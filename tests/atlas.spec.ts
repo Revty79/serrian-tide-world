@@ -1,7 +1,7 @@
 import { expect, test, type Page } from '@playwright/test';
 
 async function canvasState(page: Page) {
-  return page.getByRole('img', { name: 'Atlas map: a blank, uninterrupted ocean' }).evaluate((element) => {
+  return page.getByRole('img', { name: 'Atlas terrain map' }).evaluate((element) => {
     const canvas = element as HTMLCanvasElement;
     const context = canvas.getContext('2d')!;
     const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
@@ -38,7 +38,7 @@ test('Atlas opens with an uninterrupted, responsive ocean and no browser errors'
   expect(state.height).toBe(Math.round(state.cssHeight * state.pixelRatio));
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await expect(page.getByRole('alert')).toHaveCount(0);
-  await page.screenshot({ path: `docs/evidence/atlas-${testInfo.project.name}.png`, fullPage: true });
+  await page.screenshot({ path: testInfo.outputPath('initial-ocean.png'), fullPage: true });
   expect(errors).toEqual([]);
 });
 
