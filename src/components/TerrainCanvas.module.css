@@ -1,10 +1,15 @@
+.terrainView { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 .mapSurface {
   position: relative;
   flex: 1;
   min-height: 360px;
   overflow: hidden;
   border-radius: 3px;
+  background: #dce3e0;
 }
+
+.mapViewport { position: absolute; overflow: hidden; }
+.readout { display: block; flex: none; height: 42px; padding: 9px 0 0; overflow-wrap: anywhere; font: 11px/1.5 ui-sans-serif, system-ui, sans-serif; color: #52676c; }
 
 .canvas {
   position: absolute;
@@ -45,4 +50,7 @@
 
 @media (max-width: 540px) {
   .mapSurface { min-height: 330px; }
+}
+@media (max-width: 400px) {
+  .readout { height: 59px; }
 }

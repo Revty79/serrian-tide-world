@@ -67,3 +67,16 @@ export function viewportToWorld(terrain: Terrain, point: Point, viewport: Viewpo
 export function sampleElevation(terrain: Terrain, point: Point): number {
   return terrain.elevations[gridIndex(terrain, worldToGrid(terrain, point))]!;
 }
+
+export function inspectElevation(terrain: Terrain, point: Point) {
+  const elevation = sampleElevation(terrain, point);
+  if (!Number.isFinite(elevation)) throw new RangeError('Sampled elevation is not finite.');
+  const relativeHeight = elevation - terrain.metadata.seaLevel;
+  return {
+    position: { ...point },
+    elevation,
+    seaLevelRelation: relativeHeight > 0 ? 'above' as const : relativeHeight < 0 ? 'below' as const : 'at' as const,
+  };
+}
+
+export type ElevationSample = ReturnType<typeof inspectElevation>;

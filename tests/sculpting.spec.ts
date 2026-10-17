@@ -55,15 +55,15 @@ async function fixture(page: Page) {
 }
 async function stats(page: Page) {
   return page.evaluate(async () => {
-    const fixture = await import(new URL('/tests/fixtures/terrain.tsx', location.origin).href) as typeof import('./fixtures/terrain.tsx');
+    const fixture = await import((document.querySelector<HTMLScriptElement>('script[src*="terrain.tsx"]')!).src) as typeof import('./fixtures/terrain.tsx');
     return fixture.statistics();
   });
 }
 async function snapshot(page: Page) {
-  await page.evaluate(async () => (await import(new URL('/tests/fixtures/terrain.tsx', location.origin).href)).snapshot());
+  await page.evaluate(async () => (await import((document.querySelector<HTMLScriptElement>('script[src*="terrain.tsx"]')!).src)).snapshot());
 }
 async function unchanged(page: Page) {
-  return page.evaluate(async () => (await import(new URL('/tests/fixtures/terrain.tsx', location.origin).href)).matchesSnapshot() as boolean);
+  return page.evaluate(async () => (await import((document.querySelector<HTMLScriptElement>('script[src*="terrain.tsx"]')!).src)).matchesSnapshot() as boolean);
 }
 
 test('actual toolbar and canvas raise an island, increase its height, and lower it back under water', async ({ page }) => {
@@ -135,7 +135,7 @@ for (const termination of ['pointercancel', 'lostpointercapture', 'blur', 'resiz
     if (termination === 'blur') await page.evaluate(() => window.dispatchEvent(new Event('blur')));
     else if (termination === 'resize') await page.setViewportSize({ width: 750, height: 650 });
     else if (termination === 'read-only') {
-      await page.evaluate(async () => (await import(new URL('/tests/fixtures/terrain.tsx', location.origin).href)).setBrush(undefined));
+      await page.evaluate(async () => (await import((document.querySelector<HTMLScriptElement>('script[src*="terrain.tsx"]')!).src)).setBrush(undefined));
       await expect(map(page)).toHaveAttribute('data-editable', 'false');
     }
     else await map(page).evaluate((canvas, type) => canvas.dispatchEvent(new PointerEvent(type, { pointerId: 1, isPrimary: true, bubbles: true })), termination);
@@ -178,7 +178,7 @@ test(`equivalent browser strokes are consistent across sparse and dense events${
   for (const steps of [1, 80]) {
     await fixture(page);
     await drag(page, boundary ? [{ x: 0.8, y: 0.8 }, { x: 1.01, y: 0.2 }] : [{ x: 0.2, y: 0.5 }, { x: 0.8, y: 0.5 }], steps);
-    arrays.push(await page.evaluate(async () => Array.from((await import(new URL('/tests/fixtures/terrain.tsx', location.origin).href)).terrain.elevations as Float32Array)));
+    arrays.push(await page.evaluate(async () => Array.from((await import((document.querySelector<HTMLScriptElement>('script[src*="terrain.tsx"]')!).src)).terrain.elevations as Float32Array)));
   }
   let maxDifference = 0;
   for (let index = 0; index < arrays[0]!.length; index += 1) {
@@ -195,7 +195,7 @@ test('many pointer events in one task queue one repaint and no React commits', a
   await page.mouse.down();
   await expect.poll(async () => (await stats(page)).repaints).toBeGreaterThan(1);
   const result = await map(page).evaluate(async (canvas) => {
-    const fixture = await import(new URL('/tests/fixtures/terrain.tsx', location.origin).href) as typeof import('./fixtures/terrain.tsx');
+    const fixture = await import((document.querySelector<HTMLScriptElement>('script[src*="terrain.tsx"]')!).src) as typeof import('./fixtures/terrain.tsx');
     const before = fixture.statistics();
     const rect = canvas.getBoundingClientRect();
     for (let index = 1; index <= 60; index += 1) {
@@ -218,12 +218,12 @@ test('many pointer events in one task queue one repaint and no React commits', a
 
 test('a read-only host and invalid brush settings cannot mutate terrain', async ({ page }) => {
   await fixture(page);
-  await page.evaluate(async () => (await import(new URL('/tests/fixtures/terrain.tsx', location.origin).href)).setBrush(undefined));
+  await page.evaluate(async () => (await import((document.querySelector<HTMLScriptElement>('script[src*="terrain.tsx"]')!).src)).setBrush(undefined));
   await expect(map(page)).toHaveAttribute('data-editable', 'false');
   await snapshot(page);
   await drag(page, [{ x: 0.2, y: 0.5 }, { x: 0.8, y: 0.5 }]);
   expect(await unchanged(page)).toBe(true);
-  await page.evaluate(async () => (await import(new URL('/tests/fixtures/terrain.tsx', location.origin).href)).setBrush({ tool: 'raise', radius: 0, strength: 200 }));
+  await page.evaluate(async () => (await import((document.querySelector<HTMLScriptElement>('script[src*="terrain.tsx"]')!).src)).setBrush({ tool: 'raise', radius: 0, strength: 200 }));
   await expect(map(page)).toHaveAttribute('data-editable', 'true');
   await clickAt(page, 0.5, 0.5);
   await expect(page.getByRole('alert')).toBeVisible();
@@ -286,5 +286,5 @@ test('visual evidence: islands, higher terrain, and a lowered channel sculpted t
   expect((await pixel(page, 0.58, 0.6))[2]).toBeGreaterThan((await pixel(page, 0.58, 0.6))[1]!);
   await expect(page.getByRole('alert')).toHaveCount(0);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await page.screenshot({ path: `docs/evidence/a1-${testInfo.project.name}-sculpted.png`, fullPage: true });
+  await page.screenshot({ path: testInfo.outputPath('a1-sculpting-regression.png'), fullPage: true });
 });

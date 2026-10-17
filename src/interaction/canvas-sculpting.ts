@@ -1,6 +1,6 @@
 import { startBrushStroke, type BrushSettings, type BrushStroke } from '../terrain/brush.ts';
 import type { Terrain } from '../terrain/model.ts';
-import { viewportToWorld, type Point } from '../terrain/sampling.ts';
+import { inspectElevation, viewportToWorld, type ElevationSample, type Point } from '../terrain/sampling.ts';
 
 interface SculptingOptions {
   terrain: Terrain;
@@ -8,13 +8,14 @@ interface SculptingOptions {
   cursor: HTMLElement;
   onChange: () => void;
   onError: (error: unknown) => void;
+  onSample?: (sample: ElevationSample | null) => void;
 }
 
 /** DOM pointer lifecycle only. Numerical stroke interpolation lives in the engine. */
 export function attachCanvasSculpting(canvas: HTMLCanvasElement, options: SculptingOptions): () => void {
   const { terrain, cursor, getBrush, onChange, onError } = options;
   const view = canvas.ownerDocument.defaultView!;
-  let active: { pointerId: number; stroke: BrushStroke; lastPoint: Point; bounds: DOMRect } | null = null;
+  let active: { pointerId: number; stroke: BrushStroke; lastPoint: Point; bounds: DOMRect; windowWidth: number; windowHeight: number } | null = null;
 
   const pointFromEvent = (event: PointerEvent) => {
     const rect = canvas.getBoundingClientRect();
@@ -25,6 +26,14 @@ export function attachCanvasSculpting(canvas: HTMLCanvasElement, options: Sculpt
   };
 
   const hideCursor = () => { cursor.hidden = true; };
+  const publishSample = (event: PointerEvent) => {
+    const rect = canvas.getBoundingClientRect();
+    const inside = rect.width > 0 && rect.height > 0
+      && event.clientX >= rect.left && event.clientX <= rect.right
+      && event.clientY >= rect.top && event.clientY <= rect.bottom;
+    options.onSample?.(inside ? inspectElevation(terrain, pointFromEvent(event)) : null);
+  };
+  const leave = () => { hideCursor(); options.onSample?.(null); };
   const showCursor = (event: PointerEvent) => {
     const settings = active?.stroke.settings ?? getBrush();
     if (!settings) { hideCursor(); return; }
@@ -45,6 +54,7 @@ export function attachCanvasSculpting(canvas: HTMLCanvasElement, options: Sculpt
       canvas.releasePointerCapture(previous.pointerId);
     }
     hideCursor();
+    options.onSample?.(null);
   };
 
   const fail = (error: unknown) => { stop(); onError(error); };
@@ -54,7 +64,8 @@ export function attachCanvasSculpting(canvas: HTMLCanvasElement, options: Sculpt
     const rect = canvas.getBoundingClientRect();
     const original = active.bounds;
     // Layout can change before the browser delivers resize/observer callbacks.
-    if (rect.width !== original.width || rect.height !== original.height
+    if (view.innerWidth !== active.windowWidth || view.innerHeight !== active.windowHeight
+      || rect.width !== original.width || rect.height !== original.height
       || rect.left !== original.left || rect.top !== original.top) {
       stop();
       return false;
@@ -96,6 +107,7 @@ export function attachCanvasSculpting(canvas: HTMLCanvasElement, options: Sculpt
         active = {
           pointerId: event.pointerId, stroke: startBrushStroke(terrain, point, settings),
           lastPoint: point, bounds: canvas.getBoundingClientRect(),
+          windowWidth: view.innerWidth, windowHeight: view.innerHeight,
         };
       } catch (error) {
         canvas.releasePointerCapture(event.pointerId);
@@ -103,16 +115,17 @@ export function attachCanvasSculpting(canvas: HTMLCanvasElement, options: Sculpt
       }
       showCursor(event);
       onChange();
+      publishSample(event);
     } catch (error) { fail(error); }
   };
 
   const move = (event: PointerEvent) => {
     if (active && active.pointerId !== event.pointerId) return;
     showCursor(event);
-    if (!active) return;
-    if ((event.buttons & 1) === 0) { stop(); return; }
-    event.preventDefault();
     try {
+      if (!active) { publishSample(event); return; }
+      if ((event.buttons & 1) === 0) { stop(); publishSample(event); return; }
+      event.preventDefault();
       let changed = false;
       // Include the dispatched event as well; duplicates carry zero distance.
       const events = [...(event.getCoalescedEvents?.() ?? []), event];
@@ -121,6 +134,7 @@ export function attachCanvasSculpting(canvas: HTMLCanvasElement, options: Sculpt
         changed = advance(sample) || changed;
       }
       if (changed) onChange();
+      publishSample(event);
     } catch (error) { fail(error); }
   };
 
@@ -130,6 +144,9 @@ export function attachCanvasSculpting(canvas: HTMLCanvasElement, options: Sculpt
       if (advance(event)) onChange();
     } catch (error) { onError(error); }
     stop();
+    if (event.pointerType !== 'touch') {
+      try { publishSample(event); } catch (error) { onError(error); }
+    }
   };
   const cancel = (event: PointerEvent) => {
     if (active?.pointerId === event.pointerId) stop();
@@ -138,7 +155,7 @@ export function attachCanvasSculpting(canvas: HTMLCanvasElement, options: Sculpt
 
   canvas.addEventListener('pointerdown', down);
   canvas.addEventListener('pointermove', move);
-  canvas.addEventListener('pointerleave', hideCursor);
+  canvas.addEventListener('pointerleave', leave);
   canvas.addEventListener('pointercancel', cancel);
   canvas.addEventListener('lostpointercapture', cancel);
   view.addEventListener('pointerup', up);
@@ -151,7 +168,7 @@ export function attachCanvasSculpting(canvas: HTMLCanvasElement, options: Sculpt
     stop();
     canvas.removeEventListener('pointerdown', down);
     canvas.removeEventListener('pointermove', move);
-    canvas.removeEventListener('pointerleave', hideCursor);
+    canvas.removeEventListener('pointerleave', leave);
     canvas.removeEventListener('pointercancel', cancel);
     canvas.removeEventListener('lostpointercapture', cancel);
     view.removeEventListener('pointerup', up);

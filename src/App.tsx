@@ -1,12 +1,20 @@
 import { useState } from 'react';
 import { TerrainCanvas } from './components/TerrainCanvas.tsx';
-import { BrushToolbar } from './components/BrushToolbar.tsx';
-import type { BrushSettings } from './terrain/brush.ts';
+import { BrushToolbar, brushFromControls, type BrushControls } from './components/BrushToolbar.tsx';
+import { ElevationLegend } from './components/ElevationLegend.tsx';
 import { createBlankTerrain } from './terrain/model.ts';
+import { resetTerrainToOcean } from './terrain/modifications.ts';
 
 export function App() {
   const [terrain] = useState(() => createBlankTerrain({ id: 'atlas-a0-blank-ocean' }));
-  const [brush, setBrush] = useState<BrushSettings>({ tool: 'raise', radius: 0.06, strength: 200 });
+  const [controls, setControls] = useState<BrushControls>({ tool: 'raise', radius: 0.06, strength: 200, intensity: 0.5, targetElevation: '0' });
+  const [revision, setRevision] = useState(0);
+  const reset = () => {
+    if (window.confirm('Reset all terrain to the blank ocean at −100 meters? This clears all sculpting. Undo is not available.')) {
+      resetTerrainToOcean(terrain);
+      setRevision((value) => value + 1);
+    }
+  };
 
   return (
     <div className="atlas-app">
@@ -17,17 +25,14 @@ export function App() {
       <main>
         <div className="page-heading">
           <h1>Atlas</h1>
-          <p>Raise islands. Shape the land. Carve it back to sea.</p>
+          <p>Raise islands. Refine the land. Shape your world.</p>
         </div>
-        <BrushToolbar settings={brush} mapSpan={Math.min(terrain.metadata.dimensions.width, terrain.metadata.dimensions.height)} onChange={setBrush} />
+        <BrushToolbar settings={controls} mapSpan={Math.min(terrain.metadata.dimensions.width, terrain.metadata.dimensions.height)} onChange={setControls} onReset={reset} />
         <figure className="map-frame">
-          <TerrainCanvas terrain={terrain} brush={brush} />
+          <TerrainCanvas terrain={terrain} brush={brushFromControls(controls)} revision={revision} />
           <figcaption>
             <span className="map-name">Click or drag to sculpt</span>
-            <span className="map-legend" aria-label="Elevation legend">
-              <span><i className="swatch swatch-water" aria-hidden="true" />Water ≤ 0 m</span>
-              <span><i className="swatch swatch-land" aria-hidden="true" />Land &gt; 0 m</span>
-            </span>
+            <ElevationLegend seaLevel={terrain.metadata.seaLevel} />
           </figcaption>
         </figure>
       </main>

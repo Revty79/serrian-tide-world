@@ -12,6 +12,7 @@ let saved: Float32Array | undefined;
 let commits = 0;
 let repaints = 0;
 let changeBrush: (settings: BrushSettings | undefined) => void;
+let requestRefresh: () => void;
 
 const nativeDrawImage = CanvasRenderingContext2D.prototype.drawImage;
 CanvasRenderingContext2D.prototype.drawImage = function (...args: unknown[]) {
@@ -20,6 +21,7 @@ CanvasRenderingContext2D.prototype.drawImage = function (...args: unknown[]) {
 };
 
 export function setBrush(settings: BrushSettings | undefined) { changeBrush(settings); }
+export function refresh() { requestRefresh(); }
 export function snapshot() { saved = terrain.elevations.slice(); }
 export function matchesSnapshot() {
   return saved?.every((value, index) => Object.is(value, terrain.elevations[index]))
@@ -39,11 +41,13 @@ export function statistics() {
 
 function Fixture() {
   const [brush, updateBrush] = useState<BrushSettings | undefined>({ tool: 'raise', radius: 0.06, strength: 200 });
+  const [revision, setRevision] = useState(0);
   changeBrush = updateBrush;
+  requestRefresh = () => setRevision((value) => value + 1);
   return <>
     <button type="button">Outside the map</button>
     <Profiler id="terrain" onRender={() => { commits += 1; }}>
-      <TerrainCanvas terrain={terrain} brush={brush} />
+      <TerrainCanvas terrain={terrain} brush={brush} revision={revision} />
     </Profiler>
   </>;
 }

@@ -1,0 +1,9 @@
+.legend { display: flex; flex-wrap: wrap; gap: 16px 24px; font-size: 11px; color: #52676c; }
+.band { width: 220px; max-width: 100%; }
+.band > span:first-child { display: block; margin-bottom: 5px; font-weight: 600; }
+.band i { display: block; height: 7px; border-radius: 2px; }
+.ticks { display: flex; justify-content: space-between; gap: 8px; margin-top: 3px; font-size: 10px; }
+@media (max-width: 540px) {
+  .legend { width: 100%; gap: 20px; }
+  .band { flex: 1; min-width: 135px; }
+}

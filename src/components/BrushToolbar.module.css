@@ -7,9 +7,9 @@
 }
 
 .tools { display: flex; gap: 5px; }
-.tools button {
+.tools button, .reset {
   appearance: none;
-  padding: 10px 16px;
+  padding: 10px 13px;
   min-height: 44px;
   border: 1px solid #c8d2cf;
   border-radius: 4px;
@@ -27,11 +27,18 @@
 .control label { display: flex; justify-content: space-between; gap: 12px; font-size: 12px; font-weight: 600; }
 .control output { font-weight: 400; color: #52676c; }
 .control input { display: block; width: 100%; margin: 2px 0 -8px; min-height: 36px; accent-color: #254d5a; cursor: pointer; }
+.reset { margin-left: auto; font-size: 12px; }
+.reset:hover { border-color: #254d5a; }
+.reset:focus-visible { outline: 2px solid #236888; outline-offset: 3px; }
+.target { width: 168px; }
+.target input { border: 1px solid #b7c7c4; border-radius: 3px; margin: 5px 0 0; background: #fffefa; padding: 6px 9px; cursor: text; color: #24363b; font: inherit; font-size: 13px; }
+.target input[aria-invalid="true"] { border-color: #9a4936; }
+.target p { margin: 6px 0 0; font-size: 11px; color: #843f2d; }
 
 @media (max-width: 650px) {
   .toolbar { gap: 14px 20px; padding-top: 8px; }
   .tools { width: 100%; }
-  .tools button { flex: 1; }
+  .tools button { flex: 1; padding-inline: 8px; }
   .control { flex: 1; min-width: 135px; }
   .control label { font-size: 11px; gap: 6px; }
 }
