@@ -1,10 +1,10 @@
 # Serrian Tide Atlas
 
-Pass A2: Raise, Lower, Smooth, and Flatten on a real numerical heightmap, starting from a blank ocean.
+Pass A3: a full-screen numerical heightmap workspace with four brushes, navigation, Undo/Redo, and browser-local saving/reopening.
 
-This repository is a standalone **development workspace**, not a permanent separate website. The finished Atlas and rebuilt Worlds system will be integrated into the existing Serrian Tide Next.js application, replacing its current Worlds/Atlas implementation. Neither A0 nor A1 modifies or integrates with that application.
+This repository is a standalone **development workspace**. Atlas and the rebuilt Worlds system will ultimately replace the current Worlds/Atlas implementation inside the existing Serrian Tide Next.js/TypeScript website. The original website remains untouched.
 
-## Run locally
+## Run and verify
 
 Use Node.js 24.x and npm. In PowerShell:
 
@@ -14,9 +14,7 @@ npm.cmd ci
 npm.cmd run dev
 ```
 
-Open <http://127.0.0.1:5173/>. On other shells, `npm` works in place of `npm.cmd`. The server binds to loopback only. Stop it with Ctrl+C.
-
-## Check the project
+Open <http://127.0.0.1:5173/>. The server binds to loopback only; stop it with Ctrl+C. On other shells, use `npm` in place of `npm.cmd`.
 
 ```powershell
 npm.cmd test
@@ -25,79 +23,46 @@ npm.cmd run test:browser
 npm.cmd run build
 ```
 
-`npm.cmd run check` runs all three checks after Chromium is installed. Browser tests start the development server if one is not already running. `npm.cmd run preview` serves an existing build locally; it does not deploy anything.
+`npm.cmd run check` runs the numerical tests, browser tests and build. Browser tests start a local dev server if needed. `npm.cmd run preview` serves an existing build locally without deploying it.
 
-## Structure and technologies
+## Use the workspace
 
-React 19.3, TypeScript 7.0, Vite 8.3, the browser's Canvas 2D API, Node's built-in numerical test runner, and Playwright for browser verification. Only React and React DOM are runtime dependencies.
+The map stage occupies the browser viewport. **Atlas / Open tools** reveals a scrollable left panel that overlays the map. It never shrinks or stretches the map. Escape closes the panel and returns focus to its toggle when focus was inside. The panel is nonmodal; Tab can reach the floating actions and canvas. Reduced-motion preferences suppress the slide animation.
 
-```text
-src/
-  terrain/
-    model.ts                   Versioned numerical data and blank terrain factory
-    sampling.ts                Grid, planar, and viewport coordinate conversion
-    modifications.ts           Single-sample numerical mutation primitive
-    brush.ts                   Four numerical brushes and distance-based strokes
-    *.test.ts                  Data, sampling, modification, and brush verification
-  interaction/
-    canvas-sculpting.ts         Browser pointer lifecycle, capture, and cancellation
-  rendering/
-    elevation-colors.ts        Elevation-to-color mapping
-    elevation-raster.ts        Browser-independent RGBA raster generation
-    canvas-renderer.ts         Canvas display and device-pixel scaling
-    fit-map.ts                 Aspect-preserving map fitting
-    elevation-raster.test.ts   Numerical rendering verification
-  components/
-    TerrainCanvas.tsx          Embeddable Next.js-compatible client component
-    TerrainCanvas.module.css   Component-scoped canvas styling
-    BrushToolbar.tsx           Four tools, radius, strength/intensity, target, reset
-    BrushToolbar.module.css    Component-scoped toolbar styling
-    ElevationLegend.tsx        Color bands derived from the terrain palette
-    ElevationLegend.module.css Component-scoped legend styling
-  App.tsx                      Temporary development interface
-  main.tsx                     Vite-only browser entry point
-  styles.css                   Development-shell styling only
-tests/atlas.spec.ts             Desktop and mobile browser verification
-tests/sculpting.spec.ts         Actual sculpting and pointer lifecycle verification
-tests/refinement.spec.ts        Smooth/Flatten, readout, reset, aspect, and evidence
-tests/fixtures/                 Test-only component host and numerical inspection
-docs/ARCHITECTURE.md            Integration boundaries and terrain contract
-docs/A0-COMPLETION.md           Historical A0 completion record
-docs/A1-COMPLETION.md           A1 mathematics, acceptance evidence, and changed files
-docs/A2-COMPLETION.md           A2 behavior, verification, limitations, and changed files
-docs/PHASE-1-HEIGHTMAP-ROADMAP.md Implemented versus planned Phase 1 inventory
-docs/evidence/                 Actual desktop and mobile screenshots
-```
+- **Raise / Lower:** add or subtract 10–1,000 meters per dab at the center, default 200.
+- **Smooth:** blend toward a local 3 × 3 pre-dab neighborhood average.
+- **Flatten:** blend toward an explicit positive, zero or negative target in meters. Invalid targets disable this brush until corrected.
+- **Radius:** 0.5–20% of the map's shorter logical side, default 6%.
+- **Intensity:** Smooth/Flatten blend 1–100% per dab, default 50%.
+- **Strokes:** click for one dab or drag with mouse, pen or one finger. Dabs are spaced by a quarter radius; duplicate events and stationary time add nothing. Settings apply to the next stroke. Cancellation retains the completed portion as one undoable operation.
+- **Navigate:** wheel toward the pointer; use Zoom In/Out or Fit Map; select Pan or hold Space and drag. Two fingers pan and pinch. Zoom is limited to 100–800%. Navigation never changes elevation. Single-touch painting waits for movement or release so a second finger can claim navigation without an accidental initial dab.
+- **History:** floating Undo/Redo, Ctrl/⌘ Z, Ctrl/⌘ Shift Z, or Ctrl Y. Confirmed Reset Terrain is undoable. A new numerical edit clears Redo. Text fields retain their native Undo behavior.
+- **Preserve work:** name the map, use floating Save or Ctrl/⌘ S, select a saved map and Open Map. Save replaces the local record with the same terrain identity; New Blank Map creates a new identity and history. New/Open ask before discarding unsaved changes. Reload/closing uses the browser's standard unsaved-change prompt where supported.
 
-## Numerical terrain
+Save explicitly before leaving. Saves belong to the **current browser profile and origin on this device**, are not synchronized to Serrian Tide, and can be removed by clearing browser data. Private browsing and browser eviction policies affect their lifetime. There is no autosave, crash recovery, external import/export, server storage, or separate account system in A3. A browser may not fire an unload event when a mobile app is killed.
 
-The initial terrain contains 512 columns × 512 rows, stored row-major in a `Float32Array`: 262,144 samples occupying 1 MiB. Every sample starts at −100 meters. Sea level is 0 meters; elevations at or below sea level render as water, and values above sea level render as land.
+## Numerical terrain and integration
 
-Metadata declares contract version 1, terrain ID, planar surface, map dimensions, grid resolution, elevation units, and sea level. The provisional editing extent is a neutral 1 × 1 map-unit rectangle, not a planet or a physical-world scale. The grid includes its edges, with row zero at the top. Sampling uses the nearest sample and rejects out-of-bounds points.
+New maps have 512 columns × 512 rows in a row-major `Float32Array` (262,144 samples, 1 MiB), initially all −100 m. Sea level defaults to 0 m; water includes equality. Version 1 metadata declares identity, planar dimensions, grid resolution, units and sea level. The provisional extent is a neutral 1 × 1 map-unit rectangle, independent of sample resolution and physical-world scale.
 
-Rendering reads the numbers to generate one RGBA pixel per sample, then scales that raster to the canvas backing bitmap. CSS size and device pixel ratio never resize or rewrite the heightmap. The provisional palette varies with depth and positive height; it makes no biome or climate assumptions.
+Rendering and the camera only read terrain. One aspect-preserving scale applies to both axes; a square map stays square and a non-square map keeps its declared proportions. Fit can leave letterboxing. Camera zoom magnifies the fitted bitmap without allocating a zoom-squared raster. Pointer sampling and previews use the transformed canvas bounds, independently of device pixel ratio. The numerical elevation readout and color legend share the actual sea level and palette.
 
-## Sculpt terrain
+The numerical engine has no React, DOM, Vite, authentication, network or database dependencies. Client components use scoped CSS and an explicit `'use client'` boundary. The host owns terrain lifetime, history callbacks, storage and permissions. The full-screen shell is replaceable; the future Next.js host will use its own authentication, authoritative access checks, database and World records.
 
-Select **Raise**, **Lower**, **Smooth**, or **Flatten**, adjust the controls, then click or drag across the map. A single click applies one dab. Hovering or holding still adds no elevation. Start another stroke to build up an island into higher terrain, lower it back underwater, or refine its shape.
+## Source map
 
-- **Radius:** 0.5–20% of the map's shorter logical side, default 6%. The engine receives a radius in map units, not pixels. On the initial unit-square map the default is `0.06` map units.
-- **Strength:** 10–1,000 meters per dab at its center, default 200. Influence fades smoothly to zero at the radius. The default brings the center of one dab above the initial −100-meter ocean floor.
-- **Intensity:** Smooth and Flatten use 1–100% per dab, default 50%. Smooth blends toward the local 3 × 3 sample average; Flatten blends toward the entered target elevation in meters. Smooth reads a fixed pre-dab source snapshot, eliminating directional scan bias. Repeated passes progressively refine the terrain.
-- **Target:** Flatten accepts positive, zero, or negative finite meter values. An empty or out-of-range target disables Flatten until corrected. Tool switches retain the stored controls and do not reset terrain.
-- **Strokes:** one initial dab, then another every quarter-radius of distance traveled. Duplicate events and stationary time add nothing. Settings are fixed at the start of each stroke; the next stroke uses any updated controls.
-- **Edges and interruption:** footprints clip at the map edge. A stroke ends on exiting the map, releasing, cancelling, losing capture/focus, resizing the viewport, or disabling editing. Re-entering the canvas requires a new press. Cancellation keeps edits already applied.
+| Location | Responsibility |
+| --- | --- |
+| `src/terrain/` | Numerical model, sampling, modification/reset, four brush tools and interpolation |
+| `src/rendering/` | Colors, raster, canvas renderer, contain-fit and pure camera math |
+| `src/interaction/` | Pointer lifecycle, stroke boundaries, navigation/brush arbitration |
+| `src/editor/` | Bit-exact bounded history and document saved checkpoints |
+| `src/persistence/` | Validated/versioned little-endian save representation and separate IndexedDB adapter |
+| `src/components/` | Reusable client canvas, controlled brush inputs and elevation legend |
+| `src/App.tsx`, `src/styles.css`, `src/main.tsx` | Temporary full-screen development host |
+| `tests/` | Desktop/mobile browser proofs and test-only numerical fixture |
+| `docs/evidence/` | Actual screenshots; A0–A2 evidence remains historical |
 
-Brush dimensions and strength are independent of browser size and device pixel ratio. A2 fits the logical map rectangle inside the available display area while preserving aspect ratio. The initial square map and round brushes stay square and round on wide or tall screens. Fitted margins are outside the canvas and never accept terrain edits. Mouse, pen, and one-finger touch use the same brush math; pressure is not used.
+See [architecture](docs/ARCHITECTURE.md), [A3 completion and exact changed files](docs/A3-COMPLETION.md), and the [Phase 1 inventory](docs/PHASE-1-HEIGHTMAP-ROADMAP.md). Historical [A0](docs/A0-COMPLETION.md), [A1](docs/A1-COMPLETION.md) and [A2](docs/A2-COMPLETION.md) reports are preserved.
 
-Hover over the map for approximate planar X/Y position and numerical elevation, with an above/at/below sea-level indication. The legend's depth and height bands use the same color function as the canvas. **Reset Terrain** asks for explicit confirmation and restores every sample to −100 m while keeping terrain identity, metadata, and the existing buffer.
-
-Numerical changes update the same `Float32Array`. Rendering is queued once per animation frame, and pointer movement does not rerender the application. No Undo/Redo, Save/Load, Zoom/Pan, generation, or simulations are implemented. Reloading still resets the development example.
-
-## Integration requirement
-
-The terrain/brush engine has no React, DOM, Vite, authentication, network, or database dependencies. Browser pointer handling and rendering are isolated. `TerrainCanvas` has a Next.js `'use client'` boundary, scoped CSS, and explicit `terrain`, optional `brush`, and optional mutation `revision` props; it does not create its own World or fetch data. Omitting `brush` makes it read-only. `App.tsx` owns the temporary in-memory example, confirmation, reset, and control state.
-
-The future main-application host will own authentication, server-side permissions, World-record identity, and database persistence. Those connections remain unimplemented. See [the architecture notes](docs/ARCHITECTURE.md) for the exact boundaries and migration considerations.
-
-A0/A1 passed Ember's source review, per the owner. A2 is ready for Ember's independent review. The owner's later instruction directs delivery to this repository's `main`, with no additional A2 branch and no deployment. Owner hands-on testing is deferred until Ember approves A2 technical readiness. See the [Phase 1 roadmap](docs/PHASE-1-HEIGHTMAP-ROADMAP.md) for planned capabilities; it does not authorize A3 or later work.
+The owner confirmed Ember's approval of A2 and authorized A3 directly on `main`, including the full-screen overlay interface clarification. A3 awaits independent review and owner acceptance. Stop after A3; no A4, main-site integration or deployment is included.

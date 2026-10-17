@@ -1,3 +1,4 @@
+import { toolsPanel } from './workspace-helpers.ts';
 import { expect, test, type Page } from '@playwright/test';
 
 const map = (page: Page) => page.getByRole('img', { name: 'Atlas terrain map' });
@@ -14,6 +15,7 @@ test.afterEach(async ({ page }) => {
 });
 
 async function bounds(page: Page) {
+  await toolsPanel(page, false);
   const rect = await map(page).boundingBox();
   if (!rect) throw new Error('Map is not visible.');
   return rect;
@@ -39,6 +41,7 @@ async function clickAt(page: Page, x: number, y: number) {
   await page.mouse.click(rect.x + x * rect.width, rect.y + y * rect.height);
 }
 async function setSlider(page: Page, name: 'Radius' | 'Strength', value: number) {
+  await toolsPanel(page, true);
   const slider = page.getByRole('slider', { name: new RegExp(name) });
   const min = Number(await slider.getAttribute('min'));
   const max = Number(await slider.getAttribute('max'));
@@ -68,6 +71,7 @@ async function unchanged(page: Page) {
 
 test('actual toolbar and canvas raise an island, increase its height, and lower it back under water', async ({ page }) => {
   await page.goto('/');
+  await toolsPanel(page, true);
   await expect(page.getByRole('button', { name: 'Raise', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await expect.poll(() => pixel(page, 0.5, 0.5)).toEqual(water);
   await clickAt(page, 0.5, 0.5);
@@ -75,7 +79,9 @@ test('actual toolbar and canvas raise an island, increase its height, and lower 
   const firstLand = await pixel(page, 0.5, 0.5);
   await clickAt(page, 0.5, 0.5);
   await expect.poll(() => pixel(page, 0.5, 0.5)).not.toEqual(firstLand);
+  await toolsPanel(page, true);
   await page.getByRole('button', { name: 'Lower', exact: true }).click();
+  await toolsPanel(page, true);
   await expect(page.getByRole('button', { name: 'Lower', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await clickAt(page, 0.5, 0.5);
   await clickAt(page, 0.5, 0.5);
@@ -104,7 +110,9 @@ test('radius and strength controls visibly affect the brush footprint', async ({
   await setSlider(page, 'Strength', 1000);
   await clickAt(page, 0.65, 0.65);
   await expect.poll(async () => (await pixel(page, 0.74, 0.65))[1]! > (await pixel(page, 0.74, 0.65))[2]!).toBe(true);
+  await toolsPanel(page, true);
   await expect(page.getByRole('slider', { name: /Radius/ })).toHaveAttribute('aria-valuetext', "20% of the map's shorter side");
+  await toolsPanel(page, true);
   await expect(page.getByRole('slider', { name: /Strength/ })).toHaveAttribute('aria-valuetext', '1000 meters per dab at the brush center');
 });
 
@@ -273,9 +281,11 @@ test('visual evidence: islands, higher terrain, and a lowered channel sculpted t
   for (let index = 0; index < 3; index += 1) {
     await drag(page, [{ x: 0.32, y: 0.46 }, { x: 0.42, y: 0.4 }, { x: 0.51, y: 0.43 }], 12);
   }
+  await toolsPanel(page, true);
   await page.getByRole('button', { name: 'Lower', exact: true }).click();
   await setSlider(page, 'Radius', 3);
   await drag(page, [{ x: 0.58, y: 0.28 }, { x: 0.55, y: 0.46 }, { x: 0.59, y: 0.7 }], 12);
+  await toolsPanel(page, true);
   await page.getByRole('button', { name: 'Raise', exact: true }).click();
   await setSlider(page, 'Radius', 7);
   await setSlider(page, 'Strength', 200);

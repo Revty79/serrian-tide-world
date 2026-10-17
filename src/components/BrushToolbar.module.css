@@ -5,6 +5,10 @@
   gap: 20px 30px;
   padding: 16px 0 18px;
 }
+.toolbar { display: flex; flex-direction: column; align-items: stretch; gap: 18px; padding-block: 8px; }
+.toolbar .tools { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; width: 100%; }
+.toolbar .control { width: 100%; min-width: 0; flex: none; }
+.toolbar .reset { margin: 8px 0 0; width: 100%; }
 
 .tools { display: flex; gap: 5px; }
 .tools button, .reset {

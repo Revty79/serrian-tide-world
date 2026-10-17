@@ -1,11 +1,15 @@
 // Test-only host: no instrumentation or terrain inspection hooks enter the app build.
-import { Profiler, useState } from 'react';
+import { Profiler, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { TerrainCanvas } from '../../src/components/TerrainCanvas.tsx';
+import { TerrainCanvas, type TerrainCanvasHandle } from '../../src/components/TerrainCanvas.tsx';
+import { TerrainHistory } from '../../src/editor/terrain-history.ts';
 import type { BrushSettings } from '../../src/terrain/brush.ts';
 import { createBlankTerrain } from '../../src/terrain/model.ts';
 
 export const terrain = createBlankTerrain({ id: 'component-browser-fixture' });
+export const history = new TerrainHistory(terrain);
+export let camera: TerrainCanvasHandle;
+export let setPan: (pan: boolean) => void;
 const originalBuffer = terrain.elevations;
 const originalMetadata = terrain.metadata;
 let saved: Float32Array | undefined;
@@ -40,6 +44,10 @@ export function statistics() {
 }
 
 function Fixture() {
+  const handle = useRef<TerrainCanvasHandle>(null);
+  const [pan, updatePan] = useState(false);
+  setPan = updatePan;
+  camera = { finishInteraction: () => handle.current!.finishInteraction(), zoom: (factor) => handle.current!.zoom(factor), fit: () => handle.current!.fit() };
   const [brush, updateBrush] = useState<BrushSettings | undefined>({ tool: 'raise', radius: 0.06, strength: 200 });
   const [revision, setRevision] = useState(0);
   changeBrush = updateBrush;
@@ -47,7 +55,8 @@ function Fixture() {
   return <>
     <button type="button">Outside the map</button>
     <Profiler id="terrain" onRender={() => { commits += 1; }}>
-      <TerrainCanvas terrain={terrain} brush={brush} revision={revision} />
+      <TerrainCanvas ref={handle} terrain={terrain} brush={brush} revision={revision} pan={pan}
+        onStrokeBegin={() => history.begin()} onStrokeEnd={() => { history.commit(); }} />
     </Profiler>
   </>;
 }

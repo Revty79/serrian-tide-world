@@ -28,7 +28,8 @@ test('Atlas opens with an uninterrupted, responsive ocean and no browser errors'
   page.on('pageerror', (error) => errors.push(error.message));
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
   await page.goto('/');
-  await expect(page.getByRole('heading', { name: 'Atlas', exact: true })).toBeVisible();
+  await expect(page.getByRole('main', { name: 'Atlas workspace' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Open tools', exact: true })).toBeVisible();
   await expect.poll(async () => (await canvasState(page)).uniform).toBe(true);
   const state = await canvasState(page);
   expect(state.first).toEqual([35, 104, 136, 255]);

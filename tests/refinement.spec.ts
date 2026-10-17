@@ -1,3 +1,4 @@
+import { toolsPanel } from './workspace-helpers.ts';
 import { expect, test, type Page } from '@playwright/test';
 
 const map = (page: Page) => page.getByRole('img', { name: 'Atlas terrain map' });
@@ -12,6 +13,7 @@ test.beforeEach(({ page }) => {
 test.afterEach(async ({ page }) => { expect(errors.get(page)).toEqual([]); });
 
 async function bounds(page: Page) {
+  await toolsPanel(page, false);
   const rect = await map(page).boundingBox();
   if (!rect) throw new Error('Map is not visible.');
   return rect;
@@ -32,6 +34,7 @@ async function drag(page: Page, points: { x: number; y: number }[], steps = 1) {
   await page.mouse.up();
 }
 async function slider(page: Page, name: 'Radius' | 'Strength' | 'Intensity', value: number) {
+  await toolsPanel(page, true);
   const input = page.getByRole('slider', { name: new RegExp(name) });
   const min = Number(await input.getAttribute('min'));
   const max = Number(await input.getAttribute('max'));
@@ -66,11 +69,15 @@ test('Smooth is selectable, uses percentage intensity, and reduces a sculpted pe
   await slider(page, 'Strength', 1000);
   for (let index = 0; index < 4; index += 1) await click(page, 0.5, 0.5);
   const before = await elevation(page);
+  await toolsPanel(page, true);
   await page.getByRole('button', { name: 'Smooth', exact: true }).click();
+  await toolsPanel(page, true);
   await expect(page.getByRole('button', { name: 'Smooth', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await expect(map(page)).toHaveAccessibleDescription(/Smooth selected/);
+  await toolsPanel(page, true);
   await expect(page.getByRole('slider', { name: /Strength/ })).toHaveCount(0);
   await slider(page, 'Intensity', 100);
+  await toolsPanel(page, true);
   await expect(page.getByRole('slider', { name: /Intensity/ })).toHaveAttribute('aria-valuetext', '100% toward the local average per dab at the brush center');
   for (let index = 0; index < 4; index += 1) await click(page, 0.5, 0.5);
   expect(await elevation(page)).toBeLessThan(before);
@@ -80,8 +87,10 @@ test('Smooth is selectable, uses percentage intensity, and reduces a sculpted pe
 for (const target of [500, 0, -300]) {
   test(`Flatten accepts a ${target} m target and updates real terrain colors and readout`, async ({ page }) => {
     await page.goto('/');
+    await toolsPanel(page, true);
     await page.getByRole('button', { name: 'Flatten', exact: true }).click();
     await expect(map(page)).toHaveAccessibleDescription(/Flatten selected/);
+    await toolsPanel(page, true);
     await page.getByRole('spinbutton', { name: 'Target elevation (m)' }).fill(String(target));
     await slider(page, 'Intensity', 100);
     await click(page, 256 / 511, 256 / 511);
@@ -101,21 +110,29 @@ test('an empty Flatten target blocks editing and tool switching preserves terrai
   await slider(page, 'Strength', 500);
   await click(page, 0.5, 0.5);
   const before = await elevation(page);
+  await toolsPanel(page, true);
   await page.getByRole('button', { name: 'Flatten', exact: true }).click();
+  await toolsPanel(page, true);
   await page.getByRole('spinbutton', { name: 'Target elevation (m)' }).fill('');
   await expect(map(page)).toHaveAttribute('data-editable', 'false');
   await click(page, 0.5, 0.5);
   expect(await elevation(page)).toBe(before);
+  await toolsPanel(page, true);
   await page.getByRole('spinbutton', { name: 'Target elevation (m)' }).fill('-250');
   await expect(map(page)).toHaveAttribute('data-editable', 'true');
+  await toolsPanel(page, true);
   await page.getByRole('button', { name: 'Smooth', exact: true }).click();
   await slider(page, 'Intensity', 25);
+  await toolsPanel(page, true);
   await page.getByRole('button', { name: 'Raise', exact: true }).click();
+  await toolsPanel(page, true);
   await expect(page.getByRole('slider', { name: /Strength/ })).toHaveValue('500');
   await hover(page, 0.5, 0.5);
   expect(await elevation(page)).toBe(before);
+  await toolsPanel(page, true);
   await page.getByRole('button', { name: 'Flatten', exact: true }).click();
   await expect(page.getByRole('spinbutton', { name: 'Target elevation (m)' })).toHaveValue('-250');
+  await toolsPanel(page, true);
   await expect(page.getByRole('slider', { name: /Intensity/ })).toHaveValue('25');
 });
 
@@ -195,10 +212,12 @@ test('Reset requires confirmation, cancellation preserves edits, and acceptance 
   await click(page, 0.5, 0.5);
   const before = await elevation(page);
   page.once('dialog', async (dialog) => { expect(dialog.type()).toBe('confirm'); await dialog.dismiss(); });
+  await toolsPanel(page, true);
   await page.getByRole('button', { name: 'Reset Terrain', exact: true }).click();
   await hover(page, 0.5, 0.5);
   expect(await elevation(page)).toBe(before);
   page.once('dialog', async (dialog) => { expect(dialog.message()).toContain('−100 meters'); await dialog.accept(); });
+  await toolsPanel(page, true);
   await page.getByRole('button', { name: 'Reset Terrain', exact: true }).click();
   await expect.poll(async () => map(page).evaluate((element) => {
     const canvas = element as HTMLCanvasElement;
@@ -208,6 +227,7 @@ test('Reset requires confirmation, cancellation preserves edits, and acceptance 
   })).toBe(true);
   await hover(page, 0.5, 0.5);
   await expect(readout(page)).toContainText('-100 m · Below sea level');
+  await toolsPanel(page, true);
   await expect(page.getByRole('button', { name: 'Raise', exact: true })).toHaveAttribute('aria-pressed', 'true');
 });
 
@@ -252,6 +272,7 @@ for (const tool of ['smooth', 'flatten'] as const) {
 
 test('the visible legend uses the same water and land colors as the numerical palette', async ({ page }) => {
   await page.goto('/');
+  await toolsPanel(page, true);
   const gradients = await page.getByLabel('Elevation color legend').locator('i').evaluateAll((elements) => elements.map((element) => getComputedStyle(element).backgroundImage));
   expect(gradients[0]).toContain('rgb(12, 45, 72)');
   expect(gradients[0]).toContain('rgb(37, 111, 143)');
@@ -270,22 +291,27 @@ test('visual evidence: Raise/Lower, Smooth, and Flatten on the aspect-preserving
   await slider(page, 'Radius', 4);
   await slider(page, 'Strength', 1000);
   for (let index = 0; index < 2; index += 1) await drag(page, [{ x: 0.32, y: 0.48 }, { x: 0.44, y: 0.41 }, { x: 0.51, y: 0.45 }], 8);
+  await toolsPanel(page, true);
   await page.getByRole('button', { name: 'Lower', exact: true }).click();
   await slider(page, 'Radius', 3);
   await drag(page, [{ x: 0.58, y: 0.28 }, { x: 0.55, y: 0.47 }, { x: 0.59, y: 0.72 }], 8);
   await page.mouse.move(5, 5);
-  await page.screenshot({ path: `docs/evidence/a2-${testInfo.project.name}-raise-lower.png`, fullPage: true });
+  await page.screenshot({ path: testInfo.outputPath('a2-raise-lower-regression.png'), fullPage: true });
+  await toolsPanel(page, true);
   await page.getByRole('button', { name: 'Raise', exact: true }).click();
   await slider(page, 'Radius', 0.5);
   for (const point of [{ x: 0.37, y: 0.5 }, { x: 0.39, y: 0.5 }, { x: 0.41, y: 0.5 }]) await click(page, point.x, point.y);
+  await toolsPanel(page, true);
   await page.getByRole('button', { name: 'Smooth', exact: true }).click();
   await slider(page, 'Radius', 8);
   await slider(page, 'Intensity', 100);
   for (let index = 0; index < 8; index += 1) await drag(page, [{ x: 0.32, y: 0.5 }, { x: 0.48, y: 0.5 }], 4);
   await hover(page, 0.4, 0.5);
-  await page.screenshot({ path: `docs/evidence/a2-${testInfo.project.name}-smooth.png`, fullPage: true });
+  await page.screenshot({ path: testInfo.outputPath('a2-smooth-regression.png'), fullPage: true });
+  await toolsPanel(page, true);
   await page.getByRole('button', { name: 'Flatten', exact: true }).click();
   await slider(page, 'Radius', 10);
+  await toolsPanel(page, true);
   await page.getByRole('spinbutton', { name: 'Target elevation (m)' }).fill('1200');
   await drag(page, [{ x: 0.34, y: 0.62 }, { x: 0.46, y: 0.62 }], 8);
   await hover(page, 0.4, 0.62);
@@ -294,5 +320,5 @@ test('visual evidence: Raise/Lower, Smooth, and Flatten on the aspect-preserving
   const rect = await bounds(page);
   expect(Math.abs(rect.width - rect.height)).toBeLessThan(0.1);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await page.screenshot({ path: `docs/evidence/a2-${testInfo.project.name}-flatten.png`, fullPage: true });
+  await page.screenshot({ path: testInfo.outputPath('a2-flatten-regression.png'), fullPage: true });
 });

@@ -8,8 +8,8 @@ Updated October 17, 2026. This records the owner's expanded Phase 1 direction: a
 | --- | --- | --- |
 | A0 | Modular TypeScript terrain, versioned metadata, 512 × 512 Float32 grid, blank −100 m ocean, sea level 0, numerical color rendering | Implemented; source reviewed |
 | A1 | Raise/Lower, map-unit radius, meters-per-dab strength, smooth falloff, distance-spaced strokes, pointer lifecycle, frame scheduling | Implemented; Ember's source review approved, per owner |
-| A2 | Smooth, explicit-target Flatten, percentage intensity, elevation inspection, matching color legend, confirmed reset, aspect-preserving fitted display | Implemented; Ember's independent review pending |
-| A3 | Navigation, Undo/Redo, Save/Load and recovery work to be defined in its own pass | Planned; not authorized by A2 |
+| A2 | Smooth, explicit-target Flatten, percentage intensity, elevation inspection, matching color legend, confirmed reset, aspect-preserving fitted display | Implemented; Ember's source and visual review approved, per owner |
+| A3 | Zoom/Pan, bounded Undo/Redo, browser-local Save/Open, New Blank Map, full-screen workspace and overlay left tools | Implemented; independent review and owner acceptance pending |
 | Later Phase 1 | Remaining inventory below | Planned; pass boundaries and acceptance criteria still require authorization |
 
 The owner subsequently directed that completed work stay on this repository's `main`, avoiding additional development branches. This changes Git delivery only; it does not authorize deployment, work in the original Serrian Tide website, or implementation of the planned inventory.
@@ -64,7 +64,7 @@ Drainage analysis, depression handling, and water erosion are planned. Their alg
 
 ## Navigation, preservation, and recovery
 
-Zoom/Pan, Undo/Redo, saving/loading, recoverable sessions, and recovery workflows remain planned for separately authorized work. A2 adds none of them. The local example still resets on page reload. Confirmed Reset Terrain is the only whole-map command currently exposed, and cancellation is not Undo.
+A3 implements pointer-centered zoom, bounded panning, Space/explicit Pan and two-finger navigation; stroke/reset Undo/Redo; explicit IndexedDB Save/Open; unsaved-change guards; and New Blank Map. Its full-screen map workspace and collapsible overlay tools are the preferred long-term interface architecture. Camera, history, document state and storage adapters remain separate from numerical terrain. Saves are browser/profile/origin/device local and not synchronized. Autosave, crash/session recovery, external interchange (A7), and server persistence remain future scope. See [A3 completion](A3-COMPLETION.md).
 
 ## Architectural considerations for future passes
 
@@ -77,4 +77,4 @@ Zoom/Pan, Undo/Redo, saving/loading, recoverable sessions, and recovery workflow
 
 The inventory was checked against the project's primary [Heightmap customization documentation](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Heightmap-customization) and [template-editor documentation](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Heightmap-template-editor). Their application semantics and data models are not adopted automatically. This roadmap records the owner's requested scope; exact future behavior still requires a bounded pass.
 
-Stop after A2 for Ember's review. Owner hands-on testing begins only after Ember approves A2 technical readiness. No future inventory item is authorized merely by appearing here.
+The owner confirmed Ember's A2 approval and authorized A3, then added the full-screen overlay interface requirement. Stop after A3 for review; A4 and later work, integration and deployment require their own authorization. No future inventory item is authorized merely by appearing here.
