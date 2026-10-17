@@ -210,8 +210,8 @@ test('A3 visual evidence: sculpted full-screen map, overlay tools, zoomed naviga
   await page.mouse.move(start.x, start.y); await page.mouse.down(); await page.mouse.move(end.x, end.y, { steps: 12 }); await page.mouse.up();
   await toolsPanel(page, true); await page.getByRole('textbox', { name: 'Map name', exact: true }).fill('The Serrian coast');
   await save(page); await toolsPanel(page, false); await page.mouse.move(2, 2);
-  await page.screenshot({ path: `docs/evidence/a3-${info.project.name}-sculpted.png` });
+  await page.screenshot({ path: info.outputPath('a3-sculpted-regression.png') });
   await page.getByRole('button', { name: 'Zoom In', exact: true }).click(); await page.getByRole('button', { name: 'Zoom In', exact: true }).click();
   await toolsPanel(page, true);
-  await page.screenshot({ path: `docs/evidence/a3-${info.project.name}-zoomed-tools.png` });
+  await page.screenshot({ path: info.outputPath('a3-zoomed-tools-regression.png') });
 });

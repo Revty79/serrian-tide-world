@@ -1,4 +1,4 @@
-# Atlas integration architecture — A3
+# Atlas integration architecture — A4
 
 ## Destination and ownership
 
@@ -7,6 +7,7 @@ Atlas and the rebuilt Worlds system will replace the existing implementation ins
 | Layer | Owns | Excludes |
 | --- | --- | --- |
 | `src/terrain` | Versioned numerical model, sampling, mutation/reset, four brushes, deterministic distance-spaced strokes | React, DOM, users, persistence, World records |
+| `src/surfaces` | Pure surface identity/catalog, geometry/topology/metric/projection contracts, bounded/periodic examples, lattice neighbors, tangent transport and explicit legacy adapter | React, DOM, Canvas, persistence, working spherical/wrapped editor |
 | `src/rendering/camera.ts`, `fit-map.ts` | Pure contain-fit, camera constraints, pointer-anchored zoom, pan | Elevation mutation, resampling, storage |
 | Other `src/rendering` files | Elevation colors, RGBA raster and isolated DOM canvas drawing | Editing, authorization, document identity |
 | `src/interaction` | Pointer capture, transformed coordinates, cancellation, touch/Space/Pan/wheel arbitration and stroke boundaries | Falloff math, database, React, history representation |
@@ -18,6 +19,8 @@ Atlas and the rebuilt Worlds system will replace the existing implementation ins
 | `App.tsx`, `styles.css`, `main.tsx` | Temporary full-screen host, overlay panel, document lifetime, actions, save/open/discard UI | Main-site navigation or integration |
 
 The terrain ID is host supplied. The development host creates UUIDs for new maps; it does not invent a World record or foreign key. Future server integration must bind real World records deliberately, authenticate users, filter reads, authorize writes server-side, validate payloads and handle concurrent saves. Local Save has no such server responsibilities and confers no authority.
+
+A4 separates parent World identity, physical shape, editable surface identity, terrain representation, topology, projection and camera. Its opt-in modules do not alter the current App or v1 terrain/save contracts. See [WORLD-SURFACE-ARCHITECTURE.md](WORLD-SURFACE-ARCHITECTURE.md) for the implemented-versus-planned matrix, proposed cube-sphere/shared-node model, hollow-surface directions, movable seam plan and A5–A7 acceptance checkpoints. A descriptor for a future shape does not make that configuration editable.
 
 ## Reusable canvas contract
 
@@ -72,10 +75,10 @@ Validation rejects unsupported versions/units/surface, missing or inconsistent i
 
 IndexedDB database `serrian-tide-atlas`, schema version 1, contains `heightmaps` (keyPath `id`, full records) and `catalog` (keyPath `id`, small `{id,name,savedAt}` summaries). Save validates before starting one atomic readwrite transaction across both stores, then reports success only after `transaction.oncomplete`. Listing reads summaries without loading full maps. Open loads the record and validates it before any discard prompt or document replacement. Blocked/open/quota/transaction failures surface in the UI; they never falsely mark work saved. Connections close after operations and on version changes.
 
-The development host locks editing/name/document actions during async storage operations and finalizes an active stroke before encoding. Successful saves establish the checkpoint and update selection. New Map uses a fresh ID and never overwrites another map. Open/New explicitly guard unsaved work; corrupt Open keeps the map, name, history and camera intact. Browser departure uses the standard `beforeunload` warning where supported. Mobile process termination can bypass it, so explicit Save remains necessary. Browser-local data is profile/origin/device specific, can be cleared/evicted and is not synchronized. No autosave, session crash recovery, external file interchange (A7), cloud adapter or invented accounts were added.
+The development host locks editing/name/document actions during async storage operations and finalizes an active stroke before encoding. Successful saves establish the checkpoint and update selection. New Map uses a fresh ID and never overwrites another map. Open/New explicitly guard unsaved work; corrupt Open keeps the map, name, history and camera intact. Browser departure uses the standard `beforeunload` warning where supported. Mobile process termination can bypass it, so explicit Save remains necessary. Browser-local data is profile/origin/device specific, can be cleared/evicted and is not synchronized. No autosave, session crash recovery, external file interchange, cloud adapter or invented accounts were added. Interchange remains a subsequent pass under the owner's revised roadmap; A7 now concerns additional geometries.
 
 The adapter follows the browser's [IndexedDB transaction lifecycle](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB). Gesture arbitration uses [Pointer Events](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events/Pinch_zoom_gestures). Checksums use [Web Crypto digest](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest); departure warnings have the documented [beforeunload limitations](https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event).
 
 ## Review and scope
 
-A0–A2 completion reports/screenshots are historical and unchanged. The owner supplied Ember's A2 source/visual approval, authorized A3 directly on main, and added the full-screen overlay workspace requirement before implementation began. A3 adds only navigation, bounded history, local saves/opening, New Blank Map and that interface architecture. It does not authorize A4, original-site integration, server/Production writes or deployment. See [A3 completion](A3-COMPLETION.md) for evidence and review limitations.
+A0–A3 completion reports/screenshots are historical and unchanged. The owner supplied Ember's A3 source/visual approval and authorized A4 directly on main. A4 adds only the pure surface architecture/examples and compatibility verification, with no runtime editor or save-schema changes. It does not authorize A5, original-site integration, server/Production writes or deployment. See [A4 completion](A4-COMPLETION.md) for evidence and review limitations.

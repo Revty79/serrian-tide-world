@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "typecheck": "tsc --noEmit",
-    "test": "node --test src/terrain/*.test.ts src/rendering/*.test.ts src/editor/*.test.ts src/persistence/*.test.ts",
+    "test": "node --test src/terrain/*.test.ts src/rendering/*.test.ts src/editor/*.test.ts src/persistence/*.test.ts src/surfaces/*.test.ts",
     "test:browser": "playwright test",
     "build": "npm run typecheck && vite build",
     "preview": "vite preview --host 127.0.0.1",
