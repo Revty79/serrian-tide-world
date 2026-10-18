@@ -1,5 +1,10 @@
 import { decodeSummary, type SavedMapSummary } from './terrain-format.ts';
 import { decodeMap, type SavedMap } from './map-format.ts';
+import { decodeSphericalHeightmap, sphericalHeader, validateSphericalHeightmap } from './spherical-format.ts';
+import type { PersistenceWork } from './cooperative-work.ts';
+
+export interface LocalMapSummary extends SavedMapSummary { kind?: 'bounded' | 'wrapped' | 'sphere' }
+export const localMapType = (map: LocalMapSummary) => map.kind === 'sphere' ? 'Sphere' : map.kind === 'wrapped' ? 'Wrapped plane' : map.kind === 'bounded' ? 'Bounded plane' : 'Planar (legacy)';
 
 const DB_NAME = 'serrian-tide-atlas';
 const DB_VERSION = 1;
@@ -23,7 +28,7 @@ export class LocalMapStore {
       };
     });
   }
-  async list(): Promise<SavedMapSummary[]> {
+  async list(): Promise<LocalMapSummary[]> {
     const db = await this.database();
     try {
       const values = await new Promise<unknown[]>((resolve, reject) => {
@@ -31,12 +36,18 @@ export class LocalMapStore {
         tx.oncomplete = () => resolve(request.result as unknown[]);
         tx.onabort = () => reject(tx.error ?? new Error('Could not read saved maps.'));
       });
-      return values.map(decodeSummary).sort((a, b) => b.savedAt.localeCompare(a.savedAt));
+      return values.map((value) => {
+        const summary = decodeSummary(value), kind = (value as LocalMapSummary).kind;
+        if (kind !== undefined && !['bounded', 'wrapped', 'sphere'].includes(kind)) throw new Error('Unknown saved map type.');
+        return { ...summary, ...(kind ? { kind } : {}) };
+      }).sort((a, b) => b.savedAt.localeCompare(a.savedAt));
     } finally { db.close(); }
   }
-  async save(value: SavedMap): Promise<void> {
+  async save(input: SavedMap, work: PersistenceWork = {}): Promise<void> {
     // Validate before starting the transaction: async hashing would let IDB auto-close it.
-    await decodeMap(value);
+    const value = input.formatVersion === 3 ? await validateSphericalHeightmap(input, work) : input;
+    if (value.formatVersion !== 3) await decodeMap(value);
+    work.progress?.('Writing local map transaction', 0);
     const db = await this.database();
     try {
       await new Promise<void>((resolve, reject) => {
@@ -44,20 +55,25 @@ export class LocalMapStore {
         let reason: Error | undefined;
         const store = tx.objectStore('heightmaps'), existing = store.get(value.id);
         existing.onsuccess = () => {
+          try {
           const previous = existing.result as SavedMap | undefined;
           if (previous && (previous.formatVersion !== value.formatVersion || (previous.formatVersion === 2 && value.formatVersion === 2
             && (previous.metadata?.identity?.worldId !== value.metadata.identity.worldId || previous.metadata?.identity?.surfaceId !== value.metadata.identity.surfaceId || previous.metadata?.identity?.patchId !== value.metadata.identity.patchId)))) {
             reason = new Error('Cannot replace another map format or surface identity. Create a new map instead.'); tx.abort(); return;
           }
+          if (previous?.formatVersion === 3 && value.formatVersion === 3 && JSON.stringify(sphericalHeader(previous).metadata) !== JSON.stringify(value.metadata)) {
+            reason = new Error('Cannot replace another spherical geometry, resolution or identity.'); tx.abort(); return;
+          }
           store.put(value);
-          tx.objectStore('catalog').put({ id: value.id, name: value.name, savedAt: value.savedAt });
+          tx.objectStore('catalog').put({ id: value.id, name: value.name, savedAt: value.savedAt, kind: value.formatVersion === 3 ? 'sphere' : value.formatVersion === 2 ? 'wrapped' : 'bounded' });
+          } catch (cause) { reason = cause instanceof Error ? cause : new Error('Map transaction failed.'); try { tx.abort(); } catch { /* An interrupted write may already have aborted it. */ } }
         };
         tx.oncomplete = () => resolve();
         tx.onabort = () => reject(reason ?? tx.error ?? new Error('Map was not saved. Local storage may be full.'));
       });
     } finally { db.close(); }
   }
-  async open(id: string) {
+  private async readRecord(id: string) {
     const db = await this.database();
     let value: unknown;
     try {
@@ -68,6 +84,13 @@ export class LocalMapStore {
       });
     } finally { db.close(); }
     if (!value) throw new Error('This saved map is no longer available.');
-    return decodeMap(value);
+    return value;
+  }
+  /** Original planar-only API remains fail-closed for spherical/future versions. */
+  async open(id: string) { return decodeMap(await this.readRecord(id)); }
+  async openAny(id: string, work: PersistenceWork = {}) {
+    work.progress?.('Reading local map', 0); const value = await this.readRecord(id);
+    if ((value as SavedMap).formatVersion === 3) return { kind: 'sphere' as const, ...await decodeSphericalHeightmap(value, work) };
+    return { kind: 'planar' as const, ...await decodeMap(value) };
   }
 }

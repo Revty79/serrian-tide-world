@@ -42,7 +42,7 @@ test('actual blank editor: real continent, shared net/rotated screenshots, disca
   await expect(canvas(page)).toHaveAttribute('data-revision', revision!);
   await button(page, 'Spherical Undo').click(); await expect(page.getByLabel('Spherical work status')).toContainText('Unmodified blank ocean');
   await button(page, 'Spherical Redo').click(); await expect(page.getByLabel('Spherical work status')).toContainText('Unsaved spherical changes');
-  const dismissed = page.waitForEvent('dialog').then(async (d) => { expect(d.type()).toBe('confirm'); expect(d.message()).toContain('session-only'); await d.dismiss(); });
+  const dismissed = page.waitForEvent('dialog').then(async (d) => { expect(d.type()).toBe('confirm'); expect(d.message()).toContain('unsaved spherical'); await d.dismiss(); });
   await button(page, 'Return to map').click(); await dismissed; await expect(canvas(page)).toBeVisible();
   const unload = page.waitForEvent('dialog').then(async (d) => { expect(d.type()).toBe('beforeunload'); await d.dismiss(); });
   await page.evaluate(() => { location.reload(); }); await unload; await expect(canvas(page)).toBeVisible();

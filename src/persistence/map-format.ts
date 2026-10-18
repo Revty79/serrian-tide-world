@@ -2,9 +2,11 @@ import type { Terrain } from '../terrain/model.ts';
 import { isWrapped } from '../terrain/topology.ts';
 import { decodeHeightmap, encodeHeightmap, record, type SavedHeightmap } from './terrain-format.ts';
 import { decodeWrappedHeightmap, encodeWrappedHeightmap, type SavedWrappedHeightmap } from './wrapped-format.ts';
+import type { SavedSphericalHeightmap } from './spherical-format.ts';
 
-export type SavedMap = SavedHeightmap | SavedWrappedHeightmap;
-export const encodeMap = (terrain: Terrain, name: string, savedAt?: string): Promise<SavedMap> => isWrapped(terrain) ? encodeWrappedHeightmap(terrain, name, savedAt) : encodeHeightmap(terrain, name, savedAt);
+export type PlanarSavedMap = SavedHeightmap | SavedWrappedHeightmap;
+export type SavedMap = PlanarSavedMap | SavedSphericalHeightmap;
+export const encodeMap = (terrain: Terrain, name: string, savedAt?: string): Promise<PlanarSavedMap> => isWrapped(terrain) ? encodeWrappedHeightmap(terrain, name, savedAt) : encodeHeightmap(terrain, name, savedAt);
 export function decodeMap(value: unknown): Promise<{ terrain: Terrain; name: string }> {
   const version = record(value).formatVersion;
   if (version === 1) return decodeHeightmap(value);

@@ -7,16 +7,25 @@ export interface FaceTexture { readonly side: number; readonly pixels: Uint8Clam
 export interface SphericalDisplayCache { readonly faces: Readonly<Record<CubeFace, FaceTexture>>; sourceRevision: number; readonly byteLength: number }
 /** Derived RGBA only, never another writable elevation authority. One temporary source copy is shared by all six builds. */
 export function buildSphericalFaceTexture(terrain: SphericalTerrain, source: Float32Array, face: CubeFace, retainIndices = false): FaceTexture {
+  const steps = sphericalFaceTextureSteps(terrain, source, face, retainIndices);
+  let result = steps.next(); while (!result.done) result = steps.next(); return result.value;
+}
+/** Identical synchronous arithmetic, with optional cooperative checkpoints for loading. */
+export function* sphericalFaceTextureSteps(terrain: SphericalTerrain, source: Float32Array, face: CubeFace, retainIndices = false): Generator<void, FaceTexture> {
   if (source.length !== terrain.sampleCount) throw new RangeError('Invalid spherical display snapshot.');
   const n = terrain.metadata.representation.cellsPerEdge, resolution = Math.min(512, n * 2), side = resolution + 1;
   const indices = new Uint32Array((n + 1) ** 2), pixels = new Uint8ClampedArray(side * side * 4);
-  for (let row = 0; row <= n; row++) for (let column = 0; column <= n; column++) indices[row * (n + 1) + column] = terrain.resolve({ ...terrain.metadata.identity, patchId: face, column, row }).index;
+  for (let row = 0; row <= n; row++) for (let column = 0; column <= n; column++) {
+    const index = row * (n + 1) + column; indices[index] = terrain.resolve({ ...terrain.metadata.identity, patchId: face, column, row }).index;
+    if (index % 2048 === 2047) yield;
+  }
   for (let y = 0; y < side; y++) for (let x = 0; x < side; x++) {
     const u = x * n / resolution, v = y * n / resolution, left = Math.min(n - 1, Math.floor(u)), top = Math.min(n - 1, Math.floor(v)), fx = u - left, fy = v - top;
     const at = (dx: number, dy: number) => source[indices[(top + dy) * (n + 1) + left + dx]!]!;
     const h = (at(0, 0) * (1 - fx) + at(1, 0) * fx) * (1 - fy) + (at(0, 1) * (1 - fx) + at(1, 1) * fx) * fy;
     const color = elevationToColor(h, terrain.metadata.seaLevel), offset = (y * side + x) * 4;
     pixels[offset] = color[0]; pixels[offset + 1] = color[1]; pixels[offset + 2] = color[2]; pixels[offset + 3] = 255;
+    if (x === side - 1 && y % 8 === 7) yield;
   }
   return { side, pixels, ...(retainIndices ? { sampleIndices: indices } : {}) };
 }

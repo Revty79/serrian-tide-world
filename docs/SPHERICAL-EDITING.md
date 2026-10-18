@@ -1,5 +1,7 @@
 # Interactive spherical editing — A6-D2
 
+A6-E now adds browser-local v3 Save/Open through the separate `SphericalEditor` host, specified in [SPHERICAL-PERSISTENCE.md](SPHERICAL-PERSISTENCE.md). D2's session-only statements below describe its original checkpoint/test host. The four tools, physical previews, net assistance and numerical algorithms remain intact. Current stopping point: E; the next pass is not authorized.
+
 This extends the [D1 projection foundation](SPHERICAL-VIEWS.md) and [A6-B/C numerical tools](SPHERICAL-SCULPTING.md). The application offers a blank editable sphere separately from the preserved read-only demonstration. Radius must be explicitly supplied in meters; N=128/256 are development resolutions. Blank elevation is −100 m, sea level 0. Temporary UUIDs satisfy terrain identity contracts without creating World records.
 
 ## One authority and replaceable host
@@ -50,4 +52,4 @@ Latency instrumentation records each input segment until its final numerical dab
 
 Modified state follows spherical history state IDs plus an active changed stroke. Undo to the original blank state clears it; Redo restores it. Return asks before discarding modified sphere data. beforeunload uses the browser's standard warning after ending an active gesture. Browsers may suppress warnings or omit unload on device/process termination. There is no autosave, recovery or sphere persistence in D2. Never depend on this session as a saved document.
 
-**STOP after A6-D2.** A6-E Save/Open, globe-limb assistance correction, other shape editors, actual 3D extrusion, illustrated generation, historical systems and Worlds/site integration require separate authorization. Future illustrated maps across every supported shape and valid scale, Issue #1 and integration steps 9 → 10 → 11 remain roadmap requirements only.
+**STOP after A6-E.** Local preservation now exists; globe-limb assistance correction D2-R, weaker-device N=256 editing hardening, other shape editors, extrusion, illustrated generation, historical systems and Worlds/site integration remain future. Illustrated maps across every supported shape/valid scale, Issue #1 and integration steps 9 → 10 → 11 remain roadmap requirements. Do not begin the next pass without authorization.

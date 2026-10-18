@@ -1,6 +1,6 @@
-# World surfaces, geometry and topology — A6-D2
+# World surfaces, geometry and topology — A6-E
 
-Status: A6-D2 session-only spherical editing, October 17, 2026. Approved D1 baseline: `7794953ddd0ee907d9de5052186b87f932530223`; Ember's source/projection/screenshot/browser-evidence approval was supplied by the owner. D2 independent review and owner acceptance remain separate. Prior completion reports remain historical receipts.
+Status: A6-E browser-local spherical preservation, October 17, 2026. Approved D2 baseline: `a9a6d64690427cfef04300da1fc87b576adf16c0`; Ember's source/visual/numerical/browser approval was supplied by the owner. E independent review and owner hands-on acceptance remain separate. Prior completion reports remain historical receipts.
 
 A5.1 stabilization follows owner-supplied Ember source/numerical approval of A6-B at `bafedf08343eb48f2e1bd50b5a05db0da13a1dcb`. It corrects planar input and adds controlled edge-assisted view translation with continuous gesture winding, leaving the spherical provider and numerical authority untouched. See [A5.1 findings and evidence](A5-1-COMPLETION.md). The master roadmap records Atlas into rebuilt Worlds at step 9, the combined system into the existing site at step 10, then the final reusable Earth content milestone at step 11.
 
@@ -18,7 +18,7 @@ A6-D1 supplies spherical rotation/recentering and an oriented six-chart cutout; 
 
 ## Decision and implementation boundary
 
-Preserve bounded/periodic editors and v1/v2 saves. A6-A/B/C supply the connected numerical sphere, four physical tools and exact bounded history. D1 supplies projections; D2 adds session-only globe/net editing and revision-aware display updates. Spherical persistence remains A6-E. See [provider specification](SPHERICAL-HEIGHTMAP-FOUNDATION.md), [sculpting/history](SPHERICAL-SCULPTING.md), [view contracts](SPHERICAL-VIEWS.md) and [D2 editing/evidence](A6-D2-COMPLETION.md).
+Preserve bounded/periodic editors and v1/v2 saves. A6-A/B/C supply numerical authority/tools/history; D1/D2 supply globe/net editing. E adds exact v3 browser-local preservation, independent of view orientation, without modifying the physical frame or existing save interpretation. See [provider](SPHERICAL-HEIGHTMAP-FOUNDATION.md), [tools/history](SPHERICAL-SCULPTING.md), [views](SPHERICAL-VIEWS.md) and [v3 preservation](SPHERICAL-PERSISTENCE.md).
 
 New Wrapped Map remains the additional persistable editor geometry. The explicit spherical development preview is session-only and keeps the current planar document in place; it offers no sculpting or Save/Open. Bounded/periodic Fill, Focus, Fit and shared-authority repetition retain their meanings. Cylinder/Hollow World and physical polyhedron editors are not exposed.
 
@@ -47,7 +47,7 @@ A patch is a chart of one surface, not another World or another independently au
 | Two periodic rectangular axes | Pure normalization, metric and neighbor examples | Flat rectangular quotient (intrinsic flat torus), not an implemented embedded doughnut or spherical world |
 | Circle or triangle | Validated flat-outline descriptors | Shape masks, boundary intersection, sample ownership, clipping and metrics around holes need later providers; no editor support |
 | Arbitrary planar edge connections | Per-edge/seam contracts | Validate edge length/parameterization, inverse pairing, orientation, corner cycles and allowed orientability; no arbitrary gluing engine |
-| Sphere | A6-A/B/C authority/tools/history; D2 globe/net sculpting, geodesic previews, rotation/recenter, canonical readouts and revision patches | A6-E Save/Open and isolated held-stroke globe limb assistance; independent D2 review/acceptance and future physical-device performance work |
+| Sphere | A6-A/B/C authority/tools/history, D2 globe/net sculpting/previews and E exact v3 local Save/Open | E review/owner acceptance; D2-R held-stroke limb assistance, weaker-device N256 hardening and physical-device qualification remain future |
 | Cylinder | Radius/length descriptor, periodic flat-coordinate math useful for its lateral chart | A7: physical scale, independent end policies, caps/connections, transitions and editor |
 | Hollow sphere | Validated parent/surface catalogs for inside, outside or both | A7: independent cube-sphere terrain stores, orientation/elevation constraints and active-surface workflow |
 | Custom/multi-face world | Versioned geometry, topology and representation references; chart seam/tangent contracts | Provider implementation and proof required; nonmanifold, nonorientable, irregular and variable-curvature cases need research |
@@ -235,8 +235,9 @@ A5 keeps IndexedDB schema version 1 and the existing two stores; it performs no 
 | A5.2 — reviewed presentation before A6-C | Larger focused periodic working cycle with connected previews and movable view cut; selectable full-height/Fit; Ember source/test/visual-evidence approval supplied by owner; hands-on acceptance separate |
 | A6-C — reviewed numerical tools | Connected Smooth and datum-relative Flatten, shared cap/spacing/lifecycle/history, independent reference and N=128/256 measurements; Ember approval supplied by owner |
 | A6-D1 — viewing foundation | Implemented; owner supplied Ember's source/projection/screenshot/browser-evidence approval |
-| A6-D2 — interactive editing | Implemented for review; all four brushes, previews, history, input arbitration, patches and performance evidence. Specific globe-limb assistance limitation disclosed |
-| A6-E and subsequent A6 — require authorization | Spherical Save/Open, recovery and later agreed spherical work |
+| A6-D2 — interactive editing | Owner supplied Ember's technical approval; final hands-on acceptance separate. Held-stroke limb assistance and N=256 editing hardening remain required |
+| A6-E — local preservation | V3 exact Save/Open, validation, atomic local storage/failure recovery and fresh reopened history; independent review pending |
+| Subsequent work — requires authorization | D2-R, weaker-device editing hardening and later agreed geometry/capabilities |
 | A7 — requires authorization | Initial hollow, cylindrical and other agreed geometries; independent surface workflow, normals/clearance/end policies and explicit supported configuration list |
 | Subsequent passes | Complete Azgaar-style heightmap toolset and later interchange/generation/analysis/presentation in separately reviewed scopes |
 
@@ -244,4 +245,4 @@ Review may subdivide these passes. The former A7 external interchange label is s
 
 Open decisions: physical scale for legacy flat worlds; later spherical browser/UI memory budget; continuous render interpolation and any future area-conservative diffusion; geodesic paths/finite-path tangent transport for directional tools; overview/local projections and singular regions; allowed planar gluing configurations; persistence/migration/conversion policy; active-surface Undo presentation; clearance tolerance and invalid-edit behavior; cylinder ends/caps; parameters/providers for the complete future geometry inventory. A6-A fixes its versioned face bases, canonical ownership and initial numerical N; A6-C selects a local distance-aware Smooth policy. These are representation/tool decisions, not Earth assumptions or Serrian Tide canon. Remaining decisions are not exposed as functional UI.
 
-The original Next.js/TypeScript application retains responsibility for authentication, server-side permissions, World records and database storage. The development shell remains replaceable, with reusable client components separate from pure numerical/view/session code. No main-site integration or deployment is authorized. **Stop after A6-D2 for review; do not begin A6-E.** Owner hands-on acceptance remains separate. [Editing architecture](SPHERICAL-EDITING.md) documents physical brushes, previews, input arbitration, net edge assistance and the isolated held-stroke globe limb-assistance limitation.
+The original Next.js/TypeScript application retains responsibility for authentication, server-side permissions, World records and database storage. The development shell remains replaceable, with numerical/view/session/codec layers separate from the browser host and IndexedDB adapter. No site integration or deployment is authorized. **Stop after A6-E for independent review; do not begin the next pass.** Owner acceptance remains separate. Editing documentation retains physical brushes, net edge assistance, D2-R and weaker-device N=256 hardening.

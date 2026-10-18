@@ -6,13 +6,16 @@
 .editorHud { position: absolute; left: 12px; top: 126px; max-width: calc(100% - 24px); pointer-events: none; }
 .editingTools { display: flex; gap: 4px; flex-wrap: wrap; pointer-events: auto; }
 .history { position: absolute; right: 12px; top: 76px; display: flex; gap: 4px; }
+.saveButton { position: absolute; right: 12px; top: 130px; }
+.panel input:not([type="checkbox"]), .panel select { display: block; max-width: 100%; width: 100%; box-sizing: border-box; padding: 9px; }
+.panel fieldset { margin-top: 20px; border: 1px solid #9aaea4; }
 .editStatus { margin: 4px 0 0; font-size: 11px; color: #d9e6df; pointer-events: none; text-shadow: 0 1px 3px #000; }
 .panel label { display: block; margin-block: 12px; font-size: 12px; }
 .panel input[type="number"] { display: block; width: 100%; box-sizing: border-box; margin-top: 5px; padding: 9px; font: inherit; }
 .canvas:focus-visible { outline: 2px solid #e2b976; outline-offset: -3px; }
 .header { position: absolute; top: max(12px, env(safe-area-inset-top)); left: max(12px, env(safe-area-inset-left)); display: flex; align-items: center; gap: 14px; pointer-events: none; }
 .header button { pointer-events: auto; }
-.header span { font-weight: 600; text-shadow: 0 1px 4px #000; }
+.header span { font-weight: 600; text-shadow: 0 1px 4px #000; min-width: 0; overflow-wrap: anywhere; }
 .header small { display: block; font-weight: 400; font-size: 11px; color: #bcd2d3; }
 .toggle { position: absolute; top: 12px; right: 12px; z-index: 4; }
 .panel { position: absolute; z-index: 3; top: 0; bottom: 0; left: 0; width: min(330px, calc(100% - 56px)); padding: 86px 20px 150px; background: #f8f9f1f5; box-shadow: 4px 0 22px #0005; color: #243b42; overflow-y: auto; overscroll-behavior: contain; }

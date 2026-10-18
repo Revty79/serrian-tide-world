@@ -6,12 +6,13 @@ import { createBlankTerrain } from './terrain/model.ts';
 import { createWrappedTerrain, isWrapped } from './terrain/topology.ts';
 import { resetTerrainToOcean } from './terrain/modifications.ts';
 import { TerrainDocument } from './editor/terrain-document.ts';
-import { LocalMapStore } from './persistence/local-map-store.ts';
-import type { SavedMapSummary } from './persistence/terrain-format.ts';
+import { LocalMapStore, localMapType, type LocalMapSummary } from './persistence/local-map-store.ts';
 import { encodeMap } from './persistence/map-format.ts';
 import { isTextInput } from './interaction/canvas-navigation.ts';
 import type { ViewMode } from './rendering/camera.ts';
 import { SphericalPreview } from './components/SphericalPreview.tsx';
+import { SphericalEditor } from './components/SphericalEditor.tsx';
+import type { SphericalTerrain } from './terrain/spherical.ts';
 
 const defaults: BrushControls = { tool: 'raise', radius: 0.06, strength: 200, intensity: 0.5, targetElevation: '0' };
 const newDocument = (wrapped = false) => new TerrainDocument(wrapped
@@ -41,16 +42,17 @@ export function App() {
     window.document.addEventListener('fullscreenchange', changed);
     return () => window.document.removeEventListener('fullscreenchange', changed);
   }, []);
-  const [savedMaps, setSavedMaps] = useState<SavedMapSummary[]>([]);
+  const [savedMaps, setSavedMaps] = useState<LocalMapSummary[]>([]);
   const [selected, setSelected] = useState('');
   const [busy, setBusy] = useState(false);
   const busyRef = useRef(false);
   const [error, setError] = useState('');
-  const [spherePreview, setSpherePreview] = useState<{ radiusMeters: number; cellsPerEdge: number; kind?: 'blank' | 'demo' } | null>(null);
+  const [spherePreview, setSpherePreview] = useState<{ radiusMeters: number; cellsPerEdge: number; kind?: 'blank' | 'demo'; initial?: { terrain: SphericalTerrain; name: string } } | null>(null);
   const spherePreviewRef = useRef(spherePreview); spherePreviewRef.current = spherePreview;
   const [sphereRadius, setSphereRadius] = useState(''), [sphereResolution, setSphereResolution] = useState(128);
   const previewButtonRef = useRef<HTMLButtonElement>(null);
   const sphereButtonRef = useRef<HTMLButtonElement>(null);
+  const openMapButtonRef = useRef<HTMLButtonElement>(null);
   const validSphereRadius = sphereRadius.trim() !== '' && Number(sphereRadius) > 0 && Number.isFinite(Number(sphereRadius) * Math.PI);
   const reportError = (cause: unknown) => setError(cause instanceof Error ? cause.message : 'Local storage operation failed.');
   const finish = () => canvasRef.current?.finishInteraction();
@@ -102,7 +104,10 @@ export function App() {
   const openMap = async () => {
     if (!selected || !lock()) return;
     try {
-      const loaded = await store.open(selected);
+      const loaded = await store.openAny(selected);
+      if (loaded.kind === 'sphere') {
+        setSpherePreview({ radiusMeters: loaded.terrain.metadata.geometry.radiusMeters, cellsPerEdge: loaded.terrain.metadata.representation.cellsPerEdge, kind: 'blank', initial: { terrain: loaded.terrain, name: loaded.name } }); return;
+      }
       if (!guardDiscard()) return;
       setDocument(new TerrainDocument(loaded.terrain, loaded.name, true));
       setControls({ ...defaults, radius: Math.min(loaded.terrain.metadata.dimensions.width, loaded.terrain.metadata.dimensions.height) * 0.06 });
@@ -166,9 +171,9 @@ export function App() {
             <label htmlFor="saved-map">Saved maps</label>
             <select id="saved-map" value={selected} onChange={(event) => setSelected(event.target.value)}>
               <option value="">Choose a saved map</option>
-              {savedMaps.map((map) => <option key={map.id} value={map.id}>{map.name}</option>)}
+              {savedMaps.map((map) => <option key={map.id} value={map.id}>{map.name} · {localMapType(map)}</option>)}
             </select>
-            <div className="map-actions"><button type="button" disabled={!selected} onClick={() => void openMap()}>Open Map</button><button type="button" onClick={() => newMap()}>New Blank Map</button></div>
+            <div className="map-actions"><button ref={openMapButtonRef} type="button" disabled={!selected} onClick={() => void openMap()}>Open Map</button><button type="button" onClick={() => newMap()}>New Blank Map</button></div>
             <button className="new-wrapped" type="button" onClick={() => newMap(true)}>New Wrapped Map</button>
             <p className="hint">Focus Editing enlarges one working cycle with adjoining terrain at the sides. Pan to move the cut; every view edits the same geography. Fill View restores full-height context. Tall views keep full-height coverage. Fit Entire Map shows the complete terrain. Top and bottom stay bounded.</p>
             <h2>Spherical development preview</h2>
@@ -180,7 +185,7 @@ export function App() {
             <button ref={previewButtonRef} className="new-wrapped" disabled={!validSphereRadius} onClick={() => { finish(); setSpherePreview({ radiusMeters: Number(sphereRadius), cellsPerEdge: sphereResolution }); }}>Open spherical preview</button>
             <p className="hint">The preview above is a read-only demonstration. Start an editable blank ocean separately:</p>
             <button ref={sphereButtonRef} className="new-wrapped" disabled={!validSphereRadius} onClick={() => { finish(); setSpherePreview({ radiusMeters: Number(sphereRadius), cellsPerEdge: sphereResolution, kind: 'blank' }); }}>Create blank sphere</button>
-            <p className="hint">Spherical editing is session-only. Save/Open follows in A6-E. Your current planar map is preserved.</p>
+            <p className="hint">Editable spheres support local Save/Open. Your current planar map is preserved. The demonstration stays read-only.</p>
           </div>
         </fieldset>
         <ElevationLegend seaLevel={document.terrain.metadata.seaLevel} />
@@ -204,7 +209,10 @@ export function App() {
       <p className="save-status" role="status">{busy ? 'Working with local storage…' : status}</p>
       {error && <div className="storage-error" role="alert"><p>{error}</p><button type="button" onClick={() => setError('')}>Dismiss</button></div>}
       </div>
-      {spherePreview && <SphericalPreview {...spherePreview} onClose={() => { const button = spherePreview.kind === 'blank' ? sphereButtonRef : previewButtonRef; setSpherePreview(null); requestAnimationFrame(() => button.current?.focus({ preventScroll: true })); }} />}
+      {spherePreview && (() => {
+        const close = () => { const button = spherePreview.initial ? openMapButtonRef : spherePreview.kind === 'blank' ? sphereButtonRef : previewButtonRef; setSpherePreview(null); void store.list().then(setSavedMaps).catch(reportError); requestAnimationFrame(() => button.current?.focus({ preventScroll: true })); };
+        return spherePreview.kind === 'blank' ? <SphericalEditor {...spherePreview} onClose={close} /> : <SphericalPreview {...spherePreview} onClose={close} />;
+      })()}
     </main>
   );
 }

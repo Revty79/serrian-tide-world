@@ -10,7 +10,7 @@ export function attachSphericalEditing(canvas: HTMLCanvasElement, actions: {
   let mode: 'paint' | 'touch' | 'navigate' | 'blocked' | undefined, space = false;
   let anchor: ScreenPoint | null = null, current: ScreenPoint | null = null;
   const local = (x: number, y: number) => { const r = canvas.getBoundingClientRect(); return { x: x - r.left, y: y - r.top }; };
-  const stopPaint = () => { actions.stop(); if (mode === 'paint' || mode === 'touch') mode = 'blocked'; anchor = null; };
+  const stopPaint = () => { if (mode === 'paint' || mode === 'touch') { actions.stop(); mode = 'blocked'; } anchor = null; };
   const cancel = () => {
     stopPaint(); const ids = [...pointers.keys()]; pointers.clear(); mode = undefined; current = null;
     for (const id of ids) if (canvas.hasPointerCapture(id)) canvas.releasePointerCapture(id);
@@ -76,7 +76,13 @@ export function attachSphericalEditing(canvas: HTMLCanvasElement, actions: {
   canvas.addEventListener('pointerdown', down); canvas.addEventListener('pointermove', move); canvas.addEventListener('pointerup', up); canvas.addEventListener('pointercancel', cancel); canvas.addEventListener('lostpointercapture', lost);
   canvas.addEventListener('pointerleave', leave); canvas.addEventListener('wheel', wheel, { passive: false }); canvas.addEventListener('keydown', key); canvas.addEventListener('blur', blur);
   window.addEventListener('keyup', keyup); window.addEventListener('blur', blur); window.addEventListener('resize', cancel); document.addEventListener('visibilitychange', cancel);
-  return { cancel, get drawingPoint() { return mode === 'paint' ? current : null; }, get anchor() { return anchor; },
+  return { cancel,
+    finish() {
+      const ids = [...pointers.keys()]; pointers.clear(); mode = undefined; current = null; anchor = null;
+      for (const id of ids) if (canvas.hasPointerCapture(id)) canvas.releasePointerCapture(id);
+      canvas.dataset.dragging = 'false'; canvas.dataset.editing = 'false'; actions.release();
+    },
+    get drawingPoint() { return mode === 'paint' ? current : null; }, get anchor() { return anchor; },
     assist(dx: number, dy: number) { if (anchor && current && mode === 'paint') { anchor = { x: anchor.x + dx, y: anchor.y + dy }; movePaint(current); } },
     dispose() { cancel(); canvas.removeEventListener('pointerdown', down); canvas.removeEventListener('pointermove', move); canvas.removeEventListener('pointerup', up); canvas.removeEventListener('pointercancel', cancel); canvas.removeEventListener('lostpointercapture', lost); canvas.removeEventListener('pointerleave', leave); canvas.removeEventListener('wheel', wheel); canvas.removeEventListener('keydown', key); canvas.removeEventListener('blur', blur); window.removeEventListener('keyup', keyup); window.removeEventListener('blur', blur); window.removeEventListener('resize', cancel); document.removeEventListener('visibilitychange', cancel); }
   };

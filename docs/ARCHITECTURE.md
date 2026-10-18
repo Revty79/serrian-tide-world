@@ -1,4 +1,4 @@
-# Atlas integration architecture — A6-D2 spherical editing on A6-C/A5.2
+# Atlas integration architecture — A6-E spherical preservation
 
 ## Destination and ownership
 
@@ -16,12 +16,13 @@ Atlas and the rebuilt Worlds system will replace the existing implementation ins
 | `rendering/spherical-brush-preview.ts`, `spherical-gesture-path.ts`, `spherical-texture-updates.ts` | Geodesic preview projection, physical net join validation and incremental derived texture patches | Separate elevation authority, UI, persistence |
 | `SphericalViewport`, `SphericalBrushControls`, `interaction/spherical-editing.ts`, `spherical-navigation.ts` | Browser paint/navigation arbitration, physical inspection, controls and cached rendering; optional read-only mode | Tool algorithms, persistence, periodic repetition |
 | `SphericalPreview`, `terrain/spherical-preview-fixture.ts` | Replaceable session-only host and explicit synthetic test fixture | Canonical World records, procedural world generation, database |
+| `SphericalEditor`, `SphericalStorageControls`, `editor/prepare-spherical-session.ts` | Replaceable persistent sphere host, work locking, local controls, cooperative candidate cache preparation | Auth, server permissions, World records, numerical algorithms |
 | `src/rendering/camera.ts`, `fit-map.ts` | Pure Fill/Fit, bounded constraints, periodic phase, pointer-anchored zoom, pan | Elevation mutation, resampling, storage |
 | `src/rendering/periodic-view.ts` | Current flat periodic Focus scale and centered connected-context frame | Numerical terrain, other geometry layouts, persistence |
 | Other `src/rendering` files | Elevation colors, interpolated presentation cache, shoreline coverage and isolated bounded/repeated canvas drawing | Editing, authorization, document identity |
 | `src/interaction` | Pointer capture, transformed coordinates, cancellation, touch/Space/Pan/wheel arbitration and stroke boundaries | Falloff math, database, React, history representation |
 | `src/editor` | Terrain-only bit-exact Undo/Redo and saved document checkpoint/name | DOM, browser storage, authentication, camera |
-| `src/persistence/*format.ts`, `heightmap-payload.ts` | Validated v1/v2 codecs, dispatch, exact elevation payload and checksum | React, IndexedDB, future database client |
+| `src/persistence/*format.ts`, `heightmap-payload.ts`, `cooperative-work.ts` | Separate v1/v2/v3 codecs, strict resource/metadata/integrity checks, exact bits and cooperative spherical restoration | React, IndexedDB, future database client |
 | `src/persistence/local-map-store.ts` | Replaceable browser-local IndexedDB adapter | Terrain math, accounts, World foreign keys, server transport |
 | `TerrainCanvas` | Client lifecycle, scoped layout, camera, frame scheduling, preview/readout, callback/imperative boundary | World creation, persistence, history policy, permissions |
 | `BrushToolbar`, `ElevationLegend` | Controlled brush drafts and palette legend | Terrain lifetime, database, access rules |
@@ -128,4 +129,4 @@ The adapter follows the browser's [IndexedDB transaction lifecycle](https://deve
 
 ## Review and scope
 
-A0–A6-D1 reports/evidence remain historical and unchanged. The owner supplied Ember's D1 approval and authorized A6-D2 on main at `7794953ddd0ee907d9de5052186b87f932530223`. [D2 completion](A6-D2-COMPLETION.md) records implementation and numerical/browser evidence for independent review; owner acceptance remains separate. **Stop after A6-D2.** A6-E persistence, the disclosed held-stroke globe limb-assistance correction, later geometry, original-site integration, server/Production writes and deployment need separate authorization. The roadmap preserves editable illustrated cartography across every supported shape/valid scale and steps 9 (Atlas + separately rebuilt Worlds), 10 (combined system into the existing site), 11 (reusable historical/modern Earth foundation).
+A0–A6-D2 reports/evidence remain historical and unchanged. The owner supplied Ember's D2 approval and authorized E on main at `a9a6d64690427cfef04300da1fc87b576adf16c0`. [E completion](A6-E-COMPLETION.md) records local preservation and evidence for independent review; owner acceptance remains separate. [V3 specification](SPHERICAL-PERSISTENCE.md) defines the exact format, existing-DB-v1 compatibility, atomicity, snapshots, fresh history and failure recovery. **Stop after A6-E.** Held-stroke globe limb assistance (D2-R), weaker-device N=256 editing hardening, later geometry, server/Production writes, original-site integration and deployment need separate authorization. Editable illustrated cartography across every shape/valid scale and steps 9 → 10 → 11 remain mandatory future requirements.
