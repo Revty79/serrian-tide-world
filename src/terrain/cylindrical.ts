@@ -22,6 +22,8 @@ export interface CylinderSampleKey extends SurfaceIdentity, CylinderResolution {
   readonly lengthMeters: number;
   readonly index: number;
 }
+export const MAX_CYLINDER_PATCH_SAMPLES = 65536;
+export interface CylinderPatchBlock { readonly indices: Uint32Array; readonly values: Float32Array; readonly count: number }
 export function cylindricalSampleCount(r: CylinderResolution): number {
   if (!Number.isInteger(r.angularSamples) || r.angularSamples < 4 || r.angularSamples > 1024
     || !Number.isInteger(r.axialCells) || r.axialCells < 2 || r.axialCells > 512
@@ -124,6 +126,33 @@ export function createCylindricalTerrain(options: { readonly terrainId: string; 
     write: (key: CylinderSampleKey, value: number) => {
       const index = checkedKey(key); assertFloat32Elevation(value); const next = Math.fround(value);
       if (!Object.is(elevations[index], next)) { elevations[index] = next; revision++; }
+    },
+    /** Validate completely, then apply without allocation/callbacks. Revision remains per changed word. */
+    commitPreparedPatch: (key: CylinderSampleKey, expectedRevision: number, blocks: readonly CylinderPatchBlock[]): number => {
+      checkedKey(key);
+      if (!Number.isSafeInteger(expectedRevision) || expectedRevision < 0 || !Array.isArray(blocks) || blocks.length > 256) throw new RangeError('Invalid cylinder patch guard or block count.');
+      // Detach descriptors before validation; no caller property access in the write loop.
+      const prepared: CylinderPatchBlock[] = blocks.map((block) => ({ indices: block.indices, values: block.values, count: block.count }));
+      let previous = -1, total = 0, changed = 0;
+      for (const block of prepared) {
+        if (!ArrayBuffer.isView(block.indices) || Object.getPrototypeOf(block.indices) !== Uint32Array.prototype
+          || !ArrayBuffer.isView(block.values) || Object.getPrototypeOf(block.values) !== Float32Array.prototype
+          || !(block.indices.buffer instanceof ArrayBuffer) || !(block.values.buffer instanceof ArrayBuffer)
+          || !Number.isSafeInteger(block.count) || block.count < 0 || block.count > block.indices.length || block.count > block.values.length) throw new RangeError('Invalid or shared cylinder patch arrays.');
+        total += block.count;
+        if (total > MAX_CYLINDER_PATCH_SAMPLES) throw new RangeError('Cylinder patch sample budget exceeded.');
+        for (let i = 0; i < block.count; i++) {
+          const index = block.indices[i]!, value = block.values[i]!;
+          if (index <= previous || index >= count || !Number.isFinite(value)) throw new RangeError('Cylinder patch must have unique ordered indices and finite values.');
+          previous = index; if (!Object.is(elevations[index], value)) changed++;
+        }
+      }
+      if (revision !== expectedRevision || !Number.isSafeInteger(revision + changed)) throw new Error('Cylinder patch source revision changed or overflowed.');
+      for (const block of prepared) for (let i = 0; i < block.count; i++) {
+        const index = block.indices[i]!, value = block.values[i]!;
+        if (!Object.is(elevations[index], value)) { elevations[index] = value; revision++; }
+      }
+      return changed;
     },
     copyElevations: () => elevations.slice(),
     snapshot: () => Object.freeze({ metadata, revision, elevations: elevations.slice() }),
