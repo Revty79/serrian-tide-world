@@ -1,6 +1,6 @@
 # Serrian Tide Atlas
 
-Pass A6-D1: a session-only spherical development preview displays the real numerical terrain as a rotatable orthographic globe or an oriented six-face net. Physical selection/readouts agree across views. The current bounded/wrapped editor and A6-A/B/C numerical tools remain intact; spherical brush interaction requires A6-D2 authorization.
+Pass A6-D2: create a blank numerical sphere and sculpt it with Raise, Lower, Smooth and Flatten on a rotatable globe or connected six-face net. Both views share one Float32 authority and exact Undo/Redo. Spherical work is session-only, with discard/unload protection; spherical Save/Open is reserved for A6-E. The bounded/wrapped editor remains intact.
 
 This repository is a standalone **development workspace**. Atlas and the rebuilt Worlds system will ultimately replace the current Worlds/Atlas implementation inside the existing Serrian Tide Next.js/TypeScript website. The original website remains untouched.
 
@@ -46,13 +46,15 @@ The map stage occupies the browser viewport. **Atlas / Open tools** reveals a sc
 
 Save explicitly before leaving. Saves belong to the **current browser profile and origin on this device**, are not synchronized to Serrian Tide, and can be removed by clearing browser data. Private browsing and browser eviction policies affect their lifetime. There is no autosave, crash recovery, external import/export, server storage, or separate account system. A browser may not fire an unload event when a mobile app is killed.
 
-## Spherical development preview
+## Spherical workspace
 
-Open tools, enter an explicit **Sphere reference radius (m)** and choose N=128 or N=256, then select **Open spherical preview**. The deterministic test geography crosses chart seams and corners; it is not Earth or a generated canonical world. Preview identities exist only in the development session. The current planar document, camera and Undo/Redo remain mounted behind the preview. **Return to map** restores access to them without discarding or replacing the map.
+Open tools, enter an explicit **Sphere reference radius (m)**, choose N=128 or N=256, then select **Create blank sphere**. It starts at −100 m with sea level 0. The separate **Open spherical preview** option retains D1's clearly labeled, read-only deterministic demonstration. Neither converts the current planar map or creates actual World records. The current planar document, camera and Undo/Redo remain mounted behind the workspace. **Return to map** restores access and confirms before discarding modified spherical work.
 
-Drag the globe to rotate; drag the net to pan. Wheel/pinch or the zoom buttons change display scale. Tap/click a location to inspect its canonical numerical elevation; **Center selection** brings it to the globe center. The focused canvas supports arrow navigation, +/− zoom, Enter to inspect the center and Home to reset. **View controls** supplies six reference directions and projection/cut explanations. Solid net folds join geography; dashed amber edges are paired visual cuts. Fullscreen is optional. No spherical sculpting, GUI history or Save/Open is available; the preview is clearly session-only.
+Select a brush to draw with mouse, pen or one finger. **View controls** contains physical meter radius, m/dab strength, percentage intensity and meter Flatten target. The development UI radius range is 0.005–0.2 × reference radius. Geodesic previews follow the real footprint, including chart splits and visible-hemisphere clipping. Select **Rotate / Pan**, hold Space, use the middle mouse button, or use two fingers to navigate. Wheel/pinch and zoom buttons change display scale. Canvas arrows navigate, +/− zoom, Enter selects the center and Home resets. **Center selection** brings the selected physical position to the globe center. Floating Undo/Redo and standard shortcuts restore exact sample bits across views; text fields keep native Undo.
 
-The browser uses bounded CPU rasters and derived display caches, with lighter navigation rendering followed by a settled redraw. Display interpolation adds no authoritative geographic detail. See [projection contracts and limits](docs/SPHERICAL-VIEWS.md), [screenshots, performance and exact files](docs/A6-D1-COMPLETION.md).
+Solid net folds join geography; dashed amber edges are visual cuts into the same surface. Crossing a genuine join continues a stroke. Entering a gap, crossing a disconnected cut or taking an ambiguous diagonal corner shortcut ends it; lift and restart. Optional net screen-edge assistance pans connected terrain after a 200 ms dwell. **Automatic globe rotation while painting at the limb is not enabled**: lift, rotate/recenter and resume. Fullscreen and the overlay panel preserve terrain. Spherical saves are unavailable; do not rely on this session surviving a browser/device failure.
+
+The browser patches revision-keyed texture regions, schedules complete numerical dabs in bounded frame slices and displays a finishing status while released input drains. It uses a lighter temporary globe raster during painting, then restores settled quality. Display interpolation adds no geographic detail. See [editing architecture and limits](docs/SPHERICAL-EDITING.md), [screenshots, performance and exact files](docs/A6-D2-COMPLETION.md), and the [D1 projection mathematics](docs/SPHERICAL-VIEWS.md).
 
 ## Numerical terrain and integration
 
@@ -73,7 +75,7 @@ The numerical engine has no React, DOM, Vite, authentication, network or databas
 | `src/editor/` | Existing planar history/document checkpoints; separate spherical history through canonical writes and private snapshots |
 | `src/persistence/` | Validated/versioned little-endian save representation and separate IndexedDB adapter |
 | `src/components/` | Reusable client canvas, controlled brush inputs and elevation legend |
-| `SphericalPreview`, `SphericalViewport` | Separate session-only host and embeddable read-only globe/net viewport |
+| `SphericalPreview`, `SphericalViewport`, `SphericalSession` | Separate disposable host, embeddable globe/net viewport, and tracked numerical editing/history/display session |
 | `src/App.tsx`, `src/styles.css`, `src/main.tsx` | Temporary full-screen development host |
 | `tests/` | Desktop/mobile browser proofs and test-only numerical fixture |
 | `scripts/measure-spherical.mjs` | Reproducible numerical allocation, connectivity and seam-write receipt |
@@ -81,7 +83,7 @@ The numerical engine has no React, DOM, Vite, authentication, network or databas
 | `scripts/measure-spherical-tools.mjs` | A6-C N=128/256 Smooth/Flatten performance, bounded payloads and exact history |
 | `docs/evidence/` | Actual screenshots/numerical receipts; prior-pass evidence remains historical |
 
-The A4 surface contracts remain independent of React, Canvas, DOM and browser storage. A5 uses their periodic math. A6-A adds `createSphericalTerrain` in `src/terrain/spherical.ts` and reference geometry in `src/surfaces/cube-sphere.ts`; A6-D1 exposes them through a separate preview without changing v1/v2 storage. A radius in meters is required; default resolution is 128 cells per face edge, with 98,306 unique samples (393,224 elevation bytes). Face charts are a numerical representation of a **round** world, not a physical cube. A6-C adds distance-weighted connected Smooth and datum-relative Flatten. A6-D1 adds read-only globe/net inspection; spherical brush interaction, persistence and independent hollow surfaces remain future work.
+The A4 surface contracts remain independent of React, Canvas, DOM and browser storage. A5 uses their periodic math. A6-A adds `createSphericalTerrain` and cube-sphere geometry; A6-B/C supply the four numerical tools. A6-D2 connects them to browser editing without changing v1/v2 storage. A radius in meters is required; default resolution is 128 cells per face edge, with 98,306 unique samples (393,224 elevation bytes). Face charts represent a **round** world, not a physical cube. Spherical persistence and independent hollow surfaces remain future work.
 
 Reproduce the numerical memory/topology receipt with `node --expose-gc scripts/measure-spherical.mjs`. An optional final argument writes its JSON output to an explicit path.
 
@@ -89,4 +91,4 @@ The spherical API is `startSphericalBrushStroke(terrain, physicalPoint, settings
 
 See [World/surface architecture](docs/WORLD-SURFACE-ARCHITECTURE.md), [integration architecture](docs/ARCHITECTURE.md), [A6-C completion and exact files](docs/A6-C-COMPLETION.md), and the [complete master roadmap](docs/PHASE-1-HEIGHTMAP-ROADMAP.md). All prior completion reports remain historical receipts.
 
-The owner supplied Ember's A6-C source/numerical-evidence approval at `3e5cdeee82627c2cd293940e7397dcebfbc35455` and authorized A6-D1 directly on `main`. Owner hands-on focused-layout acceptance remains separate. See [A5.2 layout](docs/A5-2-COMPLETION.md), [A6-C numerical completion](docs/A6-C-COMPLETION.md) and [A6-D1 viewing evidence](docs/A6-D1-COMPLETION.md). Stop after A6-D1 for review; A6-D2 and later checkpoints need separate authorization. Future view providers must choose connected layouts appropriate to their geometry; rectangular side previews remain specific to the periodic plane. The master roadmap retains [Issue #1](https://github.com/Revty79/serrian-tide-world/issues/1), all geometry/cartographic/history requirements and the agreed integration sequence: Atlas + separately rebuilt Worlds (step 9), completed combined system into Serrian Tide (step 10), then the reusable historical/modern Earth foundation (step 11). No integration or deployment occurs in this pass.
+The owner supplied Ember's A6-D1 approval at `7794953ddd0ee907d9de5052186b87f932530223` and authorized A6-D2 directly on `main`. Independent D2 review and owner acceptance remain separate from technical verification. **Stop after A6-D2; do not begin A6-E without authorization.** Future view providers choose layouts appropriate to their geometry; rectangular side previews remain specific to the periodic plane. The master roadmap preserves [Issue #1](https://github.com/Revty79/serrian-tide-world/issues/1), editable professional illustrated cartography across every supported shape and map scale, and integration steps 9 → 10 → 11. No site integration or deployment occurs here.

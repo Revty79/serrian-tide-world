@@ -1,4 +1,4 @@
-# Atlas integration architecture — A6-D1 spherical views on A6-C/A5.2
+# Atlas integration architecture — A6-D2 spherical editing on A6-C/A5.2
 
 ## Destination and ownership
 
@@ -12,7 +12,9 @@ Atlas and the rebuilt Worlds system will replace the existing implementation ins
 | `src/editor/spherical-history.ts` | Separate bounded, exact spherical history through private copies and canonical writes | Exposing authority, replacing planar history, persistence/timelines |
 | `src/surfaces` | Pure surface identity/catalog, geometry/topology/metric/projection contracts, bounded/periodic mathematics, lattice neighbors, tangent transport and explicit legacy adapter | React, DOM, Canvas, persistence, spherical editor |
 | `rendering/spherical-view.ts`, `spherical-raster.ts` | Pure globe/net projection, camera frame, physical inspection, derived RGBA cache and bounded orthographic raster | Terrain mutation, DOM, React, storage |
-| `SphericalViewport`, `interaction/spherical-navigation.ts` | Read-only browser rendering, physical selection, rotate/pan/pinch/keyboard and projection controls | Numerical brushes/history, persistence, periodic repetition |
+| `editor/spherical-session.ts` | Single-authority tracked write adapter, physical input queue, spherical history and revision display updates | React, DOM, storage, duplicate geography |
+| `rendering/spherical-brush-preview.ts`, `spherical-gesture-path.ts`, `spherical-texture-updates.ts` | Geodesic preview projection, physical net join validation and incremental derived texture patches | Separate elevation authority, UI, persistence |
+| `SphericalViewport`, `SphericalBrushControls`, `interaction/spherical-editing.ts`, `spherical-navigation.ts` | Browser paint/navigation arbitration, physical inspection, controls and cached rendering; optional read-only mode | Tool algorithms, persistence, periodic repetition |
 | `SphericalPreview`, `terrain/spherical-preview-fixture.ts` | Replaceable session-only host and explicit synthetic test fixture | Canonical World records, procedural world generation, database |
 | `src/rendering/camera.ts`, `fit-map.ts` | Pure Fill/Fit, bounded constraints, periodic phase, pointer-anchored zoom, pan | Elevation mutation, resampling, storage |
 | `src/rendering/periodic-view.ts` | Current flat periodic Focus scale and centered connected-context frame | Numerical terrain, other geometry layouts, persistence |
@@ -35,7 +37,7 @@ A6-B consumes that provider without a globe UI. Its stroke API accepts identity-
 
 A6-C extends this same engine with explicit datum-relative Flatten and synchronous pre-dab Smooth over unique edge-connected vertices. Inverse geodesic-square weights account for unequal spacing; a half-center target damps oscillation, with degree three at corners and four elsewhere. Only output chunks are retained per dab; the existing history begin/commit copies remain per stroke. Raise/Lower expressions, ownership, metadata and all browser code are preserved. See the weighting rationale and A6-D view requirements in [spherical sculpting](SPHERICAL-SCULPTING.md).
 
-A6-D1 introduces a separate read-only viewport using an orthographic globe and oriented six-face spherical net. Camera frames, screen points and physical directions remain distinct from canonical sample identity. The preview requires an explicit radius and creates only ephemeral fixture identities. The existing document/canvas stays mounted behind an inert overlay; returning preserves its data, camera/history and saved records. The pure engine and v1/v2 storage are unchanged. See [spherical view contracts, tolerances and budgets](SPHERICAL-VIEWS.md). A6-D2 must separately connect brushes, projected geodesic footprints, input arbitration and revision-aware display invalidation.
+A6-D1 introduced a separate read-only orthographic globe and oriented spherical net. A6-D2 adds an optional `SphericalSession`, blank editable entry and physical brush controls. Camera frames, screen points and physical directions remain distinct from canonical sample identity. The host requires an explicit radius and ephemeral identities; the old document/canvas remains mounted in an inert subtree. Returning preserves its data, camera/history and records. The tools retain their default numerical results; cooperative steps and an optional physical visibility domain support browser scheduling and safe globe editing. v1/v2 storage is unchanged. See [projection mathematics](SPHERICAL-VIEWS.md) and [editing, revision patches, budgets and limitations](SPHERICAL-EDITING.md).
 
 ## Reusable canvas contract
 
@@ -126,4 +128,4 @@ The adapter follows the browser's [IndexedDB transaction lifecycle](https://deve
 
 ## Review and scope
 
-A0–A5.2 and A6-A/B/C reports/evidence remain historical and unchanged. The owner supplied Ember's A6-C source/numerical-evidence approval and authorized A6-D1 on main at `3e5cdeee82627c2cd293940e7397dcebfbc35455`. [A6-D1 completion](A6-D1-COMPLETION.md) records projections, navigation, mathematical/browser tests, screenshots and performance. Owner hands-on focused-layout acceptance remains separate. Stop after A6-D1 for review. A6-D2, spherical persistence, later geometry work, original-site integration, server/Production writes and deployment require separate authorization. The master roadmap preserves step 9 (Atlas into separately rebuilt Worlds), step 10 (combined system into the existing site), then step 11 (reusable historical/modern Earth foundation).
+A0–A6-D1 reports/evidence remain historical and unchanged. The owner supplied Ember's D1 approval and authorized A6-D2 on main at `7794953ddd0ee907d9de5052186b87f932530223`. [D2 completion](A6-D2-COMPLETION.md) records implementation and numerical/browser evidence for independent review; owner acceptance remains separate. **Stop after A6-D2.** A6-E persistence, the disclosed held-stroke globe limb-assistance correction, later geometry, original-site integration, server/Production writes and deployment need separate authorization. The roadmap preserves editable illustrated cartography across every supported shape/valid scale and steps 9 (Atlas + separately rebuilt Worlds), 10 (combined system into the existing site), 11 (reusable historical/modern Earth foundation).

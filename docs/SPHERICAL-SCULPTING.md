@@ -126,7 +126,7 @@ Run `node scripts/measure-spherical-brush.mjs [output.json]` for deterministic m
 
 Run `node scripts/measure-spherical-tools.mjs [output.json]` for A6-C's N=128/256 Smooth/Flatten timings, candidate/read counts, exact history digests and typed-array payload accounting. One warmup precedes three measured runs for each tool/resolution. See the [A6-C receipt](evidence/a6-c-sculpting-receipt.json) and [completion report](A6-C-COMPLETION.md). These are local numerical measurements, not globe/mobile frame-rate evidence. Raise/Lower's original script and committed A6-B receipt remain unchanged.
 
-## A6-D interface requirements — documentation only
+## A6-D interface requirements — D1 foundation, D2 implementation
 
 A6-D1 now implements the read-only globe/net, rotation/recentering and physical inspection foundation described in [SPHERICAL-VIEWS.md](SPHERICAL-VIEWS.md). The remaining requirements below concern the separately authorized future editing workflow; no GUI brush or spherical persistence is added by D1.
 
@@ -137,4 +137,4 @@ A6-D1 now implements the read-only globe/net, rotation/recentering and physical 
 - Preserve predictable pan/rotate/zoom and painting arbitration, native touch behavior, cancellation and one-operation history. Add edge-assisted drawing only where appropriate to the spherical view, updating the physical path consistently as the view moves.
 - Make poles, corners and face/cut transitions usable and centerable. A camera action cannot change elevation, ownership, radius, identity or history. Future hollow interiors/exteriors remain independently selected surfaces.
 
-A6-D1 supplies session-only viewing and navigation. Interactive spherical sculpting, projected brush previews, GUI history and any true 3D terrain rendering remain future work; spherical Save/Open needs its own approved codec/recovery contract. The [master roadmap](PHASE-1-HEIGHTMAP-ROADMAP.md) retains every geometry, advanced tool, living-history/cartographic and Issue #1 requirement, with integration steps 9 → 10 → 11 unchanged. **Stop after A6-D1; do not begin A6-D2.**
+A6-D2 now supplies session-only globe/net sculpting, physical previews, GUI history and incremental rendering as specified in [SPHERICAL-EDITING.md](SPHERICAL-EDITING.md). Its cooperative generator preserves the synchronous engine's exact results; an optional globe visibility domain clips writes to the visible hemisphere. Smooth caches only immutable geometry, retaining the A6-C benchmark hashes. Automatic held-stroke globe limb rotation remains explicit correction A6-D2-R; spherical Save/Open and true 3D extrusion remain future. The [master roadmap](PHASE-1-HEIGHTMAP-ROADMAP.md) retains every geometry, advanced tool, living-history/cartographic and Issue #1 requirement, with steps 9 → 10 → 11 unchanged. **Stop after A6-D2; do not begin A6-E.**

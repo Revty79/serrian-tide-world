@@ -1,5 +1,5 @@
 import type { SurfaceIdentity, SurfacePosition } from '../surfaces/contracts.ts';
-import { unitDirection, type Vec3 } from '../surfaces/cube-sphere.ts';
+import { dot3, unitDirection, type Vec3 } from '../surfaces/cube-sphere.ts';
 import { greatCircleArc, unitArcAngle } from '../surfaces/great-circle.ts';
 import type { SphericalHistory } from '../editor/spherical-history.ts';
 import { assertFloat32Elevation } from './model.ts';
@@ -36,13 +36,14 @@ function validate(terrain: SphericalTerrain, settings: SphericalBrushSettings) {
 }
 
 /** Physical great-circle input; one initial dab then radius/4 meters, independent of charts/UI. */
-export function startSphericalBrushStroke(terrain: SphericalTerrain, point: SphericalBrushPoint, settings: SphericalBrushSettings, history?: SphericalHistory) {
+export function startSphericalBrushStroke(terrain: SphericalTerrain, point: SphericalBrushPoint, settings: SphericalBrushSettings, history?: SphericalHistory, domain?: { readonly hemisphere: Vec3 }) {
   validate(terrain, settings); const initial = directionOf(terrain, point);
+  const hemisphere = domain ? unitDirection(domain.hemisphere) : undefined;
   if (activeTerrains.has(terrain)) throw new Error('A spherical stroke is already active on this terrain.');
   if (history && !history.owns(terrain)) throw new RangeError('History belongs to another spherical terrain.');
   const snapshot = Object.freeze({ ...settings }), radius = terrain.metadata.geometry.radiusMeters, spacing = snapshot.radiusMeters / 4;
   const stats = { dabs: 0, candidateChecks: 0, affectedSamples: 0, writes: 0, peakPreparedBytes: 0 };
-  let previous = initial, untilNext = spacing, active = true;
+  let previous = initial, untilNext = spacing, active = true, advancing = false;
   const stamp = (center: Vec3) => {
     const candidates = sphericalCapCandidates(terrain, center, Math.min(Math.PI, snapshot.radiusMeters / radius));
     const chunks: { indices: Uint32Array; values: Float32Array; count: number }[] = [];
@@ -51,6 +52,8 @@ export function startSphericalBrushStroke(terrain: SphericalTerrain, point: Sphe
       stats.candidateChecks++;
       const distance = unitArcAngle(center, sample.direction) * radius / snapshot.radiusMeters;
       if (distance >= 1) continue;
+      // Optional physical editing domain. Default numerical behavior remains the complete cap.
+      if (hemisphere && dot3(hemisphere, sample.direction) < 0) continue;
       const current = terrain.read(sample.key);
       if (!Number.isFinite(current)) throw new RangeError('Spherical brush region contains a nonfinite elevation.');
       stats.affectedSamples++;
@@ -80,23 +83,30 @@ export function startSphericalBrushStroke(terrain: SphericalTerrain, point: Sphe
   const end = () => { if (!active) return; active = false; activeTerrains.delete(terrain); history?.commit(); };
   history?.begin(); activeTerrains.add(terrain);
   try { stamp(initial); } catch (cause) { end(); throw cause; }
+  function* steps(target: SphericalBrushPoint): Generator<boolean> {
+      if (!active) return;
+      if (advancing) throw new Error('Finish the pending spherical segment before supplying another.');
+      const next = directionOf(terrain, target), arc = greatCircleArc(previous, next), length = arc.angle * radius;
+      if (length === 0) return;
+      const tolerance = Number.EPSILON * 64 * Math.max(length, spacing);
+      const count = Math.max(0, Math.floor((length - untilNext + tolerance) / spacing) + 1);
+      if (count > MAX_SEGMENT_DABS) throw new RangeError('Stroke segment exceeds the dab-work limit; use a larger physical radius or shorter segments.');
+      advancing = true;
+      try {
+        for (let i = 0; i < count; i++) { if (!active) return; yield stamp(arc.at(Math.min(1, (untilNext + i * spacing) / length))); }
+        untilNext = untilNext + count * spacing - length; previous = next;
+      } catch (cause) { end(); throw cause; }
+      finally { advancing = false; }
+  }
   return {
     settings: snapshot,
     get statistics() { return { ...stats }; },
     moveTo(target: SphericalBrushPoint): boolean {
-      if (!active) return false;
-      // Reject invalid/ambiguous segments before applying any part; a valid intermediate can follow.
-      const next = directionOf(terrain, target), arc = greatCircleArc(previous, next), length = arc.angle * radius;
-      if (length === 0) return false; // Keep the anchor so micro-movements can accumulate.
-      const tolerance = Number.EPSILON * 64 * Math.max(length, spacing);
-      const count = Math.max(0, Math.floor((length - untilNext + tolerance) / spacing) + 1);
-      if (count > MAX_SEGMENT_DABS) throw new RangeError('Stroke segment exceeds the dab-work limit; use a larger physical radius or shorter segments.');
       let changed = false;
-      try {
-        for (let i = 0; i < count; i++) changed = stamp(arc.at(Math.min(1, (untilNext + i * spacing) / length))) || changed;
-      } catch (cause) { end(); throw cause; }
-      untilNext = untilNext + count * spacing - length; previous = next; return changed;
+      for (const value of steps(target)) changed ||= value;
+      return changed;
     },
+    moveToSteps: steps,
     end,
   };
 }

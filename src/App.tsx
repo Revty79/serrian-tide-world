@@ -46,10 +46,11 @@ export function App() {
   const [busy, setBusy] = useState(false);
   const busyRef = useRef(false);
   const [error, setError] = useState('');
-  const [spherePreview, setSpherePreview] = useState<{ radiusMeters: number; cellsPerEdge: number } | null>(null);
+  const [spherePreview, setSpherePreview] = useState<{ radiusMeters: number; cellsPerEdge: number; kind?: 'blank' | 'demo' } | null>(null);
   const spherePreviewRef = useRef(spherePreview); spherePreviewRef.current = spherePreview;
   const [sphereRadius, setSphereRadius] = useState(''), [sphereResolution, setSphereResolution] = useState(128);
   const previewButtonRef = useRef<HTMLButtonElement>(null);
+  const sphereButtonRef = useRef<HTMLButtonElement>(null);
   const validSphereRadius = sphereRadius.trim() !== '' && Number(sphereRadius) > 0 && Number.isFinite(Number(sphereRadius) * Math.PI);
   const reportError = (cause: unknown) => setError(cause instanceof Error ? cause.message : 'Local storage operation failed.');
   const finish = () => canvasRef.current?.finishInteraction();
@@ -177,6 +178,9 @@ export function App() {
             <p className="hint">Spherical preview resolution · {sphereResolution === 128 ? '98,306' : '393,218'} unique samples</p>
             <div className="map-actions" role="group" aria-label="Spherical preview resolution">{[128, 256].map((n) => <button key={n} type="button" aria-label={`Preview N=${n}`} aria-pressed={sphereResolution === n} onClick={() => setSphereResolution(n)}>N={n}</button>)}</div>
             <button ref={previewButtonRef} className="new-wrapped" disabled={!validSphereRadius} onClick={() => { finish(); setSpherePreview({ radiusMeters: Number(sphereRadius), cellsPerEdge: sphereResolution }); }}>Open spherical preview</button>
+            <p className="hint">The preview above is a read-only demonstration. Start an editable blank ocean separately:</p>
+            <button ref={sphereButtonRef} className="new-wrapped" disabled={!validSphereRadius} onClick={() => { finish(); setSpherePreview({ radiusMeters: Number(sphereRadius), cellsPerEdge: sphereResolution, kind: 'blank' }); }}>Create blank sphere</button>
+            <p className="hint">Spherical editing is session-only. Save/Open follows in A6-E. Your current planar map is preserved.</p>
           </div>
         </fieldset>
         <ElevationLegend seaLevel={document.terrain.metadata.seaLevel} />
@@ -200,7 +204,7 @@ export function App() {
       <p className="save-status" role="status">{busy ? 'Working with local storage…' : status}</p>
       {error && <div className="storage-error" role="alert"><p>{error}</p><button type="button" onClick={() => setError('')}>Dismiss</button></div>}
       </div>
-      {spherePreview && <SphericalPreview {...spherePreview} onClose={() => { setSpherePreview(null); requestAnimationFrame(() => previewButtonRef.current?.focus({ preventScroll: true })); }} />}
+      {spherePreview && <SphericalPreview {...spherePreview} onClose={() => { const button = spherePreview.kind === 'blank' ? sphereButtonRef : previewButtonRef; setSpherePreview(null); requestAnimationFrame(() => button.current?.focus({ preventScroll: true })); }} />}
     </main>
   );
 }

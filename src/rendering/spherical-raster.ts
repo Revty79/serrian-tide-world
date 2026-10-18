@@ -3,10 +3,10 @@ import type { SphericalTerrain } from '../terrain/spherical.ts';
 import { elevationToColor } from './elevation-colors.ts';
 import { sphericalLayout, type SphericalView, type Viewport } from './spherical-view.ts';
 
-export interface FaceTexture { readonly side: number; readonly pixels: Uint8ClampedArray }
-export interface SphericalDisplayCache { readonly faces: Readonly<Record<CubeFace, FaceTexture>>; readonly sourceRevision: number; readonly byteLength: number }
+export interface FaceTexture { readonly side: number; readonly pixels: Uint8ClampedArray; readonly sampleIndices?: Uint32Array }
+export interface SphericalDisplayCache { readonly faces: Readonly<Record<CubeFace, FaceTexture>>; sourceRevision: number; readonly byteLength: number }
 /** Derived RGBA only, never another writable elevation authority. One temporary source copy is shared by all six builds. */
-export function buildSphericalFaceTexture(terrain: SphericalTerrain, source: Float32Array, face: CubeFace): FaceTexture {
+export function buildSphericalFaceTexture(terrain: SphericalTerrain, source: Float32Array, face: CubeFace, retainIndices = false): FaceTexture {
   if (source.length !== terrain.sampleCount) throw new RangeError('Invalid spherical display snapshot.');
   const n = terrain.metadata.representation.cellsPerEdge, resolution = Math.min(512, n * 2), side = resolution + 1;
   const indices = new Uint32Array((n + 1) ** 2), pixels = new Uint8ClampedArray(side * side * 4);
@@ -18,7 +18,7 @@ export function buildSphericalFaceTexture(terrain: SphericalTerrain, source: Flo
     const color = elevationToColor(h, terrain.metadata.seaLevel), offset = (y * side + x) * 4;
     pixels[offset] = color[0]; pixels[offset + 1] = color[1]; pixels[offset + 2] = color[2]; pixels[offset + 3] = 255;
   }
-  return { side, pixels };
+  return { side, pixels, ...(retainIndices ? { sampleIndices: indices } : {}) };
 }
 /** Camera-space ray casting with a bounded raster, independent of numerical N after cache construction. */
 export function renderSphericalGlobe(cache: SphericalDisplayCache, view: SphericalView, size: Viewport, pixelBudget = 420_000, reusable?: Uint8ClampedArray) {
@@ -49,5 +49,5 @@ export function renderSphericalGlobe(cache: SphericalDisplayCache, view: Spheric
   return { pixels, columns, rows, left, top, width, height };
 }
 export function makeSphericalDisplayCache(faces: Record<CubeFace, FaceTexture>, sourceRevision: number): SphericalDisplayCache {
-  return { faces, sourceRevision, byteLength: CUBE_FACES.reduce((sum, face) => sum + faces[face].pixels.byteLength, 0) };
+  return { faces, sourceRevision, byteLength: CUBE_FACES.reduce((sum, face) => sum + faces[face].pixels.byteLength + (faces[face].sampleIndices?.byteLength ?? 0), 0) };
 }
