@@ -1,6 +1,6 @@
-# Physical closed-cylinder foundation — A7-A / A7-B1 / A7-B2A
+# Physical closed-cylinder foundation — A7-A through A7-B2B1
 
-This provider implements a **solid, closed, capped cylinder exterior**, independently of all existing representations. It is pure TypeScript without React, DOM, storage, authentication or a host dependency. A7-B1 adds [bounded global reference-surface distance](CYLINDER-GLOBAL-DISTANCE.md) and corrects the mesh-count documentation below without changing canonical storage. A7-B2A adds [atomic numerical four-tool dabs](CYLINDRICAL-SCULPTING.md). It is not selectable in New World / Map. There is no cylinder renderer, interactive brush/stroke, history integration, codec or migration.
+This provider implements a **solid, closed, capped cylinder exterior**, independently of all existing representations. It is pure TypeScript without React, DOM, storage, authentication or a host dependency. A7-B1 adds [bounded global reference-surface distance](CYLINDER-GLOBAL-DISTANCE.md) and corrects the mesh-count documentation below without changing canonical storage. A7-B2A adds [atomic numerical four-tool dabs](CYLINDRICAL-SCULPTING.md); A7-B2B1 adds [continuous physical paths](CYLINDER-PHYSICAL-PATHS.md). It is not selectable in New World / Map. There is no cylinder renderer, interactive brush/stroke, history integration, codec or migration.
 
 ## Version and physical frame
 
@@ -108,7 +108,7 @@ On either disk the straight XY segment lies in that convex disk, so its Euclidea
 
 Even a same-side pair can take a shorter route over a cap: opposite points on a rim are πR apart along the side and only 2R across the disk. A7-B1's `globalDistance` compares all necessary continuous route families and returns a lower/upper enclosure with an explicit meter error bound, or fails on unsupported precision/work/range. A 3D chord for points in different regions generally leaves the physical surface and is never exposed as an exact surface distance. See [completeness, optimization and accuracy specification](CYLINDER-GLOBAL-DISTANCE.md).
 
-A7-B1 supplies the bounded global distance minimum over justified complete route families, including shortcuts, both rim choices, angular wrapping, center/rim endpoints and ties. A7-B2A now supplies [interval-aware single-dab influence and polar/rim Smooth](CYLINDRICAL-SCULPTING.md), conservative candidates and atomic source-epoch patches. A7-B2B still needs actual path reconstruction/continuation at ties and cut loci, physical stroke spacing, exact whole-stroke history, matching previews and device scheduling. The graph alone does not establish conservative/equal-area diffusion. Stroke spacing, footprints, saturation, queued visibility and residuals must use consistent physical geometry. Distance work has a hard per-query budget; weaker-device brush scheduling remains later scope.
+A7-B1 supplies the bounded global distance minimum over justified complete route families, including shortcuts, both rim choices, angular wrapping, center/rim endpoints and ties. A7-B2A now supplies [interval-aware single-dab influence and polar/rim Smooth](CYLINDRICAL-SCULPTING.md), conservative candidates and atomic source-epoch patches. A7-B2B1 reconstructs connected physical routes and bounded distance-along-path spacing, with explicit tie/direction and approximation policies. A7-B2B2 must connect accepted physical input to B2A dabs with scheduling/cancellation and exact whole-stroke history. Matching projected previews and browser/device integration remain future. The graph alone does not establish conservative/equal-area diffusion. Stroke spacing, footprints, saturation, queued visibility and residuals must use consistent physical geometry. Distance work has a hard per-query budget; weaker-device brush scheduling remains later scope.
 
 ## Resource and precision bounds
 
@@ -116,7 +116,7 @@ Maximum version-1 authority: **1,047,554 samples / 4,190,216 bytes**, below 4 Mi
 
 Run `node --expose-gc scripts/verify-cylinder-foundation.mjs` for actual isolated Node allocation measurements at 128/64/32, 256/128/64 and maximum resolution. The [receipt](evidence/a7-a-cylinder-allocation.json) distinguishes exact typed payload from JS object, browser, history and renderer costs. Measurements are not mobile performance claims. Existing numerical/rendering/history budgets remain unchanged because the provider is not imported by the product host.
 
-## A7-B2A delivery and later integration gate
+## A7-B2B1 delivery and later integration gate
 
 Later views must be supplied by a surface-specific provider: rectangular side, **both circular caps**, real joins, useful combined layout and recenterable local views. Projection cuts, navigation and repeated views only read the same authority. They must not relocate/resample stored geography. Accurate inverse hit testing, physical footprint previews, seam/corner/center interaction and aspect handling must precede selectable creation. Rectangular repeated previews are not a universal interface for all shapes.
 
@@ -124,4 +124,4 @@ A7-B2A implements numerical Raise, Lower, Smooth and Flatten across joins using 
 
 Open/hollow cylinders, independent interior surfaces, domed ends, passages and other connections remain future configurations. All other Phase 2 geometries/conversions and the full linked-map requirement remain in the [master roadmap](PHASE-1-HEIGHTMAP-ROADMAP.md). This is a modular component for eventual integration into **existing Worlds** under the original Next.js/TypeScript host's authentication, permissions, database and World records. No alternate lore database or auth is introduced.
 
-**Stop after A7-B2A for independent review; do not begin A7-B2B.**
+**Stop after A7-B2B1 for independent review; do not begin A7-B2B2.**

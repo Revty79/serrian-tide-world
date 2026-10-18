@@ -7,6 +7,14 @@ export interface CylinderDistanceOptions {
   readonly absoluteToleranceMeters?: number;
   /** Hard total evaluated-box budget. Defaults to 32768; cannot exceed it. */
   readonly maxBoxes?: number;
+  /** Opt-in feasible parameters for versioned physical path construction; no extra solver work. */
+  readonly includeFeasibleRoutes?: boolean;
+}
+export interface CylinderFeasibleRoute {
+  readonly version: 1;
+  readonly routeClass: CylinderRouteClass;
+  readonly angles: readonly [number, number];
+  readonly upperBoundMeters: number;
 }
 export interface CylinderDistanceResult {
   /** Conservative upper endpoint. The real intrinsic distance lies in the returned interval. */
@@ -25,6 +33,7 @@ export interface CylinderDistanceResult {
   readonly evaluatedBoxes: number;
   readonly objectiveEvaluations: number;
   readonly peakQueuedBoxes: number;
+  readonly feasibleRoutes?: readonly CylinderFeasibleRoute[];
 }
 export class CylinderDistanceUnsupportedError extends RangeError {
   readonly code: 'precision' | 'work-budget' | 'range';
@@ -101,6 +110,7 @@ class Boxes {
  */
 export function cylinderGlobalDistance(g: GeometryInput, first: SurfacePosition, second: SurfacePosition, options: CylinderDistanceOptions = {}): CylinderDistanceResult {
   const metadata = g.metadata;
+  if (options.includeFeasibleRoutes !== undefined && typeof options.includeFeasibleRoutes !== 'boolean') throw new RangeError('Invalid feasible-route reporting option.');
   assertIdentity(metadata.identity);
   if (metadata.provider !== 'physical-closed-cylinder' || metadata.version !== 1 || metadata.configuration !== 'solid-capped' || metadata.role !== 'exterior'
     || ![metadata.radiusMeters, metadata.lengthMeters].every((n) => Number.isFinite(n) && n > 0)
@@ -235,5 +245,6 @@ export function cylinderGlobalDistance(g: GeometryInput, first: SurfacePosition,
   }
   if (![lower, upper, upper - lower].every(Number.isFinite) || lower < 0 || upper < lower || upper - lower > tolerance) throw new CylinderDistanceUnsupportedError('range', 'No finite valid cylinder distance enclosure.');
   const possibleRouteClasses = routes.filter((r) => r.lower <= upper).map((r) => r.kind);
-  return Object.freeze({ value: upper, units: 'meters', scope: 'global-reference-surface', method: 'continuous-route-affine-bounds-v1', lowerBoundMeters: lower, upperBoundMeters: upper, absoluteErrorBoundMeters: upper - lower, requestedToleranceMeters: tolerance, bestRoute: best.kind, possibleRouteClasses: Object.freeze(possibleRouteClasses), bestAngles: Object.freeze(best.angles), evaluatedBoxes, objectiveEvaluations, peakQueuedBoxes });
+  const feasibleRoutes = options.includeFeasibleRoutes ? { feasibleRoutes: Object.freeze(routes.filter((r) => Number.isFinite(r.upper)).map((r) => Object.freeze({ version: 1 as const, routeClass: r.kind, angles: Object.freeze([...r.angles]) as readonly [number, number], upperBoundMeters: r.upper }))) } : {};
+  return Object.freeze({ value: upper, units: 'meters', scope: 'global-reference-surface', method: 'continuous-route-affine-bounds-v1', lowerBoundMeters: lower, upperBoundMeters: upper, absoluteErrorBoundMeters: upper - lower, requestedToleranceMeters: tolerance, bestRoute: best.kind, possibleRouteClasses: Object.freeze(possibleRouteClasses), bestAngles: Object.freeze(best.angles), evaluatedBoxes, objectiveEvaluations, peakQueuedBoxes, ...feasibleRoutes });
 }
