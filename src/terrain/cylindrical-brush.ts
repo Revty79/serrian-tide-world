@@ -108,6 +108,19 @@ export function prepareCylindricalDab(terrain: CylindricalTerrain, input: Surfac
     settings, center, sourceRevision: revision,
     get status(): CylinderDabStatus { return status; },
     get statistics() { return Object.freeze({ ...statistics }); },
+    /** Read-only source-epoch handoff. Never exposes mutable prepared arrays. */
+    *preparedChanges(expectedTerrain: CylindricalTerrain) {
+      if (expectedTerrain !== terrain || status !== 'ready') throw new Error('Prepared cylinder changes require the bound authority and a ready dab.');
+      synchronized();
+      for (const block of blocks) for (let i = 0; i < block.count; i++) {
+        if (status !== 'ready') throw new Error('Prepared cylinder dab is no longer ready.');
+        synchronized();
+        const index = block.indices[i]!;
+        yield Object.freeze({ index, before: terrain.read(terrain.keyAt(index)), after: block.values[i]! });
+      }
+      if (status !== 'ready') throw new Error('Prepared cylinder dab is no longer ready.');
+      synchronized();
+    },
     pump(maxSamples = 64): CylinderDabStatus {
       if (!Number.isSafeInteger(maxSamples) || maxSamples < 1 || maxSamples > 512) throw new RangeError('Cylinder dab pump requires 1-512 candidate steps.');
       if (status !== 'preparing') return status;
