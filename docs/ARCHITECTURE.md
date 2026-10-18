@@ -1,4 +1,4 @@
-# Atlas integration architecture — A6-A
+# Atlas integration architecture — A6-B
 
 ## Destination and ownership
 
@@ -7,7 +7,9 @@ Atlas and the rebuilt Worlds system will replace the existing implementation ins
 | Layer | Owns | Excludes |
 | --- | --- | --- |
 | `src/terrain` | Versioned numerical model, sampling, mutation/reset, four brushes, deterministic distance-spaced strokes | React, DOM, users, persistence, World records |
-| `src/terrain/spherical.ts` | Separate numerical sphere, private Float32 authority, canonical keys/aliases and vertex adjacency | Planar model changes, spherical UI/brush/history, browser codecs |
+| `src/terrain/spherical.ts` | Numerical sphere, private Float32 authority, canonical keys/aliases, vertex adjacency and actual-write revision counter | Planar model changes, UI, browser codecs |
+| `spherical-cap.ts`, `spherical-brush.ts`, `surfaces/great-circle.ts` | Conservative cap candidates, exact geodesic influence, shortest-arc strokes, shared numerical falloff/saturation | Smooth/Flatten, projection, UI, storage |
+| `src/editor/spherical-history.ts` | Separate bounded, exact spherical history through private copies and canonical writes | Exposing authority, replacing planar history, persistence/timelines |
 | `src/surfaces` | Pure surface identity/catalog, geometry/topology/metric/projection contracts, bounded/periodic mathematics, lattice neighbors, tangent transport and explicit legacy adapter | React, DOM, Canvas, persistence, spherical editor |
 | `src/rendering/camera.ts`, `fit-map.ts` | Pure Fill/Fit, bounded constraints, periodic phase, pointer-anchored zoom, pan | Elevation mutation, resampling, storage |
 | Other `src/rendering` files | Elevation colors, interpolated presentation cache, shoreline coverage and isolated bounded/repeated canvas drawing | Editing, authorization, document identity |
@@ -24,6 +26,8 @@ The terrain ID is host supplied. The development host creates UUIDs for new maps
 A4 separates parent World identity, physical shape, editable surface identity, terrain representation, topology, projection and camera. A5 binds its periodic rectangular topology, lattice and metric to a new explicit v2 terrain type. The v1 interpretation and canonical save encoding are preserved. See [WORLD-SURFACE-ARCHITECTURE.md](WORLD-SURFACE-ARCHITECTURE.md) for the capability matrix and future geometry strategy, and [A5 completion](A5-COMPLETION.md) for implemented math and evidence. A descriptor for a future shape does not make that configuration editable.
 
 A6-A adds a separate spherical provider and `src/surfaces/cube-sphere.ts` without importing either into App. It requires host-supplied World/surface/terrain IDs and a radius in meters. Six fixed chart IDs resolve to one authority. Angular positions, directions, exact canonical vertex keys and physical distances remain distinct from viewing state. This is a numerical foundation, with no new client boundary, routing, backend or browser save format. See [spherical contracts/storage preparation](SPHERICAL-HEIGHTMAP-FOUNDATION.md). The expanded [master roadmap](PHASE-1-HEIGHTMAP-ROADMAP.md) preserves all required future shapes, independent surfaces, map styles/history, linked scales and eventual host integration.
+
+A6-B consumes that provider without a globe UI. Its stroke API accepts identity-bearing physical directions or face positions and uses conservative face-local cap bounds followed by exact geodesic distances. History snapshots are independent copies; restorations use canonical write calls. A revision increments only on actual Float32-bit changes, allowing history to refuse untracked edits safely. The shared A5 falloff/saturation expressions moved into a pure helper with the original results preserved; existing input/renderer/editor/storage code is unchanged. See [spherical sculpting/history contract](SPHERICAL-SCULPTING.md) for ownership, lifecycle, numeric thresholds, budgets and measurements.
 
 ## Reusable canvas contract
 
@@ -106,4 +110,4 @@ The adapter follows the browser's [IndexedDB transaction lifecycle](https://deve
 
 ## Review and scope
 
-A0–A5 reports/evidence remain historical and unchanged. The owner supplied Ember's A5 source/visual approval and authorized A6-A directly on main. [A6-A completion](A6-A-COMPLETION.md) records numerical and existing-editor verification; independent review and acceptance remain pending. Stop after A6-A. A6-B, later geometry work, original-site integration, server/Production writes and deployment require separate authorization.
+A0–A6-A reports/evidence remain historical and unchanged. The owner supplied Ember's A6-A approval with no blockers and authorized A6-B directly on main. [A6-B completion](A6-B-COMPLETION.md) records numerical/history/performance and existing-editor verification; independent review/acceptance remain pending. Stop after A6-B. A6-C, later geometry work, original-site integration, server/Production writes and deployment require separate authorization.

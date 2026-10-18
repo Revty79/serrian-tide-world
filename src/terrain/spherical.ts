@@ -32,6 +32,7 @@ export function createSphericalTerrain(options: { readonly terrainId: string; re
   });
   // The only authoritative elevation allocation. Face views are address resolvers, not arrays.
   const elevations = new Float32Array(count).fill(-100);
+  let revision = 0;
   const assertIndex = (index: number) => {
     if (!Number.isInteger(index) || index < 0 || index >= count) throw new RangeError('Invalid canonical spherical sample index.');
   };
@@ -118,7 +119,11 @@ export function createSphericalTerrain(options: { readonly terrainId: string; re
   return Object.freeze({
     metadata, geometry, sampleCount: count, elevationByteLength: elevations.byteLength, keyAt, resolve, aliases, positionAt, neighbors, step,
     read: (key: SphericalSampleKey): number => elevations[checkedKey(key)]!,
-    write: (key: SphericalSampleKey, value: number): void => { const index = checkedKey(key); assertFloat32Elevation(value); elevations[index] = value; },
+    get revision() { return revision; },
+    write: (key: SphericalSampleKey, value: number): void => {
+      const index = checkedKey(key); assertFloat32Elevation(value); const next = Math.fround(value);
+      if (!Object.is(elevations[index], next)) { elevations[index] = next; revision++; }
+    },
     copyElevations: (): Float32Array => elevations.slice(),
     directionAt: (key: SphericalSampleKey): Vec3 => geometry.direction(positionAt(aliases(key)[0]!)),
     *samples(): Generator<SphericalSampleKey> { for (let index = 0; index < count; index++) yield keyAt(index); },

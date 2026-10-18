@@ -1,5 +1,7 @@
 # Numerical spherical provider — A6-A
 
+Current consumer update: A6-B adds numerical Raise/Lower and history in separate modules, documented in [SPHERICAL-SCULPTING.md](SPHERICAL-SCULPTING.md). The authority/ownership layout below remains unchanged. The provider now exposes a read-only `revision` counter that increments only for actual Float32-bit changes through `write`; no mutable buffer is exposed. The A6-A completion report/receipt remain historical.
+
 This is the implemented in-memory foundation. It provides no globe renderer, spherical UI/brushes/history or browser save format. The existing bounded/periodic model and v1/v2 codecs are separate and unchanged. Physical shape is a round reference sphere; a true cube-shaped World is a different future geometry.
 
 ## Public contract and identity

@@ -1,6 +1,6 @@
 # Atlas master roadmap — Phase 1 and long-term requirements
 
-Updated October 17, 2026 for A6-A. This preserves the owner's complete geometry and eventual Atlas/Worlds requirements alongside the Phase 1 heightmap tool inventory. Future entries are requirements to plan and review, not authorization to implement them during A6-A.
+Updated October 17, 2026 for A6-B. This preserves the owner's complete geometry and eventual Atlas/Worlds requirements alongside the Phase 1 heightmap tool inventory. Future entries are requirements to plan and review, not authorization to implement them during A6-B.
 
 ## Current baseline
 
@@ -12,8 +12,11 @@ Updated October 17, 2026 for A6-A. This preserves the owner's complete geometry 
 | A3 | Zoom/Pan, bounded Undo/Redo, browser-local Save/Open, New Blank Map, full-screen workspace and overlay left tools | Implemented; Ember's source and visual review approved, per owner |
 | A4 | World/surface identities, shape/topology/metric/projection contracts, bounded/periodic math examples, spherical/hollow strategy, preserved v1 editor and saves | Implemented; Ember source/architecture approval supplied by owner |
 | A5 | Seam-aware brushes, continuous recentering, repeated full-screen Fill, bounded Fill/Fit, optional fullscreen, interpolated display and v2 local saves | Implemented; Ember source/visual approval supplied by owner |
-| A6-A | Actual numerical equiangular cube-sphere, unique vertices, all face/edge/corner connectivity, geodesic metric and memory evidence | Implemented under A6-A authorization; independent review and acceptance pending; no spherical UI/save codec |
-| A6-B and later A6 checkpoints | Spherical editing interface, projected footprints, globe rotation/local views, spherical brush/history/storage work in separately defined checkpoints | Planned; not authorized by A6-A |
+| A6-A | Numerical equiangular cube-sphere, unique vertices, all face/edge/corner connectivity, geodesic metric and memory evidence | Implemented; independent source/numerical/architecture approval supplied by owner |
+| A6-B | Numerical spherical Raise/Lower, bounded cap candidates, continuous great-circle strokes and exact bounded history | Implemented; independent review/acceptance pending; no spherical UI/persistence |
+| Next spherical tool checkpoint | Smooth/Flatten with reviewed curved-surface neighbor weighting/interpolation and canonical multi-face history | Planned; separate authorization required |
+| Subsequent spherical view checkpoint | Interactive spherical editing views, inverse projection, projected footprints, globe rotation/local views and movable cuts | Planned; separate authorization required |
+| Subsequent spherical preservation checkpoint | Explicitly versioned spherical Save/Open, validation, resource budgets, compatibility and recovery | Planned; no spherical browser save format authorized yet |
 | A7 and later geometry checkpoints | Hollow, cylindrical and other agreed initial geometries | Planned; exact scope/order requires authorization |
 | Later Phase 1 | Remaining inventory below | Planned; pass boundaries and acceptance criteria still require authorization |
 
@@ -29,7 +32,7 @@ See [World/surface architecture](WORLD-SURFACE-ARCHITECTURE.md) for capability s
 
 | Owner requirement | Current status and required future work |
 | --- | --- |
-| Spherical worlds | A6-A numerical provider exists. Later A6 checkpoints must deliver actual editing, global seam/corner/pole continuity, view adapters, brush/history integration and separately approved storage |
+| Spherical worlds | A6-A connected numerical provider and A6-B physical Raise/Lower/history exist. Later checkpoints deliver reviewed Smooth/Flatten, interactive views/rotation and separately approved storage |
 | Cylindrical worlds | Descriptor and reusable flat lateral metric only. Physical circumference/length, bounded/connected/capped ends, normals and editing workflow remain future |
 | Hollow spheres | Catalog contracts only. Interior and exterior must be independently editable and independently selectable, with distinct terrain/history and appropriate inward/outward elevation normals |
 | True cube-shaped worlds | Future physical polyhedron with flat faces and real geometric edges/corners. Distinct from the cube-sphere numerical grid used for round worlds |
@@ -40,7 +43,7 @@ See [World/surface architecture](WORLD-SURFACE-ARCHITECTURE.md) for capability s
 | Flat circular and triangular worlds | Outline descriptors only; valid-domain masks/meshes, clipping, boundary/neighbor handling and editing remain future |
 | Custom connected or multi-face geometry | Versioned providers with explicit reciprocal seams, metrics, ownership and validated corners; no silent fallback to rectangle/sphere |
 | Independent interiors/exteriors where geometry supports them | Surface identity/lifetime/terrain/history must be independent of parent World and view; support only explicitly defined valid configurations |
-| Seam-crossing brushes and correct corner connectivity | A5 proves periodic tools; A6-A proves spherical nodes/neighbors/tangent basis conversion. Future brush footprints, paths, Smooth weighting and preview must use each physical surface's metric |
+| Seam-crossing brushes and correct corner connectivity | A5 proves periodic tools; A6-A supplies spherical topology and A6-B proves physical Raise/Lower footprints/paths/history. Curved Smooth weighting and projected previews remain future |
 | Continuous surface panning, globe rotation and movable map seams | Periodic recentering works. Every future shape must let creators center the working area via view state, without relocating/resampling stored geography |
 | Surface-aware editing without projection-induced terrain distortion | Inverse projection, intrinsic brush distances and projected previews must agree. A distorted overview must never redefine physical influence or authoritative positions |
 | Shape selection before world generation | Future creation workflow chooses supported physical shape, dimensions and eligible surface(s) before generation. Do not offer inert choices; generated terrain stays editable and representation is distinct from physical shape |
@@ -125,4 +128,4 @@ A3 implements pointer-centered zoom, bounded panning, Space/explicit Pan and two
 
 The inventory was checked against the project's primary [Heightmap customization documentation](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Heightmap-customization) and [template-editor documentation](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Heightmap-template-editor). Their application semantics and data models are not adopted automatically. This roadmap records the owner's requested scope; exact future behavior still requires a bounded pass.
 
-The owner confirmed Ember's A5 source/visual approval and separately authorized A6-A. Stop after A6-A for review; A6-B and later work, integration and deployment require their own authorization. No future inventory item is authorized merely by appearing here.
+The owner supplied Ember's A6-A approval and separately authorized A6-B. The three spherical checkpoint categories above are the proposed remaining sequence; their exact letter labels/briefs still require authorization. Stop after A6-B; do not begin A6-C. Later work, integration and deployment require their own authorization. No future inventory item is authorized merely by appearing here.

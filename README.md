@@ -1,6 +1,6 @@
 # Serrian Tide Atlas
 
-Pass A6-A: a numerical spherical heightmap with six connected equiangular cube-sphere charts and uniquely owned shared samples. The A5 bounded/periodic editor, display, history and local saves remain unchanged; spherical visual editing follows in a later checkpoint.
+Pass A6-B: numerical spherical Raise/Lower with physical geodesic strokes, bounded cap searches and bit-exact Undo/Redo. The A5 bounded/periodic editor, display and local saves remain the working UI; interactive spherical views follow in later checkpoints.
 
 This repository is a standalone **development workspace**. Atlas and the rebuilt Worlds system will ultimately replace the current Worlds/Atlas implementation inside the existing Serrian Tide Next.js/TypeScript website. The original website remains untouched.
 
@@ -45,7 +45,7 @@ Save explicitly before leaving. Saves belong to the **current browser profile an
 
 ## Numerical terrain and integration
 
-New maps have 512 columns × 512 rows in a row-major `Float32Array` (262,144 samples, 1 MiB), initially all −100 m. Sea level defaults to 0 m; water includes equality. Bounded maps retain version 1's independent edge samples and save contract. Wrapped maps use explicit version 2 metadata/records, with unique samples per horizontal period and World/surface/patch identities. No conversion occurs. The provisional extent is a neutral 1 × 1 map-unit rectangle, independent of sample resolution and physical-world scale.
+New maps in the existing editor have 512 columns × 512 rows in a row-major `Float32Array` (262,144 samples, 1 MiB), initially all −100 m. Sea level defaults to 0 m; water includes equality. Bounded maps retain version 1's independent edge samples and save contract. Wrapped maps use explicit version 2 metadata/records, with unique samples per horizontal period and World/surface/patch identities. No conversion occurs. The provisional extent is a neutral 1 × 1 map-unit rectangle, independent of sample resolution and physical-world scale.
 
 Rendering and the camera only read terrain. A uniform scale preserves actual terrain proportions. Periodic copies share one source cache and one numerical buffer. Rendering interpolates elevation before applying the palette and antialiases shoreline coverage; CSS pixelated scaling is removed. This improves presentation without creating new geographic detail. The authoritative resolution, exact sample readout, brushes, history and save bytes are unchanged by display interpolation. Cache sizes are bounded independently of zoom; mobile uses less display supersampling. See the [A5 report](docs/A5-COMPLETION.md) for alignment, performance and rendering limits.
 
@@ -55,22 +55,25 @@ The numerical engine has no React, DOM, Vite, authentication, network or databas
 
 | Location | Responsibility |
 | --- | --- |
-| `src/terrain/` | Bounded/periodic model and brushes; separate spherical provider with one private Float32 authority and canonical sample keys |
+| `src/terrain/` | Bounded/periodic brushes; spherical provider, bounded cap search and physical Raise/Lower strokes; shared numerical falloff/saturation |
 | `src/surfaces/` | Pure contracts, bounded/periodic math, real cube-sphere geometry/seams/tangent conversion and legacy binding |
 | `src/rendering/` | Colors, interpolated presentation cache, repeated canvas drawing, Fill/Fit and pure camera math |
 | `src/interaction/` | Pointer lifecycle, stroke boundaries, navigation/brush arbitration |
-| `src/editor/` | Bit-exact bounded history and document saved checkpoints |
+| `src/editor/` | Existing planar history/document checkpoints; separate spherical history through canonical writes and private snapshots |
 | `src/persistence/` | Validated/versioned little-endian save representation and separate IndexedDB adapter |
 | `src/components/` | Reusable client canvas, controlled brush inputs and elevation legend |
 | `src/App.tsx`, `src/styles.css`, `src/main.tsx` | Temporary full-screen development host |
 | `tests/` | Desktop/mobile browser proofs and test-only numerical fixture |
 | `scripts/measure-spherical.mjs` | Reproducible numerical allocation, connectivity and seam-write receipt |
+| `scripts/measure-spherical-brush.mjs` | N=128/256 sculpting/history benchmark and deterministic signed-zero receipt |
 | `docs/evidence/` | Actual screenshots/numerical receipts; prior-pass evidence remains historical |
 
 The A4 surface contracts remain independent of React, Canvas, DOM and browser storage. A5 uses their periodic math. A6-A adds `createSphericalTerrain` in `src/terrain/spherical.ts` and reference geometry in `src/surfaces/cube-sphere.ts`, without importing them into App or changing v1/v2 storage. A radius in meters is required; default resolution is 128 cells per face edge, with 98,306 unique samples (393,224 elevation bytes). Face charts are a numerical representation of a **round** world, not a physical cube. Globe rotation, projection/local editing views, spherical brushes/persistence and independent hollow surfaces remain future work.
 
 Reproduce the numerical memory/topology receipt with `node --expose-gc scripts/measure-spherical.mjs`. An optional final argument writes its JSON output to an explicit path.
 
-See [World/surface architecture](docs/WORLD-SURFACE-ARCHITECTURE.md), [integration architecture](docs/ARCHITECTURE.md), [A6-A completion and exact files](docs/A6-A-COMPLETION.md), and the [complete master roadmap](docs/PHASE-1-HEIGHTMAP-ROADMAP.md). All prior completion reports, including [A5](docs/A5-COMPLETION.md), remain historical receipts.
+The spherical API is `startSphericalBrushStroke(terrain, physicalPoint, {tool, radiusMeters, strengthMeters}, history?)`. Physical points carry World/surface identity and either a direction or a validated face address. Movement follows shortest great-circle segments with radius/4 meter spacing; near-antipodes require explicit intermediates. `SphericalHistory` retains at most 16 MiB/100 entries by default and never receives the authority buffer. See the [sculpting API and limits](docs/SPHERICAL-SCULPTING.md). Run `node scripts/measure-spherical-brush.mjs` to reproduce its numerical/performance receipt.
 
-The owner confirmed Ember's A5 source/visual approval and authorized A6-A directly on `main`. A6-A awaits independent review and acceptance. Stop after A6-A; A6-B and later checkpoints need separate authorization. No spherical UI, new save format, main-site integration or deployment is included.
+See [World/surface architecture](docs/WORLD-SURFACE-ARCHITECTURE.md), [integration architecture](docs/ARCHITECTURE.md), [A6-B completion and exact files](docs/A6-B-COMPLETION.md), and the [complete master roadmap](docs/PHASE-1-HEIGHTMAP-ROADMAP.md). All prior completion reports remain historical receipts.
+
+The owner supplied Ember's A6-A source/numerical/architecture approval with no blocking corrections and authorized A6-B directly on `main`. A6-B awaits independent review and acceptance. Stop after A6-B; A6-C and later checkpoints need separate authorization. Spherical Smooth/Flatten, UI/rotation and Save/Open remain later work. No new save format, main-site integration or deployment is included.

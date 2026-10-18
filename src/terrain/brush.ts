@@ -1,6 +1,7 @@
 import { assertFloat32Elevation, type Terrain } from './model.ts';
 import type { Point } from './sampling.ts';
 import { isWrapped, wrappedMath } from './topology.ts';
+import { radialFalloff, saturatedElevation } from './brush-math.ts';
 
 export type BrushTool = 'raise' | 'lower' | 'smooth' | 'flatten';
 
@@ -21,7 +22,7 @@ export interface BrushStroke {
   end(): void;
 }
 
-export const FLOAT32_MAX = 3.4028234663852886e38;
+export { FLOAT32_MAX } from './brush-math.ts';
 
 export function brushRadiusLimits(terrain: Terrain) {
   const { width, height } = terrain.metadata.dimensions;
@@ -115,7 +116,7 @@ function stamp(terrain: Terrain, center: Point, settings: Readonly<BrushSettings
         ? periodic.surface.metric.distance(canonical!, { ...periodic.surface.chart.address, u: column * stepX, v: row * stepY }).value / radius
         : Math.hypot((column * stepX - center.x) / radius, dy);
       if (distance >= 1) continue;
-      const falloff = Math.max(0, Math.min(1, (1 - distance) ** 2 * (1 + 2 * distance)));
+      const falloff = radialFalloff(distance);
       const index = row * columns + column, current = terrain.elevations[index]!;
       let value = current;
       if (settings.tool === 'raise' || settings.tool === 'lower') {
@@ -135,7 +136,7 @@ function stamp(terrain: Terrain, center: Point, settings: Readonly<BrushSettings
         const alpha = settings.intensity * falloff;
         value = current * (1 - alpha) + target * alpha;
       }
-      const next = Math.fround(Math.max(-FLOAT32_MAX, Math.min(FLOAT32_MAX, value)));
+      const next = saturatedElevation(value);
       if (next !== current) { terrain.elevations[index] = next; changed = true; }
     }
   }
