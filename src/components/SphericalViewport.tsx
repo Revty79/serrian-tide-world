@@ -9,6 +9,8 @@ import type { SphericalSession } from '../editor/spherical-session.ts';
 import { sphericalBrushPreview } from '../rendering/spherical-brush-preview.ts';
 import { continuousNetSegment } from '../rendering/spherical-gesture-path.ts';
 import { edgePanVelocity } from '../rendering/edge-pan.ts';
+import { advanceGlobeLimb, globeLimbZone, LIMB_DWELL_MS } from '../rendering/spherical-limb-assist.ts';
+import type { SphericalBrushVisibility } from '../terrain/spherical-brush.ts';
 import { isTextInput } from '../interaction/canvas-navigation.ts';
 import { SphericalBrushControls, defaultSphericalControls, sphericalBrushFromControls } from './SphericalBrushControls.tsx';
 import { renderSphericalGlobe, type SphericalDisplayCache } from '../rendering/spherical-raster.ts';
@@ -46,6 +48,8 @@ export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, 
     let frame = 0, active = true, raster: Uint8ClampedArray | undefined, pendingInspection: { point: ScreenPoint; select: boolean } | undefined;
     let paints = 0, requests = 0, dirty = true, interactiveUntil = 0, refinementTimer = 0, inputAt = 0, hover: ScreenPoint | null = null;
     let edgeSince = 0, edgeTime = 0, editingNavigation: ReturnType<typeof attachSphericalEditing> | undefined;
+    let limbSince = 0, limbTime = 0, limbSteps = 0, limbRadians = 0;
+    let assistedVisibility: SphericalBrushVisibility | undefined, acceptedLimb = false;
     const renderTimes: number[] = [], inputLatencies: number[] = [], brushLatencies: number[] = [];
     const size = () => ({ width: canvas.clientWidth, height: canvas.clientHeight });
     const showInspection = (direction: Vec3 | null, select: boolean) => {
@@ -89,6 +93,29 @@ export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, 
           }
           edgeTime = now; schedule();
         } else { edgeSince = 0; edgeTime = 0; canvas.dataset.edgeAssisting = 'false'; }
+        const activeBrush = sphericalBrushFromControls(controlsRef.current, terrain.metadata.geometry.radiusMeters);
+        const limb = point && editor.painting && !editor.locked && controlsRef.current.limbAssist && activeBrush && globeLimbZone(view, point, viewport);
+        canvas.dataset.limbAssisting = 'false'; canvas.dataset.limbPaused = String(!!limb && editor.backlogged);
+        if (limb && point && activeBrush) {
+          const now = performance.now(); if (!limbSince) limbSince = now;
+          const bounds = canvas.getBoundingClientRect();
+          if (document.elementFromPoint(bounds.left + point.x, bounds.top + point.y) !== canvas) { editingNavigation?.cancel(); limbSince = 0; }
+          else {
+            if (now - limbSince >= LIMB_DWELL_MS && !editor.backlogged) {
+              const before = viewRef.current, step = advanceGlobeLimb(before, point, viewport, limbTime ? now - limbTime : 16, activeBrush.radiusMeters / terrain.metadata.geometry.radiusMeters);
+              if (step) {
+                viewRef.current = step.view; view = step.view;
+                assistedVisibility = { hemisphere: step.fromHemisphere, endHemisphere: step.toHemisphere }; acceptedLimb = false;
+                try { editingNavigation?.assist(0, 0); } finally { assistedVisibility = undefined; }
+                if (acceptedLimb) { limbSteps++; limbRadians += step.angle; dirty = true; canvas.dataset.limbAssisting = 'true'; }
+                else { viewRef.current = before; view = before; limbSince = 0; }
+              }
+            }
+            // O(1) dwell/backpressure checks; stationary dwell does not rasterize again.
+            limbTime = now; schedule(false);
+          }
+        } else { limbSince = 0; limbTime = 0; }
+        canvas.dataset.limbSteps = String(limbSteps); canvas.dataset.limbRadians = String(limbRadians);
         const brush = sphericalBrushFromControls(controlsRef.current, terrain.metadata.geometry.radiusMeters), center = hover && unprojectSphere(terrain, hover, viewRef.current, viewport);
         const segments = brush && center ? sphericalBrushPreview(terrain, center, brush.radiusMeters, viewRef.current, viewport) : [];
         previewRef.current?.setAttribute('d', segments.map((s) => s.points.map((p, i) => `${i ? 'L' : 'M'}${p.x.toFixed(3)},${p.y.toFixed(3)}`).join(' ')).join(' '));
@@ -164,7 +191,14 @@ export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, 
       move(point) {
         const direction = unprojectSphere(terrain, point, viewRef.current, size()), anchor = editingNavigation?.anchor;
         if (!direction || viewRef.current.mode === 'net' && anchor && !continuousNetSegment(terrain, anchor, point, viewRef.current, size())) return false;
-        editor.move(direction); return true;
+        const visibility = assistedVisibility ?? (viewRef.current.mode === 'globe' ? { hemisphere: viewRef.current.frame.forward } : undefined);
+        editor.move(direction, visibility);
+        if (assistedVisibility && editor.painting) {
+          acceptedLimb = true;
+          // Latest segment only: constant-size geometry diagnostics, never terrain copies.
+          canvas.dataset.limbStep = JSON.stringify({ serial: limbSteps + 1, at: performance.now(), direction, visibility });
+        }
+        return true;
       }, release: () => editor.release(), stop: () => editor.cancel(), hover(point) { hover = point; schedule(false); },
     }) : attachSphericalNavigation(canvas, navigationActions);
     if (editor) { editor.changed = () => schedule(); editor.error = setError; }

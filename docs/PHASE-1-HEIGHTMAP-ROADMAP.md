@@ -1,6 +1,6 @@
 # Atlas master roadmap — Phase 1 and long-term requirements
 
-Updated October 18, 2026 for A6-F1 unified Atlas workspace on the approved A6-E baseline `5f71ced6b85f6f9a5d674334610b7193f35ac546`. This preserves the owner's complete geometry, cartography and eventual Atlas/Worlds requirements alongside the Phase 1 heightmap inventory. Future entries do not authorize implementation during F1.
+Updated October 18, 2026 for A6-D2-R globe-limb assisted sculpting on A6-F1 baseline `44f3cea0e81809ad0a29328a9cad9d20eada1214`. This preserves the owner's complete geometry, cartography and eventual Atlas/Worlds requirements alongside the Phase 1 heightmap inventory. Future entries do not authorize implementation during D2-R.
 
 ## Current baseline
 
@@ -21,7 +21,8 @@ Updated October 18, 2026 for A6-F1 unified Atlas workspace on the approved A6-E 
 | A6-D2 | Blank sphere, four tools on globe/net, geodesic previews, shared history, input arbitration and incremental rendering | Owner supplied Ember's source/visual/numerical/browser approval; final hands-on acceptance separate |
 | A6-E | Explicit v3 spherical Save/Open, exact validation/restoration, atomic local writes and failure recovery; v1/v2 compatibility | Ember source, persistence, visual and automated-evidence approval supplied by owner; see SPHERICAL-PERSISTENCE.md and E completion evidence |
 | A6-F1 | One workspace, explicit supported-shape creation, shared mixed library/document controls and safe replacement | Implemented for review; see UNIFIED-WORKSPACE.md and F1 evidence |
-| A6-D2-R and N=256 editing hardening — future | Safe automatic globe rotation/recentering during a held limb stroke; weaker-device N=256 brush/display responsiveness | Remain required; working net-edge assistance preserved. Automatic drawing navigation must suit every supported geometry. Not implemented by E; separate authorization required |
+| A6-D2-R | Safe automatic globe rotation/recentering during a held limb stroke, changing physical visibility and exact history | Implemented for independent review on the owner's explicit authorization; see A6-D2-R completion and evidence. Net assistance preserved |
+| N=256 editing hardening — future | Weaker-device N=256 brush/display responsiveness | Remains required and separately authorized; D2-R retains all existing numerical/rendering budgets |
 | A7 and later geometry checkpoints | Hollow, cylindrical and other agreed initial geometries | Planned; exact scope/order requires authorization |
 | Later Phase 1 | Remaining inventory below | Planned; pass boundaries and acceptance criteria still require authorization |
 
@@ -33,7 +34,7 @@ The owner moved the surface foundation ahead of the complete Azgaar-style toolse
 
 After A6-B approval, the owner inserted **A5.1 navigation/wrapping/screen-edge stabilization before A6-C**. That correction was completed and technically reviewed before the separately authorized A5.2 refinement.
 
-The owner supplied Ember's A5.2, A6-C, D1 and D2 technical approvals and separately authorized **A6-E persistent spherical heightmaps**. Owner hands-on acceptance remains separate. A6-E has passed Ember review. The owner separately authorized A6-F1 unified workspace/shape selection. Stop after F1 for review; the isolated drawing/performance corrections still require their own authorization.
+The owner supplied Ember's A5.2, A6-C, D1, D2 and E technical approvals and separately authorized A6-F1 unified workspace/shape selection, then A6-D2-R globe-limb assistance. Owner hands-on acceptance remains separate. Stop after D2-R for review; the N=256 weaker-device editing performance checkpoint still requires separate authorization.
 
 The owner's corrected downstream master-roadmap order is mandatory:
 
@@ -169,7 +170,7 @@ A3 implements pointer-centered zoom, bounded panning, Space/explicit Pan and two
 
 The inventory was checked against the project's primary [Heightmap customization documentation](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Heightmap-customization) and [template-editor documentation](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Heightmap-template-editor). Their application semantics and data models are not adopted automatically. This roadmap records the owner's requested scope; exact future behavior still requires a bounded pass.
 
-The owner supplied Ember's D2 approval and authorized E. Its local persistence implementation/evidence are submitted for independent review; owner hands-on acceptance remains separate. A6-D2-R held-stroke limb assistance and N=256 editing performance hardening remain required and unimplemented. **Stop after A6-E; do not begin the next pass without authorization.** Later work, integration and deployment require their own authorization. No future inventory item or GitHub issue is authorized merely by appearing here.
+The owner supplied Ember's D2/E approvals and separately authorized F1 and then D2-R on main. Independent review and owner hands-on acceptance of the latest work remain separate. N=256 editing performance hardening remains required and unimplemented. **Stop after A6-D2-R; do not begin the next pass without authorization.** Later work, integration and deployment require their own authorization. No future inventory item or GitHub issue is authorized merely by appearing here.
 
 ## A6-F1 unified workspace and future conversion
 
@@ -177,4 +178,4 @@ The owner supplied Ember's D2 approval and authorized E. Its local persistence i
 
 A separate future conversion phase must let a creator explicitly preview, configure, cancel, and accept a non-destructive projection onto a compatible physical shape. Preserve the source and create a new identity with traceable origin. Account for topology, dimensions/physical units, resolution, distortion, area/distance/elevation tradeoffs, face connectivity, cuts, seams, poles, caps, eligible surfaces and incompatible regions. Arbitrary texture wrapping cannot implement accurate general conversion. Switching a view or choosing New never converts existing terrain.
 
-A6-D2-R automatic globe rotation/recentering during a held stroke near the visible limb remains outstanding, as does weaker-device N=256 editing hardening. F1 does not claim either correction. The full geometry, cartography, map-scale, measurement, 3D, histories and Worlds inventory above remains mandatory, including Issue #1 and integration Steps 9, 10 and 11. Stop after F1; do not begin another pass without authorization.
+A6-D2-R now adds automatic globe rotation/recentering during a held stroke near the visible limb, immutable per-segment viewing planes and continuous great-circle dab spacing within one history operation. Weaker-device N=256 editing hardening remains outstanding. The full geometry, cartography, map-scale, measurement, 3D, histories and Worlds inventory above remains mandatory, including Issue #1 and integration Steps 9, 10 and 11. Stop after D2-R; do not begin another pass without authorization.

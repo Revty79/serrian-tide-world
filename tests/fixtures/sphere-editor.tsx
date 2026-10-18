@@ -2,7 +2,7 @@
 import { createRoot } from 'react-dom/client';
 import { SphericalViewport } from '../../src/components/SphericalViewport.tsx';
 import { createSphericalTerrain } from '../../src/terrain/spherical.ts';
-import { startSphericalBrushStroke, type SphericalBrushSettings } from '../../src/terrain/spherical-brush.ts';
+import { startSphericalBrushStroke, type SphericalBrushSettings, type SphericalBrushVisibility } from '../../src/terrain/spherical-brush.ts';
 import { SphericalSession } from '../../src/editor/spherical-session.ts';
 import { CUBE_FACES, FACE_BASES, FACE_CONNECTIONS, dot3, unitDirection, type CubeFace, type Vec3 } from '../../src/surfaces/cube-sphere.ts';
 import { buildSphericalFaceTexture, makeSphericalDisplayCache, type FaceTexture } from '../../src/rendering/spherical-raster.ts';
@@ -16,11 +16,11 @@ const cache = makeSphericalDisplayCache(faces, authority.revision);
 let copies = 0, reads = 0;
 const provider = { ...authority, get revision() { return authority.revision; }, read: (key: Parameters<typeof authority.read>[0]) => { reads++; return authority.read(key); }, copyElevations: () => { copies++; return authority.copyElevations(); } };
 const editor = new SphericalSession(provider, cache);
-type Operation = { center: Vec3; settings: SphericalBrushSettings; hemisphere?: Vec3; points: Vec3[] };
+type Operation = { center: Vec3; settings: SphericalBrushSettings; hemisphere?: Vec3; points: { direction: Vec3; visibility?: SphericalBrushVisibility }[] };
 let original: Float32Array, operations: Operation[] = [], current: Operation | undefined, recording = false;
 const begin = editor.begin.bind(editor), move = editor.move.bind(editor), release = editor.release.bind(editor), cancel = editor.cancel.bind(editor);
 editor.begin = (d, s, h) => { const result = begin(d, s, h); if (recording && result) { current = { center: d, settings: s, hemisphere: h, points: [] }; operations.push(current); } return result; };
-editor.move = (d) => { if (recording && editor.painting && !editor.processing) current?.points.push(d); move(d); };
+editor.move = (d, v) => { if (recording && editor.painting && !editor.processing) current?.points.push({ direction: d, visibility: v }); move(d, v); };
 editor.release = () => { release(); current = undefined; };
 editor.cancel = () => { cancel(); current = undefined; };
 export function startRecording() { original = authority.copyElevations(); operations = []; current = undefined; recording = true; }
@@ -30,7 +30,7 @@ export function compareRecording() {
   for (let i = 0; i < original.length; i++) reference.write(reference.keyAt(i), original[i]!);
   for (const op of operations) {
     const stroke = startSphericalBrushStroke(reference, { ...identity, direction: op.center }, op.settings, undefined, op.hemisphere ? { hemisphere: op.hemisphere } : undefined);
-    for (const direction of op.points) stroke.moveTo({ ...identity, direction }); stroke.end();
+    for (const point of op.points) stroke.moveTo({ ...identity, direction: point.direction }, point.visibility); stroke.end();
   }
   const expected = new Uint32Array(reference.copyElevations().buffer), actual = new Uint32Array(authority.copyElevations().buffer);
   return { operations: operations.length, points: operations.reduce((sum, op) => sum + op.points.length, 0), exact: actual.every((v, i) => v === expected[i]), tools: operations.map((op) => op.settings.tool) };

@@ -1,6 +1,6 @@
 import { SphericalHistory } from './spherical-history.ts';
 import type { SphericalTerrain } from '../terrain/spherical.ts';
-import { startSphericalBrushStroke, type SphericalBrushSettings } from '../terrain/spherical-brush.ts';
+import { startSphericalBrushStroke, type SphericalBrushSettings, type SphericalBrushVisibility } from '../terrain/spherical-brush.ts';
 import type { Vec3 } from '../surfaces/cube-sphere.ts';
 import { updateSphericalTextures } from '../rendering/spherical-texture-updates.ts';
 import type { SphericalDisplayCache } from '../rendering/spherical-raster.ts';
@@ -15,7 +15,7 @@ export class SphericalSession {
   private dirtyIndices = new Set<number>();
   private trackedRevision: number;
   private stroke?: ReturnType<typeof startSphericalBrushStroke>;
-  private queue: { direction: Vec3; at: number }[] = [];
+  private queue: { direction: Vec3; visibility?: SphericalBrushVisibility; at: number }[] = [];
   private segment?: Generator<boolean>;
   private segmentAt = 0;
   private presentedInputs: number[] = [];
@@ -55,10 +55,12 @@ export class SphericalSession {
     this.statistics.maxDabMs = Math.max(this.statistics.maxDabMs, performance.now() - start);
     this.released = false; this.changed(); return true;
   }
-  move(direction: Vec3) {
+  move(direction: Vec3, visibility?: SphericalBrushVisibility) {
     if (!this.stroke || this.released || this.locked) return;
     if (this.queue.length >= 2048) { this.cancel(); this.error('Stroke input limit reached. Completed terrain is retained; start a new stroke.'); return; }
-    this.queue.push({ direction, at: performance.now() }); this.changed();
+    // Capture at acceptance, never read a mutable/global camera while delayed dabs run.
+    const copy = (v: Vec3): Vec3 => [v[0], v[1], v[2]];
+    this.queue.push({ direction: copy(direction), visibility: visibility && { hemisphere: copy(visibility.hemisphere), ...(visibility.endHemisphere ? { endHemisphere: copy(visibility.endHemisphere) } : {}) }, at: performance.now() }); this.changed();
   }
   release() { this.released = true; this.changed(); }
   /** Each yield applies one complete pre-dab snapshot. Pointer segments and spacing are never dropped/coarsened. */
@@ -66,7 +68,7 @@ export class SphericalSession {
     const start = performance.now(); let count = 0;
     try {
       while (this.stroke && (this.segment || this.queue.length) && count < 8 && performance.now() - start < budgetMs) {
-        if (!this.segment) { const point = this.queue.shift()!; this.segmentAt = point.at; this.segment = this.stroke.moveToSteps({ ...this.terrain.metadata.identity, direction: point.direction }); }
+        if (!this.segment) { const point = this.queue.shift()!; this.segmentAt = point.at; this.segment = this.stroke.moveToSteps({ ...this.terrain.metadata.identity, direction: point.direction }, point.visibility); }
         const before = performance.now(), result = this.segment.next();
         this.statistics.maxDabMs = Math.max(this.statistics.maxDabMs, performance.now() - before);
         if (result.done) { this.presentedInputs.push(this.segmentAt); this.segment = undefined; } else count++;

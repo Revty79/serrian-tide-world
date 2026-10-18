@@ -1,7 +1,7 @@
-<!-- Current interface: A6-F1. Historical completion reports describe their original checkpoints. -->
+<!-- Current interface: A6-D2-R on A6-F1. Historical completion reports describe their original checkpoints. -->
 # Serrian Tide Atlas
 
-Pass A6-F1: one full-viewport Atlas workspace for bounded flat, horizontally wrapped flat and spherical worlds. Choose the shape before creation, then use common tools, naming, history and local Save/Open. Contextual views preserve the verified numerical terrain and v1/v2/v3 formats.
+Pass A6-D2-R: held brushes can smoothly reveal adjoining spherical terrain at the actual globe limb within one exact history operation. The A6-F1 unified workspace, contextual controls and v1/v2/v3 local saves remain.
 
 This repository is a standalone **development workspace**. Atlas and the rebuilt Worlds system will ultimately replace the current Worlds/Atlas implementation inside the existing Serrian Tide Next.js/TypeScript website. The original website remains untouched.
 
@@ -94,8 +94,8 @@ The spherical API is `startSphericalBrushStroke(terrain, physicalPoint, settings
 
 See [World/surface architecture](docs/WORLD-SURFACE-ARCHITECTURE.md), [integration architecture](docs/ARCHITECTURE.md), [A6-C completion and exact files](docs/A6-C-COMPLETION.md), and the [complete master roadmap](docs/PHASE-1-HEIGHTMAP-ROADMAP.md). All prior completion reports remain historical receipts.
 
-The owner supplied Ember's A6-D2 approval at `a9a6d64690427cfef04300da1fc87b576adf16c0` and authorized A6-E directly on `main`. E's independent review and owner acceptance remain separate. **Stop after A6-E; do not begin the next pass without authorization.** A6-D2-R limb drawing navigation and weaker-device N=256 editing hardening remain required follow-ups. Future view providers choose layouts appropriate to their geometry. The master roadmap preserves [Issue #1](https://github.com/Revty79/serrian-tide-world/issues/1), editable illustrated cartography across every supported shape/valid scale, and steps 9 → 10 → 11. No site integration or deployment occurs here.
+The owner authorized A6-D2-R on `main` from `44f3cea0e81809ad0a29328a9cad9d20eada1214`. Independent review and owner hands-on acceptance remain separate. **Stop after A6-D2-R; do not begin another pass without authorization.** Weaker-device N=256 editing hardening remains outstanding. Future view providers choose layouts appropriate to their geometry. The master roadmap preserves [Issue #1](https://github.com/Revty79/serrian-tide-world/issues/1), editable illustrated cartography across every supported shape/valid scale, and steps 9 → 10 → 11. No site integration or deployment occurs here.
 
 ## Unified workspace checkpoint
 
-[A6-F1 architecture and evidence](docs/UNIFIED-WORKSPACE.md) records the document/view boundary and safe switching. [Issue #2](https://github.com/Revty79/serrian-tide-world/issues/2) also records future explicit, previewable, non-destructive map-to-shape conversion. Conversion is not implemented. A6-D2-R held-stroke globe-limb navigation and N=256 mobile editing hardening remain outstanding. Stop after A6-F1 for review. The live Serrian Tide website is untouched.
+[A6-F1 architecture and evidence](docs/UNIFIED-WORKSPACE.md) records the document/view boundary and safe switching. [Issue #2](https://github.com/Revty79/serrian-tide-world/issues/2) also records future explicit, previewable, non-destructive map-to-shape conversion. Conversion is not implemented. [A6-D2-R completion](docs/A6-D2-R-COMPLETION.md) supplies continuity proofs, exact results, screenshots, traces and performance measurements. Hold near the actual globe limb for 240 ms to rotate; disable this assistance in contextual Physical brush settings. Release drains accepted work; cancellation retains applied work. Drawing outside the globe stops. The live Serrian Tide website is untouched.

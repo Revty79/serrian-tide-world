@@ -15,6 +15,8 @@ export type SphericalBrushSettings = { readonly radiusMeters: number } & (
   | { readonly tool: 'smooth'; readonly intensity: number }
   | { readonly tool: 'flatten'; readonly intensity: number; readonly targetElevation: number }
 );
+/** Immutable physical visibility for one input segment; interpolation follows its arc fraction. */
+export interface SphericalBrushVisibility { readonly hemisphere: Vec3; readonly endHemisphere?: Vec3 }
 export const MAX_SEGMENT_DABS = 65_536;
 const CHUNK_SAMPLES = 4096;
 const activeTerrains = new WeakSet<SphericalTerrain>();
@@ -44,7 +46,7 @@ export function startSphericalBrushStroke(terrain: SphericalTerrain, point: Sphe
   const snapshot = Object.freeze({ ...settings }), radius = terrain.metadata.geometry.radiusMeters, spacing = snapshot.radiusMeters / 4;
   const stats = { dabs: 0, candidateChecks: 0, affectedSamples: 0, writes: 0, peakPreparedBytes: 0 };
   let previous = initial, untilNext = spacing, active = true, advancing = false;
-  const stamp = (center: Vec3) => {
+  const stamp = (center: Vec3, visible = hemisphere) => {
     const candidates = sphericalCapCandidates(terrain, center, Math.min(Math.PI, snapshot.radiusMeters / radius));
     const chunks: { indices: Uint32Array; values: Float32Array; count: number }[] = [];
     let chunk: typeof chunks[number] | undefined, allocated = 0;
@@ -53,7 +55,7 @@ export function startSphericalBrushStroke(terrain: SphericalTerrain, point: Sphe
       const distance = unitArcAngle(center, sample.direction) * radius / snapshot.radiusMeters;
       if (distance >= 1) continue;
       // Optional physical editing domain. Default numerical behavior remains the complete cap.
-      if (hemisphere && dot3(hemisphere, sample.direction) < 0) continue;
+      if (visible && dot3(visible, sample.direction) < 0) continue;
       const current = terrain.read(sample.key);
       if (!Number.isFinite(current)) throw new RangeError('Spherical brush region contains a nonfinite elevation.');
       stats.affectedSamples++;
@@ -83,9 +85,11 @@ export function startSphericalBrushStroke(terrain: SphericalTerrain, point: Sphe
   const end = () => { if (!active) return; active = false; activeTerrains.delete(terrain); history?.commit(); };
   history?.begin(); activeTerrains.add(terrain);
   try { stamp(initial); } catch (cause) { end(); throw cause; }
-  function* steps(target: SphericalBrushPoint): Generator<boolean> {
+  function* steps(target: SphericalBrushPoint, visibility?: SphericalBrushVisibility): Generator<boolean> {
       if (!active) return;
       if (advancing) throw new Error('Finish the pending spherical segment before supplying another.');
+      const visible = visibility ? unitDirection(visibility.hemisphere) : hemisphere;
+      const visibilityArc = visibility?.endHemisphere ? greatCircleArc(visible!, unitDirection(visibility.endHemisphere)) : undefined;
       const next = directionOf(terrain, target), arc = greatCircleArc(previous, next), length = arc.angle * radius;
       if (length === 0) return;
       const tolerance = Number.EPSILON * 64 * Math.max(length, spacing);
@@ -93,7 +97,11 @@ export function startSphericalBrushStroke(terrain: SphericalTerrain, point: Sphe
       if (count > MAX_SEGMENT_DABS) throw new RangeError('Stroke segment exceeds the dab-work limit; use a larger physical radius or shorter segments.');
       advancing = true;
       try {
-        for (let i = 0; i < count; i++) { if (!active) return; yield stamp(arc.at(Math.min(1, (untilNext + i * spacing) / length))); }
+        for (let i = 0; i < count; i++) {
+          if (!active) return;
+          const fraction = Math.min(1, (untilNext + i * spacing) / length);
+          yield stamp(arc.at(fraction), visibilityArc ? visibilityArc.at(fraction) : visible);
+        }
         untilNext = untilNext + count * spacing - length; previous = next;
       } catch (cause) { end(); throw cause; }
       finally { advancing = false; }
@@ -101,9 +109,9 @@ export function startSphericalBrushStroke(terrain: SphericalTerrain, point: Sphe
   return {
     settings: snapshot,
     get statistics() { return { ...stats }; },
-    moveTo(target: SphericalBrushPoint): boolean {
+    moveTo(target: SphericalBrushPoint, visibility?: SphericalBrushVisibility): boolean {
       let changed = false;
-      for (const value of steps(target)) changed ||= value;
+      for (const value of steps(target, visibility)) changed ||= value;
       return changed;
     },
     moveToSteps: steps,

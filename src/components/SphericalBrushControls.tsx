@@ -2,8 +2,8 @@
 import type { SphericalBrushSettings } from '../terrain/spherical-brush.ts';
 import { FLOAT32_MAX } from '../terrain/brush-math.ts';
 
-export interface SphericalControlState { tool: 'navigate' | SphericalBrushSettings['tool']; radius: string; strength: string; intensity: string; target: string; edgeAssist: boolean }
-export const defaultSphericalControls = (radius: number): SphericalControlState => ({ tool: 'raise', radius: String(radius * .08), strength: '200', intensity: '50', target: '0', edgeAssist: true });
+export interface SphericalControlState { tool: 'navigate' | SphericalBrushSettings['tool']; radius: string; strength: string; intensity: string; target: string; edgeAssist: boolean; limbAssist: boolean }
+export const defaultSphericalControls = (radius: number): SphericalControlState => ({ tool: 'raise', radius: String(radius * .08), strength: '200', intensity: '50', target: '0', edgeAssist: true, limbAssist: true });
 export function sphericalBrushFromControls(controls: SphericalControlState, sphereRadius: number): SphericalBrushSettings | undefined {
   if (controls.tool === 'navigate' || !controls.radius.trim()) return;
   const radiusMeters = Number(controls.radius), strengthMeters = Number(controls.strength), intensity = Number(controls.intensity) / 100, targetElevation = Number(controls.target);
@@ -22,7 +22,8 @@ export function SphericalBrushControls({ value, radius, onChange }: { value: Sph
     {(value.tool === 'smooth' || value.tool === 'flatten') && <label>Spherical intensity (%)<input type="number" min="0" max="100" step="any" value={value.intensity} onChange={(e) => onChange({ ...value, intensity: e.target.value })} /></label>}
     {value.tool === 'flatten' && <label>Spherical target elevation (m)<input type="number" step="any" value={value.target} onChange={(e) => onChange({ ...value, target: e.target.value })} /></label>}
     <label><input type="checkbox" checked={value.edgeAssist} onChange={(e) => onChange({ ...value, edgeAssist: e.target.checked })} /> Assist drawing at net screen edges</label>
-    <p>Net assistance pans only through displayed joins. Gaps and disconnected cuts end a stroke. At a globe limb, lift and rotate/recenter; automatic globe rotation while painting is not enabled.</p>
+    <label><input type="checkbox" checked={value.limbAssist} onChange={(e) => onChange({ ...value, limbAssist: e.target.checked })} /> Assist drawing near the globe limb</label>
+    <p>Hold a brush near the globe's circular edge briefly to reveal adjoining terrain in the same stroke. Rotation waits for pending brush work. Outside the globe, drawing stops. Net assistance follows displayed joins; gaps and disconnected cuts end a stroke.</p>
     {value.tool !== 'navigate' && !sphericalBrushFromControls(value, radius) && <p role="alert">Enter valid physical brush settings before drawing.</p>}
   </div>;
 }
