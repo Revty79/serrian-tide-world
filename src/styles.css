@@ -43,6 +43,7 @@ h2 { font-size: 15px; font-weight: 600; margin: 17px 0; }
 .quick-actions, .navigation, .save-status { z-index: 45; }
 .tool-panel { padding-bottom: 140px; }
 @media (max-width: 600px) {
+  .surface-status { bottom: 164px; }
   .atlas-app[data-panel-open="true"] .navigation { flex-direction: column; width: 44px; }
   .atlas-app[data-panel-open="true"] .navigation button { width: 44px; padding: 4px; font-size: 11px; }
 }

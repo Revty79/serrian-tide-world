@@ -50,7 +50,7 @@ function Fixture() {
   const handle = useRef<TerrainCanvasHandle>(null);
   const [pan, updatePan] = useState(false);
   setPan = updatePan;
-  camera = { finishInteraction: () => handle.current!.finishInteraction(), zoom: (factor) => handle.current!.zoom(factor), fit: () => handle.current!.fit(), fill: () => handle.current!.fill() };
+  camera = { finishInteraction: () => handle.current!.finishInteraction(), zoom: (factor) => handle.current!.zoom(factor), fit: () => handle.current!.fit(), fill: () => handle.current!.fill(), focus: () => handle.current!.focus() };
   const [brush, updateBrush] = useState<BrushSettings | undefined>({ tool: 'raise', radius: 0.06, strength: 200 });
   const [revision, setRevision] = useState(0);
   changeBrush = updateBrush;

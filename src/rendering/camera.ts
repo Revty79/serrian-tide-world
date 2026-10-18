@@ -1,14 +1,17 @@
 import { fitMap } from './fit-map.ts';
 import type { Point, ViewportSize } from '../terrain/sampling.ts';
+import { focusedPeriodicSize } from './periodic-view.ts';
 
 export interface Camera { readonly zoom: number; readonly centerX: number; readonly centerY: number }
 export const MIN_ZOOM = 1;
 export const MAX_ZOOM = 8;
 export const FIT_CAMERA: Camera = Object.freeze({ zoom: 1, centerX: 0.5, centerY: 0.5 });
-export interface ViewOptions { readonly mode?: 'fit' | 'fill'; readonly periodicU?: boolean }
+export type ViewMode = 'fit' | 'fill' | 'focus';
+export interface ViewOptions { readonly mode?: ViewMode; readonly periodicU?: boolean }
 export function baseMapSize(dimensions: ViewportSize, stage: ViewportSize, options: ViewOptions = {}) {
   const fitted = fitMap(dimensions, stage);
-  if (options.mode !== 'fill') return fitted;
+  if (!options.mode || options.mode === 'fit') return fitted;
+  if (options.mode === 'focus' && options.periodicU) return focusedPeriodicSize(dimensions, stage);
   const scale = options.periodicU ? stage.height / dimensions.height : Math.max(stage.width / dimensions.width, stage.height / dimensions.height);
   return { left: 0, top: 0, width: dimensions.width * scale, height: dimensions.height * scale };
 }

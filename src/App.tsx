@@ -10,6 +10,7 @@ import { LocalMapStore } from './persistence/local-map-store.ts';
 import type { SavedMapSummary } from './persistence/terrain-format.ts';
 import { encodeMap } from './persistence/map-format.ts';
 import { isTextInput } from './interaction/canvas-navigation.ts';
+import type { ViewMode } from './rendering/camera.ts';
 
 const defaults: BrushControls = { tool: 'raise', radius: 0.06, strength: 200, intensity: 0.5, targetElevation: '0' };
 const newDocument = (wrapped = false) => new TerrainDocument(wrapped
@@ -30,6 +31,7 @@ export function App() {
   const panelRef = useRef<HTMLElement>(null), toggleRef = useRef<HTMLButtonElement>(null), headingRef = useRef<HTMLHeadingElement>(null);
   const canvasRef = useRef<TerrainCanvasHandle>(null);
   const [zoom, setZoom] = useState(1);
+  const [viewMode, setViewMode] = useState<ViewMode>('fill');
   const workspaceRef = useRef<HTMLElement>(null);
   const [fullscreenSupported, setFullscreenSupported] = useState(false), [browserFullscreen, setBrowserFullscreen] = useState(false);
   useEffect(() => {
@@ -131,7 +133,7 @@ export function App() {
   return (
     <main ref={workspaceRef} className="atlas-app" data-panel-open={openPanel} aria-label="Atlas workspace">
       <TerrainCanvas ref={canvasRef} terrain={document.terrain} brush={busy ? undefined : brushFromControls(controls)} pan={pan}
-        fullscreen initialView="fill" edgePan={edgePan} revision={revision} onZoom={setZoom}
+        fullscreen initialView={isWrapped(document.terrain) ? 'focus' : 'fill'} edgePan={edgePan} revision={revision} onZoom={setZoom} onViewChange={setViewMode}
         onStrokeBegin={() => document.history.begin()} onStrokeEnd={() => { if (document.history.commit()) update(); }} />
       <button ref={toggleRef} className="panel-toggle" type="button" aria-expanded={openPanel} aria-controls="atlas-tools"
         aria-label={openPanel ? 'Close tools' : 'Open tools'} onClick={() => openPanel ? closePanel() : setOpenPanel(true)}>
@@ -159,7 +161,7 @@ export function App() {
             </select>
             <div className="map-actions"><button type="button" disabled={!selected} onClick={() => void openMap()}>Open Map</button><button type="button" onClick={() => newMap()}>New Blank Map</button></div>
             <button className="new-wrapped" type="button" onClick={() => newMap(true)}>New Wrapped Map</button>
-            <p className="hint">Wrapped views repeat the same terrain between faint seam guides. Editing any copy changes every view. Fit Entire Map centers one complete period. Top and bottom stay bounded.</p>
+            <p className="hint">Focus Editing enlarges one working cycle with adjoining terrain at the sides. Pan to move the cut; every view edits the same geography. Fill View restores full-height context. Tall views keep full-height coverage. Fit Entire Map shows the complete terrain. Top and bottom stay bounded.</p>
           </div>
         </fieldset>
         <ElevationLegend seaLevel={document.terrain.metadata.seaLevel} />
@@ -174,11 +176,12 @@ export function App() {
         <output aria-label="Map zoom">{Math.round(zoom * 100)}%</output>
         <button type="button" aria-label="Zoom Out" disabled={zoom <= 1} onClick={() => canvasRef.current?.zoom(1 / 1.5)}>−</button>
         <button type="button" aria-label="Zoom In" disabled={zoom >= 8} onClick={() => canvasRef.current?.zoom(1.5)}>+</button>
-        <button type="button" onClick={() => canvasRef.current?.fill()}>Fill View</button>
-        <button type="button" onClick={() => canvasRef.current?.fit()}>Fit Entire Map</button>
+        {isWrapped(document.terrain) && <button type="button" aria-pressed={viewMode === 'focus'} title="Centered editing cycle with adjoining previews; tall views retain full-height coverage" onClick={() => canvasRef.current?.focus()}>Focus Editing</button>}
+        <button type="button" aria-pressed={viewMode === 'fill'} title={isWrapped(document.terrain) ? 'Full-height wrapped view with broader horizontal context' : 'Fill the viewport'} onClick={() => canvasRef.current?.fill()}>Fill View</button>
+        <button type="button" aria-pressed={viewMode === 'fit'} onClick={() => canvasRef.current?.fit()}>Fit Entire Map</button>
         {fullscreenSupported && <button type="button" aria-label={browserFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'} onClick={() => void toggleFullscreen()}>⛶</button>}
       </div>
-      {isWrapped(document.terrain) && <p className="surface-status">Horizontal wrap · same terrain repeats</p>}
+      {isWrapped(document.terrain) && <p className="surface-status">{viewMode === 'focus' ? 'Horizontal wrap · focused view' : 'Horizontal wrap · same terrain repeats'}</p>}
       <p className="save-status" role="status">{busy ? 'Working with local storage…' : status}</p>
       {error && <div className="storage-error" role="alert"><p>{error}</p><button type="button" onClick={() => setError('')}>Dismiss</button></div>}
     </main>

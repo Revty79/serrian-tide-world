@@ -8,24 +8,26 @@ import { isWrapped } from '../terrain/topology.ts';
 import { attachCanvasSculpting } from '../interaction/canvas-sculpting.ts';
 import { attachCanvasNavigation } from '../interaction/canvas-navigation.ts';
 import { fitMap } from '../rendering/fit-map.ts';
-import { FIT_CAMERA, cameraRect, constrainCamera, panBy, zoomAt, type Camera } from '../rendering/camera.ts';
+import { FIT_CAMERA, cameraRect, constrainCamera, panBy, zoomAt, type Camera, type ViewMode } from '../rendering/camera.ts';
 import { periodicStrokeOffset } from '../rendering/edge-pan.ts';
+import { periodicContextFrame } from '../rendering/periodic-view.ts';
 import { inspectElevation, type ElevationSample, type Point } from '../terrain/sampling.ts';
 import styles from './TerrainCanvas.module.css';
 
-export interface TerrainCanvasHandle { finishInteraction(): void; zoom(factor: number): void; fit(): void; fill(): void }
+export interface TerrainCanvasHandle { finishInteraction(): void; zoom(factor: number): void; fit(): void; fill(): void; focus(): void }
 export interface TerrainCanvasProps {
   terrain: Terrain;
   brush?: BrushSettings;
   revision?: number;
   pan?: boolean;
   fullscreen?: boolean;
-  initialView?: 'fit' | 'fill';
+  initialView?: ViewMode;
   edgePan?: boolean;
   ref?: Ref<TerrainCanvasHandle>;
   onStrokeBegin?: () => void;
   onStrokeEnd?: () => void;
   onZoom?: (zoom: number) => void;
+  onViewChange?: (mode: ViewMode) => void;
 }
 
 /** Embeddable client view. The host owns document, history, access and persistence. */
@@ -34,11 +36,12 @@ export function TerrainCanvas(props: TerrainCanvasProps) {
   const surfaceRef = useRef<HTMLDivElement>(null), viewportRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null), cursorRef = useRef<HTMLDivElement>(null);
   const seamsRef = useRef<HTMLSpanElement>(null);
+  const contextRef = useRef<HTMLSpanElement>(null);
   const readoutRef = useRef<HTMLOutputElement>(null);
   const samplePointRef = useRef<Point | null>(null);
   const propsRef = useRef(props);
   const cameraRef = useRef<Camera>(FIT_CAMERA);
-  const actionRef = useRef<TerrainCanvasHandle>({ finishInteraction() {}, zoom() {}, fit() {}, fill() {} });
+  const actionRef = useRef<TerrainCanvasHandle>({ finishInteraction() {}, zoom() {}, fit() {}, fill() {}, focus() {} });
   const repaintRef = useRef<() => void>(() => {});
   const descriptionId = useId();
   const [renderError, setRenderError] = useState<string | null>(null);
@@ -46,7 +49,7 @@ export function TerrainCanvas(props: TerrainCanvasProps) {
   const error = renderError ?? brushError;
   useImperativeHandle(props.ref, () => ({
     finishInteraction: () => actionRef.current.finishInteraction(),
-    zoom: (factor) => actionRef.current.zoom(factor), fit: () => actionRef.current.fit(), fill: () => actionRef.current.fill(),
+    zoom: (factor) => actionRef.current.zoom(factor), fit: () => actionRef.current.fit(), fill: () => actionRef.current.fill(), focus: () => actionRef.current.focus(),
   }), []);
   useLayoutEffect(() => { propsRef.current = props; });
   useLayoutEffect(() => { setBrushError(null); }, [brush]);
@@ -64,6 +67,8 @@ export function TerrainCanvas(props: TerrainCanvasProps) {
     let rasterWidth = 0, rasterHeight = 0, rasterRatio = 0;
     const periodic = isWrapped(terrain);
     let mode = propsRef.current.initialView ?? 'fit';
+    if (!periodic && mode === 'focus') mode = 'fill';
+    propsRef.current.onViewChange?.(mode);
     const viewOptions = () => ({ mode, periodicU: periodic });
     let appliedRect: ReturnType<typeof cameraRect> | null = null;
     let sourceRaster: HTMLCanvasElement | null = null;
@@ -88,10 +93,15 @@ export function TerrainCanvas(props: TerrainCanvasProps) {
         canvas.dataset.mapLeft = String(rect.left); canvas.dataset.mapTop = String(rect.top);
         canvas.dataset.mapWidth = String(rect.width); canvas.dataset.mapHeight = String(rect.height);
         if (seamsRef.current) {
-          seamsRef.current.hidden = !periodic || rect.width < 24;
+          seamsRef.current.hidden = !periodic || mode === 'focus' || rect.width < 24;
           seamsRef.current.style.backgroundSize = `${rect.width}px 100%`;
           seamsRef.current.style.backgroundPosition = `${rect.left}px 0`;
           seamsRef.current.style.clipPath = `inset(${Math.max(0, rect.top)}px 0 ${Math.max(0, size.height - rect.top - rect.height)}px 0)`;
+        }
+        if (contextRef.current) {
+          const context = periodicContextFrame(rect.width, size.width);
+          contextRef.current.hidden = !periodic || mode !== 'focus' || context.previewWidth < 1;
+          contextRef.current.style.setProperty('--preview-width', `${context.previewWidth}px`);
         }
         viewport.style.left = `${periodic ? 0 : rect.left}px`; viewport.style.top = `${periodic ? 0 : rect.top}px`;
         viewport.style.width = `${periodic ? size.width : fitted.width}px`; viewport.style.height = `${periodic ? size.height : fitted.height}px`;
@@ -171,8 +181,9 @@ export function TerrainCanvas(props: TerrainCanvasProps) {
     actionRef.current = {
       finishInteraction,
       zoom: (factor) => { finishInteraction(); const size = stageSize(); changeCamera(zoomAt(cameraRef.current, cameraRef.current.zoom * factor, { x: size.width / 2, y: size.height / 2 }, terrain.metadata.dimensions, size, viewOptions())); },
-      fit: () => { finishInteraction(); mode = 'fit'; changeCamera(FIT_CAMERA); },
-      fill: () => { finishInteraction(); mode = 'fill'; changeCamera({ ...cameraRef.current, zoom: 1 }); },
+      fit: () => { finishInteraction(); mode = 'fit'; propsRef.current.onViewChange?.(mode); changeCamera(FIT_CAMERA); },
+      fill: () => { finishInteraction(); mode = 'fill'; propsRef.current.onViewChange?.(mode); changeCamera({ ...cameraRef.current, zoom: 1 }); },
+      focus: () => { if (!periodic) return; finishInteraction(); mode = 'focus'; propsRef.current.onViewChange?.(mode); changeCamera({ ...cameraRef.current, zoom: 1 }); },
     };
     requestPaint();
     const observer = new ResizeObserver(requestPaint); observer.observe(surface);
@@ -196,11 +207,16 @@ export function TerrainCanvas(props: TerrainCanvasProps) {
           <div ref={cursorRef} className={isWrapped(terrain) ? styles.cursorLayer : styles.brushCursor} aria-hidden="true" hidden />
         </div>
         <span ref={seamsRef} className={styles.seams} aria-hidden="true" hidden />
+        <span ref={contextRef} className={styles.focusContext} aria-hidden="true" hidden>
+          <span className={styles.contextPreview} data-context-preview="left" />
+          <span className={styles.contextPreview} data-context-preview="right" />
+        </span>
         <p id={descriptionId} className={styles.description}>
           Elevation map: water at or below sea level, land above sea level. Wheel to zoom; Space and drag or two fingers to navigate.
           {brush && !props.pan && ` ${brush.tool.charAt(0).toUpperCase() + brush.tool.slice(1)} selected. Click or drag with a mouse, pen, or one finger to sculpt terrain. Settings apply to the next stroke.`}
           {props.pan && ' Pan selected. Drag to move the map without sculpting.'}
           {isWrapped(terrain) && ' This surface connects horizontally. Its top and bottom are bounded. Visible repetitions share the same terrain.'}
+          {isWrapped(terrain) && ' Focus Editing enlarges a centered working period with adjoining previews where space allows. Pan to move its geographic cut; Fill View restores full-height context, and Fit Entire Map shows the complete extent.'}
           {props.edgePan && ' Hold a stroke near a screen edge to scroll after a short pause. Escape ends the stroke. Edge scrolling can be switched off in tools.'}
         </p>
         {error && <p className={styles.error} role="alert">{error}</p>}

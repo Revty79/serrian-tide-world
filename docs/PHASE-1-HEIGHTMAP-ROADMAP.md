@@ -1,6 +1,6 @@
 # Atlas master roadmap — Phase 1 and long-term requirements
 
-Updated October 17, 2026 for A5.1 stabilization on the approved A6-B baseline. This preserves the owner's complete geometry and eventual Atlas/Worlds requirements alongside the Phase 1 heightmap tool inventory. Future entries are requirements to plan and review, not authorization to implement them during A5.1.
+Updated October 17, 2026 for A5.2 wrapped editing presentation on the approved A5.1/A6-B baseline. This preserves the owner's complete geometry and eventual Atlas/Worlds requirements alongside the Phase 1 heightmap tool inventory. Future entries are requirements to plan and review, not authorization to implement them during A5.2.
 
 ## Current baseline
 
@@ -14,7 +14,8 @@ Updated October 17, 2026 for A5.1 stabilization on the approved A6-B baseline. T
 | A5 | Seam-aware brushes, continuous recentering, repeated full-screen Fill, bounded Fill/Fit, optional fullscreen, interpolated display and v2 local saves | Implemented; Ember source/visual approval supplied by owner |
 | A6-A | Numerical equiangular cube-sphere, unique vertices, all face/edge/corner connectivity, geodesic metric and memory evidence | Implemented; independent source/numerical/architecture approval supplied by owner |
 | A6-B | Numerical spherical Raise/Lower, bounded cap candidates, continuous great-circle strokes and exact bounded history | Implemented; Ember source/numerical approval supplied by owner; no spherical UI/persistence |
-| A5.1 stabilization, before A6-C | Predictable horizontal input, explained periodic copies and controlled screen-edge scrolling within one stroke/history entry | Implemented and technically verified; owner hands-on acceptance remains separate; see A5.1 completion |
+| A5.1 stabilization, before A6-C | Predictable horizontal input, explained periodic copies and controlled screen-edge scrolling within one stroke/history entry | Ember source, visual and automated-evidence approval supplied by owner; owner hands-on acceptance remains outstanding |
+| A5.2 presentation refinement, before A6-C | Focused wrapped editing cycle, connected side previews, selectable full-height context and Fit, movable view cut | Implemented; technical evidence in A5.2 completion; review and owner hands-on acceptance remain separate |
 | Next spherical tool checkpoint | Smooth/Flatten with reviewed curved-surface neighbor weighting/interpolation and canonical multi-face history | Planned; separate authorization required |
 | Subsequent spherical view checkpoint | Interactive spherical editing views, inverse projection, projected footprints, globe rotation/local views and movable cuts | Planned; separate authorization required |
 | Subsequent spherical preservation checkpoint | Explicitly versioned spherical Save/Open, validation, resource budgets, compatibility and recovery | Planned; no spherical browser save format authorized yet |
@@ -29,15 +30,17 @@ The owner moved the surface foundation ahead of the complete Azgaar-style toolse
 
 After A6-B approval, the owner inserted **A5.1 navigation/wrapping/screen-edge stabilization before A6-C**. Complete and review that correction first; A6-C has no implementation authorization here.
 
+The owner approved Ember's A5.1 source/visual/automated-evidence review and separately authorized **A5.2 wrapped editing presentation**. Owner hands-on acceptance is still outstanding. Stop after A5.2 for review; A6-C remains unauthorized.
+
 The owner's corrected downstream master-roadmap order is mandatory:
 
 | Step | Required order |
 | --- | --- |
 | 9 | Introduce Atlas into the separately rebuilt Worlds system, then develop the integrated functionality that makes Atlas and Worlds work together. |
 | 10 | Complete acceptance and integration of the rebuilt Worlds + Atlas system into the existing Serrian Tide application. |
-| 11 | Final reusable modern/historical Earth content milestone. |
+| 11 | Reusable historical/modern Earth foundation, the final Earth content milestone. |
 
-This records integration order only. A5.1 performs none of these integrations or content milestones.
+This records integration order only. A5.2 performs none of these integrations or content milestones.
 
 See [World/surface architecture](WORLD-SURFACE-ARCHITECTURE.md) for capability status and outstanding decisions, and [A6-A completion](A6-A-COMPLETION.md) for numerical evidence. A5's periodic editor remains the latest UI. A6-A's six numerical charts represent a round sphere, not a physical cube. No unsupported shape choices are exposed. Bounded/periodic saves retain their exact v1/v2 interpretations without conversion, migration or a new spherical browser format.
 
@@ -76,6 +79,21 @@ These future geometries are mandatory roadmap requirements, not functionality cl
 | Existing Serrian Tide website integration | Atlas and rebuilt Worlds ultimately replace the current implementation inside the existing Next.js/TypeScript website. That host supplies authentication, server-side permissions, database and actual World records |
 
 These long-term requirements remain planned. A6-A adds no generation, art/stamps, demographic system, timeline, nested-map runtime or original-site integration.
+
+## Terrain measurement and Worlds linkage — GitHub Issue #1
+
+[Issue #1: terrain elevation, geographic feature measurement, 3D and Worlds linkage](https://github.com/Revty79/serrian-tide-world/issues/1) is an explicit future requirement, not implemented by A5.2. Schedule its numerical measurement and feature-analysis capabilities during advanced heightmap/3D preparation **before automatic illustrated 2D map generation**, and make them available to the separately rebuilt Worlds integration in **Step 9**. Scope the exact checkpoint after geometry and higher-resolution dependencies are clear.
+
+| Requirement | Planned behavior |
+| --- | --- |
+| Real elevations and physical dimensions | Query/set numerical meter elevations at physical positions, sea-level/datum conventions per shape, extrema and future unit-display conversion. Retain current readouts, Raise/Lower and explicit-target Flatten; a graphic label never substitutes for a stored height. |
+| Mountains and other landforms | Detect or manually delineate summits, ranges, ridges, saddles/passes, valleys, basins, hills and cliffs. Keep summit elevation, rise above explicitly selected surrounding terrain, and topographic prominence with its key saddle distinct; do not invent an objective mountain base. |
+| Measurements | Elevation differences, surface distances, selected-route distances, areas, slope/gradient, aspect, profiles/cross-sections, ascent/descent and relief. Use physical surface metrics across seams/edges/corners, with explicit interior/exterior conventions and no assumed Earth scale. |
+| Consistent 3D and cartography | Mesh height, physical shape/radius, normals, slope and steepness must use the same authoritative elevation data as measurements and 2D annotations. Derived features can inform stamps, contours, relief, scale bars and topographic/military symbols without a separate visual height field or seam cracks. |
+| Worlds — Step 9 | Stable feature/location IDs and geometric anchors link named terrain to actual World records, descriptions, regions, owner/canon/campaign permissions, history and alternate timelines. Map and written information must be mutually navigable. Recalculate or revision-key derived measurements when terrain/history changes. |
+| Accuracy and device budgets | Expose sampling resolution, physical scale and uncertainty; avoid unjustified precision and claims about sub-resolution landforms. Cache or incrementally compute derived data with explicit edit invalidation, preserving weaker-device and GPU-free hosting options. |
+
+Future acceptance must cover numerical target-height editing with Undo/Save and matching 3D terrain, defensible prominence/relief values, surface-aware seams/poles/orientation, consistent profiles/slopes/overlays, refreshed derived measurements and World-record navigation. Volume/earthwork calculations require separate scope. This is documentation only; no measurement/feature-analysis tools, 3D runtime or Worlds links are added now.
 
 ## Brush inventory
 
@@ -134,6 +152,7 @@ A3 implements pointer-centered zoom, bounded panning, Space/explicit Pan and two
 - Numerical elevation remains authoritative. Keep the Float32 engine, tool operations, application controls, display styles, and eventual storage formats separate. Future import/export must declare version, encoding, units, validation, and resolution explicitly.
 - Retain planar editing and aspect-preserving display without assuming every World is an Earth-like sphere. Future geometry and coordinate systems require their own design; do not silently reinterpret existing map units.
 - Recenter the working area on every eventually supported geometry without moving numerical geography: spherical rotation, movable cuts/local views and independent hollow surface selection belong to future view adapters. A5 proves only the periodic surface. Display interpolation adds no authoritative detail; higher-resolution/tiled terrain requires a separate numerical/storage design.
+- Connected-context presentation belongs to a future surface-specific view provider. A5.2's rectangular side strips apply only to the current periodic plane. Spheres need rotatable/local or cutout projections; physical cubes and pyramids need connected-face arrangements; cylinders may combine lateral panels with separately connected circular end caps. Do not impose rectangular side previews on those surfaces.
 - Preserve future living-history goals by leaving room for explicit historical states and changes. A2 creates no timeline, revision-storage system, or historical canon.
 - Atlas and rebuilt Worlds will ultimately replace the current implementation inside the existing Serrian Tide Next.js/TypeScript website. That host will own authentication, authoritative permissions, database access, and actual World-record associations. No guessed World schema or duplicate auth service belongs in this engine.
 - Future map-style goals should consume the same numerical geography through distinct presentation layers. Contours, hachures, illustrated cartography, other map styles, and 3D preview must not redefine or silently rewrite the terrain.
@@ -141,4 +160,4 @@ A3 implements pointer-centered zoom, bounded panning, Space/explicit Pan and two
 
 The inventory was checked against the project's primary [Heightmap customization documentation](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Heightmap-customization) and [template-editor documentation](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Heightmap-template-editor). Their application semantics and data models are not adopted automatically. This roadmap records the owner's requested scope; exact future behavior still requires a bounded pass.
 
-The owner supplied Ember's A6-B source/numerical approval and separately authorized A5.1. The three spherical checkpoint categories above are the proposed remaining sequence; their exact letter labels/briefs still require authorization. Stop after A5.1; do not begin A6-C. Later work, integration and deployment require their own authorization. No future inventory item is authorized merely by appearing here.
+The owner supplied Ember's A6-B source/numerical approval and A5.1 source/visual/automated-evidence approval, then separately authorized A5.2. The three spherical checkpoint categories above are the proposed remaining sequence; their exact letter labels/briefs still require authorization. Stop after A5.2; do not begin A6-C. Later work, integration and deployment require their own authorization. No future inventory item or GitHub issue is authorized merely by appearing here.
