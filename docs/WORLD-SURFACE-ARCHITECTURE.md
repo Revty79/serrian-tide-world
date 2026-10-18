@@ -1,24 +1,24 @@
-# World surfaces, geometry and topology — A4
+# World surfaces, geometry and topology — A5
 
-Status: architecture foundation, October 17, 2026. Approved baseline: A3 `7c4c7158d3b8dfd8e5af6194852e3382c90de0c7`.
+Status: A4 foundation extended by A5, October 17, 2026. Approved A5 baseline: A4 `d01a4163dcfff4f1c07ccc2cd818071bfaebb5c5`. The A4 completion report remains a historical receipt; this document tracks current architecture.
 
 ## Decision and implementation boundary
 
-Keep the working A0–A3 planar editor and save format intact. Add an opt-in mathematical surface layer, leaving curved/connected editing and continuous navigation for the authorized later passes. Adopt a six-patch equiangular gnomonic cube-sphere with uniquely owned shared vertices as the proposed spherical terrain strategy. The strategy is a project design decision, not a completed spherical implementation or performance claim.
+Preserve bounded planar authority and v1 saves. A5 uses the A4 mathematical surface layer for an explicit horizontally periodic v2 terrain, with working seamless brushes, continuous recentering, repeated display and local persistence. Curved editors remain future work. A six-patch equiangular gnomonic cube-sphere with uniquely owned shared vertices remains the proposed spherical strategy, not a completed implementation or performance claim.
 
-No new geometry choice is exposed in the UI. The existing camera still fits and bounds the planar map. The new modules are not imported by the development application, so they do not silently change editing or add unsupported modes to its bundle.
+New Wrapped Map is the only additional geometry mode. Bounded maps still have real independent edges. The default display now fills the viewport with uniform scale; periodic copies share one authority, while bounded Fill crops a pannable view. Fit Entire Map remains separate. No Sphere, Cylinder or Hollow World selection is exposed.
 
 ## Seven independent concepts
 
-| Concept | Meaning / owner | A4 contract |
+| Concept | Meaning / owner | Current contract |
 | --- | --- | --- |
 | World identity | Parent world, later associated with a real Serrian Tide World by the authenticated host | `WorldDefinition.id`; no database key/schema invented |
 | Physical shape | Reference geometry, independently of any map window | `WorldShape`: flat outline, sphere, cylinder, hollow sphere, versioned custom geometry |
 | Surface identity | A particular habitable sheet, interior or exterior | `{worldId, surfaceId}` plus `SurfaceRole`; IDs are not inferred from shape or terrain |
-| Terrain representation | Authoritative numerical elevations associated with that surface | Independent `terrainId` and versioned representation provider; existing `Terrain` remains v1 planar |
+| Terrain representation | Authoritative numerical elevations associated with that surface | Independent `terrainId` and versioned representation provider; `Terrain` distinguishes bounded v1 and periodic v2 |
 | Topology | Coordinate equivalence, connected charts, boundaries and traversal | `SurfaceTopology`, `ChartSeam`, per-edge `PatchBoundaries` |
-| Projection | A possibly cut/distorted/repeated 2D view of a surface | `MapProjection<ViewState>` contract only; projection instances never own elevation |
-| Camera | Where and how a view is presented to the creator | Existing planar camera unchanged; future projection-specific view/rotation state is separate from geography |
+| Projection | A possibly cut/distorted/repeated 2D view of a surface | Generic `MapProjection<ViewState>` contract; A5's concrete flat repeated view uses the same applied rectangle for rendering/inverse sampling and never owns elevation |
+| Camera | Where and how a view is presented to the creator | Fill/Fit and a rebased periodic phase in A5; future projection-specific view/rotation state remains separate from geography |
 
 A patch is a chart of one surface, not another World or another independently authored geography. Six cube faces will share one surface/terrain identity. A hollow world's interior and exterior will have different surface and terrain identities under one parent World. Multiple surfaces are not different projections of the same elevation array.
 
@@ -26,10 +26,10 @@ A patch is a chart of one surface, not another World or another independently au
 
 ## Capability matrix
 
-| Configuration | Working in A4 | Contract / remaining work |
+| Configuration | Working through A5 | Contract / remaining work |
 | --- | --- | --- |
-| Bounded rectangular or square planar map | Existing editor; new pure normalization, traversal, Euclidean metric, endpoint-inclusive lattice and explicit legacy binding | Current numerical/UI behavior unchanged |
-| One periodic rectangular axis, other bounded | Pure canonical coordinates, shortest-wrap metric, discrete neighbors, identity tangent transport | Mathematical flat quotient only; A5 must implement actual wrapped edits and movable view seam |
+| Bounded rectangular or square planar map | Four brushes, history/save; pure normalization, traversal, Euclidean metric, endpoint-inclusive lattice and explicit legacy binding | Numerical/v1 save behavior preserved; default Fill, optional Fit and interpolated presentation |
+| One periodic rectangular axis, other bounded | A4 canonical coordinates, shortest-wrap metric, lattice and tangent transport; A5 unique authority, all four brushes, repeated view, continuous pan, preview/hit testing, exact history and v2 Save/Open | Horizontally periodic flat quotient only; no spherical or complete cylindrical geometry |
 | Two periodic rectangular axes | Pure normalization, metric and neighbor examples | Flat rectangular quotient (intrinsic flat torus), not an implemented embedded doughnut or spherical world |
 | Circle or triangle | Validated flat-outline descriptors | Shape masks, boundary intersection, sample ownership, clipping and metrics around holes need later providers; no editor support |
 | Arbitrary planar edge connections | Per-edge/seam contracts | Validate edge length/parameterization, inverse pairing, orientation, corner cycles and allowed orientability; no arbitrary gluing engine |
@@ -71,9 +71,9 @@ Legacy map units have no established physical scale. The legacy adapter preserve
 
 Future operations must require radius/distance units to match the metric, enumerate candidate samples through the representation/topology, then apply the existing numerical falloff/strength/blend kernels. Projected circles are not a substitute for intrinsic distance. Smooth neighborhoods require provider-aware neighbors and, on irregular curved grids, an explicitly reviewed weighting policy. Ghost/halo values must be pre-operation snapshots or revision-consistent read caches, never independently editable duplicate terrain.
 
-## Projection and seamless navigation plan — A5 onward
+## Projection and seamless navigation — A5 and future shapes
 
-The pipeline will be:
+The architecture separates these operations:
 
 ```text
 pointer CSS position
@@ -91,11 +91,13 @@ unique numerical terrain
 
 `MapProjection<ViewState>` projects a surface point into zero or more 2D locations with copy IDs, and inversely returns a canonical position or `null`. Multiple visible copies are presentation references to the same authoritative sample. Its current declaration has no concrete implementation, screen-pixel dependency or elevation writes. Provider-local view state can contain a seam origin or orientation; it is not terrain metadata. Copy IDs identify projected instances, not geography.
 
-For a periodic rectangular surface, keep an unwrapped view offset and repeat only visible map tiles. Move the seam by changing that view offset/projection cut. A continent crossing the original right/left boundary can then be centered normally. Inverse projection maps either visible copy to the same canonical sample. A dab straddling the cut gathers both sides but deduplicates sample keys and writes each sample once. A stroke carries physical arc-length spacing and residual distance across the transition; neither its strength nor its history boundaries depend on the display cut. Hover sampling, preview and hit testing must use the same transform revision.
+For the implemented periodic rectangle, the normalized camera phase is rebased modulo one period after each pan, equivalent to an unwrapped position without indefinite accumulation. CanvasPattern repeats one cached period over the viewport. The cut moves relative to the viewport, so a continent spanning the original right/left boundary can be centered normally. Inverse mapping uses the painted rectangle and A4 canonical normalization. A dab gathers unique physical columns and applies the shortest-wrap metric; every sample is written at most once per dab. A stroke retains unwrapped path coordinates, distance spacing and residual across the transition. Hover, preview and hit testing use the same applied transform. See [A5 completion](A5-COMPLETION.md) for formulas and actual interaction evidence.
 
 For spheres, view orientation/rotation and projection cut move independently of the fixed cube-sphere reference frame. A local tangent/azimuthal editing view can center arbitrary geography, including a pole or face edge, without a privileged longitude seam. A world overview may use a cut projection or cube net, but it is a resampled view. Reprojection/rotation must never rearrange or resample authoritative elevation arrays. Brush previews trace projected intrinsic footprints and may look distorted in a distorted overview while retaining the correct physical area/scale.
 
-At an active pointer interaction, A5 must either hold the view transform stable or explicitly rebase the stroke under the same captured physical point. Add regression proof for wheel/pinch/pan arbitration, seam movement during hover, active-stroke lifecycle, visible-copy deduplication, corner crossings and exact Undo. A4's bounded camera is intentionally unchanged and does not claim this functionality.
+During active sculpting A5 holds the applied transform stable; navigation or a changed painted rectangle ends the partial stroke before another transform is used. Regressions cover wheel/pinch/pan arbitration, seam recentering, cancellation, tool changes, visible-copy deduplication, bounded-edge behavior and exact Undo. Cube corners/poles do not exist in this periodic rectangle and still require A6 proofs.
+
+Repositioning the working area is a firm requirement for every eventually supported geometry. A6 must put globe orientation, movable overview cuts and local spherical editing centers in projection-specific view state while keeping the authoritative patch frame fixed. A7 must select hollow interior/exterior identity independently of orientation, and retain separate terrain and history for each. A5's flat camera/renderer is one view adapter, not a universal curved-surface projection. Future adapters must supply consistent projected footprints, inverse hit testing and singular-region handling. No camera action may relocate or resample geography.
 
 Poles are ordinary physical locations in the cube-sphere, not a row of duplicated longitudes. Multi-face projections must handle uneditable gaps and deterministic inverse chart selection at shared boundaries. A projection can have singular/cut regions; numerical topology must not inherit them. No flat global projection preserves every distance or shape, so edit metrics remain on the surface.
 
@@ -189,20 +191,20 @@ Versioned custom geometry/topology/representation providers provide the extensio
 
 ## Compatibility and eventual migration
 
-A4 does not alter `TerrainMetadata`, existing brushes/sampling/rendering/history, the application, the v1 codec, IndexedDB schema or existing browser data. `describeLegacyPlanarTerrain` is an explicitly called in-memory adapter requiring host-provided World/surface/patch IDs. It returns the original terrain/buffer unchanged, a bounded rectangular world descriptor, a bounded metric/topology and the matching endpoint-inclusive lattice. It never derives World identity from a terrain ID, marks an old map periodic, or saves anything. It is not invoked automatically by App.
+A4's legacy adapter remains explicitly called and requires host-provided World/surface/patch IDs. It returns the original terrain/buffer unchanged, a bounded descriptor, metric/topology and endpoint-inclusive lattice. It never derives World identity from a terrain ID, marks an old map periodic, or saves anything. App does not automatically call it. A5 adds a discriminated v2 metadata/codec for newly created wrapped maps, reuses tool arithmetic and changes presentation. The v1 interpretation, canonical encoding, history semantics, IndexedDB schema and existing records remain preserved.
 
 The frozen fixture `tests/fixtures/saves/a3-v1-heightmap.json` was encoded for A4 verification using the v1 encoder whose Git blob is identical to the approved A3 source. Its fixture wrapper stores elevation bytes as base64 for test transport, not a new app save/export format. The embedded v1 checksum and byte payload are fixed. Unit tests prove decode → explicit binding → encode with identical time/name produces identical metadata, checksum and bytes, including signed zero. Browser tests seed a disposable test profile, open the fixture through actual saved-map selection, navigate, edit/Undo, save unchanged bytes, then Redo/save changed bytes while keeping identity and metadata.
 
-A future multi-surface format should have its own explicit version, World/surface identities, geometry/topology/representation provider versions, units, unique patch/chunk ownership, reference dimensions, independent sea levels, integrity checks and resource limits. Keep the v1 reader and catalog entries usable. Open legacy data as bounded planar first; any conversion should create a new verified record after explicit policy/acceptance and leave the v1 original available. Do not overwrite v1 records with an incompatible envelope or silently turn their IDs into World keys.
+A5's v2 format records topology, unique-u/inclusive-v ownership and World/surface/patch identities, but is only one periodic rectangle. A future multi-surface format needs a separate explicit version, geometry/topology/representation provider versions, unique shared patch/chunk ownership, reference dimensions, independent sea levels, integrity checks and resource limits. Keep v1/v2 readers and catalog entries usable. Open legacy data as bounded planar first; any future conversion must create a new verified record after explicit policy/acceptance and leave the original available. Never overwrite v1 with an incompatible envelope or silently turn its ID into a World key.
 
-A5/A6/A7 must design and test any actual IndexedDB schema/version upgrade, interrupted transaction recovery, downgrade/error handling, backup/rollback and format resource budgets when persistence expands. A4 proposes this migration boundary without implementing or scheduling an untested migration. Histories are session operations; future historical canon is separate data and remains unimplemented.
+A5 keeps IndexedDB schema version 1 and the existing two stores; it performs no schema upgrade or data migration. Mixed v1/v2 records work together. Its atomic Save rejects same-ID format/identity replacement and validates records before opening. A4 can still open v1 but refuses v2. See [integration architecture](ARCHITECTURE.md) for rollback limits. A6/A7 must test any future actual schema upgrade, interrupted transaction recovery, downgrade/error handling, backup/rollback and resource budgets. Session Undo is separate from future historical canon.
 
 ## Checkpoints and outstanding decisions
 
 | Pass | Scope and acceptance focus |
 | --- | --- |
-| A4 — current | Pure contracts/examples, identity isolation, documented spherical/hollow/projection strategy, unchanged planar editor and v1 saves |
-| A5 — requires authorization | Seam-aware flat/periodic editing and continuously movable view seam; unique sample ownership, same-transform hit testing, exact multi-seam stroke history and deliberate storage policy |
+| A4 — reviewed baseline | Pure contracts/examples, identity isolation, documented spherical/hollow/projection strategy, unchanged planar editor and v1 saves; Ember source/architecture approval supplied by owner |
+| A5 — implemented, review pending | Seam-aware flat/periodic editing, continuous recentering, repeated full-screen Fill, bounded Fill/Fit, optional fullscreen, interpolated display, unique ownership, consistent hit testing, exact history and v2 local saves |
 | A6 — requires authorization | Spherical shared-node terrain, full edge/corner/polar continuity, physical brush distance, projection/pointer integration, benchmarks and versioned persistence |
 | A7 — requires authorization | Initial hollow, cylindrical and other agreed geometries; independent surface workflow, normals/clearance/end policies and explicit supported configuration list |
 | Subsequent passes | Complete Azgaar-style heightmap toolset and later interchange/generation/analysis/presentation in separately reviewed scopes |
@@ -211,4 +213,4 @@ Review may subdivide these passes. The former A7 external interchange label is s
 
 Open decisions: physical scale for legacy flat worlds; exact cube face bases/canonical ownership tables; initial N/browser memory budget; curved Smooth weighting and corner interpolation; tangent-frame continuity for directional tools; chosen overview/local projections and their singular regions; allowed planar gluing configurations; migration/conversion policy; how active-surface Undo is presented; clearance tolerance and invalid-edit behavior; initial cylinder end/cap models; which custom topologies warrant research. None are silently resolved as Serrian Tide canon or exposed as functional UI.
 
-The original Next.js/TypeScript application will retain responsibility for authentication, server-side permissions, World records and database storage. The development shell remains replaceable, with reusable client components separate from this pure surface layer. No main-site integration or deployment is authorized. Stop after A4 for independent review; A5 is not started.
+The original Next.js/TypeScript application will retain responsibility for authentication, server-side permissions, World records and database storage. The development shell remains replaceable, with reusable client components separate from this pure surface layer. No main-site integration or deployment is authorized. Stop after A5 for independent review and owner acceptance; do not begin A6.

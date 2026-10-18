@@ -1,4 +1,5 @@
 import type { Terrain } from './model.ts';
+import { isWrapped, wrappedMath } from './topology.ts';
 
 export interface Point {
   x: number;
@@ -35,6 +36,11 @@ function assertPointWithin(point: Point, width: number, height: number): void {
 export function worldToGrid(terrain: Terrain, point: Point): GridPoint {
   const { width, height } = terrain.metadata.dimensions;
   const { columns, rows } = terrain.metadata.resolution;
+  if (isWrapped(terrain)) {
+    const normalized = wrappedMath(terrain).surface.topology.normalize({ ...terrain.metadata.identity, u: point.x, v: point.y });
+    if (!normalized) throw new RangeError('Point lies outside the bounded vertical extent.');
+    return { column: Math.round(normalized.u / width * columns) % columns, row: Math.round(normalized.v / height * (rows - 1)) };
+  }
   assertPointWithin(point, width, height);
   return {
     column: Math.round((point.x / width) * (columns - 1)),
@@ -44,6 +50,7 @@ export function worldToGrid(terrain: Terrain, point: Point): GridPoint {
 
 export function gridToWorld(terrain: Terrain, point: GridPoint): Point {
   gridIndex(terrain, point);
+  if (isWrapped(terrain)) { const position = wrappedMath(terrain).lattice.positionAt(point); return { x: position.u, y: position.v }; }
   const { width, height } = terrain.metadata.dimensions;
   const { columns, rows } = terrain.metadata.resolution;
   return {
@@ -73,7 +80,7 @@ export function inspectElevation(terrain: Terrain, point: Point) {
   if (!Number.isFinite(elevation)) throw new RangeError('Sampled elevation is not finite.');
   const relativeHeight = elevation - terrain.metadata.seaLevel;
   return {
-    position: { ...point },
+    position: isWrapped(terrain) ? { x: wrappedMath(terrain).surface.topology.normalize({ ...terrain.metadata.identity, u: point.x, v: point.y })!.u, y: point.y } : { ...point },
     elevation,
     seaLevelRelation: relativeHeight > 0 ? 'above' as const : relativeHeight < 0 ? 'below' as const : 'at' as const,
   };

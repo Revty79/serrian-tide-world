@@ -3,14 +3,18 @@ import { TerrainCanvas, type TerrainCanvasHandle } from './components/TerrainCan
 import { BrushToolbar, brushFromControls, type BrushControls } from './components/BrushToolbar.tsx';
 import { ElevationLegend } from './components/ElevationLegend.tsx';
 import { createBlankTerrain } from './terrain/model.ts';
+import { createWrappedTerrain, isWrapped } from './terrain/topology.ts';
 import { resetTerrainToOcean } from './terrain/modifications.ts';
 import { TerrainDocument } from './editor/terrain-document.ts';
 import { LocalMapStore } from './persistence/local-map-store.ts';
-import { encodeHeightmap, type SavedMapSummary } from './persistence/terrain-format.ts';
+import type { SavedMapSummary } from './persistence/terrain-format.ts';
+import { encodeMap } from './persistence/map-format.ts';
 import { isTextInput } from './interaction/canvas-navigation.ts';
 
 const defaults: BrushControls = { tool: 'raise', radius: 0.06, strength: 200, intensity: 0.5, targetElevation: '0' };
-const newDocument = () => new TerrainDocument(createBlankTerrain({ id: crypto.randomUUID() }));
+const newDocument = (wrapped = false) => new TerrainDocument(wrapped
+  ? createWrappedTerrain({ id: crypto.randomUUID(), identity: { worldId: crypto.randomUUID(), surfaceId: crypto.randomUUID(), patchId: 'periodic-grid' } })
+  : createBlankTerrain({ id: crypto.randomUUID() }), wrapped ? 'Untitled wrapped world' : 'Untitled world');
 const store = new LocalMapStore();
 
 export function App() {
@@ -25,6 +29,14 @@ export function App() {
   const panelRef = useRef<HTMLElement>(null), toggleRef = useRef<HTMLButtonElement>(null), headingRef = useRef<HTMLHeadingElement>(null);
   const canvasRef = useRef<TerrainCanvasHandle>(null);
   const [zoom, setZoom] = useState(1);
+  const workspaceRef = useRef<HTMLElement>(null);
+  const [fullscreenSupported, setFullscreenSupported] = useState(false), [browserFullscreen, setBrowserFullscreen] = useState(false);
+  useEffect(() => {
+    setFullscreenSupported(!!window.document.fullscreenEnabled && typeof workspaceRef.current?.requestFullscreen === 'function');
+    const changed = () => setBrowserFullscreen(window.document.fullscreenElement === workspaceRef.current);
+    window.document.addEventListener('fullscreenchange', changed);
+    return () => window.document.removeEventListener('fullscreenchange', changed);
+  }, []);
   const [savedMaps, setSavedMaps] = useState<SavedMapSummary[]>([]);
   const [selected, setSelected] = useState('');
   const [busy, setBusy] = useState(false);
@@ -59,17 +71,17 @@ export function App() {
       setRevision((value) => value + 1); update();
     }
   };
-  const newMap = () => {
+  const newMap = (wrapped = false) => {
     if (busyRef.current) return;
     finish();
     if (!guardDiscard()) return;
-    setDocument(newDocument()); setControls(defaults); setPan(false); setError('');
+    setDocument(newDocument(wrapped)); setControls(defaults); setPan(false); setError('');
   };
   const save = async () => {
     if (!lock()) return;
     const current = documentRef.current;
     try {
-      const record = await encodeHeightmap(current.terrain, current.name);
+      const record = await encodeMap(current.terrain, current.name);
       await store.save(record);
       current.name = record.name; current.markSaved(); update();
       setSelected(record.id);
@@ -107,11 +119,18 @@ export function App() {
     return () => { window.removeEventListener('keydown', keydown); window.removeEventListener('beforeunload', beforeunload); };
   }, []);
   const status = document.dirty ? 'Unsaved changes' : document.hasSaved ? 'Saved on this device' : 'Not saved yet';
+  const toggleFullscreen = async () => {
+    finish();
+    try {
+      if (window.document.fullscreenElement === workspaceRef.current) await window.document.exitFullscreen();
+      else await workspaceRef.current?.requestFullscreen();
+    } catch { setError('Browser fullscreen could not be changed. Your terrain is preserved; continue in this window.'); }
+  };
 
   return (
-    <main className="atlas-app" data-panel-open={openPanel} aria-label="Atlas workspace">
+    <main ref={workspaceRef} className="atlas-app" data-panel-open={openPanel} aria-label="Atlas workspace">
       <TerrainCanvas ref={canvasRef} terrain={document.terrain} brush={busy ? undefined : brushFromControls(controls)} pan={pan}
-        fullscreen revision={revision} onZoom={setZoom}
+        fullscreen initialView="fill" revision={revision} onZoom={setZoom}
         onStrokeBegin={() => document.history.begin()} onStrokeEnd={() => { if (document.history.commit()) update(); }} />
       <button ref={toggleRef} className="panel-toggle" type="button" aria-expanded={openPanel} aria-controls="atlas-tools"
         aria-label={openPanel ? 'Close tools' : 'Open tools'} onClick={() => openPanel ? closePanel() : setOpenPanel(true)}>
@@ -135,7 +154,9 @@ export function App() {
               <option value="">Choose a saved map</option>
               {savedMaps.map((map) => <option key={map.id} value={map.id}>{map.name}</option>)}
             </select>
-            <div className="map-actions"><button type="button" disabled={!selected} onClick={() => void openMap()}>Open Map</button><button type="button" onClick={newMap}>New Blank Map</button></div>
+            <div className="map-actions"><button type="button" disabled={!selected} onClick={() => void openMap()}>Open Map</button><button type="button" onClick={() => newMap()}>New Blank Map</button></div>
+            <button className="new-wrapped" type="button" onClick={() => newMap(true)}>New Wrapped Map</button>
+            <p className="hint">Wrapped maps connect horizontally. Top and bottom stay bounded. Bounded maps keep their original edges.</p>
           </div>
         </fieldset>
         <ElevationLegend seaLevel={document.terrain.metadata.seaLevel} />
@@ -150,8 +171,11 @@ export function App() {
         <output aria-label="Map zoom">{Math.round(zoom * 100)}%</output>
         <button type="button" aria-label="Zoom Out" disabled={zoom <= 1} onClick={() => canvasRef.current?.zoom(1 / 1.5)}>−</button>
         <button type="button" aria-label="Zoom In" disabled={zoom >= 8} onClick={() => canvasRef.current?.zoom(1.5)}>+</button>
-        <button type="button" onClick={() => canvasRef.current?.fit()}>Fit Map</button>
+        <button type="button" onClick={() => canvasRef.current?.fill()}>Fill View</button>
+        <button type="button" onClick={() => canvasRef.current?.fit()}>Fit Entire Map</button>
+        {fullscreenSupported && <button type="button" aria-label={browserFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'} onClick={() => void toggleFullscreen()}>⛶</button>}
       </div>
+      {isWrapped(document.terrain) && <p className="surface-status">Horizontal wrap</p>}
       <p className="save-status" role="status">{busy ? 'Working with local storage…' : status}</p>
       {error && <div className="storage-error" role="alert"><p>{error}</p><button type="button" onClick={() => setError('')}>Dismiss</button></div>}
     </main>

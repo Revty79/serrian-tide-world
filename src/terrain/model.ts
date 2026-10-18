@@ -1,8 +1,7 @@
 /** In-memory terrain contract. A future file format must declare its own encoding. */
 export const TERRAIN_DATA_VERSION = 1 as const;
 
-export interface TerrainMetadata {
-  readonly dataVersion: typeof TERRAIN_DATA_VERSION;
+interface TerrainMetadataBase {
   readonly id: string;
   readonly surface: 'planar';
   /** Neutral editing extent; these are not physical distances or planetary coordinates. */
@@ -19,8 +18,17 @@ export interface TerrainMetadata {
   readonly seaLevel: number;
 }
 
-export interface Terrain {
-  readonly metadata: TerrainMetadata;
+export interface BoundedTerrainMetadata extends TerrainMetadataBase { readonly dataVersion: 1 }
+export interface WrappedTerrainMetadata extends TerrainMetadataBase {
+  readonly dataVersion: 2;
+  readonly topology: 'horizontal-periodic';
+  readonly sampleOwnership: 'unique-u-inclusive-v';
+  readonly identity: { readonly worldId: string; readonly surfaceId: string; readonly patchId: string };
+}
+export type TerrainMetadata = BoundedTerrainMetadata | WrappedTerrainMetadata;
+
+export interface Terrain<M extends TerrainMetadata = TerrainMetadata> {
+  readonly metadata: M;
   /** Row-major: row * columns + column. Row zero is the top of the editing surface. */
   readonly elevations: Float32Array;
 }
@@ -49,7 +57,7 @@ export function createBlankTerrain({
   height = 1,
   seaLevel = 0,
   initialElevation = -100,
-}: BlankTerrainOptions): Terrain {
+}: BlankTerrainOptions): Terrain<BoundedTerrainMetadata> {
   if (id.trim().length === 0) throw new RangeError('A terrain ID is required.');
   if (![columns, rows].every((size) => Number.isSafeInteger(size) && size >= 2)) {
     throw new RangeError('Grid dimensions must be integers of at least two samples.');

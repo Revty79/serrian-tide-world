@@ -1,5 +1,6 @@
 import { startBrushStroke, type BrushSettings, type BrushStroke } from '../terrain/brush.ts';
 import type { Terrain } from '../terrain/model.ts';
+import { isWrapped } from '../terrain/topology.ts';
 import { inspectElevation, viewportToWorld, type ElevationSample, type Point } from '../terrain/sampling.ts';
 
 interface SculptingOptions {
@@ -11,6 +12,8 @@ interface SculptingOptions {
   onSample?: (sample: ElevationSample | null) => void;
   onStrokeBegin?: () => void;
   onStrokeEnd?: () => void;
+  getMapBounds?: () => DOMRect;
+  onPreview?: (event: PointerEvent, settings: Readonly<BrushSettings> | undefined) => void;
 }
 
 /** DOM pointer lifecycle only. Numerical stroke interpolation lives in the engine. */
@@ -19,9 +22,17 @@ export function attachCanvasSculpting(canvas: HTMLCanvasElement, options: Sculpt
   const view = canvas.ownerDocument.defaultView!;
   let active: { pointerId: number; stroke: BrushStroke; lastPoint: Point; bounds: DOMRect; windowWidth: number; windowHeight: number } | null = null;
   let pendingTouch: PointerEvent | null = null;
+  const bounds = () => options.getMapBounds?.() ?? canvas.getBoundingClientRect();
+  const hitBounds = () => {
+    const rect = bounds();
+    if (!isWrapped(terrain)) return rect;
+    const stage = canvas.getBoundingClientRect();
+    return { left: stage.left, right: stage.right, top: Math.max(stage.top, rect.top), bottom: Math.min(stage.bottom, rect.bottom), width: stage.width, height: Math.max(0, Math.min(stage.bottom, rect.bottom) - Math.max(stage.top, rect.top)) };
+  };
 
   const pointFromEvent = (event: PointerEvent) => {
-    const rect = canvas.getBoundingClientRect();
+    const rect = bounds();
+    if (isWrapped(terrain)) return { x: (event.clientX - rect.left) / rect.width * terrain.metadata.dimensions.width, y: Math.max(0, Math.min(terrain.metadata.dimensions.height, (event.clientY - rect.top) / rect.height * terrain.metadata.dimensions.height)) };
     return viewportToWorld(terrain, {
       x: Math.max(0, Math.min(rect.width, event.clientX - rect.left)),
       y: Math.max(0, Math.min(rect.height, event.clientY - rect.top)),
@@ -30,7 +41,7 @@ export function attachCanvasSculpting(canvas: HTMLCanvasElement, options: Sculpt
 
   const hideCursor = () => { cursor.hidden = true; };
   const publishSample = (event: PointerEvent) => {
-    const rect = canvas.getBoundingClientRect();
+    const rect = hitBounds();
     const inside = rect.width > 0 && rect.height > 0
       && event.clientX >= rect.left && event.clientX <= rect.right
       && event.clientY >= rect.top && event.clientY <= rect.bottom;
@@ -39,8 +50,9 @@ export function attachCanvasSculpting(canvas: HTMLCanvasElement, options: Sculpt
   const leave = () => { hideCursor(); options.onSample?.(null); };
   const showCursor = (event: PointerEvent) => {
     const settings = active?.stroke.settings ?? getBrush();
+    if (options.onPreview) { options.onPreview(event, settings); return; }
     if (!settings) { hideCursor(); return; }
-    const rect = canvas.getBoundingClientRect();
+    const rect = bounds();
     const { width, height } = terrain.metadata.dimensions;
     cursor.style.left = `${Math.max(0, Math.min(rect.width, event.clientX - rect.left)) / rect.width * canvas.offsetWidth}px`;
     cursor.style.top = `${Math.max(0, Math.min(rect.height, event.clientY - rect.top)) / rect.height * canvas.offsetHeight}px`;
@@ -66,7 +78,7 @@ export function attachCanvasSculpting(canvas: HTMLCanvasElement, options: Sculpt
   const advance = (event: PointerEvent): boolean => {
     if (!active) return false;
     if (!getBrush()) { stop(); return false; }
-    const rect = canvas.getBoundingClientRect();
+    const rect = bounds();
     const original = active.bounds;
     // Layout can change before the browser delivers resize/observer callbacks.
     if (view.innerWidth !== active.windowWidth || view.innerHeight !== active.windowHeight
@@ -86,12 +98,15 @@ export function attachCanvasSculpting(canvas: HTMLCanvasElement, options: Sculpt
     // Intersect the actual segment with the map boundary. Simply clamping each
     // event would bend an exiting stroke differently at different event rates.
     let t = 1;
-    if (target.x < 0) t = Math.min(t, -from.x / dx);
-    if (target.x > width) t = Math.min(t, (width - from.x) / dx);
+    const hit = hitBounds();
+    const minX = isWrapped(terrain) ? (hit.left - rect.left) / rect.width * width : 0;
+    const maxX = isWrapped(terrain) ? (hit.right - rect.left) / rect.width * width : width;
+    if (target.x < minX) t = Math.min(t, (minX - from.x) / dx);
+    if (target.x > maxX) t = Math.min(t, (maxX - from.x) / dx);
     if (target.y < 0) t = Math.min(t, -from.y / dy);
     if (target.y > height) t = Math.min(t, (height - from.y) / dy);
     const endpoint = {
-      x: Math.max(0, Math.min(width, from.x + dx * t)),
+      x: Math.max(minX, Math.min(maxX, from.x + dx * t)),
       y: Math.max(0, Math.min(height, from.y + dy * t)),
     };
     const changed = active.stroke.moveTo(endpoint);
@@ -104,6 +119,8 @@ export function attachCanvasSculpting(canvas: HTMLCanvasElement, options: Sculpt
   const begin = (event: PointerEvent) => {
     const settings = getBrush();
     if (active || !settings || !event.isPrimary || event.button !== 0) return;
+    const hit = hitBounds();
+    if (event.clientX < hit.left || event.clientX > hit.right || event.clientY < hit.top || event.clientY > hit.bottom) return;
     event.preventDefault();
     try {
       const point = pointFromEvent(event);
@@ -112,7 +129,7 @@ export function attachCanvasSculpting(canvas: HTMLCanvasElement, options: Sculpt
         options.onStrokeBegin?.();
         active = {
           pointerId: event.pointerId, stroke: startBrushStroke(terrain, point, settings),
-          lastPoint: point, bounds: canvas.getBoundingClientRect(),
+          lastPoint: point, bounds: bounds(),
           windowWidth: view.innerWidth, windowHeight: view.innerHeight,
         };
       } catch (error) {

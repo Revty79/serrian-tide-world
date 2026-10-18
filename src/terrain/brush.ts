@@ -1,5 +1,6 @@
 import { assertFloat32Elevation, type Terrain } from './model.ts';
 import type { Point } from './sampling.ts';
+import { isWrapped, wrappedMath } from './topology.ts';
 
 export type BrushTool = 'raise' | 'lower' | 'smooth' | 'flatten';
 
@@ -26,12 +27,13 @@ export function brushRadiusLimits(terrain: Terrain) {
   const { width, height } = terrain.metadata.dimensions;
   const { columns, rows } = terrain.metadata.resolution;
   return {
-    min: Math.hypot(width / (columns - 1), height / (rows - 1)),
+    min: Math.hypot(width / (isWrapped(terrain) ? columns : columns - 1), height / (rows - 1)),
     max: Math.hypot(width, height),
   };
 }
 
 function validateTerrain(terrain: Terrain): void {
+  if (isWrapped(terrain)) wrappedMath(terrain);
   const { dimensions, resolution, surface, seaLevel } = terrain.metadata;
   if (surface !== 'planar'
     || ![dimensions.width, dimensions.height].every((value) => Number.isFinite(value) && value > 0)
@@ -71,7 +73,7 @@ function validateSettings(terrain: Terrain, settings: BrushSettings): void {
 function validatePoint(terrain: Terrain, point: Point): void {
   const { width, height } = terrain.metadata.dimensions;
   if (!Number.isFinite(point.x) || !Number.isFinite(point.y)
-    || point.x < 0 || point.x > width || point.y < 0 || point.y > height) {
+    || (!isWrapped(terrain) && (point.x < 0 || point.x > width)) || point.y < 0 || point.y > height) {
     throw new RangeError('Brush center must lie on the editing surface.');
   }
 }
@@ -79,60 +81,53 @@ function validatePoint(terrain: Terrain, point: Point): void {
 function stamp(terrain: Terrain, center: Point, settings: Readonly<BrushSettings>): boolean {
   const { columns, rows } = terrain.metadata.resolution;
   const { width, height } = terrain.metadata.dimensions;
-  const stepX = width / (columns - 1);
-  const stepY = height / (rows - 1);
+  const periodic = isWrapped(terrain) ? wrappedMath(terrain) : null;
+  const stepX = width / (periodic ? columns : columns - 1), stepY = height / (rows - 1);
   const { radius, tool } = settings;
-  const left = Math.max(0, Math.floor((center.x - radius) / stepX));
-  const right = Math.min(columns - 1, Math.ceil((center.x + radius) / stepX));
-  const top = Math.max(0, Math.floor((center.y - radius) / stepY));
-  const bottom = Math.min(rows - 1, Math.ceil((center.y + radius) / stepY));
-
-  // Validate the affected region before writing any part of this dab. Also protects
-  // against a caller introducing a bad elevation while a stroke is in progress.
+  const canonical = periodic ? periodic.surface.topology.normalize({ ...periodic.surface.chart.address, u: center.x, v: center.y })! : null;
+  const centerX = canonical?.u ?? center.x;
+  const left = Math.floor((centerX - radius) / stepX), right = Math.ceil((centerX + radius) / stepX);
+  const top = Math.max(0, Math.floor((center.y - radius) / stepY)), bottom = Math.min(rows - 1, Math.ceil((center.y + radius) / stepY));
+  const wrapColumn = (column: number) => ((column % columns) + columns) % columns;
+  // Enumerate each physical column once, even when radius spans a whole period.
+  const activeColumns = periodic
+    ? right - left + 1 >= columns ? Array.from({ length: columns }, (_, i) => i) : Array.from({ length: right - left + 1 }, (_, i) => wrapColumn(left + i))
+    : Array.from({ length: Math.min(columns - 1, right) - Math.max(0, left) + 1 }, (_, i) => Math.max(0, left) + i);
+  const neighbors = (column: number) => periodic
+    ? [...new Set([wrapColumn(column - 1), column, wrapColumn(column + 1)])]
+    : Array.from({ length: Math.min(columns - 1, column + 1) - Math.max(0, column - 1) + 1 }, (_, i) => Math.max(0, column - 1) + i);
   const halo = tool === 'smooth' ? 1 : 0;
-  const sourceLeft = Math.max(0, left - halo);
-  const sourceRight = Math.min(columns - 1, right + halo);
-  const sourceTop = Math.max(0, top - halo);
-  const sourceBottom = Math.min(rows - 1, bottom + halo);
-  const sourceWidth = sourceRight - sourceLeft + 1;
-  const source = tool === 'smooth'
-    ? new Float32Array(sourceWidth * (sourceBottom - sourceTop + 1)) : null;
-  for (let row = sourceTop; row <= sourceBottom; row += 1) {
-    for (let column = sourceLeft; column <= sourceRight; column += 1) {
-      if (!Number.isFinite(terrain.elevations[row * columns + column])) {
-        throw new RangeError('Brush region contains a non-finite elevation.');
-      }
-      if (source) source[(row - sourceTop) * sourceWidth + column - sourceLeft] = terrain.elevations[row * columns + column]!;
-    }
+  const sourceTop = Math.max(0, top - halo), sourceBottom = Math.min(rows - 1, bottom + halo);
+  const sourceColumns = tool === 'smooth' ? [...new Set(activeColumns.flatMap(neighbors))] : activeColumns;
+  const source = tool === 'smooth' ? new Float32Array(sourceColumns.length * (sourceBottom - sourceTop + 1)) : null;
+  const sourceOffsets = new Int32Array(columns).fill(-1);
+  sourceColumns.forEach((column, i) => { sourceOffsets[column] = i; });
+  for (let row = sourceTop; row <= sourceBottom; row++) for (const column of sourceColumns) {
+    const value = terrain.elevations[row * columns + column]!;
+    if (!Number.isFinite(value)) throw new RangeError('Brush region contains a non-finite elevation.');
+    if (source) source[(row - sourceTop) * sourceColumns.length + sourceOffsets[column]!] = value;
   }
-
   let changed = false;
-  for (let row = top; row <= bottom; row += 1) {
+  for (let row = top; row <= bottom; row++) {
     const dy = (row * stepY - center.y) / radius;
-    for (let column = left; column <= right; column += 1) {
-      const dx = (column * stepX - center.x) / radius;
-      const distance = Math.hypot(dx, dy);
+    for (const column of activeColumns) {
+      const distance = periodic
+        ? periodic.surface.metric.distance(canonical!, { ...periodic.surface.chart.address, u: column * stepX, v: row * stepY }).value / radius
+        : Math.hypot((column * stepX - center.x) / radius, dy);
       if (distance >= 1) continue;
-      // Reversed smoothstep: zero slope at both center and boundary.
       const falloff = Math.max(0, Math.min(1, (1 - distance) ** 2 * (1 + 2 * distance)));
-      const index = row * columns + column;
-      const current = terrain.elevations[index]!;
+      const index = row * columns + column, current = terrain.elevations[index]!;
       let value = current;
       if (settings.tool === 'raise' || settings.tool === 'lower') {
         value = current + (settings.tool === 'raise' ? 1 : -1) * settings.strength * falloff;
       } else if (settings.tool === 'smooth' || settings.tool === 'flatten') {
         let target: number;
-        if (settings.tool === 'flatten') {
-          target = settings.targetElevation;
-        } else {
-          // Each dab reads a fixed source tile plus a one-cell halo. Every
-          // neighborhood sees the same pre-dab data, regardless of scan order.
-          let sum = 0;
-          let count = 0;
-          for (let neighborRow = Math.max(0, row - 1); neighborRow <= Math.min(rows - 1, row + 1); neighborRow += 1) {
-            for (let neighborColumn = Math.max(0, column - 1); neighborColumn <= Math.min(columns - 1, column + 1); neighborColumn += 1) {
-              sum += source![(neighborRow - sourceTop) * sourceWidth + neighborColumn - sourceLeft]!;
-              count += 1;
+        if (settings.tool === 'flatten') target = settings.targetElevation;
+        else {
+          let sum = 0, count = 0;
+          for (let neighborRow = Math.max(0, row - 1); neighborRow <= Math.min(rows - 1, row + 1); neighborRow++) {
+            for (const neighborColumn of neighbors(column)) {
+              sum += source![(neighborRow - sourceTop) * sourceColumns.length + sourceOffsets[neighborColumn]!]!; count++;
             }
           }
           target = sum / count;
@@ -141,10 +136,7 @@ function stamp(terrain: Terrain, center: Point, settings: Readonly<BrushSettings
         value = current * (1 - alpha) + target * alpha;
       }
       const next = Math.fround(Math.max(-FLOAT32_MAX, Math.min(FLOAT32_MAX, value)));
-      if (next !== current) {
-        terrain.elevations[index] = next;
-        changed = true;
-      }
+      if (next !== current) { terrain.elevations[index] = next; changed = true; }
     }
   }
   return changed;

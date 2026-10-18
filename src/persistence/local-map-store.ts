@@ -1,4 +1,5 @@
-import { decodeHeightmap, decodeSummary, type SavedHeightmap, type SavedMapSummary } from './terrain-format.ts';
+import { decodeSummary, type SavedMapSummary } from './terrain-format.ts';
+import { decodeMap, type SavedMap } from './map-format.ts';
 
 const DB_NAME = 'serrian-tide-atlas';
 const DB_VERSION = 1;
@@ -33,17 +34,26 @@ export class LocalMapStore {
       return values.map(decodeSummary).sort((a, b) => b.savedAt.localeCompare(a.savedAt));
     } finally { db.close(); }
   }
-  async save(value: SavedHeightmap): Promise<void> {
+  async save(value: SavedMap): Promise<void> {
     // Validate before starting the transaction: async hashing would let IDB auto-close it.
-    await decodeHeightmap(value);
+    await decodeMap(value);
     const db = await this.database();
     try {
       await new Promise<void>((resolve, reject) => {
         const tx = db.transaction(['heightmaps', 'catalog'], 'readwrite');
-        tx.objectStore('heightmaps').put(value);
-        tx.objectStore('catalog').put({ id: value.id, name: value.name, savedAt: value.savedAt });
+        let reason: Error | undefined;
+        const store = tx.objectStore('heightmaps'), existing = store.get(value.id);
+        existing.onsuccess = () => {
+          const previous = existing.result as SavedMap | undefined;
+          if (previous && (previous.formatVersion !== value.formatVersion || (previous.formatVersion === 2 && value.formatVersion === 2
+            && (previous.metadata?.identity?.worldId !== value.metadata.identity.worldId || previous.metadata?.identity?.surfaceId !== value.metadata.identity.surfaceId || previous.metadata?.identity?.patchId !== value.metadata.identity.patchId)))) {
+            reason = new Error('Cannot replace another map format or surface identity. Create a new map instead.'); tx.abort(); return;
+          }
+          store.put(value);
+          tx.objectStore('catalog').put({ id: value.id, name: value.name, savedAt: value.savedAt });
+        };
         tx.oncomplete = () => resolve();
-        tx.onabort = () => reject(tx.error ?? new Error('Map was not saved. Local storage may be full.'));
+        tx.onabort = () => reject(reason ?? tx.error ?? new Error('Map was not saved. Local storage may be full.'));
       });
     } finally { db.close(); }
   }
@@ -58,6 +68,6 @@ export class LocalMapStore {
       });
     } finally { db.close(); }
     if (!value) throw new Error('This saved map is no longer available.');
-    return decodeHeightmap(value);
+    return decodeMap(value);
   }
 }

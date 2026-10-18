@@ -27,6 +27,9 @@ h2 { font-size: 15px; font-weight: 600; margin: 17px 0; }
 .local-maps input, .local-maps select { width: 100%; min-height: 44px; border: 1px solid #b3c6c0; border-radius: 4px; background: #fffefa; color: #243b42; padding: 8px; font-size: 13px; }
 .map-actions { display: flex; gap: 6px; margin-top: 10px; }
 .map-actions button { flex: 1; padding-inline: 8px; font-size: 12px; }
+.new-wrapped { margin-top: 8px; width: 100%; }
+.surface-status { position: absolute; left: 12px; bottom: 110px; margin: 0; padding: 5px 8px; background: #fafbf6ed; border-radius: 4px; font-size: 11px; pointer-events: none; }
+.navigation { flex-wrap: wrap; justify-content: flex-end; max-width: calc(100% - 24px); }
 .quick-actions { position: absolute; z-index: 20; top: max(12px, env(safe-area-inset-top)); right: max(12px, env(safe-area-inset-right)); display: flex; gap: 4px; filter: drop-shadow(0 2px 5px #12313d20); }
 .navigation { position: absolute; z-index: 20; right: max(12px, env(safe-area-inset-right)); bottom: max(54px, calc(env(safe-area-inset-bottom) + 48px)); display: flex; align-items: center; gap: 4px; }
 .navigation output { padding: 6px; background: #fafbf6ed; font-size: 11px; border-radius: 4px; }

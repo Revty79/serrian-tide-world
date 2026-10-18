@@ -66,6 +66,7 @@ async function unchanged(page: Page) {
 
 test('Smooth is selectable, uses percentage intensity, and reduces a sculpted peak', async ({ page }) => {
   await page.goto('/');
+  await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click();
   await slider(page, 'Strength', 1000);
   for (let index = 0; index < 4; index += 1) await click(page, 0.5, 0.5);
   const before = await elevation(page);
@@ -87,6 +88,7 @@ test('Smooth is selectable, uses percentage intensity, and reduces a sculpted pe
 for (const target of [500, 0, -300]) {
   test(`Flatten accepts a ${target} m target and updates real terrain colors and readout`, async ({ page }) => {
     await page.goto('/');
+    await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click();
     await toolsPanel(page, true);
     await page.getByRole('button', { name: 'Flatten', exact: true }).click();
     await expect(map(page)).toHaveAccessibleDescription(/Flatten selected/);
@@ -107,6 +109,7 @@ for (const target of [500, 0, -300]) {
 
 test('an empty Flatten target blocks editing and tool switching preserves terrain and stored controls', async ({ page }) => {
   await page.goto('/');
+  await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click();
   await slider(page, 'Strength', 500);
   await click(page, 0.5, 0.5);
   const before = await elevation(page);
@@ -209,6 +212,7 @@ test('displayed round terrain agrees with the round preview footprint', async ({
 
 test('Reset requires confirmation, cancellation preserves edits, and acceptance restores the whole visible ocean', async ({ page }) => {
   await page.goto('/');
+  await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click();
   await click(page, 0.5, 0.5);
   const before = await elevation(page);
   page.once('dialog', async (dialog) => { expect(dialog.type()).toBe('confirm'); await dialog.dismiss(); });
@@ -272,6 +276,7 @@ for (const tool of ['smooth', 'flatten'] as const) {
 
 test('the visible legend uses the same water and land colors as the numerical palette', async ({ page }) => {
   await page.goto('/');
+  await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click();
   await toolsPanel(page, true);
   const gradients = await page.getByLabel('Elevation color legend').locator('i').evaluateAll((elements) => elements.map((element) => getComputedStyle(element).backgroundImage));
   expect(gradients[0]).toContain('rgb(12, 45, 72)');
@@ -284,6 +289,7 @@ test('the visible legend uses the same water and land colors as the numerical pa
 test('visual evidence: Raise/Lower, Smooth, and Flatten on the aspect-preserving map', async ({ page }, testInfo) => {
   test.setTimeout(60_000);
   await page.goto('/');
+  await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click();
   await slider(page, 'Radius', 14);
   await slider(page, 'Strength', 300);
   await drag(page, [{ x: 0.24, y: 0.55 }, { x: 0.34, y: 0.4 }, { x: 0.5, y: 0.36 }, { x: 0.65, y: 0.5 }, { x: 0.7, y: 0.65 }], 8);

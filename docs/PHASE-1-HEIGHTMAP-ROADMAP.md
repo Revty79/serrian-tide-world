@@ -10,8 +10,8 @@ Updated October 17, 2026. This records the owner's expanded Phase 1 direction: a
 | A1 | Raise/Lower, map-unit radius, meters-per-dab strength, smooth falloff, distance-spaced strokes, pointer lifecycle, frame scheduling | Implemented; Ember's source review approved, per owner |
 | A2 | Smooth, explicit-target Flatten, percentage intensity, elevation inspection, matching color legend, confirmed reset, aspect-preserving fitted display | Implemented; Ember's source and visual review approved, per owner |
 | A3 | Zoom/Pan, bounded Undo/Redo, browser-local Save/Open, New Blank Map, full-screen workspace and overlay left tools | Implemented; Ember's source and visual review approved, per owner |
-| A4 | World/surface identities, shape/topology/metric/projection contracts, bounded/periodic math examples, spherical/hollow strategy, preserved v1 editor and saves | Implemented; independent review and owner acceptance pending |
-| A5 | Seam-aware editing and continuous navigation with a movable visible seam | Planned; not authorized by A4 |
+| A4 | World/surface identities, shape/topology/metric/projection contracts, bounded/periodic math examples, spherical/hollow strategy, preserved v1 editor and saves | Implemented; Ember source/architecture approval supplied by owner |
+| A5 | Seam-aware brushes, continuous recentering, repeated full-screen Fill, bounded Fill/Fit, optional fullscreen, interpolated display and v2 local saves | Implemented under separate A5 authorization; independent review and owner acceptance pending |
 | A6 | Spherical terrain and polar/face/corner continuity | Planned; not authorized by A4 |
 | A7 | Hollow, cylindrical and other initial world geometries | Planned; not authorized by A4 |
 | Later Phase 1 | Remaining inventory below | Planned; pass boundaries and acceptance criteria still require authorization |
@@ -22,7 +22,7 @@ The owner subsequently directed that completed work stay on this repository's `m
 
 The owner moved the surface foundation ahead of the complete Azgaar-style toolset: **A4 surface architecture → A5 seam-aware editing/continuous navigation → A6 spherical terrain/polar continuity → A7 hollow, cylindrical and other initial geometries → subsequent heightmap capability passes**. Review may subdivide these boundaries. The older labels assigning advanced brushes to A4, whole-map operations to A5 or interchange to A7 are superseded; those capabilities remain planned, without a newly assigned pass number.
 
-See [World/surface architecture](WORLD-SURFACE-ARCHITECTURE.md) for capability status and outstanding decisions. A4's mathematical periodic examples are not an interactive wrapping editor. Circle/triangle, spherical, cylindrical, hollow and custom descriptors do not expose unsupported UI options. Current planar saves retain their exact v1 interpretation; no automatic data migration occurs.
+See [World/surface architecture](WORLD-SURFACE-ARCHITECTURE.md) for capability status and outstanding decisions. A5 builds a working horizontally periodic editor on A4's mathematics. Circle/triangle, spherical, cylindrical, hollow and custom descriptors do not expose unsupported UI options. Bounded saves retain their exact v1 interpretation; new wrapped maps use explicit v2 records without automatic conversion or database migration.
 
 ## Brush inventory
 
@@ -63,7 +63,7 @@ All template-generation capabilities are planned and unimplemented: hills, pits,
 | --- | --- |
 | Image conversion with adjustable height/color mappings | Planned |
 | Heightmap preview and review aids | Partly implemented: the live numerical 2D editor and elevation legend exist; dedicated preview/export workflows are planned |
-| Heightmap import/export | Planned for a subsequent pass; the existing browser-local v1 save format does not provide external interchange |
+| Heightmap import/export | Planned for a subsequent pass; browser-local v1/v2 saves do not provide external interchange |
 | Contours | Planned as a separate presentation layer |
 | Hachures | Planned as a separate presentation layer |
 | Basic 3D terrain preview | Planned; no 3D implementation in A2 |
@@ -74,12 +74,13 @@ Drainage analysis, depression handling, and water erosion are planned. Their alg
 
 ## Navigation, preservation, and recovery
 
-A3 implements pointer-centered zoom, bounded panning, Space/explicit Pan and two-finger navigation; stroke/reset Undo/Redo; explicit IndexedDB Save/Open; unsaved-change guards; and New Blank Map. Its full-screen map workspace and collapsible overlay tools are the preferred long-term interface architecture. A4 preserves these features and the v1 format unchanged. Camera, history, document state, surface providers and storage adapters remain separate from numerical terrain. Saves are browser/profile/origin/device local and not synchronized. Autosave, crash/session recovery, external interchange and server persistence remain future scope. See [A3 completion](A3-COMPLETION.md) and [A4 completion](A4-COMPLETION.md).
+A3 implements pointer-centered zoom, bounded panning, Space/explicit Pan and two-finger navigation; stroke/reset Undo/Redo; explicit IndexedDB Save/Open; unsaved-change guards; and New Blank Map. A4 supplies pure surface contracts. A5 adds actual continuous periodic recentering, New Wrapped Map and v2 saves, default Fill, separate Fit Entire Map, native fullscreen and smoother elevation presentation. The full-screen stage and overlay tools remain the preferred interface architecture. Camera, history, document state, surface providers and storage remain separate from numerical authority. Saves are browser/profile/origin/device local and not synchronized. Autosave, crash/session recovery, external interchange and server persistence remain future scope. See [A5 completion](A5-COMPLETION.md).
 
 ## Architectural considerations for future passes
 
 - Numerical elevation remains authoritative. Keep the Float32 engine, tool operations, application controls, display styles, and eventual storage formats separate. Future import/export must declare version, encoding, units, validation, and resolution explicitly.
 - Retain planar editing and aspect-preserving display without assuming every World is an Earth-like sphere. Future geometry and coordinate systems require their own design; do not silently reinterpret existing map units.
+- Recenter the working area on every eventually supported geometry without moving numerical geography: spherical rotation, movable cuts/local views and independent hollow surface selection belong to future view adapters. A5 proves only the periodic surface. Display interpolation adds no authoritative detail; higher-resolution/tiled terrain requires a separate numerical/storage design.
 - Preserve future living-history goals by leaving room for explicit historical states and changes. A2 creates no timeline, revision-storage system, or historical canon.
 - Atlas and rebuilt Worlds will ultimately replace the current implementation inside the existing Serrian Tide Next.js/TypeScript website. That host will own authentication, authoritative permissions, database access, and actual World-record associations. No guessed World schema or duplicate auth service belongs in this engine.
 - Future map-style goals should consume the same numerical geography through distinct presentation layers. Contours, hachures, illustrated cartography, other map styles, and 3D preview must not redefine or silently rewrite the terrain.
@@ -87,4 +88,4 @@ A3 implements pointer-centered zoom, bounded panning, Space/explicit Pan and two
 
 The inventory was checked against the project's primary [Heightmap customization documentation](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Heightmap-customization) and [template-editor documentation](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Heightmap-template-editor). Their application semantics and data models are not adopted automatically. This roadmap records the owner's requested scope; exact future behavior still requires a bounded pass.
 
-The owner confirmed Ember's A3 source/visual approval and authorized A4 surface architecture. Stop after A4 for review; A5 and later work, integration and deployment require their own authorization. No future inventory item is authorized merely by appearing here.
+The owner confirmed Ember's A4 source/architecture approval and separately authorized A5 and its display/rendering supplements. Stop after A5 for review; A6 and later work, integration and deployment require their own authorization. No future inventory item is authorized merely by appearing here.

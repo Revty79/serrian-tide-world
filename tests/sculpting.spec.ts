@@ -71,6 +71,7 @@ async function unchanged(page: Page) {
 
 test('actual toolbar and canvas raise an island, increase its height, and lower it back under water', async ({ page }) => {
   await page.goto('/');
+  await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click();
   await toolsPanel(page, true);
   await expect(page.getByRole('button', { name: 'Raise', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await expect.poll(() => pixel(page, 0.5, 0.5)).toEqual(water);
@@ -93,6 +94,7 @@ test('actual toolbar and canvas raise an island, increase its height, and lower 
 
 test('one fast browser pointer jump leaves a continuous land stroke', async ({ page }) => {
   await page.goto('/');
+  await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click();
   await drag(page, [{ x: 0.15, y: 0.5 }, { x: 0.85, y: 0.5 }]);
   await expect.poll(async () => (await pixel(page, 0.5, 0.5))[1]! > (await pixel(page, 0.5, 0.5))[2]!).toBe(true);
   for (let x = 0.15; x <= 0.85; x += 0.025) {
@@ -103,6 +105,7 @@ test('one fast browser pointer jump leaves a continuous land stroke', async ({ p
 
 test('radius and strength controls visibly affect the brush footprint', async ({ page }) => {
   await page.goto('/');
+  await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click();
   await clickAt(page, 0.25, 0.3);
   await expect.poll(() => pixel(page, 0.25, 0.3)).not.toEqual(water);
   expect(await pixel(page, 0.34, 0.3)).toEqual(water);
@@ -272,6 +275,7 @@ test('native single-touch dragging sculpts without scrolling and ends cleanly', 
 
 test('visual evidence: islands, higher terrain, and a lowered channel sculpted through the interface', async ({ page }, testInfo) => {
   await page.goto('/');
+  await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click();
   await setSlider(page, 'Radius', 14);
   await setSlider(page, 'Strength', 300);
   await drag(page, [{ x: 0.25, y: 0.52 }, { x: 0.35, y: 0.4 }, { x: 0.49, y: 0.38 }, { x: 0.62, y: 0.48 }, { x: 0.7, y: 0.65 }], 12);

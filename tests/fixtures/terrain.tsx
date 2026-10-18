@@ -5,8 +5,11 @@ import { TerrainCanvas, type TerrainCanvasHandle } from '../../src/components/Te
 import { TerrainHistory } from '../../src/editor/terrain-history.ts';
 import type { BrushSettings } from '../../src/terrain/brush.ts';
 import { createBlankTerrain } from '../../src/terrain/model.ts';
+import { createWrappedTerrain } from '../../src/terrain/topology.ts';
 
-export const terrain = createBlankTerrain({ id: 'component-browser-fixture' });
+export const terrain = new URL(location.href).searchParams.has('wrapped')
+  ? createWrappedTerrain({ id: 'wrapped-browser-fixture', identity: { worldId: 'fixture-world', surfaceId: 'fixture-surface', patchId: 'p' }, width: new URL(location.href).searchParams.has('narrow') ? 1e-8 : 1 })
+  : createBlankTerrain({ id: 'component-browser-fixture' });
 export const history = new TerrainHistory(terrain);
 export let camera: TerrainCanvasHandle;
 export let setPan: (pan: boolean) => void;
@@ -47,7 +50,7 @@ function Fixture() {
   const handle = useRef<TerrainCanvasHandle>(null);
   const [pan, updatePan] = useState(false);
   setPan = updatePan;
-  camera = { finishInteraction: () => handle.current!.finishInteraction(), zoom: (factor) => handle.current!.zoom(factor), fit: () => handle.current!.fit() };
+  camera = { finishInteraction: () => handle.current!.finishInteraction(), zoom: (factor) => handle.current!.zoom(factor), fit: () => handle.current!.fit(), fill: () => handle.current!.fill() };
   const [brush, updateBrush] = useState<BrushSettings | undefined>({ tool: 'raise', radius: 0.06, strength: 200 });
   const [revision, setRevision] = useState(0);
   changeBrush = updateBrush;

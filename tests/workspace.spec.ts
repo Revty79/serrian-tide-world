@@ -34,6 +34,7 @@ test.afterEach(({ page }) => { expect(messages.get(page)).toEqual([]); });
 
 test('full viewport, overlay tools, keyboard focus and uninterrupted stroke geometry', async ({ page }) => {
   await page.goto('/');
+  await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click();
   const area = page.getByLabel('Map display area');
   expect(await area.boundingBox()).toEqual({ x: 0, y: 0, ...page.viewportSize()! });
   const original = await bounds(page);
@@ -91,7 +92,8 @@ test('wheel anchor, pan, Space drag and Fit preserve exact data and zoomed brush
 });
 
 test('complete strokes, cancellation, Reset and shortcuts have correct history and dirty states', async ({ page }) => {
-  await page.goto('/'); await expect(page.getByRole('button', { name: 'Undo', exact: true })).toBeDisabled();
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click(); await expect(page.getByRole('button', { name: 'Undo', exact: true })).toBeDisabled();
   const p = await point(page); await page.mouse.move(p.x, p.y); await page.mouse.down(); await page.mouse.move(p.x + 15, p.y + 10);
   await map(page).dispatchEvent('pointercancel', { pointerId: 1, isPrimary: true }); await page.mouse.up();
   await expect(page.getByRole('button', { name: 'Undo', exact: true })).toBeEnabled();
@@ -106,7 +108,8 @@ test('complete strokes, cancellation, Reset and shortcuts have correct history a
 });
 
 test('actual Save, close, reopen, Open and continued editing preserve the full numerical map and identity', async ({ page, context }) => {
-  await page.goto('/'); await toolsPanel(page, true); await page.getByRole('textbox', { name: 'Map name', exact: true }).fill('Serrian coast');
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click(); await toolsPanel(page, true); await page.getByRole('textbox', { name: 'Map name', exact: true }).fill('Serrian coast');
   for (const tool of ['Raise', 'Lower', 'Smooth', 'Flatten']) {
     await toolsPanel(page, true); await page.getByRole('button', { name: tool, exact: true }).click();
     if (tool === 'Flatten') await page.getByRole('spinbutton', { name: 'Target elevation (m)' }).fill('640.25');
@@ -127,7 +130,8 @@ test('actual Save, close, reopen, Open and continued editing preserve the full n
 });
 
 test('corrupt save rejection leaves unsaved terrain, camera and history intact', async ({ page }) => {
-  await page.goto('/'); await sculpt(page); await save(page); const saved = await savedState(page);
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click(); await sculpt(page); await save(page); const saved = await savedState(page);
   await sculpt(page, .7, .5); await page.getByRole('button', { name: 'Zoom In', exact: true }).click();
   const rect = await bounds(page);
   await page.evaluate(async (id) => {
@@ -149,7 +153,8 @@ test('corrupt save rejection leaves unsaved terrain, camera and history intact',
 });
 
 test('unsaved New/Open and browser navigation warn, cancellation preserves work, new map has fresh identity', async ({ page }) => {
-  await page.goto('/'); await sculpt(page); await save(page); const saved = await savedState(page);
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click(); await sculpt(page); await save(page); const saved = await savedState(page);
   await sculpt(page, .65, .5); await toolsPanel(page, true);
   for (const action of ['New Blank Map', 'Open Map']) {
     page.once('dialog', async (dialog) => { expect(dialog.type()).toBe('confirm'); await dialog.dismiss(); });
@@ -170,7 +175,8 @@ test('unsaved New/Open and browser navigation warn, cancellation preserves work,
 
 test('storage denial reports failure and keeps the map unsaved', async ({ page }) => {
   await page.addInitScript(() => { Object.defineProperty(window, 'indexedDB', { get() { throw new Error('Storage denied for test'); } }); });
-  await page.goto('/'); await expect(page.getByRole('alert')).toContainText('Storage denied');
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click(); await expect(page.getByRole('alert')).toContainText('Storage denied');
   await page.getByRole('button', { name: 'Dismiss', exact: true }).click(); await sculpt(page);
   await page.getByRole('button', { name: 'Save', exact: true }).click();
   await expect(page.getByRole('alert')).toContainText('Storage denied'); await expect(page.getByText('Unsaved changes', { exact: true })).toBeVisible();
@@ -202,7 +208,8 @@ test('native two-finger pinch/pan never sculpts, remaining finger stays in navig
 });
 
 test('A3 visual evidence: sculpted full-screen map, overlay tools, zoomed navigation and saved state', async ({ page }, info) => {
-  await page.goto('/'); await toolsPanel(page, true);
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click(); await toolsPanel(page, true);
   const radius = page.getByRole('slider', { name: /Radius/ }); await radius.press('End');
   const strength = page.getByRole('slider', { name: /Strength/ }); await strength.press('End');
   await toolsPanel(page, false);

@@ -61,6 +61,6 @@ test('A4 opens an A3 v1 save in the actual planar editor, preserves it through v
   await page.getByRole('button', { name: 'Save', exact: true }).click(); await expect(page.getByText('Saved on this device', { exact: true })).toBeVisible();
   const edited = await signature(); expect(edited.digest).not.toBe(original.digest); expect(edited.metadata).toBe(original.metadata);
   await toolsPanel(page, true);
-  await page.screenshot({ path: `docs/evidence/a4-${info.project.name}-legacy-preserved.png` });
+  await page.screenshot({ path: info.outputPath('a4-legacy-preserved-regression.png') });
   expect(errors).toEqual([]); await expect(page.getByRole('alert')).toHaveCount(0);
 });
