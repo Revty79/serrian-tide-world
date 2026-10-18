@@ -1,0 +1,3336 @@
+{
+  "baseline": "e42bb8b2e1b360cebc18443be863eb705cd54781",
+  "branch": "main",
+  "review": "Stop after A7-A for Ember independent technical review. No A7-B authorized; owner acceptance separate.",
+  "numerical": {
+    "tests": 216,
+    "existingTests": 190,
+    "cylinderTests": 26,
+    "passed": 216,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 4568.1891
+  },
+  "browser": {
+    "startTime": "2026-10-18T19:17:30.904Z",
+    "duration": 851042.013,
+    "expected": 238,
+    "skipped": 4,
+    "unexpected": 0,
+    "flaky": 0,
+    "total": 242,
+    "retries": 0,
+    "exitCode": 0,
+    "executionNote": "After all 242 outcomes, Windows server teardown stalled. Closed only the verified temporary port-5190 Vite/npm/cmd tree; Playwright then completed report and exited 0. Duration includes teardown wait. No runner/test termination or retries.",
+    "frozen": {
+      "files": 135,
+      "beforeDigest": "431dea28b32969407645855be9fe69f45d2df355d7590fe94674a3098cc7456c",
+      "afterDigest": "431dea28b32969407645855be9fe69f45d2df355d7590fe94674a3098cc7456c",
+      "unchanged": true,
+      "changedPaths": []
+    },
+    "cases": [
+      {
+        "title": "Atlas opens with an uninterrupted, responsive ocean and no browser errors",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 1013
+      },
+      {
+        "title": "viewport resizing repaints the actual application canvas as the same ocean",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 1021
+      },
+      {
+        "title": "real canvas rendering honors sea level and synthetic land while preserving all terrain on resize",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 750
+      },
+      {
+        "title": "Atlas opens with an uninterrupted, responsive ocean and no browser errors",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 959
+      },
+      {
+        "title": "viewport resizing repaints the actual application canvas as the same ocean",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 867
+      },
+      {
+        "title": "real canvas rendering honors sea level and synthetic land while preserving all terrain on resize",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 736
+      },
+      {
+        "title": "same saved world in full-height, focused and Fit views: real widths, previews, proportions and responsive screenshots",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 5493
+      },
+      {
+        "title": "view choices, movable cuts, vertical exploration, toolbar, fullscreen and zoom preserve data and pending Redo",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 4101
+      },
+      {
+        "title": "focused raise preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 4752
+      },
+      {
+        "title": "focused lower preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 4711
+      },
+      {
+        "title": "focused smooth preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 4593
+      },
+      {
+        "title": "focused flatten preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 4523
+      },
+      {
+        "title": "edge-assisted drawing crosses the focused boundary and periodic phase cut as one mouse/touch stroke",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 5307
+      },
+      {
+        "title": "same saved world in full-height, focused and Fit views: real widths, previews, proportions and responsive screenshots",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 14118
+      },
+      {
+        "title": "view choices, movable cuts, vertical exploration, toolbar, fullscreen and zoom preserve data and pending Redo",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 4162
+      },
+      {
+        "title": "focused raise preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 11998
+      },
+      {
+        "title": "focused lower preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 10999
+      },
+      {
+        "title": "focused smooth preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 11369
+      },
+      {
+        "title": "focused flatten preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 10996
+      },
+      {
+        "title": "edge-assisted drawing crosses the focused boundary and periodic phase cut as one mouse/touch stroke",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 5007
+      },
+      {
+        "title": "actual editor: Space from a focused button and multiple drags with one held key pan both ways without sculpting",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 4221
+      },
+      {
+        "title": "bounded wide editor: no horizontal room at Fill, zoom creates room, Pan traverses both bounds, Fit remains separate",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 2512
+      },
+      {
+        "title": "repeated views share exactly one dab; long pans, seam strokes and aligned readouts match direct numerical editing",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 15923
+      },
+      {
+        "title": "actual raise: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 12826
+      },
+      {
+        "title": "actual lower: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 11000
+      },
+      {
+        "title": "actual smooth: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 11881
+      },
+      {
+        "title": "actual flatten: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 12242
+      },
+      {
+        "title": "left-edge assistance crosses the opposite phase cut and an unrelated host resize safely ends it",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 8264
+      },
+      {
+        "title": "bounded edge scroll moves both axes, stops at real boundaries without time-strength, can be disabled, and never starts on hover",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 13715
+      },
+      {
+        "title": "Escape, cancel, lost capture, blur, tool changes and toolbar obstruction leave no continuing camera or stray dabs",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 33618
+      },
+      {
+        "title": "native touch and pen navigate horizontally, touch edge strokes stay one operation, two fingers cancel assistance safely",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 9838
+      },
+      {
+        "title": "actual editor: Space from a focused button and multiple drags with one held key pan both ways without sculpting",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 4602
+      },
+      {
+        "title": "bounded wide editor: no horizontal room at Fill, zoom creates room, Pan traverses both bounds, Fit remains separate",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 2646
+      },
+      {
+        "title": "repeated views share exactly one dab; long pans, seam strokes and aligned readouts match direct numerical editing",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 17462
+      },
+      {
+        "title": "actual raise: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 13054
+      },
+      {
+        "title": "actual lower: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 11544
+      },
+      {
+        "title": "actual smooth: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 11861
+      },
+      {
+        "title": "actual flatten: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 12176
+      },
+      {
+        "title": "left-edge assistance crosses the opposite phase cut and an unrelated host resize safely ends it",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 8431
+      },
+      {
+        "title": "bounded edge scroll moves both axes, stops at real boundaries without time-strength, can be disabled, and never starts on hover",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 10744
+      },
+      {
+        "title": "Escape, cancel, lost capture, blur, tool changes and toolbar obstruction leave no continuing camera or stray dabs",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 33611
+      },
+      {
+        "title": "native touch and pen navigate horizontally, touch edge strokes stay one operation, two fingers cancel assistance safely",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 10463
+      },
+      {
+        "title": "Smooth is selectable, uses percentage intensity, and reduces a sculpted peak",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 2707
+      },
+      {
+        "title": "Flatten accepts a 500 m target and updates real terrain colors and readout",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 1299
+      },
+      {
+        "title": "Flatten accepts a 0 m target and updates real terrain colors and readout",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 1287
+      },
+      {
+        "title": "Flatten accepts a -300 m target and updates real terrain colors and readout",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 1317
+      },
+      {
+        "title": "an empty Flatten target blocks editing and tool switching preserves terrain and stored controls",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 4062
+      },
+      {
+        "title": "the cursor readout samples exact grid values and all three sea-level relationships",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 926
+      },
+      {
+        "title": "fitted maps and brush cursors stay circular on wide, tall, and square viewports; margins never paint",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 1261
+      },
+      {
+        "title": "displayed round terrain agrees with the round preview footprint",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 644
+      },
+      {
+        "title": "Reset requires confirmation, cancellation preserves edits, and acceptance restores the whole visible ocean",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 1871
+      },
+      {
+        "title": "smooth produces equivalent real-browser results with sparse and dense strokes",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 9131
+      },
+      {
+        "title": "smooth stops after cancellation and retains valid boundary edits",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 961
+      },
+      {
+        "title": "flatten produces equivalent real-browser results with sparse and dense strokes",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 8825
+      },
+      {
+        "title": "flatten stops after cancellation and retains valid boundary edits",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 992
+      },
+      {
+        "title": "the visible legend uses the same water and land colors as the numerical palette",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 932
+      },
+      {
+        "title": "visual evidence: Raise/Lower, Smooth, and Flatten on the aspect-preserving map",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 20153
+      },
+      {
+        "title": "Smooth is selectable, uses percentage intensity, and reduces a sculpted peak",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 2207
+      },
+      {
+        "title": "Flatten accepts a 500 m target and updates real terrain colors and readout",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 1247
+      },
+      {
+        "title": "Flatten accepts a 0 m target and updates real terrain colors and readout",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 1234
+      },
+      {
+        "title": "Flatten accepts a -300 m target and updates real terrain colors and readout",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 1259
+      },
+      {
+        "title": "an empty Flatten target blocks editing and tool switching preserves terrain and stored controls",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 3798
+      },
+      {
+        "title": "the cursor readout samples exact grid values and all three sea-level relationships",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 927
+      },
+      {
+        "title": "fitted maps and brush cursors stay circular on wide, tall, and square viewports; margins never paint",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 1157
+      },
+      {
+        "title": "displayed round terrain agrees with the round preview footprint",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 615
+      },
+      {
+        "title": "Reset requires confirmation, cancellation preserves edits, and acceptance restores the whole visible ocean",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 1919
+      },
+      {
+        "title": "smooth produces equivalent real-browser results with sparse and dense strokes",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 6940
+      },
+      {
+        "title": "smooth stops after cancellation and retains valid boundary edits",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 878
+      },
+      {
+        "title": "flatten produces equivalent real-browser results with sparse and dense strokes",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 6840
+      },
+      {
+        "title": "flatten stops after cancellation and retains valid boundary edits",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 776
+      },
+      {
+        "title": "the visible legend uses the same water and land colors as the numerical palette",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 932
+      },
+      {
+        "title": "visual evidence: Raise/Lower, Smooth, and Flatten on the aspect-preserving map",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 14913
+      },
+      {
+        "title": "actual toolbar and canvas raise an island, increase its height, and lower it back under water",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 2109
+      },
+      {
+        "title": "one fast browser pointer jump leaves a continuous land stroke",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 1211
+      },
+      {
+        "title": "radius and strength controls visibly affect the brush footprint",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 1641
+      },
+      {
+        "title": "hovering, stationary contact, and movement after release leave the numerical data unchanged",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 1508
+      },
+      {
+        "title": "pointercancel stops an active stroke even while the button remains down",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 892
+      },
+      {
+        "title": "lostpointercapture stops an active stroke even while the button remains down",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 1023
+      },
+      {
+        "title": "blur stops an active stroke even while the button remains down",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 972
+      },
+      {
+        "title": "resize stops an active stroke even while the button remains down",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 1088
+      },
+      {
+        "title": "read-only stops an active stroke even while the button remains down",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 958
+      },
+      {
+        "title": "captured strokes handle corners and an outside release without continuing to paint",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 722
+      },
+      {
+        "title": "resizing an already sculpted component preserves every elevation and the buffer identity",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 848
+      },
+      {
+        "title": "equivalent browser strokes are consistent across sparse and dense events",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 7350
+      },
+      {
+        "title": "equivalent browser strokes are consistent across sparse and dense events when exiting the map",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 7695
+      },
+      {
+        "title": "many pointer events in one task queue one repaint and no React commits",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 718
+      },
+      {
+        "title": "a read-only host and invalid brush settings cannot mutate terrain",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 572
+      },
+      {
+        "title": "native pen contact sculpts and pen hover after release does not paint",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 686
+      },
+      {
+        "title": "native single-touch dragging sculpts without scrolling and ends cleanly",
+        "project": "desktop",
+        "status": "skipped",
+        "durationMs": 115
+      },
+      {
+        "title": "visual evidence: islands, higher terrain, and a lowered channel sculpted through the interface",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 16599
+      },
+      {
+        "title": "actual toolbar and canvas raise an island, increase its height, and lower it back under water",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 1828
+      },
+      {
+        "title": "one fast browser pointer jump leaves a continuous land stroke",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 1046
+      },
+      {
+        "title": "radius and strength controls visibly affect the brush footprint",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 1579
+      },
+      {
+        "title": "hovering, stationary contact, and movement after release leave the numerical data unchanged",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 1497
+      },
+      {
+        "title": "pointercancel stops an active stroke even while the button remains down",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 953
+      },
+      {
+        "title": "lostpointercapture stops an active stroke even while the button remains down",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 926
+      },
+      {
+        "title": "blur stops an active stroke even while the button remains down",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 968
+      },
+      {
+        "title": "resize stops an active stroke even while the button remains down",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 1057
+      },
+      {
+        "title": "read-only stops an active stroke even while the button remains down",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 871
+      },
+      {
+        "title": "captured strokes handle corners and an outside release without continuing to paint",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 726
+      },
+      {
+        "title": "resizing an already sculpted component preserves every elevation and the buffer identity",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 817
+      },
+      {
+        "title": "equivalent browser strokes are consistent across sparse and dense events",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 6160
+      },
+      {
+        "title": "equivalent browser strokes are consistent across sparse and dense events when exiting the map",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 5610
+      },
+      {
+        "title": "many pointer events in one task queue one repaint and no React commits",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 645
+      },
+      {
+        "title": "a read-only host and invalid brush settings cannot mutate terrain",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 558
+      },
+      {
+        "title": "native pen contact sculpts and pen hover after release does not paint",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 611
+      },
+      {
+        "title": "native single-touch dragging sculpts without scrolling and ends cleanly",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 619
+      },
+      {
+        "title": "visual evidence: islands, higher terrain, and a lowered channel sculpted through the interface",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 11690
+      },
+      {
+        "title": "historical blank overlay: real continent, shared net/rotated screenshots, discard and reload guards, planar preservation",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 4307
+      },
+      {
+        "title": "all four tools on globe and connected net match the numerical engine bit for bit with exact Undo/Redo and readouts",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 6076
+      },
+      {
+        "title": "joined net stroke and screen-edge assistance retain physical spacing; gaps/cuts safely end the gesture",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 2267
+      },
+      {
+        "title": "mouse/pen/touch arbitration, cancellation, shortcuts, recenter and view changes protect single operations",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 3145
+      },
+      {
+        "title": "real projected painting across all twelve face boundaries, eight corners, poles, and a clipped globe limb",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 15395
+      },
+      {
+        "title": "actual N256 blank preparation, physical controls focus, responsive narrow/square/ultrawide layout and fullscreen",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 2607
+      },
+      {
+        "title": "brush-to-screen and rotation performance N=128",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 4564
+      },
+      {
+        "title": "brush-to-screen and rotation performance N=256",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 6529
+      },
+      {
+        "title": "historical blank overlay: real continent, shared net/rotated screenshots, discard and reload guards, planar preservation",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 4256
+      },
+      {
+        "title": "all four tools on globe and connected net match the numerical engine bit for bit with exact Undo/Redo and readouts",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 5574
+      },
+      {
+        "title": "joined net stroke and screen-edge assistance retain physical spacing; gaps/cuts safely end the gesture",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 2266
+      },
+      {
+        "title": "mouse/pen/touch arbitration, cancellation, shortcuts, recenter and view changes protect single operations",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 2967
+      },
+      {
+        "title": "real projected painting across all twelve face boundaries, eight corners, poles, and a clipped globe limb",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 12057
+      },
+      {
+        "title": "actual N256 blank preparation, physical controls focus, responsive narrow/square/ultrawide layout and fullscreen",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 2568
+      },
+      {
+        "title": "brush-to-screen and rotation performance N=128",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 10186
+      },
+      {
+        "title": "brush-to-screen and rotation performance N=256",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 16116
+      },
+      {
+        "title": "unified held limb stroke N128: native input, dynamic visibility, exact samples/history and Save/Open",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 6706
+      },
+      {
+        "title": "unified held limb stroke N256: native input, dynamic visibility, exact samples/history and Save/Open",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 7497
+      },
+      {
+        "title": "assisted geographical continuity at a seam under a manually rotated camera",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 7816
+      },
+      {
+        "title": "assisted geographical continuity at a corner under a manually rotated camera",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 3682
+      },
+      {
+        "title": "assisted geographical continuity at a pole under a manually rotated camera",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 2730
+      },
+      {
+        "title": "native pen assistance stops on release and remains one exact operation",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 3586
+      },
+      {
+        "title": "assistance stops on pointercancel without damaging applied history",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 3218
+      },
+      {
+        "title": "assistance stops on lostcapture without damaging applied history",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 3325
+      },
+      {
+        "title": "assistance stops on Space without damaging applied history",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 3365
+      },
+      {
+        "title": "assistance stops on navigation without damaging applied history",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 3054
+      },
+      {
+        "title": "assistance stops on blur without damaging applied history",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 3193
+      },
+      {
+        "title": "assistance stops on resize without damaging applied history",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 3218
+      },
+      {
+        "title": "assistance stops on wheel without damaging applied history",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 3329
+      },
+      {
+        "title": "native two-finger takeover stops assisted painting and continues globe navigation",
+        "project": "desktop",
+        "status": "skipped",
+        "durationMs": 101
+      },
+      {
+        "title": "opt-out, actual limb at zoom, pole-facing orientation and preview follow physical geography",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 4541
+      },
+      {
+        "title": "Globe: contextual radius, strength, intensity and signed target update numerical response and preview",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 10518
+      },
+      {
+        "title": "Six-face net: contextual radius, strength, intensity and signed target update numerical response and preview",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 7979
+      },
+      {
+        "title": "unified held limb stroke N128: native input, dynamic visibility, exact samples/history and Save/Open",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 9426
+      },
+      {
+        "title": "unified held limb stroke N256: native input, dynamic visibility, exact samples/history and Save/Open",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 11349
+      },
+      {
+        "title": "assisted geographical continuity at a seam under a manually rotated camera",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 2506
+      },
+      {
+        "title": "assisted geographical continuity at a corner under a manually rotated camera",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 3045
+      },
+      {
+        "title": "assisted geographical continuity at a pole under a manually rotated camera",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 2606
+      },
+      {
+        "title": "native pen assistance stops on release and remains one exact operation",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 3431
+      },
+      {
+        "title": "assistance stops on pointercancel without damaging applied history",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 3640
+      },
+      {
+        "title": "assistance stops on lostcapture without damaging applied history",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 3002
+      },
+      {
+        "title": "assistance stops on Space without damaging applied history",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 2885
+      },
+      {
+        "title": "assistance stops on navigation without damaging applied history",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 3061
+      },
+      {
+        "title": "assistance stops on blur without damaging applied history",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 3035
+      },
+      {
+        "title": "assistance stops on resize without damaging applied history",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 2896
+      },
+      {
+        "title": "assistance stops on wheel without damaging applied history",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 2954
+      },
+      {
+        "title": "native two-finger takeover stops assisted painting and continues globe navigation",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 2909
+      },
+      {
+        "title": "opt-out, actual limb at zoom, pole-facing orientation and preview follow physical geography",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 4461
+      },
+      {
+        "title": "Globe: contextual radius, strength, intensity and signed target update numerical response and preview",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 9226
+      },
+      {
+        "title": "Six-face net: contextual radius, strength, intensity and signed target update numerical response and preview",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 8205
+      },
+      {
+        "title": "controlled spherical editing N128",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 32120
+      },
+      {
+        "title": "controlled spherical editing N256",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 35128
+      },
+      {
+        "title": "CPU profile actual N256 repeated editing",
+        "project": "desktop",
+        "status": "skipped",
+        "durationMs": 117
+      },
+      {
+        "title": "controlled spherical editing N128",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 61075
+      },
+      {
+        "title": "controlled spherical editing N256",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 76350
+      },
+      {
+        "title": "CPU profile actual N256 repeated editing",
+        "project": "mobile",
+        "status": "skipped",
+        "durationMs": 186
+      },
+      {
+        "title": "actual UI: blank and sculpted sphere survives reload, reopens exact geography and continues all four tools",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 8067
+      },
+      {
+        "title": "Ctrl-S while a real brush is held drains queued input exactly; saved/modified/name checkpoints and unload guards work",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 3120
+      },
+      {
+        "title": "existing DB v1 and mixed library preserve legacy records; spherical signed-zero/edge/corner restoration and overwrite guards",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 2685
+      },
+      {
+        "title": "quota, interrupted transaction and storage denial retain edits and old saves; bad opens and discard cancellation preserve active sphere",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 6381
+      },
+      {
+        "title": "real IndexedDB persistence timing, responsiveness and memory payloads N=128",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 2172
+      },
+      {
+        "title": "real IndexedDB persistence timing, responsiveness and memory payloads N=256",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 3197
+      },
+      {
+        "title": "actual UI: blank and sculpted sphere survives reload, reopens exact geography and continues all four tools",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 7096
+      },
+      {
+        "title": "Ctrl-S while a real brush is held drains queued input exactly; saved/modified/name checkpoints and unload guards work",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 2822
+      },
+      {
+        "title": "existing DB v1 and mixed library preserve legacy records; spherical signed-zero/edge/corner restoration and overwrite guards",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 2421
+      },
+      {
+        "title": "quota, interrupted transaction and storage denial retain edits and old saves; bad opens and discard cancellation preserve active sphere",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 5052
+      },
+      {
+        "title": "real IndexedDB persistence timing, responsiveness and memory payloads N=128",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 4149
+      },
+      {
+        "title": "real IndexedDB persistence timing, responsiveness and memory payloads N=256",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 7133
+      },
+      {
+        "title": "historical overlay host: explicit session-only preview preserves bounded unsaved map, camera and pending Redo",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 2958
+      },
+      {
+        "title": "historical overlay host: explicit session-only preview preserves wrapped Focus unsaved map, camera and pending Redo",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 5036
+      },
+      {
+        "title": "real viewport: every face, edge and corner is inspectable in both views with canonical readouts and invalid gaps",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 9680
+      },
+      {
+        "title": "historical N=256 preview validates scale, cancels preparation safely and initializes in scheduled batches",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 3393
+      },
+      {
+        "title": "mouse, keyboard, native touch/pinch, cancellation, net pan, fullscreen and selection preserve geography",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 2410
+      },
+      {
+        "title": "real browser performance: N=128 rotation, zoom and view switching use caches and bounded frame work",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 2996
+      },
+      {
+        "title": "real browser performance: N=256 rotation, zoom and view switching use caches and bounded frame work",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 3784
+      },
+      {
+        "title": "historical overlay host: explicit session-only preview preserves bounded unsaved map, camera and pending Redo",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 2625
+      },
+      {
+        "title": "historical overlay host: explicit session-only preview preserves wrapped Focus unsaved map, camera and pending Redo",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 5130
+      },
+      {
+        "title": "real viewport: every face, edge and corner is inspectable in both views with canonical readouts and invalid gaps",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 8596
+      },
+      {
+        "title": "historical N=256 preview validates scale, cancels preparation safely and initializes in scheduled batches",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 3085
+      },
+      {
+        "title": "mouse, keyboard, native touch/pinch, cancellation, net pan, fullscreen and selection preserve geography",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 2305
+      },
+      {
+        "title": "real browser performance: N=128 rotation, zoom and view switching use caches and bounded frame work",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 3917
+      },
+      {
+        "title": "real browser performance: N=256 rotation, zoom and view switching use caches and bounded frame work",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 4910
+      },
+      {
+        "title": "A4 opens an A3 v1 save in the actual planar editor, preserves it through view/history operations and continues editing",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 2755
+      },
+      {
+        "title": "A4 opens an A3 v1 save in the actual planar editor, preserves it through view/history operations and continues editing",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 2545
+      },
+      {
+        "title": "start directly on any supported shape; setup is explicit, accessible and cancellable without creating a hidden flat document",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 1836
+      },
+      {
+        "title": "one workflow creates, edits with all four tools, saves and reopens v1/v2/v3 with exact history and shared globe/net authority",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 23692
+      },
+      {
+        "title": "cross-shape New/Open cancellation, corrupt data and storage failures retain the current document and history",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 3840
+      },
+      {
+        "title": "desktop, ultrawide, square and tall views preserve proportions, context, fullscreen and geography",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 5997
+      },
+      {
+        "title": "start directly on any supported shape; setup is explicit, accessible and cancellable without creating a hidden flat document",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 1686
+      },
+      {
+        "title": "one workflow creates, edits with all four tools, saves and reopens v1/v2/v3 with exact history and shared globe/net authority",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 21758
+      },
+      {
+        "title": "cross-shape New/Open cancellation, corrupt data and storage failures retain the current document and history",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 3656
+      },
+      {
+        "title": "desktop, ultrawide, square and tall views preserve proportions, context, fullscreen and geography",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 12302
+      },
+      {
+        "title": "full viewport, overlay tools, keyboard focus and uninterrupted stroke geometry",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 1273
+      },
+      {
+        "title": "wheel anchor, pan, Space drag and Fit preserve exact data and zoomed brush footprint",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 6824
+      },
+      {
+        "title": "complete strokes, cancellation, Reset and shortcuts have correct history and dirty states",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 2223
+      },
+      {
+        "title": "actual Save, close, reopen, Open and continued editing preserve the full numerical map and identity",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 4103
+      },
+      {
+        "title": "corrupt save rejection leaves unsaved terrain, camera and history intact",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 1777
+      },
+      {
+        "title": "unsaved New/Open and browser navigation warn, cancellation preserves work, new map has fresh identity",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 3908
+      },
+      {
+        "title": "storage denial reports failure and keeps the map unsaved",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 808
+      },
+      {
+        "title": "native two-finger pinch/pan never sculpts, remaining finger stays in navigation, single finger still edits",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 6809
+      },
+      {
+        "title": "A3 visual evidence: sculpted full-screen map, overlay tools, zoomed navigation and saved state",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 2983
+      },
+      {
+        "title": "full viewport, overlay tools, keyboard focus and uninterrupted stroke geometry",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 1004
+      },
+      {
+        "title": "wheel anchor, pan, Space drag and Fit preserve exact data and zoomed brush footprint",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 6448
+      },
+      {
+        "title": "complete strokes, cancellation, Reset and shortcuts have correct history and dirty states",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 1774
+      },
+      {
+        "title": "actual Save, close, reopen, Open and continued editing preserve the full numerical map and identity",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 3732
+      },
+      {
+        "title": "corrupt save rejection leaves unsaved terrain, camera and history intact",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 1619
+      },
+      {
+        "title": "unsaved New/Open and browser navigation warn, cancellation preserves work, new map has fresh identity",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 3725
+      },
+      {
+        "title": "storage denial reports failure and keeps the map unsaved",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 874
+      },
+      {
+        "title": "native two-finger pinch/pan never sculpts, remaining finger stays in navigation, single finger still edits",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 6119
+      },
+      {
+        "title": "A3 visual evidence: sculpted full-screen map, overlay tools, zoomed navigation and saved state",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 2618
+      },
+      {
+        "title": "bounded default Fill covers wide, ultrawide, square and tall views; pan reaches cropped portions and Fit preserves margins",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 4249
+      },
+      {
+        "title": "actual wrapped editor crosses a seam, recenters the same land, uses all tools, saves and reopens v2 alongside v1",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 7024
+      },
+      {
+        "title": "real raise pointer strokes cross the seam and remain one exact undoable operation",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 6941
+      },
+      {
+        "title": "real lower pointer strokes cross the seam and remain one exact undoable operation",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 6414
+      },
+      {
+        "title": "real smooth pointer strokes cross the seam and remain one exact undoable operation",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 6074
+      },
+      {
+        "title": "real flatten pointer strokes cross the seam and remain one exact undoable operation",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 6535
+      },
+      {
+        "title": "multiple visible copies share one dab and preview, unlimited pans/zoom change no elevations, native pen and touch cross seams",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 8431
+      },
+      {
+        "title": "same IndexedDB schema preserves v1 records, rejects replacement across formats and rejects corrupt v2 safely",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 2086
+      },
+      {
+        "title": "optional native fullscreen enters/exits on user actions without changing history; failures are safe",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 1337
+      },
+      {
+        "title": "wrapped zoomed readouts/previews stay aligned; cancellation and tool changes end partial strokes",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 7954
+      },
+      {
+        "title": "wrapped navigation covers ultrawide and mobile displays without sidebars, duplicate storage or redraws of the cached height field",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 4697
+      },
+      {
+        "title": "subpixel periodic extents do not allocate unbounded preview nodes or stall the workspace",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 486
+      },
+      {
+        "title": "bounded default Fill covers wide, ultrawide, square and tall views; pan reaches cropped portions and Fit preserves margins",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 4945
+      },
+      {
+        "title": "actual wrapped editor crosses a seam, recenters the same land, uses all tools, saves and reopens v2 alongside v1",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 6795
+      },
+      {
+        "title": "real raise pointer strokes cross the seam and remain one exact undoable operation",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 6534
+      },
+      {
+        "title": "real lower pointer strokes cross the seam and remain one exact undoable operation",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 6019
+      },
+      {
+        "title": "real smooth pointer strokes cross the seam and remain one exact undoable operation",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 6292
+      },
+      {
+        "title": "real flatten pointer strokes cross the seam and remain one exact undoable operation",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 6051
+      },
+      {
+        "title": "multiple visible copies share one dab and preview, unlimited pans/zoom change no elevations, native pen and touch cross seams",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 15262
+      },
+      {
+        "title": "same IndexedDB schema preserves v1 records, rejects replacement across formats and rejects corrupt v2 safely",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 1957
+      },
+      {
+        "title": "optional native fullscreen enters/exits on user actions without changing history; failures are safe",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 1116
+      },
+      {
+        "title": "wrapped zoomed readouts/previews stay aligned; cancellation and tool changes end partial strokes",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 6912
+      },
+      {
+        "title": "wrapped navigation covers ultrawide and mobile displays without sidebars, duplicate storage or redraws of the cached height field",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 6488
+      },
+      {
+        "title": "subpixel periodic extents do not allocate unbounded preview nodes or stall the workspace",
+        "project": "mobile",
+        "status": "expected",
+        "durationMs": 567
+      }
+    ]
+  },
+  "build": {
+    "typecheck": "pass",
+    "vite": "pass",
+    "modules": 73,
+    "compilationMs": 165
+  },
+  "hashConvention": "Git-normalized text (CRLF to LF); PNG/ZIP raw. Receipt and later delivery metadata exclude their own hashes.",
+  "inventory": [
+    {
+      "path": "README.md",
+      "bytes": 16934,
+      "sha256": "6d0e838681a4eb0a210bef125cdc6b98904f5711c9f2500467475752a4a788c8"
+    },
+    {
+      "path": "docs/A7-A-COMPLETION.md",
+      "bytes": 12751,
+      "sha256": "48f02f69555c2c355df288aeca5c819ac0ee1d3c1501402241191965dfa1cd4c"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "bytes": 32589,
+      "sha256": "c6ba1c567e627fb6403b6d66cceba374ea9ef166b06fccb027f48cd38ba39cc7"
+    },
+    {
+      "path": "docs/CYLINDRICAL-HEIGHTMAP-FOUNDATION.md",
+      "bytes": 14533,
+      "sha256": "7c129dfb55e9f93b7d9ec82ff241b3f246e955425482c1cd870ecf5e135c0569"
+    },
+    {
+      "path": "docs/PHASE-1-HEIGHTMAP-ROADMAP.md",
+      "bytes": 29297,
+      "sha256": "dba194707278c608e3a2576e2cce6eb0b04c4189632e4051796d84a09357fbbc"
+    },
+    {
+      "path": "docs/WORLD-SURFACE-ARCHITECTURE.md",
+      "bytes": 39179,
+      "sha256": "e4c9cce0df7734ab2029844832e0872fe4f148e5412c66f147d232af015c6db3"
+    },
+    {
+      "path": "docs/evidence/a7-a-browser-results.json",
+      "bytes": 311135,
+      "sha256": "c0c4535ca64429bbe0303172627903775bde6eaea6b962d73727d4889599f63e"
+    },
+    {
+      "path": "docs/evidence/a7-a-browser.txt",
+      "bytes": 40049,
+      "sha256": "80150839577eb737525002c5b69c04566fb99a0c8d72ea6a95e446a40711b8f8"
+    },
+    {
+      "path": "docs/evidence/a7-a-build.txt",
+      "bytes": 352,
+      "sha256": "654446e1a512362ccae5e90b0c71052cb2ba75b5c09f5017621b006daa8238bd"
+    },
+    {
+      "path": "docs/evidence/a7-a-cylinder-allocation.json",
+      "bytes": 1936,
+      "sha256": "0c19bd637bcf045cebc6ef477af352fd208b3265129f083cd41cc89327a6d63a"
+    },
+    {
+      "path": "docs/evidence/a7-a-desktop-n128-editing-regression.json",
+      "bytes": 34479,
+      "sha256": "66728e927f0f4e50ede283dffbf10c1b94c61813a814328527885c84b62b5acb"
+    },
+    {
+      "path": "docs/evidence/a7-a-desktop-n128-limb-held.png",
+      "bytes": 369334,
+      "sha256": "c70e6542649040db48b4ecf6b788e37915f128bc0038079e8f71cee2af286e97"
+    },
+    {
+      "path": "docs/evidence/a7-a-desktop-n128-limb-proof.json",
+      "bytes": 75509,
+      "sha256": "c5c77f7db4f0d9df2d8015948e40e48dd29b6cda43bffb23c2be9ba9f6c96253"
+    },
+    {
+      "path": "docs/evidence/a7-a-desktop-n256-editing-regression.json",
+      "bytes": 39962,
+      "sha256": "fafc1cb89c6acf5bae7e76c51ec3c2f012ee4d9350533b0666f2ea6565f0e6b5"
+    },
+    {
+      "path": "docs/evidence/a7-a-desktop-n256-limb-held.png",
+      "bytes": 369324,
+      "sha256": "e4ef178786d98fed1cb66c07314922addb78027dcafa34527b8d55c436b2f9e5"
+    },
+    {
+      "path": "docs/evidence/a7-a-desktop-n256-limb-proof.json",
+      "bytes": 75047,
+      "sha256": "ceed6c705cad49491344d81cdd3d3e739d94a436ec964b479f8e7475f79fa11b"
+    },
+    {
+      "path": "docs/evidence/a7-a-desktop-n256-regression-trace.zip",
+      "bytes": 13543492,
+      "sha256": "f0ccc855f24f9844edda3bca9e8ce596020053dcffe5d3837c9dbdeb530667d1"
+    },
+    {
+      "path": "docs/evidence/a7-a-frozen-source.json",
+      "bytes": 232,
+      "sha256": "dc4a86e1fd20b15ca7103dcc8604cd9ad35c05f28136b4eec79554b6dcc49efc"
+    },
+    {
+      "path": "docs/evidence/a7-a-mobile-n128-editing-regression.json",
+      "bytes": 41187,
+      "sha256": "cbd5a91fc48f57b96d62f7ad51b800d1c7db1969554295021a1b2afc87a7e504"
+    },
+    {
+      "path": "docs/evidence/a7-a-mobile-n128-limb-held.png",
+      "bytes": 655633,
+      "sha256": "7a183f55c710a4e1a66d164cc63d8826ee1ca18e8ea3248eabb761c8cc499beb"
+    },
+    {
+      "path": "docs/evidence/a7-a-mobile-n128-limb-proof.json",
+      "bytes": 64456,
+      "sha256": "06342b9f69f3ba3357bf8dcb217fd9a4f321ba2e06e5b56e6a1bd1b72d383d5e"
+    },
+    {
+      "path": "docs/evidence/a7-a-mobile-n256-editing-regression.json",
+      "bytes": 44840,
+      "sha256": "c81ede4ab20349561990a130872c4e46758fa1d87ff9fdc511002493ebae1d3e"
+    },
+    {
+      "path": "docs/evidence/a7-a-mobile-n256-limb-held.png",
+      "bytes": 653288,
+      "sha256": "e8b791e57e0c63f221ee85eaf703875374ad0bcd42ce7bcddf26ce9bb28dc8d7"
+    },
+    {
+      "path": "docs/evidence/a7-a-mobile-n256-limb-proof.json",
+      "bytes": 52439,
+      "sha256": "afae44b3641ca0d062b7dea788195dc419aee97a9529bcac13b69ece299cba23"
+    },
+    {
+      "path": "docs/evidence/a7-a-mobile-n256-regression-trace.zip",
+      "bytes": 31883106,
+      "sha256": "08026c60ae591c6fc7797a6b0e06436e67dbe7cf90b9f67c5a719be76e2cf45c"
+    },
+    {
+      "path": "docs/evidence/a7-a-numerical.txt",
+      "bytes": 23828,
+      "sha256": "a2aa2b17b6f051a554e4f93c43f4a2c6704e583939a7152d58268310787d45a2"
+    },
+    {
+      "path": "scripts/verify-cylinder-foundation.mjs",
+      "bytes": 2663,
+      "sha256": "3010ac8d0af982a69147884f6b110736d513799238f6e1aad920c5ffbbf95f71"
+    },
+    {
+      "path": "src/surfaces/cylinder.test.ts",
+      "bytes": 8003,
+      "sha256": "da3d46bae00d9581f037a832c824bb3415adb9356ba3e84a1160b6a5a78d6439"
+    },
+    {
+      "path": "src/surfaces/cylinder.ts",
+      "bytes": 7353,
+      "sha256": "af3b301ed3174adf0d253c6571f5960d50f146ed40ee7b877389b7e21a12ad60"
+    },
+    {
+      "path": "src/terrain/cylindrical.test.ts",
+      "bytes": 12990,
+      "sha256": "3532c32c7d9531f19444076ce2ccaedd736524fd414e5cb95f9eb6a1756dd43d"
+    },
+    {
+      "path": "src/terrain/cylindrical.ts",
+      "bytes": 9256,
+      "sha256": "a0b07ad519767b4d04a9ad1445f078143a7cce7e50afde62049b146f7cb8fe15"
+    }
+  ],
+  "protectedFiles": [
+    {
+      "path": "package-lock.json",
+      "sha256": "8841dbbe27925de78ebb707c8297753d70a1e8e78a1f2daf119a650771423778"
+    },
+    {
+      "path": "package.json",
+      "sha256": "5ee59386242d27f0734a23f5fd86d1610c8465bab46b7f6f616848bb7455032a"
+    },
+    {
+      "path": "playwright.config.ts",
+      "sha256": "33c9d218b15330a9a63fc766280ab4ff1cb3fae3da98b98d645463663565f3af"
+    },
+    {
+      "path": "scripts/measure-spherical-brush.mjs",
+      "sha256": "954f78d5b259a19e1b41ccfc27c836fa810bd24f70cee7ef3c639f1a8275ad93"
+    },
+    {
+      "path": "scripts/measure-spherical-raster.mjs",
+      "sha256": "e1ccb8fefac2de373e1a3390163213b86e1d820abd4bc66f00137ab4ff59bac8"
+    },
+    {
+      "path": "scripts/measure-spherical-tools.mjs",
+      "sha256": "6b989327ff008cd2f24e7b9c735bbe0d6c8486ad808e5f70d9fe5e283aa8cd2d"
+    },
+    {
+      "path": "scripts/measure-spherical-workspace.mjs",
+      "sha256": "42ac49ad894ee53230f74103a08dbfccf199651913e60677d90b4c146940f536"
+    },
+    {
+      "path": "scripts/measure-spherical.mjs",
+      "sha256": "1a32b2e8d250c7f1c2631acdb85c208514bc63e7643aadf0b93c2d29ee55b6a9"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "bc4de3ad0718911b87caf1febdf617df961e7db205b739da01251030b6a19bab"
+    },
+    {
+      "path": "src/components/BrushToolbar.module.css",
+      "sha256": "6f7d0bcbba928b0da08852a75e95f3ae028ad3235e82edb3a586e42c0299932b"
+    },
+    {
+      "path": "src/components/BrushToolbar.tsx",
+      "sha256": "e041d0a07761e6454e84d0f6ad7a1d1a1864b4788b2bf34cc59ce58c6499a2f6"
+    },
+    {
+      "path": "src/components/ElevationLegend.module.css",
+      "sha256": "7fb56082a4283ac8314918690a76631501b942b80e9c9a8a879f2de309fa59c7"
+    },
+    {
+      "path": "src/components/ElevationLegend.tsx",
+      "sha256": "524cd1e3dd8d17b2374e7d108056b8b5724aa5844a4dede7169360eff46f38f5"
+    },
+    {
+      "path": "src/components/NewWorldDialog.tsx",
+      "sha256": "ef53e15bc44385b80e27325240df3e83d0a585de935ebc827db54194d786b842"
+    },
+    {
+      "path": "src/components/SphericalBrushControls.tsx",
+      "sha256": "9baf5ff29bbf80b9b3126872432e7dc1e3562169a998a2ce202ef876a703181b"
+    },
+    {
+      "path": "src/components/SphericalEditor.tsx",
+      "sha256": "573712b91ba0a3ce9f6c55663235b837e5c620935803edda28e90a68b146f3d1"
+    },
+    {
+      "path": "src/components/SphericalPreview.module.css",
+      "sha256": "742b6f6efd717199c8e5103a1d9fa89472277a4f9be7eca748d89a802ea8060b"
+    },
+    {
+      "path": "src/components/SphericalPreview.tsx",
+      "sha256": "a7a2ccc23fecdfccde35e56f31276ce4c507f0df4bb951307e8801aca44e59ee"
+    },
+    {
+      "path": "src/components/SphericalStorageControls.tsx",
+      "sha256": "635ab138ecc96ac48c5466e358283f8f83ad486e1913e32c138280b5bee62570"
+    },
+    {
+      "path": "src/components/SphericalViewport.tsx",
+      "sha256": "5bacd0c3f8edd80262a3b9ec7340323da959e0403075f1b85eeba6fdbe5f92cb"
+    },
+    {
+      "path": "src/components/TerrainCanvas.module.css",
+      "sha256": "24a4056be3b57f1dfb05eb3dd759e9685b02f4f454e790878d6256e244ed4910"
+    },
+    {
+      "path": "src/components/TerrainCanvas.tsx",
+      "sha256": "d7bdab114c2a8e497205003be7733e8f9b3edb9b47aba7a9d5de5c04ae0b4814"
+    },
+    {
+      "path": "src/components/WorkspaceChrome.tsx",
+      "sha256": "84eb26a8aa037cf5166f15ad9cf6307d596f2c039f3d5f655fa38705bd7b486f"
+    },
+    {
+      "path": "src/editor/atlas-document.ts",
+      "sha256": "b91742f18304c521bab92774214f59342ca641e1a4b906eaffc0e13af43fdf5b"
+    },
+    {
+      "path": "src/editor/prepare-spherical-session.ts",
+      "sha256": "9377bfecd338cc33c4466c38043a7d501977f01fffc18b706a3df8b3bccb3b8e"
+    },
+    {
+      "path": "src/editor/spherical-history.test.ts",
+      "sha256": "5674880efe1640fe857b9c9edb1e051392be0ff11e010e98d230731ba3f1c7cd"
+    },
+    {
+      "path": "src/editor/spherical-history.ts",
+      "sha256": "c77435fddee1441534df78da4ea360bf29d23326a7e7834b2da61c441f93d76d"
+    },
+    {
+      "path": "src/editor/spherical-limb-session.test.ts",
+      "sha256": "d943cda9c6c3a19b603315940ae3e31acff4d8df1e2947542108ba9949ad7462"
+    },
+    {
+      "path": "src/editor/spherical-persistence.test.ts",
+      "sha256": "f53d4b588ac1ce9e7963f0f4f449625be92204440a72983710f8b328611e64f2"
+    },
+    {
+      "path": "src/editor/spherical-session.test.ts",
+      "sha256": "806076c89c9b459bd78a6eb5b7334cd4a447c301c56240b3977b39eb7b270cf6"
+    },
+    {
+      "path": "src/editor/spherical-session.ts",
+      "sha256": "cbbb3a3eee8481b9047ae326beff4e4090292d3f4fed70928d5c19abcbf024e7"
+    },
+    {
+      "path": "src/editor/terrain-document.ts",
+      "sha256": "44fdfbb7576f27998b7d468dbb999be83c16d0504bf0514cfa8e5d41d88dd314"
+    },
+    {
+      "path": "src/editor/terrain-history.test.ts",
+      "sha256": "c206497454dc989e891f5da4a6cc70914c65336b3a516ea469f73b542b1f7bb6"
+    },
+    {
+      "path": "src/editor/terrain-history.ts",
+      "sha256": "63f9e6e50d2290783d4fcd3996f196142ab794ab787f0f919142650444bb17ea"
+    },
+    {
+      "path": "src/interaction/canvas-navigation.ts",
+      "sha256": "b608c4efca952ca7e24927f0dec6a7a851ca48b5a0a5f7393b57d8d318bdd7df"
+    },
+    {
+      "path": "src/interaction/canvas-sculpting.ts",
+      "sha256": "d51afb71d2ba959d5d7d67e0afc907f4be05eac0f326c770105ed1e90bf7e227"
+    },
+    {
+      "path": "src/interaction/spherical-editing.ts",
+      "sha256": "1481881468b5da9ad9abe371a03767e05cd0ffc723599b2d171c0af674f22a5a"
+    },
+    {
+      "path": "src/interaction/spherical-navigation.ts",
+      "sha256": "a849da53da87dcaa4a49c075d661d490a30d099878ce485fa9e51b5772297bbf"
+    },
+    {
+      "path": "src/main.tsx",
+      "sha256": "8989c7a482dd7c56661d9152674e33d1095a6c6cb46f5233a04afc56f122267d"
+    },
+    {
+      "path": "src/persistence/cooperative-work.ts",
+      "sha256": "5e9e86f8409f9f94a3a2f694114454b366ee58b9252996f91da06a6737ffaf05"
+    },
+    {
+      "path": "src/persistence/heightmap-payload.ts",
+      "sha256": "2bf3ea64ddd44dd4907d4d477b6d62e9df46b653af77ea20eebdc1f4b496afef"
+    },
+    {
+      "path": "src/persistence/local-map-store.ts",
+      "sha256": "405ad96cc4f138caf87ae9cc3df7f881fb8ec4c9db51519a6fda877af9ada1c3"
+    },
+    {
+      "path": "src/persistence/map-format.ts",
+      "sha256": "b4ac26f2042af0c1572fa86ae277d60d3e8c6fc8771c73ca702781dae6431eaf"
+    },
+    {
+      "path": "src/persistence/spherical-format.test.ts",
+      "sha256": "0285666ba6af0c29dea7f7333b5b171b8de39169126634d07e20668c1cdeafa2"
+    },
+    {
+      "path": "src/persistence/spherical-format.ts",
+      "sha256": "9408c01a34b0b44d63497cc39a7ddacb046741006c8210254c98195b0aa9b11f"
+    },
+    {
+      "path": "src/persistence/terrain-format.test.ts",
+      "sha256": "84ea749600824d89bee2da4f99307767089c66ff4dfc0261062de9ecb500b01b"
+    },
+    {
+      "path": "src/persistence/terrain-format.ts",
+      "sha256": "d6a9fecfca4e29878f70119d39cbcb11c3790e93981d673394f8c5dd4f03502b"
+    },
+    {
+      "path": "src/persistence/wrapped-format.test.ts",
+      "sha256": "7957dff9372598f57a4a644d10f1daa4ecddbd653fdf9787e47a3c31cc327613"
+    },
+    {
+      "path": "src/persistence/wrapped-format.ts",
+      "sha256": "fcd48e503f88913e1decfa6e53900777f80cc4de17be35f1ffd1c2eb9ad4fe54"
+    },
+    {
+      "path": "src/rendering/camera.test.ts",
+      "sha256": "56f4de0991e19d2218ce29abdd4e6cfb312967dbe97080cab1474b4e0550f1d0"
+    },
+    {
+      "path": "src/rendering/camera.ts",
+      "sha256": "28cc51eb2ab746d0900fe1651d9af3da8f8df741d62f42da777d94bd21b128f5"
+    },
+    {
+      "path": "src/rendering/canvas-renderer.ts",
+      "sha256": "c0b8f2e26bafdaa2c949eb1b7da75490de63c6b61dcefac5d7d18aca1cc6ea0e"
+    },
+    {
+      "path": "src/rendering/display-raster.test.ts",
+      "sha256": "86db9a206cc254beebd65a6bca232f5c5abb002476962cea43bd2f54971d2980"
+    },
+    {
+      "path": "src/rendering/display-raster.ts",
+      "sha256": "a392669e82a1e96ee68a4d422d9055a2c60bb84a6ceeb087ee2dc7874b7669d9"
+    },
+    {
+      "path": "src/rendering/edge-pan.test.ts",
+      "sha256": "adca6de9a87dd86a7c2d7d945bba5fa62be893ba26621aaab95afda9a9279dc8"
+    },
+    {
+      "path": "src/rendering/edge-pan.ts",
+      "sha256": "8a66fb2a7b98992f912c5d89c99b0a86b791e57d110acb13c6687e32eeac6ca3"
+    },
+    {
+      "path": "src/rendering/elevation-colors.ts",
+      "sha256": "991b8a713286fb516d0a5cd8eea291c264a2ecfb10568a879909ac5dd94b3f3f"
+    },
+    {
+      "path": "src/rendering/elevation-raster.test.ts",
+      "sha256": "27daa89d265a97ddfdb592444ab52736bf45c50c33e27fc4689f53b2cae5c50a"
+    },
+    {
+      "path": "src/rendering/elevation-raster.ts",
+      "sha256": "bdf272baa0d8d52334a5f83ea66921df9a91e989896ff176f025c6e212bda26c"
+    },
+    {
+      "path": "src/rendering/fit-map.test.ts",
+      "sha256": "ac5619a3849022b781dba70e2176541cae25b21b69d4613b1e7d84ca0c60f8bf"
+    },
+    {
+      "path": "src/rendering/fit-map.ts",
+      "sha256": "841b06966a6ea9c937ba3abccf78929f0bc2027a239cc31428f2ea750a79c024"
+    },
+    {
+      "path": "src/rendering/periodic-view.test.ts",
+      "sha256": "306d66c82912f8e661a168a0b34a333ee284968da971980f15f67493aff40843"
+    },
+    {
+      "path": "src/rendering/periodic-view.ts",
+      "sha256": "3c86ea6edd5df2cd1b7961ff1ae7f9da3514da88403f43c1a560c4dc5ca9fe64"
+    },
+    {
+      "path": "src/rendering/spherical-brush-preview.ts",
+      "sha256": "bcc4dd08f902eaacde5e3c6c4f5b78f78fada4ad1e40c2419c8ce53e58600130"
+    },
+    {
+      "path": "src/rendering/spherical-editing.test.ts",
+      "sha256": "3f940a8e9622b6c82271890f38488f102ad7deb67e7fe5b66bb05f8403bc6dc0"
+    },
+    {
+      "path": "src/rendering/spherical-gesture-path.ts",
+      "sha256": "b4f48046e3ea77502e04401da40731cf5b8a1318b09fe79372121b81fe0726a5"
+    },
+    {
+      "path": "src/rendering/spherical-limb-assist.test.ts",
+      "sha256": "be32179b8f3b6905827167e93e017f7afc63f41abe684e0cc8f611b8f54033a1"
+    },
+    {
+      "path": "src/rendering/spherical-limb-assist.ts",
+      "sha256": "c0feb73ed0649a6325dbe5899a4f83fed600f213a0a82bdd0aa331fd21cccd0b"
+    },
+    {
+      "path": "src/rendering/spherical-raster-cache.test.ts",
+      "sha256": "211425d7a5c212a4066f6b93463951f166e415f1b77654999fc1164cc2caf232"
+    },
+    {
+      "path": "src/rendering/spherical-raster.ts",
+      "sha256": "276c6ef1b2b2508521b7d9e8a8c04ab6574972024516c0f394f9e30b057d0279"
+    },
+    {
+      "path": "src/rendering/spherical-texture-updates.ts",
+      "sha256": "3380a3bac927de263c5e30de97dff9783f3555e9e390eafb9483206e229a9642"
+    },
+    {
+      "path": "src/rendering/spherical-view.test.ts",
+      "sha256": "176f0785b71a7138fb71b9e24c31cdeab682369393e30deec3f410e6ec0906e3"
+    },
+    {
+      "path": "src/rendering/spherical-view.ts",
+      "sha256": "f07e9d48c96ea63bb54b6f21ae5cb1ce461ae468fa37abb590a2993add687803"
+    },
+    {
+      "path": "src/rendering/wrapping-camera.test.ts",
+      "sha256": "2adfc86b79b98b617493cab763844d7b5c242f09f59e2ffefb1e134f13e6b8d6"
+    },
+    {
+      "path": "src/styles.css",
+      "sha256": "407146eb777e00075a98b8c3090f1118ed343cfe665230250723ef4b63c86dd6"
+    },
+    {
+      "path": "src/surfaces/compatibility.test.ts",
+      "sha256": "7897ceb13d7afba6e0fb1957902b28b66d14420f7de67169ce53d798a665e974"
+    },
+    {
+      "path": "src/surfaces/contracts.ts",
+      "sha256": "cfb7b2c27ee43feec425c86171caf3281be92d41cd3cc141db2b7a0689f0ba83"
+    },
+    {
+      "path": "src/surfaces/cube-sphere.test.ts",
+      "sha256": "002f24b406f6ab5057de6acc721d76c68e816a6918b81b75ee0406bbc761dd12"
+    },
+    {
+      "path": "src/surfaces/cube-sphere.ts",
+      "sha256": "45fbca2f7ce7a31eb8b4d6eebcf60633d24332c03f387fc74330fce5ca9760e4"
+    },
+    {
+      "path": "src/surfaces/great-circle.ts",
+      "sha256": "4f30b260fff7a15f12de230438b4fa07f072547bc376a3e4f9c5e026b7e8af13"
+    },
+    {
+      "path": "src/surfaces/legacy-planar.ts",
+      "sha256": "4326bd3e64842c58f15c10ff83cce9902c8ac9573ae8bab2e6dc511414ea77a2"
+    },
+    {
+      "path": "src/surfaces/rectangular.test.ts",
+      "sha256": "fe22f566731a1a8ebdee85159030eda37d411f1a3b7b6b8a18fad0b361ad55c2"
+    },
+    {
+      "path": "src/surfaces/rectangular.ts",
+      "sha256": "b59bb07572b2b85b7bf7e78aec961e0f4adac250f429b6f1fced5e65ada18b79"
+    },
+    {
+      "path": "src/surfaces/world.test.ts",
+      "sha256": "60d957c4349fb6c4f16b2554a506c8dc5b990635568226a3749b85c0d6c311b1"
+    },
+    {
+      "path": "src/surfaces/world.ts",
+      "sha256": "d4c849778b71f606c4a59b50a00520864838ea9aeafc25a09288b34a9ab35254"
+    },
+    {
+      "path": "src/terrain/brush-math.ts",
+      "sha256": "6a5fed2cce38c70fadd4b9fa340d2c9def28925fcf6a085e092e849e07f48f10"
+    },
+    {
+      "path": "src/terrain/brush.test.ts",
+      "sha256": "b91c204ddb3ea211ac8485e4daad9c51d8874c88ce47e679c0b7f35bf8230eab"
+    },
+    {
+      "path": "src/terrain/brush.ts",
+      "sha256": "5904cb85930beaa7789dc337511c9fa3b1ad31c3daef6a7e541409d1846cafda"
+    },
+    {
+      "path": "src/terrain/model.test.ts",
+      "sha256": "96183a66d313bf95dfe9534fbe370341f42180fdb67ae2cc429c456f222dd414"
+    },
+    {
+      "path": "src/terrain/model.ts",
+      "sha256": "45581a6f9add3115053b0b2048f58acf0585337c4c5b3391bd4a1c94c0d9d104"
+    },
+    {
+      "path": "src/terrain/modifications.ts",
+      "sha256": "1c08f0557e537da051c845aaebf64b3468fd10ffc8de70296fade29621ba1e47"
+    },
+    {
+      "path": "src/terrain/refinement.test.ts",
+      "sha256": "fc07bab77cb8f066236f6bb27a7c77fff157e763d5d8cfa9cd8bd01cda107fa9"
+    },
+    {
+      "path": "src/terrain/sampling.test.ts",
+      "sha256": "7546654d62c76b6876a30db96815f9e6acb2ecd641425ddd1041d99d4e1da973"
+    },
+    {
+      "path": "src/terrain/sampling.ts",
+      "sha256": "c7450e4fa8de04ad64e75a5814a6db34d2d311fcac276792984bac440bde7942"
+    },
+    {
+      "path": "src/terrain/spherical-brush.test.ts",
+      "sha256": "7020711b317ecbea878e73cba220b0f27faa3f5696bb3fb056ae5234924973b2"
+    },
+    {
+      "path": "src/terrain/spherical-brush.ts",
+      "sha256": "6f4ec1826e04a5d9ffe3c32a6e003b55a986bef7fd96cb24f6f92aad9cce3464"
+    },
+    {
+      "path": "src/terrain/spherical-cap.ts",
+      "sha256": "6f6acc228033e3b5c6f2dc1083d7627961ecb60e5bd8786d8904aa0c034cbce5"
+    },
+    {
+      "path": "src/terrain/spherical-preview-fixture.ts",
+      "sha256": "11c61e1a919638b4746dbf05c59af0f80c75ae6435a660e2ac05431ff8a2e357"
+    },
+    {
+      "path": "src/terrain/spherical-smoothing.ts",
+      "sha256": "1fccb9079f8fe2165156d64f1e639e9ef885cfb569e304d94b5197029650eb61"
+    },
+    {
+      "path": "src/terrain/spherical-tools.test.ts",
+      "sha256": "87d5cc13468ac44aeb4fca44f04464c3a01c695380f2eac18f25a7806577c8cd"
+    },
+    {
+      "path": "src/terrain/spherical.test.ts",
+      "sha256": "da1f9ce15a808ed197fa01b886d4f884a6d09817f2fea79a7e11c0259b286e91"
+    },
+    {
+      "path": "src/terrain/spherical.ts",
+      "sha256": "a3492e41821f175ed6a1e79f6ea0665f16ade672e73e4fdbd8427c147af3f0c4"
+    },
+    {
+      "path": "src/terrain/topology.ts",
+      "sha256": "e31cbc890444fd5284b6b32b4db5627eb32dec4e8fd8511e337fd3097c823d69"
+    },
+    {
+      "path": "src/terrain/wrapping.test.ts",
+      "sha256": "415f3f3781e2804a45a8405d6bb0e69ab21c98b17c3e780965d4208aaf84592b"
+    },
+    {
+      "path": "tests/atlas.spec.ts",
+      "sha256": "b56e6a70efca9266082307dde27b47977a53c985ada6af5cc6a50573d306c2d5"
+    },
+    {
+      "path": "tests/fixtures/legacy-app.tsx",
+      "sha256": "392bcefa01a05ca88f6cb543f8acf61316e49ef554601b04322a3e9712a75f12"
+    },
+    {
+      "path": "tests/fixtures/legacy.html",
+      "sha256": "eb7ef6c97b5b38de6cc62d6a5f125f20eafd9c9675d99003ef68ca2657c7de41"
+    },
+    {
+      "path": "tests/fixtures/legacy.tsx",
+      "sha256": "3a0a67ebdfeb67e6048744307cfb34a2ecee80946b5900cd4c9842c70dc83dc2"
+    },
+    {
+      "path": "tests/fixtures/limb-workspace.ts",
+      "sha256": "cd9e788e9790a2e72b358a3824bca0036231f4ac8e41b529b009de52a4da4358"
+    },
+    {
+      "path": "tests/fixtures/saves/a3-v1-heightmap.json",
+      "sha256": "240286feeb579fc1d557986fe2c6e252fae0af4897d6187939f0f8b30aef27f5"
+    },
+    {
+      "path": "tests/fixtures/sphere-editor.html",
+      "sha256": "c08fd65ffde45d82e3b2747f76780f393528f667822207d99f50a278cb06243b"
+    },
+    {
+      "path": "tests/fixtures/sphere-editor.tsx",
+      "sha256": "53f2d341abf3802bdc180af22b2246e662c561b9f37b015505d5fee2f80e3eb7"
+    },
+    {
+      "path": "tests/fixtures/sphere-storage.ts",
+      "sha256": "46821d742b3299224f9181f439a55ca8133be8d907682d2f1b5107fbc7e7674e"
+    },
+    {
+      "path": "tests/fixtures/sphere.html",
+      "sha256": "a4b0c01f11187a2ec0af3f242deea9544678f0a7089bc91740ece36aed4ceee1"
+    },
+    {
+      "path": "tests/fixtures/sphere.tsx",
+      "sha256": "6c5c292271310922267bb89786aeb3e7a68d620546816f02454c6806b19d5019"
+    },
+    {
+      "path": "tests/fixtures/spherical-performance.ts",
+      "sha256": "69a6adb0712bf69bc0da5ff8e3c5241f56ac4a5eecfa49bdc7edc24dbd91f68e"
+    },
+    {
+      "path": "tests/fixtures/spherical-raster-reference.ts",
+      "sha256": "20187ff5ec972faba4ee4be4553680ed8e7d3953c6d852d9290cdbc9ff84e0b3"
+    },
+    {
+      "path": "tests/fixtures/terrain.html",
+      "sha256": "0f469f659c311838b99bf1dec8bc3b755835be9f3a1fd070f6d819266c78c544"
+    },
+    {
+      "path": "tests/fixtures/terrain.tsx",
+      "sha256": "aa7a2e04614acb42f330e4e621d9c5ac9d54993ec8fff916c01200726e951dce"
+    },
+    {
+      "path": "tests/fixtures/workspace-storage.ts",
+      "sha256": "20b95822fd7998372bcd76278c1ed5d50f108264f5b8e364d0aa6713a3b3065a"
+    },
+    {
+      "path": "tests/focused-view.spec.ts",
+      "sha256": "180d9f22ca3d37b0577a2b60356dc9f08a0bbb121f8c74e3f5aebba301b32975"
+    },
+    {
+      "path": "tests/navigation-stabilization.spec.ts",
+      "sha256": "001f5692b6961cde1e5d175f9433e41ae8507c4c2ead5eff2a07ab96776113c2"
+    },
+    {
+      "path": "tests/refinement.spec.ts",
+      "sha256": "3766c7f26c29cc7b39af603926c928d2a69e9e2249bbd53c0401a6ba3620aa25"
+    },
+    {
+      "path": "tests/sculpting.spec.ts",
+      "sha256": "31dfe5fcefdd52520f0b46bd0bf6dbe44ad1967a2a69a5a1d5fb5c2cd2e52da2"
+    },
+    {
+      "path": "tests/spherical-editing.spec.ts",
+      "sha256": "19745dee0cd57d9263b1dbadb1be617ac42bd2c77a38cc8a214de97994b507ad"
+    },
+    {
+      "path": "tests/spherical-limb-workspace.spec.ts",
+      "sha256": "3ed00ebd0804473e30f82c9af382130029207afc20d591370235b6642159259b"
+    },
+    {
+      "path": "tests/spherical-performance.spec.ts",
+      "sha256": "3f27697abbed369cc4863e16bf8f00f5f764cd4d18b3a0a3239980e86d9beb17"
+    },
+    {
+      "path": "tests/spherical-persistence.spec.ts",
+      "sha256": "ec5a9a79ccf3c01adf818fed651f4179b2fa97ea73f738c1eb3781e4a22b9ee1"
+    },
+    {
+      "path": "tests/spherical-preview.spec.ts",
+      "sha256": "2c33b2d60de9ffbebe43fe07d7e4185a61591a2ae6c390ec206405cf869e2705"
+    },
+    {
+      "path": "tests/surface-compatibility.spec.ts",
+      "sha256": "ad57bbafe7ebe98ca1287f70d4b3d2fd424690d1e97ee129b792a43775b2e17a"
+    },
+    {
+      "path": "tests/unified-workspace.spec.ts",
+      "sha256": "3d9d21cdd1b4eb21fb00280c47114dcca815b76d3c37fef2db079cb7716ff6ad"
+    },
+    {
+      "path": "tests/workspace-helpers.ts",
+      "sha256": "725a6137b545f1cee24d427af1a24c44f5e07970653ad55f5494613c93715235"
+    },
+    {
+      "path": "tests/workspace.spec.ts",
+      "sha256": "981eb8e3052914a21393c1736680a55551e8e61da1c74e661adb603eb7732de3"
+    },
+    {
+      "path": "tests/wrapping.spec.ts",
+      "sha256": "d0a1e7b0b207559a7bdd318cd2d4612da53a6250cdc177bd066e0eb48d7da411"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "203107e428646a6709ae2c7c31dd6a72b53a6950c2e5039d24ed6555e38c50bd"
+    },
+    {
+      "path": "vite.config.ts",
+      "sha256": "c82a0cd4976de5c9597348777d98b8f4a9fdb96dab5aaf5a93029feabb3d66d1"
+    }
+  ],
+  "historicalFiles": [
+    {
+      "path": "docs/A0-COMPLETION.md",
+      "sha256": "b21db4cf6e63c5f8b9928c0ce9c65ba10d357e404c7757982306c0b4a8f9a992"
+    },
+    {
+      "path": "docs/A1-COMPLETION.md",
+      "sha256": "c4f261824a2ffb51287ce98a3e76ccd2b002cc5452ed3e1af1adffeb86163940"
+    },
+    {
+      "path": "docs/A2-COMPLETION.md",
+      "sha256": "32e6a91d0f33b0dfcf53ef285f608c0dbada0a5d650254ce90c7cc1997c246a5"
+    },
+    {
+      "path": "docs/A3-COMPLETION.md",
+      "sha256": "3ce253f4b5f64fd402d40215387f196d61dc72d34909cc703dd403006b4d460c"
+    },
+    {
+      "path": "docs/A4-COMPLETION.md",
+      "sha256": "721d636662fb14ee0b25a6e88ea8d517c91ee13ad6394f738f92aba3a40234ec"
+    },
+    {
+      "path": "docs/A5-1-COMPLETION.md",
+      "sha256": "f803bcb6e9d37af4e3a765d5438530059cdf3da6603908d0aaab99f52d5fd212"
+    },
+    {
+      "path": "docs/A5-2-COMPLETION.md",
+      "sha256": "2251039d5e7f7eba4e82989ea860df313e7e6108ac82370d3ab0201f4064b38d"
+    },
+    {
+      "path": "docs/A5-COMPLETION.md",
+      "sha256": "2d38db63edc5a402cdfbf20701077dcbaf037c75fea5a22cdaff2bef3ea317d6"
+    },
+    {
+      "path": "docs/A6-A-COMPLETION.md",
+      "sha256": "6f8a76061c0ef41528f67c078a78114595bb17c7a437a8cf774c040e629ab52c"
+    },
+    {
+      "path": "docs/A6-B-COMPLETION.md",
+      "sha256": "fabd2e0977f7b0213d202efb8ae840c26d30b816b4727335f53dd0beba5e3bc8"
+    },
+    {
+      "path": "docs/A6-C-COMPLETION.md",
+      "sha256": "480cb49e1e9a610acf4799969f8959d9812206d7a9dc5dcab2c0901367fe8b0d"
+    },
+    {
+      "path": "docs/A6-D1-COMPLETION.md",
+      "sha256": "947bb90ece8374cf06b52d86a02238240506c5b7fbc6f67f0c7659d7d0e415b6"
+    },
+    {
+      "path": "docs/A6-D2-COMPLETION.md",
+      "sha256": "2c22d9e3a2c1811cf82afaf542f22fa6af8bea1f8c4da3ca0dc951b99169e402"
+    },
+    {
+      "path": "docs/A6-D2-R-COMPLETION.md",
+      "sha256": "e90596655e59885d2799044a43b794e0236773dae9370dbfd63bdac95a3193c1"
+    },
+    {
+      "path": "docs/A6-E-COMPLETION.md",
+      "sha256": "f6ec37126e4865792be6c943f2c1a98d0b114ec4f4abe4f35094b851bf058ed3"
+    },
+    {
+      "path": "docs/A6-F1-COMPLETION.md",
+      "sha256": "664f6d84be76b25ea4fbe52d86a96f9d4cce5411ff4fc90710d70cbdaba7b495"
+    },
+    {
+      "path": "docs/A6-P1-COMPLETION.md",
+      "sha256": "821e413e3b53bef622946d20c6e57cdacc9f023e153d17efc10fbfa56fb9e084"
+    },
+    {
+      "path": "docs/evidence/a1-desktop-sculpted.png",
+      "sha256": "76fd9abcde18e20ed91fd6657a77118a1026a422f8723a3f0440eb0f22fd9534"
+    },
+    {
+      "path": "docs/evidence/a1-mobile-sculpted.png",
+      "sha256": "cf165a2051c3ea10c1d6005d2f16b59d67f64d689731ac6524d6d6b3209c105a"
+    },
+    {
+      "path": "docs/evidence/a2-desktop-flatten.png",
+      "sha256": "d120e923a9b029abd5a7deb352f5223a001f575228eed6aa38259c6d9bbc1220"
+    },
+    {
+      "path": "docs/evidence/a2-desktop-raise-lower.png",
+      "sha256": "ac7fddbf86b1308ca1e07ccff1da51df232312ae98bdb9fd09616ef3f9273df7"
+    },
+    {
+      "path": "docs/evidence/a2-desktop-smooth.png",
+      "sha256": "e683ecc9d1797397b0b28567d094cb164543c20275006df505143eb728b38b2a"
+    },
+    {
+      "path": "docs/evidence/a2-mobile-flatten.png",
+      "sha256": "5cf9eade38d9307c341bbba79571052e0e3834363df39909d0e470046eea341e"
+    },
+    {
+      "path": "docs/evidence/a2-mobile-raise-lower.png",
+      "sha256": "9ecd785f80820697aa19bc002675e27e1a54ddc004947044418d1bf776e868e6"
+    },
+    {
+      "path": "docs/evidence/a2-mobile-smooth.png",
+      "sha256": "f51bbcea70bda92dcd732dedc6b1978884058e485839cac1356ad10746b74abf"
+    },
+    {
+      "path": "docs/evidence/a3-desktop-sculpted.png",
+      "sha256": "3716d2056b8cd99130a727e337e52df7c2a6ee82973f03dca1dc5e26140e54a9"
+    },
+    {
+      "path": "docs/evidence/a3-desktop-zoomed-tools.png",
+      "sha256": "070f6a40de2e4ed53e4a68bb83234a56132fdae445e8a02c073eff4bcdbae6be"
+    },
+    {
+      "path": "docs/evidence/a3-mobile-sculpted.png",
+      "sha256": "676a28d03799eb02fe87632119cf159f180a5154fc7dc42262e47f407eb50459"
+    },
+    {
+      "path": "docs/evidence/a3-mobile-zoomed-tools.png",
+      "sha256": "63ab4bf834a89374cc9111a33fedc1f0e303139b45091d2f0a74fe5cf327cc9b"
+    },
+    {
+      "path": "docs/evidence/a4-desktop-legacy-preserved.png",
+      "sha256": "4907c5fbce5a328cc5d71359fca3f5eba0c5f5c11fc19a0584682910d64b02a3"
+    },
+    {
+      "path": "docs/evidence/a4-mobile-legacy-preserved.png",
+      "sha256": "e86c2e1bccdea47f2b785dfd1d69b66ba739f0ea3e280710ff63bf0300820562"
+    },
+    {
+      "path": "docs/evidence/a5-1-baseline-edge.png",
+      "sha256": "4f877d67d20f0744eb15204cfee8a740fe1d7e2a2c3ec16dd80a19d0a3912b81"
+    },
+    {
+      "path": "docs/evidence/a5-1-baseline-trace.zip",
+      "sha256": "b81d8f13646bd9d4f1191abbadc1838a7d7a1794858eafe1be5a1b9752124488"
+    },
+    {
+      "path": "docs/evidence/a5-1-baseline.json",
+      "sha256": "76a379f8eaa331cba297d1f86e1d5cd19edf716b1a90aee6cdb44561d3007083"
+    },
+    {
+      "path": "docs/evidence/a5-1-desktop-bounded-pan.png",
+      "sha256": "d5dcd766acb8f5bbc382c09f52953a49f39e129baab8400070c64a5e9cf8f9c2"
+    },
+    {
+      "path": "docs/evidence/a5-1-desktop-edge-stroke.png",
+      "sha256": "abf7f89e2267bb616a48593974c158db2f994c66e1c28f1c214f2e51a4e8e429"
+    },
+    {
+      "path": "docs/evidence/a5-1-desktop-edge-trace.zip",
+      "sha256": "8dfe720a27978213baddebbc62caaf9ae3aef348a9458a0cdbc97d2665f98e8e"
+    },
+    {
+      "path": "docs/evidence/a5-1-desktop-motion.json",
+      "sha256": "5424491c66e29d4d034bdaa398be1066fa3777d992ae683122c0f36cdfe8b51b"
+    },
+    {
+      "path": "docs/evidence/a5-1-desktop-seam.png",
+      "sha256": "65b8983f8633fc9b04853f27ffbbb5b59c22f2910cc24bfda33c7b3d5f06c190"
+    },
+    {
+      "path": "docs/evidence/a5-1-desktop-touch-edge.png",
+      "sha256": "6a29800105732f193615715f78d65ae2c339e7bc3db196b1a9247fffe7a33f8f"
+    },
+    {
+      "path": "docs/evidence/a5-1-mobile-edge-stroke.png",
+      "sha256": "e5cc6b266b19d65a63c94a974bd825e6faa75be480b37da4d72da8541a4fa76d"
+    },
+    {
+      "path": "docs/evidence/a5-1-mobile-edge-trace.zip",
+      "sha256": "f6f67089bd9cf6ec1ad0020b6fdde499dab79e65ac4521335ae18bf3690bd72f"
+    },
+    {
+      "path": "docs/evidence/a5-1-mobile-motion.json",
+      "sha256": "a177b268f0f0d91c0376c89ec2e2fad79203614d0b845af8264f3d6749f00f33"
+    },
+    {
+      "path": "docs/evidence/a5-1-mobile-seam.png",
+      "sha256": "d0eae4cb4bf498f4a0fd354d5c1621303f2294eb8193133cdf3e2d8fd6ae270c"
+    },
+    {
+      "path": "docs/evidence/a5-1-mobile-touch-edge.png",
+      "sha256": "6897322a71acf0c5ae437605a05017e6ef9c99ac81b5a1642a232becca91bf02"
+    },
+    {
+      "path": "docs/evidence/a5-1-verification.json",
+      "sha256": "a759d302a89fefa1a5c883d3a86c9c1344fd23bf79a74ca7a62aa48e4993732a"
+    },
+    {
+      "path": "docs/evidence/a5-2-desktop-desktop-fit.png",
+      "sha256": "510e442243d3b47b7a72733cc4cb4cf57a6abae4c70da13b95a17e3670871cf2"
+    },
+    {
+      "path": "docs/evidence/a5-2-desktop-desktop-focused.png",
+      "sha256": "8998c0b66c98ef1f1cf4da1a9d3b4375b17294202409532bb1645a0e0fdc5c49"
+    },
+    {
+      "path": "docs/evidence/a5-2-desktop-desktop-full-height.png",
+      "sha256": "75b31c060227c2b58ffd59d7a6fe337173cf182441108e639bbbb3ee29ab37b4"
+    },
+    {
+      "path": "docs/evidence/a5-2-desktop-edge-connected.png",
+      "sha256": "76bd6d0f7a8d037c0eb71a58c938f47f5240b3045c293ffd490b4d8bfa64f81a"
+    },
+    {
+      "path": "docs/evidence/a5-2-desktop-edge-trace.zip",
+      "sha256": "ef04cbb5b25d0fcd02cba10871f6bc7d171fb5a49bf5beed3d62222208128bcf"
+    },
+    {
+      "path": "docs/evidence/a5-2-desktop-layout.json",
+      "sha256": "02532869ed46b32e5964f0b3abfb5d99fe115f988f1a7de2f068239cda24fd13"
+    },
+    {
+      "path": "docs/evidence/a5-2-desktop-mobile-fit.png",
+      "sha256": "f45778b2b7dfbc6ff1f8c26ebb599aac10fbed1dc21ff857923593816edd31be"
+    },
+    {
+      "path": "docs/evidence/a5-2-desktop-mobile-focused.png",
+      "sha256": "4635f259f380abcc1661622214d267735e1b1ab68c8bae249577bcd108850202"
+    },
+    {
+      "path": "docs/evidence/a5-2-desktop-mobile-full-height.png",
+      "sha256": "111bf9cc19e3b5f4570ebf090a09314c19c136fea31ec2ab5f5e35bd3a5ab8bf"
+    },
+    {
+      "path": "docs/evidence/a5-2-desktop-square-fit.png",
+      "sha256": "91c6dea56237ce90d94cb33e002e43b1957366e19f3cedeeebb8b62672a47fdc"
+    },
+    {
+      "path": "docs/evidence/a5-2-desktop-square-focused.png",
+      "sha256": "b263ce878cf0d5e9b1aaf73fa163423796911cb5ca6d9f5e3f886f116bfff15f"
+    },
+    {
+      "path": "docs/evidence/a5-2-desktop-square-full-height.png",
+      "sha256": "3d62a1ad899e5304f69819f3be54bbb506252ae95ca990318df69aedf531856c"
+    },
+    {
+      "path": "docs/evidence/a5-2-desktop-ultrawide-fit.png",
+      "sha256": "5827989483e55ed00e17679a202fd0a49bc5dc439d21300a1cb1e5025183d955"
+    },
+    {
+      "path": "docs/evidence/a5-2-desktop-ultrawide-focused.png",
+      "sha256": "1368156ee934eef8aefe741916ef0b172693d8cec27a8e8ea4c40c50dac613f4"
+    },
+    {
+      "path": "docs/evidence/a5-2-desktop-ultrawide-full-height.png",
+      "sha256": "17cac99d26b43c0d822cdc0133fd2bd5b8439eeeea7a75e1a3be6bab2b791ed3"
+    },
+    {
+      "path": "docs/evidence/a5-2-mobile-desktop-fit.png",
+      "sha256": "e3389ea361e1d94ca7ac81c234bf23dc33b372c349aff8d130bfe2d2ed3150e0"
+    },
+    {
+      "path": "docs/evidence/a5-2-mobile-desktop-focused.png",
+      "sha256": "8d7ff17afa1fd52badbc400be5999ced9f1afd2e7f74095b12b53e3cbd026303"
+    },
+    {
+      "path": "docs/evidence/a5-2-mobile-desktop-full-height.png",
+      "sha256": "83a8ee00fc6617984aea2d04c1e432aa37d04ddc2da2e7a2ccc15e826331f21b"
+    },
+    {
+      "path": "docs/evidence/a5-2-mobile-edge-connected.png",
+      "sha256": "5e38e0c30008145c33f0ffc0d271ee9a5885eda917db82d7858adc5e919ce8cc"
+    },
+    {
+      "path": "docs/evidence/a5-2-mobile-edge-trace.zip",
+      "sha256": "f147dcb17eb7d42e54328609b1048e0d3fc49d1ed054cb4faeab884208bf1173"
+    },
+    {
+      "path": "docs/evidence/a5-2-mobile-layout.json",
+      "sha256": "02532869ed46b32e5964f0b3abfb5d99fe115f988f1a7de2f068239cda24fd13"
+    },
+    {
+      "path": "docs/evidence/a5-2-mobile-mobile-fit.png",
+      "sha256": "df5be1da74240a5495dcb9bd82def9aeea509f916821b017b526fb2434befe69"
+    },
+    {
+      "path": "docs/evidence/a5-2-mobile-mobile-focused.png",
+      "sha256": "9f0258efdcb5c4d177ba3151ac761c4817ef7a6cf24c1e328f1ed121e6b6fbb2"
+    },
+    {
+      "path": "docs/evidence/a5-2-mobile-mobile-full-height.png",
+      "sha256": "5c9d958a5bec23b321f61a391c41dcc423b480a4182f5aba376ea4d7c86af9eb"
+    },
+    {
+      "path": "docs/evidence/a5-2-mobile-square-fit.png",
+      "sha256": "5f04d435c049b020123a2d7e3ee4d806e701862de5bf2d9668656067d73ecfcf"
+    },
+    {
+      "path": "docs/evidence/a5-2-mobile-square-focused.png",
+      "sha256": "e3ab68257322554965a74bec05a3badcf7bff0d71d7789910708f12cf8616a40"
+    },
+    {
+      "path": "docs/evidence/a5-2-mobile-square-full-height.png",
+      "sha256": "64a3ace2e89ed6f3e23f583ac6e2a7689e91a141cea38f7f9bfbe302d095f4b9"
+    },
+    {
+      "path": "docs/evidence/a5-2-mobile-ultrawide-fit.png",
+      "sha256": "9a2dbbe4f0bc91ef20231cb7f9838e28eb487a9d70101e79dd86f0a2fa7348e3"
+    },
+    {
+      "path": "docs/evidence/a5-2-mobile-ultrawide-focused.png",
+      "sha256": "0f27eba8032d13f10b91805e7c8a0eca6c0f6e089e2d910e190b233b87d0ab66"
+    },
+    {
+      "path": "docs/evidence/a5-2-mobile-ultrawide-full-height.png",
+      "sha256": "ccf18996ebac65be01bb912718b8e11b3483fdeb4d6a0623a6d1a5aacb6b541a"
+    },
+    {
+      "path": "docs/evidence/a5-2-verification.json",
+      "sha256": "21991a66bc3af79de87b69b40c5450d7340514de51f2900e2392037583518fa5"
+    },
+    {
+      "path": "docs/evidence/a5-desktop-bounded-fill.png",
+      "sha256": "e415a7e8281667ca5220315dd0026c7e299c823a11895fa1caf2600a3ed9d65a"
+    },
+    {
+      "path": "docs/evidence/a5-desktop-recentered.png",
+      "sha256": "89e91f57f05331a33bc4d98860ddb24428e9856305eaedf2e00e37bc454a58ea"
+    },
+    {
+      "path": "docs/evidence/a5-desktop-seam.png",
+      "sha256": "5137c1ac4b3f7fd0f7ea5ee7230e8810bc79c4d9c557218035c05a1499cbb7c0"
+    },
+    {
+      "path": "docs/evidence/a5-desktop-zoomed-rendering.png",
+      "sha256": "78b0ee5adfc11f4e6db17448f6ae9ebc805ca39dd968866a37c12e20e6899ed1"
+    },
+    {
+      "path": "docs/evidence/a5-mobile-bounded-fill.png",
+      "sha256": "3b70befb44156e7bfb614514809b021e0f6ea2dd74f0f0d19ad70f7d7b6fb1ef"
+    },
+    {
+      "path": "docs/evidence/a5-mobile-recentered.png",
+      "sha256": "f7ca61b1b31f30994fdb91f32cfc3d975ab459eff7636848e872f31d25f7f2eb"
+    },
+    {
+      "path": "docs/evidence/a5-mobile-seam.png",
+      "sha256": "4aefacac5f0af4be4143d73af63620e319c62eacc625c88d50687ff36512cbb4"
+    },
+    {
+      "path": "docs/evidence/a5-mobile-zoomed-rendering.png",
+      "sha256": "074b0e94b73ccfd8d5323fff6af5eb48c44eae094485d46b11919e502eae4fae"
+    },
+    {
+      "path": "docs/evidence/a5-rendering-performance.json",
+      "sha256": "b173f392a3fcce1de89f6dc823c6f5440c9edaf6a8b0fee1a4e0b47d00bbacb6"
+    },
+    {
+      "path": "docs/evidence/a6-a-numerical-receipt.json",
+      "sha256": "1a692ea553bbefe8856444458f28ace09ed66ab53d2c9279d73e0a59260a0b58"
+    },
+    {
+      "path": "docs/evidence/a6-b-sculpting-receipt.json",
+      "sha256": "e93fe85799e35aa0151862770ccac552efa9cdea6ff1fbd21ab6997eab502c04"
+    },
+    {
+      "path": "docs/evidence/a6-c-sculpting-receipt.json",
+      "sha256": "b2c409853783dff12a10393039d6ba54e8f7c64f7310e3bf75e3743a196e89e8"
+    },
+    {
+      "path": "docs/evidence/a6-c-verification.json",
+      "sha256": "f45d1d480747b0b700ae7f7711aac7012f57cd96d6f9d058074a3af629956f41"
+    },
+    {
+      "path": "docs/evidence/a6-d1-desktop-globe-nx.png",
+      "sha256": "dc7bdbbc9745ec5977c708f8f1ad200f889733d08ea2a2e826c8f1193e0a2406"
+    },
+    {
+      "path": "docs/evidence/a6-d1-desktop-globe-px.png",
+      "sha256": "04d514b6eca5cd5a49c84101a40482a670a36a60067acf7e816d3e82f42c4725"
+    },
+    {
+      "path": "docs/evidence/a6-d1-desktop-globe-pz.png",
+      "sha256": "1b1d5ee585f831222746c1a7376b15ccb567f6751545fbc1e36a73f8466734b8"
+    },
+    {
+      "path": "docs/evidence/a6-d1-desktop-n128-performance.json",
+      "sha256": "795e7084ed1f8c9686e210b8f9acd579f7be3b9d578569735a891461612ada84"
+    },
+    {
+      "path": "docs/evidence/a6-d1-desktop-n256-performance.json",
+      "sha256": "14cb1075dc37bb64617dbfc440424103852f1811cc7562ffe87dd79d07193823"
+    },
+    {
+      "path": "docs/evidence/a6-d1-desktop-net.png",
+      "sha256": "0760ea479e62609d69c975c764a3715049248e7e4fe391b17de102fa6125646e"
+    },
+    {
+      "path": "docs/evidence/a6-d1-desktop-product-preparation.json",
+      "sha256": "df07abf1ebbec34b3cc8b2d8bf9f14feb7961858a78396aa39e5650272080f05"
+    },
+    {
+      "path": "docs/evidence/a6-d1-mobile-globe-nx.png",
+      "sha256": "6e7e678a05b756848889b1f39f491ab09e8275af20f00bf47064b535c13926de"
+    },
+    {
+      "path": "docs/evidence/a6-d1-mobile-globe-px.png",
+      "sha256": "7a4a1a09d1c0337076063699c9df31d8fd6ded2f55db8d1b0aadbb199e0b0fca"
+    },
+    {
+      "path": "docs/evidence/a6-d1-mobile-globe-pz.png",
+      "sha256": "004df2f283467a8716beda99fbbba446f62fa716e609da9405b344cf54d2a2ad"
+    },
+    {
+      "path": "docs/evidence/a6-d1-mobile-n128-performance.json",
+      "sha256": "f69dbef8d30571b216a8af094f7540dd35bc98628a37a715988e8f54e4827b4b"
+    },
+    {
+      "path": "docs/evidence/a6-d1-mobile-n256-performance.json",
+      "sha256": "1b04d2531371dbefca525183a3884dcb702d4eac685bbb273c580917300ecd9c"
+    },
+    {
+      "path": "docs/evidence/a6-d1-mobile-net.png",
+      "sha256": "30a02ff8207c748dc6f4541613c6d129b6cf055fc03f279a96e492c749e88ee2"
+    },
+    {
+      "path": "docs/evidence/a6-d1-mobile-product-preparation.json",
+      "sha256": "5dfdd325d20fbec3e560e9b5e1656aba8bf64956cbd3244c3dd62d67c38eb8f4"
+    },
+    {
+      "path": "docs/evidence/a6-d1-verification.json",
+      "sha256": "485be53d73deb643f460dedc4e67da8147129ff597c8f721b8cc526cf04d0f29"
+    },
+    {
+      "path": "docs/evidence/a6-d2-browser-results.json",
+      "sha256": "370655b37dbb08b9a32c05c38896a5f84411dd90eaf5f84b74f3fe0cfc055f87"
+    },
+    {
+      "path": "docs/evidence/a6-d2-desktop-blank.png",
+      "sha256": "5c764472db16cf8cf741184e82bcf315b9673c4101642baee5c0f08ca5a70378"
+    },
+    {
+      "path": "docs/evidence/a6-d2-desktop-continent.png",
+      "sha256": "96f60f320384600236c417760e4b3711fb9f2c69b7f9fb3a0174d06370753182"
+    },
+    {
+      "path": "docs/evidence/a6-d2-desktop-editing-trace.zip",
+      "sha256": "e8368dd88bb619267f8c21b09dbfb354a66122a4fef64ec42ab1bd00eb43db71"
+    },
+    {
+      "path": "docs/evidence/a6-d2-desktop-n128-performance.json",
+      "sha256": "ed965e55022d38dba2ea0d8123d8446d3001605b2cb09209d02d8524bb5bbc56"
+    },
+    {
+      "path": "docs/evidence/a6-d2-desktop-n256-performance.json",
+      "sha256": "3d9437d0ce1ca358aa634b27b33e2c88c335822dbd34561682757d857df7ab86"
+    },
+    {
+      "path": "docs/evidence/a6-d2-desktop-net-edge-trace.zip",
+      "sha256": "105aeb7f2a1aff48575b96d817795da547593cbb0204a65f059592ade3ea342c"
+    },
+    {
+      "path": "docs/evidence/a6-d2-desktop-net.png",
+      "sha256": "a39d5e4c952ab4c765cb962b97b77a136eda09d3822228cb48a20e1e4c9ae7e8"
+    },
+    {
+      "path": "docs/evidence/a6-d2-desktop-rotated.png",
+      "sha256": "0ed397745b535d19a943b75131469143291435c43d3a3933b7178d88d26a2356"
+    },
+    {
+      "path": "docs/evidence/a6-d2-mobile-blank.png",
+      "sha256": "1791dab0cf7601a6b0ae42049281446a9a50b5ff0af0e4d2b9d6d07c74ee6a20"
+    },
+    {
+      "path": "docs/evidence/a6-d2-mobile-continent.png",
+      "sha256": "bc5a79bb25374e1010d7f35c8c7f5d281c8adc9fafc041138193347275d1a468"
+    },
+    {
+      "path": "docs/evidence/a6-d2-mobile-editing-trace.zip",
+      "sha256": "8b0ef9cb2a4c61070c019be71bed69e017d469a244f6ebbad762c153cf309c52"
+    },
+    {
+      "path": "docs/evidence/a6-d2-mobile-n128-performance.json",
+      "sha256": "e781b1782b506db3df0eb5b0553dc07a86e3e44d8ddcb04218f457bc98d0ad04"
+    },
+    {
+      "path": "docs/evidence/a6-d2-mobile-n256-performance.json",
+      "sha256": "e8ff02950a99ece6bbd2f1609d6413d61fc62da5c78db03cf4def62509dad39e"
+    },
+    {
+      "path": "docs/evidence/a6-d2-mobile-net-edge-trace.zip",
+      "sha256": "0bf3f475f1519d9bf9e9357355c38a80322d443312a002e4f081e033418f8fa1"
+    },
+    {
+      "path": "docs/evidence/a6-d2-mobile-net.png",
+      "sha256": "605bbdde3546b70971bdd48480386503a7719eaa6cf6c092b0a3d902cdaf4c1f"
+    },
+    {
+      "path": "docs/evidence/a6-d2-mobile-rotated.png",
+      "sha256": "4ccfd0d5d525a8c535bc49bf13d7c077a812b6cb9c831eef85fa36676f77faef"
+    },
+    {
+      "path": "docs/evidence/a6-d2-numerical-performance.json",
+      "sha256": "9f8a0221c06bb8da3624fb525002bfb917e5b783da9c19ead4c4056d4ee182ac"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-browser-results.json",
+      "sha256": "b5a6f3e315768e4739c50191818db0389331fa780622ec385313f8aced680cb1"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-build.txt",
+      "sha256": "0b3ce19120de1f0b61f25af74eef15b0fca614087e2ea96e1577d5f1da842fa1"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-delivery.json",
+      "sha256": "4bb6d4fd2c6305615a7aebf7841ee417495b31e74a4055a6dae4c7c644d243d6"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-desktop-corner.json",
+      "sha256": "2cef97fad166c2a203e968d8fe8a419ba193f0ad125287d647b3341686476541"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-desktop-globe-settings.json",
+      "sha256": "f74a368fcfdc6942af7f8f0899c9960d9b410fee9f713d2442bb482c45453b62"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-desktop-n128-editing-regression.json",
+      "sha256": "ed965e55022d38dba2ea0d8123d8446d3001605b2cb09209d02d8524bb5bbc56"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-desktop-n128-held.png",
+      "sha256": "b224675792ea78696d057d71dd0377cf690b1c3e3b2abf4c3cd8ca41f1755b7c"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-desktop-n128-reopened.png",
+      "sha256": "3fb11a91d2841442c1f9407aef38707626fb66a7de535a7a054e98a16eb9a02d"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-desktop-n128-stroke.json",
+      "sha256": "7cdaf2308daf01f5abd46c17af22e6835c783cf9aacf8751d3f99b836f8076f6"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-desktop-n128-trace.zip",
+      "sha256": "698e9d27f829b85549dc6ecd9e975f171dc37cb33b89f7f26face0150916c8ca"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-desktop-n256-editing-regression.json",
+      "sha256": "3d9437d0ce1ca358aa634b27b33e2c88c335822dbd34561682757d857df7ab86"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-desktop-n256-held.png",
+      "sha256": "8ad3c73fc65efde37dc0ea32127ea1bc6913a967f6b6fee69410727497ba3859"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-desktop-n256-reopened.png",
+      "sha256": "71a20b38ed359b7b544e889cc10db1409609ff754b7320163753ef7e98f525f4"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-desktop-n256-stroke.json",
+      "sha256": "5e88bc09c1d833b4745d2883f48336ba0aa8bdd34fbd5f0bbb728283fa3061fa"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-desktop-n256-trace.zip",
+      "sha256": "5991880bd4210c5991af47ad03fe48c8d4871b50e350c2d495db56e9fc87365d"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-desktop-net-settings.json",
+      "sha256": "da6454efdb0498cb609c0d672c3db13d2784eebdec837ac7a0453e6073fac79f"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-desktop-pole.json",
+      "sha256": "fb8c416258dbaddc56ef9c5f0d1ec15882cc92e7df68ed3ab82d0722e6943326"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-desktop-seam.json",
+      "sha256": "7efb19cc65f6f2d0c04c400d3412ed933683dec439353d351e0a64ea2ae4171a"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-frozen-source.json",
+      "sha256": "c0634d0d35e96dcf4ca2841613693ac35ed5788981da5e9a2df58f6f8ef7f4c2"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-mobile-corner.json",
+      "sha256": "eabf047eff0602d16caae27cd39c4a0e9ce1e0db77dca89b2723e5e1034bf56d"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-mobile-globe-settings.json",
+      "sha256": "462c2177f7cf854c5bcfa9740d6291842a9fc5e0f3a85a8ef12fb3170ba87476"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-mobile-n128-editing-regression.json",
+      "sha256": "e781b1782b506db3df0eb5b0553dc07a86e3e44d8ddcb04218f457bc98d0ad04"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-mobile-n128-held.png",
+      "sha256": "fc879e56022e1eef961ac86e51135bb2af0d5d99aeb3d0679131f2078f783bda"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-mobile-n128-reopened.png",
+      "sha256": "1beb31fefd380c0c67429c3ea44b3f0ee3f1713c6b8d641efb95d711633fce31"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-mobile-n128-stroke.json",
+      "sha256": "b8d0a35fe5af55c1f29c3c3318c2190504d06e4b50e8d36f1ae24a76ffa768ad"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-mobile-n128-trace.zip",
+      "sha256": "70f450a1cabc66a69c86799af6a9cef85662ba0547db10da7a1e921bbd4ecbaa"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-mobile-n256-editing-regression.json",
+      "sha256": "e8ff02950a99ece6bbd2f1609d6413d61fc62da5c78db03cf4def62509dad39e"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-mobile-n256-held.png",
+      "sha256": "b1784248c3a705b9c263bd48d1739b1fea0af6e53e21b576185609f2be1d49be"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-mobile-n256-reopened.png",
+      "sha256": "c6ff933d2492bbecd87489a76638113e08ff593187bce714fd50023e264da24a"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-mobile-n256-stroke.json",
+      "sha256": "603c65e796b2fcb567c159bfb055141dfe07d20229a6b04b6391bd79ed22419a"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-mobile-n256-trace.zip",
+      "sha256": "cf95c2de979d3cb5e8304579873b375a867d1add118e46b970e6b203201d7224"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-mobile-net-settings.json",
+      "sha256": "13e4a9d47f6b91d14c4d2739488a3a5210851125fa48c11d4ddbf6044b8b3b00"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-mobile-pole.json",
+      "sha256": "41ab39b8ce67d69fedb6c4e6744eb317c22d68e148449862c2b7f558e1901137"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-mobile-seam.json",
+      "sha256": "b63131bf19990a82a0c0da3d6a6781011c8c82143b8f770e50a214e049a4cb53"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-numerical.txt",
+      "sha256": "3d518405742785fc2c596e8288f41d1e98273bc1075358226e106b64f7936e49"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-performance.json",
+      "sha256": "6b43cc38d7ac1724164591f934b6e49eeab72b5db9253a7a260af850b4876a51"
+    },
+    {
+      "path": "docs/evidence/a6-d2-r-verification.json",
+      "sha256": "145c2af664de321a17eaa368d9245db47c16eb3816909ca9799a0774a540c641"
+    },
+    {
+      "path": "docs/evidence/a6-d2-verification.json",
+      "sha256": "fd225c5d6c89c408955e07e718b512d09a1583a1350d3f6d69a7787d1e8d9ffc"
+    },
+    {
+      "path": "docs/evidence/a6-e-browser-results.json",
+      "sha256": "96542f57c478e371008c1974352b4e1f2468eb27276a8f3f79de7cafc7d61872"
+    },
+    {
+      "path": "docs/evidence/a6-e-desktop-blank-saved.png",
+      "sha256": "3de8978422948721c6bc8db1da1a68fdf7382a8ca0d0648cb89b13d23f5fb485"
+    },
+    {
+      "path": "docs/evidence/a6-e-desktop-continent-saved.png",
+      "sha256": "faea72a35ef093a8a97199bf304a46fc45cfc97ae027bbad33fb7e433cfde5bf"
+    },
+    {
+      "path": "docs/evidence/a6-e-desktop-continued-editing.png",
+      "sha256": "e5b5dccac1ab2688dcde14b2b428da863ed92420db1cfea06b145570077d8adc"
+    },
+    {
+      "path": "docs/evidence/a6-e-desktop-n128-persistence.json",
+      "sha256": "b695f56ededcf9d7cfd6d7e3db2008c27264331d8e16056d8a0467d42f149f17"
+    },
+    {
+      "path": "docs/evidence/a6-e-desktop-n256-persistence.json",
+      "sha256": "4fe7f7a53fd269b885c12c55657d8b29f17332f675df6f7464a3ca27c3d1d0ff"
+    },
+    {
+      "path": "docs/evidence/a6-e-desktop-recovery-trace.zip",
+      "sha256": "adbe8715d87286a4cc4449741ecce0c3662335196ca6ba92b5129bf329c560d6"
+    },
+    {
+      "path": "docs/evidence/a6-e-desktop-reopened-net.png",
+      "sha256": "06031555804fd83cb97b6d04a28823d313acf4504143cbc33784189f9f6f26cb"
+    },
+    {
+      "path": "docs/evidence/a6-e-desktop-save-open-trace.zip",
+      "sha256": "7847756369a56486d6ff4ebd8d2ffb32a8d1c2730a3d1cf5c36090d8aaa49e5a"
+    },
+    {
+      "path": "docs/evidence/a6-e-mobile-blank-saved.png",
+      "sha256": "206c4cb69088c49b10913266309fc954f1f6141db90b47648c9d0a6475cdebcf"
+    },
+    {
+      "path": "docs/evidence/a6-e-mobile-continent-saved.png",
+      "sha256": "49639e4ba6d89e7b998674cc6078f9531b10c2729b934fa278d426048de517e3"
+    },
+    {
+      "path": "docs/evidence/a6-e-mobile-continued-editing.png",
+      "sha256": "f663d6ee6dcb1bd1b9049459f002df6cb21ad37305de75fdf057cde4753a0598"
+    },
+    {
+      "path": "docs/evidence/a6-e-mobile-n128-persistence.json",
+      "sha256": "5559fad0db024662e24402e3976cc9da91644bfa1d7d21acc7a32a16fa53279e"
+    },
+    {
+      "path": "docs/evidence/a6-e-mobile-n256-persistence.json",
+      "sha256": "2a4854bfec1a5884295bfe18bcb4952c3e0d639028d5bf1dc264546f0b54269b"
+    },
+    {
+      "path": "docs/evidence/a6-e-mobile-recovery-trace.zip",
+      "sha256": "94058476f23844ddbcf77a8ef21139b70b723f54b3be5bb574a831bfaa002519"
+    },
+    {
+      "path": "docs/evidence/a6-e-mobile-reopened-net.png",
+      "sha256": "941f4fdb17e565485af4e4a59f0a2efdb10a3b6f2ee2ad399cd2c46c86bd6903"
+    },
+    {
+      "path": "docs/evidence/a6-e-mobile-save-open-trace.zip",
+      "sha256": "be77885f42960baa8a5dd2ac1db2874ced467161c72e0b4582a14b797072064a"
+    },
+    {
+      "path": "docs/evidence/a6-e-verification.json",
+      "sha256": "1c3b0455fe5501155196902b419fe1d26b47fe760d939c111d6887d47fb6c04b"
+    },
+    {
+      "path": "docs/evidence/a6-f1-browser-results.json",
+      "sha256": "397e0a620c54eb830c7b976f5f12d9dac894cb6cacdba3db490dafba76ae9d69"
+    },
+    {
+      "path": "docs/evidence/a6-f1-delivery.json",
+      "sha256": "db8367edc4f9eb4809ee83b76ad7c686741b16cdeecca8e1356c407be95afadc"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-1440x900.png",
+      "sha256": "b64e913bb4f18ad37012fc32a02bb429ac481078d62109913bf8cd5d58639a61"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-3440x1440.png",
+      "sha256": "bcfa2974ecaf059f0339099fbd873218801cda7b6a8d7150a7edcf89e3556bee"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-412x915.png",
+      "sha256": "9c0e6f3475bd36e63961da330db503bd13d19aadf60014de8d4bc4ae24b23fa6"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-900x900.png",
+      "sha256": "51cfb97520c5c8f534ba272299135555671991cbfa6584e90b4055d17c76bb0e"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-bounded-workspace.png",
+      "sha256": "926f6d72365b1a4f0b40a2ed58913b7a5d709b5a2e74c8202d856bdd51cbe5d1"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-mixed-library.png",
+      "sha256": "6217876581fbc3df40cb386ed1ebf005a400202fdeb8a125e7d11103d9137acb"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-n128-editing-regression.json",
+      "sha256": "5e4636cd62a7d2efff031d10ad99870b6c0413d946d44071b4a0c68c5222bddc"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-n128-persistence.json",
+      "sha256": "9483dc3b14f3f9ee1f79949566698ef649b3858bd2095cf0b5b7df06bd1621c1"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-n256-editing-regression.json",
+      "sha256": "742c7f312c600e76f38282c744167ba2acb38d5e629c04756b5f6d576bb85600"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-n256-persistence.json",
+      "sha256": "02512fba14b84096ac80d25c33907348c89a0d8491cb9d3ad760b9ac03a33c7c"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-recovery-trace.zip",
+      "sha256": "3118094eb355495e2d43bf1b296ed86d89a12dc2150b75f806857f3251bafb44"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-sphere-net.png",
+      "sha256": "1e2a4f85cc67be187e3aa680b4e5f604f9ed5427891341f2c0abb369cae62cf6"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-sphere-workspace.png",
+      "sha256": "dd93f3e4d9290f56e8e884c34f035c4323c3c7e981d494ac7ed1206d80b6454a"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-viewports.json",
+      "sha256": "1ff0053379c8ace6c44295655d44fe42c9f78a0e096189d37c5d8fff2cc86291"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-workflow-trace.zip",
+      "sha256": "bd1ec128b2e7eb891b312abfcfb4ae72f5645c11616e358acf6dc7fc8f60edde"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-workflow.json",
+      "sha256": "edbe738476e75a8c7d749b03cfb33ffd60a2b0c70a8d74694f7478ed2b920c3e"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-world-setup.png",
+      "sha256": "c747c0bda038ea4476180c3330eb840d3d09b0210b9f6cc90687280c172975f6"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-wrapped-workspace.png",
+      "sha256": "68ef81ea54f51e8c3f806dfd00444ebffc04917429b9b78f9ceb93094303e765"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-1440x900.png",
+      "sha256": "f103c843e1d94f3cbe3d1004f6d44d43826bc0a094ab52c26ba79ed5c2594ca2"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-3440x1440.png",
+      "sha256": "e6a239f73814b8852ba0d374b8cf96d43e5bae3fe47e07c44848fafd0995d7d7"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-412x915.png",
+      "sha256": "706400de489d3db74b238cc6818fc51ab78375191c13a6e1cfdebe8b7f25e8fa"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-900x900.png",
+      "sha256": "df28b41866e1cbee0d85aa73e723478ca0feb199608d20b515593a934cc37575"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-bounded-workspace.png",
+      "sha256": "b99a69395d374d6cc047a1bfea8fe5c36d4fc2ea47b7870c183b8d01652d7b4e"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-mixed-library.png",
+      "sha256": "5ca49d05fc288688a7774ec2d0d22e230619ca95129707b288f97980b1c0e555"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-n128-editing-regression.json",
+      "sha256": "cf5a96027b9f2ff5fe653e4f13978812c07fabf57e3889ef112d0067319e690a"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-n128-persistence.json",
+      "sha256": "11df650587a6f49c08ce490ff705080ee3bd239cc7c5131b20c6f293c87a500b"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-n256-editing-regression.json",
+      "sha256": "5ea145d41dda2323cc9e61339a7528a1ec46bb65a3d76c5025245f1063621417"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-n256-persistence.json",
+      "sha256": "114dd7bf7493c7ef07a7bf937306b9cc6b6698e322cded410f53a05a19291d4f"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-recovery-trace.zip",
+      "sha256": "2476512a920f31a2c58563d5c2f7bef3a4009dc989cce295e979b0699edb0dc4"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-sphere-net.png",
+      "sha256": "de498336c7bfc32dc8c3769841caa148ff4da77329b470226c17fa0b619457ca"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-sphere-workspace.png",
+      "sha256": "d0e455b97261e6c8910adce208f59de427ef6b7b69a5f174a008ff16b7666b29"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-viewports.json",
+      "sha256": "1ff0053379c8ace6c44295655d44fe42c9f78a0e096189d37c5d8fff2cc86291"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-workflow-trace.zip",
+      "sha256": "9d81053747bbf4a5c54400ca1418131590894b455d8335eb8f5a446460951fc0"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-workflow.json",
+      "sha256": "50167a55cd27d318443e97bcaec2e37d4983386342a05de48beccebf041ad985"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-world-setup.png",
+      "sha256": "337fca351e81735c83ffd355abb51f3d2d08713a73157fc665be17cc40b1ab65"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-wrapped-workspace.png",
+      "sha256": "7b55e562b4c3382dc515f586f24fcd8b76a6f547827dfb3b2838924309ecf98e"
+    },
+    {
+      "path": "docs/evidence/a6-f1-production-bundles.json",
+      "sha256": "8bec2a3938d04008e92968ea72c89d54c2fc816ff446e8f4a7defa36f35b7667"
+    },
+    {
+      "path": "docs/evidence/a6-f1-verification.json",
+      "sha256": "503a9011356f48d2fb641f4f120fa9eb1a4ae6fb0ad8bbd9682ad8cf3945335c"
+    },
+    {
+      "path": "docs/evidence/a6-p1-after-confirm-mobile-n256.json",
+      "sha256": "b79fe5b9e59264c6bd146cf8bbed3ba6cbbf423576547cb880232a284ec74fe0"
+    },
+    {
+      "path": "docs/evidence/a6-p1-after-confirm-mobile-n256.png",
+      "sha256": "6ae050c64ab85e1b08fc12bb08b392e07cc76d622fe95b33dc3e3893db11ac86"
+    },
+    {
+      "path": "docs/evidence/a6-p1-after-desktop-n128.json",
+      "sha256": "0f486f779096a2339cc9700f1f4d54fb16b01cfeb74528505922fd9175a8b66c"
+    },
+    {
+      "path": "docs/evidence/a6-p1-after-desktop-n128.png",
+      "sha256": "72b36cb96aea5edc5a86006aac2a8a7cfe27e84826a2134073ce586d17e902fa"
+    },
+    {
+      "path": "docs/evidence/a6-p1-after-desktop-n256.json",
+      "sha256": "b69529f1c7ca2511560dea2f69178d56c7eef95fc185cbcc2c483db874ec889a"
+    },
+    {
+      "path": "docs/evidence/a6-p1-after-desktop-n256.png",
+      "sha256": "2d298fed1543c0d24ca58fe35d466f33e58db0713759522b59b380fd563db3a5"
+    },
+    {
+      "path": "docs/evidence/a6-p1-after-final-browser-results.json",
+      "sha256": "148cca3bea11613b6e7406962e29b76d54bfd5138f11e86b72372136507bf82a"
+    },
+    {
+      "path": "docs/evidence/a6-p1-after-final-conditions.json",
+      "sha256": "9261db6cc30f8393061e069ef5f4994cce333e139e816c12b8351181425f0317"
+    },
+    {
+      "path": "docs/evidence/a6-p1-after-final-mobile-n128.json",
+      "sha256": "5772dd5d6d0722d42ce70fc6a180b4a3eb55a3a51f8d6f1b17c232c4f055f408"
+    },
+    {
+      "path": "docs/evidence/a6-p1-after-final-mobile-n128.png",
+      "sha256": "0abde075520c3c8a4dde5310fe985bb0a6ad2ffe2071047d76a03b5c10e01803"
+    },
+    {
+      "path": "docs/evidence/a6-p1-after-mobile-n128.json",
+      "sha256": "6a2b08de2da3deb1d68ef217c73dbcbd70850bc97b8c602be11f7a6e324c7099"
+    },
+    {
+      "path": "docs/evidence/a6-p1-after-mobile-n128.png",
+      "sha256": "0abde075520c3c8a4dde5310fe985bb0a6ad2ffe2071047d76a03b5c10e01803"
+    },
+    {
+      "path": "docs/evidence/a6-p1-after-mobile-n256.json",
+      "sha256": "b8690349801d21c826ea54ed10b9084ff8c34424e755863c88250f5c2ee4802b"
+    },
+    {
+      "path": "docs/evidence/a6-p1-after-mobile-n256.png",
+      "sha256": "6ae050c64ab85e1b08fc12bb08b392e07cc76d622fe95b33dc3e3893db11ac86"
+    },
+    {
+      "path": "docs/evidence/a6-p1-after.cpuprofile",
+      "sha256": "67a345cc3ff476e437405ba0797a4403b6365b8e33f3d891faf983fa96e9a2af"
+    },
+    {
+      "path": "docs/evidence/a6-p1-before-confirm-mobile-n256.json",
+      "sha256": "db0e5a60ec3a14ae1f56f9f83837b8ff9e563b8d6ed82721471bbe5b4ba3ec9f"
+    },
+    {
+      "path": "docs/evidence/a6-p1-before-confirm-mobile-n256.png",
+      "sha256": "6ae050c64ab85e1b08fc12bb08b392e07cc76d622fe95b33dc3e3893db11ac86"
+    },
+    {
+      "path": "docs/evidence/a6-p1-before-desktop-n128.json",
+      "sha256": "ec5f904e1ecc2d5d70e2aa1969d65e4c9cf3173c73ef5fcf5fc5532aa4e8fb9c"
+    },
+    {
+      "path": "docs/evidence/a6-p1-before-desktop-n128.png",
+      "sha256": "72b36cb96aea5edc5a86006aac2a8a7cfe27e84826a2134073ce586d17e902fa"
+    },
+    {
+      "path": "docs/evidence/a6-p1-before-desktop-n256.json",
+      "sha256": "d488f5269b55792c8605bb0520a65bac1c53771b01dc2fae1ef73ba5e47e4137"
+    },
+    {
+      "path": "docs/evidence/a6-p1-before-desktop-n256.png",
+      "sha256": "2d298fed1543c0d24ca58fe35d466f33e58db0713759522b59b380fd563db3a5"
+    },
+    {
+      "path": "docs/evidence/a6-p1-before-mobile-n128.json",
+      "sha256": "9c4b9141d507e70f311cee8522db10791c9c08f19276051cf069a446771941d0"
+    },
+    {
+      "path": "docs/evidence/a6-p1-before-mobile-n128.png",
+      "sha256": "0abde075520c3c8a4dde5310fe985bb0a6ad2ffe2071047d76a03b5c10e01803"
+    },
+    {
+      "path": "docs/evidence/a6-p1-before-mobile-n256.json",
+      "sha256": "2fd1cc678fc7093ddbadb0559a4d3dca936320f501efd8a0288c8ecb0af1bfdc"
+    },
+    {
+      "path": "docs/evidence/a6-p1-before-mobile-n256.png",
+      "sha256": "6ae050c64ab85e1b08fc12bb08b392e07cc76d622fe95b33dc3e3893db11ac86"
+    },
+    {
+      "path": "docs/evidence/a6-p1-before.cpuprofile",
+      "sha256": "f1bc7c4083555297485377f665add672a29369e602aef46a89e220c7bd99d527"
+    },
+    {
+      "path": "docs/evidence/a6-p1-browser-results.json",
+      "sha256": "c6f6b7f047f49e0a22b6b1f2236a37153a8ffe0aad234fc5db6b1334975d44eb"
+    },
+    {
+      "path": "docs/evidence/a6-p1-build.txt",
+      "sha256": "6ad0542fa1c343e1a22828779135ced6f807c26afff20d2a6cf559f5c60930c5"
+    },
+    {
+      "path": "docs/evidence/a6-p1-delivery.json",
+      "sha256": "eb18570390936a45c4e1e179d9c9a9a86e0ee4a1e9a802c517bfc1e68f91e82c"
+    },
+    {
+      "path": "docs/evidence/a6-p1-desktop-n128-editing-regression.json",
+      "sha256": "d7d809732805db4ff54604e22b9dc8dc3bd97cb9c406833fdbed2c79ef618204"
+    },
+    {
+      "path": "docs/evidence/a6-p1-desktop-n128-limb-held.png",
+      "sha256": "509f56f6c9a59edfa44608d21f488a4797a2586814f90af7dceff07cd291b1b7"
+    },
+    {
+      "path": "docs/evidence/a6-p1-desktop-n128-limb-proof.json",
+      "sha256": "cfd605d87bf2f1253177e087148116f6db5e7a3a1b0eda9688007a25dd0429f2"
+    },
+    {
+      "path": "docs/evidence/a6-p1-desktop-n256-editing-regression.json",
+      "sha256": "da101f05798941bf01a2a4e327423c2da242d95189e31ee0826b58e4681e616b"
+    },
+    {
+      "path": "docs/evidence/a6-p1-desktop-n256-limb-held.png",
+      "sha256": "eddee1cefe67c694763ee040ecccb387dfe276339a6c7b6018868efbf990e2f6"
+    },
+    {
+      "path": "docs/evidence/a6-p1-desktop-n256-limb-proof.json",
+      "sha256": "b73bb4242825775d87d2764b668cf94349b6628123bf5c832e6f4d8e7a257bee"
+    },
+    {
+      "path": "docs/evidence/a6-p1-desktop-n256-trace.zip",
+      "sha256": "c4feab06ea06653b5b5ad31c6e9933b8e02b5ce97ae7d23846d167ad8d1930fb"
+    },
+    {
+      "path": "docs/evidence/a6-p1-frozen-source.json",
+      "sha256": "508723e202d6361b31edf11f121b28dcd79689bee1bb3cb9782c86cf48cb3c71"
+    },
+    {
+      "path": "docs/evidence/a6-p1-memory-after-trace.zip",
+      "sha256": "55c39ad7a6377fd2024d71619f572b45ea3b4e1d1ee8c1f4d4251d01c3ab292c"
+    },
+    {
+      "path": "docs/evidence/a6-p1-memory-before-trace.zip",
+      "sha256": "17a522737fe8ae23da86cacf2886d526ae8c6dff8f7fec3c8dd6c2601ba6997d"
+    },
+    {
+      "path": "docs/evidence/a6-p1-memory.json",
+      "sha256": "624320da1a9d10880819a59f376dbcd635c3d7bae3f027e73aca27fd8b030617"
+    },
+    {
+      "path": "docs/evidence/a6-p1-mobile-n128-editing-regression.json",
+      "sha256": "8d4c5e7fe71da4618c39d79ef5609c35efab22d12750c3f2a41a233aa14059bc"
+    },
+    {
+      "path": "docs/evidence/a6-p1-mobile-n128-limb-held.png",
+      "sha256": "ce5ad94161a33c062cd3513cb702a8ac080b3fd4a52640ada8e7a1544c65d642"
+    },
+    {
+      "path": "docs/evidence/a6-p1-mobile-n128-limb-proof.json",
+      "sha256": "b824a668ae08fdf416f7b3209faed604a45ccf3311c7a9883af34e0fdf6e5609"
+    },
+    {
+      "path": "docs/evidence/a6-p1-mobile-n256-editing-regression.json",
+      "sha256": "aae512b77f9608c62b80ffe7ae216423064d9b106c711ad400499659f73602eb"
+    },
+    {
+      "path": "docs/evidence/a6-p1-mobile-n256-limb-held.png",
+      "sha256": "f55eae681e1819329d02576b3bcddca257a3a241936788f0ff0b2c679e7fa39c"
+    },
+    {
+      "path": "docs/evidence/a6-p1-mobile-n256-limb-proof.json",
+      "sha256": "c99c9aeef04b38df9a536e8b4ab3729a67933c67aa686039d1345c19e0ce7a73"
+    },
+    {
+      "path": "docs/evidence/a6-p1-mobile-n256-trace.zip",
+      "sha256": "43580dee4806c9a868d98e62b9e649ba0a6a5d9cd1ed714e085e0b83b8c06025"
+    },
+    {
+      "path": "docs/evidence/a6-p1-numerical.txt",
+      "sha256": "4d1c16e23c67c2a899c0286243489c805e928bfa1a0f3d7af84e624d90bf61fa"
+    },
+    {
+      "path": "docs/evidence/a6-p1-performance-comparison.json",
+      "sha256": "0bb3202ff96f0d5d0dd2bbbc42ba7a83e99a51fc3a099ffefb0ac48b98b38238"
+    },
+    {
+      "path": "docs/evidence/a6-p1-raster-microbench.json",
+      "sha256": "9caf75173357bc45185b589fc5be4dfa68c2e9a1e471b5cf73b760eee7385aec"
+    },
+    {
+      "path": "docs/evidence/a6-p1-regression-desktop-n128.json",
+      "sha256": "2f216d0b8560e540aac1c0eceff38150cc5ec238c678a1cc22810fedf172546b"
+    },
+    {
+      "path": "docs/evidence/a6-p1-regression-desktop-n128.png",
+      "sha256": "72b36cb96aea5edc5a86006aac2a8a7cfe27e84826a2134073ce586d17e902fa"
+    },
+    {
+      "path": "docs/evidence/a6-p1-regression-desktop-n256.json",
+      "sha256": "e30f34aeebe6a8fb9b937d85dd92c292dbdb902517892f39365b8de1dc44d75d"
+    },
+    {
+      "path": "docs/evidence/a6-p1-regression-desktop-n256.png",
+      "sha256": "2d298fed1543c0d24ca58fe35d466f33e58db0713759522b59b380fd563db3a5"
+    },
+    {
+      "path": "docs/evidence/a6-p1-regression-mobile-n128.json",
+      "sha256": "802c7c609c447f4e262409991acb3a617bd3a723dfc7300dcda3deddc7436956"
+    },
+    {
+      "path": "docs/evidence/a6-p1-regression-mobile-n128.png",
+      "sha256": "0abde075520c3c8a4dde5310fe985bb0a6ad2ffe2071047d76a03b5c10e01803"
+    },
+    {
+      "path": "docs/evidence/a6-p1-regression-mobile-n256.json",
+      "sha256": "75a24e83871473d36f85cd73ed957bf6838435ed2c9e35ba8201580cb0ef1993"
+    },
+    {
+      "path": "docs/evidence/a6-p1-regression-mobile-n256.png",
+      "sha256": "6ae050c64ab85e1b08fc12bb08b392e07cc76d622fe95b33dc3e3893db11ac86"
+    },
+    {
+      "path": "docs/evidence/a6-p1-verification.json",
+      "sha256": "438fdac64a53aa25436d7057d9a28036202298514238f47c5eedfec7bbaa82bc"
+    },
+    {
+      "path": "docs/evidence/atlas-desktop.png",
+      "sha256": "5b41778acefbf1782e2fe87415188fb552b8c6bc7b95c3ddf72735b398d08697"
+    },
+    {
+      "path": "docs/evidence/atlas-mobile.png",
+      "sha256": "7cd6b5d242561e767e60c9974b1c4678bf1ebfb6b1bcc238e220af1716725c16"
+    }
+  ],
+  "captures": [
+    "docs/evidence/a7-a-desktop-n256-regression-trace.zip",
+    "docs/evidence/a7-a-desktop-n128-limb-proof.json",
+    "docs/evidence/a7-a-desktop-n128-limb-held.png",
+    "docs/evidence/a7-a-desktop-n128-editing-regression.json",
+    "docs/evidence/a7-a-desktop-n256-limb-proof.json",
+    "docs/evidence/a7-a-desktop-n256-limb-held.png",
+    "docs/evidence/a7-a-desktop-n256-editing-regression.json",
+    "docs/evidence/a7-a-mobile-n256-regression-trace.zip",
+    "docs/evidence/a7-a-mobile-n128-limb-proof.json",
+    "docs/evidence/a7-a-mobile-n128-limb-held.png",
+    "docs/evidence/a7-a-mobile-n128-editing-regression.json",
+    "docs/evidence/a7-a-mobile-n256-limb-proof.json",
+    "docs/evidence/a7-a-mobile-n256-limb-held.png",
+    "docs/evidence/a7-a-mobile-n256-editing-regression.json"
+  ],
+  "allocation": "docs/evidence/a7-a-cylinder-allocation.json"
+}

@@ -1,0 +1,62 @@
+{
+  "timestamp": "2026-10-18T19:17:04.852Z",
+  "node": "v24.18.0",
+  "platform": "win32",
+  "geometry": {
+    "identity": {
+      "worldId": "a7-a-proof",
+      "surfaceId": "exterior"
+    },
+    "provider": "physical-closed-cylinder",
+    "version": 1,
+    "configuration": "solid-capped",
+    "role": "exterior",
+    "radiusMeters": 6371000,
+    "lengthMeters": 12000000
+  },
+  "records": [
+    {
+      "resolution": {
+        "angularSamples": 128,
+        "axialCells": 64,
+        "radialCells": 32
+      },
+      "sampleCount": 16258,
+      "authorityBytes": 65032,
+      "retainedArrayBufferDelta": 65032,
+      "snapshotArrayBufferDelta": 130064,
+      "creationMs": 0.5387999999999948,
+      "blankFloat32Word": "c2c80000",
+      "blankSnapshotSha256": "890366a28fdd01af962473c4e22e4395c6d9a657ec817745e2835f9a9d83aa13"
+    },
+    {
+      "resolution": {
+        "angularSamples": 256,
+        "axialCells": 128,
+        "radialCells": 64
+      },
+      "sampleCount": 65282,
+      "authorityBytes": 261128,
+      "retainedArrayBufferDelta": 261128,
+      "snapshotArrayBufferDelta": 522256,
+      "creationMs": 0.1424999999999983,
+      "blankFloat32Word": "c2c80000",
+      "blankSnapshotSha256": "9285fd9ffc79a0f276c745e1b20e8aeda5cd6404f37dde7ed9e8a27fdc940cdb"
+    },
+    {
+      "resolution": {
+        "angularSamples": 1024,
+        "axialCells": 512,
+        "radialCells": 256
+      },
+      "sampleCount": 1047554,
+      "authorityBytes": 4190216,
+      "retainedArrayBufferDelta": 4190216,
+      "snapshotArrayBufferDelta": 8380432,
+      "creationMs": 0.6296999999999997,
+      "blankFloat32Word": "c2c80000",
+      "blankSnapshotSha256": "3299a6c9e1041dff953b8aae5ca23d7aeed5da3f113fbdfd9e3b189772e51918"
+    }
+  ],
+  "caveat": "Isolated Node ArrayBuffer deltas, not browser/process/total JS memory. Each caller-owned snapshot adds another authority-sized buffer. No cylinder renderer or brush is implemented."
+}
