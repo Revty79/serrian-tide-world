@@ -1,4 +1,5 @@
 import { assertIdentity, type SurfaceIdentity, type SurfacePosition, type SurfaceTangent, type TangentTransform } from './contracts.ts';
+import { cylinderGlobalDistance, type CylinderDistanceOptions } from './cylinder-distance.ts';
 
 /** A representation frame, not gravity, geographic north or a viewing orientation. */
 export type CylinderVector = readonly [number, number, number];
@@ -91,7 +92,7 @@ export function createCylinderGeometry(input: CylinderConfiguration) {
   };
   const sameRegionDistance = (first: SurfacePosition, second: SurfacePosition) => {
     const a = normalize(first), b = normalize(second);
-    if (a.patchId !== b.patchId) throw new RangeError('Region-restricted distance requires one chart; general cross-rim geodesics are unsupported.');
+    if (a.patchId !== b.patchId) throw new RangeError('Region-restricted distance requires one chart; use globalDistance for cross-rim paths.');
     const value = a.patchId === 'side'
       ? Math.hypot(radius * cylinderAngle(a.u - b.u), a.v - b.v)
       : (() => { const p = referencePosition(a), q = referencePosition(b); return Math.hypot(p[0] - q[0], p[1] - q[1]); })();
@@ -99,8 +100,8 @@ export function createCylinderGeometry(input: CylinderConfiguration) {
   };
   return Object.freeze({
     metadata, identity, circumferenceMeters, normalize, referencePosition, normal, tangentVector, crossRim, sameRegionDistance,
-    /** Reject even same-region requests: a cap shortcut can beat the side-only route. */
-    globalDistance: (a: SurfacePosition, b: SurfacePosition): never => { normalize(a); normalize(b); throw new RangeError('Global closed-cylinder geodesics are not implemented.'); },
+    /** Bounded continuous-surface result, including cap shortcuts; no terrain/view access. */
+    globalDistance: (a: SurfacePosition, b: SurfacePosition, options?: CylinderDistanceOptions) => cylinderGlobalDistance({ metadata, normalize }, a, b, options),
     /** At the center the physical tangent plane exists; only the polar basis is singular. */
     capCartesianTangent: (region: Exclude<CylinderRegion, 'side'>, x: number, y: number): CylinderVector => {
       if (!['cap-start', 'cap-end'].includes(region) || ![x, y].every(Number.isFinite)) throw new RangeError('A cap and finite Cartesian components are required.');

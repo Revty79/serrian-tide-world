@@ -1,6 +1,6 @@
-# Physical closed-cylinder foundation — A7-A
+# Physical closed-cylinder foundation — A7-A / A7-B1
 
-This provider implements a **solid, closed, capped cylinder exterior**, independently of all existing representations. It is pure TypeScript without React, DOM, storage, authentication or a host dependency. It is not selectable in New World / Map. There is no cylinder renderer, brush, history integration, codec or migration in A7-A.
+This provider implements a **solid, closed, capped cylinder exterior**, independently of all existing representations. It is pure TypeScript without React, DOM, storage, authentication or a host dependency. A7-B1 adds [bounded global reference-surface distance](CYLINDER-GLOBAL-DISTANCE.md) and corrects the mesh-count documentation below without changing canonical storage. It is not selectable in New World / Map. There is no cylinder renderer, brush, history integration, codec or migration in A7-A/B1.
 
 ## Version and physical frame
 
@@ -87,12 +87,14 @@ Regular nodes have two angular neighbors and two transverse neighbors. At a side
 For an independent cell complex, join adjacent side rows with A quads; on each cap join successive nonzero rings with A quads, and use A triangles from its single center to its first ring. Weld outer cap rings to the appropriate side rings with reversed end-cap orientation. There are:
 
 ```text
-F = AZ + 2A(P−2) + 2A = A(Z+2P−2)
-E = A(2Z+4P−3)
+F = AZ + 2A(P−1) + 2A = A(Z+2P)
+E = A(2Z+4P−1)
 V−E+F = 2
 ```
 
-Every directed cell edge has exactly one oppositely directed partner, the graph is connected, and the closed orientable surface is genus zero. This is the topology of a closed cylinder boundary; it does not imply sphere reference geometry. The independent symbolic mesh test derives physical weld labels without using provider indices/alias logic, checks every paired directed edge, compares every neighbor to the mesh, and proves V−E+F=2. Separate exhaustive tests cover every chart address, rim, angular wrap, alias count and reciprocal neighbor for four resolutions (including odd A). A maximum-grid test visits all 1,047,554 canonical indices and proves owner→resolve identity. The authority is never three arrays stitched after editing.
+Each cap has P−1 annular quad bands (including the band joining its last interior ring to the shared rim), plus its center fan. Also, all V−2 noncenter nodes have degree 4 and the two centers degree A, giving `E=[4(V−2)+2A]/2`. The A7-A documented E and F each omitted 2A; their errors canceled in Euler. A7-B1 corrects those formulas and independently asserts actual generated V/E/F counts for A=4,7,9,32, including odd counts. Canonical terrain structure is unchanged.
+
+Every directed cell edge has exactly one oppositely directed partner, the graph is connected, and the closed orientable surface is genus zero. This is the topology of a closed cylinder boundary; it does not imply sphere reference geometry. The independent symbolic mesh test derives physical weld labels without using provider indices/alias logic, checks every paired directed edge, compares every neighbor to the mesh, and proves actual V, E, F and V−E+F=2. Separate exhaustive tests cover every chart address, rim, angular wrap, alias count and reciprocal neighbor for four resolutions (including odd A). A maximum-grid test visits all 1,047,554 canonical indices and proves owner→resolve identity. The authority is never three arrays stitched after editing.
 
 ## Physical measurements and deliberate limits
 
@@ -104,9 +106,9 @@ sqrt((R wrapAngle(u1-u2))² + (v1-v2)²).
 
 On either disk the straight XY segment lies in that convex disk, so its Euclidean planar length is the exact region-intrinsic shortest path. In particular a radial distance is `abs(r1-r2)` for equal physical angle. These measurements exclude displaced relief. Every result says `scope: region-restricted`; different-region inputs fail. The provider intentionally does **not** implement generic `SurfaceMetric.distance` with a misleading global contract.
 
-Even a same-side pair can take a shorter route over a cap: opposite points on a rim are πR apart along the side and only 2R across the disk. `globalDistance` always throws explicitly, including same-region pairs. A 3D chord for points in different regions generally leaves the physical surface and is never exposed as an exact surface distance.
+Even a same-side pair can take a shorter route over a cap: opposite points on a rim are πR apart along the side and only 2R across the disk. A7-B1's `globalDistance` compares all necessary continuous route families and returns a lower/upper enclosure with an explicit meter error bound, or fails on unsupported precision/work/range. A 3D chord for points in different regions generally leaves the physical surface and is never exposed as an exact surface distance. See [completeness, optimization and accuracy specification](CYLINDER-GLOBAL-DISTANCE.md).
 
-Before cross-rim brushes/paths are enabled, the next numerical phase must solve or conservatively certify the global minimum over valid routes and angular lifts, including disk shortcuts, both rim choices, grazing/tied paths and sharp-edge crossings. A cap crossing uses its convex disk chord; side portions use valid unrolled-cylinder segments. Entry/exit rim parameters must be optimized with boundary cases, not guessed from a single unfolded tangent plane. Smooth needs defensible physical distances/weights at centers and rims, with strongly varying polar sample area; this graph alone does not establish a conservative/equal-area discretization. Stroke spacing, footprints, saturation, queued visibility and residuals must use the same approved intrinsic geometry. Numerical budgets and independent reference proofs are prerequisites to interactive support. A7-A makes no claim to solve these open mathematical/editing questions.
+A7-B1 supplies the bounded global distance minimum over justified complete route families, including shortcuts, both rim choices, angular wrapping, center/rim endpoints and ties. A7-B2 still needs actual path reconstruction/continuation at ties and cut loci, interval-aware influence, physical stroke spacing and Smooth weights at centers/rims with strongly varying polar sample area. The graph alone does not establish conservative/equal-area diffusion. Stroke spacing, footprints, saturation, queued visibility and residuals must use consistent physical geometry. Distance work has a hard per-query budget; weaker-device brush scheduling remains later scope.
 
 ## Resource and precision bounds
 
@@ -114,12 +116,12 @@ Maximum version-1 authority: **1,047,554 samples / 4,190,216 bytes**, below 4 Mi
 
 Run `node --expose-gc scripts/verify-cylinder-foundation.mjs` for actual isolated Node allocation measurements at 128/64/32, 256/128/64 and maximum resolution. The [receipt](evidence/a7-a-cylinder-allocation.json) distinguishes exact typed payload from JS object, browser, history and renderer costs. Measurements are not mobile performance claims. Existing numerical/rendering/history budgets remain unchanged because the provider is not imported by the product host.
 
-## A7-B contract and review gate
+## A7-B2 contract and review gate
 
 Later views must be supplied by a surface-specific provider: rectangular side, **both circular caps**, real joins, useful combined layout and recenterable local views. Projection cuts, navigation and repeated views only read the same authority. They must not relocate/resample stored geography. Accurate inverse hit testing, physical footprint previews, seam/corner/center interaction and aspect handling must precede selectable creation. Rectangular repeated previews are not a universal interface for all shapes.
 
-Raise, Lower, Smooth and Flatten must cross joins using the approved physical metric and one canonical update per dab, with whole-stroke exact-bit Undo/Redo. The selected physical brush must agree with previews across charts; centers cannot acquire directional singularities. A later codec needs explicit provider/version/dimensions/resolution/ownership/identity/role, exact Float32 words, checksum/resource limits and atomic host behavior, while preserving v1/v2/v3. No cylinder data is passed to those old codecs now. No conversion is authorized. Cylinder selection stays absent until functional views, editing and persistence are reviewed.
+Raise, Lower, Smooth and Flatten must cross joins using approved physical-distance enclosures and one canonical update per dab, with whole-stroke exact-bit Undo/Redo. Queries overlapping a brush boundary need refinement/an approved error policy; failed distance queries cannot cause partial dabs. The selected physical brush must agree with previews across charts; centers cannot acquire directional singularities. A later codec needs explicit provider/version/dimensions/resolution/ownership/identity/role, exact Float32 words, checksum/resource limits and atomic host behavior, while preserving v1/v2/v3. No cylinder data is passed to those old codecs now. No conversion is authorized. Cylinder selection stays absent until functional views, editing and persistence are reviewed.
 
 Open/hollow cylinders, independent interior surfaces, domed ends, passages and other connections remain future configurations. All other Phase 2 geometries/conversions and the full linked-map requirement remain in the [master roadmap](PHASE-1-HEIGHTMAP-ROADMAP.md). This is a modular component for eventual integration into **existing Worlds** under the original Next.js/TypeScript host's authentication, permissions, database and World records. No alternate lore database or auth is introduced.
 
-**Stop after A7-A for Ember's independent review. A7-B is not authorized by this delivery.**
+**Stop after A7-B1 for independent review. A7-B2 is not authorized by this delivery.**

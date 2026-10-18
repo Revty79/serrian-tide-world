@@ -1,6 +1,6 @@
 # Atlas master roadmap — Phase 1 and long-term requirements
 
-Updated for A7-A on approved baseline `e42bb8b2e1b360cebc18443be863eb705cd54781`. The owner's revised sequence below supersedes earlier plans for a separately rebuilt replacement Worlds system. Existing Worlds information, organization, data and functionality must be preserved wherever practical. A7-A begins Phase 2 with the physical capped-cylinder numerical foundation only; subsequent geometry, editing, viewing, persistence and Phases 3–11 remain future work.
+Updated for A7-B1 on approved baseline `dc55500bf201be40648190fba13a2ab29fabe948`. The owner's revised sequence below supersedes earlier plans for a separately rebuilt replacement Worlds system. Existing Worlds information, organization, data and functionality must be preserved wherever practical. A7-A begins Phase 2 with the physical capped-cylinder numerical foundation; A7-B1 adds bounded global reference-surface distances. Cylinder editing, viewing, persistence, subsequent geometry and Phases 3–11 remain future work.
 
 ## Current baseline
 
@@ -24,7 +24,8 @@ Updated for A7-A on approved baseline `e42bb8b2e1b360cebc18443be863eb705cd54781`
 | A6-D2-R | Safe automatic globe rotation/recentering during a held limb stroke, changing physical visibility and exact history | Implemented for independent review on the owner's explicit authorization; see A6-D2-R completion and evidence. Net assistance preserved |
 | A6-P1 | Weaker-device N=256 editing responsiveness with exact geography, D2-R continuity and bounded memory | Implemented and verified for Ember's independent technical review; see P1 completion/evidence. No later phase authorized |
 | A7-A | Physical closed capped-cylinder geometry, one Float32 exterior authority, unique rims/centers, reciprocal topology and explicit metric limits | Implemented for independent review; no cylinder UI/brush/persistence. See CYLINDRICAL-HEIGHTMAP-FOUNDATION.md and A7-A completion |
-| A7-B and later geometry checkpoints | Cylinder editing/views/persistence, hollow and other agreed geometries/conversions | Future; do not begin automatically after A7-A |
+| A7-B1 | Corrected mesh-count assertions and globally complete cylinder route families with bounded numerical distance enclosures | Implemented for independent review; see CYLINDER-GLOBAL-DISTANCE.md and A7-B1 completion; explicit precision/work/range failures |
+| A7-B2 and later geometry checkpoints | Cylinder brushes/editing/views/persistence, hollow and other agreed geometries/conversions | Future; do not begin automatically after A7-B1 |
 | Later Phase 1 | Remaining inventory below | Planned; pass boundaries and acceptance criteria still require authorization |
 
 The owner subsequently directed that completed work stay on this repository's `main`, avoiding additional development branches. This changes Git delivery only; it does not authorize deployment, work in the original Serrian Tide website, or implementation of the planned inventory.
@@ -35,7 +36,7 @@ The owner moved the surface foundation ahead of the complete Azgaar-style toolse
 
 After A6-B approval, the owner inserted **A5.1 navigation/wrapping/screen-edge stabilization before A6-C**. That correction was completed and technically reviewed before the separately authorized A5.2 refinement.
 
-The owner supplied Ember's A5.2, A6-C, D1, D2 and E technical approvals and separately authorized F1, D2-R, P1 and now A7-A. Owner hands-on acceptance remains separate. Stop after A7-A for Ember's independent technical review; do not begin A7-B automatically.
+The owner supplied Ember's A5.2, A6-C, D1, D2 and E technical approvals and separately authorized F1, D2-R, P1, A7-A and now A7-B1. Owner hands-on acceptance remains separate. Stop after A7-B1 for independent technical review; do not begin A7-B2 automatically.
 
 ## Current owner-approved long-term development sequence
 
@@ -55,7 +56,7 @@ This complete sequence replaces the previous three-step downstream integration p
 | 10 | Complete acceptance, compatibility and permissions verification before a separately authorized production rollout. |
 | 11 | Build the reusable modern and historical Earth setting. |
 
-Only A7-A's capped-cylinder numerical foundation is implemented from Phase 2 in this checkpoint; the rest of Phases 2–11 remains planned. Atlas must support functional interconnected maps before Phase 7: place a settlement and author its linked city/town map; place buildings and author linked interiors and floors; create linked dungeons and underground levels; navigate between every connected pair in both directions. Complete these workflows in Atlas before website integration.
+Only A7-A's capped-cylinder numerical authority and A7-B1's bounded global reference distances are implemented from Phase 2 in this checkpoint; the rest of Phases 2–11 remains planned. Atlas must support functional interconnected maps before Phase 7: place a settlement and author its linked city/town map; place buildings and author linked interiors and floors; create linked dungeons and underground levels; navigate between every connected pair in both directions. Complete these workflows in Atlas before website integration.
 
 Plan stable map, surface, feature, location and connection identities early. A connection needs explicit parent/child or peer endpoints, anchors in each map's valid geometry/scale, floor/level relationships, reciprocal navigation and future host-owned World associations and permissions. Preserve identities through view changes and explicit non-destructive conversion provenance. These are design requirements, not a speculative persisted schema or additional lore database in P1. Future integration reuses actual Worlds records, organization, living history and alternate timelines wherever practical. The existing Next.js host remains responsible for authentication, server-side authorization and database access.
 
@@ -68,7 +69,7 @@ See [World/surface architecture](WORLD-SURFACE-ARCHITECTURE.md), [numerical foun
 | Owner requirement | Current status and required future work |
 | --- | --- |
 | Spherical worlds | A6-A/B/C authority/tools/history, D2 globe/net editing, E v3 preservation and D2-R held-stroke limb rotation exist. P1 hardens performance while preserving those algorithms |
-| Cylindrical worlds | A7-A implements physical solid capped exterior geometry, shared-rim/center ownership, reciprocal topology and exact region-restricted measurements. Open/hollow/domed/other connected variants, global cross-rim geodesics, editing, views and persistence remain future |
+| Cylindrical worlds | A7-A implements physical solid capped exterior geometry, shared-rim/center ownership, reciprocal topology and region-restricted measurements. A7-B1 adds complete global route families with bounded numerical distance/error enclosures. Open/hollow/domed/other connected variants, brushes/path continuation, editing, views and persistence remain future |
 | Hollow spheres | Catalog contracts only. Interior and exterior must be independently editable and independently selectable, with distinct terrain/history and appropriate inward/outward elevation normals |
 | True cube-shaped worlds | Future physical polyhedron with flat faces and real geometric edges/corners. Distinct from the cube-sphere numerical grid used for round worlds |
 | Pyramid-shaped worlds | Future physical geometry; define base/apex/face arrangement, dimensions, shared samples, metrics and corner traversal before implementation |
@@ -185,7 +186,7 @@ A3 implements pointer-centered zoom, bounded panning, Space/explicit Pan and two
 
 The inventory was checked against the project's primary [Heightmap customization documentation](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Heightmap-customization) and [template-editor documentation](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Heightmap-template-editor). Their application semantics and data models are not adopted automatically. This roadmap records the owner's requested scope; exact future behavior still requires a bounded pass.
 
-The owner supplied Ember's D2/E approvals and separately authorized F1, D2-R, P1 and A7-A on main. Independent review and owner hands-on acceptance remain separate. **Stop after A7-A and submit for Ember's independent technical review; do not begin A7-B.** Later geometry work, integration and production rollout require their own authorization. No future inventory item or GitHub issue is authorized merely by appearing here.
+The owner supplied Ember's D2/E approvals and separately authorized F1, D2-R, P1, A7-A and A7-B1 on main. Independent review and owner hands-on acceptance remain separate. **Stop after A7-B1 for independent technical review; do not begin A7-B2.** Later geometry work, integration and production rollout require their own authorization. No future inventory item or GitHub issue is authorized merely by appearing here.
 
 ## A6-F1 unified workspace and future conversion
 
@@ -193,4 +194,4 @@ The owner supplied Ember's D2/E approvals and separately authorized F1, D2-R, P1
 
 A separate future conversion phase must let a creator explicitly preview, configure, cancel, and accept a non-destructive projection onto a compatible physical shape. Preserve the source and create a new identity with traceable origin. Account for topology, dimensions/physical units, resolution, distortion, area/distance/elevation tradeoffs, face connectivity, cuts, seams, poles, caps, eligible surfaces and incompatible regions. Arbitrary texture wrapping cannot implement accurate general conversion. Switching a view or choosing New never converts existing terrain.
 
-A6-D2-R supplies automatic globe rotation/recentering during a held stroke near the visible limb, immutable per-segment viewing planes and continuous great-circle dab spacing within one history operation. P1 preserves it while hardening editing responsiveness; A7-A leaves all existing engines and workspace behavior unchanged. The full geometry, professional cartography, linked-scale maps, measurement, 3D, existing living history and alternate-timeline inventory remains mandatory, including Issues #1/#2 and the current eleven-phase sequence. Stop after A7-A; do not begin A7-B automatically.
+A6-D2-R supplies automatic globe rotation/recentering during a held stroke near the visible limb, immutable per-segment viewing planes and continuous great-circle dab spacing within one history operation. P1 preserves it while hardening editing responsiveness; A7-A/B1 leave existing editors and workspace behavior unchanged. The full geometry, professional cartography, linked-scale maps, measurement, 3D, existing living history and alternate-timeline inventory remains mandatory, including Issues #1/#2 and the current eleven-phase sequence. Stop after A7-B1; do not begin A7-B2 automatically.

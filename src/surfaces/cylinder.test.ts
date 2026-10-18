@@ -89,7 +89,9 @@ test('cylinder restricted metrics have independent exact axial, wrap, disk and r
   // Diametrically opposite side-rim points have cap shortcut 2R < piR.
   close(d(point('side', 0, 0), point('side', Math.PI, 0)), 3 * Math.PI);
   assert.equal(g.sameRegionDistance(point('side', 0, 0), point('side', 1, 1)).scope, 'region-restricted');
-  assert.throws(() => g.globalDistance(point('side', 0, 0), point('side', Math.PI, 0)), /not implemented/);
+  const global = g.globalDistance(point('side', 0, 0), point('side', Math.PI, 0));
+  assert.ok(global.lowerBoundMeters <= 6 && global.upperBoundMeters >= 6);
+  assert.ok(global.absoluteErrorBoundMeters <= global.requestedToleranceMeters);
   assert.throws(() => g.sameRegionDistance(point('side', 0, 0), point('cap-start', 0, 0)), /cross-rim/);
 });
 

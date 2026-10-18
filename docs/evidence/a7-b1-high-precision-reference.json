@@ -1,0 +1,212 @@
+{
+  "method": "65-digit Decimal Taylor trigonometry, 1024-bin edge derivative bracketing + 170 bisections, four impact-parameter branches (2048 bins) + constrained multistart Newton; independent of production affine branch-and-bound",
+  "precisionDigits": 65,
+  "referenceRoundingAllowanceNormalized": "1e-45",
+  "limitation": "Dense root bracketing/multistart alone is not a proof of global completeness; compare with independently justified production enclosures. Newton candidates must have residual <1e-48.",
+  "records": [
+    {
+      "name": "side-shortcut",
+      "radius": "1",
+      "length": "2",
+      "region0": "side",
+      "coordinate0": ".02",
+      "region1": "side",
+      "coordinate1": ".03",
+      "angle": "3.1415926535897932384626433832795028841971693993751058209749445923078164",
+      "distance": "2.0499999999999999999999999999999999999999999999999999999999999998",
+      "route": "via-start-cap",
+      "angles": [
+        "3.1415926535897932384626433832795028841971693993751058209749445923078164",
+        "0"
+      ],
+      "stationaryAndBoundaryCandidates": 3
+    },
+    {
+      "name": "side-start-interior-minimum",
+      "radius": "1",
+      "length": "3",
+      "region0": "side",
+      "coordinate0": ".2",
+      "region1": "side",
+      "coordinate1": ".4",
+      "angle": "2.6",
+      "distance": "2.4953791703394800550325168533567403718310112472858285611516104045",
+      "route": "via-start-cap",
+      "angles": [
+        "2.3489064313136588888958082174491027784023844450004256525678059246",
+        "0"
+      ],
+      "stationaryAndBoundaryCandidates": 4
+    },
+    {
+      "name": "side-end-interior-minimum",
+      "radius": "1",
+      "length": "3",
+      "region0": "side",
+      "coordinate0": "2.7",
+      "region1": "side",
+      "coordinate1": "2.8",
+      "angle": "2.8",
+      "distance": "2.4611596113191397198274170443260521167652784505547814508728256497",
+      "route": "via-end-cap",
+      "angles": [
+        "2.6834065532111489404664944043912777160682339785319519960703764772",
+        "0"
+      ],
+      "stationaryAndBoundaryCandidates": 4
+    },
+    {
+      "name": "side-direct",
+      "radius": "1",
+      "length": "2",
+      "region0": "side",
+      "coordinate0": ".8",
+      "region1": "side",
+      "coordinate1": "1.4",
+      "angle": "1.2",
+      "distance": "1.3416407864998738178455042012387657412643710157669154345625383472",
+      "route": "side",
+      "angles": [
+        "0",
+        "0"
+      ],
+      "stationaryAndBoundaryCandidates": 1
+    },
+    {
+      "name": "side-cap-interior",
+      "radius": "1",
+      "length": "2",
+      "region0": "side",
+      "coordinate0": ".7",
+      "region1": "start",
+      "coordinate1": ".8",
+      "angle": "2.2",
+      "distance": "2.2189560820513843266522994732551206932481900604052543621429465926",
+      "route": "side-to-cap",
+      "angles": [
+        "1.6939865530956131620573944042734046402412894778778320229455544901",
+        "0"
+      ],
+      "stationaryAndBoundaryCandidates": 3
+    },
+    {
+      "name": "side-cap-near-rim",
+      "radius": "1",
+      "length": "2",
+      "region0": "side",
+      "coordinate0": ".04",
+      "region1": "start",
+      "coordinate1": ".999",
+      "angle": "3.05",
+      "distance": "2.0368613601359191723154840777247370174221028923645581034365928022",
+      "route": "side-to-cap",
+      "angles": [
+        "3.0481303294575107405399383695661817945056040467294893845645538798",
+        "0"
+      ],
+      "stationaryAndBoundaryCandidates": 3
+    },
+    {
+      "name": "side-cap-near-center",
+      "radius": "1",
+      "length": "2",
+      "region0": "side",
+      "coordinate0": ".7",
+      "region1": "start",
+      "coordinate1": ".02",
+      "angle": "2.9",
+      "distance": "1.7194225777995428691905570830269422624903042466132338330655645421",
+      "route": "side-to-cap",
+      "angles": [
+        "2.8966698750962324581155244089892985332892687484490396860047922966",
+        "0"
+      ],
+      "stationaryAndBoundaryCandidates": 3
+    },
+    {
+      "name": "opposite-interior",
+      "radius": "1",
+      "length": "2",
+      "region0": "start",
+      "coordinate0": ".7",
+      "region1": "end",
+      "coordinate1": ".8",
+      "angle": "2.4",
+      "distance": "3.4031634303506167282614997308756535953415170743951218666249493257",
+      "route": "opposite-caps",
+      "angles": [
+        "0.47209472519136678842717714025175842820876883726824437815054768101",
+        "0.23722883388572347202203517160920110772871403583572461740655462656"
+      ],
+      "stationaryAndBoundaryCandidates": 29
+    },
+    {
+      "name": "opposite-squat",
+      "radius": "1",
+      "length": ".15",
+      "region0": "start",
+      "coordinate0": ".93",
+      "region1": "end",
+      "coordinate1": ".88",
+      "angle": "3.05",
+      "distance": "2.0978055187527640402578875649757941434875583374030224030138177202",
+      "route": "opposite-caps",
+      "angles": [
+        "0.0036105775996261238238407332163673434407492306236145077284294625252",
+        "3.0391946957234269247441917279782863487332317222304386310839483915"
+      ],
+      "stationaryAndBoundaryCandidates": 31
+    },
+    {
+      "name": "opposite-long",
+      "radius": "1",
+      "length": "100",
+      "region0": "start",
+      "coordinate0": ".4",
+      "region1": "end",
+      "coordinate1": ".9",
+      "angle": "2.7",
+      "distance": "100.73586552025710319339718598123457632575436205623659897473875107",
+      "route": "opposite-caps",
+      "angles": [
+        "0.039889089964137855985503085108391985185317860941379086838919988435",
+        "0.0029525183197185161945359158521236183335592546667039095580148222836"
+      ],
+      "stationaryAndBoundaryCandidates": 10
+    },
+    {
+      "name": "opposite-near-rims",
+      "radius": "1",
+      "length": ".02",
+      "region0": "start",
+      "coordinate0": ".99999",
+      "region1": "end",
+      "coordinate1": ".9999",
+      "angle": "3.13",
+      "distance": "2.0198760648656287311499625342021691674156868636811211291716093028",
+      "route": "opposite-caps",
+      "angles": [
+        "5.8547355161704957191003316189734619052484534421727461191482613591E-8",
+        "3.1298828479132886001005048443859956461962512500118139440287121725"
+      ],
+      "stationaryAndBoundaryCandidates": 13
+    },
+    {
+      "name": "opposite-symmetric-tie",
+      "radius": "1",
+      "length": ".5",
+      "region0": "start",
+      "coordinate0": "1",
+      "region1": "end",
+      "coordinate1": "1",
+      "angle": "3.1415926535897932384626433832795028841971693993751058209749445923078164",
+      "distance": "2.4999999999999999999999999999999999999999999999999999999999999998",
+      "route": "opposite-caps",
+      "angles": [
+        "0",
+        "3.1415926535897932384626433832795028841971693993751058209749445923078164"
+      ],
+      "stationaryAndBoundaryCandidates": 29
+    }
+  ]
+}

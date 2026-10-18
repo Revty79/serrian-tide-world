@@ -1,0 +1,352 @@
+{
+  "timestamp": "2026-10-18T20:04:27.366Z",
+  "environment": {
+    "node": "v24.18.0",
+    "cpu": "AMD Ryzen 5 5600G with Radeon Graphics         ",
+    "platform": "win32",
+    "release": "10.0.26300"
+  },
+  "references": [
+    {
+      "name": "side-shortcut",
+      "reference": "2.0499999999999999999999999999999999999999999999999999999999999998",
+      "errorVsRoundedReferenceMeters": 4.547473508864641e-13,
+      "queryMs": 2.814300000000003,
+      "value": 2.0500000000004546,
+      "units": "meters",
+      "scope": "global-reference-surface",
+      "method": "continuous-route-affine-bounds-v1",
+      "lowerBoundMeters": 2.049999999962742,
+      "upperBoundMeters": 2.0500000000004546,
+      "absoluteErrorBoundMeters": 3.771249978967717e-11,
+      "requestedToleranceMeters": 1e-10,
+      "bestRoute": "via-start-cap",
+      "possibleRouteClasses": [
+        "via-start-cap"
+      ],
+      "bestAngles": [
+        3.141592653589793,
+        0
+      ],
+      "evaluatedBoxes": 35,
+      "objectiveEvaluations": 351,
+      "peakQueuedBoxes": 1
+    },
+    {
+      "name": "side-start-interior-minimum",
+      "reference": "2.4953791703394800550325168533567403718310112472858285611516104045",
+      "errorVsRoundedReferenceMeters": 1.3358203432289883e-12,
+      "queryMs": 0.6414000000000044,
+      "value": 2.495379170340816,
+      "units": "meters",
+      "scope": "global-reference-surface",
+      "method": "continuous-route-affine-bounds-v1",
+      "lowerBoundMeters": 2.4953791702949095,
+      "upperBoundMeters": 2.495379170340816,
+      "absoluteErrorBoundMeters": 4.590638980062067e-11,
+      "requestedToleranceMeters": 1e-10,
+      "bestRoute": "via-start-cap",
+      "possibleRouteClasses": [
+        "via-start-cap"
+      ],
+      "bestAngles": [
+        2.3489078736054183,
+        0
+      ],
+      "evaluatedBoxes": 57,
+      "objectiveEvaluations": 567,
+      "peakQueuedBoxes": 3
+    },
+    {
+      "name": "side-end-interior-minimum",
+      "reference": "2.4611596113191397198274170443260521167652784505547814508728256497",
+      "errorVsRoundedReferenceMeters": 6.465938895416912e-13,
+      "queryMs": 0.36370000000000857,
+      "value": 2.4611596113197862,
+      "units": "meters",
+      "scope": "global-reference-surface",
+      "method": "continuous-route-affine-bounds-v1",
+      "lowerBoundMeters": 2.4611596112751153,
+      "upperBoundMeters": 2.4611596113197862,
+      "absoluteErrorBoundMeters": 4.46709336188178e-11,
+      "requestedToleranceMeters": 1e-10,
+      "bestRoute": "via-end-cap",
+      "possibleRouteClasses": [
+        "via-end-cap"
+      ],
+      "bestAngles": [
+        2.683406022808293,
+        0
+      ],
+      "evaluatedBoxes": 43,
+      "objectiveEvaluations": 429,
+      "peakQueuedBoxes": 3
+    },
+    {
+      "name": "side-direct",
+      "reference": "1.3416407864998738178455042012387657412643710157669154345625383472",
+      "errorVsRoundedReferenceMeters": 6.10178574333986e-13,
+      "queryMs": 0.023200000000002774,
+      "value": 1.341640786500484,
+      "units": "meters",
+      "scope": "global-reference-surface",
+      "method": "continuous-route-affine-bounds-v1",
+      "lowerBoundMeters": 1.3416407864992637,
+      "upperBoundMeters": 1.341640786500484,
+      "absoluteErrorBoundMeters": 1.220357148667972e-12,
+      "requestedToleranceMeters": 1e-10,
+      "bestRoute": "side",
+      "possibleRouteClasses": [
+        "side"
+      ],
+      "bestAngles": [
+        0,
+        0
+      ],
+      "evaluatedBoxes": 0,
+      "objectiveEvaluations": 0,
+      "peakQueuedBoxes": 0
+    },
+    {
+      "name": "side-cap-interior",
+      "reference": "2.2189560820513843266522994732551206932481900604052543621429465926",
+      "errorVsRoundedReferenceMeters": 6.714628852932947e-13,
+      "queryMs": 0.8983999999999952,
+      "value": 2.2189560820520557,
+      "units": "meters",
+      "scope": "global-reference-surface",
+      "method": "continuous-route-affine-bounds-v1",
+      "lowerBoundMeters": 2.218956081980515,
+      "upperBoundMeters": 2.2189560820520557,
+      "absoluteErrorBoundMeters": 7.154055126079584e-11,
+      "requestedToleranceMeters": 1e-10,
+      "bestRoute": "side-to-cap",
+      "possibleRouteClasses": [
+        "side-to-cap"
+      ],
+      "bestAngles": [
+        1.6939855545410456,
+        0
+      ],
+      "evaluatedBoxes": 73,
+      "objectiveEvaluations": 719,
+      "peakQueuedBoxes": 5
+    },
+    {
+      "name": "side-cap-near-rim",
+      "reference": "2.0368613601359191723154840777247370174221028923645581034365928022",
+      "errorVsRoundedReferenceMeters": 5.155875726359227e-13,
+      "queryMs": 0.5015000000000072,
+      "value": 2.036861360136435,
+      "units": "meters",
+      "scope": "global-reference-surface",
+      "method": "continuous-route-affine-bounds-v1",
+      "lowerBoundMeters": 2.036861360070839,
+      "upperBoundMeters": 2.036861360136435,
+      "absoluteErrorBoundMeters": 6.55959730977429e-11,
+      "requestedToleranceMeters": 1e-10,
+      "bestRoute": "side-to-cap",
+      "possibleRouteClasses": [
+        "side-to-cap"
+      ],
+      "bestAngles": [
+        3.048130258607514,
+        0
+      ],
+      "evaluatedBoxes": 39,
+      "objectiveEvaluations": 387,
+      "peakQueuedBoxes": 2
+    },
+    {
+      "name": "side-cap-near-center",
+      "reference": "1.7194225777995428691905570830269422624903042466132338330655645421",
+      "errorVsRoundedReferenceMeters": 4.545253062815391e-13,
+      "queryMs": 0.4054999999999893,
+      "value": 1.7194225777999974,
+      "units": "meters",
+      "scope": "global-reference-surface",
+      "method": "continuous-route-affine-bounds-v1",
+      "lowerBoundMeters": 1.719422577737898,
+      "upperBoundMeters": 1.7194225777999974,
+      "absoluteErrorBoundMeters": 6.209943670398843e-11,
+      "requestedToleranceMeters": 1e-10,
+      "bestRoute": "side-to-cap",
+      "possibleRouteClasses": [
+        "side-to-cap"
+      ],
+      "bestAngles": [
+        2.896669878773409,
+        0
+      ],
+      "evaluatedBoxes": 51,
+      "objectiveEvaluations": 495,
+      "peakQueuedBoxes": 4
+    },
+    {
+      "name": "opposite-interior",
+      "reference": "3.4031634303506167282614997308756535953415170743951218666249493257",
+      "errorVsRoundedReferenceMeters": 3.814726312612038e-12,
+      "queryMs": 4.108899999999991,
+      "value": 3.4031634303544314,
+      "units": "meters",
+      "scope": "global-reference-surface",
+      "method": "continuous-route-affine-bounds-v1",
+      "lowerBoundMeters": 3.4031634302614977,
+      "upperBoundMeters": 3.4031634303544314,
+      "absoluteErrorBoundMeters": 9.29336607669029e-11,
+      "requestedToleranceMeters": 1e-10,
+      "bestRoute": "opposite-caps",
+      "possibleRouteClasses": [
+        "opposite-caps"
+      ],
+      "bestAngles": [
+        0.4720962524414062,
+        0.23722686767578122
+      ],
+      "evaluatedBoxes": 541,
+      "objectiveEvaluations": 5014,
+      "peakQueuedBoxes": 27
+    },
+    {
+      "name": "opposite-squat",
+      "reference": "2.0978055187527640402578875649757941434875583374030224030138177202",
+      "errorVsRoundedReferenceMeters": 1.1805223465444215e-11,
+      "queryMs": 1.4910999999999888,
+      "value": 2.097805518764569,
+      "units": "meters",
+      "scope": "global-reference-surface",
+      "method": "continuous-route-affine-bounds-v1",
+      "lowerBoundMeters": 2.09780551871484,
+      "upperBoundMeters": 2.097805518764569,
+      "absoluteErrorBoundMeters": 4.972910971901001e-11,
+      "requestedToleranceMeters": 1e-10,
+      "bestRoute": "opposite-caps",
+      "possibleRouteClasses": [
+        "opposite-caps"
+      ],
+      "bestAngles": [
+        0.00360994843762992,
+        3.039197063446045
+      ],
+      "evaluatedBoxes": 259,
+      "objectiveEvaluations": 2560,
+      "peakQueuedBoxes": 11
+    },
+    {
+      "name": "opposite-long",
+      "reference": "100.73586552025710319339718598123457632575436205623659897473875107",
+      "errorVsRoundedReferenceMeters": 1.0118128557223827e-10,
+      "queryMs": 1.9420999999999964,
+      "value": 100.73586552035829,
+      "units": "meters",
+      "scope": "global-reference-surface",
+      "method": "continuous-route-affine-bounds-v1",
+      "lowerBoundMeters": 100.73586551937596,
+      "upperBoundMeters": 100.73586552035829,
+      "absoluteErrorBoundMeters": 9.823253321883385e-10,
+      "requestedToleranceMeters": 9.999999999999999e-10,
+      "bestRoute": "opposite-caps",
+      "possibleRouteClasses": [
+        "opposite-caps"
+      ],
+      "bestAngles": [
+        0.03989067077636718,
+        0.002956008911132813
+      ],
+      "evaluatedBoxes": 405,
+      "objectiveEvaluations": 3651,
+      "peakQueuedBoxes": 26
+    },
+    {
+      "name": "opposite-near-rims",
+      "reference": "2.0198760648656287311499625342021691674156868636811211291716093028",
+      "errorVsRoundedReferenceMeters": 7.65609797781508e-12,
+      "queryMs": 5.004800000000003,
+      "value": 2.019876064873285,
+      "units": "meters",
+      "scope": "global-reference-surface",
+      "method": "continuous-route-affine-bounds-v1",
+      "lowerBoundMeters": 2.0198760647735896,
+      "upperBoundMeters": 2.019876064873285,
+      "absoluteErrorBoundMeters": 9.969536307607996e-11,
+      "requestedToleranceMeters": 1e-10,
+      "bestRoute": "opposite-caps",
+      "possibleRouteClasses": [
+        "opposite-caps"
+      ],
+      "bestAngles": [
+        4.664063453675834e-8,
+        3.129882792085409
+      ],
+      "evaluatedBoxes": 1055,
+      "objectiveEvaluations": 9648,
+      "peakQueuedBoxes": 75
+    },
+    {
+      "name": "opposite-symmetric-tie",
+      "reference": "2.4999999999999999999999999999999999999999999999999999999999999998",
+      "errorVsRoundedReferenceMeters": 4.547473508864641e-13,
+      "queryMs": 0.4639000000000095,
+      "value": 2.5000000000004547,
+      "units": "meters",
+      "scope": "global-reference-surface",
+      "method": "continuous-route-affine-bounds-v1",
+      "lowerBoundMeters": 2.4999999999367106,
+      "upperBoundMeters": 2.5000000000004547,
+      "absoluteErrorBoundMeters": 6.374412109266814e-11,
+      "requestedToleranceMeters": 1e-10,
+      "bestRoute": "opposite-caps",
+      "possibleRouteClasses": [
+        "opposite-caps"
+      ],
+      "bestAngles": [
+        0,
+        3.141592653589793
+      ],
+      "evaluatedBoxes": 101,
+      "objectiveEvaluations": 1006,
+      "peakQueuedBoxes": 3
+    }
+  ],
+  "stress": {
+    "seed": 17,
+    "queries": 1500,
+    "lengthToRadiusRange": [
+      0.000001,
+      1000000
+    ],
+    "failed": 0,
+    "failures": [],
+    "queryMs": {
+      "min": 0.004900000000020555,
+      "median": 0.172300000000007,
+      "p95": 1.0914000000000215,
+      "max": 15.421100000000024
+    },
+    "workloadWallMs": 520.6862,
+    "maxBoxes": 4735,
+    "maxQueue": 520,
+    "maxEvaluations": 42631
+  },
+  "memory": {
+    "memoryBefore": {
+      "rss": 73564160,
+      "heapTotal": 21000192,
+      "heapUsed": 10624688,
+      "external": 8963463,
+      "arrayBuffers": 137471
+    },
+    "memoryAfterGC": {
+      "rss": 79036416,
+      "heapTotal": 21000192,
+      "heapUsed": 10737896,
+      "external": 8963467,
+      "arrayBuffers": 137471
+    },
+    "maxObservedHeap": 15613936,
+    "retainedArrayBufferDelta": 0,
+    "queueLimit": 16384,
+    "boxLimit": 32768,
+    "caveat": "Heap readings include VM, temporary query objects and measurement machinery; caller-held timings/geometry remain live. No exact per-object byte or mobile/browser frame-time claim. Solver retains no per-query cache or terrain/sample arrays."
+  }
+}

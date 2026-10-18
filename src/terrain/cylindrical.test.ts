@@ -70,9 +70,9 @@ for (const r of [{ angularSamples: 4, axialCells: 2, radialCells: 2 }, { angular
   });
 }
 
-test('cylinder independent oriented cell complex is closed, genus zero and exactly matches neighbor graph', () => {
+for (const angularSamples of [4, 7, 9, 32]) test(`cylinder independent oriented cell counts, closure, genus and neighbor graph A=${angularSamples}`, () => {
   // Build a welded mesh with symbolic physical labels, without using provider indices/aliases.
-  const r = { angularSamples: 9, axialCells: 5, radialCells: 4 }, t = create(r), { angularSamples: a, axialCells: z, radialCells: p } = r;
+  const r = { angularSamples, axialCells: 5, radialCells: 4 }, t = create(r), { angularSamples: a, axialCells: z, radialCells: p } = r;
   const wrap = (n: number) => (n + a) % a;
   const label = (region: CylinderRegion, c: number, row: number) => {
     c = wrap(c);
@@ -96,6 +96,9 @@ test('cylinder independent oriented cell complex is closed, genus zero and exact
   }
   for (const [edge, count] of directed) { assert.equal(count, 1); const [from, to] = edge.split('>'); assert.equal(directed.get(`${to}>${from}`), 1); }
   assert.equal(samples.size, t.sampleCount); assert.equal(new Set(samples.values()).size, samples.size);
+  assert.equal(samples.size, a * (z + 2 * p - 1) + 2);
+  assert.equal(directed.size / 2, a * (2 * z + 4 * p - 1));
+  assert.equal(polygons.length, a * (z + 2 * p));
   assert.equal(samples.size - directed.size / 2 + polygons.length, 2);
   for (const [label, index] of samples) assert.deepEqual(t.neighbors(t.keyAt(index)).map((k) => k.index).sort((x, y) => x - y), [...adjacency.get(label)!].map((s) => samples.get(s)!).sort((x, y) => x - y));
 });
