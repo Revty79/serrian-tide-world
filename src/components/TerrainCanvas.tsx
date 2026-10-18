@@ -9,6 +9,7 @@ import { attachCanvasSculpting } from '../interaction/canvas-sculpting.ts';
 import { attachCanvasNavigation } from '../interaction/canvas-navigation.ts';
 import { fitMap } from '../rendering/fit-map.ts';
 import { FIT_CAMERA, cameraRect, constrainCamera, panBy, zoomAt, type Camera } from '../rendering/camera.ts';
+import { periodicStrokeOffset } from '../rendering/edge-pan.ts';
 import { inspectElevation, type ElevationSample, type Point } from '../terrain/sampling.ts';
 import styles from './TerrainCanvas.module.css';
 
@@ -20,6 +21,7 @@ export interface TerrainCanvasProps {
   pan?: boolean;
   fullscreen?: boolean;
   initialView?: 'fit' | 'fill';
+  edgePan?: boolean;
   ref?: Ref<TerrainCanvasHandle>;
   onStrokeBegin?: () => void;
   onStrokeEnd?: () => void;
@@ -31,6 +33,7 @@ export function TerrainCanvas(props: TerrainCanvasProps) {
   const { terrain, brush, revision = 0, fullscreen = false } = props;
   const surfaceRef = useRef<HTMLDivElement>(null), viewportRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null), cursorRef = useRef<HTMLDivElement>(null);
+  const seamsRef = useRef<HTMLSpanElement>(null);
   const readoutRef = useRef<HTMLOutputElement>(null);
   const samplePointRef = useRef<Point | null>(null);
   const propsRef = useRef(props);
@@ -71,7 +74,7 @@ export function TerrainCanvas(props: TerrainCanvasProps) {
         : 'Move over the map to inspect elevation';
     };
     const stageSize = () => surface.getBoundingClientRect();
-    const paint = () => {
+    const paint = (preserveStroke = false) => {
       frame = null;
       const size = stageSize();
       if (size.width <= 0 || size.height <= 0) return;
@@ -79,11 +82,17 @@ export function TerrainCanvas(props: TerrainCanvasProps) {
         const fitted = fitMap(terrain.metadata.dimensions, size);
         cameraRef.current = constrainCamera(cameraRef.current, terrain.metadata.dimensions, size, viewOptions());
         const rect = cameraRect(cameraRef.current, terrain.metadata.dimensions, size, viewOptions());
-        if (appliedRect && (rect.left !== appliedRect.left || rect.top !== appliedRect.top || rect.width !== appliedRect.width || rect.height !== appliedRect.height)) sculpting.finish();
+        if (!preserveStroke && appliedRect && (rect.left !== appliedRect.left || rect.top !== appliedRect.top || rect.width !== appliedRect.width || rect.height !== appliedRect.height)) sculpting.finish();
         appliedRect = rect;
         canvas.dataset.viewMode = mode;
         canvas.dataset.mapLeft = String(rect.left); canvas.dataset.mapTop = String(rect.top);
         canvas.dataset.mapWidth = String(rect.width); canvas.dataset.mapHeight = String(rect.height);
+        if (seamsRef.current) {
+          seamsRef.current.hidden = !periodic || rect.width < 24;
+          seamsRef.current.style.backgroundSize = `${rect.width}px 100%`;
+          seamsRef.current.style.backgroundPosition = `${rect.left}px 0`;
+          seamsRef.current.style.clipPath = `inset(${Math.max(0, rect.top)}px 0 ${Math.max(0, size.height - rect.top - rect.height)}px 0)`;
+        }
         viewport.style.left = `${periodic ? 0 : rect.left}px`; viewport.style.top = `${periodic ? 0 : rect.top}px`;
         viewport.style.width = `${periodic ? size.width : fitted.width}px`; viewport.style.height = `${periodic ? size.height : fitted.height}px`;
         viewport.style.transform = periodic ? 'none' : `scale(${rect.width / fitted.width})`;
@@ -100,7 +109,7 @@ export function TerrainCanvas(props: TerrainCanvasProps) {
         setRenderError(null);
       } catch (cause) { setRenderError(cause instanceof Error ? cause.message : 'The map could not be displayed.'); }
     };
-    const requestPaint = () => { if (frame === null) frame = window.requestAnimationFrame(paint); };
+    const requestPaint = () => { if (frame === null) frame = window.requestAnimationFrame(() => paint()); };
     const requestRaster = () => { rasterDirty = true; requestPaint(); };
     repaintRef.current = requestRaster;
     const changeCamera = (next: Camera) => {
@@ -117,11 +126,27 @@ export function TerrainCanvas(props: TerrainCanvasProps) {
     const sculpting = attachCanvasSculpting(canvas, {
       terrain, cursor, getBrush: () => navigation.blocked() ? undefined : propsRef.current.brush,
       onStrokeBegin: () => { strokeFinished = propsRef.current.onStrokeEnd; propsRef.current.onStrokeBegin?.(); },
-      onStrokeEnd: () => { const callback = strokeFinished; strokeFinished = undefined; callback?.(); },
+      onStrokeEnd: () => { canvas.dataset.edgeScrolling = 'false'; const callback = strokeFinished; strokeFinished = undefined; callback?.(); },
       onChange: () => { setBrushError(null); requestRaster(); },
       onError: (cause) => setBrushError(cause instanceof Error ? cause.message : 'The brush could not be applied.'),
       onSample: reportSample,
-      getMapBounds: periodic ? () => { const stage = stageSize(); const rect = appliedRect ?? cameraRect(cameraRef.current, terrain.metadata.dimensions, stage, viewOptions()); return new DOMRect(stage.left + rect.left, stage.top + rect.top, rect.width, rect.height); } : undefined,
+      getMapBounds: () => { const stage = stageSize(); const rect = appliedRect ?? cameraRect(cameraRef.current, terrain.metadata.dimensions, stage, viewOptions()); return new DOMRect(stage.left + rect.left, stage.top + rect.top, rect.width, rect.height); },
+      getStageBounds: stageSize,
+      edgePanEnabled: () => !!propsRef.current.edgePan,
+      panView: (delta) => {
+        if (!appliedRect) return null;
+        const previous = appliedRect;
+        cameraRef.current = panBy(cameraRef.current, delta, terrain.metadata.dimensions, stageSize(), viewOptions());
+        const next = cameraRect(cameraRef.current, terrain.metadata.dimensions, stageSize(), viewOptions());
+        if (next.left === previous.left && next.top === previous.top) return null;
+        // Paint and pointer inversion advance together. Only this intentional
+        // translation may preserve a stroke; zoom, resize and manual pan end it.
+        if (frame !== null) window.cancelAnimationFrame(frame);
+        if (next.width !== previous.width || next.height !== previous.height) { paint(); return null; }
+        paint(true);
+        canvas.dataset.edgeScrolling = 'true';
+        return { offsetX: periodic ? periodicStrokeOffset(previous.left, next.left, delta.x, next.width, terrain.metadata.dimensions.width) : 0 };
+      },
       onPreview: periodic ? (event, settings) => {
         const stage = stageSize(), rect = appliedRect;
         if (!settings || !rect || event.clientY < stage.top + rect.top || event.clientY > stage.top + rect.top + rect.height) { cursor.hidden = true; return; }
@@ -170,11 +195,13 @@ export function TerrainCanvas(props: TerrainCanvasProps) {
           </canvas>
           <div ref={cursorRef} className={isWrapped(terrain) ? styles.cursorLayer : styles.brushCursor} aria-hidden="true" hidden />
         </div>
+        <span ref={seamsRef} className={styles.seams} aria-hidden="true" hidden />
         <p id={descriptionId} className={styles.description}>
           Elevation map: water at or below sea level, land above sea level. Wheel to zoom; Space and drag or two fingers to navigate.
           {brush && !props.pan && ` ${brush.tool.charAt(0).toUpperCase() + brush.tool.slice(1)} selected. Click or drag with a mouse, pen, or one finger to sculpt terrain. Settings apply to the next stroke.`}
           {props.pan && ' Pan selected. Drag to move the map without sculpting.'}
           {isWrapped(terrain) && ' This surface connects horizontally. Its top and bottom are bounded. Visible repetitions share the same terrain.'}
+          {props.edgePan && ' Hold a stroke near a screen edge to scroll after a short pause. Escape ends the stroke. Edge scrolling can be switched off in tools.'}
         </p>
         {error && <p className={styles.error} role="alert">{error}</p>}
       </div>

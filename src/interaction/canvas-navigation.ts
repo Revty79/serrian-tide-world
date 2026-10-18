@@ -28,14 +28,18 @@ export function attachCanvasNavigation(stage: HTMLElement, canvas: HTMLCanvasEle
     return { midpoint: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, distance: Math.hypot(a.x - b.x, a.y - b.y) };
   };
   const consume = (event: Event) => { event.preventDefault(); event.stopImmediatePropagation(); };
-  const finish = () => {
+  const finishGesture = () => {
     const ids = [...pointers.keys()];
     if (panId !== null) ids.push(panId);
-    pointers.clear(); mode = null; panId = null; previous = null; pinch = null; space = false;
+    pointers.clear(); mode = null; panId = null; previous = null; pinch = null;
     for (const id of ids) if (stage.hasPointerCapture(id)) stage.releasePointerCapture(id);
   };
+  const finish = () => { space = false; finishGesture(); };
   const down = (e: PointerEvent) => {
     if (e.button !== 0) return;
+    // A mouse press also transfers keyboard focus from the last toolbar action.
+    // This prevents a held Space from activating that button on release.
+    canvas.focus({ preventScroll: true });
     if (e.pointerType === 'touch') pointers.set(e.pointerId, position(e));
     if (pointers.size >= 2 || mode === 'pinch') {
       options.finishStroke(); mode = 'pinch'; pinch = pinchState(); stage.setPointerCapture(e.pointerId); consume(e); return;
@@ -60,9 +64,11 @@ export function attachCanvasNavigation(stage: HTMLElement, canvas: HTMLCanvasEle
   };
   const up = (e: PointerEvent) => {
     pointers.delete(e.pointerId);
-    if (mode === 'pinch') { pinch = pinchState(); consume(e); if (!pointers.size) finish(); }
-    else if (mode === 'pan' && e.pointerId === panId) { consume(e); finish(); }
+    if (mode === 'pinch') { pinch = pinchState(); consume(e); if (!pointers.size) finishGesture(); }
+    else if (mode === 'pan' && e.pointerId === panId) { consume(e); finishGesture(); }
   };
+  const cancel = (e: PointerEvent) => { if (pointers.has(e.pointerId) || e.pointerId === panId) finish(); };
+  const lostCapture = (e: PointerEvent) => { if (e.target === stage) cancel(e); };
   const wheel = (e: WheelEvent) => {
     if (e.target !== canvas) return;
     options.finishStroke();
@@ -70,8 +76,11 @@ export function attachCanvasNavigation(stage: HTMLElement, canvas: HTMLCanvasEle
     consume(e);
   };
   const keydown = (e: KeyboardEvent) => {
-    if (e.code === 'Space' && !isTextInput(e.target) && !(e.target instanceof HTMLElement && e.target.closest('button'))) {
-      if (!space) options.finishStroke(); space = true; e.preventDefault();
+    if (e.key === 'Escape') { options.finishStroke(); finish(); return; }
+    if (e.code === 'Space' && !isTextInput(e.target)) {
+      if (!space) options.finishStroke(); space = true;
+      // Preserve native keyboard activation when a button is used without dragging.
+      if (!(e.target instanceof HTMLElement && e.target.closest('button'))) e.preventDefault();
     }
   };
   const keyup = (e: KeyboardEvent) => { if (e.code === 'Space') space = false; };
@@ -80,7 +89,8 @@ export function attachCanvasNavigation(stage: HTMLElement, canvas: HTMLCanvasEle
   stage.addEventListener('pointermove', move, true);
   // Capture on window also handles releases outside the stage.
   view.addEventListener('pointerup', up, true);
-  view.addEventListener('pointercancel', up, true);
+  view.addEventListener('pointercancel', cancel, true);
+  stage.addEventListener('lostpointercapture', lostCapture);
   stage.addEventListener('wheel', wheel, { passive: false });
   view.addEventListener('keydown', keydown);
   view.addEventListener('keyup', keyup);
@@ -91,7 +101,8 @@ export function attachCanvasNavigation(stage: HTMLElement, canvas: HTMLCanvasEle
   return { blocked: () => mode !== null || space || options.isPan(), finish, dispose: () => {
     finish();
     stage.removeEventListener('pointerdown', down, true); stage.removeEventListener('pointermove', move, true);
-    view.removeEventListener('pointerup', up, true); view.removeEventListener('pointercancel', up, true);
+    view.removeEventListener('pointerup', up, true); view.removeEventListener('pointercancel', cancel, true);
+    stage.removeEventListener('lostpointercapture', lostCapture);
     stage.removeEventListener('wheel', wheel); view.removeEventListener('keydown', keydown); view.removeEventListener('keyup', keyup);
     view.removeEventListener('blur', finish); view.removeEventListener('resize', finish); view.removeEventListener('pagehide', finish);
     stage.ownerDocument.removeEventListener('visibilitychange', visibility);

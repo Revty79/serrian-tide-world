@@ -22,6 +22,7 @@ export function App() {
   const documentRef = useRef(document); documentRef.current = document;
   const [controls, setControls] = useState(defaults);
   const [pan, setPan] = useState(false);
+  const [edgePan, setEdgePan] = useState(true);
   const [revision, setRevision] = useState(0);
   const [, refresh] = useState(0);
   const update = () => refresh((value) => value + 1);
@@ -130,7 +131,7 @@ export function App() {
   return (
     <main ref={workspaceRef} className="atlas-app" data-panel-open={openPanel} aria-label="Atlas workspace">
       <TerrainCanvas ref={canvasRef} terrain={document.terrain} brush={busy ? undefined : brushFromControls(controls)} pan={pan}
-        fullscreen initialView="fill" revision={revision} onZoom={setZoom}
+        fullscreen initialView="fill" edgePan={edgePan} revision={revision} onZoom={setZoom}
         onStrokeBegin={() => document.history.begin()} onStrokeEnd={() => { if (document.history.commit()) update(); }} />
       <button ref={toggleRef} className="panel-toggle" type="button" aria-expanded={openPanel} aria-controls="atlas-tools"
         aria-label={openPanel ? 'Close tools' : 'Open tools'} onClick={() => openPanel ? closePanel() : setOpenPanel(true)}>
@@ -142,6 +143,8 @@ export function App() {
           <legend className="sr-only">Terrain editing and local maps</legend>
           <button type="button" className="pan-tool" aria-pressed={pan} onClick={() => { finish(); setPan(!pan); }}>Pan</button>
           <p className="hint">Space + drag to pan · wheel to zoom<br />Two fingers to pan and zoom</p>
+          <label className="edge-scroll"><input type="checkbox" checked={edgePan} onChange={(event) => { finish(); setEdgePan(event.target.checked); }} /> Scroll while drawing at screen edges</label>
+          <p className="hint">Hold near an edge briefly to reveal more terrain in the same stroke. Escape stops drawing. Bounded edges stop scrolling; zoom in for more horizontal room.</p>
           <BrushToolbar settings={controls} mapSpan={Math.min(document.terrain.metadata.dimensions.width, document.terrain.metadata.dimensions.height)}
             onChange={(value) => { setControls(value); setPan(false); }} onReset={reset} />
           <div className="local-maps">
@@ -156,11 +159,11 @@ export function App() {
             </select>
             <div className="map-actions"><button type="button" disabled={!selected} onClick={() => void openMap()}>Open Map</button><button type="button" onClick={() => newMap()}>New Blank Map</button></div>
             <button className="new-wrapped" type="button" onClick={() => newMap(true)}>New Wrapped Map</button>
-            <p className="hint">Wrapped maps connect horizontally. Top and bottom stay bounded. Bounded maps keep their original edges.</p>
+            <p className="hint">Wrapped views repeat the same terrain between faint seam guides. Editing any copy changes every view. Fit Entire Map centers one complete period. Top and bottom stay bounded.</p>
           </div>
         </fieldset>
         <ElevationLegend seaLevel={document.terrain.metadata.seaLevel} />
-        <p className="hint">Undo: Ctrl/⌘ Z · Redo: Ctrl/⌘ Shift Z<br />Save: Ctrl/⌘ S · Escape closes tools</p>
+        <p className="hint">Undo: Ctrl/⌘ Z · Redo: Ctrl/⌘ Shift Z<br />Save: Ctrl/⌘ S · Escape stops drawing and closes tools</p>
       </aside>
       <div className="quick-actions" role="group" aria-label="Editing history and saving">
         <button type="button" onClick={undo} disabled={busy || !document.history.canUndo} aria-keyshortcuts="Control+z Meta+z">Undo</button>
@@ -175,7 +178,7 @@ export function App() {
         <button type="button" onClick={() => canvasRef.current?.fit()}>Fit Entire Map</button>
         {fullscreenSupported && <button type="button" aria-label={browserFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'} onClick={() => void toggleFullscreen()}>⛶</button>}
       </div>
-      {isWrapped(document.terrain) && <p className="surface-status">Horizontal wrap</p>}
+      {isWrapped(document.terrain) && <p className="surface-status">Horizontal wrap · same terrain repeats</p>}
       <p className="save-status" role="status">{busy ? 'Working with local storage…' : status}</p>
       {error && <div className="storage-error" role="alert"><p>{error}</p><button type="button" onClick={() => setError('')}>Dismiss</button></div>}
     </main>

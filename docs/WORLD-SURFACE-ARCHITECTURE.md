@@ -2,6 +2,8 @@
 
 Status: A6-B numerical spherical sculpting/history, October 17, 2026. Approved A6-A baseline: `3d210140f53e1e1d4f2ef72edf92debcfe0d2efa`; independent source/numerical/architecture approval with no blockers was supplied by the owner. Prior completion reports remain historical receipts.
 
+A5.1 stabilization follows owner-supplied Ember source/numerical approval of A6-B at `bafedf08343eb48f2e1bd50b5a05db0da13a1dcb`. It corrects planar input and adds controlled edge-assisted view translation with continuous gesture winding, leaving the spherical provider and numerical authority untouched. See [A5.1 findings and evidence](A5-1-COMPLETION.md). Stop before A6-C. The master roadmap records Atlas into rebuilt Worlds at step 9, the combined system into the existing site at step 10, then the final reusable Earth content milestone at step 11.
+
 ## Decision and implementation boundary
 
 Preserve bounded/periodic editors and v1/v2 saves. A6-A supplies the connected numerical cube-sphere. A6-B adds physical Raise/Lower, bounded cap search, great-circle strokes and exact bounded history without a globe UI. Smooth/Flatten, interactive projections/rotation and spherical persistence remain later checkpoints. See [provider specification](SPHERICAL-HEIGHTMAP-FOUNDATION.md), [sculpting/history contract](SPHERICAL-SCULPTING.md) and [A6-B evidence](A6-B-COMPLETION.md).
@@ -216,7 +218,8 @@ A5 keeps IndexedDB schema version 1 and the existing two stores; it performs no 
 | A4 — reviewed baseline | Pure contracts/examples, identity isolation, documented spherical/hollow/projection strategy, unchanged planar editor and v1 saves; Ember source/architecture approval supplied by owner |
 | A5 — reviewed baseline | Seam-aware flat/periodic editor, continuous recentering, full-screen Fill/Fit, fullscreen, interpolated display, exact history and v2 saves; Ember approval supplied by owner |
 | A6-A — reviewed baseline | Numerical spherical authority, unique shared vertices, edge/corner adjacency, metric and tangent basis conversions; independent approval supplied by owner |
-| A6-B — implemented, review pending | Numerical geodesic Raise/Lower, conservative cap search, continuous shortest-arc strokes and private canonical history; no globe UI or browser persistence |
+| A6-B — reviewed baseline | Numerical geodesic Raise/Lower, conservative cap search, continuous shortest-arc strokes and private canonical history; Ember source/numerical approval supplied by owner; no globe UI or browser persistence |
+| A5.1 — stabilization before A6-C | Planar input fixes, explained repetition and controlled screen-edge scrolling with one stroke/history operation; technical evidence in A5.1 completion |
 | Later A6 — requires authorization | Reviewed spherical Smooth/Flatten; interactive views/rotation/local projections; separately approved spherical Save/Open, in bounded checkpoints |
 | A7 — requires authorization | Initial hollow, cylindrical and other agreed geometries; independent surface workflow, normals/clearance/end policies and explicit supported configuration list |
 | Subsequent passes | Complete Azgaar-style heightmap toolset and later interchange/generation/analysis/presentation in separately reviewed scopes |
@@ -225,4 +228,4 @@ Review may subdivide these passes. The former A7 external interchange label is s
 
 Open decisions: physical scale for legacy flat worlds; later spherical browser/UI memory budget; curved Smooth weighting and corner interpolation; geodesic paths/finite-path tangent transport for directional tools; overview/local projections and singular regions; allowed planar gluing configurations; persistence/migration/conversion policy; active-surface Undo presentation; clearance tolerance and invalid-edit behavior; cylinder ends/caps; parameters/providers for the complete future geometry inventory. A6-A now fixes its versioned face bases, canonical ownership and initial numerical N; these are representation decisions, not Earth assumptions or Serrian Tide canon. Remaining decisions are not exposed as functional UI.
 
-The original Next.js/TypeScript application will retain responsibility for authentication, server-side permissions, World records and database storage. The development shell remains replaceable, with reusable client components separate from this pure surface layer. No main-site integration or deployment is authorized. Stop after A6-B for independent review and acceptance; do not begin A6-C.
+The original Next.js/TypeScript application will retain responsibility for authentication, server-side permissions, World records and database storage. The development shell remains replaceable, with reusable client components separate from this pure surface layer. No main-site integration or deployment is authorized. Stop after A5.1 for owner hands-on acceptance; do not begin A6-C.

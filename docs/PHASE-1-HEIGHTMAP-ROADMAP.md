@@ -1,6 +1,6 @@
 # Atlas master roadmap — Phase 1 and long-term requirements
 
-Updated October 17, 2026 for A6-B. This preserves the owner's complete geometry and eventual Atlas/Worlds requirements alongside the Phase 1 heightmap tool inventory. Future entries are requirements to plan and review, not authorization to implement them during A6-B.
+Updated October 17, 2026 for A5.1 stabilization on the approved A6-B baseline. This preserves the owner's complete geometry and eventual Atlas/Worlds requirements alongside the Phase 1 heightmap tool inventory. Future entries are requirements to plan and review, not authorization to implement them during A5.1.
 
 ## Current baseline
 
@@ -13,7 +13,8 @@ Updated October 17, 2026 for A6-B. This preserves the owner's complete geometry 
 | A4 | World/surface identities, shape/topology/metric/projection contracts, bounded/periodic math examples, spherical/hollow strategy, preserved v1 editor and saves | Implemented; Ember source/architecture approval supplied by owner |
 | A5 | Seam-aware brushes, continuous recentering, repeated full-screen Fill, bounded Fill/Fit, optional fullscreen, interpolated display and v2 local saves | Implemented; Ember source/visual approval supplied by owner |
 | A6-A | Numerical equiangular cube-sphere, unique vertices, all face/edge/corner connectivity, geodesic metric and memory evidence | Implemented; independent source/numerical/architecture approval supplied by owner |
-| A6-B | Numerical spherical Raise/Lower, bounded cap candidates, continuous great-circle strokes and exact bounded history | Implemented; independent review/acceptance pending; no spherical UI/persistence |
+| A6-B | Numerical spherical Raise/Lower, bounded cap candidates, continuous great-circle strokes and exact bounded history | Implemented; Ember source/numerical approval supplied by owner; no spherical UI/persistence |
+| A5.1 stabilization, before A6-C | Predictable horizontal input, explained periodic copies and controlled screen-edge scrolling within one stroke/history entry | Implemented and technically verified; owner hands-on acceptance remains separate; see A5.1 completion |
 | Next spherical tool checkpoint | Smooth/Flatten with reviewed curved-surface neighbor weighting/interpolation and canonical multi-face history | Planned; separate authorization required |
 | Subsequent spherical view checkpoint | Interactive spherical editing views, inverse projection, projected footprints, globe rotation/local views and movable cuts | Planned; separate authorization required |
 | Subsequent spherical preservation checkpoint | Explicitly versioned spherical Save/Open, validation, resource budgets, compatibility and recovery | Planned; no spherical browser save format authorized yet |
@@ -25,6 +26,18 @@ The owner subsequently directed that completed work stay on this repository's `m
 ## Agreed implementation order
 
 The owner moved the surface foundation ahead of the complete Azgaar-style toolset: **A4 surface architecture → A5 seam-aware editing/continuous navigation → A6 spherical terrain/polar continuity → A7 hollow, cylindrical and other agreed initial geometries → subsequent heightmap capability passes**. A6 is now explicitly divided into independently reviewable checkpoints: A6-A numerical foundation first; the spherical editing experience follows separately. The older labels assigning advanced brushes to A4, whole-map operations to A5 or interchange to A7 are superseded. The complete geometry inventory below does not promise that every shape fits inside A7.
+
+After A6-B approval, the owner inserted **A5.1 navigation/wrapping/screen-edge stabilization before A6-C**. Complete and review that correction first; A6-C has no implementation authorization here.
+
+The owner's corrected downstream master-roadmap order is mandatory:
+
+| Step | Required order |
+| --- | --- |
+| 9 | Introduce Atlas into the separately rebuilt Worlds system, then develop the integrated functionality that makes Atlas and Worlds work together. |
+| 10 | Complete acceptance and integration of the rebuilt Worlds + Atlas system into the existing Serrian Tide application. |
+| 11 | Final reusable modern/historical Earth content milestone. |
+
+This records integration order only. A5.1 performs none of these integrations or content milestones.
 
 See [World/surface architecture](WORLD-SURFACE-ARCHITECTURE.md) for capability status and outstanding decisions, and [A6-A completion](A6-A-COMPLETION.md) for numerical evidence. A5's periodic editor remains the latest UI. A6-A's six numerical charts represent a round sphere, not a physical cube. No unsupported shape choices are exposed. Bounded/periodic saves retain their exact v1/v2 interpretations without conversion, migration or a new spherical browser format.
 
@@ -128,4 +141,4 @@ A3 implements pointer-centered zoom, bounded panning, Space/explicit Pan and two
 
 The inventory was checked against the project's primary [Heightmap customization documentation](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Heightmap-customization) and [template-editor documentation](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Heightmap-template-editor). Their application semantics and data models are not adopted automatically. This roadmap records the owner's requested scope; exact future behavior still requires a bounded pass.
 
-The owner supplied Ember's A6-A approval and separately authorized A6-B. The three spherical checkpoint categories above are the proposed remaining sequence; their exact letter labels/briefs still require authorization. Stop after A6-B; do not begin A6-C. Later work, integration and deployment require their own authorization. No future inventory item is authorized merely by appearing here.
+The owner supplied Ember's A6-B source/numerical approval and separately authorized A5.1. The three spherical checkpoint categories above are the proposed remaining sequence; their exact letter labels/briefs still require authorization. Stop after A5.1; do not begin A6-C. Later work, integration and deployment require their own authorization. No future inventory item is authorized merely by appearing here.
