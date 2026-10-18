@@ -6,9 +6,15 @@ import { assertFloat32Elevation } from './model.ts';
 import { radialFalloff, saturatedElevation } from './brush-math.ts';
 import type { SphericalTerrain } from './spherical.ts';
 import { sphericalCapCandidates } from './spherical-cap.ts';
+import { sphericalSmoothDelta } from './spherical-smoothing.ts';
 
 export type SphericalBrushPoint = SurfacePosition | (SurfaceIdentity & { readonly direction: Vec3 });
-export interface SphericalBrushSettings { readonly tool: 'raise' | 'lower'; readonly radiusMeters: number; readonly strengthMeters: number }
+export type SphericalBrushSettings = { readonly radiusMeters: number } & (
+  | { readonly tool: 'raise'; readonly strengthMeters: number }
+  | { readonly tool: 'lower'; readonly strengthMeters: number }
+  | { readonly tool: 'smooth'; readonly intensity: number }
+  | { readonly tool: 'flatten'; readonly intensity: number; readonly targetElevation: number }
+);
 export const MAX_SEGMENT_DABS = 65_536;
 const CHUNK_SAMPLES = 4096;
 const activeTerrains = new WeakSet<SphericalTerrain>();
@@ -19,9 +25,14 @@ function directionOf(terrain: SphericalTerrain, point: SphericalBrushPoint): Vec
 }
 function validate(terrain: SphericalTerrain, settings: SphericalBrushSettings) {
   const angular = settings.radiusMeters / terrain.metadata.geometry.radiusMeters;
-  if (!['raise', 'lower'].includes(settings.tool) || !Number.isFinite(settings.radiusMeters) || !Number.isFinite(angular) || angular < 1e-12 || settings.radiusMeters > terrain.metadata.geometry.radiusMeters * Math.PI || settings.radiusMeters / 4 === 0) throw new RangeError('Spherical brush radius must be finite, at least 1e-12 radians and at most pi radians, in meters.');
-  assertFloat32Elevation(settings.strengthMeters);
-  if (Math.fround(settings.strengthMeters) <= 0) throw new RangeError('Spherical strength must be positive meters per dab.');
+  if (!['raise', 'lower', 'smooth', 'flatten'].includes(settings.tool) || !Number.isFinite(settings.radiusMeters) || !Number.isFinite(angular) || angular < 1e-12 || settings.radiusMeters > terrain.metadata.geometry.radiusMeters * Math.PI || settings.radiusMeters / 4 === 0) throw new RangeError('Spherical brush radius must be finite, at least 1e-12 radians and at most pi radians, in meters.');
+  if (settings.tool === 'raise' || settings.tool === 'lower') {
+    assertFloat32Elevation(settings.strengthMeters);
+    if (Math.fround(settings.strengthMeters) <= 0) throw new RangeError('Spherical strength must be positive meters per dab.');
+  } else {
+    if (!Number.isFinite(settings.intensity) || settings.intensity < 0 || settings.intensity > 1) throw new RangeError('Spherical intensity must be a blend factor in [0,1].');
+    if (settings.tool === 'flatten') assertFloat32Elevation(settings.targetElevation);
+  }
 }
 
 /** Physical great-circle input; one initial dab then radius/4 meters, independent of charts/UI. */
@@ -43,7 +54,17 @@ export function startSphericalBrushStroke(terrain: SphericalTerrain, point: Sphe
       const current = terrain.read(sample.key);
       if (!Number.isFinite(current)) throw new RangeError('Spherical brush region contains a nonfinite elevation.');
       stats.affectedSamples++;
-      const next = saturatedElevation(current + (snapshot.tool === 'raise' ? 1 : -1) * snapshot.strengthMeters * radialFalloff(distance));
+      let next: number;
+      if (snapshot.tool === 'raise' || snapshot.tool === 'lower') {
+        // Preserve A6-B's expression and Float32 results exactly.
+        next = saturatedElevation(current + (snapshot.tool === 'raise' ? 1 : -1) * snapshot.strengthMeters * radialFalloff(distance));
+      } else {
+        const blend = snapshot.intensity * radialFalloff(distance);
+        if (blend === 0) continue;
+        next = saturatedElevation(snapshot.tool === 'flatten'
+          ? (1 - blend) * current + blend * snapshot.targetElevation
+          : current + blend * sphericalSmoothDelta(terrain, sample.key, current));
+      }
       if (next === current) continue;
       if (!chunk || chunk.count === CHUNK_SAMPLES) {
         chunk = { indices: new Uint32Array(CHUNK_SAMPLES), values: new Float32Array(CHUNK_SAMPLES), count: 0 };

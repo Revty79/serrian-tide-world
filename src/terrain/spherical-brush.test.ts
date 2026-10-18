@@ -10,9 +10,10 @@ import { startSphericalBrushStroke, type SphericalBrushSettings } from './spheri
 const identity = { worldId: 'sculpt-world', surfaceId: 'sphere' }, radius = 1_000_000;
 const make = (cellsPerEdge = 16) => createSphericalTerrain({ terrainId: 'sculpt-terrain', identity, radiusMeters: radius, cellsPerEdge });
 const point = (direction: Vec3) => ({ ...identity, direction });
-const settings = (tool: 'raise' | 'lower' = 'raise', angularRadius = .3): SphericalBrushSettings => ({ tool, radiusMeters: radius * angularRadius, strengthMeters: 300 });
+type AdditiveSettings = Extract<SphericalBrushSettings, { readonly strengthMeters: number }>;
+const settings = (tool: 'raise' | 'lower' = 'raise', angularRadius = .3): AdditiveSettings => ({ tool, radiusMeters: radius * angularRadius, strengthMeters: 300 });
 const words = (terrain: SphericalTerrain) => new Uint32Array(terrain.copyElevations().buffer);
-function bruteDab(terrain: SphericalTerrain, center: Vec3, brush: SphericalBrushSettings) {
+function bruteDab(terrain: SphericalTerrain, center: Vec3, brush: AdditiveSettings) {
   return Float32Array.from([...terrain.samples()].map((key) => {
     const t = geodesicDistanceMeters(center, terrain.directionAt(key), radius) / brush.radiusMeters;
     return t >= 1 ? -100 : Math.fround(-100 + (brush.tool === 'raise' ? 1 : -1) * brush.strengthMeters * Math.max(0, Math.min(1, (1 - t) ** 2 * (1 + 2 * t))));
@@ -100,7 +101,7 @@ test('one multi-face/corner stroke, settings snapshot and partial termination pr
   const metadata = terrain.metadata, before = words(terrain), history = new SphericalHistory(terrain), brush = { ...settings(), strengthMeters: 43.7 };
   const stroke = startSphericalBrushStroke(terrain, point([1, 0, 0]), brush, history); brush.strengthMeters = 999;
   for (const p of [[1, 1, 1], [0, 1, 0], [-1, .1, .1], [-1, -1, -1], [0, 0, -1]] as const) stroke.moveTo(point(p));
-  assert.throws(() => history.undo(), /End/); stroke.end(); stroke.end(); assert.equal(history.length, 1); assert.equal(stroke.settings.strengthMeters, 43.7);
+  assert.throws(() => history.undo(), /End/); stroke.end(); stroke.end(); assert.equal(history.length, 1); assert.ok('strengthMeters' in stroke.settings); assert.equal(stroke.settings.strengthMeters, 43.7);
   const after = words(terrain); assert.notDeepEqual(after, before); assert.equal(stroke.moveTo(point([1, 0, 0])), false);
   history.undo(); assert.deepEqual(words(terrain), before); history.redo(); assert.deepEqual(words(terrain), after); assert.equal(terrain.metadata, metadata);
 });

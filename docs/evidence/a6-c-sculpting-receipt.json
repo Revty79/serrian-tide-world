@@ -1,0 +1,229 @@
+{
+  "measuredAt": "2026-10-18T02:30:43.377Z",
+  "runtime": "v24.18.0",
+  "platform": "win32",
+  "architecture": "x64",
+  "method": "One warmup then three measured runs per tool and N; 272-dab multi-face path with history commit. Fixture setup/digests excluded. Payload accounting is not process RSS or a mobile/browser timing claim.",
+  "radiusMeters": 1000000,
+  "brushRadiusMeters": 80000,
+  "intensity": 0.5,
+  "flattenTargetMeters": 2500,
+  "path": [
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      1
+    ],
+    [
+      0,
+      1,
+      0
+    ],
+    [
+      -1,
+      0.1,
+      0.1
+    ],
+    [
+      -1,
+      -1,
+      -1
+    ],
+    [
+      0,
+      0,
+      -1
+    ]
+  ],
+  "benchmarks": [
+    {
+      "tool": "smooth",
+      "cellsPerEdge": 128,
+      "sampleCount": 98306,
+      "authoritativeBytes": 393224,
+      "dabs": 272,
+      "candidateChecks": 93173,
+      "affectedSamples": 40959,
+      "writes": 40945,
+      "peakPreparedBytes": 32768,
+      "uniqueChangedSamples": 6666,
+      "elevationReads": 204779,
+      "neighborQueries": 40959,
+      "fullElevationCopiesPerStroke": 2,
+      "pendingSnapshotBytes": 393224,
+      "retainedHistoryBytes": 80056,
+      "historyEntries": 1,
+      "liveAuthorityPendingAndPreparedBytes": 819216,
+      "conservativeFirstCommitTypedPayloadBytes": 1259728,
+      "sculptAndCommitMs": 582.6161999999999,
+      "undoMs": 0.347599999999602,
+      "redoMs": 0.2557999999999083,
+      "initialSha256": "c1b41bbd15a0a45edc6eea70797e100d05975a157b7103549a72053b5f9e36c6",
+      "editedSha256": "fa55dccef6084aea63846a90e55254556f4eb58a0da889e13dd4c914e9147e37",
+      "exactUndoRedo": true,
+      "medianSculptAndCommitMs": 586.4575,
+      "timingRunsMs": [
+        {
+          "sculptAndCommit": 602.7997999999999,
+          "undo": 0.5933999999999742,
+          "redo": 0.3569999999999709
+        },
+        {
+          "sculptAndCommit": 586.4575,
+          "undo": 0.2780999999999949,
+          "redo": 0.26279999999997017
+        },
+        {
+          "sculptAndCommit": 582.6161999999999,
+          "undo": 0.347599999999602,
+          "redo": 0.2557999999999083
+        }
+      ],
+      "averageCandidatesPerDab": 342.5477941176471,
+      "avoidedFullScanChecks": 26646059
+    },
+    {
+      "tool": "flatten",
+      "cellsPerEdge": 128,
+      "sampleCount": 98306,
+      "authoritativeBytes": 393224,
+      "dabs": 272,
+      "candidateChecks": 93173,
+      "affectedSamples": 40959,
+      "writes": 40948,
+      "peakPreparedBytes": 32768,
+      "uniqueChangedSamples": 6666,
+      "elevationReads": 40959,
+      "neighborQueries": 0,
+      "fullElevationCopiesPerStroke": 2,
+      "pendingSnapshotBytes": 393224,
+      "retainedHistoryBytes": 80056,
+      "historyEntries": 1,
+      "liveAuthorityPendingAndPreparedBytes": 819216,
+      "conservativeFirstCommitTypedPayloadBytes": 1259728,
+      "sculptAndCommitMs": 89.99720000000025,
+      "undoMs": 0.2741000000000895,
+      "redoMs": 0.2581000000000131,
+      "initialSha256": "c1b41bbd15a0a45edc6eea70797e100d05975a157b7103549a72053b5f9e36c6",
+      "editedSha256": "7201410a95cc3f06fa3b2b5ded7e5f53990b99305bc1cdae6d60b0367371144f",
+      "exactUndoRedo": true,
+      "medianSculptAndCommitMs": 91.44579999999996,
+      "timingRunsMs": [
+        {
+          "sculptAndCommit": 91.44579999999996,
+          "undo": 0.25520000000005894,
+          "redo": 0.25739999999996144
+        },
+        {
+          "sculptAndCommit": 93.13590000000022,
+          "undo": 0.23720000000002983,
+          "redo": 0.2337999999999738
+        },
+        {
+          "sculptAndCommit": 89.99720000000025,
+          "undo": 0.2741000000000895,
+          "redo": 0.2581000000000131
+        }
+      ],
+      "averageCandidatesPerDab": 342.5477941176471,
+      "avoidedFullScanChecks": 26646059
+    },
+    {
+      "tool": "smooth",
+      "cellsPerEdge": 256,
+      "sampleCount": 393218,
+      "authoritativeBytes": 1572872,
+      "dabs": 272,
+      "candidateChecks": 297750,
+      "affectedSamples": 163648,
+      "writes": 163438,
+      "peakPreparedBytes": 32768,
+      "uniqueChangedSamples": 26440,
+      "elevationReads": 818224,
+      "neighborQueries": 163648,
+      "fullElevationCopiesPerStroke": 2,
+      "pendingSnapshotBytes": 1572872,
+      "retainedHistoryBytes": 317344,
+      "historyEntries": 1,
+      "liveAuthorityPendingAndPreparedBytes": 3178512,
+      "conservativeFirstCommitTypedPayloadBytes": 5035960,
+      "sculptAndCommitMs": 2242.9431999999997,
+      "undoMs": 1.2345000000004802,
+      "redoMs": 0.9475000000002183,
+      "initialSha256": "9b8d9df2055489d20378e37c94f71d6be0bfcc4460a68ade9286810744b8efce",
+      "editedSha256": "b58bf0ff565583819078c8665682068ddca13003856777c6e3ae0df8b3349a0f",
+      "exactUndoRedo": true,
+      "medianSculptAndCommitMs": 2242.9431999999997,
+      "timingRunsMs": [
+        {
+          "sculptAndCommit": 2241.3148,
+          "undo": 1.0234000000000378,
+          "redo": 1.0758999999998196
+        },
+        {
+          "sculptAndCommit": 2247.7133999999996,
+          "undo": 1.2114000000001397,
+          "redo": 1.126299999999901
+        },
+        {
+          "sculptAndCommit": 2242.9431999999997,
+          "undo": 1.2345000000004802,
+          "redo": 0.9475000000002183
+        }
+      ],
+      "averageCandidatesPerDab": 1094.6691176470588,
+      "avoidedFullScanChecks": 106657546
+    },
+    {
+      "tool": "flatten",
+      "cellsPerEdge": 256,
+      "sampleCount": 393218,
+      "authoritativeBytes": 1572872,
+      "dabs": 272,
+      "candidateChecks": 297750,
+      "affectedSamples": 163648,
+      "writes": 163588,
+      "peakPreparedBytes": 32768,
+      "uniqueChangedSamples": 26443,
+      "elevationReads": 163648,
+      "neighborQueries": 0,
+      "fullElevationCopiesPerStroke": 2,
+      "pendingSnapshotBytes": 1572872,
+      "retainedHistoryBytes": 317380,
+      "historyEntries": 1,
+      "liveAuthorityPendingAndPreparedBytes": 3178512,
+      "conservativeFirstCommitTypedPayloadBytes": 5035996,
+      "sculptAndCommitMs": 279.21039999999994,
+      "undoMs": 1.1993000000002212,
+      "redoMs": 0.9907999999995809,
+      "initialSha256": "9b8d9df2055489d20378e37c94f71d6be0bfcc4460a68ade9286810744b8efce",
+      "editedSha256": "ae24030f4d514984f31c09fa1cb374018043590b68bc3d8aa609b0a090779cd0",
+      "exactUndoRedo": true,
+      "medianSculptAndCommitMs": 279.21039999999994,
+      "timingRunsMs": [
+        {
+          "sculptAndCommit": 277.90970000000016,
+          "undo": 1.0103999999992084,
+          "redo": 1.6707000000005792
+        },
+        {
+          "sculptAndCommit": 282.02490000000034,
+          "undo": 1.1556000000000495,
+          "redo": 0.978899999998248
+        },
+        {
+          "sculptAndCommit": 279.21039999999994,
+          "undo": 1.1993000000002212,
+          "redo": 0.9907999999995809
+        }
+      ],
+      "averageCandidatesPerDab": 1094.6691176470588,
+      "avoidedFullScanChecks": 106657546
+    }
+  ]
+}

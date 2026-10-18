@@ -1,8 +1,8 @@
-# World surfaces, geometry and topology — A6-B
+# World surfaces, geometry and topology — A6-C
 
-Status: A6-B numerical spherical sculpting/history, October 17, 2026. Approved A6-A baseline: `3d210140f53e1e1d4f2ef72edf92debcfe0d2efa`; independent source/numerical/architecture approval with no blockers was supplied by the owner. Prior completion reports remain historical receipts.
+Status: A6-C numerical spherical Smooth/Flatten, October 17, 2026. Approved A5.2 baseline: `7033fe5f5013db9bac6d74792db2a642182006e2`; Ember's source/test/visual-evidence approval was supplied by the owner. Owner hands-on focused-layout acceptance remains separate. Prior completion reports remain historical receipts.
 
-A5.1 stabilization follows owner-supplied Ember source/numerical approval of A6-B at `bafedf08343eb48f2e1bd50b5a05db0da13a1dcb`. It corrects planar input and adds controlled edge-assisted view translation with continuous gesture winding, leaving the spherical provider and numerical authority untouched. See [A5.1 findings and evidence](A5-1-COMPLETION.md). Stop before A6-C. The master roadmap records Atlas into rebuilt Worlds at step 9, the combined system into the existing site at step 10, then the final reusable Earth content milestone at step 11.
+A5.1 stabilization follows owner-supplied Ember source/numerical approval of A6-B at `bafedf08343eb48f2e1bd50b5a05db0da13a1dcb`. It corrects planar input and adds controlled edge-assisted view translation with continuous gesture winding, leaving the spherical provider and numerical authority untouched. See [A5.1 findings and evidence](A5-1-COMPLETION.md). The master roadmap records Atlas into rebuilt Worlds at step 9, the combined system into the existing site at step 10, then the final reusable Earth content milestone at step 11.
 
 A5.2 follows Ember's owner-reported source, visual and automated-evidence approval of A5.1 at `cf146b4e0c441b4e81b2a7d516aaf77462ba587d`; owner hands-on acceptance remains outstanding. The focused wrapped presentation changes camera scale and decorative context only. One centered working period uses a movable geographic cut, with connected previews where the viewport permits. Full-height context and Fit remain selectable. See [A5.2 completion](A5-2-COMPLETION.md).
 
@@ -18,7 +18,7 @@ Spherical worlds need rotation, local/cutout projections and movable cuts. Physi
 
 ## Decision and implementation boundary
 
-Preserve bounded/periodic editors and v1/v2 saves. A6-A supplies the connected numerical cube-sphere. A6-B adds physical Raise/Lower, bounded cap search, great-circle strokes and exact bounded history without a globe UI. Smooth/Flatten, interactive projections/rotation and spherical persistence remain later checkpoints. See [provider specification](SPHERICAL-HEIGHTMAP-FOUNDATION.md), [sculpting/history contract](SPHERICAL-SCULPTING.md) and [A6-B evidence](A6-B-COMPLETION.md).
+Preserve bounded/periodic editors and v1/v2 saves. A6-A supplies the connected numerical cube-sphere. A6-B adds physical Raise/Lower, bounded cap search, great-circle strokes and exact bounded history. A6-C adds Smooth/Flatten through that same infrastructure without changing the authority or browser editor. Interactive projections/rotation and spherical persistence remain later checkpoints. See [provider specification](SPHERICAL-HEIGHTMAP-FOUNDATION.md), [sculpting/history contract](SPHERICAL-SCULPTING.md) and [A6-C evidence](A6-C-COMPLETION.md).
 
 New Wrapped Map is the only additional geometry mode. Bounded maps still have real independent edges. The default display now fills the viewport with uniform scale; periodic copies share one authority, while bounded Fill crops a pannable view. Fit Entire Map remains separate. No Sphere, Cylinder or Hollow World selection is exposed.
 
@@ -40,14 +40,14 @@ A patch is a chart of one surface, not another World or another independently au
 
 ## Capability matrix
 
-| Configuration | Working through A6-B | Contract / remaining work |
+| Configuration | Working through A6-C | Contract / remaining work |
 | --- | --- | --- |
 | Bounded rectangular or square planar map | Four brushes, history/save; pure normalization, traversal, Euclidean metric, endpoint-inclusive lattice and explicit legacy binding | Numerical/v1 save behavior preserved; default Fill, optional Fit and interpolated presentation |
 | One periodic rectangular axis, other bounded | A4 canonical coordinates, shortest-wrap metric, lattice and tangent transport; A5 unique authority, all four brushes, repeated view, continuous pan, preview/hit testing, exact history and v2 Save/Open | Horizontally periodic flat quotient only; no spherical or complete cylindrical geometry |
 | Two periodic rectangular axes | Pure normalization, metric and neighbor examples | Flat rectangular quotient (intrinsic flat torus), not an implemented embedded doughnut or spherical world |
 | Circle or triangle | Validated flat-outline descriptors | Shape masks, boundary intersection, sample ownership, clipping and metrics around holes need later providers; no editor support |
 | Arbitrary planar edge connections | Per-edge/seam contracts | Validate edge length/parameterization, inverse pairing, orientation, corner cycles and allowed orientability; no arbitrary gluing engine |
-| Sphere | A6-A shared numerical authority/geometry plus A6-B physical Raise/Lower, bounded cap candidates, great-circle strokes and bit-exact history | Later checkpoints: curved Smooth/Flatten, interactive views/rotation and spherical Save/Open, with reviewed UI/performance/storage budgets |
+| Sphere | A6-A shared authority/geometry, A6-B Raise/Lower, A6-C connected distance-aware Smooth/Flatten, bounded cap candidates, great-circle strokes and bit-exact history | A6-D views/rotation and separately approved spherical Save/Open, with reviewed UI/performance/storage budgets |
 | Cylinder | Radius/length descriptor, periodic flat-coordinate math useful for its lateral chart | A7: physical scale, independent end policies, caps/connections, transitions and editor |
 | Hollow sphere | Validated parent/surface catalogs for inside, outside or both | A7: independent cube-sphere terrain stores, orientation/elevation constraints and active-surface workflow |
 | Custom/multi-face world | Versioned geometry, topology and representation references; chart seam/tangent contracts | Provider implementation and proof required; nonmanifold, nonorientable, irregular and variable-curvature cases need research |
@@ -156,7 +156,7 @@ The implemented provider keeps one private contiguous Float32 buffer, algorithmi
 
 Implemented reference-sphere distance is `R × atan2(|n₁ × n₂|, n₁ · n₂)` with robust unit normalization and finite/degenerate checks. Geometry uses double precision; elevations use Float32. A6-B narrows each spherical cap to conservative face-local rectangles, emits each canonical owner once, then checks exact geodesic influence. Strokes follow shortest great-circle arcs with radius/4 meter spacing and carried residuals. Nearly antipodal endpoints require an explicit intermediate position. No face-coordinate circle, screen distance or arbitrary directional axis substitutes for the surface metric.
 
-Shared-edge chart conversions use the analytical mapping Jacobians and the destination Gram matrix, preserving the same physical tangent despite nonorthogonal chart axes. This is a change of basis at one point, not parallel transport along a finite geodesic. Three faces meet at a corner; the supplied neighbor graph is not a completed Smooth weighting/interpolation policy. Later spherical brushes must verify intrinsic paths, corner weighting and projected footprint consistency at all seams/poles before becoming UI options. A6-A has no full spherical brush implementation.
+Shared-edge chart conversions use the analytical mapping Jacobians and the destination Gram matrix, preserving the same physical tangent despite nonorthogonal chart axes. This is a change of basis at one point, not parallel transport along a finite geodesic. Three faces meet at a corner. A6-C's Smooth uses three unique connected neighbors there, four elsewhere, with normalized inverse-geodesic-square weights and a half-center target. Every dab reads its complete source neighborhood before any writes. The independent welded-mesh oracle checks all seams/corners/poles; projected footprint consistency and interactive editing remain A6-D requirements. Flatten uses explicit meter targets relative to the fixed zero sea-level/reference-sphere datum. See [weighting rationale and limitations](SPHERICAL-SCULPTING.md).
 
 ### Resolution and resource estimates
 
@@ -177,7 +177,7 @@ Changing projection or viewport resolution must affect presentation only. Changi
 | Equidistant radial cube-sphere | Simple mapping but different spacing variation; equiangular is the initial proposal for more convenient patch coordinate continuation |
 | Equal-area spherical cube mappings | Potential area advantage, more involved mapping/inverse/metric work; revisit if measured distortion or analysis needs justify it |
 
-These alternatives are project assessments, not claims that another grid cannot work. A6-A proves ownership/topology/geometry; A6-B adds numerical geodesic Raise/Lower and bounded history. Curved Smooth/Flatten, UI/rendering, interactive performance and persistence still require later checkpoint acceptance.
+These alternatives are project assessments, not claims that another grid cannot work. A6-A proves ownership/topology/geometry; A6-B adds numerical geodesic Raise/Lower and bounded history; A6-C adds connected Smooth and explicit-target Flatten. UI/rendering, interactive performance and persistence still require later checkpoints. Distance-aware local smoothing does not claim an equal-area or conservative diffusion discretization.
 
 ## Hollow worlds and other geometry — A7
 
@@ -232,13 +232,14 @@ A5 keeps IndexedDB schema version 1 and the existing two stores; it performs no 
 | A6-A — reviewed baseline | Numerical spherical authority, unique shared vertices, edge/corner adjacency, metric and tangent basis conversions; independent approval supplied by owner |
 | A6-B — reviewed baseline | Numerical geodesic Raise/Lower, conservative cap search, continuous shortest-arc strokes and private canonical history; Ember source/numerical approval supplied by owner; no globe UI or browser persistence |
 | A5.1 — stabilization before A6-C | Planar input fixes, explained repetition and controlled screen-edge scrolling with one stroke/history operation; technical evidence in A5.1 completion |
-| A5.2 — presentation before A6-C | Larger focused periodic working cycle with connected previews and movable view cut; selectable full-height/Fit; no geometry or numerical change |
-| Later A6 — requires authorization | Reviewed spherical Smooth/Flatten; interactive views/rotation/local projections; separately approved spherical Save/Open, in bounded checkpoints |
+| A5.2 — reviewed presentation before A6-C | Larger focused periodic working cycle with connected previews and movable view cut; selectable full-height/Fit; Ember source/test/visual-evidence approval supplied by owner; hands-on acceptance separate |
+| A6-C — numerical tools | Connected distance-aware Smooth and datum-relative Flatten; shared cap/spacing/lifecycle/history, independent reference and N=128/256 measurements; review pending |
+| A6-D and subsequent A6 — require authorization | Interactive spherical views/rotation/local projections, followed by separately approved spherical Save/Open in bounded checkpoints |
 | A7 — requires authorization | Initial hollow, cylindrical and other agreed geometries; independent surface workflow, normals/clearance/end policies and explicit supported configuration list |
 | Subsequent passes | Complete Azgaar-style heightmap toolset and later interchange/generation/analysis/presentation in separately reviewed scopes |
 
 Review may subdivide these passes. The former A7 external interchange label is superseded by the owner's new ordering; import/export remains future work with no new pass number assigned here.
 
-Open decisions: physical scale for legacy flat worlds; later spherical browser/UI memory budget; curved Smooth weighting and corner interpolation; geodesic paths/finite-path tangent transport for directional tools; overview/local projections and singular regions; allowed planar gluing configurations; persistence/migration/conversion policy; active-surface Undo presentation; clearance tolerance and invalid-edit behavior; cylinder ends/caps; parameters/providers for the complete future geometry inventory. A6-A now fixes its versioned face bases, canonical ownership and initial numerical N; these are representation decisions, not Earth assumptions or Serrian Tide canon. Remaining decisions are not exposed as functional UI.
+Open decisions: physical scale for legacy flat worlds; later spherical browser/UI memory budget; continuous render interpolation and any future area-conservative diffusion; geodesic paths/finite-path tangent transport for directional tools; overview/local projections and singular regions; allowed planar gluing configurations; persistence/migration/conversion policy; active-surface Undo presentation; clearance tolerance and invalid-edit behavior; cylinder ends/caps; parameters/providers for the complete future geometry inventory. A6-A fixes its versioned face bases, canonical ownership and initial numerical N; A6-C selects a local distance-aware Smooth policy. These are representation/tool decisions, not Earth assumptions or Serrian Tide canon. Remaining decisions are not exposed as functional UI.
 
-The original Next.js/TypeScript application will retain responsibility for authentication, server-side permissions, World records and database storage. The development shell remains replaceable, with reusable client components separate from this pure surface layer. No main-site integration or deployment is authorized. Stop after A5.2 for review; owner hands-on acceptance remains outstanding. Do not begin A6-C.
+The original Next.js/TypeScript application will retain responsibility for authentication, server-side permissions, World records and database storage. The development shell remains replaceable, with reusable client components separate from this pure surface layer. No main-site integration or deployment is authorized. Stop after A6-C for review; owner hands-on focused-layout acceptance remains separate. Do not begin A6-D. Its documented requirements include physical rotate/recenter, appropriate cutout/gore/multi-face or local views, projection-independent screen-to-surface input, projected geodesic previews, predictable navigation/edge assistance and usable poles/transitions; see [A6-D interface requirements](SPHERICAL-SCULPTING.md#a6-d-interface-requirements--documentation-only).

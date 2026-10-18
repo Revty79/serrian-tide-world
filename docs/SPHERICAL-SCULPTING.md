@@ -1,6 +1,6 @@
-# Spherical sculpting and numerical history — A6-B
+# Spherical sculpting and numerical history — A6-C
 
-This pure TypeScript layer consumes the A6-A numerical sphere. It implements Raise/Lower and exact bounded history without React, Canvas, browser storage or a globe UI. Existing planar/periodic behavior is preserved; only their unchanged falloff/saturation expressions were extracted into `brush-math.ts`.
+This pure TypeScript layer consumes the A6-A numerical sphere. All four tools share A6-B's cap enumeration, geodesic influence, great-circle spacing, lifecycle and exact bounded history. A6-C adds Smooth/Flatten without changing the planar/periodic editor, save codecs, spherical authority or Raise/Lower numerical expressions. There is no React, Canvas, browser storage or globe UI in this engine.
 
 ## API and lifecycle
 
@@ -21,7 +21,14 @@ history.redo();
 
 `SphericalBrushPoint` carries World/surface identity plus either a finite nonzero 3D direction or an A6-A `SurfacePosition` (`patchId,u,v` angular face coordinates). The future UI supplies physical positions through its inverse projection. Normalization removes vector magnitude, not geographic information. Foreign identities, invalid chart coordinates, zero/nonfinite directions and history from a different provider instance are rejected.
 
-Settings are captured/frozen per stroke. Radius is physical meters, positive and finite, angular radius at least 1e−12 radians and at most π (the maximum geodesic separation). This precision floor prevents meaningless sub-machine-scale footprints; it is not a geographic detail claim or a future UI radius choice. Strength is positive finite Float32-range meters per dab. Only Raise/Lower are accepted. Large caps may cover most/all of the sphere. Existing neutral planar map units are never converted implicitly.
+Settings are captured/frozen per stroke. Radius is physical meters, positive and finite, angular radius at least 1e−12 radians and at most π (the maximum geodesic separation). This precision floor prevents meaningless sub-machine-scale footprints; it is not a geographic detail claim or a future UI radius choice. Large caps may cover most/all of the sphere. Existing neutral planar map units are never converted implicitly.
+
+`SphericalBrushSettings` is a discriminated union. Raise/Lower retain positive finite Float32-range `strengthMeters` per dab. Smooth takes `intensity`; Flatten takes `intensity` and `targetElevation`. Intensity is a finite blend factor **0…1**, equivalent to 0…100%; zero is a supported no-op. Targets are finite Float32-range meters relative to the provider's defined sea-level datum: metadata `seaLevel=0`, the reference sphere at `radiusMeters`. Positive targets are outward above that datum; negative targets are below it. This pass does not add a configurable datum or change radius. Example settings:
+
+```ts
+{ tool: 'smooth', radiusMeters: 80_000, intensity: .5 }
+{ tool: 'flatten', radiusMeters: 80_000, intensity: .75, targetElevation: 2500 }
+```
 
 Starting applies one dab. `moveTo` supplies physical path segments. Repeated identical positions and stationary time add no dabs. `end` is idempotent, finalizes optional history and stops all later movement; cancellation can call it to preserve completed work. Only one engine stroke can be active per provider instance. Do not interleave unrelated provider writes or manual history operations inside a stroke. Finish before Undo/Redo, clear or starting another history operation; conflicts are refused. History is optional for numerical consumers, and automatic when passed as the fourth argument.
 
@@ -41,6 +48,29 @@ newHeight = Float32(clamp(currentHeight ± strengthMeters × falloff, −Float32
 The formulas and operation order match A5's existing expressions. Elevation is independent of radius or projected face scale. The reference sphere supplies physical distance; there is no privileged pole or artificial seam wall. Equivalent face addresses resolve the same physical centers and canonical samples. Every write calls `terrain.write(terrain.keyAt(index), value)`. Authority remains one private buffer; metadata, radius, ownership, representation version and identities remain unchanged.
 
 Each dab reads/validates all affected values and prepares its changed values before writing any. Finite validation is per affected region; the real provider's private buffer additionally maintains a finite-write invariant globally. There is no global elevation scan per dab. Preparation uses 4,096-sample typed chunks containing canonical Uint32 indices and Float32 values. No changes means no chunks; otherwise payload is `32,768 × ceil(changedSamples/4096)` bytes. No independently editable face or halo copies exist.
+
+## Flatten and geometry-aware Smooth — A6-C
+
+Flatten uses `b = intensity × falloff` and `next = Float32((1−b)h + b×targetElevation)`, with the shared finite saturation guard. This convex form reaches the explicit target at full influence even when h and target differ by extreme magnitudes; `h + b(target−h)` can lose a small target through cancellation. Signed-zero equality is treated as no numerical change by the brush, so unchanged zeros retain their original bits. History still records/restores any zeros changed by real edits exactly.
+
+Smooth uses the **unique edge-connected graph**, not chart-local 3×3 kernels or cell diagonals. An ordinary vertex, including a shared edge vertex, has four neighbors; each of the eight cube corners has three. Incident face aliases are welded before enumeration. Neighbor elevations just outside the brush cap are legitimate source data, but only samples inside the geodesic footprint are written.
+
+For center vertex i and its connected neighbors j, measured on the reference sphere:
+
+```text
+θij = atan2(|ni × nj|, ni · nj)
+wij = (minj θij / θij)²
+Δi = Σj wij(hj−hi) / (2 Σj wij)
+nexti = Float32(hi + intensity × falloffi × Δi)
+```
+
+Normalized weights are equivalent to inverse **geodesic distance squared**, since common radius and minimum-distance factors cancel. Ratios avoid overflow/underflow from squaring extreme physical radii. Shorter grid edges receive more influence. Half of the target weight stays at the center, half goes to the normalized neighbor mean. This lazy graph smoother damps a full-intensity checkerboard instead of swapping its two phases. The target is convex, so it introduces no new local extrema. Difference accumulation preserves an exactly constant Float32 field, including signed zero, without cancellation drift. Degree normalization avoids a special gain/loss merely because a cube corner has three neighbors.
+
+Distance weighting was selected for this local sculpting tool over uniform chart weights, which ignore unequal physical spacing. Area-aware finite-volume diffusion would additionally require explicit dual-cell areas and flux conductances; weighting only by incident face counts or approximate vertex areas would not establish conservation or isotropy. This smoother does **not** claim equal-area tessellation, a conservative diffusion PDE, exact rotational invariance of a finite cube grid, or volume preservation. Its physical footprint and neighbor weights are independent of the viewing projection. Future erosion/volume-analysis tools need their own discretization and acceptance tests.
+
+All source reads finish before the first write of a dab. The pending output chunks therefore provide the same result as a pre-dab source snapshot, without copying the elevation field or storing a persistent halo. Each sample's transient neighborhood contains at most four value/angle records, released immediately. No `copyElevations` occurs per dab; tracked strokes still use only the existing begin/commit copies. Whole-sphere caps can legitimately prepare O(S) output, bounded by N≤512; there are no extra O(S) Smooth input copies. Small caps cost O(candidates + affected neighbors), not O(S).
+
+The independent test oracle reconstructs a complete welded quad-edge mesh from all six chart lattices, computes directions directly from the equiangular mapping, uses chord/asin angles, visits every vertex instead of cap bounds, and blends absolute weighted elevations. It calls neither production neighbors, cap search, directionAt, smoothing nor falloff kernels. Resolution/address ownership is the shared A6-A contract, not a second writable terrain. Tests compare nonconstant fields at all interiors/edges/corners and poles, near-single-vertex caps and multi-face/whole-sphere footprints. Reversed neighbor enumeration and isolated seam/corner spikes provide additional checks; the oracle verifies synchronous pre-dab behavior rather than a directional in-place sweep.
 
 ## Conservative spherical-cap search
 
@@ -94,4 +124,15 @@ Transient costs are explicit: one `4S`-byte pending snapshot, another `4S`-byte 
 
 Run `node scripts/measure-spherical-brush.mjs [output.json]` for deterministic multi-face Lower/signed-zero history, event-frequency evidence and measured N=128/256 Raise benchmarks. [Committed receipt](evidence/a6-b-sculpting-receipt.json) includes all paths, units, counters, raw timing runs, payload accounting and digests. One warmup precedes three runs per resolution. Timing includes initial dab, 272-dab path and history commit; digest computation is excluded. This is a local Node benchmark, not an interactive globe/mobile rendering result.
 
-Spherical Smooth/Flatten need a reviewed curved neighborhood/weighting policy. Interactive projected views, rotation, projected brush previews and cancellation/input integration remain later work. Spherical Save/Open needs its own approved codec/recovery contract. The current browser has no sphere option. All future shape/history/map-style/Worlds requirements in the [master roadmap](PHASE-1-HEIGHTMAP-ROADMAP.md) remain preserved. Stop after A6-B.
+Run `node scripts/measure-spherical-tools.mjs [output.json]` for A6-C's N=128/256 Smooth/Flatten timings, candidate/read counts, exact history digests and typed-array payload accounting. One warmup precedes three measured runs for each tool/resolution. See the [A6-C receipt](evidence/a6-c-sculpting-receipt.json) and [completion report](A6-C-COMPLETION.md). These are local numerical measurements, not globe/mobile frame-rate evidence. Raise/Lower's original script and committed A6-B receipt remain unchanged.
+
+## A6-D interface requirements — documentation only
+
+- Rotate/recenter the spherical working surface through view state while keeping the canonical geographic frame and elevation samples fixed. A sphere must not be implemented as a horizontally periodic rectangle.
+- A flattened view may use cutouts, gores, connected faces or local spherical projections. A surface-specific view provider must choose layout, movable cuts, forward/inverse mapping and singular-region behavior; periodic side strips are not the universal interface.
+- Convert screen input to identity-bearing physical directions or validated chart positions independently of the selected projection. Then feed the existing engine. Never infer physical brush size from chart pixels or resample the authority when changing the view.
+- Project the actual geodesic cap for previews, including split footprints at cuts. Readout, hit testing and rendering must agree with the same applied view state.
+- Preserve predictable pan/rotate/zoom and painting arbitration, native touch behavior, cancellation and one-operation history. Add edge-assisted drawing only where appropriate to the spherical view, updating the physical path consistently as the view moves.
+- Make poles, corners and face/cut transitions usable and centerable. A camera action cannot change elevation, ownership, radius, identity or history. Future hollow interiors/exteriors remain independently selected surfaces.
+
+Interactive views/rotation, 3D rendering, projected previews and browser input integration require A6-D authorization. Spherical Save/Open needs its own approved codec/recovery contract. The current browser has no sphere option. The [master roadmap](PHASE-1-HEIGHTMAP-ROADMAP.md) retains every geometry, advanced tool, living-history/cartographic and Issue #1 requirement, with integration steps 9 → 10 → 11 unchanged. **Stop after A6-C; do not begin A6-D.**
