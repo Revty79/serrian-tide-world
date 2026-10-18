@@ -1,0 +1,51 @@
+{
+  "method": "Sequential separate Chromium Pixel 7 contexts, one browser at a time, 4x CPU throttle, traces on, same actual UI edit and three reopen cycles. Two explicit garbage collections after work, outside all measured timing intervals, inspect retained backing storage. Includes browser/test overhead; not process RSS or physical-device memory.",
+  "records": [
+    {
+      "label": "before",
+      "beforeGC": {
+        "usedSize": 10706072,
+        "totalSize": 21942272,
+        "embedderHeapUsedSize": 2420360,
+        "backingStorageSize": 51067640
+      },
+      "afterGC": {
+        "usedSize": 9194928,
+        "totalSize": 9883648,
+        "embedderHeapUsedSize": 1084928,
+        "backingStorageSize": 14994549
+      },
+      "payload": "59f51123e4da44c3c1cd7f8da8db077789c57cba48a87a36051f53a1acc345fc",
+      "memory": {
+        "authorityBytes": 1572872,
+        "derivedTexturesAndIndicesBytes": 7901232,
+        "rayCacheBytes": 0,
+        "rasterBytes": 879844,
+        "sampleCount": 393218
+      }
+    },
+    {
+      "label": "after",
+      "beforeGC": {
+        "usedSize": 10824468,
+        "totalSize": 21942272,
+        "embedderHeapUsedSize": 2286432,
+        "backingStorageSize": 38926305
+      },
+      "afterGC": {
+        "usedSize": 9242328,
+        "totalSize": 9883648,
+        "embedderHeapUsedSize": 1070736,
+        "backingStorageSize": 17620460
+      },
+      "payload": "59f51123e4da44c3c1cd7f8da8db077789c57cba48a87a36051f53a1acc345fc",
+      "memory": {
+        "authorityBytes": 1572872,
+        "derivedTexturesAndIndicesBytes": 7901232,
+        "rayCacheBytes": 2618641,
+        "rasterBytes": 879844,
+        "sampleCount": 393218
+      }
+    }
+  ]
+}

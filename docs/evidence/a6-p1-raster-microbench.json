@@ -1,0 +1,136 @@
+{
+  "method": "Same Node process, exact frozen pre-P1 renderer, fixed 25 camera positions per trial, same texture/resolution/raster budget, six AB/BA rounds. Round zero includes warmup and cold ray construction. This isolates raster CPU work; browser editing is measured separately.",
+  "node": "v24.18.0",
+  "measurements": [
+    {
+      "budget": 35000,
+      "results": [
+        {
+          "round": 0,
+          "label": "before",
+          "ms": 102.80339999999998
+        },
+        {
+          "round": 0,
+          "label": "after",
+          "ms": 75.25970000000001
+        },
+        {
+          "round": 1,
+          "label": "after",
+          "ms": 43.70330000000001
+        },
+        {
+          "round": 1,
+          "label": "before",
+          "ms": 90.8553
+        },
+        {
+          "round": 2,
+          "label": "before",
+          "ms": 103.2989
+        },
+        {
+          "round": 2,
+          "label": "after",
+          "ms": 52.86609999999996
+        },
+        {
+          "round": 3,
+          "label": "after",
+          "ms": 42.78409999999997
+        },
+        {
+          "round": 3,
+          "label": "before",
+          "ms": 97.12119999999993
+        },
+        {
+          "round": 4,
+          "label": "before",
+          "ms": 106.37329999999997
+        },
+        {
+          "round": 4,
+          "label": "after",
+          "ms": 41.263900000000035
+        },
+        {
+          "round": 5,
+          "label": "after",
+          "ms": 41.3601000000001
+        },
+        {
+          "round": 5,
+          "label": "before",
+          "ms": 88.14379999999994
+        }
+      ]
+    },
+    {
+      "budget": 220000,
+      "results": [
+        {
+          "round": 0,
+          "label": "before",
+          "ms": 591.8203999999998
+        },
+        {
+          "round": 0,
+          "label": "after",
+          "ms": 249.50689999999986
+        },
+        {
+          "round": 1,
+          "label": "after",
+          "ms": 253.7881
+        },
+        {
+          "round": 1,
+          "label": "before",
+          "ms": 566.7753000000002
+        },
+        {
+          "round": 2,
+          "label": "before",
+          "ms": 543.2064
+        },
+        {
+          "round": 2,
+          "label": "after",
+          "ms": 237.53870000000006
+        },
+        {
+          "round": 3,
+          "label": "after",
+          "ms": 240.57450000000017
+        },
+        {
+          "round": 3,
+          "label": "before",
+          "ms": 550.0825000000004
+        },
+        {
+          "round": 4,
+          "label": "before",
+          "ms": 559.0330000000004
+        },
+        {
+          "round": 4,
+          "label": "after",
+          "ms": 242.66400000000067
+        },
+        {
+          "round": 5,
+          "label": "after",
+          "ms": 241.29499999999916
+        },
+        {
+          "round": 5,
+          "label": "before",
+          "ms": 536.8392999999996
+        }
+      ]
+    }
+  ]
+}

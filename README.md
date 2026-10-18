@@ -1,9 +1,9 @@
-<!-- Current interface: A6-D2-R on A6-F1. Historical completion reports describe their original checkpoints. -->
+<!-- Current interface: A6-P1 on A6-F1/D2-R. Historical completion reports describe their original checkpoints. -->
 # Serrian Tide Atlas
 
-Pass A6-D2-R: held brushes can smoothly reveal adjoining spherical terrain at the actual globe limb within one exact history operation. The A6-F1 unified workspace, contextual controls and v1/v2/v3 local saves remain.
+Pass A6-P1: CPU globe-raster hardening with bounded reusable camera-local rays and exact original RGBA output. The unified workspace, D2-R assisted drawing, physical brushes, history and v1/v2/v3 local saves remain.
 
-This repository is a standalone **development workspace**. Atlas and the rebuilt Worlds system will ultimately replace the current Worlds/Atlas implementation inside the existing Serrian Tide Next.js/TypeScript website. The original website remains untouched.
+This repository is a standalone **development workspace**. Atlas will eventually join the **existing** Serrian Tide Worlds section in isolated development, preserving existing information, organization, data and functionality wherever practical. The owner superseded the earlier separate-Worlds-rebuild plan. Functional interconnected Atlas maps must precede website integration; the [eleven-phase roadmap](docs/PHASE-1-HEIGHTMAP-ROADMAP.md) governs the sequence. The original website remains untouched in this pass.
 
 ## Run and verify
 
@@ -94,7 +94,7 @@ The spherical API is `startSphericalBrushStroke(terrain, physicalPoint, settings
 
 See [World/surface architecture](docs/WORLD-SURFACE-ARCHITECTURE.md), [integration architecture](docs/ARCHITECTURE.md), [A6-C completion and exact files](docs/A6-C-COMPLETION.md), and the [complete master roadmap](docs/PHASE-1-HEIGHTMAP-ROADMAP.md). All prior completion reports remain historical receipts.
 
-The owner authorized A6-D2-R on `main` from `44f3cea0e81809ad0a29328a9cad9d20eada1214`. Independent review and owner hands-on acceptance remain separate. **Stop after A6-D2-R; do not begin another pass without authorization.** Weaker-device N=256 editing hardening remains outstanding. Future view providers choose layouts appropriate to their geometry. The master roadmap preserves [Issue #1](https://github.com/Revty79/serrian-tide-world/issues/1), editable illustrated cartography across every supported shape/valid scale, and steps 9 → 10 → 11. No site integration or deployment occurs here.
+The owner authorized A6-P1 on `main` from `e7862418b010b276dfbb8c736d421f36f901480a`. Independent review and owner hands-on acceptance remain separate. **Stop after A6-P1; do not begin the next geometry phase automatically.** See [P1 measurements, exact results and limits](docs/A6-P1-COMPLETION.md). The [revised eleven-phase roadmap](docs/PHASE-1-HEIGHTMAP-ROADMAP.md) preserves Issue #1, every required geometry, professional mapmaking, functional interconnected maps before integration, real measurements/3D, existing living history/alternate timelines and GPU-free hosting. Existing Worlds is the future integration target. No site integration or deployment occurs here.
 
 ## Unified workspace checkpoint
 

@@ -1,6 +1,6 @@
 # Atlas master roadmap — Phase 1 and long-term requirements
 
-Updated October 18, 2026 for A6-D2-R globe-limb assisted sculpting on A6-F1 baseline `44f3cea0e81809ad0a29328a9cad9d20eada1214`. This preserves the owner's complete geometry, cartography and eventual Atlas/Worlds requirements alongside the Phase 1 heightmap inventory. Future entries do not authorize implementation during D2-R.
+Updated for A6-P1 on approved baseline `e7862418b010b276dfbb8c736d421f36f901480a`. The owner's revised sequence below supersedes earlier plans for a separately rebuilt replacement Worlds system. Existing Worlds information, organization, data and functionality must be preserved wherever practical. Only performance hardening and this documentation correction are authorized in P1; Phases 2–11 are future work.
 
 ## Current baseline
 
@@ -22,7 +22,7 @@ Updated October 18, 2026 for A6-D2-R globe-limb assisted sculpting on A6-F1 base
 | A6-E | Explicit v3 spherical Save/Open, exact validation/restoration, atomic local writes and failure recovery; v1/v2 compatibility | Ember source, persistence, visual and automated-evidence approval supplied by owner; see SPHERICAL-PERSISTENCE.md and E completion evidence |
 | A6-F1 | One workspace, explicit supported-shape creation, shared mixed library/document controls and safe replacement | Implemented for review; see UNIFIED-WORKSPACE.md and F1 evidence |
 | A6-D2-R | Safe automatic globe rotation/recentering during a held limb stroke, changing physical visibility and exact history | Implemented for independent review on the owner's explicit authorization; see A6-D2-R completion and evidence. Net assistance preserved |
-| N=256 editing hardening — future | Weaker-device N=256 brush/display responsiveness | Remains required and separately authorized; D2-R retains all existing numerical/rendering budgets |
+| A6-P1 | Weaker-device N=256 editing responsiveness with exact geography, D2-R continuity and bounded memory | Implemented and verified for Ember's independent technical review; see P1 completion/evidence. No later phase authorized |
 | A7 and later geometry checkpoints | Hollow, cylindrical and other agreed initial geometries | Planned; exact scope/order requires authorization |
 | Later Phase 1 | Remaining inventory below | Planned; pass boundaries and acceptance criteria still require authorization |
 
@@ -34,17 +34,31 @@ The owner moved the surface foundation ahead of the complete Azgaar-style toolse
 
 After A6-B approval, the owner inserted **A5.1 navigation/wrapping/screen-edge stabilization before A6-C**. That correction was completed and technically reviewed before the separately authorized A5.2 refinement.
 
-The owner supplied Ember's A5.2, A6-C, D1, D2 and E technical approvals and separately authorized A6-F1 unified workspace/shape selection, then A6-D2-R globe-limb assistance. Owner hands-on acceptance remains separate. Stop after D2-R for review; the N=256 weaker-device editing performance checkpoint still requires separate authorization.
+The owner supplied Ember's A5.2, A6-C, D1, D2 and E technical approvals and separately authorized F1, D2-R and now P1 performance hardening. Owner hands-on acceptance remains separate. Stop after P1 for Ember's independent technical review; do not begin the next geometry phase automatically.
 
-The owner's corrected downstream master-roadmap order is mandatory:
+## Current owner-approved long-term development sequence
 
-| Step | Required order |
+This complete sequence replaces the previous three-step downstream integration plan. Existing Worlds is the future integration target; a separate replacement lore/Worlds system is not planned.
+
+| Phase | Required order |
 | --- | --- |
-| 9 | Introduce Atlas into the separately rebuilt Worlds system, then develop the integrated functionality that makes Atlas and Worlds work together. |
-| 10 | Complete acceptance and integration of the rebuilt Worlds + Atlas system into the existing Serrian Tide application. |
-| 11 | Reusable historical/modern Earth foundation, the final Earth content milestone. |
+| 1 | Complete Atlas's foundation, including P1 performance hardening. |
+| 2 | Implement all required world geometries and non-destructive conversions. |
+| 3 | Complete comprehensive Azgaar-style Heightmap Studio. |
+| 4 | Develop real geographical measurements and terrain intelligence. |
+| 5 | Complete professional illustrated 2D mapmaking, including settlements, city/town maps, buildings, interiors/floors, dungeons/underground levels and linked-map navigation. |
+| 6 | Complete true 3D terrain and geographic exploration. |
+| 7 | Integrate Atlas into an isolated development version of the existing Serrian Tide Worlds section. Production remains untouched. |
+| 8 | Develop bidirectional functionality between Atlas and existing Worlds records. |
+| 9 | Connect geographical changes with existing Worlds living-history and alternate-timeline functionality. |
+| 10 | Complete acceptance, compatibility and permissions verification before a separately authorized production rollout. |
+| 11 | Build the reusable modern and historical Earth setting. |
 
-This records integration order only. A6-E performs none of these integrations or content milestones.
+Phases 2–11 are documentation requirements only in P1. Atlas must support functional interconnected maps before Phase 7: place a settlement and author its linked city/town map; place buildings and author linked interiors and floors; create linked dungeons and underground levels; navigate between every connected pair in both directions. Complete these workflows in Atlas before website integration.
+
+Plan stable map, surface, feature, location and connection identities early. A connection needs explicit parent/child or peer endpoints, anchors in each map's valid geometry/scale, floor/level relationships, reciprocal navigation and future host-owned World associations and permissions. Preserve identities through view changes and explicit non-destructive conversion provenance. These are design requirements, not a speculative persisted schema or additional lore database in P1. Future integration reuses actual Worlds records, organization, living history and alternate timelines wherever practical. The existing Next.js host remains responsible for authentication, server-side authorization and database access.
+
+Affordable consumer hardware and GPU-free hosting remain requirements throughout. No phase introduces a server GPU, paid service or new infrastructure merely by appearing on this roadmap.
 
 See [World/surface architecture](WORLD-SURFACE-ARCHITECTURE.md), [numerical foundation](A6-A-COMPLETION.md), [editing](SPHERICAL-EDITING.md) and [E preservation](SPHERICAL-PERSISTENCE.md). A6-F1 hosts A5.2 planar/wrapped and D2/E spherical editing/preservation in one Atlas workspace with one active document and a shared mixed library. The six charts represent a round sphere, not a physical cube. Bounded/periodic saves keep exact v1/v2 interpretations without conversion or migration; spheres use their own v3 format.
 
@@ -52,7 +66,7 @@ See [World/surface architecture](WORLD-SURFACE-ARCHITECTURE.md), [numerical foun
 
 | Owner requirement | Current status and required future work |
 | --- | --- |
-| Spherical worlds | A6-A/B/C authority/tools/history, D2 globe/net editing and E v3 browser-local preservation exist. Held-stroke globe limb rotation and N=256 editing hardening remain future |
+| Spherical worlds | A6-A/B/C authority/tools/history, D2 globe/net editing, E v3 preservation and D2-R held-stroke limb rotation exist. P1 hardens performance while preserving those algorithms |
 | Cylindrical worlds | Descriptor and reusable flat lateral metric only. Physical circumference/length, bounded/connected/capped ends, normals and editing workflow remain future |
 | Hollow spheres | Catalog contracts only. Interior and exterior must be independently editable and independently selectable, with distinct terrain/history and appropriate inward/outward elevation normals |
 | True cube-shaped worlds | Future physical polyhedron with flat faces and real geometric edges/corners. Distinct from the cube-sphere numerical grid used for round worlds |
@@ -75,12 +89,12 @@ These future geometries are mandatory roadmap requirements, not functionality cl
 | Owner requirement | Preservation and future boundary |
 | --- | --- |
 | Complete Azgaar-style heightmap authoring | Preserve the full tool, whole-map operation, template, analysis and interchange inventory below, adapted to authoritative meter elevations and each surface's topology |
-| Living historical terrain and alternate timelines | Future explicit historical states/changes, branch identities and compatibility rules. Session Undo is not living history; no timeline implementation is included now |
-| Worlds categories | Future categories supply civilizations, races, populations and historical information under explicit owner canon and host permissions. No synthetic demographics or simulation is inferred |
+| Living historical terrain and alternate timelines | Future Atlas geographical states/changes need explicit identities and compatibility rules and must connect to existing Worlds living-history and alternate-timeline functionality in Phase 9. Preserve that existing functionality; session Undo is not living history. No timeline implementation is included now |
+| Existing Worlds categories | Preserve existing organization, civilizations, races, populations and historical information wherever practical. Future Atlas links reuse actual records under owner canon and host permissions; do not create a competing lore database or infer synthetic demographics/simulation |
 | Automatic editable professional illustrated 2D cartography | Must eventually work across every supported world shape and valid map scale, including globe and appropriate flat/cartographic views. Derive editable illustration placement from authoritative terrain and appropriate Worlds data; changing style never changes numerical geography. See the explicit cross-shape/scale requirement below |
 | Military-style topographic rendering | Future elevation/contour/symbol/scale presentation from the same terrain, alongside illustrated styles; no separate conflicting geographical authority |
-| Interconnected map scales | Link world, region, city, building and dungeon maps with explicit spatial/identity relationships; do not assume each uses the same resolution, geometry or editor |
-| Existing Serrian Tide website integration | Atlas and rebuilt Worlds ultimately replace the current implementation inside the existing Next.js/TypeScript website. That host supplies authentication, server-side permissions, database and actual World records |
+| Interconnected map scales | Complete reciprocal world/region/settlement/city/building/interior/floor/dungeon/underground connections before Phase 7. Use stable identities and explicit spatial/scale/level relationships; each map retains appropriate geometry, resolution and editor |
+| Existing Serrian Tide website integration | Integrate Atlas into the existing Worlds section in isolated development at Phase 7; preserve information, organization, data and functionality wherever practical. The existing Next.js host supplies authentication, server-side permissions, database and actual World records. No competing lore database |
 
 These long-term requirements remain planned. A6-E adds no generation, art/stamps, demographic system, timeline, nested-map runtime or original-site integration.
 
@@ -92,7 +106,7 @@ This includes regional, city, building/interior and dungeon maps wherever their 
 
 ## Terrain measurement and Worlds linkage — GitHub Issue #1
 
-[Issue #1: terrain elevation, geographic feature measurement, 3D and Worlds linkage](https://github.com/Revty79/serrian-tide-world/issues/1) is an explicit future requirement, not implemented by A6-E. Schedule its numerical measurement and feature-analysis capabilities during advanced heightmap/3D preparation **before automatic illustrated 2D map generation**, and make them available to the separately rebuilt Worlds integration in **Step 9**. Scope the exact checkpoint after geometry and higher-resolution dependencies are clear.
+[Issue #1: terrain elevation, geographic feature measurement, 3D and Worlds linkage](https://github.com/Revty79/serrian-tide-world/issues/1) remains explicit future scope. Phase 4 develops measurements and terrain intelligence before Phase 5 illustrated mapmaking and Phase 6 true 3D. Reuse those capabilities when Atlas joins existing Worlds in isolated development at Phase 7, links records bidirectionally at Phase 8 and connects geographical changes to living history/alternate timelines at Phase 9. Scope exact checkpoints after geometry and higher-resolution dependencies are clear.
 
 | Requirement | Planned behavior |
 | --- | --- |
@@ -100,7 +114,7 @@ This includes regional, city, building/interior and dungeon maps wherever their 
 | Mountains and other landforms | Detect or manually delineate summits, ranges, ridges, saddles/passes, valleys, basins, hills and cliffs. Keep summit elevation, rise above explicitly selected surrounding terrain, and topographic prominence with its key saddle distinct; do not invent an objective mountain base. |
 | Measurements | Elevation differences, surface distances, selected-route distances, areas, slope/gradient, aspect, profiles/cross-sections, ascent/descent and relief. Use physical surface metrics across seams/edges/corners, with explicit interior/exterior conventions and no assumed Earth scale. |
 | Consistent 3D and cartography | Mesh height, physical shape/radius, normals, slope and steepness must use the same authoritative elevation data as measurements and 2D annotations. Derived features can inform stamps, contours, relief, scale bars and topographic/military symbols without a separate visual height field or seam cracks. |
-| Worlds — Step 9 | Stable feature/location IDs and geometric anchors link named terrain to actual World records, descriptions, regions, owner/canon/campaign permissions, history and alternate timelines. Map and written information must be mutually navigable. Recalculate or revision-key derived measurements when terrain/history changes. |
+| Existing Worlds — Phases 7–9 | Stable feature/location IDs and geometric anchors link named terrain to actual World records, descriptions, regions, owner/canon/campaign permissions, existing living history and alternate timelines. Map and written information must be mutually navigable. Recalculate or revision-key derived measurements when terrain/history changes. Preserve existing information and relationships wherever practical. |
 | Accuracy and device budgets | Expose sampling resolution, physical scale and uncertainty; avoid unjustified precision and claims about sub-resolution landforms. Cache or incrementally compute derived data with explicit edit invalidation, preserving weaker-device and GPU-free hosting options. |
 
 Future acceptance must cover numerical target-height editing with Undo/Save and matching 3D terrain, defensible prominence/relief values, surface-aware seams/poles/orientation, consistent profiles/slopes/overlays, refreshed derived measurements and World-record navigation. Volume/earthwork calculations require separate scope. This is documentation only; no measurement/feature-analysis tools, 3D runtime or Worlds links are added now.
@@ -164,13 +178,13 @@ A3 implements pointer-centered zoom, bounded panning, Space/explicit Pan and two
 - Recenter the working area on every eventually supported geometry without moving numerical geography: spherical rotation, movable cuts/local views and independent hollow surface selection belong to future view adapters. A5 proves only the periodic surface. Display interpolation adds no authoritative detail; higher-resolution/tiled terrain requires a separate numerical/storage design.
 - Connected-context presentation belongs to a future surface-specific view provider. A5.2's rectangular side strips apply only to the current periodic plane. Spheres need rotatable/local or cutout projections; physical cubes and pyramids need connected-face arrangements; cylinders may combine lateral panels with separately connected circular end caps. Do not impose rectangular side previews on those surfaces.
 - Preserve future living-history goals by leaving room for explicit historical states and changes. A2 creates no timeline, revision-storage system, or historical canon.
-- Atlas and rebuilt Worlds will ultimately replace the current implementation inside the existing Serrian Tide Next.js/TypeScript website. That host will own authentication, authoritative permissions, database access, and actual World-record associations. No guessed World schema or duplicate auth service belongs in this engine.
+- Atlas will integrate into the existing Worlds section of Serrian Tide in isolated development at Phase 7, after functional interconnected maps exist. Preserve existing information, organization, data and functionality wherever practical. The existing Next.js host owns authentication, authoritative permissions, database access and actual World associations. No competing lore database, guessed World schema or duplicate auth service belongs in this engine.
 - Future map-style goals should consume the same numerical geography through distinct presentation layers. Contours, hachures, illustrated cartography, other map styles, and 3D preview must not redefine or silently rewrite the terrain.
 - Azgaar is a capability reference, not an application or civilization/population model to copy. Serrian Tide's meter units, sea level, permissions, canon, and World identity remain its own.
 
 The inventory was checked against the project's primary [Heightmap customization documentation](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Heightmap-customization) and [template-editor documentation](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Heightmap-template-editor). Their application semantics and data models are not adopted automatically. This roadmap records the owner's requested scope; exact future behavior still requires a bounded pass.
 
-The owner supplied Ember's D2/E approvals and separately authorized F1 and then D2-R on main. Independent review and owner hands-on acceptance of the latest work remain separate. N=256 editing performance hardening remains required and unimplemented. **Stop after A6-D2-R; do not begin the next pass without authorization.** Later work, integration and deployment require their own authorization. No future inventory item or GitHub issue is authorized merely by appearing here.
+The owner supplied Ember's D2/E approvals and separately authorized F1, D2-R and P1 on main. Independent review and owner hands-on acceptance remain separate. **Stop after A6-P1 and submit for Ember's independent technical review.** Later geometry work, integration and production rollout require their own authorization. No future inventory item or GitHub issue is authorized merely by appearing here.
 
 ## A6-F1 unified workspace and future conversion
 
@@ -178,4 +192,4 @@ The owner supplied Ember's D2/E approvals and separately authorized F1 and then 
 
 A separate future conversion phase must let a creator explicitly preview, configure, cancel, and accept a non-destructive projection onto a compatible physical shape. Preserve the source and create a new identity with traceable origin. Account for topology, dimensions/physical units, resolution, distortion, area/distance/elevation tradeoffs, face connectivity, cuts, seams, poles, caps, eligible surfaces and incompatible regions. Arbitrary texture wrapping cannot implement accurate general conversion. Switching a view or choosing New never converts existing terrain.
 
-A6-D2-R now adds automatic globe rotation/recentering during a held stroke near the visible limb, immutable per-segment viewing planes and continuous great-circle dab spacing within one history operation. Weaker-device N=256 editing hardening remains outstanding. The full geometry, cartography, map-scale, measurement, 3D, histories and Worlds inventory above remains mandatory, including Issue #1 and integration Steps 9, 10 and 11. Stop after D2-R; do not begin another pass without authorization.
+A6-D2-R supplies automatic globe rotation/recentering during a held stroke near the visible limb, immutable per-segment viewing planes and continuous great-circle dab spacing within one history operation. P1 preserves it while hardening editing responsiveness. The full geometry, professional cartography, linked-scale maps, measurement, 3D, existing living history and alternate-timeline inventory remains mandatory, including Issues #1/#2 and the current eleven-phase sequence. Stop after P1; do not begin another pass automatically.

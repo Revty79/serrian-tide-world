@@ -1,0 +1,5698 @@
+{
+  "baseline": "e7862418b010b276dfbb8c736d421f36f901480a",
+  "host": {
+    "platform": "win32",
+    "release": "10.0.26300",
+    "cpuModel": "AMD Ryzen 5 5600G with Radeon Graphics         ",
+    "logicalCpus": 12,
+    "physicalMemoryBytes": 33687609344,
+    "node": "v24.18.0",
+    "playwright": "1.64.1",
+    "browsers": [
+      {
+        "name": "chromium",
+        "revision": "1248",
+        "installByDefault": true,
+        "browserVersion": "156.0.8078.4",
+        "title": "Chrome for Testing"
+      },
+      {
+        "name": "chromium-headless-shell",
+        "revision": "1248",
+        "installByDefault": true,
+        "browserVersion": "156.0.8078.4",
+        "title": "Chrome Headless Shell"
+      }
+    ]
+  },
+  "method": "Initial three-repeat before/after per profile/N; separate three-repeat N256 mobile confirmation from an exact exported baseline, one worker, trace on, same viewport/input/quality/4x throttle. Ordinary inputs use exact matching payload hashes. Timed limb input may expose a different amount of geography with changed throughput, so report dabs/steps separately. Paint tasks include numerical work, patches, preview and raster. Pixel 7 emulation is not physical hardware; no universal guarantees.",
+  "groups": [
+    {
+      "profile": "desktop",
+      "n": 128,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "cpuThrottle": 1,
+      "workers": 1,
+      "repeats": 3,
+      "initialPreparationMs": {
+        "before": {
+          "preparationMs": 47.5,
+          "maxTaskMs": 8,
+          "authorityBytes": 393224,
+          "cacheBytes": 1984560
+        },
+        "after": {
+          "preparationMs": 47.099999994039536,
+          "maxTaskMs": 8.100000008940697,
+          "authorityBytes": 393224,
+          "cacheBytes": 1984560
+        }
+      },
+      "reopenedPreparationMs": {
+        "before": [
+          40,
+          34.69999998807907,
+          33.5
+        ],
+        "after": [
+          39.79999999701977,
+          35,
+          34.099999994039536
+        ]
+      },
+      "scenarios": [
+        {
+          "kind": "sparse",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 201.5,
+              "p95": 201.5,
+              "max": 202
+            },
+            "trialPaintMediansMs": [
+              18.100000001490116,
+              17.899999998509884,
+              18
+            ],
+            "fullViewportPaintMs": {
+              "observations": 12,
+              "median": 18.100000001490116,
+              "p95": 58,
+              "max": 64
+            },
+            "frameGapMs": {
+              "observations": 28,
+              "median": 16.66699999999946,
+              "p95": 50,
+              "max": 66.70000000000073
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 55.79999999701977,
+              "p95": 60.5,
+              "max": 66.29999999701977
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 12.69999997317791,
+              "p95": 12.69999997317791,
+              "max": 12.799999997019768
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 4.300000011920929,
+              "p95": 4.300000011920929,
+              "max": 4.899999991059303
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 2.2000000029802322,
+              "p95": 2.2000000029802322,
+              "max": 2.5
+            },
+            "maxAtomicDabMs": 3.7999999970197678,
+            "texturePixelsPerTrial": [
+              9721,
+              9721,
+              9721
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 160.70000000298023,
+              "p95": 160.70000000298023,
+              "max": 163.69999998807907
+            },
+            "trialPaintMediansMs": [
+              13.299999997019768,
+              13.600000001490116,
+              13.899999998509884
+            ],
+            "fullViewportPaintMs": {
+              "observations": 12,
+              "median": 13.299999997019768,
+              "p95": 29.299999997019768,
+              "max": 32.19999998807907
+            },
+            "frameGapMs": {
+              "observations": 26,
+              "median": 16.683999999998377,
+              "p95": 16.799999999999272,
+              "max": 33.29999999999927
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 39.8999999910593,
+              "p95": 45,
+              "max": 45.29999999701977
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 13.899999991059303,
+              "p95": 13.899999991059303,
+              "max": 14.399999991059303
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 4.299999997019768,
+              "p95": 4.299999997019768,
+              "max": 5.600000008940697
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 1.7999999970197678,
+              "p95": 1.7999999970197678,
+              "max": 2.5
+            },
+            "maxAtomicDabMs": 3.7999999970197678,
+            "texturePixelsPerTrial": [
+              9721,
+              9721,
+              9721
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "dense",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 1341.800000011921,
+              "p95": 1341.800000011921,
+              "max": 1363.3999999910593
+            },
+            "trialPaintMediansMs": [
+              10.100000008940697,
+              11.100000008940697,
+              11.5
+            ],
+            "fullViewportPaintMs": {
+              "observations": 147,
+              "median": 11.099999994039536,
+              "p95": 12.600000008940697,
+              "max": 58.20000000298023
+            },
+            "frameGapMs": {
+              "observations": 234,
+              "median": 16.69999999999891,
+              "p95": 16.700000000000728,
+              "max": 66.60000000000218
+            },
+            "inputToPresentationMs": {
+              "observations": 150,
+              "median": 11.200000002980232,
+              "p95": 14.099999994039536,
+              "max": 63.80000001192093
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 13.299999982118607,
+              "p95": 13.299999982118607,
+              "max": 15.599999964237213
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 10.000000044703484,
+              "p95": 10.000000044703484,
+              "max": 11.200000017881393
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 1.699999988079071,
+              "p95": 1.699999988079071,
+              "max": 1.9000000059604645
+            },
+            "maxAtomicDabMs": 3.7999999970197678,
+            "texturePixelsPerTrial": [
+              35944,
+              35944,
+              35944
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 1046.5,
+              "p95": 1046.5,
+              "max": 1048.9000000059605
+            },
+            "trialPaintMediansMs": [
+              6.100000008940697,
+              6.199999988079071,
+              6.100000008940697
+            ],
+            "fullViewportPaintMs": {
+              "observations": 147,
+              "median": 6.100000008940697,
+              "p95": 7.899999991059303,
+              "max": 30.700000002980232
+            },
+            "frameGapMs": {
+              "observations": 185,
+              "median": 16.69999999999891,
+              "p95": 16.799999999999272,
+              "max": 33.40000000000009
+            },
+            "inputToPresentationMs": {
+              "observations": 150,
+              "median": 6.3499999940395355,
+              "p95": 9,
+              "max": 36.5
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 14.500000014901161,
+              "p95": 14.500000014901161,
+              "max": 15.100000023841858
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 11.399999991059303,
+              "p95": 11.399999991059303,
+              "max": 12.299999997019768
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 1.6000000089406967,
+              "p95": 1.6000000089406967,
+              "max": 2.0999999940395355
+            },
+            "maxAtomicDabMs": 3.7999999970197678,
+            "texturePixelsPerTrial": [
+              35944,
+              35944,
+              35944
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "smooth",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 233.30000001192093,
+              "p95": 233.30000001192093,
+              "max": 247.3999999910593
+            },
+            "trialPaintMediansMs": [
+              17.649999998509884,
+              18.150000005960464,
+              18.399999998509884
+            ],
+            "fullViewportPaintMs": {
+              "observations": 18,
+              "median": 17.950000002980232,
+              "p95": 57.3999999910593,
+              "max": 58.3999999910593
+            },
+            "frameGapMs": {
+              "observations": 34,
+              "median": 16.69999999999709,
+              "p95": 50,
+              "max": 50.10000000000218
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 61.20000000298023,
+              "p95": 83.90000000596046,
+              "max": 84.29999999701977
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 27.900000020861626,
+              "p95": 27.900000020861626,
+              "max": 28.099999994039536
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 3.7999999970197678,
+              "p95": 3.7999999970197678,
+              "max": 4.500000014901161
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 6,
+              "p95": 6,
+              "max": 7.0999999940395355
+            },
+            "maxAtomicDabMs": 7,
+            "texturePixelsPerTrial": [
+              11163,
+              11305,
+              11199
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 183.40000000596046,
+              "p95": 183.40000000596046,
+              "max": 183.79999999701977
+            },
+            "trialPaintMediansMs": [
+              13.349999994039536,
+              13.75,
+              13.400000005960464
+            ],
+            "fullViewportPaintMs": {
+              "observations": 17,
+              "median": 13.5,
+              "p95": 28.5,
+              "max": 29.900000005960464
+            },
+            "frameGapMs": {
+              "observations": 31,
+              "median": 16.668000000000575,
+              "p95": 16.700000000000728,
+              "max": 16.80000000000109
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 38.3999999910593,
+              "p95": 62,
+              "max": 108.09999999403954
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 26,
+              "p95": 26,
+              "max": 27.700000002980232
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 3.7999999821186066,
+              "p95": 3.7999999821186066,
+              "max": 4.199999988079071
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 5.700000002980232,
+              "p95": 5.700000002980232,
+              "max": 6.9000000059604645
+            },
+            "maxAtomicDabMs": 6.9000000059604645,
+            "texturePixelsPerTrial": [
+              11163,
+              11125,
+              9790
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "flatten",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 199.3999999910593,
+              "p95": 199.3999999910593,
+              "max": 216.90000000596046
+            },
+            "trialPaintMediansMs": [
+              18.799999997019768,
+              16.650000005960464,
+              16.94999999552965
+            ],
+            "fullViewportPaintMs": {
+              "observations": 12,
+              "median": 17.350000001490116,
+              "p95": 56.099999994039536,
+              "max": 57.5
+            },
+            "frameGapMs": {
+              "observations": 30,
+              "median": 16.666999999997643,
+              "p95": 50,
+              "max": 50.100000000000364
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 54.20000000298023,
+              "p95": 60.20000000298023,
+              "max": 63.5
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 13,
+              "p95": 13,
+              "max": 15.600000008940697
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 3.4000000059604645,
+              "p95": 3.4000000059604645,
+              "max": 3.6000000089406967
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 1.5,
+              "p95": 1.5,
+              "max": 1.6000000089406967
+            },
+            "maxAtomicDabMs": 7,
+            "texturePixelsPerTrial": [
+              9721,
+              9721,
+              9721
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 148.20000000298023,
+              "p95": 148.20000000298023,
+              "max": 150
+            },
+            "trialPaintMediansMs": [
+              11.849999994039536,
+              12.399999991059303,
+              11.700000002980232
+            ],
+            "fullViewportPaintMs": {
+              "observations": 10,
+              "median": 12.049999997019768,
+              "p95": 31,
+              "max": 32.099999994039536
+            },
+            "frameGapMs": {
+              "observations": 24,
+              "median": 16.66699999999946,
+              "p95": 16.800000000000182,
+              "max": 33.399999999999636
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 41.8999999910593,
+              "p95": 69.70000000298023,
+              "max": 72.29999999701977
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 13.5,
+              "p95": 13.5,
+              "max": 13.599999979138374
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 2.9000000059604645,
+              "p95": 2.9000000059604645,
+              "max": 3.199999988079071
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 1.5999999940395355,
+              "p95": 1.5999999940395355,
+              "max": 1.6000000089406967
+            },
+            "maxAtomicDabMs": 6.9000000059604645,
+            "texturePixelsPerTrial": [
+              9721,
+              9721,
+              9721
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "limb",
+          "exactFixedInputPayloads": null,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 1964.8999999910593,
+              "p95": 1964.8999999910593,
+              "max": 1980.4000000059605
+            },
+            "trialPaintMediansMs": [
+              10.649999998509884,
+              11.200000002980232,
+              11.049999997019768
+            ],
+            "fullViewportPaintMs": {
+              "observations": 291,
+              "median": 11,
+              "p95": 13.400000005960464,
+              "max": 56.5
+            },
+            "frameGapMs": {
+              "observations": 348,
+              "median": 16.69999999999891,
+              "p95": 16.799999999999272,
+              "max": 50.099999999998545
+            },
+            "inputToPresentationMs": {
+              "observations": 291,
+              "median": 27.400000005960464,
+              "p95": 30.899999991059303,
+              "max": 76.1000000089407
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 14.700000032782555,
+              "p95": 14.700000032782555,
+              "max": 18.200000002980232
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 9.199999988079071,
+              "p95": 9.199999988079071,
+              "max": 9.900000005960464
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 1.6000000089406967,
+              "p95": 1.6000000089406967,
+              "max": 1.7000000029802322
+            },
+            "maxAtomicDabMs": 7,
+            "texturePixelsPerTrial": [
+              26035,
+              26035,
+              24190
+            ],
+            "completedDabs": [
+              15,
+              15,
+              14
+            ],
+            "limbSteps": [
+              96,
+              95,
+              94
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 1912.8999999910593,
+              "p95": 1912.8999999910593,
+              "max": 1914.5
+            },
+            "trialPaintMediansMs": [
+              6.4000000059604645,
+              6.299999997019768,
+              6.299999997019768
+            ],
+            "fullViewportPaintMs": {
+              "observations": 287,
+              "median": 6.300000011920929,
+              "p95": 8.299999997019768,
+              "max": 30.900000005960464
+            },
+            "frameGapMs": {
+              "observations": 343,
+              "median": 16.69999999999891,
+              "p95": 16.700000000000728,
+              "max": 33.29999999999927
+            },
+            "inputToPresentationMs": {
+              "observations": 287,
+              "median": 23.099999994039536,
+              "p95": 25.299999997019768,
+              "max": 47.79999999701977
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 13.500000029802322,
+              "p95": 13.500000029802322,
+              "max": 17.800000116229057
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 8.799999982118607,
+              "p95": 8.799999982118607,
+              "max": 9.799999922513962
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 1.5,
+              "p95": 1.5,
+              "max": 1.6000000089406967
+            },
+            "maxAtomicDabMs": 6.9000000059604645,
+            "texturePixelsPerTrial": [
+              24190,
+              24190,
+              24190
+            ],
+            "completedDabs": [
+              14,
+              14,
+              14
+            ],
+            "limbSteps": [
+              94,
+              94,
+              93
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "rotation",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 466.90000000596046,
+              "p95": 466.90000000596046,
+              "max": 482.79999999701977
+            },
+            "trialPaintMediansMs": [
+              21.399999998509884,
+              22.849999994039536,
+              22
+            ],
+            "fullViewportPaintMs": {
+              "observations": 36,
+              "median": 21.75,
+              "p95": 24.399999991059303,
+              "max": 25.899999991059303
+            },
+            "frameGapMs": {
+              "observations": 84,
+              "median": 16.69999999999709,
+              "p95": 16.799999999995634,
+              "max": 33.29999999999927
+            },
+            "inputToPresentationMs": {
+              "observations": 0,
+              "median": null,
+              "p95": null,
+              "max": null
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 0,
+              "p95": 0,
+              "max": 0
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 0,
+              "p95": 0,
+              "max": 0.20000000298023224
+            },
+            "initialDabMs": {
+              "observations": 0,
+              "median": null,
+              "p95": null,
+              "max": null
+            },
+            "maxAtomicDabMs": 7,
+            "texturePixelsPerTrial": [
+              0,
+              0,
+              0
+            ],
+            "completedDabs": [
+              0,
+              0,
+              0
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 382.5,
+              "p95": 382.5,
+              "max": 384.20000000298023
+            },
+            "trialPaintMediansMs": [
+              11.799999997019768,
+              11.799999997019768,
+              11.850000008940697
+            ],
+            "fullViewportPaintMs": {
+              "observations": 36,
+              "median": 11.799999997019768,
+              "p95": 14.099999994039536,
+              "max": 14.300000011920929
+            },
+            "frameGapMs": {
+              "observations": 68,
+              "median": 16.69999999999891,
+              "p95": 16.700000000000728,
+              "max": 16.80000000000291
+            },
+            "inputToPresentationMs": {
+              "observations": 0,
+              "median": null,
+              "p95": null,
+              "max": null
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 0,
+              "p95": 0,
+              "max": 0.09999999403953552
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 0.20000001788139343,
+              "p95": 0.20000001788139343,
+              "max": 0.20000001788139343
+            },
+            "initialDabMs": {
+              "observations": 0,
+              "median": null,
+              "p95": null,
+              "max": null
+            },
+            "maxAtomicDabMs": 6.9000000059604645,
+            "texturePixelsPerTrial": [
+              0,
+              0,
+              0
+            ],
+            "completedDabs": [
+              0,
+              0,
+              0
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "profile": "desktop",
+      "n": 256,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "cpuThrottle": 1,
+      "workers": 1,
+      "repeats": 3,
+      "initialPreparationMs": {
+        "before": {
+          "preparationMs": 129.59999999403954,
+          "maxTaskMs": 8.200000002980232,
+          "authorityBytes": 1572872,
+          "cacheBytes": 7901232
+        },
+        "after": {
+          "preparationMs": 130.90000000596046,
+          "maxTaskMs": 8.300000011920929,
+          "authorityBytes": 1572872,
+          "cacheBytes": 7901232
+        }
+      },
+      "reopenedPreparationMs": {
+        "before": [
+          127.8999999910593,
+          119.20000000298023,
+          124.5
+        ],
+        "after": [
+          126.8999999910593,
+          116,
+          116.09999999403954
+        ]
+      },
+      "scenarios": [
+        {
+          "kind": "sparse",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 291.5,
+              "p95": 291.5,
+              "max": 318
+            },
+            "trialPaintMediansMs": [
+              20.299999997019768,
+              20.399999998509884,
+              21.350000008940697
+            ],
+            "fullViewportPaintMs": {
+              "observations": 23,
+              "median": 20.799999997019768,
+              "p95": 53.5,
+              "max": 55.099999994039536
+            },
+            "frameGapMs": {
+              "observations": 40,
+              "median": 16.700000000000045,
+              "p95": 50,
+              "max": 50
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 58,
+              "p95": 138.59999999403954,
+              "max": 219.90000000596046
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 40,
+              "p95": 40,
+              "max": 43.19999998807907
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 20.30000001192093,
+              "p95": 20.30000001192093,
+              "max": 23.69999998807907
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 6.799999997019768,
+              "p95": 6.799999997019768,
+              "max": 7.799999997019768
+            },
+            "maxAtomicDabMs": 9.200000002980232,
+            "texturePixelsPerTrial": [
+              53258,
+              58893,
+              59163
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 252.90000000596046,
+              "p95": 252.90000000596046,
+              "max": 265.40000000596046
+            },
+            "trialPaintMediansMs": [
+              16.399999991059303,
+              16.80000000447035,
+              17.099999994039536
+            ],
+            "fullViewportPaintMs": {
+              "observations": 22,
+              "median": 16.899999998509884,
+              "p95": 31.099999994039536,
+              "max": 34.599999994039536
+            },
+            "frameGapMs": {
+              "observations": 39,
+              "median": 16.699999999999818,
+              "p95": 33.30000000000018,
+              "max": 33.400000000001455
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 37.29999999701977,
+              "p95": 98.70000000298023,
+              "max": 116.59999999403954
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 39.20000000298023,
+              "p95": 39.20000000298023,
+              "max": 41.400000005960464
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 17.399999991059303,
+              "p95": 17.399999991059303,
+              "max": 20.499999970197678
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 6,
+              "p95": 6,
+              "max": 6.700000002980232
+            },
+            "maxAtomicDabMs": 8.900000005960464,
+            "texturePixelsPerTrial": [
+              53258,
+              58735,
+              53258
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "dense",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 1449.1000000089407,
+              "p95": 1449.1000000089407,
+              "max": 1451.5
+            },
+            "trialPaintMediansMs": [
+              11.25,
+              11.25,
+              11.350000001490116
+            ],
+            "fullViewportPaintMs": {
+              "observations": 150,
+              "median": 11.299999997019768,
+              "p95": 15.400000005960464,
+              "max": 57.79999999701977
+            },
+            "frameGapMs": {
+              "observations": 254,
+              "median": 16.699999999999818,
+              "p95": 16.799999999999272,
+              "max": 50
+            },
+            "inputToPresentationMs": {
+              "observations": 150,
+              "median": 11.400000005960464,
+              "p95": 16.200000002980232,
+              "max": 62.5
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 39.30000001192093,
+              "p95": 39.30000001192093,
+              "max": 42.50000002980232
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 35.00000002980232,
+              "p95": 35.00000002980232,
+              "max": 35.80000001192093
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 6.200000002980232,
+              "p95": 6.200000002980232,
+              "max": 8.100000008940697
+            },
+            "maxAtomicDabMs": 9.200000002980232,
+            "texturePixelsPerTrial": [
+              134152,
+              134152,
+              134152
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 1233.9000000059605,
+              "p95": 1233.9000000059605,
+              "max": 1268
+            },
+            "trialPaintMediansMs": [
+              7.399999998509884,
+              7.300000011920929,
+              7.4000000059604645
+            ],
+            "fullViewportPaintMs": {
+              "observations": 149,
+              "median": 7.4000000059604645,
+              "p95": 12.200000002980232,
+              "max": 36.1000000089407
+            },
+            "frameGapMs": {
+              "observations": 220,
+              "median": 16.699999999999818,
+              "p95": 16.799999999999272,
+              "max": 33.39999999999782
+            },
+            "inputToPresentationMs": {
+              "observations": 150,
+              "median": 7.5,
+              "p95": 13.400000005960464,
+              "max": 43.70000000298023
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 41.900000020861626,
+              "p95": 41.900000020861626,
+              "max": 43.29999998211861
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 35.80000001192093,
+              "p95": 35.80000001192093,
+              "max": 37.59999994933605
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 5.600000008940697,
+              "p95": 5.600000008940697,
+              "max": 5.9000000059604645
+            },
+            "maxAtomicDabMs": 8.900000005960464,
+            "texturePixelsPerTrial": [
+              134152,
+              134152,
+              134152
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "smooth",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 398.90000000596046,
+              "p95": 398.90000000596046,
+              "max": 511.8999999910593
+            },
+            "trialPaintMediansMs": [
+              22.25000000745058,
+              22.19999999552965,
+              25.599999994039536
+            ],
+            "fullViewportPaintMs": {
+              "observations": 31,
+              "median": 22.399999991059303,
+              "p95": 65,
+              "max": 103.30000001192093
+            },
+            "frameGapMs": {
+              "observations": 50,
+              "median": 16.700000000000728,
+              "p95": 50,
+              "max": 116.70000000000073
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 101.90000000596046,
+              "p95": 279.5,
+              "max": 380.20000000298023
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 89.50000001490116,
+              "p95": 89.50000001490116,
+              "max": 120
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 18.80000001192093,
+              "p95": 18.80000001192093,
+              "max": 26.799999967217445
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 21.399999991059303,
+              "p95": 21.399999991059303,
+              "max": 23.099999994039536
+            },
+            "maxAtomicDabMs": 23.099999994039536,
+            "texturePixelsPerTrial": [
+              65584,
+              65946,
+              71489
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 364.79999999701977,
+              "p95": 364.79999999701977,
+              "max": 381
+            },
+            "trialPaintMediansMs": [
+              20.650000005960464,
+              18.5,
+              19
+            ],
+            "fullViewportPaintMs": {
+              "observations": 32,
+              "median": 19,
+              "p95": 34.099999994039536,
+              "max": 46.19999998807907
+            },
+            "frameGapMs": {
+              "observations": 50,
+              "median": 16.699999999999818,
+              "p95": 33.399999999999636,
+              "max": 50
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 72.90000000596046,
+              "p95": 252,
+              "max": 254.79999999701977
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 96.59999999403954,
+              "p95": 96.59999999403954,
+              "max": 102.90000002086163
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 18.69999995827675,
+              "p95": 18.69999995827675,
+              "max": 23.99999998509884
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 21.700000002980232,
+              "p95": 21.700000002980232,
+              "max": 26
+            },
+            "maxAtomicDabMs": 26,
+            "texturePixelsPerTrial": [
+              66680,
+              65946,
+              66582
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "flatten",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 250.20000000298023,
+              "p95": 250.20000000298023,
+              "max": 315.79999999701977
+            },
+            "trialPaintMediansMs": [
+              20.100000008940697,
+              20.899999998509884,
+              20.549999997019768
+            ],
+            "fullViewportPaintMs": {
+              "observations": 21,
+              "median": 20.599999994039536,
+              "p95": 54,
+              "max": 57.3999999910593
+            },
+            "frameGapMs": {
+              "observations": 36,
+              "median": 16.700000000000273,
+              "p95": 49.899999999999636,
+              "max": 66.70000000000073
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 62.400000005960464,
+              "p95": 142.5,
+              "max": 187.40000000596046
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 37.099999979138374,
+              "p95": 37.099999979138374,
+              "max": 40.5
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 14.300000011920929,
+              "p95": 14.300000011920929,
+              "max": 18.599999979138374
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 6,
+              "p95": 6,
+              "max": 6
+            },
+            "maxAtomicDabMs": 23.099999994039536,
+            "texturePixelsPerTrial": [
+              53480,
+              47101,
+              58485
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 215.20000000298023,
+              "p95": 215.20000000298023,
+              "max": 230.90000000596046
+            },
+            "trialPaintMediansMs": [
+              16.350000001490116,
+              17,
+              16.899999998509884
+            ],
+            "fullViewportPaintMs": {
+              "observations": 19,
+              "median": 16.899999991059303,
+              "p95": 32.099999994039536,
+              "max": 33.29999999701977
+            },
+            "frameGapMs": {
+              "observations": 35,
+              "median": 16.699999999999818,
+              "p95": 33.29999999999927,
+              "max": 33.399999999999636
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 38.1000000089407,
+              "p95": 96.70000000298023,
+              "max": 148.70000000298023
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 38.099999994039536,
+              "p95": 38.099999994039536,
+              "max": 38.30000001192093
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 13.100000008940697,
+              "p95": 13.100000008940697,
+              "max": 15.399999961256981
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 5.700000002980232,
+              "p95": 5.700000002980232,
+              "max": 6
+            },
+            "maxAtomicDabMs": 26,
+            "texturePixelsPerTrial": [
+              47481,
+              53258,
+              47101
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "limb",
+          "exactFixedInputPayloads": null,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 1965.199999988079,
+              "p95": 1965.199999988079,
+              "max": 1995.0999999940395
+            },
+            "trialPaintMediansMs": [
+              11.799999997019768,
+              12,
+              11.800000011920929
+            ],
+            "fullViewportPaintMs": {
+              "observations": 291,
+              "median": 11.800000011920929,
+              "p95": 16,
+              "max": 62.70000000298023
+            },
+            "frameGapMs": {
+              "observations": 348,
+              "median": 16.69999999999709,
+              "p95": 16.799999999999272,
+              "max": 50
+            },
+            "inputToPresentationMs": {
+              "observations": 291,
+              "median": 28.200000002980232,
+              "p95": 34,
+              "max": 79.40000000596046
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 36.19999997317791,
+              "p95": 36.19999997317791,
+              "max": 36.499999925494194
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 28.599999994039536,
+              "p95": 28.599999994039536,
+              "max": 30.400000020861626
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 5.9000000059604645,
+              "p95": 5.9000000059604645,
+              "max": 6.299999997019768
+            },
+            "maxAtomicDabMs": 23.099999994039536,
+            "texturePixelsPerTrial": [
+              98901,
+              98901,
+              98901
+            ],
+            "completedDabs": [
+              15,
+              15,
+              15
+            ],
+            "limbSteps": [
+              95,
+              97,
+              93
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 1933.8999999910593,
+              "p95": 1933.8999999910593,
+              "max": 1934
+            },
+            "trialPaintMediansMs": [
+              7.850000001490116,
+              7.799999997019768,
+              7.700000002980232
+            ],
+            "fullViewportPaintMs": {
+              "observations": 289,
+              "median": 7.799999997019768,
+              "p95": 11.400000005960464,
+              "max": 40.099999994039536
+            },
+            "frameGapMs": {
+              "observations": 344,
+              "median": 16.69999999999891,
+              "p95": 16.799999999999272,
+              "max": 33.39999999999782
+            },
+            "inputToPresentationMs": {
+              "observations": 289,
+              "median": 24.5,
+              "p95": 28.100000008940697,
+              "max": 56
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 35.40000003576279,
+              "p95": 35.40000003576279,
+              "max": 40.20000000298023
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 26.80000002682209,
+              "p95": 26.80000002682209,
+              "max": 29.5
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 5.699999988079071,
+              "p95": 5.699999988079071,
+              "max": 6.200000002980232
+            },
+            "maxAtomicDabMs": 26,
+            "texturePixelsPerTrial": [
+              92016,
+              98901,
+              92016
+            ],
+            "completedDabs": [
+              14,
+              15,
+              14
+            ],
+            "limbSteps": [
+              94,
+              95,
+              94
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "rotation",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 466.30000001192093,
+              "p95": 466.30000001192093,
+              "max": 467.5
+            },
+            "trialPaintMediansMs": [
+              22.299999997019768,
+              22.400000005960464,
+              22.30000001192093
+            ],
+            "fullViewportPaintMs": {
+              "observations": 36,
+              "median": 22.350000001490116,
+              "p95": 22.700000002980232,
+              "max": 23.099999994039536
+            },
+            "frameGapMs": {
+              "observations": 84,
+              "median": 16.69999999999709,
+              "p95": 16.700000000000728,
+              "max": 16.73400000000038
+            },
+            "inputToPresentationMs": {
+              "observations": 0,
+              "median": null,
+              "p95": null,
+              "max": null
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 0,
+              "p95": 0,
+              "max": 0
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 0.09999999403953552,
+              "p95": 0.09999999403953552,
+              "max": 0.20000000298023224
+            },
+            "initialDabMs": {
+              "observations": 0,
+              "median": null,
+              "p95": null,
+              "max": null
+            },
+            "maxAtomicDabMs": 23.099999994039536,
+            "texturePixelsPerTrial": [
+              0,
+              0,
+              0
+            ],
+            "completedDabs": [
+              0,
+              0,
+              0
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 417.40000000596046,
+              "p95": 417.40000000596046,
+              "max": 417.70000000298023
+            },
+            "trialPaintMediansMs": [
+              13.200000002980232,
+              13,
+              12.899999998509884
+            ],
+            "fullViewportPaintMs": {
+              "observations": 36,
+              "median": 13,
+              "p95": 15.5,
+              "max": 16.80000001192093
+            },
+            "frameGapMs": {
+              "observations": 74,
+              "median": 16.69999999999891,
+              "p95": 16.700000000000728,
+              "max": 16.80000000000109
+            },
+            "inputToPresentationMs": {
+              "observations": 0,
+              "median": null,
+              "p95": null,
+              "max": null
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 0,
+              "p95": 0,
+              "max": 0
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 0.09999999403953552,
+              "p95": 0.09999999403953552,
+              "max": 0.29999998211860657
+            },
+            "initialDabMs": {
+              "observations": 0,
+              "median": null,
+              "p95": null,
+              "max": null
+            },
+            "maxAtomicDabMs": 26,
+            "texturePixelsPerTrial": [
+              0,
+              0,
+              0
+            ],
+            "completedDabs": [
+              0,
+              0,
+              0
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "profile": "mobile",
+      "n": 128,
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "cpuThrottle": 4,
+      "workers": 1,
+      "repeats": 3,
+      "initialPreparationMs": {
+        "before": {
+          "preparationMs": 188.8999999910593,
+          "maxTaskMs": 12,
+          "authorityBytes": 393224,
+          "cacheBytes": 1984560
+        },
+        "after": {
+          "preparationMs": 188.70000000298023,
+          "maxTaskMs": 9.700000002980232,
+          "authorityBytes": 393224,
+          "cacheBytes": 1984560
+        }
+      },
+      "reopenedPreparationMs": {
+        "before": [
+          148.29999999701977,
+          132.09999999403954,
+          131.5
+        ],
+        "after": [
+          146.29999999701977,
+          132.20000000298023,
+          134.5
+        ]
+      },
+      "scenarios": [
+        {
+          "kind": "sparse",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 562.5,
+              "p95": 562.5,
+              "max": 567.0999999940395
+            },
+            "trialPaintMediansMs": [
+              31.74999999254942,
+              32,
+              31.899999998509884
+            ],
+            "fullViewportPaintMs": {
+              "observations": 24,
+              "median": 31.94999999552965,
+              "p95": 122.20000000298023,
+              "max": 130.5
+            },
+            "frameGapMs": {
+              "observations": 53,
+              "median": 16.700000000004366,
+              "p95": 50.099999999998545,
+              "max": 150.10000000000218
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 126.30000001192093,
+              "p95": 376.20000000298023,
+              "max": 377.90000000596046
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 56.6000000089407,
+              "p95": 56.6000000089407,
+              "max": 58.8999999910593
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 29,
+              "p95": 29,
+              "max": 30.5
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 7,
+              "p95": 7,
+              "max": 8
+            },
+            "maxAtomicDabMs": 13.599999994039536,
+            "texturePixelsPerTrial": [
+              17032,
+              17232,
+              17110
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 498.5,
+              "p95": 498.5,
+              "max": 501.19999998807907
+            },
+            "trialPaintMediansMs": [
+              25.400000005960464,
+              24.600000008940697,
+              24.599999994039536
+            ],
+            "fullViewportPaintMs": {
+              "observations": 27,
+              "median": 24.600000008940697,
+              "p95": 66.5,
+              "max": 75.90000000596046
+            },
+            "frameGapMs": {
+              "observations": 53,
+              "median": 16.700000000004366,
+              "p95": 50.099999999999454,
+              "max": 83.40000000000146
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 76.70000000298023,
+              "p95": 314.40000000596046,
+              "max": 318.40000000596046
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 57.400000020861626,
+              "p95": 57.400000020861626,
+              "max": 60.60000003874302
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 30.69999998807907,
+              "p95": 30.69999998807907,
+              "max": 31.299999997019768
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 8,
+              "p95": 8,
+              "max": 8
+            },
+            "maxAtomicDabMs": 18.400000005960464,
+            "texturePixelsPerTrial": [
+              17040,
+              17236,
+              18799
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "dense",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 2262.2000000029802,
+              "p95": 2262.2000000029802,
+              "max": 2282.9000000059605
+            },
+            "trialPaintMediansMs": [
+              21.44999999552965,
+              21.200000002980232,
+              21.24999999254942
+            ],
+            "fullViewportPaintMs": {
+              "observations": 150,
+              "median": 21.350000001490116,
+              "p95": 27.899999991059303,
+              "max": 124.09999999403954
+            },
+            "frameGapMs": {
+              "observations": 326,
+              "median": 16.700000000000728,
+              "p95": 33.399999999999636,
+              "max": 116.60000000000036
+            },
+            "inputToPresentationMs": {
+              "observations": 150,
+              "median": 21.75,
+              "p95": 29.400000005960464,
+              "max": 131.1000000089407
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 54.30000002682209,
+              "p95": 54.30000002682209,
+              "max": 65.39999997615814
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 47.69999998807907,
+              "p95": 47.69999998807907,
+              "max": 50.39999996125698
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 5.9000000059604645,
+              "p95": 5.9000000059604645,
+              "max": 6.600000008940697
+            },
+            "maxAtomicDabMs": 13.599999994039536,
+            "texturePixelsPerTrial": [
+              35944,
+              35944,
+              35944
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 1865.2999999970198,
+              "p95": 1865.2999999970198,
+              "max": 1870.6000000089407
+            },
+            "trialPaintMediansMs": [
+              12.900000005960464,
+              13.5,
+              13.850000008940697
+            ],
+            "fullViewportPaintMs": {
+              "observations": 150,
+              "median": 13.600000008940697,
+              "p95": 19.200000002980232,
+              "max": 72.59999999403954
+            },
+            "frameGapMs": {
+              "observations": 325,
+              "median": 16.69999999999709,
+              "p95": 16.799999999999272,
+              "max": 66.70000000000073
+            },
+            "inputToPresentationMs": {
+              "observations": 150,
+              "median": 14.149999998509884,
+              "p95": 19.700000002980232,
+              "max": 83.20000000298023
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 51.60000002384186,
+              "p95": 51.60000002384186,
+              "max": 59.30000002682209
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 46.099999979138374,
+              "p95": 46.099999979138374,
+              "max": 47.79999998211861
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 6.4000000059604645,
+              "p95": 6.4000000059604645,
+              "max": 6.5
+            },
+            "maxAtomicDabMs": 18.400000005960464,
+            "texturePixelsPerTrial": [
+              35944,
+              35944,
+              35944
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "smooth",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 791.9000000059605,
+              "p95": 791.9000000059605,
+              "max": 818.4000000059605
+            },
+            "trialPaintMediansMs": [
+              30.950000002980232,
+              31.700000002980232,
+              35.70000000298023
+            ],
+            "fullViewportPaintMs": {
+              "observations": 35,
+              "median": 32.400000005960464,
+              "p95": 114.8999999910593,
+              "max": 126
+            },
+            "frameGapMs": {
+              "observations": 63,
+              "median": 33.30000000000291,
+              "p95": 66.70000000000437,
+              "max": 133.39999999999964
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 348.20000000298023,
+              "p95": 587.9000000059605,
+              "max": 618.5999999940395
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 116.30000001192093,
+              "p95": 116.30000001192093,
+              "max": 130.29999996721745
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 26.30000001192093,
+              "p95": 26.30000001192093,
+              "max": 32.00000002980232
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 28.799999997019768,
+              "p95": 28.799999997019768,
+              "max": 32.400000005960464
+            },
+            "maxAtomicDabMs": 32.30000001192093,
+            "texturePixelsPerTrial": [
+              21734,
+              20545,
+              19044
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 647.7000000029802,
+              "p95": 647.7000000029802,
+              "max": 692.5
+            },
+            "trialPaintMediansMs": [
+              25.350000001490116,
+              25.350000001490116,
+              26.400000005960464
+            ],
+            "fullViewportPaintMs": {
+              "observations": 35,
+              "median": 26.200000002980232,
+              "p95": 67.20000000298023,
+              "max": 77.59999999403954
+            },
+            "frameGapMs": {
+              "observations": 60,
+              "median": 33.24999999999818,
+              "p95": 66.69999999999709,
+              "max": 100.10000000000582
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 224.79999999701977,
+              "p95": 458.90000000596046,
+              "max": 487.79999999701977
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 117.59999999403954,
+              "p95": 117.59999999403954,
+              "max": 130.6000000089407
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 26.30000002682209,
+              "p95": 26.30000002682209,
+              "max": 32.099999994039536
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 24.900000005960464,
+              "p95": 24.900000005960464,
+              "max": 29.700000002980232
+            },
+            "maxAtomicDabMs": 29.5,
+            "texturePixelsPerTrial": [
+              21742,
+              20627,
+              20279
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "flatten",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 562.5,
+              "p95": 562.5,
+              "max": 567.5
+            },
+            "trialPaintMediansMs": [
+              30.69999999552965,
+              32.05000001192093,
+              31.5
+            ],
+            "fullViewportPaintMs": {
+              "observations": 24,
+              "median": 31.200000002980232,
+              "p95": 124.8999999910593,
+              "max": 126.90000000596046
+            },
+            "frameGapMs": {
+              "observations": 50,
+              "median": 33.299999999995634,
+              "p95": 50,
+              "max": 150
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 126.70000000298023,
+              "p95": 371.20000000298023,
+              "max": 376.3999999910593
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 57,
+              "p95": 57,
+              "max": 57.79999999701977
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 23.799999997019768,
+              "p95": 23.799999997019768,
+              "max": 25.399999991059303
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 6.9000000059604645,
+              "p95": 6.9000000059604645,
+              "max": 7
+            },
+            "maxAtomicDabMs": 32.30000001192093,
+            "texturePixelsPerTrial": [
+              17122,
+              17048,
+              17306
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 498.6000000089407,
+              "p95": 498.6000000089407,
+              "max": 527.1999999880791
+            },
+            "trialPaintMediansMs": [
+              25.149999998509884,
+              23.899999991059303,
+              24.200000002980232
+            ],
+            "fullViewportPaintMs": {
+              "observations": 26,
+              "median": 24.200000002980232,
+              "p95": 65.40000000596046,
+              "max": 92.3999999910593
+            },
+            "frameGapMs": {
+              "observations": 57,
+              "median": 16.700000000004366,
+              "p95": 50,
+              "max": 100
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 78.40000000596046,
+              "p95": 306.6000000089407,
+              "max": 321.59999999403954
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 60.69999997317791,
+              "p95": 60.69999997317791,
+              "max": 66.19999997317791
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 24.099999994039536,
+              "p95": 24.099999994039536,
+              "max": 26.30000001192093
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 8.399999991059303,
+              "p95": 8.399999991059303,
+              "max": 9.099999994039536
+            },
+            "maxAtomicDabMs": 29.5,
+            "texturePixelsPerTrial": [
+              17162,
+              18819,
+              17306
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "limb",
+          "exactFixedInputPayloads": null,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 2201.2999999970198,
+              "p95": 2201.2999999970198,
+              "max": 2230.5999999940395
+            },
+            "trialPaintMediansMs": [
+              22.200000002980232,
+              22.099999994039536,
+              21.899999991059303
+            ],
+            "fullViewportPaintMs": {
+              "observations": 175,
+              "median": 22.100000008940697,
+              "p95": 28.899999991059303,
+              "max": 122.70000000298023
+            },
+            "frameGapMs": {
+              "observations": 236,
+              "median": 33.29999999999745,
+              "p95": 33.400000000001455,
+              "max": 133.29999999999927
+            },
+            "inputToPresentationMs": {
+              "observations": 175,
+              "median": 50.79999999701977,
+              "p95": 59.099999994039536,
+              "max": 152.90000000596046
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 50.20000000298023,
+              "p95": 50.20000000298023,
+              "max": 57.30000002682209
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 37.5,
+              "p95": 37.5,
+              "max": 38.70000001788139
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 6.700000002980232,
+              "p95": 6.700000002980232,
+              "max": 9.399999991059303
+            },
+            "maxAtomicDabMs": 32.30000001192093,
+            "texturePixelsPerTrial": [
+              26035,
+              26035,
+              27970
+            ],
+            "completedDabs": [
+              15,
+              15,
+              16
+            ],
+            "limbSteps": [
+              56,
+              56,
+              57
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 2116.7999999970198,
+              "p95": 2116.7999999970198,
+              "max": 2133.2999999970198
+            },
+            "trialPaintMediansMs": [
+              14.100000008940697,
+              14.5,
+              14.200000002980232
+            ],
+            "fullViewportPaintMs": {
+              "observations": 229,
+              "median": 14.299999997019768,
+              "p95": 20.5,
+              "max": 71.30000001192093
+            },
+            "frameGapMs": {
+              "observations": 291,
+              "median": 16.700000000000728,
+              "p95": 33.399999999999636,
+              "max": 83.30000000000291
+            },
+            "inputToPresentationMs": {
+              "observations": 229,
+              "median": 35.29999999701977,
+              "p95": 42.20000000298023,
+              "max": 94.09999999403954
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 50.90000005066395,
+              "p95": 50.90000005066395,
+              "max": 53.7000000923872
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 37.90000003576279,
+              "p95": 37.90000003576279,
+              "max": 40.099999979138374
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 7.5,
+              "p95": 7.5,
+              "max": 7.600000008940697
+            },
+            "maxAtomicDabMs": 29.5,
+            "texturePixelsPerTrial": [
+              26035,
+              26035,
+              26035
+            ],
+            "completedDabs": [
+              15,
+              15,
+              15
+            ],
+            "limbSteps": [
+              75,
+              73,
+              75
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "rotation",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 700.0999999940395,
+              "p95": 700.0999999940395,
+              "max": 700.6000000089407
+            },
+            "trialPaintMediansMs": [
+              37.149999998509884,
+              37.399999998509884,
+              37.05000000447035
+            ],
+            "fullViewportPaintMs": {
+              "observations": 36,
+              "median": 37.19999998807907,
+              "p95": 38.29999999701977,
+              "max": 41.099999994039536
+            },
+            "frameGapMs": {
+              "observations": 90,
+              "median": 16.69999999999891,
+              "p95": 33.400000000001455,
+              "max": 33.5
+            },
+            "inputToPresentationMs": {
+              "observations": 0,
+              "median": null,
+              "p95": null,
+              "max": null
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 0.4000000059604645,
+              "p95": 0.4000000059604645,
+              "max": 0.4999999850988388
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 0.29999999701976776,
+              "p95": 0.29999999701976776,
+              "max": 0.4000000059604645
+            },
+            "initialDabMs": {
+              "observations": 0,
+              "median": null,
+              "p95": null,
+              "max": null
+            },
+            "maxAtomicDabMs": 32.30000001192093,
+            "texturePixelsPerTrial": [
+              0,
+              0,
+              0
+            ],
+            "completedDabs": [
+              0,
+              0,
+              0
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 528.2999999970198,
+              "p95": 528.2999999970198,
+              "max": 537
+            },
+            "trialPaintMediansMs": [
+              22,
+              21.75,
+              21.75000000745058
+            ],
+            "fullViewportPaintMs": {
+              "observations": 36,
+              "median": 21.899999991059303,
+              "p95": 25.299999997019768,
+              "max": 28.799999997019768
+            },
+            "frameGapMs": {
+              "observations": 93,
+              "median": 16.69999999999709,
+              "p95": 16.799999999995634,
+              "max": 33.30000000000291
+            },
+            "inputToPresentationMs": {
+              "observations": 0,
+              "median": null,
+              "p95": null,
+              "max": null
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 0.29999999701976776,
+              "p95": 0.29999999701976776,
+              "max": 0.5000000149011612
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 0.5,
+              "p95": 0.5,
+              "max": 0.6000000089406967
+            },
+            "initialDabMs": {
+              "observations": 0,
+              "median": null,
+              "p95": null,
+              "max": null
+            },
+            "maxAtomicDabMs": 29.5,
+            "texturePixelsPerTrial": [
+              0,
+              0,
+              0
+            ],
+            "completedDabs": [
+              0,
+              0,
+              0
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "profile": "mobile",
+      "n": 256,
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "cpuThrottle": 4,
+      "workers": 1,
+      "repeats": 3,
+      "initialPreparationMs": {
+        "before": {
+          "preparationMs": 533.9000000059605,
+          "maxTaskMs": 9.5,
+          "authorityBytes": 1572872,
+          "cacheBytes": 7901232
+        },
+        "after": {
+          "preparationMs": 569.8999999910593,
+          "maxTaskMs": 12.399999991059303,
+          "authorityBytes": 1572872,
+          "cacheBytes": 7901232
+        }
+      },
+      "reopenedPreparationMs": {
+        "before": [
+          520.7000000029802,
+          513,
+          473.40000000596046
+        ],
+        "after": [
+          519.4000000059605,
+          502.20000000298023,
+          464.6000000089407
+        ]
+      },
+      "scenarios": [
+        {
+          "kind": "sparse",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 968.2000000029802,
+              "p95": 968.2000000029802,
+              "max": 1002.5999999940395
+            },
+            "trialPaintMediansMs": [
+              41.899999998509884,
+              43.54999999701977,
+              43.29999999701977
+            ],
+            "fullViewportPaintMs": {
+              "observations": 37,
+              "median": 43,
+              "p95": 134.19999998807907,
+              "max": 147.6000000089407
+            },
+            "frameGapMs": {
+              "observations": 64,
+              "median": 50,
+              "p95": 83.39999999999418,
+              "max": 166.70000000000073
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 444.1000000089407,
+              "p95": 747.9000000059605,
+              "max": 787.2000000029802
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 163.80000004172325,
+              "p95": 163.80000004172325,
+              "max": 168.39999997615814
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 109.59999997913837,
+              "p95": 109.59999997913837,
+              "max": 112.5
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 24.299999997019768,
+              "p95": 24.299999997019768,
+              "max": 25.599999994039536
+            },
+            "maxAtomicDabMs": 33.3999999910593,
+            "texturePixelsPerTrial": [
+              88048,
+              88048,
+              87886
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 881.2999999970198,
+              "p95": 881.2999999970198,
+              "max": 914.6000000089407
+            },
+            "trialPaintMediansMs": [
+              36.54999999701977,
+              39.20000000298023,
+              36.1000000089407
+            ],
+            "fullViewportPaintMs": {
+              "observations": 38,
+              "median": 36.54999999701977,
+              "p95": 100.19999998807907,
+              "max": 107
+            },
+            "frameGapMs": {
+              "observations": 65,
+              "median": 33.30000000000018,
+              "p95": 83.29999999999927,
+              "max": 116.69999999999709
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 400.59999999403954,
+              "p95": 665.3000000119209,
+              "max": 719.9000000059605
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 173.19999998807907,
+              "p95": 173.19999998807907,
+              "max": 192.80000004172325
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 117,
+              "p95": 117,
+              "max": 122.00000001490116
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 24.900000005960464,
+              "p95": 24.900000005960464,
+              "max": 26.099999994039536
+            },
+            "maxAtomicDabMs": 34.099999994039536,
+            "texturePixelsPerTrial": [
+              88218,
+              88218,
+              93557
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "dense",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 2934.3999999910593,
+              "p95": 2934.3999999910593,
+              "max": 3083.7000000029802
+            },
+            "trialPaintMediansMs": [
+              25.850000001490116,
+              26.850000001490116,
+              25.799999997019768
+            ],
+            "fullViewportPaintMs": {
+              "observations": 150,
+              "median": 25.900000005960464,
+              "p95": 44,
+              "max": 189.8999999910593
+            },
+            "frameGapMs": {
+              "observations": 341,
+              "median": 16.700000000000728,
+              "p95": 50,
+              "max": 183.40000000000146
+            },
+            "inputToPresentationMs": {
+              "observations": 150,
+              "median": 26.5,
+              "p95": 95.5,
+              "max": 273
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 182.3999999910593,
+              "p95": 182.3999999910593,
+              "max": 182.49999998509884
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 158.70000004768372,
+              "p95": 158.70000004768372,
+              "max": 164.90000000596046
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 24.100000008940697,
+              "p95": 24.100000008940697,
+              "max": 27.700000002980232
+            },
+            "maxAtomicDabMs": 33.3999999910593,
+            "texturePixelsPerTrial": [
+              134152,
+              134152,
+              134152
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 2247.4000000059605,
+              "p95": 2247.4000000059605,
+              "max": 2475
+            },
+            "trialPaintMediansMs": [
+              18.149999998509884,
+              17.399999998509884,
+              17.850000001490116
+            ],
+            "fullViewportPaintMs": {
+              "observations": 150,
+              "median": 17.650000005960464,
+              "p95": 37.1000000089407,
+              "max": 97.09999999403954
+            },
+            "frameGapMs": {
+              "observations": 336,
+              "median": 16.700000000000728,
+              "p95": 33.400000000001455,
+              "max": 99.90000000000146
+            },
+            "inputToPresentationMs": {
+              "observations": 150,
+              "median": 18.399999991059303,
+              "p95": 92,
+              "max": 163.70000000298023
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 179.40000005066395,
+              "p95": 179.40000005066395,
+              "max": 197.19999998807907
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 158.20000000298023,
+              "p95": 158.20000000298023,
+              "max": 173.59999994933605
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 26.100000008940697,
+              "p95": 26.100000008940697,
+              "max": 30.399999991059303
+            },
+            "maxAtomicDabMs": 34.099999994039536,
+            "texturePixelsPerTrial": [
+              134152,
+              134152,
+              134152
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "smooth",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 1766.9000000059605,
+              "p95": 1766.9000000059605,
+              "max": 1832.2000000029802
+            },
+            "trialPaintMediansMs": [
+              49.8999999910593,
+              51.8999999910593,
+              50.79999999701977
+            ],
+            "fullViewportPaintMs": {
+              "observations": 63,
+              "median": 50.79999999701977,
+              "p95": 58.29999999701977,
+              "max": 148.29999999701977
+            },
+            "frameGapMs": {
+              "observations": 121,
+              "median": 49.899999999999636,
+              "p95": 83.30000000000291,
+              "max": 166.59999999999854
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 1000.1000000089407,
+              "p95": 1309.1000000089407,
+              "max": 1360
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 391.79999999701977,
+              "p95": 391.79999999701977,
+              "max": 427.7999999821186
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 135.60000002384186,
+              "p95": 135.60000002384186,
+              "max": 137
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 87.19999998807907,
+              "p95": 87.19999998807907,
+              "max": 107.29999999701977
+            },
+            "maxAtomicDabMs": 107.29999999701977,
+            "texturePixelsPerTrial": [
+              117618,
+              117618,
+              117618
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 1728.8999999910593,
+              "p95": 1728.8999999910593,
+              "max": 1736.2999999970198
+            },
+            "trialPaintMediansMs": [
+              43.099999994039536,
+              43.69999998807907,
+              42.900000005960464
+            ],
+            "fullViewportPaintMs": {
+              "observations": 63,
+              "median": 43.29999999701977,
+              "p95": 46.70000000298023,
+              "max": 94.29999999701977
+            },
+            "frameGapMs": {
+              "observations": 152,
+              "median": 16.700000000000728,
+              "p95": 66.70000000000437,
+              "max": 116.70000000000437
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 848,
+              "p95": 1119.5999999940395,
+              "max": 1138
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 396.0999999642372,
+              "p95": 396.0999999642372,
+              "max": 409.90000000596046
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 134.5,
+              "p95": 134.5,
+              "max": 137.6000000089407
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 89.90000000596046,
+              "p95": 89.90000000596046,
+              "max": 96.70000000298023
+            },
+            "maxAtomicDabMs": 96.70000000298023,
+            "texturePixelsPerTrial": [
+              117618,
+              117618,
+              117618
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "flatten",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 978.4000000059605,
+              "p95": 978.4000000059605,
+              "max": 1061.300000011921
+            },
+            "trialPaintMediansMs": [
+              51.70000000298023,
+              51,
+              41.8500000089407
+            ],
+            "fullViewportPaintMs": {
+              "observations": 36,
+              "median": 49.30000000447035,
+              "p95": 133.80000001192093,
+              "max": 153.19999998807907
+            },
+            "frameGapMs": {
+              "observations": 68,
+              "median": 49.900000000001455,
+              "p95": 83.30000000000291,
+              "max": 166.59999999999854
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 440.30000001192093,
+              "p95": 749.7000000029802,
+              "max": 835.8999999910593
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 161.3999999910593,
+              "p95": 161.3999999910593,
+              "max": 176.20000000298023
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 103.30000001192093,
+              "p95": 103.30000001192093,
+              "max": 107.80000002682209
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 25.399999991059303,
+              "p95": 25.399999991059303,
+              "max": 27.700000002980232
+            },
+            "maxAtomicDabMs": 107.29999999701977,
+            "texturePixelsPerTrial": [
+              82337,
+              88008,
+              87878
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 847.7000000029802,
+              "p95": 847.7000000029802,
+              "max": 851.4000000059605
+            },
+            "trialPaintMediansMs": [
+              33,
+              33.400000005960464,
+              34.599999994039536
+            ],
+            "fullViewportPaintMs": {
+              "observations": 38,
+              "median": 33.849999994039536,
+              "p95": 82.30000001192093,
+              "max": 96.1000000089407
+            },
+            "frameGapMs": {
+              "observations": 65,
+              "median": 33.399999999999636,
+              "p95": 83.29999999999563,
+              "max": 100.09999999999854
+            },
+            "inputToPresentationMs": {
+              "observations": 9,
+              "median": 390.29999999701977,
+              "p95": 644.7000000029802,
+              "max": 651.2999999970198
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 162.5,
+              "p95": 162.5,
+              "max": 168.70000000298023
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 98,
+              "p95": 98,
+              "max": 100.79999999701977
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 23.700000002980232,
+              "p95": 23.700000002980232,
+              "max": 25.600000008940697
+            },
+            "maxAtomicDabMs": 96.70000000298023,
+            "texturePixelsPerTrial": [
+              87878,
+              88068,
+              88048
+            ],
+            "completedDabs": [
+              20,
+              20,
+              20
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "limb",
+          "exactFixedInputPayloads": null,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 2249.800000011921,
+              "p95": 2249.800000011921,
+              "max": 2253.9000000059605
+            },
+            "trialPaintMediansMs": [
+              25.200000002980232,
+              24.700000002980232,
+              25
+            ],
+            "fullViewportPaintMs": {
+              "observations": 152,
+              "median": 25,
+              "p95": 43,
+              "max": 137.29999999701977
+            },
+            "frameGapMs": {
+              "observations": 215,
+              "median": 33.29999999999927,
+              "p95": 50,
+              "max": 150
+            },
+            "inputToPresentationMs": {
+              "observations": 122,
+              "median": 56.45000000298023,
+              "p95": 110.90000000596046,
+              "max": 170.20000000298023
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 101.10000002384186,
+              "p95": 101.10000002384186,
+              "max": 135.5999999344349
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 87.69999995827675,
+              "p95": 87.69999995827675,
+              "max": 88.99999997019768
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 23.600000008940697,
+              "p95": 23.600000008940697,
+              "max": 25.19999998807907
+            },
+            "maxAtomicDabMs": 107.29999999701977,
+            "texturePixelsPerTrial": [
+              72333,
+              72333,
+              72333
+            ],
+            "completedDabs": [
+              11,
+              11,
+              11
+            ],
+            "limbSteps": [
+              39,
+              39,
+              38
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 2212,
+              "p95": 2212,
+              "max": 2212.0999999940395
+            },
+            "trialPaintMediansMs": [
+              17.599999994039536,
+              17.30000001192093,
+              17.900000005960464
+            ],
+            "fullViewportPaintMs": {
+              "observations": 191,
+              "median": 17.599999994039536,
+              "p95": 35,
+              "max": 86.79999999701977
+            },
+            "frameGapMs": {
+              "observations": 256,
+              "median": 16.700000000004366,
+              "p95": 50,
+              "max": 100.10000000000582
+            },
+            "inputToPresentationMs": {
+              "observations": 158,
+              "median": 42.04999999701977,
+              "p95": 87.20000000298023,
+              "max": 158.5
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 112.19999997317791,
+              "p95": 112.19999997317791,
+              "max": 126.50000002980232
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 95.30000008642673,
+              "p95": 95.30000008642673,
+              "max": 102.2999999821186
+            },
+            "initialDabMs": {
+              "observations": 3,
+              "median": 24.200000002980232,
+              "p95": 24.200000002980232,
+              "max": 26.900000005960464
+            },
+            "maxAtomicDabMs": 96.70000000298023,
+            "texturePixelsPerTrial": [
+              78894,
+              78894,
+              78894
+            ],
+            "completedDabs": [
+              12,
+              12,
+              12
+            ],
+            "limbSteps": [
+              50,
+              52,
+              50
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        {
+          "kind": "rotation",
+          "exactFixedInputPayloads": true,
+          "before": {
+            "wallMs": {
+              "observations": 3,
+              "median": 802,
+              "p95": 802,
+              "max": 857.2000000029802
+            },
+            "trialPaintMediansMs": [
+              41.75,
+              40.54999999701977,
+              40.850000001490116
+            ],
+            "fullViewportPaintMs": {
+              "observations": 36,
+              "median": 41,
+              "p95": 45.6000000089407,
+              "max": 45.79999999701977
+            },
+            "frameGapMs": {
+              "observations": 93,
+              "median": 16.700000000004366,
+              "p95": 50,
+              "max": 50.10000000000218
+            },
+            "inputToPresentationMs": {
+              "observations": 0,
+              "median": null,
+              "p95": null,
+              "max": null
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 0.20000000298023224,
+              "p95": 0.20000000298023224,
+              "max": 0.7000000029802322
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 0.29999998211860657,
+              "p95": 0.29999998211860657,
+              "max": 0.29999999701976776
+            },
+            "initialDabMs": {
+              "observations": 0,
+              "median": null,
+              "p95": null,
+              "max": null
+            },
+            "maxAtomicDabMs": 107.29999999701977,
+            "texturePixelsPerTrial": [
+              0,
+              0,
+              0
+            ],
+            "completedDabs": [
+              0,
+              0,
+              0
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          },
+          "after": {
+            "wallMs": {
+              "observations": 3,
+              "median": 663.2999999970198,
+              "p95": 663.2999999970198,
+              "max": 665.2999999970198
+            },
+            "trialPaintMediansMs": [
+              25.30000000447035,
+              25.400000005960464,
+              25.149999998509884
+            ],
+            "fullViewportPaintMs": {
+              "observations": 36,
+              "median": 25.299999997019768,
+              "p95": 29.799999997019768,
+              "max": 32.29999999701977
+            },
+            "frameGapMs": {
+              "observations": 91,
+              "median": 16.700000000000728,
+              "p95": 33.39999999999418,
+              "max": 33.400000000001455
+            },
+            "inputToPresentationMs": {
+              "observations": 0,
+              "median": null,
+              "p95": null,
+              "max": null
+            },
+            "numericalPumpTotalMs": {
+              "observations": 3,
+              "median": 0,
+              "p95": 0,
+              "max": 0.30000001192092896
+            },
+            "textureTotalMs": {
+              "observations": 3,
+              "median": 0.20000000298023224,
+              "p95": 0.20000000298023224,
+              "max": 0.29999999701976776
+            },
+            "initialDabMs": {
+              "observations": 0,
+              "median": null,
+              "p95": null,
+              "max": null
+            },
+            "maxAtomicDabMs": 96.70000000298023,
+            "texturePixelsPerTrial": [
+              0,
+              0,
+              0
+            ],
+            "completedDabs": [
+              0,
+              0,
+              0
+            ],
+            "limbSteps": [
+              0,
+              0,
+              0
+            ],
+            "retainedRayCacheBytes": [
+              null,
+              null,
+              null
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "confirmation": [
+    {
+      "kind": "sparse",
+      "before": {
+        "wallMs": {
+          "observations": 3,
+          "median": 989.5,
+          "p95": 989.5,
+          "max": 1019.3999999910593
+        },
+        "trialPaintMediansMs": [
+          41.54999999701977,
+          42.79999999701977,
+          43.70000000298023
+        ],
+        "fullViewportPaintMs": {
+          "observations": 37,
+          "median": 42.6000000089407,
+          "p95": 141.30000001192093,
+          "max": 162.79999999701977
+        },
+        "frameGapMs": {
+          "observations": 64,
+          "median": 49.95000000000073,
+          "p95": 83.29999999999927,
+          "max": 183.39999999999782
+        },
+        "inputToPresentationMs": {
+          "observations": 9,
+          "median": 459,
+          "p95": 761.2000000029802,
+          "max": 792.1000000089407
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 171.10000003874302,
+          "p95": 171.10000003874302,
+          "max": 177.09999997913837
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 110.19999995827675,
+          "p95": 110.19999995827675,
+          "max": 116.50000001490116
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 24.599999994039536,
+          "p95": 24.599999994039536,
+          "max": 24.900000005960464
+        },
+        "maxAtomicDabMs": 34.099999994039536,
+        "texturePixelsPerTrial": [
+          88048,
+          88048,
+          88218
+        ],
+        "completedDabs": [
+          20,
+          20,
+          20
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "after": {
+        "wallMs": {
+          "observations": 3,
+          "median": 847.5999999940395,
+          "p95": 847.5999999940395,
+          "max": 853.0999999940395
+        },
+        "trialPaintMediansMs": [
+          33.19999999552965,
+          35.899999998509884,
+          35.69999998807907
+        ],
+        "fullViewportPaintMs": {
+          "observations": 37,
+          "median": 35.5,
+          "p95": 85.1000000089407,
+          "max": 113
+        },
+        "frameGapMs": {
+          "observations": 65,
+          "median": 33.39999999999418,
+          "p95": 66.70000000000073,
+          "max": 116.69999999999709
+        },
+        "inputToPresentationMs": {
+          "observations": 9,
+          "median": 378.09999999403954,
+          "p95": 639.2999999970198,
+          "max": 648.3000000119209
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 169,
+          "p95": 169,
+          "max": 182.2000000178814
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 108.20000000298023,
+          "p95": 108.20000000298023,
+          "max": 112.3999999910593
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 24.599999994039536,
+          "p95": 24.599999994039536,
+          "max": 25.100000008940697
+        },
+        "maxAtomicDabMs": 34.29999999701977,
+        "texturePixelsPerTrial": [
+          88048,
+          88048,
+          87886
+        ],
+        "completedDabs": [
+          20,
+          20,
+          20
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          2304866,
+          2304866,
+          2304866
+        ]
+      }
+    },
+    {
+      "kind": "dense",
+      "before": {
+        "wallMs": {
+          "observations": 3,
+          "median": 2749.2999999970198,
+          "p95": 2749.2999999970198,
+          "max": 2937.7999999970198
+        },
+        "trialPaintMediansMs": [
+          24.5,
+          24.44999999552965,
+          26.25000000745058
+        ],
+        "fullViewportPaintMs": {
+          "observations": 150,
+          "median": 25.100000008940697,
+          "p95": 42.400000005960464,
+          "max": 145.70000000298023
+        },
+        "frameGapMs": {
+          "observations": 367,
+          "median": 16.69999999999891,
+          "p95": 49.900000000001455,
+          "max": 150
+        },
+        "inputToPresentationMs": {
+          "observations": 150,
+          "median": 25.700000002980232,
+          "p95": 93.8999999910593,
+          "max": 209.29999999701977
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 162.49999991059303,
+          "p95": 162.49999991059303,
+          "max": 180.89999997615814
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 153.90000002086163,
+          "p95": 153.90000002086163,
+          "max": 156.90000005066395
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 26.399999991059303,
+          "p95": 26.399999991059303,
+          "max": 27.200000002980232
+        },
+        "maxAtomicDabMs": 34.099999994039536,
+        "texturePixelsPerTrial": [
+          134152,
+          134152,
+          134152
+        ],
+        "completedDabs": [
+          20,
+          20,
+          20
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "after": {
+        "wallMs": {
+          "observations": 3,
+          "median": 2265.5,
+          "p95": 2265.5,
+          "max": 2285.5999999940395
+        },
+        "trialPaintMediansMs": [
+          16.399999998509884,
+          16.899999998509884,
+          17
+        ],
+        "fullViewportPaintMs": {
+          "observations": 150,
+          "median": 16.75,
+          "p95": 33.1000000089407,
+          "max": 104.29999999701977
+        },
+        "frameGapMs": {
+          "observations": 332,
+          "median": 16.700000000000728,
+          "p95": 33.399999999999636,
+          "max": 100
+        },
+        "inputToPresentationMs": {
+          "observations": 150,
+          "median": 17.350000001490116,
+          "p95": 68.5,
+          "max": 170.3999999910593
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 170.7000000923872,
+          "p95": 170.7000000923872,
+          "max": 176.49999998509884
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 151.2999999821186,
+          "p95": 151.2999999821186,
+          "max": 153.49999994039536
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 23.600000008940697,
+          "p95": 23.600000008940697,
+          "max": 25.399999991059303
+        },
+        "maxAtomicDabMs": 34.29999999701977,
+        "texturePixelsPerTrial": [
+          134152,
+          134152,
+          134152
+        ],
+        "completedDabs": [
+          20,
+          20,
+          20
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          2304866,
+          2304866,
+          2304866
+        ]
+      }
+    },
+    {
+      "kind": "smooth",
+      "before": {
+        "wallMs": {
+          "observations": 3,
+          "median": 1738.2000000029802,
+          "p95": 1738.2000000029802,
+          "max": 1770.4000000059605
+        },
+        "trialPaintMediansMs": [
+          50.5,
+          50.5,
+          51.099999994039536
+        ],
+        "fullViewportPaintMs": {
+          "observations": 63,
+          "median": 50.70000000298023,
+          "p95": 55.3999999910593,
+          "max": 144.19999998807907
+        },
+        "frameGapMs": {
+          "observations": 119,
+          "median": 50,
+          "p95": 83.39999999999964,
+          "max": 166.60000000000036
+        },
+        "inputToPresentationMs": {
+          "observations": 9,
+          "median": 1009.2999999970198,
+          "p95": 1319.699999988079,
+          "max": 1327.2999999970198
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 394.70000000298023,
+          "p95": 394.70000000298023,
+          "max": 399.9999999701977
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 132.79999999701977,
+          "p95": 132.79999999701977,
+          "max": 134.1000000089407
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 88.69999998807907,
+          "p95": 88.69999998807907,
+          "max": 98.90000000596046
+        },
+        "maxAtomicDabMs": 98.90000000596046,
+        "texturePixelsPerTrial": [
+          117618,
+          117618,
+          117618
+        ],
+        "completedDabs": [
+          20,
+          20,
+          20
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "after": {
+        "wallMs": {
+          "observations": 3,
+          "median": 1731.7999999970198,
+          "p95": 1731.7999999970198,
+          "max": 1743.0999999940395
+        },
+        "trialPaintMediansMs": [
+          42.29999999701977,
+          43.8999999910593,
+          44.3999999910593
+        ],
+        "fullViewportPaintMs": {
+          "observations": 63,
+          "median": 43.8999999910593,
+          "p95": 49.900000005960464,
+          "max": 97
+        },
+        "frameGapMs": {
+          "observations": 147,
+          "median": 16.700000000004366,
+          "p95": 66.69999999999891,
+          "max": 116.70000000000073
+        },
+        "inputToPresentationMs": {
+          "observations": 9,
+          "median": 856,
+          "p95": 1138,
+          "max": 1139.9000000059605
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 410.2999999821186,
+          "p95": 410.2999999821186,
+          "max": 416.59999999403954
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 134.1000000089407,
+          "p95": 134.1000000089407,
+          "max": 137.7999999821186
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 88,
+          "p95": 88,
+          "max": 94.90000000596046
+        },
+        "maxAtomicDabMs": 94.70000000298023,
+        "texturePixelsPerTrial": [
+          117618,
+          117618,
+          117618
+        ],
+        "completedDabs": [
+          20,
+          20,
+          20
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          2304866,
+          2304866,
+          2304866
+        ]
+      }
+    },
+    {
+      "kind": "flatten",
+      "before": {
+        "wallMs": {
+          "observations": 3,
+          "median": 996.6000000089407,
+          "p95": 996.6000000089407,
+          "max": 1023.7000000029802
+        },
+        "trialPaintMediansMs": [
+          40.79999999701977,
+          50.79999999701977,
+          49.399999998509884
+        ],
+        "fullViewportPaintMs": {
+          "observations": 36,
+          "median": 48.44999999552965,
+          "p95": 129.1000000089407,
+          "max": 147.6000000089407
+        },
+        "frameGapMs": {
+          "observations": 63,
+          "median": 49.900000000001455,
+          "p95": 83.39999999999418,
+          "max": 150
+        },
+        "inputToPresentationMs": {
+          "observations": 9,
+          "median": 508.6000000089407,
+          "p95": 783.1000000089407,
+          "max": 809.2999999970198
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 167.8999999910593,
+          "p95": 167.8999999910593,
+          "max": 172.30000001192093
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 100.10000003874302,
+          "p95": 100.10000003874302,
+          "max": 111.80000001192093
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 23.700000002980232,
+          "p95": 23.700000002980232,
+          "max": 24.600000008940697
+        },
+        "maxAtomicDabMs": 98.90000000596046,
+        "texturePixelsPerTrial": [
+          87878,
+          88008,
+          82337
+        ],
+        "completedDabs": [
+          20,
+          20,
+          20
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "after": {
+        "wallMs": {
+          "observations": 3,
+          "median": 831.5999999940395,
+          "p95": 831.5999999940395,
+          "max": 849.6000000089407
+        },
+        "trialPaintMediansMs": [
+          33.399999998509884,
+          33.80000000447035,
+          33.75
+        ],
+        "fullViewportPaintMs": {
+          "observations": 36,
+          "median": 33.75,
+          "p95": 97.3999999910593,
+          "max": 102.09999999403954
+        },
+        "frameGapMs": {
+          "observations": 64,
+          "median": 33.30000000000018,
+          "p95": 83.40000000000146,
+          "max": 116.70000000000437
+        },
+        "inputToPresentationMs": {
+          "observations": 9,
+          "median": 361.90000000596046,
+          "p95": 615.7000000029802,
+          "max": 643.6999999880791
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 158.79999996721745,
+          "p95": 158.79999996721745,
+          "max": 169.0999999642372
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 104.29999999701977,
+          "p95": 104.29999999701977,
+          "max": 104.60000002384186
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 23.200000002980232,
+          "p95": 23.200000002980232,
+          "max": 24.299999997019768
+        },
+        "maxAtomicDabMs": 94.70000000298023,
+        "texturePixelsPerTrial": [
+          87878,
+          87878,
+          87878
+        ],
+        "completedDabs": [
+          20,
+          20,
+          20
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          2304866,
+          2304866,
+          2304866
+        ]
+      }
+    },
+    {
+      "kind": "limb",
+      "before": {
+        "wallMs": {
+          "observations": 3,
+          "median": 2264.7999999970198,
+          "p95": 2264.7999999970198,
+          "max": 2278.9000000059605
+        },
+        "trialPaintMediansMs": [
+          25.099999994039536,
+          25,
+          24.80000001192093
+        ],
+        "fullViewportPaintMs": {
+          "observations": 154,
+          "median": 24.900000005960464,
+          "p95": 43.400000005960464,
+          "max": 145.79999999701977
+        },
+        "frameGapMs": {
+          "observations": 216,
+          "median": 33.30000000000109,
+          "p95": 50,
+          "max": 150
+        },
+        "inputToPresentationMs": {
+          "observations": 124,
+          "median": 56.399999998509884,
+          "p95": 109.30000001192093,
+          "max": 178.6000000089407
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 107.30000001192093,
+          "p95": 107.30000001192093,
+          "max": 112.2999999821186
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 90.90000008046627,
+          "p95": 90.90000008046627,
+          "max": 92.80000004172325
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 23.399999991059303,
+          "p95": 23.399999991059303,
+          "max": 26.5
+        },
+        "maxAtomicDabMs": 98.90000000596046,
+        "texturePixelsPerTrial": [
+          72333,
+          78894,
+          72333
+        ],
+        "completedDabs": [
+          11,
+          12,
+          11
+        ],
+        "limbSteps": [
+          39,
+          40,
+          39
+        ],
+        "retainedRayCacheBytes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "after": {
+        "wallMs": {
+          "observations": 3,
+          "median": 2206.4000000059605,
+          "p95": 2206.4000000059605,
+          "max": 2214.2999999970198
+        },
+        "trialPaintMediansMs": [
+          17.450000002980232,
+          17.100000008940697,
+          17.200000002980232
+        ],
+        "fullViewportPaintMs": {
+          "observations": 195,
+          "median": 17.200000002980232,
+          "p95": 33.20000000298023,
+          "max": 86.69999998807907
+        },
+        "frameGapMs": {
+          "observations": 260,
+          "median": 16.700000000004366,
+          "p95": 50,
+          "max": 100
+        },
+        "inputToPresentationMs": {
+          "observations": 162,
+          "median": 40.79999999701977,
+          "p95": 84.59999999403954,
+          "max": 154.59999999403954
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 113.30000002682209,
+          "p95": 113.30000002682209,
+          "max": 114.69999997317791
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 93.79999996721745,
+          "p95": 93.79999996721745,
+          "max": 94.5
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 24.099999994039536,
+          "p95": 24.099999994039536,
+          "max": 25.200000002980232
+        },
+        "maxAtomicDabMs": 94.70000000298023,
+        "texturePixelsPerTrial": [
+          78894,
+          78894,
+          78894
+        ],
+        "completedDabs": [
+          12,
+          12,
+          12
+        ],
+        "limbSteps": [
+          51,
+          52,
+          53
+        ],
+        "retainedRayCacheBytes": [
+          2304866,
+          2304866,
+          2304866
+        ]
+      }
+    },
+    {
+      "kind": "rotation",
+      "before": {
+        "wallMs": {
+          "observations": 3,
+          "median": 796.5999999940395,
+          "p95": 796.5999999940395,
+          "max": 860.5999999940395
+        },
+        "trialPaintMediansMs": [
+          40.599999994039536,
+          40.649999998509884,
+          41.20000000298023
+        ],
+        "fullViewportPaintMs": {
+          "observations": 37,
+          "median": 40.70000000298023,
+          "p95": 44.20000000298023,
+          "max": 123.80000001192093
+        },
+        "frameGapMs": {
+          "observations": 95,
+          "median": 16.700000000000728,
+          "p95": 50,
+          "max": 50.09999999999127
+        },
+        "inputToPresentationMs": {
+          "observations": 0,
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 0.09999999403953552,
+          "p95": 0.09999999403953552,
+          "max": 0.20000000298023224
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 0.20000000298023224,
+          "p95": 0.20000000298023224,
+          "max": 0.5
+        },
+        "initialDabMs": {
+          "observations": 0,
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "maxAtomicDabMs": 98.90000000596046,
+        "texturePixelsPerTrial": [
+          0,
+          0,
+          0
+        ],
+        "completedDabs": [
+          0,
+          0,
+          0
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "after": {
+        "wallMs": {
+          "observations": 3,
+          "median": 635.2000000029802,
+          "p95": 635.2000000029802,
+          "max": 668.6000000089407
+        },
+        "trialPaintMediansMs": [
+          25.149999991059303,
+          25.399999998509884,
+          25.350000001490116
+        ],
+        "fullViewportPaintMs": {
+          "observations": 36,
+          "median": 25.25,
+          "p95": 29.599999994039536,
+          "max": 32.70000000298023
+        },
+        "frameGapMs": {
+          "observations": 93,
+          "median": 16.69999999999709,
+          "p95": 33.400000000001455,
+          "max": 33.5
+        },
+        "inputToPresentationMs": {
+          "observations": 0,
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 0.19999998807907104,
+          "p95": 0.19999998807907104,
+          "max": 0.4000000059604645
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 0.09999999403953552,
+          "p95": 0.09999999403953552,
+          "max": 0.20000000298023224
+        },
+        "initialDabMs": {
+          "observations": 0,
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "maxAtomicDabMs": 94.70000000298023,
+        "texturePixelsPerTrial": [
+          0,
+          0,
+          0
+        ],
+        "completedDabs": [
+          0,
+          0,
+          0
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          2618641,
+          2618641,
+          2618641
+        ]
+      }
+    }
+  ],
+  "confirmationPreparation": {
+    "before": {
+      "preparationMs": 561,
+      "maxTaskMs": 9.200000002980232,
+      "authorityBytes": 1572872,
+      "cacheBytes": 7901232
+    },
+    "after": {
+      "preparationMs": 576.9000000059605,
+      "maxTaskMs": 9.799999997019768,
+      "authorityBytes": 1572872,
+      "cacheBytes": 7901232
+    },
+    "beforeReopens": [
+      "516.9000000059605",
+      "487.40000000596046",
+      "481.90000000596046"
+    ],
+    "afterReopens": [
+      "491.79999999701977",
+      "469.8999999910593",
+      "469.40000000596046"
+    ]
+  },
+  "observedHeap": {
+    "method": "CDP heap readings include development/test overhead and no forced-GC normalization. Not process RSS.",
+    "before": {
+      "start": {
+        "usedSize": 11965308,
+        "totalSize": 21417984,
+        "embedderHeapUsedSize": 3721760,
+        "backingStorageSize": 23969819
+      },
+      "end": {
+        "usedSize": 11715172,
+        "totalSize": 82759680,
+        "embedderHeapUsedSize": 1984112,
+        "backingStorageSize": 44349195
+      }
+    },
+    "after": {
+      "start": {
+        "usedSize": 11904860,
+        "totalSize": 20893696,
+        "embedderHeapUsedSize": 3482448,
+        "backingStorageSize": 26282697
+      },
+      "end": {
+        "usedSize": 11751660,
+        "totalSize": 82235392,
+        "embedderHeapUsedSize": 2045744,
+        "backingStorageSize": 59563276
+      }
+    }
+  },
+  "cpuProfiles": {
+    "before": {
+      "method": "1ms sampling during actual mobile N256 edits, 4x CPU throttle. Categories follow the nearest matching ancestor and are sampled wall attribution; different timed-limb frame counts prevent interpreting total CPU time as a fixed-work before/after benchmark.",
+      "topSelfMs": [
+        [
+          "renderSphericalGlobe rendering/spherical-raster.ts",
+          3407.7049999999977
+        ],
+        [
+          "(program) ",
+          1834.9189999999985
+        ],
+        [
+          "(idle) ",
+          1399.5869999999982
+        ],
+        [
+          "paint components/SphericalViewport.tsx",
+          463.69599999999997
+        ],
+        [
+          "aliases terrain/spherical.ts",
+          258.482
+        ],
+        [
+          "visitNode ",
+          206.807
+        ],
+        [
+          "unitDirection surfaces/cube-sphere.ts",
+          154.329
+        ],
+        [
+          "exports.jsxDEV deps/react_jsx-dev-runtime.js?v=fd8c40ce",
+          153.4350000000001
+        ],
+        [
+          "dot3 surfaces/cube-sphere.ts",
+          116.074
+        ],
+        [
+          "(garbage collector) ",
+          113.58100000000005
+        ],
+        [
+          "focus ",
+          98.31299999999999
+        ],
+        [
+          "snapshot editor/spherical-history.ts",
+          96.914
+        ],
+        [
+          "sphericalSmoothDelta terrain/spherical-smoothing.ts",
+          88.30400000000002
+        ],
+        [
+          " terrain/spherical.ts",
+          83.31799999999998
+        ],
+        [
+          "updateSphericalTextures rendering/spherical-texture-updates.ts",
+          80.60400000000001
+        ],
+        [
+          "stamp terrain/spherical-brush.ts",
+          75.41099999999999
+        ],
+        [
+          " ",
+          69.302
+        ],
+        [
+          "unitArcAngle surfaces/great-circle.ts",
+          55.25599999999999
+        ],
+        [
+          "samples terrain/spherical-cap.ts",
+          53.42800000000001
+        ],
+        [
+          "updateDisplay editor/spherical-session.ts",
+          51.97
+        ],
+        [
+          "slope surfaces/cube-sphere.ts",
+          50.462
+        ],
+        [
+          "showInspection components/SphericalViewport.tsx",
+          50.29499999999999
+        ],
+        [
+          "putImageData ",
+          37.174
+        ],
+        [
+          "cubeAtKey terrain/spherical.ts",
+          36.894000000000005
+        ],
+        [
+          " components/SphericalViewport.tsx",
+          36.61
+        ],
+        [
+          "coordinate terrain/spherical.ts",
+          35.717
+        ],
+        [
+          "blend rendering/elevation-colors.ts",
+          35.322
+        ],
+        [
+          " rendering/spherical-brush-preview.ts",
+          30.912999999999997
+        ],
+        [
+          "checkedAddress terrain/spherical.ts",
+          29.664
+        ],
+        [
+          "resolve terrain/spherical.ts",
+          29.012
+        ]
+      ],
+      "categoriesMs": {
+        "other / browser / test / idle": 5085.502000000007,
+        "globe raster": 3407.7049999999977,
+        "brush preview": 82.235,
+        "history": 124.74800000000003,
+        "cap candidate enumeration": 350.984,
+        "other numerical brush": 230.4600000000001,
+        "incremental textures": 533.183,
+        "Smooth neighborhood": 342.2189999999999
+      }
+    },
+    "after": {
+      "method": "1ms sampling during actual mobile N256 edits, 4x CPU throttle. Categories follow the nearest matching ancestor and are sampled wall attribution; different timed-limb frame counts prevent interpreting total CPU time as a fixed-work before/after benchmark.",
+      "topSelfMs": [
+        [
+          "renderSphericalGlobe rendering/spherical-raster.ts",
+          2438.067999999999
+        ],
+        [
+          "(program) ",
+          1856.1749999999975
+        ],
+        [
+          "(idle) ",
+          1262.8969999999983
+        ],
+        [
+          "aliases terrain/spherical.ts",
+          250.25899999999984
+        ],
+        [
+          "paint components/SphericalViewport.tsx",
+          214.9479999999999
+        ],
+        [
+          "visitNode ",
+          171.1490000000001
+        ],
+        [
+          "exports.jsxDEV deps/react_jsx-dev-runtime.js?v=fd8c40ce",
+          153.455
+        ],
+        [
+          "unitDirection surfaces/cube-sphere.ts",
+          150.62800000000007
+        ],
+        [
+          "dot3 surfaces/cube-sphere.ts",
+          119.99700000000001
+        ],
+        [
+          "(garbage collector) ",
+          114.22200000000002
+        ],
+        [
+          "snapshot editor/spherical-history.ts",
+          92.31900000000002
+        ],
+        [
+          "updateSphericalTextures rendering/spherical-texture-updates.ts",
+          85.13800000000002
+        ],
+        [
+          "unitArcAngle surfaces/great-circle.ts",
+          77.806
+        ],
+        [
+          "focus ",
+          72.464
+        ],
+        [
+          "sphericalSmoothDelta terrain/spherical-smoothing.ts",
+          72.07200000000002
+        ],
+        [
+          "slope surfaces/cube-sphere.ts",
+          69.098
+        ],
+        [
+          " terrain/spherical.ts",
+          68.90599999999999
+        ],
+        [
+          "stamp terrain/spherical-brush.ts",
+          64.048
+        ],
+        [
+          "samples terrain/spherical-cap.ts",
+          61.792
+        ],
+        [
+          " ",
+          60.74199999999999
+        ],
+        [
+          "updateDisplay editor/spherical-session.ts",
+          57.519
+        ],
+        [
+          "coordinate terrain/spherical.ts",
+          44.515
+        ],
+        [
+          "showInspection components/SphericalViewport.tsx",
+          43.902
+        ],
+        [
+          " components/SphericalViewport.tsx",
+          42.32000000000001
+        ],
+        [
+          "visitChild ",
+          37.437
+        ],
+        [
+          "keyAt terrain/spherical.ts",
+          32.366
+        ],
+        [
+          "blend rendering/elevation-colors.ts",
+          30.67
+        ],
+        [
+          "putImageData ",
+          30.587000000000007
+        ],
+        [
+          "cubeAtKey terrain/spherical.ts",
+          27.707
+        ],
+        [
+          "at rendering/spherical-texture-updates.ts",
+          26.711999999999996
+        ]
+      ],
+      "categoriesMs": {
+        "other / browser / test / idle": 4625.63,
+        "globe raster": 2443.868999999999,
+        "brush preview": 76.06800000000004,
+        "history": 120.70100000000001,
+        "other numerical brush": 245.67300000000006,
+        "cap candidate enumeration": 392.08600000000007,
+        "incremental textures": 534.8939999999994,
+        "Smooth neighborhood": 294.71700000000004
+      }
+    }
+  },
+  "memory": {
+    "retainedRayCacheMaximumBytes": 8388608,
+    "maximumEntries": 2,
+    "authorityAndTextureBytesUnchanged": true,
+    "oversizedRequests": "uncached fallback",
+    "notes": "Camera-local Float64 x/y/z and byte alpha only. No world/elevation/pixel copies in this cache. Evict before allocation; transient GC and Canvas storage are additional."
+  },
+  "finalN128Confirmation": [
+    {
+      "kind": "sparse",
+      "before": {
+        "wallMs": {
+          "observations": 3,
+          "median": 562.5,
+          "p95": 562.5,
+          "max": 567.0999999940395
+        },
+        "trialPaintMediansMs": [
+          31.74999999254942,
+          32,
+          31.899999998509884
+        ],
+        "fullViewportPaintMs": {
+          "observations": 24,
+          "median": 31.94999999552965,
+          "p95": 122.20000000298023,
+          "max": 130.5
+        },
+        "frameGapMs": {
+          "observations": 53,
+          "median": 16.700000000004366,
+          "p95": 50.099999999998545,
+          "max": 150.10000000000218
+        },
+        "inputToPresentationMs": {
+          "observations": 9,
+          "median": 126.30000001192093,
+          "p95": 376.20000000298023,
+          "max": 377.90000000596046
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 56.6000000089407,
+          "p95": 56.6000000089407,
+          "max": 58.8999999910593
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 29,
+          "p95": 29,
+          "max": 30.5
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 7,
+          "p95": 7,
+          "max": 8
+        },
+        "maxAtomicDabMs": 13.599999994039536,
+        "texturePixelsPerTrial": [
+          17032,
+          17232,
+          17110
+        ],
+        "completedDabs": [
+          20,
+          20,
+          20
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          null,
+          null,
+          null
+        ]
+      },
+      "after": {
+        "wallMs": {
+          "observations": 3,
+          "median": 483.8999999910593,
+          "p95": 483.8999999910593,
+          "max": 496.3999999910593
+        },
+        "trialPaintMediansMs": [
+          23.700000002980232,
+          24.399999991059303,
+          24.899999991059303
+        ],
+        "fullViewportPaintMs": {
+          "observations": 27,
+          "median": 24.399999991059303,
+          "p95": 67.80000001192093,
+          "max": 73.59999999403954
+        },
+        "frameGapMs": {
+          "observations": 53,
+          "median": 16.700000000004366,
+          "p95": 50,
+          "max": 83.29999999999927
+        },
+        "inputToPresentationMs": {
+          "observations": 9,
+          "median": 70.70000000298023,
+          "p95": 306.09999999403954,
+          "max": 306.5
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 58.200000032782555,
+          "p95": 58.200000032782555,
+          "max": 58.29999999701977
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 26.599999979138374,
+          "p95": 26.599999979138374,
+          "max": 31.19999998807907
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 7.9000000059604645,
+          "p95": 7.9000000059604645,
+          "max": 7.9000000059604645
+        },
+        "maxAtomicDabMs": 17,
+        "texturePixelsPerTrial": [
+          18713,
+          18791,
+          17244
+        ],
+        "completedDabs": [
+          20,
+          20,
+          20
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          2304866,
+          2304866,
+          2304866
+        ]
+      }
+    },
+    {
+      "kind": "dense",
+      "before": {
+        "wallMs": {
+          "observations": 3,
+          "median": 2262.2000000029802,
+          "p95": 2262.2000000029802,
+          "max": 2282.9000000059605
+        },
+        "trialPaintMediansMs": [
+          21.44999999552965,
+          21.200000002980232,
+          21.24999999254942
+        ],
+        "fullViewportPaintMs": {
+          "observations": 150,
+          "median": 21.350000001490116,
+          "p95": 27.899999991059303,
+          "max": 124.09999999403954
+        },
+        "frameGapMs": {
+          "observations": 326,
+          "median": 16.700000000000728,
+          "p95": 33.399999999999636,
+          "max": 116.60000000000036
+        },
+        "inputToPresentationMs": {
+          "observations": 150,
+          "median": 21.75,
+          "p95": 29.400000005960464,
+          "max": 131.1000000089407
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 54.30000002682209,
+          "p95": 54.30000002682209,
+          "max": 65.39999997615814
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 47.69999998807907,
+          "p95": 47.69999998807907,
+          "max": 50.39999996125698
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 5.9000000059604645,
+          "p95": 5.9000000059604645,
+          "max": 6.600000008940697
+        },
+        "maxAtomicDabMs": 13.599999994039536,
+        "texturePixelsPerTrial": [
+          35944,
+          35944,
+          35944
+        ],
+        "completedDabs": [
+          20,
+          20,
+          20
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          null,
+          null,
+          null
+        ]
+      },
+      "after": {
+        "wallMs": {
+          "observations": 3,
+          "median": 1850.8999999910593,
+          "p95": 1850.8999999910593,
+          "max": 1854.5
+        },
+        "trialPaintMediansMs": [
+          13.300000004470348,
+          13.5,
+          13.350000001490116
+        ],
+        "fullViewportPaintMs": {
+          "observations": 150,
+          "median": 13.400000005960464,
+          "p95": 19.399999991059303,
+          "max": 68
+        },
+        "frameGapMs": {
+          "observations": 319,
+          "median": 16.69999999999709,
+          "p95": 16.800000000000182,
+          "max": 66.80000000000291
+        },
+        "inputToPresentationMs": {
+          "observations": 150,
+          "median": 14,
+          "p95": 22.700000002980232,
+          "max": 82.29999999701977
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 54.19999994337559,
+          "p95": 54.19999994337559,
+          "max": 57.29999999701977
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 46.400000005960464,
+          "p95": 46.400000005960464,
+          "max": 48.80000001192093
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 6.299999997019768,
+          "p95": 6.299999997019768,
+          "max": 6.5999999940395355
+        },
+        "maxAtomicDabMs": 17,
+        "texturePixelsPerTrial": [
+          35944,
+          35944,
+          35944
+        ],
+        "completedDabs": [
+          20,
+          20,
+          20
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          2304866,
+          2304866,
+          2304866
+        ]
+      }
+    },
+    {
+      "kind": "smooth",
+      "before": {
+        "wallMs": {
+          "observations": 3,
+          "median": 791.9000000059605,
+          "p95": 791.9000000059605,
+          "max": 818.4000000059605
+        },
+        "trialPaintMediansMs": [
+          30.950000002980232,
+          31.700000002980232,
+          35.70000000298023
+        ],
+        "fullViewportPaintMs": {
+          "observations": 35,
+          "median": 32.400000005960464,
+          "p95": 114.8999999910593,
+          "max": 126
+        },
+        "frameGapMs": {
+          "observations": 63,
+          "median": 33.30000000000291,
+          "p95": 66.70000000000437,
+          "max": 133.39999999999964
+        },
+        "inputToPresentationMs": {
+          "observations": 9,
+          "median": 348.20000000298023,
+          "p95": 587.9000000059605,
+          "max": 618.5999999940395
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 116.30000001192093,
+          "p95": 116.30000001192093,
+          "max": 130.29999996721745
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 26.30000001192093,
+          "p95": 26.30000001192093,
+          "max": 32.00000002980232
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 28.799999997019768,
+          "p95": 28.799999997019768,
+          "max": 32.400000005960464
+        },
+        "maxAtomicDabMs": 32.30000001192093,
+        "texturePixelsPerTrial": [
+          21734,
+          20545,
+          19044
+        ],
+        "completedDabs": [
+          20,
+          20,
+          20
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          null,
+          null,
+          null
+        ]
+      },
+      "after": {
+        "wallMs": {
+          "observations": 3,
+          "median": 619.4000000059605,
+          "p95": 619.4000000059605,
+          "max": 650.2999999970198
+        },
+        "trialPaintMediansMs": [
+          24.75,
+          26.5,
+          26.099999994039536
+        ],
+        "fullViewportPaintMs": {
+          "observations": 34,
+          "median": 25.94999999552965,
+          "p95": 73.90000000596046,
+          "max": 77.69999998807907
+        },
+        "frameGapMs": {
+          "observations": 58,
+          "median": 33.25000000000182,
+          "p95": 66.70000000000073,
+          "max": 100
+        },
+        "inputToPresentationMs": {
+          "observations": 9,
+          "median": 226.70000000298023,
+          "p95": 436.6000000089407,
+          "max": 465.8999999910593
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 111.59999996423721,
+          "p95": 111.59999996423721,
+          "max": 127.60000002384186
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 24.19999998807907,
+          "p95": 24.19999998807907,
+          "max": 31.499999955296516
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 25.100000008940697,
+          "p95": 25.100000008940697,
+          "max": 31.400000005960464
+        },
+        "maxAtomicDabMs": 31.299999997019768,
+        "texturePixelsPerTrial": [
+          21874,
+          20077,
+          20291
+        ],
+        "completedDabs": [
+          20,
+          20,
+          20
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          2304866,
+          2304866,
+          2304866
+        ]
+      }
+    },
+    {
+      "kind": "flatten",
+      "before": {
+        "wallMs": {
+          "observations": 3,
+          "median": 562.5,
+          "p95": 562.5,
+          "max": 567.5
+        },
+        "trialPaintMediansMs": [
+          30.69999999552965,
+          32.05000001192093,
+          31.5
+        ],
+        "fullViewportPaintMs": {
+          "observations": 24,
+          "median": 31.200000002980232,
+          "p95": 124.8999999910593,
+          "max": 126.90000000596046
+        },
+        "frameGapMs": {
+          "observations": 50,
+          "median": 33.299999999995634,
+          "p95": 50,
+          "max": 150
+        },
+        "inputToPresentationMs": {
+          "observations": 9,
+          "median": 126.70000000298023,
+          "p95": 371.20000000298023,
+          "max": 376.3999999910593
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 57,
+          "p95": 57,
+          "max": 57.79999999701977
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 23.799999997019768,
+          "p95": 23.799999997019768,
+          "max": 25.399999991059303
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 6.9000000059604645,
+          "p95": 6.9000000059604645,
+          "max": 7
+        },
+        "maxAtomicDabMs": 32.30000001192093,
+        "texturePixelsPerTrial": [
+          17122,
+          17048,
+          17306
+        ],
+        "completedDabs": [
+          20,
+          20,
+          20
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          null,
+          null,
+          null
+        ]
+      },
+      "after": {
+        "wallMs": {
+          "observations": 3,
+          "median": 482.70000000298023,
+          "p95": 482.70000000298023,
+          "max": 486.20000000298023
+        },
+        "trialPaintMediansMs": [
+          23.299999997019768,
+          23.899999991059303,
+          23.400000005960464
+        ],
+        "fullViewportPaintMs": {
+          "observations": 27,
+          "median": 23.599999994039536,
+          "p95": 64.70000000298023,
+          "max": 69.3999999910593
+        },
+        "frameGapMs": {
+          "observations": 54,
+          "median": 16.700000000004366,
+          "p95": 33.400000000001455,
+          "max": 83.29999999999927
+        },
+        "inputToPresentationMs": {
+          "observations": 9,
+          "median": 67.79999999701977,
+          "p95": 299.59999999403954,
+          "max": 303.30000001192093
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 53.70000000298023,
+          "p95": 53.70000000298023,
+          "max": 57.299999967217445
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 23.899999976158142,
+          "p95": 23.899999976158142,
+          "max": 24.200000032782555
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 6.699999988079071,
+          "p95": 6.699999988079071,
+          "max": 7
+        },
+        "maxAtomicDabMs": 31.299999997019768,
+        "texturePixelsPerTrial": [
+          17122,
+          17306,
+          17330
+        ],
+        "completedDabs": [
+          20,
+          20,
+          20
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          2304866,
+          2304866,
+          2304866
+        ]
+      }
+    },
+    {
+      "kind": "limb",
+      "before": {
+        "wallMs": {
+          "observations": 3,
+          "median": 2201.2999999970198,
+          "p95": 2201.2999999970198,
+          "max": 2230.5999999940395
+        },
+        "trialPaintMediansMs": [
+          22.200000002980232,
+          22.099999994039536,
+          21.899999991059303
+        ],
+        "fullViewportPaintMs": {
+          "observations": 175,
+          "median": 22.100000008940697,
+          "p95": 28.899999991059303,
+          "max": 122.70000000298023
+        },
+        "frameGapMs": {
+          "observations": 236,
+          "median": 33.29999999999745,
+          "p95": 33.400000000001455,
+          "max": 133.29999999999927
+        },
+        "inputToPresentationMs": {
+          "observations": 175,
+          "median": 50.79999999701977,
+          "p95": 59.099999994039536,
+          "max": 152.90000000596046
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 50.20000000298023,
+          "p95": 50.20000000298023,
+          "max": 57.30000002682209
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 37.5,
+          "p95": 37.5,
+          "max": 38.70000001788139
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 6.700000002980232,
+          "p95": 6.700000002980232,
+          "max": 9.399999991059303
+        },
+        "maxAtomicDabMs": 32.30000001192093,
+        "texturePixelsPerTrial": [
+          26035,
+          26035,
+          27970
+        ],
+        "completedDabs": [
+          15,
+          15,
+          16
+        ],
+        "limbSteps": [
+          56,
+          56,
+          57
+        ],
+        "retainedRayCacheBytes": [
+          null,
+          null,
+          null
+        ]
+      },
+      "after": {
+        "wallMs": {
+          "observations": 3,
+          "median": 2114.300000011921,
+          "p95": 2114.300000011921,
+          "max": 2114.5
+        },
+        "trialPaintMediansMs": [
+          14,
+          14.049999997019768,
+          13.950000002980232
+        ],
+        "fullViewportPaintMs": {
+          "observations": 235,
+          "median": 14,
+          "p95": 20.399999991059303,
+          "max": 68.6000000089407
+        },
+        "frameGapMs": {
+          "observations": 300,
+          "median": 16.699999999999818,
+          "p95": 33.400000000001455,
+          "max": 83.29999999999927
+        },
+        "inputToPresentationMs": {
+          "observations": 235,
+          "median": 34.29999999701977,
+          "p95": 40.70000000298023,
+          "max": 92
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 52.00000002980232,
+          "p95": 52.00000002980232,
+          "max": 53.29999993741512
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 36.99999997019768,
+          "p95": 36.99999997019768,
+          "max": 37.79999992251396
+        },
+        "initialDabMs": {
+          "observations": 3,
+          "median": 8.700000002980232,
+          "p95": 8.700000002980232,
+          "max": 10.199999988079071
+        },
+        "maxAtomicDabMs": 31.299999997019768,
+        "texturePixelsPerTrial": [
+          26035,
+          26035,
+          26035
+        ],
+        "completedDabs": [
+          15,
+          15,
+          15
+        ],
+        "limbSteps": [
+          77,
+          76,
+          76
+        ],
+        "retainedRayCacheBytes": [
+          2304866,
+          2304866,
+          2304866
+        ]
+      }
+    },
+    {
+      "kind": "rotation",
+      "before": {
+        "wallMs": {
+          "observations": 3,
+          "median": 700.0999999940395,
+          "p95": 700.0999999940395,
+          "max": 700.6000000089407
+        },
+        "trialPaintMediansMs": [
+          37.149999998509884,
+          37.399999998509884,
+          37.05000000447035
+        ],
+        "fullViewportPaintMs": {
+          "observations": 36,
+          "median": 37.19999998807907,
+          "p95": 38.29999999701977,
+          "max": 41.099999994039536
+        },
+        "frameGapMs": {
+          "observations": 90,
+          "median": 16.69999999999891,
+          "p95": 33.400000000001455,
+          "max": 33.5
+        },
+        "inputToPresentationMs": {
+          "observations": 0,
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 0.4000000059604645,
+          "p95": 0.4000000059604645,
+          "max": 0.4999999850988388
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 0.29999999701976776,
+          "p95": 0.29999999701976776,
+          "max": 0.4000000059604645
+        },
+        "initialDabMs": {
+          "observations": 0,
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "maxAtomicDabMs": 32.30000001192093,
+        "texturePixelsPerTrial": [
+          0,
+          0,
+          0
+        ],
+        "completedDabs": [
+          0,
+          0,
+          0
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          null,
+          null,
+          null
+        ]
+      },
+      "after": {
+        "wallMs": {
+          "observations": 3,
+          "median": 517.7999999970198,
+          "p95": 517.7999999970198,
+          "max": 534.4000000059605
+        },
+        "trialPaintMediansMs": [
+          21.549999997019768,
+          21.75,
+          21.44999999552965
+        ],
+        "fullViewportPaintMs": {
+          "observations": 36,
+          "median": 21.5,
+          "p95": 24.5,
+          "max": 27.5
+        },
+        "frameGapMs": {
+          "observations": 90,
+          "median": 16.69999999999709,
+          "p95": 16.80000000000291,
+          "max": 33.30000000000291
+        },
+        "inputToPresentationMs": {
+          "observations": 0,
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "numericalPumpTotalMs": {
+          "observations": 3,
+          "median": 0.09999999403953552,
+          "p95": 0.09999999403953552,
+          "max": 0.20000000298023224
+        },
+        "textureTotalMs": {
+          "observations": 3,
+          "median": 0.29999999701976776,
+          "p95": 0.29999999701976776,
+          "max": 0.40000002086162567
+        },
+        "initialDabMs": {
+          "observations": 0,
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "maxAtomicDabMs": 31.299999997019768,
+        "texturePixelsPerTrial": [
+          0,
+          0,
+          0
+        ],
+        "completedDabs": [
+          0,
+          0,
+          0
+        ],
+        "limbSteps": [
+          0,
+          0,
+          0
+        ],
+        "retainedRayCacheBytes": [
+          2618641,
+          2618641,
+          2618641
+        ]
+      }
+    }
+  ],
+  "quantileMethod": "Median averages the middle pair for even counts. p95 is the observed lower order statistic at floor((n-1)*0.95). Counts and three-repeat variability are retained; small samples are not population estimates."
+}

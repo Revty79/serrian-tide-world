@@ -13,7 +13,7 @@ import { advanceGlobeLimb, globeLimbZone, LIMB_DWELL_MS } from '../rendering/sph
 import type { SphericalBrushVisibility } from '../terrain/spherical-brush.ts';
 import { isTextInput } from '../interaction/canvas-navigation.ts';
 import { SphericalBrushControls, defaultSphericalControls, sphericalBrushFromControls } from './SphericalBrushControls.tsx';
-import { renderSphericalGlobe, type SphericalDisplayCache } from '../rendering/spherical-raster.ts';
+import { renderSphericalGlobe, sphericalRasterCacheBytes, type SphericalDisplayCache } from '../rendering/spherical-raster.ts';
 import { INITIAL_SPHERICAL_VIEW, inspectSphere, netEdgeIsJoined, netFaceCoordinates, netFaceRect, panSphereNet, projectSphere, recenterSphere, rotateSphere, sphericalLayout, unprojectSphere, zoomSphere, type ScreenPoint, type SphericalView } from '../rendering/spherical-view.ts';
 import styles from './SphericalPreview.module.css';
 import { SphericalStorageControls, type SphericalPersistenceUi } from './SphericalStorageControls.tsx';
@@ -163,6 +163,7 @@ export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, 
       renderTimes.push(performance.now() - start); if (renderTimes.length > 120) renderTimes.shift(); paints++;
       canvas.dataset.mode = view.mode; canvas.dataset.frame = JSON.stringify(view.frame); canvas.dataset.zoom = String(view.zoom); canvas.dataset.pan = JSON.stringify(view.pan);
       canvas.dataset.renders = String(paints); canvas.dataset.requests = String(requests); canvas.dataset.renderTimes = JSON.stringify(renderTimes); canvas.dataset.rasterBytes = String(raster?.byteLength ?? 0);
+      canvas.dataset.rayCacheBytes = String(sphericalRasterCacheBytes());
       canvas.dataset.revision = String(terrain.revision);
       if (inputAt) { inputLatencies.push(performance.now() - inputAt); if (inputLatencies.length > 120) inputLatencies.shift(); canvas.dataset.inputLatencies = JSON.stringify(inputLatencies); inputAt = 0; }
       if (editor) { brushLatencies.push(...editor.presentedLatencies(performance.now())); if (brushLatencies.length > 120) brushLatencies.splice(0, brushLatencies.length - 120); canvas.dataset.brushLatencies = JSON.stringify(brushLatencies); }

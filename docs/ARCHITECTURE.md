@@ -2,7 +2,9 @@
 
 ## Destination and ownership
 
-Atlas and the rebuilt Worlds system will replace the existing implementation inside Serrian Tide's Next.js/TypeScript application. Vite is a local development harness. No source, schema, authentication, routing or data in the original website was modified.
+The owner's A6-P1 clarification supersedes the earlier separate replacement-Worlds plan. Atlas will join the existing Worlds section of Serrian Tide's Next.js/TypeScript application in isolated development at Phase 7, after functional interconnected maps and true 3D exploration are ready. Preserve existing information, organization, data and functionality wherever practical; reuse the host's authentication, server permissions, records, living history and alternate timelines. Bidirectional record links follow in Phase 8, geographical-history/timeline connections in Phase 9 and full acceptance/compatibility/permissions verification before separately authorized production rollout in Phase 10. Vite remains a local development harness. No source, schema, authentication, routing or data in the original website was modified.
+
+Stable map/surface/feature/location/connection identities and reciprocal anchors must support world/region/settlement/city/building/interior/floor/dungeon/underground navigation before integration. Plan explicit geometry, scale, level and conversion-provenance relationships early without inventing a persisted World schema or competing lore database. See the complete [eleven-phase roadmap](PHASE-1-HEIGHTMAP-ROADMAP.md); these are future contracts, not P1 runtime features.
 
 | Layer | Owns | Excludes |
 | --- | --- | --- |
@@ -129,7 +131,9 @@ The adapter follows the browser's [IndexedDB transaction lifecycle](https://deve
 
 ## Review and scope
 
-A0–A6-F1 completion reports/evidence remain historical and unchanged. The owner explicitly authorized D2-R on main at `44f3cea0e81809ad0a29328a9cad9d20eada1214`. [F1 architecture](UNIFIED-WORKSPACE.md) records unified hosting; [D2-R completion](A6-D2-R-COMPLETION.md) records assisted globe strokes and immutable per-segment visibility. Independent review and owner acceptance remain separate. [V3 specification](SPHERICAL-PERSISTENCE.md) retains the exact format, existing-DB-v1 compatibility, atomicity, snapshots, fresh history and failure recovery. **Stop after A6-D2-R.** Weaker-device N=256 editing hardening, later geometry, server/Production writes, original-site integration and deployment need separate authorization. Editable illustrated cartography across every shape/valid scale and steps 9 → 10 → 11 remain mandatory future requirements.
+A0–A6-D2-R completion reports/evidence remain historical and unchanged. The owner explicitly authorized P1 on main at `e7862418b010b276dfbb8c736d421f36f901480a`. [F1 architecture](UNIFIED-WORKSPACE.md) records unified hosting; [D2-R completion](A6-D2-R-COMPLETION.md) records assisted globe strokes and immutable per-segment visibility; [P1 completion](A6-P1-COMPLETION.md) records controlled performance evidence. Independent review and owner acceptance remain separate. [V3 specification](SPHERICAL-PERSISTENCE.md) retains every storage contract. **Stop after A6-P1 for Ember's review.** Later geometry, server/Production writes, existing-site integration and deployment need separate authorization. All geometry, cartography, linked maps, measurements, 3D and existing history/timeline requirements remain under the current eleven-phase roadmap.
+
+P1's display-only ray cache is module-wide, at most two entries and 8 MiB of retained typed payload. Float64 camera-local x/y/z and byte alpha preserve the original ray arithmetic; no world direction, elevation or mutable texture pixel is cached. It invalidates by exact layout/quality key, shares across numerical resolutions and uses an uncached path for oversized requests. Original signed-axis face bases are evaluated directly, retaining atan, bilinear interpolation and shading. RGBA comparisons against the frozen pre-P1 implementation cover camera changes, seams/poles, quality changes, texture edits and cropped views. Numerical budgets, raster pixel counts and algorithms remain unchanged. Browser/Canvas backing storage, source textures, history, JS bookkeeping and garbage-collection transients remain additional costs.
 
 ## Current shared document host (A6-F1)
 
