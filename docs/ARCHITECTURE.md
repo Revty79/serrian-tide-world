@@ -1,4 +1,4 @@
-# Atlas integration architecture — A5
+# Atlas integration architecture — A6-A
 
 ## Destination and ownership
 
@@ -7,6 +7,7 @@ Atlas and the rebuilt Worlds system will replace the existing implementation ins
 | Layer | Owns | Excludes |
 | --- | --- | --- |
 | `src/terrain` | Versioned numerical model, sampling, mutation/reset, four brushes, deterministic distance-spaced strokes | React, DOM, users, persistence, World records |
+| `src/terrain/spherical.ts` | Separate numerical sphere, private Float32 authority, canonical keys/aliases and vertex adjacency | Planar model changes, spherical UI/brush/history, browser codecs |
 | `src/surfaces` | Pure surface identity/catalog, geometry/topology/metric/projection contracts, bounded/periodic mathematics, lattice neighbors, tangent transport and explicit legacy adapter | React, DOM, Canvas, persistence, spherical editor |
 | `src/rendering/camera.ts`, `fit-map.ts` | Pure Fill/Fit, bounded constraints, periodic phase, pointer-anchored zoom, pan | Elevation mutation, resampling, storage |
 | Other `src/rendering` files | Elevation colors, interpolated presentation cache, shoreline coverage and isolated bounded/repeated canvas drawing | Editing, authorization, document identity |
@@ -21,6 +22,8 @@ Atlas and the rebuilt Worlds system will replace the existing implementation ins
 The terrain ID is host supplied. The development host creates UUIDs for new maps; it does not invent a World record or foreign key. Future server integration must bind real World records deliberately, authenticate users, filter reads, authorize writes server-side, validate payloads and handle concurrent saves. Local Save has no such server responsibilities and confers no authority.
 
 A4 separates parent World identity, physical shape, editable surface identity, terrain representation, topology, projection and camera. A5 binds its periodic rectangular topology, lattice and metric to a new explicit v2 terrain type. The v1 interpretation and canonical save encoding are preserved. See [WORLD-SURFACE-ARCHITECTURE.md](WORLD-SURFACE-ARCHITECTURE.md) for the capability matrix and future geometry strategy, and [A5 completion](A5-COMPLETION.md) for implemented math and evidence. A descriptor for a future shape does not make that configuration editable.
+
+A6-A adds a separate spherical provider and `src/surfaces/cube-sphere.ts` without importing either into App. It requires host-supplied World/surface/terrain IDs and a radius in meters. Six fixed chart IDs resolve to one authority. Angular positions, directions, exact canonical vertex keys and physical distances remain distinct from viewing state. This is a numerical foundation, with no new client boundary, routing, backend or browser save format. See [spherical contracts/storage preparation](SPHERICAL-HEIGHTMAP-FOUNDATION.md). The expanded [master roadmap](PHASE-1-HEIGHTMAP-ROADMAP.md) preserves all required future shapes, independent surfaces, map styles/history, linked scales and eventual host integration.
 
 ## Reusable canvas contract
 
@@ -103,4 +106,4 @@ The adapter follows the browser's [IndexedDB transaction lifecycle](https://deve
 
 ## Review and scope
 
-A0–A4 completion reports/screenshots remain historical and unchanged. The owner supplied Ember's A4 source/architecture approval and authorized A5 directly on main, including Fill/fullscreen and rendering supplements. A5's technical verification is recorded in [A5 completion](A5-COMPLETION.md); independent review and owner acceptance remain pending. Stop after A5. A6/A7, original-site integration, server/Production writes and deployment require separate authorization.
+A0–A5 reports/evidence remain historical and unchanged. The owner supplied Ember's A5 source/visual approval and authorized A6-A directly on main. [A6-A completion](A6-A-COMPLETION.md) records numerical and existing-editor verification; independent review and acceptance remain pending. Stop after A6-A. A6-B, later geometry work, original-site integration, server/Production writes and deployment require separate authorization.

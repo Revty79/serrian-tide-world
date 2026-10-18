@@ -1,6 +1,6 @@
 # Serrian Tide Atlas
 
-Pass A5: seamless horizontal terrain wrapping, continuous recentering, a map-filling workspace and smoother elevation rendering, alongside bounded maps, Undo/Redo and browser-local saving/reopening.
+Pass A6-A: a numerical spherical heightmap with six connected equiangular cube-sphere charts and uniquely owned shared samples. The A5 bounded/periodic editor, display, history and local saves remain unchanged; spherical visual editing follows in a later checkpoint.
 
 This repository is a standalone **development workspace**. Atlas and the rebuilt Worlds system will ultimately replace the current Worlds/Atlas implementation inside the existing Serrian Tide Next.js/TypeScript website. The original website remains untouched.
 
@@ -55,8 +55,8 @@ The numerical engine has no React, DOM, Vite, authentication, network or databas
 
 | Location | Responsibility |
 | --- | --- |
-| `src/terrain/` | Numerical model, bounded/periodic sampling, topology binding, modification/reset and four brush tools |
-| `src/surfaces/` | Pure World/surface identities, shape/provider/projection contracts, bounded/periodic math, lattice neighbors, tangent transport and explicit legacy binding |
+| `src/terrain/` | Bounded/periodic model and brushes; separate spherical provider with one private Float32 authority and canonical sample keys |
+| `src/surfaces/` | Pure contracts, bounded/periodic math, real cube-sphere geometry/seams/tangent conversion and legacy binding |
 | `src/rendering/` | Colors, interpolated presentation cache, repeated canvas drawing, Fill/Fit and pure camera math |
 | `src/interaction/` | Pointer lifecycle, stroke boundaries, navigation/brush arbitration |
 | `src/editor/` | Bit-exact bounded history and document saved checkpoints |
@@ -64,10 +64,13 @@ The numerical engine has no React, DOM, Vite, authentication, network or databas
 | `src/components/` | Reusable client canvas, controlled brush inputs and elevation legend |
 | `src/App.tsx`, `src/styles.css`, `src/main.tsx` | Temporary full-screen development host |
 | `tests/` | Desktop/mobile browser proofs and test-only numerical fixture |
-| `docs/evidence/` | Actual screenshots; A0–A4 evidence remains historical |
+| `scripts/measure-spherical.mjs` | Reproducible numerical allocation, connectivity and seam-write receipt |
+| `docs/evidence/` | Actual screenshots/numerical receipts; prior-pass evidence remains historical |
 
-The A4 surface contracts remain independent of React, Canvas, DOM and browser storage. A5 uses their periodic normalization, metric and lattice for the working wrapped editor. Surface identity, topology, numerical terrain, projection and camera remain separate. Globe rotation, movable spherical projection cuts, local editing views and independent hollow interior/exterior selection are future A6/A7 work. A5 implements no globe or complete cylinder.
+The A4 surface contracts remain independent of React, Canvas, DOM and browser storage. A5 uses their periodic math. A6-A adds `createSphericalTerrain` in `src/terrain/spherical.ts` and reference geometry in `src/surfaces/cube-sphere.ts`, without importing them into App or changing v1/v2 storage. A radius in meters is required; default resolution is 128 cells per face edge, with 98,306 unique samples (393,224 elevation bytes). Face charts are a numerical representation of a **round** world, not a physical cube. Globe rotation, projection/local editing views, spherical brushes/persistence and independent hollow surfaces remain future work.
 
-See [World/surface architecture and capability matrix](docs/WORLD-SURFACE-ARCHITECTURE.md), [integration architecture](docs/ARCHITECTURE.md), [A5 completion and exact changed files](docs/A5-COMPLETION.md), and the [Phase 1 inventory](docs/PHASE-1-HEIGHTMAP-ROADMAP.md). Historical [A0](docs/A0-COMPLETION.md), [A1](docs/A1-COMPLETION.md), [A2](docs/A2-COMPLETION.md), [A3](docs/A3-COMPLETION.md) and [A4](docs/A4-COMPLETION.md) reports are preserved.
+Reproduce the numerical memory/topology receipt with `node --expose-gc scripts/measure-spherical.mjs`. An optional final argument writes its JSON output to an explicit path.
 
-The owner confirmed Ember's A4 source/architecture approval and authorized A5 directly on `main`, including the full-screen and rendering supplements. A5 awaits independent review and owner acceptance. Stop after A5: A6 spherical/polar continuity and A7 hollow/cylindrical/other initial geometries require separate authorization. Complete Azgaar-style tools and external interchange follow those foundations; their former pass numbers are superseded. No main-site integration or deployment is included.
+See [World/surface architecture](docs/WORLD-SURFACE-ARCHITECTURE.md), [integration architecture](docs/ARCHITECTURE.md), [A6-A completion and exact files](docs/A6-A-COMPLETION.md), and the [complete master roadmap](docs/PHASE-1-HEIGHTMAP-ROADMAP.md). All prior completion reports, including [A5](docs/A5-COMPLETION.md), remain historical receipts.
+
+The owner confirmed Ember's A5 source/visual approval and authorized A6-A directly on `main`. A6-A awaits independent review and acceptance. Stop after A6-A; A6-B and later checkpoints need separate authorization. No spherical UI, new save format, main-site integration or deployment is included.

@@ -1,0 +1,69 @@
+{
+  "measuredAt": "2026-10-18T00:39:18.378Z",
+  "runtime": "v24.18.0",
+  "platform": "win32",
+  "architecture": "x64",
+  "method": "Node --expose-gc, live ArrayBuffer delta across each constructor, one private Float32 authority. Timings are one local run, not browser editing benchmarks.",
+  "memory": [
+    {
+      "cellsPerEdge": 16,
+      "logicalVerticesPerFace": 289,
+      "uniqueSamples": 1538,
+      "elevationBytes": 6152,
+      "allocatedArrayBufferBytes": 6152,
+      "constructionMs": 0.5307999999999993
+    },
+    {
+      "cellsPerEdge": 64,
+      "logicalVerticesPerFace": 4225,
+      "uniqueSamples": 24578,
+      "elevationBytes": 98312,
+      "allocatedArrayBufferBytes": 98312,
+      "constructionMs": 0.10200000000000387
+    },
+    {
+      "cellsPerEdge": 128,
+      "logicalVerticesPerFace": 16641,
+      "uniqueSamples": 98306,
+      "elevationBytes": 393224,
+      "allocatedArrayBufferBytes": 393224,
+      "constructionMs": 0.1606000000000023
+    },
+    {
+      "cellsPerEdge": 256,
+      "logicalVerticesPerFace": 66049,
+      "uniqueSamples": 393218,
+      "elevationBytes": 1572872,
+      "allocatedArrayBufferBytes": 1572872,
+      "constructionMs": 0.35020000000000095
+    },
+    {
+      "cellsPerEdge": 512,
+      "logicalVerticesPerFace": 263169,
+      "uniqueSamples": 1572866,
+      "elevationBytes": 6291464,
+      "allocatedArrayBufferBytes": 6291464,
+      "constructionMs": 1.1593000000000018
+    }
+  ],
+  "fixture": {
+    "cellsPerEdge": 8,
+    "radiusMeters": 1250000,
+    "uniqueSamples": 386,
+    "aliasCounts": {
+      "faceInteriors": 294,
+      "edgeInteriors": 84,
+      "corners": 8
+    },
+    "directedSeams": 24,
+    "undirectedSeams": 12,
+    "graphEdges": 768,
+    "quads": 384,
+    "eulerCharacteristic": 2,
+    "modifiedSharedSamples": 92,
+    "elevationSha256": "48e36ee86be99dbcd01dbe31ba2376324a64a81a41290e749778e4a7640b490c",
+    "largestUnitLengthError": 0,
+    "largestReferenceRadiusErrorMeters": 2.3283064365386963e-10,
+    "geometryPreservesElevationDigest": true
+  }
+}
