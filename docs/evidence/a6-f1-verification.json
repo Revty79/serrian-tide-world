@@ -1,0 +1,1840 @@
+{
+  "baseline": "5f71ced6b85f6f9a5d674334610b7193f35ac546",
+  "branch": "main",
+  "verifiedAt": "2026-10-18T15:28:53.494Z",
+  "results": {
+    "numerical": {
+      "passed": 178,
+      "command": "npm.cmd test"
+    },
+    "browser": {
+      "passed": 201,
+      "skipped": 1,
+      "total": 202,
+      "retries": 0,
+      "stats": {
+        "startTime": "2026-10-18T15:17:58.412Z",
+        "duration": 567546.193,
+        "expected": 201,
+        "skipped": 1,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "sourceSnapshot": {
+        "files": 122,
+        "beforeDigest": "fe227b3bfcdc2f92bf411ffefa08bb99980579a72b8bbc9914fd28cf44a21e38",
+        "afterDigest": "fe227b3bfcdc2f92bf411ffefa08bb99980579a72b8bbc9914fd28cf44a21e38",
+        "unchanged": true,
+        "changedPaths": []
+      },
+      "command": "node .local/run-a6-f1-browser.mjs",
+      "freshServer": "127.0.0.1:5179"
+    },
+    "build": {
+      "command": "npm.cmd run build",
+      "modules": 72
+    }
+  },
+  "preservation": {
+    "protectedFiles": [
+      {
+        "path": "package-lock.json",
+        "sha256": "8841dbbe27925de78ebb707c8297753d70a1e8e78a1f2daf119a650771423778",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "package.json",
+        "sha256": "5ee59386242d27f0734a23f5fd86d1610c8465bab46b7f6f616848bb7455032a",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "playwright.config.ts",
+        "sha256": "33c9d218b15330a9a63fc766280ab4ff1cb3fae3da98b98d645463663565f3af",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/editor/prepare-spherical-session.ts",
+        "sha256": "9377bfecd338cc33c4466c38043a7d501977f01fffc18b706a3df8b3bccb3b8e",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/editor/spherical-history.test.ts",
+        "sha256": "5674880efe1640fe857b9c9edb1e051392be0ff11e010e98d230731ba3f1c7cd",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/editor/spherical-history.ts",
+        "sha256": "c77435fddee1441534df78da4ea360bf29d23326a7e7834b2da61c441f93d76d",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/editor/spherical-persistence.test.ts",
+        "sha256": "f53d4b588ac1ce9e7963f0f4f449625be92204440a72983710f8b328611e64f2",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/editor/spherical-session.test.ts",
+        "sha256": "806076c89c9b459bd78a6eb5b7334cd4a447c301c56240b3977b39eb7b270cf6",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/editor/spherical-session.ts",
+        "sha256": "3ab265120ec5517d886dc55e48955a476c827e964f371b05e1fa92ba2ff4c6c9",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/editor/terrain-document.ts",
+        "sha256": "44fdfbb7576f27998b7d468dbb999be83c16d0504bf0514cfa8e5d41d88dd314",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/editor/terrain-history.test.ts",
+        "sha256": "c206497454dc989e891f5da4a6cc70914c65336b3a516ea469f73b542b1f7bb6",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/editor/terrain-history.ts",
+        "sha256": "63f9e6e50d2290783d4fcd3996f196142ab794ab787f0f919142650444bb17ea",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/interaction/canvas-navigation.ts",
+        "sha256": "b608c4efca952ca7e24927f0dec6a7a851ca48b5a0a5f7393b57d8d318bdd7df",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/interaction/canvas-sculpting.ts",
+        "sha256": "d51afb71d2ba959d5d7d67e0afc907f4be05eac0f326c770105ed1e90bf7e227",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/interaction/spherical-editing.ts",
+        "sha256": "1481881468b5da9ad9abe371a03767e05cd0ffc723599b2d171c0af674f22a5a",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/interaction/spherical-navigation.ts",
+        "sha256": "a849da53da87dcaa4a49c075d661d490a30d099878ce485fa9e51b5772297bbf",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/main.tsx",
+        "sha256": "8989c7a482dd7c56661d9152674e33d1095a6c6cb46f5233a04afc56f122267d",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/persistence/cooperative-work.ts",
+        "sha256": "5e9e86f8409f9f94a3a2f694114454b366ee58b9252996f91da06a6737ffaf05",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/persistence/heightmap-payload.ts",
+        "sha256": "2bf3ea64ddd44dd4907d4d477b6d62e9df46b653af77ea20eebdc1f4b496afef",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/persistence/local-map-store.ts",
+        "sha256": "405ad96cc4f138caf87ae9cc3df7f881fb8ec4c9db51519a6fda877af9ada1c3",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/persistence/map-format.ts",
+        "sha256": "b4ac26f2042af0c1572fa86ae277d60d3e8c6fc8771c73ca702781dae6431eaf",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/persistence/spherical-format.test.ts",
+        "sha256": "0285666ba6af0c29dea7f7333b5b171b8de39169126634d07e20668c1cdeafa2",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/persistence/spherical-format.ts",
+        "sha256": "9408c01a34b0b44d63497cc39a7ddacb046741006c8210254c98195b0aa9b11f",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/persistence/terrain-format.test.ts",
+        "sha256": "84ea749600824d89bee2da4f99307767089c66ff4dfc0261062de9ecb500b01b",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/persistence/terrain-format.ts",
+        "sha256": "d6a9fecfca4e29878f70119d39cbcb11c3790e93981d673394f8c5dd4f03502b",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/persistence/wrapped-format.test.ts",
+        "sha256": "7957dff9372598f57a4a644d10f1daa4ecddbd653fdf9787e47a3c31cc327613",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/persistence/wrapped-format.ts",
+        "sha256": "fcd48e503f88913e1decfa6e53900777f80cc4de17be35f1ffd1c2eb9ad4fe54",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/camera.test.ts",
+        "sha256": "56f4de0991e19d2218ce29abdd4e6cfb312967dbe97080cab1474b4e0550f1d0",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/camera.ts",
+        "sha256": "28cc51eb2ab746d0900fe1651d9af3da8f8df741d62f42da777d94bd21b128f5",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/canvas-renderer.ts",
+        "sha256": "c0b8f2e26bafdaa2c949eb1b7da75490de63c6b61dcefac5d7d18aca1cc6ea0e",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/display-raster.test.ts",
+        "sha256": "86db9a206cc254beebd65a6bca232f5c5abb002476962cea43bd2f54971d2980",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/display-raster.ts",
+        "sha256": "a392669e82a1e96ee68a4d422d9055a2c60bb84a6ceeb087ee2dc7874b7669d9",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/edge-pan.test.ts",
+        "sha256": "adca6de9a87dd86a7c2d7d945bba5fa62be893ba26621aaab95afda9a9279dc8",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/edge-pan.ts",
+        "sha256": "8a66fb2a7b98992f912c5d89c99b0a86b791e57d110acb13c6687e32eeac6ca3",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/elevation-colors.ts",
+        "sha256": "991b8a713286fb516d0a5cd8eea291c264a2ecfb10568a879909ac5dd94b3f3f",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/elevation-raster.test.ts",
+        "sha256": "27daa89d265a97ddfdb592444ab52736bf45c50c33e27fc4689f53b2cae5c50a",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/elevation-raster.ts",
+        "sha256": "bdf272baa0d8d52334a5f83ea66921df9a91e989896ff176f025c6e212bda26c",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/fit-map.test.ts",
+        "sha256": "ac5619a3849022b781dba70e2176541cae25b21b69d4613b1e7d84ca0c60f8bf",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/fit-map.ts",
+        "sha256": "841b06966a6ea9c937ba3abccf78929f0bc2027a239cc31428f2ea750a79c024",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/periodic-view.test.ts",
+        "sha256": "306d66c82912f8e661a168a0b34a333ee284968da971980f15f67493aff40843",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/periodic-view.ts",
+        "sha256": "3c86ea6edd5df2cd1b7961ff1ae7f9da3514da88403f43c1a560c4dc5ca9fe64",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/spherical-brush-preview.ts",
+        "sha256": "bcc4dd08f902eaacde5e3c6c4f5b78f78fada4ad1e40c2419c8ce53e58600130",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/spherical-editing.test.ts",
+        "sha256": "3f940a8e9622b6c82271890f38488f102ad7deb67e7fe5b66bb05f8403bc6dc0",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/spherical-gesture-path.ts",
+        "sha256": "b4f48046e3ea77502e04401da40731cf5b8a1318b09fe79372121b81fe0726a5",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/spherical-raster.ts",
+        "sha256": "53ed631583ef419fcdbb7020517195e334dbe7401628bf8f62879911516413d0",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/spherical-texture-updates.ts",
+        "sha256": "3380a3bac927de263c5e30de97dff9783f3555e9e390eafb9483206e229a9642",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/spherical-view.test.ts",
+        "sha256": "176f0785b71a7138fb71b9e24c31cdeab682369393e30deec3f410e6ec0906e3",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/spherical-view.ts",
+        "sha256": "f07e9d48c96ea63bb54b6f21ae5cb1ce461ae468fa37abb590a2993add687803",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/rendering/wrapping-camera.test.ts",
+        "sha256": "2adfc86b79b98b617493cab763844d7b5c242f09f59e2ffefb1e134f13e6b8d6",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/surfaces/compatibility.test.ts",
+        "sha256": "7897ceb13d7afba6e0fb1957902b28b66d14420f7de67169ce53d798a665e974",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/surfaces/contracts.ts",
+        "sha256": "cfb7b2c27ee43feec425c86171caf3281be92d41cd3cc141db2b7a0689f0ba83",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/surfaces/cube-sphere.test.ts",
+        "sha256": "002f24b406f6ab5057de6acc721d76c68e816a6918b81b75ee0406bbc761dd12",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/surfaces/cube-sphere.ts",
+        "sha256": "45fbca2f7ce7a31eb8b4d6eebcf60633d24332c03f387fc74330fce5ca9760e4",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/surfaces/great-circle.ts",
+        "sha256": "4f30b260fff7a15f12de230438b4fa07f072547bc376a3e4f9c5e026b7e8af13",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/surfaces/legacy-planar.ts",
+        "sha256": "4326bd3e64842c58f15c10ff83cce9902c8ac9573ae8bab2e6dc511414ea77a2",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/surfaces/rectangular.test.ts",
+        "sha256": "fe22f566731a1a8ebdee85159030eda37d411f1a3b7b6b8a18fad0b361ad55c2",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/surfaces/rectangular.ts",
+        "sha256": "b59bb07572b2b85b7bf7e78aec961e0f4adac250f429b6f1fced5e65ada18b79",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/surfaces/world.test.ts",
+        "sha256": "60d957c4349fb6c4f16b2554a506c8dc5b990635568226a3749b85c0d6c311b1",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/surfaces/world.ts",
+        "sha256": "d4c849778b71f606c4a59b50a00520864838ea9aeafc25a09288b34a9ab35254",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/terrain/brush-math.ts",
+        "sha256": "6a5fed2cce38c70fadd4b9fa340d2c9def28925fcf6a085e092e849e07f48f10",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/terrain/brush.test.ts",
+        "sha256": "b91c204ddb3ea211ac8485e4daad9c51d8874c88ce47e679c0b7f35bf8230eab",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/terrain/brush.ts",
+        "sha256": "5904cb85930beaa7789dc337511c9fa3b1ad31c3daef6a7e541409d1846cafda",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/terrain/model.test.ts",
+        "sha256": "96183a66d313bf95dfe9534fbe370341f42180fdb67ae2cc429c456f222dd414",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/terrain/model.ts",
+        "sha256": "45581a6f9add3115053b0b2048f58acf0585337c4c5b3391bd4a1c94c0d9d104",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/terrain/modifications.ts",
+        "sha256": "1c08f0557e537da051c845aaebf64b3468fd10ffc8de70296fade29621ba1e47",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/terrain/refinement.test.ts",
+        "sha256": "fc07bab77cb8f066236f6bb27a7c77fff157e763d5d8cfa9cd8bd01cda107fa9",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/terrain/sampling.test.ts",
+        "sha256": "7546654d62c76b6876a30db96815f9e6acb2ecd641425ddd1041d99d4e1da973",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/terrain/sampling.ts",
+        "sha256": "c7450e4fa8de04ad64e75a5814a6db34d2d311fcac276792984bac440bde7942",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/terrain/spherical-brush.test.ts",
+        "sha256": "7020711b317ecbea878e73cba220b0f27faa3f5696bb3fb056ae5234924973b2",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/terrain/spherical-brush.ts",
+        "sha256": "8da501e5fcefc32e42f2b87fe484409981e178ba4adc89e86c6b1ff41b552abf",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/terrain/spherical-cap.ts",
+        "sha256": "6f6acc228033e3b5c6f2dc1083d7627961ecb60e5bd8786d8904aa0c034cbce5",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/terrain/spherical-preview-fixture.ts",
+        "sha256": "11c61e1a919638b4746dbf05c59af0f80c75ae6435a660e2ac05431ff8a2e357",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/terrain/spherical-smoothing.ts",
+        "sha256": "1fccb9079f8fe2165156d64f1e639e9ef885cfb569e304d94b5197029650eb61",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/terrain/spherical-tools.test.ts",
+        "sha256": "87d5cc13468ac44aeb4fca44f04464c3a01c695380f2eac18f25a7806577c8cd",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/terrain/spherical.test.ts",
+        "sha256": "da1f9ce15a808ed197fa01b886d4f884a6d09817f2fea79a7e11c0259b286e91",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/terrain/spherical.ts",
+        "sha256": "a3492e41821f175ed6a1e79f6ea0665f16ade672e73e4fdbd8427c147af3f0c4",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/terrain/topology.ts",
+        "sha256": "e31cbc890444fd5284b6b32b4db5627eb32dec4e8fd8511e337fd3097c823d69",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "src/terrain/wrapping.test.ts",
+        "sha256": "415f3f3781e2804a45a8405d6bb0e69ab21c98b17c3e780965d4208aaf84592b",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "tests/fixtures/saves/a3-v1-heightmap.json",
+        "sha256": "240286feeb579fc1d557986fe2c6e252fae0af4897d6187939f0f8b30aef27f5",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "tests/fixtures/sphere-editor.html",
+        "sha256": "c08fd65ffde45d82e3b2747f76780f393528f667822207d99f50a278cb06243b",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "tests/fixtures/sphere-editor.tsx",
+        "sha256": "33f460947d5397dd30da4c08414fd942ee814606ca2d8fbb94685aa34ea5d455",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "tests/fixtures/sphere-storage.ts",
+        "sha256": "46821d742b3299224f9181f439a55ca8133be8d907682d2f1b5107fbc7e7674e",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "tests/fixtures/sphere.html",
+        "sha256": "a4b0c01f11187a2ec0af3f242deea9544678f0a7089bc91740ece36aed4ceee1",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "tests/fixtures/sphere.tsx",
+        "sha256": "6c5c292271310922267bb89786aeb3e7a68d620546816f02454c6806b19d5019",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "tests/fixtures/terrain.html",
+        "sha256": "0f469f659c311838b99bf1dec8bc3b755835be9f3a1fd070f6d819266c78c544",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "tests/fixtures/terrain.tsx",
+        "sha256": "aa7a2e04614acb42f330e4e621d9c5ac9d54993ec8fff916c01200726e951dce",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "tsconfig.json",
+        "sha256": "203107e428646a6709ae2c7c31dd6a72b53a6950c2e5039d24ed6555e38c50bd",
+        "comparison": "EOL-normalized source"
+      },
+      {
+        "path": "vite.config.ts",
+        "sha256": "c82a0cd4976de5c9597348777d98b8f4a9fdb96dab5aaf5a93029feabb3d66d1",
+        "comparison": "EOL-normalized source"
+      }
+    ],
+    "historicalFiles": [
+      {
+        "path": "docs/A0-COMPLETION.md",
+        "sha256": "b21db4cf6e63c5f8b9928c0ce9c65ba10d357e404c7757982306c0b4a8f9a992"
+      },
+      {
+        "path": "docs/A1-COMPLETION.md",
+        "sha256": "c4f261824a2ffb51287ce98a3e76ccd2b002cc5452ed3e1af1adffeb86163940"
+      },
+      {
+        "path": "docs/A2-COMPLETION.md",
+        "sha256": "32e6a91d0f33b0dfcf53ef285f608c0dbada0a5d650254ce90c7cc1997c246a5"
+      },
+      {
+        "path": "docs/A3-COMPLETION.md",
+        "sha256": "3ce253f4b5f64fd402d40215387f196d61dc72d34909cc703dd403006b4d460c"
+      },
+      {
+        "path": "docs/A4-COMPLETION.md",
+        "sha256": "721d636662fb14ee0b25a6e88ea8d517c91ee13ad6394f738f92aba3a40234ec"
+      },
+      {
+        "path": "docs/A5-1-COMPLETION.md",
+        "sha256": "f803bcb6e9d37af4e3a765d5438530059cdf3da6603908d0aaab99f52d5fd212"
+      },
+      {
+        "path": "docs/A5-2-COMPLETION.md",
+        "sha256": "2251039d5e7f7eba4e82989ea860df313e7e6108ac82370d3ab0201f4064b38d"
+      },
+      {
+        "path": "docs/A5-COMPLETION.md",
+        "sha256": "2d38db63edc5a402cdfbf20701077dcbaf037c75fea5a22cdaff2bef3ea317d6"
+      },
+      {
+        "path": "docs/A6-A-COMPLETION.md",
+        "sha256": "6f8a76061c0ef41528f67c078a78114595bb17c7a437a8cf774c040e629ab52c"
+      },
+      {
+        "path": "docs/A6-B-COMPLETION.md",
+        "sha256": "fabd2e0977f7b0213d202efb8ae840c26d30b816b4727335f53dd0beba5e3bc8"
+      },
+      {
+        "path": "docs/A6-C-COMPLETION.md",
+        "sha256": "480cb49e1e9a610acf4799969f8959d9812206d7a9dc5dcab2c0901367fe8b0d"
+      },
+      {
+        "path": "docs/A6-D1-COMPLETION.md",
+        "sha256": "947bb90ece8374cf06b52d86a02238240506c5b7fbc6f67f0c7659d7d0e415b6"
+      },
+      {
+        "path": "docs/A6-D2-COMPLETION.md",
+        "sha256": "2c22d9e3a2c1811cf82afaf542f22fa6af8bea1f8c4da3ca0dc951b99169e402"
+      },
+      {
+        "path": "docs/A6-E-COMPLETION.md",
+        "sha256": "f6ec37126e4865792be6c943f2c1a98d0b114ec4f4abe4f35094b851bf058ed3"
+      },
+      {
+        "path": "docs/evidence/a1-desktop-sculpted.png",
+        "sha256": "76fd9abcde18e20ed91fd6657a77118a1026a422f8723a3f0440eb0f22fd9534"
+      },
+      {
+        "path": "docs/evidence/a1-mobile-sculpted.png",
+        "sha256": "cf165a2051c3ea10c1d6005d2f16b59d67f64d689731ac6524d6d6b3209c105a"
+      },
+      {
+        "path": "docs/evidence/a2-desktop-flatten.png",
+        "sha256": "d120e923a9b029abd5a7deb352f5223a001f575228eed6aa38259c6d9bbc1220"
+      },
+      {
+        "path": "docs/evidence/a2-desktop-raise-lower.png",
+        "sha256": "ac7fddbf86b1308ca1e07ccff1da51df232312ae98bdb9fd09616ef3f9273df7"
+      },
+      {
+        "path": "docs/evidence/a2-desktop-smooth.png",
+        "sha256": "e683ecc9d1797397b0b28567d094cb164543c20275006df505143eb728b38b2a"
+      },
+      {
+        "path": "docs/evidence/a2-mobile-flatten.png",
+        "sha256": "5cf9eade38d9307c341bbba79571052e0e3834363df39909d0e470046eea341e"
+      },
+      {
+        "path": "docs/evidence/a2-mobile-raise-lower.png",
+        "sha256": "9ecd785f80820697aa19bc002675e27e1a54ddc004947044418d1bf776e868e6"
+      },
+      {
+        "path": "docs/evidence/a2-mobile-smooth.png",
+        "sha256": "f51bbcea70bda92dcd732dedc6b1978884058e485839cac1356ad10746b74abf"
+      },
+      {
+        "path": "docs/evidence/a3-desktop-sculpted.png",
+        "sha256": "3716d2056b8cd99130a727e337e52df7c2a6ee82973f03dca1dc5e26140e54a9"
+      },
+      {
+        "path": "docs/evidence/a3-desktop-zoomed-tools.png",
+        "sha256": "070f6a40de2e4ed53e4a68bb83234a56132fdae445e8a02c073eff4bcdbae6be"
+      },
+      {
+        "path": "docs/evidence/a3-mobile-sculpted.png",
+        "sha256": "676a28d03799eb02fe87632119cf159f180a5154fc7dc42262e47f407eb50459"
+      },
+      {
+        "path": "docs/evidence/a3-mobile-zoomed-tools.png",
+        "sha256": "63ab4bf834a89374cc9111a33fedc1f0e303139b45091d2f0a74fe5cf327cc9b"
+      },
+      {
+        "path": "docs/evidence/a4-desktop-legacy-preserved.png",
+        "sha256": "4907c5fbce5a328cc5d71359fca3f5eba0c5f5c11fc19a0584682910d64b02a3"
+      },
+      {
+        "path": "docs/evidence/a4-mobile-legacy-preserved.png",
+        "sha256": "e86c2e1bccdea47f2b785dfd1d69b66ba739f0ea3e280710ff63bf0300820562"
+      },
+      {
+        "path": "docs/evidence/a5-1-baseline-edge.png",
+        "sha256": "4f877d67d20f0744eb15204cfee8a740fe1d7e2a2c3ec16dd80a19d0a3912b81"
+      },
+      {
+        "path": "docs/evidence/a5-1-baseline-trace.zip",
+        "sha256": "b81d8f13646bd9d4f1191abbadc1838a7d7a1794858eafe1be5a1b9752124488"
+      },
+      {
+        "path": "docs/evidence/a5-1-baseline.json",
+        "sha256": "76a379f8eaa331cba297d1f86e1d5cd19edf716b1a90aee6cdb44561d3007083"
+      },
+      {
+        "path": "docs/evidence/a5-1-desktop-bounded-pan.png",
+        "sha256": "d5dcd766acb8f5bbc382c09f52953a49f39e129baab8400070c64a5e9cf8f9c2"
+      },
+      {
+        "path": "docs/evidence/a5-1-desktop-edge-stroke.png",
+        "sha256": "abf7f89e2267bb616a48593974c158db2f994c66e1c28f1c214f2e51a4e8e429"
+      },
+      {
+        "path": "docs/evidence/a5-1-desktop-edge-trace.zip",
+        "sha256": "8dfe720a27978213baddebbc62caaf9ae3aef348a9458a0cdbc97d2665f98e8e"
+      },
+      {
+        "path": "docs/evidence/a5-1-desktop-motion.json",
+        "sha256": "5424491c66e29d4d034bdaa398be1066fa3777d992ae683122c0f36cdfe8b51b"
+      },
+      {
+        "path": "docs/evidence/a5-1-desktop-seam.png",
+        "sha256": "65b8983f8633fc9b04853f27ffbbb5b59c22f2910cc24bfda33c7b3d5f06c190"
+      },
+      {
+        "path": "docs/evidence/a5-1-desktop-touch-edge.png",
+        "sha256": "6a29800105732f193615715f78d65ae2c339e7bc3db196b1a9247fffe7a33f8f"
+      },
+      {
+        "path": "docs/evidence/a5-1-mobile-edge-stroke.png",
+        "sha256": "e5cc6b266b19d65a63c94a974bd825e6faa75be480b37da4d72da8541a4fa76d"
+      },
+      {
+        "path": "docs/evidence/a5-1-mobile-edge-trace.zip",
+        "sha256": "f6f67089bd9cf6ec1ad0020b6fdde499dab79e65ac4521335ae18bf3690bd72f"
+      },
+      {
+        "path": "docs/evidence/a5-1-mobile-motion.json",
+        "sha256": "a177b268f0f0d91c0376c89ec2e2fad79203614d0b845af8264f3d6749f00f33"
+      },
+      {
+        "path": "docs/evidence/a5-1-mobile-seam.png",
+        "sha256": "d0eae4cb4bf498f4a0fd354d5c1621303f2294eb8193133cdf3e2d8fd6ae270c"
+      },
+      {
+        "path": "docs/evidence/a5-1-mobile-touch-edge.png",
+        "sha256": "6897322a71acf0c5ae437605a05017e6ef9c99ac81b5a1642a232becca91bf02"
+      },
+      {
+        "path": "docs/evidence/a5-1-verification.json",
+        "sha256": "a759d302a89fefa1a5c883d3a86c9c1344fd23bf79a74ca7a62aa48e4993732a"
+      },
+      {
+        "path": "docs/evidence/a5-2-desktop-desktop-fit.png",
+        "sha256": "510e442243d3b47b7a72733cc4cb4cf57a6abae4c70da13b95a17e3670871cf2"
+      },
+      {
+        "path": "docs/evidence/a5-2-desktop-desktop-focused.png",
+        "sha256": "8998c0b66c98ef1f1cf4da1a9d3b4375b17294202409532bb1645a0e0fdc5c49"
+      },
+      {
+        "path": "docs/evidence/a5-2-desktop-desktop-full-height.png",
+        "sha256": "75b31c060227c2b58ffd59d7a6fe337173cf182441108e639bbbb3ee29ab37b4"
+      },
+      {
+        "path": "docs/evidence/a5-2-desktop-edge-connected.png",
+        "sha256": "76bd6d0f7a8d037c0eb71a58c938f47f5240b3045c293ffd490b4d8bfa64f81a"
+      },
+      {
+        "path": "docs/evidence/a5-2-desktop-edge-trace.zip",
+        "sha256": "ef04cbb5b25d0fcd02cba10871f6bc7d171fb5a49bf5beed3d62222208128bcf"
+      },
+      {
+        "path": "docs/evidence/a5-2-desktop-layout.json",
+        "sha256": "02532869ed46b32e5964f0b3abfb5d99fe115f988f1a7de2f068239cda24fd13"
+      },
+      {
+        "path": "docs/evidence/a5-2-desktop-mobile-fit.png",
+        "sha256": "f45778b2b7dfbc6ff1f8c26ebb599aac10fbed1dc21ff857923593816edd31be"
+      },
+      {
+        "path": "docs/evidence/a5-2-desktop-mobile-focused.png",
+        "sha256": "4635f259f380abcc1661622214d267735e1b1ab68c8bae249577bcd108850202"
+      },
+      {
+        "path": "docs/evidence/a5-2-desktop-mobile-full-height.png",
+        "sha256": "111bf9cc19e3b5f4570ebf090a09314c19c136fea31ec2ab5f5e35bd3a5ab8bf"
+      },
+      {
+        "path": "docs/evidence/a5-2-desktop-square-fit.png",
+        "sha256": "91c6dea56237ce90d94cb33e002e43b1957366e19f3cedeeebb8b62672a47fdc"
+      },
+      {
+        "path": "docs/evidence/a5-2-desktop-square-focused.png",
+        "sha256": "b263ce878cf0d5e9b1aaf73fa163423796911cb5ca6d9f5e3f886f116bfff15f"
+      },
+      {
+        "path": "docs/evidence/a5-2-desktop-square-full-height.png",
+        "sha256": "3d62a1ad899e5304f69819f3be54bbb506252ae95ca990318df69aedf531856c"
+      },
+      {
+        "path": "docs/evidence/a5-2-desktop-ultrawide-fit.png",
+        "sha256": "5827989483e55ed00e17679a202fd0a49bc5dc439d21300a1cb1e5025183d955"
+      },
+      {
+        "path": "docs/evidence/a5-2-desktop-ultrawide-focused.png",
+        "sha256": "1368156ee934eef8aefe741916ef0b172693d8cec27a8e8ea4c40c50dac613f4"
+      },
+      {
+        "path": "docs/evidence/a5-2-desktop-ultrawide-full-height.png",
+        "sha256": "17cac99d26b43c0d822cdc0133fd2bd5b8439eeeea7a75e1a3be6bab2b791ed3"
+      },
+      {
+        "path": "docs/evidence/a5-2-mobile-desktop-fit.png",
+        "sha256": "e3389ea361e1d94ca7ac81c234bf23dc33b372c349aff8d130bfe2d2ed3150e0"
+      },
+      {
+        "path": "docs/evidence/a5-2-mobile-desktop-focused.png",
+        "sha256": "8d7ff17afa1fd52badbc400be5999ced9f1afd2e7f74095b12b53e3cbd026303"
+      },
+      {
+        "path": "docs/evidence/a5-2-mobile-desktop-full-height.png",
+        "sha256": "83a8ee00fc6617984aea2d04c1e432aa37d04ddc2da2e7a2ccc15e826331f21b"
+      },
+      {
+        "path": "docs/evidence/a5-2-mobile-edge-connected.png",
+        "sha256": "5e38e0c30008145c33f0ffc0d271ee9a5885eda917db82d7858adc5e919ce8cc"
+      },
+      {
+        "path": "docs/evidence/a5-2-mobile-edge-trace.zip",
+        "sha256": "f147dcb17eb7d42e54328609b1048e0d3fc49d1ed054cb4faeab884208bf1173"
+      },
+      {
+        "path": "docs/evidence/a5-2-mobile-layout.json",
+        "sha256": "02532869ed46b32e5964f0b3abfb5d99fe115f988f1a7de2f068239cda24fd13"
+      },
+      {
+        "path": "docs/evidence/a5-2-mobile-mobile-fit.png",
+        "sha256": "df5be1da74240a5495dcb9bd82def9aeea509f916821b017b526fb2434befe69"
+      },
+      {
+        "path": "docs/evidence/a5-2-mobile-mobile-focused.png",
+        "sha256": "9f0258efdcb5c4d177ba3151ac761c4817ef7a6cf24c1e328f1ed121e6b6fbb2"
+      },
+      {
+        "path": "docs/evidence/a5-2-mobile-mobile-full-height.png",
+        "sha256": "5c9d958a5bec23b321f61a391c41dcc423b480a4182f5aba376ea4d7c86af9eb"
+      },
+      {
+        "path": "docs/evidence/a5-2-mobile-square-fit.png",
+        "sha256": "5f04d435c049b020123a2d7e3ee4d806e701862de5bf2d9668656067d73ecfcf"
+      },
+      {
+        "path": "docs/evidence/a5-2-mobile-square-focused.png",
+        "sha256": "e3ab68257322554965a74bec05a3badcf7bff0d71d7789910708f12cf8616a40"
+      },
+      {
+        "path": "docs/evidence/a5-2-mobile-square-full-height.png",
+        "sha256": "64a3ace2e89ed6f3e23f583ac6e2a7689e91a141cea38f7f9bfbe302d095f4b9"
+      },
+      {
+        "path": "docs/evidence/a5-2-mobile-ultrawide-fit.png",
+        "sha256": "9a2dbbe4f0bc91ef20231cb7f9838e28eb487a9d70101e79dd86f0a2fa7348e3"
+      },
+      {
+        "path": "docs/evidence/a5-2-mobile-ultrawide-focused.png",
+        "sha256": "0f27eba8032d13f10b91805e7c8a0eca6c0f6e089e2d910e190b233b87d0ab66"
+      },
+      {
+        "path": "docs/evidence/a5-2-mobile-ultrawide-full-height.png",
+        "sha256": "ccf18996ebac65be01bb912718b8e11b3483fdeb4d6a0623a6d1a5aacb6b541a"
+      },
+      {
+        "path": "docs/evidence/a5-2-verification.json",
+        "sha256": "21991a66bc3af79de87b69b40c5450d7340514de51f2900e2392037583518fa5"
+      },
+      {
+        "path": "docs/evidence/a5-desktop-bounded-fill.png",
+        "sha256": "e415a7e8281667ca5220315dd0026c7e299c823a11895fa1caf2600a3ed9d65a"
+      },
+      {
+        "path": "docs/evidence/a5-desktop-recentered.png",
+        "sha256": "89e91f57f05331a33bc4d98860ddb24428e9856305eaedf2e00e37bc454a58ea"
+      },
+      {
+        "path": "docs/evidence/a5-desktop-seam.png",
+        "sha256": "5137c1ac4b3f7fd0f7ea5ee7230e8810bc79c4d9c557218035c05a1499cbb7c0"
+      },
+      {
+        "path": "docs/evidence/a5-desktop-zoomed-rendering.png",
+        "sha256": "78b0ee5adfc11f4e6db17448f6ae9ebc805ca39dd968866a37c12e20e6899ed1"
+      },
+      {
+        "path": "docs/evidence/a5-mobile-bounded-fill.png",
+        "sha256": "3b70befb44156e7bfb614514809b021e0f6ea2dd74f0f0d19ad70f7d7b6fb1ef"
+      },
+      {
+        "path": "docs/evidence/a5-mobile-recentered.png",
+        "sha256": "f7ca61b1b31f30994fdb91f32cfc3d975ab459eff7636848e872f31d25f7f2eb"
+      },
+      {
+        "path": "docs/evidence/a5-mobile-seam.png",
+        "sha256": "4aefacac5f0af4be4143d73af63620e319c62eacc625c88d50687ff36512cbb4"
+      },
+      {
+        "path": "docs/evidence/a5-mobile-zoomed-rendering.png",
+        "sha256": "074b0e94b73ccfd8d5323fff6af5eb48c44eae094485d46b11919e502eae4fae"
+      },
+      {
+        "path": "docs/evidence/a5-rendering-performance.json",
+        "sha256": "b173f392a3fcce1de89f6dc823c6f5440c9edaf6a8b0fee1a4e0b47d00bbacb6"
+      },
+      {
+        "path": "docs/evidence/a6-a-numerical-receipt.json",
+        "sha256": "1a692ea553bbefe8856444458f28ace09ed66ab53d2c9279d73e0a59260a0b58"
+      },
+      {
+        "path": "docs/evidence/a6-b-sculpting-receipt.json",
+        "sha256": "e93fe85799e35aa0151862770ccac552efa9cdea6ff1fbd21ab6997eab502c04"
+      },
+      {
+        "path": "docs/evidence/a6-c-sculpting-receipt.json",
+        "sha256": "b2c409853783dff12a10393039d6ba54e8f7c64f7310e3bf75e3743a196e89e8"
+      },
+      {
+        "path": "docs/evidence/a6-c-verification.json",
+        "sha256": "f45d1d480747b0b700ae7f7711aac7012f57cd96d6f9d058074a3af629956f41"
+      },
+      {
+        "path": "docs/evidence/a6-d1-desktop-globe-nx.png",
+        "sha256": "dc7bdbbc9745ec5977c708f8f1ad200f889733d08ea2a2e826c8f1193e0a2406"
+      },
+      {
+        "path": "docs/evidence/a6-d1-desktop-globe-px.png",
+        "sha256": "04d514b6eca5cd5a49c84101a40482a670a36a60067acf7e816d3e82f42c4725"
+      },
+      {
+        "path": "docs/evidence/a6-d1-desktop-globe-pz.png",
+        "sha256": "1b1d5ee585f831222746c1a7376b15ccb567f6751545fbc1e36a73f8466734b8"
+      },
+      {
+        "path": "docs/evidence/a6-d1-desktop-n128-performance.json",
+        "sha256": "795e7084ed1f8c9686e210b8f9acd579f7be3b9d578569735a891461612ada84"
+      },
+      {
+        "path": "docs/evidence/a6-d1-desktop-n256-performance.json",
+        "sha256": "14cb1075dc37bb64617dbfc440424103852f1811cc7562ffe87dd79d07193823"
+      },
+      {
+        "path": "docs/evidence/a6-d1-desktop-net.png",
+        "sha256": "0760ea479e62609d69c975c764a3715049248e7e4fe391b17de102fa6125646e"
+      },
+      {
+        "path": "docs/evidence/a6-d1-desktop-product-preparation.json",
+        "sha256": "df07abf1ebbec34b3cc8b2d8bf9f14feb7961858a78396aa39e5650272080f05"
+      },
+      {
+        "path": "docs/evidence/a6-d1-mobile-globe-nx.png",
+        "sha256": "6e7e678a05b756848889b1f39f491ab09e8275af20f00bf47064b535c13926de"
+      },
+      {
+        "path": "docs/evidence/a6-d1-mobile-globe-px.png",
+        "sha256": "7a4a1a09d1c0337076063699c9df31d8fd6ded2f55db8d1b0aadbb199e0b0fca"
+      },
+      {
+        "path": "docs/evidence/a6-d1-mobile-globe-pz.png",
+        "sha256": "004df2f283467a8716beda99fbbba446f62fa716e609da9405b344cf54d2a2ad"
+      },
+      {
+        "path": "docs/evidence/a6-d1-mobile-n128-performance.json",
+        "sha256": "f69dbef8d30571b216a8af094f7540dd35bc98628a37a715988e8f54e4827b4b"
+      },
+      {
+        "path": "docs/evidence/a6-d1-mobile-n256-performance.json",
+        "sha256": "1b04d2531371dbefca525183a3884dcb702d4eac685bbb273c580917300ecd9c"
+      },
+      {
+        "path": "docs/evidence/a6-d1-mobile-net.png",
+        "sha256": "30a02ff8207c748dc6f4541613c6d129b6cf055fc03f279a96e492c749e88ee2"
+      },
+      {
+        "path": "docs/evidence/a6-d1-mobile-product-preparation.json",
+        "sha256": "5dfdd325d20fbec3e560e9b5e1656aba8bf64956cbd3244c3dd62d67c38eb8f4"
+      },
+      {
+        "path": "docs/evidence/a6-d1-verification.json",
+        "sha256": "485be53d73deb643f460dedc4e67da8147129ff597c8f721b8cc526cf04d0f29"
+      },
+      {
+        "path": "docs/evidence/a6-d2-browser-results.json",
+        "sha256": "370655b37dbb08b9a32c05c38896a5f84411dd90eaf5f84b74f3fe0cfc055f87"
+      },
+      {
+        "path": "docs/evidence/a6-d2-desktop-blank.png",
+        "sha256": "5c764472db16cf8cf741184e82bcf315b9673c4101642baee5c0f08ca5a70378"
+      },
+      {
+        "path": "docs/evidence/a6-d2-desktop-continent.png",
+        "sha256": "96f60f320384600236c417760e4b3711fb9f2c69b7f9fb3a0174d06370753182"
+      },
+      {
+        "path": "docs/evidence/a6-d2-desktop-editing-trace.zip",
+        "sha256": "e8368dd88bb619267f8c21b09dbfb354a66122a4fef64ec42ab1bd00eb43db71"
+      },
+      {
+        "path": "docs/evidence/a6-d2-desktop-n128-performance.json",
+        "sha256": "ed965e55022d38dba2ea0d8123d8446d3001605b2cb09209d02d8524bb5bbc56"
+      },
+      {
+        "path": "docs/evidence/a6-d2-desktop-n256-performance.json",
+        "sha256": "3d9437d0ce1ca358aa634b27b33e2c88c335822dbd34561682757d857df7ab86"
+      },
+      {
+        "path": "docs/evidence/a6-d2-desktop-net-edge-trace.zip",
+        "sha256": "105aeb7f2a1aff48575b96d817795da547593cbb0204a65f059592ade3ea342c"
+      },
+      {
+        "path": "docs/evidence/a6-d2-desktop-net.png",
+        "sha256": "a39d5e4c952ab4c765cb962b97b77a136eda09d3822228cb48a20e1e4c9ae7e8"
+      },
+      {
+        "path": "docs/evidence/a6-d2-desktop-rotated.png",
+        "sha256": "0ed397745b535d19a943b75131469143291435c43d3a3933b7178d88d26a2356"
+      },
+      {
+        "path": "docs/evidence/a6-d2-mobile-blank.png",
+        "sha256": "1791dab0cf7601a6b0ae42049281446a9a50b5ff0af0e4d2b9d6d07c74ee6a20"
+      },
+      {
+        "path": "docs/evidence/a6-d2-mobile-continent.png",
+        "sha256": "bc5a79bb25374e1010d7f35c8c7f5d281c8adc9fafc041138193347275d1a468"
+      },
+      {
+        "path": "docs/evidence/a6-d2-mobile-editing-trace.zip",
+        "sha256": "8b0ef9cb2a4c61070c019be71bed69e017d469a244f6ebbad762c153cf309c52"
+      },
+      {
+        "path": "docs/evidence/a6-d2-mobile-n128-performance.json",
+        "sha256": "e781b1782b506db3df0eb5b0553dc07a86e3e44d8ddcb04218f457bc98d0ad04"
+      },
+      {
+        "path": "docs/evidence/a6-d2-mobile-n256-performance.json",
+        "sha256": "e8ff02950a99ece6bbd2f1609d6413d61fc62da5c78db03cf4def62509dad39e"
+      },
+      {
+        "path": "docs/evidence/a6-d2-mobile-net-edge-trace.zip",
+        "sha256": "0bf3f475f1519d9bf9e9357355c38a80322d443312a002e4f081e033418f8fa1"
+      },
+      {
+        "path": "docs/evidence/a6-d2-mobile-net.png",
+        "sha256": "605bbdde3546b70971bdd48480386503a7719eaa6cf6c092b0a3d902cdaf4c1f"
+      },
+      {
+        "path": "docs/evidence/a6-d2-mobile-rotated.png",
+        "sha256": "4ccfd0d5d525a8c535bc49bf13d7c077a812b6cb9c831eef85fa36676f77faef"
+      },
+      {
+        "path": "docs/evidence/a6-d2-numerical-performance.json",
+        "sha256": "9f8a0221c06bb8da3624fb525002bfb917e5b783da9c19ead4c4056d4ee182ac"
+      },
+      {
+        "path": "docs/evidence/a6-d2-verification.json",
+        "sha256": "fd225c5d6c89c408955e07e718b512d09a1583a1350d3f6d69a7787d1e8d9ffc"
+      },
+      {
+        "path": "docs/evidence/a6-e-browser-results.json",
+        "sha256": "96542f57c478e371008c1974352b4e1f2468eb27276a8f3f79de7cafc7d61872"
+      },
+      {
+        "path": "docs/evidence/a6-e-desktop-blank-saved.png",
+        "sha256": "3de8978422948721c6bc8db1da1a68fdf7382a8ca0d0648cb89b13d23f5fb485"
+      },
+      {
+        "path": "docs/evidence/a6-e-desktop-continent-saved.png",
+        "sha256": "faea72a35ef093a8a97199bf304a46fc45cfc97ae027bbad33fb7e433cfde5bf"
+      },
+      {
+        "path": "docs/evidence/a6-e-desktop-continued-editing.png",
+        "sha256": "e5b5dccac1ab2688dcde14b2b428da863ed92420db1cfea06b145570077d8adc"
+      },
+      {
+        "path": "docs/evidence/a6-e-desktop-n128-persistence.json",
+        "sha256": "b695f56ededcf9d7cfd6d7e3db2008c27264331d8e16056d8a0467d42f149f17"
+      },
+      {
+        "path": "docs/evidence/a6-e-desktop-n256-persistence.json",
+        "sha256": "4fe7f7a53fd269b885c12c55657d8b29f17332f675df6f7464a3ca27c3d1d0ff"
+      },
+      {
+        "path": "docs/evidence/a6-e-desktop-recovery-trace.zip",
+        "sha256": "adbe8715d87286a4cc4449741ecce0c3662335196ca6ba92b5129bf329c560d6"
+      },
+      {
+        "path": "docs/evidence/a6-e-desktop-reopened-net.png",
+        "sha256": "06031555804fd83cb97b6d04a28823d313acf4504143cbc33784189f9f6f26cb"
+      },
+      {
+        "path": "docs/evidence/a6-e-desktop-save-open-trace.zip",
+        "sha256": "7847756369a56486d6ff4ebd8d2ffb32a8d1c2730a3d1cf5c36090d8aaa49e5a"
+      },
+      {
+        "path": "docs/evidence/a6-e-mobile-blank-saved.png",
+        "sha256": "206c4cb69088c49b10913266309fc954f1f6141db90b47648c9d0a6475cdebcf"
+      },
+      {
+        "path": "docs/evidence/a6-e-mobile-continent-saved.png",
+        "sha256": "49639e4ba6d89e7b998674cc6078f9531b10c2729b934fa278d426048de517e3"
+      },
+      {
+        "path": "docs/evidence/a6-e-mobile-continued-editing.png",
+        "sha256": "f663d6ee6dcb1bd1b9049459f002df6cb21ad37305de75fdf057cde4753a0598"
+      },
+      {
+        "path": "docs/evidence/a6-e-mobile-n128-persistence.json",
+        "sha256": "5559fad0db024662e24402e3976cc9da91644bfa1d7d21acc7a32a16fa53279e"
+      },
+      {
+        "path": "docs/evidence/a6-e-mobile-n256-persistence.json",
+        "sha256": "2a4854bfec1a5884295bfe18bcb4952c3e0d639028d5bf1dc264546f0b54269b"
+      },
+      {
+        "path": "docs/evidence/a6-e-mobile-recovery-trace.zip",
+        "sha256": "94058476f23844ddbcf77a8ef21139b70b723f54b3be5bb574a831bfaa002519"
+      },
+      {
+        "path": "docs/evidence/a6-e-mobile-reopened-net.png",
+        "sha256": "941f4fdb17e565485af4e4a59f0a2efdb10a3b6f2ee2ad399cd2c46c86bd6903"
+      },
+      {
+        "path": "docs/evidence/a6-e-mobile-save-open-trace.zip",
+        "sha256": "be77885f42960baa8a5dd2ac1db2874ced467161c72e0b4582a14b797072064a"
+      },
+      {
+        "path": "docs/evidence/a6-e-verification.json",
+        "sha256": "1c3b0455fe5501155196902b419fe1d26b47fe760d939c111d6887d47fb6c04b"
+      },
+      {
+        "path": "docs/evidence/atlas-desktop.png",
+        "sha256": "5b41778acefbf1782e2fe87415188fb552b8c6bc7b95c3ddf72735b398d08697"
+      },
+      {
+        "path": "docs/evidence/atlas-mobile.png",
+        "sha256": "7cd6b5d242561e767e60c9974b1c4678bf1ebfb6b1bcc238e220af1716725c16"
+      }
+    ]
+  },
+  "performance": {
+    "desktop-N128": {
+      "n": 128,
+      "stages": {
+        "encodeMs": 4.200000002980232,
+        "validateAndAtomicWriteMs": 7.299999997019768,
+        "indexedDbReadMs": 1.2999999970197678,
+        "validateAndDecodeMs": 9.900000005960464,
+        "textureRestorationMs": 52.599999994039536
+      },
+      "ticks": 3,
+      "maxAnimationFrameGapMs": 11.900000005960464,
+      "maxTextureTaskMs": 8,
+      "authorityBytes": 393224,
+      "cacheBytes": 1984560,
+      "conservativeCodecTypedPayloadBytes": 1572896,
+      "exact": true,
+      "metadataExact": true,
+      "databaseVersion": 1,
+      "cycles": [
+        {
+          "n": 128,
+          "stages": {
+            "encodeMs": 4.200000002980232,
+            "validateAndAtomicWriteMs": 7.299999997019768,
+            "indexedDbReadMs": 1.2999999970197678,
+            "validateAndDecodeMs": 9.900000005960464,
+            "textureRestorationMs": 52.599999994039536
+          },
+          "ticks": 1,
+          "maxAnimationFrameGapMs": 11.900000005960464,
+          "maxTextureTaskMs": 8,
+          "authorityBytes": 393224,
+          "cacheBytes": 1984560,
+          "conservativeCodecTypedPayloadBytes": 1572896,
+          "exact": true,
+          "metadataExact": true,
+          "databaseVersion": 1
+        },
+        {
+          "n": 128,
+          "stages": {
+            "encodeMs": 1.2999999970197678,
+            "validateAndAtomicWriteMs": 3.8999999910593033,
+            "indexedDbReadMs": 0.800000011920929,
+            "validateAndDecodeMs": 6.299999997019768,
+            "textureRestorationMs": 42.5
+          },
+          "ticks": 1,
+          "maxAnimationFrameGapMs": 2.199999988079071,
+          "maxTextureTaskMs": 8.099999994039536,
+          "authorityBytes": 393224,
+          "cacheBytes": 1984560,
+          "conservativeCodecTypedPayloadBytes": 1572896,
+          "exact": true,
+          "metadataExact": true,
+          "databaseVersion": 1
+        },
+        {
+          "n": 128,
+          "stages": {
+            "encodeMs": 1.7000000029802322,
+            "validateAndAtomicWriteMs": 4.299999997019768,
+            "indexedDbReadMs": 0.7000000029802322,
+            "validateAndDecodeMs": 6.299999997019768,
+            "textureRestorationMs": 38.70000000298023
+          },
+          "ticks": 1,
+          "maxAnimationFrameGapMs": 3.0999999940395355,
+          "maxTextureTaskMs": 7.899999991059303,
+          "authorityBytes": 393224,
+          "cacheBytes": 1984560,
+          "conservativeCodecTypedPayloadBytes": 1572896,
+          "exact": true,
+          "metadataExact": true,
+          "databaseVersion": 1
+        }
+      ],
+      "actualAppTexturePreparationMs": 52.20000000298023,
+      "actualAppMaxPreparationTaskMs": 8.299999997019768,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "cpuThrottle": 1,
+      "method": "Real IndexedDB version-1 database, v3 checksummed payload, cooperative validation/restore/cache, then actual App Open/Save. Timings include cooperative waits. Typed payload accounting excludes JS/GC/Canvas/browser overhead and is not process RSS. Pixel 7 is emulation, not physical hardware."
+    },
+    "desktop-N256": {
+      "n": 256,
+      "stages": {
+        "encodeMs": 6.5999999940395355,
+        "validateAndAtomicWriteMs": 15.900000005960464,
+        "indexedDbReadMs": 3.6000000089406967,
+        "validateAndDecodeMs": 19.200000002980232,
+        "textureRestorationMs": 154.5
+      },
+      "ticks": 10,
+      "maxAnimationFrameGapMs": 107.90000000596046,
+      "maxTextureTaskMs": 8.5,
+      "authorityBytes": 1572872,
+      "cacheBytes": 7901232,
+      "conservativeCodecTypedPayloadBytes": 6291488,
+      "exact": true,
+      "metadataExact": true,
+      "databaseVersion": 1,
+      "cycles": [
+        {
+          "n": 256,
+          "stages": {
+            "encodeMs": 6.5999999940395355,
+            "validateAndAtomicWriteMs": 15.900000005960464,
+            "indexedDbReadMs": 3.6000000089406967,
+            "validateAndDecodeMs": 19.200000002980232,
+            "textureRestorationMs": 154.5
+          },
+          "ticks": 3,
+          "maxAnimationFrameGapMs": 107.90000000596046,
+          "maxTextureTaskMs": 8.5,
+          "authorityBytes": 1572872,
+          "cacheBytes": 7901232,
+          "conservativeCodecTypedPayloadBytes": 6291488,
+          "exact": true,
+          "metadataExact": true,
+          "databaseVersion": 1
+        },
+        {
+          "n": 256,
+          "stages": {
+            "encodeMs": 5,
+            "validateAndAtomicWriteMs": 16.400000005960464,
+            "indexedDbReadMs": 3.7000000029802322,
+            "validateAndDecodeMs": 21.599999994039536,
+            "textureRestorationMs": 153.90000000596046
+          },
+          "ticks": 3,
+          "maxAnimationFrameGapMs": 106.09999999403954,
+          "maxTextureTaskMs": 8.5,
+          "authorityBytes": 1572872,
+          "cacheBytes": 7901232,
+          "conservativeCodecTypedPayloadBytes": 6291488,
+          "exact": true,
+          "metadataExact": true,
+          "databaseVersion": 1
+        },
+        {
+          "n": 256,
+          "stages": {
+            "encodeMs": 4.5,
+            "validateAndAtomicWriteMs": 15.399999991059303,
+            "indexedDbReadMs": 2.4000000059604645,
+            "validateAndDecodeMs": 25.599999994039536,
+            "textureRestorationMs": 148.20000000298023
+          },
+          "ticks": 4,
+          "maxAnimationFrameGapMs": 101.5,
+          "maxTextureTaskMs": 8.200000002980232,
+          "authorityBytes": 1572872,
+          "cacheBytes": 7901232,
+          "conservativeCodecTypedPayloadBytes": 6291488,
+          "exact": true,
+          "metadataExact": true,
+          "databaseVersion": 1
+        }
+      ],
+      "actualAppTexturePreparationMs": 204.59999999403954,
+      "actualAppMaxPreparationTaskMs": 13.099999994039536,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "cpuThrottle": 1,
+      "method": "Real IndexedDB version-1 database, v3 checksummed payload, cooperative validation/restore/cache, then actual App Open/Save. Timings include cooperative waits. Typed payload accounting excludes JS/GC/Canvas/browser overhead and is not process RSS. Pixel 7 is emulation, not physical hardware."
+    },
+    "mobile-N128": {
+      "n": 128,
+      "stages": {
+        "encodeMs": 14.900000005960464,
+        "validateAndAtomicWriteMs": 22.299999997019768,
+        "indexedDbReadMs": 3.7000000029802322,
+        "validateAndDecodeMs": 25.5,
+        "textureRestorationMs": 227.3999999910593
+      },
+      "ticks": 11,
+      "maxAnimationFrameGapMs": 108.79999999701977,
+      "maxTextureTaskMs": 9.5,
+      "authorityBytes": 393224,
+      "cacheBytes": 1984560,
+      "conservativeCodecTypedPayloadBytes": 1572896,
+      "exact": true,
+      "metadataExact": true,
+      "databaseVersion": 1,
+      "cycles": [
+        {
+          "n": 128,
+          "stages": {
+            "encodeMs": 14.900000005960464,
+            "validateAndAtomicWriteMs": 22.299999997019768,
+            "indexedDbReadMs": 3.7000000029802322,
+            "validateAndDecodeMs": 25.5,
+            "textureRestorationMs": 227.3999999910593
+          },
+          "ticks": 4,
+          "maxAnimationFrameGapMs": 104,
+          "maxTextureTaskMs": 9.5,
+          "authorityBytes": 393224,
+          "cacheBytes": 1984560,
+          "conservativeCodecTypedPayloadBytes": 1572896,
+          "exact": true,
+          "metadataExact": true,
+          "databaseVersion": 1
+        },
+        {
+          "n": 128,
+          "stages": {
+            "encodeMs": 5.4000000059604645,
+            "validateAndAtomicWriteMs": 10.599999994039536,
+            "indexedDbReadMs": 2.4000000059604645,
+            "validateAndDecodeMs": 24.700000002980232,
+            "textureRestorationMs": 203.8999999910593
+          },
+          "ticks": 4,
+          "maxAnimationFrameGapMs": 108.20000000298023,
+          "maxTextureTaskMs": 10.299999997019768,
+          "authorityBytes": 393224,
+          "cacheBytes": 1984560,
+          "conservativeCodecTypedPayloadBytes": 1572896,
+          "exact": true,
+          "metadataExact": true,
+          "databaseVersion": 1
+        },
+        {
+          "n": 128,
+          "stages": {
+            "encodeMs": 5.799999997019768,
+            "validateAndAtomicWriteMs": 13.400000005960464,
+            "indexedDbReadMs": 2.6000000089406967,
+            "validateAndDecodeMs": 27.399999991059303,
+            "textureRestorationMs": 183.5
+          },
+          "ticks": 3,
+          "maxAnimationFrameGapMs": 108.79999999701977,
+          "maxTextureTaskMs": 9.199999988079071,
+          "authorityBytes": 393224,
+          "cacheBytes": 1984560,
+          "conservativeCodecTypedPayloadBytes": 1572896,
+          "exact": true,
+          "metadataExact": true,
+          "databaseVersion": 1
+        }
+      ],
+      "actualAppTexturePreparationMs": 191.29999999701977,
+      "actualAppMaxPreparationTaskMs": 9.299999997019768,
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "cpuThrottle": 4,
+      "method": "Real IndexedDB version-1 database, v3 checksummed payload, cooperative validation/restore/cache, then actual App Open/Save. Timings include cooperative waits. Typed payload accounting excludes JS/GC/Canvas/browser overhead and is not process RSS. Pixel 7 is emulation, not physical hardware."
+    },
+    "mobile-N256": {
+      "n": 256,
+      "stages": {
+        "encodeMs": 25.599999994039536,
+        "validateAndAtomicWriteMs": 35.099999994039536,
+        "indexedDbReadMs": 6.399999991059303,
+        "validateAndDecodeMs": 63.70000000298023,
+        "textureRestorationMs": 733.4000000059605
+      },
+      "ticks": 35,
+      "maxAnimationFrameGapMs": 108.70000000298023,
+      "maxTextureTaskMs": 12.400000005960464,
+      "authorityBytes": 1572872,
+      "cacheBytes": 7901232,
+      "conservativeCodecTypedPayloadBytes": 6291488,
+      "exact": true,
+      "metadataExact": true,
+      "databaseVersion": 1,
+      "cycles": [
+        {
+          "n": 256,
+          "stages": {
+            "encodeMs": 25.599999994039536,
+            "validateAndAtomicWriteMs": 35.099999994039536,
+            "indexedDbReadMs": 6.399999991059303,
+            "validateAndDecodeMs": 63.70000000298023,
+            "textureRestorationMs": 733.4000000059605
+          },
+          "ticks": 11,
+          "maxAnimationFrameGapMs": 108.70000000298023,
+          "maxTextureTaskMs": 12.400000005960464,
+          "authorityBytes": 1572872,
+          "cacheBytes": 7901232,
+          "conservativeCodecTypedPayloadBytes": 6291488,
+          "exact": true,
+          "metadataExact": true,
+          "databaseVersion": 1
+        },
+        {
+          "n": 256,
+          "stages": {
+            "encodeMs": 21,
+            "validateAndAtomicWriteMs": 41.70000000298023,
+            "indexedDbReadMs": 9,
+            "validateAndDecodeMs": 74.79999999701977,
+            "textureRestorationMs": 654.6000000089407
+          },
+          "ticks": 12,
+          "maxAnimationFrameGapMs": 106.3999999910593,
+          "maxTextureTaskMs": 9.900000005960464,
+          "authorityBytes": 1572872,
+          "cacheBytes": 7901232,
+          "conservativeCodecTypedPayloadBytes": 6291488,
+          "exact": true,
+          "metadataExact": true,
+          "databaseVersion": 1
+        },
+        {
+          "n": 256,
+          "stages": {
+            "encodeMs": 18.799999997019768,
+            "validateAndAtomicWriteMs": 35.1000000089407,
+            "indexedDbReadMs": 6.0999999940395355,
+            "validateAndDecodeMs": 72.5,
+            "textureRestorationMs": 768.7000000029802
+          },
+          "ticks": 12,
+          "maxAnimationFrameGapMs": 108.20000000298023,
+          "maxTextureTaskMs": 15.599999994039536,
+          "authorityBytes": 1572872,
+          "cacheBytes": 7901232,
+          "conservativeCodecTypedPayloadBytes": 6291488,
+          "exact": true,
+          "metadataExact": true,
+          "databaseVersion": 1
+        }
+      ],
+      "actualAppTexturePreparationMs": 911.7999999970198,
+      "actualAppMaxPreparationTaskMs": 19.100000008940697,
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "cpuThrottle": 4,
+      "method": "Real IndexedDB version-1 database, v3 checksummed payload, cooperative validation/restore/cache, then actual App Open/Save. Timings include cooperative waits. Typed payload accounting excludes JS/GC/Canvas/browser overhead and is not process RSS. Pixel 7 is emulation, not physical hardware."
+    }
+  },
+  "traces": [
+    "docs/evidence/a6-f1-desktop-recovery-trace.zip",
+    "docs/evidence/a6-f1-mobile-recovery-trace.zip",
+    "docs/evidence/a6-f1-desktop-workflow-trace.zip",
+    "docs/evidence/a6-f1-mobile-workflow-trace.zip"
+  ],
+  "exactChangedFiles": [
+    {
+      "path": "README.md",
+      "sha256": "fbbf217e5afdb56092af65fb6a6ce589d4a62d705059db1cf3259de18e726d68",
+      "bytes": 16001,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/A6-F1-COMPLETION.md",
+      "sha256": "664f6d84be76b25ea4fbe52d86a96f9d4cce5411ff4fc90710d70cbdaba7b495",
+      "bytes": 11252,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "sha256": "e3e689f0fac02ed9730fc814030265d1b39b3b85120a4408abf42fbd7e0faea0",
+      "bytes": 29324,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/PHASE-1-HEIGHTMAP-ROADMAP.md",
+      "sha256": "22f8041a27e55f84f2567541a9727052883cd8568faf0ac801b74584d692ac8d",
+      "bytes": 25780,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/SPHERICAL-EDITING.md",
+      "sha256": "15a1eea9888a475032ff5389d5137227c8a3c3d379d9c106dff3248e389f6ad2",
+      "bytes": 12208,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/SPHERICAL-PERSISTENCE.md",
+      "sha256": "ce8f9ba8b6c6b9b46debb0895f3d530c367f868f7400d0042859e56b56d91e47",
+      "bytes": 12796,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/SPHERICAL-VIEWS.md",
+      "sha256": "f22412fb9705b50cf042c38c92ed2e8f33428ffddfd40b38a3cac5ad67cb5195",
+      "bytes": 12163,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/UNIFIED-WORKSPACE.md",
+      "sha256": "22dd07107aef65f8e245e89c5527b8014effea694f29f59e951f97d670e221c6",
+      "bytes": 6743,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/evidence/a6-f1-browser-results.json",
+      "sha256": "397e0a620c54eb830c7b976f5f12d9dac894cb6cacdba3db490dafba76ae9d69",
+      "bytes": 252025,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-1440x900.png",
+      "sha256": "b64e913bb4f18ad37012fc32a02bb429ac481078d62109913bf8cd5d58639a61",
+      "bytes": 32996,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-3440x1440.png",
+      "sha256": "bcfa2974ecaf059f0339099fbd873218801cda7b6a8d7150a7edcf89e3556bee",
+      "bytes": 57264,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-412x915.png",
+      "sha256": "9c0e6f3475bd36e63961da330db503bd13d19aadf60014de8d4bc4ae24b23fa6",
+      "bytes": 25410,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-900x900.png",
+      "sha256": "51cfb97520c5c8f534ba272299135555671991cbfa6584e90b4055d17c76bb0e",
+      "bytes": 27187,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-bounded-workspace.png",
+      "sha256": "926f6d72365b1a4f0b40a2ed58913b7a5d709b5a2e74c8202d856bdd51cbe5d1",
+      "bytes": 37056,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-mixed-library.png",
+      "sha256": "6217876581fbc3df40cb386ed1ebf005a400202fdeb8a125e7d11103d9137acb",
+      "bytes": 351820,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-n128-editing-regression.json",
+      "sha256": "5e4636cd62a7d2efff031d10ad99870b6c0413d946d44071b4a0c68c5222bddc",
+      "bytes": 33968,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-n128-persistence.json",
+      "sha256": "9483dc3b14f3f9ee1f79949566698ef649b3858bd2095cf0b5b7df06bd1621c1",
+      "bytes": 2803,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-n256-editing-regression.json",
+      "sha256": "742c7f312c600e76f38282c744167ba2acb38d5e629c04756b5f6d576bb85600",
+      "bytes": 38204,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-n256-persistence.json",
+      "sha256": "02512fba14b84096ac80d25c33907348c89a0d8491cb9d3ad760b9ac03a33c7c",
+      "bytes": 2755,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-recovery-trace.zip",
+      "sha256": "3118094eb355495e2d43bf1b296ed86d89a12dc2150b75f806857f3251bafb44",
+      "bytes": 1611031,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-sphere-net.png",
+      "sha256": "1e2a4f85cc67be187e3aa680b4e5f604f9ed5427891341f2c0abb369cae62cf6",
+      "bytes": 335221,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-sphere-workspace.png",
+      "sha256": "dd93f3e4d9290f56e8e884c34f035c4323c3c7e981d494ac7ed1206d80b6454a",
+      "bytes": 381360,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-viewports.json",
+      "sha256": "1ff0053379c8ace6c44295655d44fe42c9f78a0e096189d37c5d8fff2cc86291",
+      "bytes": 808,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-workflow-trace.zip",
+      "sha256": "bd1ec128b2e7eb891b312abfcfb4ae72f5645c11616e358acf6dc7fc8f60edde",
+      "bytes": 9400087,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-workflow.json",
+      "sha256": "edbe738476e75a8c7d749b03cfb33ffd60a2b0c70a8d74694f7478ed2b920c3e",
+      "bytes": 891,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-world-setup.png",
+      "sha256": "c747c0bda038ea4476180c3330eb840d3d09b0210b9f6cc90687280c172975f6",
+      "bytes": 65454,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-desktop-wrapped-workspace.png",
+      "sha256": "68ef81ea54f51e8c3f806dfd00444ebffc04917429b9b78f9ceb93094303e765",
+      "bytes": 36943,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-1440x900.png",
+      "sha256": "f103c843e1d94f3cbe3d1004f6d44d43826bc0a094ab52c26ba79ed5c2594ca2",
+      "bytes": 138726,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-3440x1440.png",
+      "sha256": "e6a239f73814b8852ba0d374b8cf96d43e5bae3fe47e07c44848fafd0995d7d7",
+      "bytes": 272843,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-412x915.png",
+      "sha256": "706400de489d3db74b238cc6818fc51ab78375191c13a6e1cfdebe8b7f25e8fa",
+      "bytes": 106106,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-900x900.png",
+      "sha256": "df28b41866e1cbee0d85aa73e723478ca0feb199608d20b515593a934cc37575",
+      "bytes": 116191,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-bounded-workspace.png",
+      "sha256": "b99a69395d374d6cc047a1bfea8fe5c36d4fc2ea47b7870c183b8d01652d7b4e",
+      "bytes": 100047,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-mixed-library.png",
+      "sha256": "5ca49d05fc288688a7774ec2d0d22e230619ca95129707b288f97980b1c0e555",
+      "bytes": 364456,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-n128-editing-regression.json",
+      "sha256": "cf5a96027b9f2ff5fe653e4f13978812c07fabf57e3889ef112d0067319e690a",
+      "bytes": 41327,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-n128-persistence.json",
+      "sha256": "11df650587a6f49c08ce490ff705080ee3bd239cc7c5131b20c6f293c87a500b",
+      "bytes": 2775,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-n256-editing-regression.json",
+      "sha256": "5ea145d41dda2323cc9e61339a7528a1ec46bb65a3d76c5025245f1063621417",
+      "bytes": 43411,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-n256-persistence.json",
+      "sha256": "114dd7bf7493c7ef07a7bf937306b9cc6b6698e322cded410f53a05a19291d4f",
+      "bytes": 2812,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-recovery-trace.zip",
+      "sha256": "2476512a920f31a2c58563d5c2f7bef3a4009dc989cce295e979b0699edb0dc4",
+      "bytes": 2927537,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-sphere-net.png",
+      "sha256": "de498336c7bfc32dc8c3769841caa148ff4da77329b470226c17fa0b619457ca",
+      "bytes": 721460,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-sphere-workspace.png",
+      "sha256": "d0e455b97261e6c8910adce208f59de427ef6b7b69a5f174a008ff16b7666b29",
+      "bytes": 668949,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-viewports.json",
+      "sha256": "1ff0053379c8ace6c44295655d44fe42c9f78a0e096189d37c5d8fff2cc86291",
+      "bytes": 808,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-workflow-trace.zip",
+      "sha256": "9d81053747bbf4a5c54400ca1418131590894b455d8335eb8f5a446460951fc0",
+      "bytes": 13301527,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-workflow.json",
+      "sha256": "50167a55cd27d318443e97bcaec2e37d4983386342a05de48beccebf041ad985",
+      "bytes": 890,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-world-setup.png",
+      "sha256": "337fca351e81735c83ffd355abb51f3d2d08713a73157fc665be17cc40b1ab65",
+      "bytes": 203207,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-mobile-wrapped-workspace.png",
+      "sha256": "7b55e562b4c3382dc515f586f24fcd8b76a6f547827dfb3b2838924309ecf98e",
+      "bytes": 114618,
+      "hashBasis": "raw binary"
+    },
+    {
+      "path": "docs/evidence/a6-f1-production-bundles.json",
+      "sha256": "8bec2a3938d04008e92968ea72c89d54c2fc816ff446e8f4a7defa36f35b7667",
+      "bytes": 656,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "bc4de3ad0718911b87caf1febdf617df961e7db205b739da01251030b6a19bab",
+      "bytes": 14889,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "src/components/BrushToolbar.tsx",
+      "sha256": "e041d0a07761e6454e84d0f6ad7a1d1a1864b4788b2bf34cc59ce58c6499a2f6",
+      "bytes": 4184,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "src/components/NewWorldDialog.tsx",
+      "sha256": "ef53e15bc44385b80e27325240df3e83d0a585de935ebc827db54194d786b842",
+      "bytes": 3483,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "src/components/SphericalPreview.module.css",
+      "sha256": "742b6f6efd717199c8e5103a1d9fa89472277a4f9be7eca748d89a802ea8060b",
+      "bytes": 4219,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "src/components/SphericalViewport.tsx",
+      "sha256": "571baef8b69b9cccb106a1134122751ae61676ace112b1f26672acfab2efd38c",
+      "bytes": 30076,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "src/components/WorkspaceChrome.tsx",
+      "sha256": "84eb26a8aa037cf5166f15ad9cf6307d596f2c039f3d5f655fa38705bd7b486f",
+      "bytes": 4214,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "src/editor/atlas-document.ts",
+      "sha256": "b91742f18304c521bab92774214f59342ca641e1a4b906eaffc0e13af43fdf5b",
+      "bytes": 2341,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "src/styles.css",
+      "sha256": "407146eb777e00075a98b8c3090f1118ed343cfe665230250723ef4b63c86dd6",
+      "bytes": 6297,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "tests/atlas.spec.ts",
+      "sha256": "b56e6a70efca9266082307dde27b47977a53c985ada6af5cc6a50573d306c2d5",
+      "bytes": 5504,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "tests/fixtures/legacy-app.tsx",
+      "sha256": "392bcefa01a05ca88f6cb543f8acf61316e49ef554601b04322a3e9712a75f12",
+      "bytes": 17401,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "tests/fixtures/legacy.html",
+      "sha256": "eb7ef6c97b5b38de6cc62d6a5f125f20eafd9c9675d99003ef68ca2657c7de41",
+      "bytes": 272,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "tests/fixtures/legacy.tsx",
+      "sha256": "3a0a67ebdfeb67e6048744307cfb34a2ecee80946b5900cd4c9842c70dc83dc2",
+      "bytes": 321,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "tests/fixtures/workspace-storage.ts",
+      "sha256": "20b95822fd7998372bcd76278c1ed5d50f108264f5b8e364d0aa6713a3b3065a",
+      "bytes": 717,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "tests/focused-view.spec.ts",
+      "sha256": "180d9f22ca3d37b0577a2b60356dc9f08a0bbb121f8c74e3f5aebba301b32975",
+      "bytes": 13928,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "tests/navigation-stabilization.spec.ts",
+      "sha256": "001f5692b6961cde1e5d175f9433e41ae8507c4c2ead5eff2a07ab96776113c2",
+      "bytes": 21763,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "tests/refinement.spec.ts",
+      "sha256": "3766c7f26c29cc7b39af603926c928d2a69e9e2249bbd53c0401a6ba3620aa25",
+      "bytes": 18188,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "tests/sculpting.spec.ts",
+      "sha256": "31dfe5fcefdd52520f0b46bd0bf6dbe44ad1967a2a69a5a1d5fb5c2cd2e52da2",
+      "bytes": 16485,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "tests/spherical-editing.spec.ts",
+      "sha256": "19745dee0cd57d9263b1dbadb1be617ac42bd2c77a38cc8a214de97994b507ad",
+      "bytes": 22476,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "tests/spherical-persistence.spec.ts",
+      "sha256": "ec5a9a79ccf3c01adf818fed651f4179b2fa97ea73f738c1eb3781e4a22b9ee1",
+      "bytes": 13316,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "tests/spherical-preview.spec.ts",
+      "sha256": "2c33b2d60de9ffbebe43fe07d7e4185a61591a2ae6c390ec206405cf869e2705",
+      "bytes": 15554,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "tests/surface-compatibility.spec.ts",
+      "sha256": "ad57bbafe7ebe98ca1287f70d4b3d2fd424690d1e97ee129b792a43775b2e17a",
+      "bytes": 5554,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "tests/unified-workspace.spec.ts",
+      "sha256": "3d9d21cdd1b4eb21fb00280c47114dcca815b76d3c37fef2db079cb7716ff6ad",
+      "bytes": 13691,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "tests/workspace-helpers.ts",
+      "sha256": "725a6137b545f1cee24d427af1a24c44f5e07970653ad55f5494613c93715235",
+      "bytes": 1990,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "tests/workspace.spec.ts",
+      "sha256": "981eb8e3052914a21393c1736680a55551e8e61da1c74e661adb603eb7732de3",
+      "bytes": 18401,
+      "hashBasis": "UTF-8 LF repository content"
+    },
+    {
+      "path": "tests/wrapping.spec.ts",
+      "sha256": "d0a1e7b0b207559a7bdd318cd2d4612da53a6250cdc177bd066e0eb48d7da411",
+      "bytes": 23929,
+      "hashBasis": "UTF-8 LF repository content"
+    }
+  ],
+  "boundaries": {
+    "oneActiveDocument": true,
+    "v1v2v3Changed": false,
+    "conversionImplemented": false,
+    "newGeometryImplemented": false,
+    "mainWebsiteTouched": false,
+    "deployment": false,
+    "d2RComplete": false,
+    "n256MobileHardeningComplete": false,
+    "ownerAcceptance": "pending",
+    "independentF1Review": "pending"
+  }
+}

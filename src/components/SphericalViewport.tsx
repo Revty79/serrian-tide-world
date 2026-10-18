@@ -1,6 +1,6 @@
 'use client';
 
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useImperativeHandle, useLayoutEffect, useRef, useState, type ReactNode, type Ref } from 'react';
 import { CUBE_FACES, FACE_BASES, FACE_EDGES, QUARTER_PI, type CubeFace, type Vec3 } from '../surfaces/cube-sphere.ts';
 import type { SphericalTerrain } from '../terrain/spherical.ts';
 import { attachSphericalNavigation } from '../interaction/spherical-navigation.ts';
@@ -16,13 +16,16 @@ import { INITIAL_SPHERICAL_VIEW, inspectSphere, netEdgeIsJoined, netFaceCoordina
 import styles from './SphericalPreview.module.css';
 import { SphericalStorageControls, type SphericalPersistenceUi } from './SphericalStorageControls.tsx';
 
-export interface SphericalViewportProps { readonly terrain: SphericalTerrain; readonly cache: SphericalDisplayCache; readonly onClose: () => void; readonly preparationMs?: number; readonly maxPreparationTaskMs?: number; readonly editor?: SphericalSession; readonly persistence?: SphericalPersistenceUi }
-export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, maxPreparationTaskMs = 0, editor, persistence }: SphericalViewportProps) {
+export interface SphericalViewportHandle { finishInteraction(): void; stop(): void; undo(): void; redo(): void }
+export interface SphericalWorkspaceView { tools: ReactNode; toolPicker: ReactNode; navigation: ReactNode; canUndo: boolean; canRedo: boolean; processing: boolean }
+export interface SphericalViewportProps { readonly terrain: SphericalTerrain; readonly cache: SphericalDisplayCache; readonly onClose: () => void; readonly preparationMs?: number; readonly maxPreparationTaskMs?: number; readonly editor?: SphericalSession; readonly persistence?: SphericalPersistenceUi; readonly workspace?: (view: SphericalWorkspaceView) => ReactNode; readonly handleRef?: Ref<SphericalViewportHandle> }
+export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, maxPreparationTaskMs = 0, editor, persistence, workspace, handleRef }: SphericalViewportProps) {
   const persistenceRef = useRef(persistence); persistenceRef.current = persistence;
   const canvasRef = useRef<HTMLCanvasElement>(null), rootRef = useRef<HTMLElement>(null), readoutRef = useRef<HTMLOutputElement>(null);
   const viewRef = useRef<SphericalView>(INITIAL_SPHERICAL_VIEW), selectedRef = useRef<Vec3 | null>(null);
   const previewRef = useRef<SVGPathElement>(null);
   const commands = useRef({ change(_fn: (view: SphericalView) => SphericalView) {}, inspect(_point: ScreenPoint, _select: boolean) {}, reset() {}, stop() {}, undo() {}, redo() {}, repaint() {}, prepareSave() {} });
+  useImperativeHandle(handleRef, () => ({ finishInteraction: () => commands.current.prepareSave(), stop: () => commands.current.stop(), undo: () => commands.current.undo(), redo: () => commands.current.redo() }), []);
   const [controls, setControls] = useState(() => defaultSphericalControls(terrain.metadata.geometry.radiusMeters));
   const controlsRef = useRef(controls); controlsRef.current = controls;
   const [editorState, setEditorState] = useState({ modified: false, canUndo: false, canRedo: false, busy: false });
@@ -171,6 +174,7 @@ export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, 
       prepareSave: () => { editingNavigation?.finish(); editor?.release(); schedule(); } };
     const observer = new ResizeObserver(() => { navigation.cancel(); schedule(); }); observer.observe(root);
     const key = (event: KeyboardEvent) => {
+      if (workspace) return; // The Atlas document host owns shared shortcuts and focus.
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 's') { event.preventDefault(); if (persistenceRef.current) { commands.current.prepareSave(); persistenceRef.current.save(); } else setError('Spherical preview is session-only. Saving is not available in this checkpoint.'); }
       if (editor && (event.ctrlKey || event.metaKey) && !isTextInput(event.target) && ['z', 'y'].includes(event.key.toLowerCase())) { event.preventDefault(); if (event.shiftKey || event.key.toLowerCase() === 'y') commands.current.redo(); else commands.current.undo(); }
       if (event.key === 'Escape') { navigation.cancel(); setPanel(false); if (panelRef.current?.contains(document.activeElement)) toggleRef.current?.focus(); }
@@ -178,7 +182,7 @@ export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, 
     window.addEventListener('keydown', key);
     const fullscreenChange = () => { setFullscreen(!!document.fullscreenElement); navigation.cancel(); schedule(); };
     document.addEventListener('fullscreenchange', fullscreenChange);
-    const beforeUnload = (event: BeforeUnloadEvent) => { if (editor) { stop(); if (editor.modified || editor.locked) { event.preventDefault(); event.returnValue = ''; } } };
+    const beforeUnload = (event: BeforeUnloadEvent) => { if (!workspace && editor) { stop(); if (editor.modified || editor.locked) { event.preventDefault(); event.returnValue = ''; } } };
     window.addEventListener('beforeunload', beforeUnload);
     schedule(); canvas.focus({ preventScroll: true });
     return () => { active = false; cancelAnimationFrame(frame); clearTimeout(refinementTimer); navigation.dispose(); observer.disconnect(); window.removeEventListener('keydown', key); window.removeEventListener('beforeunload', beforeUnload); document.removeEventListener('fullscreenchange', fullscreenChange); if (editor) { editor.changed = () => {}; editor.error = () => {}; } };
@@ -191,9 +195,14 @@ export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, 
   };
   const requestClose = () => { if (editor?.locked) return; commands.current.stop(); if (editor?.modified && !window.confirm(persistence ? 'Discard unsaved spherical changes? Save first to keep this sphere. Your planar map is preserved.' : 'Discard modified session-only spherical terrain? Spherical saving is not available yet. Your planar map is preserved.')) return; onClose(); };
   const saveSphere = () => { if (editor?.locked) return; commands.current.prepareSave(); persistence?.save(); };
-  return <section ref={rootRef} className={styles.workspace} aria-label="Spherical development preview">
-    <canvas ref={canvasRef} className={styles.canvas} tabIndex={0} role="img" aria-label="Spherical terrain preview" aria-describedby="sphere-help" data-samples={terrain.sampleCount} data-authority-bytes={terrain.elevationByteLength} data-cache-bytes={cache.byteLength} data-preparation-ms={preparationMs} data-preparation-max-task-ms={maxPreparationTaskMs} data-radius={terrain.metadata.geometry.radiusMeters} data-resolution={terrain.metadata.representation.cellsPerEdge} />
+  return <section ref={rootRef} className={`${styles.workspace} ${workspace ? styles.embedded : ''}`} aria-label={workspace ? 'Spherical surface view' : 'Spherical development preview'}>
+    <canvas ref={canvasRef} className={styles.canvas} tabIndex={0} role="img" aria-label={workspace ? 'Atlas spherical terrain map' : 'Spherical terrain preview'} aria-describedby="sphere-help" data-samples={terrain.sampleCount} data-authority-bytes={terrain.elevationByteLength} data-cache-bytes={cache.byteLength} data-preparation-ms={preparationMs} data-preparation-max-task-ms={maxPreparationTaskMs} data-radius={terrain.metadata.geometry.radiusMeters} data-resolution={terrain.metadata.representation.cellsPerEdge} />
     {editor && <svg className={styles.brushPreview} aria-hidden="true"><path ref={previewRef} fill="none" stroke="#fff0b0" strokeWidth="1.5" /></svg>}
+    {workspace ? workspace({ canUndo: editorState.canUndo, canRedo: editorState.canRedo, processing: editorState.busy,
+      toolPicker: (['navigate', 'raise', 'lower', 'smooth', 'flatten'] as const).map((tool) => <button key={tool} disabled={editor?.locked} aria-pressed={controls.tool === tool} onClick={() => { commands.current.stop(); setControls({ ...controls, tool }); }}>{tool === 'navigate' ? 'Rotate / Pan' : tool.charAt(0).toUpperCase() + tool.slice(1)}</button>),
+      tools: <><p id="sphere-help" className="hint">Reference radius: {terrain.metadata.geometry.radiusMeters.toLocaleString()} m · N={terrain.metadata.representation.cellsPerEdge}. Globe and Net edit the same spherical samples. Space + drag or two fingers to navigate. Arrow keys, +/−, Enter and Home work on the canvas.</p><SphericalBrushControls value={controls} radius={terrain.metadata.geometry.radiusMeters} onChange={(value) => { commands.current.stop(); setControls(value); }} /><p className="hint">Solid net lines join faces. Dashed amber cuts lead to adjoining geography. These charts describe a round sphere, not a physical cube.</p><div className={styles.faces}>{CUBE_FACES.map((face) => <button key={face} onClick={() => change((view) => ({ ...recenterSphere(view, FACE_BASES[face].normal), mode: 'globe' }))}>View {face}</button>)}</div></>,
+      navigation: <><button aria-pressed={mode === 'globe'} onClick={() => change((view) => ({ ...view, mode: 'globe' }))}>Globe</button><button aria-pressed={mode === 'net'} onClick={() => change((view) => ({ ...view, mode: 'net' }))}>Six-face net</button><button aria-label="Zoom Out" disabled={zoom <= 1} onClick={() => change((view) => zoomSphere(view, .8))}>−</button><output aria-label="Map zoom">{Math.round(zoom * 100)}%</output><button aria-label="Zoom In" disabled={zoom >= 4} onClick={() => change((view) => zoomSphere(view, 1.25))}>+</button><button onClick={() => commands.current.reset()}>Reset View</button><button disabled={!hasSelection} onClick={() => change((view) => ({ ...recenterSphere(view, selectedRef.current!), mode: 'globe' }))}>Center selection</button></>
+    }) : <>
     <header className={styles.header}><button disabled={persistence?.busy} onClick={requestClose}>Return to map</button><span>{editor ? 'Spherical editor' : 'Spherical preview'} <small>{persistence ? persistence.name : editor ? 'Blank sphere · session-only editing' : 'Session-only · viewing and inspection'}</small></span></header>
     <button ref={toggleRef} className={styles.toggle} aria-expanded={panel} aria-controls="sphere-controls" onClick={() => { commands.current.stop(); setPanel(!panel); }}>View controls</button>
     <aside ref={panelRef} id="sphere-controls" hidden={!panel} className={styles.panel} aria-label="Spherical view controls">
@@ -224,8 +233,9 @@ export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, 
       <button disabled={!hasSelection} onClick={() => change((view) => ({ ...recenterSphere(view, selectedRef.current!), mode: 'globe' }))}>Center selection</button>
       {fullscreenSupported && <button aria-label={fullscreen ? 'Exit Spherical Fullscreen' : 'Spherical Fullscreen'} onClick={() => void full()}>⛶</button>}
     </nav>
+    </>}
     <output ref={readoutRef} className={styles.readout} aria-label="Spherical elevation" aria-live="off">Tap/click terrain to select a physical location. Elevations are meters relative to sea level 0.</output>
-    <p className={styles.notice}>{persistence ? 'Browser-local sphere · Save explicitly · No autosave' : editor ? 'Session-only sphere · Save/Open follows in A6-E' : 'Development fixture · no sculpting or saving'}</p>
+    {!workspace && <p className={styles.notice}>{persistence ? 'Browser-local sphere · Save explicitly · No autosave' : editor ? 'Session-only sphere · Save/Open follows in A6-E' : 'Development fixture · no sculpting or saving'}</p>}
     {persistence?.error && <div className={styles.error} role="alert">{persistence.error}</div>}
     {error && <div className={styles.error} role="alert">{error}<button onClick={() => setError('')}>Dismiss preview message</button></div>}
   </section>;

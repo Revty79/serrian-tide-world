@@ -1,6 +1,9 @@
 # Interactive spherical editing — A6-D2
 
-A6-E now adds browser-local v3 Save/Open through the separate `SphericalEditor` host, specified in [SPHERICAL-PERSISTENCE.md](SPHERICAL-PERSISTENCE.md). D2's session-only statements below describe its original checkpoint/test host. The four tools, physical previews, net assistance and numerical algorithms remain intact. Current stopping point: E; the next pass is not authorized.
+Current hosting (A6-F1): the shared Atlas workspace owns one active planar/wrapped/spherical document, common creation, name, Save/Open, library, history, status and fullscreen. See [Unified workspace](UNIFIED-WORKSPACE.md). The separate launch/Return to map statements below describe historical checkpoints and retained test hosts. Numerical algorithms and v1/v2/v3 contracts are unchanged. Stop after F1 for review; globe-limb held-stroke navigation and N=256 mobile editing hardening remain outstanding.
+
+
+A6-E now adds browser-local v3 Save/Open through the separate `SphericalEditor` host, specified in [SPHERICAL-PERSISTENCE.md](SPHERICAL-PERSISTENCE.md). D2's session-only statements below describe its original checkpoint/test host. The four tools, physical previews, net assistance and numerical algorithms remain intact. The D2/E hosting statements below are historical.
 
 This extends the [D1 projection foundation](SPHERICAL-VIEWS.md) and [A6-B/C numerical tools](SPHERICAL-SCULPTING.md). The application offers a blank editable sphere separately from the preserved read-only demonstration. Radius must be explicitly supplied in meters; N=128/256 are development resolutions. Blank elevation is −100 m, sea level 0. Temporary UUIDs satisfy terrain identity contracts without creating World records.
 

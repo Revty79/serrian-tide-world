@@ -37,11 +37,24 @@ h2 { font-size: 15px; font-weight: 600; margin: 17px 0; }
 .navigation output { padding: 6px; background: #fafbf6ed; font-size: 11px; border-radius: 4px; }
 .navigation button { min-width: 44px; }
 .save-status { position: absolute; z-index: 15; top: max(66px, calc(env(safe-area-inset-top) + 60px)); right: 12px; margin: 0; padding: 5px 8px; border-radius: 4px; background: #fafbf6ed; font-size: 11px; pointer-events: none; }
-.storage-error { position: absolute; z-index: 50; top: 118px; right: 12px; max-width: min(360px, calc(100% - 24px)); border: 1px solid #ae6b43; border-radius: 5px; padding: 12px; background: #fff5e6; font-size: 13px; box-shadow: 0 3px 16px #17374733; }
+.storage-error { position: absolute; z-index: 50; bottom: 140px; right: 12px; max-width: min(360px, calc(100% - 24px)); border: 1px solid #ae6b43; border-radius: 5px; padding: 12px; background: #fff5e6; font-size: 13px; box-shadow: 0 3px 16px #17374733; }
 .storage-error p { margin: 0 0 10px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .quick-actions, .navigation, .save-status { z-index: 45; }
-.tool-panel { padding-bottom: 140px; }
+.tool-panel { padding-bottom: 140px; color: #243b42; }
+.save-status, .navigation output { color: #243b42; }
+.workspace-tools { position: absolute; z-index: 20; top: 104px; right: 12px; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px; max-width: calc(100% - 24px); }
+.panel-tool-picker { display: flex; gap: 4px; flex-wrap: wrap; margin-block: 16px; }
+.navigation-buttons { display: flex; gap: 4px; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
+.spherical-brush-controls { font-size: 12px; line-height: 1.6; }
+.spherical-brush-controls label { display: block; margin-block: 12px; }
+.spherical-brush-controls input:not([type="checkbox"]) { display: block; width: 100%; min-height: 44px; margin-top: 6px; padding: 8px; }
+.new-world-dialog { width: min(480px, calc(100% - 24px)); max-height: calc(100dvh - 24px); overflow-y: auto; color: #243b42; background: #f8f9f1; border: 1px solid #9aafa8; border-radius: 10px; padding: 24px; box-shadow: 0 12px 64px #061e3280; }
+.new-world-dialog::backdrop { background: #0a2334a8; }
+.new-world-dialog h1 { font-size: 30px; margin-top: 0; }
+.new-world-dialog p { font-size: 13px; line-height: 1.6; }
+.new-world-dialog label { display: block; margin: 16px 0 6px; font-size: 13px; font-weight: 600; }
+.new-world-dialog input, .new-world-dialog select { width: 100%; min-height: 44px; padding: 8px; }
 @media (max-width: 600px) {
   .surface-status { bottom: 164px; }
   .atlas-app[data-panel-open="true"] .navigation { flex-direction: column; width: 44px; }

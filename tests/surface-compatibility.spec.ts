@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { toolsPanel } from './workspace-helpers.ts';
+import { toolsPanel, startAtlas } from './workspace-helpers.ts';
 
 const fixture = JSON.parse(readFileSync(new URL('./fixtures/saves/a3-v1-heightmap.json', import.meta.url), 'utf8')) as {
   sourceCommit: string;
@@ -13,7 +13,7 @@ test('A4 opens an A3 v1 save in the actual planar editor, preserves it through v
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
-  await page.goto('/');
+  await startAtlas(page);
   await page.evaluate(async (data) => {
     const { LocalMapStore } = await import(new URL('/src/persistence/local-map-store.ts', location.origin).href) as typeof import('../src/persistence/local-map-store.ts');
     const { elevationsBase64, ...record } = data;
@@ -24,6 +24,8 @@ test('A4 opens an A3 v1 save in the actual planar editor, preserves it through v
   await toolsPanel(page, true);
   await page.getByRole('combobox', { name: 'Saved maps', exact: true }).selectOption(fixture.record.id);
   await page.getByRole('button', { name: 'Open Map', exact: true }).click();
+  await expect(page.getByLabel('Map work status', { exact: true })).toHaveText('Saved on this device', { timeout: 30000 });
+  await toolsPanel(page, true);
   await expect(page.getByRole('textbox', { name: 'Map name', exact: true })).toHaveValue(fixture.record.name);
   await expect(page.getByRole('button', { name: 'Undo', exact: true })).toBeDisabled();
   await expect(page.getByRole('combobox')).toHaveCount(1); // No unsupported shape selector added.

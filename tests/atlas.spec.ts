@@ -1,3 +1,4 @@
+import { startAtlas } from './workspace-helpers.ts';
 import { expect, test, type Page } from '@playwright/test';
 
 async function canvasState(page: Page) {
@@ -27,7 +28,7 @@ test('Atlas opens with an uninterrupted, responsive ocean and no browser errors'
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
-  await page.goto('/');
+  await startAtlas(page);
   await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click();
   await expect(page.getByRole('main', { name: 'Atlas workspace' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Open tools', exact: true })).toBeVisible();
@@ -45,7 +46,7 @@ test('Atlas opens with an uninterrupted, responsive ocean and no browser errors'
 });
 
 test('viewport resizing repaints the actual application canvas as the same ocean', async ({ page }) => {
-  await page.goto('/');
+  await startAtlas(page);
   await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click();
   await expect.poll(async () => (await canvasState(page)).uniform).toBe(true);
   const before = await canvasState(page);
@@ -62,7 +63,7 @@ test('viewport resizing repaints the actual application canvas as the same ocean
 });
 
 test('real canvas rendering honors sea level and synthetic land while preserving all terrain on resize', async ({ page }) => {
-  await page.goto('/');
+  await startAtlas(page);
   await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click();
   const result = await page.evaluate(async () => {
     const model = await import(new URL('/src/terrain/model.ts', location.origin).href) as typeof import('../src/terrain/model.ts');

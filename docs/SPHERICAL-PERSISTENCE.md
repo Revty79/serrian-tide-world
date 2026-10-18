@@ -1,5 +1,8 @@
 # Spherical persistence — A6-E / format v3
 
+Current hosting (A6-F1): the shared Atlas workspace owns one active planar/wrapped/spherical document, common creation, name, Save/Open, library, history, status and fullscreen. See [Unified workspace](UNIFIED-WORKSPACE.md). The separate launch/Return to map statements below describe historical checkpoints and retained test hosts. Numerical algorithms and v1/v2/v3 contracts are unchanged. Stop after F1 for review; globe-limb held-stroke navigation and N=256 mobile editing hardening remain outstanding.
+
+
 The approved input is `a9a6d64690427cfef04300da1fc87b576adf16c0` (A6-D2). This adds explicit browser-local Save/Open to its editable spherical workspace. The read-only synthetic demonstration remains separate. There is no server storage, authentication, original-site integration, autosave, external interchange or timeline storage.
 
 ## Record specification

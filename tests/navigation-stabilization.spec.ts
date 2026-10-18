@@ -1,6 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 import { writeFile } from 'node:fs/promises';
-import { toolsPanel } from './workspace-helpers.ts';
+import { toolsPanel, startAtlas, createWorld } from './workspace-helpers.ts';
 
 test.use({ trace: 'on' });
 const map = (page: Page) => page.getByRole('img', { name: 'Atlas terrain map' });
@@ -9,8 +9,8 @@ async function view(page: Page) {
 }
 async function painted(page: Page) { await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))); }
 async function app(page: Page, wrapped = true) {
-  await page.goto('/');
-  if (wrapped) { await toolsPanel(page, true); await page.getByRole('button', { name: 'New Wrapped Map', exact: true }).click(); await toolsPanel(page, false); }
+  await startAtlas(page);
+  if (wrapped) { await toolsPanel(page, true); await createWorld(page, 'wrapped'); await toolsPanel(page, false); }
   await expect.poll(async () => (await view(page)).width).toBeGreaterThan(0);
 }
 async function drag(page: Page, dx: number, dy = 0) {

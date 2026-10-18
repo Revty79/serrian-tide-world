@@ -1,4 +1,4 @@
-# Atlas integration architecture — A6-E spherical preservation
+# Atlas integration architecture — A6-F1 unified workspace
 
 ## Destination and ownership
 
@@ -16,17 +16,17 @@ Atlas and the rebuilt Worlds system will replace the existing implementation ins
 | `rendering/spherical-brush-preview.ts`, `spherical-gesture-path.ts`, `spherical-texture-updates.ts` | Geodesic preview projection, physical net join validation and incremental derived texture patches | Separate elevation authority, UI, persistence |
 | `SphericalViewport`, `SphericalBrushControls`, `interaction/spherical-editing.ts`, `spherical-navigation.ts` | Browser paint/navigation arbitration, physical inspection, controls and cached rendering; optional read-only mode | Tool algorithms, persistence, periodic repetition |
 | `SphericalPreview`, `terrain/spherical-preview-fixture.ts` | Replaceable session-only host and explicit synthetic test fixture | Canonical World records, procedural world generation, database |
-| `SphericalEditor`, `SphericalStorageControls`, `editor/prepare-spherical-session.ts` | Replaceable persistent sphere host, work locking, local controls, cooperative candidate cache preparation | Auth, server permissions, World records, numerical algorithms |
+| `SphericalEditor`, `SphericalStorageControls`, `editor/prepare-spherical-session.ts` | Historical sphere-host fixture and shared cooperative candidate cache preparation; product persistence now belongs to App | Auth, server permissions, World records, numerical algorithms |
 | `src/rendering/camera.ts`, `fit-map.ts` | Pure Fill/Fit, bounded constraints, periodic phase, pointer-anchored zoom, pan | Elevation mutation, resampling, storage |
 | `src/rendering/periodic-view.ts` | Current flat periodic Focus scale and centered connected-context frame | Numerical terrain, other geometry layouts, persistence |
 | Other `src/rendering` files | Elevation colors, interpolated presentation cache, shoreline coverage and isolated bounded/repeated canvas drawing | Editing, authorization, document identity |
 | `src/interaction` | Pointer capture, transformed coordinates, cancellation, touch/Space/Pan/wheel arbitration and stroke boundaries | Falloff math, database, React, history representation |
-| `src/editor` | Terrain-only bit-exact Undo/Redo and saved document checkpoint/name | DOM, browser storage, authentication, camera |
+| `src/editor` | Terrain-only bit-exact Undo/Redo, saved checkpoints and discriminated Atlas document/setup contract | DOM, browser storage, authentication, camera |
 | `src/persistence/*format.ts`, `heightmap-payload.ts`, `cooperative-work.ts` | Separate v1/v2/v3 codecs, strict resource/metadata/integrity checks, exact bits and cooperative spherical restoration | React, IndexedDB, future database client |
 | `src/persistence/local-map-store.ts` | Replaceable browser-local IndexedDB adapter | Terrain math, accounts, World foreign keys, server transport |
 | `TerrainCanvas` | Client lifecycle, scoped layout, camera, frame scheduling, preview/readout, callback/imperative boundary | World creation, persistence, history policy, permissions |
 | `BrushToolbar`, `ElevationLegend` | Controlled brush drafts and palette legend | Terrain lifetime, database, access rules |
-| `App.tsx`, `styles.css`, `main.tsx` | Temporary full-screen host, overlay panel, document lifetime, actions, save/open/discard UI | Main-site navigation or integration |
+| `App.tsx`, `WorkspaceChrome`, `NewWorldDialog`, `styles.css`, `main.tsx` | Unified full-screen host, supported-shape setup, overlay tools, one document lifetime and shared save/open/discard lifecycle | Main-site navigation or integration |
 
 The terrain ID is host supplied. The development host creates UUIDs for new maps; it does not invent a World record or foreign key. Future server integration must bind real World records deliberately, authenticate users, filter reads, authorize writes server-side, validate payloads and handle concurrent saves. Local Save has no such server responsibilities and confers no authority.
 
@@ -129,4 +129,8 @@ The adapter follows the browser's [IndexedDB transaction lifecycle](https://deve
 
 ## Review and scope
 
-A0–A6-D2 reports/evidence remain historical and unchanged. The owner supplied Ember's D2 approval and authorized E on main at `a9a6d64690427cfef04300da1fc87b576adf16c0`. [E completion](A6-E-COMPLETION.md) records local preservation and evidence for independent review; owner acceptance remains separate. [V3 specification](SPHERICAL-PERSISTENCE.md) defines the exact format, existing-DB-v1 compatibility, atomicity, snapshots, fresh history and failure recovery. **Stop after A6-E.** Held-stroke globe limb assistance (D2-R), weaker-device N=256 editing hardening, later geometry, server/Production writes, original-site integration and deployment need separate authorization. Editable illustrated cartography across every shape/valid scale and steps 9 → 10 → 11 remain mandatory future requirements.
+A0–A6-E reports/evidence remain historical and unchanged. The owner supplied Ember's E approval and authorized F1 on main at `5f71ced6b85f6f9a5d674334610b7193f35ac546`. [F1 architecture](UNIFIED-WORKSPACE.md) records unified hosting; independent review and owner acceptance remain separate. [V3 specification](SPHERICAL-PERSISTENCE.md) retains the exact format, existing-DB-v1 compatibility, atomicity, snapshots, fresh history and failure recovery. **Stop after A6-F1.** Held-stroke globe limb assistance (D2-R), weaker-device N=256 editing hardening, later geometry, server/Production writes, original-site integration and deployment need separate authorization. Editable illustrated cartography across every shape/valid scale and steps 9 → 10 → 11 remain mandatory future requirements.
+
+## Current shared document host (A6-F1)
+
+See [Unified workspace](UNIFIED-WORKSPACE.md). `App` owns a single discriminated `AtlasDocument`, a common storage adapter and safe replacement lifecycle. `WorkspaceChrome` supplies the same controls for every shape. The embedded spherical viewport contributes only valid controls/projections/navigation to that chrome. Legacy standalone preview/editor hosts remain solely for isolated regression fixtures and are not reachable from the product entry. Renderer view state remains separate from authoritative terrain; conversion is a separately planned operation.

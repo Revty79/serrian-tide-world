@@ -1,6 +1,9 @@
 # Spherical viewing and projection foundation — A6-D1
 
-This retains D1's mathematical/read-only foundation. D2 adds editing, revision patches, previews/history and gesture arbitration ([editing](SPHERICAL-EDITING.md)); E adds exact local preservation ([v3 specification](SPHERICAL-PERSISTENCE.md)). Statements below about D1's fixed fixture/no sculpting describe its separate historical mode. The current authorized stopping point is E; the next pass is not authorized.
+Current hosting (A6-F1): the shared Atlas workspace owns one active planar/wrapped/spherical document, common creation, name, Save/Open, library, history, status and fullscreen. See [Unified workspace](UNIFIED-WORKSPACE.md). The separate launch/Return to map statements below describe historical checkpoints and retained test hosts. Numerical algorithms and v1/v2/v3 contracts are unchanged. Stop after F1 for review; globe-limb held-stroke navigation and N=256 mobile editing hardening remain outstanding.
+
+
+This retains D1's mathematical/read-only foundation. D2 adds editing, revision patches, previews/history and gesture arbitration ([editing](SPHERICAL-EDITING.md)); E adds exact local preservation ([v3 specification](SPHERICAL-PERSISTENCE.md)). Statements below about D1's fixed fixture/no sculpting describe its separate historical mode. The D1/E hosting statements below are historical.
 
 The numerical terrain remains the A6-A/B/C provider. `spherical-view.ts` supplies pure physical/view conversion; `spherical-raster.ts` derives display-only images. Neither imports React, DOM, persistence or database code. `SphericalViewport` owns browser presentation/input; `SphericalPreview` is the replaceable development host that creates an explicitly sized session-only fixture. A future Next.js host can supply a real authorized provider instead of this fixture without adopting the development shell or inventing World records.
 

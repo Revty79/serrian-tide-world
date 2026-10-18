@@ -17,8 +17,8 @@ const errors = new WeakMap<Page, string[]>();
 test.beforeEach(({ page }) => { const list: string[] = []; errors.set(page, list); page.on('pageerror', (e) => list.push(e.message)); });
 test.afterEach(({ page }) => expect(errors.get(page)).toEqual([]));
 
-for (const wrapped of [false, true]) test(`actual app: explicit session-only preview preserves ${wrapped ? 'wrapped Focus' : 'bounded'} unsaved map, camera and pending Redo`, async ({ page }, info) => {
-  test.setTimeout(60000); await page.goto('/');
+for (const wrapped of [false, true]) test(`historical overlay host: explicit session-only preview preserves ${wrapped ? 'wrapped Focus' : 'bounded'} unsaved map, camera and pending Redo`, async ({ page }, info) => {
+  test.setTimeout(60000); await page.goto('/tests/fixtures/legacy.html');
   if (wrapped) { await toolsPanel(page, true); await page.getByRole('button', { name: 'New Wrapped Map', exact: true }).click(); await toolsPanel(page, false); }
   const size = page.viewportSize()!;
   await page.mouse.click(size.width * .45, size.height * .45); await page.getByRole('button', { name: 'Save', exact: true }).click();
@@ -80,8 +80,8 @@ test('real viewport: every face, edge and corner is inspectable in both views wi
   expect((await stats(page)).exactBitsUnchanged).toBe(true); expect((await stats(page)).copies).toBe(0);
 });
 
-test('actual N=256 preview validates scale, cancels preparation safely and initializes in scheduled batches', async ({ page }, info) => {
-  test.setTimeout(60000); await page.goto('/'); await toolsPanel(page, true);
+test('historical N=256 preview validates scale, cancels preparation safely and initializes in scheduled batches', async ({ page }, info) => {
+  test.setTimeout(60000); await page.goto('/tests/fixtures/legacy.html'); await toolsPanel(page, true);
   const radius = page.getByRole('spinbutton', { name: 'Sphere reference radius (m)', exact: true }), open = page.getByRole('button', { name: 'Open spherical preview', exact: true });
   for (const value of ['0', '-1', '']) { await radius.fill(value); await expect(open).toBeDisabled(); }
   await radius.fill('735000'); await page.getByRole('button', { name: 'Preview N=256', exact: true }).click();

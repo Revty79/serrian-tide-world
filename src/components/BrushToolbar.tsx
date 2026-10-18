@@ -28,9 +28,10 @@ interface BrushToolbarProps {
   mapSpan: number;
   onChange: (settings: BrushControls) => void;
   onReset: () => void;
+  hideToolPicker?: boolean;
 }
 
-export function BrushToolbar({ settings, mapSpan, onChange, onReset }: BrushToolbarProps) {
+export function BrushToolbar({ settings, mapSpan, onChange, onReset, hideToolPicker = false }: BrushToolbarProps) {
   const radiusId = useId();
   const strengthId = useId();
   const targetId = useId();
@@ -39,14 +40,14 @@ export function BrushToolbar({ settings, mapSpan, onChange, onReset }: BrushTool
   const radiusPercent = Math.round(settings.radius / mapSpan * 1_000) / 10;
   return (
     <div className={styles.toolbar} aria-label="Terrain brush controls">
-      <div className={styles.tools} role="group" aria-label="Terrain tool">
+      {!hideToolPicker && <div className={styles.tools} role="group" aria-label="Terrain tool">
         {(['raise', 'lower', 'smooth', 'flatten'] as const).map((tool) => (
           <button key={tool} type="button" aria-pressed={settings.tool === tool}
             onClick={() => onChange({ ...settings, tool })}>
             {tool.charAt(0).toUpperCase() + tool.slice(1)}
           </button>
         ))}
-      </div>
+      </div>}
       <div className={styles.control}>
         <label htmlFor={radiusId}>Radius <output htmlFor={radiusId}>{radiusPercent}% of map</output></label>
         <input id={radiusId} type="range" min="0.5" max="20" step="0.5" value={radiusPercent}

@@ -19,8 +19,8 @@ const errors = new WeakMap<Page, string[]>();
 test.beforeEach(({ page }) => { const list: string[] = []; errors.set(page, list); page.on('pageerror', (e) => list.push(e.message)); });
 test.afterEach(({ page }) => expect(errors.get(page)).toEqual([]));
 
-test('actual blank editor: real continent, shared net/rotated screenshots, discard and reload guards, planar preservation', async ({ page }, info) => {
-  test.setTimeout(90000); await page.goto('/');
+test('historical blank overlay: real continent, shared net/rotated screenshots, discard and reload guards, planar preservation', async ({ page }, info) => {
+  test.setTimeout(90000); await page.goto('/tests/fixtures/legacy.html');
   const size = page.viewportSize()!, x = size.width / 2, y = size.height / 2, r = Math.min(size.width, size.height) * .42;
   await page.mouse.click(x, y); await page.mouse.click(x + 20, y); await button(page, 'Undo').click();
   const planar = page.getByRole('img', { name: 'Atlas terrain map', exact: true });
@@ -166,7 +166,7 @@ test('real projected painting across all twelve face boundaries, eight corners, 
 });
 
 test('actual N256 blank preparation, physical controls focus, responsive narrow/square/ultrawide layout and fullscreen', async ({ page }) => {
-  test.setTimeout(60000); await page.goto('/'); await toolsPanel(page, true); await page.getByLabel('Sphere reference radius (m)', { exact: true }).fill('735000');
+  test.setTimeout(60000); await page.goto('/tests/fixtures/legacy.html'); await toolsPanel(page, true); await page.getByLabel('Sphere reference radius (m)', { exact: true }).fill('735000');
   await button(page, 'Preview N=256').click(); await button(page, 'Create blank sphere').click(); await expect(canvas(page)).toHaveAttribute('data-mode', 'globe', { timeout: 30000 });
   await expect(canvas(page)).toHaveAttribute('data-samples', '393218'); await expect(canvas(page)).toHaveAttribute('data-radius', '735000');
   await button(page, 'View controls').click(); await expect(page.getByLabel('Spherical brush radius (m)', { exact: true })).toBeFocused();

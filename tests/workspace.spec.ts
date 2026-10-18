@@ -1,5 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
-import { toolsPanel } from './workspace-helpers.ts';
+import { toolsPanel, startAtlas, createWorld } from './workspace-helpers.ts';
 
 const map = (page: Page) => page.getByRole('img', { name: 'Atlas terrain map' });
 async function bounds(page: Page) { const rect = await map(page).boundingBox(); if (!rect) throw new Error('No map'); return rect; }
@@ -33,7 +33,7 @@ test.beforeEach(({ page }) => {
 test.afterEach(({ page }) => { expect(messages.get(page)).toEqual([]); });
 
 test('full viewport, overlay tools, keyboard focus and uninterrupted stroke geometry', async ({ page }) => {
-  await page.goto('/');
+  await startAtlas(page);
   await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click();
   const area = page.getByLabel('Map display area');
   expect(await area.boundingBox()).toEqual({ x: 0, y: 0, ...page.viewportSize()! });
@@ -41,7 +41,7 @@ test('full viewport, overlay tools, keyboard focus and uninterrupted stroke geom
   await page.getByRole('button', { name: 'Open tools' }).focus(); await page.keyboard.press('Enter');
   await expect(page.getByRole('heading', { name: 'Atlas', exact: true })).toBeFocused();
   expect(await bounds(page)).toEqual(original);
-  await page.keyboard.press('Tab'); await expect(page.getByRole('button', { name: 'Pan', exact: true })).toBeFocused();
+  await page.keyboard.press('Tab'); await expect(page.getByRole('button', { name: 'New World / Map', exact: true })).toBeFocused();
   await page.keyboard.press('Escape'); await expect(page.getByRole('button', { name: 'Open tools' })).toBeFocused();
   await page.mouse.move((await point(page)).x, (await point(page)).y); await page.mouse.down();
   // Keyboard activation of the overlay leaves the existing pointer capture and map geometry intact.
@@ -92,7 +92,7 @@ test('wheel anchor, pan, Space drag and Fit preserve exact data and zoomed brush
 });
 
 test('complete strokes, cancellation, Reset and shortcuts have correct history and dirty states', async ({ page }) => {
-  await page.goto('/');
+  await startAtlas(page);
   await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click(); await expect(page.getByRole('button', { name: 'Undo', exact: true })).toBeDisabled();
   const p = await point(page); await page.mouse.move(p.x, p.y); await page.mouse.down(); await page.mouse.move(p.x + 15, p.y + 10);
   await map(page).dispatchEvent('pointercancel', { pointerId: 1, isPrimary: true }); await page.mouse.up();
@@ -108,7 +108,7 @@ test('complete strokes, cancellation, Reset and shortcuts have correct history a
 });
 
 test('actual Save, close, reopen, Open and continued editing preserve the full numerical map and identity', async ({ page, context }) => {
-  await page.goto('/');
+  await startAtlas(page);
   await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click(); await toolsPanel(page, true); await page.getByRole('textbox', { name: 'Map name', exact: true }).fill('Serrian coast');
   for (const tool of ['Raise', 'Lower', 'Smooth', 'Flatten']) {
     await toolsPanel(page, true); await page.getByRole('button', { name: tool, exact: true }).click();
@@ -117,9 +117,10 @@ test('actual Save, close, reopen, Open and continued editing preserve the full n
   }
   await page.getByRole('button', { name: 'Zoom In', exact: true }).click(); await save(page);
   const before = await savedState(page); expect(before.changed).toBeGreaterThan(0);
-  const reopened = await context.newPage(); await page.close(); await reopened.goto('/');
+  const reopened = await context.newPage(); await page.close(); await startAtlas(reopened);
   await toolsPanel(reopened, true); await reopened.getByRole('combobox', { name: 'Saved maps', exact: true }).selectOption(before.id);
   await reopened.getByRole('button', { name: 'Open Map', exact: true }).click();
+  await toolsPanel(reopened, true);
   await expect(reopened.getByRole('textbox', { name: 'Map name', exact: true })).toHaveValue('Serrian coast');
   await expect(reopened.getByRole('button', { name: 'Undo', exact: true })).toBeDisabled();
   await save(reopened); expect(await savedState(reopened)).toEqual(before);
@@ -130,7 +131,7 @@ test('actual Save, close, reopen, Open and continued editing preserve the full n
 });
 
 test('corrupt save rejection leaves unsaved terrain, camera and history intact', async ({ page }) => {
-  await page.goto('/');
+  await startAtlas(page);
   await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click(); await sculpt(page); await save(page); const saved = await savedState(page);
   await sculpt(page, .7, .5); await page.getByRole('button', { name: 'Zoom In', exact: true }).click();
   const rect = await bounds(page);
@@ -153,19 +154,20 @@ test('corrupt save rejection leaves unsaved terrain, camera and history intact',
 });
 
 test('unsaved New/Open and browser navigation warn, cancellation preserves work, new map has fresh identity', async ({ page }) => {
-  await page.goto('/');
+  await startAtlas(page);
   await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click(); await sculpt(page); await save(page); const saved = await savedState(page);
   await sculpt(page, .65, .5); await toolsPanel(page, true);
-  for (const action of ['New Blank Map', 'Open Map']) {
+  for (const action of ['New World / Map', 'Open Map']) {
     page.once('dialog', async (dialog) => { expect(dialog.type()).toBe('confirm'); await dialog.dismiss(); });
     await page.getByRole('button', { name: action, exact: true }).click();
+    if (action === 'New World / Map') { await page.getByRole('button', { name: 'Create World / Map', exact: true }).click(); await page.getByRole('button', { name: 'Cancel', exact: true }).click(); }
     await expect(page.getByRole('button', { name: 'Save', exact: true })).toBeEnabled();
     await expect(page.getByText('Unsaved changes', { exact: true })).toBeVisible();
   }
   const dialogPromise = page.waitForEvent('dialog'); const navigation = page.reload({ timeout: 1500 }).catch(() => null);
   const dialog = await dialogPromise; expect(dialog.type()).toBe('beforeunload'); await dialog.dismiss(); await navigation;
   await expect(page.getByText('Unsaved changes', { exact: true })).toBeVisible();
-  page.once('dialog', (dialog) => dialog.accept()); await page.getByRole('button', { name: 'New Blank Map', exact: true }).click();
+  page.once('dialog', (dialog) => dialog.accept()); await createWorld(page, 'bounded');
   await expect(page.getByText('Not saved yet', { exact: true })).toBeVisible(); await expect(page.getByRole('button', { name: 'Undo', exact: true })).toBeDisabled();
   await save(page); const blank = await savedState(page); expect(blank.id).not.toBe(saved.id); expect(blank.changed).toBe(0);
   expect(JSON.parse(blank.metadata).resolution).toEqual({ columns: 512, rows: 512 });
@@ -175,7 +177,7 @@ test('unsaved New/Open and browser navigation warn, cancellation preserves work,
 
 test('storage denial reports failure and keeps the map unsaved', async ({ page }) => {
   await page.addInitScript(() => { Object.defineProperty(window, 'indexedDB', { get() { throw new Error('Storage denied for test'); } }); });
-  await page.goto('/');
+  await startAtlas(page);
   await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click(); await expect(page.getByRole('alert')).toContainText('Storage denied');
   await page.getByRole('button', { name: 'Dismiss', exact: true }).click(); await sculpt(page);
   await page.getByRole('button', { name: 'Save', exact: true }).click();
@@ -208,7 +210,7 @@ test('native two-finger pinch/pan never sculpts, remaining finger stays in navig
 });
 
 test('A3 visual evidence: sculpted full-screen map, overlay tools, zoomed navigation and saved state', async ({ page }, info) => {
-  await page.goto('/');
+  await startAtlas(page);
   await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click(); await toolsPanel(page, true);
   const radius = page.getByRole('slider', { name: /Radius/ }); await radius.press('End');
   const strength = page.getByRole('slider', { name: /Strength/ }); await strength.press('End');

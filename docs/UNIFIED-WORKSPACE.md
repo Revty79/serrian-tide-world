@@ -1,0 +1,33 @@
+# A6-F1 — one Atlas workspace
+
+Atlas starts with a shape chooser before allocating terrain. Bounded flat maps, horizontally wrapped flat maps and spherical worlds use the same document controls, overlay toolbar, tool picker, library, saved/modified status and browser fullscreen action. Horizontal periodic geography is explicitly distinguished from a complete physical cylinder. Sphere creation requires a positive finite radius in meters and N=128 or N=256. There are no functional placeholders for future shapes.
+
+## Document and view ownership
+
+`editor/atlas-document.ts` defines a discriminated host document. A planar document retains its original `TerrainDocument` and history; a sphere retains the original prepared `SphericalSession`, canonical authority and derived display cache. `App` owns **one active document**, not a planar editor hidden underneath a sphere. Preparing a replacement temporarily retains the old document and candidate until successful acceptance; that is deliberate recovery memory, not duplicate authoritative terrain for one world.
+
+`WorkspaceChrome` is the common interface. The planar provider uses `TerrainCanvas`; the embedded spherical provider uses the existing `SphericalViewport` render/input loop. Its optional workspace slot supplies contextual controls, geodesic brush parameters, projection actions, readouts and history availability. The same chrome renders those slots. Providers own view/camera state; changing Globe/Net or Focus/Fill/Fit never changes authority, dimensions, identities or elevations. There is no universal rectangular preview layout: future providers must supply their surface's connected geography, inverses, footprints, eligible surfaces and navigation.
+
+The terrain, topology, physical metric, brush, smoothing, history, projection and persistence algorithms are retained. A small optional `hideToolPicker` parameter lets the existing planar brush panel use the shared picker without duplicating buttons. Standalone spherical preview/editor hosts remain available to test fixtures. They are not imported by the product entry or offered as launchers in Atlas.
+
+## Safe operations
+
+Save finishes pointer input and drains accepted queued spherical work before taking the original versioned snapshot. The existing adapter validates and atomically commits heightmap/catalog together. The host marks the checkpoint only after commit. A failed operation reports its error while retaining the real modified/saved state, terrain, name, history and prior committed record. A post-commit catalog refresh failure is reported separately; it does not undo a successful checkpoint.
+
+Open completely validates the v1/v2/v3 candidate, prepares spherical display caches where needed, then asks before discarding unsaved work and replaces the document. Canceling the prompt or a failed read/validation/preparation leaves the old authority, camera and history in place. Successful reopening intentionally starts fresh camera/history, as in A6-E. New creates a new identity and blank ocean; its shape choice is never a conversion. Canceling cooperative preparation invalidates the pending operation token; a stale completion cannot replace a later document. Busy controls and the synchronous host/session locks prevent concurrent mutations and operations. Browser unload guards remain in the shared host. No persistence format, IndexedDB version or existing catalog row is migrated.
+
+The mixed catalog labels typed records as Bounded plane, Wrapped plane or Sphere. Preexisting untyped entries remain Planar (legacy): guessing geometry from a catalog without reading and validating its payload would misrepresent it. Open dispatches on the validated record rather than the catalog label. All saves remain browser/profile/origin/device local, with explicit warnings and no autosave, backend, synchronization or physical-device durability claim.
+
+## Interface and accessibility
+
+The native modal setup dialog traps focus, labels every field, validates explicit sphere dimensions and permits Escape/cancel. On cancellation, focus returns to the shared New action. The nonmodal overlay toolbar focuses its heading on opening and returns focus to its toggle on closing. The map keeps the full viewport and proportions throughout. Tool selection moves between the floating row and the open panel without duplicating controls. Contextual panels preserve planar map-unit radius versus spherical meter radius. Shared shortcuts respect text-field Undo. The optional Fullscreen API targets the same root across all shapes; exit/failure leaves the document untouched.
+
+## Planned conversion and geometry
+
+[Issue #2](https://github.com/Revty79/serrian-tide-world/issues/2) defines the permanent unified workspace and future conversion requirement. Conversion must be optional, configurable, previewable, cancelable and non-destructive. It needs a new output identity with traceable origin and an unchanged source. Approved contracts must cover physical dimensions/units, topology, seams/cuts, poles/caps, face connectivity, surface choice, resolution, distortion, detail loss and incompatible regions. Arbitrary texture wrapping is not an accurate general conversion. **No conversion is implemented in F1.**
+
+Globe rotation near the limb during a held stroke (A6-D2-R) and N=256 weaker-device editing hardening remain outstanding. Current globe editing still requires lifting to rotate/recenter. The complete shape/cartography/scale/measurement/3D/history/Worlds inventory and [Issue #1](https://github.com/Revty79/serrian-tide-world/issues/1) remain in the master roadmap. Step 9 combines Atlas with separately rebuilt Worlds, Step 10 integrates their accepted combined system into Serrian Tide, and Step 11 supplies the final reusable historical/modern Earth setting. F1 touches none of the live application, databases, authentication or backend services. Stop after F1 for review.
+
+## Verification approach
+
+The retained A0–A6-E engine and browser assertions continue. Product-entry planar and spherical persistence tests now use the shared creation/library controls. Five retired preview/overlay launcher cases run against a clearly named test-only frozen A6-E host: those historical tests assert preserving an inactive planar editor, a behavior intentionally absent from the new product. Their numerical/visual/interaction assertions were not deleted. New unified product tests replace that hosting assumption with direct shape creation, one active canvas, exact mixed Save/Open, every tool in every view, exact history, cancellation/recovery and desktop/mobile/ultrawide/square/fullscreen evidence. Completion results and exact file/preservation lists are in the F1 completion report and receipt.

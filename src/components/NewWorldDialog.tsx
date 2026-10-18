@@ -1,0 +1,27 @@
+'use client';
+import { useLayoutEffect, useRef, useState } from 'react';
+import { shapeName, type WorldSetup, type WorldShape } from '../editor/atlas-document.ts';
+
+/** Setup creates a new identity. It never converts the document behind the dialog. */
+export function NewWorldDialog({ busy, hasDocument, create, close, error }: { busy: boolean; hasDocument: boolean; create(setup: WorldSetup): void; close(): void; error: string }) {
+  const ref = useRef<HTMLDialogElement>(null);
+  const [shape, setShape] = useState<WorldShape>('bounded'), [name, setName] = useState('Untitled world'), [radius, setRadius] = useState(''), [resolution, setResolution] = useState<128 | 256>(128);
+  useLayoutEffect(() => { const dialog = ref.current!; dialog.showModal(); return () => dialog.close(); }, []);
+  const valid = !!name.trim() && (shape !== 'sphere' || radius.trim() !== '' && Number(radius) > 0 && Number.isFinite(Number(radius) * Math.PI));
+  return <dialog ref={ref} className="new-world-dialog" aria-labelledby="new-world-title" onCancel={(event) => { event.preventDefault(); if (!busy) close(); }}>
+    <form onSubmit={(event) => { event.preventDefault(); if (valid && !busy) create({ shape, name, radiusMeters: Number(radius), cellsPerEdge: resolution }); }}>
+      <h1 id="new-world-title">New World / Map</h1><p>Choose your working surface. Every view edits the same geography.</p>
+      <fieldset disabled={busy}><legend className="sr-only">World setup</legend>
+        <label htmlFor="new-world-name">World/map name</label><input autoFocus id="new-world-name" value={name} maxLength={120} onChange={(e) => setName(e.target.value)} />
+        <label htmlFor="world-shape">World shape</label><select id="world-shape" value={shape} onChange={(e) => setShape(e.target.value as WorldShape)}>{(['bounded', 'wrapped', 'sphere'] as const).map((s) => <option key={s} value={s}>{shapeName(s)}</option>)}</select>
+        <p className="hint">{shape === 'sphere' ? 'A round physical sphere. Globe and Six-face Net share one numerical terrain.' : shape === 'wrapped' ? 'Repeats horizontally with bounded top and bottom. This is periodic flat geography; it is not a complete physical cylinder.' : 'A bounded flat map with map-unit coordinates and meter elevations.'}</p>
+        {shape === 'sphere' && <><label htmlFor="new-sphere-radius">Sphere reference radius (m)</label><input id="new-sphere-radius" type="number" min="0" step="any" placeholder="Enter an explicit radius" value={radius} onChange={(e) => setRadius(e.target.value)} />
+          <label htmlFor="sphere-resolution">Spherical resolution</label><select id="sphere-resolution" value={resolution} onChange={(e) => setResolution(Number(e.target.value) as 128 | 256)}><option value="128">N=128 · 98,306 unique samples</option><option value="256">N=256 · 393,218 unique samples</option></select><p className="hint">N=256 needs more memory and processing time, especially on mobile.</p></>}
+        <p className="hint">Starts as blank ocean at −100 m. Creating a new shape does not convert your current geography. Other geometries are planned.</p>
+        <div className="map-actions"><button type="submit" disabled={!valid}>Create World / Map</button></div>
+      </fieldset>
+      {busy && <p role="status">Preparing world…</p>}
+      {error && <p role="alert">{error}</p>}<button type="button" onClick={close}>{busy ? 'Cancel preparation' : hasDocument ? 'Cancel' : 'Browse saved maps'}</button>
+    </form>
+  </dialog>;
+}

@@ -1,5 +1,5 @@
 ﻿import { expect, test, type Page } from '@playwright/test';
-import { toolsPanel } from './workspace-helpers.ts';
+import { toolsPanel, startAtlas, createWorld } from './workspace-helpers.ts';
 
 const map = (page: Page) => page.getByRole('img', { name: 'Atlas terrain map' });
 async function view(page: Page) {
@@ -40,7 +40,7 @@ test.beforeEach(({ page }) => { const messages: string[] = []; errors.set(page, 
 test.afterEach(({ page }) => { expect(errors.get(page)).toEqual([]); });
 
 test('bounded default Fill covers wide, ultrawide, square and tall views; pan reaches cropped portions and Fit preserves margins', async ({ page }, info) => {
-  await page.goto('/'); await ready(page);
+  await startAtlas(page); await ready(page);
   for (const size of [{ width: 1440, height: 900 }, { width: 3440, height: 1440 }, { width: 900, height: 900 }, { width: 412, height: 839 }]) {
     await page.setViewportSize(size);
     await expect.poll(async () => { const r = await view(page); return r.mode === 'fill' && Math.abs(r.width - Math.max(size.width, size.height)) < .01 && r.left <= .01 && r.top <= .01; }).toBe(true);
@@ -65,9 +65,10 @@ test('bounded default Fill covers wide, ultrawide, square and tall views; pan re
 
 test('actual wrapped editor crosses a seam, recenters the same land, uses all tools, saves and reopens v2 alongside v1', async ({ page, context }, info) => {
   test.setTimeout(60_000);
-  await page.goto('/'); await save(page); const legacy = await saved(page);
-  await toolsPanel(page, true); await page.getByRole('button', { name: 'New Wrapped Map', exact: true }).click();
+  await startAtlas(page); await save(page); const legacy = await saved(page);
+  await toolsPanel(page, true); await createWorld(page, 'wrapped');
   await expect(map(page)).toHaveAttribute('data-topology', 'horizontal-periodic');
+  await toolsPanel(page, true);
   await page.getByRole('textbox', { name: 'Map name', exact: true }).fill('Serrian wrapped coast');
   await page.getByRole('slider', { name: /Radius/ }).press('End');
   await page.getByRole('slider', { name: /Strength/ }).press('End'); await toolsPanel(page, false);
@@ -99,7 +100,7 @@ test('actual wrapped editor crosses a seam, recenters the same land, uses all to
   await save(page); const edited = await saved(page); expect(edited.digest).not.toBe(original.digest); expect(edited.metadata).toBe(original.metadata);
   await page.screenshot({ path: `docs/evidence/a5-${info.project.name}-zoomed-rendering.png` });
   const reopened = await context.newPage(); const reopenedErrors: string[] = []; reopened.on('pageerror', (e) => reopenedErrors.push(e.message));
-  await page.close(); await reopened.goto('/'); await toolsPanel(reopened, true);
+  await page.close(); await startAtlas(reopened); await toolsPanel(reopened, true);
   await reopened.getByRole('combobox', { name: 'Saved maps', exact: true }).selectOption(edited.id); await reopened.getByRole('button', { name: 'Open Map', exact: true }).click();
   await expect(map(reopened)).toHaveAttribute('data-topology', 'horizontal-periodic'); await save(reopened); expect(await saved(reopened)).toEqual(edited);
   await expect(reopened.getByRole('button', { name: 'Undo', exact: true })).toBeDisabled();
@@ -154,7 +155,7 @@ test('multiple visible copies share one dab and preview, unlimited pans/zoom cha
 });
 
 test('same IndexedDB schema preserves v1 records, rejects replacement across formats and rejects corrupt v2 safely', async ({ page }) => {
-  await page.goto('/');
+  await startAtlas(page);
   const result = await page.evaluate(async () => {
     const { LocalMapStore } = await import(new URL('/src/persistence/local-map-store.ts', location.origin).href) as typeof import('../src/persistence/local-map-store.ts');
     const { createBlankTerrain } = await import(new URL('/src/terrain/model.ts', location.origin).href) as typeof import('../src/terrain/model.ts');
@@ -169,7 +170,7 @@ test('same IndexedDB schema preserves v1 records, rejects replacement across for
     return { rejected, version: retained.terrain.metadata.dataVersion };
   });
   expect(result).toEqual({ rejected: true, version: 1 });
-  await page.reload(); await toolsPanel(page, true); await page.getByRole('button', { name: 'New Wrapped Map', exact: true }).click(); await toolsPanel(page, false);
+  await page.reload(); await toolsPanel(page, true); await createWorld(page, 'wrapped'); await toolsPanel(page, false);
   const r = await view(page); await page.mouse.click(r.stageWidth / 2, r.stageHeight / 2);
   await toolsPanel(page, true); await page.getByRole('combobox', { name: 'Saved maps', exact: true }).selectOption('corrupt-v2'); await page.getByRole('button', { name: 'Open Map', exact: true }).click();
   await expect(page.getByRole('alert')).toContainText('checksum'); await expect(page.getByText('Unsaved changes', { exact: true })).toBeVisible(); await expect(map(page)).toHaveAttribute('data-topology', 'horizontal-periodic');
@@ -177,7 +178,7 @@ test('same IndexedDB schema preserves v1 records, rejects replacement across for
 });
 
 test('optional native fullscreen enters/exits on user actions without changing history; failures are safe', async ({ page }) => {
-  await page.goto('/'); await ready(page); const r = await view(page); await page.mouse.click(r.stageWidth / 2, r.stageHeight / 2);
+  await startAtlas(page); await ready(page); const r = await view(page); await page.mouse.click(r.stageWidth / 2, r.stageHeight / 2);
   const enter = page.getByRole('button', { name: 'Enter Fullscreen', exact: true });
   await expect(enter).toBeVisible(); await enter.click(); await expect(page.getByRole('button', { name: 'Exit Fullscreen', exact: true })).toBeVisible();
   expect(await page.evaluate(() => !!document.fullscreenElement)).toBe(true);

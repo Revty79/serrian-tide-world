@@ -1,6 +1,6 @@
 import { expect, test, type Page, type JSHandle } from '@playwright/test';
 import { writeFile } from 'node:fs/promises';
-import { toolsPanel } from './workspace-helpers.ts';
+import { toolsPanel, startAtlas, createWorld } from './workspace-helpers.ts';
 
 test.use({ trace: 'on' });
 const map = (page: Page) => page.getByRole('img', { name: 'Atlas terrain map' });
@@ -12,7 +12,7 @@ async function mode(page: Page, name: 'Focus Editing' | 'Fill View' | 'Fit Entir
   await page.getByRole('button', { name, exact: true }).click(); await painted(page);
 }
 async function app(page: Page) {
-  await page.goto('/'); await toolsPanel(page, true); await page.getByRole('button', { name: 'New Wrapped Map', exact: true }).click(); await toolsPanel(page, false);
+  await startAtlas(page); await toolsPanel(page, true); await createWorld(page, 'wrapped'); await toolsPanel(page, false);
   await expect(map(page)).toHaveAttribute('data-view-mode', 'focus');
 }
 async function save(page: Page) {

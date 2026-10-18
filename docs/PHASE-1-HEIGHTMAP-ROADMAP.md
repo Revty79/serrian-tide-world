@@ -1,6 +1,6 @@
 # Atlas master roadmap — Phase 1 and long-term requirements
 
-Updated October 17, 2026 for A6-E spherical persistence on the approved D2 baseline `a9a6d64690427cfef04300da1fc87b576adf16c0`. This preserves the owner's complete geometry, cartography and eventual Atlas/Worlds requirements alongside the Phase 1 heightmap inventory. Future entries are requirements, not authorization to implement them during E.
+Updated October 18, 2026 for A6-F1 unified Atlas workspace on the approved A6-E baseline `5f71ced6b85f6f9a5d674334610b7193f35ac546`. This preserves the owner's complete geometry, cartography and eventual Atlas/Worlds requirements alongside the Phase 1 heightmap inventory. Future entries do not authorize implementation during F1.
 
 ## Current baseline
 
@@ -19,7 +19,8 @@ Updated October 17, 2026 for A6-E spherical persistence on the approved D2 basel
 | A6-C | Spherical Smooth/Flatten, connected inverse-geodesic-square weighting and canonical multi-face history | Implemented; Ember source/numerical-evidence approval supplied by owner |
 | A6-D1 | Session-only orthographic globe, rotation/zoom/recenter, oriented six-face net and physical inspection | Implemented; Ember source/projection/screenshot/browser-evidence approval supplied by owner |
 | A6-D2 | Blank sphere, four tools on globe/net, geodesic previews, shared history, input arbitration and incremental rendering | Owner supplied Ember's source/visual/numerical/browser approval; final hands-on acceptance separate |
-| A6-E | Explicit v3 spherical Save/Open, exact validation/restoration, atomic local writes and failure recovery; v1/v2 compatibility | Implemented for independent review; see SPHERICAL-PERSISTENCE.md and E completion evidence |
+| A6-E | Explicit v3 spherical Save/Open, exact validation/restoration, atomic local writes and failure recovery; v1/v2 compatibility | Ember source, persistence, visual and automated-evidence approval supplied by owner; see SPHERICAL-PERSISTENCE.md and E completion evidence |
+| A6-F1 | One workspace, explicit supported-shape creation, shared mixed library/document controls and safe replacement | Implemented for review; see UNIFIED-WORKSPACE.md and F1 evidence |
 | A6-D2-R and N=256 editing hardening — future | Safe automatic globe rotation/recentering during a held limb stroke; weaker-device N=256 brush/display responsiveness | Remain required; working net-edge assistance preserved. Automatic drawing navigation must suit every supported geometry. Not implemented by E; separate authorization required |
 | A7 and later geometry checkpoints | Hollow, cylindrical and other agreed initial geometries | Planned; exact scope/order requires authorization |
 | Later Phase 1 | Remaining inventory below | Planned; pass boundaries and acceptance criteria still require authorization |
@@ -32,7 +33,7 @@ The owner moved the surface foundation ahead of the complete Azgaar-style toolse
 
 After A6-B approval, the owner inserted **A5.1 navigation/wrapping/screen-edge stabilization before A6-C**. That correction was completed and technically reviewed before the separately authorized A5.2 refinement.
 
-The owner supplied Ember's A5.2, A6-C, D1 and D2 technical approvals and separately authorized **A6-E persistent spherical heightmaps**. Owner hands-on acceptance remains separate. Stop after E; do not begin another pass or the isolated drawing/performance corrections without authorization.
+The owner supplied Ember's A5.2, A6-C, D1 and D2 technical approvals and separately authorized **A6-E persistent spherical heightmaps**. Owner hands-on acceptance remains separate. A6-E has passed Ember review. The owner separately authorized A6-F1 unified workspace/shape selection. Stop after F1 for review; the isolated drawing/performance corrections still require their own authorization.
 
 The owner's corrected downstream master-roadmap order is mandatory:
 
@@ -44,7 +45,7 @@ The owner's corrected downstream master-roadmap order is mandatory:
 
 This records integration order only. A6-E performs none of these integrations or content milestones.
 
-See [World/surface architecture](WORLD-SURFACE-ARCHITECTURE.md), [numerical foundation](A6-A-COMPLETION.md), [editing](SPHERICAL-EDITING.md) and [E preservation](SPHERICAL-PERSISTENCE.md). A5.2 remains the planar/wrapped UI; D2/E supply separate spherical editing/preservation. The six charts represent a round sphere, not a physical cube. Bounded/periodic saves keep exact v1/v2 interpretations without conversion or migration; spheres use their own v3 format.
+See [World/surface architecture](WORLD-SURFACE-ARCHITECTURE.md), [numerical foundation](A6-A-COMPLETION.md), [editing](SPHERICAL-EDITING.md) and [E preservation](SPHERICAL-PERSISTENCE.md). A6-F1 hosts A5.2 planar/wrapped and D2/E spherical editing/preservation in one Atlas workspace with one active document and a shared mixed library. The six charts represent a round sphere, not a physical cube. Bounded/periodic saves keep exact v1/v2 interpretations without conversion or migration; spheres use their own v3 format.
 
 ## Complete future geometry and editing requirements
 
@@ -64,7 +65,7 @@ See [World/surface architecture](WORLD-SURFACE-ARCHITECTURE.md), [numerical foun
 | Seam-crossing brushes and correct corner connectivity | A5 proves periodic tools; A6-A/B/C supply spherical topology and four physical tools/history. D2 connects accurate projected previews and editing, with safe net-cut termination |
 | Continuous surface panning, globe rotation and movable map seams | Periodic recentering works. Every future shape must let creators center the working area via view state, without relocating/resampling stored geography |
 | Surface-aware editing without projection-induced terrain distortion | Inverse projection, intrinsic brush distances and projected previews must agree. A distorted overview must never redefine physical influence or authoritative positions |
-| Shape selection before world generation | Future creation workflow chooses supported physical shape, dimensions and eligible surface(s) before generation. Do not offer inert choices; generated terrain stays editable and representation is distinct from physical shape |
+| Shape selection before world generation | A6-F1 selects bounded flat, horizontally wrapped flat or spherical worlds before terrain creation; explicit sphere radius and N=128/256. Future shapes and eligible surface(s) require approved providers before generation. Do not offer inert choices; generated terrain stays editable and representation is distinct from physical shape |
 
 These future geometries are mandatory roadmap requirements, not functionality claimed by current descriptors. Initial supported configurations and acceptance checkpoints still need explicit approval.
 
@@ -169,3 +170,11 @@ A3 implements pointer-centered zoom, bounded panning, Space/explicit Pan and two
 The inventory was checked against the project's primary [Heightmap customization documentation](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Heightmap-customization) and [template-editor documentation](https://github.com/Azgaar/Fantasy-Map-Generator/wiki/Heightmap-template-editor). Their application semantics and data models are not adopted automatically. This roadmap records the owner's requested scope; exact future behavior still requires a bounded pass.
 
 The owner supplied Ember's D2 approval and authorized E. Its local persistence implementation/evidence are submitted for independent review; owner hands-on acceptance remains separate. A6-D2-R held-stroke limb assistance and N=256 editing performance hardening remain required and unimplemented. **Stop after A6-E; do not begin the next pass without authorization.** Later work, integration and deployment require their own authorization. No future inventory item or GitHub issue is authorized merely by appearing here.
+
+## A6-F1 unified workspace and future conversion
+
+[Issue #2](https://github.com/Revty79/serrian-tide-world/issues/2) is the permanent one-workspace/shape-selection contract. F1 supplies one New World / Map workflow, one active document, shared Save/Open/name/history/tools/status, and contextual planar/wrapped/globe/net view providers. Numerical engines and v1/v2/v3 formats remain unchanged. No unavailable geometry is offered as functional.
+
+A separate future conversion phase must let a creator explicitly preview, configure, cancel, and accept a non-destructive projection onto a compatible physical shape. Preserve the source and create a new identity with traceable origin. Account for topology, dimensions/physical units, resolution, distortion, area/distance/elevation tradeoffs, face connectivity, cuts, seams, poles, caps, eligible surfaces and incompatible regions. Arbitrary texture wrapping cannot implement accurate general conversion. Switching a view or choosing New never converts existing terrain.
+
+A6-D2-R automatic globe rotation/recentering during a held stroke near the visible limb remains outstanding, as does weaker-device N=256 editing hardening. F1 does not claim either correction. The full geometry, cartography, map-scale, measurement, 3D, histories and Worlds inventory above remains mandatory, including Issue #1 and integration Steps 9, 10 and 11. Stop after F1; do not begin another pass without authorization.
