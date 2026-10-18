@@ -1,0 +1,41 @@
+{
+  "pass": "A6-D2-R",
+  "date": "2026-10-18",
+  "repository": "Revty79/serrian-tide-world",
+  "branch": "main",
+  "baselineSha": "44f3cea0e81809ad0a29328a9cad9d20eada1214",
+  "implementationSha": "ce3ed7b1143ef8dc57bd0d3705807eb243b65392",
+  "verificationSha256": "145c2af664de321a17eaa368d9245db47c16eb3816909ca9799a0774a540c641",
+  "report": "docs/A6-D2-R-COMPLETION.md",
+  "implementationChangedFiles": 54,
+  "metadataNote": "This separate metadata-only commit identifies the already complete, tested implementation without a self-referential SHA. Its publication SHA is supplied in the delivery message.",
+  "tests": {
+    "numerical": {
+      "tests": 187,
+      "passed": 187,
+      "failed": 0,
+      "durationMs": 4150.8106
+    },
+    "browser": {
+      "total": 236,
+      "passed": 234,
+      "skipped": 2,
+      "failed": 0,
+      "flaky": 0,
+      "retries": 0,
+      "durationMs": 726180.698
+    },
+    "build": {
+      "typecheck": "pass",
+      "vite": "pass",
+      "modules": 73,
+      "compilationMs": 728
+    }
+  },
+  "preserved": {
+    "unaffectedSources": 117,
+    "historicalArtifacts": 182
+  },
+  "status": "Implemented and tested; independent review and owner hands-on acceptance pending.",
+  "stop": "Stop after A6-D2-R. No next pass, N256 weaker-device hardening, original-site/Worlds integration, deployment or database work authorized by this delivery."
+}
