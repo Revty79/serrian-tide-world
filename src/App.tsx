@@ -11,6 +11,7 @@ import type { SavedMapSummary } from './persistence/terrain-format.ts';
 import { encodeMap } from './persistence/map-format.ts';
 import { isTextInput } from './interaction/canvas-navigation.ts';
 import type { ViewMode } from './rendering/camera.ts';
+import { SphericalPreview } from './components/SphericalPreview.tsx';
 
 const defaults: BrushControls = { tool: 'raise', radius: 0.06, strength: 200, intensity: 0.5, targetElevation: '0' };
 const newDocument = (wrapped = false) => new TerrainDocument(wrapped
@@ -45,6 +46,11 @@ export function App() {
   const [busy, setBusy] = useState(false);
   const busyRef = useRef(false);
   const [error, setError] = useState('');
+  const [spherePreview, setSpherePreview] = useState<{ radiusMeters: number; cellsPerEdge: number } | null>(null);
+  const spherePreviewRef = useRef(spherePreview); spherePreviewRef.current = spherePreview;
+  const [sphereRadius, setSphereRadius] = useState(''), [sphereResolution, setSphereResolution] = useState(128);
+  const previewButtonRef = useRef<HTMLButtonElement>(null);
+  const validSphereRadius = sphereRadius.trim() !== '' && Number(sphereRadius) > 0 && Number.isFinite(Number(sphereRadius) * Math.PI);
   const reportError = (cause: unknown) => setError(cause instanceof Error ? cause.message : 'Local storage operation failed.');
   const finish = () => canvasRef.current?.finishInteraction();
   const guardDiscard = () => !documentRef.current.dirty || window.confirm('Discard unsaved changes to this map? Save first to keep your work.');
@@ -107,6 +113,7 @@ export function App() {
   actionsRef.current = { undo, redo, save, closePanel };
   useEffect(() => {
     const keydown = (event: KeyboardEvent) => {
+      if (spherePreviewRef.current) { if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 's') event.preventDefault(); return; }
       if (event.key === 'Escape') { actionsRef.current.closePanel(); return; }
       if (!(event.ctrlKey || event.metaKey) || event.altKey) return;
       const key = event.key.toLowerCase();
@@ -132,6 +139,7 @@ export function App() {
 
   return (
     <main ref={workspaceRef} className="atlas-app" data-panel-open={openPanel} aria-label="Atlas workspace">
+      <div inert={!!spherePreview} aria-hidden={!!spherePreview} style={{ display: 'contents' }}>
       <TerrainCanvas ref={canvasRef} terrain={document.terrain} brush={busy ? undefined : brushFromControls(controls)} pan={pan}
         fullscreen initialView={isWrapped(document.terrain) ? 'focus' : 'fill'} edgePan={edgePan} revision={revision} onZoom={setZoom} onViewChange={setViewMode}
         onStrokeBegin={() => document.history.begin()} onStrokeEnd={() => { if (document.history.commit()) update(); }} />
@@ -162,6 +170,13 @@ export function App() {
             <div className="map-actions"><button type="button" disabled={!selected} onClick={() => void openMap()}>Open Map</button><button type="button" onClick={() => newMap()}>New Blank Map</button></div>
             <button className="new-wrapped" type="button" onClick={() => newMap(true)}>New Wrapped Map</button>
             <p className="hint">Focus Editing enlarges one working cycle with adjoining terrain at the sides. Pan to move the cut; every view edits the same geography. Fill View restores full-height context. Tall views keep full-height coverage. Fit Entire Map shows the complete terrain. Top and bottom stay bounded.</p>
+            <h2>Spherical development preview</h2>
+            <p className="hint">View and inspect session-only test geography. No sculpting or saving. Your current map stays in place.</p>
+            <label htmlFor="sphere-radius">Sphere reference radius (m)</label>
+            <input id="sphere-radius" type="number" min="0" step="any" value={sphereRadius} onChange={(event) => setSphereRadius(event.target.value)} placeholder="Enter an explicit radius" />
+            <p className="hint">Spherical preview resolution · {sphereResolution === 128 ? '98,306' : '393,218'} unique samples</p>
+            <div className="map-actions" role="group" aria-label="Spherical preview resolution">{[128, 256].map((n) => <button key={n} type="button" aria-label={`Preview N=${n}`} aria-pressed={sphereResolution === n} onClick={() => setSphereResolution(n)}>N={n}</button>)}</div>
+            <button ref={previewButtonRef} className="new-wrapped" disabled={!validSphereRadius} onClick={() => { finish(); setSpherePreview({ radiusMeters: Number(sphereRadius), cellsPerEdge: sphereResolution }); }}>Open spherical preview</button>
           </div>
         </fieldset>
         <ElevationLegend seaLevel={document.terrain.metadata.seaLevel} />
@@ -184,6 +199,8 @@ export function App() {
       {isWrapped(document.terrain) && <p className="surface-status">{viewMode === 'focus' ? 'Horizontal wrap · focused view' : 'Horizontal wrap · same terrain repeats'}</p>}
       <p className="save-status" role="status">{busy ? 'Working with local storage…' : status}</p>
       {error && <div className="storage-error" role="alert"><p>{error}</p><button type="button" onClick={() => setError('')}>Dismiss</button></div>}
+      </div>
+      {spherePreview && <SphericalPreview {...spherePreview} onClose={() => { setSpherePreview(null); requestAnimationFrame(() => previewButtonRef.current?.focus({ preventScroll: true })); }} />}
     </main>
   );
 }

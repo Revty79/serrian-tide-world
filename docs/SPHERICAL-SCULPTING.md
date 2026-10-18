@@ -128,6 +128,8 @@ Run `node scripts/measure-spherical-tools.mjs [output.json]` for A6-C's N=128/25
 
 ## A6-D interface requirements — documentation only
 
+A6-D1 now implements the read-only globe/net, rotation/recentering and physical inspection foundation described in [SPHERICAL-VIEWS.md](SPHERICAL-VIEWS.md). The remaining requirements below concern the separately authorized future editing workflow; no GUI brush or spherical persistence is added by D1.
+
 - Rotate/recenter the spherical working surface through view state while keeping the canonical geographic frame and elevation samples fixed. A sphere must not be implemented as a horizontally periodic rectangle.
 - A flattened view may use cutouts, gores, connected faces or local spherical projections. A surface-specific view provider must choose layout, movable cuts, forward/inverse mapping and singular-region behavior; periodic side strips are not the universal interface.
 - Convert screen input to identity-bearing physical directions or validated chart positions independently of the selected projection. Then feed the existing engine. Never infer physical brush size from chart pixels or resample the authority when changing the view.
@@ -135,4 +137,4 @@ Run `node scripts/measure-spherical-tools.mjs [output.json]` for A6-C's N=128/25
 - Preserve predictable pan/rotate/zoom and painting arbitration, native touch behavior, cancellation and one-operation history. Add edge-assisted drawing only where appropriate to the spherical view, updating the physical path consistently as the view moves.
 - Make poles, corners and face/cut transitions usable and centerable. A camera action cannot change elevation, ownership, radius, identity or history. Future hollow interiors/exteriors remain independently selected surfaces.
 
-Interactive views/rotation, 3D rendering, projected previews and browser input integration require A6-D authorization. Spherical Save/Open needs its own approved codec/recovery contract. The current browser has no sphere option. The [master roadmap](PHASE-1-HEIGHTMAP-ROADMAP.md) retains every geometry, advanced tool, living-history/cartographic and Issue #1 requirement, with integration steps 9 → 10 → 11 unchanged. **Stop after A6-C; do not begin A6-D.**
+A6-D1 supplies session-only viewing and navigation. Interactive spherical sculpting, projected brush previews, GUI history and any true 3D terrain rendering remain future work; spherical Save/Open needs its own approved codec/recovery contract. The [master roadmap](PHASE-1-HEIGHTMAP-ROADMAP.md) retains every geometry, advanced tool, living-history/cartographic and Issue #1 requirement, with integration steps 9 → 10 → 11 unchanged. **Stop after A6-D1; do not begin A6-D2.**

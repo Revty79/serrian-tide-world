@@ -1,0 +1,651 @@
+{
+  "verifiedAt": "2026-10-18T03:17:27.576Z",
+  "approvedBaseline": "3e5cdeee82627c2cd293940e7397dcebfbc35455",
+  "branch": "main",
+  "changedFiles": [
+    "README.md",
+    "docs/A6-D1-COMPLETION.md",
+    "docs/ARCHITECTURE.md",
+    "docs/PHASE-1-HEIGHTMAP-ROADMAP.md",
+    "docs/SPHERICAL-SCULPTING.md",
+    "docs/SPHERICAL-VIEWS.md",
+    "docs/WORLD-SURFACE-ARCHITECTURE.md",
+    "docs/evidence/a6-d1-desktop-globe-nx.png",
+    "docs/evidence/a6-d1-desktop-globe-px.png",
+    "docs/evidence/a6-d1-desktop-globe-pz.png",
+    "docs/evidence/a6-d1-desktop-n128-performance.json",
+    "docs/evidence/a6-d1-desktop-n256-performance.json",
+    "docs/evidence/a6-d1-desktop-net.png",
+    "docs/evidence/a6-d1-desktop-product-preparation.json",
+    "docs/evidence/a6-d1-mobile-globe-nx.png",
+    "docs/evidence/a6-d1-mobile-globe-px.png",
+    "docs/evidence/a6-d1-mobile-globe-pz.png",
+    "docs/evidence/a6-d1-mobile-n128-performance.json",
+    "docs/evidence/a6-d1-mobile-n256-performance.json",
+    "docs/evidence/a6-d1-mobile-net.png",
+    "docs/evidence/a6-d1-mobile-product-preparation.json",
+    "docs/evidence/a6-d1-verification.json",
+    "src/App.tsx",
+    "src/components/SphericalPreview.module.css",
+    "src/components/SphericalPreview.tsx",
+    "src/components/SphericalViewport.tsx",
+    "src/interaction/spherical-navigation.ts",
+    "src/rendering/spherical-raster.ts",
+    "src/rendering/spherical-view.test.ts",
+    "src/rendering/spherical-view.ts",
+    "src/terrain/spherical-preview-fixture.ts",
+    "tests/fixtures/sphere.html",
+    "tests/fixtures/sphere.tsx",
+    "tests/spherical-preview.spec.ts"
+  ],
+  "numerical": {
+    "command": "npm.cmd test",
+    "passed": 158,
+    "failed": 0,
+    "baselineCases": 153,
+    "newMathematicalCases": 5
+  },
+  "browser": {
+    "command": "npm.cmd run test:browser -- --config .local/a6-d1-playwright.config.ts",
+    "total": 166,
+    "passed": 165,
+    "skipped": 1,
+    "failed": 0,
+    "originalCases": 152,
+    "newCases": 14,
+    "configuration": "Dedicated loopback port 5176, no server reuse; same desktop/Pixel7 projects, two workers, zero retries",
+    "skip": "Existing desktop native single-touch case; mobile native touch passes",
+    "lastRun": {
+      "status": "passed",
+      "failedTests": []
+    }
+  },
+  "build": {
+    "command": "npm.cmd run build",
+    "typecheck": "passed",
+    "modules": 57,
+    "assets": [
+      "index-Dopzuun4.css",
+      "index-Bc3CA3Lo.js"
+    ]
+  },
+  "preservation": {
+    "protectedSourceCount": 80,
+    "byteIdenticalCount": 79,
+    "protectedSource": [
+      {
+        "path": "scripts/measure-spherical-brush.mjs",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "954f78d5b259a19e1b41ccfc27c836fa810bd24f70cee7ef3c639f1a8275ad93"
+      },
+      {
+        "path": "scripts/measure-spherical-tools.mjs",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "6b989327ff008cd2f24e7b9c735bbe0d6c8486ad808e5f70d9fe5e283aa8cd2d"
+      },
+      {
+        "path": "scripts/measure-spherical.mjs",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "1a32b2e8d250c7f1c2631acdb85c208514bc63e7643aadf0b93c2d29ee55b6a9"
+      },
+      {
+        "path": "src/components/BrushToolbar.module.css",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "6f7d0bcbba928b0da08852a75e95f3ae028ad3235e82edb3a586e42c0299932b"
+      },
+      {
+        "path": "src/components/BrushToolbar.tsx",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "9318d6290a682a6d34f0c7e2fadbda035b9606e48352f581da2663007f989c3d"
+      },
+      {
+        "path": "src/components/ElevationLegend.module.css",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "7fb56082a4283ac8314918690a76631501b942b80e9c9a8a879f2de309fa59c7"
+      },
+      {
+        "path": "src/components/ElevationLegend.tsx",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "524cd1e3dd8d17b2374e7d108056b8b5724aa5844a4dede7169360eff46f38f5"
+      },
+      {
+        "path": "src/components/TerrainCanvas.module.css",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "24a4056be3b57f1dfb05eb3dd759e9685b02f4f454e790878d6256e244ed4910"
+      },
+      {
+        "path": "src/components/TerrainCanvas.tsx",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "d7bdab114c2a8e497205003be7733e8f9b3edb9b47aba7a9d5de5c04ae0b4814"
+      },
+      {
+        "path": "src/editor/spherical-history.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "5674880efe1640fe857b9c9edb1e051392be0ff11e010e98d230731ba3f1c7cd"
+      },
+      {
+        "path": "src/editor/spherical-history.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "c77435fddee1441534df78da4ea360bf29d23326a7e7834b2da61c441f93d76d"
+      },
+      {
+        "path": "src/editor/terrain-document.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "44fdfbb7576f27998b7d468dbb999be83c16d0504bf0514cfa8e5d41d88dd314"
+      },
+      {
+        "path": "src/editor/terrain-history.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "c206497454dc989e891f5da4a6cc70914c65336b3a516ea469f73b542b1f7bb6"
+      },
+      {
+        "path": "src/editor/terrain-history.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "63f9e6e50d2290783d4fcd3996f196142ab794ab787f0f919142650444bb17ea"
+      },
+      {
+        "path": "src/interaction/canvas-navigation.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "b608c4efca952ca7e24927f0dec6a7a851ca48b5a0a5f7393b57d8d318bdd7df"
+      },
+      {
+        "path": "src/interaction/canvas-sculpting.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "d51afb71d2ba959d5d7d67e0afc907f4be05eac0f326c770105ed1e90bf7e227"
+      },
+      {
+        "path": "src/main.tsx",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "8989c7a482dd7c56661d9152674e33d1095a6c6cb46f5233a04afc56f122267d"
+      },
+      {
+        "path": "src/persistence/heightmap-payload.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "2bf3ea64ddd44dd4907d4d477b6d62e9df46b653af77ea20eebdc1f4b496afef"
+      },
+      {
+        "path": "src/persistence/local-map-store.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "c23c11368b6cc8403f51994b3eacfdf243c6a1e181280a059a6b9d2ac7159a89"
+      },
+      {
+        "path": "src/persistence/map-format.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "32049bfb940aae9d932b2c488ba76f3d7db7b50945d85753a1ae4e74b05c9cec"
+      },
+      {
+        "path": "src/persistence/terrain-format.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "84ea749600824d89bee2da4f99307767089c66ff4dfc0261062de9ecb500b01b"
+      },
+      {
+        "path": "src/persistence/terrain-format.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "d6a9fecfca4e29878f70119d39cbcb11c3790e93981d673394f8c5dd4f03502b"
+      },
+      {
+        "path": "src/persistence/wrapped-format.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "7957dff9372598f57a4a644d10f1daa4ecddbd653fdf9787e47a3c31cc327613"
+      },
+      {
+        "path": "src/persistence/wrapped-format.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "fcd48e503f88913e1decfa6e53900777f80cc4de17be35f1ffd1c2eb9ad4fe54"
+      },
+      {
+        "path": "src/rendering/camera.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "56f4de0991e19d2218ce29abdd4e6cfb312967dbe97080cab1474b4e0550f1d0"
+      },
+      {
+        "path": "src/rendering/camera.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "28cc51eb2ab746d0900fe1651d9af3da8f8df741d62f42da777d94bd21b128f5"
+      },
+      {
+        "path": "src/rendering/canvas-renderer.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "c0b8f2e26bafdaa2c949eb1b7da75490de63c6b61dcefac5d7d18aca1cc6ea0e"
+      },
+      {
+        "path": "src/rendering/display-raster.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "86db9a206cc254beebd65a6bca232f5c5abb002476962cea43bd2f54971d2980"
+      },
+      {
+        "path": "src/rendering/display-raster.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "a392669e82a1e96ee68a4d422d9055a2c60bb84a6ceeb087ee2dc7874b7669d9"
+      },
+      {
+        "path": "src/rendering/edge-pan.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "adca6de9a87dd86a7c2d7d945bba5fa62be893ba26621aaab95afda9a9279dc8"
+      },
+      {
+        "path": "src/rendering/edge-pan.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "8a66fb2a7b98992f912c5d89c99b0a86b791e57d110acb13c6687e32eeac6ca3"
+      },
+      {
+        "path": "src/rendering/elevation-colors.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "991b8a713286fb516d0a5cd8eea291c264a2ecfb10568a879909ac5dd94b3f3f"
+      },
+      {
+        "path": "src/rendering/elevation-raster.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "27daa89d265a97ddfdb592444ab52736bf45c50c33e27fc4689f53b2cae5c50a"
+      },
+      {
+        "path": "src/rendering/elevation-raster.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "bdf272baa0d8d52334a5f83ea66921df9a91e989896ff176f025c6e212bda26c"
+      },
+      {
+        "path": "src/rendering/fit-map.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "ac5619a3849022b781dba70e2176541cae25b21b69d4613b1e7d84ca0c60f8bf"
+      },
+      {
+        "path": "src/rendering/fit-map.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "841b06966a6ea9c937ba3abccf78929f0bc2027a239cc31428f2ea750a79c024"
+      },
+      {
+        "path": "src/rendering/periodic-view.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "306d66c82912f8e661a168a0b34a333ee284968da971980f15f67493aff40843"
+      },
+      {
+        "path": "src/rendering/periodic-view.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "3c86ea6edd5df2cd1b7961ff1ae7f9da3514da88403f43c1a560c4dc5ca9fe64"
+      },
+      {
+        "path": "src/rendering/wrapping-camera.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "2adfc86b79b98b617493cab763844d7b5c242f09f59e2ffefb1e134f13e6b8d6"
+      },
+      {
+        "path": "src/styles.css",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "6127977f4cf8e6cdae25c40e70d2403acc69e7f2caabf071a4dcbae6c1e1c2b1"
+      },
+      {
+        "path": "src/surfaces/compatibility.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "7897ceb13d7afba6e0fb1957902b28b66d14420f7de67169ce53d798a665e974"
+      },
+      {
+        "path": "src/surfaces/contracts.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "cfb7b2c27ee43feec425c86171caf3281be92d41cd3cc141db2b7a0689f0ba83"
+      },
+      {
+        "path": "src/surfaces/cube-sphere.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "002f24b406f6ab5057de6acc721d76c68e816a6918b81b75ee0406bbc761dd12"
+      },
+      {
+        "path": "src/surfaces/cube-sphere.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "45fbca2f7ce7a31eb8b4d6eebcf60633d24332c03f387fc74330fce5ca9760e4"
+      },
+      {
+        "path": "src/surfaces/great-circle.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "4f30b260fff7a15f12de230438b4fa07f072547bc376a3e4f9c5e026b7e8af13"
+      },
+      {
+        "path": "src/surfaces/legacy-planar.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "4326bd3e64842c58f15c10ff83cce9902c8ac9573ae8bab2e6dc511414ea77a2"
+      },
+      {
+        "path": "src/surfaces/rectangular.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "fe22f566731a1a8ebdee85159030eda37d411f1a3b7b6b8a18fad0b361ad55c2"
+      },
+      {
+        "path": "src/surfaces/rectangular.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "b59bb07572b2b85b7bf7e78aec961e0f4adac250f429b6f1fced5e65ada18b79"
+      },
+      {
+        "path": "src/surfaces/world.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "60d957c4349fb6c4f16b2554a506c8dc5b990635568226a3749b85c0d6c311b1"
+      },
+      {
+        "path": "src/surfaces/world.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "d4c849778b71f606c4a59b50a00520864838ea9aeafc25a09288b34a9ab35254"
+      },
+      {
+        "path": "src/terrain/brush-math.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "6a5fed2cce38c70fadd4b9fa340d2c9def28925fcf6a085e092e849e07f48f10"
+      },
+      {
+        "path": "src/terrain/brush.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "b91c204ddb3ea211ac8485e4daad9c51d8874c88ce47e679c0b7f35bf8230eab"
+      },
+      {
+        "path": "src/terrain/brush.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "5904cb85930beaa7789dc337511c9fa3b1ad31c3daef6a7e541409d1846cafda"
+      },
+      {
+        "path": "src/terrain/model.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "96183a66d313bf95dfe9534fbe370341f42180fdb67ae2cc429c456f222dd414"
+      },
+      {
+        "path": "src/terrain/model.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "45581a6f9add3115053b0b2048f58acf0585337c4c5b3391bd4a1c94c0d9d104"
+      },
+      {
+        "path": "src/terrain/modifications.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "1c08f0557e537da051c845aaebf64b3468fd10ffc8de70296fade29621ba1e47"
+      },
+      {
+        "path": "src/terrain/refinement.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "fc07bab77cb8f066236f6bb27a7c77fff157e763d5d8cfa9cd8bd01cda107fa9"
+      },
+      {
+        "path": "src/terrain/sampling.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "7546654d62c76b6876a30db96815f9e6acb2ecd641425ddd1041d99d4e1da973"
+      },
+      {
+        "path": "src/terrain/sampling.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "c7450e4fa8de04ad64e75a5814a6db34d2d311fcac276792984bac440bde7942"
+      },
+      {
+        "path": "src/terrain/spherical-brush.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "7020711b317ecbea878e73cba220b0f27faa3f5696bb3fb056ae5234924973b2"
+      },
+      {
+        "path": "src/terrain/spherical-brush.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "7c28de3347ede75fbbfc29b597cb0f1033bc2913ce2dca646c5dafd9cc14ebfa"
+      },
+      {
+        "path": "src/terrain/spherical-cap.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "6f6acc228033e3b5c6f2dc1083d7627961ecb60e5bd8786d8904aa0c034cbce5"
+      },
+      {
+        "path": "src/terrain/spherical-smoothing.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "1d51946c7146e76d729a3889dbf197901bd845ff1d667587c4e387099dae6896"
+      },
+      {
+        "path": "src/terrain/spherical-tools.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "87d5cc13468ac44aeb4fca44f04464c3a01c695380f2eac18f25a7806577c8cd"
+      },
+      {
+        "path": "src/terrain/spherical.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "da1f9ce15a808ed197fa01b886d4f884a6d09817f2fea79a7e11c0259b286e91"
+      },
+      {
+        "path": "src/terrain/spherical.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "a3492e41821f175ed6a1e79f6ea0665f16ade672e73e4fdbd8427c147af3f0c4"
+      },
+      {
+        "path": "src/terrain/topology.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "e31cbc890444fd5284b6b32b4db5627eb32dec4e8fd8511e337fd3097c823d69"
+      },
+      {
+        "path": "src/terrain/wrapping.test.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "415f3f3781e2804a45a8405d6bb0e69ab21c98b17c3e780965d4208aaf84592b"
+      },
+      {
+        "path": "tests/atlas.spec.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "88d30bfa2ac74eca1535be4f7c79db3b13e17f990421dde122c9772e2004af24"
+      },
+      {
+        "path": "tests/fixtures/saves/a3-v1-heightmap.json",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "240286feeb579fc1d557986fe2c6e252fae0af4897d6187939f0f8b30aef27f5"
+      },
+      {
+        "path": "tests/fixtures/terrain.html",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "0f469f659c311838b99bf1dec8bc3b755835be9f3a1fd070f6d819266c78c544"
+      },
+      {
+        "path": "tests/fixtures/terrain.tsx",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "aa7a2e04614acb42f330e4e621d9c5ac9d54993ec8fff916c01200726e951dce"
+      },
+      {
+        "path": "tests/focused-view.spec.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "4edc7bbea7563503196a87c42a30665ecd3171ed109b1e3a034caf6a8ec5ccbf"
+      },
+      {
+        "path": "tests/navigation-stabilization.spec.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "23db71c9a21b8c37be92f8fbde6ee2ed8f0ba7a2e2e45460be5ecd4b8367be41"
+      },
+      {
+        "path": "tests/refinement.spec.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "7a7a33902da3db0043c6b04539db835a686a312623551cabdf00a717d4e21edf"
+      },
+      {
+        "path": "tests/sculpting.spec.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "29822823c15ce32e847ceb1e7d66eb76d5a4b580dc895f5a266022f1c2bd788e"
+      },
+      {
+        "path": "tests/surface-compatibility.spec.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "89361e1a70731c639a96e682b1d592c472a60b27b144e6b77635f40e40516b11"
+      },
+      {
+        "path": "tests/workspace-helpers.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "fc4e73949f8028903ae68e5b9b15a4c68799f5aa9a327b893a2a7a5c679b9ca7"
+      },
+      {
+        "path": "tests/workspace.spec.ts",
+        "byteIdentical": true,
+        "gitNormalizedSha256": "2e03df1f97b8a8aebc71603899d99886845cf38e6e097ab3ae6333cca4be589c"
+      },
+      {
+        "path": "tests/wrapping.spec.ts",
+        "byteIdentical": false,
+        "gitNormalizedSha256": "3a891e115a21bae52bf3c155f23efa318d46b26273be5fcda58487f2e6e7eb6f"
+      }
+    ],
+    "historicalEvidenceFilesVerified": 75,
+    "restoredRegeneratedHistoricalEvidence": [
+      "docs/evidence/a5-1-desktop-bounded-pan.png",
+      "docs/evidence/a5-1-desktop-edge-stroke.png",
+      "docs/evidence/a5-1-desktop-motion.json",
+      "docs/evidence/a5-1-desktop-seam.png",
+      "docs/evidence/a5-1-desktop-touch-edge.png",
+      "docs/evidence/a5-1-mobile-edge-stroke.png",
+      "docs/evidence/a5-1-mobile-seam.png",
+      "docs/evidence/a5-1-mobile-touch-edge.png",
+      "docs/evidence/a5-2-desktop-edge-connected.png",
+      "docs/evidence/a5-2-mobile-edge-connected.png",
+      "docs/evidence/a5-desktop-bounded-fill.png",
+      "docs/evidence/a5-desktop-recentered.png",
+      "docs/evidence/a5-desktop-seam.png",
+      "docs/evidence/a5-desktop-zoomed-rendering.png",
+      "docs/evidence/a5-mobile-bounded-fill.png",
+      "docs/evidence/a5-mobile-recentered.png",
+      "docs/evidence/a5-mobile-seam.png",
+      "docs/evidence/a5-mobile-zoomed-rendering.png"
+    ],
+    "a6NumericalAndHistorySourcesUnchanged": true,
+    "originalBrowserSpecsUnchanged": 8,
+    "planarWrappedRuntimeAndFormatsUnchanged": true,
+    "onlyExistingRuntimeEntryChanged": "src/App.tsx",
+    "completeInventoryAndIssue1Preserved": true,
+    "integrationSteps": [
+      9,
+      10,
+      11
+    ]
+  },
+  "projection": {
+    "namedDirectionTolerance": 2e-12,
+    "seededDirectionTolerance": 1e-10,
+    "limbDirectionTolerance": 1e-7,
+    "netJoinedEdgePairs": 5,
+    "netVisualCutPairs": 7,
+    "canonicalOwnership": "Unchanged one Float32 per physical sample"
+  },
+  "performance": [
+    {
+      "path": "docs/evidence/a6-d1-desktop-n128-performance.json",
+      "project": "desktop",
+      "n": 128,
+      "cpuRate": 1,
+      "actions": {
+        "rotate": {
+          "medianMs": 22.25,
+          "p95Ms": 26.100000001490116
+        },
+        "zoom": {
+          "medianMs": 53.600000001490116,
+          "p95Ms": 55.100000001490116
+        },
+        "switch": {
+          "medianMs": 26.850000001490116,
+          "p95Ms": 59.100000001490116
+        }
+      },
+      "allActionP95Ms": 55.100000001490116,
+      "fixturePreparationMs": 241.89999999850988,
+      "authorityBytes": 393224,
+      "cacheBytes": 1585176,
+      "providerReadsDuringNavigation": 2,
+      "fullElevationCopiesDuringNavigation": 0,
+      "rendersDuring100Events": 1
+    },
+    {
+      "path": "docs/evidence/a6-d1-desktop-n256-performance.json",
+      "project": "desktop",
+      "n": 256,
+      "cpuRate": 1,
+      "actions": {
+        "rotate": {
+          "medianMs": 24.150000002235174,
+          "p95Ms": 27
+        },
+        "zoom": {
+          "medianMs": 57.650000002235174,
+          "p95Ms": 60.899999998509884
+        },
+        "switch": {
+          "medianMs": 31.949999999254942,
+          "p95Ms": 76
+        }
+      },
+      "allActionP95Ms": 66.89999999850988,
+      "fixturePreparationMs": 858.6000000014901,
+      "authorityBytes": 1572872,
+      "cacheBytes": 6316056,
+      "providerReadsDuringNavigation": 2,
+      "fullElevationCopiesDuringNavigation": 0,
+      "rendersDuring100Events": 1
+    },
+    {
+      "path": "docs/evidence/a6-d1-mobile-n128-performance.json",
+      "project": "mobile",
+      "n": 128,
+      "cpuRate": 4,
+      "actions": {
+        "rotate": {
+          "medianMs": 39.25,
+          "p95Ms": 53.5
+        },
+        "zoom": {
+          "medianMs": 127.65000000223517,
+          "p95Ms": 131.89999999850988
+        },
+        "switch": {
+          "medianMs": 77.19999999925494,
+          "p95Ms": 164.10000000149012
+        }
+      },
+      "allActionP95Ms": 160.89999999850988,
+      "fixturePreparationMs": 264.8999999985099,
+      "authorityBytes": 393224,
+      "cacheBytes": 1585176,
+      "providerReadsDuringNavigation": 2,
+      "fullElevationCopiesDuringNavigation": 0,
+      "rendersDuring100Events": 1
+    },
+    {
+      "path": "docs/evidence/a6-d1-mobile-n256-performance.json",
+      "project": "mobile",
+      "n": 256,
+      "cpuRate": 4,
+      "actions": {
+        "rotate": {
+          "medianMs": 45.05000000074506,
+          "p95Ms": 54
+        },
+        "zoom": {
+          "medianMs": 158.30000000074506,
+          "p95Ms": 163.5
+        },
+        "switch": {
+          "medianMs": 79.64999999850988,
+          "p95Ms": 164.5
+        }
+      },
+      "allActionP95Ms": 163.5,
+      "fixturePreparationMs": 877.9000000059605,
+      "authorityBytes": 1572872,
+      "cacheBytes": 6316056,
+      "providerReadsDuringNavigation": 2,
+      "fullElevationCopiesDuringNavigation": 0,
+      "rendersDuring100Events": 1
+    }
+  ],
+  "visualEvidence": [
+    "docs/evidence/a6-d1-desktop-globe-nx.png",
+    "docs/evidence/a6-d1-desktop-globe-px.png",
+    "docs/evidence/a6-d1-desktop-globe-pz.png",
+    "docs/evidence/a6-d1-desktop-net.png",
+    "docs/evidence/a6-d1-mobile-globe-nx.png",
+    "docs/evidence/a6-d1-mobile-globe-px.png",
+    "docs/evidence/a6-d1-mobile-globe-pz.png",
+    "docs/evidence/a6-d1-mobile-net.png"
+  ],
+  "review": {
+    "a6_c": "Owner supplied Ember source/numerical-evidence approval",
+    "a6_d1": "Independent review and owner acceptance pending",
+    "earlierFocusedLayoutHandsOn": "Separate",
+    "stopBefore": "A6-D2"
+  },
+  "delivery": {
+    "githubAccount": "Revty79",
+    "repository": "Revty79/serrian-tide-world",
+    "viewerPermission": "ADMIN",
+    "fetchedMain": "3e5cdeee82627c2cd293940e7397dcebfbc35455",
+    "deployment": false,
+    "originalSiteOrDatabaseWrites": false
+  }
+}

@@ -1,6 +1,6 @@
 # Serrian Tide Atlas
 
-Pass A6-C: numerical spherical Smooth and explicit-target Flatten join Raise/Lower on one continuous cube-sphere authority, with geodesic footprints, connected distance-aware neighborhoods and exact history. The A5.2 focused wrapped editor remains unchanged; spherical views require A6-D authorization.
+Pass A6-D1: a session-only spherical development preview displays the real numerical terrain as a rotatable orthographic globe or an oriented six-face net. Physical selection/readouts agree across views. The current bounded/wrapped editor and A6-A/B/C numerical tools remain intact; spherical brush interaction requires A6-D2 authorization.
 
 This repository is a standalone **development workspace**. Atlas and the rebuilt Worlds system will ultimately replace the current Worlds/Atlas implementation inside the existing Serrian Tide Next.js/TypeScript website. The original website remains untouched.
 
@@ -46,6 +46,14 @@ The map stage occupies the browser viewport. **Atlas / Open tools** reveals a sc
 
 Save explicitly before leaving. Saves belong to the **current browser profile and origin on this device**, are not synchronized to Serrian Tide, and can be removed by clearing browser data. Private browsing and browser eviction policies affect their lifetime. There is no autosave, crash recovery, external import/export, server storage, or separate account system. A browser may not fire an unload event when a mobile app is killed.
 
+## Spherical development preview
+
+Open tools, enter an explicit **Sphere reference radius (m)** and choose N=128 or N=256, then select **Open spherical preview**. The deterministic test geography crosses chart seams and corners; it is not Earth or a generated canonical world. Preview identities exist only in the development session. The current planar document, camera and Undo/Redo remain mounted behind the preview. **Return to map** restores access to them without discarding or replacing the map.
+
+Drag the globe to rotate; drag the net to pan. Wheel/pinch or the zoom buttons change display scale. Tap/click a location to inspect its canonical numerical elevation; **Center selection** brings it to the globe center. The focused canvas supports arrow navigation, +/− zoom, Enter to inspect the center and Home to reset. **View controls** supplies six reference directions and projection/cut explanations. Solid net folds join geography; dashed amber edges are paired visual cuts. Fullscreen is optional. No spherical sculpting, GUI history or Save/Open is available; the preview is clearly session-only.
+
+The browser uses bounded CPU rasters and derived display caches, with lighter navigation rendering followed by a settled redraw. Display interpolation adds no authoritative geographic detail. See [projection contracts and limits](docs/SPHERICAL-VIEWS.md), [screenshots, performance and exact files](docs/A6-D1-COMPLETION.md).
+
 ## Numerical terrain and integration
 
 New maps in the existing editor have 512 columns × 512 rows in a row-major `Float32Array` (262,144 samples, 1 MiB), initially all −100 m. Sea level defaults to 0 m; water includes equality. Bounded maps retain version 1's independent edge samples and save contract. Wrapped maps use explicit version 2 metadata/records, with unique samples per horizontal period and World/surface/patch identities. No conversion occurs. The provisional extent is a neutral 1 × 1 map-unit rectangle, independent of sample resolution and physical-world scale.
@@ -65,6 +73,7 @@ The numerical engine has no React, DOM, Vite, authentication, network or databas
 | `src/editor/` | Existing planar history/document checkpoints; separate spherical history through canonical writes and private snapshots |
 | `src/persistence/` | Validated/versioned little-endian save representation and separate IndexedDB adapter |
 | `src/components/` | Reusable client canvas, controlled brush inputs and elevation legend |
+| `SphericalPreview`, `SphericalViewport` | Separate session-only host and embeddable read-only globe/net viewport |
 | `src/App.tsx`, `src/styles.css`, `src/main.tsx` | Temporary full-screen development host |
 | `tests/` | Desktop/mobile browser proofs and test-only numerical fixture |
 | `scripts/measure-spherical.mjs` | Reproducible numerical allocation, connectivity and seam-write receipt |
@@ -72,7 +81,7 @@ The numerical engine has no React, DOM, Vite, authentication, network or databas
 | `scripts/measure-spherical-tools.mjs` | A6-C N=128/256 Smooth/Flatten performance, bounded payloads and exact history |
 | `docs/evidence/` | Actual screenshots/numerical receipts; prior-pass evidence remains historical |
 
-The A4 surface contracts remain independent of React, Canvas, DOM and browser storage. A5 uses their periodic math. A6-A adds `createSphericalTerrain` in `src/terrain/spherical.ts` and reference geometry in `src/surfaces/cube-sphere.ts`, without importing them into App or changing v1/v2 storage. A radius in meters is required; default resolution is 128 cells per face edge, with 98,306 unique samples (393,224 elevation bytes). Face charts are a numerical representation of a **round** world, not a physical cube. A6-C adds distance-weighted connected Smooth and datum-relative Flatten. Globe rotation, projection/local editing views, spherical persistence and independent hollow surfaces remain future work.
+The A4 surface contracts remain independent of React, Canvas, DOM and browser storage. A5 uses their periodic math. A6-A adds `createSphericalTerrain` in `src/terrain/spherical.ts` and reference geometry in `src/surfaces/cube-sphere.ts`; A6-D1 exposes them through a separate preview without changing v1/v2 storage. A radius in meters is required; default resolution is 128 cells per face edge, with 98,306 unique samples (393,224 elevation bytes). Face charts are a numerical representation of a **round** world, not a physical cube. A6-C adds distance-weighted connected Smooth and datum-relative Flatten. A6-D1 adds read-only globe/net inspection; spherical brush interaction, persistence and independent hollow surfaces remain future work.
 
 Reproduce the numerical memory/topology receipt with `node --expose-gc scripts/measure-spherical.mjs`. An optional final argument writes its JSON output to an explicit path.
 
@@ -80,4 +89,4 @@ The spherical API is `startSphericalBrushStroke(terrain, physicalPoint, settings
 
 See [World/surface architecture](docs/WORLD-SURFACE-ARCHITECTURE.md), [integration architecture](docs/ARCHITECTURE.md), [A6-C completion and exact files](docs/A6-C-COMPLETION.md), and the [complete master roadmap](docs/PHASE-1-HEIGHTMAP-ROADMAP.md). All prior completion reports remain historical receipts.
 
-The owner supplied Ember's A5.2 source, test and visual-evidence approval at `7033fe5f5013db9bac6d74792db2a642182006e2` and authorized A6-C directly on `main`. Owner hands-on focused-layout acceptance remains separate and outstanding. See [A5.2 layout and screenshots](docs/A5-2-COMPLETION.md) and [A6-C numerical completion](docs/A6-C-COMPLETION.md). Stop after A6-C for review; A6-D and later checkpoints need separate authorization. Future view providers must choose connected layouts appropriate to their geometry; rectangular side previews are specific to the current periodic plane. The master roadmap explicitly records [Issue #1](https://github.com/Revty79/serrian-tide-world/issues/1) for terrain measurement, prominence, slope, 3D consistency and Worlds linkage. Atlas first joins separately rebuilt Worlds (step 9); that combined system then joins Serrian Tide (step 10), before the reusable historical/modern Earth foundation (step 11). No integration or deployment occurs in this pass.
+The owner supplied Ember's A6-C source/numerical-evidence approval at `3e5cdeee82627c2cd293940e7397dcebfbc35455` and authorized A6-D1 directly on `main`. Owner hands-on focused-layout acceptance remains separate. See [A5.2 layout](docs/A5-2-COMPLETION.md), [A6-C numerical completion](docs/A6-C-COMPLETION.md) and [A6-D1 viewing evidence](docs/A6-D1-COMPLETION.md). Stop after A6-D1 for review; A6-D2 and later checkpoints need separate authorization. Future view providers must choose connected layouts appropriate to their geometry; rectangular side previews remain specific to the periodic plane. The master roadmap retains [Issue #1](https://github.com/Revty79/serrian-tide-world/issues/1), all geometry/cartographic/history requirements and the agreed integration sequence: Atlas + separately rebuilt Worlds (step 9), completed combined system into Serrian Tide (step 10), then the reusable historical/modern Earth foundation (step 11). No integration or deployment occurs in this pass.

@@ -1,4 +1,4 @@
-# Atlas integration architecture — A6-C numerical tools on A5.2
+# Atlas integration architecture — A6-D1 spherical views on A6-C/A5.2
 
 ## Destination and ownership
 
@@ -11,6 +11,9 @@ Atlas and the rebuilt Worlds system will replace the existing implementation ins
 | `spherical-cap.ts`, `spherical-brush.ts`, `spherical-smoothing.ts`, `surfaces/great-circle.ts` | Conservative cap candidates, all four geodesic tools, connected distance-aware Smooth, shortest-arc strokes and shared falloff/saturation | Projection, UI, storage |
 | `src/editor/spherical-history.ts` | Separate bounded, exact spherical history through private copies and canonical writes | Exposing authority, replacing planar history, persistence/timelines |
 | `src/surfaces` | Pure surface identity/catalog, geometry/topology/metric/projection contracts, bounded/periodic mathematics, lattice neighbors, tangent transport and explicit legacy adapter | React, DOM, Canvas, persistence, spherical editor |
+| `rendering/spherical-view.ts`, `spherical-raster.ts` | Pure globe/net projection, camera frame, physical inspection, derived RGBA cache and bounded orthographic raster | Terrain mutation, DOM, React, storage |
+| `SphericalViewport`, `interaction/spherical-navigation.ts` | Read-only browser rendering, physical selection, rotate/pan/pinch/keyboard and projection controls | Numerical brushes/history, persistence, periodic repetition |
+| `SphericalPreview`, `terrain/spherical-preview-fixture.ts` | Replaceable session-only host and explicit synthetic test fixture | Canonical World records, procedural world generation, database |
 | `src/rendering/camera.ts`, `fit-map.ts` | Pure Fill/Fit, bounded constraints, periodic phase, pointer-anchored zoom, pan | Elevation mutation, resampling, storage |
 | `src/rendering/periodic-view.ts` | Current flat periodic Focus scale and centered connected-context frame | Numerical terrain, other geometry layouts, persistence |
 | Other `src/rendering` files | Elevation colors, interpolated presentation cache, shoreline coverage and isolated bounded/repeated canvas drawing | Editing, authorization, document identity |
@@ -31,6 +34,8 @@ A6-A adds a separate spherical provider and `src/surfaces/cube-sphere.ts` withou
 A6-B consumes that provider without a globe UI. Its stroke API accepts identity-bearing physical directions or face positions and uses conservative face-local cap bounds followed by exact geodesic distances. History snapshots are independent copies; restorations use canonical write calls. A revision increments only on actual Float32-bit changes, allowing history to refuse untracked edits safely. The shared A5 falloff/saturation expressions moved into a pure helper with the original results preserved; existing input/renderer/editor/storage code is unchanged. See [spherical sculpting/history contract](SPHERICAL-SCULPTING.md) for ownership, lifecycle, numeric thresholds, budgets and measurements.
 
 A6-C extends this same engine with explicit datum-relative Flatten and synchronous pre-dab Smooth over unique edge-connected vertices. Inverse geodesic-square weights account for unequal spacing; a half-center target damps oscillation, with degree three at corners and four elsewhere. Only output chunks are retained per dab; the existing history begin/commit copies remain per stroke. Raise/Lower expressions, ownership, metadata and all browser code are preserved. See the weighting rationale and A6-D view requirements in [spherical sculpting](SPHERICAL-SCULPTING.md).
+
+A6-D1 introduces a separate read-only viewport using an orthographic globe and oriented six-face spherical net. Camera frames, screen points and physical directions remain distinct from canonical sample identity. The preview requires an explicit radius and creates only ephemeral fixture identities. The existing document/canvas stays mounted behind an inert overlay; returning preserves its data, camera/history and saved records. The pure engine and v1/v2 storage are unchanged. See [spherical view contracts, tolerances and budgets](SPHERICAL-VIEWS.md). A6-D2 must separately connect brushes, projected geodesic footprints, input arbitration and revision-aware display invalidation.
 
 ## Reusable canvas contract
 
@@ -121,4 +126,4 @@ The adapter follows the browser's [IndexedDB transaction lifecycle](https://deve
 
 ## Review and scope
 
-A0–A5.2 and A6-A/B reports/evidence remain historical and unchanged. The owner supplied Ember's A5.2 source/test/visual-evidence approval and authorized A6-C on main at `7033fe5f5013db9bac6d74792db2a642182006e2`. [A6-C completion](A6-C-COMPLETION.md) records mathematical design, tests, compatibility and performance. Owner hands-on focused-layout acceptance remains separate. Stop after A6-C for review. A6-D, later geometry work, original-site integration, server/Production writes and deployment require separate authorization. The master roadmap preserves step 9 (Atlas into separately rebuilt Worlds), step 10 (combined system into the existing site), then step 11 (reusable historical/modern Earth foundation).
+A0–A5.2 and A6-A/B/C reports/evidence remain historical and unchanged. The owner supplied Ember's A6-C source/numerical-evidence approval and authorized A6-D1 on main at `3e5cdeee82627c2cd293940e7397dcebfbc35455`. [A6-D1 completion](A6-D1-COMPLETION.md) records projections, navigation, mathematical/browser tests, screenshots and performance. Owner hands-on focused-layout acceptance remains separate. Stop after A6-D1 for review. A6-D2, spherical persistence, later geometry work, original-site integration, server/Production writes and deployment require separate authorization. The master roadmap preserves step 9 (Atlas into separately rebuilt Worlds), step 10 (combined system into the existing site), then step 11 (reusable historical/modern Earth foundation).
