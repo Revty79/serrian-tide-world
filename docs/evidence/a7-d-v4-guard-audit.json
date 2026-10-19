@@ -1,0 +1,173 @@
+{
+  "method": "Independent auxiliary decoder guard audit. Every malformed record receives a freshly recomputed SHA-256 after mutation, so rejection cannot rely on stale integrity. Foreign geometry identity explicitly breaks the shared identity object alias before mutation.",
+  "cases": [
+    {
+      "name": "foreign geometry identity",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Invalid cylinder identity or save date."
+    },
+    {
+      "name": "foreign terrain id",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Invalid cylinder identity or save date."
+    },
+    {
+      "name": "empty World id",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Invalid map name or identity."
+    },
+    {
+      "name": "oversized surface id",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Invalid map name or identity."
+    },
+    {
+      "name": "unsupported provider",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Unsupported cylinder geometry, representation, units or ownership."
+    },
+    {
+      "name": "future geometry",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Unsupported cylinder geometry, representation, units or ownership."
+    },
+    {
+      "name": "interior role",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Unsupported cylinder geometry, representation, units or ownership."
+    },
+    {
+      "name": "open cylinder",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Unsupported cylinder geometry, representation, units or ownership."
+    },
+    {
+      "name": "zero radius",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "RangeError: Cylinder radius and axial length must be 1–1,000,000,000 m, with length between 0.1 and 20 times the radius."
+    },
+    {
+      "name": "negative length",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "RangeError: Cylinder radius and axial length must be 1–1,000,000,000 m, with length between 0.1 and 20 times the radius."
+    },
+    {
+      "name": "oversized dimension",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "RangeError: Cylinder radius and axial length must be 1–1,000,000,000 m, with length between 0.1 and 20 times the radius."
+    },
+    {
+      "name": "unsupported aspect",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "RangeError: Cylinder radius and axial length must be 1–1,000,000,000 m, with length between 0.1 and 20 times the radius."
+    },
+    {
+      "name": "unsupported detail",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "RangeError: Select cylinder detail 64, 128 or 256."
+    },
+    {
+      "name": "wrong detail ratio",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Unsupported cylinder resolution ratio."
+    },
+    {
+      "name": "duplicated ownership",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Unsupported cylinder geometry, representation, units or ownership."
+    },
+    {
+      "name": "future representation",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Unsupported cylinder geometry, representation, units or ownership."
+    },
+    {
+      "name": "wrong sample count",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Incorrect canonical cylinder sample count."
+    },
+    {
+      "name": "empty name",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Invalid map name or identity."
+    },
+    {
+      "name": "overlong name",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Invalid map name or identity."
+    },
+    {
+      "name": "invalid real date",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Invalid cylinder identity or save date."
+    },
+    {
+      "name": "unknown metadata",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Unsupported cylindrical record fields."
+    },
+    {
+      "name": "unknown root field",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Unsupported cylindrical record fields."
+    },
+    {
+      "name": "wrong elevation units",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Unsupported cylinder geometry, representation, units or ownership."
+    },
+    {
+      "name": "nonzero datum",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Unsupported cylinder geometry, representation, units or ownership."
+    },
+    {
+      "name": "wrong encoding",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Unsupported cylinder geometry, representation, units or ownership."
+    },
+    {
+      "name": "wrong payload length",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Incorrect cylinder elevation byte length."
+    },
+    {
+      "name": "NaN with valid integrity",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Saved cylinder elevations must be finite."
+    },
+    {
+      "name": "infinite value with valid integrity",
+      "integrityRecomputed": true,
+      "rejected": true,
+      "reason": "Error: Saved cylinder elevations must be finite."
+    }
+  ]
+}

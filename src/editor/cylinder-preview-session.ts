@@ -6,6 +6,10 @@ import type { SurfacePosition } from '../surfaces/contracts.ts';
 import { CYLINDER_PREVIEW_DAB_LIMITS, CylinderDisplayCache, cylinderPackedColor, cylinderVisibilityGuard, prepareCylinderStencil, type CylinderStencil } from '../rendering/cylindrical-raster.ts';
 import type { CylinderView } from '../rendering/cylindrical-view.ts';
 import { CYLINDER_UI_SPACING_RATIO } from './cylinder-controls.ts';
+import { yieldPersistence } from '../persistence/cooperative-work.ts';
+
+const historyWord = new DataView(new ArrayBuffer(4));
+function valueOfWord(word: number) { historyWord.setUint32(0, word, true); return historyWord.getFloat32(0, true); }
 
 export const CYLINDER_PREVIEW_RESOLUTIONS = [64, 128, 256] as const;
 export function createCylinderPreviewTerrain(angularSamples: number = 128) {
@@ -30,16 +34,29 @@ export class CylinderPreviewSession {
   changed = () => {};
   stopped = () => {};
   private disposed = false;
+  name: string;
+  hasSaved: boolean;
+  locked = false;
+  readonly persistent: boolean;
+  private checkpointName: string;
+  // Exact sparse differences from the saved content; independent of history retention/cursors.
+  private checkpointDifferences = new Map<number, number>();
   readonly statistics = { strokes: 0, dabs: 0, writes: 0, failures: 0, cancellations: 0, sliceMaxMs: 0, slices: 0, previewMaxMs: 0, stagedDisplayPeakBytes: 0, droppedTimingRecords: 0, lastStroke: {} as object, lastTermination: '' };
-  constructor(terrain: CylindricalTerrain) { this.terrain = terrain; this.history = createCylindricalHistory(terrain); this.cache = new CylinderDisplayCache(terrain); }
+  constructor(terrain: CylindricalTerrain, name = 'Untitled cylinder', saved = false, persistent = false) { this.terrain = terrain; this.history = createCylindricalHistory(terrain); this.cache = new CylinderDisplayCache(terrain); this.name = name; this.checkpointName = name; this.hasSaved = saved; this.persistent = persistent; if (persistent) this.message = saved ? 'Cylinder reopened. Continue editing the same geography.' : 'Blank ocean. Save explicitly to this browser.'; }
   get painting() { return !!this.stroke; }
   get processing() { return this.stroke?.status === 'draining'; }
-  get modified() { return this.terrain.revision !== 0; }
+  get modified() { return this.checkpointDifferences.size > 0 || this.name !== this.checkpointName; }
+  get checkpointSamples() { return this.checkpointDifferences.size; }
+  markSaved(name: string) { if (this.painting) throw new Error('Finish cylinder input before marking it saved.'); this.name = name; this.checkpointName = name; this.checkpointDifferences.clear(); this.hasSaved = true; this.changed(); }
+  private track(index: number, before: number, after: number) {
+    const savedValue = this.checkpointDifferences.get(index) ?? before;
+    if (Object.is(after, savedValue)) this.checkpointDifferences.delete(index); else this.checkpointDifferences.set(index, savedValue);
+  }
   get pendingPositions() { return this.stroke?.statistics.pendingPositions ?? 0; }
   get previewPending() { return !!this.preview; }
   private clearPreview() { this.preview?.job.cancel(); this.preview = undefined; this.previewKey = ''; this.stencil = undefined; this.previewMessage = ''; }
   begin(center: SurfacePosition, settings: CylindricalBrushSettings, view: CylinderView, at = performance.now()) {
-    if (this.disposed || this.stroke) return false;
+    if (this.disposed || this.stroke || this.locked) return false;
     this.clearPreview(); this.lastDab = undefined;
     const real = this.history, guard = cylinderVisibilityGuard(this.terrain, view);
     // Inherit the real closure-backed history. Override only its handoff to stage
@@ -53,6 +70,7 @@ export class CylinderPreviewSession {
         const stencil = { center: job.center, indices, revision: job.sourceRevision, settings: job.settings, affectedSamples: job.statistics.affectedSamples };
         this.statistics.stagedDisplayPeakBytes = Math.max(this.statistics.stagedDisplayPeakBytes, indices.byteLength + colors.byteLength);
         const count = operation.commitDab(job);
+        for (const c of changes) this.track(c.index, c.before, c.after);
         this.cache.apply(indices, colors, this.terrain.revision); this.lastDab = stencil; return count;
       } });
     } });
@@ -62,7 +80,7 @@ export class CylinderPreviewSession {
     } catch (e) { this.message = e instanceof Error ? e.message : String(e); this.changed(); return false; }
   }
   move(point: SurfacePosition, at = performance.now()) {
-    if (!this.stroke || this.stroke.status !== 'drawing') return false;
+    if (!this.stroke || this.stroke.status !== 'drawing' || this.locked) return false;
     try { this.stroke.move(point); this.inputTimes.push({ ordinal: this.stroke.statistics.acceptedPositions, at }); this.changed(); return true; }
     catch (e) { this.fail(e); return false; }
   }
@@ -88,7 +106,7 @@ export class CylinderPreviewSession {
     try {
       while (this.stroke && calls++ < 8 && performance.now() - start < budgetMs) {
         this.stroke.pump(16); this.collectTimings();
-        if (this.stroke.status === 'complete') { this.message = this.terrain.revision === this.lastStrokeRevision ? 'Stroke completed with no numerical changes. Session-only.' : 'Stroke complete. Undo restores the entire gesture. Session-only; cannot save.'; this.finish(); }
+        if (this.stroke.status === 'complete') { this.message = this.terrain.revision === this.lastStrokeRevision ? 'Stroke completed with no numerical changes.' : `Stroke complete. Undo restores the entire gesture.${this.persistent ? '' : ' Session-only; cannot save.'}`; this.finish(); }
         else if (!this.stroke.statistics.hasPendingWork && this.stroke.status === 'drawing') break;
       }
     } catch (e) { this.fail(e); }
@@ -100,18 +118,20 @@ export class CylinderPreviewSession {
     this.clearPreview(); this.changed();
   }
   undo() {
+    if (this.locked) return;
     this.cancel('Undo interrupted drawing');
     const operation = this.history.statistics.cursor - 1;
-    try { if (this.history.undo()) { this.cache.refresh([...this.history.changes(operation)].map(c => c.index)); this.message = 'Exact whole-stroke Undo. Session-only.'; } }
+    try { if (this.history.undo()) { for (const c of this.history.changes(operation)) this.track(c.index, valueOfWord(c.afterWord), valueOfWord(c.beforeWord)); this.cache.refresh([...this.history.changes(operation)].map(c => c.index)); this.message = 'Exact whole-stroke Undo.'; } }
     catch (e) { this.message = String(e); } this.lastDab = undefined; this.changed();
   }
   redo() {
+    if (this.locked) return;
     this.cancel('Redo interrupted drawing'); const operation = this.history.statistics.cursor;
-    try { if (this.history.redo()) { this.cache.refresh([...this.history.changes(operation)].map(c => c.index)); this.message = 'Exact whole-stroke Redo. Session-only.'; } }
+    try { if (this.history.redo()) { for (const c of this.history.changes(operation)) this.track(c.index, valueOfWord(c.beforeWord), valueOfWord(c.afterWord)); this.cache.refresh([...this.history.changes(operation)].map(c => c.index)); this.message = 'Exact whole-stroke Redo.'; } }
     catch (e) { this.message = String(e); } this.lastDab = undefined; this.changed();
   }
   requestPreview(center: SurfacePosition | undefined, settings: CylindricalBrushSettings | undefined, view: CylinderView) {
-    if (this.stroke || this.disposed || !center || !settings) { this.clearPreview(); return; }
+    if (this.stroke || this.disposed || this.locked || !center || !settings) { this.clearPreview(); return; }
     const key = JSON.stringify([center, settings, view.mode, view.frame, this.terrain.revision]);
     if (key === this.previewKey) return;
     this.clearPreview(); this.previewKey = key;
@@ -128,5 +148,10 @@ export class CylinderPreviewSession {
     this.statistics.previewMaxMs = Math.max(this.statistics.previewMaxMs, performance.now() - start); return !!this.preview;
   }
   presented(revision: number, now = performance.now()) { const values: number[] = []; this.presentationTimes = this.presentationTimes.filter(p => { if (p.revision > revision) return true; values.push(now - p.at); return false; }); return values; }
-  dispose() { this.cancel('Preview closed'); this.disposed = true; this.history.clear(); this.cache.dispose(); this.lastDab = undefined; this.presentationTimes = []; this.changed = () => {}; this.stopped = () => {}; }
+  async drainForSave(yieldWork = yieldPersistence) {
+    const failures = this.statistics.failures; this.release();
+    while (this.painting) { this.pump(3); await yieldWork(); }
+    if (this.statistics.failures !== failures) throw new Error('Queued cylinder input failed. Applied edits are retained; inspect them before retrying Save.');
+  }
+  dispose() { this.cancel('Cylinder closed'); this.disposed = true; this.history.clear(); this.cache.dispose(); this.lastDab = undefined; this.presentationTimes = []; this.checkpointDifferences.clear(); this.changed = () => {}; this.stopped = () => {}; }
 }

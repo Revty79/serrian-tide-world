@@ -1,5 +1,7 @@
 # Physical cylinder single-dab sculpting — A7-B2A
 
+Current integration: A7-D exposes the accepted numerical engine in the normal Atlas workspace at `/`, with explicit v4 Save/Open, shared document/library controls and exact saved checkpoints. See [current persistence and lifecycle](CYLINDRICAL-PERSISTENCE.md) and [A7-D completion](A7-D-COMPLETION.md). The kernel API and mathematics documented below remain unchanged.
+
 This is a pure TypeScript numerical component for the solid capped exterior defined in [the authority specification](CYLINDRICAL-HEIGHTMAP-FOUNDATION.md). It has no browser host, renderer, input controller, history, selector or persistence format. The [B1 global distance contract](CYLINDER-GLOBAL-DISTANCE.md), physical dimensions, sharp rims and canonical layout are unchanged. Distances refer to the fixed reference surface, not displaced relief.
 
 ## Settings and lifecycle
@@ -118,4 +120,4 @@ Projection inverses and previews must describe the same intrinsic footprint on s
 
 Cylinder creation/selection remains absent until viewing, interactive editing and explicit validated persistence are ready. A later format must retain identities/provider/version/dimensions/resolution/ownership, exact words, integrity/resource checks and atomic Save/Open, while preserving v1/v2/v3. No conversion, other shape, existing-site/Worlds integration or database change is included. The modular kernel remains compatible with the eventual Next.js host and its existing authentication, server permissions and World records under the unchanged eleven-phase roadmap.
 
-**Stop after A7-C for Ember's independent review; do not begin A7-D.**
+**Stop after A7-D for Ember's independent review and owner hands-on acceptance. Do not automatically begin another geometry phase.**

@@ -1,6 +1,8 @@
 # Continuous cylindrical sculpting and exact history — A7-B2B2
 
-This pure TypeScript numerical layer connects [B1 distances](CYLINDER-GLOBAL-DISTANCE.md), [B2A atomic dabs](CYLINDRICAL-SCULPTING.md) and [B2B1 physical paths](CYLINDER-PHYSICAL-PATHS.md). It has no React, DOM, screen coordinates, storage, authentication or database dependencies. A7-C now uses this unchanged engine in a [session-only development editor](CYLINDRICAL-EDITING.md), with physical/connected views and actual input. The production application entry does not import it. Ordinary cylinder creation and persistence remain A7-D.
+Current integration: A7-D exposes the accepted numerical engine in the normal Atlas workspace at `/`, with explicit v4 Save/Open, shared document/library controls and exact saved checkpoints. See [current persistence and lifecycle](CYLINDRICAL-PERSISTENCE.md) and [A7-D completion](A7-D-COMPLETION.md). The kernel API and mathematics documented below remain unchanged.
+
+This pure TypeScript numerical layer connects [B1 distances](CYLINDER-GLOBAL-DISTANCE.md), [B2A atomic dabs](CYLINDRICAL-SCULPTING.md) and [B2B1 physical paths](CYLINDER-PHYSICAL-PATHS.md). It has no React, DOM, screen coordinates, storage, authentication or database dependencies. A7-C now uses this unchanged engine in a [session-only development editor](CYLINDRICAL-EDITING.md), with physical/connected views and actual input. The A7-D production entry reuses this original engine through the shared cylinder document/view provider; the diagnostic entry remains session-only.
 
 ## Numerical session
 
@@ -104,4 +106,4 @@ Known retained B2A limitation: exact brush-boundary ambiguity can exhaust interv
 
 See [completion report](A7-B2B2-COMPLETION.md) and [raw measurements](evidence/a7-b2b2-stroke-measurements.json). All earlier saved formats, workspace behavior and historical evidence remain preserved. The [eleven-phase roadmap](PHASE-1-HEIGHTMAP-ROADMAP.md), including Issue #1 and functional linked maps before integration with existing Worlds, remains unchanged. The eventual Next.js host retains authentication, permissions, database and World-record ownership.
 
-**Stop after A7-C for Ember's independent review; do not begin A7-D.**
+**Stop after A7-D for Ember's independent review and owner hands-on acceptance. Do not automatically begin another geometry phase.**

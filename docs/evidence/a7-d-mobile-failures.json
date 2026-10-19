@@ -1,0 +1,318 @@
+{
+  "faults": [
+    {
+      "mode": "quota",
+      "recordUnchanged": true,
+      "editsRetained": true
+    },
+    {
+      "mode": "abort",
+      "recordUnchanged": true,
+      "editsRetained": true
+    },
+    {
+      "mode": "catalog",
+      "recordUnchanged": true,
+      "editsRetained": true
+    },
+    {
+      "mode": "denied",
+      "recordUnchanged": true,
+      "editsRetained": true
+    }
+  ],
+  "collision": {
+    "messages": [
+      "Error: Cannot replace another cylinder geometry, resolution or identity.",
+      "Error: Cannot replace another cylinder geometry, resolution or identity.",
+      "Error: Cannot replace another cylinder geometry, resolution or identity."
+    ],
+    "unchanged": true
+  },
+  "damagedRecords": 7,
+  "replacementRefused": true,
+  "preparationCancelled": true,
+  "preparationFailedSafely": true,
+  "oldSession": {
+    "identity": {
+      "worldId": "1ea0bc76-98f8-46ba-8b10-8e8191f2993e",
+      "surfaceId": "f838f593-7018-4651-8b58-070cb3419043"
+    },
+    "metadata": {
+      "terrainId": "df566092-84e7-49ec-816d-9f638d7eabc1",
+      "identity": {
+        "worldId": "1ea0bc76-98f8-46ba-8b10-8e8191f2993e",
+        "surfaceId": "f838f593-7018-4651-8b58-070cb3419043"
+      },
+      "geometry": {
+        "identity": {
+          "worldId": "1ea0bc76-98f8-46ba-8b10-8e8191f2993e",
+          "surfaceId": "f838f593-7018-4651-8b58-070cb3419043"
+        },
+        "provider": "physical-closed-cylinder",
+        "version": 1,
+        "configuration": "solid-capped",
+        "role": "exterior",
+        "radiusMeters": 820000,
+        "lengthMeters": 1200000
+      },
+      "representation": {
+        "provider": "cylinder-rings-shared-rims",
+        "version": 1,
+        "resolution": {
+          "angularSamples": 128,
+          "axialCells": 64,
+          "radialCells": 32
+        },
+        "ownership": "side-rims-cap-interiors-single-centers"
+      },
+      "elevationUnits": "meters",
+      "seaLevel": 0
+    },
+    "view": {
+      "mode": "map",
+      "frame": {
+        "right": [
+          0.4819187497721559,
+          0.876215908676647,
+          0
+        ],
+        "up": [
+          -0.43364060429174067,
+          0.2385023323604574,
+          0.8689490570615264
+        ],
+        "forward": [
+          0.761386987626881,
+          -0.4187628431947846,
+          0.49490154195747266
+        ]
+      },
+      "zoom": 1,
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "pan": {
+        "x": 0,
+        "y": 0
+      },
+      "phase": 0
+    },
+    "requested": {
+      "mode": "map",
+      "frame": {
+        "right": [
+          0.4819187497721559,
+          0.876215908676647,
+          0
+        ],
+        "up": [
+          -0.43364060429174067,
+          0.2385023323604574,
+          0.8689490570615264
+        ],
+        "forward": [
+          0.761386987626881,
+          -0.4187628431947846,
+          0.49490154195747266
+        ]
+      },
+      "zoom": 1,
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "pan": {
+        "x": 0,
+        "y": 0
+      },
+      "phase": 0
+    },
+    "size": {
+      "width": 412,
+      "height": 839
+    },
+    "ready": false,
+    "painting": false,
+    "processing": false,
+    "name": "Integrated cylinder",
+    "hasSaved": true,
+    "modified": false,
+    "checkpointSamples": 0,
+    "locked": false,
+    "history": {
+      "entries": 0,
+      "cursor": 0,
+      "retainedBytes": 0,
+      "activeBytes": 0,
+      "activeSamples": 0,
+      "evictions": 0,
+      "branches": 0,
+      "peakTypedBytes": 24576
+    },
+    "operations": [],
+    "statistics": {
+      "strokes": 2,
+      "dabs": 4,
+      "writes": 1106,
+      "failures": 0,
+      "cancellations": 0,
+      "sliceMaxMs": 3.1000000089406967,
+      "slices": 91,
+      "previewMaxMs": 1.699999988079071,
+      "stagedDisplayPeakBytes": 2368,
+      "droppedTimingRecords": 0,
+      "lastStroke": {
+        "pumps": 72,
+        "acceptedPositions": 3,
+        "processedPositions": 3,
+        "discardedPositions": 0,
+        "paths": 2,
+        "pathBoxes": 0,
+        "failedPathBoxAllowance": 0,
+        "committedDabs": 2,
+        "writes": 553,
+        "distanceQueries": 553,
+        "distanceBoxes": 0,
+        "failedQueryBoxAllowance": 0,
+        "dabCandidates": 1041,
+        "peakPreparedDabBytes": 8192,
+        "sumPreRoundElevationErrorMeters": 3.1682054781486055e-9,
+        "maxPreRoundElevationErrorMeters": 1.6367755073918055e-9,
+        "maxFalloffError": 8.164255055795936e-12,
+        "peakPendingPositions": 2,
+        "maximumPathPieces": 1,
+        "traveledMeters": 21999.81232203003,
+        "hasPendingWork": false,
+        "pendingPositions": 0,
+        "residualMeters": 5726.6909220300295,
+        "spacingErrorBoundMeters": 0.0000021830999203916977,
+        "lastCommittedCenter": {
+          "worldId": "1ea0bc76-98f8-46ba-8b10-8e8191f2993e",
+          "surfaceId": "f838f593-7018-4651-8b58-070cb3419043",
+          "patchId": "cap-end",
+          "u": 0,
+          "v": 16273.216180579804
+        }
+      },
+      "lastTermination": "complete"
+    },
+    "cacheBytes": 0,
+    "displayRevision": -1,
+    "revision": 2290,
+    "rasterBytes": 0,
+    "metrics": {
+      "preparationMs": 5.799999997019768,
+      "firstPresentationMs": 87.29999999701977,
+      "renders": 10,
+      "renderSliceMaxMs": 3,
+      "rasterTotalMs": 18.399999991059303,
+      "rasterStartedAt": 3056.7000000029802,
+      "overlayMaxMs": 1.2000000029802322,
+      "maxFrameGapMs": 22.299999997019768,
+      "rasterSnapshotBytes": 65032,
+      "renderTimes": [
+        41.5,
+        30.700000002980232,
+        6.799999997019768,
+        15.200000017881393,
+        16.900000005960464,
+        14.5,
+        4.200000002980232,
+        16.600000023841858,
+        18.700000017881393,
+        18.399999991059303
+      ],
+      "inputLatencies": [
+        65.40000000596046
+      ],
+      "brushLatencies": [
+        94.1000000089407,
+        169.59999999403954,
+        161.20000000298023,
+        80,
+        156,
+        149.09999999403954
+      ],
+      "frameGaps": [
+        12.299999997019768,
+        13.200000002980232,
+        17.5,
+        16.799999997019768,
+        15.900000005960464,
+        22.299999997019768,
+        10.700000002980232,
+        17.5,
+        16.30000001192093,
+        17.399999991059303,
+        15.400000005960464,
+        17.099999994039536,
+        16.799999997019768,
+        19.30000001192093,
+        13.099999994039536,
+        16.799999997019768,
+        17.100000008940697,
+        17,
+        16.399999991059303,
+        17.700000002980232,
+        15.900000005960464,
+        16.099999994039536,
+        17,
+        17.099999994039536,
+        15.900000005960464,
+        17,
+        17,
+        16.599999994039536,
+        15.800000011920929,
+        17.599999994039536,
+        16.799999997019768,
+        15.700000002980232,
+        17.299999997019768,
+        17.400000005960464,
+        17.400000005960464,
+        17,
+        15.400000005960464,
+        18,
+        15.399999991059303,
+        17.30000001192093,
+        16.099999994039536,
+        18.299999997019768,
+        14.900000005960464,
+        17,
+        17.099999994039536,
+        16.299999997019768,
+        18.400000005960464,
+        19.5,
+        11.799999997019768,
+        17,
+        17,
+        16.100000008940697,
+        17,
+        17,
+        16.099999994039536,
+        17.099999994039536,
+        16.5,
+        16.100000008940697,
+        17,
+        16.5,
+        19.5,
+        18.200000002980232,
+        20.5,
+        12
+      ]
+    },
+    "controls": {
+      "tool": "raise",
+      "radius": "68634",
+      "strength": "200",
+      "intensity": "50",
+      "target": "0"
+    },
+    "previewPending": false,
+    "previewMessage": "",
+    "message": "Exact whole-stroke Redo."
+  }
+}

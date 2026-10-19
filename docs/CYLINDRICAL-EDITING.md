@@ -1,6 +1,6 @@
 # Physical cylinder development editor — A7-C
 
-This is a real, session-only editor for the existing solid capped exterior. Both views use one `CylindricalTerrain`, the accepted A7-B2B2 stroke engine and its exact history. [Numerical foundation](CYLINDRICAL-HEIGHTMAP-FOUNDATION.md), [certified distance](CYLINDER-GLOBAL-DISTANCE.md), [atomic dabs](CYLINDRICAL-SCULPTING.md) and [continuous strokes](CYLINDRICAL-STROKES.md) retain their original code and mathematics.
+The A7-C development entry remains a real session-only editor for the existing solid capped exterior. A7-D reuses the same viewport/session in the normal Atlas workspace at `/`, with [v4 Save/Open, shared document controls and saved checkpoints](CYLINDRICAL-PERSISTENCE.md). Both views use one `CylindricalTerrain`, the accepted A7-B2B2 stroke engine and its exact history. [Numerical foundation](CYLINDRICAL-HEIGHTMAP-FOUNDATION.md), [certified distance](CYLINDER-GLOBAL-DISTANCE.md), [atomic dabs](CYLINDRICAL-SCULPTING.md) and [continuous strokes](CYLINDRICAL-STROKES.md) retain their original code and mathematics.
 
 ## Open the preview
 
@@ -13,7 +13,7 @@ Open **http://127.0.0.1:5173/dev/cylinder.html**. Stop the local server with Ctr
 
 The preview starts blank at −100 m, sea level 0, reference radius 1,000,000 m and length 1,600,000 m. Standard detail is 128 angular samples / 64 axial cells / 32 radial cells, **16,258 canonical samples**. Lightweight 64/32/16 and higher 256/128/64 are available in tools; select detail then **New blank cylinder**. Replacement of modified terrain requires an explicit discard decision. Cancellation retains terrain, identity, view and history. This is not map conversion.
 
-The persistent notice says **Development preview · session only · cannot save**. There is no Save button, library, IndexedDB adapter, codec, autosave or account. Ctrl/⌘ S explains that saving is unavailable. Reloading/closing loses the terrain; supported browsers warn after edits. Returning to Atlas does not preserve the cylinder. A7-D must supply validated preservation before ordinary Cylinder creation joins New World / Map.
+The persistent notice says **Development preview · session only · cannot save**. There is no Save button, library, IndexedDB adapter, codec, autosave or account. Ctrl/⌘ S explains that saving is unavailable. Reloading/closing loses the terrain; supported browsers warn after edits. Returning to Atlas does not preserve the cylinder. A7-D now supplies validated preservation in the normal New World / Map interface; this separate diagnostic entry intentionally remains session-only.
 
 ## Working controls
 
@@ -94,12 +94,12 @@ Scene and pointer-overlay native canvas backing is capped at 3,000,000 pixels **
 
 B1 queries, one high-valence Smooth calculation, history handoff/commit/Undo/Redo, stencil projection and a raster step are synchronous and non-preemptible. Candidate/ray counts and soft elapsed budgets **do not guarantee frame time**. Unsupported precision/work/history configurations stop explicitly with reversible committed terrain. The browser evidence includes real delays, 4× mobile CPU emulation, N=128/256 cap Smooth/Flatten, rim edits, repeated/long/cancelled strokes and actual heap readings. Higher detail can have noticeable queued-input latency; the lighter setting remains available. No speedup or universal device claim is made.
 
-## Verification and A7-D boundary
+## Verification and A7-D integration
 
 Run `npm.cmd test`, `npm.cmd run test:browser`, `npm.cmd run build`, and `node --expose-gc scripts/measure-cylinder-preview.mjs`. The normal browser suite includes the real development preview. Its read-only development diagnostics and test observer never install terrain or bypass pointer editing. Actual pointer traces are replayed in a separate accepted numerical engine instance and compared sample by sample. Original B1/B2A/B2B2 numerical sources/tests remain unchanged. See [completion, exact files, screenshots, traces and measurements](A7-C-COMPLETION.md).
 
-A7-D must explicitly extend the unified document/library/shape selection only after an independently versioned, validated cylinder record can preserve identity, physical dimensions, representation/ownership, resolution, exact Float32 words, integrity and resource limits. Preserve v1/v2/v3 interpretations; no conversion/migration is implicit. Add atomic Save/Open, failure-safe/discard-aware document replacement, accepted-input draining, real saved checkpoints despite history eviction, and full compatibility tests. The preview's revision-based conservative departure warning is not a saved-state checkpoint implementation. Review device/large-footprint limits before exposing broader configurations.
+A7-D now extends the unified document/library/shape selection with a validated explicit v4 record, exact saved checkpoints, atomic Save/Open, accepted-input draining and safe document replacement. Its sparse checkpoint is separate from the diagnostic host departure warning. The original A7-C projection, visibility, brush precision and resource limits remain. See [the current persistence/integration contract](CYLINDRICAL-PERSISTENCE.md).
 
 The complete eleven-phase roadmap remains mandatory, including functional linked maps before isolated integration with existing Worlds. Authentication, authoritative permissions, database and World records remain host responsibilities. No original website, Worlds, database or production deployment is modified.
 
-**Stop after A7-C for Ember's independent review. Do not begin A7-D.**
+**Stop after A7-D for Ember's independent review and owner hands-on acceptance. Do not automatically begin another geometry phase.**

@@ -109,6 +109,7 @@ export function App() {
       if (loaded.kind === 'sphere') {
         setSpherePreview({ radiusMeters: loaded.terrain.metadata.geometry.radiusMeters, cellsPerEdge: loaded.terrain.metadata.representation.cellsPerEdge, kind: 'blank', initial: { terrain: loaded.terrain, name: loaded.name } }); return;
       }
+      if (loaded.kind === 'cylinder') throw new Error('Cylinder worlds use the unified Atlas workspace.');
       if (!guardDiscard()) return;
       setDocument(new TerrainDocument(loaded.terrain, loaded.name, true));
       setControls({ ...defaults, radius: Math.min(loaded.terrain.metadata.dimensions.width, loaded.terrain.metadata.dimensions.height) * 0.06 });

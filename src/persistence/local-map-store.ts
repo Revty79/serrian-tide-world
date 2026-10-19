@@ -1,10 +1,11 @@
+import { decodeCylindricalHeightmap, cylindricalHeader, validateCylindricalHeightmap } from './cylindrical-format.ts';
 import { decodeSummary, type SavedMapSummary } from './terrain-format.ts';
 import { decodeMap, type SavedMap } from './map-format.ts';
 import { decodeSphericalHeightmap, sphericalHeader, validateSphericalHeightmap } from './spherical-format.ts';
 import type { PersistenceWork } from './cooperative-work.ts';
 
-export interface LocalMapSummary extends SavedMapSummary { kind?: 'bounded' | 'wrapped' | 'sphere' }
-export const localMapType = (map: LocalMapSummary) => map.kind === 'sphere' ? 'Sphere' : map.kind === 'wrapped' ? 'Wrapped plane' : map.kind === 'bounded' ? 'Bounded plane' : 'Planar (legacy)';
+export interface LocalMapSummary extends SavedMapSummary { kind?: 'bounded' | 'wrapped' | 'sphere' | 'cylinder' }
+export const localMapType = (map: LocalMapSummary) => map.kind === 'cylinder' ? 'Physical cylinder' : map.kind === 'sphere' ? 'Sphere' : map.kind === 'wrapped' ? 'Wrapped plane' : map.kind === 'bounded' ? 'Bounded plane' : 'Planar (legacy)';
 
 const DB_NAME = 'serrian-tide-atlas';
 const DB_VERSION = 1;
@@ -38,15 +39,15 @@ export class LocalMapStore {
       });
       return values.map((value) => {
         const summary = decodeSummary(value), kind = (value as LocalMapSummary).kind;
-        if (kind !== undefined && !['bounded', 'wrapped', 'sphere'].includes(kind)) throw new Error('Unknown saved map type.');
+        if (kind !== undefined && !['bounded', 'wrapped', 'sphere', 'cylinder'].includes(kind)) throw new Error('Unknown saved map type.');
         return { ...summary, ...(kind ? { kind } : {}) };
       }).sort((a, b) => b.savedAt.localeCompare(a.savedAt));
     } finally { db.close(); }
   }
   async save(input: SavedMap, work: PersistenceWork = {}): Promise<void> {
     // Validate before starting the transaction: async hashing would let IDB auto-close it.
-    const value = input.formatVersion === 3 ? await validateSphericalHeightmap(input, work) : input;
-    if (value.formatVersion !== 3) await decodeMap(value);
+    const value = input.formatVersion === 4 ? await validateCylindricalHeightmap(input, work) : input.formatVersion === 3 ? await validateSphericalHeightmap(input, work) : input;
+    if (value.formatVersion !== 3 && value.formatVersion !== 4) await decodeMap(value);
     work.progress?.('Writing local map transaction', 0);
     const db = await this.database();
     try {
@@ -64,8 +65,11 @@ export class LocalMapStore {
           if (previous?.formatVersion === 3 && value.formatVersion === 3 && JSON.stringify(sphericalHeader(previous).metadata) !== JSON.stringify(value.metadata)) {
             reason = new Error('Cannot replace another spherical geometry, resolution or identity.'); tx.abort(); return;
           }
+          if (previous?.formatVersion === 4 && value.formatVersion === 4 && JSON.stringify(cylindricalHeader(previous).metadata) !== JSON.stringify(value.metadata)) {
+            reason = new Error('Cannot replace another cylinder geometry, resolution or identity.'); tx.abort(); return;
+          }
           store.put(value);
-          tx.objectStore('catalog').put({ id: value.id, name: value.name, savedAt: value.savedAt, kind: value.formatVersion === 3 ? 'sphere' : value.formatVersion === 2 ? 'wrapped' : 'bounded' });
+          tx.objectStore('catalog').put({ id: value.id, name: value.name, savedAt: value.savedAt, kind: value.formatVersion === 4 ? 'cylinder' : value.formatVersion === 3 ? 'sphere' : value.formatVersion === 2 ? 'wrapped' : 'bounded' });
           } catch (cause) { reason = cause instanceof Error ? cause : new Error('Map transaction failed.'); try { tx.abort(); } catch { /* An interrupted write may already have aborted it. */ } }
         };
         tx.oncomplete = () => resolve();
@@ -90,6 +94,7 @@ export class LocalMapStore {
   async open(id: string) { return decodeMap(await this.readRecord(id)); }
   async openAny(id: string, work: PersistenceWork = {}) {
     work.progress?.('Reading local map', 0); const value = await this.readRecord(id);
+    if ((value as SavedMap).formatVersion === 4) return { kind: 'cylinder' as const, ...await decodeCylindricalHeightmap(value, work) };
     if ((value as SavedMap).formatVersion === 3) return { kind: 'sphere' as const, ...await decodeSphericalHeightmap(value, work) };
     return { kind: 'planar' as const, ...await decodeMap(value) };
   }

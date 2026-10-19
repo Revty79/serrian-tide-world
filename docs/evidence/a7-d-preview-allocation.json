@@ -1,0 +1,361 @@
+{
+  "baseline": "cf9fb1ba6e18d07fcf1d1834d5232f5866c5cf95",
+  "timestamp": "2026-10-19T01:25:16.363Z",
+  "environment": {
+    "node": "v24.18.0",
+    "platform": "win32",
+    "release": "10.0.26300",
+    "cpu": "AMD Ryzen 5 5600G with Radeon Graphics         "
+  },
+  "method": "Node adapter/display observations; not browser/mobile memory or controlled speedup. Authority exists before GC baseline and remains referenced. Event-loop yields plus two explicit collections before each reading. Derived RGBA only, no display elevation buffer. Pending raster snapshot is coherently copied color data; generator cancellation releases it. 100 dry-preview cancellations do not mutate terrain. Disposed session deliberately remains referenced; derived cache/history/stencils release while its caller-owned authority remains. JS objects, VM/Map overhead, native Canvas and browser GPU/compositor are additional; browser receipt records actual heap and backing dimensions.",
+  "records": [
+    {
+      "n": 64,
+      "samples": 4034,
+      "authorityBytes": 16136,
+      "preparationMs": 0.31450000000000955,
+      "strokeMs": 6.030900000000003,
+      "exactUndo": true,
+      "exactRedo": true,
+      "blankSha256": "f496781c55e00c8098e65f48171e078ef3fe0c3d0ff05b361b37753f384fe0a6",
+      "finalSha256": "01c026f0048d08f403c4373b9ce1c9ee6eadc0c9dea5795d030f3f315d13faa2",
+      "canonicalColorBytes": 16136,
+      "lastDabBytes": 0,
+      "history": {
+        "entries": 1,
+        "cursor": 1,
+        "retainedBytes": 12288,
+        "activeBytes": 0,
+        "activeSamples": 0,
+        "evictions": 0,
+        "branches": 0,
+        "peakTypedBytes": 12288
+      },
+      "statistics": {
+        "strokes": 1,
+        "dabs": 1,
+        "writes": 65,
+        "failures": 0,
+        "cancellations": 0,
+        "sliceMaxMs": 3.2036999999999978,
+        "slices": 2,
+        "previewMaxMs": 0.46889999999999077,
+        "stagedDisplayPeakBytes": 520,
+        "droppedTimingRecords": 0,
+        "lastStroke": {
+          "pumps": 13,
+          "acceptedPositions": 1,
+          "processedPositions": 1,
+          "discardedPositions": 0,
+          "paths": 0,
+          "pathBoxes": 0,
+          "failedPathBoxAllowance": 0,
+          "committedDabs": 1,
+          "writes": 65,
+          "distanceQueries": 65,
+          "distanceBoxes": 0,
+          "failedQueryBoxAllowance": 0,
+          "dabCandidates": 193,
+          "peakPreparedDabBytes": 8192,
+          "sumPreRoundElevationErrorMeters": 7.412689493032673e-9,
+          "maxPreRoundElevationErrorMeters": 7.412689493032673e-9,
+          "maxFalloffError": 6.174872768408027e-12,
+          "peakPendingPositions": 0,
+          "maximumPathPieces": 0,
+          "traveledMeters": 0,
+          "hasPendingWork": false,
+          "pendingPositions": 0,
+          "residualMeters": 0,
+          "spacingErrorBoundMeters": 0,
+          "lastCommittedCenter": {
+            "worldId": "30dd565c-58da-4da1-b4e8-abf70574a8e0",
+            "surfaceId": "398d601b-088a-44c4-aa5a-3567977759b8",
+            "patchId": "cap-start",
+            "u": 0,
+            "v": 0
+          }
+        },
+        "lastTermination": "complete"
+      },
+      "baseline": {
+        "rss": 74375168,
+        "heapTotal": 14708736,
+        "heapUsed": 9712912,
+        "external": 9318009,
+        "arrayBuffers": 159755
+      },
+      "prepared": {
+        "rss": 74649600,
+        "heapTotal": 14970880,
+        "heapUsed": 9794936,
+        "external": 9376327,
+        "arrayBuffers": 175891
+      },
+      "retained": {
+        "rss": 76402688,
+        "heapTotal": 15757312,
+        "heapUsed": 10158544,
+        "external": 9388875,
+        "arrayBuffers": 188439
+      },
+      "afterCancelled": {
+        "rss": 77778944,
+        "heapTotal": 16019456,
+        "heapUsed": 10295056,
+        "external": 9388615,
+        "arrayBuffers": 188179
+      },
+      "disposed": {
+        "rss": 77778944,
+        "heapTotal": 16019456,
+        "heapUsed": 10276216,
+        "external": 9360191,
+        "arrayBuffers": 159755
+      },
+      "retainedArrayBufferDelta": 28684,
+      "expectedRetainedPayload": 28684,
+      "after100CancelledPreviewsArrayBufferDelta": 28424,
+      "expectedAfterCancellationPayload": 28424,
+      "disposedArrayBufferDelta": 0,
+      "disposedSessionAndAuthorityStillReferenced": true,
+      "render": {
+        "pendingArrayBufferDelta": 95680,
+        "expectedSnapshotBytes": 16136,
+        "expectedRasterBytes": 79544,
+        "cancelledArrayBufferDelta": 0
+      }
+    },
+    {
+      "n": 128,
+      "samples": 16258,
+      "authorityBytes": 65032,
+      "preparationMs": 0.08449999999999136,
+      "strokeMs": 4.75539999999998,
+      "exactUndo": true,
+      "exactRedo": true,
+      "blankSha256": "890366a28fdd01af962473c4e22e4395c6d9a657ec817745e2835f9a9d83aa13",
+      "finalSha256": "25e4903e732d83449ab8f3da76dd6c020a55c9290956dc9a4fe7d522ef70c862",
+      "canonicalColorBytes": 65032,
+      "lastDabBytes": 0,
+      "history": {
+        "entries": 1,
+        "cursor": 1,
+        "retainedBytes": 12288,
+        "activeBytes": 0,
+        "activeSamples": 0,
+        "evictions": 0,
+        "branches": 0,
+        "peakTypedBytes": 12288
+      },
+      "statistics": {
+        "strokes": 1,
+        "dabs": 1,
+        "writes": 257,
+        "failures": 0,
+        "cancellations": 0,
+        "sliceMaxMs": 1.3444000000000074,
+        "slices": 5,
+        "previewMaxMs": 0.5698999999999899,
+        "stagedDisplayPeakBytes": 2056,
+        "droppedTimingRecords": 0,
+        "lastStroke": {
+          "pumps": 33,
+          "acceptedPositions": 1,
+          "processedPositions": 1,
+          "discardedPositions": 0,
+          "paths": 0,
+          "pathBoxes": 0,
+          "failedPathBoxAllowance": 0,
+          "committedDabs": 1,
+          "writes": 257,
+          "distanceQueries": 257,
+          "distanceBoxes": 0,
+          "failedQueryBoxAllowance": 0,
+          "dabCandidates": 513,
+          "peakPreparedDabBytes": 8192,
+          "sumPreRoundElevationErrorMeters": 9.191878188455078e-9,
+          "maxPreRoundElevationErrorMeters": 9.191878188455078e-9,
+          "maxFalloffError": 7.642772462661479e-12,
+          "peakPendingPositions": 0,
+          "maximumPathPieces": 0,
+          "traveledMeters": 0,
+          "hasPendingWork": false,
+          "pendingPositions": 0,
+          "residualMeters": 0,
+          "spacingErrorBoundMeters": 0,
+          "lastCommittedCenter": {
+            "worldId": "897ec057-9297-42e8-ab91-674752af7726",
+            "surfaceId": "370186f1-9a23-4307-93d7-d4cea3b1ae69",
+            "patchId": "cap-start",
+            "u": 0,
+            "v": 0
+          }
+        },
+        "lastTermination": "complete"
+      },
+      "baseline": {
+        "rss": 77852672,
+        "heapTotal": 16019456,
+        "heapUsed": 10251104,
+        "external": 9409087,
+        "arrayBuffers": 208651
+      },
+      "prepared": {
+        "rss": 77852672,
+        "heapTotal": 16019456,
+        "heapUsed": 10265136,
+        "external": 9474119,
+        "arrayBuffers": 273683
+      },
+      "retained": {
+        "rss": 77758464,
+        "heapTotal": 16019456,
+        "heapUsed": 10348424,
+        "external": 9487435,
+        "arrayBuffers": 286999
+      },
+      "afterCancelled": {
+        "rss": 78245888,
+        "heapTotal": 16019456,
+        "heapUsed": 10388352,
+        "external": 9486407,
+        "arrayBuffers": 285971
+      },
+      "disposed": {
+        "rss": 78249984,
+        "heapTotal": 16019456,
+        "heapUsed": 10342056,
+        "external": 9409087,
+        "arrayBuffers": 208651
+      },
+      "retainedArrayBufferDelta": 78348,
+      "expectedRetainedPayload": 78348,
+      "after100CancelledPreviewsArrayBufferDelta": 77320,
+      "expectedAfterCancellationPayload": 77320,
+      "disposedArrayBufferDelta": 0,
+      "disposedSessionAndAuthorityStillReferenced": true,
+      "render": {
+        "pendingArrayBufferDelta": 144576,
+        "expectedSnapshotBytes": 65032,
+        "expectedRasterBytes": 79544,
+        "cancelledArrayBufferDelta": 0
+      }
+    },
+    {
+      "n": 256,
+      "samples": 65282,
+      "authorityBytes": 261128,
+      "preparationMs": 0.08269999999998845,
+      "strokeMs": 17.54819999999995,
+      "exactUndo": true,
+      "exactRedo": true,
+      "blankSha256": "9285fd9ffc79a0f276c745e1b20e8aeda5cd6404f37dde7ed9e8a27fdc940cdb",
+      "finalSha256": "7b8a510107fe50552da5e850b95d012754555941f4784743af161f563cd6515c",
+      "canonicalColorBytes": 261128,
+      "lastDabBytes": 0,
+      "history": {
+        "entries": 1,
+        "cursor": 1,
+        "retainedBytes": 24576,
+        "activeBytes": 0,
+        "activeSamples": 0,
+        "evictions": 0,
+        "branches": 0,
+        "peakTypedBytes": 24576
+      },
+      "statistics": {
+        "strokes": 1,
+        "dabs": 1,
+        "writes": 1281,
+        "failures": 0,
+        "cancellations": 0,
+        "sliceMaxMs": 5.508399999999995,
+        "slices": 15,
+        "previewMaxMs": 2.170000000000016,
+        "stagedDisplayPeakBytes": 10248,
+        "droppedTimingRecords": 0,
+        "lastStroke": {
+          "pumps": 113,
+          "acceptedPositions": 1,
+          "processedPositions": 1,
+          "discardedPositions": 0,
+          "paths": 0,
+          "pathBoxes": 0,
+          "failedPathBoxAllowance": 0,
+          "committedDabs": 1,
+          "writes": 1281,
+          "distanceQueries": 1281,
+          "distanceBoxes": 0,
+          "failedQueryBoxAllowance": 0,
+          "dabCandidates": 1793,
+          "peakPreparedDabBytes": 16384,
+          "sumPreRoundElevationErrorMeters": 9.666772683354453e-9,
+          "maxPreRoundElevationErrorMeters": 9.666772683354453e-9,
+          "maxFalloffError": 8.046348705568148e-12,
+          "peakPendingPositions": 0,
+          "maximumPathPieces": 0,
+          "traveledMeters": 0,
+          "hasPendingWork": false,
+          "pendingPositions": 0,
+          "residualMeters": 0,
+          "spacingErrorBoundMeters": 0,
+          "lastCommittedCenter": {
+            "worldId": "bb69e0ec-a5f8-4a88-8221-ef00c2a24660",
+            "surfaceId": "a895be18-bbc2-4382-bb48-e6b3d50efdfd",
+            "patchId": "cap-start",
+            "u": 0,
+            "v": 0
+          }
+        },
+        "lastTermination": "complete"
+      },
+      "baseline": {
+        "rss": 78770176,
+        "heapTotal": 16019456,
+        "heapUsed": 10341592,
+        "external": 9605183,
+        "arrayBuffers": 404747
+      },
+      "prepared": {
+        "rss": 78770176,
+        "heapTotal": 16019456,
+        "heapUsed": 10347880,
+        "external": 9866311,
+        "arrayBuffers": 665875
+      },
+      "retained": {
+        "rss": 79147008,
+        "heapTotal": 16281600,
+        "heapUsed": 10533624,
+        "external": 9896011,
+        "arrayBuffers": 695575
+      },
+      "afterCancelled": {
+        "rss": 83046400,
+        "heapTotal": 20475904,
+        "heapUsed": 10520848,
+        "external": 9890887,
+        "arrayBuffers": 690451
+      },
+      "disposed": {
+        "rss": 82587648,
+        "heapTotal": 19951616,
+        "heapUsed": 10393384,
+        "external": 9605183,
+        "arrayBuffers": 404747
+      },
+      "retainedArrayBufferDelta": 290828,
+      "expectedRetainedPayload": 290828,
+      "after100CancelledPreviewsArrayBufferDelta": 285704,
+      "expectedAfterCancellationPayload": 285704,
+      "disposedArrayBufferDelta": 0,
+      "disposedSessionAndAuthorityStillReferenced": true,
+      "render": {
+        "pendingArrayBufferDelta": 340672,
+        "expectedSnapshotBytes": 261128,
+        "expectedRasterBytes": 79544,
+        "cancelledArrayBufferDelta": 0
+      }
+    }
+  ]
+}

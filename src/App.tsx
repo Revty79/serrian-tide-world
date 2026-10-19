@@ -1,4 +1,7 @@
 'use client';
+import { CylinderWorkspace, type CylinderViewportHandle } from './components/CylinderPreview.tsx';
+import { prepareCylinderSession } from './editor/prepare-cylinder-session.ts';
+import { encodeCylindricalHeightmap } from './persistence/cylindrical-format.ts';
 import { useEffect, useRef, useState } from 'react';
 import { TerrainCanvas, type TerrainCanvasHandle } from './components/TerrainCanvas.tsx';
 import { BrushToolbar, brushFromControls, type BrushControls } from './components/BrushToolbar.tsx';
@@ -28,38 +31,39 @@ export function App() {
   const [revision, setRevision] = useState(0), [, refresh] = useState(0), update = () => refresh((v) => v + 1);
   const [openPanel, setPanel] = useState(false), [newWorld, setNewWorld] = useState(true);
   const [zoom, setZoom] = useState(1), [viewMode, setViewMode] = useState<ViewMode>('fill');
-  const planar = useRef<TerrainCanvasHandle>(null), spherical = useRef<SphericalViewportHandle>(null), root = useRef<HTMLElement>(null);
+  const planar = useRef<TerrainCanvasHandle>(null), spherical = useRef<SphericalViewportHandle>(null), cylindrical = useRef<CylinderViewportHandle>(null), root = useRef<HTMLElement>(null);
   const [fullscreenSupported, setFullscreenSupported] = useState(false), [fullscreen, setFullscreen] = useState(false);
   const [maps, setMaps] = useState<LocalMapSummary[]>([]), [selected, setSelected] = useState('');
   const [busy, setBusy] = useState(false), busyRef = useRef(false), [message, setMessage] = useState(''), [error, setError] = useState('');
   const operation = useRef(0), mounted = useRef(true), dialogOpen = useRef(newWorld); dialogOpen.current = newWorld;
   const report = (cause: unknown) => setError(cause instanceof Error ? cause.message : 'Local storage operation failed.');
   const list = async () => { try { const result = await store.list(); if (mounted.current) setMaps(result); } catch (cause) { if (mounted.current) report(cause); } };
-  useEffect(() => { mounted.current = true; void list(); return () => { mounted.current = false; operation.current++; }; }, []);
+  useEffect(() => { mounted.current = true; void list(); return () => { mounted.current = false; operation.current++; if (activeRef.current?.kind === 'cylinder') activeRef.current.editor.dispose(); }; }, []);
   useEffect(() => {
     setFullscreenSupported(!!document.fullscreenEnabled && typeof root.current?.requestFullscreen === 'function');
     const changed = () => setFullscreen(document.fullscreenElement === root.current);
     document.addEventListener('fullscreenchange', changed); return () => document.removeEventListener('fullscreenchange', changed);
   }, []);
-  const finish = () => { if (activeRef.current?.kind === 'sphere') spherical.current?.finishInteraction(); else planar.current?.finishInteraction(); };
+  const finish = () => { if (activeRef.current?.kind === 'cylinder') cylindrical.current?.finishInteraction(); else if (activeRef.current?.kind === 'sphere') spherical.current?.finishInteraction(); else planar.current?.finishInteraction(); };
   const lock = () => {
     if (busyRef.current) return null;
     finish(); busyRef.current = true; setBusy(true); setError(''); setMessage('Finishing accepted brush input');
-    const current = activeRef.current; if (current?.kind === 'sphere') current.editor.locked = true;
+    const current = activeRef.current; if (current && current.kind !== 'planar') current.editor.locked = true;
     return { current, token: ++operation.current };
   };
-  const unlock = (current: AtlasDocument | null) => { if (current?.kind === 'sphere') { current.editor.locked = false; current.editor.changed(); } busyRef.current = false; setBusy(false); };
+  const unlock = (current: AtlasDocument | null) => { if (current && current.kind !== 'planar') { current.editor.locked = false; current.editor.changed(); } busyRef.current = false; setBusy(false); };
   const workFor = (token: number): PersistenceWork => ({ progress: (stage, fraction) => { if (token === operation.current) setMessage(`${stage} · ${Math.round(fraction * 100)}%`); }, yield: async () => { await yieldPersistence(); if (!mounted.current || token !== operation.current) throw new Error('World preparation canceled.'); } });
-  const drain = async (current: AtlasDocument | null, work: PersistenceWork) => { if (current?.kind === 'sphere') await current.editor.drainForSave(work.yield); };
+  const drain = async (current: AtlasDocument | null, work: PersistenceWork) => { if (current && current.kind !== 'planar') await current.editor.drainForSave(work.yield); };
   const guard = (current: AtlasDocument | null) => !current || !documentModified(current) || window.confirm('Discard unsaved changes to this world/map? Save first to keep your work.');
-  const replace = (candidate: AtlasDocument) => { activeRef.current = candidate; setActive(candidate); setGeneration((v) => v + 1); setControls(defaults); setPan(false); setPanel(false); setNewWorld(false); setMessage(''); setError(''); };
+  const dispose = (candidate: AtlasDocument | null) => { if (candidate?.kind === 'cylinder') candidate.editor.dispose(); };
+  const replace = (candidate: AtlasDocument) => { dispose(activeRef.current); activeRef.current = candidate; setActive(candidate); setGeneration((v) => v + 1); setControls(defaults); setPan(false); setPanel(false); setNewWorld(false); setMessage(''); setError(''); };
   const create = async (setup: WorldSetup) => {
     const locked = lock(); if (!locked) return;
     const { current, token } = locked, work = workFor(token);
     try {
       await drain(current, work); if (!guard(current)) { setMessage(''); return; }
       const candidate = await createAtlasDocument(setup, work);
-      if (token === operation.current && mounted.current) { replace(candidate); setSelected(''); await list(); }
+      if (token === operation.current && mounted.current) { replace(candidate); setSelected(''); await list(); } else dispose(candidate);
     } catch (cause) { if (token === operation.current) { report(cause); setMessage('Creation failed · current map retained'); } }
     finally { if (token === operation.current) unlock(current); }
   };
@@ -69,9 +73,9 @@ export function App() {
     const { current, token } = locked, work = workFor(token); if (!current) return;
     try {
       await drain(current, work);
-      const record = current.kind === 'sphere' ? await encodeSphericalHeightmap(current.terrain, current.editor.name, undefined, work) : await encodeMap(current.document.terrain, current.document.name);
+      const record = current.kind === 'cylinder' ? await encodeCylindricalHeightmap(current.terrain, current.editor.name, undefined, work) : current.kind === 'sphere' ? await encodeSphericalHeightmap(current.terrain, current.editor.name, undefined, work) : await encodeMap(current.document.terrain, current.document.name);
       await store.save(record, work);
-      if (current.kind === 'sphere') current.editor.markSaved(record.name); else { current.document.name = record.name; current.document.markSaved(); }
+      if (current.kind !== 'planar') current.editor.markSaved(record.name); else { current.document.name = record.name; current.document.markSaved(); }
       setSelected(record.id); update(); await list(); setMessage('');
     } catch (cause) { report(cause); setMessage('Save failed · edits retained'); }
     finally { unlock(current); }
@@ -82,8 +86,8 @@ export function App() {
     try {
       await drain(current, work);
       const loaded = await store.openAny(selected, work);
-      const candidate: AtlasDocument = loaded.kind === 'sphere' ? { kind: 'sphere', ...await prepareSphericalSession(loaded.terrain, loaded.name, true, work) } : { kind: 'planar', document: new TerrainDocument(loaded.terrain, loaded.name, true) };
-      if (!guard(current)) { setMessage(''); return; }
+      const candidate: AtlasDocument = loaded.kind === 'cylinder' ? { kind: 'cylinder', ...await prepareCylinderSession(loaded.terrain, loaded.name, true, work) } : loaded.kind === 'sphere' ? { kind: 'sphere', ...await prepareSphericalSession(loaded.terrain, loaded.name, true, work) } : { kind: 'planar', document: new TerrainDocument(loaded.terrain, loaded.name, true) };
+      if (token !== operation.current || !mounted.current || !guard(current)) { dispose(candidate); setMessage(''); return; }
       replace(candidate);
       if (candidate.kind === 'planar') setControls({ ...defaults, radius: Math.min(candidate.document.terrain.metadata.dimensions.width, candidate.document.terrain.metadata.dimensions.height) * .06 });
     } catch (cause) { report(cause); setMessage('Open failed · current map retained'); }
@@ -91,7 +95,8 @@ export function App() {
   };
   const history = (redo = false) => {
     if (busyRef.current) return; const current = activeRef.current; if (!current) return;
-    if (current.kind === 'sphere') { if (redo) spherical.current?.redo(); else spherical.current?.undo(); }
+    if (current.kind === 'cylinder') { if (redo) cylindrical.current?.redo(); else cylindrical.current?.undo(); }
+    else if (current.kind === 'sphere') { if (redo) spherical.current?.redo(); else spherical.current?.undo(); }
     else { finish(); if (redo ? current.document.history.redo() : current.document.history.undo()) { setRevision((v) => v + 1); update(); } }
     setMessage('');
   };
@@ -110,15 +115,15 @@ export function App() {
       if (key === 's') { event.preventDefault(); void actions.current.save(); }
       else if (!isTextInput(event.target) && ['z', 'y'].includes(key)) { event.preventDefault(); actions.current.history(event.shiftKey || key === 'y'); }
     };
-    const beforeunload = (event: BeforeUnloadEvent) => { actions.current.finish(); if (busyRef.current || activeRef.current && documentModified(activeRef.current)) { event.preventDefault(); event.returnValue = ''; } };
+    const beforeunload = (event: BeforeUnloadEvent) => { actions.current.finish(); if (busyRef.current || activeRef.current && (documentModified(activeRef.current) || activeRef.current.kind === 'cylinder' && activeRef.current.editor.painting)) { event.preventDefault(); event.returnValue = ''; } };
     window.addEventListener('keydown', keydown); window.addEventListener('beforeunload', beforeunload);
     return () => { window.removeEventListener('keydown', keydown); window.removeEventListener('beforeunload', beforeunload); };
   }, []);
   const full = async () => { finish(); try { if (document.fullscreenElement === root.current) await document.exitFullscreen(); else await root.current?.requestFullscreen(); } catch { setError('Browser fullscreen could not be changed. Your terrain is preserved; continue in this window.'); } };
   const chrome = (sphere?: SphericalWorkspaceView) => {
     const doc = active?.kind === 'planar' ? active.document : null;
-    const status = busy ? message || 'Working with local storage…' : (active ? documentModified(active) ? 'Unsaved changes' : (active.kind === 'sphere' ? active.editor.hasSaved : active.document.hasSaved) ? 'Saved on this device' : 'Not saved yet' : 'Choose a world/map');
-    return <WorkspaceChrome openPanel={openPanel} setPanel={setPanel} busy={busy} name={active ? documentName(active) : ''} rename={(name) => { if (active?.kind === 'sphere') { active.editor.name = name; active.editor.changed(); } else if (doc) doc.name = name; setMessage(''); update(); }} shape={active ? shapeName(documentShape(active)) : ''}
+    const status = busy ? message || 'Working with local storage…' : (active ? documentModified(active) ? 'Unsaved changes' : (active.kind !== 'planar' ? active.editor.hasSaved : active.document.hasSaved) ? 'Saved on this device' : 'Not saved yet' : 'Choose a world/map');
+    return <WorkspaceChrome prepare={finish} openPanel={openPanel} setPanel={setPanel} busy={busy} name={active ? documentName(active) : ''} rename={(name) => { if (active && active.kind !== 'planar') { active.editor.name = name; active.editor.changed(); } else if (doc) doc.name = name; setMessage(''); update(); }} shape={active ? shapeName(documentShape(active)) : ''}
       hasDocument={!!active} maps={maps} selected={selected} select={setSelected} save={() => void save()} open={() => void open()} refresh={() => void list()} newWorld={() => { finish(); setNewWorld(true); }} undo={() => history()} redo={() => history(true)} canUndo={sphere ? sphere.canUndo && !sphere.processing : !!doc?.history.canUndo} canRedo={sphere ? sphere.canRedo && !sphere.processing : !!doc?.history.canRedo} status={status} error={error} dismiss={() => setError('')}
       toolPicker={sphere?.toolPicker ?? (doc && <><button aria-pressed={pan} onClick={() => { finish(); setPan(!pan); }}>Pan</button>{(['raise', 'lower', 'smooth', 'flatten'] as const).map((tool) => <button key={tool} aria-pressed={!pan && controls.tool === tool} onClick={() => { finish(); setControls({ ...controls, tool }); setPan(false); }}>{tool.charAt(0).toUpperCase() + tool.slice(1)}</button>)}</>)}
       tools={sphere?.tools ?? (doc && <><p className="hint">Space + drag to pan · wheel to zoom<br />Two fingers to pan and zoom. Brush radius uses map units; elevations use meters.</p><label className="edge-scroll"><input type="checkbox" checked={edgePan} onChange={(e) => { finish(); setEdgePan(e.target.checked); }} /> Scroll while drawing at screen edges</label><p className="hint">Hold near an edge briefly to reveal terrain in the same stroke. Top and bottom remain bounded.</p><BrushToolbar hideToolPicker settings={controls} mapSpan={Math.min(doc.terrain.metadata.dimensions.width, doc.terrain.metadata.dimensions.height)} onChange={(value) => { setControls(value); setPan(false); }} onReset={reset} />{isWrapped(doc.terrain) && <p className="hint">Focus Editing enlarges one cycle with adjoining terrain at the sides. Pan to move the cut. Fill View gives full-height context; Fit Entire Map shows all terrain. Horizontal wrapping is not a complete physical cylinder.</p>}</>)}
@@ -127,7 +132,7 @@ export function App() {
   };
   return <main ref={root} className="atlas-app" data-panel-open={openPanel} data-world-shape={active ? documentShape(active) : 'none'} aria-label="Atlas workspace">
     {active?.kind === 'planar' && <TerrainCanvas key={generation} ref={planar} terrain={active.document.terrain} brush={busy ? undefined : brushFromControls(controls)} pan={pan} fullscreen initialView={isWrapped(active.document.terrain) ? 'focus' : 'fill'} edgePan={edgePan} revision={revision} onZoom={setZoom} onViewChange={setViewMode} onStrokeBegin={() => active.document.history.begin()} onStrokeEnd={() => { if (active.document.history.commit()) update(); }} />}
-    {active?.kind === 'sphere' ? <SphericalViewport key={generation} {...active} handleRef={spherical} onClose={() => {}} workspace={chrome} /> : chrome()}
+    {active?.kind === 'cylinder' ? <CylinderWorkspace key={generation} session={active.editor} preparationMs={active.preparationMs} handleRef={cylindrical} workspace={chrome} /> : active?.kind === 'sphere' ? <SphericalViewport key={generation} {...active} handleRef={spherical} onClose={() => {}} workspace={chrome} /> : chrome()}
     {active?.kind === 'planar' && isWrapped(active.document.terrain) && <p className="surface-status">{viewMode === 'focus' ? 'Horizontal wrap · focused view' : 'Horizontal wrap · same terrain repeats'}</p>}
     {newWorld && <NewWorldDialog busy={busy} hasDocument={!!active} error={error} create={(setup) => void create(setup)} close={closeSetup} />}
   </main>;
