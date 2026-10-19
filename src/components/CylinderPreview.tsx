@@ -7,6 +7,7 @@ import { cylinderLayout, continuousCylinderScreenSegment, initialCylinderView, n
 import { cylinderRasterSteps, type CylinderRaster, type CylinderStencil } from '../rendering/cylindrical-raster.ts';
 import { CylinderWebGLRenderer } from '../rendering/cylindrical-webgl.ts';
 import { surfaceDisplayDimensions } from '../rendering/surface-renderer.ts';
+import { type CylinderAppearance } from '../rendering/cylindrical-elevation.ts';
 import type { CylinderPosition, CylinderRegion } from '../surfaces/cylinder.ts';
 import './CylinderPreview.css';
 
@@ -37,12 +38,15 @@ export interface CylinderWorkspaceView { tools: ReactNode; toolPicker: ReactNode
 export function CylinderWorkspace({ session, preparationMs = 0, detail = 128, setDetail = () => {}, replace = () => {}, workspace, handleRef }: { session: CylinderPreviewSession; preparationMs?: number; detail?: number; setDetail?(n: number): void; replace?(): void; workspace?(view: CylinderWorkspaceView): ReactNode; handleRef?: Ref<CylinderViewportHandle> }) {
   const root = useRef<HTMLElement>(null), canvas = useRef<HTMLCanvasElement>(null), gpuCanvas = useRef<HTMLCanvasElement>(null), pointer = useRef<HTMLDivElement>(null), overlay = useRef<HTMLCanvasElement>(null), readout = useRef<HTMLOutputElement>(null), toggle = useRef<HTMLButtonElement>(null), heading = useRef<HTMLHeadingElement>(null);
   const [controls, setControls] = useState<CylinderControls>(() => defaultCylinderControls(session.terrain.metadata.geometry.radiusMeters)), controlsRef = useRef(controls); controlsRef.current = controls;
+  const [appearance, setAppearance] = useState<CylinderAppearance>('relief'), appearanceRef = useRef(appearance); appearanceRef.current = appearance;
+  const diagnostics = useRef<HTMLOutputElement>(null);
   const [panel, setPanel] = useState(false), [, update] = useState(0), [mode, setMode] = useState<CylinderView['mode']>('physical'), [zoom, setZoom] = useState(1), [selected, setSelected] = useState(false), [fullscreen, setFullscreen] = useState(false), [fullscreenSupported, setFullscreenSupported] = useState(false);
-  const commands = useRef({ stop: () => {}, mode: (_mode: CylinderView['mode']) => {}, zoom: (_factor: number) => {}, reset: () => {}, center: (_region?: CylinderRegion) => {}, undo: () => {}, redo: () => {}, refresh: () => {}, finish: () => {} });
+  const commands = useRef({ stop: () => {}, mode: (_mode: CylinderView['mode']) => {}, zoom: (_factor: number) => {}, reset: () => {}, center: (_region?: CylinderRegion) => {}, undo: () => {}, redo: () => {}, refresh: () => {}, finish: () => {}, display: () => {} });
   useImperativeHandle(handleRef, () => ({ finishInteraction: () => commands.current.finish(), stop: () => commands.current.stop(), undo: () => commands.current.undo(), redo: () => commands.current.redo() }), []);
   const previousPanel = useRef(false);
   useLayoutEffect(() => { if (panel) heading.current?.focus({ preventScroll: true }); else if (previousPanel.current) toggle.current?.focus({ preventScroll: true }); previousPanel.current = panel; }, [panel]);
   useLayoutEffect(() => { commands.current.stop(); commands.current.refresh(); }, [controls]);
+  useLayoutEffect(() => { commands.current.display(); }, [appearance]);
   useLayoutEffect(() => {
     const node = canvas.current!, surface = overlay.current!, output = readout.current!, owner = root.current!, ctx = node.getContext('2d')!, mark = surface.getContext('2d')!, scratch = document.createElement('canvas'), scratchContext = scratch.getContext('2d')!;
     setFullscreenSupported(!!document.fullscreenEnabled && typeof owner.requestFullscreen === 'function');
@@ -124,7 +128,7 @@ export function CylinderWorkspace({ session, preparationMs = 0, detail = 128, se
       if (gpu.available && (redraw || displayRevision !== session.cache.sourceRevision)) {
         raster?.return(undefined as never); raster = undefined;
         try {
-          const viewport = size(), at = performance.now(), receipt = gpu.present(requested, viewport);
+          const viewport = size(), at = performance.now(), receipt = gpu.present(requested, viewport, appearanceRef.current);
           backing(viewport); ctx.clearRect(0, 0, node.width, node.height);
           applied = requested; appliedSize = viewport; appliedSerial = serial; displayRevision = receipt.revision; redraw = false; front = undefined; spare = undefined;
           bounded(metrics.renderTimes, [performance.now() - at]); bounded(metrics.uploadTimes, [receipt.uploadMs]); bounded(metrics.submitTimes, [receipt.submitMs]); bounded(metrics.resizeTimes, [receipt.resizeMs]); presented();
@@ -135,7 +139,7 @@ export function CylinderWorkspace({ session, preparationMs = 0, detail = 128, se
         pendingView = requested; pendingSize = size(); pendingSerial = serial;
         if (pendingSize.width > 0 && pendingSize.height > 0) {
           const mobile = matchMedia('(pointer: coarse)').matches, interactive = session.painting || performance.now() < interactionUntil, budget = interactive ? mobile ? 22000 : 40000 : mobile ? 90000 : 160000;
-          raster = cylinderRasterSteps(session.cache, pendingView, pendingSize, budget, spare); spare = undefined; redraw = false; metrics.rasterStartedAt = performance.now(); metrics.rasterTotalMs = 0;
+          raster = cylinderRasterSteps(session.cache, pendingView, pendingSize, budget, spare, appearanceRef.current); spare = undefined; redraw = false; metrics.rasterStartedAt = performance.now(); metrics.rasterTotalMs = 0;
         }
       }
       for (let work = 0; raster && work < 16 && performance.now() - frameStart < 9; work++) {
@@ -147,6 +151,13 @@ export function CylinderWorkspace({ session, preparationMs = 0, detail = 128, se
           ctx.setTransform(node.width / appliedSize.width, 0, 0, node.height / appliedSize.height, 0, 0); ctx.clearRect(0, 0, appliedSize.width, appliedSize.height); ctx.imageSmoothingEnabled = true; ctx.drawImage(scratch, 0, 0, appliedSize.width, appliedSize.height);
           displayRevision = front.revision; metrics.rasterSnapshotBytes = front.snapshotBytes; bounded(metrics.renderTimes, [metrics.rasterTotalMs]); presented();
         }
+      }
+      if (diagnostics.current) {
+        const active = gpu.available, width = active ? gpuCanvas.current!.width : front?.columns ?? 0, height = active ? gpuCanvas.current!.height : front?.rows ?? 0;
+        const res = session.terrain.metadata.representation.resolution;
+        const text = `${active ? 'Hardware WebGL2' : 'CPU fallback'}\n${gpu.statistics.renderer || 'Graphics renderer unavailable'}${active ? '' : `\n${gpu.statistics.reason || 'Preparing CPU display'}`}\nTerrain backing: ${width} × ${height} px\nPresentation backing: ${node.width} × ${node.height} px\nNumerical: ${res.angularSamples} angular / ${res.axialCells} axial / ${res.radialCells} radial · ${session.terrain.sampleCount.toLocaleString()} samples`;
+        if (diagnostics.current.textContent !== text) diagnostics.current.textContent = text;
+        diagnostics.current.dataset.backend = active ? 'webgl2' : 'cpu';
       }
       drawOverlay(); if (hover) show(pointAt(hover), false);
       const pending = session.locked ? session.painting : session.pump(3), previewPending = session.pumpPreview();
@@ -182,7 +193,7 @@ export function CylinderWorkspace({ session, preparationMs = 0, detail = 128, se
     commands.current = { stop, mode: mode => { stop(); change(view => ({ ...view, mode })); }, zoom: factor => { stop(); change(view => ({ ...view, zoom: Math.max(.6, Math.min(6, view.zoom * factor)) }), true); }, reset: () => { stop(); change(view => initialCylinderView(view.mode)); }, center: region => {
       stop(); const p = region ? { ...session.terrain.metadata.identity, patchId: region, u: requested.phase, v: region === 'side' ? session.terrain.metadata.geometry.lengthMeters / 2 : 0 } : selection;
       if (p) change(view => recenterCylinder(session.terrain.geometry, view, p));
-    }, undo: () => { stop(); session.undo(); schedule(); }, redo: () => { stop(); session.redo(); schedule(); }, refresh: schedule, finish: () => { navigation.finish(); session.release(); schedule(); } };
+    }, undo: () => { stop(); session.undo(); schedule(); }, redo: () => { stop(); session.redo(); schedule(); }, refresh: schedule, finish: () => { navigation.finish(); session.release(); schedule(); }, display: () => { raster?.return(undefined as never); raster = undefined; redraw = true; schedule(); } };
     session.changed = schedule; session.stopped = () => navigation.cancel();
     const resize = new ResizeObserver(() => { stop(); raster?.return(undefined as never); raster = undefined; serial++; node.dataset.ready = 'false'; redraw = true; ctx.clearRect(0, 0, node.width, node.height); mark.clearRect(0, 0, surface.width, surface.height); schedule(); }); resize.observe(owner);
     const textInput = (target: EventTarget | null) => target instanceof HTMLElement && !!target.closest('input,textarea,select,[contenteditable="true"]');
@@ -197,7 +208,7 @@ export function CylinderWorkspace({ session, preparationMs = 0, detail = 128, se
     const fullscreenChanged = () => { stop(); setFullscreen(!!document.fullscreenElement); };
     window.addEventListener('keydown', key); window.addEventListener('beforeunload', departure); window.addEventListener('pagehide', stop); document.addEventListener('fullscreenchange', fullscreenChanged);
     inspection = {
-      snapshot: (includeWords = true) => structuredClone({ ...(includeWords ? { words: [...new Uint32Array(session.terrain.copyElevations().buffer)] } : {}), identity: session.terrain.metadata.identity, metadata: session.terrain.metadata, view: applied, requested, size: appliedSize, ready: ready(), painting: session.painting, processing: session.processing, name: session.name, hasSaved: session.hasSaved, modified: session.modified, checkpointSamples: session.checkpointSamples, locked: session.locked, history: session.history.statistics, operations: session.history.operations, statistics: session.statistics, cacheBytes: session.cache.byteLength, displayRevision, revision: session.terrain.revision, rasterBytes: (front?.pixels.byteLength ?? 0) + (spare?.byteLength ?? 0), renderer: { kind: gpu.available ? 'webgl2' : 'cpu', width: gpu.available ? gpuCanvas.current!.width : front?.columns, height: gpu.available ? gpuCanvas.current!.height : front?.rows, ...gpu.statistics }, metrics, controls: controlsRef.current, stencil: session.stencil && { ...session.stencil, indices: [...session.stencil.indices] }, lastDab: session.lastDab && { ...session.lastDab, indices: [...session.lastDab.indices] }, pendingWork: session.pendingWork, pendingPositions: session.pendingPositions, previewPending: session.previewPending, previewMessage: session.previewMessage, message: session.message }),
+      snapshot: (includeWords = true) => structuredClone({ ...(includeWords ? { words: [...new Uint32Array(session.terrain.copyElevations().buffer)] } : {}), identity: session.terrain.metadata.identity, metadata: session.terrain.metadata, view: applied, requested, size: appliedSize, ready: ready(), painting: session.painting, processing: session.processing, name: session.name, hasSaved: session.hasSaved, modified: session.modified, checkpointSamples: session.checkpointSamples, locked: session.locked, history: session.history.statistics, operations: session.history.operations, statistics: session.statistics, cacheBytes: session.cache.byteLength, displayRevision, revision: session.terrain.revision, rasterBytes: (front?.pixels.byteLength ?? 0) + (spare?.byteLength ?? 0), appearance: appearanceRef.current, renderer: { kind: gpu.available ? 'webgl2' : 'cpu', width: gpu.available ? gpuCanvas.current!.width : front?.columns, height: gpu.available ? gpuCanvas.current!.height : front?.rows, ...gpu.statistics }, metrics, controls: controlsRef.current, stencil: session.stencil && { ...session.stencil, indices: [...session.stencil.indices] }, lastDab: session.lastDab && { ...session.lastDab, indices: [...session.lastDab.indices] }, pendingWork: session.pendingWork, pendingPositions: session.pendingPositions, previewPending: session.previewPending, previewMessage: session.previewMessage, message: session.message }),
       project: p => projectCylinder(session.terrain.geometry, { ...session.terrain.metadata.identity, ...p }, applied, appliedSize),
       sample: index => { const key = session.terrain.keyAt(index), address = session.terrain.owner(key); return { key, address, aliases: session.terrain.aliases(key), position: session.terrain.positionAt(address), screen: projectCylinder(session.terrain.geometry, session.terrain.positionAt(address), applied, appliedSize) }; },
     };
@@ -215,6 +226,9 @@ export function CylinderWorkspace({ session, preparationMs = 0, detail = 128, se
       <h2>Working surface</h2><p>Physical view protects occluded samples. If a dab reaches hidden terrain, reduce its radius, rotate, or use Surface map. Dots show exact canonical samples changed by a dry-run dab; flat Smooth can have no changes.</p>
       <p>In Surface map, matching angle markers connect the real rims. Only the white tangent join is continuous on screen. Dashed edges are cuts: lift and restart, or select a point and Center selection to move the working meridian.</p>
       <p id="cylinder-help">Mouse, pen or one finger draw. Rotate / Pan, Space-drag, middle-drag or two fingers navigate. Arrows navigate; +/− zoom; Home fits; Enter inspects the center. Ctrl/⌘ Z undoes, Ctrl/⌘ Shift Z redoes. Escape stops and closes tools. Release drains accepted input.</p>
+      <h2>Terrain display</h2><label>Cylinder terrain appearance<select aria-label="Cylinder terrain appearance" value={appearance} onChange={e => setAppearance(e.target.value as CylinderAppearance)}><option value="relief">Shaded relief · 5× display</option><option value="elevation">Elevation colors</option></select></label>
+      <p>Coasts follow interpolated elevation. Relief uses physical slopes with 5× display exaggeration; it adds no terrain detail or displacement.</p>
+      <details className="cylinder-diagnostics"><summary>Display diagnostics</summary><output ref={diagnostics} aria-label="Cylinder display diagnostics">Preparing display…</output></details>
 </>;
   const navigation = <><button aria-pressed={mode === 'physical'} onClick={() => commands.current.mode('physical')}>Physical view</button><button aria-pressed={mode === 'map'} onClick={() => commands.current.mode('map')}>Surface map</button><button onClick={() => commands.current.zoom(.8)} aria-label="Zoom out">−</button><span>{Math.round(zoom * 100)}%</span><button onClick={() => commands.current.zoom(1.25)} aria-label="Zoom in">+</button><button onClick={() => commands.current.reset()}>Fit cylinder</button><details className="cylinder-regions"><summary>Center region</summary><div><button onClick={() => commands.current.center('side')}>Side</button><button onClick={() => commands.current.center('cap-start')}>Start cap</button><button onClick={() => commands.current.center('cap-end')}>End cap</button><button disabled={!selected} onClick={() => commands.current.center()}>Center selection</button></div></details>{!workspace && fullscreenSupported && <button aria-label={fullscreen ? 'Exit fullscreen' : 'Enter fullscreen'} onClick={() => { commands.current.stop(); void (document.fullscreenElement ? document.exitFullscreen() : root.current!.requestFullscreen()).catch(e => { session.message = `Fullscreen unavailable: ${String(e)}`; commands.current.refresh(); }); }}>⛶</button>}</>;
   const picker = <>{tool('navigate', 'Rotate / Pan')}{tool('raise', 'Raise')}{tool('lower', 'Lower')}{tool('smooth', 'Smooth')}{tool('flatten', 'Flatten')}</>;

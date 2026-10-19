@@ -1,0 +1,301 @@
+{
+  "method": "Paired real PNGs, before palette interpolation vs corrected plain elevation colors, same physical view and v4 file. Decode pixels without image editing. Interior side only, middle 25–70% height / 18–82% width, away from controls, rims and silhouette. Remove analytic reference facing shade. Water red ≤37 and land red ≥109; red in (40,106) identifies class-mixed coverage rather than valid ordinary palette colors. Horizontal contiguous band widths are CSS pixels. This diagnoses broad palette mixing, not geographical detail, height error or a complete perceptual quality score.",
+  "results": [
+    {
+      "profile": "desktop",
+      "backend": "hardware",
+      "n": 128,
+      "samples": [
+        {
+          "label": "before",
+          "path": "docs/evidence/a7-p1ar-baseline-hardware-desktop-n128-coast.png",
+          "pngWidth": 1440,
+          "pngHeight": 900,
+          "eligiblePixels": 373410,
+          "intermediatePalettePixels": 21650,
+          "intermediateFraction": 0.057979164992903245,
+          "horizontalMixedBandCssPixels": {
+            "count": 648,
+            "p50": 24,
+            "p95": 83,
+            "max": 141
+          }
+        },
+        {
+          "label": "after",
+          "path": "docs/evidence/a7-p1ar-corrected-hardware-desktop-n128-elevation-coast.png",
+          "pngWidth": 1440,
+          "pngHeight": 900,
+          "eligiblePixels": 373410,
+          "intermediatePalettePixels": 765,
+          "intermediateFraction": 0.0020486864304651723,
+          "horizontalMixedBandCssPixels": {
+            "count": 530,
+            "p50": 1,
+            "p95": 3,
+            "max": 17
+          }
+        }
+      ]
+    },
+    {
+      "profile": "desktop",
+      "backend": "hardware",
+      "n": 256,
+      "samples": [
+        {
+          "label": "before",
+          "path": "docs/evidence/a7-p1ar-baseline-hardware-desktop-n256-coast.png",
+          "pngWidth": 1440,
+          "pngHeight": 900,
+          "eligiblePixels": 373410,
+          "intermediatePalettePixels": 12188,
+          "intermediateFraction": 0.03263972577060068,
+          "horizontalMixedBandCssPixels": {
+            "count": 665,
+            "p50": 12.999999999999998,
+            "p95": 39,
+            "max": 85
+          }
+        },
+        {
+          "label": "after",
+          "path": "docs/evidence/a7-p1ar-corrected-hardware-desktop-n256-elevation-coast.png",
+          "pngWidth": 1440,
+          "pngHeight": 900,
+          "eligiblePixels": 373410,
+          "intermediatePalettePixels": 767,
+          "intermediateFraction": 0.0020540424734206367,
+          "horizontalMixedBandCssPixels": {
+            "count": 533,
+            "p50": 1,
+            "p95": 3,
+            "max": 10
+          }
+        }
+      ]
+    },
+    {
+      "profile": "mobile",
+      "backend": "hardware",
+      "n": 128,
+      "samples": [
+        {
+          "label": "before",
+          "path": "docs/evidence/a7-p1ar-baseline-hardware-mobile-n128-coast.png",
+          "pngWidth": 1082,
+          "pngHeight": 2202,
+          "eligiblePixels": 668322,
+          "intermediatePalettePixels": 32336,
+          "intermediateFraction": 0.048383862868497524,
+          "horizontalMixedBandCssPixels": {
+            "count": 811,
+            "p50": 11.042513863216266,
+            "p95": 33.508317929759706,
+            "max": 62.06654343807763
+          }
+        },
+        {
+          "label": "after",
+          "path": "docs/evidence/a7-p1ar-corrected-hardware-mobile-n128-elevation-coast.png",
+          "pngWidth": 1082,
+          "pngHeight": 2202,
+          "eligiblePixels": 668322,
+          "intermediatePalettePixels": 4147,
+          "intermediateFraction": 0.006205092754690104,
+          "horizontalMixedBandCssPixels": {
+            "count": 806,
+            "p50": 1.1423290203327172,
+            "p95": 4.9500924214417745,
+            "max": 19.800369685767098
+          }
+        }
+      ]
+    },
+    {
+      "profile": "mobile",
+      "backend": "hardware",
+      "n": 256,
+      "samples": [
+        {
+          "label": "before",
+          "path": "docs/evidence/a7-p1ar-baseline-hardware-mobile-n256-coast.png",
+          "pngWidth": 1082,
+          "pngHeight": 2202,
+          "eligiblePixels": 668322,
+          "intermediatePalettePixels": 18343,
+          "intermediateFraction": 0.02744635071118413,
+          "horizontalMixedBandCssPixels": {
+            "count": 811,
+            "p50": 6.0924214417744915,
+            "p95": 17.51571164510166,
+            "max": 37.31608133086876
+          }
+        },
+        {
+          "label": "after",
+          "path": "docs/evidence/a7-p1ar-corrected-hardware-mobile-n256-elevation-coast.png",
+          "pngWidth": 1082,
+          "pngHeight": 2202,
+          "eligiblePixels": 668322,
+          "intermediatePalettePixels": 4065,
+          "intermediateFraction": 0.006082397407237828,
+          "horizontalMixedBandCssPixels": {
+            "count": 804,
+            "p50": 1.1423290203327172,
+            "p95": 4.9500924214417745,
+            "max": 18.277264325323475
+          }
+        }
+      ]
+    },
+    {
+      "profile": "desktop",
+      "backend": "fallback",
+      "n": 128,
+      "samples": [
+        {
+          "label": "before",
+          "path": "docs/evidence/a7-p1ar-baseline-fallback-desktop-n128-coast.png",
+          "pngWidth": 1440,
+          "pngHeight": 900,
+          "eligiblePixels": 373410,
+          "intermediatePalettePixels": 21726,
+          "intermediateFraction": 0.0581826946252109,
+          "horizontalMixedBandCssPixels": {
+            "count": 648,
+            "p50": 24,
+            "p95": 82,
+            "max": 141
+          }
+        },
+        {
+          "label": "after",
+          "path": "docs/evidence/a7-p1ar-corrected-fallback-desktop-n128-elevation-coast.png",
+          "pngWidth": 1440,
+          "pngHeight": 900,
+          "eligiblePixels": 373410,
+          "intermediatePalettePixels": 5052,
+          "intermediateFraction": 0.013529364505503334,
+          "horizontalMixedBandCssPixels": {
+            "count": 655,
+            "p50": 5,
+            "p95": 21,
+            "max": 67
+          }
+        }
+      ]
+    },
+    {
+      "profile": "desktop",
+      "backend": "fallback",
+      "n": 256,
+      "samples": [
+        {
+          "label": "before",
+          "path": "docs/evidence/a7-p1ar-baseline-fallback-desktop-n256-coast.png",
+          "pngWidth": 1440,
+          "pngHeight": 900,
+          "eligiblePixels": 373410,
+          "intermediatePalettePixels": 12678,
+          "intermediateFraction": 0.033951956294689487,
+          "horizontalMixedBandCssPixels": {
+            "count": 660,
+            "p50": 12.999999999999998,
+            "p95": 39,
+            "max": 89
+          }
+        },
+        {
+          "label": "after",
+          "path": "docs/evidence/a7-p1ar-corrected-fallback-desktop-n256-elevation-coast.png",
+          "pngWidth": 1440,
+          "pngHeight": 900,
+          "eligiblePixels": 373410,
+          "intermediatePalettePixels": 4931,
+          "intermediateFraction": 0.013205323906697732,
+          "horizontalMixedBandCssPixels": {
+            "count": 662,
+            "p50": 5,
+            "p95": 19,
+            "max": 53
+          }
+        }
+      ]
+    },
+    {
+      "profile": "mobile",
+      "backend": "fallback",
+      "n": 128,
+      "samples": [
+        {
+          "label": "before",
+          "path": "docs/evidence/a7-p1ar-baseline-fallback-mobile-n128-coast.png",
+          "pngWidth": 1082,
+          "pngHeight": 2202,
+          "eligiblePixels": 668322,
+          "intermediatePalettePixels": 32990,
+          "intermediateFraction": 0.049362433078665675,
+          "horizontalMixedBandCssPixels": {
+            "count": 813,
+            "p50": 11.423290203327172,
+            "p95": 33.1275415896488,
+            "max": 62.06654343807763
+          }
+        },
+        {
+          "label": "after",
+          "path": "docs/evidence/a7-p1ar-corrected-fallback-mobile-n128-elevation-coast.png",
+          "pngWidth": 1082,
+          "pngHeight": 2202,
+          "eligiblePixels": 668322,
+          "intermediatePalettePixels": 11921,
+          "intermediateFraction": 0.01783721020705588,
+          "horizontalMixedBandCssPixels": {
+            "count": 811,
+            "p50": 3.8077634011090575,
+            "p95": 14.088724584103513,
+            "max": 41.88539741219963
+          }
+        }
+      ]
+    },
+    {
+      "profile": "mobile",
+      "backend": "fallback",
+      "n": 256,
+      "samples": [
+        {
+          "label": "before",
+          "path": "docs/evidence/a7-p1ar-baseline-fallback-mobile-n256-coast.png",
+          "pngWidth": 1082,
+          "pngHeight": 2202,
+          "eligiblePixels": 668322,
+          "intermediatePalettePixels": 20480,
+          "intermediateFraction": 0.030643911168568443,
+          "horizontalMixedBandCssPixels": {
+            "count": 818,
+            "p50": 7.615526802218115,
+            "p95": 20.56192236598891,
+            "max": 47.97781885397412
+          }
+        },
+        {
+          "label": "after",
+          "path": "docs/evidence/a7-p1ar-corrected-fallback-mobile-n256-elevation-coast.png",
+          "pngWidth": 1082,
+          "pngHeight": 2202,
+          "eligiblePixels": 668322,
+          "intermediatePalettePixels": 11546,
+          "intermediateFraction": 0.01727610343517047,
+          "horizontalMixedBandCssPixels": {
+            "count": 813,
+            "p50": 3.4269870609981514,
+            "p95": 12.946395563770796,
+            "max": 31.604436229205174
+          }
+        }
+      ]
+    }
+  ]
+}

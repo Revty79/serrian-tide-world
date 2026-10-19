@@ -1,0 +1,3581 @@
+{
+  "method": "Derived from final raw runs. Native paced input and 120 RAF-paced DOM moves during a native held navigation gesture are distinct. Captured monitor intervals include release/coherent-tail/refinement where present. Host stage vectors are bounded rings; initial upload is taken from the pre-navigation snapshot. No GPU-completion/photon or numerical-brush speedup claim.",
+  "cases": [
+    {
+      "label": "baseline-hardware",
+      "profile": "desktop",
+      "n": 64,
+      "renderer": {
+        "kind": "webgl2",
+        "width": 1440,
+        "height": 900,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 2,
+        "textureBytes": 17152,
+        "geometryBytes": 1179744,
+        "antialias": true,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "native": {
+        "frames": {
+          "count": 244,
+          "p50": 16.699999999999818,
+          "p95": 16.799999999999727,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 0.4000000059604645,
+          "p95": 0.5999999940395355,
+          "max": 0.9000000059604645
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.19999998807907104,
+          "p95": 0.30000001192092896,
+          "max": 1.0999999940395355
+        },
+        "rasterOrDraw": {
+          "count": 102,
+          "p50": 0.09999999403953552,
+          "p95": 0.19999998807907104,
+          "max": 7.199999988079071
+        },
+        "unreadyFrames": 100,
+        "lagFrames": 100,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 33.40000000000009,
+          "p95": 50,
+          "max": 50.100000000000364
+        },
+        "stages": {
+          "clearRect": {
+            "count": 200,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 122,
+          "p50": 16.699999999999818,
+          "p95": 16.800000000000182,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 16.299999982118607,
+          "p95": 16.899999976158142,
+          "max": 17.599999994039536
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 16.099999994039536,
+          "p95": 16.599999994039536,
+          "max": 16.900000005960464
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 0.09999999403953552,
+          "p95": 0.20000001788139343,
+          "max": 0.3999999761581421
+        },
+        "unreadyFrames": 120,
+        "lagFrames": 120,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 118,
+          "p50": 16.699999999999818,
+          "p95": 16.800000000000182,
+          "max": 16.800000000000182
+        },
+        "stages": {
+          "clearRect": {
+            "count": 240,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          }
+        }
+      },
+      "elapsedInputMs": 1995.5,
+      "coherentViewChanges": 120,
+      "initialUploadCpuMs": {
+        "count": 2,
+        "p50": 2.800000011920929,
+        "p95": 2.800000011920929,
+        "max": 2.800000011920929
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 32.69999998807907,
+        "p95": 33.599999994039536,
+        "max": 33.69999998807907
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 16.19999998807907,
+        "p95": 16.69999998807907,
+        "max": 17.200000017881393
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.09999999403953552,
+        "p95": 0.20000001788139343,
+        "max": 0.20000001788139343
+      },
+      "memory": {
+        "usedSize": 9351800,
+        "totalSize": 10145792,
+        "embedderHeapUsedSize": 1053760,
+        "backingStorageSize": 5350895
+      }
+    },
+    {
+      "label": "baseline-hardware",
+      "profile": "desktop",
+      "n": 128,
+      "renderer": {
+        "kind": "webgl2",
+        "width": 1440,
+        "height": 900,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 2,
+        "textureBytes": 67072,
+        "geometryBytes": 1179744,
+        "antialias": true,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "native": {
+        "frames": {
+          "count": 241,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000273,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 0.5,
+          "p95": 0.7000000178813934,
+          "max": 0.7000000178813934
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.19999998807907104,
+          "p95": 0.30000001192092896,
+          "max": 1.4000000059604645
+        },
+        "rasterOrDraw": {
+          "count": 102,
+          "p50": 0.09999999403953552,
+          "p95": 0.19999998807907104,
+          "max": 4.800000011920929
+        },
+        "unreadyFrames": 100,
+        "lagFrames": 100,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 33.399999999999864,
+          "p95": 50.09999999999991,
+          "max": 50.100000000000364
+        },
+        "stages": {
+          "clearRect": {
+            "count": 200,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 122,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 16.19999998807907,
+          "p95": 16.80000001192093,
+          "max": 17.599999994039536
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 16,
+          "p95": 16.400000005960464,
+          "max": 17.400000005960464
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 0.09999999403953552,
+          "p95": 0.19999998807907104,
+          "max": 0.29999998211860657
+        },
+        "unreadyFrames": 120,
+        "lagFrames": 120,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 118,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.800000000000182
+        },
+        "stages": {
+          "clearRect": {
+            "count": 240,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.09999999403953552
+          }
+        }
+      },
+      "elapsedInputMs": 1994.5,
+      "coherentViewChanges": 120,
+      "initialUploadCpuMs": {
+        "count": 2,
+        "p50": 1.7000000178813934,
+        "p95": 1.7000000178813934,
+        "max": 1.7000000178813934
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 32.599999994039536,
+        "p95": 33.5,
+        "max": 34.19999998807907
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 16.100000023841858,
+        "p95": 16.69999998807907,
+        "max": 17.5
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.09999999403953552,
+        "p95": 0.19999998807907104,
+        "max": 0.6000000238418579
+      },
+      "memory": {
+        "usedSize": 9486796,
+        "totalSize": 10670080,
+        "embedderHeapUsedSize": 1053016,
+        "backingStorageSize": 5448862
+      }
+    },
+    {
+      "label": "baseline-hardware",
+      "profile": "desktop",
+      "n": 256,
+      "renderer": {
+        "kind": "webgl2",
+        "width": 1440,
+        "height": 900,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 2,
+        "textureBytes": 265216,
+        "geometryBytes": 1179744,
+        "antialias": true,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "native": {
+        "frames": {
+          "count": 241,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000273,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 0.4000000059604645,
+          "p95": 0.5999999940395355,
+          "max": 1.0999999940395355
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.19999998807907104,
+          "p95": 0.30000001192092896,
+          "max": 1.9000000059604645
+        },
+        "rasterOrDraw": {
+          "count": 102,
+          "p50": 0.09999999403953552,
+          "p95": 0.20000001788139343,
+          "max": 6.0999999940395355
+        },
+        "unreadyFrames": 100,
+        "lagFrames": 100,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 33.40000000000009,
+          "p95": 50,
+          "max": 50.100000000000364
+        },
+        "stages": {
+          "clearRect": {
+            "count": 200,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 123,
+          "p50": 16.699999999999818,
+          "p95": 16.800000000000182,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 16.30000001192093,
+          "p95": 16.900000005960464,
+          "max": 17.900000005960464
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 16.099999994039536,
+          "p95": 16.599999994039536,
+          "max": 17.700000017881393
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 0.09999999403953552,
+          "p95": 0.20000001788139343,
+          "max": 0.20000001788139343
+        },
+        "unreadyFrames": 120,
+        "lagFrames": 120,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 118,
+          "p50": 16.699999999999818,
+          "p95": 16.800000000000182,
+          "max": 16.800000000000182
+        },
+        "stages": {
+          "clearRect": {
+            "count": 240,
+            "p50": 0,
+            "p95": 0,
+            "max": 0.09999999403953552
+          }
+        }
+      },
+      "elapsedInputMs": 1994,
+      "coherentViewChanges": 120,
+      "initialUploadCpuMs": {
+        "count": 2,
+        "p50": 3.5,
+        "p95": 3.5,
+        "max": 3.5
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 32.80000001192093,
+        "p95": 33.5,
+        "max": 34.5
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 16.19999998807907,
+        "p95": 16.80000001192093,
+        "max": 17.900000005960464
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.09999999403953552,
+        "p95": 0.20000001788139343,
+        "max": 0.20000001788139343
+      },
+      "memory": {
+        "usedSize": 9417328,
+        "totalSize": 10670080,
+        "embedderHeapUsedSize": 1061096,
+        "backingStorageSize": 5840884
+      }
+    },
+    {
+      "label": "baseline-hardware",
+      "profile": "mobile",
+      "n": 64,
+      "renderer": {
+        "kind": "webgl2",
+        "width": 618,
+        "height": 1258,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 2,
+        "textureBytes": 17152,
+        "geometryBytes": 1179744,
+        "antialias": true,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "native": {
+        "frames": {
+          "count": 286,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 1.800000011920929,
+          "p95": 2.4000000059604645,
+          "max": 3.4000000059604645
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.7000000178813934,
+          "p95": 1,
+          "max": 4.600000023841858
+        },
+        "rasterOrDraw": {
+          "count": 102,
+          "p50": 0.3999999761581421,
+          "p95": 0.5,
+          "max": 7.199999988079071
+        },
+        "unreadyFrames": 100,
+        "lagFrames": 100,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 50,
+          "p95": 50.100000000000364,
+          "max": 66.70000000000027
+        },
+        "stages": {
+          "clearRect": {
+            "count": 200,
+            "p50": 0,
+            "p95": 0.19999998807907104,
+            "max": 0.30000001192092896
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 125,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 14.900000005960464,
+          "p95": 15.799999982118607,
+          "max": 17.599999994039536
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 14,
+          "p95": 14.800000011920929,
+          "max": 16.599999994039536
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 0.30000001192092896,
+          "p95": 0.5,
+          "max": 0.7999999821186066
+        },
+        "unreadyFrames": 120,
+        "lagFrames": 120,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 119,
+          "p50": 16.699999999999818,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000109
+        },
+        "stages": {
+          "clearRect": {
+            "count": 240,
+            "p50": 0,
+            "p95": 0.19999998807907104,
+            "max": 0.20000001788139343
+          }
+        }
+      },
+      "elapsedInputMs": 1997.0999999940395,
+      "coherentViewChanges": 120,
+      "initialUploadCpuMs": {
+        "count": 2,
+        "p50": 2.2000000178813934,
+        "p95": 2.2000000178813934,
+        "max": 2.2000000178813934
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 31.099999994039536,
+        "p95": 32.10000002384186,
+        "max": 34
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 14.599999994039536,
+        "p95": 15.400000005960464,
+        "max": 17.099999994039536
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.29999998211860657,
+        "p95": 0.4000000059604645,
+        "max": 0.7000000178813934
+      },
+      "memory": {
+        "usedSize": 9437460,
+        "totalSize": 10145792,
+        "embedderHeapUsedSize": 1065496,
+        "backingStorageSize": 5350889
+      }
+    },
+    {
+      "label": "baseline-hardware",
+      "profile": "mobile",
+      "n": 128,
+      "renderer": {
+        "kind": "webgl2",
+        "width": 618,
+        "height": 1258,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 2,
+        "textureBytes": 67072,
+        "geometryBytes": 1179744,
+        "antialias": true,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "native": {
+        "frames": {
+          "count": 302,
+          "p50": 16.699999999999818,
+          "p95": 16.799999999999272,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 2,
+          "p95": 2.9000000059604645,
+          "max": 4.300000011920929
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.800000011920929,
+          "p95": 1,
+          "max": 7
+        },
+        "rasterOrDraw": {
+          "count": 102,
+          "p50": 0.30000001192092896,
+          "p95": 0.5,
+          "max": 11.700000017881393
+        },
+        "unreadyFrames": 100,
+        "lagFrames": 100,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 50,
+          "p95": 50.100000000000364,
+          "max": 66.70000000000073
+        },
+        "stages": {
+          "clearRect": {
+            "count": 200,
+            "p50": 0,
+            "p95": 0.19999998807907104,
+            "max": 0.4000000059604645
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 125,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 14.5,
+          "p95": 15.900000005960464,
+          "max": 16.700000017881393
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 13.400000005960464,
+          "p95": 14.599999994039536,
+          "max": 15.399999976158142
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 0.3999999761581421,
+          "p95": 0.5,
+          "max": 0.699999988079071
+        },
+        "unreadyFrames": 120,
+        "lagFrames": 120,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 119,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "stages": {
+          "clearRect": {
+            "count": 240,
+            "p50": 0,
+            "p95": 0.19999998807907104,
+            "max": 0.29999998211860657
+          }
+        }
+      },
+      "elapsedInputMs": 1994.699999988079,
+      "coherentViewChanges": 120,
+      "initialUploadCpuMs": {
+        "count": 2,
+        "p50": 5.799999982118607,
+        "p95": 5.799999982118607,
+        "max": 5.799999982118607
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 30.700000017881393,
+        "p95": 31.799999982118607,
+        "max": 32.70000001788139
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 14.199999988079071,
+        "p95": 15.5,
+        "max": 16.30000001192093
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.30000001192092896,
+        "p95": 0.5,
+        "max": 0.5999999940395355
+      },
+      "memory": {
+        "usedSize": 9511400,
+        "totalSize": 10407936,
+        "embedderHeapUsedSize": 1064504,
+        "backingStorageSize": 5448880
+      }
+    },
+    {
+      "label": "baseline-hardware",
+      "profile": "mobile",
+      "n": 256,
+      "renderer": {
+        "kind": "webgl2",
+        "width": 618,
+        "height": 1258,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 2,
+        "textureBytes": 265216,
+        "geometryBytes": 1179744,
+        "antialias": true,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "native": {
+        "frames": {
+          "count": 292,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 1.7999999821186066,
+          "p95": 2.5999999940395355,
+          "max": 2.9000000059604645
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.699999988079071,
+          "p95": 1,
+          "max": 5.200000017881393
+        },
+        "rasterOrDraw": {
+          "count": 102,
+          "p50": 0.30000001192092896,
+          "p95": 0.5999999940395355,
+          "max": 17.099999994039536
+        },
+        "unreadyFrames": 100,
+        "lagFrames": 100,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 50,
+          "p95": 50.100000000000364,
+          "max": 66.69999999999982
+        },
+        "stages": {
+          "clearRect": {
+            "count": 200,
+            "p50": 0,
+            "p95": 0.19999998807907104,
+            "max": 0.30000001192092896
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 124,
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 14.800000011920929,
+          "p95": 16,
+          "max": 16.5
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 13.899999976158142,
+          "p95": 15,
+          "max": 15.399999976158142
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 0.29999998211860657,
+          "p95": 0.5,
+          "max": 1
+        },
+        "unreadyFrames": 120,
+        "lagFrames": 120,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 119,
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.800000000000182
+        },
+        "stages": {
+          "clearRect": {
+            "count": 240,
+            "p50": 0,
+            "p95": 0.19999998807907104,
+            "max": 0.30000001192092896
+          }
+        }
+      },
+      "elapsedInputMs": 1996.699999988079,
+      "coherentViewChanges": 120,
+      "initialUploadCpuMs": {
+        "count": 2,
+        "p50": 11.5,
+        "p95": 11.5,
+        "max": 11.5
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 31.099999994039536,
+        "p95": 32,
+        "max": 34.20000001788139
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 14.400000005960464,
+        "p95": 15.599999994039536,
+        "max": 16
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.29999998211860657,
+        "p95": 0.5,
+        "max": 0.5
+      },
+      "memory": {
+        "usedSize": 9435788,
+        "totalSize": 10145792,
+        "embedderHeapUsedSize": 1066016,
+        "backingStorageSize": 5840895
+      }
+    },
+    {
+      "label": "improved-hardware",
+      "profile": "desktop",
+      "n": 64,
+      "renderer": {
+        "kind": "webgl2",
+        "width": 1440,
+        "height": 900,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 2,
+        "textureBytes": 17152,
+        "geometryBytes": 1179744,
+        "antialias": true,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "native": {
+        "frames": {
+          "count": 232,
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 0.4000000059604645,
+          "p95": 0.7000000178813934,
+          "max": 0.9000000059604645
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.19999998807907104,
+          "p95": 0.30000001192092896,
+          "max": 1.7999999821186066
+        },
+        "rasterOrDraw": {
+          "count": 102,
+          "p50": 0.09999999403953552,
+          "p95": 0.20000001788139343,
+          "max": 7.5999999940395355
+        },
+        "unreadyFrames": 100,
+        "lagFrames": 100,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 33.399999999999636,
+          "p95": 50,
+          "max": 50.100000000000364
+        },
+        "stages": {
+          "clearRect": {
+            "count": 200,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 122,
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 16.30000001192093,
+          "p95": 17.200000017881393,
+          "max": 17.80000001192093
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 16,
+          "p95": 16.900000005960464,
+          "max": 17.599999994039536
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 0.09999999403953552,
+          "p95": 0.20000001788139343,
+          "max": 0.20000001788139343
+        },
+        "unreadyFrames": 120,
+        "lagFrames": 120,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 118,
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "stages": {
+          "clearRect": {
+            "count": 240,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.09999999403953552
+          }
+        }
+      },
+      "elapsedInputMs": 1995,
+      "coherentViewChanges": 120,
+      "initialUploadCpuMs": {
+        "count": 2,
+        "p50": 3.699999988079071,
+        "p95": 3.699999988079071,
+        "max": 3.699999988079071
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 32.599999994039536,
+        "p95": 33.599999994039536,
+        "max": 34.400000005960464
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 16.200000017881393,
+        "p95": 17.099999994039536,
+        "max": 17.69999998807907
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.09999999403953552,
+        "p95": 0.19999998807907104,
+        "max": 1.0999999940395355
+      },
+      "memory": {
+        "usedSize": 9481220,
+        "totalSize": 10145792,
+        "embedderHeapUsedSize": 1072776,
+        "backingStorageSize": 5397158
+      }
+    },
+    {
+      "label": "improved-hardware",
+      "profile": "desktop",
+      "n": 128,
+      "renderer": {
+        "kind": "webgl2",
+        "width": 1440,
+        "height": 900,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 2,
+        "textureBytes": 67072,
+        "geometryBytes": 1179744,
+        "antialias": true,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "native": {
+        "frames": {
+          "count": 242,
+          "p50": 16.699999999999818,
+          "p95": 16.799999999999727,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 0.5,
+          "p95": 0.7999999821186066,
+          "max": 1.199999988079071
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.19999998807907104,
+          "p95": 0.30000001192092896,
+          "max": 2.4000000059604645
+        },
+        "rasterOrDraw": {
+          "count": 102,
+          "p50": 0.09999999403953552,
+          "p95": 0.19999998807907104,
+          "max": 5.600000023841858
+        },
+        "unreadyFrames": 100,
+        "lagFrames": 100,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 33.40000000000009,
+          "p95": 50.09999999999991,
+          "max": 50.100000000000364
+        },
+        "stages": {
+          "clearRect": {
+            "count": 200,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 122,
+          "p50": 16.699999999999818,
+          "p95": 16.699999999999818,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 16.19999998807907,
+          "p95": 17,
+          "max": 17.5
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 15.900000005960464,
+          "p95": 16.69999998807907,
+          "max": 17.19999998807907
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 0.09999999403953552,
+          "p95": 0.19999998807907104,
+          "max": 0.4000000059604645
+        },
+        "unreadyFrames": 120,
+        "lagFrames": 120,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 118,
+          "p50": 16.699999999999818,
+          "p95": 16.699999999999818,
+          "max": 16.800000000000182
+        },
+        "stages": {
+          "clearRect": {
+            "count": 240,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          }
+        }
+      },
+      "elapsedInputMs": 1993.8999999761581,
+      "coherentViewChanges": 120,
+      "initialUploadCpuMs": {
+        "count": 2,
+        "p50": 2.7999999821186066,
+        "p95": 2.7999999821186066,
+        "max": 2.7999999821186066
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 32.599999994039536,
+        "p95": 33.5,
+        "max": 34
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 16.099999994039536,
+        "p95": 16.900000005960464,
+        "max": 17.400000005960464
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.09999999403953552,
+        "p95": 0.19999998807907104,
+        "max": 0.20000001788139343
+      },
+      "memory": {
+        "usedSize": 9613660,
+        "totalSize": 10407936,
+        "embedderHeapUsedSize": 1071368,
+        "backingStorageSize": 5495128
+      }
+    },
+    {
+      "label": "improved-hardware",
+      "profile": "desktop",
+      "n": 256,
+      "renderer": {
+        "kind": "webgl2",
+        "width": 1440,
+        "height": 900,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 2,
+        "textureBytes": 265216,
+        "geometryBytes": 1179744,
+        "antialias": true,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "native": {
+        "frames": {
+          "count": 232,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 0.4000000059604645,
+          "p95": 0.6000000238418579,
+          "max": 1
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.19999998807907104,
+          "p95": 0.30000001192092896,
+          "max": 1.699999988079071
+        },
+        "rasterOrDraw": {
+          "count": 102,
+          "p50": 0.09999999403953552,
+          "p95": 0.20000001788139343,
+          "max": 10.800000011920929
+        },
+        "unreadyFrames": 100,
+        "lagFrames": 100,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 33.30000000000018,
+          "p95": 50.100000000000364,
+          "max": 50.100000000000364
+        },
+        "stages": {
+          "clearRect": {
+            "count": 200,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.20000001788139343
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 122,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 16.30000001192093,
+          "p95": 16.900000005960464,
+          "max": 18
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 16.099999994039536,
+          "p95": 16.599999994039536,
+          "max": 17.599999994039536
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 0.09999999403953552,
+          "p95": 0.20000001788139343,
+          "max": 0.20000001788139343
+        },
+        "unreadyFrames": 120,
+        "lagFrames": 120,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 118,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.800000000000182
+        },
+        "stages": {
+          "clearRect": {
+            "count": 240,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          }
+        }
+      },
+      "elapsedInputMs": 1994.4000000059605,
+      "coherentViewChanges": 120,
+      "initialUploadCpuMs": {
+        "count": 2,
+        "p50": 7.699999988079071,
+        "p95": 7.699999988079071,
+        "max": 7.699999988079071
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 32.69999998807907,
+        "p95": 33.5,
+        "max": 33.80000001192093
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 16.19999998807907,
+        "p95": 16.799999982118607,
+        "max": 17.900000005960464
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.09999999403953552,
+        "p95": 0.19999998807907104,
+        "max": 0.20000001788139343
+      },
+      "memory": {
+        "usedSize": 9548000,
+        "totalSize": 11194368,
+        "embedderHeapUsedSize": 1072080,
+        "backingStorageSize": 5887151
+      }
+    },
+    {
+      "label": "improved-hardware",
+      "profile": "mobile",
+      "n": 64,
+      "renderer": {
+        "kind": "webgl2",
+        "width": 618,
+        "height": 1258,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 2,
+        "textureBytes": 17152,
+        "geometryBytes": 1179744,
+        "antialias": true,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "native": {
+        "frames": {
+          "count": 292,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 1.7000000178813934,
+          "p95": 2.300000011920929,
+          "max": 3.399999976158142
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.699999988079071,
+          "p95": 1,
+          "max": 6.399999976158142
+        },
+        "rasterOrDraw": {
+          "count": 102,
+          "p50": 0.30000001192092896,
+          "p95": 0.5999999940395355,
+          "max": 9.199999988079071
+        },
+        "unreadyFrames": 100,
+        "lagFrames": 100,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 50,
+          "p95": 50.100000000000364,
+          "max": 66.70000000000027
+        },
+        "stages": {
+          "clearRect": {
+            "count": 200,
+            "p50": 0,
+            "p95": 0.19999998807907104,
+            "max": 0.30000001192092896
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 124,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 14.600000023841858,
+          "p95": 15.900000005960464,
+          "max": 17.900000005960464
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 13.600000023841858,
+          "p95": 14.800000011920929,
+          "max": 17
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 0.30000001192092896,
+          "p95": 0.5999999940395355,
+          "max": 1.4000000059604645
+        },
+        "unreadyFrames": 120,
+        "lagFrames": 120,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 119,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.800000000000182
+        },
+        "stages": {
+          "clearRect": {
+            "count": 240,
+            "p50": 0,
+            "p95": 0.20000001788139343,
+            "max": 0.30000001192092896
+          }
+        }
+      },
+      "elapsedInputMs": 1987.5999999940395,
+      "coherentViewChanges": 120,
+      "initialUploadCpuMs": {
+        "count": 2,
+        "p50": 3.699999988079071,
+        "p95": 3.699999988079071,
+        "max": 3.699999988079071
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 30.80000001192093,
+        "p95": 31.900000005960464,
+        "max": 34
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 14.200000017881393,
+        "p95": 15.400000005960464,
+        "max": 17.30000001192093
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.30000001192092896,
+        "p95": 0.5,
+        "max": 0.5999999940395355
+      },
+      "memory": {
+        "usedSize": 9569736,
+        "totalSize": 10932224,
+        "embedderHeapUsedSize": 1084384,
+        "backingStorageSize": 5397146
+      }
+    },
+    {
+      "label": "improved-hardware",
+      "profile": "mobile",
+      "n": 128,
+      "renderer": {
+        "kind": "webgl2",
+        "width": 618,
+        "height": 1258,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 2,
+        "textureBytes": 67072,
+        "geometryBytes": 1179744,
+        "antialias": true,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "native": {
+        "frames": {
+          "count": 307,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 33.30000000000018
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 2.0999999940395355,
+          "p95": 3.0999999940395355,
+          "max": 3.9000000059604645
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.800000011920929,
+          "p95": 1.100000023841858,
+          "max": 8
+        },
+        "rasterOrDraw": {
+          "count": 102,
+          "p50": 0.4000000059604645,
+          "p95": 0.6000000238418579,
+          "max": 14.600000023841858
+        },
+        "unreadyFrames": 100,
+        "lagFrames": 100,
+        "droppedFrames": 1,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 50,
+          "p95": 50.100000000000364,
+          "max": 66.59999999999991
+        },
+        "stages": {
+          "clearRect": {
+            "count": 200,
+            "p50": 0,
+            "p95": 0.19999998807907104,
+            "max": 0.30000001192092896
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 125,
+          "p50": 16.699999999999818,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000109
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 14.599999994039536,
+          "p95": 15.5,
+          "max": 15.900000005960464
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 13.400000005960464,
+          "p95": 14.399999976158142,
+          "max": 14.800000011920929
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 0.30000001192092896,
+          "p95": 0.5,
+          "max": 0.5999999940395355
+        },
+        "unreadyFrames": 120,
+        "lagFrames": 120,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 119,
+          "p50": 16.699999999999818,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000109
+        },
+        "stages": {
+          "clearRect": {
+            "count": 240,
+            "p50": 0,
+            "p95": 0.19999998807907104,
+            "max": 0.30000001192092896
+          }
+        }
+      },
+      "elapsedInputMs": 1994,
+      "coherentViewChanges": 120,
+      "initialUploadCpuMs": {
+        "count": 2,
+        "p50": 8.800000011920929,
+        "p95": 8.800000011920929,
+        "max": 8.800000011920929
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 30.69999998807907,
+        "p95": 31.599999994039536,
+        "max": 37.30000001192093
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 14.099999994039536,
+        "p95": 15.099999994039536,
+        "max": 15.5
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.30000001192092896,
+        "p95": 0.5,
+        "max": 1.4000000059604645
+      },
+      "memory": {
+        "usedSize": 9639312,
+        "totalSize": 10932224,
+        "embedderHeapUsedSize": 1082856,
+        "backingStorageSize": 5495158
+      }
+    },
+    {
+      "label": "improved-hardware",
+      "profile": "mobile",
+      "n": 256,
+      "renderer": {
+        "kind": "webgl2",
+        "width": 618,
+        "height": 1258,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 2,
+        "textureBytes": 265216,
+        "geometryBytes": 1179744,
+        "antialias": true,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "native": {
+        "frames": {
+          "count": 299,
+          "p50": 16.699999999999818,
+          "p95": 16.799999999999272,
+          "max": 33.30000000000018
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 1.800000011920929,
+          "p95": 2.399999976158142,
+          "max": 3.5
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.7000000178813934,
+          "p95": 1,
+          "max": 5.5999999940395355
+        },
+        "rasterOrDraw": {
+          "count": 102,
+          "p50": 0.30000001192092896,
+          "p95": 0.5999999940395355,
+          "max": 23.899999976158142
+        },
+        "unreadyFrames": 100,
+        "lagFrames": 100,
+        "droppedFrames": 1,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 50,
+          "p95": 50.100000000000364,
+          "max": 66.69999999999982
+        },
+        "stages": {
+          "clearRect": {
+            "count": 200,
+            "p50": 0,
+            "p95": 0.19999998807907104,
+            "max": 0.30000001192092896
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 124,
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000109
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 14.599999994039536,
+          "p95": 15.599999994039536,
+          "max": 16.5
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 13.599999994039536,
+          "p95": 14.599999994039536,
+          "max": 15.199999988079071
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 0.30000001192092896,
+          "p95": 0.5,
+          "max": 0.6000000238418579
+        },
+        "unreadyFrames": 120,
+        "lagFrames": 120,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 119,
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000109
+        },
+        "stages": {
+          "clearRect": {
+            "count": 240,
+            "p50": 0,
+            "p95": 0.19999998807907104,
+            "max": 0.30000001192092896
+          }
+        }
+      },
+      "elapsedInputMs": 1994.800000011921,
+      "coherentViewChanges": 120,
+      "initialUploadCpuMs": {
+        "count": 2,
+        "p50": 18.099999994039536,
+        "p95": 18.099999994039536,
+        "max": 18.099999994039536
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 30.69999998807907,
+        "p95": 31.900000005960464,
+        "max": 32.599999994039536
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 14.200000017881393,
+        "p95": 15.199999988079071,
+        "max": 16.30000001192093
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.30000001192092896,
+        "p95": 0.5999999940395355,
+        "max": 1.4000000059604645
+      },
+      "memory": {
+        "usedSize": 9567464,
+        "totalSize": 10932224,
+        "embedderHeapUsedSize": 1094392,
+        "backingStorageSize": 5887156
+      }
+    },
+    {
+      "label": "baseline",
+      "profile": "desktop",
+      "n": 64,
+      "renderer": {
+        "kind": "cpu",
+        "width": 505,
+        "height": 316,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 0,
+        "presentations": 0,
+        "textureBytes": 0,
+        "geometryBytes": 0,
+        "antialias": false,
+        "reason": "Error: Software graphics detected; using bounded CPU fallback.",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "native": {
+        "frames": {
+          "count": 301,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 18.19999998807907,
+          "p95": 20.400000005960464,
+          "max": 37.30000001192093
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.30000001192092896,
+          "p95": 0.4000000059604645,
+          "max": 1
+        },
+        "rasterOrDraw": {
+          "count": 101,
+          "p50": 9.099999994039536,
+          "p95": 11.799999982118607,
+          "max": 57.599999994039536
+        },
+        "unreadyFrames": 201,
+        "lagFrames": 201,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 50,
+          "p95": 50.100000000000364,
+          "max": 66.69999999999982
+        },
+        "stages": {
+          "clearRect": {
+            "count": 300,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          },
+          "putImageData": {
+            "count": 100,
+            "p50": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.20000001788139343
+          },
+          "drawImage": {
+            "count": 100,
+            "p50": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.10000002384185791
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 126,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 29.5,
+          "p95": 34.099999994039536,
+          "max": 37
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 12,
+          "p95": 17.299999982118607,
+          "max": 19.5
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 8.799999982118607,
+          "p95": 11.299999982118607,
+          "max": 14.399999976158142
+        },
+        "unreadyFrames": 122,
+        "lagFrames": 122,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 60,
+          "p50": 33.30000000000018,
+          "p95": 33.400000000000546,
+          "max": 33.5
+        },
+        "stages": {
+          "clearRect": {
+            "count": 123,
+            "p50": 0,
+            "p95": 0,
+            "max": 0.10000002384185791
+          },
+          "putImageData": {
+            "count": 61,
+            "p50": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.10000002384185791
+          },
+          "drawImage": {
+            "count": 61,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          }
+        }
+      },
+      "elapsedInputMs": 2000.699999988079,
+      "coherentViewChanges": 61,
+      "initialUploadCpuMs": {
+        "count": 0,
+        "p50": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 45.900000005960464,
+        "p95": 52.400000005960464,
+        "max": 54.5
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 14.300000011920929,
+        "p95": 17.400000005960464,
+        "max": 19.599999994039536
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.09999999403953552,
+        "p95": 0.19999998807907104,
+        "max": 0.20000001788139343
+      },
+      "memory": {
+        "usedSize": 9503628,
+        "totalSize": 11456512,
+        "embedderHeapUsedSize": 1054376,
+        "backingStorageSize": 6625735
+      }
+    },
+    {
+      "label": "baseline",
+      "profile": "desktop",
+      "n": 128,
+      "renderer": {
+        "kind": "cpu",
+        "width": 505,
+        "height": 316,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 0,
+        "presentations": 0,
+        "textureBytes": 0,
+        "geometryBytes": 0,
+        "antialias": false,
+        "reason": "Error: Software graphics detected; using bounded CPU fallback.",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "native": {
+        "frames": {
+          "count": 311,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 21.69999998807907,
+          "p95": 23.5,
+          "max": 30.599999994039536
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.19999998807907104,
+          "p95": 0.30000001192092896,
+          "max": 1.5
+        },
+        "rasterOrDraw": {
+          "count": 101,
+          "p50": 8.5,
+          "p95": 11.199999988079071,
+          "max": 43.59999996423721
+        },
+        "unreadyFrames": 200,
+        "lagFrames": 200,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 50,
+          "p95": 66.70000000000005,
+          "max": 66.70000000000073
+        },
+        "stages": {
+          "clearRect": {
+            "count": 300,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          },
+          "putImageData": {
+            "count": 100,
+            "p50": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.19999998807907104
+          },
+          "drawImage": {
+            "count": 100,
+            "p50": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.19999998807907104
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 126,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 29.80000001192093,
+          "p95": 33.70000001788139,
+          "max": 36.900000005960464
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 11.5,
+          "p95": 16.400000005960464,
+          "max": 19.19999998807907
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 8.400000005960464,
+          "p95": 9.699999988079071,
+          "max": 11.5
+        },
+        "unreadyFrames": 122,
+        "lagFrames": 122,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 60,
+          "p50": 33.30000000000018,
+          "p95": 33.400000000001455,
+          "max": 33.5
+        },
+        "stages": {
+          "clearRect": {
+            "count": 123,
+            "p50": 0,
+            "p95": 0,
+            "max": 0.09999999403953552
+          },
+          "putImageData": {
+            "count": 61,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          },
+          "drawImage": {
+            "count": 61,
+            "p50": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.10000002384185791
+          }
+        }
+      },
+      "elapsedInputMs": 2001.800000011921,
+      "coherentViewChanges": 61,
+      "initialUploadCpuMs": {
+        "count": 0,
+        "p50": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 45.20000001788139,
+        "p95": 50.19999998807907,
+        "max": 53.400000005960464
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 14.5,
+        "p95": 16.69999998807907,
+        "max": 19.399999976158142
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.09999999403953552,
+        "p95": 0.19999998807907104,
+        "max": 0.20000001788139343
+      },
+      "memory": {
+        "usedSize": 9640660,
+        "totalSize": 10932224,
+        "embedderHeapUsedSize": 1053176,
+        "backingStorageSize": 6723801
+      }
+    },
+    {
+      "label": "baseline",
+      "profile": "desktop",
+      "n": 256,
+      "renderer": {
+        "kind": "cpu",
+        "width": 505,
+        "height": 316,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 0,
+        "presentations": 0,
+        "textureBytes": 0,
+        "geometryBytes": 0,
+        "antialias": false,
+        "reason": "Error: Software graphics detected; using bounded CPU fallback.",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "native": {
+        "frames": {
+          "count": 309,
+          "p50": 16.699999999999818,
+          "p95": 16.799999999999727,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 20,
+          "p95": 23.700000017881393,
+          "max": 47
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.19999998807907104,
+          "p95": 0.30000001192092896,
+          "max": 1.7999999821186066
+        },
+        "rasterOrDraw": {
+          "count": 101,
+          "p50": 8.800000011920929,
+          "p95": 11.400000005960464,
+          "max": 41.69999998807907
+        },
+        "unreadyFrames": 201,
+        "lagFrames": 201,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 50,
+          "p95": 66.59999999999945,
+          "max": 83.40000000000009
+        },
+        "stages": {
+          "clearRect": {
+            "count": 300,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          },
+          "putImageData": {
+            "count": 100,
+            "p50": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.30000001192092896
+          },
+          "drawImage": {
+            "count": 100,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 126,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 29.799999982118607,
+          "p95": 33.79999998211861,
+          "max": 36.900000005960464
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 12.200000017881393,
+          "p95": 15.700000017881393,
+          "max": 16
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 8.5,
+          "p95": 9.599999994039536,
+          "max": 10.799999982118607
+        },
+        "unreadyFrames": 122,
+        "lagFrames": 122,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 60,
+          "p50": 33.30000000000018,
+          "p95": 33.400000000000546,
+          "max": 33.400000000001455
+        },
+        "stages": {
+          "clearRect": {
+            "count": 123,
+            "p50": 0,
+            "p95": 0,
+            "max": 0.10000002384185791
+          },
+          "putImageData": {
+            "count": 61,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          },
+          "drawImage": {
+            "count": 61,
+            "p50": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.10000002384185791
+          }
+        }
+      },
+      "elapsedInputMs": 1997.8999999761581,
+      "coherentViewChanges": 61,
+      "initialUploadCpuMs": {
+        "count": 0,
+        "p50": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 44.89999997615814,
+        "p95": 49.29999998211861,
+        "max": 53
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 14.400000005960464,
+        "p95": 15.900000005960464,
+        "max": 16.19999998807907
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.09999999403953552,
+        "p95": 0.19999998807907104,
+        "max": 0.30000001192092896
+      },
+      "memory": {
+        "usedSize": 9572512,
+        "totalSize": 10932224,
+        "embedderHeapUsedSize": 1059544,
+        "backingStorageSize": 7115739
+      }
+    },
+    {
+      "label": "baseline",
+      "profile": "mobile",
+      "n": 64,
+      "renderer": {
+        "kind": "cpu",
+        "width": 210,
+        "height": 428,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 0,
+        "presentations": 0,
+        "textureBytes": 0,
+        "geometryBytes": 0,
+        "antialias": false,
+        "reason": "Error: Software graphics detected; using bounded CPU fallback.",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "native": {
+        "frames": {
+          "count": 746,
+          "p50": 16.699999999999818,
+          "p95": 16.799999999999272,
+          "max": 50
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 41.400000005960464,
+          "p95": 55.900000005960464,
+          "max": 103.5
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.5999999940395355,
+          "p95": 0.800000011920929,
+          "max": 4.600000023841858
+        },
+        "rasterOrDraw": {
+          "count": 101,
+          "p50": 26.69999998807907,
+          "p95": 30.30000004172325,
+          "max": 153.60000002384186
+        },
+        "unreadyFrames": 307,
+        "lagFrames": 307,
+        "droppedFrames": 17,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 116.70000000000073,
+          "p95": 150,
+          "max": 150.10000000000036
+        },
+        "stages": {
+          "clearRect": {
+            "count": 300,
+            "p50": 0,
+            "p95": 0.19999998807907104,
+            "max": 0.30000001192092896
+          },
+          "putImageData": {
+            "count": 100,
+            "p50": 0.09999999403953552,
+            "p95": 0.29999998211860657,
+            "max": 0.4000000059604645
+          },
+          "drawImage": {
+            "count": 100,
+            "p50": 0.09999999403953552,
+            "p95": 0.20000001788139343,
+            "max": 0.30000001192092896
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 130,
+          "p50": 16.700000000000728,
+          "p95": 33.29999999999927,
+          "max": 33.400000000001455
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 48,
+          "p95": 56.5,
+          "max": 72.90000000596046
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 4.799999982118607,
+          "p95": 15,
+          "max": 18.5
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 26.200000017881393,
+          "p95": 29.000000029802322,
+          "max": 32.19999998807907
+        },
+        "unreadyFrames": 123,
+        "lagFrames": 123,
+        "droppedFrames": 10,
+        "presentationIntervals": {
+          "count": 40,
+          "p50": 50,
+          "p95": 66.70000000000073,
+          "max": 66.70000000000073
+        },
+        "stages": {
+          "clearRect": {
+            "count": 83,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.19999998807907104
+          },
+          "putImageData": {
+            "count": 41,
+            "p50": 0,
+            "p95": 0.20000001788139343,
+            "max": 0.20000001788139343
+          },
+          "drawImage": {
+            "count": 41,
+            "p50": 0,
+            "p95": 0.20000001788139343,
+            "max": 0.30000001192092896
+          }
+        }
+      },
+      "elapsedInputMs": 2156,
+      "coherentViewChanges": 41,
+      "initialUploadCpuMs": {
+        "count": 0,
+        "p50": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 63.69999998807907,
+        "p95": 72.5,
+        "max": 91.5
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 5.5999999940395355,
+        "p95": 15.800000011920929,
+        "max": 19.099999994039536
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.30000001192092896,
+        "p95": 0.5,
+        "max": 1.4000000059604645
+      },
+      "memory": {
+        "usedSize": 9596500,
+        "totalSize": 10407936,
+        "embedderHeapUsedSize": 1065384,
+        "backingStorageSize": 6068138
+      }
+    },
+    {
+      "label": "baseline",
+      "profile": "mobile",
+      "n": 128,
+      "renderer": {
+        "kind": "cpu",
+        "width": 210,
+        "height": 428,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 0,
+        "presentations": 0,
+        "textureBytes": 0,
+        "geometryBytes": 0,
+        "antialias": false,
+        "reason": "Error: Software graphics detected; using bounded CPU fallback.",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "native": {
+        "frames": {
+          "count": 782,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 33.400000000000546
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 43.19999998807907,
+          "p95": 59,
+          "max": 93.59999999403954
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.699999988079071,
+          "p95": 0.9000000059604645,
+          "max": 7.4000000059604645
+        },
+        "rasterOrDraw": {
+          "count": 101,
+          "p50": 27.100000023841858,
+          "p95": 31,
+          "max": 141.6000000834465
+        },
+        "unreadyFrames": 308,
+        "lagFrames": 308,
+        "droppedFrames": 6,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 133.29999999999927,
+          "p95": 133.40000000000146,
+          "max": 150
+        },
+        "stages": {
+          "clearRect": {
+            "count": 300,
+            "p50": 0,
+            "p95": 0.19999998807907104,
+            "max": 0.30000001192092896
+          },
+          "putImageData": {
+            "count": 100,
+            "p50": 0.09999999403953552,
+            "p95": 0.20000001788139343,
+            "max": 0.30000001192092896
+          },
+          "drawImage": {
+            "count": 100,
+            "p50": 0,
+            "p95": 0.20000001788139343,
+            "max": 0.20000001788139343
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 130,
+          "p50": 16.69999999999891,
+          "p95": 33.39999999999782,
+          "max": 33.400000000001455
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 43.79999998211861,
+          "p95": 57.10000002384186,
+          "max": 160.59999999403954
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 5,
+          "p95": 15.800000011920929,
+          "max": 19.30000001192093
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 26.000000029802322,
+          "p95": 29,
+          "max": 89.80000004172325
+        },
+        "unreadyFrames": 122,
+        "lagFrames": 122,
+        "droppedFrames": 16,
+        "presentationIntervals": {
+          "count": 38,
+          "p50": 50,
+          "p95": 66.70000000000073,
+          "max": 66.79999999999927
+        },
+        "stages": {
+          "clearRect": {
+            "count": 78,
+            "p50": 0,
+            "p95": 0.20000001788139343,
+            "max": 0.30000001192092896
+          },
+          "putImageData": {
+            "count": 39,
+            "p50": 0,
+            "p95": 0.30000001192092896,
+            "max": 0.5999999940395355
+          },
+          "drawImage": {
+            "count": 39,
+            "p50": 0,
+            "p95": 0.20000001788139343,
+            "max": 0.29999998211860657
+          }
+        }
+      },
+      "elapsedInputMs": 2238.5999999940395,
+      "coherentViewChanges": 39,
+      "initialUploadCpuMs": {
+        "count": 0,
+        "p50": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 61.400000005960464,
+        "p95": 74.40000000596046,
+        "max": 177.30000001192093
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 5.700000017881393,
+        "p95": 16.700000017881393,
+        "max": 19.900000005960464
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.29999998211860657,
+        "p95": 0.5,
+        "max": 0.6000000238418579
+      },
+      "memory": {
+        "usedSize": 9671744,
+        "totalSize": 10407936,
+        "embedderHeapUsedSize": 1066288,
+        "backingStorageSize": 6166208
+      }
+    },
+    {
+      "label": "baseline",
+      "profile": "mobile",
+      "n": 256,
+      "renderer": {
+        "kind": "cpu",
+        "width": 210,
+        "height": 428,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 0,
+        "presentations": 0,
+        "textureBytes": 0,
+        "geometryBytes": 0,
+        "antialias": false,
+        "reason": "Error: Software graphics detected; using bounded CPU fallback.",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "native": {
+        "frames": {
+          "count": 760,
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 33.400000000001455
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 42.29999998211861,
+          "p95": 63.79999998211861,
+          "max": 85.30000001192093
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.5999999940395355,
+          "p95": 0.9000000059604645,
+          "max": 4.800000011920929
+        },
+        "rasterOrDraw": {
+          "count": 101,
+          "p50": 27.400000005960464,
+          "p95": 31.500000029802322,
+          "max": 143.10000002384186
+        },
+        "unreadyFrames": 312,
+        "lagFrames": 312,
+        "droppedFrames": 9,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 116.70000000000073,
+          "p95": 149.89999999999964,
+          "max": 216.59999999999945
+        },
+        "stages": {
+          "clearRect": {
+            "count": 300,
+            "p50": 0,
+            "p95": 0.19999998807907104,
+            "max": 0.4000000059604645
+          },
+          "putImageData": {
+            "count": 100,
+            "p50": 0.09999999403953552,
+            "p95": 0.20000001788139343,
+            "max": 0.4000000059604645
+          },
+          "drawImage": {
+            "count": 100,
+            "p50": 0,
+            "p95": 0.20000001788139343,
+            "max": 0.30000001192092896
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 132,
+          "p50": 16.700000000000728,
+          "p95": 33.30000000000109,
+          "max": 33.400000000001455
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 43.19999998807907,
+          "p95": 57.69999998807907,
+          "max": 161.5
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 4.5999999940395355,
+          "p95": 14.900000005960464,
+          "max": 17.5
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 26.30000001192093,
+          "p95": 30.200000017881393,
+          "max": 92.59999996423721
+        },
+        "unreadyFrames": 123,
+        "lagFrames": 123,
+        "droppedFrames": 10,
+        "presentationIntervals": {
+          "count": 38,
+          "p50": 50,
+          "p95": 66.80000000000109,
+          "max": 83.30000000000109
+        },
+        "stages": {
+          "clearRect": {
+            "count": 78,
+            "p50": 0,
+            "p95": 0.19999998807907104,
+            "max": 0.20000001788139343
+          },
+          "putImageData": {
+            "count": 39,
+            "p50": 0.09999999403953552,
+            "p95": 0.4000000059604645,
+            "max": 0.5999999940395355
+          },
+          "drawImage": {
+            "count": 39,
+            "p50": 0.09999999403953552,
+            "p95": 0.20000001788139343,
+            "max": 0.20000001788139343
+          }
+        }
+      },
+      "elapsedInputMs": 2158.5999999940395,
+      "coherentViewChanges": 39,
+      "initialUploadCpuMs": {
+        "count": 0,
+        "p50": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 59.400000005960464,
+        "p95": 74.80000001192093,
+        "max": 176.7999999821186
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 5.200000017881393,
+        "p95": 15.699999988079071,
+        "max": 18
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.30000001192092896,
+        "p95": 0.5,
+        "max": 0.5999999940395355
+      },
+      "memory": {
+        "usedSize": 9595272,
+        "totalSize": 10670080,
+        "embedderHeapUsedSize": 1068376,
+        "backingStorageSize": 6558154
+      }
+    },
+    {
+      "label": "improved",
+      "profile": "desktop",
+      "n": 64,
+      "renderer": {
+        "kind": "cpu",
+        "width": 505,
+        "height": 316,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 0,
+        "presentations": 0,
+        "textureBytes": 0,
+        "geometryBytes": 0,
+        "antialias": false,
+        "reason": "Error: Software graphics detected; using bounded CPU fallback.",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "native": {
+        "frames": {
+          "count": 335,
+          "p50": 16.699999999999818,
+          "p95": 16.799999999999272,
+          "max": 33.29999999999973
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 21.5,
+          "p95": 30.599999994039536,
+          "max": 48
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.20000001788139343,
+          "p95": 0.4000000059604645,
+          "max": 1.199999988079071
+        },
+        "rasterOrDraw": {
+          "count": 101,
+          "p50": 12.099999994039536,
+          "p95": 15.900000005960464,
+          "max": 61.09999993443489
+        },
+        "unreadyFrames": 202,
+        "lagFrames": 202,
+        "droppedFrames": 1,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 50,
+          "p95": 83.30000000000018,
+          "max": 100.10000000000036
+        },
+        "stages": {
+          "clearRect": {
+            "count": 300,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          },
+          "putImageData": {
+            "count": 100,
+            "p50": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.30000001192092896
+          },
+          "drawImage": {
+            "count": 100,
+            "p50": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.10000002384185791
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 126,
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 28.80000001192093,
+          "p95": 35.20000001788139,
+          "max": 40.60000002384186
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 8.799999982118607,
+          "p95": 13.900000005960464,
+          "max": 17.5
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 11.900000005960464,
+          "p95": 15.09999993443489,
+          "max": 16.600000023841858
+        },
+        "unreadyFrames": 122,
+        "lagFrames": 122,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 60,
+          "p50": 33.30000000000109,
+          "p95": 33.400000000001455,
+          "max": 33.400000000001455
+        },
+        "stages": {
+          "clearRect": {
+            "count": 123,
+            "p50": 0,
+            "p95": 0,
+            "max": 0.09999999403953552
+          },
+          "putImageData": {
+            "count": 61,
+            "p50": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.10000002384185791
+          },
+          "drawImage": {
+            "count": 61,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          }
+        }
+      },
+      "elapsedInputMs": 2002.300000011921,
+      "coherentViewChanges": 61,
+      "initialUploadCpuMs": {
+        "count": 0,
+        "p50": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 43.70000001788139,
+        "p95": 47.39999997615814,
+        "max": 58.60000002384186
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 9,
+        "p95": 14.199999988079071,
+        "max": 17.700000017881393
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.09999999403953552,
+        "p95": 0.20000001788139343,
+        "max": 0.20000001788139343
+      },
+      "memory": {
+        "usedSize": 9687524,
+        "totalSize": 10407936,
+        "embedderHeapUsedSize": 1072120,
+        "backingStorageSize": 6667689
+      }
+    },
+    {
+      "label": "improved",
+      "profile": "desktop",
+      "n": 128,
+      "renderer": {
+        "kind": "cpu",
+        "width": 505,
+        "height": 316,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 0,
+        "presentations": 0,
+        "textureBytes": 0,
+        "geometryBytes": 0,
+        "antialias": false,
+        "reason": "Error: Software graphics detected; using bounded CPU fallback.",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "native": {
+        "frames": {
+          "count": 325,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 19.900000005960464,
+          "p95": 27.299999982118607,
+          "max": 37.29999998211861
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.29999998211860657,
+          "p95": 0.5,
+          "max": 1.5
+        },
+        "rasterOrDraw": {
+          "count": 101,
+          "p50": 10.899999976158142,
+          "p95": 14.199999988079071,
+          "max": 59.80000001192093
+        },
+        "unreadyFrames": 201,
+        "lagFrames": 201,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 50,
+          "p95": 66.70000000000005,
+          "max": 83.29999999999973
+        },
+        "stages": {
+          "clearRect": {
+            "count": 300,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          },
+          "putImageData": {
+            "count": 100,
+            "p50": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.19999998807907104
+          },
+          "drawImage": {
+            "count": 100,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 128,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 27.5,
+          "p95": 34.10000002384186,
+          "max": 42.099999994039536
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 8.300000011920929,
+          "p95": 15.300000011920929,
+          "max": 15.5
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 10.5,
+          "p95": 12.699999988079071,
+          "max": 17.5
+        },
+        "unreadyFrames": 122,
+        "lagFrames": 122,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 60,
+          "p50": 33.30000000000018,
+          "p95": 33.400000000000546,
+          "max": 33.400000000000546
+        },
+        "stages": {
+          "clearRect": {
+            "count": 123,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          },
+          "putImageData": {
+            "count": 61,
+            "p50": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.10000002384185791
+          },
+          "drawImage": {
+            "count": 61,
+            "p50": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.10000002384185791
+          }
+        }
+      },
+      "elapsedInputMs": 1994.2999999821186,
+      "coherentViewChanges": 61,
+      "initialUploadCpuMs": {
+        "count": 0,
+        "p50": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 43.19999998807907,
+        "p95": 48.69999998807907,
+        "max": 51.099999994039536
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 8.700000017881393,
+        "p95": 15.5,
+        "max": 15.600000023841858
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.09999999403953552,
+        "p95": 0.19999998807907104,
+        "max": 0.20000001788139343
+      },
+      "memory": {
+        "usedSize": 9761096,
+        "totalSize": 10932224,
+        "embedderHeapUsedSize": 1071416,
+        "backingStorageSize": 6765740
+      }
+    },
+    {
+      "label": "improved",
+      "profile": "desktop",
+      "n": 256,
+      "renderer": {
+        "kind": "cpu",
+        "width": 505,
+        "height": 316,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 0,
+        "presentations": 0,
+        "textureBytes": 0,
+        "geometryBytes": 0,
+        "antialias": false,
+        "reason": "Error: Software graphics detected; using bounded CPU fallback.",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "native": {
+        "frames": {
+          "count": 308,
+          "p50": 16.699999999999818,
+          "p95": 16.799999999999955,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 20.599999994039536,
+          "p95": 24.200000017881393,
+          "max": 38.900000005960464
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.19999998807907104,
+          "p95": 0.30000001192092896,
+          "max": 1.0999999940395355
+        },
+        "rasterOrDraw": {
+          "count": 101,
+          "p50": 10,
+          "p95": 13.199999958276749,
+          "max": 55.900000005960464
+        },
+        "unreadyFrames": 201,
+        "lagFrames": 201,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 50,
+          "p95": 66.70000000000005,
+          "max": 83.30000000000018
+        },
+        "stages": {
+          "clearRect": {
+            "count": 300,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.10000002384185791
+          },
+          "putImageData": {
+            "count": 100,
+            "p50": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.5
+          },
+          "drawImage": {
+            "count": 100,
+            "p50": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.10000002384185791
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 126,
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.800000000000182
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 26.099999994039536,
+          "p95": 34.5,
+          "max": 46.30000001192093
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 10.099999994039536,
+          "p95": 15.400000005960464,
+          "max": 16.19999998807907
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 9.999999970197678,
+          "p95": 13.199999958276749,
+          "max": 16.30000001192093
+        },
+        "unreadyFrames": 122,
+        "lagFrames": 122,
+        "droppedFrames": 0,
+        "presentationIntervals": {
+          "count": 60,
+          "p50": 33.30000000000018,
+          "p95": 33.400000000000546,
+          "max": 33.400000000000546
+        },
+        "stages": {
+          "clearRect": {
+            "count": 123,
+            "p50": 0,
+            "p95": 0,
+            "max": 0.09999999403953552
+          },
+          "putImageData": {
+            "count": 61,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.20000001788139343
+          },
+          "drawImage": {
+            "count": 61,
+            "p50": 0,
+            "p95": 0.09999999403953552,
+            "max": 0.19999998807907104
+          }
+        }
+      },
+      "elapsedInputMs": 1994.5,
+      "coherentViewChanges": 61,
+      "initialUploadCpuMs": {
+        "count": 0,
+        "p50": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 39.39999997615814,
+        "p95": 49,
+        "max": 52.60000002384186
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 10.400000005960464,
+        "p95": 15.5,
+        "max": 16.30000001192093
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.09999999403953552,
+        "p95": 0.19999998807907104,
+        "max": 0.20000001788139343
+      },
+      "memory": {
+        "usedSize": 9692036,
+        "totalSize": 12242944,
+        "embedderHeapUsedSize": 1072000,
+        "backingStorageSize": 7157682
+      }
+    },
+    {
+      "label": "improved",
+      "profile": "mobile",
+      "n": 64,
+      "renderer": {
+        "kind": "cpu",
+        "width": 210,
+        "height": 428,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 0,
+        "presentations": 0,
+        "textureBytes": 0,
+        "geometryBytes": 0,
+        "antialias": false,
+        "reason": "Error: Software graphics detected; using bounded CPU fallback.",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "native": {
+        "frames": {
+          "count": 738,
+          "p50": 16.699999999999818,
+          "p95": 33.30000000000018,
+          "max": 50
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 59.099999994039536,
+          "p95": 82.80000001192093,
+          "max": 130.89999997615814
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.5999999940395355,
+          "p95": 0.800000011920929,
+          "max": 5.699999988079071
+        },
+        "rasterOrDraw": {
+          "count": 101,
+          "p50": 35.99999997019768,
+          "p95": 47.30000004172325,
+          "max": 223.90000000596046
+        },
+        "unreadyFrames": 366,
+        "lagFrames": 366,
+        "droppedFrames": 78,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 133.3000000000011,
+          "p95": 150.0000000000009,
+          "max": 166.70000000000073
+        },
+        "stages": {
+          "clearRect": {
+            "count": 300,
+            "p50": 0,
+            "p95": 0.19999998807907104,
+            "max": 0.30000001192092896
+          },
+          "putImageData": {
+            "count": 100,
+            "p50": 0.09999999403953552,
+            "p95": 0.20000001788139343,
+            "max": 0.4000000059604645
+          },
+          "drawImage": {
+            "count": 100,
+            "p50": 0,
+            "p95": 0.20000001788139343,
+            "max": 0.20000001788139343
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 132,
+          "p50": 16.700000000000728,
+          "p95": 33.39999999999782,
+          "max": 33.400000000001455
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 58.10000002384186,
+          "p95": 75.19999998807907,
+          "max": 209.5
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 4.5,
+          "p95": 14.699999988079071,
+          "max": 19.5
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 34.29999998211861,
+          "p95": 40.69999998807907,
+          "max": 118.1000000834465
+        },
+        "unreadyFrames": 124,
+        "lagFrames": 124,
+        "droppedFrames": 18,
+        "presentationIntervals": {
+          "count": 34,
+          "p50": 66.69999999999709,
+          "p95": 83.29999999999927,
+          "max": 83.30000000000291
+        },
+        "stages": {
+          "clearRect": {
+            "count": 70,
+            "p50": 0,
+            "p95": 0.19999998807907104,
+            "max": 0.20000001788139343
+          },
+          "putImageData": {
+            "count": 35,
+            "p50": 0.09999999403953552,
+            "p95": 0.30000001192092896,
+            "max": 0.5999999940395355
+          },
+          "drawImage": {
+            "count": 35,
+            "p50": 0,
+            "p95": 0.20000001788139343,
+            "max": 0.30000001192092896
+          }
+        }
+      },
+      "elapsedInputMs": 2273.9000000059605,
+      "coherentViewChanges": 35,
+      "initialUploadCpuMs": {
+        "count": 0,
+        "p50": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 74.09999999403954,
+        "p95": 110.7999999821186,
+        "max": 225.40000000596046
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 5.199999988079071,
+        "p95": 15.300000011920929,
+        "max": 20.299999982118607
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.30000001192092896,
+        "p95": 0.5,
+        "max": 1.100000023841858
+      },
+      "memory": {
+        "usedSize": 9723376,
+        "totalSize": 10932224,
+        "embedderHeapUsedSize": 1082712,
+        "backingStorageSize": 6110093
+      }
+    },
+    {
+      "label": "improved",
+      "profile": "mobile",
+      "n": 128,
+      "renderer": {
+        "kind": "cpu",
+        "width": 210,
+        "height": 428,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 0,
+        "presentations": 0,
+        "textureBytes": 0,
+        "geometryBytes": 0,
+        "antialias": false,
+        "reason": "Error: Software graphics detected; using bounded CPU fallback.",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "native": {
+        "frames": {
+          "count": 778,
+          "p50": 16.699999999999818,
+          "p95": 33.30000000000018,
+          "max": 50
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 56.60000002384186,
+          "p95": 82.7000000178814,
+          "max": 130.69999998807907
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.6000000238418579,
+          "p95": 0.800000011920929,
+          "max": 7.300000011920929
+        },
+        "rasterOrDraw": {
+          "count": 101,
+          "p50": 33.400000005960464,
+          "p95": 38.799999952316284,
+          "max": 190.8000001013279
+        },
+        "unreadyFrames": 369,
+        "lagFrames": 369,
+        "droppedFrames": 60,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 133.3000000000011,
+          "p95": 150.10000000000036,
+          "max": 166.70000000000027
+        },
+        "stages": {
+          "clearRect": {
+            "count": 300,
+            "p50": 0,
+            "p95": 0.19999998807907104,
+            "max": 0.30000001192092896
+          },
+          "putImageData": {
+            "count": 100,
+            "p50": 0.09999999403953552,
+            "p95": 0.20000001788139343,
+            "max": 0.4000000059604645
+          },
+          "drawImage": {
+            "count": 100,
+            "p50": 0,
+            "p95": 0.20000001788139343,
+            "max": 0.30000001192092896
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 137,
+          "p50": 16.700000000000728,
+          "p95": 33.39999999999782,
+          "max": 33.400000000001455
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 56.900000005960464,
+          "p95": 74.09999999403954,
+          "max": 82.5
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 5.199999988079071,
+          "p95": 16.599999994039536,
+          "max": 20.900000005960464
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 32.10000002384186,
+          "p95": 36.80000001192093,
+          "max": 114
+        },
+        "unreadyFrames": 122,
+        "lagFrames": 122,
+        "droppedFrames": 27,
+        "presentationIntervals": {
+          "count": 36,
+          "p50": 66.69999999999709,
+          "p95": 83.39999999999782,
+          "max": 83.40000000000146
+        },
+        "stages": {
+          "clearRect": {
+            "count": 74,
+            "p50": 0,
+            "p95": 0.20000001788139343,
+            "max": 0.20000001788139343
+          },
+          "putImageData": {
+            "count": 37,
+            "p50": 0,
+            "p95": 0.30000001192092896,
+            "max": 0.9000000059604645
+          },
+          "drawImage": {
+            "count": 37,
+            "p50": 0.09999999403953552,
+            "p95": 0.20000001788139343,
+            "max": 0.20000001788139343
+          }
+        }
+      },
+      "elapsedInputMs": 2388.4000000059605,
+      "coherentViewChanges": 37,
+      "initialUploadCpuMs": {
+        "count": 0,
+        "p50": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 73.59999999403954,
+        "p95": 95.89999997615814,
+        "max": 116
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 6.0999999940395355,
+        "p95": 17.80000001192093,
+        "max": 21.5
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.30000001192092896,
+        "p95": 0.5,
+        "max": 0.5999999940395355
+      },
+      "memory": {
+        "usedSize": 9788672,
+        "totalSize": 10932224,
+        "embedderHeapUsedSize": 1084768,
+        "backingStorageSize": 6208144
+      }
+    },
+    {
+      "label": "improved",
+      "profile": "mobile",
+      "n": 256,
+      "renderer": {
+        "kind": "cpu",
+        "width": 210,
+        "height": 428,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 0,
+        "presentations": 0,
+        "textureBytes": 0,
+        "geometryBytes": 0,
+        "antialias": false,
+        "reason": "Error: Software graphics detected; using bounded CPU fallback.",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "native": {
+        "frames": {
+          "count": 701,
+          "p50": 16.699999999999818,
+          "p95": 33.399999999999636,
+          "max": 50.09999999999991
+        },
+        "cameraInput": {
+          "count": 100,
+          "p50": 64,
+          "p95": 84.7000000178814,
+          "max": 118.40000000596046
+        },
+        "pointerEventToRAF": {
+          "count": 101,
+          "p50": 0.6000000238418579,
+          "p95": 0.9000000059604645,
+          "max": 5.9000000059604645
+        },
+        "rasterOrDraw": {
+          "count": 101,
+          "p50": 31.500000029802322,
+          "p95": 42.79999998211861,
+          "max": 172.3999999165535
+        },
+        "unreadyFrames": 360,
+        "lagFrames": 360,
+        "droppedFrames": 100,
+        "presentationIntervals": {
+          "count": 99,
+          "p50": 133.30000000000018,
+          "p95": 150,
+          "max": 166.70000000000027
+        },
+        "stages": {
+          "clearRect": {
+            "count": 300,
+            "p50": 0,
+            "p95": 0.19999998807907104,
+            "max": 0.30000001192092896
+          },
+          "putImageData": {
+            "count": 100,
+            "p50": 0.09999999403953552,
+            "p95": 0.30000001192092896,
+            "max": 0.3999999761581421
+          },
+          "drawImage": {
+            "count": 100,
+            "p50": 0,
+            "p95": 0.20000001788139343,
+            "max": 0.30000001192092896
+          }
+        }
+      },
+      "rafPaced": {
+        "frames": {
+          "count": 132,
+          "p50": 16.700000000000728,
+          "p95": 33.29999999999927,
+          "max": 33.400000000001455
+        },
+        "cameraInput": {
+          "count": 120,
+          "p50": 58.400000005960464,
+          "p95": 72.5,
+          "max": 197.69999998807907
+        },
+        "pointerEventToRAF": {
+          "count": 121,
+          "p50": 4.4000000059604645,
+          "p95": 14.900000005960464,
+          "max": 18.400000005960464
+        },
+        "rasterOrDraw": {
+          "count": 120,
+          "p50": 30.5,
+          "p95": 36.10000002384186,
+          "max": 107.19999995827675
+        },
+        "unreadyFrames": 124,
+        "lagFrames": 124,
+        "droppedFrames": 13,
+        "presentationIntervals": {
+          "count": 35,
+          "p50": 66.59999999999854,
+          "p95": 66.70000000000073,
+          "max": 83.39999999999782
+        },
+        "stages": {
+          "clearRect": {
+            "count": 72,
+            "p50": 0,
+            "p95": 0.10000002384185791,
+            "max": 0.20000001788139343
+          },
+          "putImageData": {
+            "count": 36,
+            "p50": 0.09999999403953552,
+            "p95": 0.4000000059604645,
+            "max": 0.4000000059604645
+          },
+          "drawImage": {
+            "count": 36,
+            "p50": 0.09999999403953552,
+            "p95": 0.20000001788139343,
+            "max": 0.29999998211860657
+          }
+        }
+      },
+      "elapsedInputMs": 2204.4000000059605,
+      "coherentViewChanges": 36,
+      "initialUploadCpuMs": {
+        "count": 0,
+        "p50": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "followingRafOpportunityMs": {
+        "count": 120,
+        "p50": 76.40000000596046,
+        "p95": 108.59999999403954,
+        "max": 214.19999998807907
+      },
+      "pointerFeedbackMs": {
+        "count": 120,
+        "p50": 5,
+        "p95": 15.600000023841858,
+        "max": 19.099999994039536
+      },
+      "cameraCalculationMs": {
+        "count": 120,
+        "p50": 0.30000001192092896,
+        "p95": 0.5,
+        "max": 0.7999999821186066
+      },
+      "memory": {
+        "usedSize": 9742264,
+        "totalSize": 10670080,
+        "embedderHeapUsedSize": 1082968,
+        "backingStorageSize": 6600084
+      }
+    }
+  ]
+}
