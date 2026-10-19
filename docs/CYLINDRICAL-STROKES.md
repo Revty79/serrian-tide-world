@@ -1,6 +1,6 @@
 # Continuous cylindrical sculpting and exact history — A7-B2B2
 
-This pure TypeScript numerical layer connects [B1 distances](CYLINDER-GLOBAL-DISTANCE.md), [B2A atomic dabs](CYLINDRICAL-SCULPTING.md) and [B2B1 physical paths](CYLINDER-PHYSICAL-PATHS.md). It has no React, DOM, screen coordinates, storage, authentication or database dependencies. Cylinder creation, views and input UI remain A7-C; persistence remains A7-D. The existing application does not import this layer.
+This pure TypeScript numerical layer connects [B1 distances](CYLINDER-GLOBAL-DISTANCE.md), [B2A atomic dabs](CYLINDRICAL-SCULPTING.md) and [B2B1 physical paths](CYLINDER-PHYSICAL-PATHS.md). It has no React, DOM, screen coordinates, storage, authentication or database dependencies. A7-C now uses this unchanged engine in a [session-only development editor](CYLINDRICAL-EDITING.md), with physical/connected views and actual input. The production application entry does not import it. Ordinary cylinder creation and persistence remain A7-D.
 
 ## Numerical session
 
@@ -66,7 +66,7 @@ Undo/Redo validates all affected current words against the recorded after/before
 | Queue/count, path/precision, spacing, dab/aggregate or history exhaustion | Fail with diagnostic; no silent dropping/coarsening, no partial pending dab; retained prefix remains reversible |
 | Later calls after termination | No background work; pumps do nothing, input is rejected, cancel/dispose are safe |
 
-The future browser adapter must translate capture loss, navigation, gesture changes and other interruptions to this lifecycle. This pass implements no such cylinder adapter.
+The A7-C development adapter translates capture loss, navigation, gesture changes and workspace interruption to this lifecycle. It uses the same history transaction, adds precommit visibility/derived-color staging and retains a reversible prefix. See its separate browser evidence; the numerical kernel remains unchanged.
 
 ## Fixed resources and non-preemptible work
 
@@ -104,4 +104,4 @@ Known retained B2A limitation: exact brush-boundary ambiguity can exhaust interv
 
 See [completion report](A7-B2B2-COMPLETION.md) and [raw measurements](evidence/a7-b2b2-stroke-measurements.json). All earlier saved formats, workspace behavior and historical evidence remain preserved. The [eleven-phase roadmap](PHASE-1-HEIGHTMAP-ROADMAP.md), including Issue #1 and functional linked maps before integration with existing Worlds, remains unchanged. The eventual Next.js host retains authentication, permissions, database and World-record ownership.
 
-**Stop after A7-B2B2 for Ember's independent review. Do not begin A7-C.**
+**Stop after A7-C for Ember's independent review; do not begin A7-D.**

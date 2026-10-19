@@ -1,0 +1,5574 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      ".local/a7-c-full-playwright.config.ts",
+      "--list",
+      "--reporter=json"
+    ],
+    "configFile": "D:\\serrian-tide-world\\.local\\a7-c-full-playwright.config.ts",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {},
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/serrian-tide-world/test-results/a7-c-full",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/serrian-tide-world/test-results/a7-c-full",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\serrian-tide-world\\test-results\\a7-c-full",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "name": "desktop",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5196",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\serrian-tide-world\\test-results\\a7-c-full",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "name": "mobile",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5196",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Mobile Safari/537.36",
+          "viewport": {
+            "width": 412,
+            "height": 839
+          },
+          "screen": {
+            "width": 412,
+            "height": 915
+          },
+          "deviceScaleFactor": 2.625,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "atlas.spec.ts",
+      "file": "atlas.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Atlas opens with an uninterrupted, responsive ocean and no browser errors",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bed8efe74e8526a653f7-358480380d7b609517e6",
+          "file": "atlas.spec.ts",
+          "line": 27,
+          "column": 1
+        },
+        {
+          "title": "viewport resizing repaints the actual application canvas as the same ocean",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bed8efe74e8526a653f7-9b5b01112510d1250b8f",
+          "file": "atlas.spec.ts",
+          "line": 48,
+          "column": 1
+        },
+        {
+          "title": "real canvas rendering honors sea level and synthetic land while preserving all terrain on resize",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bed8efe74e8526a653f7-332baa4fa2e7d8d357d5",
+          "file": "atlas.spec.ts",
+          "line": 65,
+          "column": 1
+        },
+        {
+          "title": "Atlas opens with an uninterrupted, responsive ocean and no browser errors",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bed8efe74e8526a653f7-9652dca7740593f2a054",
+          "file": "atlas.spec.ts",
+          "line": 27,
+          "column": 1
+        },
+        {
+          "title": "viewport resizing repaints the actual application canvas as the same ocean",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bed8efe74e8526a653f7-8df8d6973ed25cf2ced7",
+          "file": "atlas.spec.ts",
+          "line": 48,
+          "column": 1
+        },
+        {
+          "title": "real canvas rendering honors sea level and synthetic land while preserving all terrain on resize",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bed8efe74e8526a653f7-e02a0aa5f652c04bac18",
+          "file": "atlas.spec.ts",
+          "line": 65,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "cylinder-preview.spec.ts",
+      "file": "cylinder-preview.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "cylinder real complete workflow: visible physical side, both caps, four tools, exact history and canonical previews",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0babfb25369b3a20ce88-2c1856dcc8b7c05d7eff",
+          "file": "cylinder-preview.spec.ts",
+          "line": 27,
+          "column": 1
+        },
+        {
+          "title": "cylinder navigation, recentering, resize, overlay focus and fullscreen preserve every word",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0babfb25369b3a20ce88-1002be731fe57047be9b",
+          "file": "cylinder-preview.spec.ts",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "cylinder interrupts pending drawing through capture, navigation, gestures and workspace changes without corruption",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0babfb25369b3a20ce88-967016173328a8033170",
+          "file": "cylinder-preview.spec.ts",
+          "line": 60,
+          "column": 1
+        },
+        {
+          "title": "cylinder projected cuts stop safely and moving the working meridian preserves angular wrapping",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0babfb25369b3a20ce88-03522787de9d8cf54c55",
+          "file": "cylinder-preview.spec.ts",
+          "line": 93,
+          "column": 1
+        },
+        {
+          "title": "cylinder large physical footprints use real cap shortcuts; unsupported previews remain atomic",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0babfb25369b3a20ce88-7e92344e8b7e5b3b0d66",
+          "file": "cylinder-preview.spec.ts",
+          "line": 102,
+          "column": 1
+        },
+        {
+          "title": "cylinder replacement guards unsaved terrain, clears the old session and keeps the overlay geometry fixed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0babfb25369b3a20ce88-d5a0ef8f2cefe5d5cc1b",
+          "file": "cylinder-preview.spec.ts",
+          "line": 110,
+          "column": 1
+        },
+        {
+          "title": "cylinder measured navigation, cap tools, repeated and long/cancelled strokes N128",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0babfb25369b3a20ce88-cc4d609d6eac3e64c4e2",
+          "file": "cylinder-preview.spec.ts",
+          "line": 117,
+          "column": 26
+        },
+        {
+          "title": "cylinder measured navigation, cap tools, repeated and long/cancelled strokes N256",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0babfb25369b3a20ce88-fba04d083c6116788f39",
+          "file": "cylinder-preview.spec.ts",
+          "line": 117,
+          "column": 26
+        },
+        {
+          "title": "cylinder real complete workflow: visible physical side, both caps, four tools, exact history and canonical previews",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0babfb25369b3a20ce88-0a57b16d15ebc2a2dd39",
+          "file": "cylinder-preview.spec.ts",
+          "line": 27,
+          "column": 1
+        },
+        {
+          "title": "cylinder navigation, recentering, resize, overlay focus and fullscreen preserve every word",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0babfb25369b3a20ce88-1da4cb50696ac8d425db",
+          "file": "cylinder-preview.spec.ts",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "cylinder interrupts pending drawing through capture, navigation, gestures and workspace changes without corruption",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0babfb25369b3a20ce88-4cf86b03601e72af1249",
+          "file": "cylinder-preview.spec.ts",
+          "line": 60,
+          "column": 1
+        },
+        {
+          "title": "cylinder projected cuts stop safely and moving the working meridian preserves angular wrapping",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0babfb25369b3a20ce88-4412b70a5f5d9de40f18",
+          "file": "cylinder-preview.spec.ts",
+          "line": 93,
+          "column": 1
+        },
+        {
+          "title": "cylinder large physical footprints use real cap shortcuts; unsupported previews remain atomic",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0babfb25369b3a20ce88-05044ddf077727c174a9",
+          "file": "cylinder-preview.spec.ts",
+          "line": 102,
+          "column": 1
+        },
+        {
+          "title": "cylinder replacement guards unsaved terrain, clears the old session and keeps the overlay geometry fixed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0babfb25369b3a20ce88-6d476d21407827e9bb3b",
+          "file": "cylinder-preview.spec.ts",
+          "line": 110,
+          "column": 1
+        },
+        {
+          "title": "cylinder measured navigation, cap tools, repeated and long/cancelled strokes N128",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0babfb25369b3a20ce88-6c23b605db5cdced79d3",
+          "file": "cylinder-preview.spec.ts",
+          "line": 117,
+          "column": 26
+        },
+        {
+          "title": "cylinder measured navigation, cap tools, repeated and long/cancelled strokes N256",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0babfb25369b3a20ce88-918e4135649a4a60669a",
+          "file": "cylinder-preview.spec.ts",
+          "line": 117,
+          "column": 26
+        }
+      ],
+      "suites": [
+        {
+          "title": "cylinder native touch capable context",
+          "file": "cylinder-preview.spec.ts",
+          "line": 78,
+          "column": 6,
+          "specs": [
+            {
+              "title": "cylinder native pen, touch, two-finger takeover and keyboard have exclusive numerical ownership",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0babfb25369b3a20ce88-988d06402a1c82d55475",
+              "file": "cylinder-preview.spec.ts",
+              "line": 80,
+              "column": 2
+            },
+            {
+              "title": "cylinder native pen, touch, two-finger takeover and keyboard have exclusive numerical ownership",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0babfb25369b3a20ce88-345f0aaa9817d5033544",
+              "file": "cylinder-preview.spec.ts",
+              "line": 80,
+              "column": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "cylinder-rims.spec.ts",
+      "file": "cylinder-rims.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "cylinder start rim: all four tools continue in both directions with exact words",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "8bbfd25d329b61c25f0b-ff5600db012da9a0000e",
+          "file": "cylinder-rims.spec.ts",
+          "line": 10,
+          "column": 31
+        },
+        {
+          "title": "cylinder end rim: all four tools continue in both directions with exact words",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "8bbfd25d329b61c25f0b-d71fcb1065434f3c51ba",
+          "file": "cylinder-rims.spec.ts",
+          "line": 10,
+          "column": 31
+        },
+        {
+          "title": "cylinder start rim: all four tools continue in both directions with exact words",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "8bbfd25d329b61c25f0b-17901e48d43795892e7a",
+          "file": "cylinder-rims.spec.ts",
+          "line": 10,
+          "column": 31
+        },
+        {
+          "title": "cylinder end rim: all four tools continue in both directions with exact words",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "8bbfd25d329b61c25f0b-37bdd0ba0539d9e235f0",
+          "file": "cylinder-rims.spec.ts",
+          "line": 10,
+          "column": 31
+        }
+      ]
+    },
+    {
+      "title": "focused-view.spec.ts",
+      "file": "focused-view.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "same saved world in full-height, focused and Fit views: real widths, previews, proportions and responsive screenshots",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-f4d860127bfaeb21c6a7",
+          "file": "focused-view.spec.ts",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "view choices, movable cuts, vertical exploration, toolbar, fullscreen and zoom preserve data and pending Redo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-83d6a776f0c658707290",
+          "file": "focused-view.spec.ts",
+          "line": 79,
+          "column": 1
+        },
+        {
+          "title": "focused raise preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-6ea37fa91b4bbd16f2ad",
+          "file": "focused-view.spec.ts",
+          "line": 100,
+          "column": 3
+        },
+        {
+          "title": "focused lower preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-af48905d0ad33cfc99af",
+          "file": "focused-view.spec.ts",
+          "line": 100,
+          "column": 3
+        },
+        {
+          "title": "focused smooth preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-0e4fa36e147e7216742c",
+          "file": "focused-view.spec.ts",
+          "line": 100,
+          "column": 3
+        },
+        {
+          "title": "focused flatten preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-31d8ff755bcd59b735e5",
+          "file": "focused-view.spec.ts",
+          "line": 100,
+          "column": 3
+        },
+        {
+          "title": "edge-assisted drawing crosses the focused boundary and periodic phase cut as one mouse/touch stroke",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-865a2d9b5b0602503c63",
+          "file": "focused-view.spec.ts",
+          "line": 134,
+          "column": 1
+        },
+        {
+          "title": "same saved world in full-height, focused and Fit views: real widths, previews, proportions and responsive screenshots",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-8e9ed78e3753d67d310b",
+          "file": "focused-view.spec.ts",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "view choices, movable cuts, vertical exploration, toolbar, fullscreen and zoom preserve data and pending Redo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-2254c64c1892918cc56a",
+          "file": "focused-view.spec.ts",
+          "line": 79,
+          "column": 1
+        },
+        {
+          "title": "focused raise preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-a671b5ae84962c4043c2",
+          "file": "focused-view.spec.ts",
+          "line": 100,
+          "column": 3
+        },
+        {
+          "title": "focused lower preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-d92b81cd4906844de685",
+          "file": "focused-view.spec.ts",
+          "line": 100,
+          "column": 3
+        },
+        {
+          "title": "focused smooth preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-8b14e57966faff3f140e",
+          "file": "focused-view.spec.ts",
+          "line": 100,
+          "column": 3
+        },
+        {
+          "title": "focused flatten preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-fd1fc65c5d259ab150c6",
+          "file": "focused-view.spec.ts",
+          "line": 100,
+          "column": 3
+        },
+        {
+          "title": "edge-assisted drawing crosses the focused boundary and periodic phase cut as one mouse/touch stroke",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-dd7aaae4922afd294ff9",
+          "file": "focused-view.spec.ts",
+          "line": 134,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "navigation-stabilization.spec.ts",
+      "file": "navigation-stabilization.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "actual editor: Space from a focused button and multiple drags with one held key pan both ways without sculpting",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-56a03da238109de92b74",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 48,
+          "column": 1
+        },
+        {
+          "title": "bounded wide editor: no horizontal room at Fill, zoom creates room, Pan traverses both bounds, Fit remains separate",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-edd998ac88d2a5d7c7cf",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 63,
+          "column": 1
+        },
+        {
+          "title": "repeated views share exactly one dab; long pans, seam strokes and aligned readouts match direct numerical editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-7185193c3a19a5a65339",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 78,
+          "column": 1
+        },
+        {
+          "title": "actual raise: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-7b778c6a26855dd36da0",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 126,
+          "column": 3
+        },
+        {
+          "title": "actual lower: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-8605a59fbbf7069ac5e4",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 126,
+          "column": 3
+        },
+        {
+          "title": "actual smooth: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-278e63f7dfc3d1cc0a66",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 126,
+          "column": 3
+        },
+        {
+          "title": "actual flatten: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-1ff4c44963d38a687145",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 126,
+          "column": 3
+        },
+        {
+          "title": "left-edge assistance crosses the opposite phase cut and an unrelated host resize safely ends it",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-7777a8e54bad0c655c46",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 160,
+          "column": 1
+        },
+        {
+          "title": "bounded edge scroll moves both axes, stops at real boundaries without time-strength, can be disabled, and never starts on hover",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-f950583c32a363c119ff",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 175,
+          "column": 1
+        },
+        {
+          "title": "Escape, cancel, lost capture, blur, tool changes and toolbar obstruction leave no continuing camera or stray dabs",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-1822b3c0c9ad7f828c3d",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 201,
+          "column": 1
+        },
+        {
+          "title": "native touch and pen navigate horizontally, touch edge strokes stay one operation, two fingers cancel assistance safely",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-7c8cd55dbc4a21e14943",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 230,
+          "column": 1
+        },
+        {
+          "title": "actual editor: Space from a focused button and multiple drags with one held key pan both ways without sculpting",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-8ddc0a76c1731c4e15b6",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 48,
+          "column": 1
+        },
+        {
+          "title": "bounded wide editor: no horizontal room at Fill, zoom creates room, Pan traverses both bounds, Fit remains separate",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-493dc2162052e8ef1147",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 63,
+          "column": 1
+        },
+        {
+          "title": "repeated views share exactly one dab; long pans, seam strokes and aligned readouts match direct numerical editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-e54560e167b8856c8060",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 78,
+          "column": 1
+        },
+        {
+          "title": "actual raise: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-1f56d1e17ef938028f70",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 126,
+          "column": 3
+        },
+        {
+          "title": "actual lower: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-e1b177de907a827675c5",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 126,
+          "column": 3
+        },
+        {
+          "title": "actual smooth: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-fc5c949f5ffee2947c8f",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 126,
+          "column": 3
+        },
+        {
+          "title": "actual flatten: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-6ec91c7a81d87f8fc5d7",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 126,
+          "column": 3
+        },
+        {
+          "title": "left-edge assistance crosses the opposite phase cut and an unrelated host resize safely ends it",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-5c9a32e22057439811c0",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 160,
+          "column": 1
+        },
+        {
+          "title": "bounded edge scroll moves both axes, stops at real boundaries without time-strength, can be disabled, and never starts on hover",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-58228f0663958c07fa07",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 175,
+          "column": 1
+        },
+        {
+          "title": "Escape, cancel, lost capture, blur, tool changes and toolbar obstruction leave no continuing camera or stray dabs",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-77b39ae5ed0f172e960d",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 201,
+          "column": 1
+        },
+        {
+          "title": "native touch and pen navigate horizontally, touch edge strokes stay one operation, two fingers cancel assistance safely",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-6f8bc2c1a288c43969cb",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 230,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "refinement.spec.ts",
+      "file": "refinement.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Smooth is selectable, uses percentage intensity, and reduces a sculpted peak",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-b60d1c64904eed19bf8c",
+          "file": "refinement.spec.ts",
+          "line": 67,
+          "column": 1
+        },
+        {
+          "title": "Flatten accepts a 500 m target and updates real terrain colors and readout",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-d896b63198f320047a80",
+          "file": "refinement.spec.ts",
+          "line": 89,
+          "column": 3
+        },
+        {
+          "title": "Flatten accepts a 0 m target and updates real terrain colors and readout",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-3e78d321e653828c2bab",
+          "file": "refinement.spec.ts",
+          "line": 89,
+          "column": 3
+        },
+        {
+          "title": "Flatten accepts a -300 m target and updates real terrain colors and readout",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-a225767183672b33e0ec",
+          "file": "refinement.spec.ts",
+          "line": 89,
+          "column": 3
+        },
+        {
+          "title": "an empty Flatten target blocks editing and tool switching preserves terrain and stored controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-eb6b28fb655090da8833",
+          "file": "refinement.spec.ts",
+          "line": 110,
+          "column": 1
+        },
+        {
+          "title": "the cursor readout samples exact grid values and all three sea-level relationships",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-e2417d85acd72c493874",
+          "file": "refinement.spec.ts",
+          "line": 142,
+          "column": 1
+        },
+        {
+          "title": "fitted maps and brush cursors stay circular on wide, tall, and square viewports; margins never paint",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-def7b38feeef8c913542",
+          "file": "refinement.spec.ts",
+          "line": 160,
+          "column": 1
+        },
+        {
+          "title": "displayed round terrain agrees with the round preview footprint",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-4e1ab77f587afdfc3237",
+          "file": "refinement.spec.ts",
+          "line": 190,
+          "column": 1
+        },
+        {
+          "title": "Reset requires confirmation, cancellation preserves edits, and acceptance restores the whole visible ocean",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-c5014e89bfd2f6226343",
+          "file": "refinement.spec.ts",
+          "line": 213,
+          "column": 1
+        },
+        {
+          "title": "smooth produces equivalent real-browser results with sparse and dense strokes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-cc981260dc9bad8379b2",
+          "file": "refinement.spec.ts",
+          "line": 239,
+          "column": 3
+        },
+        {
+          "title": "smooth stops after cancellation and retains valid boundary edits",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-fe55b7db86e69a760e3a",
+          "file": "refinement.spec.ts",
+          "line": 257,
+          "column": 3
+        },
+        {
+          "title": "flatten produces equivalent real-browser results with sparse and dense strokes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-23ef325951553883c151",
+          "file": "refinement.spec.ts",
+          "line": 239,
+          "column": 3
+        },
+        {
+          "title": "flatten stops after cancellation and retains valid boundary edits",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-6b6467edca755bd181e5",
+          "file": "refinement.spec.ts",
+          "line": 257,
+          "column": 3
+        },
+        {
+          "title": "the visible legend uses the same water and land colors as the numerical palette",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-964d08fb2571eddee28c",
+          "file": "refinement.spec.ts",
+          "line": 277,
+          "column": 1
+        },
+        {
+          "title": "visual evidence: Raise/Lower, Smooth, and Flatten on the aspect-preserving map",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-73ab8fcc4e943f6fe83d",
+          "file": "refinement.spec.ts",
+          "line": 289,
+          "column": 1
+        },
+        {
+          "title": "Smooth is selectable, uses percentage intensity, and reduces a sculpted peak",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-bf6458b5e9a28ee62968",
+          "file": "refinement.spec.ts",
+          "line": 67,
+          "column": 1
+        },
+        {
+          "title": "Flatten accepts a 500 m target and updates real terrain colors and readout",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-fe82351f9742af590853",
+          "file": "refinement.spec.ts",
+          "line": 89,
+          "column": 3
+        },
+        {
+          "title": "Flatten accepts a 0 m target and updates real terrain colors and readout",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-e86635596b4bafcccc0e",
+          "file": "refinement.spec.ts",
+          "line": 89,
+          "column": 3
+        },
+        {
+          "title": "Flatten accepts a -300 m target and updates real terrain colors and readout",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-8107fbabffe3b5b6c049",
+          "file": "refinement.spec.ts",
+          "line": 89,
+          "column": 3
+        },
+        {
+          "title": "an empty Flatten target blocks editing and tool switching preserves terrain and stored controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-1852f83a15ae4d9a028d",
+          "file": "refinement.spec.ts",
+          "line": 110,
+          "column": 1
+        },
+        {
+          "title": "the cursor readout samples exact grid values and all three sea-level relationships",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-40c2ad0205cecccf0297",
+          "file": "refinement.spec.ts",
+          "line": 142,
+          "column": 1
+        },
+        {
+          "title": "fitted maps and brush cursors stay circular on wide, tall, and square viewports; margins never paint",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-c15aa44214bd256cc0cc",
+          "file": "refinement.spec.ts",
+          "line": 160,
+          "column": 1
+        },
+        {
+          "title": "displayed round terrain agrees with the round preview footprint",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-0aeb5aa1a32078eb4fad",
+          "file": "refinement.spec.ts",
+          "line": 190,
+          "column": 1
+        },
+        {
+          "title": "Reset requires confirmation, cancellation preserves edits, and acceptance restores the whole visible ocean",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-8703fc9bce1a05295727",
+          "file": "refinement.spec.ts",
+          "line": 213,
+          "column": 1
+        },
+        {
+          "title": "smooth produces equivalent real-browser results with sparse and dense strokes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-8f9f3c299a280de3390c",
+          "file": "refinement.spec.ts",
+          "line": 239,
+          "column": 3
+        },
+        {
+          "title": "smooth stops after cancellation and retains valid boundary edits",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-900a5c1063be617990f3",
+          "file": "refinement.spec.ts",
+          "line": 257,
+          "column": 3
+        },
+        {
+          "title": "flatten produces equivalent real-browser results with sparse and dense strokes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-763b45e4ed7e5b3df9d1",
+          "file": "refinement.spec.ts",
+          "line": 239,
+          "column": 3
+        },
+        {
+          "title": "flatten stops after cancellation and retains valid boundary edits",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-e23125865916ebd8571e",
+          "file": "refinement.spec.ts",
+          "line": 257,
+          "column": 3
+        },
+        {
+          "title": "the visible legend uses the same water and land colors as the numerical palette",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-41b9d4caa179fdc4738f",
+          "file": "refinement.spec.ts",
+          "line": 277,
+          "column": 1
+        },
+        {
+          "title": "visual evidence: Raise/Lower, Smooth, and Flatten on the aspect-preserving map",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cba574eae72c893644c-f24c4494dfb968734e9a",
+          "file": "refinement.spec.ts",
+          "line": 289,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "sculpting.spec.ts",
+      "file": "sculpting.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "actual toolbar and canvas raise an island, increase its height, and lower it back under water",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-5dc46edf40b784ace78a",
+          "file": "sculpting.spec.ts",
+          "line": 72,
+          "column": 1
+        },
+        {
+          "title": "one fast browser pointer jump leaves a continuous land stroke",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-b1559ef79ba315e50460",
+          "file": "sculpting.spec.ts",
+          "line": 95,
+          "column": 1
+        },
+        {
+          "title": "radius and strength controls visibly affect the brush footprint",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-0aa4a4103bc7f85384d6",
+          "file": "sculpting.spec.ts",
+          "line": 106,
+          "column": 1
+        },
+        {
+          "title": "hovering, stationary contact, and movement after release leave the numerical data unchanged",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-4606701401b7b90262b4",
+          "file": "sculpting.spec.ts",
+          "line": 122,
+          "column": 1
+        },
+        {
+          "title": "pointercancel stops an active stroke even while the button remains down",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-1b3ff919a54edd893741",
+          "file": "sculpting.spec.ts",
+          "line": 139,
+          "column": 3
+        },
+        {
+          "title": "lostpointercapture stops an active stroke even while the button remains down",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-efb178d76a41b4b9ecda",
+          "file": "sculpting.spec.ts",
+          "line": 139,
+          "column": 3
+        },
+        {
+          "title": "blur stops an active stroke even while the button remains down",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-964ceb1ce99bfbc178c9",
+          "file": "sculpting.spec.ts",
+          "line": 139,
+          "column": 3
+        },
+        {
+          "title": "resize stops an active stroke even while the button remains down",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-087e0a2bdbe656ded031",
+          "file": "sculpting.spec.ts",
+          "line": 139,
+          "column": 3
+        },
+        {
+          "title": "read-only stops an active stroke even while the button remains down",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-04bacbe153c665556637",
+          "file": "sculpting.spec.ts",
+          "line": 139,
+          "column": 3
+        },
+        {
+          "title": "captured strokes handle corners and an outside release without continuing to paint",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-82c5b4c7119e6eed42a9",
+          "file": "sculpting.spec.ts",
+          "line": 159,
+          "column": 1
+        },
+        {
+          "title": "resizing an already sculpted component preserves every elevation and the buffer identity",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-ed1bf59b09f2dbcebf46",
+          "file": "sculpting.spec.ts",
+          "line": 174,
+          "column": 1
+        },
+        {
+          "title": "equivalent browser strokes are consistent across sparse and dense events",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-c6db4e7d2590bd574d00",
+          "file": "sculpting.spec.ts",
+          "line": 187,
+          "column": 1
+        },
+        {
+          "title": "equivalent browser strokes are consistent across sparse and dense events when exiting the map",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-1d066e54ca7fb52f92e6",
+          "file": "sculpting.spec.ts",
+          "line": 187,
+          "column": 1
+        },
+        {
+          "title": "many pointer events in one task queue one repaint and no React commits",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-d87034740d9a43798afa",
+          "file": "sculpting.spec.ts",
+          "line": 202,
+          "column": 1
+        },
+        {
+          "title": "a read-only host and invalid brush settings cannot mutate terrain",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-cafcab2ef52d4dc6a7d7",
+          "file": "sculpting.spec.ts",
+          "line": 230,
+          "column": 1
+        },
+        {
+          "title": "native pen contact sculpts and pen hover after release does not paint",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-3e147b3619926ea31abf",
+          "file": "sculpting.spec.ts",
+          "line": 244,
+          "column": 1
+        },
+        {
+          "title": "native single-touch dragging sculpts without scrolling and ends cleanly",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-4ee170abf87b24d8d755",
+          "file": "sculpting.spec.ts",
+          "line": 259,
+          "column": 1
+        },
+        {
+          "title": "visual evidence: islands, higher terrain, and a lowered channel sculpted through the interface",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-371e917016af3421ff86",
+          "file": "sculpting.spec.ts",
+          "line": 276,
+          "column": 1
+        },
+        {
+          "title": "actual toolbar and canvas raise an island, increase its height, and lower it back under water",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-1a9ba5c083db2f05c2d4",
+          "file": "sculpting.spec.ts",
+          "line": 72,
+          "column": 1
+        },
+        {
+          "title": "one fast browser pointer jump leaves a continuous land stroke",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-62dc61d7d15b9d5d777c",
+          "file": "sculpting.spec.ts",
+          "line": 95,
+          "column": 1
+        },
+        {
+          "title": "radius and strength controls visibly affect the brush footprint",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-b8e8704af5709c0f021a",
+          "file": "sculpting.spec.ts",
+          "line": 106,
+          "column": 1
+        },
+        {
+          "title": "hovering, stationary contact, and movement after release leave the numerical data unchanged",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-d2534e1ed017bba9a7f1",
+          "file": "sculpting.spec.ts",
+          "line": 122,
+          "column": 1
+        },
+        {
+          "title": "pointercancel stops an active stroke even while the button remains down",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-ea0a034d50ca5154ed27",
+          "file": "sculpting.spec.ts",
+          "line": 139,
+          "column": 3
+        },
+        {
+          "title": "lostpointercapture stops an active stroke even while the button remains down",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-e76f1cc790f8fc048123",
+          "file": "sculpting.spec.ts",
+          "line": 139,
+          "column": 3
+        },
+        {
+          "title": "blur stops an active stroke even while the button remains down",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-533e373650caa1352030",
+          "file": "sculpting.spec.ts",
+          "line": 139,
+          "column": 3
+        },
+        {
+          "title": "resize stops an active stroke even while the button remains down",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-cffae91d67c3bf2abe73",
+          "file": "sculpting.spec.ts",
+          "line": 139,
+          "column": 3
+        },
+        {
+          "title": "read-only stops an active stroke even while the button remains down",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-e2766ce564cc0d59429c",
+          "file": "sculpting.spec.ts",
+          "line": 139,
+          "column": 3
+        },
+        {
+          "title": "captured strokes handle corners and an outside release without continuing to paint",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-fec8e7dea62a71b2aaf1",
+          "file": "sculpting.spec.ts",
+          "line": 159,
+          "column": 1
+        },
+        {
+          "title": "resizing an already sculpted component preserves every elevation and the buffer identity",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-9b938fef34b1e03a933d",
+          "file": "sculpting.spec.ts",
+          "line": 174,
+          "column": 1
+        },
+        {
+          "title": "equivalent browser strokes are consistent across sparse and dense events",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-3af3b3f7460a5c661152",
+          "file": "sculpting.spec.ts",
+          "line": 187,
+          "column": 1
+        },
+        {
+          "title": "equivalent browser strokes are consistent across sparse and dense events when exiting the map",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-29a8085393591a1ad5b8",
+          "file": "sculpting.spec.ts",
+          "line": 187,
+          "column": 1
+        },
+        {
+          "title": "many pointer events in one task queue one repaint and no React commits",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-ae8607768e0e1b00fd3a",
+          "file": "sculpting.spec.ts",
+          "line": 202,
+          "column": 1
+        },
+        {
+          "title": "a read-only host and invalid brush settings cannot mutate terrain",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-746052ae9be73fe1dcb1",
+          "file": "sculpting.spec.ts",
+          "line": 230,
+          "column": 1
+        },
+        {
+          "title": "native pen contact sculpts and pen hover after release does not paint",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-400803f61eb25ab0b43d",
+          "file": "sculpting.spec.ts",
+          "line": 244,
+          "column": 1
+        },
+        {
+          "title": "native single-touch dragging sculpts without scrolling and ends cleanly",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-d9e6c313d5ccccee0f09",
+          "file": "sculpting.spec.ts",
+          "line": 259,
+          "column": 1
+        },
+        {
+          "title": "visual evidence: islands, higher terrain, and a lowered channel sculpted through the interface",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1fd3bf13a44dd7d83872-fe74bf1df44da6b6fa7b",
+          "file": "sculpting.spec.ts",
+          "line": 276,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "spherical-editing.spec.ts",
+      "file": "spherical-editing.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "historical blank overlay: real continent, shared net/rotated screenshots, discard and reload guards, planar preservation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-511a88ff026cb3a12695",
+          "file": "spherical-editing.spec.ts",
+          "line": 22,
+          "column": 1
+        },
+        {
+          "title": "all four tools on globe and connected net match the numerical engine bit for bit with exact Undo/Redo and readouts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-b6ae81fb1d024430f7d7",
+          "file": "spherical-editing.spec.ts",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "joined net stroke and screen-edge assistance retain physical spacing; gaps/cuts safely end the gesture",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-05e2e9e7587d1251f7c4",
+          "file": "spherical-editing.spec.ts",
+          "line": 81,
+          "column": 1
+        },
+        {
+          "title": "mouse/pen/touch arbitration, cancellation, shortcuts, recenter and view changes protect single operations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-90c108521db136986b1b",
+          "file": "spherical-editing.spec.ts",
+          "line": 107,
+          "column": 1
+        },
+        {
+          "title": "real projected painting across all twelve face boundaries, eight corners, poles, and a clipped globe limb",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-9b919bc509c5511c9bbe",
+          "file": "spherical-editing.spec.ts",
+          "line": 145,
+          "column": 1
+        },
+        {
+          "title": "actual N256 blank preparation, physical controls focus, responsive narrow/square/ultrawide layout and fullscreen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-36cf6334caacd999de43",
+          "file": "spherical-editing.spec.ts",
+          "line": 168,
+          "column": 1
+        },
+        {
+          "title": "brush-to-screen and rotation performance N=128",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-eeadcad949e1f8c4ae81",
+          "file": "spherical-editing.spec.ts",
+          "line": 187,
+          "column": 29
+        },
+        {
+          "title": "brush-to-screen and rotation performance N=256",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-67fba63fc1930c2cdf2b",
+          "file": "spherical-editing.spec.ts",
+          "line": 187,
+          "column": 29
+        },
+        {
+          "title": "historical blank overlay: real continent, shared net/rotated screenshots, discard and reload guards, planar preservation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-290c51517fcd246595de",
+          "file": "spherical-editing.spec.ts",
+          "line": 22,
+          "column": 1
+        },
+        {
+          "title": "all four tools on globe and connected net match the numerical engine bit for bit with exact Undo/Redo and readouts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-8ed81f7470bc6146def2",
+          "file": "spherical-editing.spec.ts",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "joined net stroke and screen-edge assistance retain physical spacing; gaps/cuts safely end the gesture",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-e06b6607edba9734369b",
+          "file": "spherical-editing.spec.ts",
+          "line": 81,
+          "column": 1
+        },
+        {
+          "title": "mouse/pen/touch arbitration, cancellation, shortcuts, recenter and view changes protect single operations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-ea0e0594f6301e68e06b",
+          "file": "spherical-editing.spec.ts",
+          "line": 107,
+          "column": 1
+        },
+        {
+          "title": "real projected painting across all twelve face boundaries, eight corners, poles, and a clipped globe limb",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-a4782b0fd6a5347f1af2",
+          "file": "spherical-editing.spec.ts",
+          "line": 145,
+          "column": 1
+        },
+        {
+          "title": "actual N256 blank preparation, physical controls focus, responsive narrow/square/ultrawide layout and fullscreen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-eb10e4c326941fdf7d4f",
+          "file": "spherical-editing.spec.ts",
+          "line": 168,
+          "column": 1
+        },
+        {
+          "title": "brush-to-screen and rotation performance N=128",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-e45b6012a64fe78c184f",
+          "file": "spherical-editing.spec.ts",
+          "line": 187,
+          "column": 29
+        },
+        {
+          "title": "brush-to-screen and rotation performance N=256",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-3afbe99233bb679b2127",
+          "file": "spherical-editing.spec.ts",
+          "line": 187,
+          "column": 29
+        }
+      ]
+    },
+    {
+      "title": "spherical-limb-workspace.spec.ts",
+      "file": "spherical-limb-workspace.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "unified held limb stroke N128: native input, dynamic visibility, exact samples/history and Save/Open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-f1d4aac5c685fcecbe42",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 24,
+          "column": 29
+        },
+        {
+          "title": "unified held limb stroke N256: native input, dynamic visibility, exact samples/history and Save/Open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-815aac3d1e19327ad70a",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 24,
+          "column": 29
+        },
+        {
+          "title": "assisted geographical continuity at a seam under a manually rotated camera",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-619838a2669b5c4a2f85",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 53,
+          "column": 60
+        },
+        {
+          "title": "assisted geographical continuity at a corner under a manually rotated camera",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-e242558a89e2035a026a",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 53,
+          "column": 60
+        },
+        {
+          "title": "assisted geographical continuity at a pole under a manually rotated camera",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-cf4880c93459b80ff5d3",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 53,
+          "column": 60
+        },
+        {
+          "title": "native pen assistance stops on release and remains one exact operation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-ae6d21f40367cd87ebde",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 69,
+          "column": 1
+        },
+        {
+          "title": "assistance stops on pointercancel without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-922aa6eedf1161c367f1",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "assistance stops on lostcapture without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-7e3344984d6a08c171c0",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "assistance stops on Space without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-1a7359edeb96689097b4",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "assistance stops on navigation without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-c11c801a90a0bd89090a",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "assistance stops on blur without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-0c8dc6f65084235cf122",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "assistance stops on resize without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-c07f8393485c15ac479d",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "assistance stops on wheel without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-d54e21ff86cb2e49b608",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "native two-finger takeover stops assisted painting and continues globe navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-6d493fbd0c774a547552",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 91,
+          "column": 1
+        },
+        {
+          "title": "opt-out, actual limb at zoom, pole-facing orientation and preview follow physical geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-48514af1ec4a4ae5c08e",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 103,
+          "column": 1
+        },
+        {
+          "title": "Globe: contextual radius, strength, intensity and signed target update numerical response and preview",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-369d9ca57ea2567b82d5",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 118,
+          "column": 56
+        },
+        {
+          "title": "Six-face net: contextual radius, strength, intensity and signed target update numerical response and preview",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-bfdbcae84674487a9456",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 118,
+          "column": 56
+        },
+        {
+          "title": "unified held limb stroke N128: native input, dynamic visibility, exact samples/history and Save/Open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-f3281ea9e720ef88b85d",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 24,
+          "column": 29
+        },
+        {
+          "title": "unified held limb stroke N256: native input, dynamic visibility, exact samples/history and Save/Open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-21edd7114e4e47a891c3",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 24,
+          "column": 29
+        },
+        {
+          "title": "assisted geographical continuity at a seam under a manually rotated camera",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-d3ad96c5d600c47cf6e4",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 53,
+          "column": 60
+        },
+        {
+          "title": "assisted geographical continuity at a corner under a manually rotated camera",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-a59089e09fff748d6875",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 53,
+          "column": 60
+        },
+        {
+          "title": "assisted geographical continuity at a pole under a manually rotated camera",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-f00f461e7e71a83319a7",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 53,
+          "column": 60
+        },
+        {
+          "title": "native pen assistance stops on release and remains one exact operation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-1bcd2f49754959679644",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 69,
+          "column": 1
+        },
+        {
+          "title": "assistance stops on pointercancel without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-400e604160ba54cf3167",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "assistance stops on lostcapture without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-cf2b7e54d93b44107798",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "assistance stops on Space without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-5c6dd1490064214eb55f",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "assistance stops on navigation without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-321fc01f6f988de2f9b0",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "assistance stops on blur without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-2df26d354204bce8a8a8",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "assistance stops on resize without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-5f6e1aa052925057593d",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "assistance stops on wheel without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-9cc423ec72a531ccd3ca",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "native two-finger takeover stops assisted painting and continues globe navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-186349ea3054a22c6d46",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 91,
+          "column": 1
+        },
+        {
+          "title": "opt-out, actual limb at zoom, pole-facing orientation and preview follow physical geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-85683cdc68872c18cd90",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 103,
+          "column": 1
+        },
+        {
+          "title": "Globe: contextual radius, strength, intensity and signed target update numerical response and preview",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-e1f0d3d1f0a0c6670c4b",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 118,
+          "column": 56
+        },
+        {
+          "title": "Six-face net: contextual radius, strength, intensity and signed target update numerical response and preview",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "0db52292fe991d14412d-50e0946583523f47ece9",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 118,
+          "column": 56
+        }
+      ]
+    },
+    {
+      "title": "spherical-performance.spec.ts",
+      "file": "spherical-performance.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "controlled spherical editing N128",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "73418ad06ce0bf9f12bf-71ed646c7f424c98c34e",
+          "file": "spherical-performance.spec.ts",
+          "line": 10,
+          "column": 29
+        },
+        {
+          "title": "controlled spherical editing N256",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "73418ad06ce0bf9f12bf-204b4f543f661ea44da0",
+          "file": "spherical-performance.spec.ts",
+          "line": 10,
+          "column": 29
+        },
+        {
+          "title": "CPU profile actual N256 repeated editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "73418ad06ce0bf9f12bf-5efe6eb04545b0316378",
+          "file": "spherical-performance.spec.ts",
+          "line": 49,
+          "column": 1
+        },
+        {
+          "title": "controlled spherical editing N128",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "73418ad06ce0bf9f12bf-1837e6b23b135f0e867a",
+          "file": "spherical-performance.spec.ts",
+          "line": 10,
+          "column": 29
+        },
+        {
+          "title": "controlled spherical editing N256",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "73418ad06ce0bf9f12bf-1f1f93a77e0c6d04f51c",
+          "file": "spherical-performance.spec.ts",
+          "line": 10,
+          "column": 29
+        },
+        {
+          "title": "CPU profile actual N256 repeated editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "73418ad06ce0bf9f12bf-e0b2f0a5d6990e74e596",
+          "file": "spherical-performance.spec.ts",
+          "line": 49,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "spherical-persistence.spec.ts",
+      "file": "spherical-persistence.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "actual UI: blank and sculpted sphere survives reload, reopens exact geography and continues all four tools",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e07dfa3f339ffbd09d33-0c4714b55ff5d6ccaa3f",
+          "file": "spherical-persistence.spec.ts",
+          "line": 21,
+          "column": 1
+        },
+        {
+          "title": "Ctrl-S while a real brush is held drains queued input exactly; saved/modified/name checkpoints and unload guards work",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e07dfa3f339ffbd09d33-39bd2307143eff72bbc4",
+          "file": "spherical-persistence.spec.ts",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "existing DB v1 and mixed library preserve legacy records; spherical signed-zero/edge/corner restoration and overwrite guards",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e07dfa3f339ffbd09d33-4773dfdf5f62f2144227",
+          "file": "spherical-persistence.spec.ts",
+          "line": 56,
+          "column": 1
+        },
+        {
+          "title": "quota, interrupted transaction and storage denial retain edits and old saves; bad opens and discard cancellation preserve active sphere",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e07dfa3f339ffbd09d33-b372d9b4e34a75e8046e",
+          "file": "spherical-persistence.spec.ts",
+          "line": 69,
+          "column": 1
+        },
+        {
+          "title": "real IndexedDB persistence timing, responsiveness and memory payloads N=128",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e07dfa3f339ffbd09d33-09702ecc9965147ef3b7",
+          "file": "spherical-persistence.spec.ts",
+          "line": 88,
+          "column": 29
+        },
+        {
+          "title": "real IndexedDB persistence timing, responsiveness and memory payloads N=256",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e07dfa3f339ffbd09d33-f9161be9e947de91a45f",
+          "file": "spherical-persistence.spec.ts",
+          "line": 88,
+          "column": 29
+        },
+        {
+          "title": "actual UI: blank and sculpted sphere survives reload, reopens exact geography and continues all four tools",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e07dfa3f339ffbd09d33-8a25e440bba43430ea22",
+          "file": "spherical-persistence.spec.ts",
+          "line": 21,
+          "column": 1
+        },
+        {
+          "title": "Ctrl-S while a real brush is held drains queued input exactly; saved/modified/name checkpoints and unload guards work",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e07dfa3f339ffbd09d33-5d959f4df97cfb0d9ba3",
+          "file": "spherical-persistence.spec.ts",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "existing DB v1 and mixed library preserve legacy records; spherical signed-zero/edge/corner restoration and overwrite guards",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e07dfa3f339ffbd09d33-6772cbe103cc77d225f8",
+          "file": "spherical-persistence.spec.ts",
+          "line": 56,
+          "column": 1
+        },
+        {
+          "title": "quota, interrupted transaction and storage denial retain edits and old saves; bad opens and discard cancellation preserve active sphere",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e07dfa3f339ffbd09d33-dbbada88738b32da3ba6",
+          "file": "spherical-persistence.spec.ts",
+          "line": 69,
+          "column": 1
+        },
+        {
+          "title": "real IndexedDB persistence timing, responsiveness and memory payloads N=128",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e07dfa3f339ffbd09d33-4b7ed7be568343750d22",
+          "file": "spherical-persistence.spec.ts",
+          "line": 88,
+          "column": 29
+        },
+        {
+          "title": "real IndexedDB persistence timing, responsiveness and memory payloads N=256",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e07dfa3f339ffbd09d33-807c5651e39cccc5aab2",
+          "file": "spherical-persistence.spec.ts",
+          "line": 88,
+          "column": 29
+        }
+      ]
+    },
+    {
+      "title": "spherical-preview.spec.ts",
+      "file": "spherical-preview.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "historical overlay host: explicit session-only preview preserves bounded unsaved map, camera and pending Redo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e9dec83993613c770d31-e6669915674c32a133f4",
+          "file": "spherical-preview.spec.ts",
+          "line": 20,
+          "column": 38
+        },
+        {
+          "title": "historical overlay host: explicit session-only preview preserves wrapped Focus unsaved map, camera and pending Redo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e9dec83993613c770d31-ca04e655158c50de3d74",
+          "file": "spherical-preview.spec.ts",
+          "line": 20,
+          "column": 38
+        },
+        {
+          "title": "real viewport: every face, edge and corner is inspectable in both views with canonical readouts and invalid gaps",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e9dec83993613c770d31-0ce98df05bb53a28c109",
+          "file": "spherical-preview.spec.ts",
+          "line": 58,
+          "column": 1
+        },
+        {
+          "title": "historical N=256 preview validates scale, cancels preparation safely and initializes in scheduled batches",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e9dec83993613c770d31-77d08e7c3fab38695d2b",
+          "file": "spherical-preview.spec.ts",
+          "line": 83,
+          "column": 1
+        },
+        {
+          "title": "mouse, keyboard, native touch/pinch, cancellation, net pan, fullscreen and selection preserve geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e9dec83993613c770d31-59e9f427c19d97905c09",
+          "file": "spherical-preview.spec.ts",
+          "line": 96,
+          "column": 1
+        },
+        {
+          "title": "real browser performance: N=128 rotation, zoom and view switching use caches and bounded frame work",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e9dec83993613c770d31-e31f060c68e874257be4",
+          "file": "spherical-preview.spec.ts",
+          "line": 130,
+          "column": 29
+        },
+        {
+          "title": "real browser performance: N=256 rotation, zoom and view switching use caches and bounded frame work",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e9dec83993613c770d31-1eb182e3436cba5df5d5",
+          "file": "spherical-preview.spec.ts",
+          "line": 130,
+          "column": 29
+        },
+        {
+          "title": "historical overlay host: explicit session-only preview preserves bounded unsaved map, camera and pending Redo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e9dec83993613c770d31-cd5405b55178bf2f87da",
+          "file": "spherical-preview.spec.ts",
+          "line": 20,
+          "column": 38
+        },
+        {
+          "title": "historical overlay host: explicit session-only preview preserves wrapped Focus unsaved map, camera and pending Redo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e9dec83993613c770d31-be68526f1aa485c78cef",
+          "file": "spherical-preview.spec.ts",
+          "line": 20,
+          "column": 38
+        },
+        {
+          "title": "real viewport: every face, edge and corner is inspectable in both views with canonical readouts and invalid gaps",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e9dec83993613c770d31-4adbb9e5f7818fd7ccc3",
+          "file": "spherical-preview.spec.ts",
+          "line": 58,
+          "column": 1
+        },
+        {
+          "title": "historical N=256 preview validates scale, cancels preparation safely and initializes in scheduled batches",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e9dec83993613c770d31-5050ab384ef21a2f72eb",
+          "file": "spherical-preview.spec.ts",
+          "line": 83,
+          "column": 1
+        },
+        {
+          "title": "mouse, keyboard, native touch/pinch, cancellation, net pan, fullscreen and selection preserve geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e9dec83993613c770d31-8965c41f9be7beaa3475",
+          "file": "spherical-preview.spec.ts",
+          "line": 96,
+          "column": 1
+        },
+        {
+          "title": "real browser performance: N=128 rotation, zoom and view switching use caches and bounded frame work",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e9dec83993613c770d31-6e2fee640c41ca1c119b",
+          "file": "spherical-preview.spec.ts",
+          "line": 130,
+          "column": 29
+        },
+        {
+          "title": "real browser performance: N=256 rotation, zoom and view switching use caches and bounded frame work",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e9dec83993613c770d31-6adc1c05668754216401",
+          "file": "spherical-preview.spec.ts",
+          "line": 130,
+          "column": 29
+        }
+      ]
+    },
+    {
+      "title": "surface-compatibility.spec.ts",
+      "file": "surface-compatibility.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "A4 opens an A3 v1 save in the actual planar editor, preserves it through view/history operations and continues editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "fd784ab688009588b91a-14fb520c7e753db13568",
+          "file": "surface-compatibility.spec.ts",
+          "line": 12,
+          "column": 1
+        },
+        {
+          "title": "A4 opens an A3 v1 save in the actual planar editor, preserves it through view/history operations and continues editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "fd784ab688009588b91a-d22cc1b3b8104be43581",
+          "file": "surface-compatibility.spec.ts",
+          "line": 12,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "unified-workspace.spec.ts",
+      "file": "unified-workspace.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "start directly on any supported shape; setup is explicit, accessible and cancellable without creating a hidden flat document",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "afa49328af5a27a98259-baa550f4057914711944",
+          "file": "unified-workspace.spec.ts",
+          "line": 26,
+          "column": 1
+        },
+        {
+          "title": "one workflow creates, edits with all four tools, saves and reopens v1/v2/v3 with exact history and shared globe/net authority",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "afa49328af5a27a98259-371643270b650652b543",
+          "file": "unified-workspace.spec.ts",
+          "line": 45,
+          "column": 1
+        },
+        {
+          "title": "cross-shape New/Open cancellation, corrupt data and storage failures retain the current document and history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "afa49328af5a27a98259-219690856f56bef5ba58",
+          "file": "unified-workspace.spec.ts",
+          "line": 80,
+          "column": 1
+        },
+        {
+          "title": "desktop, ultrawide, square and tall views preserve proportions, context, fullscreen and geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "afa49328af5a27a98259-45eea4d7e58f862c0b47",
+          "file": "unified-workspace.spec.ts",
+          "line": 100,
+          "column": 1
+        },
+        {
+          "title": "start directly on any supported shape; setup is explicit, accessible and cancellable without creating a hidden flat document",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "afa49328af5a27a98259-42ad19fbf8c7be3ea7e0",
+          "file": "unified-workspace.spec.ts",
+          "line": 26,
+          "column": 1
+        },
+        {
+          "title": "one workflow creates, edits with all four tools, saves and reopens v1/v2/v3 with exact history and shared globe/net authority",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "afa49328af5a27a98259-d21c7a3fd4842996ee37",
+          "file": "unified-workspace.spec.ts",
+          "line": 45,
+          "column": 1
+        },
+        {
+          "title": "cross-shape New/Open cancellation, corrupt data and storage failures retain the current document and history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "afa49328af5a27a98259-19c95e22b31da6e86575",
+          "file": "unified-workspace.spec.ts",
+          "line": 80,
+          "column": 1
+        },
+        {
+          "title": "desktop, ultrawide, square and tall views preserve proportions, context, fullscreen and geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "afa49328af5a27a98259-1f6366e017769429d6d8",
+          "file": "unified-workspace.spec.ts",
+          "line": 100,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "workspace.spec.ts",
+      "file": "workspace.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "full viewport, overlay tools, keyboard focus and uninterrupted stroke geometry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b163ed09f68681248ada-fc3991302d8d8516e1e8",
+          "file": "workspace.spec.ts",
+          "line": 35,
+          "column": 1
+        },
+        {
+          "title": "wheel anchor, pan, Space drag and Fit preserve exact data and zoomed brush footprint",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b163ed09f68681248ada-fb0a6e9cd51c85bb7630",
+          "file": "workspace.spec.ts",
+          "line": 58,
+          "column": 1
+        },
+        {
+          "title": "complete strokes, cancellation, Reset and shortcuts have correct history and dirty states",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b163ed09f68681248ada-1cfc76f47827def0f4b5",
+          "file": "workspace.spec.ts",
+          "line": 94,
+          "column": 1
+        },
+        {
+          "title": "actual Save, close, reopen, Open and continued editing preserve the full numerical map and identity",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b163ed09f68681248ada-398d43625e523f116195",
+          "file": "workspace.spec.ts",
+          "line": 110,
+          "column": 1
+        },
+        {
+          "title": "corrupt save rejection leaves unsaved terrain, camera and history intact",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b163ed09f68681248ada-29a6db2eeef871f99d87",
+          "file": "workspace.spec.ts",
+          "line": 133,
+          "column": 1
+        },
+        {
+          "title": "unsaved New/Open and browser navigation warn, cancellation preserves work, new map has fresh identity",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b163ed09f68681248ada-d3bbf423f7ec959aa903",
+          "file": "workspace.spec.ts",
+          "line": 156,
+          "column": 1
+        },
+        {
+          "title": "storage denial reports failure and keeps the map unsaved",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b163ed09f68681248ada-2ed04cbdec7219924a4b",
+          "file": "workspace.spec.ts",
+          "line": 178,
+          "column": 1
+        },
+        {
+          "title": "native two-finger pinch/pan never sculpts, remaining finger stays in navigation, single finger still edits",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b163ed09f68681248ada-987ca1480f1e6a911bb5",
+          "file": "workspace.spec.ts",
+          "line": 187,
+          "column": 1
+        },
+        {
+          "title": "A3 visual evidence: sculpted full-screen map, overlay tools, zoomed navigation and saved state",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b163ed09f68681248ada-5b5fbeb4ad16b300bb45",
+          "file": "workspace.spec.ts",
+          "line": 212,
+          "column": 1
+        },
+        {
+          "title": "full viewport, overlay tools, keyboard focus and uninterrupted stroke geometry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b163ed09f68681248ada-45782443fa3d21ba6027",
+          "file": "workspace.spec.ts",
+          "line": 35,
+          "column": 1
+        },
+        {
+          "title": "wheel anchor, pan, Space drag and Fit preserve exact data and zoomed brush footprint",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b163ed09f68681248ada-0b4fad252d843b80e684",
+          "file": "workspace.spec.ts",
+          "line": 58,
+          "column": 1
+        },
+        {
+          "title": "complete strokes, cancellation, Reset and shortcuts have correct history and dirty states",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b163ed09f68681248ada-f3c39fdd1ef2c4dd0a91",
+          "file": "workspace.spec.ts",
+          "line": 94,
+          "column": 1
+        },
+        {
+          "title": "actual Save, close, reopen, Open and continued editing preserve the full numerical map and identity",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b163ed09f68681248ada-7836408d808b51e3f624",
+          "file": "workspace.spec.ts",
+          "line": 110,
+          "column": 1
+        },
+        {
+          "title": "corrupt save rejection leaves unsaved terrain, camera and history intact",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b163ed09f68681248ada-d4561f0e443dad2963c9",
+          "file": "workspace.spec.ts",
+          "line": 133,
+          "column": 1
+        },
+        {
+          "title": "unsaved New/Open and browser navigation warn, cancellation preserves work, new map has fresh identity",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b163ed09f68681248ada-0012f2b853d48df71a86",
+          "file": "workspace.spec.ts",
+          "line": 156,
+          "column": 1
+        },
+        {
+          "title": "storage denial reports failure and keeps the map unsaved",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b163ed09f68681248ada-e726d57f7b1dcfd71cde",
+          "file": "workspace.spec.ts",
+          "line": 178,
+          "column": 1
+        },
+        {
+          "title": "native two-finger pinch/pan never sculpts, remaining finger stays in navigation, single finger still edits",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b163ed09f68681248ada-f1df715172d6f2cef351",
+          "file": "workspace.spec.ts",
+          "line": 187,
+          "column": 1
+        },
+        {
+          "title": "A3 visual evidence: sculpted full-screen map, overlay tools, zoomed navigation and saved state",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b163ed09f68681248ada-f62a7903ada06383a0fb",
+          "file": "workspace.spec.ts",
+          "line": 212,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "wrapping.spec.ts",
+      "file": "wrapping.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "bounded default Fill covers wide, ultrawide, square and tall views; pan reaches cropped portions and Fit preserves margins",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-960b4b1fb0ae0fdc1dc4",
+          "file": "wrapping.spec.ts",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "actual wrapped editor crosses a seam, recenters the same land, uses all tools, saves and reopens v2 alongside v1",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-a22268185049076cecc4",
+          "file": "wrapping.spec.ts",
+          "line": 66,
+          "column": 1
+        },
+        {
+          "title": "real raise pointer strokes cross the seam and remain one exact undoable operation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-7008e093291f289727e3",
+          "file": "wrapping.spec.ts",
+          "line": 113,
+          "column": 3
+        },
+        {
+          "title": "real lower pointer strokes cross the seam and remain one exact undoable operation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-c2ecb48c1c6fe7688cf4",
+          "file": "wrapping.spec.ts",
+          "line": 113,
+          "column": 3
+        },
+        {
+          "title": "real smooth pointer strokes cross the seam and remain one exact undoable operation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-b092ba0aa17f2872fe9b",
+          "file": "wrapping.spec.ts",
+          "line": 113,
+          "column": 3
+        },
+        {
+          "title": "real flatten pointer strokes cross the seam and remain one exact undoable operation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-a318fa7acc0c29ea97f0",
+          "file": "wrapping.spec.ts",
+          "line": 113,
+          "column": 3
+        },
+        {
+          "title": "multiple visible copies share one dab and preview, unlimited pans/zoom change no elevations, native pen and touch cross seams",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-f6d3f8ef99e494b71773",
+          "file": "wrapping.spec.ts",
+          "line": 128,
+          "column": 1
+        },
+        {
+          "title": "same IndexedDB schema preserves v1 records, rejects replacement across formats and rejects corrupt v2 safely",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-555883c13637333131cd",
+          "file": "wrapping.spec.ts",
+          "line": 157,
+          "column": 1
+        },
+        {
+          "title": "optional native fullscreen enters/exits on user actions without changing history; failures are safe",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-42a0c3d14fd072334409",
+          "file": "wrapping.spec.ts",
+          "line": 180,
+          "column": 1
+        },
+        {
+          "title": "wrapped zoomed readouts/previews stay aligned; cancellation and tool changes end partial strokes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-ec67269b7b822fd4df13",
+          "file": "wrapping.spec.ts",
+          "line": 191,
+          "column": 1
+        },
+        {
+          "title": "wrapped navigation covers ultrawide and mobile displays without sidebars, duplicate storage or redraws of the cached height field",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-fcca10cd28bbd8b8fb16",
+          "file": "wrapping.spec.ts",
+          "line": 207,
+          "column": 1
+        },
+        {
+          "title": "subpixel periodic extents do not allocate unbounded preview nodes or stall the workspace",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-015e384160f99d87ee08",
+          "file": "wrapping.spec.ts",
+          "line": 241,
+          "column": 1
+        },
+        {
+          "title": "bounded default Fill covers wide, ultrawide, square and tall views; pan reaches cropped portions and Fit preserves margins",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-71926e4ae708348555d0",
+          "file": "wrapping.spec.ts",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "actual wrapped editor crosses a seam, recenters the same land, uses all tools, saves and reopens v2 alongside v1",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-13edff059b5204c83a53",
+          "file": "wrapping.spec.ts",
+          "line": 66,
+          "column": 1
+        },
+        {
+          "title": "real raise pointer strokes cross the seam and remain one exact undoable operation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-46f88d1c77bd10cc8bb7",
+          "file": "wrapping.spec.ts",
+          "line": 113,
+          "column": 3
+        },
+        {
+          "title": "real lower pointer strokes cross the seam and remain one exact undoable operation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-dce905e61cf0c3e56da5",
+          "file": "wrapping.spec.ts",
+          "line": 113,
+          "column": 3
+        },
+        {
+          "title": "real smooth pointer strokes cross the seam and remain one exact undoable operation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-f0224a41ed5ae7e80f75",
+          "file": "wrapping.spec.ts",
+          "line": 113,
+          "column": 3
+        },
+        {
+          "title": "real flatten pointer strokes cross the seam and remain one exact undoable operation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-43ae650b8de50d751c1a",
+          "file": "wrapping.spec.ts",
+          "line": 113,
+          "column": 3
+        },
+        {
+          "title": "multiple visible copies share one dab and preview, unlimited pans/zoom change no elevations, native pen and touch cross seams",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-8543b4bd4bce77fdf520",
+          "file": "wrapping.spec.ts",
+          "line": 128,
+          "column": 1
+        },
+        {
+          "title": "same IndexedDB schema preserves v1 records, rejects replacement across formats and rejects corrupt v2 safely",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-d3a3922e6987f0d6f136",
+          "file": "wrapping.spec.ts",
+          "line": 157,
+          "column": 1
+        },
+        {
+          "title": "optional native fullscreen enters/exits on user actions without changing history; failures are safe",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-fbfc8469c241a5697e8a",
+          "file": "wrapping.spec.ts",
+          "line": 180,
+          "column": 1
+        },
+        {
+          "title": "wrapped zoomed readouts/previews stay aligned; cancellation and tool changes end partial strokes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-5bbeb9222a8e9e132699",
+          "file": "wrapping.spec.ts",
+          "line": 191,
+          "column": 1
+        },
+        {
+          "title": "wrapped navigation covers ultrawide and mobile displays without sidebars, duplicate storage or redraws of the cached height field",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-9579a33b383235a87100",
+          "file": "wrapping.spec.ts",
+          "line": 207,
+          "column": 1
+        },
+        {
+          "title": "subpixel periodic extents do not allocate unbounded preview nodes or stall the workspace",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c980dad0b3732b789db7-d1d43e54b00acf3ce402",
+          "file": "wrapping.spec.ts",
+          "line": 241,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-19T00:38:13.919Z",
+    "duration": 444.63100000000003,
+    "expected": 0,
+    "skipped": 264,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

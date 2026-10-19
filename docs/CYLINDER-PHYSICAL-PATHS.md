@@ -1,6 +1,6 @@
 # Continuous physical cylinder paths — A7-B2B1
 
-This module constructs traversable reference-surface paths for the solid capped exterior. It does not read or edit elevations, numerical ownership, camera state or projections. [B1](CYLINDER-GLOBAL-DISTANCE.md) remains the global distance optimizer; [B2A](CYLINDRICAL-SCULPTING.md) remains the isolated atomic dab engine. A7-B2B2 now connects these paths through [continuous numerical strokes and exact history](CYLINDRICAL-STROKES.md). No cylinder renderer, selector, save format or website integration is introduced.
+This module constructs traversable reference-surface paths for the solid capped exterior. It does not read or edit elevations, numerical ownership, camera state or projections. [B1](CYLINDER-GLOBAL-DISTANCE.md) remains the global distance optimizer; [B2A](CYLINDRICAL-SCULPTING.md) remains the isolated atomic dab engine. A7-B2B2 now connects these paths through [continuous numerical strokes and exact history](CYLINDRICAL-STROKES.md). A7-C now uses these unchanged paths in a [real session-only development editor](CYLINDRICAL-EDITING.md). Normal selection, save format and website integration remain outside this checkpoint.
 
 ## Versioned interface
 
@@ -110,4 +110,4 @@ B1 still permits at most 32,768 evaluated boxes and 16,384 live boxes per constr
 
 The standalone TypeScript kernel remains independent of React/DOM, Vite, Next.js, storage/auth and numerical ownership. A future surface-specific view provider will supply its own projections/joins/inverses without resampling geography. B2B2 connects these paths to B2A's epoch-guarded dabs, accepted-input scheduling, physical spacing/error residuals, pending-work cancellation, bounded exact before/after history handoff and one-operation Undo/Redo. The optional direction preference is a tool for that controller, not a substitute for its trajectory/ambiguity policy. Renderer, shape selection and explicit cylinder persistence remain later scopes. The eleven-phase roadmap and eventual existing Next.js/Worlds ownership remain unchanged.
 
-**Stop after A7-B2B2 for Ember's independent review; do not begin A7-C.**
+**Stop after A7-C for Ember's independent review; do not begin A7-D.**

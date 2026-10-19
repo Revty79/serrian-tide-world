@@ -1,0 +1,19 @@
+{
+  "mainFiles": 169,
+  "finalFiles": 170,
+  "addedPath": "tests/cylinder-rims.spec.ts",
+  "addedSha256": "b24c54d113713e4a0555ef4a9dd64d581c43ec7cc94cbeb9db7c652b3eac8850",
+  "changedTest": {
+    "path": "tests/navigation-stabilization.spec.ts",
+    "oldRawSha256": "3614589310fe92a75fb1e01436764a19e089c8f51f5f5d7902ce20ec15653d0d",
+    "newRawSha256": "4bb6f7ab6a0cefa8f0cc004d8b19cd0549baa3a60e494d52c0d0e277f9f703d6",
+    "oldNormalizedSha256": "001f5692b6961cde1e5d175f9433e41ae8507c4c2ead5eff2a07ab96776113c2",
+    "waitBlock": "      // Test the obstruction after the actual slide-in has finished, as toolsPanel already does.\n      await expect(page.getByRole('complementary', { name: 'Atlas tools' })).toBeVisible();\n      await toolsPanel(page, true);\n",
+    "originalBodyAndAssertionsUnchanged": true
+  },
+  "inheritedDigest": "6e9c5d6e28e82d1a5d8916bc78fb71461a7059a24805fa0847f52114c2df8be6",
+  "inheritedCurrentDigest": "6e9c5d6e28e82d1a5d8916bc78fb71461a7059a24805fa0847f52114c2df8be6",
+  "finalBeforeDigest": "5c600061327151fec7ee32638b0b1a8017e3b44c64078c73063fa4c157562021",
+  "unchangedInheritedSources": true,
+  "reason": "One new rim browser test file and a test-only wait for the existing toolbar animation. Restoring the old test raw hash reproduces the entire main-run digest. All application implementation and other tests stay exactly frozen."
+}

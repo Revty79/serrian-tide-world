@@ -114,8 +114,8 @@ The only addition to the B2A job is `preparedChanges(expectedTerrain)`, a ready-
 
 Exact brush-boundary ambiguity and unattainable precision still fail explicitly; B2B2 does not weaken certified influence to bypass them. A pending failed/cancelled dab never partially mutates terrain. Completed prefix words remain reversible; overlapping external edits cause explicit atomic history conflicts. See the stroke specification for lifecycle, budgets, transient/retained memory and measured non-preemptible work.
 
-Projection inverses and previews must describe the same intrinsic footprint on side, both disks, rims and centers, including changing cuts and recentering. A surface-specific view provider determines connected layouts; rectangular side previews are not universal. Weaker-device/browser work requires later evidence. No cylinder browser UI or performance claim follows from these Node tests.
+Projection inverses and previews must describe the same intrinsic footprint on side, both disks, rims and centers, including changing cuts and recentering. A surface-specific view provider determines connected layouts; rectangular side previews are not universal. Weaker-device/browser work requires later evidence. Those Node tests alone make no browser claim. A7-C separately supplies [real development editing and browser measurements](CYLINDRICAL-EDITING.md), using this unchanged B2A job for actual dabs and dry-run exact change stencils.
 
 Cylinder creation/selection remains absent until viewing, interactive editing and explicit validated persistence are ready. A later format must retain identities/provider/version/dimensions/resolution/ownership, exact words, integrity/resource checks and atomic Save/Open, while preserving v1/v2/v3. No conversion, other shape, existing-site/Worlds integration or database change is included. The modular kernel remains compatible with the eventual Next.js host and its existing authentication, server permissions and World records under the unchanged eleven-phase roadmap.
 
-**Stop after A7-B2B2 for Ember's independent review; do not begin A7-C.**
+**Stop after A7-C for Ember's independent review; do not begin A7-D.**

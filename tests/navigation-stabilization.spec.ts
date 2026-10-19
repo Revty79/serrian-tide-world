@@ -210,6 +210,9 @@ test('Escape, cancel, lost capture, blur, tool changes and toolbar obstruction l
     else if (reason === 'blur') await page.evaluate(() => dispatchEvent(new Event('blur')));
     else {
       await page.getByRole('button', { name: 'Open tools', exact: true }).focus(); await page.keyboard.press('Enter');
+      // Test the obstruction after the actual slide-in has finished, as toolsPanel already does.
+      await expect(page.getByRole('complementary', { name: 'Atlas tools' })).toBeVisible();
+      await toolsPanel(page, true);
       if (reason === 'tool') { await page.getByRole('button', { name: 'Lower', exact: true }).focus(); await page.keyboard.press('Enter'); }
       else await page.mouse.move(100, y);
     }
