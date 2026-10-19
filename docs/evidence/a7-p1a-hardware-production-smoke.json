@@ -1,0 +1,279 @@
+{
+  "method": "Built production dist served only on localhost with Vite preview. Actual / DOM controls and IndexedDB record reads. No /src imports, development diagnostics, test roots or numerical editing hooks.",
+  "records": [
+    {
+      "profile": "desktop",
+      "url": "http://127.0.0.1:5209/",
+      "version": 4,
+      "detail": 64,
+      "exactUndo": true,
+      "exactRedo": true,
+      "exactReopen": true,
+      "freshHistory": true,
+      "identityAndMetadataExact": true,
+      "mixedFourFormatLibrary": true,
+      "allFourPayloadsPreserved": true,
+      "library": [
+        {
+          "id": "611357a1-3fde-4eca-a5f9-4432a2d3f5d3",
+          "name": "Production bounded",
+          "version": 1,
+          "metadata": {
+            "dataVersion": 1,
+            "id": "611357a1-3fde-4eca-a5f9-4432a2d3f5d3",
+            "surface": "planar",
+            "dimensions": {
+              "width": 1,
+              "height": 1,
+              "units": "map-units"
+            },
+            "resolution": {
+              "columns": 512,
+              "rows": 512
+            },
+            "elevationUnits": "meters",
+            "seaLevel": 0
+          },
+          "payloadSha256": "7587c9cf4874b49b06300a54cb3ec3a54c00bf887e804722ebcd10afbc9fb47b"
+        },
+        {
+          "id": "e14dc355-f434-4845-8d67-dab2c0a2a5ea",
+          "name": "Production cylinder",
+          "version": 4,
+          "metadata": {
+            "terrainId": "e14dc355-f434-4845-8d67-dab2c0a2a5ea",
+            "identity": {
+              "worldId": "d8ff4a0a-921b-492f-a0bf-011588b3e57b",
+              "surfaceId": "71f8bd2b-598d-4888-8981-b38594c9f06b"
+            },
+            "geometry": {
+              "identity": {
+                "worldId": "d8ff4a0a-921b-492f-a0bf-011588b3e57b",
+                "surfaceId": "71f8bd2b-598d-4888-8981-b38594c9f06b"
+              },
+              "provider": "physical-closed-cylinder",
+              "version": 1,
+              "configuration": "solid-capped",
+              "role": "exterior",
+              "radiusMeters": 1000000,
+              "lengthMeters": 1600000
+            },
+            "representation": {
+              "provider": "cylinder-rings-shared-rims",
+              "version": 1,
+              "resolution": {
+                "angularSamples": 64,
+                "axialCells": 32,
+                "radialCells": 16
+              },
+              "ownership": "side-rims-cap-interiors-single-centers"
+            },
+            "elevationUnits": "meters",
+            "seaLevel": 0
+          },
+          "payloadSha256": "e4c212b1b82d5a0fd993416542600bdc908d689a574260153526ba7576f9e57c"
+        },
+        {
+          "id": "e4c94da7-b368-4c46-965b-c4709bb7b04c",
+          "name": "Production wrapped",
+          "version": 2,
+          "metadata": {
+            "dataVersion": 2,
+            "id": "e4c94da7-b368-4c46-965b-c4709bb7b04c",
+            "surface": "planar",
+            "dimensions": {
+              "width": 1,
+              "height": 1,
+              "units": "map-units"
+            },
+            "resolution": {
+              "columns": 512,
+              "rows": 512
+            },
+            "elevationUnits": "meters",
+            "seaLevel": 0,
+            "topology": "horizontal-periodic",
+            "sampleOwnership": "unique-u-inclusive-v",
+            "identity": {
+              "worldId": "a5418812-c920-4085-8050-76261818157d",
+              "surfaceId": "44caab06-54b3-408b-abde-f58963f46128",
+              "patchId": "periodic-grid"
+            }
+          },
+          "payloadSha256": "7587c9cf4874b49b06300a54cb3ec3a54c00bf887e804722ebcd10afbc9fb47b"
+        },
+        {
+          "id": "e82145c9-c0da-4fbd-bd5c-5216d398414d",
+          "name": "Production sphere",
+          "version": 3,
+          "metadata": {
+            "terrainId": "e82145c9-c0da-4fbd-bd5c-5216d398414d",
+            "identity": {
+              "worldId": "4a55b413-768b-440f-a116-deb08d4994bd",
+              "surfaceId": "b41c1131-dc65-4b08-ade4-eba0755076e7"
+            },
+            "geometry": {
+              "kind": "sphere",
+              "radiusMeters": 1000000
+            },
+            "representation": {
+              "provider": "equiangular-cube-sphere-vertices",
+              "version": 1,
+              "cellsPerEdge": 128,
+              "ownership": "interiors-edges-corners",
+              "faces": [
+                "px",
+                "nx",
+                "py",
+                "ny",
+                "pz",
+                "nz"
+              ]
+            },
+            "elevationUnits": "meters",
+            "seaLevel": 0
+          },
+          "payloadSha256": "ef3ded8520ccffb7663c209ac6905b4ecbede97a516f849f60ce8e5eed3ffef3"
+        }
+      ],
+      "pageErrors": []
+    },
+    {
+      "profile": "mobile",
+      "url": "http://127.0.0.1:5209/",
+      "version": 4,
+      "detail": 64,
+      "exactUndo": true,
+      "exactRedo": true,
+      "exactReopen": true,
+      "freshHistory": true,
+      "identityAndMetadataExact": true,
+      "mixedFourFormatLibrary": true,
+      "allFourPayloadsPreserved": true,
+      "library": [
+        {
+          "id": "67b03bf6-59fd-4365-bf6c-4dad5ac615ea",
+          "name": "Production cylinder",
+          "version": 4,
+          "metadata": {
+            "terrainId": "67b03bf6-59fd-4365-bf6c-4dad5ac615ea",
+            "identity": {
+              "worldId": "7c3284c3-74d6-4027-85a4-d61fabc0f61a",
+              "surfaceId": "9028fc7d-0e3a-4ec0-b1f6-2f1fac935f15"
+            },
+            "geometry": {
+              "identity": {
+                "worldId": "7c3284c3-74d6-4027-85a4-d61fabc0f61a",
+                "surfaceId": "9028fc7d-0e3a-4ec0-b1f6-2f1fac935f15"
+              },
+              "provider": "physical-closed-cylinder",
+              "version": 1,
+              "configuration": "solid-capped",
+              "role": "exterior",
+              "radiusMeters": 1000000,
+              "lengthMeters": 1600000
+            },
+            "representation": {
+              "provider": "cylinder-rings-shared-rims",
+              "version": 1,
+              "resolution": {
+                "angularSamples": 64,
+                "axialCells": 32,
+                "radialCells": 16
+              },
+              "ownership": "side-rims-cap-interiors-single-centers"
+            },
+            "elevationUnits": "meters",
+            "seaLevel": 0
+          },
+          "payloadSha256": "67b9272e7c375887d8a2b4bcd037bb095fe894490b41cca35dc05be3be314726"
+        },
+        {
+          "id": "873d2a1e-4807-4c71-84e7-d0f89e33d66d",
+          "name": "Production wrapped",
+          "version": 2,
+          "metadata": {
+            "dataVersion": 2,
+            "id": "873d2a1e-4807-4c71-84e7-d0f89e33d66d",
+            "surface": "planar",
+            "dimensions": {
+              "width": 1,
+              "height": 1,
+              "units": "map-units"
+            },
+            "resolution": {
+              "columns": 512,
+              "rows": 512
+            },
+            "elevationUnits": "meters",
+            "seaLevel": 0,
+            "topology": "horizontal-periodic",
+            "sampleOwnership": "unique-u-inclusive-v",
+            "identity": {
+              "worldId": "7a5d5bd7-ede5-409e-943a-48d00716857b",
+              "surfaceId": "99d26c92-2b73-4eec-b1a9-8d38ca457265",
+              "patchId": "periodic-grid"
+            }
+          },
+          "payloadSha256": "7587c9cf4874b49b06300a54cb3ec3a54c00bf887e804722ebcd10afbc9fb47b"
+        },
+        {
+          "id": "a9c1175c-8a4a-423e-bc6a-e0960408290f",
+          "name": "Production sphere",
+          "version": 3,
+          "metadata": {
+            "terrainId": "a9c1175c-8a4a-423e-bc6a-e0960408290f",
+            "identity": {
+              "worldId": "10f543f2-14e5-41e5-8564-59156700f1a6",
+              "surfaceId": "d8648fae-f243-4fd1-a4e3-f16e54adc217"
+            },
+            "geometry": {
+              "kind": "sphere",
+              "radiusMeters": 1000000
+            },
+            "representation": {
+              "provider": "equiangular-cube-sphere-vertices",
+              "version": 1,
+              "cellsPerEdge": 128,
+              "ownership": "interiors-edges-corners",
+              "faces": [
+                "px",
+                "nx",
+                "py",
+                "ny",
+                "pz",
+                "nz"
+              ]
+            },
+            "elevationUnits": "meters",
+            "seaLevel": 0
+          },
+          "payloadSha256": "ef3ded8520ccffb7663c209ac6905b4ecbede97a516f849f60ce8e5eed3ffef3"
+        },
+        {
+          "id": "f45afcd3-cd98-4f88-8306-7d614ef3ddf4",
+          "name": "Production bounded",
+          "version": 1,
+          "metadata": {
+            "dataVersion": 1,
+            "id": "f45afcd3-cd98-4f88-8306-7d614ef3ddf4",
+            "surface": "planar",
+            "dimensions": {
+              "width": 1,
+              "height": 1,
+              "units": "map-units"
+            },
+            "resolution": {
+              "columns": 512,
+              "rows": 512
+            },
+            "elevationUnits": "meters",
+            "seaLevel": 0
+          },
+          "payloadSha256": "7587c9cf4874b49b06300a54cb3ec3a54c00bf887e804722ebcd10afbc9fb47b"
+        }
+      ],
+      "pageErrors": []
+    }
+  ]
+}

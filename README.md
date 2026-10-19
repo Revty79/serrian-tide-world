@@ -1,7 +1,7 @@
-<!-- Current interface: A7-D. Historical completion reports describe their original checkpoints. -->
+<!-- Current interface: A7-P1A. Historical completion reports describe their original checkpoints. -->
 # Serrian Tide Atlas
 
-Pass A7-D: Physical capped cylinders are selectable, editable and savable directly in the unified Atlas workspace. The v4 cylinder format joins the unchanged v1 bounded, v2 wrapped and v3 spherical formats in the mixed local library. Existing spherical P1 rendering, D2-R assisted drawing and exact numerical tools/history remain.
+Pass A7-P1A: Physical capped cylinders use a sharper browser-GPU display for physical and connected-map views, with reusable meshes, camera uniforms, exact committed palette updates and a correct CPU fallback. Immediate pointer feedback is separate from the computed intrinsic footprint. Cylinder v4 and bounded/wrapped/spherical v1/v2/v3 saves, numerical tools and exact history remain. See [renderer architecture](docs/CYLINDER-RENDERING.md) and [completion and measurements](docs/A7-P1A-COMPLETION.md). Numerical brush delays still need separate P1B evaluation; no later pass is started automatically.
 
 This repository is a standalone **development workspace**. Atlas will eventually join the **existing** Serrian Tide Worlds section in isolated development, preserving existing information, organization, data and functionality wherever practical. The owner superseded the earlier separate-Worlds-rebuild plan. Functional interconnected Atlas maps must precede website integration; the [eleven-phase roadmap](docs/PHASE-1-HEIGHTMAP-ROADMAP.md) governs the sequence. The original website remains untouched in this pass.
 

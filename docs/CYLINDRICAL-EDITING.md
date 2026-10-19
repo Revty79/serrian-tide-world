@@ -1,5 +1,7 @@
 # Physical cylinder development editor — A7-C
 
+Current display: A7-P1A uses the [browser-GPU renderer and independent pointer feedback](CYLINDER-RENDERING.md) in both this diagnostic entry and the ordinary Atlas workspace. The older CPU display pipeline described below remains the correct bounded fallback. Numerical tools and ownership are unchanged.
+
 The A7-C development entry remains a real session-only editor for the existing solid capped exterior. A7-D reuses the same viewport/session in the normal Atlas workspace at `/`, with [v4 Save/Open, shared document controls and saved checkpoints](CYLINDRICAL-PERSISTENCE.md). Both views use one `CylindricalTerrain`, the accepted A7-B2B2 stroke engine and its exact history. [Numerical foundation](CYLINDRICAL-HEIGHTMAP-FOUNDATION.md), [certified distance](CYLINDER-GLOBAL-DISTANCE.md), [atomic dabs](CYLINDRICAL-SCULPTING.md) and [continuous strokes](CYLINDRICAL-STROKES.md) retain their original code and mathematics.
 
 ## Open the preview
@@ -29,7 +31,7 @@ No cylinder assisted rotation or edge scrolling is introduced. Navigation interr
 
 ## Physical projection and visibility
 
-The renderer uses browser CPU ray casting and Canvas; the server requires no GPU. Work in reference-radius units, with `q = (x/R, y/R, (z−L/2)/R)`, half-length `h=L/(2R)`. Camera right/up/forward form an orthonormal right-handed frame. One uniform scale maps the projection to the viewport:
+The CPU fallback uses browser ray casting and Canvas; the normal A7-P1A display uses reusable browser-GPU reference meshes and the same camera convention. The server requires no GPU. Work in reference-radius units, with `q = (x/R, y/R, (z−L/2)/R)`, half-length `h=L/(2R)`. Camera right/up/forward form an orthonormal right-handed frame. One uniform scale maps the projection to the viewport:
 
 ```text
 screenX = width/2  + scale · dot(q−target, right)

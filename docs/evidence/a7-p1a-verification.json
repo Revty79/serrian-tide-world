@@ -1,0 +1,1838 @@
+{
+  "baseline": "daa5aed2046cf65e96e2507a38291edd55df1594",
+  "numerical": {
+    "tests": 418,
+    "pass": 418,
+    "fail": 0,
+    "skip": 0
+  },
+  "browser": {
+    "startTime": "2026-10-19T03:31:29.874Z",
+    "duration": 1093758.909,
+    "expected": 288,
+    "skipped": 4,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "hardwareInputBrowser": {
+    "startTime": "2026-10-19T03:50:53.329Z",
+    "duration": 46252.941999999995,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "frozenSourceFiles": 200,
+  "hashConvention": "Git-normalized LF for text, raw binary for PNG/ZIP/GZ. Frozen source uses raw local bytes before/after.",
+  "protectedPaths": [
+    "dev/cylinder.html",
+    "package-lock.json",
+    "package.json",
+    "playwright.config.ts",
+    "scripts/measure-cylinder-dabs.mjs",
+    "scripts/measure-cylinder-distance.mjs",
+    "scripts/measure-cylinder-paths.mjs",
+    "scripts/measure-cylinder-preview.mjs",
+    "scripts/measure-cylinder-strokes.mjs",
+    "scripts/measure-spherical-brush.mjs",
+    "scripts/measure-spherical-raster.mjs",
+    "scripts/measure-spherical-tools.mjs",
+    "scripts/measure-spherical-workspace.mjs",
+    "scripts/measure-spherical.mjs",
+    "scripts/reference-cylinder-dabs.py",
+    "scripts/reference-cylinder-distance.py",
+    "scripts/reference-cylinder-paths.py",
+    "scripts/reference-cylinder-strokes.py",
+    "scripts/verify-cylinder-foundation.mjs",
+    "src/App.tsx",
+    "src/components/BrushToolbar.module.css",
+    "src/components/BrushToolbar.tsx",
+    "src/components/ElevationLegend.module.css",
+    "src/components/ElevationLegend.tsx",
+    "src/components/NewWorldDialog.tsx",
+    "src/components/SphericalBrushControls.tsx",
+    "src/components/SphericalEditor.tsx",
+    "src/components/SphericalPreview.module.css",
+    "src/components/SphericalPreview.tsx",
+    "src/components/SphericalStorageControls.tsx",
+    "src/components/SphericalViewport.tsx",
+    "src/components/TerrainCanvas.module.css",
+    "src/components/TerrainCanvas.tsx",
+    "src/components/WorkspaceChrome.tsx",
+    "src/dev/cylinder.tsx",
+    "src/editor/atlas-document.ts",
+    "src/editor/cylinder-configuration.ts",
+    "src/editor/cylinder-controls.ts",
+    "src/editor/cylinder-persistence.test.ts",
+    "src/editor/cylinder-preview-session.test.ts",
+    "src/editor/cylindrical-history.test.ts",
+    "src/editor/cylindrical-history.ts",
+    "src/editor/prepare-cylinder-session.ts",
+    "src/editor/prepare-spherical-session.ts",
+    "src/editor/spherical-history.test.ts",
+    "src/editor/spherical-history.ts",
+    "src/editor/spherical-limb-session.test.ts",
+    "src/editor/spherical-persistence.test.ts",
+    "src/editor/spherical-session.test.ts",
+    "src/editor/spherical-session.ts",
+    "src/editor/terrain-document.ts",
+    "src/editor/terrain-history.test.ts",
+    "src/editor/terrain-history.ts",
+    "src/interaction/canvas-navigation.ts",
+    "src/interaction/canvas-sculpting.ts",
+    "src/interaction/spherical-editing.ts",
+    "src/interaction/spherical-navigation.ts",
+    "src/main.tsx",
+    "src/persistence/cooperative-work.ts",
+    "src/persistence/cylindrical-format.test.ts",
+    "src/persistence/cylindrical-format.ts",
+    "src/persistence/heightmap-payload.ts",
+    "src/persistence/local-map-store.ts",
+    "src/persistence/map-format.ts",
+    "src/persistence/spherical-format.test.ts",
+    "src/persistence/spherical-format.ts",
+    "src/persistence/terrain-format.test.ts",
+    "src/persistence/terrain-format.ts",
+    "src/persistence/wrapped-format.test.ts",
+    "src/persistence/wrapped-format.ts",
+    "src/rendering/camera.test.ts",
+    "src/rendering/camera.ts",
+    "src/rendering/canvas-renderer.ts",
+    "src/rendering/cylindrical-raster.ts",
+    "src/rendering/cylindrical-view.test.ts",
+    "src/rendering/cylindrical-view.ts",
+    "src/rendering/display-raster.test.ts",
+    "src/rendering/display-raster.ts",
+    "src/rendering/edge-pan.test.ts",
+    "src/rendering/edge-pan.ts",
+    "src/rendering/elevation-colors.ts",
+    "src/rendering/elevation-raster.test.ts",
+    "src/rendering/elevation-raster.ts",
+    "src/rendering/fit-map.test.ts",
+    "src/rendering/fit-map.ts",
+    "src/rendering/periodic-view.test.ts",
+    "src/rendering/periodic-view.ts",
+    "src/rendering/spherical-brush-preview.ts",
+    "src/rendering/spherical-editing.test.ts",
+    "src/rendering/spherical-gesture-path.ts",
+    "src/rendering/spherical-limb-assist.test.ts",
+    "src/rendering/spherical-limb-assist.ts",
+    "src/rendering/spherical-raster-cache.test.ts",
+    "src/rendering/spherical-raster.ts",
+    "src/rendering/spherical-texture-updates.ts",
+    "src/rendering/spherical-view.test.ts",
+    "src/rendering/spherical-view.ts",
+    "src/rendering/wrapping-camera.test.ts",
+    "src/styles.css",
+    "src/surfaces/compatibility.test.ts",
+    "src/surfaces/contracts.ts",
+    "src/surfaces/cube-sphere.test.ts",
+    "src/surfaces/cube-sphere.ts",
+    "src/surfaces/cylinder-distance.test.ts",
+    "src/surfaces/cylinder-distance.ts",
+    "src/surfaces/cylinder-path-math.ts",
+    "src/surfaces/cylinder-path-spacing.test.ts",
+    "src/surfaces/cylinder-path-spacing.ts",
+    "src/surfaces/cylinder-path.test.ts",
+    "src/surfaces/cylinder-path.ts",
+    "src/surfaces/cylinder-spacing-decimal.test.ts",
+    "src/surfaces/cylinder.test.ts",
+    "src/surfaces/cylinder.ts",
+    "src/surfaces/fixtures/cylinder-distance-reference.json",
+    "src/surfaces/great-circle.ts",
+    "src/surfaces/legacy-planar.ts",
+    "src/surfaces/rectangular.test.ts",
+    "src/surfaces/rectangular.ts",
+    "src/surfaces/world.test.ts",
+    "src/surfaces/world.ts",
+    "src/terrain/brush-math.ts",
+    "src/terrain/brush.test.ts",
+    "src/terrain/brush.ts",
+    "src/terrain/cylindrical-brush-reference.test.ts",
+    "src/terrain/cylindrical-brush.test.ts",
+    "src/terrain/cylindrical-brush.ts",
+    "src/terrain/cylindrical-candidates.ts",
+    "src/terrain/cylindrical-patch.test.ts",
+    "src/terrain/cylindrical-smoothing.ts",
+    "src/terrain/cylindrical-stroke-reference.test.ts",
+    "src/terrain/cylindrical-stroke.test.ts",
+    "src/terrain/cylindrical-stroke.ts",
+    "src/terrain/cylindrical.test.ts",
+    "src/terrain/cylindrical.ts",
+    "src/terrain/fixtures/cylinder-dab-reference.json",
+    "src/terrain/fixtures/cylinder-stroke-reference.json",
+    "src/terrain/model.test.ts",
+    "src/terrain/model.ts",
+    "src/terrain/modifications.ts",
+    "src/terrain/refinement.test.ts",
+    "src/terrain/sampling.test.ts",
+    "src/terrain/sampling.ts",
+    "src/terrain/spherical-brush.test.ts",
+    "src/terrain/spherical-brush.ts",
+    "src/terrain/spherical-cap.ts",
+    "src/terrain/spherical-preview-fixture.ts",
+    "src/terrain/spherical-smoothing.ts",
+    "src/terrain/spherical-tools.test.ts",
+    "src/terrain/spherical.test.ts",
+    "src/terrain/spherical.ts",
+    "src/terrain/topology.ts",
+    "src/terrain/wrapping.test.ts",
+    "tests/atlas.spec.ts",
+    "tests/cylinder-preview.spec.ts",
+    "tests/cylinder-rims.spec.ts",
+    "tests/cylinder-workspace.spec.ts",
+    "tests/fixtures/cylinder-observer.ts",
+    "tests/fixtures/cylinder-storage.ts",
+    "tests/fixtures/legacy-app.tsx",
+    "tests/fixtures/legacy.html",
+    "tests/fixtures/legacy.tsx",
+    "tests/fixtures/limb-workspace.ts",
+    "tests/fixtures/saves/a3-v1-heightmap.json",
+    "tests/fixtures/sphere-editor.html",
+    "tests/fixtures/sphere-editor.tsx",
+    "tests/fixtures/sphere-storage.ts",
+    "tests/fixtures/sphere.html",
+    "tests/fixtures/sphere.tsx",
+    "tests/fixtures/spherical-performance.ts",
+    "tests/fixtures/spherical-raster-reference.ts",
+    "tests/fixtures/terrain.html",
+    "tests/fixtures/terrain.tsx",
+    "tests/fixtures/workspace-storage.ts",
+    "tests/focused-view.spec.ts",
+    "tests/navigation-stabilization.spec.ts",
+    "tests/refinement.spec.ts",
+    "tests/sculpting.spec.ts",
+    "tests/spherical-editing.spec.ts",
+    "tests/spherical-limb-workspace.spec.ts",
+    "tests/spherical-performance.spec.ts",
+    "tests/spherical-persistence.spec.ts",
+    "tests/spherical-preview.spec.ts",
+    "tests/surface-compatibility.spec.ts",
+    "tests/unified-workspace.spec.ts",
+    "tests/workspace-helpers.ts",
+    "tests/workspace.spec.ts",
+    "tests/wrapping.spec.ts",
+    "tsconfig.json",
+    "vite.config.ts"
+  ],
+  "historicalPaths": [
+    "docs/A0-COMPLETION.md",
+    "docs/A1-COMPLETION.md",
+    "docs/A2-COMPLETION.md",
+    "docs/A3-COMPLETION.md",
+    "docs/A4-COMPLETION.md",
+    "docs/A5-1-COMPLETION.md",
+    "docs/A5-2-COMPLETION.md",
+    "docs/A5-COMPLETION.md",
+    "docs/A6-A-COMPLETION.md",
+    "docs/A6-B-COMPLETION.md",
+    "docs/A6-C-COMPLETION.md",
+    "docs/A6-D1-COMPLETION.md",
+    "docs/A6-D2-COMPLETION.md",
+    "docs/A6-D2-R-COMPLETION.md",
+    "docs/A6-E-COMPLETION.md",
+    "docs/A6-F1-COMPLETION.md",
+    "docs/A6-P1-COMPLETION.md",
+    "docs/A7-A-COMPLETION.md",
+    "docs/A7-B1-COMPLETION.md",
+    "docs/A7-B2A-COMPLETION.md",
+    "docs/A7-B2B1-COMPLETION.md",
+    "docs/A7-B2B2-COMPLETION.md",
+    "docs/A7-C-COMPLETION.md",
+    "docs/A7-D-COMPLETION.md",
+    "docs/evidence/a1-desktop-sculpted.png",
+    "docs/evidence/a1-mobile-sculpted.png",
+    "docs/evidence/a2-desktop-flatten.png",
+    "docs/evidence/a2-desktop-raise-lower.png",
+    "docs/evidence/a2-desktop-smooth.png",
+    "docs/evidence/a2-mobile-flatten.png",
+    "docs/evidence/a2-mobile-raise-lower.png",
+    "docs/evidence/a2-mobile-smooth.png",
+    "docs/evidence/a3-desktop-sculpted.png",
+    "docs/evidence/a3-desktop-zoomed-tools.png",
+    "docs/evidence/a3-mobile-sculpted.png",
+    "docs/evidence/a3-mobile-zoomed-tools.png",
+    "docs/evidence/a4-desktop-legacy-preserved.png",
+    "docs/evidence/a4-mobile-legacy-preserved.png",
+    "docs/evidence/a5-1-baseline-edge.png",
+    "docs/evidence/a5-1-baseline-trace.zip",
+    "docs/evidence/a5-1-baseline.json",
+    "docs/evidence/a5-1-desktop-bounded-pan.png",
+    "docs/evidence/a5-1-desktop-edge-stroke.png",
+    "docs/evidence/a5-1-desktop-edge-trace.zip",
+    "docs/evidence/a5-1-desktop-motion.json",
+    "docs/evidence/a5-1-desktop-seam.png",
+    "docs/evidence/a5-1-desktop-touch-edge.png",
+    "docs/evidence/a5-1-mobile-edge-stroke.png",
+    "docs/evidence/a5-1-mobile-edge-trace.zip",
+    "docs/evidence/a5-1-mobile-motion.json",
+    "docs/evidence/a5-1-mobile-seam.png",
+    "docs/evidence/a5-1-mobile-touch-edge.png",
+    "docs/evidence/a5-1-verification.json",
+    "docs/evidence/a5-2-desktop-desktop-fit.png",
+    "docs/evidence/a5-2-desktop-desktop-focused.png",
+    "docs/evidence/a5-2-desktop-desktop-full-height.png",
+    "docs/evidence/a5-2-desktop-edge-connected.png",
+    "docs/evidence/a5-2-desktop-edge-trace.zip",
+    "docs/evidence/a5-2-desktop-layout.json",
+    "docs/evidence/a5-2-desktop-mobile-fit.png",
+    "docs/evidence/a5-2-desktop-mobile-focused.png",
+    "docs/evidence/a5-2-desktop-mobile-full-height.png",
+    "docs/evidence/a5-2-desktop-square-fit.png",
+    "docs/evidence/a5-2-desktop-square-focused.png",
+    "docs/evidence/a5-2-desktop-square-full-height.png",
+    "docs/evidence/a5-2-desktop-ultrawide-fit.png",
+    "docs/evidence/a5-2-desktop-ultrawide-focused.png",
+    "docs/evidence/a5-2-desktop-ultrawide-full-height.png",
+    "docs/evidence/a5-2-mobile-desktop-fit.png",
+    "docs/evidence/a5-2-mobile-desktop-focused.png",
+    "docs/evidence/a5-2-mobile-desktop-full-height.png",
+    "docs/evidence/a5-2-mobile-edge-connected.png",
+    "docs/evidence/a5-2-mobile-edge-trace.zip",
+    "docs/evidence/a5-2-mobile-layout.json",
+    "docs/evidence/a5-2-mobile-mobile-fit.png",
+    "docs/evidence/a5-2-mobile-mobile-focused.png",
+    "docs/evidence/a5-2-mobile-mobile-full-height.png",
+    "docs/evidence/a5-2-mobile-square-fit.png",
+    "docs/evidence/a5-2-mobile-square-focused.png",
+    "docs/evidence/a5-2-mobile-square-full-height.png",
+    "docs/evidence/a5-2-mobile-ultrawide-fit.png",
+    "docs/evidence/a5-2-mobile-ultrawide-focused.png",
+    "docs/evidence/a5-2-mobile-ultrawide-full-height.png",
+    "docs/evidence/a5-2-verification.json",
+    "docs/evidence/a5-desktop-bounded-fill.png",
+    "docs/evidence/a5-desktop-recentered.png",
+    "docs/evidence/a5-desktop-seam.png",
+    "docs/evidence/a5-desktop-zoomed-rendering.png",
+    "docs/evidence/a5-mobile-bounded-fill.png",
+    "docs/evidence/a5-mobile-recentered.png",
+    "docs/evidence/a5-mobile-seam.png",
+    "docs/evidence/a5-mobile-zoomed-rendering.png",
+    "docs/evidence/a5-rendering-performance.json",
+    "docs/evidence/a6-a-numerical-receipt.json",
+    "docs/evidence/a6-b-sculpting-receipt.json",
+    "docs/evidence/a6-c-sculpting-receipt.json",
+    "docs/evidence/a6-c-verification.json",
+    "docs/evidence/a6-d1-desktop-globe-nx.png",
+    "docs/evidence/a6-d1-desktop-globe-px.png",
+    "docs/evidence/a6-d1-desktop-globe-pz.png",
+    "docs/evidence/a6-d1-desktop-n128-performance.json",
+    "docs/evidence/a6-d1-desktop-n256-performance.json",
+    "docs/evidence/a6-d1-desktop-net.png",
+    "docs/evidence/a6-d1-desktop-product-preparation.json",
+    "docs/evidence/a6-d1-mobile-globe-nx.png",
+    "docs/evidence/a6-d1-mobile-globe-px.png",
+    "docs/evidence/a6-d1-mobile-globe-pz.png",
+    "docs/evidence/a6-d1-mobile-n128-performance.json",
+    "docs/evidence/a6-d1-mobile-n256-performance.json",
+    "docs/evidence/a6-d1-mobile-net.png",
+    "docs/evidence/a6-d1-mobile-product-preparation.json",
+    "docs/evidence/a6-d1-verification.json",
+    "docs/evidence/a6-d2-browser-results.json",
+    "docs/evidence/a6-d2-desktop-blank.png",
+    "docs/evidence/a6-d2-desktop-continent.png",
+    "docs/evidence/a6-d2-desktop-editing-trace.zip",
+    "docs/evidence/a6-d2-desktop-n128-performance.json",
+    "docs/evidence/a6-d2-desktop-n256-performance.json",
+    "docs/evidence/a6-d2-desktop-net-edge-trace.zip",
+    "docs/evidence/a6-d2-desktop-net.png",
+    "docs/evidence/a6-d2-desktop-rotated.png",
+    "docs/evidence/a6-d2-mobile-blank.png",
+    "docs/evidence/a6-d2-mobile-continent.png",
+    "docs/evidence/a6-d2-mobile-editing-trace.zip",
+    "docs/evidence/a6-d2-mobile-n128-performance.json",
+    "docs/evidence/a6-d2-mobile-n256-performance.json",
+    "docs/evidence/a6-d2-mobile-net-edge-trace.zip",
+    "docs/evidence/a6-d2-mobile-net.png",
+    "docs/evidence/a6-d2-mobile-rotated.png",
+    "docs/evidence/a6-d2-numerical-performance.json",
+    "docs/evidence/a6-d2-r-browser-results.json",
+    "docs/evidence/a6-d2-r-build.txt",
+    "docs/evidence/a6-d2-r-delivery.json",
+    "docs/evidence/a6-d2-r-desktop-corner.json",
+    "docs/evidence/a6-d2-r-desktop-globe-settings.json",
+    "docs/evidence/a6-d2-r-desktop-n128-editing-regression.json",
+    "docs/evidence/a6-d2-r-desktop-n128-held.png",
+    "docs/evidence/a6-d2-r-desktop-n128-reopened.png",
+    "docs/evidence/a6-d2-r-desktop-n128-stroke.json",
+    "docs/evidence/a6-d2-r-desktop-n128-trace.zip",
+    "docs/evidence/a6-d2-r-desktop-n256-editing-regression.json",
+    "docs/evidence/a6-d2-r-desktop-n256-held.png",
+    "docs/evidence/a6-d2-r-desktop-n256-reopened.png",
+    "docs/evidence/a6-d2-r-desktop-n256-stroke.json",
+    "docs/evidence/a6-d2-r-desktop-n256-trace.zip",
+    "docs/evidence/a6-d2-r-desktop-net-settings.json",
+    "docs/evidence/a6-d2-r-desktop-pole.json",
+    "docs/evidence/a6-d2-r-desktop-seam.json",
+    "docs/evidence/a6-d2-r-frozen-source.json",
+    "docs/evidence/a6-d2-r-mobile-corner.json",
+    "docs/evidence/a6-d2-r-mobile-globe-settings.json",
+    "docs/evidence/a6-d2-r-mobile-n128-editing-regression.json",
+    "docs/evidence/a6-d2-r-mobile-n128-held.png",
+    "docs/evidence/a6-d2-r-mobile-n128-reopened.png",
+    "docs/evidence/a6-d2-r-mobile-n128-stroke.json",
+    "docs/evidence/a6-d2-r-mobile-n128-trace.zip",
+    "docs/evidence/a6-d2-r-mobile-n256-editing-regression.json",
+    "docs/evidence/a6-d2-r-mobile-n256-held.png",
+    "docs/evidence/a6-d2-r-mobile-n256-reopened.png",
+    "docs/evidence/a6-d2-r-mobile-n256-stroke.json",
+    "docs/evidence/a6-d2-r-mobile-n256-trace.zip",
+    "docs/evidence/a6-d2-r-mobile-net-settings.json",
+    "docs/evidence/a6-d2-r-mobile-pole.json",
+    "docs/evidence/a6-d2-r-mobile-seam.json",
+    "docs/evidence/a6-d2-r-numerical.txt",
+    "docs/evidence/a6-d2-r-performance.json",
+    "docs/evidence/a6-d2-r-verification.json",
+    "docs/evidence/a6-d2-verification.json",
+    "docs/evidence/a6-e-browser-results.json",
+    "docs/evidence/a6-e-desktop-blank-saved.png",
+    "docs/evidence/a6-e-desktop-continent-saved.png",
+    "docs/evidence/a6-e-desktop-continued-editing.png",
+    "docs/evidence/a6-e-desktop-n128-persistence.json",
+    "docs/evidence/a6-e-desktop-n256-persistence.json",
+    "docs/evidence/a6-e-desktop-recovery-trace.zip",
+    "docs/evidence/a6-e-desktop-reopened-net.png",
+    "docs/evidence/a6-e-desktop-save-open-trace.zip",
+    "docs/evidence/a6-e-mobile-blank-saved.png",
+    "docs/evidence/a6-e-mobile-continent-saved.png",
+    "docs/evidence/a6-e-mobile-continued-editing.png",
+    "docs/evidence/a6-e-mobile-n128-persistence.json",
+    "docs/evidence/a6-e-mobile-n256-persistence.json",
+    "docs/evidence/a6-e-mobile-recovery-trace.zip",
+    "docs/evidence/a6-e-mobile-reopened-net.png",
+    "docs/evidence/a6-e-mobile-save-open-trace.zip",
+    "docs/evidence/a6-e-verification.json",
+    "docs/evidence/a6-f1-browser-results.json",
+    "docs/evidence/a6-f1-delivery.json",
+    "docs/evidence/a6-f1-desktop-1440x900.png",
+    "docs/evidence/a6-f1-desktop-3440x1440.png",
+    "docs/evidence/a6-f1-desktop-412x915.png",
+    "docs/evidence/a6-f1-desktop-900x900.png",
+    "docs/evidence/a6-f1-desktop-bounded-workspace.png",
+    "docs/evidence/a6-f1-desktop-mixed-library.png",
+    "docs/evidence/a6-f1-desktop-n128-editing-regression.json",
+    "docs/evidence/a6-f1-desktop-n128-persistence.json",
+    "docs/evidence/a6-f1-desktop-n256-editing-regression.json",
+    "docs/evidence/a6-f1-desktop-n256-persistence.json",
+    "docs/evidence/a6-f1-desktop-recovery-trace.zip",
+    "docs/evidence/a6-f1-desktop-sphere-net.png",
+    "docs/evidence/a6-f1-desktop-sphere-workspace.png",
+    "docs/evidence/a6-f1-desktop-viewports.json",
+    "docs/evidence/a6-f1-desktop-workflow-trace.zip",
+    "docs/evidence/a6-f1-desktop-workflow.json",
+    "docs/evidence/a6-f1-desktop-world-setup.png",
+    "docs/evidence/a6-f1-desktop-wrapped-workspace.png",
+    "docs/evidence/a6-f1-mobile-1440x900.png",
+    "docs/evidence/a6-f1-mobile-3440x1440.png",
+    "docs/evidence/a6-f1-mobile-412x915.png",
+    "docs/evidence/a6-f1-mobile-900x900.png",
+    "docs/evidence/a6-f1-mobile-bounded-workspace.png",
+    "docs/evidence/a6-f1-mobile-mixed-library.png",
+    "docs/evidence/a6-f1-mobile-n128-editing-regression.json",
+    "docs/evidence/a6-f1-mobile-n128-persistence.json",
+    "docs/evidence/a6-f1-mobile-n256-editing-regression.json",
+    "docs/evidence/a6-f1-mobile-n256-persistence.json",
+    "docs/evidence/a6-f1-mobile-recovery-trace.zip",
+    "docs/evidence/a6-f1-mobile-sphere-net.png",
+    "docs/evidence/a6-f1-mobile-sphere-workspace.png",
+    "docs/evidence/a6-f1-mobile-viewports.json",
+    "docs/evidence/a6-f1-mobile-workflow-trace.zip",
+    "docs/evidence/a6-f1-mobile-workflow.json",
+    "docs/evidence/a6-f1-mobile-world-setup.png",
+    "docs/evidence/a6-f1-mobile-wrapped-workspace.png",
+    "docs/evidence/a6-f1-production-bundles.json",
+    "docs/evidence/a6-f1-verification.json",
+    "docs/evidence/a6-p1-after-confirm-mobile-n256.json",
+    "docs/evidence/a6-p1-after-confirm-mobile-n256.png",
+    "docs/evidence/a6-p1-after-desktop-n128.json",
+    "docs/evidence/a6-p1-after-desktop-n128.png",
+    "docs/evidence/a6-p1-after-desktop-n256.json",
+    "docs/evidence/a6-p1-after-desktop-n256.png",
+    "docs/evidence/a6-p1-after-final-browser-results.json",
+    "docs/evidence/a6-p1-after-final-conditions.json",
+    "docs/evidence/a6-p1-after-final-mobile-n128.json",
+    "docs/evidence/a6-p1-after-final-mobile-n128.png",
+    "docs/evidence/a6-p1-after-mobile-n128.json",
+    "docs/evidence/a6-p1-after-mobile-n128.png",
+    "docs/evidence/a6-p1-after-mobile-n256.json",
+    "docs/evidence/a6-p1-after-mobile-n256.png",
+    "docs/evidence/a6-p1-after.cpuprofile",
+    "docs/evidence/a6-p1-before-confirm-mobile-n256.json",
+    "docs/evidence/a6-p1-before-confirm-mobile-n256.png",
+    "docs/evidence/a6-p1-before-desktop-n128.json",
+    "docs/evidence/a6-p1-before-desktop-n128.png",
+    "docs/evidence/a6-p1-before-desktop-n256.json",
+    "docs/evidence/a6-p1-before-desktop-n256.png",
+    "docs/evidence/a6-p1-before-mobile-n128.json",
+    "docs/evidence/a6-p1-before-mobile-n128.png",
+    "docs/evidence/a6-p1-before-mobile-n256.json",
+    "docs/evidence/a6-p1-before-mobile-n256.png",
+    "docs/evidence/a6-p1-before.cpuprofile",
+    "docs/evidence/a6-p1-browser-results.json",
+    "docs/evidence/a6-p1-build.txt",
+    "docs/evidence/a6-p1-delivery.json",
+    "docs/evidence/a6-p1-desktop-n128-editing-regression.json",
+    "docs/evidence/a6-p1-desktop-n128-limb-held.png",
+    "docs/evidence/a6-p1-desktop-n128-limb-proof.json",
+    "docs/evidence/a6-p1-desktop-n256-editing-regression.json",
+    "docs/evidence/a6-p1-desktop-n256-limb-held.png",
+    "docs/evidence/a6-p1-desktop-n256-limb-proof.json",
+    "docs/evidence/a6-p1-desktop-n256-trace.zip",
+    "docs/evidence/a6-p1-frozen-source.json",
+    "docs/evidence/a6-p1-memory-after-trace.zip",
+    "docs/evidence/a6-p1-memory-before-trace.zip",
+    "docs/evidence/a6-p1-memory.json",
+    "docs/evidence/a6-p1-mobile-n128-editing-regression.json",
+    "docs/evidence/a6-p1-mobile-n128-limb-held.png",
+    "docs/evidence/a6-p1-mobile-n128-limb-proof.json",
+    "docs/evidence/a6-p1-mobile-n256-editing-regression.json",
+    "docs/evidence/a6-p1-mobile-n256-limb-held.png",
+    "docs/evidence/a6-p1-mobile-n256-limb-proof.json",
+    "docs/evidence/a6-p1-mobile-n256-trace.zip",
+    "docs/evidence/a6-p1-numerical.txt",
+    "docs/evidence/a6-p1-performance-comparison.json",
+    "docs/evidence/a6-p1-raster-microbench.json",
+    "docs/evidence/a6-p1-regression-desktop-n128.json",
+    "docs/evidence/a6-p1-regression-desktop-n128.png",
+    "docs/evidence/a6-p1-regression-desktop-n256.json",
+    "docs/evidence/a6-p1-regression-desktop-n256.png",
+    "docs/evidence/a6-p1-regression-mobile-n128.json",
+    "docs/evidence/a6-p1-regression-mobile-n128.png",
+    "docs/evidence/a6-p1-regression-mobile-n256.json",
+    "docs/evidence/a6-p1-regression-mobile-n256.png",
+    "docs/evidence/a6-p1-verification.json",
+    "docs/evidence/a7-a-browser-results.json",
+    "docs/evidence/a7-a-browser.txt",
+    "docs/evidence/a7-a-build.txt",
+    "docs/evidence/a7-a-cylinder-allocation.json",
+    "docs/evidence/a7-a-delivery.json",
+    "docs/evidence/a7-a-desktop-n128-editing-regression.json",
+    "docs/evidence/a7-a-desktop-n128-limb-held.png",
+    "docs/evidence/a7-a-desktop-n128-limb-proof.json",
+    "docs/evidence/a7-a-desktop-n256-editing-regression.json",
+    "docs/evidence/a7-a-desktop-n256-limb-held.png",
+    "docs/evidence/a7-a-desktop-n256-limb-proof.json",
+    "docs/evidence/a7-a-desktop-n256-regression-trace.zip",
+    "docs/evidence/a7-a-frozen-source.json",
+    "docs/evidence/a7-a-mobile-n128-editing-regression.json",
+    "docs/evidence/a7-a-mobile-n128-limb-held.png",
+    "docs/evidence/a7-a-mobile-n128-limb-proof.json",
+    "docs/evidence/a7-a-mobile-n256-editing-regression.json",
+    "docs/evidence/a7-a-mobile-n256-limb-held.png",
+    "docs/evidence/a7-a-mobile-n256-limb-proof.json",
+    "docs/evidence/a7-a-mobile-n256-regression-trace.zip",
+    "docs/evidence/a7-a-numerical.txt",
+    "docs/evidence/a7-a-verification.json",
+    "docs/evidence/a7-b1-browser-results.json",
+    "docs/evidence/a7-b1-browser.txt",
+    "docs/evidence/a7-b1-build.txt",
+    "docs/evidence/a7-b1-delivery.json",
+    "docs/evidence/a7-b1-desktop-n128-editing-regression.json",
+    "docs/evidence/a7-b1-desktop-n128-limb-held.png",
+    "docs/evidence/a7-b1-desktop-n128-limb-proof.json",
+    "docs/evidence/a7-b1-desktop-n256-editing-regression.json",
+    "docs/evidence/a7-b1-desktop-n256-limb-held.png",
+    "docs/evidence/a7-b1-desktop-n256-limb-proof.json",
+    "docs/evidence/a7-b1-desktop-n256-regression-trace.zip",
+    "docs/evidence/a7-b1-distance-measurements.json",
+    "docs/evidence/a7-b1-frozen-source.json",
+    "docs/evidence/a7-b1-high-precision-reference.json",
+    "docs/evidence/a7-b1-mobile-n128-editing-regression.json",
+    "docs/evidence/a7-b1-mobile-n128-limb-held.png",
+    "docs/evidence/a7-b1-mobile-n128-limb-proof.json",
+    "docs/evidence/a7-b1-mobile-n256-editing-regression.json",
+    "docs/evidence/a7-b1-mobile-n256-limb-held.png",
+    "docs/evidence/a7-b1-mobile-n256-limb-proof.json",
+    "docs/evidence/a7-b1-mobile-n256-regression-trace.zip",
+    "docs/evidence/a7-b1-numerical.txt",
+    "docs/evidence/a7-b1-verification.json",
+    "docs/evidence/a7-b2a-browser-results.json",
+    "docs/evidence/a7-b2a-browser.txt",
+    "docs/evidence/a7-b2a-build.txt",
+    "docs/evidence/a7-b2a-dab-measurements.json",
+    "docs/evidence/a7-b2a-delivery.json",
+    "docs/evidence/a7-b2a-desktop-n128-editing-regression.json",
+    "docs/evidence/a7-b2a-desktop-n128-limb-held.png",
+    "docs/evidence/a7-b2a-desktop-n128-limb-proof.json",
+    "docs/evidence/a7-b2a-desktop-n256-editing-regression.json",
+    "docs/evidence/a7-b2a-desktop-n256-limb-held.png",
+    "docs/evidence/a7-b2a-desktop-n256-limb-proof.json",
+    "docs/evidence/a7-b2a-desktop-n256-regression-trace.zip",
+    "docs/evidence/a7-b2a-frozen-source.json",
+    "docs/evidence/a7-b2a-independent-reference.json",
+    "docs/evidence/a7-b2a-mobile-n128-editing-regression.json",
+    "docs/evidence/a7-b2a-mobile-n128-limb-held.png",
+    "docs/evidence/a7-b2a-mobile-n128-limb-proof.json",
+    "docs/evidence/a7-b2a-mobile-n256-editing-regression.json",
+    "docs/evidence/a7-b2a-mobile-n256-limb-held.png",
+    "docs/evidence/a7-b2a-mobile-n256-limb-proof.json",
+    "docs/evidence/a7-b2a-mobile-n256-regression-trace.zip",
+    "docs/evidence/a7-b2a-numerical.txt",
+    "docs/evidence/a7-b2a-verification.json",
+    "docs/evidence/a7-b2b1-browser-results.json",
+    "docs/evidence/a7-b2b1-browser.txt",
+    "docs/evidence/a7-b2b1-build.txt",
+    "docs/evidence/a7-b2b1-delivery.json",
+    "docs/evidence/a7-b2b1-desktop-n128-editing-regression.json",
+    "docs/evidence/a7-b2b1-desktop-n128-limb-held.png",
+    "docs/evidence/a7-b2b1-desktop-n128-limb-proof.json",
+    "docs/evidence/a7-b2b1-desktop-n256-editing-regression.json",
+    "docs/evidence/a7-b2b1-desktop-n256-limb-held.png",
+    "docs/evidence/a7-b2b1-desktop-n256-limb-proof.json",
+    "docs/evidence/a7-b2b1-desktop-n256-regression-trace.zip",
+    "docs/evidence/a7-b2b1-frozen-source.json",
+    "docs/evidence/a7-b2b1-independent-path-proof.json",
+    "docs/evidence/a7-b2b1-mobile-n128-editing-regression.json",
+    "docs/evidence/a7-b2b1-mobile-n128-limb-held.png",
+    "docs/evidence/a7-b2b1-mobile-n128-limb-proof.json",
+    "docs/evidence/a7-b2b1-mobile-n256-editing-regression.json",
+    "docs/evidence/a7-b2b1-mobile-n256-limb-held.png",
+    "docs/evidence/a7-b2b1-mobile-n256-limb-proof.json",
+    "docs/evidence/a7-b2b1-mobile-n256-regression-trace.zip",
+    "docs/evidence/a7-b2b1-numerical.txt",
+    "docs/evidence/a7-b2b1-path-measurements.json",
+    "docs/evidence/a7-b2b1-verification.json",
+    "docs/evidence/a7-b2b2-browser-results.json",
+    "docs/evidence/a7-b2b2-browser.txt",
+    "docs/evidence/a7-b2b2-build.txt",
+    "docs/evidence/a7-b2b2-delivery.json",
+    "docs/evidence/a7-b2b2-desktop-n128-editing-regression.json",
+    "docs/evidence/a7-b2b2-desktop-n128-limb-held.png",
+    "docs/evidence/a7-b2b2-desktop-n128-limb-proof.json",
+    "docs/evidence/a7-b2b2-desktop-n256-editing-regression.json",
+    "docs/evidence/a7-b2b2-desktop-n256-limb-held.png",
+    "docs/evidence/a7-b2b2-desktop-n256-limb-proof.json",
+    "docs/evidence/a7-b2b2-desktop-n256-regression-trace.zip",
+    "docs/evidence/a7-b2b2-frozen-source.json",
+    "docs/evidence/a7-b2b2-independent-stroke-reference.json",
+    "docs/evidence/a7-b2b2-mobile-n128-editing-regression.json",
+    "docs/evidence/a7-b2b2-mobile-n128-limb-held.png",
+    "docs/evidence/a7-b2b2-mobile-n128-limb-proof.json",
+    "docs/evidence/a7-b2b2-mobile-n256-editing-regression.json",
+    "docs/evidence/a7-b2b2-mobile-n256-limb-held.png",
+    "docs/evidence/a7-b2b2-mobile-n256-limb-proof.json",
+    "docs/evidence/a7-b2b2-mobile-n256-regression-trace.zip",
+    "docs/evidence/a7-b2b2-numerical.txt",
+    "docs/evidence/a7-b2b2-stroke-measurements.json",
+    "docs/evidence/a7-b2b2-verification.json",
+    "docs/evidence/a7-c-browser-results.json",
+    "docs/evidence/a7-c-browser.txt",
+    "docs/evidence/a7-c-build.txt",
+    "docs/evidence/a7-c-delivery.json",
+    "docs/evidence/a7-c-desktop-cuts-and-wrap.json",
+    "docs/evidence/a7-c-desktop-editing-trace.zip",
+    "docs/evidence/a7-c-desktop-end-cap.png",
+    "docs/evidence/a7-c-desktop-end-rim-held.png",
+    "docs/evidence/a7-c-desktop-end-rim-proof.json",
+    "docs/evidence/a7-c-desktop-end-rim-trace.zip",
+    "docs/evidence/a7-c-desktop-interruptions.json",
+    "docs/evidence/a7-c-desktop-large-footprint.json",
+    "docs/evidence/a7-c-desktop-large-footprint.png",
+    "docs/evidence/a7-c-desktop-n128-measured.png",
+    "docs/evidence/a7-c-desktop-n128-measurements.json",
+    "docs/evidence/a7-c-desktop-n256-measured.png",
+    "docs/evidence/a7-c-desktop-n256-measurements.json",
+    "docs/evidence/a7-c-desktop-native-input.json",
+    "docs/evidence/a7-c-desktop-navigation.json",
+    "docs/evidence/a7-c-desktop-physical-edited.png",
+    "docs/evidence/a7-c-desktop-replacement.json",
+    "docs/evidence/a7-c-desktop-start-cap.png",
+    "docs/evidence/a7-c-desktop-start-rim-held.png",
+    "docs/evidence/a7-c-desktop-start-rim-proof.json",
+    "docs/evidence/a7-c-desktop-start-rim-trace.zip",
+    "docs/evidence/a7-c-desktop-surface-map-edited.png",
+    "docs/evidence/a7-c-desktop-toolbar-corrected-trace.zip",
+    "docs/evidence/a7-c-desktop-tools.png",
+    "docs/evidence/a7-c-desktop-workflow.json",
+    "docs/evidence/a7-c-discovery.json",
+    "docs/evidence/a7-c-frozen-source.json",
+    "docs/evidence/a7-c-initial-toolbar-failure-error-context.md",
+    "docs/evidence/a7-c-initial-toolbar-failure-screenshot.png",
+    "docs/evidence/a7-c-initial-toolbar-failure-trace.zip",
+    "docs/evidence/a7-c-mobile-cuts-and-wrap.json",
+    "docs/evidence/a7-c-mobile-editing-trace.zip",
+    "docs/evidence/a7-c-mobile-end-cap.png",
+    "docs/evidence/a7-c-mobile-end-rim-held.png",
+    "docs/evidence/a7-c-mobile-end-rim-proof.json",
+    "docs/evidence/a7-c-mobile-end-rim-trace.zip",
+    "docs/evidence/a7-c-mobile-interruptions.json",
+    "docs/evidence/a7-c-mobile-large-footprint.json",
+    "docs/evidence/a7-c-mobile-large-footprint.png",
+    "docs/evidence/a7-c-mobile-n128-measured.png",
+    "docs/evidence/a7-c-mobile-n128-measurements.json",
+    "docs/evidence/a7-c-mobile-n256-measured.png",
+    "docs/evidence/a7-c-mobile-n256-measurements.json",
+    "docs/evidence/a7-c-mobile-native-input.json",
+    "docs/evidence/a7-c-mobile-navigation.json",
+    "docs/evidence/a7-c-mobile-physical-edited.png",
+    "docs/evidence/a7-c-mobile-replacement.json",
+    "docs/evidence/a7-c-mobile-start-cap.png",
+    "docs/evidence/a7-c-mobile-start-rim-held.png",
+    "docs/evidence/a7-c-mobile-start-rim-proof.json",
+    "docs/evidence/a7-c-mobile-start-rim-trace.zip",
+    "docs/evidence/a7-c-mobile-surface-map-edited.png",
+    "docs/evidence/a7-c-mobile-toolbar-corrected-trace.zip",
+    "docs/evidence/a7-c-mobile-tools.png",
+    "docs/evidence/a7-c-mobile-workflow.json",
+    "docs/evidence/a7-c-numerical.txt",
+    "docs/evidence/a7-c-preview-allocation.json",
+    "docs/evidence/a7-c-regression-desktop-n128-limb-proof.json",
+    "docs/evidence/a7-c-regression-desktop-n256-limb-proof.json",
+    "docs/evidence/a7-c-regression-mobile-n128-limb-proof.json",
+    "docs/evidence/a7-c-regression-mobile-n256-limb-proof.json",
+    "docs/evidence/a7-c-rims-browser-results.json",
+    "docs/evidence/a7-c-rims-browser.txt",
+    "docs/evidence/a7-c-rims-frozen-source.json",
+    "docs/evidence/a7-c-source-bridge.json",
+    "docs/evidence/a7-c-supplement-typecheck.txt",
+    "docs/evidence/a7-c-verification.json",
+    "docs/evidence/a7-d-badge-fixed-browser-results.json",
+    "docs/evidence/a7-d-badge-fixed-browser.txt",
+    "docs/evidence/a7-d-badge-fixed-frozen-source.json",
+    "docs/evidence/a7-d-browser-memory.json",
+    "docs/evidence/a7-d-browser-results.json",
+    "docs/evidence/a7-d-browser.txt",
+    "docs/evidence/a7-d-build.txt",
+    "docs/evidence/a7-d-delivery.json",
+    "docs/evidence/a7-d-desktop-connected-editor.png",
+    "docs/evidence/a7-d-desktop-failures-trace.zip",
+    "docs/evidence/a7-d-desktop-failures.json",
+    "docs/evidence/a7-d-desktop-held-checkpoint-trace.zip",
+    "docs/evidence/a7-d-desktop-held-checkpoint.json",
+    "docs/evidence/a7-d-desktop-held-dirty-checkpoint.png",
+    "docs/evidence/a7-d-desktop-n128-performance.json",
+    "docs/evidence/a7-d-desktop-n128-reopened.png",
+    "docs/evidence/a7-d-desktop-n256-performance.json",
+    "docs/evidence/a7-d-desktop-n256-persistence-trace.zip",
+    "docs/evidence/a7-d-desktop-n256-reopened.png",
+    "docs/evidence/a7-d-desktop-n64-performance.json",
+    "docs/evidence/a7-d-desktop-n64-reopened.png",
+    "docs/evidence/a7-d-desktop-native-input-trace.zip",
+    "docs/evidence/a7-d-desktop-native-input.json",
+    "docs/evidence/a7-d-desktop-physical-editor.png",
+    "docs/evidence/a7-d-desktop-production-reopened.png",
+    "docs/evidence/a7-d-desktop-regression-editing-n128-measurements.json",
+    "docs/evidence/a7-d-desktop-regression-editing-n256-measurements.json",
+    "docs/evidence/a7-d-desktop-regression-end-rim-proof.json",
+    "docs/evidence/a7-d-desktop-regression-sphere-n128-proof.json",
+    "docs/evidence/a7-d-desktop-regression-sphere-n256-proof.json",
+    "docs/evidence/a7-d-desktop-regression-start-rim-proof.json",
+    "docs/evidence/a7-d-desktop-reopened.png",
+    "docs/evidence/a7-d-desktop-shape-selection.png",
+    "docs/evidence/a7-d-desktop-workflow-trace.zip",
+    "docs/evidence/a7-d-desktop-workflow.json",
+    "docs/evidence/a7-d-focus-browser-results.json",
+    "docs/evidence/a7-d-frozen-source.json",
+    "docs/evidence/a7-d-initial-browser-results.json",
+    "docs/evidence/a7-d-initial-browser.txt",
+    "docs/evidence/a7-d-initial-frozen-source.json",
+    "docs/evidence/a7-d-initial-held-badge.json",
+    "docs/evidence/a7-d-initial-pending-exit.json",
+    "docs/evidence/a7-d-mobile-connected-editor.png",
+    "docs/evidence/a7-d-mobile-failures-trace.zip",
+    "docs/evidence/a7-d-mobile-failures.json",
+    "docs/evidence/a7-d-mobile-held-checkpoint-trace.zip",
+    "docs/evidence/a7-d-mobile-held-checkpoint.json",
+    "docs/evidence/a7-d-mobile-held-dirty-checkpoint.png",
+    "docs/evidence/a7-d-mobile-n128-performance.json",
+    "docs/evidence/a7-d-mobile-n128-reopened.png",
+    "docs/evidence/a7-d-mobile-n256-performance.json",
+    "docs/evidence/a7-d-mobile-n256-persistence-trace.zip",
+    "docs/evidence/a7-d-mobile-n256-reopened.png",
+    "docs/evidence/a7-d-mobile-n64-performance.json",
+    "docs/evidence/a7-d-mobile-n64-reopened.png",
+    "docs/evidence/a7-d-mobile-native-input-trace.zip",
+    "docs/evidence/a7-d-mobile-native-input.json",
+    "docs/evidence/a7-d-mobile-physical-editor.png",
+    "docs/evidence/a7-d-mobile-production-reopened.png",
+    "docs/evidence/a7-d-mobile-regression-editing-n128-measurements.json",
+    "docs/evidence/a7-d-mobile-regression-editing-n256-measurements.json",
+    "docs/evidence/a7-d-mobile-regression-end-rim-proof.json",
+    "docs/evidence/a7-d-mobile-regression-sphere-n128-proof.json",
+    "docs/evidence/a7-d-mobile-regression-sphere-n256-proof.json",
+    "docs/evidence/a7-d-mobile-regression-start-rim-proof.json",
+    "docs/evidence/a7-d-mobile-reopened.png",
+    "docs/evidence/a7-d-mobile-shape-selection.png",
+    "docs/evidence/a7-d-mobile-workflow-trace.zip",
+    "docs/evidence/a7-d-mobile-workflow.json",
+    "docs/evidence/a7-d-numerical.txt",
+    "docs/evidence/a7-d-preview-allocation.json",
+    "docs/evidence/a7-d-production-smoke.json",
+    "docs/evidence/a7-d-v4-guard-audit.json",
+    "docs/evidence/a7-d-verification.json",
+    "docs/evidence/atlas-desktop.png",
+    "docs/evidence/atlas-mobile.png"
+  ],
+  "roadmapTableSha256": "15e25a0574a7927128c687d0ae2775151d5ece99b9212365f94dacfcf0d18358",
+  "roadmapUnchanged": true,
+  "issue1Preserved": true,
+  "traceInventory": [
+    {
+      "title": "GPU palette and projected coverage agree with independent double-precision authority at every cylinder detail",
+      "project": "desktop",
+      "path": "docs/evidence/a7-p1a-desktop-case-1-trace.zip",
+      "sha256": "4331e4fd90d65ac52f07bccd099d62223929ed9ef402d71b8e68acf94b094271"
+    },
+    {
+      "title": "unified N128 rapid navigation, cuts, caps, resize and v4 preserve exact terrain",
+      "project": "desktop",
+      "path": "docs/evidence/a7-p1a-desktop-case-2-trace.zip",
+      "sha256": "42c9c81c73d12f8de068abe455239fb86b147165d5a17e813c78ac80b0dbefc4"
+    },
+    {
+      "title": "unified N256 rapid navigation, cuts, caps, resize and v4 preserve exact terrain",
+      "project": "desktop",
+      "path": "docs/evidence/a7-p1a-desktop-case-3-trace.zip",
+      "sha256": "6421b223e1b0446fbc050923cbf3d3180c85e455a2246da21f32b78ff7daee55"
+    },
+    {
+      "title": "device loss and recovery retain held accepted work and exact history; fallback remains editable",
+      "project": "desktop",
+      "path": "docs/evidence/a7-p1a-desktop-case-4-trace.zip",
+      "sha256": "42b221829c19774d77be11654beab3d988836401b14d472bdcfbfb238dde88c7"
+    },
+    {
+      "title": "unavailable WebGL uses correct CPU fallback, readouts, Undo/Redo and v4 Save/Open",
+      "project": "desktop",
+      "path": "docs/evidence/a7-p1a-desktop-case-5-trace.zip",
+      "sha256": "e6c381627fe83343622be305806ce205cbedaa96fdf9f2a6600d7f4a696cbcfd"
+    },
+    {
+      "title": "shader-failure WebGL uses correct CPU fallback, readouts, Undo/Redo and v4 Save/Open",
+      "project": "desktop",
+      "path": "docs/evidence/a7-p1a-desktop-case-6-trace.zip",
+      "sha256": "8917c0f5780b8be52bc02259fbddf899ae42a4f4bbf8e32723b934fd136d44a5"
+    },
+    {
+      "title": "independent pointer follows held N256 input while exact numerical work is pending",
+      "project": "desktop",
+      "path": "docs/evidence/a7-p1a-desktop-case-7-trace.zip",
+      "sha256": "d14453d4c1dfce0fac4bd8ddef4ca28460c50d08174847c8b8981c3519f64293"
+    },
+    {
+      "title": "GPU palette and projected coverage agree with independent double-precision authority at every cylinder detail",
+      "project": "mobile",
+      "path": "docs/evidence/a7-p1a-mobile-case-8-trace.zip",
+      "sha256": "7aae40db1e8c12bee22b723c0a3d15130c2233f4fcce29c72eb16d53787bd530"
+    },
+    {
+      "title": "unified N128 rapid navigation, cuts, caps, resize and v4 preserve exact terrain",
+      "project": "mobile",
+      "path": "docs/evidence/a7-p1a-mobile-case-9-trace.zip",
+      "sha256": "be9233d9cd7cba12008a0b0816d44e0d8e905d8bba64bd9bcd2f225b04c79998"
+    },
+    {
+      "title": "unified N256 rapid navigation, cuts, caps, resize and v4 preserve exact terrain",
+      "project": "mobile",
+      "path": "docs/evidence/a7-p1a-mobile-case-10-trace.zip",
+      "sha256": "90a04b2474b0b5d5884e16795e2741dd6c9dff417f827ed05222f606128262b5"
+    },
+    {
+      "title": "device loss and recovery retain held accepted work and exact history; fallback remains editable",
+      "project": "mobile",
+      "path": "docs/evidence/a7-p1a-mobile-case-11-trace.zip",
+      "sha256": "c33870118f4b1a0d1feb787cdfb98f10876c41baa38ddff8d90b613a90a91ec5"
+    },
+    {
+      "title": "unavailable WebGL uses correct CPU fallback, readouts, Undo/Redo and v4 Save/Open",
+      "project": "mobile",
+      "path": "docs/evidence/a7-p1a-mobile-case-12-trace.zip",
+      "sha256": "0dbbcc152373114071c6aef9c83d7dbdaf612106d28f303190a7763ddc10497e"
+    },
+    {
+      "title": "shader-failure WebGL uses correct CPU fallback, readouts, Undo/Redo and v4 Save/Open",
+      "project": "mobile",
+      "path": "docs/evidence/a7-p1a-mobile-case-13-trace.zip",
+      "sha256": "f10e040b78d66f983b744b86133112a32522aceb320d4891be93bd8bd3d94b16"
+    },
+    {
+      "title": "independent pointer follows held N256 input while exact numerical work is pending",
+      "project": "mobile",
+      "path": "docs/evidence/a7-p1a-mobile-case-14-trace.zip",
+      "sha256": "37793e3ab06d5c6b8d6100fc1e4e192b166687c8e53d95361846bec7962ead83"
+    }
+  ],
+  "hardwareTraceInventory": [
+    {
+      "title": "cylinder real complete workflow: visible physical side, both caps, four tools, exact history and canonical previews",
+      "project": "desktop",
+      "path": "docs/evidence/a7-p1a-desktop-hardware-regression-1-trace.zip",
+      "sha256": "e4e33b8d782e004492201101cf93ddef1b5a967c6807e287eb90511c27bc8194"
+    },
+    {
+      "title": "cylinder real complete workflow: visible physical side, both caps, four tools, exact history and canonical previews",
+      "project": "mobile",
+      "path": "docs/evidence/a7-p1a-mobile-hardware-regression-2-trace.zip",
+      "sha256": "b355325d785fb0e9717ee92220ce34f9382df7a6e6c19bebd9a60d02a3ae11d3"
+    },
+    {
+      "title": "cylinder native pen, touch, two-finger takeover and keyboard have exclusive numerical ownership",
+      "project": "desktop",
+      "path": "docs/evidence/a7-p1a-desktop-hardware-regression-3-trace.zip",
+      "sha256": "9a494be9a9dc7ef57009287db80dab95e6d1badf0553c2873bcd9f737c9b8781"
+    },
+    {
+      "title": "cylinder native pen, touch, two-finger takeover and keyboard have exclusive numerical ownership",
+      "project": "mobile",
+      "path": "docs/evidence/a7-p1a-mobile-hardware-regression-4-trace.zip",
+      "sha256": "fc0642178f242a70c99e96d73a8b30237d0e76cc39773e98fbf48d2a302fc773"
+    },
+    {
+      "title": "normal Atlas creates, sculpts all four tools and both rims, saves, switches and reopens exact v4 geography",
+      "project": "desktop",
+      "path": "docs/evidence/a7-p1a-desktop-hardware-regression-5-trace.zip",
+      "sha256": "d5c5df6d79ee115aec03bb0b5e8be9f97a4cc34bc0b4f47592f805da5d83dbea"
+    },
+    {
+      "title": "normal Atlas creates, sculpts all four tools and both rims, saves, switches and reopens exact v4 geography",
+      "project": "mobile",
+      "path": "docs/evidence/a7-p1a-mobile-hardware-regression-6-trace.zip",
+      "sha256": "516ca13663bf850b716fb96893742f34a57841cb81232acc0a24b209e5fb8837"
+    },
+    {
+      "title": "held stroke Save drains, native pen and touch edit, two fingers navigate, cancellation stays reversible",
+      "project": "desktop",
+      "path": "docs/evidence/a7-p1a-desktop-hardware-regression-7-trace.zip",
+      "sha256": "fc6f98622c2af8b33ae99b7186c6422c6be0095334eaee5f88095f36a698e11a"
+    },
+    {
+      "title": "held stroke Save drains, native pen and touch edit, two fingers navigate, cancellation stays reversible",
+      "project": "mobile",
+      "path": "docs/evidence/a7-p1a-mobile-hardware-regression-8-trace.zip",
+      "sha256": "19d5bdde492f448ef5611dad0e28b0ee6ef126c3062e899739fe122244bd30af"
+    }
+  ],
+  "freshRegressionReceipts": [
+    "docs/evidence/a7-p1a-regression-desktop-n128-measurements.json",
+    "docs/evidence/a7-p1a-regression-desktop-n256-measurements.json",
+    "docs/evidence/a7-p1a-regression-mobile-n128-measurements.json",
+    "docs/evidence/a7-p1a-regression-mobile-n256-measurements.json"
+  ],
+  "inventory": [
+    {
+      "path": "README.md",
+      "bytes": 17822,
+      "sha256": "d4cb34097ccbd84ef6fa0ccf24b4653beadba3e47355dc0fae5fa7204b02640d",
+      "gitBlobSha1": "6cfa3428b9ede2d9a6e38190a8d649d76eec8f24"
+    },
+    {
+      "path": "docs/CYLINDRICAL-EDITING.md",
+      "bytes": 16270,
+      "sha256": "81e55046da859718d792cc8d9ade981cc08aade3b569c44141cbd2e089083618",
+      "gitBlobSha1": "22a112641c2163ddd07e5992434a52d16f35124e"
+    },
+    {
+      "path": "docs/PHASE-1-HEIGHTMAP-ROADMAP.md",
+      "bytes": 32683,
+      "sha256": "7e305996e8d7597fed01e61a173e48696af4286188e20bd676469bfdaa53dcc0",
+      "gitBlobSha1": "53bac3e049ddde2df2546f878dfba49152582196"
+    },
+    {
+      "path": "src/components/CylinderPreview.css",
+      "bytes": 5333,
+      "sha256": "20222555a0f110382485fcee9323d008d21cc6a456680749b3b4f65518b8ee77",
+      "gitBlobSha1": "4bb09ad3452179142c7da78a8888910daf02beb3"
+    },
+    {
+      "path": "src/components/CylinderPreview.tsx",
+      "bytes": 34670,
+      "sha256": "6cb813c9a83801f9374f13440369abf8b17b1a405d983eb5984aa10a3e4c2041",
+      "gitBlobSha1": "f0815612a37f2f02d5a596edb846965a29c30987"
+    },
+    {
+      "path": "src/editor/cylinder-preview-session.ts",
+      "bytes": 12814,
+      "sha256": "366b993310e1a180f2a16dca41e92d1bbf9b9fcca465e736782bbca2f7a29961",
+      "gitBlobSha1": "fe2333149cd18d559038f34ec13c9dc66d22223b"
+    },
+    {
+      "path": "docs/A7-P1A-COMPLETION.md",
+      "bytes": 20388,
+      "sha256": "7be4cf0e91fb55a9953c3b3c43f4257609c6a8bc968611bdd7f1fb36ca28e2f0",
+      "gitBlobSha1": "777d111f9191ce88db7010513c26e58f9916d20b"
+    },
+    {
+      "path": "docs/CYLINDER-RENDERING.md",
+      "bytes": 6638,
+      "sha256": "d0e3f750e8141bb1736dd31447f084ccc07418dae148cc99462479dc1e17ecf5",
+      "gitBlobSha1": "6b6fb7bb8835422ca5089c80218d7664c57f8f82"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-desktop-zoom-trace.zip",
+      "bytes": 748149,
+      "sha256": "afbfe3dfef61b7ba0ba9dc94659b6d4c8c13efc30a121bcbcc09057dccc459b6",
+      "gitBlobSha1": "a0ba1ec32d4d1b3c1b505d4a74d33240e600643c"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-desktop-zoomed-map.png",
+      "bytes": 520436,
+      "sha256": "0df9d20e97d01ef5e741cd41ec2048b49946c60a74ff9fb454adb7404c89f4dc",
+      "gitBlobSha1": "af562725bbc11de1808443ccafb3705f2bc97ab0"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-desktop-zoomed-physical.png",
+      "bytes": 470083,
+      "sha256": "98bb301f04e8bc6b2c127618f5d4f21be6621694cd130bb2d4f191e47ab7d18f",
+      "gitBlobSha1": "0799ccd5e509dddbfcf4da260ff84a6df2fdaea0"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-hardware-benchmarks.json",
+      "bytes": 619781,
+      "sha256": "52725dd2bcaf37fd2d4fd3d785251aa2c9e4fa7384f8023c4c584147650e10ca",
+      "gitBlobSha1": "ee0bec2353307de8fc10130495484a0444c671ef"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-hardware-desktop-n128-chromium-trace.json.gz",
+      "bytes": 4762716,
+      "sha256": "c42fa4c69476bf854b1cee1d60b6f925c56b6d677ffb4e8bab60a875147cf424",
+      "gitBlobSha1": "f2d205a124dd745fe8148e9d8bd7bc31b7a0d03e"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-hardware-desktop-n128-map.png",
+      "bytes": 467121,
+      "sha256": "4fcabdc5de034d4e7828330b138cf094fe791bf0b55c9db83ecc5f1cee56eec1",
+      "gitBlobSha1": "a1b877a2ea892907dc9aabc024eeb7123633caff"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-hardware-desktop-n128-physical.png",
+      "bytes": 451432,
+      "sha256": "9f37bd1ec32d77338b19d52238cf18e01172f49efb6b4c370fe71bab5392598c",
+      "gitBlobSha1": "762fecab2078250f379c6ee7e7ea92356aef8e87"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-hardware-desktop-n128-trace.zip",
+      "bytes": 7918186,
+      "sha256": "a51ce98463ee5a89a0637a2b77a283ed97fa7eb537414adcf04031d8cf5b46fe",
+      "gitBlobSha1": "0adc6e788b9627150c79acbb9c76fbb8114304a6"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-hardware-desktop-n256-map.png",
+      "bytes": 460961,
+      "sha256": "861f837de7611eee2c2d41c653c4fe7867cc898e90472e3f8cef1ef6c88b1fcf",
+      "gitBlobSha1": "05f264afaf0825f2a765db589da0df85c4ae9502"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-hardware-desktop-n256-physical.png",
+      "bytes": 451271,
+      "sha256": "0c8c934f03004da4e697cf5fca00c668b5c02bd5769f8b900d8e1f870c273e34",
+      "gitBlobSha1": "f95e376ee68add8692eb446b8ce3688644a1d03d"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-hardware-desktop-n64-map.png",
+      "bytes": 468061,
+      "sha256": "bea6f0c1a51db80d99a973561cc24614b5009feb9cb0ff0ee0fcda6f221956e1",
+      "gitBlobSha1": "0d4707f021f069bea6fb2c012341246c63924135"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-hardware-desktop-n64-physical.png",
+      "bytes": 446734,
+      "sha256": "9ee79797cb4ca5c9672b61b818a14f6a38c16c6454bfac5a9efd676af0afb753",
+      "gitBlobSha1": "cc236b16354b8f903683acf5187744713a2b0956"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-hardware-mobile-n128-chromium-trace.json.gz",
+      "bytes": 6155745,
+      "sha256": "814e04a7c0dbeaab40ac301c3e4392c5f5d85dcb3710ace13df2a74880d85bb5",
+      "gitBlobSha1": "87b1cb38144ac7a8cade26e3f80c948d15f8e8d4"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-hardware-mobile-n128-map.png",
+      "bytes": 889318,
+      "sha256": "237bd2cb3ffc591b567049ede334fc6a94229e975d1d95b6a740f174292cc07f",
+      "gitBlobSha1": "718c85313800e5ffa193d3b16508a7ac1f4073b7"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-hardware-mobile-n128-physical.png",
+      "bytes": 776409,
+      "sha256": "c1895b54700561197685aac292ec8b45244b098eb1e9762800624fc4cbb480ad",
+      "gitBlobSha1": "2886d6677c99ac074283f5118f750cee40a37296"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-hardware-mobile-n128-trace.zip",
+      "bytes": 10674440,
+      "sha256": "b43f3ffffca32ff5175603ad6ecd311860599267b38e7cb91035b4d6b0819715",
+      "gitBlobSha1": "d6d09853cb887998f16f082cc8eee88a11180941"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-hardware-mobile-n256-map.png",
+      "bytes": 887424,
+      "sha256": "bfb03c3c133a5287bd6c0ba025dbf78d25dae82ebf748c80cf2409c9b6759712",
+      "gitBlobSha1": "5486ca8e3e58613f73e37b437d402b5db79b90c2"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-hardware-mobile-n256-physical.png",
+      "bytes": 774939,
+      "sha256": "6e43e62c78701ba4023ccb62b49d955366edba3e82beeb0f6cce14e35a252a39",
+      "gitBlobSha1": "db215cf590895bcb438869a505e55e319dff04da"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-hardware-mobile-n64-map.png",
+      "bytes": 892228,
+      "sha256": "2483d15f9262b5835d095c76fbc76f17f2d88bc6fbd0eb80ba7b9565d94fca37",
+      "gitBlobSha1": "2c21d2154c93c922339d11ae7517f30de33255e5"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-hardware-mobile-n64-physical.png",
+      "bytes": 779653,
+      "sha256": "d4e52b4c6e82d0ceba52bd2e6cddde6747c3f0b715e813cebc907717cc2b8a4a",
+      "gitBlobSha1": "c4a383a59d83d75001add67e6fcb5aaffb6be029"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-mobile-zoom-trace.zip",
+      "bytes": 991384,
+      "sha256": "56242254bcb6f64885a40ada99aaf544adf04b791b1de4c3b78ff72d9bd6aaa9",
+      "gitBlobSha1": "a6a3d22bcc1865ff8ec2f3d28f4b03d0944df60f"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-mobile-zoomed-map.png",
+      "bytes": 958006,
+      "sha256": "0ab10f4e5ec363bbce926f7d6d7cd42bef651f2f47a43ebefff5415596b4fced",
+      "gitBlobSha1": "295017f6b8c2a60970a143456a4c0e7d38701c56"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-baseline-mobile-zoomed-physical.png",
+      "bytes": 543428,
+      "sha256": "c8363cb039e8c29704ea430959c6f1f18d2b9307daa5c927a183549db3da7910",
+      "gitBlobSha1": "3539d7358da92c34eded8c51dcba23a08d143b4b"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-browser-results.json",
+      "bytes": 384200,
+      "sha256": "70ea4212de89ae3d698664b3ee69ff9c4af08373e57da1028a781c271269f423",
+      "gitBlobSha1": "10629001ebf2603c82660b2f0102fa24276293eb"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-build.txt",
+      "bytes": 474,
+      "sha256": "b0607970c6aca4381162eb8349faac97294ec27a5a734d865d7250d1c4491062",
+      "gitBlobSha1": "816668da76ef48eea45ecf43eaa868d9590fd8e7"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-case-1-trace.zip",
+      "bytes": 125712,
+      "sha256": "4331e4fd90d65ac52f07bccd099d62223929ed9ef402d71b8e68acf94b094271",
+      "gitBlobSha1": "86007015d9decdb31f363b142d10f5544a22d0ad"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-case-2-trace.zip",
+      "bytes": 7247720,
+      "sha256": "42c9c81c73d12f8de068abe455239fb86b147165d5a17e813c78ac80b0dbefc4",
+      "gitBlobSha1": "fe2053aba664ef71a86bc472683ae0db75ed98a5"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-case-3-trace.zip",
+      "bytes": 8198990,
+      "sha256": "6421b223e1b0446fbc050923cbf3d3180c85e455a2246da21f32b78ff7daee55",
+      "gitBlobSha1": "721a4a4e36f3890bc03928ba24311cf05788ea3a"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-case-4-trace.zip",
+      "bytes": 1672830,
+      "sha256": "42b221829c19774d77be11654beab3d988836401b14d472bdcfbfb238dde88c7",
+      "gitBlobSha1": "25b097dc720989aa5035d7d34350f9c37dbaa33d"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-case-5-trace.zip",
+      "bytes": 1865798,
+      "sha256": "e6c381627fe83343622be305806ce205cbedaa96fdf9f2a6600d7f4a696cbcfd",
+      "gitBlobSha1": "4e6c93c7e1bb1b45f38eb92a7f5b6828d6e846ab"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-case-6-trace.zip",
+      "bytes": 1613158,
+      "sha256": "8917c0f5780b8be52bc02259fbddf899ae42a4f4bbf8e32723b934fd136d44a5",
+      "gitBlobSha1": "3e615d1e0d3057e1fa390c7a0557d311ae68a04f"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-case-7-trace.zip",
+      "bytes": 3222317,
+      "sha256": "d14453d4c1dfce0fac4bd8ddef4ca28460c50d08174847c8b8981c3519f64293",
+      "gitBlobSha1": "2bb0b546f5ce42b312182bb4cd5c6d3a3a858ad1"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-context-lost.png",
+      "bytes": 342176,
+      "sha256": "b9bb09b794875c37fe52ac8607ca7271dbf14f92b2ff53029a013460eddaa293",
+      "gitBlobSha1": "2f5369c02098f9e5c18180f4c6b343e895dc560e"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-context-restored.png",
+      "bytes": 302015,
+      "sha256": "b9608f6f11e704a260ba332f6b48fedf6a64647db85f912b7e11debf4edaca0b",
+      "gitBlobSha1": "8d86101ca61a59694c56f938167480add92addbc"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-device-loss.json",
+      "bytes": 1251,
+      "sha256": "933f24eb226825b0dc38afb672219ca9b1d7d477656d1532fa364a41a454e634",
+      "gitBlobSha1": "5632e78d4f042939514727ef9fccef02b3d8845a"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-fallback.json",
+      "bytes": 377,
+      "sha256": "c1aefff816bfe21cd13d9e5abff8f63730506bad7772a4ef8603fc27e0d8e3ca",
+      "gitBlobSha1": "dd7faad854e68b3d80a22f5a54e77f29b57da2cf"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-gpu-parity.json",
+      "bytes": 29628,
+      "sha256": "e3b2f1dd237679a8f29d800eef399438730420f8d67f56f209489cda01c62283",
+      "gitBlobSha1": "a78de0b13246a9f10feb0cf261739561636238e0"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-hardware-native-proof.json",
+      "bytes": 40021,
+      "sha256": "76b328e66b81f879de73ae50d7b780138a26b6c4356db8454d21ac023f1db826",
+      "gitBlobSha1": "7a3d70605338173e80f481dd912b548a3f80f74f"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-hardware-regression-1-trace.zip",
+      "bytes": 13810336,
+      "sha256": "e4e33b8d782e004492201101cf93ddef1b5a967c6807e287eb90511c27bc8194",
+      "gitBlobSha1": "c5ae59e1901e5763966fd41bc25de654291d38e2"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-hardware-regression-3-trace.zip",
+      "bytes": 1787267,
+      "sha256": "9a494be9a9dc7ef57009287db80dab95e6d1badf0553c2873bcd9f737c9b8781",
+      "gitBlobSha1": "df6fe99f30f7664723f90f57fcb2e759708d994d"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-hardware-regression-5-trace.zip",
+      "bytes": 10468161,
+      "sha256": "d5c5df6d79ee115aec03bb0b5e8be9f97a4cc34bc0b4f47592f805da5d83dbea",
+      "gitBlobSha1": "6c3e16e3420c6afd56e5b59bd058f38cfc819f20"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-hardware-regression-7-trace.zip",
+      "bytes": 2832304,
+      "sha256": "fc6f98622c2af8b33ae99b7186c6422c6be0095334eaee5f88095f36a698e11a",
+      "gitBlobSha1": "f4e63898015b5fa02e6b016d389a99bd62a4e3f4"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-n128-navigation-reopened.png",
+      "bytes": 270596,
+      "sha256": "8261450cc11a414ac609b91f1002269d704890e4f1c7810efd04884284076588",
+      "gitBlobSha1": "b0612864701d5cec537c64c97061088a6e69439c"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-n128-navigation.json",
+      "bytes": 19914,
+      "sha256": "609c6d22fe63b55c337464fe101a3017412eed845fdf1670e928910af1e7cf22",
+      "gitBlobSha1": "5270fd28223a5ccab253928724cddf4b2b56d3fe"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-n256-navigation-reopened.png",
+      "bytes": 270592,
+      "sha256": "391322cdfb1c4dc461acaf821a54050807e64ee4b339cd175c2cd105f3c31cd7",
+      "gitBlobSha1": "4628276927dccfa468fbb5069a13fa889a4f5f33"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-n256-navigation.json",
+      "bytes": 19948,
+      "sha256": "628e41b4c6a3888eb022b5ab0db6e6bbf49bb4f26727cdde4be2ab6854aa5a58",
+      "gitBlobSha1": "60291e226e916e53f5ebe213c826d8736e42c198"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-pending-pointer.json",
+      "bytes": 74804,
+      "sha256": "93db6a6f861367e065dd0152db75abc6b7c9d5f893bef2ab039381984b1557d3",
+      "gitBlobSha1": "bcef9e6b95e8e699a69ff569948212fc47ca05cc"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-pending-pointer.png",
+      "bytes": 304564,
+      "sha256": "d91d5f62215a2d1878b92594f058b2572eed985b06fa7345ccb34b4f59c1891d",
+      "gitBlobSha1": "5a1f933cf97ca3c03f9ee3ad832563bfd4ed690f"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-shader-failure-fallback.json",
+      "bytes": 412,
+      "sha256": "631fc33e6c54f0d9a49c2aae122c0cda07904f8133111b6c03c692597a4a4ba8",
+      "gitBlobSha1": "bfbf34d02302da6573caa8e6792ce4d160f11297"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-shader-failure-fallback.png",
+      "bytes": 283117,
+      "sha256": "abb4c8192444b16a0183056af2c6b804a2476757a80f8c6c4d9756ad68d5edd2",
+      "gitBlobSha1": "a461cc922da643824de9ae2699043edf3a71a741"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-unavailable-fallback.json",
+      "bytes": 377,
+      "sha256": "c1aefff816bfe21cd13d9e5abff8f63730506bad7772a4ef8603fc27e0d8e3ca",
+      "gitBlobSha1": "dd7faad854e68b3d80a22f5a54e77f29b57da2cf"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-desktop-unavailable-fallback.png",
+      "bytes": 283117,
+      "sha256": "abb4c8192444b16a0183056af2c6b804a2476757a80f8c6c4d9756ad68d5edd2",
+      "gitBlobSha1": "a461cc922da643824de9ae2699043edf3a71a741"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-focus-browser-results.json",
+      "bytes": 12584,
+      "sha256": "5925dc56731f65f6ea9b8da72088f3820251e69b1c89aa4e37cd0576f60ae661",
+      "gitBlobSha1": "1727f1b67426d98ddcec7bfa9a5e000eb159a5d8"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-frozen-source.json",
+      "bytes": 21984,
+      "sha256": "131315e28fbe9d2ed9596b83b4f7978ababb258761e63884e7e2d802a10a8352",
+      "gitBlobSha1": "175b3a676170fab695a6ab176b2174b11c019d26"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-hardware-desktop-production-reopened.png",
+      "bytes": 271348,
+      "sha256": "26a0bfce1c22f2da4b54ef620ed0f01b346fdbc348fb3eea4a69a3a260fd8b71",
+      "gitBlobSha1": "05dc5384451de18e0183114bf3ab10f920f2701f"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-hardware-input-browser-results.json",
+      "bytes": 18030,
+      "sha256": "c09a45a319c1cbd67c034d1f9b81aeda955a31ba320d888b6fa637f85d38d15c",
+      "gitBlobSha1": "9ee7498df2e9b25daa63bb0124524f8c6a1494cf"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-hardware-mobile-production-reopened.png",
+      "bytes": 487133,
+      "sha256": "650392a73a00a64bfaac84e2c1f4e7edd33756053d5292d77ce7aeebdebbe2a0",
+      "gitBlobSha1": "64dc89f798eff68bd89ca399b227ea5376ffcb12"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-hardware-production-smoke.json",
+      "bytes": 9351,
+      "sha256": "a700257cdf08acf85f0b76a8f775fc734ec3ef2d3ebc620da11da50a7df9b4f2",
+      "gitBlobSha1": "d4b04274338b00ab389e577c09697f5de1ded84d"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-benchmarks.json",
+      "bytes": 866159,
+      "sha256": "418c3949f4cf3e2f742506bdf797f289a7b8a53ee9863ae88085b1ae4a2a0781",
+      "gitBlobSha1": "acce8b31921310f4ba353fc7fb2d5b0372587e9d"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-desktop-n128-chromium-trace.json.gz",
+      "bytes": 4482772,
+      "sha256": "e84ba9a9d7d042fe7dc1f3fd092ce6aab6cb9baeaac90f1bbbe9d7a4eb042a36",
+      "gitBlobSha1": "4e166a26b36e3ae2e78ebf41f92ad9756b419f37"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-desktop-n128-map.png",
+      "bytes": 560062,
+      "sha256": "84d75da16fca9d5875ed0b141048f2e9529ba41ca5c15fdf27a6738e0310e585",
+      "gitBlobSha1": "accac89486fc5a1d6d114acc4c9ca774288b2156"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-desktop-n128-physical.png",
+      "bytes": 526790,
+      "sha256": "607381ef239e2373da181ec34353289d067b7ca686ae98f38098958506787cfd",
+      "gitBlobSha1": "1835603270e951ca205229859ffd1b594344dc17"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-desktop-n128-trace.zip",
+      "bytes": 8085116,
+      "sha256": "3331665564fb928558e1ac79de2928334f7600adced28b885dc6aa7ed7cadd38",
+      "gitBlobSha1": "a65f52d6b7d14102a30d54212f2b08ec3ad75911"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-desktop-n256-map.png",
+      "bytes": 557091,
+      "sha256": "1d078367e7a28fbb438918484fe76256645d5b2831d7f04a9bc98fc297ccca7a",
+      "gitBlobSha1": "c1904558041ef15fec429cd9d5aaf89144c546bd"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-desktop-n256-physical.png",
+      "bytes": 527331,
+      "sha256": "41a4fc3b297fa53d04c4098085966cbf45416839b43a931f87bb8c92934028c3",
+      "gitBlobSha1": "8c82263de8a1fe9ef893e6a4baccacfb66536643"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-desktop-n64-map.png",
+      "bytes": 561834,
+      "sha256": "08cc0dd38db8731d6fef24a48fd6efbe885831d416cc28e2b60b2e917c72c012",
+      "gitBlobSha1": "7f68c36cc4962d4db238b5337ead4c44ebd8a149"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-desktop-n64-physical.png",
+      "bytes": 523340,
+      "sha256": "6a80b507e97a6c0323cd2ecb33aa7a4bf0fc2d4c88445490e7f22da2b96cf2c4",
+      "gitBlobSha1": "ceaa4511d3b936eecd7cb1bb67303bac34760d3d"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-desktop-zoom-trace.zip",
+      "bytes": 608717,
+      "sha256": "cd466d505a6eac7d9cf13b58252d688513945175ccbdc9e0b74f334445bda081",
+      "gitBlobSha1": "85a336d8a65777b8cb5735a7dc9188020b0da9b4"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-desktop-zoomed-map.png",
+      "bytes": 495579,
+      "sha256": "4610f07311cb8a6a13aaed507b47041262700b0437b7872b5840478ff4ec318e",
+      "gitBlobSha1": "2ba1f0bc6f6e2329371c58ff781463135d337fb5"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-desktop-zoomed-physical.png",
+      "bytes": 469811,
+      "sha256": "89d4535552f95b82d0e949460646f73bbff6ca587a9431c1bafe7cdf11193587",
+      "gitBlobSha1": "afaea36af07820b46a3af7ba77f5f26668d0a672"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-hardware-benchmarks.json",
+      "bytes": 864121,
+      "sha256": "b65f879799e5cefdf8e5a51f17c5828dfed7668e54a6788dfb428092c9ee1a3b",
+      "gitBlobSha1": "852635005ec48f2026898fec043ebbb901d3b74b"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-hardware-desktop-n128-chromium-trace.json.gz",
+      "bytes": 3984100,
+      "sha256": "4a2a0a767485e5604ba27fd2d172f200dff7482869fd56fa6e45653a65abf778",
+      "gitBlobSha1": "aa0f7504d981708379bc20e22da24579ffb59aae"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-hardware-desktop-n128-map.png",
+      "bytes": 449605,
+      "sha256": "d5cc65dc6b8728c7bc3019c6e8366adb765354b3a0250e26bcefe8ac6bd9eb54",
+      "gitBlobSha1": "0895041637bbd1ef8387c68c2c69f6fc4ec56166"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-hardware-desktop-n128-physical.png",
+      "bytes": 438209,
+      "sha256": "310408ad72da5c5bbd3ee5d26ee23f120e3b761ef4648882cbd3123c75f8d992",
+      "gitBlobSha1": "bbcea6311fc5bd1a2c8faa684823323ac8094700"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-hardware-desktop-n128-trace.zip",
+      "bytes": 5370009,
+      "sha256": "fda80b631953c473687ad435a614279fc76b419fef7e7111ba3e131072b473cd",
+      "gitBlobSha1": "1bb21f0fb2ca90f5cc7edbfdfe8ff78d213867e4"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-hardware-desktop-n256-map.png",
+      "bytes": 440922,
+      "sha256": "ff7acd9f79d16a64528e376a42dbf19ac667dfcb31ff63bbac27acd980688684",
+      "gitBlobSha1": "72b238fceb1507b46d6bb3240a20b14feffdd92c"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-hardware-desktop-n256-physical.png",
+      "bytes": 437439,
+      "sha256": "eca07d290fe876a4874fe2719500664ec89d211161b3779c6a5e97f4958e1d82",
+      "gitBlobSha1": "6c033220ea5b0e9e7d0d39228e1448d3b3533494"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-hardware-desktop-n64-map.png",
+      "bytes": 453308,
+      "sha256": "5c0966ca235010613db5b6a9902ae014f10a6a7f47f64ce1bc02eae98dc4201e",
+      "gitBlobSha1": "3e4f1b8327c695e0f1d116b07b938f2faabfadbd"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-hardware-desktop-n64-physical.png",
+      "bytes": 435365,
+      "sha256": "bc66a4d81d6d59952cebb050a0e6234cb6e44ea01a4afb3e52fc0d6c73884ff4",
+      "gitBlobSha1": "fffd3e9f32c6ad65e54e069dc23e379476d18ee6"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-hardware-mobile-n128-chromium-trace.json.gz",
+      "bytes": 4283501,
+      "sha256": "e8f0f57374f36580068465c9fc4362c2118f5ac42ab02cb6150769777e488398",
+      "gitBlobSha1": "55a80cb865cefe69fff2c5b3dddb970b6282f72e"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-hardware-mobile-n128-map.png",
+      "bytes": 877470,
+      "sha256": "06783826f18407d1c062ad247f5cc1de085944569d6c24501f3ea1b2a11e9387",
+      "gitBlobSha1": "675ba0a270a5e6a0d101d7cfc16fcfdbf9ebc8d1"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-hardware-mobile-n128-physical.png",
+      "bytes": 771124,
+      "sha256": "197f986402b40a8e805d9c10150ca33df9f067222baee1a041818b65814ffcd7",
+      "gitBlobSha1": "e09be89e8b97c5b7955a31201aabc11cbf3a732f"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-hardware-mobile-n128-trace.zip",
+      "bytes": 7112789,
+      "sha256": "483f513ecb333384c71c8d572b6b21950b85f92fa6b4df89886119f22b9cb2d0",
+      "gitBlobSha1": "ed48d473d46d2c9883ea7c005f79e5dce2fa684e"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-hardware-mobile-n256-map.png",
+      "bytes": 871409,
+      "sha256": "715ef65e291d8cec8c3639ca04c52f8f9fa240d0a3b13887a55ac489efe0b079",
+      "gitBlobSha1": "758a2fb3048410ffa4c7c5958dd559cfbaf90b9f"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-hardware-mobile-n256-physical.png",
+      "bytes": 766856,
+      "sha256": "e8d36ef6162cefd0f623b558d9acbd8b48ff4e634a061487e956ba97fd417993",
+      "gitBlobSha1": "4294c58e5362030c31e9ce14cb50f0b3c64878dd"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-hardware-mobile-n64-map.png",
+      "bytes": 881155,
+      "sha256": "31ce66044a57a050814be661c307ecba5c73e28bb9171fb969326d6b5a7d8c8a",
+      "gitBlobSha1": "aa3f0c0e76d1052edc3b2a3f412bb9ab0191e713"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-hardware-mobile-n64-physical.png",
+      "bytes": 775398,
+      "sha256": "feb51e6a5f0a96e724b480cc79be8c62b431f755f2d0f26e56c242b96201f73e",
+      "gitBlobSha1": "72d746d30ea7bcc4d4d044ec2c68a1d87b173f68"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-mobile-n128-chromium-trace.json.gz",
+      "bytes": 6163371,
+      "sha256": "6cb48048ee53b7f037f9729293cf0cbafa3a8dd36b30cad1a55859d7b262ed53",
+      "gitBlobSha1": "e15f9949fb356e076ac4f8f9a058c4aaa7152481"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-mobile-n128-map.png",
+      "bytes": 1046794,
+      "sha256": "e03c5d230089f587b645bb6edae2f0fc738996659e245b35f0839d2c5efcd7db",
+      "gitBlobSha1": "1549e1cc7bfce8b11da683088b171fec62932c82"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-mobile-n128-physical.png",
+      "bytes": 844747,
+      "sha256": "7929c37ff65176d51284ee0bdc1ee2227e1a04fc6aecc2906903972f0ee6d4e7",
+      "gitBlobSha1": "0201ecb5d1ec70ff2461ce6f4f50843ab15b0e12"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-mobile-n128-trace.zip",
+      "bytes": 11756996,
+      "sha256": "2abe3b541e38e8ea81b940f8c6ef3c30bc8f43c6a93ffa146f492f50dffa0408",
+      "gitBlobSha1": "51a7d20dd3629bd4e51e260f07b5fb403f307b21"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-mobile-n256-map.png",
+      "bytes": 1046700,
+      "sha256": "1ee64ba20413a86f6733432f228aadbb65e6b5a552a1b5c3e847794f9e62be82",
+      "gitBlobSha1": "c120a7db1cd72d4cacf51d8cf7a8f4ec000193ef"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-mobile-n256-physical.png",
+      "bytes": 843232,
+      "sha256": "6df1b0eb0207eff26cc8d957ac89b2a3c8c03ec7425d8c2efb170d2dc8aa00be",
+      "gitBlobSha1": "ecda5359bc9f7454a4ce7605a081225d0bfcafb7"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-mobile-n64-map.png",
+      "bytes": 1050655,
+      "sha256": "250b14346e007595523c93b05de068af4fb6995cf0828a55135e8417ca0384d9",
+      "gitBlobSha1": "fe5f9ae3c69c85f4f74742541c44a5a3c5c29e5f"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-mobile-n64-physical.png",
+      "bytes": 847904,
+      "sha256": "fb2aa64a1f49d24fdd84ccc139c6a254c4fba097154ef16ae60cb698dd530e97",
+      "gitBlobSha1": "29ee8b16ea0bf86fce481767a86d2fe4237d4878"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-mobile-zoom-trace.zip",
+      "bytes": 844023,
+      "sha256": "6d84d40f6ba71bb126643f13d4839ff72f298f115e7c99ef296fd2ace84c17b4",
+      "gitBlobSha1": "07ec8e466bfe2a931d78afb02db2171455063baf"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-mobile-zoomed-map.png",
+      "bytes": 936999,
+      "sha256": "5597716c8328d4162655f90d734d8eecbf40d4c6d8362d9b0f26b673ab2ab789",
+      "gitBlobSha1": "945858ae062118fb27ed5fcd007dbcbcafcdf9a8"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-improved-mobile-zoomed-physical.png",
+      "bytes": 549687,
+      "sha256": "bbf9ff42f1ee64e1cc3db7d42b6a32f742626b4f5933e041da928364cb026c9b",
+      "gitBlobSha1": "c69506d9dca6f19021d72be7438eeb9c98a0144b"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-initial-broad-gpu-browser-results.json",
+      "bytes": 395749,
+      "sha256": "4a7f65aaddb7ca52d80626418eb60c534df0fb74deca23c9fb7b7e5c79694f5e",
+      "gitBlobSha1": "f1ab1e31773f53f2633e5e84fc761a1676ab5bbd"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-initial-broad-gpu-browser.txt",
+      "bytes": 54913,
+      "sha256": "6619e9380f83be4ba29bb3c7297c85caf38de088ea6342d2c59801b2043ef30e",
+      "gitBlobSha1": "0ef2440dd1de06e267ba9fc11fb76d6ca768cb01"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-case-10-trace.zip",
+      "bytes": 13932876,
+      "sha256": "90a04b2474b0b5d5884e16795e2741dd6c9dff417f827ed05222f606128262b5",
+      "gitBlobSha1": "234a689bdde395b62368f2df4239b060269917e3"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-case-11-trace.zip",
+      "bytes": 2528145,
+      "sha256": "c33870118f4b1a0d1feb787cdfb98f10876c41baa38ddff8d90b613a90a91ec5",
+      "gitBlobSha1": "6216e587bfbf8964e52dfc5e01405afab598ccf6"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-case-12-trace.zip",
+      "bytes": 2645505,
+      "sha256": "0dbbcc152373114071c6aef9c83d7dbdaf612106d28f303190a7763ddc10497e",
+      "gitBlobSha1": "febd6f9088fad43223f5cf762e3ccbe3288e37c6"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-case-13-trace.zip",
+      "bytes": 2640890,
+      "sha256": "f10e040b78d66f983b744b86133112a32522aceb320d4891be93bd8bd3d94b16",
+      "gitBlobSha1": "d1676d79a5eaa5202f2d1426c97fcd0297721721"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-case-14-trace.zip",
+      "bytes": 3720046,
+      "sha256": "37793e3ab06d5c6b8d6100fc1e4e192b166687c8e53d95361846bec7962ead83",
+      "gitBlobSha1": "382a647ea08a6373c4ba73b5a6573f436b5847d9"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-case-8-trace.zip",
+      "bytes": 159374,
+      "sha256": "7aae40db1e8c12bee22b723c0a3d15130c2233f4fcce29c72eb16d53787bd530",
+      "gitBlobSha1": "4ba7c9483673a3b65a76b38440a45aa84a9b7b63"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-case-9-trace.zip",
+      "bytes": 12629736,
+      "sha256": "be9233d9cd7cba12008a0b0816d44e0d8e905d8bba64bd9bcd2f225b04c79998",
+      "gitBlobSha1": "e71ea990a504624ba312df05d29736ca8bacf8fc"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-context-lost.png",
+      "bytes": 742503,
+      "sha256": "b3a9d088fffce1137a682c2837f0f9576dbcd89d1c47a55f9432c32a33c9ca98",
+      "gitBlobSha1": "ecfdca203f447864334b25372601fbed5d55a8e7"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-context-restored.png",
+      "bytes": 681048,
+      "sha256": "6cddcfb06a82af530eb4b7442ed24393016b460611d4024994dddedd15d17ecd",
+      "gitBlobSha1": "a35e76c4bc7ff09fa7e07d5752ba584e24d10665"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-device-loss.json",
+      "bytes": 1251,
+      "sha256": "0909696defe8830ac7d178099a81dac7d3499af59656896b2d5adf85b728b9dc",
+      "gitBlobSha1": "74750c508ca02dd47e4700844f76c48375d7c79a"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-fallback.json",
+      "bytes": 377,
+      "sha256": "416cbd49fa7dd574e0e9b273f2cee1637c5f8c1308533501377c317664f34794",
+      "gitBlobSha1": "2eb34759bf6dc64729d28f52de1bbfe29ca36634"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-gpu-parity.json",
+      "bytes": 29697,
+      "sha256": "6449da770b0cb8a9386596c38b72347012bc10b9cf2a2d9bd023f1610f7bdb91",
+      "gitBlobSha1": "056a15c799632e3933f1b48293bb7118fcf4b313"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-hardware-native-proof.json",
+      "bytes": 38948,
+      "sha256": "98030f0affd0df11d1147ad08ecccad7afe004127284ed244b8dfd4300e209a3",
+      "gitBlobSha1": "ed5c466f1bfa27ef810b11eb0681db22396cf97d"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-hardware-regression-2-trace.zip",
+      "bytes": 17967491,
+      "sha256": "b355325d785fb0e9717ee92220ce34f9382df7a6e6c19bebd9a60d02a3ae11d3",
+      "gitBlobSha1": "06145c2600e1f16cdb040104d51434cfa223161b"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-hardware-regression-4-trace.zip",
+      "bytes": 2576913,
+      "sha256": "fc0642178f242a70c99e96d73a8b30237d0e76cc39773e98fbf48d2a302fc773",
+      "gitBlobSha1": "d78ede7b5f81f0fd0d27a6c0ce5136dd7dff963d"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-hardware-regression-6-trace.zip",
+      "bytes": 13217219,
+      "sha256": "516ca13663bf850b716fb96893742f34a57841cb81232acc0a24b209e5fb8837",
+      "gitBlobSha1": "6d0cde6a65e22b0506eaeeab8eb756995322f32f"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-hardware-regression-8-trace.zip",
+      "bytes": 3527103,
+      "sha256": "19d5bdde492f448ef5611dad0e28b0ee6ef126c3062e899739fe122244bd30af",
+      "gitBlobSha1": "5bb409dbaa68d49300d604adf5cf0f373f374208"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-n128-navigation-reopened.png",
+      "bytes": 484048,
+      "sha256": "da38ffb8169928cc02e2e17eeac4be2895047a72443494df3077fe5c5d649176",
+      "gitBlobSha1": "5f46db494d8c7a9bff138893c66c2f6cb3fd0270"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-n128-navigation.json",
+      "bytes": 19940,
+      "sha256": "ae34408e01234e895fd5b76da0f51e8ec1125f701146930a25d9bb0d0c42dcd5",
+      "gitBlobSha1": "e177feabc560089a277122ec49679bd352cbf115"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-n256-navigation-reopened.png",
+      "bytes": 483860,
+      "sha256": "45b26f61ef0ea6f254c34f3e36af0f9dfaa516baac82626a14fcf3aff1d6805c",
+      "gitBlobSha1": "192d31c327c07e0e52d1165bdf20d7be83361003"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-n256-navigation.json",
+      "bytes": 19940,
+      "sha256": "8fa6f214d3961c1b5a2ea2d49ef0f3763073ebc743ae7f3415f8d516b71f53e6",
+      "gitBlobSha1": "5a96c78799eff409dce9ae79c7c3d5005ce2f37b"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-pending-pointer.json",
+      "bytes": 74598,
+      "sha256": "926997bd7fd24b0685c95c1d43bae2af8dd9100b0459ffe9ae1b6e187c6d9b3a",
+      "gitBlobSha1": "412b2b7190254e0d2a3e228b2ff0e118691796b0"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-pending-pointer.png",
+      "bytes": 686585,
+      "sha256": "45ab3a068b516c0b5da60e542f41206946a717fcd1c854c4ab6344eae7a01c36",
+      "gitBlobSha1": "cbea4746429d4af2e6884967e3262c892165e1da"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-shader-failure-fallback.json",
+      "bytes": 412,
+      "sha256": "f06f8fb365245ab1c73cc36f9044cc81982438a51dedb9ece4335b7d0d6261fa",
+      "gitBlobSha1": "255fa30445a239bdf8ee3f61965f59e09c786e63"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-shader-failure-fallback.png",
+      "bytes": 491421,
+      "sha256": "e17eed01eec979517311ef528a5cd60dbefd993fb694801f528c355325ccb136",
+      "gitBlobSha1": "ffc4eb3e728c824b4cbcc65c5f3346265eb2fdd5"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-unavailable-fallback.json",
+      "bytes": 377,
+      "sha256": "416cbd49fa7dd574e0e9b273f2cee1637c5f8c1308533501377c317664f34794",
+      "gitBlobSha1": "2eb34759bf6dc64729d28f52de1bbfe29ca36634"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-mobile-unavailable-fallback.png",
+      "bytes": 491421,
+      "sha256": "e17eed01eec979517311ef528a5cd60dbefd993fb694801f528c355325ccb136",
+      "gitBlobSha1": "ffc4eb3e728c824b4cbcc65c5f3346265eb2fdd5"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-numerical.txt",
+      "bytes": 42089,
+      "sha256": "0a67a36364818259c290ed8061d4ca0783919e98102bee6375cf0652fe03bcdf",
+      "gitBlobSha1": "bef6b628594882c2ceaa0b5f1d2a69e2927f1719"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-performance-summary.json",
+      "bytes": 150061,
+      "sha256": "c0cea3c984e12b2257125123909af7db61f0f18cf6dfad33cc515630461ff9b1",
+      "gitBlobSha1": "db0885377d67b1069b5e891a8eba35f3a6b593e0"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-pixel-clarity.json",
+      "bytes": 14578,
+      "sha256": "d6f398b07c9f2511c0493e26f43f7daf002a7b88037f9f35a7c68aba1021b2a1",
+      "gitBlobSha1": "1320a6496a0d8c87fd5c52f7075899e268a161ee"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-regression-desktop-n128-measurements.json",
+      "bytes": 28498,
+      "sha256": "78f9c6d755a06f3e1a92836ea046a33a0ae9876a90736aa766a5b878305bb6b5",
+      "gitBlobSha1": "7ee120bc8e013e79d5ba23d2f18bd02cc754821a"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-regression-desktop-n256-measurements.json",
+      "bytes": 29079,
+      "sha256": "34ffa36a9d919531bd6d8506b968fa15c6911a1e684be40cb64f7e5876467d53",
+      "gitBlobSha1": "1f13b2d38193e815db57d6b1d6a169e1a54d5140"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-regression-mobile-n128-measurements.json",
+      "bytes": 28450,
+      "sha256": "70e40604ea8b6ccb41c39ca7dca78a5fc5460608627769bd3144dd5791ffee6f",
+      "gitBlobSha1": "953e44973a67edd763c0329e5c86d08b1e76ee6b"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-regression-mobile-n256-measurements.json",
+      "bytes": 31345,
+      "sha256": "98b0fe3ef043843c862045778d40ebb2ba6aa33e8959c54a5ee2344d2a507592",
+      "gitBlobSha1": "66e9771f15dbeffe9ca4256480b83548572279e0"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-software-desktop-production-reopened.png",
+      "bytes": 389824,
+      "sha256": "eddc2ee5629b4f9f834988611fcc8588ad2c488e510e5b362c674a676e658cd6",
+      "gitBlobSha1": "0df35b800b36b23bc4fc7c9cd1277747d1e169f6"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-software-mobile-production-reopened.png",
+      "bytes": 585317,
+      "sha256": "1814cfbdfb546808ab2c421cbf484c82bec940229ba2e802ccbb14be118b357a",
+      "gitBlobSha1": "6627bdc8c0d7818a5336235d50d616dff6dabd90"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-software-production-smoke.json",
+      "bytes": 9351,
+      "sha256": "337a5b972c14d9bb34baca7f64e94a344e3f7f0068c9ca7160e0730a0864ca83",
+      "gitBlobSha1": "5bf5e3e9e6ba81989fe21d0c96ae007b750e0232"
+    },
+    {
+      "path": "docs/evidence/a7-p1a-zoom-pairs.json",
+      "bytes": 43699,
+      "sha256": "5437f5b7d3fb0059613ea174f2f934d4bfa182a809182f2bdfc56512a3fe2534",
+      "gitBlobSha1": "65065ad7e6673abbd665b5f3a5d7b9cdf23ba566"
+    },
+    {
+      "path": "scripts/measure-cylinder-clarity.mjs",
+      "bytes": 3601,
+      "sha256": "6c40ffdd0ff24ad82e544e7a71e862490d4c664e6256a208d5ce9dccb8ba64b2",
+      "gitBlobSha1": "be267523e4c122a87ae7587195011726d13d142b"
+    },
+    {
+      "path": "scripts/measure-cylinder-rendering.mjs",
+      "bytes": 8205,
+      "sha256": "b98cd33b8a1db87c7737e8da1c6bfb241e85e8c2b272fc52e862de5d67072227",
+      "gitBlobSha1": "8b50cb06bcc03cb2dcfb8ff4159e2c3a404bbfea"
+    },
+    {
+      "path": "src/rendering/cylindrical-webgl.ts",
+      "bytes": 11698,
+      "sha256": "775ca6aac6e621c7748862b193767b795008324cb8919ed65d64bb360f92677e",
+      "gitBlobSha1": "fc545fb10748d98e042da55942d4b1e11000be76"
+    },
+    {
+      "path": "src/rendering/surface-renderer.test.ts",
+      "bytes": 769,
+      "sha256": "39f20628c089b5f88a3fbf3e9330c3a3d17c13ede0343dac37e68a0ef07f56d0",
+      "gitBlobSha1": "95e84c0e0759e156eabc1a21b9e4b2f2a7b776bc"
+    },
+    {
+      "path": "src/rendering/surface-renderer.ts",
+      "bytes": 1015,
+      "sha256": "8195c26f4245a4577f929b9c617606e7e324de51a4a2e897f7b7a80cc4c45de6",
+      "gitBlobSha1": "7311095425b20dbde851e022316f7dc43b43bd51"
+    },
+    {
+      "path": "tests/cylinder-rendering.spec.ts",
+      "bytes": 14972,
+      "sha256": "a0e5bfbe4f2fc64c84ee2c5067f5f8dc89dcbe48410fe8eb618ff44b5333fba9",
+      "gitBlobSha1": "b325b4dace7398aedbd8cbab418d90207d668c79"
+    },
+    {
+      "path": "tests/fixtures/cylinder-gpu-proof.ts",
+      "bytes": 4960,
+      "sha256": "5e3b082f5533e3b998de2d4a08f21dd9acc1aa1dda9b67a7045916f7cb9435b4",
+      "gitBlobSha1": "5b255f6bb84cff3948846dd02f59fb7201f60446"
+    },
+    {
+      "path": "tests/fixtures/cylinder-render-benchmark.ts",
+      "bytes": 4046,
+      "sha256": "b5d3dc8f4977d9eb46631dd9c7047f2e5f29aab352c0a76ac6439a328d256922",
+      "gitBlobSha1": "ec653c72d7f0743410e1c3acb9f0957c872e2517"
+    }
+  ],
+  "initialDiagnosticTextNormalization": "Output-only trailing whitespace removed from the initial console log; original initial JSON result is unmodified."
+}

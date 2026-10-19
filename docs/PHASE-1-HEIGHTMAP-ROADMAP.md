@@ -1,6 +1,6 @@
 # Atlas master roadmap — Phase 1 and long-term requirements
 
-Updated for A7-D on approved baseline `cf9fb1ba6e18d07fcf1d1834d5232f5866c5cf95`. The owner's revised sequence below supersedes earlier plans for a separately rebuilt replacement Worlds system. Existing Worlds information, organization, data and functionality must be preserved wherever practical. A7-A begins Phase 2 with the physical capped-cylinder numerical foundation; A7-B1 adds bounded global reference-surface distances. A7-B2A adds isolated numerical four-tool dabs with atomic preparation/commit; A7-B2B1 adds connected physical path construction and bounded distance/residual evaluation. A7-B2B2 adds continuous numerical four-tool strokes with ordered input, corrected spacing, bounded scheduling/cancellation and exact whole-stroke history. A7-C adds a real session-only physical/connected cylinder editor. A7-D adds normal cylinder creation/selection, validated v4 Save/Open and exact saved checkpoints; subsequent geometry and Phases 3–11 remain future work.
+Updated for A7-P1A on approved baseline `daa5aed2046cf65e96e2507a38291edd55df1594`. The owner's revised sequence below supersedes earlier plans for a separately rebuilt replacement Worlds system. Existing Worlds information, organization, data and functionality must be preserved wherever practical. A7-A begins Phase 2 with the physical capped-cylinder numerical foundation; A7-B1 adds bounded global reference-surface distances. A7-B2A adds isolated numerical four-tool dabs with atomic preparation/commit; A7-B2B1 adds connected physical path construction and bounded distance/residual evaluation. A7-B2B2 adds continuous numerical four-tool strokes with ordered input, corrected spacing, bounded scheduling/cancellation and exact whole-stroke history. A7-C adds a real session-only physical/connected cylinder editor. A7-D adds normal cylinder creation/selection, validated v4 Save/Open and exact saved checkpoints. A7-P1A improves cylinder rendering/navigation and independent pointer feedback; subsequent geometry and Phases 3–11 remain future work.
 
 ## Current baseline
 
@@ -29,7 +29,8 @@ Updated for A7-D on approved baseline `cf9fb1ba6e18d07fcf1d1834d5232f5866c5cf95`
 | A7-B2B1 | Certified continuous physical side/disk path reconstruction, deterministic/direction-aware selection and bounded distance/residual iteration | Implemented for independent review; no cylinder dabs/history/UI/persistence integration. See CYLINDER-PHYSICAL-PATHS.md and A7-B2B1 completion |
 | A7-B2B2 | Connect certified physical paths to B2A dabs, physical spacing, accepted-input scheduling/cancellation and one-operation exact Undo/Redo | Implemented for independent review; numerical only, no cylinder UI or persistence. See CYLINDRICAL-STROKES.md and A7-B2B2 completion |
 | A7-C | Visible physical and connected surface-map development views, real four-tool input, exact stencils/history and browser measurements | Implemented for independent review; session-only, no cylinder Save/Open or normal shape selection. See CYLINDRICAL-EDITING.md and A7-C completion |
-| A7-D | Explicit v4 cylinder preservation, ordinary shared selection/document/library, exact saved checkpoints and safe replacement | Implemented for independent review and owner hands-on acceptance; see CYLINDRICAL-PERSISTENCE.md and A7-D completion |
+| A7-D | Explicit v4 cylinder preservation, ordinary shared selection/document/library, exact saved checkpoints and safe replacement | Technically accepted for progression by the owner in the A7-P1A brief; see CYLINDRICAL-PERSISTENCE.md and A7-D completion |
+| A7-P1A | Browser-GPU cylinder rendering/navigation, independent pointer feedback and correct device-failure fallback | Implemented for Ember's independent review; see CYLINDER-RENDERING.md and A7-P1A completion. Numerical performance P1B remains separately authorized |
 | Later geometry checkpoints | Hollow and other agreed geometries/conversions | Future; separately authorized |
 | Later Phase 1 | Remaining inventory below | Planned; pass boundaries and acceptance criteria still require authorization |
 
@@ -41,7 +42,7 @@ The owner moved the surface foundation ahead of the complete Azgaar-style toolse
 
 After A6-B approval, the owner inserted **A5.1 navigation/wrapping/screen-edge stabilization before A6-C**. That correction was completed and technically reviewed before the separately authorized A5.2 refinement.
 
-The owner supplied Ember's A5.2, A6-C, D1, D2 and E technical approvals and separately authorized F1, D2-R, P1, A7-A, A7-B1, A7-B2A, A7-B2B1, A7-B2B2, A7-C and now A7-D. Owner hands-on acceptance remains separate. Stop after A7-D for independent technical review and owner hands-on acceptance; do not begin another geometry phase automatically.
+The owner supplied Ember's A5.2, A6-C, D1, D2 and E technical approvals and separately authorized F1, D2-R, P1, A7-A, A7-B1, A7-B2A, A7-B2B1, A7-B2B2, A7-C and A7-D. A7-D is technically accepted for progression in the owner's A7-P1A authorization. Owner hands-on acceptance remains separate. Stop after A7-P1A for Ember's independent review. Do not begin A7-P1B, hollow spheres or another geometry without authorization.
 
 ## Current owner-approved long-term development sequence
 

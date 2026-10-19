@@ -53,6 +53,7 @@ export class CylinderPreviewSession {
     if (Object.is(after, savedValue)) this.checkpointDifferences.delete(index); else this.checkpointDifferences.set(index, savedValue);
   }
   get pendingPositions() { return this.stroke?.statistics.pendingPositions ?? 0; }
+  get pendingWork() { return !!this.stroke?.statistics.hasPendingWork; }
   get previewPending() { return !!this.preview; }
   private clearPreview() { this.preview?.job.cancel(); this.preview = undefined; this.previewKey = ''; this.stencil = undefined; this.previewMessage = ''; }
   begin(center: SurfacePosition, settings: CylindricalBrushSettings, view: CylinderView, at = performance.now()) {
