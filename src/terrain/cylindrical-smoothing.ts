@@ -1,7 +1,8 @@
+import { paintingStage } from '../editor/painting-metrics.ts';
 import type { CylinderSampleKey, CylindricalTerrain } from './cylindrical.ts';
 
 /** Fold-aware polar/side finite-volume conductances; a local lazy graph filter, not exact heat flow. */
-export function cylindricalSmoothEstimate(terrain: CylindricalTerrain, key: CylinderSampleKey, current: number) {
+function cylindricalSmoothEstimateImpl(terrain: CylindricalTerrain, key: CylinderSampleKey, current: number) {
   const owner = terrain.owner(key), { angularSamples: A, axialCells: Z, radialCells: P } = terrain.metadata.representation.resolution;
   const R = terrain.metadata.geometry.radiusMeters, q = terrain.metadata.geometry.lengthMeters / Z / R, dr = 1 / P, angle = 2 * Math.PI / A;
   if (!(q > 0) || !Number.isFinite(q)) throw new RangeError('Smooth aspect ratio is outside supported numerical range.');
@@ -35,3 +36,5 @@ export function cylindricalSmoothEstimate(terrain: CylindricalTerrain, key: Cyli
     roundoffErrorMeters: 128 * Number.EPSILON * neighbors.length * maxDifference,
     conductances, keys: neighbors };
 }
+
+export function cylindricalSmoothEstimate(...args: Parameters<typeof cylindricalSmoothEstimateImpl>) { return paintingStage('smoothNeighborhood', () => cylindricalSmoothEstimateImpl(...args)); }

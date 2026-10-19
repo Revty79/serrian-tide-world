@@ -1,0 +1,30 @@
+{
+  "phases": [
+    {
+      "name": "hardware-input",
+      "args": [
+        ".local/run-a7-p1b-hardware-input-browser.mjs"
+      ],
+      "code": 0,
+      "elapsedMs": 73326
+    },
+    {
+      "name": "production-before",
+      "args": [
+        ".local/production-painting-p1b.mjs",
+        "before"
+      ],
+      "code": 0,
+      "elapsedMs": 118264
+    },
+    {
+      "name": "production-after",
+      "args": [
+        ".local/production-painting-p1b.mjs",
+        "after"
+      ],
+      "code": 0,
+      "elapsedMs": 68785
+    }
+  ]
+}

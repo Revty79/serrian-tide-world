@@ -1,3 +1,4 @@
+import { paintingStage } from '../editor/painting-metrics.ts';
 import type { SurfacePosition } from '../surfaces/contracts.ts';
 import { reconstructCylinderPath, type CylinderPathOptions, type CylinderPhysicalPath } from '../surfaces/cylinder-path.ts';
 import { cylinderPathSpacings } from '../surfaces/cylinder-path-spacing.ts';
@@ -8,6 +9,9 @@ import type { CylindricalTerrain } from './cylindrical.ts';
 export const CYLINDER_STROKE_LIMITS = Object.freeze({ maxPendingPositions: 256, maxAcceptedPositions: 65536, maxDabs: 16384, maxTotalDistanceQueries: 262144, maxTotalDistanceBoxes: 1048576, maxTotalCandidates: 1048576, maxTotalPathBoxes: 262144 });
 type StrokeBudgetOptions = { readonly [K in keyof typeof CYLINDER_STROKE_LIMITS]?: number };
 export interface CylinderStrokeOptions extends StrokeBudgetOptions {
+  /** Optional execution barrier. The ready dab and all path residuals stay put
+   * until its host acknowledges preparation. Does not change numerical work. */
+  readonly commitReady?: (job: ReturnType<typeof prepareCylindricalDab>) => boolean;
   readonly spacingMeters?: number;
   readonly maxSpacingErrorMeters?: number;
   readonly localTransitionMeters?: number;
@@ -84,14 +88,15 @@ export function beginCylindricalStroke(terrain: CylindricalTerrain, history: Cyl
       try {
         operation.synchronized(); stats.pumps++;
         if (job) {
-          if (job.status === 'preparing') job.pump(candidateSteps);
+          if (job.status === 'preparing') paintingStage('dabPreparation', () => job!.pump(candidateSteps));
           if (job.status === 'ready') {
             if (stats.committedDabs >= limits.maxDabs) throw new RangeError('Cylinder stroke dab budget exhausted.');
+            if (input.commitReady && !input.commitReady(job)) return status;
             const writes = operation.commitDab(job); account(); lastCommittedCenter = job.center; job = undefined; stats.committedDabs++; stats.writes += writes;
             if (stats.processedPositions === 0) stats.processedPositions = 1;
           }
         } else if (sampler) {
-          const next = sampler.next();
+          const next = paintingStage('spacing', () => sampler!.next());
           if (!next.done) job = prepareCylindricalDab(terrain, next.value.position, settings, boundedDabLimits(stats.distanceQueries, stats.distanceBoxes + stats.failedQueryBoxAllowance, stats.dabCandidates));
           else {
             residual = next.value.residualMeters; spacingError = next.value.roundoffBoundMeters;

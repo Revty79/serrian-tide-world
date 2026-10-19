@@ -1,0 +1,13 @@
+import {spawn,execFileSync} from 'node:child_process';
+import {createWriteStream,readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {resolve} from 'node:path';
+const phase=process.argv[2]||'focus',port=5221,hash=b=>createHash('sha256').update(b).digest('hex');
+const snapshot=()=>Object.fromEntries(execFileSync('git',['ls-files','--cached','--others','--exclude-standard'],{encoding:'utf8'}).trim().split('\n').filter(p=>/^(src\/|tests\/|scripts\/|dev\/|package(-lock)?\.json|vite\.config|playwright\.config|tsconfig)/.test(p)).sort().map(p=>[p,hash(readFileSync(p))]));
+const before=snapshot(),serverLog=createWriteStream(`.local/a7-p1b-${phase}-server.log`),log=createWriteStream(`docs/evidence/a7-p1b-${phase}-browser.txt`);
+const server=spawn(process.execPath,['node_modules/vite/bin/vite.js','--host','127.0.0.1','--port',String(port),'--strictPort'],{windowsHide:true,stdio:['ignore','pipe','pipe']});server.stdout.pipe(serverLog);server.stderr.pipe(serverLog);
+try{
+ const at=Date.now();while(true){if(server.exitCode!==null)throw Error('Strict server failed');try{if((await fetch(`http://127.0.0.1:${port}`)).ok)break;}catch{}if(Date.now()-at>30000)throw Error('Server timeout');await new Promise(r=>setTimeout(r,150));}
+ const child=spawn(process.execPath,['node_modules/@playwright/test/cli.js','test','--config',`.local/a7-p1b-${phase}.config.ts`,'--reporter=list,json'],{windowsHide:true,env:{...process.env,PLAYWRIGHT_JSON_OUTPUT_FILE:resolve(`docs/evidence/a7-p1b-${phase}-browser-results.json`)},stdio:['ignore','pipe','pipe']});child.stdout.pipe(log);child.stderr.pipe(log);const code=await new Promise(r=>child.on('exit',r));await new Promise(r=>log.end(r));
+ const after=snapshot(),changed=Object.keys({...before,...after}).filter(p=>before[p]!==after[p]);writeFileSync(`docs/evidence/a7-p1b-${phase}-source-check.json`,JSON.stringify({before,after,beforeDigest:hash(JSON.stringify(before)),afterDigest:hash(JSON.stringify(after)),changed},null,2));console.log({phase,code,changed});process.exitCode=code||changed.length?1:0;
+}finally{server.kill();server.stdout.destroy();server.stderr.destroy();server.unref();serverLog.end();}

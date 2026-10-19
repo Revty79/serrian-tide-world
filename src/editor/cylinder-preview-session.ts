@@ -7,6 +7,10 @@ import { CYLINDER_PREVIEW_DAB_LIMITS, CylinderDisplayCache, cylinderPackedColor,
 import type { CylinderView } from '../rendering/cylindrical-view.ts';
 import { CYLINDER_UI_SPACING_RATIO } from './cylinder-controls.ts';
 import { yieldPersistence } from '../persistence/cooperative-work.ts';
+import { beginWorkerCylinderStroke, cylinderWorkerFactory, type CylinderWorkerFactory } from './cylinder-worker-stroke.ts';
+import type { CylinderWorkOutput } from './cylinder-work-protocol.ts';
+import { cylinderPreparedPatch } from './cylinder-prepared-patch.ts';
+import { paintingStage, paintingMetricsEnabled } from './painting-metrics.ts';
 
 const historyWord = new DataView(new ArrayBuffer(4));
 function valueOfWord(word: number) { historyWord.setUint32(0, word, true); return historyWord.getFloat32(0, true); }
@@ -21,7 +25,27 @@ export class CylinderPreviewSession {
   readonly terrain: CylindricalTerrain;
   readonly history: CylindricalHistory;
   readonly cache: CylinderDisplayCache;
-  private stroke?: ReturnType<typeof beginCylindricalStroke>;
+  private stroke?: ReturnType<typeof beginCylindricalStroke> | ReturnType<typeof beginWorkerCylinderStroke>;
+  private workerFactory?: CylinderWorkerFactory;
+  private baseWorkerFactory?: CylinderWorkerFactory;
+  private warmWorker?: Worker;
+  private remotePreview?: Worker;
+  private previewTask = 0;
+  private previewTimeout?: ReturnType<typeof setTimeout>;
+  workDiagnostics: object = { backend: 'cooperative' };
+  previewDiagnostics: object = { backend: 'cooperative' };
+  /** Browser host opts in. Numerical-only consumers retain the synchronous API. */
+  enableWorkers(factory = cylinderWorkerFactory) {
+    if (factory === this.baseWorkerFactory) return;
+    this.warmWorker?.terminate(); this.baseWorkerFactory = factory;
+    const warm = () => { if (this.disposed) return; try { this.warmWorker = factory(); this.warmWorker.onerror = e => { e.preventDefault(); this.warmWorker?.terminate(); this.warmWorker = undefined; }; } catch { this.warmWorker = undefined; } };
+    warm();
+    this.workerFactory = () => {
+      const worker = this.warmWorker ?? factory(); this.warmWorker = undefined;
+      // One unused preloaded realm plus one active task, never a worker per dab.
+      warm(); return worker;
+    };
+  }
   private preview?: ReturnType<typeof prepareCylinderStencil>;
   private previewKey = '';
   private lastStrokeRevision = 0;
@@ -54,8 +78,8 @@ export class CylinderPreviewSession {
   }
   get pendingPositions() { return this.stroke?.statistics.pendingPositions ?? 0; }
   get pendingWork() { return !!this.stroke?.statistics.hasPendingWork; }
-  get previewPending() { return !!this.preview; }
-  private clearPreview() { this.preview?.job.cancel(); this.preview = undefined; this.previewKey = ''; this.stencil = undefined; this.previewMessage = ''; }
+  get previewPending() { return !!this.preview || !!this.remotePreview; }
+  private clearPreview() { clearTimeout(this.previewTimeout); this.remotePreview?.terminate(); this.remotePreview = undefined; this.previewTask++; this.preview?.job.cancel(); this.preview = undefined; this.previewKey = ''; this.stencil = undefined; this.previewMessage = ''; }
   begin(center: SurfacePosition, settings: CylindricalBrushSettings, view: CylinderView, at = performance.now()) {
     if (this.disposed || this.stroke || this.locked) return false;
     this.clearPreview(); this.lastDab = undefined;
@@ -70,13 +94,15 @@ export class CylinderPreviewSession {
         guard(job.center, indices);
         const stencil = { center: job.center, indices, revision: job.sourceRevision, settings: job.settings, affectedSamples: job.statistics.affectedSamples };
         this.statistics.stagedDisplayPeakBytes = Math.max(this.statistics.stagedDisplayPeakBytes, indices.byteLength + colors.byteLength);
-        const count = operation.commitDab(job);
+        const count = paintingStage('historyAndCommit', () => operation.commitDab(job));
         for (const c of changes) this.track(c.index, c.before, c.after);
         this.cache.apply(indices, colors, this.terrain.revision); this.lastDab = stencil; return count;
       } });
     } });
     try {
-      this.stroke = beginCylindricalStroke(this.terrain, tracked, center, settings, { spacingMeters: settings.radiusMeters * CYLINDER_UI_SPACING_RATIO, dabLimits: CYLINDER_PREVIEW_DAB_LIMITS, maxDabs: 2048 });
+      const options = { spacingMeters: settings.radiusMeters * CYLINDER_UI_SPACING_RATIO, dabLimits: CYLINDER_PREVIEW_DAB_LIMITS, maxDabs: 2048 };
+      this.stroke = this.workerFactory ? beginWorkerCylinderStroke(this.terrain, tracked, center, settings, options, () => this.changed(), this.workerFactory) : beginCylindricalStroke(this.terrain, tracked, center, settings, options);
+      this.workDiagnostics = 'diagnostics' in this.stroke ? this.stroke.diagnostics : { backend: 'cooperative' };
       this.lastStrokeRevision = this.terrain.revision; this.inputTimes = [{ ordinal: 1, at }]; this.message = 'Drawing physical terrain…'; this.changed(); return true;
     } catch (e) { this.message = e instanceof Error ? e.message : String(e); this.changed(); return false; }
   }
@@ -104,9 +130,11 @@ export class CylinderPreviewSession {
   private fail(error: unknown) { this.message = `Stroke stopped safely: ${error instanceof Error ? error.message : String(error)} Committed prefix remains undoable.`; this.statistics.failures++; this.stroke?.cancel(); this.finish(); this.stopped(); }
   pump(budgetMs = 3) {
     const start = performance.now(); let calls = 0;
+    if (this.stroke && 'diagnostics' in this.stroke && this.stroke.diagnostics.backend === 'cooperative fallback' && !this.message.includes('Background preparation unavailable')) this.message += ' Background preparation unavailable; local processing may be slower.';
     try {
       while (this.stroke && calls++ < 8 && performance.now() - start < budgetMs) {
         this.stroke.pump(16); this.collectTimings();
+        if (this.stroke.status === 'failed') { this.fail(this.stroke.failure?.message ?? 'Cylinder preparation failed.'); break; }
         if (this.stroke.status === 'complete') { this.message = this.terrain.revision === this.lastStrokeRevision ? 'Stroke completed with no numerical changes.' : `Stroke complete. Undo restores the entire gesture.${this.persistent ? '' : ' Session-only; cannot save.'}`; this.finish(); }
         else if (!this.stroke.statistics.hasPendingWork && this.stroke.status === 'drawing') break;
       }
@@ -136,14 +164,41 @@ export class CylinderPreviewSession {
     const key = JSON.stringify([center, settings, view.mode, view.frame, this.terrain.revision]);
     if (key === this.previewKey) return;
     this.clearPreview(); this.previewKey = key;
+    if (this.workerFactory) {
+      const task = this.previewTask, revision = this.terrain.revision, started = performance.now();
+      try {
+        const worker = this.workerFactory(); this.remotePreview = worker; this.previewMessage = 'Calculating exact canonical footprint…';
+        const finish = () => { if (this.remotePreview === worker) { clearTimeout(this.previewTimeout); this.remotePreview = undefined; } worker.terminate(); this.changed(); };
+        this.previewTimeout = setTimeout(() => { if (task === this.previewTask && this.remotePreview === worker) { this.previewMessage = 'Preview unavailable: background preparation timed out. Drawing and saving remain available.'; finish(); } }, 10000);
+        worker.onerror = e => { e.preventDefault(); if (task === this.previewTask) this.previewMessage = `Preview unavailable: ${e.message || 'worker startup failed'}`; finish(); };
+        worker.onmessageerror = () => { if (task === this.previewTask) this.previewMessage = 'Preview unavailable: worker response could not be decoded.'; finish(); };
+        worker.onmessage = (event: MessageEvent<CylinderWorkOutput>) => {
+          if (this.disposed || task !== this.previewTask || worker !== this.remotePreview || this.painting) return;
+          const m = event.data;
+          try {
+            if (m.type === 'prepared') {
+              if (m.task !== task || m.sourceRevision !== revision || revision !== this.terrain.revision) throw new Error('Preview source changed.');
+              cylinderPreparedPatch(this.terrain, m); cylinderVisibilityGuard(this.terrain, view)(m.center, m.indices);
+              this.stencil = { center: m.center, indices: m.indices, revision, settings: m.settings, affectedSamples: m.affectedSamples };
+              this.previewDiagnostics = { backend: 'worker', revision, elapsedMs: performance.now() - started, stages: m.previewStages ?? {} };
+              this.previewMessage = `${m.indices.length} canonical samples would change (${m.affectedSamples} within the intrinsic footprint).`; finish();
+            } else if (m.type === 'error') { this.previewMessage = `Preview unavailable: ${m.message}`; finish(); }
+          } catch (e) { this.stencil = undefined; this.previewMessage = `Preview unavailable: ${String(e)}`; finish(); }
+        };
+        const values = paintingStage('previewSourceSnapshot', () => this.terrain.copyElevations());
+        worker.postMessage({ type: 'start', task, metadata: this.terrain.metadata, revision, values, center, settings, options: {}, preview: view, measure: paintingMetricsEnabled() }, [values.buffer]);
+      } catch (e) { this.remotePreview?.terminate(); this.remotePreview = undefined; this.previewMessage = `Preview unavailable: ${String(e)}`; }
+      return;
+    }
     try { this.preview = prepareCylinderStencil(this.terrain, center, settings, view); this.previewMessage = 'Calculating exact canonical footprint…'; }
     catch (e) { this.previewMessage = String(e); }
   }
   pumpPreview() {
+    if (this.remotePreview) return true;
     if (!this.preview || this.stroke) return false;
     const start = performance.now();
     try {
-      this.preview.job.pump(32);
+      paintingStage('footprintPreparation', () => this.preview!.job.pump(32));
       if (this.preview.job.status === 'ready') { this.stencil = this.preview.finish(); this.preview = undefined; this.previewMessage = `${this.stencil.indices.length} canonical samples would change (${this.stencil.affectedSamples} within the intrinsic footprint).`; }
     } catch (e) { this.preview?.job.cancel(); this.preview = undefined; this.stencil = undefined; this.previewMessage = `Preview unavailable: ${e instanceof Error ? e.message : String(e)}`; }
     this.statistics.previewMaxMs = Math.max(this.statistics.previewMaxMs, performance.now() - start); return !!this.preview;
@@ -151,8 +206,12 @@ export class CylinderPreviewSession {
   presented(revision: number, now = performance.now()) { const values: number[] = []; this.presentationTimes = this.presentationTimes.filter(p => { if (p.revision > revision) return true; values.push(now - p.at); return false; }); return values; }
   async drainForSave(yieldWork = yieldPersistence) {
     const failures = this.statistics.failures; this.release();
-    while (this.painting) { this.pump(3); await yieldWork(); }
+    while (this.painting) {
+      this.pump(3);
+      if (this.stroke && 'waitForProgress' in this.stroke) await this.stroke.waitForProgress();
+      await yieldWork();
+    }
     if (this.statistics.failures !== failures) throw new Error('Queued cylinder input failed. Applied edits are retained; inspect them before retrying Save.');
   }
-  dispose() { this.cancel('Cylinder closed'); this.disposed = true; this.history.clear(); this.cache.dispose(); this.lastDab = undefined; this.presentationTimes = []; this.checkpointDifferences.clear(); this.changed = () => {}; this.stopped = () => {}; }
+  dispose() { this.cancel('Cylinder closed'); this.disposed = true; this.warmWorker?.terminate(); this.warmWorker = undefined; this.history.clear(); this.cache.dispose(); this.lastDab = undefined; this.presentationTimes = []; this.checkpointDifferences.clear(); this.changed = () => {}; this.stopped = () => {}; }
 }

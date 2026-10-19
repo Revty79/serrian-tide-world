@@ -1,0 +1,495 @@
+{
+  "method": "Supplementary production-bundle comparison: no stage profiling, DEV inspection or Playwright source tracing. Blank -100m terrain, Raise only, three reset-by-exact-Undo repetitions per group. Compositor crop still adds overhead. These are different scenes from the sculpted four-brush experiment. Nearest-rank p50/p95/max with only three samples per group.",
+  "groups": [
+    {
+      "backend": "hardware",
+      "profile": "desktop",
+      "n": 64,
+      "before": {
+        "count": 3,
+        "p50": 42.643798828125,
+        "p95": 44.239990234375,
+        "max": 44.239990234375
+      },
+      "after": {
+        "count": 3,
+        "p50": 46.380859375,
+        "p95": 51.447021484375,
+        "max": 51.447021484375
+      },
+      "unobservedBefore": 0,
+      "unobservedAfter": 0
+    },
+    {
+      "backend": "hardware",
+      "profile": "desktop",
+      "n": 256,
+      "before": {
+        "count": 3,
+        "p50": 488.84912109375,
+        "p95": 489.880126953125,
+        "max": 489.880126953125
+      },
+      "after": {
+        "count": 3,
+        "p50": 162.842041015625,
+        "p95": 163.72998046875,
+        "max": 163.72998046875
+      },
+      "unobservedBefore": 0,
+      "unobservedAfter": 0
+    },
+    {
+      "backend": "hardware",
+      "profile": "mobile",
+      "n": 64,
+      "before": {
+        "count": 3,
+        "p50": 41.744140625,
+        "p95": 54.812255859375,
+        "max": 54.812255859375
+      },
+      "after": {
+        "count": 3,
+        "p50": 49.89599609375,
+        "p95": 55.80419921875,
+        "max": 55.80419921875
+      },
+      "unobservedBefore": 0,
+      "unobservedAfter": 0
+    },
+    {
+      "backend": "hardware",
+      "profile": "mobile",
+      "n": 256,
+      "before": {
+        "count": 3,
+        "p50": 1076.47509765625,
+        "p95": 1116.446044921875,
+        "max": 1116.446044921875
+      },
+      "after": {
+        "count": 3,
+        "p50": 216.8828125,
+        "p95": 239.81982421875,
+        "max": 239.81982421875
+      },
+      "unobservedBefore": 0,
+      "unobservedAfter": 0
+    },
+    {
+      "backend": "fallback",
+      "profile": "desktop",
+      "n": 64,
+      "before": {
+        "count": 3,
+        "p50": 57.48486328125,
+        "p95": 59.76513671875,
+        "max": 59.76513671875
+      },
+      "after": {
+        "count": 3,
+        "p50": 59.610107421875,
+        "p95": 63.966064453125,
+        "max": 63.966064453125
+      },
+      "unobservedBefore": 0,
+      "unobservedAfter": 0
+    },
+    {
+      "backend": "fallback",
+      "profile": "desktop",
+      "n": 256,
+      "before": {
+        "count": 3,
+        "p50": 476.018798828125,
+        "p95": 523.56494140625,
+        "max": 523.56494140625
+      },
+      "after": {
+        "count": 3,
+        "p50": 181.4619140625,
+        "p95": 182.966064453125,
+        "max": 182.966064453125
+      },
+      "unobservedBefore": 0,
+      "unobservedAfter": 0
+    },
+    {
+      "backend": "fallback",
+      "profile": "mobile",
+      "n": 64,
+      "before": {
+        "count": 3,
+        "p50": 88.93896484375,
+        "p95": 131.40087890625,
+        "max": 131.40087890625
+      },
+      "after": {
+        "count": 3,
+        "p50": 88.906005859375,
+        "p95": 131.76416015625,
+        "max": 131.76416015625
+      },
+      "unobservedBefore": 0,
+      "unobservedAfter": 0
+    },
+    {
+      "backend": "fallback",
+      "profile": "mobile",
+      "n": 256,
+      "before": {
+        "count": 3,
+        "p50": 1089.6171875,
+        "p95": 1102.39111328125,
+        "max": 1102.39111328125
+      },
+      "after": {
+        "count": 3,
+        "p50": 240.829833984375,
+        "p95": 274.7578125,
+        "max": 274.7578125
+      },
+      "unobservedBefore": 0,
+      "unobservedAfter": 0
+    }
+  ],
+  "pairs": [
+    {
+      "backend": "hardware",
+      "profile": "desktop",
+      "n": 64,
+      "scenario": "n64-ordinary",
+      "repeat": 0,
+      "exact": true,
+      "saved": {
+        "count": 4034,
+        "sha256": "e573586e654011decab3321fd3fee934f125d21a7522e3287928df48e64840d8"
+      },
+      "beforeMs": 44.239990234375,
+      "afterMs": 46.380859375
+    },
+    {
+      "backend": "hardware",
+      "profile": "desktop",
+      "n": 64,
+      "scenario": "n64-ordinary",
+      "repeat": 1,
+      "exact": true,
+      "saved": {
+        "count": 4034,
+        "sha256": "e573586e654011decab3321fd3fee934f125d21a7522e3287928df48e64840d8"
+      },
+      "beforeMs": 13.621826171875,
+      "afterMs": 51.447021484375
+    },
+    {
+      "backend": "hardware",
+      "profile": "desktop",
+      "n": 64,
+      "scenario": "n64-ordinary",
+      "repeat": 2,
+      "exact": true,
+      "saved": {
+        "count": 4034,
+        "sha256": "e573586e654011decab3321fd3fee934f125d21a7522e3287928df48e64840d8"
+      },
+      "beforeMs": 42.643798828125,
+      "afterMs": 29.375732421875
+    },
+    {
+      "backend": "hardware",
+      "profile": "desktop",
+      "n": 256,
+      "scenario": "n256-rim",
+      "repeat": 0,
+      "exact": true,
+      "saved": {
+        "count": 65282,
+        "sha256": "5d75d7de0a4928d171fb14cea89af4d7bcbcb51ce8af9dd5e57b4a149565e690"
+      },
+      "beforeMs": 451.671142578125,
+      "afterMs": 129.60693359375
+    },
+    {
+      "backend": "hardware",
+      "profile": "desktop",
+      "n": 256,
+      "scenario": "n256-rim",
+      "repeat": 1,
+      "exact": true,
+      "saved": {
+        "count": 65282,
+        "sha256": "5d75d7de0a4928d171fb14cea89af4d7bcbcb51ce8af9dd5e57b4a149565e690"
+      },
+      "beforeMs": 489.880126953125,
+      "afterMs": 163.72998046875
+    },
+    {
+      "backend": "hardware",
+      "profile": "desktop",
+      "n": 256,
+      "scenario": "n256-rim",
+      "repeat": 2,
+      "exact": true,
+      "saved": {
+        "count": 65282,
+        "sha256": "5d75d7de0a4928d171fb14cea89af4d7bcbcb51ce8af9dd5e57b4a149565e690"
+      },
+      "beforeMs": 488.84912109375,
+      "afterMs": 162.842041015625
+    },
+    {
+      "backend": "hardware",
+      "profile": "mobile",
+      "n": 64,
+      "scenario": "n64-ordinary",
+      "repeat": 0,
+      "exact": true,
+      "saved": {
+        "count": 4034,
+        "sha256": "891e468f5f9d0ac73f7a9d057657ba74ee07f0cebce2137def7469ebecdd2383"
+      },
+      "beforeMs": 54.812255859375,
+      "afterMs": 49.89599609375
+    },
+    {
+      "backend": "hardware",
+      "profile": "mobile",
+      "n": 64,
+      "scenario": "n64-ordinary",
+      "repeat": 1,
+      "exact": true,
+      "saved": {
+        "count": 4034,
+        "sha256": "891e468f5f9d0ac73f7a9d057657ba74ee07f0cebce2137def7469ebecdd2383"
+      },
+      "beforeMs": 41.744140625,
+      "afterMs": 55.80419921875
+    },
+    {
+      "backend": "hardware",
+      "profile": "mobile",
+      "n": 64,
+      "scenario": "n64-ordinary",
+      "repeat": 2,
+      "exact": true,
+      "saved": {
+        "count": 4034,
+        "sha256": "891e468f5f9d0ac73f7a9d057657ba74ee07f0cebce2137def7469ebecdd2383"
+      },
+      "beforeMs": 35.739990234375,
+      "afterMs": 41.735107421875
+    },
+    {
+      "backend": "hardware",
+      "profile": "mobile",
+      "n": 256,
+      "scenario": "n256-rim",
+      "repeat": 0,
+      "exact": true,
+      "saved": {
+        "count": 65282,
+        "sha256": "100b70ca03643b58ef8eda0a76f83e66e1568ff5e1b0bf592ff704777f88ed96"
+      },
+      "beforeMs": 1076.47509765625,
+      "afterMs": 189.640869140625
+    },
+    {
+      "backend": "hardware",
+      "profile": "mobile",
+      "n": 256,
+      "scenario": "n256-rim",
+      "repeat": 1,
+      "exact": true,
+      "saved": {
+        "count": 65282,
+        "sha256": "100b70ca03643b58ef8eda0a76f83e66e1568ff5e1b0bf592ff704777f88ed96"
+      },
+      "beforeMs": 1116.446044921875,
+      "afterMs": 216.8828125
+    },
+    {
+      "backend": "hardware",
+      "profile": "mobile",
+      "n": 256,
+      "scenario": "n256-rim",
+      "repeat": 2,
+      "exact": true,
+      "saved": {
+        "count": 65282,
+        "sha256": "100b70ca03643b58ef8eda0a76f83e66e1568ff5e1b0bf592ff704777f88ed96"
+      },
+      "beforeMs": 1070.73095703125,
+      "afterMs": 239.81982421875
+    },
+    {
+      "backend": "fallback",
+      "profile": "desktop",
+      "n": 64,
+      "scenario": "n64-ordinary",
+      "repeat": 0,
+      "exact": true,
+      "saved": {
+        "count": 4034,
+        "sha256": "e573586e654011decab3321fd3fee934f125d21a7522e3287928df48e64840d8"
+      },
+      "beforeMs": 49.938720703125,
+      "afterMs": 63.966064453125
+    },
+    {
+      "backend": "fallback",
+      "profile": "desktop",
+      "n": 64,
+      "scenario": "n64-ordinary",
+      "repeat": 1,
+      "exact": true,
+      "saved": {
+        "count": 4034,
+        "sha256": "e573586e654011decab3321fd3fee934f125d21a7522e3287928df48e64840d8"
+      },
+      "beforeMs": 57.48486328125,
+      "afterMs": 59.610107421875
+    },
+    {
+      "backend": "fallback",
+      "profile": "desktop",
+      "n": 64,
+      "scenario": "n64-ordinary",
+      "repeat": 2,
+      "exact": true,
+      "saved": {
+        "count": 4034,
+        "sha256": "e573586e654011decab3321fd3fee934f125d21a7522e3287928df48e64840d8"
+      },
+      "beforeMs": 59.76513671875,
+      "afterMs": 46.89013671875
+    },
+    {
+      "backend": "fallback",
+      "profile": "desktop",
+      "n": 256,
+      "scenario": "n256-rim",
+      "repeat": 0,
+      "exact": true,
+      "saved": {
+        "count": 65282,
+        "sha256": "5d75d7de0a4928d171fb14cea89af4d7bcbcb51ce8af9dd5e57b4a149565e690"
+      },
+      "beforeMs": 476.018798828125,
+      "afterMs": 158.52783203125
+    },
+    {
+      "backend": "fallback",
+      "profile": "desktop",
+      "n": 256,
+      "scenario": "n256-rim",
+      "repeat": 1,
+      "exact": true,
+      "saved": {
+        "count": 65282,
+        "sha256": "5d75d7de0a4928d171fb14cea89af4d7bcbcb51ce8af9dd5e57b4a149565e690"
+      },
+      "beforeMs": 523.56494140625,
+      "afterMs": 181.4619140625
+    },
+    {
+      "backend": "fallback",
+      "profile": "desktop",
+      "n": 256,
+      "scenario": "n256-rim",
+      "repeat": 2,
+      "exact": true,
+      "saved": {
+        "count": 65282,
+        "sha256": "5d75d7de0a4928d171fb14cea89af4d7bcbcb51ce8af9dd5e57b4a149565e690"
+      },
+      "beforeMs": 470.118896484375,
+      "afterMs": 182.966064453125
+    },
+    {
+      "backend": "fallback",
+      "profile": "mobile",
+      "n": 64,
+      "scenario": "n64-ordinary",
+      "repeat": 0,
+      "exact": true,
+      "saved": {
+        "count": 4034,
+        "sha256": "891e468f5f9d0ac73f7a9d057657ba74ee07f0cebce2137def7469ebecdd2383"
+      },
+      "beforeMs": 131.40087890625,
+      "afterMs": 131.76416015625
+    },
+    {
+      "backend": "fallback",
+      "profile": "mobile",
+      "n": 64,
+      "scenario": "n64-ordinary",
+      "repeat": 1,
+      "exact": true,
+      "saved": {
+        "count": 4034,
+        "sha256": "891e468f5f9d0ac73f7a9d057657ba74ee07f0cebce2137def7469ebecdd2383"
+      },
+      "beforeMs": 88.93896484375,
+      "afterMs": 88.8681640625
+    },
+    {
+      "backend": "fallback",
+      "profile": "mobile",
+      "n": 64,
+      "scenario": "n64-ordinary",
+      "repeat": 2,
+      "exact": true,
+      "saved": {
+        "count": 4034,
+        "sha256": "891e468f5f9d0ac73f7a9d057657ba74ee07f0cebce2137def7469ebecdd2383"
+      },
+      "beforeMs": 88.713134765625,
+      "afterMs": 88.906005859375
+    },
+    {
+      "backend": "fallback",
+      "profile": "mobile",
+      "n": 256,
+      "scenario": "n256-rim",
+      "repeat": 0,
+      "exact": true,
+      "saved": {
+        "count": 65282,
+        "sha256": "100b70ca03643b58ef8eda0a76f83e66e1568ff5e1b0bf592ff704777f88ed96"
+      },
+      "beforeMs": 1102.39111328125,
+      "afterMs": 238.326171875
+    },
+    {
+      "backend": "fallback",
+      "profile": "mobile",
+      "n": 256,
+      "scenario": "n256-rim",
+      "repeat": 1,
+      "exact": true,
+      "saved": {
+        "count": 65282,
+        "sha256": "100b70ca03643b58ef8eda0a76f83e66e1568ff5e1b0bf592ff704777f88ed96"
+      },
+      "beforeMs": 1089.6171875,
+      "afterMs": 274.7578125
+    },
+    {
+      "backend": "fallback",
+      "profile": "mobile",
+      "n": 256,
+      "scenario": "n256-rim",
+      "repeat": 2,
+      "exact": true,
+      "saved": {
+        "count": 65282,
+        "sha256": "100b70ca03643b58ef8eda0a76f83e66e1568ff5e1b0bf592ff704777f88ed96"
+      },
+      "beforeMs": 996.38232421875,
+      "afterMs": 240.829833984375
+    }
+  ]
+}

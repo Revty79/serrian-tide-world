@@ -1,3 +1,4 @@
+import { paintingStage } from '../editor/painting-metrics.ts';
 import { assertIdentity, type SurfacePosition } from './contracts.ts';
 import type { CylinderConfiguration, CylinderPosition } from './cylinder.ts';
 
@@ -108,7 +109,7 @@ class Boxes {
  * docs/CYLINDER-GLOBAL-DISTANCE.md. No adjacent-sample graph distance is used.
  * Float64 allowance is included at each bound; requests below its floor fail.
  */
-export function cylinderGlobalDistance(g: GeometryInput, first: SurfacePosition, second: SurfacePosition, options: CylinderDistanceOptions = {}): CylinderDistanceResult {
+function cylinderGlobalDistanceImpl(g: GeometryInput, first: SurfacePosition, second: SurfacePosition, options: CylinderDistanceOptions = {}): CylinderDistanceResult {
   const metadata = g.metadata;
   if (options.includeFeasibleRoutes !== undefined && typeof options.includeFeasibleRoutes !== 'boolean') throw new RangeError('Invalid feasible-route reporting option.');
   assertIdentity(metadata.identity);
@@ -248,3 +249,5 @@ export function cylinderGlobalDistance(g: GeometryInput, first: SurfacePosition,
   const feasibleRoutes = options.includeFeasibleRoutes ? { feasibleRoutes: Object.freeze(routes.filter((r) => Number.isFinite(r.upper)).map((r) => Object.freeze({ version: 1 as const, routeClass: r.kind, angles: Object.freeze([...r.angles]) as readonly [number, number], upperBoundMeters: r.upper }))) } : {};
   return Object.freeze({ value: upper, units: 'meters', scope: 'global-reference-surface', method: 'continuous-route-affine-bounds-v1', lowerBoundMeters: lower, upperBoundMeters: upper, absoluteErrorBoundMeters: upper - lower, requestedToleranceMeters: tolerance, bestRoute: best.kind, possibleRouteClasses: Object.freeze(possibleRouteClasses), bestAngles: Object.freeze(best.angles), evaluatedBoxes, objectiveEvaluations, peakQueuedBoxes, ...feasibleRoutes });
 }
+
+export function cylinderGlobalDistance(...args: Parameters<typeof cylinderGlobalDistanceImpl>) { return paintingStage('distance', () => cylinderGlobalDistanceImpl(...args)); }

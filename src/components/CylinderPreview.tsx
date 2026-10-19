@@ -1,5 +1,6 @@
 'use client';
-import { useEffect, useLayoutEffect, useRef, useState, useImperativeHandle, type ReactNode, type Ref } from 'react';
+import { Profiler, useEffect, useLayoutEffect, useRef, useState, useImperativeHandle, type ReactNode, type Ref } from 'react';
+import { recordPaintingStage } from '../editor/painting-metrics.ts';
 import { CylinderPreviewSession, createCylinderPreviewTerrain } from '../editor/cylinder-preview-session.ts';
 import { cylinderBrushFromControls, defaultCylinderControls, type CylinderControls } from '../editor/cylinder-controls.ts';
 import { attachSphericalEditing as attachSurfaceEditing } from '../interaction/spherical-editing.ts';
@@ -48,6 +49,7 @@ export function CylinderWorkspace({ session, preparationMs = 0, detail = 128, se
   useLayoutEffect(() => { commands.current.stop(); commands.current.refresh(); }, [controls]);
   useLayoutEffect(() => { commands.current.display(); }, [appearance]);
   useLayoutEffect(() => {
+    session.enableWorkers();
     const node = canvas.current!, surface = overlay.current!, output = readout.current!, owner = root.current!, ctx = node.getContext('2d')!, mark = surface.getContext('2d')!, scratch = document.createElement('canvas'), scratchContext = scratch.getContext('2d')!;
     setFullscreenSupported(!!document.fullscreenEnabled && typeof owner.requestFullscreen === 'function');
     let alive = true, frame = 0, requested = initialCylinderView(), applied = requested, appliedSize: CylinderViewport = { width: node.clientWidth, height: node.clientHeight }, serial = 0, appliedSerial = -1, pendingSerial = 0, pendingView = requested, pendingSize = appliedSize;
@@ -97,7 +99,8 @@ export function CylinderWorkspace({ session, preparationMs = 0, detail = 128, se
         const p = projectCylinder(session.terrain.geometry, stencil.center, applied, appliedSize); if (p) { mark.strokeStyle = '#fff3a8'; mark.lineWidth = 1; mark.beginPath(); mark.moveTo(p.x - 5, p.y); mark.lineTo(p.x + 5, p.y); mark.moveTo(p.x, p.y - 5); mark.lineTo(p.x, p.y + 5); mark.stroke(); }
       }
       if (selection) { const p = projectCylinder(session.terrain.geometry, selection, applied, appliedSize); if (p) { mark.strokeStyle = '#fff'; mark.lineWidth = 1.5; mark.beginPath(); mark.arc(p.x, p.y, 7, 0, 2 * Math.PI); mark.stroke(); } }
-      metrics.overlayMaxMs = Math.max(metrics.overlayMaxMs, performance.now() - t);
+      const overlayMs = performance.now() - t;
+      metrics.overlayMaxMs = Math.max(metrics.overlayMaxMs, overlayMs); recordPaintingStage('overlay', overlayMs);
     };
     const schedule = () => { if (alive && !frame) frame = requestAnimationFrame(paint); };
     const gpu = new CylinderWebGLRenderer(gpuCanvas.current!, session.cache, () => {
@@ -131,7 +134,7 @@ export function CylinderWorkspace({ session, preparationMs = 0, detail = 128, se
           const viewport = size(), at = performance.now(), receipt = gpu.present(requested, viewport, appearanceRef.current);
           backing(viewport); ctx.clearRect(0, 0, node.width, node.height);
           applied = requested; appliedSize = viewport; appliedSerial = serial; displayRevision = receipt.revision; redraw = false; front = undefined; spare = undefined;
-          bounded(metrics.renderTimes, [performance.now() - at]); bounded(metrics.uploadTimes, [receipt.uploadMs]); bounded(metrics.submitTimes, [receipt.submitMs]); bounded(metrics.resizeTimes, [receipt.resizeMs]); presented();
+          bounded(metrics.renderTimes, [performance.now() - at]); bounded(metrics.uploadTimes, [receipt.uploadMs]); bounded(metrics.submitTimes, [receipt.submitMs]); bounded(metrics.resizeTimes, [receipt.resizeMs]); recordPaintingStage('gpuElevationUpload', receipt.uploadMs); recordPaintingStage('gpuSubmit', receipt.submitMs); presented();
         } catch (e) { gpu.fail(e); appliedSerial = -1; displayRevision = -1; redraw = true; }
       }
       session.requestPreview(hover && pointAt(hover), brush, applied);
@@ -143,7 +146,7 @@ export function CylinderWorkspace({ session, preparationMs = 0, detail = 128, se
         }
       }
       for (let work = 0; raster && work < 16 && performance.now() - frameStart < 9; work++) {
-        const at = performance.now(), result = raster.next(), elapsed = performance.now() - at; metrics.renderSliceMaxMs = Math.max(metrics.renderSliceMaxMs, elapsed); metrics.rasterTotalMs += elapsed;
+        const at = performance.now(), result = raster.next(), elapsed = performance.now() - at; metrics.renderSliceMaxMs = Math.max(metrics.renderSliceMaxMs, elapsed); metrics.rasterTotalMs += elapsed; recordPaintingStage('cpuRasterSlice', elapsed);
         if (result.done) {
           if (front) spare = front.pixels; front = result.value; raster = undefined; applied = pendingView; appliedSize = pendingSize; appliedSerial = pendingSerial;
           backing(appliedSize);
@@ -162,8 +165,9 @@ export function CylinderWorkspace({ session, preparationMs = 0, detail = 128, se
       drawOverlay(); if (hover) show(pointAt(hover), false);
       const pending = session.locked ? session.painting : session.pump(3), previewPending = session.pumpPreview();
       drawOverlay(); // A completed dry-run stencil must be visible even when no work remains.
-      pointer.current!.dataset.pending = String(session.pendingWork || session.previewPending || !ready());
-      pointer.current!.textContent = session.pendingWork || session.previewPending ? 'Pointer · pending work' : 'Pointer';
+      const pendingPresentation = displayRevision !== session.cache.sourceRevision;
+      pointer.current!.dataset.pending = String(session.pendingWork || session.previewPending || pendingPresentation || !ready());
+      pointer.current!.textContent = session.pendingWork || session.previewPending || pendingPresentation ? 'Pointer · pending work' : 'Pointer';
       const sig = JSON.stringify([session.modified, session.message, session.previewMessage, session.painting, session.processing, session.history.canUndo, session.history.canRedo, ready()]); if (sig !== signature) { signature = sig; update(v => v + 1); }
       node.dataset.renderer = gpu.available ? 'webgl2' : 'cpu'; node.dataset.modified = String(session.modified); node.dataset.ready = String(ready()); node.dataset.mode = applied.mode; node.dataset.processing = String(session.processing); node.dataset.painting = String(session.painting); node.dataset.revision = String(session.terrain.revision); node.dataset.displayRevision = String(displayRevision); node.dataset.historyEntries = String(session.history.statistics.entries); node.dataset.zoom = String(applied.zoom); node.dataset.previewPending = String(session.previewPending);
       if (pending || previewPending || raster || redraw || opportunityAt || displayRevision !== session.cache.sourceRevision) schedule(); else lastFrame = 0;
@@ -208,7 +212,7 @@ export function CylinderWorkspace({ session, preparationMs = 0, detail = 128, se
     const fullscreenChanged = () => { stop(); setFullscreen(!!document.fullscreenElement); };
     window.addEventListener('keydown', key); window.addEventListener('beforeunload', departure); window.addEventListener('pagehide', stop); document.addEventListener('fullscreenchange', fullscreenChanged);
     inspection = {
-      snapshot: (includeWords = true) => structuredClone({ ...(includeWords ? { words: [...new Uint32Array(session.terrain.copyElevations().buffer)] } : {}), identity: session.terrain.metadata.identity, metadata: session.terrain.metadata, view: applied, requested, size: appliedSize, ready: ready(), painting: session.painting, processing: session.processing, name: session.name, hasSaved: session.hasSaved, modified: session.modified, checkpointSamples: session.checkpointSamples, locked: session.locked, history: session.history.statistics, operations: session.history.operations, statistics: session.statistics, cacheBytes: session.cache.byteLength, displayRevision, revision: session.terrain.revision, rasterBytes: (front?.pixels.byteLength ?? 0) + (spare?.byteLength ?? 0), appearance: appearanceRef.current, renderer: { kind: gpu.available ? 'webgl2' : 'cpu', width: gpu.available ? gpuCanvas.current!.width : front?.columns, height: gpu.available ? gpuCanvas.current!.height : front?.rows, ...gpu.statistics }, metrics, controls: controlsRef.current, stencil: session.stencil && { ...session.stencil, indices: [...session.stencil.indices] }, lastDab: session.lastDab && { ...session.lastDab, indices: [...session.lastDab.indices] }, pendingWork: session.pendingWork, pendingPositions: session.pendingPositions, previewPending: session.previewPending, previewMessage: session.previewMessage, message: session.message }),
+      snapshot: (includeWords = true) => structuredClone({ ...(includeWords ? { words: [...new Uint32Array(session.terrain.copyElevations().buffer)] } : {}), identity: session.terrain.metadata.identity, metadata: session.terrain.metadata, view: applied, requested, size: appliedSize, ready: ready(), painting: session.painting, processing: session.processing, name: session.name, hasSaved: session.hasSaved, modified: session.modified, checkpointSamples: session.checkpointSamples, locked: session.locked, history: session.history.statistics, operations: session.history.operations, statistics: session.statistics, workDiagnostics: session.workDiagnostics, previewDiagnostics: session.previewDiagnostics, cacheBytes: session.cache.byteLength, displayRevision, revision: session.terrain.revision, rasterBytes: (front?.pixels.byteLength ?? 0) + (spare?.byteLength ?? 0), appearance: appearanceRef.current, renderer: { kind: gpu.available ? 'webgl2' : 'cpu', width: gpu.available ? gpuCanvas.current!.width : front?.columns, height: gpu.available ? gpuCanvas.current!.height : front?.rows, ...gpu.statistics }, metrics, controls: controlsRef.current, stencil: session.stencil && { ...session.stencil, indices: [...session.stencil.indices] }, lastDab: session.lastDab && { ...session.lastDab, indices: [...session.lastDab.indices] }, pendingWork: session.pendingWork, pendingPositions: session.pendingPositions, previewPending: session.previewPending, previewMessage: session.previewMessage, message: session.message }),
       project: p => projectCylinder(session.terrain.geometry, { ...session.terrain.metadata.identity, ...p }, applied, appliedSize),
       sample: index => { const key = session.terrain.keyAt(index), address = session.terrain.owner(key); return { key, address, aliases: session.terrain.aliases(key), position: session.terrain.positionAt(address), screen: projectCylinder(session.terrain.geometry, session.terrain.positionAt(address), applied, appliedSize) }; },
     };
@@ -233,7 +237,7 @@ export function CylinderWorkspace({ session, preparationMs = 0, detail = 128, se
   const navigation = <><button aria-pressed={mode === 'physical'} onClick={() => commands.current.mode('physical')}>Physical view</button><button aria-pressed={mode === 'map'} onClick={() => commands.current.mode('map')}>Surface map</button><button onClick={() => commands.current.zoom(.8)} aria-label="Zoom out">−</button><span>{Math.round(zoom * 100)}%</span><button onClick={() => commands.current.zoom(1.25)} aria-label="Zoom in">+</button><button onClick={() => commands.current.reset()}>Fit cylinder</button><details className="cylinder-regions"><summary>Center region</summary><div><button onClick={() => commands.current.center('side')}>Side</button><button onClick={() => commands.current.center('cap-start')}>Start cap</button><button onClick={() => commands.current.center('cap-end')}>End cap</button><button disabled={!selected} onClick={() => commands.current.center()}>Center selection</button></div></details>{!workspace && fullscreenSupported && <button aria-label={fullscreen ? 'Exit fullscreen' : 'Enter fullscreen'} onClick={() => { commands.current.stop(); void (document.fullscreenElement ? document.exitFullscreen() : root.current!.requestFullscreen()).catch(e => { session.message = `Fullscreen unavailable: ${String(e)}`; commands.current.refresh(); }); }}>⛶</button>}</>;
   const picker = <>{tool('navigate', 'Rotate / Pan')}{tool('raise', 'Raise')}{tool('lower', 'Lower')}{tool('smooth', 'Smooth')}{tool('flatten', 'Flatten')}</>;
   const Container = workspace ? 'section' : 'main';
-  return <Container ref={root} className={workspace ? 'cylinder-preview cylinder-integrated' : 'cylinder-preview'} aria-label={workspace ? 'Cylindrical surface view' : 'Cylinder development preview'}>
+  return <Profiler id="cylinder-workspace" onRender={(_id, _phase, actualDuration) => recordPaintingStage('reactRender', actualDuration)}><Container ref={root} className={workspace ? 'cylinder-preview cylinder-integrated' : 'cylinder-preview'} aria-label={workspace ? 'Cylindrical surface view' : 'Cylinder development preview'}>
     <canvas ref={gpuCanvas} className="cylinder-gpu" aria-hidden="true" />
     <canvas ref={canvas} className="cylinder-canvas" tabIndex={0} role="img" aria-label="Interactive physical cylinder terrain" aria-describedby={workspace ? 'cylinder-help' : 'cylinder-help cylinder-session-notice'} />
     <canvas ref={overlay} className="cylinder-overlay" aria-hidden="true" />
@@ -251,5 +255,5 @@ export function CylinderWorkspace({ session, preparationMs = 0, detail = 128, se
     <nav className="cylinder-navigation" aria-label="Cylinder navigation">{navigation}</nav>
     </>}
     <div className="cylinder-feedback"><p role="status" aria-label="Cylinder work status">{session.message}</p><p aria-label="Cylinder footprint status">{session.previewMessage || (session.painting ? 'Dots show the last committed physical dab.' : 'Point at terrain to inspect its exact numerical footprint.')}</p><output ref={readout} aria-label="Cylinder elevation readout">Inspect the physical surface or switch to Surface map.</output></div>
-  </Container>;
+  </Container></Profiler>;
 }

@@ -1,0 +1,86 @@
+{
+  "n": 128,
+  "stages": {
+    "encodeMs": 14.099999994039536,
+    "validateAndAtomicWriteMs": 18.5,
+    "indexedDbReadMs": 2.9000000059604645,
+    "validateAndDecodeMs": 30.5,
+    "textureRestorationMs": 203.09999999403954
+  },
+  "ticks": 10,
+  "maxAnimationFrameGapMs": 109.2000000178814,
+  "maxTextureTaskMs": 11.400000005960464,
+  "authorityBytes": 393224,
+  "cacheBytes": 1984560,
+  "conservativeCodecTypedPayloadBytes": 1572896,
+  "exact": true,
+  "metadataExact": true,
+  "databaseVersion": 1,
+  "cycles": [
+    {
+      "n": 128,
+      "stages": {
+        "encodeMs": 14.099999994039536,
+        "validateAndAtomicWriteMs": 18.5,
+        "indexedDbReadMs": 2.9000000059604645,
+        "validateAndDecodeMs": 30.5,
+        "textureRestorationMs": 203.09999999403954
+      },
+      "ticks": 4,
+      "maxAnimationFrameGapMs": 109.2000000178814,
+      "maxTextureTaskMs": 11.400000005960464,
+      "authorityBytes": 393224,
+      "cacheBytes": 1984560,
+      "conservativeCodecTypedPayloadBytes": 1572896,
+      "exact": true,
+      "metadataExact": true,
+      "databaseVersion": 1
+    },
+    {
+      "n": 128,
+      "stages": {
+        "encodeMs": 5.799999982118607,
+        "validateAndAtomicWriteMs": 10.599999994039536,
+        "indexedDbReadMs": 2.199999988079071,
+        "validateAndDecodeMs": 25.5,
+        "textureRestorationMs": 186
+      },
+      "ticks": 3,
+      "maxAnimationFrameGapMs": 104.7999999821186,
+      "maxTextureTaskMs": 9.300000011920929,
+      "authorityBytes": 393224,
+      "cacheBytes": 1984560,
+      "conservativeCodecTypedPayloadBytes": 1572896,
+      "exact": true,
+      "metadataExact": true,
+      "databaseVersion": 1
+    },
+    {
+      "n": 128,
+      "stages": {
+        "encodeMs": 6.200000017881393,
+        "validateAndAtomicWriteMs": 12.300000011920929,
+        "indexedDbReadMs": 2.7999999821186066,
+        "validateAndDecodeMs": 24.700000017881393,
+        "textureRestorationMs": 174.2999999821186
+      },
+      "ticks": 3,
+      "maxAnimationFrameGapMs": 105.5,
+      "maxTextureTaskMs": 9.699999988079071,
+      "authorityBytes": 393224,
+      "cacheBytes": 1984560,
+      "conservativeCodecTypedPayloadBytes": 1572896,
+      "exact": true,
+      "metadataExact": true,
+      "databaseVersion": 1
+    }
+  ],
+  "actualAppTexturePreparationMs": 177.2999999821186,
+  "actualAppMaxPreparationTaskMs": 8.900000005960464,
+  "viewport": {
+    "width": 412,
+    "height": 839
+  },
+  "cpuThrottle": 4,
+  "method": "Real IndexedDB version-1 database, v3 checksummed payload, cooperative validation/restore/cache, then actual App Open/Save. Timings include cooperative waits. Typed payload accounting excludes JS/GC/Canvas/browser overhead and is not process RSS. Pixel 7 is emulation, not physical hardware."
+}

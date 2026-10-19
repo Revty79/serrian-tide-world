@@ -1,0 +1,45 @@
+import{chromium,devices}from'@playwright/test';
+import{spawn,execFileSync}from'node:child_process';
+import{readFileSync,writeFileSync,mkdirSync}from'node:fs';
+import{resolve,dirname,join}from'node:path';
+import{createHash}from'node:crypto';
+import{inflateSync}from'node:zlib';
+import assert from'node:assert/strict';
+import{createCylinderGeometry}from'../src/surfaces/cylinder.ts';
+import{initialCylinderView,projectCylinder}from'../src/rendering/cylindrical-view.ts';
+const label=process.argv[2]??'after',base='267903f69e5cdff3f2151944b971002ca7d2be7e',root=label==='before'?'.local/a7-p1b-production-baseline':'.',port=5224,url=`http://127.0.0.1:${port}`,delay=ms=>new Promise(r=>setTimeout(r,ms));
+if(label==='before'){
+ for(const p of execFileSync('git',['ls-tree','-r','--name-only',base],{encoding:'utf8'}).trim().split('\n').filter(p=>/^(src\/|index.html$|package.*json$|vite.config.ts$|tsconfig.json$)/.test(p))){const target=join(root,p);mkdirSync(dirname(target),{recursive:true});writeFileSync(target,execFileSync('git',['show',`${base}:${p}`]));}
+ execFileSync(process.execPath,[resolve('node_modules/vite/bin/vite.js'),'build'],{cwd:resolve(root),stdio:'pipe'});
+}
+// Use exactly the final benchmark's PNG decoder, without running its driver.
+const measureSource=readFileSync('scripts/measure-cylinder-painting.mjs','utf8'),decoder=measureSource.slice(measureSource.indexOf('let focus='),measureSource.indexOf('const server='));
+const pixels=new Function('assert','inflateSync','createHash',decoder+'\nreturn { crop, focus: value => { focus=value; } };')(assert,inflateSync,createHash);
+const server=spawn(process.execPath,[resolve('node_modules/vite/bin/vite.js'),'preview','--host','127.0.0.1','--port',String(port),'--strictPort'],{cwd:resolve(root),windowsHide:true,stdio:'ignore'});let browser;const records=[];
+try{
+ for(let i=0;;i++){if(server.exitCode!==null||i>200)throw Error('Strict built preview unavailable');try{if((await fetch(url)).ok)break;}catch{}await delay(100);}
+ for(const backend of['hardware','fallback']){
+  browser=await chromium.launch(backend==='hardware'?{channel:'chrome',headless:false}:{headless:true});
+  for(const profile of['desktop','mobile'])for(const scenario of['n64-ordinary','n256-rim']){
+   const n=scenario==='n64-ordinary'?64:256,context=await browser.newContext(profile==='mobile'?devices['Pixel 7']:{viewport:{width:1440,height:900}}),page=await context.newPage(),cdp=await context.newCDPSession(page);await cdp.send('Emulation.setCPUThrottlingRate',{rate:profile==='mobile'?4:1});
+   const b=name=>page.getByRole('button',{name,exact:true}),canvas=page.locator('.cylinder-canvas');
+   const idle=()=>page.waitForFunction(()=>{const c=document.querySelector('.cylinder-canvas');return c?.dataset.ready==='true'&&c.dataset.painting==='false'&&c.dataset.revision===c.dataset.displayRevision&&c.dataset.previewPending==='false';},undefined,{timeout:120000});
+   await page.addInitScript(()=>{document.addEventListener('pointerdown',e=>{if(e.target instanceof Element&&e.target.matches('.cylinder-canvas'))window.prodPaintingDown=performance.timeOrigin+performance.now();},true);});
+   await page.goto(url);await page.getByLabel('World shape',{exact:true}).selectOption('cylinder');await page.getByLabel('World/map name',{exact:true}).fill(`Built painting ${scenario}`);await page.getByLabel('Cylinder numerical detail',{exact:true}).selectOption(String(n));await b('Create World / Map').click();await idle();assert.equal(await canvas.getAttribute('data-renderer'),backend==='hardware'?'webgl2':'cpu');
+   if(n===256){await b('Open tools').click();await page.getByLabel('Cylinder brush radius (m)',{exact:true}).fill('377100');await b('Close tools').click();await b('Surface map').click();await idle();}
+   const box=await canvas.boundingBox(),view=initialCylinderView(n===256?'map':'physical'),identity={worldId:'coordinate-only',surfaceId:'outside'},geometry=createCylinderGeometry({identity,provider:'physical-closed-cylinder',version:1,configuration:'solid-capped',role:'exterior',radiusMeters:1000000,lengthMeters:1600000});
+   const local=projectCylinder(geometry,{...identity,patchId:'side',u:.013,v:n===256?43700:800000},view,{width:box.width,height:box.height});assert.ok(local);const p={x:box.x+local.x,y:box.y+local.y},viewport=page.viewportSize();pixels.focus({x:p.x/viewport.width,y:p.y/viewport.height});
+   const save=async()=>{await b('Save').click();await page.getByLabel('Map work status',{exact:true}).filter({hasText:'Saved on this device'}).waitFor();return page.evaluate(async()=>{const db=await new Promise((resolve,reject)=>{const q=indexedDB.open('serrian-tide-atlas',1);q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error);});try{const rows=await new Promise((resolve,reject)=>{const tx=db.transaction('heightmaps','readonly'),q=tx.objectStore('heightmaps').getAll();tx.oncomplete=()=>resolve(q.result);tx.onabort=()=>reject(tx.error);});const r=rows.find(r=>r.formatVersion===4);return{count:r.elevations.byteLength/4,sha256:Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',r.elevations)),v=>v.toString(16).padStart(2,'0')).join('')};}finally{db.close();}});};
+   const initial=await save();
+   await page.addStyleTag({content:'.cylinder-overlay,.cylinder-pointer{visibility:hidden!important}'});
+   for(let repeat=0;repeat<3;repeat++){
+    await page.mouse.move(p.x,p.y);await idle();const frames=[];cdp.removeAllListeners('Page.screencastFrame');cdp.on('Page.screencastFrame',e=>{void cdp.send('Page.screencastFrameAck',{sessionId:e.sessionId}).catch(()=>{});if(frames.length<512)frames.push({utcMs:e.metadata.timestamp*1000,hash:pixels.crop(e.data)});});
+    await cdp.send('Page.startScreencast',{format:'png',maxWidth:480,maxHeight:320,everyNthFrame:1});for(let i=0;!frames.length&&i<100;i++)await delay(20);assert.ok(frames.length);const previous=frames.at(-1).hash;
+    await page.mouse.down();for(let i=1;i<=(n===256?80:4);i++){await page.mouse.move(p.x+i*.3,p.y+Math.sin(i/5)*2);await delay(16);}await page.mouse.up();await idle();await delay(100);await cdp.send('Page.stopScreencast');const down=await page.evaluate(()=>window.prodPaintingDown),frame=frames.find(f=>f.utcMs>=down&&f.hash!==previous),saved=await save();assert.notEqual(saved.sha256,initial.sha256);
+    records.push({label,backend,profile,n,scenario,repeat,pageMainThreadThrottle:profile==='mobile'?4:1,inputToVisibleMs:frame?frame.utcMs-down:null,down,firstChangedFrame:frame,frames,initial,saved});writeFileSync(`docs/evidence/a7-p1b-${label}-production-painting.json`,JSON.stringify({base,method:'Supplementary built-bundle normal / check. Verbatim approved Git source vs final production dist. No Playwright tracing, /src imports, DEV inspection or stage profiling. Native Raise on blank -100m geography, three repetitions each reset by exact Undo, compositor terrain crop; 4 ordinary or80 demanding moves. Pixel capture remains instrumented, not photons. These scenes differ from the sculpted diagnostic experiment.',records},null,2));
+    await b('Undo').click();await idle();assert.deepEqual(await save(),initial);
+   }
+   await page.screenshot({path:`docs/evidence/a7-p1b-${label}-production-${backend}-${profile}-${scenario}.png`});await context.close();console.log(label,backend,profile,scenario,records.filter(r=>r.backend===backend&&r.profile===profile&&r.n===n).map(r=>r.inputToVisibleMs));
+  }await browser.close();browser=undefined;
+ }
+}finally{await browser?.close();server.kill();server.unref();}

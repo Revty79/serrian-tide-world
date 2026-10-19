@@ -1,3 +1,4 @@
+import { paintingStage } from '../editor/painting-metrics.ts';
 import type { SurfacePosition } from '../surfaces/contracts.ts';
 import { assertFloat32Elevation } from './model.ts';
 import { radialFalloff, saturatedElevation } from './brush-math.ts';
@@ -63,7 +64,7 @@ export function cylinderFalloffEnclosure(lower: number, upper: number, radius: n
 /** One numerical dab only. pump prepares a guarded source epoch; commit is explicit and atomic. */
 export function prepareCylindricalDab(terrain: CylindricalTerrain, input: SurfacePosition, inputSettings: CylindricalBrushSettings, inputLimits: CylinderDabLimits = {}) {
   const settings = settingsSnapshot(inputSettings), limits = limitSnapshot(inputLimits);
-  const plan = cylinderBrushCandidates(terrain, input, settings.radiusMeters), center = Object.freeze({ ...plan.center });
+  const plan = paintingStage('candidatePlan', () => cylinderBrushCandidates(terrain, input, settings.radiusMeters)), center = Object.freeze({ ...plan.center });
   const revision = terrain.revision, binding = terrain.keyAt(0);
   let status: CylinderDabStatus = (settings.tool === 'smooth' || settings.tool === 'flatten') && settings.intensity === 0 ? 'ready' : 'preparing';
   let iterator: ReturnType<typeof plan.samples> | undefined = status === 'preparing' ? plan.samples() : undefined;
@@ -127,7 +128,7 @@ export function prepareCylindricalDab(terrain: CylindricalTerrain, input: Surfac
       try {
         synchronized(); statistics.pumps++;
         for (let i = 0; i < maxSamples; i++) {
-          const item = iterator!.next();
+          const item = paintingStage('candidateSelection', () => iterator!.next());
           if (item.done) { iterator = undefined; status = 'ready'; break; }
           if (++statistics.candidates > limits.maxCandidates) throw new RangeError('Cylinder dab candidate budget exceeded.');
           const { key, position } = item.value;

@@ -1,3 +1,4 @@
+import { paintingStage } from './painting-metrics.ts';
 import type { prepareCylindricalDab } from '../terrain/cylindrical-brush.ts';
 import { MAX_CYLINDER_PATCH_SAMPLES, type CylindricalTerrain, type CylinderPatchBlock } from '../terrain/cylindrical.ts';
 
@@ -6,6 +7,7 @@ export const CYLINDER_HISTORY_LIMITS = Object.freeze({ maxEntries: 32, maxBytes:
 export type CylinderHistoryLimits = { readonly [K in keyof typeof CYLINDER_HISTORY_LIMITS]?: number };
 export type CylinderStrokeTermination = 'released' | 'cancelled' | 'failed' | 'disposed';
 type Dab = ReturnType<typeof prepareCylindricalDab>;
+export type CylindricalCommitJob = Pick<Dab, 'preparedChanges' | 'commit' | 'center' | 'settings' | 'sourceRevision'> & { readonly statistics: Pick<Dab['statistics'], 'affectedSamples'> };
 interface Chunk { indices: Uint32Array; before: Float32Array; after: Float32Array; beforeWords: Uint32Array; afterWords: Uint32Array }
 interface Record { chunks: (Chunk | undefined)[]; slots: Map<number, number>; count: number; bytes: number; dabs: number; reason: CylinderStrokeTermination }
 
@@ -56,7 +58,7 @@ export function createCylindricalHistory(terrain: CylindricalTerrain, input: Cyl
       const synchronized = () => { if (closed || active !== pending || terrain.revision !== expectedRevision) throw new Error('Cylinder stroke source revision changed or its history operation ended.'); };
       return Object.freeze({
         synchronized,
-        commitDab(job: Dab) {
+        commitDab(job: CylindricalCommitJob) {
           synchronized();
           const r = pending!;
           const changes = [];
@@ -79,7 +81,7 @@ export function createCylindricalHistory(terrain: CylindricalTerrain, input: Cyl
               if (slot === undefined) { slot = r.count++; r.slots.set(change.index, slot); const c = chunkAt(r, slot), j = slot % CHUNK; c.indices[j] = change.index; c.before[j] = change.before; }
               chunkAt(r, slot).after[slot % CHUNK] = change.after;
             }
-            synchronized(); const writes = job.commit(); expectedRevision = terrain.revision; r.bytes = nextBytes; r.dabs++;
+            synchronized(); const writes = paintingStage('canonicalCommit', () => job.commit()); expectedRevision = terrain.revision; r.bytes = nextBytes; r.dabs++;
             if (changes.length) {
               for (let i = cursor; i < size; i++) { bytes -= entries[i]!.bytes; entries[i] = undefined; branches++; } size = cursor;
               for (let i = 0; i < evict; i++) { bytes -= entries[i]!.bytes; evictions++; }

@@ -1,0 +1,7 @@
+import{readFileSync,writeFileSync,createWriteStream}from'node:fs';
+import{spawn}from'node:child_process';
+const notBefore=Date.now(),phases=[];
+let ready=false;while(!ready){try{const c=JSON.parse(readFileSync('docs/evidence/a7-p1b-final-checks.json','utf8'));ready=Date.parse(c.finished)>=notBefore&&c.phases.length===11&&c.phases.every(p=>p.code===0&&!p.changed.length);}catch{}if(!ready)await new Promise(r=>setTimeout(r,1000));}
+for(const[name,args]of[['hardware-input',['.local/run-a7-p1b-hardware-input-browser.mjs']],['production-before',['.local/production-painting-p1b.mjs','before']],['production-after',['.local/production-painting-p1b.mjs','after']]]){
+ console.log('Starting',name);const at=Date.now(),out=createWriteStream(`docs/evidence/a7-p1b-additional-${name}.txt`),child=spawn(process.execPath,args,{windowsHide:true,stdio:['ignore','pipe','pipe']});child.stdout.pipe(out);child.stderr.pipe(out);const code=await new Promise(r=>child.on('exit',r));await new Promise(r=>out.end(r));phases.push({name,args,code,elapsedMs:Date.now()-at});writeFileSync('docs/evidence/a7-p1b-additional-checks.json',JSON.stringify({phases},null,2));console.log(phases.at(-1));if(code)throw Error(`${name} failed`);
+}

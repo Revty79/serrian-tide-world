@@ -154,3 +154,7 @@ Future Next.js integration can replace this development host and construct the n
 ## A7-D normal cylinder document
 
 `AtlasDocument` now includes a cylinder variant prepared by `prepareCylinderSession`. It supplies the same `CylinderWorkspace` to `WorkspaceChrome` while App owns creation, the mixed library, durable checkpoints, accepted-input draining and safe replacement. V4 is explicitly discriminated from v1/v2/v3 and uses the existing two-store atomic IndexedDB adapter. Geometry/brush/path/history math and the existing gesture arbiter remain unchanged. The sparse exact saved-content map is bounded by the sample count and remains correct despite history branching/eviction. See [persistence and lifecycle specification](CYLINDRICAL-PERSISTENCE.md) and [completion evidence](A7-D-COMPLETION.md).
+
+## A7-P1B responsive preparation
+
+Cylinder paths, certified distances, candidates, brush preparation and dry-run footprints use a dedicated preparation worker. Main-thread authority validates one revision-keyed patch at a time, commits through exact history/checkpoint/display handoff and acknowledges it before the scratch epoch advances. Ordered input, revision leases and event-driven drain signals form the small shared foundation. See [the detailed contract and sphere adoption plan](SURFACE-PAINTING-CONTRACT.md). Other shape implementations and persistence formats are unchanged.

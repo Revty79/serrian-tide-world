@@ -1,3 +1,4 @@
+import { paintingStage } from '../editor/painting-metrics.ts';
 import type { SurfacePosition } from './contracts.ts';
 import { cylinderAngle, createCylinderGeometry, type CylinderPosition, type CylinderRegion, type CylinderVector } from './cylinder.ts';
 import { cylinderGlobalDistance, type CylinderDistanceOptions, type CylinderRouteClass } from './cylinder-distance.ts';
@@ -33,7 +34,7 @@ const vector = (v: readonly number[]): CylinderVector => Object.freeze([v[0]!, v
 const xy = (theta: number, radius: number): readonly [number, number] => { const [s, c] = pathTrig(theta); return Object.freeze([radius * c, radius * s]); };
 
 /** Pure continuous reference geometry. No sample ownership, elevation, history, input or projection. */
-export function reconstructCylinderPath(g: Geometry, first: SurfacePosition, second: SurfacePosition, options: CylinderPathOptions) {
+function reconstructCylinderPathImpl(g: Geometry, first: SurfacePosition, second: SurfacePosition, options: CylinderPathOptions) {
   if (options.version !== 1) throw new RangeError('Only cylinder physical path version 1 is supported.');
   const start = Object.freeze(g.normalize(first)), end = Object.freeze(g.normalize(second)), { radiusMeters: R, lengthMeters: L } = g.metadata;
   const scale = Math.max(R, L), guard = Math.max(8192 * Number.MIN_VALUE, 8192 * EPS * scale);
@@ -171,3 +172,5 @@ export function reconstructCylinderPath(g: Geometry, first: SurfacePosition, sec
   });
 }
 export type CylinderPhysicalPath = ReturnType<typeof reconstructCylinderPath>;
+
+export function reconstructCylinderPath(...args: Parameters<typeof reconstructCylinderPathImpl>) { return paintingStage('path', () => reconstructCylinderPathImpl(...args)); }

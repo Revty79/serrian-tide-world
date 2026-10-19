@@ -1,0 +1,2 @@
+import base from '../playwright.config.ts';
+export default { ...base, testDir: '../tests', outputDir: '../test-results/a7-p1b-full', use: { ...base.use, baseURL: 'http://127.0.0.1:5221', launchOptions: { args: [] } }, webServer: undefined };
