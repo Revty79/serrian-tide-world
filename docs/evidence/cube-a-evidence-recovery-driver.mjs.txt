@@ -1,0 +1,16 @@
+import { execFileSync } from 'node:child_process';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+const paths = execFileSync('git', ['diff', '--name-only', '--', 'docs/evidence'], { encoding: 'utf8' }).trim().split(/\r?\n/).filter(Boolean), receipt = [];
+mkdirSync('.local/cube-a-interrupted-evidence', { recursive: true });
+for (const path of paths) {
+  if (!/^docs\/evidence\/(a5-desktop-|a6-d1-desktop-)/.test(path)) throw Error(`Unexpected historical mutation: ${path}`);
+  const data = readFileSync(path); writeFileSync(`.local/cube-a-interrupted-evidence/${path.split('/').at(-1)}`, data);
+  const original = execFileSync('git', ['show', `HEAD:${path}`], { maxBuffer: 100e6 }); writeFileSync(path, original);
+  const actual = createHash('sha1').update(`blob ${original.length}\0`).update(readFileSync(path)).digest('hex');
+  const expected = execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim();
+  if (actual !== expected) throw Error(`Restore mismatch: ${path}`);
+  receipt.push({ path, restoredGitBlob: actual });
+}
+writeFileSync('docs/evidence/cube-a-interrupted-run.json', JSON.stringify({ status: 'Initial browser attempt stopped when default output paths overwrote historical artifacts; exact Git blobs restored. Final run uses isolated cwd. No runtime/source change.', restored: receipt }, null, 2) + '\n');
+console.log({ exactRestorations: receipt.length });

@@ -1,0 +1,27 @@
+import { readFileSync, writeFileSync, readdirSync, copyFileSync, statSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+const prefix = 'docs/evidence/cube-a-', directory = '.local/cube-a-browser/docs/evidence';
+const sha = (value) => createHash('sha256').update(value).digest('hex');
+const entries = readdirSync(directory).sort().map((file) => {
+  const path = `${directory}/${file}`, data = readFileSync(path);
+  if (!statSync(path).isFile()) throw Error('Expected flat regression artifact directory');
+  const input = /^a7-p1c-saved-geography-n(128|256)\.json$/.test(file);
+  if (input && sha(data) !== sha(readFileSync(`docs/evidence/${file}`))) throw Error('Fixture input mismatch');
+  return { archivePath: file, role: input ? 'accepted input fixture' : 'generated regression evidence', bytes: data.length, sha256: sha(data) };
+});
+const archives = []; let current;
+for (const entry of entries) {
+  if (!current || current.uncompressedBytes + entry.bytes > 32 * 1024 * 1024) {
+    current = { archive: `${prefix}browser-artifacts-${archives.length + 1}.zip`, files: 0, uncompressedBytes: 0 }; archives.push(current);
+  }
+  current.uncompressedBytes += entry.bytes; current.files++; entry.archive = current.archive;
+}
+writeFileSync(prefix + 'browser-artifacts.json', JSON.stringify({ archives, scope: 'Actual unchanged-editor browser regressions. Cube-A itself has no UI. Extract all archives into one evidence directory.',
+  files: entries.length, generated: entries.filter((e) => e.role === 'generated regression evidence').length,
+  uncompressedBytes: entries.reduce((sum, e) => sum + e.bytes, 0), entries }, null, 2) + '\n');
+for (const [source, name] of [
+  ['.local/cube-a-validate.mjs', 'browser-validation-driver.mjs.txt'], ['.local/cube-a-final-numerical.mjs', 'final-numerical-driver.mjs.txt'],
+  ['.local/cube-a.config.ts', 'browser-config.ts.txt'], ['.local/cube-a-preserve.mjs', 'preservation-driver.mjs.txt'],
+  ['.local/cube-a-restore-evidence.mjs', 'evidence-recovery-driver.mjs.txt'], ['.local/cube-a-split-zip.ps1', 'archive-driver.ps1.txt'],
+]) copyFileSync(source, prefix + name);
+console.log({ files: entries.length, generated: entries.filter((e) => e.role === 'generated regression evidence').length, bytes: entries.reduce((sum, e) => sum + e.bytes, 0) });

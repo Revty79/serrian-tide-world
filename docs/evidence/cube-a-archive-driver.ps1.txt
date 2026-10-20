@@ -1,0 +1,32 @@
+$ErrorActionPreference = 'Stop'
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+$cubeManifest = Get-Content -LiteralPath 'docs/evidence/cube-a-browser-artifacts.json' -Encoding utf8 -Raw | ConvertFrom-Json
+$cubeProofs = @()
+foreach ($cubeArchive in $cubeManifest.archives) {
+  if (Test-Path -LiteralPath $cubeArchive.archive) { throw 'Archive exists; do not replace silently.' }
+  $cubeEntries = @($cubeManifest.entries | Where-Object { $_.archive -eq $cubeArchive.archive })
+  $cubePaths = @($cubeEntries | ForEach-Object { Join-Path 'D:\serrian-tide-world\.local\cube-a-browser\docs\evidence' $_.archivePath })
+  Compress-Archive -LiteralPath $cubePaths -DestinationPath $cubeArchive.archive -CompressionLevel Optimal
+  $cubeExpected = @{}
+  foreach ($cubeItem in $cubeEntries) { $cubeExpected[$cubeItem.archivePath] = $cubeItem }
+  $cubeZip = [System.IO.Compression.ZipFile]::OpenRead((Join-Path (Get-Location) $cubeArchive.archive))
+  $cubeChecked = 0
+  try {
+    foreach ($cubeEntry in $cubeZip.Entries) {
+      $cubeName = $cubeEntry.FullName.Replace('\', '/')
+      $cubeKnown = $cubeExpected[$cubeName]
+      if ($null -eq $cubeKnown) { throw "Unexpected entry $cubeName" }
+      $cubeStream = $cubeEntry.Open(); $cubeHasher = [System.Security.Cryptography.SHA256]::Create()
+      try { $cubeDigest = [System.BitConverter]::ToString($cubeHasher.ComputeHash($cubeStream)).Replace('-', '').ToLowerInvariant() }
+      finally { $cubeStream.Dispose(); $cubeHasher.Dispose() }
+      if ($cubeDigest -ne $cubeKnown.sha256 -or $cubeEntry.Length -ne $cubeKnown.bytes) { throw "Entry mismatch $cubeName" }
+      $cubeChecked++
+    }
+  } finally { $cubeZip.Dispose() }
+  if ($cubeChecked -ne $cubeArchive.files) { throw 'Count mismatch' }
+  $cubeInfo = Get-Item -LiteralPath $cubeArchive.archive
+  if ($cubeInfo.Length -ge 40MB) { throw 'Archive exceeds delivery target' }
+  $cubeProofs += [ordered]@{ archive = $cubeArchive.archive; bytes = $cubeInfo.Length; sha256 = (Get-FileHash -LiteralPath $cubeArchive.archive -Algorithm SHA256).Hash.ToLowerInvariant(); checkedEntries = $cubeChecked; exactEntryHashes = $true }
+}
+[System.IO.File]::WriteAllText((Join-Path (Get-Location) 'docs/evidence/cube-a-browser-archive-proof.json'), (ConvertTo-Json -InputObject $cubeProofs), [System.Text.UTF8Encoding]::new($false))
+$cubeProofs | ConvertTo-Json

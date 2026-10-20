@@ -1,0 +1,335 @@
+{
+  "baseline": "ee92f24f899a5776c43943cdeeb0b8ed049d1b8a",
+  "scope": "Cube-A solid exterior numerical foundation only",
+  "sourceTestDriverFiles": [
+    "src/surfaces/solid-cube.ts",
+    "src/surfaces/solid-cube.test.ts",
+    "src/terrain/solid-cube.ts",
+    "src/terrain/solid-cube.test.ts",
+    "scripts/verify-solid-cube.mjs"
+  ],
+  "documentationFiles": [
+    "README.md",
+    "docs/ARCHITECTURE.md",
+    "docs/PHASE-1-HEIGHTMAP-ROADMAP.md",
+    "docs/SURFACE-VISUAL-STANDARD.md",
+    "docs/WORLD-SURFACE-ARCHITECTURE.md",
+    "docs/SOLID-CUBE-FOUNDATION.md",
+    "docs/CUBE-A-COMPLETION.md"
+  ],
+  "totalImplementationFilesIncludingThisManifest": 45,
+  "self": {
+    "path": "docs/evidence/cube-a-delivery-manifest.json",
+    "omittedFromHashesToAvoidSelfReference": true
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "category": "documentation",
+      "bytes": 19085,
+      "sha256": "e307b151d3b73ee74e3b9a6ae59365725ebf0286b53af11a9c336cb7860a8830",
+      "gitBlob": "fa3c646a311f4a5954915bb5cdc00b6f0536efbd"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "category": "documentation",
+      "bytes": 38117,
+      "sha256": "169f4fc24eb0fc67c785c8abdcf4d6e18e468eecc830f46bc35d9d79f60e59e5",
+      "gitBlob": "b02850c7fcaaaf8cfa549572acf232be5254a88b"
+    },
+    {
+      "path": "docs/CUBE-A-COMPLETION.md",
+      "category": "documentation",
+      "bytes": 11952,
+      "sha256": "bad0f38b641982699d1ff0f32fe2219e6e8a6e6e1cd800259baf7a8dddb9c59b",
+      "gitBlob": "4e97102332840aecd5096fd88802858938912b55"
+    },
+    {
+      "path": "docs/PHASE-1-HEIGHTMAP-ROADMAP.md",
+      "category": "documentation",
+      "bytes": 38157,
+      "sha256": "4f57e56f25334fb63b8d2b835802aee6ed855daae4dbdce6ee856fc6a5006d29",
+      "gitBlob": "4679b98cba0ade830c2b02102862b9ec0d12b73d"
+    },
+    {
+      "path": "docs/SOLID-CUBE-FOUNDATION.md",
+      "category": "documentation",
+      "bytes": 10703,
+      "sha256": "230fe0e643f80a9ca0ece9aad7946251618747ef179f0e60717a6b597e8d0d52",
+      "gitBlob": "27f9b9f630fccbe04c9af96ca015f43fb10626a9"
+    },
+    {
+      "path": "docs/SURFACE-VISUAL-STANDARD.md",
+      "category": "documentation",
+      "bytes": 7085,
+      "sha256": "3f4aa1c76579d5b167b38200078994b4d2ecee16c2427277a413422876725acd",
+      "gitBlob": "7bd9967452a35b89ca0486fd033c4601d278faf3"
+    },
+    {
+      "path": "docs/WORLD-SURFACE-ARCHITECTURE.md",
+      "category": "documentation",
+      "bytes": 41685,
+      "sha256": "17d17d25683de3f8353b16667cf60bfc3d6c0b1da3a0f69e0544ed2d317cbe38",
+      "gitBlob": "24da15e5fb27770cddd682b5fac5380ca93eda8d"
+    },
+    {
+      "path": "docs/evidence/cube-a-archive-driver.ps1.txt",
+      "category": "evidence",
+      "bytes": 2349,
+      "sha256": "5bb36e1f6a9d34aa9855918eb0f62a323e46af746bd0ab5346e02f5b093f1925",
+      "gitBlob": "fdd8610044c9a79f093c63d2014eca050296d534"
+    },
+    {
+      "path": "docs/evidence/cube-a-browser-archive-proof.json",
+      "category": "evidence",
+      "bytes": 808,
+      "sha256": "8f08d801955ec7064991e616166186ad9fe2384b1e6ffd005b7027c10b765eec",
+      "gitBlob": "e796c63137e9b219ca800a52d2cd3a359d6a7355"
+    },
+    {
+      "path": "docs/evidence/cube-a-browser-artifacts-1.zip",
+      "category": "evidence",
+      "bytes": 30996978,
+      "sha256": "ffd44f67bf26c6696f3413e7998faf969bdf3c47ecc348a4fc215f0e12bed292",
+      "gitBlob": "31a2e61a4d2db47e5b14bb11743dd9faa585c668"
+    },
+    {
+      "path": "docs/evidence/cube-a-browser-artifacts-2.zip",
+      "category": "evidence",
+      "bytes": 26671352,
+      "sha256": "eb1d4d848ccdf0a8c9fef8c0a03341cbe42f70c9b6392531c8c0a43ed7ccd605",
+      "gitBlob": "be0b3f44b17030673ff1bb5919964d8becbef914"
+    },
+    {
+      "path": "docs/evidence/cube-a-browser-artifacts-3.zip",
+      "category": "evidence",
+      "bytes": 18698078,
+      "sha256": "330c97380c0a3d6d8459df2c09a57bed41e07f244af6b4d596fe69045faa19c3",
+      "gitBlob": "72cc1a498975b393b67653ffab244115442f2d69"
+    },
+    {
+      "path": "docs/evidence/cube-a-browser-artifacts.json",
+      "category": "evidence",
+      "bytes": 87123,
+      "sha256": "c53a2062ae1bcdf9a6000bb352f454d29565cb320a70fd58023f266edb69cba3",
+      "gitBlob": "39777456f79bf319d192aa2d79ecc4c872542c31"
+    },
+    {
+      "path": "docs/evidence/cube-a-browser-config.ts.txt",
+      "category": "evidence",
+      "bytes": 401,
+      "sha256": "fb726cfa4be8596c3413934c8eea2aa48031f86ae5af515c39bbbe0fd88b3d5a",
+      "gitBlob": "341f8301336e5cd22477bd54edbd658b6d68cb2f"
+    },
+    {
+      "path": "docs/evidence/cube-a-browser-regression.txt",
+      "category": "evidence",
+      "bytes": 59427,
+      "sha256": "eca43d9a222ed8eb1e7092f4595a4711739c8e274b843a8cb25d2008472a935a",
+      "gitBlob": "95e215e86b13afadee590dc2fcd3826d50197013"
+    },
+    {
+      "path": "docs/evidence/cube-a-browser-result.json",
+      "category": "evidence",
+      "bytes": 445702,
+      "sha256": "66c058090f252747655a71502eb3f6fd33863256c0728e7fb95c376579382076",
+      "gitBlob": "40e6269247bc02d8e1972771cacdb3a1f4a596c4"
+    },
+    {
+      "path": "docs/evidence/cube-a-browser-source-freeze.json",
+      "category": "evidence",
+      "bytes": 116,
+      "sha256": "e8647720a726675b75f59022b9e5f7e76bb5c87f84a3ec2687e39ae95d275fef",
+      "gitBlob": "8a60aada471dd2ea2552619717e8cc3b80dda9a1"
+    },
+    {
+      "path": "docs/evidence/cube-a-browser-tested-source.json",
+      "category": "evidence",
+      "bytes": 35739,
+      "sha256": "c415a2984e4fe4d874ae5f29f2b44dc2f71619d6e63acdc56b3c590e8eb1b46a",
+      "gitBlob": "f43dd0c2fa02633910d16c08feaa766badfc8f90"
+    },
+    {
+      "path": "docs/evidence/cube-a-browser-validation-driver.mjs.txt",
+      "category": "evidence",
+      "bytes": 3906,
+      "sha256": "4cd85dec4ffcdf7f6a4100b325163e0c01d5731a6e95bd5648bb1271a214fea5",
+      "gitBlob": "55a8ad2e483075d43ecf6e1b767098794a7de771"
+    },
+    {
+      "path": "docs/evidence/cube-a-build.txt",
+      "category": "evidence",
+      "bytes": 901,
+      "sha256": "5205af3951e5d6f2d074a43688460fec5d93a4944f5c79b3cfdde9566dc46385",
+      "gitBlob": "19d89d7fa603c0ccc22dac3e692740fca7993ec4"
+    },
+    {
+      "path": "docs/evidence/cube-a-evidence-package-driver.mjs.txt",
+      "category": "evidence",
+      "bytes": 2297,
+      "sha256": "ffde538582d678d1c85e7213f01e1019b76394d9605db00878a1bd84f956ac6c",
+      "gitBlob": "10f435506d981a6677f08e249a85aac937f2a29b"
+    },
+    {
+      "path": "docs/evidence/cube-a-evidence-recovery-driver.mjs.txt",
+      "category": "evidence",
+      "bytes": 1461,
+      "sha256": "f82ccb107ed3fa833946caf07f6203e12a5bc03daccbfb4576ef87fcfc43d113",
+      "gitBlob": "1e92a682fbea288b7e1179b935dc671602ecee05"
+    },
+    {
+      "path": "docs/evidence/cube-a-final-build.txt",
+      "category": "evidence",
+      "bytes": 901,
+      "sha256": "5a5b2d69a0febab404b79f710b3b47237d7b46099ed1e0408effa06914c8f70c",
+      "gitBlob": "3e545a028e266f51f06393e15e18b1980ca53567"
+    },
+    {
+      "path": "docs/evidence/cube-a-final-focused.txt",
+      "category": "evidence",
+      "bytes": 3181,
+      "sha256": "147a14a91d0f77cbc986e1e2e612d5d7882a32370474a8c9e5541d26a7ade342",
+      "gitBlob": "0d2fcf77e53e338058221c6e563b80367a309a25"
+    },
+    {
+      "path": "docs/evidence/cube-a-final-geometry-certificate.txt",
+      "category": "evidence",
+      "bytes": 1999,
+      "sha256": "437e75eb1f9aa15bcba7291b7405483c33d4ea771e7d1a933a8b0d1baf718340",
+      "gitBlob": "0e77a6414dcc00a4487f71c86ec0706e7080d7ac"
+    },
+    {
+      "path": "docs/evidence/cube-a-final-numerical-driver.mjs.txt",
+      "category": "evidence",
+      "bytes": 3918,
+      "sha256": "83954e4f3038acffd58bbbe397cd252c35905e634bc2064b613ed8466bcc747d",
+      "gitBlob": "7d5cc078b64112e26680e6f90eb6b2aa9317d40f"
+    },
+    {
+      "path": "docs/evidence/cube-a-final-numerical-regression.txt",
+      "category": "evidence",
+      "bytes": 50573,
+      "sha256": "9b35ceab7e4ac144f94a16f24d597c8fac38cb1e3fbd870de17d4812e22c3a7b",
+      "gitBlob": "7ecea7959664258e2b81ece0e206dbb9fdf0653c"
+    },
+    {
+      "path": "docs/evidence/cube-a-final-typecheck.txt",
+      "category": "evidence",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/cube-a-focused.txt",
+      "category": "evidence",
+      "bytes": 3179,
+      "sha256": "b03499d16b6ab321a306f7f26dd23650e103c0dec9c9641733b8dfe4325a5b26",
+      "gitBlob": "bfe88cd511e4f639d0a2ac2cde1d4e77d4f99cc9"
+    },
+    {
+      "path": "docs/evidence/cube-a-geometry-certificate.txt",
+      "category": "evidence",
+      "bytes": 1980,
+      "sha256": "0ccbcf596da2e511c709c86518a3bd1a5dfc8b6cfd7ae9276f10e1724e2083f3",
+      "gitBlob": "a894af8e3652dfb80a9557d55e612a3521d5685e"
+    },
+    {
+      "path": "docs/evidence/cube-a-interrupted-run.json",
+      "category": "evidence",
+      "bytes": 1761,
+      "sha256": "db3db4c21577c001141c29fde73e58baab92a79afdedc48edaf161c0761976f7",
+      "gitBlob": "ed185d9597cfe66ae4a3203c29f230fc922acf25"
+    },
+    {
+      "path": "docs/evidence/cube-a-numerical-regression.txt",
+      "category": "evidence",
+      "bytes": 50563,
+      "sha256": "10643117611c321dab52e360358e9fc6edf4840693c4aa3ef8e4812cf1b25363",
+      "gitBlob": "c083b1fae18d28e23e0325ad74ce01faa54886a3"
+    },
+    {
+      "path": "docs/evidence/cube-a-preservation-driver.mjs.txt",
+      "category": "evidence",
+      "bytes": 3428,
+      "sha256": "b86087530409e83753209ae2c030d9073c3e69ef41a8e474abe497cdfd1ea549",
+      "gitBlob": "9937cfd837e8c9c56f11413083b22257b96210e7"
+    },
+    {
+      "path": "docs/evidence/cube-a-preservation.json",
+      "category": "evidence",
+      "bytes": 341342,
+      "sha256": "4503c88133d84fd6fca02dc56986ea0da91f0a216f1ed664bae81779c585ad9b",
+      "gitBlob": "3cb6c4c284a72461c71c61630f203df2353705c8"
+    },
+    {
+      "path": "docs/evidence/cube-a-source-bridge.json",
+      "category": "evidence",
+      "bytes": 1017,
+      "sha256": "ddff1823cfb534bfe0a46ccdae38c2c6d2be40dd5073ef533733b33244697279",
+      "gitBlob": "53effce65c62c30d6da81adb42fbd90d19d2cb8b"
+    },
+    {
+      "path": "docs/evidence/cube-a-source-freeze.json",
+      "category": "evidence",
+      "bytes": 269,
+      "sha256": "70ad658cc0362fea46e3229c6ce9982bab362e65d022cc927157e5492d9c6aab",
+      "gitBlob": "be2cc23b3200b304122e4a93c3523f0ddeaad2bf"
+    },
+    {
+      "path": "docs/evidence/cube-a-tested-source.json",
+      "category": "evidence",
+      "bytes": 35839,
+      "sha256": "dd7a8cbe4e7d330dc3d3db45ebcbfce07033817d7102a2ce64913802a90115fb",
+      "gitBlob": "bc9a4792ffb1bcb89c12a974404ecc6eefed19ad"
+    },
+    {
+      "path": "docs/evidence/cube-a-typecheck.txt",
+      "category": "evidence",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/cube-a-validation.json",
+      "category": "evidence",
+      "bytes": 7061,
+      "sha256": "48b741690d2c45d65e8b4df5ed721da1fb4c9f5afa9272ac3a6b0f12e8c3ac44",
+      "gitBlob": "510bf6aa80c2428963451647ca2a77854a71c38f"
+    },
+    {
+      "path": "scripts/verify-solid-cube.mjs",
+      "category": "source-test-driver",
+      "bytes": 4445,
+      "sha256": "f36b94ed07e9240934d6031846c89637e457ad68a80f32c229072d7cc6099279",
+      "gitBlob": "374e94a95bdae3b18ad452e232be6d3575dcc0f8"
+    },
+    {
+      "path": "src/surfaces/solid-cube.test.ts",
+      "category": "source-test-driver",
+      "bytes": 11516,
+      "sha256": "2cea2568c7ee9aedc4af65b244365a57a3d2d1f5efd3d4684bb5fc2f8917b38e",
+      "gitBlob": "59839bc0757efd16ab118759c645febf35ae7d20"
+    },
+    {
+      "path": "src/surfaces/solid-cube.ts",
+      "category": "source-test-driver",
+      "bytes": 11742,
+      "sha256": "8773e56feb0fe9fac48ba492bbeee930e275a70f4ad1608fab691d7957358389",
+      "gitBlob": "cb71219f77474451efee8c4f8a806f44885e9273"
+    },
+    {
+      "path": "src/terrain/solid-cube.test.ts",
+      "category": "source-test-driver",
+      "bytes": 11598,
+      "sha256": "598ebc34cc3e769a90de1767e67b57549235c1246fb080b7e4c1784101bccdec",
+      "gitBlob": "d1d73fafbe7dc9a210103c83d0b3296e717dbe6d"
+    },
+    {
+      "path": "src/terrain/solid-cube.ts",
+      "category": "source-test-driver",
+      "bytes": 9404,
+      "sha256": "d59c24472bfbb223fce01a803ac9c67330691b7fc6494185825d07860546773a",
+      "gitBlob": "58356043a161a5b618f256a61f7e615d7b242343"
+    }
+  ]
+}

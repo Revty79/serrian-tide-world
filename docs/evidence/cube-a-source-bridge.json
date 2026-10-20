@@ -1,0 +1,26 @@
+{
+  "reason": "Post-browser sparse/array-like vector validation hardening in the unimported numerical-only cube provider; existing product and browser test sources unchanged.",
+  "browserImportedSourceChanges": 0,
+  "changedUnimportedCubeFiles": [
+    {
+      "path": "src/surfaces/solid-cube.test.ts",
+      "browserRunSha256": "47c584e55b1b909241748ff3790ad3f4b39aceb0a9f56a7c8e683d56397548b9",
+      "finalSha256": "2cea2568c7ee9aedc4af65b244365a57a3d2d1f5efd3d4684bb5fc2f8917b38e"
+    },
+    {
+      "path": "src/surfaces/solid-cube.ts",
+      "browserRunSha256": "a23d42e4947cfd76df93b4f7f1961ca7187f03707e1a595d616b671485157a15",
+      "finalSha256": "8773e56feb0fe9fac48ba492bbeee930e275a70f4ad1608fab691d7957358389"
+    }
+  ],
+  "unchangedRegistryEntries": 240,
+  "browserResult": {
+    "startTime": "2026-10-20T11:12:29.703Z",
+    "duration": 1594042.366,
+    "expected": 328,
+    "skipped": 4,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "finalNumericalRegistry": "docs/evidence/cube-a-tested-source.json"
+}

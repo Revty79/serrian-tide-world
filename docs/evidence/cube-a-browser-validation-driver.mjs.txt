@@ -1,0 +1,42 @@
+import { spawn, execFileSync } from 'node:child_process';
+import { createWriteStream, writeFileSync, readFileSync, readdirSync, mkdirSync, copyFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+const base = 'docs/evidence/cube-a-', browserOnly = process.argv.includes('--browser-only'), phases = browserOnly ? JSON.parse(readFileSync(base + 'validation.json', 'utf8')) : [], root = process.cwd();
+const sha = (value) => createHash('sha256').update(value).digest('hex');
+const files = [...new Set(execFileSync('git', ['ls-files', '--cached', '--others', '--exclude-standard', '--', 'src', 'tests', 'scripts', 'package.json', 'package-lock.json', 'tsconfig.json', 'vite.config.ts', 'playwright.config.ts'], { encoding: 'utf8' }).trim().split(/\r?\n/))].sort();
+const frozen = browserOnly ? JSON.parse(readFileSync(base + 'tested-source.json', 'utf8')).files : files.map((path) => ({ path, sha256: sha(readFileSync(path)) }));
+if (frozen.some((f) => sha(readFileSync(f.path)) !== f.sha256)) throw Error('Source differs from numerical/build checks');
+if (!browserOnly) writeFileSync(base + 'tested-source.json', JSON.stringify({ baseline: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(), files: frozen }, null, 2) + '\n');
+async function run(label, args, cwd = root) {
+  const started = Date.now(), log = createWriteStream(base + label + '.txt'), child = spawn(process.execPath, args, { cwd, windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] });
+  console.log('start', label); child.stdout.pipe(log); child.stderr.pipe(log);
+  const code = await new Promise((resolve, reject) => { child.once('error', reject); child.once('exit', resolve); });
+  await new Promise((resolve) => log.end(resolve));
+  const phase = { label, command: ['node', ...args], exitCode: code, elapsedMs: Date.now() - started };
+  phases.push(phase); writeFileSync(base + 'validation.json', JSON.stringify(phases, null, 2) + '\n');
+  console.log('done', phase); if (code !== 0) throw Error(`${label} failed`);
+}
+if (!browserOnly) {
+await run('focused', ['--test', 'src/surfaces/solid-cube.test.ts', 'src/terrain/solid-cube.test.ts']);
+await run('geometry-certificate', ['scripts/verify-solid-cube.mjs']);
+const testFiles = ['src/terrain', 'src/rendering', 'src/editor', 'src/persistence', 'src/surfaces'].flatMap((d) => readdirSync(d).filter((f) => f.endsWith('.test.ts')).map((f) => `${d}/${f}`));
+await run('numerical-regression', ['--test', ...testFiles]);
+await run('typecheck', ['node_modules/typescript/bin/tsc', '--noEmit']);
+await run('build', ['node_modules/vite/bin/vite.js', 'build']);
+}
+const browserCwd = root + '/.local/cube-a-browser';
+mkdirSync(browserCwd + '/docs/evidence', { recursive: true });
+for (const n of [128, 256]) copyFileSync(`docs/evidence/a7-p1c-saved-geography-n${n}.json`, `${browserCwd}/docs/evidence/a7-p1c-saved-geography-n${n}.json`);
+const server = spawn(process.execPath, ['node_modules/vite/bin/vite.js', '--host', '127.0.0.1', '--port', '5236', '--strictPort'], { windowsHide: true, stdio: 'ignore' });
+try {
+  for (let i = 0; ; i++) {
+    if (server.exitCode !== null || i > 300) throw Error('Owned strict server unavailable');
+    try { if ((await fetch('http://127.0.0.1:5236')).ok) break; } catch {}
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  }
+  await run('browser-regression', [root + '/node_modules/@playwright/test/cli.js', 'test', '-c', root + '/.local/cube-a.config.ts'], browserCwd);
+} finally { server.kill(); server.unref(); }
+const changed = frozen.filter((f) => sha(readFileSync(f.path)) !== f.sha256);
+if (changed.length) throw Error(`Source changed during verification: ${changed.map((f) => f.path)}`);
+writeFileSync(base + 'source-freeze.json', JSON.stringify({ count: frozen.length, changed, digest: sha(JSON.stringify(frozen)) }, null, 2) + '\n');
+console.log('ALL COMPLETE; exact source freeze', frozen.length);
