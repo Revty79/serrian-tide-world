@@ -1,0 +1,282 @@
+{
+  "pathGroups": [
+    {
+      "label": "same-face",
+      "trials": 3,
+      "statuses": [
+        "complete",
+        "complete",
+        "complete"
+      ],
+      "elapsedMs": {
+        "median": 10.103200000000015,
+        "max": 16.284599999999998
+      },
+      "maxPumpMs": 2.296900000000008,
+      "maxNodeYieldGapMs": 2.3345999999999947,
+      "maxArcTerms": 1,
+      "maxWork": 79993,
+      "routePumpsMs": {
+        "median": 0.5159000000000162,
+        "max": 2.296900000000008
+      },
+      "centerPumpsMs": {
+        "median": 0.7363,
+        "max": 1.721199999999996
+      }
+    },
+    {
+      "label": "edge",
+      "trials": 3,
+      "statuses": [
+        "complete",
+        "complete",
+        "complete"
+      ],
+      "elapsedMs": {
+        "median": 2.6862000000000137,
+        "max": 3.575000000000017
+      },
+      "maxPumpMs": 2.140500000000003,
+      "maxNodeYieldGapMs": 2.1694999999999993,
+      "maxArcTerms": 1,
+      "maxWork": 4120,
+      "routePumpsMs": {
+        "median": 1.3146999999999878,
+        "max": 2.140500000000003
+      },
+      "centerPumpsMs": {
+        "median": 0.3494000000000028,
+        "max": 0.48510000000001696
+      }
+    },
+    {
+      "label": "opposite",
+      "trials": 3,
+      "statuses": [
+        "complete",
+        "complete",
+        "complete"
+      ],
+      "elapsedMs": {
+        "median": 21.036299999999983,
+        "max": 21.512699999999995
+      },
+      "maxPumpMs": 2.667900000000003,
+      "maxNodeYieldGapMs": 2.7075000000000102,
+      "maxArcTerms": 1,
+      "maxWork": 96771,
+      "routePumpsMs": {
+        "median": 2.5711000000000013,
+        "max": 2.667900000000003
+      },
+      "centerPumpsMs": {
+        "median": 0.242999999999995,
+        "max": 1.0117999999999938
+      }
+    },
+    {
+      "label": "corner",
+      "trials": 3,
+      "statuses": [
+        "complete",
+        "complete",
+        "complete"
+      ],
+      "elapsedMs": {
+        "median": 55.57189999999997,
+        "max": 55.90629999999999
+      },
+      "maxPumpMs": 11.45059999999998,
+      "maxNodeYieldGapMs": 11.500599999999991,
+      "maxArcTerms": 1,
+      "maxWork": 521826,
+      "routePumpsMs": {
+        "median": 11.05699999999996,
+        "max": 11.45059999999998
+      },
+      "centerPumpsMs": {
+        "median": 0.5856499999999869,
+        "max": 0.9472000000000094
+      }
+    },
+    {
+      "label": "dense-collinear",
+      "trials": 3,
+      "statuses": [
+        "complete",
+        "complete",
+        "complete"
+      ],
+      "elapsedMs": {
+        "median": 37.12209999999999,
+        "max": 40.37389999999999
+      },
+      "maxPumpMs": 0.6415000000000077,
+      "maxNodeYieldGapMs": 0.8602999999999952,
+      "maxArcTerms": 1,
+      "maxWork": 163731,
+      "routePumpsMs": {
+        "median": 0.1596999999999582,
+        "max": 0.33770000000004075
+      },
+      "centerPumpsMs": {
+        "median": 0.5750500000000045,
+        "max": 0.6415000000000077
+      }
+    },
+    {
+      "label": "bending",
+      "trials": 3,
+      "statuses": [
+        "complete",
+        "complete",
+        "complete"
+      ],
+      "elapsedMs": {
+        "median": 353.97799999999995,
+        "max": 358.80459999999994
+      },
+      "maxPumpMs": 25.00330000000008,
+      "maxNodeYieldGapMs": 25.054300000000012,
+      "maxArcTerms": 64,
+      "maxWork": 2538153,
+      "routePumpsMs": {
+        "median": 0.5239999999999441,
+        "max": 0.8583999999999605
+      },
+      "centerPumpsMs": {
+        "median": 13.149800000000027,
+        "max": 25.00330000000008
+      }
+    }
+  ],
+  "routeGroups": [
+    {
+      "label": "same-face",
+      "ms": {
+        "median": 0.15079999999989013,
+        "max": 0.18020000000001346
+      }
+    },
+    {
+      "label": "edge",
+      "ms": {
+        "median": 0.6023999999999887,
+        "max": 0.6501000000000658
+      }
+    },
+    {
+      "label": "opposite",
+      "ms": {
+        "median": 1.3177999999998065,
+        "max": 1.3287000000000262
+      }
+    },
+    {
+      "label": "corner",
+      "ms": {
+        "median": 7.842799999999897,
+        "max": 7.929399999999987
+      }
+    }
+  ],
+  "dabGroups": [
+    {
+      "n": 128,
+      "radius": 40.96,
+      "trials": 8,
+      "totalPreparationMs": {
+        "median": 3.5955000000000155,
+        "max": 7.3926000000001295
+      },
+      "initializationMs": {
+        "median": 1.2831999999999653,
+        "max": 3.061000000000149
+      },
+      "maxPumpMs": 2.104000000000042,
+      "maxNodeYieldGapMs": 2.1836000000000695,
+      "peakPreparedBytes": 12288
+    },
+    {
+      "n": 128,
+      "radius": 563.2,
+      "trials": 8,
+      "totalPreparationMs": {
+        "median": 190.9764,
+        "max": 293.1156000000001
+      },
+      "initializationMs": {
+        "median": 1.3949000000001206,
+        "max": 2.1073999999998705
+      },
+      "maxPumpMs": 1.3353000000001884,
+      "maxNodeYieldGapMs": 2.1431000000002314,
+      "peakPreparedBytes": 196608
+    },
+    {
+      "n": 256,
+      "radius": 40.96,
+      "trials": 8,
+      "totalPreparationMs": {
+        "median": 9.039250000000038,
+        "max": 16.529899999999998
+      },
+      "initializationMs": {
+        "median": 1.8638499999999567,
+        "max": 3.021600000000035
+      },
+      "maxPumpMs": 2.0792999999998756,
+      "maxNodeYieldGapMs": 2.1378999999997177,
+      "peakPreparedBytes": 12288
+    },
+    {
+      "n": 256,
+      "radius": 563.2,
+      "trials": 8,
+      "totalPreparationMs": {
+        "median": 728.1866999999997,
+        "max": 1149.8488000000007
+      },
+      "initializationMs": {
+        "median": 1.693300000000363,
+        "max": 2.510099999999511
+      },
+      "maxPumpMs": 4.783800000001065,
+      "maxNodeYieldGapMs": 4.80029999999897,
+      "peakPreparedBytes": 749568
+    }
+  ],
+  "expectedFailures": [
+    {
+      "label": "input",
+      "status": "failed",
+      "retainedArcTerms": 0,
+      "workUnits": 0,
+      "failedRouteWorkAllowance": 0
+    },
+    {
+      "label": "route",
+      "status": "failed",
+      "retainedArcTerms": 0,
+      "workUnits": 1,
+      "failedRouteWorkAllowance": 1
+    },
+    {
+      "label": "dabs",
+      "status": "failed",
+      "retainedArcTerms": 0,
+      "workUnits": 3291,
+      "failedRouteWorkAllowance": 0
+    },
+    {
+      "label": "aggregate",
+      "status": "failed",
+      "retainedArcTerms": 0,
+      "workUnits": 1,
+      "failedRouteWorkAllowance": 1
+    }
+  ],
+  "maxPathPumpMs": 25.00330000000008,
+  "maxDabPumpMs": 4.783800000001065
+}

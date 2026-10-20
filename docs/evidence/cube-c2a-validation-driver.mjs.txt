@@ -1,0 +1,35 @@
+import assert from 'node:assert/strict';
+import {spawn,execFileSync} from 'node:child_process';
+import {createWriteStream,writeFileSync,readFileSync,readdirSync,mkdirSync,copyFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+const prefix='docs/evidence/cube-c2a-',phases=[],root=process.cwd(),sha=b=>createHash('sha256').update(b).digest('hex');
+const baseline=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();assert.equal(baseline,'bb0940dd2778f2277c1d9c7c5e4a498bfc48c272');
+const files=[...new Set(execFileSync('git',['ls-files','--cached','--others','--exclude-standard','--','src','tests','scripts','dev','package.json','package-lock.json','tsconfig.json','vite.config.ts','playwright.config.ts'],{encoding:'utf8'}).trim().split(/\r?\n/))].sort();
+const frozen=files.map(path=>({path,sha256:sha(readFileSync(path))}));writeFileSync(prefix+'tested-source.json',JSON.stringify({baseline,files:frozen},null,2)+'\n');
+const check=()=>{for(const f of frozen)assert.equal(sha(readFileSync(f.path)),f.sha256,f.path);};
+async function run(label,args,cwd=root){
+ check();const at=Date.now(),log=createWriteStream(prefix+label+'.txt');console.log('start',label);
+ const child=spawn(process.execPath,args,{cwd,windowsHide:true,stdio:['ignore','pipe','pipe']});child.stdout.pipe(log);child.stderr.pipe(log);
+ const exitCode=await new Promise((resolve,reject)=>{child.once('error',reject);child.once('exit',resolve);});await new Promise(r=>log.end(r));
+ phases.push({label,command:['node',...args],exitCode,elapsedMs:Date.now()-at});writeFileSync(prefix+'validation.json',JSON.stringify(phases,null,2)+'\n');console.log(phases.at(-1));assert.equal(exitCode,0);check();
+}
+await run('focused',['--test','src/surfaces/solid-cube-stroke-path.test.ts','src/surfaces/cube-brush-distance.test.ts','src/terrain/solid-cube-brush.test.ts']);
+await run('independent-strokes',['scripts/verify-solid-cube-strokes.mjs',prefix]);
+await run('independent-c1',['scripts/verify-solid-cube-dabs.mjs',prefix+'c1-']);
+await run('performance',['--expose-gc','scripts/measure-solid-cube-strokes.mjs',prefix+'performance.json']);
+await run('cube-b-certificate',['--expose-gc','scripts/verify-solid-cube-routes.mjs',prefix+'cube-b-']);
+await run('cube-a-certificate',['scripts/verify-solid-cube.mjs']);
+const tests=['src/terrain','src/rendering','src/editor','src/persistence','src/surfaces'].flatMap(d=>readdirSync(d).filter(f=>f.endsWith('.test.ts')).map(f=>`${d}/${f}`));
+await run('numerical-regression',['--test',...tests]);
+await run('typecheck',['node_modules/typescript/bin/tsc','--noEmit']);
+await run('build',['node_modules/vite/bin/vite.js','build']);
+const browserCwd=root+'/.local/cube-c2a-browser',config=root+'/.local/cube-c2a.config.ts';mkdirSync(browserCwd+'/docs/evidence',{recursive:true});
+for(const n of [128,256])copyFileSync(`docs/evidence/a7-p1c-saved-geography-n${n}.json`,`${browserCwd}/docs/evidence/a7-p1c-saved-geography-n${n}.json`);
+const configText=readFileSync(config,'utf8');assert.ok(configText.includes('http://127.0.0.1:5244'));assert.ok(configText.includes('cube-c2a-browser-result.json'));assert.ok(!configText.includes('cube-c1'));
+const server=spawn(process.execPath,['node_modules/vite/bin/vite.js','--host','127.0.0.1','--port','5244','--strictPort'],{windowsHide:true,stdio:'ignore'});
+try{
+ for(let i=0;;i++){if(server.exitCode!==null||i>300)throw Error('Owned strict server unavailable');try{if((await fetch('http://127.0.0.1:5244')).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
+ await run('browser-regression',[root+'/node_modules/@playwright/test/cli.js','test','-c',config],browserCwd);
+}finally{server.kill();server.unref();}
+check();writeFileSync(prefix+'source-freeze.json',JSON.stringify({files:frozen.length,changed:[],sha256:sha(JSON.stringify(frozen)),scope:'All focused, independent C2A/C1, performance, Cube-A/B, full numerical/browser, type and build phases share this exact source registry.'},null,2)+'\n');
+console.log('ALL COMPLETE; source frozen',frozen.length);

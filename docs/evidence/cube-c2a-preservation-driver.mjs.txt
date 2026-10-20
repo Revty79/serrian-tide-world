@@ -1,0 +1,28 @@
+import {execFileSync} from 'node:child_process';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const baseline='bb0940dd2778f2277c1d9c7c5e4a498bfc48c272',sha=b=>createHash('sha256').update(b).digest('hex');
+const editedDocs=new Set(['README.md','docs/ARCHITECTURE.md','docs/PHASE-1-HEIGHTMAP-ROADMAP.md','docs/SURFACE-VISUAL-STANDARD.md','docs/WORLD-SURFACE-ARCHITECTURE.md','docs/SOLID-CUBE-FOUNDATION.md']);
+const entries=execFileSync('git',['ls-tree','-r',baseline],{encoding:'utf8',maxBuffer:20e6}).trim().split('\n').map(line=>{const[m,path]=line.split('\t');return{path,blob:m.split(' ')[2]};});
+const protectedFiles=entries.filter(f=>!editedDocs.has(f.path));
+const hashes=execFileSync('git',['hash-object','--stdin-paths'],{input:protectedFiles.map(f=>f.path).join('\n')+'\n',encoding:'utf8',maxBuffer:20e6}).trim().split(/\r?\n/);
+assert.equal(hashes.length,protectedFiles.length);for(const[i,f]of protectedFiles.entries())assert.equal(hashes[i],f.blob,f.path);
+const oldRegistry=JSON.parse(readFileSync('docs/evidence/cube-c1-final-tested-source.json','utf8'));for(const f of oldRegistry.files)assert.equal(sha(readFileSync(f.path)),f.sha256,f.path);
+const current=JSON.parse(readFileSync('docs/evidence/cube-c2a-tested-source.json','utf8'));for(const f of current.files)assert.equal(sha(readFileSync(f.path)),f.sha256,f.path);
+assert.equal(oldRegistry.files.length,256);assert.equal(current.files.length,262);
+const roadmap=readFileSync('docs/PHASE-1-HEIGHTMAP-ROADMAP.md','utf8').replaceAll('\r\n','\n'),old=execFileSync('git',['show',`${baseline}:docs/PHASE-1-HEIGHTMAP-ROADMAP.md`],{encoding:'utf8'}).replaceAll('\r\n','\n');
+const table=s=>s.slice(s.indexOf('| Phase | Required order |'),s.indexOf('\n\n',s.indexOf('| Phase | Required order |')));
+const geometryOrder=s=>s.slice(s.indexOf('### Owner-approved geometry priorities after A7-P1C'),s.indexOf('\nNon-destructive shape conversion remains required.'));
+assert.equal(table(roadmap),table(old));assert.equal(table(roadmap).split('\n').length,13);assert.equal(geometryOrder(roadmap),geometryOrder(old));assert.equal(geometryOrder(roadmap).split('\n').filter(l=>/^\d+\. /.test(l)).length,13);
+for(const issue of[1,2])assert.ok(roadmap.includes(`https://github.com/Revty79/serrian-tide-world/issues/${issue}`));
+const accepted=JSON.parse(readFileSync('docs/evidence/a7-p1c-production-source-check.json','utf8'));
+const assets=accepted.builtAssets.map(a=>({path:a.path,sha256:sha(readFileSync(a.path)),acceptedSha256:a.sha256}));for(const a of assets)assert.equal(a.sha256,a.acceptedSha256,a.path);
+const importers=execFileSync('rg',['-l','solid-cube-stroke-path|cube-stroke-exact','src','dev','tests'],{encoding:'utf8'}).trim().split(/\r?\n/).map(p=>p.replaceAll('\\','/'));
+assert.deepEqual(importers.sort(),['src/surfaces/solid-cube-stroke-path.test.ts','src/surfaces/solid-cube-stroke-path.ts'].sort());
+const data={baseline,protectedFileCount:protectedFiles.length,protectedSourceCount:oldRegistry.files.length,historicalEvidenceFiles:protectedFiles.filter(f=>f.path.startsWith('docs/evidence/')).length,
+ exactProtectedGitBlobs:true,allCubeABC1SourcesUnchanged:true,editedExistingDocuments:[...editedDocs],currentTestedFiles:current.files.length,
+ masterElevenPhaseTableUnchanged:true,masterPhaseTableSha256:sha(table(roadmap)),geometryPriorityOrderUnchanged:true,geometryPriorityOrderSha256:sha(geometryOrder(roadmap)),issue1Preserved:true,issue2Preserved:true,
+ builtAssetsIdenticalToAcceptedP1C:assets,noProductDevOrBrowserTestImporters:true,numericalImporters:importers,protectedFiles};
+writeFileSync('docs/evidence/cube-c2a-preservation.json',JSON.stringify(data,null,2)+'\n');
+console.log({protectedFiles:protectedFiles.length,historicalEvidenceFiles:data.historicalEvidenceFiles,legacySourceFiles:oldRegistry.files.length,currentSourceFiles:current.files.length,productionAssets:assets.length,elevenPhases:'unchanged',geometryOrder:'unchanged'});

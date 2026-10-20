@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+const prefix='docs/evidence/cube-c2a-',browser=JSON.parse(readFileSync(prefix+'browser-result.json','utf8')),
+ phases=JSON.parse(readFileSync(prefix+'validation.json','utf8')),freeze=JSON.parse(readFileSync(prefix+'source-freeze.json','utf8')),
+ artifacts=JSON.parse(readFileSync(prefix+'browser-artifacts.json','utf8')),archives=JSON.parse(readFileSync(prefix+'browser-archive-proof.json','utf8'));
+assert.equal(phases.length,10);for(const p of phases)assert.equal(p.exitCode,0,p.label);assert.equal(freeze.files,262);assert.deepEqual(freeze.changed,[]);
+assert.equal(browser.stats.unexpected,0);assert.equal(browser.stats.flaky,0);assert.equal(browser.stats.expected+browser.stats.skipped,332);
+const skipped=report=>{
+ const names=[];const visit=suite=>{for(const spec of suite.specs??[])for(const test of spec.tests??[])if(test.results.some(r=>r.status==='skipped'))names.push(`${spec.file}:${spec.title}:${test.projectName}`);for(const child of suite.suites??[])visit(child);};
+ for(const suite of report.suites)visit(suite);return names.sort();
+};
+const historical=JSON.parse(readFileSync('docs/evidence/cube-c1-browser-result.json','utf8'));assert.deepEqual(skipped(browser),skipped(historical));
+writeFileSync(prefix+'browser-skip-preservation.json',JSON.stringify({baseline:'docs/evidence/cube-c1-browser-result.json',exactSameSkippedCases:true,skipped:skipped(browser)},null,2)+'\n');
+assert.equal(archives.reduce((a,b)=>a+b.checkedEntries,0),artifacts.files);assert.ok(archives.every(a=>a.exactEntryHashes));
+const phase=phases.find(p=>p.label==='browser-regression'),result=`**${browser.stats.expected} browser tests passed; ${browser.stats.skipped} existing conditional skips; zero failures or flaky tests.** Both configured desktop and Pixel 7 mobile projects ran against the owned strict-port Vite server at \`127.0.0.1:5244\`. Browser wall time was **${(phase.elapsedMs/1000).toFixed(3)} seconds**. See the [structured result](evidence/cube-c2a-browser-result.json), [complete log](evidence/cube-c2a-browser-regression.txt), [exact configuration](evidence/cube-c2a-browser-config.ts.txt) and [validation driver](evidence/cube-c2a-validation-driver.mjs.txt).\n\nThe isolated artifact directory contains **${artifacts.files} files (${artifacts.generated} generated evidence files and ${artifacts.files-artifacts.generated} unchanged accepted geography inputs), ${artifacts.uncompressedBytes.toLocaleString('en-US')} uncompressed bytes**. It is delivered in ${archives.length} [archives](evidence/cube-c2a-browser-artifacts.json): ${archives.map(a=>`[${a.archive.split('/').at(-1)}](evidence/${a.archive.split('/').at(-1)})`).join(', ')}. Every decompressed entry's size and SHA256 was checked against the manifest; [archive proof](evidence/cube-c2a-browser-archive-proof.json) records exact compressed sizes/hashes. Extract all parts into one directory. Historical evidence paths and the user's existing server were not overwritten.`;
+const path='docs/CUBE-C2A-COMPLETION.md',old=readFileSync(path,'utf8');assert.equal(old.split('FINAL_BROWSER_RESULT_PENDING').length,2);writeFileSync(path,old.replace('FINAL_BROWSER_RESULT_PENDING',result));
+console.log({passed:browser.stats.expected,skipped:browser.stats.skipped,browserWallSeconds:phase.elapsedMs/1000,artifactFiles:artifacts.files,archives:archives.length});

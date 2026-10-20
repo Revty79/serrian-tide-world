@@ -1,0 +1,38 @@
+import assert from 'node:assert/strict';
+import {spawnSync} from 'node:child_process';
+import {readFileSync,writeFileSync,copyFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {createSolidCubeStrokePath} from '../src/surfaces/solid-cube-stroke-path.ts';
+import {createSolidCubeRouter} from '../src/surfaces/solid-cube-routing.ts';
+import {createSolidCubeGeometry,SOLID_CUBE_PROVIDER,SOLID_CUBE_PHYSICAL_EDGES} from '../src/surfaces/solid-cube.ts';
+const prefix='docs/evidence/cube-c2a-',registry=JSON.parse(readFileSync(prefix+'tested-source.json','utf8')).files;
+const check=()=>{for(const f of registry)assert.equal(createHash('sha256').update(readFileSync(f.path)).digest('hex'),f.sha256,f.path);};check();
+const identity={worldId:'c2a-matrix',surfaceId:'outside'},configuration={identity,provider:SOLID_CUBE_PROVIDER,version:1,configuration:'solid',role:'exterior',sideLengthMeters:10};
+const geometry=createSolidCubeGeometry(configuration),router=createSolidCubeRouter(configuration),p=(patchId,u=0,v=0)=>({...identity,patchId,u,v});
+const faces=['px','nx','py','ny','pz','nz'],opposite={px:'nx',nx:'px',py:'ny',ny:'py',pz:'nz',nz:'pz'};
+// Literal Cartesian directions, independently written, not read from runtime frames.
+const neighbors={px:['py','ny','pz','nz'],nx:['ny','py','pz','nz'],py:['nx','px','pz','nz'],ny:['px','nx','pz','nz'],pz:['px','nx','py','ny'],nz:['px','nx','ny','py']};
+const cases=[];
+function capture(label,inputs){
+ const path=createSolidCubeStrokePath(configuration,4),events=[];for(const q of inputs)assert.equal(path.accept(q),true);path.release();
+ while(path.status==='draining'){path.pump();for(;;){const e=path.take();if(!e)break;events.push(e);}}
+ assert.equal(path.status,'complete');const paths=events.filter(e=>e.kind==='path'),dabs=events.filter(e=>e.kind==='dab');
+ const routeQueries=paths.map((e,i)=>({label:`${label}-${i}`,sideLengthMeters:10,first:e.from,second:e.to,result:router.route(e.from,e.to)}));
+ const item={label,inputs,sideLengthMeters:10,spacingMeters:1,paths,dabs,routeQueries,statistics:path.statistics};cases.push(item);return item;
+}
+for(const a of faces)for(const b of faces){const c=capture(`ordered-centers-${a}-${b}`,[p(a),p(b)]),distance=a===b?0:opposite[a]===b?20:10;
+ assert.equal(c.dabs.length,distance+1);assert.equal(c.paths.length,distance?1:0);if(distance)assert.equal(c.paths[0].route.lengthMeters.lower,distance);
+}
+for(const face of faces)for(let axis=0;axis<4;axis++){
+ const before=p(face,axis===0?-1:axis===1?1:0,axis===2?-1:axis===3?1:0);
+ const c=capture(`context-${face}-${axis}`,[before,p(face),p(opposite[face]),p(face)]),route=c.paths[1];
+ assert.equal(route.policy,'continuation');assert.equal(route.route.faces[1],neighbors[face][axis]);assert.equal(c.paths[2].policy,'exact-backtrack');
+ assert.deepEqual(c.paths[2].route.faces,[...route.route.faces].reverse());
+}
+for(const face of faces){const c=capture(`context-score-tie-${face}`,[p(face,-1,-1),p(face),p(opposite[face])]);assert.equal(c.paths[1].policy,'canonical-context-tie');assert.ok([neighbors[face][0],neighbors[face][2]].includes(c.paths[1].route.faces[1]));}
+for(const edge of SOLID_CUBE_PHYSICAL_EDGES){const mid=p(edge.face,edge.edge.startsWith('u')?(edge.edge.endsWith('min')?-5:5):0,edge.edge.startsWith('v')?(edge.edge.endsWith('min')?-5:5):0);
+ const antipodal=geometry.positionsForReference(geometry.referencePosition(mid).map(v=>-v))[0];capture(`edge-context-${edge.edgeId}`,[p(edge.face),mid,antipodal]);}
+const json=v=>JSON.stringify(v,(_,x)=>typeof x==='bigint'?x.toString():x,2)+'\n';writeFileSync(prefix+'matrix-oracle-input.json',json(cases));
+const result=spawnSync('python',['scripts/cube-stroke-reference.py'],{input:json(cases),encoding:'utf8',windowsHide:true,maxBuffer:128*1024*1024});assert.equal(result.status,0,result.stderr);
+const certificate=JSON.parse(result.stdout);writeFileSync(prefix+'matrix-oracle-certificate.json',json(certificate));check();copyFileSync('.local/cube-c2a-matrix.mjs',prefix+'matrix-driver.mjs.txt');
+console.log(json({cases:certificate.cases,paths:certificate.paths,dabs:certificate.dabs,coordinateBoundsChecked:certificate.coordinateBoundsChecked,oracleMs:certificate.elapsedMs,manualFaceCenterCases:36,manualDirectedContinuationCases:24,manualScoreTieCases:6,exactEdgeContextCases:12,sourceRegistryUnchanged:registry.length}));

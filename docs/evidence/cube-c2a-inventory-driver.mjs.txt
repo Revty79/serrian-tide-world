@@ -1,0 +1,20 @@
+import {execFileSync} from 'node:child_process';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const baseline='bb0940dd2778f2277c1d9c7c5e4a498bfc48c272',manifestPath='docs/evidence/cube-c2a-delivery-manifest.json';
+assert.equal(execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),baseline);
+const edited=execFileSync('git',['diff','--name-only',baseline],{encoding:'utf8'}).trim().split(/\r?\n/).filter(Boolean);
+const baselineFiles=new Set(execFileSync('git',['ls-tree','-r','--name-only',baseline],{encoding:'utf8'}).trim().split(/\r?\n/));
+const added=execFileSync('git',['ls-files','--others','--exclude-standard'],{encoding:'utf8'}).trim().split(/\r?\n/).filter(Boolean);
+const expectedSources=new Set(['src/surfaces/cube-stroke-exact.ts','src/surfaces/solid-cube-stroke-path.ts','src/surfaces/solid-cube-stroke-path.test.ts','scripts/cube-stroke-reference.py','scripts/verify-solid-cube-strokes.mjs','scripts/measure-solid-cube-strokes.mjs']);
+const expectedDocs=new Set(['README.md','docs/ARCHITECTURE.md','docs/PHASE-1-HEIGHTMAP-ROADMAP.md','docs/WORLD-SURFACE-ARCHITECTURE.md','docs/SOLID-CUBE-FOUNDATION.md','docs/SURFACE-VISUAL-STANDARD.md','docs/CUBE-STROKE-PATHS.md','docs/CUBE-C2A-COMPLETION.md']);
+const paths=[...new Set([...edited,...added,manifestPath])].sort();
+const entries=paths.filter(p=>p!==manifestPath).map(path=>{
+ const role=expectedSources.has(path)?'numerical source/test/driver':expectedDocs.has(path)?'documentation':path.startsWith('docs/evidence/cube-c2a-')?'evidence':undefined;
+ assert.ok(role,`Unexpected path ${path}`);const data=readFileSync(path);return {path,role,change:baselineFiles.has(path)?'modified':'added',bytes:data.length,sha256:createHash('sha256').update(data).digest('hex')};
+});
+for(const path of expectedSources)assert.ok(entries.some(e=>e.path===path));for(const path of expectedDocs)assert.ok(entries.some(e=>e.path===path));
+const data={baseline,scope:'Cube-C2A only; no modification to any existing source/test/config/dependency/evidence file',manifestPath,selfHash:'Excluded to avoid a circular content hash; the Git implementation inventory records the committed manifest blob.',files:paths.length,
+ counts:{sourceTestsDrivers:expectedSources.size,documentation:expectedDocs.size,evidenceIncludingManifest:paths.length-expectedSources.size-expectedDocs.size},entries};
+writeFileSync(manifestPath,JSON.stringify(data,null,2)+'\n');console.log({files:data.files,counts:data.counts});
