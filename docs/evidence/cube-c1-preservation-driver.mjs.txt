@@ -1,0 +1,38 @@
+import{execFileSync}from'node:child_process';
+import{readFileSync,writeFileSync}from'node:fs';
+import{createHash}from'node:crypto';
+import assert from'node:assert/strict';
+const baseline='647e40c91b1ce6304088bc544a38ca4886022933',sha=b=>createHash('sha256').update(b).digest('hex');
+const editedDocs=new Set(['README.md','docs/ARCHITECTURE.md','docs/PHASE-1-HEIGHTMAP-ROADMAP.md','docs/SURFACE-VISUAL-STANDARD.md','docs/WORLD-SURFACE-ARCHITECTURE.md','docs/SOLID-CUBE-FOUNDATION.md']);
+const terrainPath='src/terrain/solid-cube.ts';
+const entries=execFileSync('git',['ls-tree','-r',baseline],{encoding:'utf8',maxBuffer:20e6}).trim().split('\n').map(line=>{const[m,path]=line.split('\t');return{path,blob:m.split(' ')[2]};});
+const protectedFiles=entries.filter(f=>!editedDocs.has(f.path)&&f.path!==terrainPath);
+const hashes=execFileSync('git',['hash-object','--stdin-paths'],{input:protectedFiles.map(f=>f.path).join('\n')+'\n',encoding:'utf8',maxBuffer:20e6}).trim().split(/\r?\n/);
+assert.equal(hashes.length,protectedFiles.length);for(const[i,f]of protectedFiles.entries())assert.equal(hashes[i],f.blob,f.path);
+const original=execFileSync('git',['show',`${baseline}:${terrainPath}`],{encoding:'utf8'}).replaceAll('\r\n','\n'),current=readFileSync(terrainPath,'utf8').replaceAll('\r\n','\n');
+const declarationsStart=current.indexOf('export const MAX_CUBE_PATCH_SAMPLES ='),declarationsEnd=current.indexOf('export interface SolidCubeSampleAddress');
+const methodStart=current.indexOf('    /** C1: validate the entire bounded patch'),methodEnd=current.indexOf('    get revision() { return revision; },',methodStart);
+assert.ok(declarationsStart>0&&declarationsEnd>declarationsStart&&methodStart>declarationsEnd&&methodEnd>methodStart);
+const stripped=current.slice(0,declarationsStart)+current.slice(declarationsEnd,methodStart)+current.slice(methodEnd);
+assert.equal(stripped,original,'Every original Cube-A terrain source byte must remain intact');
+const terrainAdditions={path:terrainPath,originalGitBlob:entries.find(f=>f.path===terrainPath).blob,originalSha256:sha(original),strippedCurrentSha256:sha(stripped),
+  originalSourceExactAfterOnlyTwoAdditiveRegions:true,addedSourceLines:(current.slice(declarationsStart,declarationsEnd)+current.slice(methodStart,methodEnd)).split('\n').length-1,
+  declarations:current.slice(declarationsStart,declarationsEnd),publicationMethod:current.slice(methodStart,methodEnd)};
+const roadmap=readFileSync('docs/PHASE-1-HEIGHTMAP-ROADMAP.md','utf8').replaceAll('\r\n','\n'),old=execFileSync('git',['show',`${baseline}:docs/PHASE-1-HEIGHTMAP-ROADMAP.md`],{encoding:'utf8'}).replaceAll('\r\n','\n');
+const table=s=>s.slice(s.indexOf('| Phase | Required order |'),s.indexOf('\n\n',s.indexOf('| Phase | Required order |')));
+const geometryOrder=s=>s.slice(s.indexOf('### Owner-approved geometry priorities after A7-P1C'),s.indexOf('\nNon-destructive shape conversion remains required.'));
+assert.equal(table(roadmap),table(old));assert.equal(table(roadmap).split('\n').length,13);assert.equal(geometryOrder(roadmap),geometryOrder(old));assert.equal(geometryOrder(roadmap).split('\n').filter(l=>/^\d+\. /.test(l)).length,13);
+for(const issue of[1,2])assert.ok(roadmap.includes(`https://github.com/Revty79/serrian-tide-world/issues/${issue}`));
+const accepted=JSON.parse(readFileSync('docs/evidence/a7-p1c-production-source-check.json','utf8'));
+const assets=accepted.builtAssets.map(a=>({path:a.path,sha256:sha(readFileSync(a.path)),acceptedSha256:a.sha256}));for(const a of assets)assert.equal(a.sha256,a.acceptedSha256,a.path);
+for(const a of assets.filter(a=>a.path.endsWith('.js'))){const s=readFileSync(a.path,'utf8');assert.ok(!s.includes('physical-solid-cube'));assert.ok(!s.includes('cube-simple-face-unfoldings'));}
+const source=JSON.parse(readFileSync('docs/evidence/cube-c1-final-tested-source.json','utf8'));for(const f of source.files)assert.equal(sha(readFileSync(f.path)),f.sha256,f.path);assert.equal(source.files.length,256);
+const bridge=JSON.parse(readFileSync('docs/evidence/cube-c1-source-bridge.json','utf8'));assert.equal(bridge.unchangedRegisteredFiles,254);assert.equal(bridge.noProductDevOrBrowserTestImporters,true);
+const restored=JSON.parse(readFileSync('docs/evidence/cube-c1-browser-infrastructure-recovery.json','utf8'));assert.equal(sha(readFileSync(restored.restoredPath)),restored.originalReceiptWorkingSha256);
+writeFileSync('docs/evidence/cube-c1-preservation.json',JSON.stringify({baseline,protectedFileCount:protectedFiles.length,
+ protectedSourceCount:protectedFiles.filter(f=>/^(src\/|tests\/|scripts\/|dev\/|package.*json$|vite.config.ts$|tsconfig.json$|playwright.config.ts$)/.test(f.path)).length,
+ historicalEvidenceFiles:protectedFiles.filter(f=>f.path.startsWith('docs/evidence/')).length,exactProtectedGitBlobs:true,editedExistingDocuments:[...editedDocs],terrainAdditions,
+ masterElevenPhaseTableUnchanged:true,masterPhaseTableSha256:sha(table(roadmap)),geometryPriorityOrderUnchanged:true,geometryPriorityOrderSha256:sha(geometryOrder(roadmap)),issue1Preserved:true,issue2Preserved:true,
+ builtAssetsIdenticalToAcceptedP1C:assets,testedSourceFilesUnchanged:source.files.length,browserSourceBridge:'docs/evidence/cube-c1-source-bridge.json',historicalBrowserReportRecoveredExact:true,protectedFiles},null,2)+'\n');
+console.log({protectedFiles:protectedFiles.length,protectedSourceFiles:protectedFiles.filter(f=>/^(src\/|tests\/|scripts\/|dev\/|package.*json$|vite.config.ts$|tsconfig.json$|playwright.config.ts$)/.test(f.path)).length,
+ sourceFiles:source.files.length,terrainOnlyAdditions:terrainAdditions.addedSourceLines,identicalProductionAssets:assets.length,elevenPhases:'unchanged',geometryOrder:'unchanged'});

@@ -1,0 +1,32 @@
+import { readFileSync, writeFileSync, readdirSync, copyFileSync, statSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+const prefix = 'docs/evidence/cube-c1-', directory = '.local/cube-c1-browser/docs/evidence';
+const sha = (value) => createHash('sha256').update(value).digest('hex');
+const entries = readdirSync(directory).sort().map((file) => {
+  const path = `${directory}/${file}`, data = readFileSync(path);
+  if (!statSync(path).isFile()) throw Error('Expected flat regression artifact directory');
+  const input = /^a7-p1c-saved-geography-n(128|256)\.json$/.test(file);
+  if (input && sha(data) !== sha(readFileSync(`docs/evidence/${file}`))) throw Error('Fixture input mismatch');
+  return { archivePath: file, role: input ? 'accepted input fixture' : 'generated regression evidence', bytes: data.length, sha256: sha(data) };
+});
+const archives = []; let current;
+for (const entry of entries) {
+  if (!current || current.uncompressedBytes + entry.bytes > 32 * 1024 * 1024) {
+    current = { archive: `${prefix}browser-artifacts-${archives.length + 1}.zip`, files: 0, uncompressedBytes: 0 }; archives.push(current);
+  }
+  current.uncompressedBytes += entry.bytes; current.files++; entry.archive = current.archive;
+}
+writeFileSync(prefix + 'browser-artifacts.json', JSON.stringify({ archives, scope: 'Actual unchanged-editor browser regressions. Cube-C1 itself is numerical only and has no UI. Extract all archives into one evidence directory.',
+  files: entries.length, generated: entries.filter((e) => e.role === 'generated regression evidence').length,
+  uncompressedBytes: entries.reduce((sum, e) => sum + e.bytes, 0), entries }, null, 2) + '\n');
+for (const [source, name] of [
+  ['.local/cube-c1-validate.mjs', 'initial-validation-driver.mjs.txt'],
+  ['.local/cube-c1-final-validate.mjs', 'final-validation-driver.mjs.txt'], ['.local/cube-c1-harden.mjs', 'atomic-hardening-driver.mjs.txt'],
+  ['.local/cube-c1-source-bridge.mjs', 'source-bridge-driver.mjs.txt'],
+  ['.local/cube-c1.config.ts', 'browser-config.ts.txt'], ['.local/cube-b.config.ts', 'infrastructure-original-config.ts.txt'],
+  ['.local/cube-c1-browser-retry.mjs', 'browser-retry-driver.mjs.txt'], ['.local/cube-c1-recover-browser.mjs', 'browser-recovery-driver.mjs.txt'],
+  ['.local/cube-c1-summarize.mjs', 'performance-summary-driver.mjs.txt'], ['.local/cube-c1-preserve.mjs', 'preservation-driver.mjs.txt'],
+  ['.local/cube-c1-split-zip.ps1', 'archive-command.ps1.txt'], ['.local/cube-c1-package.mjs', 'evidence-package-driver.mjs.txt'],
+  ['.local/cube-c1-inventory.mjs', 'inventory-driver.mjs.txt'], ['.local/cube-c1-check-stage.mjs', 'stage-audit-driver.mjs.txt'],
+]) copyFileSync(source, prefix + name);
+console.log({ files: entries.length, generated: entries.filter((e) => e.role === 'generated regression evidence').length, bytes: entries.reduce((sum, e) => sum + e.bytes, 0) });

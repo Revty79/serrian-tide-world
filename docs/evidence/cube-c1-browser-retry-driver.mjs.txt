@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {spawn} from 'node:child_process';
+import {readFileSync,writeFileSync,createWriteStream} from 'node:fs';
+import {createHash} from 'node:crypto';
+const prefix='docs/evidence/cube-c1-',root=process.cwd(),frozen=JSON.parse(readFileSync(prefix+'tested-source.json','utf8')).files,sha=b=>createHash('sha256').update(b).digest('hex');
+const check=()=>{for(const f of frozen)assert.equal(sha(readFileSync(f.path)),f.sha256,f.path);};check();assert.equal(frozen.length,256);
+const config=root+'/.local/cube-c1.config.ts',text=readFileSync(config,'utf8');assert.ok(text.includes('http://127.0.0.1:5241'));assert.ok(text.includes('cube-c1-browser-result.json'));
+const server=spawn(process.execPath,['node_modules/vite/bin/vite.js','--host','127.0.0.1','--port','5241','--strictPort'],{windowsHide:true,stdio:'ignore'});
+try{
+ for(let i=0;;i++){if(server.exitCode!==null||i>300)throw Error('Owned strict server unavailable');try{if((await fetch('http://127.0.0.1:5241')).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
+ const at=Date.now(),args=[root+'/node_modules/@playwright/test/cli.js','test','-c',config],log=createWriteStream(prefix+'browser-regression.txt');
+ console.log('start browser-regression; corrected owned server/config 5241; source frozen',frozen.length);
+ const child=spawn(process.execPath,args,{cwd:root+'/.local/cube-c1-browser',windowsHide:true,stdio:['ignore','pipe','pipe']});child.stdout.pipe(log);child.stderr.pipe(log);
+ const exitCode=await new Promise((resolve,reject)=>{child.once('error',reject);child.once('exit',resolve);});await new Promise(r=>log.end(r));
+ const phases=JSON.parse(readFileSync(prefix+'validation.json','utf8'));phases.push({label:'browser-regression',command:['node',...args],exitCode,elapsedMs:Date.now()-at});writeFileSync(prefix+'validation.json',JSON.stringify(phases,null,2)+'\n');console.log(phases.at(-1));assert.equal(exitCode,0);check();
+ writeFileSync(prefix+'source-freeze.json',JSON.stringify({files:frozen.length,changed:[],sha256:sha(JSON.stringify(frozen)),scope:'Eight successful numerical/certificate/performance/type/build phases and final corrected browser run. Initial browser infrastructure failure is separately preserved; no source changes.'},null,2)+'\n');
+ console.log('ALL COMPLETE; source frozen',frozen.length);
+}finally{server.kill();server.unref();}

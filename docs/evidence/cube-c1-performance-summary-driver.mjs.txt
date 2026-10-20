@@ -1,0 +1,14 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+const prefix=process.argv[2]??'docs/evidence/cube-c1-';
+const raw=JSON.parse(readFileSync(prefix+'performance.json','utf8')),r=raw.records;
+const max=(records,fn)=>Math.max(...records.map(fn)),median=(records,fn)=>{const v=records.map(fn).sort((a,b)=>a-b);return v[Math.ceil(v.length/2)-1];};
+const groups=[];for(const n of [128,256])for(const size of ['ordinary','wide']){const a=r.filter(v=>v.n===n&&v.size===size);groups.push({n,size,trials:a.length,
+  medianInitializationMs:median(a,v=>v.initializationMs),maxInitializationMs:max(a,v=>v.initializationMs),medianPreparationWallMs:median(a,v=>v.preparationWallMs),maxPreparationWallMs:max(a,v=>v.preparationWallMs),
+  maxPumpMs:max(a,v=>v.maxPumpMs),maxCommitMs:max(a,v=>v.commitMs),maxCandidates:max(a,v=>v.statistics.candidates),maxSequenceTests:max(a,v=>v.statistics.sequenceTests),maxWork:max(a,v=>v.statistics.workUnits),
+  maxPreparedBytes:max(a,v=>v.statistics.peakPreparedBytes),maxHeapAfterPrepare:max(a,v=>v.memoryAfterPrepare.heapUsed),maxRssAfterPrepare:max(a,v=>v.memoryAfterPrepare.rss),maxYieldGapMs:max(a,v=>v.maxYieldGapMs),failures:a.filter(v=>v.failure).length});}
+const summary={node:raw.node,platform:raw.platform,recordedAtUtc:raw.recordedAtUtc,groups,allTrials:r.length,
+  workObservedMax:max(r,v=>v.statistics.workUnits),candidateObservedMax:max(r,v=>v.statistics.candidates),peakPreparedBytes:max(r,v=>v.statistics.peakPreparedBytes),
+  maxInitializationMs:max(r,v=>v.initializationMs??0),maxPumpMs:max(r,v=>v.maxPumpMs),maxCommitMs:max(r,v=>v.commitMs??0),
+  expectedFailures:r.filter(v=>v.failure).map(v=>({n:v.n,code:v.failure.code,reason:v.failure.message,work:v.statistics.workUnits,changes:v.statistics.changesPrepared,bufferBytes:v.statistics.peakPreparedBytes,preparedBytesAfterFailure:v.statistics.preparedBytes,writes:v.statistics.writes})),
+  note:'Group medians/maxima mix the four tools and four center locations. Ordinary = 3 trials per combination, wide = 1. Process heap/RSS includes source authority/snapshot, retained diagnostics, scalar replay records, garbage/GC; not an isolated allocation bound. Node yield gaps are not browser frames.'};
+writeFileSync(prefix+'performance-summary.json',JSON.stringify(summary,null,2)+'\n');console.log(JSON.stringify(summary,null,2));

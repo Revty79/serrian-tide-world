@@ -1,0 +1,20 @@
+import {readFileSync,writeFileSync,copyFileSync,renameSync} from 'node:fs';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const prefix='docs/evidence/cube-c1-',baseline='647e40c91b1ce6304088bc544a38ca4886022933';
+const sha=b=>createHash('sha256').update(b).digest('hex');
+const oldPath='docs/evidence/cube-b-browser-result.json',failed=JSON.parse(readFileSync(oldPath,'utf8'));
+assert.equal(failed.stats.unexpected,328);assert.equal(failed.stats.skipped,4);
+const errors=[];function visit(suite){for(const s of suite.specs??[])for(const t of s.tests??[])for(const r of t.results??[])if(r.status==='failed')errors.push(r.error?.message??'');for(const child of suite.suites??[])visit(child);}
+for(const suite of failed.suites)visit(suite);assert.equal(errors.length,328);for(const e of errors){assert.ok(e.includes('ERR_CONNECTION_REFUSED'));assert.ok(e.includes('5238'));}
+copyFileSync(oldPath,prefix+'browser-infrastructure-attempt.json');
+renameSync(prefix+'browser-regression.txt',prefix+'browser-infrastructure-attempt.txt');
+const correct=execFileSync('git',['show',`${baseline}:${oldPath}`],{maxBuffer:32*1024*1024});writeFileSync(oldPath,correct);
+const recorded=JSON.parse(readFileSync('docs/evidence/cube-b-implementation-files.json','utf8')).files.find(f=>f.path===oldPath);
+assert.equal(sha(readFileSync(oldPath)),recorded.workingSha256);
+const phases=JSON.parse(readFileSync(prefix+'validation.json','utf8'));assert.equal(phases.at(-1).exitCode,1);phases.at(-1).label='browser-infrastructure-attempt';
+writeFileSync(prefix+'validation.json',JSON.stringify(phases,null,2)+'\n');
+writeFileSync(prefix+'browser-infrastructure-recovery.json',JSON.stringify({reason:'Local validation harness accidentally selected preceding Cube-B config: owned server 5241, browser config 5238. All 328 failures were connection refusal before application checks. Four existing skips.',
+  failed:failed.stats,failedConnectionRefusedCount:errors.length,restoredPath:oldPath,baseline,restoredSha256:sha(correct),originalReceiptWorkingSha256:recorded.workingSha256,sourceChanges:false},null,2)+'\n');
+console.log({failedConnectionRefusedCount:errors.length,restoredHistoricalReport:oldPath,sha256:sha(correct)});

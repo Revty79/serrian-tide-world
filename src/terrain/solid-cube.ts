@@ -7,6 +7,13 @@ export const SOLID_CUBE_REPRESENTATION_VERSION = 1 as const;
 export const DEFAULT_SOLID_CUBE_CELLS = 128;
 export const MAX_SOLID_CUBE_CELLS = 256;
 export const MAX_SOLID_CUBE_REVISION = Number.MAX_SAFE_INTEGER;
+export const MAX_CUBE_PATCH_SAMPLES = 65_536;
+export interface CubePatchBlock { readonly indices: Uint32Array; readonly before: Float32Array; readonly after: Float32Array; readonly count: number }
+const cubeViewPrototype = Object.getPrototypeOf(Uint8Array.prototype);
+const cubeViewBuffer = Object.getOwnPropertyDescriptor(cubeViewPrototype, 'buffer')!.get!;
+const cubeViewLength = Object.getOwnPropertyDescriptor(cubeViewPrototype, 'length')!.get!;
+const cubeViewName = Object.getOwnPropertyDescriptor(cubeViewPrototype, Symbol.toStringTag)!.get!;
+const cubeUnsharedBuffer = Object.getOwnPropertyDescriptor(ArrayBuffer.prototype, 'byteLength')!.get!;
 export interface SolidCubeSampleAddress extends SurfaceIdentity { readonly patchId: SolidCubeFace; readonly column: number; readonly row: number }
 export interface SolidCubeSampleKey extends SurfaceIdentity {
   readonly terrainId: string;
@@ -112,6 +119,43 @@ export function createSolidCubeTerrain(options: { readonly terrainId: string; re
         if (revision >= MAX_SOLID_CUBE_REVISION) throw new RangeError('Cube revision limit reached; terrain is unchanged.');
         elevations[index] = next; revision++;
       }
+    },
+    /** C1: validate the entire bounded patch, then publish without callbacks or allocations. */
+    commitPreparedPatch: (binding: SolidCubeSampleKey, expectedRevision: number, blocks: readonly CubePatchBlock[]): number => {
+      checkedKey(binding);
+      if (!Number.isSafeInteger(expectedRevision) || expectedRevision < 0 || !Array.isArray(blocks)) throw new RangeError('Invalid cube patch epoch or block count.');
+      const blockCount = blocks.length;
+      if (!Number.isSafeInteger(blockCount) || blockCount < 0 || blockCount > 64) throw new RangeError('Invalid cube patch block count.');
+      // Finish ALL caller descriptor reads before value validation. Do not invoke
+      // caller .map/species or typed-view buffer/length property overrides.
+      const prepared: CubePatchBlock[] = [];
+      for (let i = 0; i < blockCount; i++) {
+        const b = blocks[i]!; prepared.push({ indices: b.indices, before: b.before, after: b.after, count: b.count });
+      }
+      let previous = -1, total = 0, changed = 0;
+      for (const b of prepared) {
+        for (const [array, prototype] of [[b.indices, Uint32Array.prototype], [b.before, Float32Array.prototype], [b.after, Float32Array.prototype]] as const) {
+          if (!ArrayBuffer.isView(array) || Object.getPrototypeOf(array) !== prototype
+            || cubeViewName.call(array) !== (prototype === Uint32Array.prototype ? 'Uint32Array' : 'Float32Array')) throw new RangeError('Cube patches require intrinsic Uint32/Float32 views.');
+          try { cubeUnsharedBuffer.call(cubeViewBuffer.call(array)); }
+          catch { throw new RangeError('Cube patches require actual nonshared ArrayBuffers.'); }
+        }
+        if (!Number.isSafeInteger(b.count) || b.count < 0 || b.count > cubeViewLength.call(b.indices) || b.count > cubeViewLength.call(b.before) || b.count > cubeViewLength.call(b.after)) throw new RangeError('Invalid cube patch extent.');
+        total += b.count;
+        if (total > MAX_CUBE_PATCH_SAMPLES) throw new RangeError('Cube atomic patch sample limit exceeded.');
+        for (let i = 0; i < b.count; i++) {
+          const index = b.indices[i]!, before = b.before[i]!, after = b.after[i]!;
+          if (index <= previous || index >= count || !Number.isFinite(before) || !Number.isFinite(after)
+            || !Object.is(elevations[index], before)) throw new RangeError('Cube patch requires unique sorted indices and exact valid source words.');
+          previous = index; if (!Object.is(before, after)) changed++;
+        }
+      }
+      if (revision !== expectedRevision || !Number.isSafeInteger(revision + changed)) throw new Error('Cube patch source changed or revision capacity was exhausted.');
+      for (const b of prepared) for (let i = 0; i < b.count; i++) {
+        const index = b.indices[i]!, after = b.after[i]!;
+        if (!Object.is(elevations[index], after)) { elevations[index] = after; revision++; }
+      }
+      return changed;
     },
     get revision() { return revision; },
     copyElevations: (): Float32Array => elevations.slice(),

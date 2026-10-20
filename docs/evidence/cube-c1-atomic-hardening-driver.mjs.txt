@@ -1,0 +1,42 @@
+import{readFileSync,writeFileSync,copyFileSync}from'node:fs';
+import{createHash}from'node:crypto';
+import assert from'node:assert/strict';
+const frozen=JSON.parse(readFileSync('docs/evidence/cube-c1-tested-source.json','utf8')).files,sha=b=>createHash('sha256').update(b).digest('hex');
+for(const path of ['src/terrain/solid-cube.ts','src/terrain/solid-cube-brush.test.ts'])assert.equal(sha(readFileSync(path)),frozen.find(f=>f.path===path).sha256,path);
+assert.equal(JSON.parse(readFileSync('docs/evidence/cube-c1-source-freeze.json','utf8')).files,256,'Finish the unchanged-source browser run first');
+copyFileSync('src/terrain/solid-cube.ts','docs/evidence/cube-c1-browser-terrain-source.ts.txt');
+copyFileSync('src/terrain/solid-cube-brush.test.ts','docs/evidence/cube-c1-browser-brush-test-source.ts.txt');
+let source=readFileSync('src/terrain/solid-cube.ts','utf8');
+const declaration='export interface CubePatchBlock { readonly indices: Uint32Array; readonly before: Float32Array; readonly after: Float32Array; readonly count: number }';assert.ok(source.includes(declaration));
+source=source.replace(declaration,declaration+`\nconst cubeViewPrototype = Object.getPrototypeOf(Uint8Array.prototype);\nconst cubeViewBuffer = Object.getOwnPropertyDescriptor(cubeViewPrototype, 'buffer')!.get!;\nconst cubeViewLength = Object.getOwnPropertyDescriptor(cubeViewPrototype, 'length')!.get!;\nconst cubeViewName = Object.getOwnPropertyDescriptor(cubeViewPrototype, Symbol.toStringTag)!.get!;\nconst cubeUnsharedBuffer = Object.getOwnPropertyDescriptor(ArrayBuffer.prototype, 'byteLength')!.get!;`);
+const old=`      if (!Number.isSafeInteger(expectedRevision) || expectedRevision < 0 || !Array.isArray(blocks) || blocks.length > 64) throw new RangeError('Invalid cube patch epoch or block count.');\n      // Snapshot caller descriptors before checking anything that will be published.\n      const prepared = blocks.map((b) => ({ indices: b.indices, before: b.before, after: b.after, count: b.count }));`;
+assert.ok(source.includes(old));source=source.replace(old,`      if (!Number.isSafeInteger(expectedRevision) || expectedRevision < 0 || !Array.isArray(blocks)) throw new RangeError('Invalid cube patch epoch or block count.');\n      const blockCount = blocks.length;\n      if (!Number.isSafeInteger(blockCount) || blockCount < 0 || blockCount > 64) throw new RangeError('Invalid cube patch block count.');\n      // Finish ALL caller descriptor reads before value validation. Do not invoke\n      // caller .map/species or typed-view buffer/length property overrides.\n      const prepared: CubePatchBlock[] = [];\n      for (let i = 0; i < blockCount; i++) {\n        const b = blocks[i]!; prepared.push({ indices: b.indices, before: b.before, after: b.after, count: b.count });\n      }`);
+const oldGuard="          if (!ArrayBuffer.isView(array) || Object.getPrototypeOf(array) !== prototype || !(array.buffer instanceof ArrayBuffer)) throw new RangeError('Cube patches require ordinary, nonshared typed arrays.');";
+assert.ok(source.includes(oldGuard));source=source.replace(oldGuard,`          if (!ArrayBuffer.isView(array) || Object.getPrototypeOf(array) !== prototype\n            || cubeViewName.call(array) !== (prototype === Uint32Array.prototype ? 'Uint32Array' : 'Float32Array')) throw new RangeError('Cube patches require intrinsic Uint32/Float32 views.');\n          try { cubeUnsharedBuffer.call(cubeViewBuffer.call(array)); }\n          catch { throw new RangeError('Cube patches require actual nonshared ArrayBuffers.'); }`);
+const lengths='b.count > b.indices.length || b.count > b.before.length || b.count > b.after.length';assert.ok(source.includes(lengths));source=source.replace(lengths,'b.count > cubeViewLength.call(b.indices) || b.count > cubeViewLength.call(b.before) || b.count > cubeViewLength.call(b.after)');
+writeFileSync('src/terrain/solid-cube.ts',source);
+const tests=`
+test('raw publication bypasses caller map/species and typed-view accessors before any write', () => {
+  const t = create(), key = t.keyAt(0), first = Float32Array.of(10), second = Float32Array.of(20); let callbacks = 0;
+  Object.defineProperty(second,'buffer',{get(){callbacks++; first[0] = Infinity; return new ArrayBuffer(4);}});
+  Object.defineProperty(second,'length',{get(){callbacks++; return 1000000;}});
+  const blocks: CubePatchBlock[] = [{indices:Uint32Array.of(0),before:Float32Array.of(-100),after:first,count:1},{indices:Uint32Array.of(1),before:Float32Array.of(-100),after:second,count:1}];
+  Object.defineProperty(blocks,'map',{value(){callbacks++;throw new Error('Caller map must never execute');}});
+  assert.equal(t.commitPreparedPatch(key,t.revision,blocks),2); assert.equal(callbacks,0);
+  assert.equal(t.read(key),10); assert.equal(t.read(t.keyAt(1)),20);
+});
+test('raw publication checks intrinsic buffer brands and extents despite spoofed properties', () => {
+  const t = create(), key = t.keyAt(0), before = words(t), shared = new Float32Array(new SharedArrayBuffer(4)); let callbacks = 0;
+  Object.defineProperty(shared,'buffer',{get(){callbacks++; return new ArrayBuffer(4);}});
+  assert.throws(()=>t.commitPreparedPatch(key,t.revision,[{indices:Uint32Array.of(0),before:Float32Array.of(-100),after:shared,count:1}]));
+  const short = Float32Array.of(10); Object.defineProperty(short,'length',{get(){callbacks++;return 100;}});
+  assert.throws(()=>t.commitPreparedPatch(key,t.revision,[{indices:Uint32Array.of(0,1),before:Float32Array.of(-100,-100),after:short,count:2}]));
+  const sharedBuffer = new SharedArrayBuffer(4), disguised = new Float32Array(sharedBuffer); Object.setPrototypeOf(sharedBuffer,ArrayBuffer.prototype);
+  assert.throws(()=>t.commitPreparedPatch(key,t.revision,[{indices:Uint32Array.of(0),before:Float32Array.of(-100),after:disguised,count:1}]));
+  const wrong = Uint32Array.of(16777217); Object.setPrototypeOf(wrong,Float32Array.prototype);
+  assert.throws(()=>t.commitPreparedPatch(key,t.revision,[{indices:Uint32Array.of(0),before:Float32Array.of(-100),after:wrong as unknown as Float32Array,count:1}]));
+  assert.equal(callbacks,0);assert.deepEqual(words(t),before);assert.equal(t.revision,0);
+});
+`;
+writeFileSync('src/terrain/solid-cube-brush.test.ts',readFileSync('src/terrain/solid-cube-brush.test.ts','utf8')+tests);
+console.log('Applied narrowly scoped raw atomic guard hardening and two adversarial tests. Browser source snapshot retained.');

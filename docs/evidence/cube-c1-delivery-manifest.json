@@ -1,0 +1,647 @@
+{
+  "baseline": "647e40c91b1ce6304088bc544a38ca4886022933",
+  "scope": "Cube-C1 physical numerical single dabs and guarded atomic publication only",
+  "sourceTestDriverFiles": [
+    "src/terrain/solid-cube.ts",
+    "src/surfaces/cube-brush-distance.ts",
+    "src/terrain/solid-cube-brush.ts",
+    "src/surfaces/cube-brush-distance.test.ts",
+    "src/terrain/solid-cube-brush.test.ts",
+    "scripts/cube-dab-reference.py",
+    "scripts/verify-solid-cube-dabs.mjs",
+    "scripts/measure-solid-cube-dabs.mjs"
+  ],
+  "documentationFiles": [
+    "README.md",
+    "docs/ARCHITECTURE.md",
+    "docs/PHASE-1-HEIGHTMAP-ROADMAP.md",
+    "docs/SURFACE-VISUAL-STANDARD.md",
+    "docs/WORLD-SURFACE-ARCHITECTURE.md",
+    "docs/SOLID-CUBE-FOUNDATION.md",
+    "docs/CUBE-TERRAIN-DABS.md",
+    "docs/CUBE-C1-COMPLETION.md"
+  ],
+  "totalImplementationFilesIncludingThisManifest": 89,
+  "self": {
+    "path": "docs/evidence/cube-c1-delivery-manifest.json",
+    "omittedFromHashesToAvoidSelfReference": true
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "category": "documentation",
+      "bytes": 19945,
+      "sha256": "ae5fe151217f410f4c0783199864e259a32ff91d893f8ec8f2f4cb4da12f0755",
+      "gitBlob": "a58c6c5fd9d93bf8006413cd7fd4a380e6021289"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "category": "documentation",
+      "bytes": 41311,
+      "sha256": "c25c5e1fedfff99527b0b7734a47517b4644c3db465fbec920e58afd2c59c166",
+      "gitBlob": "6a971d4573813be4cdd18503529b0af87ca1a5cf"
+    },
+    {
+      "path": "docs/CUBE-C1-COMPLETION.md",
+      "category": "documentation",
+      "bytes": 19716,
+      "sha256": "c081ae46476cb45f7c1fab883465ff4a8044dca902af1453bb5f2721ae34ad2e",
+      "gitBlob": "9c38c9674c52e42643de808f7cb800262ac7fe59"
+    },
+    {
+      "path": "docs/CUBE-TERRAIN-DABS.md",
+      "category": "documentation",
+      "bytes": 16163,
+      "sha256": "41b03c91ea4d2fc6a2d2faf5df7c9968154703d144dcb4eaf911dba1fd4888d5",
+      "gitBlob": "767a4a2212bc5d944f865f8f92e9265459d1dc0e"
+    },
+    {
+      "path": "docs/PHASE-1-HEIGHTMAP-ROADMAP.md",
+      "category": "documentation",
+      "bytes": 40839,
+      "sha256": "08b177b8e9e197fc17849d1023b8dfb23da8b3d3fc1be5f29c5fb9544258df95",
+      "gitBlob": "ed81c4902a636291743b96cacdf11349d3e597cf"
+    },
+    {
+      "path": "docs/SOLID-CUBE-FOUNDATION.md",
+      "category": "documentation",
+      "bytes": 11341,
+      "sha256": "3532044a3464e09eb6019e875122cc2ad282d50f263aed73b5ce10d0c24b129f",
+      "gitBlob": "47f128e0d111583df63ebf3394ed90387cf82805"
+    },
+    {
+      "path": "docs/SURFACE-VISUAL-STANDARD.md",
+      "category": "documentation",
+      "bytes": 7139,
+      "sha256": "3c9354c5c6e882f21b678a146d23945e28d696738613f58b736815584aa31911",
+      "gitBlob": "7be03dd2edeaad0e4d9c6b2dd250fe9181d9ba94"
+    },
+    {
+      "path": "docs/WORLD-SURFACE-ARCHITECTURE.md",
+      "category": "documentation",
+      "bytes": 41879,
+      "sha256": "d5cdbaeff095d44fdc04fe99bd0d8123a82590a5bee602e0f768c53045855d02",
+      "gitBlob": "bfd18e946de4e6a41932bf138c6ba07e07af7646"
+    },
+    {
+      "path": "docs/evidence/cube-c1-archive-command.ps1.txt",
+      "category": "evidence",
+      "bytes": 2352,
+      "sha256": "e84a0f595f8665cdd2388166bb4d039334208b277976bc3e48a765e00b5c796b",
+      "gitBlob": "45fa0361b549c3214a8aaa6aa1f3d498ae6d7963"
+    },
+    {
+      "path": "docs/evidence/cube-c1-atomic-hardening-driver.mjs.txt",
+      "category": "evidence",
+      "bytes": 6412,
+      "sha256": "5f154954dbc35d98a47bcb27beb3bda43b40f43f6a8772f5a9c1f97fe2f4398c",
+      "gitBlob": "6829a4de6ded33197e2f9aa9247e466664337104"
+    },
+    {
+      "path": "docs/evidence/cube-c1-browser-archive-proof.json",
+      "category": "evidence",
+      "bytes": 811,
+      "sha256": "922316c0636d7864276ee0edf6c13e7b8c850cf0f46454746d2f3c8a8c06a75c",
+      "gitBlob": "70c739d6d2b5ef61ac1b44492f1605761be3d35b"
+    },
+    {
+      "path": "docs/evidence/cube-c1-browser-artifacts-1.zip",
+      "category": "evidence",
+      "bytes": 30772009,
+      "sha256": "ecca60261be908fb81c460299d1605597b47b21493acfe31715e27a5b43c09ed",
+      "gitBlob": "5c496539971920f1914d3d850422a1f393e2347a"
+    },
+    {
+      "path": "docs/evidence/cube-c1-browser-artifacts-2.zip",
+      "category": "evidence",
+      "bytes": 26672108,
+      "sha256": "0b175e581478e8c82e61c156a7685fbfb76422d38e4dd8e35970edd8ec19e11a",
+      "gitBlob": "75a768e542f589825b2d13242b624839e0b90d27"
+    },
+    {
+      "path": "docs/evidence/cube-c1-browser-artifacts-3.zip",
+      "category": "evidence",
+      "bytes": 18697721,
+      "sha256": "98d5feb4a6c71cf453b4cf339ac914c4f38fcf3850797f19b03940e692e97338",
+      "gitBlob": "ea73222e3627c5b60a20d54d46b8c0056db45ff5"
+    },
+    {
+      "path": "docs/evidence/cube-c1-browser-artifacts.json",
+      "category": "evidence",
+      "bytes": 87450,
+      "sha256": "e3eedc4db447e5e925bf50e4f5fcc9a67c3b36e52c57f2baaabde62755540f7a",
+      "gitBlob": "b88fc43ecc144c1b6485b85361d65ec1f5871551"
+    },
+    {
+      "path": "docs/evidence/cube-c1-browser-brush-test-source.ts.txt",
+      "category": "evidence",
+      "bytes": 15288,
+      "sha256": "bae7e96b38490e5e63dceb383d953f814cd45c9b0d4aac0b3c3f283262656f1e",
+      "gitBlob": "964833a7670f40980a1443c268f8626466ca1341"
+    },
+    {
+      "path": "docs/evidence/cube-c1-browser-config.ts.txt",
+      "category": "evidence",
+      "bytes": 403,
+      "sha256": "f7d8c88a48a0298addd00daa0b4680f600500dbf71ff06e57217a4872c054fb9",
+      "gitBlob": "9b03423c6fa1dc611bce909f05113d61d4dd742f"
+    },
+    {
+      "path": "docs/evidence/cube-c1-browser-infrastructure-attempt.json",
+      "category": "evidence",
+      "bytes": 1881452,
+      "sha256": "98557210fab65511163e15fb9e8701121c660c4faf8e76c297b1e9bb9b467217",
+      "gitBlob": "043145e54a46bbe3d63e019f2e4d3cb2f039f1cd"
+    },
+    {
+      "path": "docs/evidence/cube-c1-browser-infrastructure-attempt.txt",
+      "category": "evidence",
+      "bytes": 1135061,
+      "sha256": "9081741de2218c1b0cc8810df87b45d40defecaf7210e773586e533425fe63e2",
+      "gitBlob": "76ce08f1814e8002faebf17040579d58d2cf6fcc"
+    },
+    {
+      "path": "docs/evidence/cube-c1-browser-infrastructure-recovery.json",
+      "category": "evidence",
+      "bytes": 761,
+      "sha256": "8cfddafc3dcf5b7c64ed3e6e3964ecbecdcdfe54ac21824ae516810150bf3d7e",
+      "gitBlob": "9f9374cbb7744a0bd1460b0caa0f5bf98cde0f71"
+    },
+    {
+      "path": "docs/evidence/cube-c1-browser-recovery-driver.mjs.txt",
+      "category": "evidence",
+      "bytes": 2283,
+      "sha256": "858026c27e4986bc53c8a98109554aa8e7ecf6309b4ffc8698789aa5058bc76b",
+      "gitBlob": "1694d2cfe089bb21984f4ac255d3535ab4933305"
+    },
+    {
+      "path": "docs/evidence/cube-c1-browser-regression.txt",
+      "category": "evidence",
+      "bytes": 59416,
+      "sha256": "cf4d10a84d177df648b94385e705c6d7c66497f7a55fedea4eb5e3641224f165",
+      "gitBlob": "5f7bfcf2ba891692e593148d11e8434ce2be4051"
+    },
+    {
+      "path": "docs/evidence/cube-c1-browser-result.json",
+      "category": "evidence",
+      "bytes": 445904,
+      "sha256": "73d6ef53a4f141915cab59ad39db3b518f40b5fc3b4a48951335ac1cd58e5c85",
+      "gitBlob": "1cb9c1c1ea33bfb2a0e8f4f0f9a1c627a16ef83c"
+    },
+    {
+      "path": "docs/evidence/cube-c1-browser-retry-driver.mjs.txt",
+      "category": "evidence",
+      "bytes": 2382,
+      "sha256": "fae970df0ed1ddacb1112ed0530d5de6c6b1c75fb20f593094d465b0610c7eda",
+      "gitBlob": "d8b2f3c11001664bf1587e0c5e8b85bc3e4ec9a7"
+    },
+    {
+      "path": "docs/evidence/cube-c1-browser-terrain-source.ts.txt",
+      "category": "evidence",
+      "bytes": 11940,
+      "sha256": "3d900d6713cde7a0b26acc06cb595a49897f42f1032ff24ccd6b047040b88f10",
+      "gitBlob": "80d453c95b2941eebdd5d0c0d421ca744d2efc1a"
+    },
+    {
+      "path": "docs/evidence/cube-c1-build.txt",
+      "category": "evidence",
+      "bytes": 901,
+      "sha256": "61f113c6f28d7423a2b6c5cee1d528374c0a40ddd7bef842f10c25ccc8ba01e7",
+      "gitBlob": "5ccdaf7347a5caa8ceb2b5015a20ddc3c44336b4"
+    },
+    {
+      "path": "docs/evidence/cube-c1-cube-a-preservation-certificate.txt",
+      "category": "evidence",
+      "bytes": 1987,
+      "sha256": "d195272c0853f0e531ad5c27d750265786102b46607d66f341e812e505d3edde",
+      "gitBlob": "6eb19025129a1b238b4a88f357a208eaae45ade2"
+    },
+    {
+      "path": "docs/evidence/cube-c1-cube-b-oracle-certificate.json",
+      "category": "evidence",
+      "bytes": 102974,
+      "sha256": "61cda58db023b7285d6fc51df729a6add29b16ee4833d9605626553b75cd043a",
+      "gitBlob": "38e81b4d66da2c51dd33e1e15d81b09d4d493bf8"
+    },
+    {
+      "path": "docs/evidence/cube-c1-cube-b-oracle-input.json",
+      "category": "evidence",
+      "bytes": 5423162,
+      "sha256": "c422adae06895c805b28d1a1a552892f7a69e0bfb8605ffc8fcd375eb7d430cd",
+      "gitBlob": "f3ca4f56779e50a9bda48f876f04d0540e569b5c"
+    },
+    {
+      "path": "docs/evidence/cube-c1-cube-b-oracle-stderr.txt",
+      "category": "evidence",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/cube-c1-cube-b-performance.json",
+      "category": "evidence",
+      "bytes": 7956,
+      "sha256": "71db84d8ed1246ab76e5d548efb13355e4c5c6619d0bf20850628c4be4cf5c8a",
+      "gitBlob": "9c84ee75f7ce4e961a3398e52436e76f8b498687"
+    },
+    {
+      "path": "docs/evidence/cube-c1-cube-b-preservation-certificate.txt",
+      "category": "evidence",
+      "bytes": 2284,
+      "sha256": "592f907903dd96763262caae78c5999bd5c923c7465affc1f445b5aeb091fa6e",
+      "gitBlob": "2d123849f3277f9f2fc6bd2e02265b83b534d3de"
+    },
+    {
+      "path": "docs/evidence/cube-c1-cube-b-sample-preservation.json",
+      "category": "evidence",
+      "bytes": 729,
+      "sha256": "e8f9183125a3646862131e9b50887f8e627c0bf5dd0783d9f16294b141b35ce7",
+      "gitBlob": "adb327ebfca8f84a004fe01c34fc1e71aecf8fda"
+    },
+    {
+      "path": "docs/evidence/cube-c1-evidence-package-driver.mjs.txt",
+      "category": "evidence",
+      "bytes": 2880,
+      "sha256": "c487e9824afbab244ff119cee719bfe5d3ed8ceb91452894cb5fa49bdd7c54e6",
+      "gitBlob": "308b3091a08cca00362796512f4dc4fbb8176659"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-build.txt",
+      "category": "evidence",
+      "bytes": 901,
+      "sha256": "31d1d0112c9c8cb597216437bad04ea3e5ff5cebc3dde646034c3a6d49f6d1d3",
+      "gitBlob": "8a0de517a8e26ac536f2ef8d023825360d7595e1"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-cube-a-preservation-certificate.txt",
+      "category": "evidence",
+      "bytes": 1988,
+      "sha256": "a2943ed22e62912a9acb49a515eb3a7e28ec1a8a51b685d9156e78ab64946e3a",
+      "gitBlob": "7669771d9ddc308bce9ed82291dbdd4bfbb1a03c"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-cube-b-oracle-certificate.json",
+      "category": "evidence",
+      "bytes": 102975,
+      "sha256": "8fa546ee2282d686f48aea556f0ca8f4e683b63524524b932aa68dd6d8b26f9c",
+      "gitBlob": "fc0731684ee4dfb39c4d9f56496a95d48572a657"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-cube-b-oracle-input.json",
+      "category": "evidence",
+      "bytes": 5423162,
+      "sha256": "c422adae06895c805b28d1a1a552892f7a69e0bfb8605ffc8fcd375eb7d430cd",
+      "gitBlob": "f3ca4f56779e50a9bda48f876f04d0540e569b5c"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-cube-b-oracle-stderr.txt",
+      "category": "evidence",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-cube-b-performance.json",
+      "category": "evidence",
+      "bytes": 7958,
+      "sha256": "565891fa42e37c8abfb84cac4db36cb75d20b49ac7f92f94a62791932cae4c3a",
+      "gitBlob": "a5a47b6a2fafc3505272499636206384961db05f"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-cube-b-preservation-certificate.txt",
+      "category": "evidence",
+      "bytes": 2286,
+      "sha256": "98163cf0ec4aae19760ba7539ae7433d19bbc3dbc56f5a7cbc65b5526c126c2a",
+      "gitBlob": "3da7fec405ebbf4692df1bae4bc26b6e17b57161"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-cube-b-sample-preservation.json",
+      "category": "evidence",
+      "bytes": 729,
+      "sha256": "e8f9183125a3646862131e9b50887f8e627c0bf5dd0783d9f16294b141b35ce7",
+      "gitBlob": "adb327ebfca8f84a004fe01c34fc1e71aecf8fda"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-focused.txt",
+      "category": "evidence",
+      "bytes": 5202,
+      "sha256": "d5ec08643e9bcf140e540d00de7b9e6a0df0f37f77d1fd0c11259c3e14ddf9e8",
+      "gitBlob": "0c672c3be08b8c955bf489aa0c90983bac82ea9a"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-independent.txt",
+      "category": "evidence",
+      "bytes": 2494,
+      "sha256": "dc57287e7b06a895df9db903612d38ee638f972d5e44a34abe8e5a4536d11a54",
+      "gitBlob": "8db1e55011dab41c1ed253a4eba98241e931f4aa"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-numerical-regression.txt",
+      "category": "evidence",
+      "bytes": 59095,
+      "sha256": "c6b61155e225ddc53c458968fc9ed819d64703c61a1be9674beb45c8145c2751",
+      "gitBlob": "5414caeab6f0fd38e5c66398bdd1cd492228675d"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-oracle-certificate.json",
+      "category": "evidence",
+      "bytes": 352103,
+      "sha256": "f86e689285f216ab8452cc1ddb7de1b9dd35af6f1179d6ef17a3d1469f05b57b",
+      "gitBlob": "13284c9d4b2d9372a9ec995bf875422eba0303a7"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-oracle-input.json",
+      "category": "evidence",
+      "bytes": 2786051,
+      "sha256": "ae05f1a39b5ea6a54420cf5e0ea78e463f76bd975b4a62538943ac386f3d253e",
+      "gitBlob": "5791f1199208ea7581f4f017968665fc01d6ea0a"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-oracle-stderr.txt",
+      "category": "evidence",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-performance-summary.json",
+      "category": "evidence",
+      "bytes": 3618,
+      "sha256": "44e0c10232ab32168d60b3f3a89fe954ee4aea09b3eb4c8a0042d90cabe258ac",
+      "gitBlob": "85cd5b8f3682f6856686e73965cb3b0da41c45e0"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-performance.json",
+      "category": "evidence",
+      "bytes": 317503,
+      "sha256": "cd9da92429cc58a6ee531250cfba38019b2d9a6d0bc46b9830462abe87feab9e",
+      "gitBlob": "b330e7f3554b59f3df7248d0f1518f8a1e530c22"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-performance.txt",
+      "category": "evidence",
+      "bytes": 814,
+      "sha256": "a64cee1f418b73bb2d48f2477febf72d7d69f8a4785ddf3e41510a8152326dad",
+      "gitBlob": "5774b1b8753094720ab758ce75a36dedf10c0edb"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-sample-preservation.json",
+      "category": "evidence",
+      "bytes": 2190,
+      "sha256": "c81b33597bbc84777b8bb5eb3b31dde97e64a6b426992e8f36bea8a25a9a9d1f",
+      "gitBlob": "f8caa215c9093bad22c81798b070eef973e0b089"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-source-freeze.json",
+      "category": "evidence",
+      "bytes": 364,
+      "sha256": "e2a9bff4cc409900f3cb9a0bd53412e1c8dbfeac7d1d660e2a71d2ce707fc7ce",
+      "gitBlob": "88ce4eeced4352ea2e6929f5dbc9eca55e98cd7d"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-tested-source.json",
+      "category": "evidence",
+      "bytes": 37801,
+      "sha256": "341ecd1393ae2145fc019d9f72c927404c2cc35e3019feaaa80588de00797785",
+      "gitBlob": "da96397f002ca208593be4aba4a1dfe158402705"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-typecheck.txt",
+      "category": "evidence",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-validation-driver.mjs.txt",
+      "category": "evidence",
+      "bytes": 3143,
+      "sha256": "5025010fea5c6f26b40f395a35f66fed451273c66bb99a3d41dc01c59a120e26",
+      "gitBlob": "3159f517ed48f3bdf28058d8e143a4f4ad35fff0"
+    },
+    {
+      "path": "docs/evidence/cube-c1-final-validation.json",
+      "category": "evidence",
+      "bytes": 4277,
+      "sha256": "a633a7d8622942ca5b3bc5962ab3337843eada94e7f28b8a716584b98b649a64",
+      "gitBlob": "bd8078983ae6b6f366c4b7e9c3b9bb7c320c4803"
+    },
+    {
+      "path": "docs/evidence/cube-c1-focused.txt",
+      "category": "evidence",
+      "bytes": 4997,
+      "sha256": "58d23dea63105c685394eeafb5842b1b8aaa9301a853ec2385668cba2f02f33a",
+      "gitBlob": "827dd2672b2c86768f38e099e641043c185904bc"
+    },
+    {
+      "path": "docs/evidence/cube-c1-independent.txt",
+      "category": "evidence",
+      "bytes": 2494,
+      "sha256": "d597cc80d614c3c5f109415b96c1da16c8b8978be7cc27b6c5879e5bcc96b111",
+      "gitBlob": "5f6f98809d9ba772b1626689e234be613c2601b4"
+    },
+    {
+      "path": "docs/evidence/cube-c1-infrastructure-original-config.ts.txt",
+      "category": "evidence",
+      "bytes": 401,
+      "sha256": "ba286204398517821fe527a289a49c0fd51d86c166a61adaf2b79501c9f6173e",
+      "gitBlob": "bca2859ba7365dcc251995d064484e40ccd8790a"
+    },
+    {
+      "path": "docs/evidence/cube-c1-initial-validation-driver.mjs.txt",
+      "category": "evidence",
+      "bytes": 3901,
+      "sha256": "fa70487948f126f900506027d941dbb414b7801d567d7a3c584a776d032d8d0e",
+      "gitBlob": "331aa303890e28ee9982884210d95430e2091e65"
+    },
+    {
+      "path": "docs/evidence/cube-c1-inventory-driver.mjs.txt",
+      "category": "evidence",
+      "bytes": 4402,
+      "sha256": "d387bb8f8784e9dd23f23e369eda2c8013c8f29cc377d4c70bc5e633ea33d449",
+      "gitBlob": "0426b06f7b1cd215f9f3c2a2600f5f22eb3f2a36"
+    },
+    {
+      "path": "docs/evidence/cube-c1-numerical-regression.txt",
+      "category": "evidence",
+      "bytes": 58905,
+      "sha256": "10b9d03f9a1be21b05ba58edfa9a5f0f25dcbec0253ce73a00967881bce2bac1",
+      "gitBlob": "290c2705288724c33291995fbf76439d443c79af"
+    },
+    {
+      "path": "docs/evidence/cube-c1-oracle-certificate.json",
+      "category": "evidence",
+      "bytes": 352103,
+      "sha256": "2a7acdd8ee9f2582482dcbb0f41fda33cb41fbb92c443de5429b5e0b0031dea3",
+      "gitBlob": "d53869359790066b8ffbf8c78a9eb37876cf9725"
+    },
+    {
+      "path": "docs/evidence/cube-c1-oracle-input.json",
+      "category": "evidence",
+      "bytes": 2786051,
+      "sha256": "ae05f1a39b5ea6a54420cf5e0ea78e463f76bd975b4a62538943ac386f3d253e",
+      "gitBlob": "5791f1199208ea7581f4f017968665fc01d6ea0a"
+    },
+    {
+      "path": "docs/evidence/cube-c1-oracle-stderr.txt",
+      "category": "evidence",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/cube-c1-performance-summary-driver.mjs.txt",
+      "category": "evidence",
+      "bytes": 2321,
+      "sha256": "0cc895e3be3e3e17c70d531a1e6550a661eba69473563f0f18c465a1602297b8",
+      "gitBlob": "0bdbb499daf2f4d31e107ff190be028b128282e8"
+    },
+    {
+      "path": "docs/evidence/cube-c1-performance-summary.json",
+      "category": "evidence",
+      "bytes": 3619,
+      "sha256": "d5983798d19c0982bbe2ca43d509cd934371ce3294db8752ece06386cb3dd7e6",
+      "gitBlob": "d98160307f32c0e226c9e8f5fd281aa6d9071575"
+    },
+    {
+      "path": "docs/evidence/cube-c1-performance.json",
+      "category": "evidence",
+      "bytes": 317482,
+      "sha256": "11014d5ff4162ac15dcbf002f5829c4359eec3bd04ee38278bcfc5783bfb3ccc",
+      "gitBlob": "be94198403d66243ae20057baf6dfa2bdff02801"
+    },
+    {
+      "path": "docs/evidence/cube-c1-performance.txt",
+      "category": "evidence",
+      "bytes": 812,
+      "sha256": "cac2c31ff0da13d9467ddf20293d748922c6ac0f3bd662785b437ac5327056e1",
+      "gitBlob": "545d67fd22218ca1e75fdee3748b2b81ec400f07"
+    },
+    {
+      "path": "docs/evidence/cube-c1-preservation-driver.mjs.txt",
+      "category": "evidence",
+      "bytes": 5705,
+      "sha256": "0e614bae0cd2cdf7621bed4ebe2166c57bdf51866be6d3effa61aeefa335cb7b",
+      "gitBlob": "c8b213b89a6c36b58161dca68b480372d3fde8d2"
+    },
+    {
+      "path": "docs/evidence/cube-c1-preservation.json",
+      "category": "evidence",
+      "bytes": 356008,
+      "sha256": "b214ad5f8f167681d51d95e08fb272c601cc79498873a3d0bc74a769c9b3998d",
+      "gitBlob": "67a9318145aa0d99ab2b4dd98f2a6da0df6d7002"
+    },
+    {
+      "path": "docs/evidence/cube-c1-sample-preservation.json",
+      "category": "evidence",
+      "bytes": 2190,
+      "sha256": "c81b33597bbc84777b8bb5eb3b31dde97e64a6b426992e8f36bea8a25a9a9d1f",
+      "gitBlob": "f8caa215c9093bad22c81798b070eef973e0b089"
+    },
+    {
+      "path": "docs/evidence/cube-c1-source-bridge-driver.mjs.txt",
+      "category": "evidence",
+      "bytes": 3301,
+      "sha256": "8eb9b15b9a6c06e2fbb4384163d561e00fef5a28cddf672ee0940c0f6cfd4e43",
+      "gitBlob": "45143d5dc806e71896d99fcb98a02c845debdccd"
+    },
+    {
+      "path": "docs/evidence/cube-c1-source-bridge.json",
+      "category": "evidence",
+      "bytes": 2158,
+      "sha256": "6215fc0b4638ba6a7f23c181ef50f2fedd875b702f1cd29730a17e929b22c192",
+      "gitBlob": "25b7f61cac4af18c5dbab95009ae9bb725d0fab7"
+    },
+    {
+      "path": "docs/evidence/cube-c1-source-freeze.json",
+      "category": "evidence",
+      "bytes": 315,
+      "sha256": "13653678a14af8af32673d955ae13ed69418e65b770279d16bec0790ece960ad",
+      "gitBlob": "31bb2280c9f6a67b03834217b6d995ae72bc5d02"
+    },
+    {
+      "path": "docs/evidence/cube-c1-stage-audit-driver.mjs.txt",
+      "category": "evidence",
+      "bytes": 1320,
+      "sha256": "5f6d05b1be09d22f51de57763571a9820168ddaeff421d10d0acc0e7ec255f81",
+      "gitBlob": "745923f0530c29d45235632935f6cb0ba24db7cd"
+    },
+    {
+      "path": "docs/evidence/cube-c1-tested-source.json",
+      "category": "evidence",
+      "bytes": 37801,
+      "sha256": "f8b5d95c828379ddadf960ede091a00b622900c70e6dee8c3141a0e6671ab7fd",
+      "gitBlob": "3584753328124f3ada5286ff0cc0caff1a56ed90"
+    },
+    {
+      "path": "docs/evidence/cube-c1-typecheck.txt",
+      "category": "evidence",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/cube-c1-validation.json",
+      "category": "evidence",
+      "bytes": 4824,
+      "sha256": "2393e9064bb004e6ba771d7171e61d3ce2e868cf8061ecfd938855b5a3a506c6",
+      "gitBlob": "7959c5fb1acf42e960247cf5a0899510100d4873"
+    },
+    {
+      "path": "scripts/cube-dab-reference.py",
+      "category": "source-test-driver",
+      "bytes": 9339,
+      "sha256": "0c0799456f4a32ee40029a2f03785ddb703ef5487b17d09d7f1428f8e1bd4bb0",
+      "gitBlob": "7240ad720efe9931548759b359553ab697e8cda2"
+    },
+    {
+      "path": "scripts/measure-solid-cube-dabs.mjs",
+      "category": "source-test-driver",
+      "bytes": 5954,
+      "sha256": "552983d66993054095aa09ec2166e388ac9be88cf501573bc7b37df49dad0f00",
+      "gitBlob": "83c8cb3aea60e8de2bcf0e9dd51ae4f60e620738"
+    },
+    {
+      "path": "scripts/verify-solid-cube-dabs.mjs",
+      "category": "source-test-driver",
+      "bytes": 8956,
+      "sha256": "a41cf5c2f0930b46ebf7268890f686674e642cf97f4bac3bb0809e0077ef15dc",
+      "gitBlob": "c85c59a2b4ccb26bc8567b383eaaf735c4d86482"
+    },
+    {
+      "path": "src/surfaces/cube-brush-distance.test.ts",
+      "category": "source-test-driver",
+      "bytes": 7540,
+      "sha256": "70458b2ea9b13f89bcf4c64fb81d6a11b3babb6e10bd127eeb44c11837ca8cf9",
+      "gitBlob": "01acb9e98a3d5750460e8551af0ee3f6637abd4e"
+    },
+    {
+      "path": "src/surfaces/cube-brush-distance.ts",
+      "category": "source-test-driver",
+      "bytes": 14944,
+      "sha256": "5835c270a6bb4793372adc42b9b83584c11caf1c95e32152246a9f9b9892200f",
+      "gitBlob": "486b2ceb66a0a60ea6a6f52acb0968ca4469cc0c"
+    },
+    {
+      "path": "src/terrain/solid-cube-brush.test.ts",
+      "category": "source-test-driver",
+      "bytes": 17539,
+      "sha256": "ef182c834276dd7d97400866428e854aad4e15982970b369a8991fbf1c34f181",
+      "gitBlob": "eae81118b58f6b8fb004a1d9287d620ed189c204"
+    },
+    {
+      "path": "src/terrain/solid-cube-brush.ts",
+      "category": "source-test-driver",
+      "bytes": 13017,
+      "sha256": "d0a69f262b25132d5b1cbabf29c015ca3da4453501a6adf38d26350c0fc37ee9",
+      "gitBlob": "b3a9f8587df3c754034a83d5ebf9479e7aa72be4"
+    },
+    {
+      "path": "src/terrain/solid-cube.ts",
+      "category": "source-test-driver",
+      "bytes": 13006,
+      "sha256": "95645c12aac2dcd42ee5ab5e93a56739a2375db359d74261b37deaa97a615884",
+      "gitBlob": "4b544dcfe6bf9e9ee90cfc504347a5ebfb584f8f"
+    }
+  ]
+}

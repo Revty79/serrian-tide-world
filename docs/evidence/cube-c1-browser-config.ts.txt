@@ -1,0 +1,5 @@
+import base from '../playwright.config.ts';
+import { fileURLToPath } from 'node:url';
+export default { ...base, testDir: '../tests', outputDir: '../test-results/cube-c1-regression',
+  reporter: [['list'], ['json', { outputFile: fileURLToPath(new URL('../docs/evidence/cube-c1-browser-result.json', import.meta.url)) }]],
+  use: { ...base.use, baseURL: 'http://127.0.0.1:5241' }, webServer: undefined };

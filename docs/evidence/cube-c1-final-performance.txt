@@ -1,0 +1,35 @@
+{
+  "trials": 130,
+  "ordinary": 96,
+  "wide": 32,
+  "failures": [
+    {
+      "n": 128,
+      "tool": "raise",
+      "location": "whole-cube",
+      "size": "over-limit",
+      "failure": {
+        "name": "CubeDabCertificationError",
+        "code": "work",
+        "message": "Cube dab atomic change limit exhausted."
+      }
+    },
+    {
+      "n": 256,
+      "tool": "raise",
+      "location": "whole-cube",
+      "size": "over-limit",
+      "failure": {
+        "name": "CubeDabCertificationError",
+        "code": "work",
+        "message": "Cube dab atomic change limit exhausted."
+      }
+    }
+  ],
+  "maxCandidateCount": 93193,
+  "maxWorkUnits": 1664950,
+  "maxInitializationMs": 3.7652999999999963,
+  "maxPumpMs": 2.7187999999998738,
+  "maxCommitMs": 3.058899999999994,
+  "peakPreparedBytes": 786432
+}

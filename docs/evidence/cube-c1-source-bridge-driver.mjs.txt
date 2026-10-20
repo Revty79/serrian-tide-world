@@ -1,0 +1,26 @@
+import{readFileSync,writeFileSync}from'node:fs';
+import{createHash}from'node:crypto';
+import assert from'node:assert/strict';
+import{dirname,resolve}from'node:path';
+const sha=b=>createHash('sha256').update(b).digest('hex');
+const browser=JSON.parse(readFileSync('docs/evidence/cube-c1-tested-source.json','utf8')),final=JSON.parse(readFileSync('docs/evidence/cube-c1-final-tested-source.json','utf8'));
+assert.equal(browser.files.length,256);assert.equal(final.files.length,256);assert.deepEqual(browser.files.map(f=>f.path),final.files.map(f=>f.path));
+const changed=browser.files.flatMap((b,i)=>b.sha256!==final.files[i].sha256?[{path:b.path,browserSha256:b.sha256,finalSha256:final.files[i].sha256}]:[]);
+assert.deepEqual(changed.map(f=>f.path).sort(),['src/terrain/solid-cube-brush.test.ts','src/terrain/solid-cube.ts']);
+const snapshots={'src/terrain/solid-cube.ts':'docs/evidence/cube-c1-browser-terrain-source.ts.txt','src/terrain/solid-cube-brush.test.ts':'docs/evidence/cube-c1-browser-brush-test-source.ts.txt'};
+for(const f of changed){assert.equal(sha(readFileSync(f.path)),f.finalSha256);assert.equal(sha(readFileSync(snapshots[f.path])),f.browserSha256);f.browserSourceSnapshot=snapshots[f.path];}
+for(const f of final.files)assert.equal(sha(readFileSync(f.path)),f.sha256,f.path);
+const runtimeSet=new Set(['src/terrain/solid-cube.ts','src/terrain/solid-cube-brush.ts','src/surfaces/cube-brush-distance.ts'].map(p=>resolve(p))),importers=[];
+for(const f of final.files.filter(f=>/^(src\/|dev\/|tests\/)/.test(f.path)&&/\.tsx?$/.test(f.path)&&!f.path.endsWith('.test.ts'))){
+ const s=readFileSync(f.path,'utf8');for(const m of s.matchAll(/(?:from\s+|import\s*\(\s*)['"]([^'"]+)['"]/g))if(m[1].startsWith('.')){
+  const target=resolve(dirname(f.path),m[1]);if(runtimeSet.has(target)){assert.ok(runtimeSet.has(resolve(f.path)),`${f.path} must not import the numerical-only cube terrain/dab modules`);importers.push({file:f.path,target:m[1]});}
+ }
+}
+const accepted=JSON.parse(readFileSync('docs/evidence/a7-p1c-production-source-check.json','utf8'));
+const assets=accepted.builtAssets.map(a=>({path:a.path,acceptedSha256:a.sha256,finalSha256:sha(readFileSync(a.path))}));for(const a of assets)assert.equal(a.finalSha256,a.acceptedSha256);
+const freeze=JSON.parse(readFileSync('docs/evidence/cube-c1-final-source-freeze.json','utf8'));assert.equal(freeze.files,256);assert.deepEqual(freeze.changed,[]);
+writeFileSync('docs/evidence/cube-c1-source-bridge.json',JSON.stringify({browserRegistry:'docs/evidence/cube-c1-tested-source.json',finalNumericalRegistry:'docs/evidence/cube-c1-final-tested-source.json',files:256,
+ unchangedRegisteredFiles:254,changed,scope:'Post-browser hardening only: bypass caller array map/species and typed-view buffer/length overrides in raw atomic validation; two adversarial numerical tests. No footprint, kernel, UI, browser tests, history, codecs, dependencies or base configs changed.',
+ cubeNumericalRuntimeImporters:importers,noProductDevOrBrowserTestImporters:true,productionAssetsIdenticalToAcceptedP1C:assets,
+ finalNumericalAndBuildReverified:true,originalBrowserSourceSnapshotsComplete:true},null,2)+'\n');
+console.log({registeredFiles:256,unchanged:254,changed:changed.map(f=>f.path),noProductImports:true,identicalProductionAssets:assets.length});

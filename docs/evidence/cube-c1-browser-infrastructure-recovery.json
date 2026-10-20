@@ -1,0 +1,17 @@
+{
+  "reason": "Local validation harness accidentally selected preceding Cube-B config: owned server 5241, browser config 5238. All 328 failures were connection refusal before application checks. Four existing skips.",
+  "failed": {
+    "startTime": "2026-10-20T16:52:41.454Z",
+    "duration": 176814.797,
+    "expected": 0,
+    "skipped": 4,
+    "unexpected": 328,
+    "flaky": 0
+  },
+  "failedConnectionRefusedCount": 328,
+  "restoredPath": "docs/evidence/cube-b-browser-result.json",
+  "baseline": "647e40c91b1ce6304088bc544a38ca4886022933",
+  "restoredSha256": "e1825adc9dc2c79d6cb52ac7fd67fe3d025923e68da6fcff4e299053a05a535b",
+  "originalReceiptWorkingSha256": "e1825adc9dc2c79d6cb52ac7fd67fe3d025923e68da6fcff4e299053a05a535b",
+  "sourceChanges": false
+}
