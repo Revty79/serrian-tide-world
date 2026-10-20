@@ -1,0 +1,4541 @@
+{
+  "records": [
+    {
+      "mode": "Globe",
+      "radius": 80000,
+      "tool": "Raise",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 98306,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "raise",
+            "radiusMeters": 80000,
+            "strengthMeters": 1200
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 5,
+          "candidateChecks": 1844,
+          "affectedSamples": 854,
+          "writes": 853,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 378,
+          "weighted": 378,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "after": "28e8f06a23572a4ca95da307c7078bc077d94a8e9c4889b09868012d25f43bea",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 99681,
+        "textureRevision": 99681,
+        "displayRevision": 99681,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 5,
+          "writes": 853,
+          "updatedPixels": 2256,
+          "updatedRegions": 10,
+          "fullRebuilds": 0,
+          "maxDabMs": 5.299999982118607,
+          "slices": 53
+        },
+        "history": {
+          "state": 1,
+          "entries": 1,
+          "bytes": 3196
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.0999999940395355,
+          2,
+          5.200000017881393,
+          4.5999999940395355,
+          3.800000011920929,
+          3,
+          7,
+          1.699999988079071,
+          2.5999999940395355
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 9,
+            "slices": 45,
+            "computeMs": 242.19999995827675,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 1597536
+          },
+          "fieldBytes": 5948672,
+          "fieldRevision": 99681,
+          "displayRevision": 99681,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 10
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 378,
+          "weighted": 378,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 80000,
+      "tool": "Lower",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 98306,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "lower",
+            "radiusMeters": 80000,
+            "strengthMeters": 1200
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 5,
+          "candidateChecks": 1844,
+          "affectedSamples": 854,
+          "writes": 853,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 378,
+          "weighted": 378,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "after": "3835e10949d18d8a8ffadbffdf02081a010604820e7c39a75c04905e68fa0344",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 101317,
+        "textureRevision": 101317,
+        "displayRevision": 101317,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 10,
+          "writes": 1706,
+          "updatedPixels": 4939,
+          "updatedRegions": 22,
+          "fullRebuilds": 0,
+          "maxDabMs": 5.299999982118607,
+          "slices": 105
+        },
+        "history": {
+          "state": 2,
+          "entries": 1,
+          "bytes": 3196
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.0999999940395355,
+          2,
+          5.200000017881393,
+          4.5999999940395355,
+          3.800000011920929,
+          3,
+          7,
+          1.699999988079071,
+          2.5999999940395355,
+          6.4000000059604645,
+          4.300000011920929,
+          5.700000017881393,
+          6.5999999940395355,
+          7,
+          4.4000000059604645,
+          3.300000011920929,
+          1
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 17,
+            "slices": 94,
+            "computeMs": 513.0999999344349,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 1597536
+          },
+          "fieldBytes": 5948672,
+          "fieldRevision": 101317,
+          "displayRevision": 101317,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 20
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 378,
+          "weighted": 378,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 80000,
+      "tool": "Smooth",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 98306,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "smooth",
+            "radiusMeters": 80000,
+            "intensity": 0.7
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 5,
+          "candidateChecks": 1844,
+          "affectedSamples": 854,
+          "writes": 846,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 378,
+          "weighted": 3024,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "after": "ade4ec5012830c6fb39e50419d0c5501f8e7ce7d56457bb6adb0323c510ef1f5",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 102940,
+        "textureRevision": 102940,
+        "displayRevision": 102940,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 15,
+          "writes": 2552,
+          "updatedPixels": 7567,
+          "updatedRegions": 34,
+          "fullRebuilds": 0,
+          "maxDabMs": 6.199999988079071,
+          "slices": 164
+        },
+        "history": {
+          "state": 3,
+          "entries": 1,
+          "bytes": 3160
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.0999999940395355,
+          2,
+          5.200000017881393,
+          4.5999999940395355,
+          3.800000011920929,
+          3,
+          7,
+          1.699999988079071,
+          2.5999999940395355,
+          6.4000000059604645,
+          4.300000011920929,
+          5.700000017881393,
+          6.5999999940395355,
+          7,
+          4.4000000059604645,
+          3.300000011920929,
+          1,
+          5.600000023841858,
+          4.5,
+          6.199999988079071,
+          5.5,
+          4.9000000059604645,
+          5.4000000059604645,
+          6.4000000059604645,
+          1.7000000178813934,
+          5.100000023841858
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 26,
+            "slices": 146,
+            "computeMs": 811.6999999284744,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 1597536
+          },
+          "fieldBytes": 5948672,
+          "fieldRevision": 102940,
+          "displayRevision": 102940,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 30
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 378,
+          "weighted": 3024,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 80000,
+      "tool": "Flatten",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 98306,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "flatten",
+            "radiusMeters": 80000,
+            "intensity": 0.7,
+            "targetElevation": -1600
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 5,
+          "candidateChecks": 1844,
+          "affectedSamples": 854,
+          "writes": 854,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 378,
+          "weighted": 378,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "after": "e68c6aaf3302e5588e596a7afff23fc848eb5940121c42692522382f684165ea",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 104574,
+        "textureRevision": 104574,
+        "displayRevision": 104574,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 20,
+          "writes": 3406,
+          "updatedPixels": 10230,
+          "updatedRegions": 46,
+          "fullRebuilds": 0,
+          "maxDabMs": 6.199999988079071,
+          "slices": 220
+        },
+        "history": {
+          "state": 4,
+          "entries": 1,
+          "bytes": 3196
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.0999999940395355,
+          2,
+          5.200000017881393,
+          4.5999999940395355,
+          3.800000011920929,
+          3,
+          7,
+          1.699999988079071,
+          2.5999999940395355,
+          6.4000000059604645,
+          4.300000011920929,
+          5.700000017881393,
+          6.5999999940395355,
+          7,
+          4.4000000059604645,
+          3.300000011920929,
+          1,
+          5.600000023841858,
+          4.5,
+          6.199999988079071,
+          5.5,
+          4.9000000059604645,
+          5.4000000059604645,
+          6.4000000059604645,
+          1.7000000178813934,
+          5.100000023841858,
+          2.800000011920929,
+          1.0999999940395355,
+          8.699999988079071,
+          4.5999999940395355,
+          4,
+          2.300000011920929,
+          1.2000000178813934,
+          2.199999988079071,
+          3
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 35,
+            "slices": 198,
+            "computeMs": 1090.7000000178814,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 1597536
+          },
+          "fieldBytes": 5948672,
+          "fieldRevision": 104574,
+          "displayRevision": 104574,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 40
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 378,
+          "weighted": 378,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 200000,
+      "tool": "Raise",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 98306,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "raise",
+            "radiusMeters": 200000,
+            "strengthMeters": 1200
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 2,
+          "candidateChecks": 3811,
+          "affectedSamples": 2104,
+          "writes": 2103,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1899,
+          "weighted": 1899,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "after": "50100969d5816b99f6511f24788236426b69a1536b6ff8fffd2264abdab00ba6",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 109286,
+        "textureRevision": 109286,
+        "displayRevision": 109286,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 22,
+          "writes": 5509,
+          "updatedPixels": 17019,
+          "updatedRegions": 56,
+          "fullRebuilds": 0,
+          "maxDabMs": 6.5999999940395355,
+          "slices": 271
+        },
+        "history": {
+          "state": 5,
+          "entries": 1,
+          "bytes": 14152
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.0999999940395355,
+          2,
+          5.200000017881393,
+          4.5999999940395355,
+          3.800000011920929,
+          3,
+          7,
+          1.699999988079071,
+          2.5999999940395355,
+          6.4000000059604645,
+          4.300000011920929,
+          5.700000017881393,
+          6.5999999940395355,
+          7,
+          4.4000000059604645,
+          3.300000011920929,
+          1,
+          5.600000023841858,
+          4.5,
+          6.199999988079071,
+          5.5,
+          4.9000000059604645,
+          5.4000000059604645,
+          6.4000000059604645,
+          1.7000000178813934,
+          5.100000023841858,
+          2.800000011920929,
+          1.0999999940395355,
+          8.699999988079071,
+          4.5999999940395355,
+          4,
+          2.300000011920929,
+          1.2000000178813934,
+          2.199999988079071,
+          3,
+          1.2999999821186066,
+          3.2000000178813934,
+          6.699999988079071,
+          5.100000023841858,
+          4.5,
+          2
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 41,
+            "slices": 237,
+            "computeMs": 1307.900000065565,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 1597536
+          },
+          "fieldBytes": 5948672,
+          "fieldRevision": 109286,
+          "displayRevision": 109286,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 50
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1899,
+          "weighted": 1899,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 200000,
+      "tool": "Lower",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 98306,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "lower",
+            "radiusMeters": 200000,
+            "strengthMeters": 1200
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 2,
+          "candidateChecks": 3811,
+          "affectedSamples": 2104,
+          "writes": 2103,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1899,
+          "weighted": 1899,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "after": "564a9153563bf9b5fa8aaeafef81feb437908d3fbb48b1c3f2d034c02d02f396",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 114911,
+        "textureRevision": 114911,
+        "displayRevision": 114911,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 24,
+          "writes": 7612,
+          "updatedPixels": 25055,
+          "updatedRegions": 66,
+          "fullRebuilds": 0,
+          "maxDabMs": 6.5999999940395355,
+          "slices": 327
+        },
+        "history": {
+          "state": 6,
+          "entries": 1,
+          "bytes": 14152
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.0999999940395355,
+          2,
+          5.200000017881393,
+          4.5999999940395355,
+          3.800000011920929,
+          3,
+          7,
+          1.699999988079071,
+          2.5999999940395355,
+          6.4000000059604645,
+          4.300000011920929,
+          5.700000017881393,
+          6.5999999940395355,
+          7,
+          4.4000000059604645,
+          3.300000011920929,
+          1,
+          5.600000023841858,
+          4.5,
+          6.199999988079071,
+          5.5,
+          4.9000000059604645,
+          5.4000000059604645,
+          6.4000000059604645,
+          1.7000000178813934,
+          5.100000023841858,
+          2.800000011920929,
+          1.0999999940395355,
+          8.699999988079071,
+          4.5999999940395355,
+          4,
+          2.300000011920929,
+          1.2000000178813934,
+          2.199999988079071,
+          3,
+          1.2999999821186066,
+          3.2000000178813934,
+          6.699999988079071,
+          5.100000023841858,
+          4.5,
+          2,
+          6.600000023841858,
+          2.4000000059604645,
+          2.0999999940395355,
+          2.5,
+          2.5,
+          2.4000000059604645
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 47,
+            "slices": 280,
+            "computeMs": 1546.2000001072884,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 1597536
+          },
+          "fieldBytes": 5948672,
+          "fieldRevision": 114911,
+          "displayRevision": 114911,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 60
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1899,
+          "weighted": 1899,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 200000,
+      "tool": "Smooth",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 98306,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "smooth",
+            "radiusMeters": 200000,
+            "intensity": 0.7
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 2,
+          "candidateChecks": 3811,
+          "affectedSamples": 2104,
+          "writes": 2077,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 1899,
+          "weighted": 15192,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 11.199999988079071,
+          "snapshotMs": 2.5999999940395355,
+          "computeMs": 57.10000005364418,
+          "proposals": 2,
+          "staleResults": 0,
+          "validationMaxMs": 1.4000000059604645,
+          "commitMaxMs": 0.29999998211860657,
+          "ackWait": {
+            "count": 2,
+            "totalMs": 4.300000011920929,
+            "maxMs": 2.9000000059604645,
+            "samples": [
+              2.9000000059604645,
+              1.4000000059604645
+            ]
+          },
+          "statistics": {
+            "dabs": 2,
+            "candidateChecks": 3811,
+            "affectedSamples": 2104,
+            "writes": 2077,
+            "peakPreparedBytes": 32768,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 1
+          }
+        }
+      },
+      "before": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "after": "b9380207d2d1ca863165ba3af7821fa03a6b94d4ac15ada490c65b8f2d1481ef",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 120480,
+        "textureRevision": 120480,
+        "displayRevision": 120480,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 26,
+          "writes": 9689,
+          "updatedPixels": 33041,
+          "updatedRegions": 76,
+          "fullRebuilds": 0,
+          "maxDabMs": 6.5999999940395355,
+          "slices": 388
+        },
+        "history": {
+          "state": 7,
+          "entries": 1,
+          "bytes": 13972
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.0999999940395355,
+          2,
+          5.200000017881393,
+          4.5999999940395355,
+          3.800000011920929,
+          3,
+          7,
+          1.699999988079071,
+          2.5999999940395355,
+          6.4000000059604645,
+          4.300000011920929,
+          5.700000017881393,
+          6.5999999940395355,
+          7,
+          4.4000000059604645,
+          3.300000011920929,
+          1,
+          5.600000023841858,
+          4.5,
+          6.199999988079071,
+          5.5,
+          4.9000000059604645,
+          5.4000000059604645,
+          6.4000000059604645,
+          1.7000000178813934,
+          5.100000023841858,
+          2.800000011920929,
+          1.0999999940395355,
+          8.699999988079071,
+          4.5999999940395355,
+          4,
+          2.300000011920929,
+          1.2000000178813934,
+          2.199999988079071,
+          3,
+          1.2999999821186066,
+          3.2000000178813934,
+          6.699999988079071,
+          5.100000023841858,
+          4.5,
+          2,
+          6.600000023841858,
+          2.4000000059604645,
+          2.0999999940395355,
+          2.5,
+          2.5,
+          2.4000000059604645,
+          4.800000011920929,
+          7.0999999940395355,
+          6.0999999940395355,
+          5.4000000059604645,
+          3.4000000059604645,
+          5.0999999940395355
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 53,
+            "slices": 324,
+            "computeMs": 1803.4000001251698,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 1597536
+          },
+          "fieldBytes": 5948672,
+          "fieldRevision": 120480,
+          "displayRevision": 120480,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 61
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 1899,
+          "weighted": 15192,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 11.199999988079071,
+          "snapshotMs": 2.5999999940395355,
+          "computeMs": 57.10000005364418,
+          "proposals": 2,
+          "staleResults": 0,
+          "validationMaxMs": 1.4000000059604645,
+          "commitMaxMs": 0.29999998211860657,
+          "ackWait": {
+            "count": 2,
+            "totalMs": 4.300000011920929,
+            "maxMs": 2.9000000059604645,
+            "samples": [
+              2.9000000059604645,
+              1.4000000059604645
+            ]
+          },
+          "statistics": {
+            "dabs": 2,
+            "candidateChecks": 3811,
+            "affectedSamples": 2104,
+            "writes": 2077,
+            "peakPreparedBytes": 32768,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 1
+          }
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 200000,
+      "tool": "Flatten",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 98306,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "flatten",
+            "radiusMeters": 200000,
+            "intensity": 0.7,
+            "targetElevation": -1600
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 2,
+          "candidateChecks": 3811,
+          "affectedSamples": 2104,
+          "writes": 2103,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1899,
+          "weighted": 1899,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "after": "fa040cd904d7f052baad28274485b580c0e0d1c730da47e09e338924ee546617",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 126090,
+        "textureRevision": 126090,
+        "displayRevision": 126090,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 28,
+          "writes": 11792,
+          "updatedPixels": 41077,
+          "updatedRegions": 86,
+          "fullRebuilds": 0,
+          "maxDabMs": 6.5999999940395355,
+          "slices": 448
+        },
+        "history": {
+          "state": 8,
+          "entries": 1,
+          "bytes": 14152
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.0999999940395355,
+          2,
+          5.200000017881393,
+          4.5999999940395355,
+          3.800000011920929,
+          3,
+          7,
+          1.699999988079071,
+          2.5999999940395355,
+          6.4000000059604645,
+          4.300000011920929,
+          5.700000017881393,
+          6.5999999940395355,
+          7,
+          4.4000000059604645,
+          3.300000011920929,
+          1,
+          5.600000023841858,
+          4.5,
+          6.199999988079071,
+          5.5,
+          4.9000000059604645,
+          5.4000000059604645,
+          6.4000000059604645,
+          1.7000000178813934,
+          5.100000023841858,
+          2.800000011920929,
+          1.0999999940395355,
+          8.699999988079071,
+          4.5999999940395355,
+          4,
+          2.300000011920929,
+          1.2000000178813934,
+          2.199999988079071,
+          3,
+          1.2999999821186066,
+          3.2000000178813934,
+          6.699999988079071,
+          5.100000023841858,
+          4.5,
+          2,
+          6.600000023841858,
+          2.4000000059604645,
+          2.0999999940395355,
+          2.5,
+          2.5,
+          2.4000000059604645,
+          4.800000011920929,
+          7.0999999940395355,
+          6.0999999940395355,
+          5.4000000059604645,
+          3.4000000059604645,
+          5.0999999940395355,
+          2.2999999821186066,
+          6.5,
+          4.5,
+          6,
+          2.5999999940395355,
+          5.699999988079071
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 59,
+            "slices": 370,
+            "computeMs": 2067.800000011921,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 1597536
+          },
+          "fieldBytes": 5948672,
+          "fieldRevision": 126090,
+          "displayRevision": 126090,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 71
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1899,
+          "weighted": 1899,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 80000,
+      "tool": "Raise",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 98306,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "raise",
+            "radiusMeters": 80000,
+            "strengthMeters": 1200
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 10,
+          "candidateChecks": 3893,
+          "affectedSamples": 1751,
+          "writes": 1750,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 378,
+          "weighted": 378,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "after": "c00e732fba5c80f1fef76d7175cbab5a59ce71c6a293b4e54627c2308fc33084",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 129806,
+        "textureRevision": 129806,
+        "displayRevision": 129806,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 38,
+          "writes": 13542,
+          "updatedPixels": 46722,
+          "updatedRegions": 106,
+          "fullRebuilds": 0,
+          "maxDabMs": 6.5999999940395355,
+          "slices": 496
+        },
+        "history": {
+          "state": 9,
+          "entries": 1,
+          "bytes": 4816
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.0999999940395355,
+          2,
+          5.200000017881393,
+          4.5999999940395355,
+          3.800000011920929,
+          3,
+          7,
+          1.699999988079071,
+          2.5999999940395355,
+          6.4000000059604645,
+          4.300000011920929,
+          5.700000017881393,
+          6.5999999940395355,
+          7,
+          4.4000000059604645,
+          3.300000011920929,
+          1,
+          5.600000023841858,
+          4.5,
+          6.199999988079071,
+          5.5,
+          4.9000000059604645,
+          5.4000000059604645,
+          6.4000000059604645,
+          1.7000000178813934,
+          5.100000023841858,
+          2.800000011920929,
+          1.0999999940395355,
+          8.699999988079071,
+          4.5999999940395355,
+          4,
+          2.300000011920929,
+          1.2000000178813934,
+          2.199999988079071,
+          3,
+          1.2999999821186066,
+          3.2000000178813934,
+          6.699999988079071,
+          5.100000023841858,
+          4.5,
+          2,
+          6.600000023841858,
+          2.4000000059604645,
+          2.0999999940395355,
+          2.5,
+          2.5,
+          2.4000000059604645,
+          4.800000011920929,
+          7.0999999940395355,
+          6.0999999940395355,
+          5.4000000059604645,
+          3.4000000059604645,
+          5.0999999940395355,
+          2.2999999821186066,
+          6.5,
+          4.5,
+          6,
+          2.5999999940395355,
+          5.699999988079071,
+          2.7999999821186066,
+          3.0999999940395355,
+          10.199999988079071,
+          8.200000017881393,
+          9.5,
+          8.100000023841858,
+          7.399999976158142,
+          6.4000000059604645,
+          1.9000000059604645,
+          8.099999994039536,
+          10.600000023841858,
+          2.5,
+          1.199999988079071,
+          2.7000000178813934
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 73,
+            "slices": 413,
+            "computeMs": 2282.800000011921,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 1597536
+          },
+          "fieldBytes": 5948672,
+          "fieldRevision": 129806,
+          "displayRevision": 129806,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 81
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 378,
+          "weighted": 378,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 80000,
+      "tool": "Lower",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 98306,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "lower",
+            "radiusMeters": 80000,
+            "strengthMeters": 1200
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 10,
+          "candidateChecks": 3893,
+          "affectedSamples": 1751,
+          "writes": 1750,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 378,
+          "weighted": 378,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "after": "8e3e567b8a2e9681869a98be968b685c1e6364e1b5fdc2a14b4da3ea93f4b024",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 132744,
+        "textureRevision": 132744,
+        "displayRevision": 132744,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 48,
+          "writes": 15292,
+          "updatedPixels": 51334,
+          "updatedRegions": 126,
+          "fullRebuilds": 0,
+          "maxDabMs": 6.5999999940395355,
+          "slices": 535
+        },
+        "history": {
+          "state": 10,
+          "entries": 1,
+          "bytes": 4816
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.0999999940395355,
+          2,
+          5.200000017881393,
+          4.5999999940395355,
+          3.800000011920929,
+          3,
+          7,
+          1.699999988079071,
+          2.5999999940395355,
+          6.4000000059604645,
+          4.300000011920929,
+          5.700000017881393,
+          6.5999999940395355,
+          7,
+          4.4000000059604645,
+          3.300000011920929,
+          1,
+          5.600000023841858,
+          4.5,
+          6.199999988079071,
+          5.5,
+          4.9000000059604645,
+          5.4000000059604645,
+          6.4000000059604645,
+          1.7000000178813934,
+          5.100000023841858,
+          2.800000011920929,
+          1.0999999940395355,
+          8.699999988079071,
+          4.5999999940395355,
+          4,
+          2.300000011920929,
+          1.2000000178813934,
+          2.199999988079071,
+          3,
+          1.2999999821186066,
+          3.2000000178813934,
+          6.699999988079071,
+          5.100000023841858,
+          4.5,
+          2,
+          6.600000023841858,
+          2.4000000059604645,
+          2.0999999940395355,
+          2.5,
+          2.5,
+          2.4000000059604645,
+          4.800000011920929,
+          7.0999999940395355,
+          6.0999999940395355,
+          5.4000000059604645,
+          3.4000000059604645,
+          5.0999999940395355,
+          2.2999999821186066,
+          6.5,
+          4.5,
+          6,
+          2.5999999940395355,
+          5.699999988079071,
+          2.7999999821186066,
+          3.0999999940395355,
+          10.199999988079071,
+          8.200000017881393,
+          9.5,
+          8.100000023841858,
+          7.399999976158142,
+          6.4000000059604645,
+          1.9000000059604645,
+          8.099999994039536,
+          10.600000023841858,
+          2.5,
+          1.199999988079071,
+          2.7000000178813934,
+          1.0999999940395355,
+          10.599999994039536,
+          2,
+          2.699999988079071,
+          8,
+          7.799999982118607,
+          7.0999999940395355,
+          5.899999976158142,
+          7,
+          7.700000017881393,
+          3.7000000178813934,
+          5.100000023841858,
+          1.5
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 86,
+            "slices": 450,
+            "computeMs": 2458.7000000178814,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 1597536
+          },
+          "fieldBytes": 5948672,
+          "fieldRevision": 132744,
+          "displayRevision": 132744,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 91
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 378,
+          "weighted": 378,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 80000,
+      "tool": "Smooth",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 98306,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "smooth",
+            "radiusMeters": 80000,
+            "intensity": 0.7
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 10,
+          "candidateChecks": 3893,
+          "affectedSamples": 1751,
+          "writes": 1730,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 378,
+          "weighted": 3024,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "after": "682284e0ace5161f467a1b9fdcaf8a0c69be9f3192ead387452b06565113d361",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 135654,
+        "textureRevision": 135654,
+        "displayRevision": 135654,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 58,
+          "writes": 17022,
+          "updatedPixels": 55931,
+          "updatedRegions": 146,
+          "fullRebuilds": 0,
+          "maxDabMs": 6.5999999940395355,
+          "slices": 571
+        },
+        "history": {
+          "state": 11,
+          "entries": 1,
+          "bytes": 4768
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.0999999940395355,
+          2,
+          5.200000017881393,
+          4.5999999940395355,
+          3.800000011920929,
+          3,
+          7,
+          1.699999988079071,
+          2.5999999940395355,
+          6.4000000059604645,
+          4.300000011920929,
+          5.700000017881393,
+          6.5999999940395355,
+          7,
+          4.4000000059604645,
+          3.300000011920929,
+          1,
+          5.600000023841858,
+          4.5,
+          6.199999988079071,
+          5.5,
+          4.9000000059604645,
+          5.4000000059604645,
+          6.4000000059604645,
+          1.7000000178813934,
+          5.100000023841858,
+          2.800000011920929,
+          1.0999999940395355,
+          8.699999988079071,
+          4.5999999940395355,
+          4,
+          2.300000011920929,
+          1.2000000178813934,
+          2.199999988079071,
+          3,
+          1.2999999821186066,
+          3.2000000178813934,
+          6.699999988079071,
+          5.100000023841858,
+          4.5,
+          2,
+          6.600000023841858,
+          2.4000000059604645,
+          2.0999999940395355,
+          2.5,
+          2.5,
+          2.4000000059604645,
+          4.800000011920929,
+          7.0999999940395355,
+          6.0999999940395355,
+          5.4000000059604645,
+          3.4000000059604645,
+          5.0999999940395355,
+          2.2999999821186066,
+          6.5,
+          4.5,
+          6,
+          2.5999999940395355,
+          5.699999988079071,
+          2.7999999821186066,
+          3.0999999940395355,
+          10.199999988079071,
+          8.200000017881393,
+          9.5,
+          8.100000023841858,
+          7.399999976158142,
+          6.4000000059604645,
+          1.9000000059604645,
+          8.099999994039536,
+          10.600000023841858,
+          2.5,
+          1.199999988079071,
+          2.7000000178813934,
+          1.0999999940395355,
+          10.599999994039536,
+          2,
+          2.699999988079071,
+          8,
+          7.799999982118607,
+          7.0999999940395355,
+          5.899999976158142,
+          7,
+          7.700000017881393,
+          3.7000000178813934,
+          5.100000023841858,
+          1.5,
+          6,
+          10.699999988079071,
+          2.100000023841858,
+          2.300000011920929,
+          8.900000005960464,
+          8.400000005960464,
+          1.7000000178813934,
+          12.5,
+          2,
+          4.5,
+          5.199999988079071,
+          1.5,
+          4.0999999940395355
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 99,
+            "slices": 484,
+            "computeMs": 2617.699999988079,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 1597536
+          },
+          "fieldBytes": 5948672,
+          "fieldRevision": 135654,
+          "displayRevision": 135654,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 101
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 378,
+          "weighted": 3024,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 80000,
+      "tool": "Flatten",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 98306,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "flatten",
+            "radiusMeters": 80000,
+            "intensity": 0.7,
+            "targetElevation": -1600
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 10,
+          "candidateChecks": 3893,
+          "affectedSamples": 1751,
+          "writes": 1749,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 378,
+          "weighted": 378,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "after": "f7ebcc1e3e99fbd1a01e4eacc5a286da2207d26d6b67a85f508a47d30ff64289",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 138587,
+        "textureRevision": 138587,
+        "displayRevision": 138587,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 68,
+          "writes": 18771,
+          "updatedPixels": 60308,
+          "updatedRegions": 165,
+          "fullRebuilds": 0,
+          "maxDabMs": 6.5999999940395355,
+          "slices": 603
+        },
+        "history": {
+          "state": 12,
+          "entries": 1,
+          "bytes": 4816
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.0999999940395355,
+          2,
+          5.200000017881393,
+          4.5999999940395355,
+          3.800000011920929,
+          3,
+          7,
+          1.699999988079071,
+          2.5999999940395355,
+          6.4000000059604645,
+          4.300000011920929,
+          5.700000017881393,
+          6.5999999940395355,
+          7,
+          4.4000000059604645,
+          3.300000011920929,
+          1,
+          5.600000023841858,
+          4.5,
+          6.199999988079071,
+          5.5,
+          4.9000000059604645,
+          5.4000000059604645,
+          6.4000000059604645,
+          1.7000000178813934,
+          5.100000023841858,
+          2.800000011920929,
+          1.0999999940395355,
+          8.699999988079071,
+          4.5999999940395355,
+          4,
+          2.300000011920929,
+          1.2000000178813934,
+          2.199999988079071,
+          3,
+          1.2999999821186066,
+          3.2000000178813934,
+          6.699999988079071,
+          5.100000023841858,
+          4.5,
+          2,
+          6.600000023841858,
+          2.4000000059604645,
+          2.0999999940395355,
+          2.5,
+          2.5,
+          2.4000000059604645,
+          4.800000011920929,
+          7.0999999940395355,
+          6.0999999940395355,
+          5.4000000059604645,
+          3.4000000059604645,
+          5.0999999940395355,
+          2.2999999821186066,
+          6.5,
+          4.5,
+          6,
+          2.5999999940395355,
+          5.699999988079071,
+          2.7999999821186066,
+          3.0999999940395355,
+          10.199999988079071,
+          8.200000017881393,
+          9.5,
+          8.100000023841858,
+          7.399999976158142,
+          6.4000000059604645,
+          1.9000000059604645,
+          8.099999994039536,
+          10.600000023841858,
+          2.5,
+          1.199999988079071,
+          2.7000000178813934,
+          1.0999999940395355,
+          10.599999994039536,
+          2,
+          2.699999988079071,
+          8,
+          7.799999982118607,
+          7.0999999940395355,
+          5.899999976158142,
+          7,
+          7.700000017881393,
+          3.7000000178813934,
+          5.100000023841858,
+          1.5,
+          6,
+          10.699999988079071,
+          2.100000023841858,
+          2.300000011920929,
+          8.900000005960464,
+          8.400000005960464,
+          1.7000000178813934,
+          12.5,
+          2,
+          4.5,
+          5.199999988079071,
+          1.5,
+          4.0999999940395355,
+          6.600000023841858,
+          7.800000011920929,
+          6.5999999940395355,
+          7.5999999940395355,
+          8.099999994039536,
+          6.5,
+          10.600000023841858,
+          7,
+          9.5,
+          2.5999999940395355,
+          5.800000011920929,
+          3.7000000178813934
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 111,
+            "slices": 514,
+            "computeMs": 2770.1999999582767,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 1597536
+          },
+          "fieldBytes": 5948672,
+          "fieldRevision": 138587,
+          "displayRevision": 138587,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 111
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 378,
+          "weighted": 378,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 200000,
+      "tool": "Raise",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 98306,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "raise",
+            "radiusMeters": 200000,
+            "strengthMeters": 1200
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 4,
+          "candidateChecks": 7917,
+          "affectedSamples": 4272,
+          "writes": 4268,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1899,
+          "weighted": 1899,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "after": "8a1ebeb1b5fffdeb6554ff816189bd32d80fd34d438b3371dcf94a35c457d6c7",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 146161,
+        "textureRevision": 146161,
+        "displayRevision": 146161,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 72,
+          "writes": 23039,
+          "updatedPixels": 71465,
+          "updatedRegions": 179,
+          "fullRebuilds": 0,
+          "maxDabMs": 6.5999999940395355,
+          "slices": 644
+        },
+        "history": {
+          "state": 13,
+          "entries": 1,
+          "bytes": 17524
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.0999999940395355,
+          2,
+          5.200000017881393,
+          4.5999999940395355,
+          3.800000011920929,
+          3,
+          7,
+          1.699999988079071,
+          2.5999999940395355,
+          6.4000000059604645,
+          4.300000011920929,
+          5.700000017881393,
+          6.5999999940395355,
+          7,
+          4.4000000059604645,
+          3.300000011920929,
+          1,
+          5.600000023841858,
+          4.5,
+          6.199999988079071,
+          5.5,
+          4.9000000059604645,
+          5.4000000059604645,
+          6.4000000059604645,
+          1.7000000178813934,
+          5.100000023841858,
+          2.800000011920929,
+          1.0999999940395355,
+          8.699999988079071,
+          4.5999999940395355,
+          4,
+          2.300000011920929,
+          1.2000000178813934,
+          2.199999988079071,
+          3,
+          1.2999999821186066,
+          3.2000000178813934,
+          6.699999988079071,
+          5.100000023841858,
+          4.5,
+          2,
+          6.600000023841858,
+          2.4000000059604645,
+          2.0999999940395355,
+          2.5,
+          2.5,
+          2.4000000059604645,
+          4.800000011920929,
+          7.0999999940395355,
+          6.0999999940395355,
+          5.4000000059604645,
+          3.4000000059604645,
+          5.0999999940395355,
+          2.2999999821186066,
+          6.5,
+          4.5,
+          6,
+          2.5999999940395355,
+          5.699999988079071,
+          2.7999999821186066,
+          3.0999999940395355,
+          10.199999988079071,
+          8.200000017881393,
+          9.5,
+          8.100000023841858,
+          7.399999976158142,
+          6.4000000059604645,
+          1.9000000059604645,
+          8.099999994039536,
+          10.600000023841858,
+          2.5,
+          1.199999988079071,
+          2.7000000178813934,
+          1.0999999940395355,
+          10.599999994039536,
+          2,
+          2.699999988079071,
+          8,
+          7.799999982118607,
+          7.0999999940395355,
+          5.899999976158142,
+          7,
+          7.700000017881393,
+          3.7000000178813934,
+          5.100000023841858,
+          1.5,
+          6,
+          10.699999988079071,
+          2.100000023841858,
+          2.300000011920929,
+          8.900000005960464,
+          8.400000005960464,
+          1.7000000178813934,
+          12.5,
+          2,
+          4.5,
+          5.199999988079071,
+          1.5,
+          4.0999999940395355,
+          6.600000023841858,
+          7.800000011920929,
+          6.5999999940395355,
+          7.5999999940395355,
+          8.099999994039536,
+          6.5,
+          10.600000023841858,
+          7,
+          9.5,
+          2.5999999940395355,
+          5.800000011920929,
+          3.7000000178813934,
+          2.800000011920929,
+          11.299999982118607,
+          10.100000023841858,
+          8.099999994039536,
+          2.300000011920929,
+          2.800000011920929,
+          3.199999988079071,
+          4.299999982118607
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 119,
+            "slices": 541,
+            "computeMs": 2908.899999946356,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 1597536
+          },
+          "fieldBytes": 5948672,
+          "fieldRevision": 146161,
+          "displayRevision": 146161,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 121
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1899,
+          "weighted": 1899,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 200000,
+      "tool": "Lower",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 98306,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "lower",
+            "radiusMeters": 200000,
+            "strengthMeters": 1200
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 4,
+          "candidateChecks": 7917,
+          "affectedSamples": 4272,
+          "writes": 4268,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1899,
+          "weighted": 1899,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "after": "5759d0e355bffeb8f50d1caf85570cd38093828d898c4173b65be7d018fb9c65",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 154794,
+        "textureRevision": 154794,
+        "displayRevision": 154794,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 76,
+          "writes": 27307,
+          "updatedPixels": 84122,
+          "updatedRegions": 193,
+          "fullRebuilds": 0,
+          "maxDabMs": 6.5999999940395355,
+          "slices": 689
+        },
+        "history": {
+          "state": 14,
+          "entries": 1,
+          "bytes": 17524
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          1.699999988079071,
+          2.5999999940395355,
+          6.4000000059604645,
+          4.300000011920929,
+          5.700000017881393,
+          6.5999999940395355,
+          7,
+          4.4000000059604645,
+          3.300000011920929,
+          1,
+          5.600000023841858,
+          4.5,
+          6.199999988079071,
+          5.5,
+          4.9000000059604645,
+          5.4000000059604645,
+          6.4000000059604645,
+          1.7000000178813934,
+          5.100000023841858,
+          2.800000011920929,
+          1.0999999940395355,
+          8.699999988079071,
+          4.5999999940395355,
+          4,
+          2.300000011920929,
+          1.2000000178813934,
+          2.199999988079071,
+          3,
+          1.2999999821186066,
+          3.2000000178813934,
+          6.699999988079071,
+          5.100000023841858,
+          4.5,
+          2,
+          6.600000023841858,
+          2.4000000059604645,
+          2.0999999940395355,
+          2.5,
+          2.5,
+          2.4000000059604645,
+          4.800000011920929,
+          7.0999999940395355,
+          6.0999999940395355,
+          5.4000000059604645,
+          3.4000000059604645,
+          5.0999999940395355,
+          2.2999999821186066,
+          6.5,
+          4.5,
+          6,
+          2.5999999940395355,
+          5.699999988079071,
+          2.7999999821186066,
+          3.0999999940395355,
+          10.199999988079071,
+          8.200000017881393,
+          9.5,
+          8.100000023841858,
+          7.399999976158142,
+          6.4000000059604645,
+          1.9000000059604645,
+          8.099999994039536,
+          10.600000023841858,
+          2.5,
+          1.199999988079071,
+          2.7000000178813934,
+          1.0999999940395355,
+          10.599999994039536,
+          2,
+          2.699999988079071,
+          8,
+          7.799999982118607,
+          7.0999999940395355,
+          5.899999976158142,
+          7,
+          7.700000017881393,
+          3.7000000178813934,
+          5.100000023841858,
+          1.5,
+          6,
+          10.699999988079071,
+          2.100000023841858,
+          2.300000011920929,
+          8.900000005960464,
+          8.400000005960464,
+          1.7000000178813934,
+          12.5,
+          2,
+          4.5,
+          5.199999988079071,
+          1.5,
+          4.0999999940395355,
+          6.600000023841858,
+          7.800000011920929,
+          6.5999999940395355,
+          7.5999999940395355,
+          8.099999994039536,
+          6.5,
+          10.600000023841858,
+          7,
+          9.5,
+          2.5999999940395355,
+          5.800000011920929,
+          3.7000000178813934,
+          2.800000011920929,
+          11.299999982118607,
+          10.100000023841858,
+          8.099999994039536,
+          2.300000011920929,
+          2.800000011920929,
+          3.199999988079071,
+          4.299999982118607,
+          1.800000011920929,
+          3,
+          10.400000005960464,
+          2.0999999940395355,
+          1.5,
+          2.9000000059604645,
+          4.200000017881393,
+          2.100000023841858
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 127,
+            "slices": 572,
+            "computeMs": 3059.399999976158,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 1597536
+          },
+          "fieldBytes": 5948672,
+          "fieldRevision": 154794,
+          "displayRevision": 154794,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 131
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1899,
+          "weighted": 1899,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 200000,
+      "tool": "Smooth",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 98306,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "smooth",
+            "radiusMeters": 200000,
+            "intensity": 0.7
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 4,
+          "candidateChecks": 7917,
+          "affectedSamples": 4272,
+          "writes": 4231,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 1899,
+          "weighted": 15192,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 7.399999976158142,
+          "snapshotMs": 2.5,
+          "computeMs": 78.7000000178814,
+          "proposals": 4,
+          "staleResults": 0,
+          "validationMaxMs": 0.4000000059604645,
+          "commitMaxMs": 0.20000001788139343,
+          "ackWait": {
+            "count": 4,
+            "totalMs": 5.9000000059604645,
+            "maxMs": 2.4000000059604645,
+            "samples": [
+              1.0999999940395355,
+              1.2999999821186066,
+              2.4000000059604645,
+              1.100000023841858
+            ]
+          },
+          "statistics": {
+            "dabs": 4,
+            "candidateChecks": 7917,
+            "affectedSamples": 4272,
+            "writes": 4231,
+            "peakPreparedBytes": 32768,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      },
+      "before": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "after": "43c93620592bb3c479a3bd572e82b549dcb82cc3daa8585a47b92b2d349d65b2",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 163364,
+        "textureRevision": 163364,
+        "displayRevision": 163364,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 80,
+          "writes": 31538,
+          "updatedPixels": 96773,
+          "updatedRegions": 207,
+          "fullRebuilds": 0,
+          "maxDabMs": 6.5999999940395355,
+          "slices": 731
+        },
+        "history": {
+          "state": 15,
+          "entries": 1,
+          "bytes": 17368
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          3.300000011920929,
+          1,
+          5.600000023841858,
+          4.5,
+          6.199999988079071,
+          5.5,
+          4.9000000059604645,
+          5.4000000059604645,
+          6.4000000059604645,
+          1.7000000178813934,
+          5.100000023841858,
+          2.800000011920929,
+          1.0999999940395355,
+          8.699999988079071,
+          4.5999999940395355,
+          4,
+          2.300000011920929,
+          1.2000000178813934,
+          2.199999988079071,
+          3,
+          1.2999999821186066,
+          3.2000000178813934,
+          6.699999988079071,
+          5.100000023841858,
+          4.5,
+          2,
+          6.600000023841858,
+          2.4000000059604645,
+          2.0999999940395355,
+          2.5,
+          2.5,
+          2.4000000059604645,
+          4.800000011920929,
+          7.0999999940395355,
+          6.0999999940395355,
+          5.4000000059604645,
+          3.4000000059604645,
+          5.0999999940395355,
+          2.2999999821186066,
+          6.5,
+          4.5,
+          6,
+          2.5999999940395355,
+          5.699999988079071,
+          2.7999999821186066,
+          3.0999999940395355,
+          10.199999988079071,
+          8.200000017881393,
+          9.5,
+          8.100000023841858,
+          7.399999976158142,
+          6.4000000059604645,
+          1.9000000059604645,
+          8.099999994039536,
+          10.600000023841858,
+          2.5,
+          1.199999988079071,
+          2.7000000178813934,
+          1.0999999940395355,
+          10.599999994039536,
+          2,
+          2.699999988079071,
+          8,
+          7.799999982118607,
+          7.0999999940395355,
+          5.899999976158142,
+          7,
+          7.700000017881393,
+          3.7000000178813934,
+          5.100000023841858,
+          1.5,
+          6,
+          10.699999988079071,
+          2.100000023841858,
+          2.300000011920929,
+          8.900000005960464,
+          8.400000005960464,
+          1.7000000178813934,
+          12.5,
+          2,
+          4.5,
+          5.199999988079071,
+          1.5,
+          4.0999999940395355,
+          6.600000023841858,
+          7.800000011920929,
+          6.5999999940395355,
+          7.5999999940395355,
+          8.099999994039536,
+          6.5,
+          10.600000023841858,
+          7,
+          9.5,
+          2.5999999940395355,
+          5.800000011920929,
+          3.7000000178813934,
+          2.800000011920929,
+          11.299999982118607,
+          10.100000023841858,
+          8.099999994039536,
+          2.300000011920929,
+          2.800000011920929,
+          3.199999988079071,
+          4.299999982118607,
+          1.800000011920929,
+          3,
+          10.400000005960464,
+          2.0999999940395355,
+          1.5,
+          2.9000000059604645,
+          4.200000017881393,
+          2.100000023841858,
+          1,
+          11.5,
+          6.200000017881393,
+          9.599999994039536,
+          9.700000017881393,
+          4.4000000059604645,
+          3.2999999821186066,
+          5.799999982118607
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 135,
+            "slices": 599,
+            "computeMs": 3199.299999922514,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 1597536
+          },
+          "fieldBytes": 5948672,
+          "fieldRevision": 163364,
+          "displayRevision": 163364,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 132
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 1899,
+          "weighted": 15192,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 7.399999976158142,
+          "snapshotMs": 2.5,
+          "computeMs": 78.7000000178814,
+          "proposals": 4,
+          "staleResults": 0,
+          "validationMaxMs": 0.4000000059604645,
+          "commitMaxMs": 0.20000001788139343,
+          "ackWait": {
+            "count": 4,
+            "totalMs": 5.9000000059604645,
+            "maxMs": 2.4000000059604645,
+            "samples": [
+              1.0999999940395355,
+              1.2999999821186066,
+              2.4000000059604645,
+              1.100000023841858
+            ]
+          },
+          "statistics": {
+            "dabs": 4,
+            "candidateChecks": 7917,
+            "affectedSamples": 4272,
+            "writes": 4231,
+            "peakPreparedBytes": 32768,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 200000,
+      "tool": "Flatten",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 98306,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "flatten",
+            "radiusMeters": 200000,
+            "intensity": 0.7,
+            "targetElevation": -1600
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 4,
+          "candidateChecks": 7917,
+          "affectedSamples": 4272,
+          "writes": 4269,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1899,
+          "weighted": 1899,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "after": "383ba56ad5b98c89cdb30df38e72fdc6e83732ca2cfc417a6121482a3b499b77",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 171987,
+        "textureRevision": 171987,
+        "displayRevision": 171987,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 84,
+          "writes": 35807,
+          "updatedPixels": 109430,
+          "updatedRegions": 221,
+          "fullRebuilds": 0,
+          "maxDabMs": 6.5999999940395355,
+          "slices": 767
+        },
+        "history": {
+          "state": 16,
+          "entries": 1,
+          "bytes": 17536
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          6.4000000059604645,
+          1.7000000178813934,
+          5.100000023841858,
+          2.800000011920929,
+          1.0999999940395355,
+          8.699999988079071,
+          4.5999999940395355,
+          4,
+          2.300000011920929,
+          1.2000000178813934,
+          2.199999988079071,
+          3,
+          1.2999999821186066,
+          3.2000000178813934,
+          6.699999988079071,
+          5.100000023841858,
+          4.5,
+          2,
+          6.600000023841858,
+          2.4000000059604645,
+          2.0999999940395355,
+          2.5,
+          2.5,
+          2.4000000059604645,
+          4.800000011920929,
+          7.0999999940395355,
+          6.0999999940395355,
+          5.4000000059604645,
+          3.4000000059604645,
+          5.0999999940395355,
+          2.2999999821186066,
+          6.5,
+          4.5,
+          6,
+          2.5999999940395355,
+          5.699999988079071,
+          2.7999999821186066,
+          3.0999999940395355,
+          10.199999988079071,
+          8.200000017881393,
+          9.5,
+          8.100000023841858,
+          7.399999976158142,
+          6.4000000059604645,
+          1.9000000059604645,
+          8.099999994039536,
+          10.600000023841858,
+          2.5,
+          1.199999988079071,
+          2.7000000178813934,
+          1.0999999940395355,
+          10.599999994039536,
+          2,
+          2.699999988079071,
+          8,
+          7.799999982118607,
+          7.0999999940395355,
+          5.899999976158142,
+          7,
+          7.700000017881393,
+          3.7000000178813934,
+          5.100000023841858,
+          1.5,
+          6,
+          10.699999988079071,
+          2.100000023841858,
+          2.300000011920929,
+          8.900000005960464,
+          8.400000005960464,
+          1.7000000178813934,
+          12.5,
+          2,
+          4.5,
+          5.199999988079071,
+          1.5,
+          4.0999999940395355,
+          6.600000023841858,
+          7.800000011920929,
+          6.5999999940395355,
+          7.5999999940395355,
+          8.099999994039536,
+          6.5,
+          10.600000023841858,
+          7,
+          9.5,
+          2.5999999940395355,
+          5.800000011920929,
+          3.7000000178813934,
+          2.800000011920929,
+          11.299999982118607,
+          10.100000023841858,
+          8.099999994039536,
+          2.300000011920929,
+          2.800000011920929,
+          3.199999988079071,
+          4.299999982118607,
+          1.800000011920929,
+          3,
+          10.400000005960464,
+          2.0999999940395355,
+          1.5,
+          2.9000000059604645,
+          4.200000017881393,
+          2.100000023841858,
+          1,
+          11.5,
+          6.200000017881393,
+          9.599999994039536,
+          9.700000017881393,
+          4.4000000059604645,
+          3.2999999821186066,
+          5.799999982118607,
+          2.5999999940395355,
+          9.5,
+          10.099999994039536,
+          7.699999988079071,
+          7.300000011920929,
+          3.5,
+          7,
+          1
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 143,
+            "slices": 622,
+            "computeMs": 3317.899999946356,
+            "maxSliceMs": 6.4000000059604645,
+            "snapshotBytes": 1597536
+          },
+          "fieldBytes": 5948672,
+          "fieldRevision": 171987,
+          "displayRevision": 171987,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 142
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1899,
+          "weighted": 1899,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    }
+  ],
+  "final": "43c93620592bb3c479a3bd572e82b549dcb82cc3daa8585a47b92b2d349d65b2",
+  "source": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117"
+}

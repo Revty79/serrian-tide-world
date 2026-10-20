@@ -1,0 +1,29 @@
+
+Running 16 tests using 1 worker
+
+(node:15216) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [desktop] › ..\..\tests\sphere-standards.spec.ts:24:29 › spherical standards N128: actual Globe/Net ordinary and large brushes, accepted input, exact history and v3 reopening (25.5s)
+  ok  2 [desktop] › ..\..\tests\sphere-standards.spec.ts:24:29 › spherical standards N256: actual Globe/Net ordinary and large brushes, accepted input, exact history and v3 reopening (33.5s)
+  ok  3 [desktop] › ..\..\tests\sphere-standards.spec.ts:46:1 › sphere appearance, navigation and source synchronization never rewrite geography; hardware context loss/restoration and CPU fallback are safe (6.0s)
+  ok  4 [desktop] › ..\..\tests\sphere-standards.spec.ts:64:1 › N256 background limb strokes preserve native mouse/pen/touch continuity and stop on two-finger or failed-worker interruption (13.1s)
+  ok  5 [desktop] › ..\..\tests\sphere-standards.spec.ts:92:1 › WebGL unavailable and worker construction failure retain ordered exact painting and recoverable single-operation history (6.8s)
+  ok  6 [desktop] › ..\..\tests\spherical-editing.spec.ts:55:1 › all four tools on globe and connected net match the numerical engine bit for bit with exact Undo/Redo and readouts (9.9s)
+  ok  7 [desktop] › ..\..\tests\spherical-editing.spec.ts:145:1 › real projected painting across all twelve face boundaries, eight corners, poles, and a clipped globe limb (18.8s)
+(node:27188) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  8 [desktop] › ..\..\tests\spherical-preview.spec.ts:58:1 › real viewport: every face, edge and corner is inspectable in both views with canonical readouts and invalid gaps (16.0s)
+(node:9024) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  9 [mobile] › ..\..\tests\sphere-standards.spec.ts:24:29 › spherical standards N128: actual Globe/Net ordinary and large brushes, accepted input, exact history and v3 reopening (22.6s)
+  ok 10 [mobile] › ..\..\tests\sphere-standards.spec.ts:24:29 › spherical standards N256: actual Globe/Net ordinary and large brushes, accepted input, exact history and v3 reopening (36.4s)
+  ok 11 [mobile] › ..\..\tests\sphere-standards.spec.ts:46:1 › sphere appearance, navigation and source synchronization never rewrite geography; hardware context loss/restoration and CPU fallback are safe (7.4s)
+  ok 12 [mobile] › ..\..\tests\sphere-standards.spec.ts:64:1 › N256 background limb strokes preserve native mouse/pen/touch continuity and stop on two-finger or failed-worker interruption (15.0s)
+  ok 13 [mobile] › ..\..\tests\sphere-standards.spec.ts:92:1 › WebGL unavailable and worker construction failure retain ordered exact painting and recoverable single-operation history (7.2s)
+  ok 14 [mobile] › ..\..\tests\spherical-editing.spec.ts:55:1 › all four tools on globe and connected net match the numerical engine bit for bit with exact Undo/Redo and readouts (11.9s)
+  ok 15 [mobile] › ..\..\tests\spherical-editing.spec.ts:145:1 › real projected painting across all twelve face boundaries, eight corners, poles, and a clipped globe limb (21.0s)
+(node:25820) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 16 [mobile] › ..\..\tests\spherical-preview.spec.ts:58:1 › real viewport: every face, edge and corner is inspectable in both views with canonical readouts and invalid gaps (20.6s)
+
+  16 passed (4.8m)

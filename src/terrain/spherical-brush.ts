@@ -25,7 +25,7 @@ function directionOf(terrain: SphericalTerrain, point: SphericalBrushPoint): Vec
   if (point.worldId !== identity.worldId || point.surfaceId !== identity.surfaceId) throw new RangeError('Brush position belongs to another World or surface.');
   return 'direction' in point ? unitDirection(point.direction) : terrain.geometry.direction(point);
 }
-function validate(terrain: SphericalTerrain, settings: SphericalBrushSettings) {
+export function validateSphericalBrushSettings(terrain: SphericalTerrain, settings: SphericalBrushSettings) {
   const angular = settings.radiusMeters / terrain.metadata.geometry.radiusMeters;
   if (!['raise', 'lower', 'smooth', 'flatten'].includes(settings.tool) || !Number.isFinite(settings.radiusMeters) || !Number.isFinite(angular) || angular < 1e-12 || settings.radiusMeters > terrain.metadata.geometry.radiusMeters * Math.PI || settings.radiusMeters / 4 === 0) throw new RangeError('Spherical brush radius must be finite, at least 1e-12 radians and at most pi radians, in meters.');
   if (settings.tool === 'raise' || settings.tool === 'lower') {
@@ -38,15 +38,17 @@ function validate(terrain: SphericalTerrain, settings: SphericalBrushSettings) {
 }
 
 /** Physical great-circle input; one initial dab then radius/4 meters, independent of charts/UI. */
-export function startSphericalBrushStroke(terrain: SphericalTerrain, point: SphericalBrushPoint, settings: SphericalBrushSettings, history?: SphericalHistory, domain?: { readonly hemisphere: Vec3 }) {
-  validate(terrain, settings); const initial = directionOf(terrain, point);
+export interface PreparedSphericalDab { readonly center: Vec3; readonly visible?: Vec3; readonly fraction: number; changes(): Generator<{index:number;before:number;after:number}> }
+export interface SphericalPreparationOptions { readonly deferInitial?: boolean; readonly commitReady?: (job: PreparedSphericalDab) => boolean }
+export function startSphericalBrushStroke(terrain: SphericalTerrain, point: SphericalBrushPoint, settings: SphericalBrushSettings, history?: SphericalHistory, domain?: { readonly hemisphere: Vec3 }, preparation: SphericalPreparationOptions = {}) {
+  validateSphericalBrushSettings(terrain, settings); const initial = directionOf(terrain, point);
   const hemisphere = domain ? unitDirection(domain.hemisphere) : undefined;
   if (activeTerrains.has(terrain)) throw new Error('A spherical stroke is already active on this terrain.');
   if (history && !history.owns(terrain)) throw new RangeError('History belongs to another spherical terrain.');
   const snapshot = Object.freeze({ ...settings }), radius = terrain.metadata.geometry.radiusMeters, spacing = snapshot.radiusMeters / 4;
   const stats = { dabs: 0, candidateChecks: 0, affectedSamples: 0, writes: 0, peakPreparedBytes: 0 };
   let previous = initial, untilNext = spacing, active = true, advancing = false;
-  const stamp = (center: Vec3, visible = hemisphere) => {
+  function* stamp(center: Vec3, visible = hemisphere, fraction = 0): Generator<boolean,boolean> {
     const candidates = sphericalCapCandidates(terrain, center, Math.min(Math.PI, snapshot.radiusMeters / radius));
     const chunks: { indices: Uint32Array; values: Float32Array; count: number }[] = [];
     let chunk: typeof chunks[number] | undefined, allocated = 0;
@@ -79,14 +81,23 @@ export function startSphericalBrushStroke(terrain: SphericalTerrain, point: Sphe
     }
     // All affected elevations are checked and prepared before the first write of this dab.
     stats.peakPreparedBytes = Math.max(stats.peakPreparedBytes, allocated); let changed = false;
+    if (preparation.commitReady) {
+      const job: PreparedSphericalDab = { center, visible, fraction, *changes() { for (const block of chunks) for (let i = 0; i < block.count; i++) { const index = block.indices[i]!; yield { index, before: terrain.read(terrain.keyAt(index)), after: block.values[i]! }; } } };
+      while (active && !preparation.commitReady(job)) yield false;
+    }
+    if (!active) return false;
     for (const block of chunks) for (let i = 0; i < block.count; i++) { terrain.write(terrain.keyAt(block.indices[i]!), block.values[i]!); stats.writes++; changed = true; }
     stats.dabs++; return changed;
-  };
+  }
   const end = () => { if (!active) return; active = false; activeTerrains.delete(terrain); history?.commit(); };
   history?.begin(); activeTerrains.add(terrain);
-  try { stamp(initial); } catch (cause) { end(); throw cause; }
+  let initialPending = !!preparation.deferInitial;
+  function* initialSteps(): Generator<boolean,void> { if (!active || !initialPending) return; try { yield* stamp(initial); initialPending = false; } catch(cause) { end(); throw cause; } }
+  const initialWork = initialSteps();
+  if (!initialPending) { try { const steps = stamp(initial); let result = steps.next(); while (!result.done) result = steps.next(); } catch (cause) { end(); throw cause; } }
   function* steps(target: SphericalBrushPoint, visibility?: SphericalBrushVisibility): Generator<boolean> {
       if (!active) return;
+      if (initialPending) throw new Error('Finish initial spherical preparation before accepting a segment.');
       if (advancing) throw new Error('Finish the pending spherical segment before supplying another.');
       const visible = visibility ? unitDirection(visibility.hemisphere) : hemisphere;
       const visibilityArc = visibility?.endHemisphere ? greatCircleArc(visible!, unitDirection(visibility.endHemisphere)) : undefined;
@@ -100,7 +111,8 @@ export function startSphericalBrushStroke(terrain: SphericalTerrain, point: Sphe
         for (let i = 0; i < count; i++) {
           if (!active) return;
           const fraction = Math.min(1, (untilNext + i * spacing) / length);
-          yield stamp(arc.at(fraction), visibilityArc ? visibilityArc.at(fraction) : visible);
+          const changed = yield* stamp(arc.at(fraction), visibilityArc ? visibilityArc.at(fraction) : visible, fraction);
+          yield changed;
         }
         untilNext = untilNext + count * spacing - length; previous = next;
       } catch (cause) { end(); throw cause; }
@@ -115,6 +127,7 @@ export function startSphericalBrushStroke(terrain: SphericalTerrain, point: Sphe
       return changed;
     },
     moveToSteps: steps,
+    initialSteps: () => initialWork,
     end,
   };
 }

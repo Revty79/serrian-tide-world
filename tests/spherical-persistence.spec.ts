@@ -1,12 +1,12 @@
 import { expect, test, type Page } from '@playwright/test';
 import { writeFile } from 'node:fs/promises';
-import { toolsPanel, createWorld, startAtlas } from './workspace-helpers.ts';
+import { toolsPanel, createWorld, startAtlas, sphericalPresentation } from './workspace-helpers.ts';
 type Host = typeof import('./fixtures/sphere-storage.ts');
 const button = (p: Page, name: string) => p.getByRole('button', { name, exact: true });
 const globe = (p: Page) => p.getByRole('img', { name: 'Atlas spherical terrain map', exact: true });
 const status = (p: Page) => p.getByLabel('Map work status', { exact: true });
 const summary = (p: Page, id?: string) => p.evaluate(async (id) => (await import(new URL('/tests/fixtures/sphere-storage.ts', location.origin).href) as Host).summary(id), id);
-async function frame(p: Page) { await p.evaluate(() => new Promise<void>((r) => requestAnimationFrame(() => requestAnimationFrame(() => r())))); }
+async function frame(p: Page) { await p.evaluate(() => new Promise<void>((r) => requestAnimationFrame(() => requestAnimationFrame(() => r())))); await sphericalPresentation(p); }
 async function enter(p: Page, n = 128) { await p.goto('/'); await createWorld(p, 'sphere', { n }); await expect(globe(p)).toHaveAttribute('data-mode', 'globe', { timeout: 30000 }); }
 async function panel(p: Page, action: () => Promise<void>) { await toolsPanel(p, true); await action(); await toolsPanel(p, false); }
 async function name(p: Page, value: string) { await panel(p, () => p.getByLabel('Map name', { exact: true }).fill(value)); }

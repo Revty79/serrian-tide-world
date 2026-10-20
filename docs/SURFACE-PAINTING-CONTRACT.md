@@ -1,7 +1,61 @@
 # Responsive surface painting
 
-A7-P1B applies this foundation to the physical cylinder only. Sphere and plane
-adoption requires independent authorization and acceptance.
+A7-P1B established this foundation for the physical cylinder. The separately
+authorized A7-P1C adds the spherical provider and measured hybrid selection below.
+Planar adoption still requires separate authorization and acceptance. See the
+[common visual standard and bounded planar proposal](SURFACE-VISUAL-STANDARD.md).
+
+## Spherical provider and workload selection
+
+`spherical-work-policy.ts` estimates conservative candidate-rectangle work,
+weighting Smooth by eight. The P1C before measurements calibrate thresholds of
+24,000 weighted candidates on desktop and 6,000 on coarse-pointer devices.
+Ordinary inexpensive work stays in the unchanged cooperative engine. Zero
+intensity stays cooperative. These thresholds select scheduling only: the same
+great-circle path, cap candidates, exact source-epoch formulas and numerical
+budgets determine both results. Device emulation is not a physical-phone claim.
+
+The spherical engine's optional ready-dab barrier pauses before any writes.
+`sphere-work-runtime.ts` runs that same engine on an exact private source epoch;
+only canonical acknowledgement lets it advance. Its host reuses
+`OrderedSurfaceInput`, `RevisionLease` and `SurfaceProgressSignal`. It validates
+the accepted ordinal/fraction against the original great-circle arc, immutable
+per-segment visibility, exact before words, finite after values, unique canonical
+indices and every changed sample's visible hemisphere. All canonical writes go
+through the active session/history provider. One held stroke is one operation.
+
+The worker pumps at most 64 generator advances or roughly 6 ms per scheduled
+turn. An existing atomic numerical dab can exceed this target; no geographical
+work limit is enlarged. Only one prepared proposal waits for acknowledgement.
+The existing 2,048-position limit includes input in transit. One warm spare plus
+one active worker is the maximum. A source epoch includes exact Float32 values
+and a private topology; its unused topology allocation is bounded and is not
+additional geography. Transport adds one before-word array and typed index/after
+buffers. Main-thread validation/commits remain atomic and are measured separately.
+
+Startup failure before publication can replay all accepted positions exactly in
+the cooperative engine. Later failure retains one exact committed prefix and
+reports failure. External untracked revisions clear unsafe history and preserve
+the foreign terrain. Cancellation terminates the worker and invalidates the lease;
+late results cannot revive it. Startup/activity watchdogs bound a nonresponding
+task. Stationary held input is legitimate idle time; only outstanding work is
+timed, and additional queued positions cannot extend a stalled worker's deadline.
+Save drains accepted work through actual progress notifications, then uses
+the unchanged v3 persistence format and exact saved checkpoint.
+
+Spherical diagnostics include startup round trip, private snapshot CPU, worker
+compute time, host validation/commit maximum and acknowledgement waits. Wait
+quantiles use the last 512 samples, with separate lifetime count/total/maximum.
+The complete benchmark additionally records native main-thread tasks and actual
+changed terrain pixels; these are not interchangeable with worker timings.
+
+The legacy spherical presentation-latency ring records conservative drained-input
+and displayed-epoch readiness, not first changed pixels. It retains pending samples
+while numerical preparation is backlogged and drops cancelled or failed samples.
+Only the independent compositor measurement establishes first visible terrain.
+
+The remaining cylinder-specific details below retain their original P1B scope;
+the historical sphere adoption checklist records the plan now implemented by P1C.
 
 ## Authority and ordered preparation
 

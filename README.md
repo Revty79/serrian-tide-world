@@ -1,7 +1,9 @@
-<!-- Current interface: A7-P1B. Historical completion reports describe their original checkpoints. -->
+<!-- Current interface: A7-P1C. Historical completion reports describe their original checkpoints. -->
 # Serrian Tide Atlas
 
-Pass A7-P1B: Cylinder preparation now uses ordered, revision-acknowledged worker tasks with authoritative main-thread commits/history and event-driven Save draining. A7-P1A-R elevation-first coastlines, physical-gradient relief, elevation colors and GPU/CPU display behavior remain intact. See [completion and measured evidence](docs/A7-P1B-COMPLETION.md), the [shared painting contract / sphere adoption plan](docs/SURFACE-PAINTING-CONTRACT.md), and the [previous matched visual review](docs/evidence/a7-p1ar-visual-review.html). Stop for Ember review and owner hands-on acceptance before migration to another shape or new geometry.
+Pass A7-P1C: Sphere Globe/Net presentation now reconstructs numerical elevation before terrain colors, with coast coverage, optional physical-gradient relief, persistent hardware WebGL2 and coherent CPU fallback. A measured hybrid path retains inexpensive cooperative strokes and prepares expensive spherical dabs in revision-acknowledged workers. Exact geography, history, v3 saves and mixed libraries remain authoritative. See [completion and measured evidence](docs/A7-P1C-COMPLETION.md), the [visual standard and proposed flat/wrapped follow-up](docs/SURFACE-VISUAL-STANDARD.md), and the [shared painting contract](docs/SURFACE-PAINTING-CONTRACT.md). Stop for Ember independent review and owner hands-on visual/painting acceptance.
+
+Performance acceptance remains open: first-visible p50 increased in 31/32 measured groups, while observed numerical drain was faster in 48/64 sustained trials. Full timing conditions, blocking costs and limitations are recorded in the completion report.
 
 This repository is a standalone **development workspace**. Atlas will eventually join the **existing** Serrian Tide Worlds section in isolated development, preserving existing information, organization, data and functionality wherever practical. The owner superseded the earlier separate-Worlds-rebuild plan. Functional interconnected Atlas maps must precede website integration; the [eleven-phase roadmap](docs/PHASE-1-HEIGHTMAP-ROADMAP.md) governs the sequence. The original website remains untouched in this pass.
 

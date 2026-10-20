@@ -45,7 +45,7 @@ export function at(x: number, y: number) { const d = unprojectSphere(authority, 
 export async function digest() { return [...new Uint8Array(await crypto.subtle.digest('SHA-256', authority.copyElevations().buffer as ArrayBuffer))].map((v) => v.toString(16).padStart(2, '0')).join(''); }
 export function statistics() {
   const values = authority.copyElevations();
-  return { revision: authority.revision, cacheRevision: cache.sourceRevision, copies, reads, samples: authority.sampleCount, authorityBytes: authority.elevationByteLength, cacheBytes: cache.byteLength, historyBytes: editor.history.retainedBytes, pendingBytes: editor.history.pendingBytes, historyEntries: editor.history.length, modified: editor.modified, pendingPoints: editor.pendingPoints, backlogged: editor.backlogged, min: values.reduce((a, b) => Math.min(a, b)), max: values.reduce((a, b) => Math.max(a, b)), changedSamples: values.reduce((count, v) => count + (v !== -100 ? 1 : 0), 0), ...editor.statistics };
+  return { revision: authority.revision, cacheRevision: cache.sourceRevision, copies, displayEpochCopies: cache.elevationField?.sourceCopies ?? 0, reads, samples: authority.sampleCount, authorityBytes: authority.elevationByteLength, cacheBytes: cache.byteLength, historyBytes: editor.history.retainedBytes, pendingBytes: editor.history.pendingBytes, historyEntries: editor.history.length, modified: editor.modified, pendingPoints: editor.pendingPoints, backlogged: editor.backlogged, min: values.reduce((a, b) => Math.min(a, b)), max: values.reduce((a, b) => Math.max(a, b)), changedSamples: values.reduce((count, v) => count + (v !== -100 ? 1 : 0), 0), ...editor.statistics };
 }
 export function boundaryLocations(): Vec3[] {
   const points: Vec3[] = [];

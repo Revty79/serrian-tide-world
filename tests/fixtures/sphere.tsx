@@ -32,6 +32,6 @@ export function clickTarget(direction: Vec3, face: CubeFace) {
 }
 export function statistics() {
   const current = new Uint32Array(authority.copyElevations().buffer);
-  return { exactBitsUnchanged: current.every((value, i) => value === original[i]), metadataSame: metadata === authority.metadata, revision, currentRevision: authority.revision, samples: authority.sampleCount, authorityBytes: authority.elevationByteLength, cacheBytes: cache.byteLength, copies, reads, preparedMs };
+  return { exactBitsUnchanged: current.every((value, i) => value === original[i]), metadataSame: metadata === authority.metadata, revision, currentRevision: authority.revision, samples: authority.sampleCount, authorityBytes: authority.elevationByteLength, cacheBytes: cache.byteLength, fieldBytes: cache.elevationField?.byteLength ?? 0, copies, reads, preparedMs };
 }
 createRoot(document.getElementById('root')!).render(<main className="atlas-app"><SphericalViewport terrain={terrain} cache={cache} preparationMs={preparedMs} onClose={() => {}} /></main>);

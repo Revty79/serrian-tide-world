@@ -1,0 +1,117 @@
+import{readFileSync,writeFileSync}from'node:fs';import assert from'node:assert/strict';
+const json=p=>JSON.parse(readFileSync(p,'utf8')),e='docs/evidence/',checks=json(e+'a7-p1c-final-checks.json'),source=json(e+'a7-p1c-source-inventory.json'),perf=json(e+'a7-p1c-performance-summary.json'),hardware=json(e+'a7-p1c-hardware-result.json'),production=json(e+'a7-p1c-production.json'),preserved=json(e+'a7-p1c-full-preservation.json'),browser=json('.local/p1c-final-browser-result.json'),golden=json(e+'a7-p1c-golden-equivalence.json');
+assert.equal(browser.code,0);assert.equal(hardware.code,0);assert.equal(production.records.length,8);assert.equal(perf.pairs,384);assert.ok(checks.phases.every(p=>p.code===0&&p.changed.length===0));assert.equal(golden.wordMismatches,0);
+const clean=s=>s.replace(/\x1b\[[0-9;]*m/g,''),log=clean(readFileSync('.local/p1c-final-browser.log','utf8')),passed=Number(log.match(/\n\s*(\d+) passed/)?.[1]),skipped=Number(log.match(/\n\s*(\d+) skipped/)?.[1]??0),fmt=q=>[q.p50,q.p95,q.max].map(v=>v===null?'n/a':v.toFixed(1)).join(' / '),mb=n=>(n/1048576).toFixed(2);
+const selected=[['Hardware desktop ordinary Globe N128','hardware','desktop',128,'globe','ordinary'],['Hardware mobile-profile large Globe N256','hardware','mobile',256,'globe','large'],['CPU fallback mobile-profile large Globe N256','fallback','mobile',256,'globe','large'],['Hardware desktop large Net N256','hardware','desktop',256,'net','large']];
+let rows='';for(const[label,backend,profile,n,mode,cost]of selected){const g=perf.groups.find(g=>g.backend===backend&&g.profile===profile&&g.n===n&&g.mode===mode&&g.cost===cost);rows+=`| ${label} | ${fmt(g.before.firstVisibleMs)} | ${fmt(g.after.firstVisibleMs)} |\n`;}
+const comparable=perf.groups.filter(g=>g.before.firstVisibleMs.count&&g.after.firstVisibleMs.count),higher=comparable.filter(g=>g.after.firstVisibleMs.p50>g.before.firstVisibleMs.p50).length;
+const hardwareCount=Number(clean(readFileSync(e+'a7-p1c-hardware-browser.txt','utf8')).match(/\n\s*(\d+) passed/)?.[1]);assert.equal(passed,328);assert.equal(skipped,4);assert.equal(hardwareCount,16);
+const sustained=json(e+'a7-p1c-sustained-summary.json');assert.equal(sustained.pairs,64);assert.ok(sustained.minimumDabs>=4);
+const drainPairs=sustained.records.filter(r=>Number.isFinite(r.before.observedNumericalDrainMs)&&Number.isFinite(r.after.observedNumericalDrainMs)),drainBetter=drainPairs.filter(r=>r.after.observedNumericalDrainMs<r.before.observedNumericalDrainMs).length;assert.equal(drainPairs.length,64);
+const sustainedRows=['hardware/mobile/256/globe/Raise','hardware/mobile/256/globe/Smooth','fallback/mobile/256/globe/Smooth'].map(key=>{const r=sustained.records.find(r=>r.key===key);assert.ok(r);const pair=field=>[r.before[field],r.after[field]].map(v=>v.toFixed(1)).join(' / ');return`| ${key} (${r.after.work.backend}) | ${pair('firstVisibleMs')} | ${pair('observedNumericalDrainMs')} | ${r.before.mainTasksMs.max.toFixed(1)} / ${r.after.mainTasksMs.max.toFixed(1)} |`;}).join('\n');
+const report=`# A7-P1C completion — spherical visual and painting standards
+
+Technical delivery for Ember independent review and owner hands-on visual/painting acceptance. Those acceptance decisions remain outstanding. Stop after this pass.
+
+Approved starting checkpoint: \`ec1c6e195dd66272bf8aa3ba3232463831e000cb\`, repository \`Revty79/serrian-tide-world\`, branch \`main\`. The owner explicitly confirmed A7-P1B acceptance and authorized A7-P1C. The implementation SHA and post-implementation receipt are recorded in [A7-P1C-DELIVERY.md](A7-P1C-DELIVERY.md).
+
+## Delivered behavior
+
+Globe and connected Net now reconstruct canonical numerical elevation before terrain classification. Four geographical coverage rays resolve coast crossings and the globe silhouette. Optional Shaded Relief uses physical world-tangent height gradients with 5x display exaggeration; Elevation Colors remains available in the contextual tools. No elevation displacement, added noise, resampling, higher numerical resolution or new geography is introduced.
+
+The persistent hardware WebGL2 renderer raycasts the genuine round reference sphere and its oriented connected charts. Its six RGBA32F layers are derived views of one canonical terrain. Shared edges/corners receive identical height/gradient field words. Camera/appearance changes reuse three GPU resources and upload no terrain. Sparse revision-keyed uploads, full recovery uploads, software rejection and real context loss/restoration are verified. A bounded coherent CPU path remains editable when GPU presentation is unavailable.
+
+Requested and displayed cameras are distinct. Picking, preview and inspection use the displayed pose. Controlled limb/net assistance presents its new camera before accepting that physical geographical endpoint. Releasing during CPU reconstruction stays on the displayed pose. All existing mouse, pen, touch, Space, keyboard, two-finger, manual rotation, projection-cut and net workflows remain covered.
+
+Painting is hybrid. Conservative candidate work selects cooperative preparation for inexpensive strokes and a worker for expensive work (Smooth weighted by eight; desktop threshold 24,000, coarse-pointer 6,000). This heuristic changes scheduling only. The same original great-circle engine, spacing residuals, source-epoch formulas, visibility and numerical budgets operate in both paths. Shared ordering, revision leases and progress signals are reused. The host validates exact source words, unique canonical samples, accepted physical arcs and per-dab visible hemispheres before atomic commits. The worker cannot advance its private source epoch until acknowledgement. One held stroke remains one exact history operation.
+
+Startup failure can replay uncommitted input cooperatively. Later failure/cancellation retains an exact undoable prefix. Save drains accepted input through actual progress notifications, preserving unchanged v3 and mixed v1/v2/v3/v4 libraries. A legitimate stationary hold does not trip the watchdog; additional input cannot indefinitely extend a stalled worker's deadline. Untracked external revisions preserve current terrain and clear unsafe history.
+
+## Frozen verification
+
+| Check | Actual result |
+| --- | --- |
+| Complete numerical suite | 471 passed, 0 failed, 0 skipped |
+| Accepted-source equivalence | ${golden.cases} cases; ${golden.wordComparisons.toLocaleString('en-US')} complete UInt32 word comparisons; 0 word/history mismatches |
+| Complete desktop/mobile browser suite | ${passed} passed, ${skipped} existing conditional skips; exit 0; ${(browser.elapsedMs/60000).toFixed(1)} min |
+| Additional actual-hardware spherical browser checks | ${hardwareCount} passed; strict hardware requirement; context loss/restoration, all charts/corners/poles and native inputs |
+| Built production bundle | 8/8 hardware/fallback × desktop/mobile layout × N128/N256 contexts; exact Save/Open/Undo/Redo; no page errors |
+| TypeScript and production build | Both exit 0 |
+| Matched input-to-terrain measurements | 384 before/after stroke pairs and 16 navigation contexts per revision; all fixture/final payload hashes exact |
+| Sustained large-brush measurements | 64 additional matched held-stroke pairs across joined charts; at least ${sustained.minimumDabs} actual spaced dabs per trial; all final word hashes exact |
+| Source and preservation checks | ${source.sourceFilesChecked} raw source hashes unchanged across final numerical/proof/build checks; ${source.changedFiles} inventoried source/test/driver paths; ${preserved.protectedSourceCount} other accepted source blobs unchanged; ${preserved.historicalCount} historical evidence/report files restored byte for byte |
+
+The [final-check registry](evidence/a7-p1c-final-checks.json), [complete browser log](evidence/a7-p1c-final-browser.txt), [hardware result](evidence/a7-p1c-hardware-result.json), [production result](evidence/a7-p1c-production.json), [accepted-source proof](evidence/a7-p1c-golden-equivalence.json) and [preservation receipt](evidence/a7-p1c-full-preservation.json) contain the exact conditions and results. Hardware functional checks and production smoke checks can overlap the general regression run; their timings are not the controlled performance comparison. The matched painting benchmark runs separately without competing verification work.
+
+The equivalence script imports the accepted Git source separately and compares all words, complete history fields/entries, state IDs, budgets, revisions, Undo and Redo. It covers all twelve physical chart edges, eight corners, both poles and queued changing visibility, with four tools at N128/N256, independently for current cooperative and validated worker paths. Signed zero is included. Browser traces additionally record genuine native held strokes and real authoritative changes.
+
+Historical test helpers now wait for actual completed presentation rather than assuming two RAFs imply a finished CPU image. Memory/copy assertions explicitly account for the new coherent display field and still prohibit navigation-driven source copies. All numerical/readout/visibility/history assertions remain. There is one accessible map canvas plus one GPU presentation canvas, with one numerical authority.
+
+## Appearance and response evidence
+
+Open the [32-pair matched visual review](evidence/a7-p1c-visual-review.html) for the same saved geography in Globe, Net, zoomed coasts and mountain gradients at both resolutions and desktop/mobile layouts. Hardware and bounded CPU results are separate choices. [Production screenshots and conditions](evidence/a7-p1c-production.json) demonstrate the built application without development fixtures. Full and hardware interaction traces are listed in their preservation receipts.
+
+The [photo proof](evidence/a7-p1c-photo-proof.json) checks identical numerical geography and exact displayed cameras for all 32 pairs. Photos are captured separately after the timing runs, with native selection awaited and CPU screenshot pixels checked against the completed canvas. This photo-only readback is absent from latency trials. The timing driver polls awaited snapshot results on the host; it does not pass an asynchronous predicate to this Playwright version's truthy-value poller.
+
+The accepted development export suppresses only its canvas selection-ring draw during pixel measurement. Pointer/footprint overlays are hidden in both revisions. Terrain, camera, native input and numerical behavior use the accepted checkpoint; the separately imported numerical proof source is unmodified.
+
+Direct PNG pairs for review on GitHub:
+
+| N256 hardware-browser view | Accepted before | P1C after |
+| --- | --- | --- |
+${[['desktop','globe'],['desktop','net'],['desktop','zoom-coast'],['desktop','zoom-mountain'],['mobile','globe'],['mobile','net']].map(([profile,view])=>`| ${profile} ${view} | [Before](evidence/a7-p1c-before-hardware-${profile}-n256-${view}.png) | [After](evidence/a7-p1c-after-hardware-${profile}-n256-${view}.png) |`).join('\n')}
+
+Representative input-to-first-changed-terrain-pixel distributions below are p50 / p95 / max in milliseconds (12 strokes per group). Every group and individual tool population remains available in the [complete performance report](evidence/a7-p1c-performance.md) and [raw summary](evidence/a7-p1c-performance-summary.json).
+
+| Condition | Before | After |
+| --- | --- | --- |
+${rows}
+These are observed compositor PNG terrain changes, with pointer/footprint/pending overlays hidden, not RAF or cursor latency. Capture and instrumentation overhead is included. The baseline hardware-browser profile still used the old CPU sphere renderer. Mobile is Pixel 7 layout plus 4x page-main-thread throttling on this Windows host; dedicated workers and the desktop GPU are not made equivalent to a physical phone.
+
+The complete matrix has ${higher}/${comparable.length} comparable groups whose after p50 is greater than before. This pass does not claim a universal latency improvement. Compare visible-terrain distributions, main-thread blocking, navigation intervals and task-ready/communication costs together. Worker task-ready round trip is ${fmt(perf.worker.readyRoundTripMs)} ms; worker compute ${fmt(perf.worker.computeMs)} ms. Ready time includes private topology/source setup on a preloaded worker. Acknowledgement quantiles retain up to 512 samples per task; lifetime count/maximum are separate. Per-group queue peaks, actual device diagnostics, CPU fallback costs and JS-realm heap readings are in the raw report.
+
+Navigation intervals measure RAF scheduling, not a guarantee that every RAF contains a newly presented geographical image. CPU fallback publishes complete coherent images across multiple frames; requested-camera changes can replace obsolete reconstruction work. Its visible navigation can therefore lag the scheduling intervals. This limitation remains subject to hands-on acceptance.
+
+The legacy presentation-latency ring is also separate: it records conservative drained-input/epoch readiness, retains samples during pending preparation, and omits cancelled/failed samples. Delayed-worker browser and pre-commit failure tests verify that it cannot report unprepared input as presented. First-visible values above come only from actual changed compositor terrain pixels.
+
+The separate [sustained large-brush comparison](evidence/a7-p1c-sustained.md) measures 64 additional matched held strokes across the connected px/py charts. Each trial must apply multiple actual dabs, rather than merely accept pointer positions below the spacing threshold. These are one held trial/tool/context, with full per-task/frame distributions retained. Initial-response repetition and sustained throughput are reported separately. Native worker-limb tests additionally require at least six dabs and numerical changes behind the initial hemisphere, proving work on newly exposed geography. The CPU fallback retains its current image until new coherent terrain exists, preventing a pre-commit quality-only repaint from being counted as painting response.
+
+Observed numerical drain was faster in ${drainBetter}/${drainPairs.length} sustained trials; ${drainPairs.length-drainBetter} did not improve. These are descriptive single-trial comparisons, not replicated per-tool speed claims. Representative seven-dab N256 mobile-profile Globe observations below show before / after milliseconds:
+
+| Condition and candidate scheduler | First pixels | Observed numerical drain | Largest main-thread task |
+| --- | --- | --- | --- |
+${sustainedRows}
+
+Response delays occur on cooperative as well as worker paths. Further performance review should include derived-field preparation and presentation, rather than attributing the complete visible delay to worker startup. The visual and numerical results do not establish owner acceptance of these response costs.
+
+## Memory and scheduling bounds
+
+| Native detail | Canonical Float32 authority | Existing cache + coherent derived field | CPU coherent field snapshot | GPU elevation/gradient texture |
+| --- | --- | --- | --- | --- |
+| N128 | ${mb(393224)} MiB | ${mb(7933232)} MiB | ${mb(1597536)} MiB | ${mb(1597536)} MiB |
+| N256 | ${mb(1572872)} MiB | ${mb(31594800)} MiB | ${mb(6340704)} MiB | ${mb(6340704)} MiB |
+
+Canvas backing stores, browser/JS objects, history and worker realms are additional. The worker has a copied source epoch, bounded topology allocation (including an unused blank allocation), one prepared proposal and transport buffers. Only one active worker plus one warm spare exists. Pending input remains bounded at 2,048 positions, including transit. Existing numerical dab/candidate/stroke/history limits remain unchanged. Display fields yield every 64 nodes, CPU raster work every 512 pixels; requested 4/6 ms slices can be exceeded by atomic operations, GC or browser scheduling. Existing desktop/coarse editing/navigation/settled pixel budgets are retained. Diagnostic rings are bounded independently of geographical input.
+
+## Source inventory and architecture
+
+The [33-path source inventory](evidence/a7-p1c-source-inventory.json) records status, accepted/current clean Git blobs, raw SHA-256 and byte counts. Geometry-specific field, GPU/CPU presentation, worker protocol/runtime/host and preparation policy remain small independent providers. The shared renderer/backing-dimension and ordered-input/revision/progress primitives are reused. No large generalized terrain framework is added.
+
+| Source/test/driver path | Change |
+| --- | --- |
+${source.files.map(f=>`| \`${f.path}\` | ${f.status} |`).join('\n')}
+
+## Limits and next authorization boundary
+
+- Physical mobile-device performance and owner hands-on visual/painting acceptance remain outstanding. The coarse-pointer workload heuristic is calibrated to these measured profiles, not every device.
+- Initial visible-response p50 is higher in ${higher}/${comparable.length} measured groups. Reduced blocking and the sustained improvements above do not remove that regression; performance acceptance remains open.
+- CPU fallback publishes coherent multi-frame images and can show pending feedback during expensive work; the measured worst cases remain visible in the report.
+- Bilinear elevation reconstruction is continuous across charts but does not make its derivative continuous or create finer geographical detail. Extreme within-map Float32 dynamic ranges and bounded display gradients can limit GPU appearance; numerical authority/persistence remain exact.
+- The retained legacy color cache plus physical display fields trades additional bounded memory for compatibility and coherent presentation. Heap measurements include development/test overhead and exclude total process/GPU/worker memory.
+- Worker cancellation intentionally discards uncommitted queued work while retaining its exact committed prefix. A later stroke can recover; silent partial-success Save is not used for a newly failed drain.
+
+The [visual standard](SURFACE-VISUAL-STANDARD.md) and [painting contract](SURFACE-PAINTING-CONTRACT.md) define common policies and provider extension points. The proposed next bounded pass migrates existing flat/wrapped presentation and measured scheduling while preserving periodic cuts, edge assistance, Fit/Fill/Focus, proportions, exact words/history and v1/v2 saves. It is a proposal only.
+
+The approved eleven-phase roadmap table and GitHub Issue #1 are preserved. No main-site/Worlds integration, database/Production/hosting mutation, new geometry, conversion, generator, additional brush, professional cartography or 3D displacement was implemented. **Stop for Ember independent review and owner hands-on visual/painting acceptance.**
+`;
+writeFileSync('docs/A7-P1C-COMPLETION.md',report);console.log({passed,skipped,hardwareCount,production:8,pairs:384});

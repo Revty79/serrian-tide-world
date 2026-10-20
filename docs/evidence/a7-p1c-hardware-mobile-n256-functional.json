@@ -1,0 +1,4913 @@
+{
+  "records": [
+    {
+      "mode": "Globe",
+      "radius": 80000,
+      "tool": "Raise",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "raise",
+            "radiusMeters": 80000,
+            "strengthMeters": 1200
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 5,
+          "candidateChecks": 5976,
+          "affectedSamples": 3405,
+          "writes": 3404,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "14efb7400a20e51a8cb70bde200083d00bc192088f0804905c085a232fc0fb10",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 398674,
+        "textureRevision": 398674,
+        "displayRevision": 398674,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 5,
+          "writes": 3404,
+          "updatedPixels": 7814,
+          "updatedRegions": 7,
+          "fullRebuilds": 0,
+          "maxDabMs": 8.199999988079071,
+          "slices": 25
+        },
+        "history": {
+          "state": 1,
+          "entries": 1,
+          "bytes": 12376
+        },
+        "renderer": "webgl2",
+        "renderTimes": [
+          12.199999988079071,
+          7.199999988079071,
+          7.699999988079071,
+          7.9000000059604645,
+          4.5,
+          11.899999976158142,
+          4.9000000059604645,
+          2.2999999821186066
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "reason": "",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 8,
+            "uploadBytes": 6465728,
+            "textureBytes": 6340704,
+            "presentations": 8,
+            "resources": 3
+          },
+          "cpu": {
+            "images": 0,
+            "slices": 0,
+            "computeMs": 0,
+            "maxSliceMs": 0,
+            "snapshotBytes": 0
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 398674,
+          "displayRevision": 398674,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 10
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 80000,
+      "tool": "Lower",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "lower",
+            "radiusMeters": 80000,
+            "strengthMeters": 1200
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 5,
+          "candidateChecks": 5976,
+          "affectedSamples": 3405,
+          "writes": 3404,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "a3247e95fb150eb34392aa32f37b28b4436d5f9ef5464629adb8d8fa96605509",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 405156,
+        "textureRevision": 405156,
+        "displayRevision": 405156,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 10,
+          "writes": 6808,
+          "updatedPixels": 17071,
+          "updatedRegions": 15,
+          "fullRebuilds": 0,
+          "maxDabMs": 9.799999982118607,
+          "slices": 47
+        },
+        "history": {
+          "state": 2,
+          "entries": 1,
+          "bytes": 12376
+        },
+        "renderer": "webgl2",
+        "renderTimes": [
+          12.199999988079071,
+          7.199999988079071,
+          7.699999988079071,
+          7.9000000059604645,
+          4.5,
+          11.899999976158142,
+          4.9000000059604645,
+          2.2999999821186066,
+          2.800000011920929,
+          4.0999999940395355,
+          6.399999976158142,
+          7.799999982118607,
+          8.300000011920929,
+          3.5,
+          2,
+          4.199999988079071
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "reason": "",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 16,
+            "uploadBytes": 6613840,
+            "textureBytes": 6340704,
+            "presentations": 16,
+            "resources": 3
+          },
+          "cpu": {
+            "images": 0,
+            "slices": 0,
+            "computeMs": 0,
+            "maxSliceMs": 0,
+            "snapshotBytes": 0
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 405156,
+          "displayRevision": 405156,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 20
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 80000,
+      "tool": "Smooth",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "smooth",
+            "radiusMeters": 80000,
+            "intensity": 0.7
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 5,
+          "candidateChecks": 5976,
+          "affectedSamples": 3405,
+          "writes": 3363,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 1178,
+          "weighted": 9424,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 21.69999998807907,
+          "snapshotMs": 8,
+          "computeMs": 70,
+          "proposals": 5,
+          "staleResults": 0,
+          "validationMaxMs": 0.5999999940395355,
+          "commitMaxMs": 0.4000000059604645,
+          "ackWait": {
+            "count": 5,
+            "totalMs": 6.000000029802322,
+            "maxMs": 1.7000000178813934,
+            "samples": [
+              1.7000000178813934,
+              0.7999999821186066,
+              1.2000000178813934,
+              1,
+              1.300000011920929
+            ]
+          },
+          "statistics": {
+            "dabs": 5,
+            "candidateChecks": 5976,
+            "affectedSamples": 3405,
+            "writes": 3363,
+            "peakPreparedBytes": 32768,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 1
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "e02a33391c4d25c17bbf7ad709c39f97fea2035f856fe81de35e166847a394e4",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 411579,
+        "textureRevision": 411579,
+        "displayRevision": 411579,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 15,
+          "writes": 10171,
+          "updatedPixels": 25406,
+          "updatedRegions": 22,
+          "fullRebuilds": 0,
+          "maxDabMs": 9.799999982118607,
+          "slices": 70
+        },
+        "history": {
+          "state": 3,
+          "entries": 1,
+          "bytes": 12268
+        },
+        "renderer": "webgl2",
+        "renderTimes": [
+          12.199999988079071,
+          7.199999988079071,
+          7.699999988079071,
+          7.9000000059604645,
+          4.5,
+          11.899999976158142,
+          4.9000000059604645,
+          2.2999999821186066,
+          2.800000011920929,
+          4.0999999940395355,
+          6.399999976158142,
+          7.799999982118607,
+          8.300000011920929,
+          3.5,
+          2,
+          4.199999988079071,
+          4.9000000059604645,
+          2.0999999940395355,
+          5.600000023841858,
+          5.5,
+          3.5999999940395355,
+          4.300000011920929,
+          3.5
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "reason": "",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 23,
+            "uploadBytes": 6747200,
+            "textureBytes": 6340704,
+            "presentations": 23,
+            "resources": 3
+          },
+          "cpu": {
+            "images": 0,
+            "slices": 0,
+            "computeMs": 0,
+            "maxSliceMs": 0,
+            "snapshotBytes": 0
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 411579,
+          "displayRevision": 411579,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 21
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 1178,
+          "weighted": 9424,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 21.69999998807907,
+          "snapshotMs": 8,
+          "computeMs": 70,
+          "proposals": 5,
+          "staleResults": 0,
+          "validationMaxMs": 0.5999999940395355,
+          "commitMaxMs": 0.4000000059604645,
+          "ackWait": {
+            "count": 5,
+            "totalMs": 6.000000029802322,
+            "maxMs": 1.7000000178813934,
+            "samples": [
+              1.7000000178813934,
+              0.7999999821186066,
+              1.2000000178813934,
+              1,
+              1.300000011920929
+            ]
+          },
+          "statistics": {
+            "dabs": 5,
+            "candidateChecks": 5976,
+            "affectedSamples": 3405,
+            "writes": 3363,
+            "peakPreparedBytes": 32768,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 1
+          }
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 80000,
+      "tool": "Flatten",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "flatten",
+            "radiusMeters": 80000,
+            "intensity": 0.7,
+            "targetElevation": -1600
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 5,
+          "candidateChecks": 5976,
+          "affectedSamples": 3405,
+          "writes": 3405,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "6a395f0681910c7b3bbb9e9774660bfea3a2eae40f85657e61a05ff00070a910",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 418053,
+        "textureRevision": 418053,
+        "displayRevision": 418053,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 20,
+          "writes": 13576,
+          "updatedPixels": 34626,
+          "updatedRegions": 30,
+          "fullRebuilds": 0,
+          "maxDabMs": 9.799999982118607,
+          "slices": 95
+        },
+        "history": {
+          "state": 4,
+          "entries": 1,
+          "bytes": 12376
+        },
+        "renderer": "webgl2",
+        "renderTimes": [
+          12.199999988079071,
+          7.199999988079071,
+          7.699999988079071,
+          7.9000000059604645,
+          4.5,
+          11.899999976158142,
+          4.9000000059604645,
+          2.2999999821186066,
+          2.800000011920929,
+          4.0999999940395355,
+          6.399999976158142,
+          7.799999982118607,
+          8.300000011920929,
+          3.5,
+          2,
+          4.199999988079071,
+          4.9000000059604645,
+          2.0999999940395355,
+          5.600000023841858,
+          5.5,
+          3.5999999940395355,
+          4.300000011920929,
+          3.5,
+          3.2000000178813934,
+          4.600000023841858,
+          4.300000011920929,
+          3.7999999821186066,
+          3.7000000178813934,
+          16.099999994039536,
+          5,
+          4.700000017881393
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "reason": "",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 31,
+            "uploadBytes": 6894720,
+            "textureBytes": 6340704,
+            "presentations": 31,
+            "resources": 3
+          },
+          "cpu": {
+            "images": 0,
+            "slices": 0,
+            "computeMs": 0,
+            "maxSliceMs": 0,
+            "snapshotBytes": 0
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 418053,
+          "displayRevision": 418053,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 31
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 200000,
+      "tool": "Raise",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "raise",
+            "radiusMeters": 200000,
+            "strengthMeters": 1200
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 2,
+          "candidateChecks": 13989,
+          "affectedSamples": 8422,
+          "writes": 8419,
+          "peakPreparedBytes": 65536
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 22.69999998807907,
+          "snapshotMs": 8.599999994039536,
+          "computeMs": 60.900000005960464,
+          "proposals": 2,
+          "staleResults": 0,
+          "validationMaxMs": 2,
+          "commitMaxMs": 0.5999999940395355,
+          "ackWait": {
+            "count": 2,
+            "totalMs": 9.299999982118607,
+            "maxMs": 5.0999999940395355,
+            "samples": [
+              5.0999999940395355,
+              4.199999988079071
+            ]
+          },
+          "statistics": {
+            "dabs": 2,
+            "candidateChecks": 13989,
+            "affectedSamples": 8422,
+            "writes": 8419,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 1
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "cface3461dc8bbc9702911f1c8cec36b551cb0d5332012c57e273441f113cb28",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 436886,
+        "textureRevision": 436886,
+        "displayRevision": 436886,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 22,
+          "writes": 21995,
+          "updatedPixels": 60127,
+          "updatedRegions": 39,
+          "fullRebuilds": 0,
+          "maxDabMs": 9.799999982118607,
+          "slices": 140
+        },
+        "history": {
+          "state": 5,
+          "entries": 1,
+          "bytes": 56392
+        },
+        "renderer": "webgl2",
+        "renderTimes": [
+          12.199999988079071,
+          7.199999988079071,
+          7.699999988079071,
+          7.9000000059604645,
+          4.5,
+          11.899999976158142,
+          4.9000000059604645,
+          2.2999999821186066,
+          2.800000011920929,
+          4.0999999940395355,
+          6.399999976158142,
+          7.799999982118607,
+          8.300000011920929,
+          3.5,
+          2,
+          4.199999988079071,
+          4.9000000059604645,
+          2.0999999940395355,
+          5.600000023841858,
+          5.5,
+          3.5999999940395355,
+          4.300000011920929,
+          3.5,
+          3.2000000178813934,
+          4.600000023841858,
+          4.300000011920929,
+          3.7999999821186066,
+          3.7000000178813934,
+          16.099999994039536,
+          5,
+          4.700000017881393,
+          1.800000011920929,
+          4.5999999940395355,
+          2.0999999940395355,
+          4,
+          2.699999988079071
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "reason": "",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 36,
+            "uploadBytes": 7302736,
+            "textureBytes": 6340704,
+            "presentations": 36,
+            "resources": 3
+          },
+          "cpu": {
+            "images": 0,
+            "slices": 0,
+            "computeMs": 0,
+            "maxSliceMs": 0,
+            "snapshotBytes": 0
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 436886,
+          "displayRevision": 436886,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 32
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 22.69999998807907,
+          "snapshotMs": 8.599999994039536,
+          "computeMs": 60.900000005960464,
+          "proposals": 2,
+          "staleResults": 0,
+          "validationMaxMs": 2,
+          "commitMaxMs": 0.5999999940395355,
+          "ackWait": {
+            "count": 2,
+            "totalMs": 9.299999982118607,
+            "maxMs": 5.0999999940395355,
+            "samples": [
+              5.0999999940395355,
+              4.199999988079071
+            ]
+          },
+          "statistics": {
+            "dabs": 2,
+            "candidateChecks": 13989,
+            "affectedSamples": 8422,
+            "writes": 8419,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 1
+          }
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 200000,
+      "tool": "Lower",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "lower",
+            "radiusMeters": 200000,
+            "strengthMeters": 1200
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 2,
+          "candidateChecks": 13989,
+          "affectedSamples": 8422,
+          "writes": 8419,
+          "peakPreparedBytes": 65536
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 19.5,
+          "snapshotMs": 8.5,
+          "computeMs": 60.99999997019768,
+          "proposals": 2,
+          "staleResults": 0,
+          "validationMaxMs": 2,
+          "commitMaxMs": 1,
+          "ackWait": {
+            "count": 2,
+            "totalMs": 9,
+            "maxMs": 5.300000011920929,
+            "samples": [
+              3.699999988079071,
+              5.300000011920929
+            ]
+          },
+          "statistics": {
+            "dabs": 2,
+            "candidateChecks": 13989,
+            "affectedSamples": 8422,
+            "writes": 8419,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "a6f78205f7fab6ec9fa1e2e1a5e6cc6987a5db89e7f212885cfdcdd92d6a22f5",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 459387,
+        "textureRevision": 459387,
+        "displayRevision": 459387,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 24,
+          "writes": 30414,
+          "updatedPixels": 90544,
+          "updatedRegions": 49,
+          "fullRebuilds": 0,
+          "maxDabMs": 9.799999982118607,
+          "slices": 191
+        },
+        "history": {
+          "state": 6,
+          "entries": 1,
+          "bytes": 56392
+        },
+        "renderer": "webgl2",
+        "renderTimes": [
+          12.199999988079071,
+          7.199999988079071,
+          7.699999988079071,
+          7.9000000059604645,
+          4.5,
+          11.899999976158142,
+          4.9000000059604645,
+          2.2999999821186066,
+          2.800000011920929,
+          4.0999999940395355,
+          6.399999976158142,
+          7.799999982118607,
+          8.300000011920929,
+          3.5,
+          2,
+          4.199999988079071,
+          4.9000000059604645,
+          2.0999999940395355,
+          5.600000023841858,
+          5.5,
+          3.5999999940395355,
+          4.300000011920929,
+          3.5,
+          3.2000000178813934,
+          4.600000023841858,
+          4.300000011920929,
+          3.7999999821186066,
+          3.7000000178813934,
+          16.099999994039536,
+          5,
+          4.700000017881393,
+          1.800000011920929,
+          4.5999999940395355,
+          2.0999999940395355,
+          4,
+          2.699999988079071,
+          4.5999999940395355,
+          2.300000011920929,
+          4.300000011920929,
+          1.699999988079071,
+          3
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "reason": "",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 41,
+            "uploadBytes": 7789408,
+            "textureBytes": 6340704,
+            "presentations": 41,
+            "resources": 3
+          },
+          "cpu": {
+            "images": 0,
+            "slices": 0,
+            "computeMs": 0,
+            "maxSliceMs": 0,
+            "snapshotBytes": 0
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 459387,
+          "displayRevision": 459387,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 33
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 19.5,
+          "snapshotMs": 8.5,
+          "computeMs": 60.99999997019768,
+          "proposals": 2,
+          "staleResults": 0,
+          "validationMaxMs": 2,
+          "commitMaxMs": 1,
+          "ackWait": {
+            "count": 2,
+            "totalMs": 9,
+            "maxMs": 5.300000011920929,
+            "samples": [
+              3.699999988079071,
+              5.300000011920929
+            ]
+          },
+          "statistics": {
+            "dabs": 2,
+            "candidateChecks": 13989,
+            "affectedSamples": 8422,
+            "writes": 8419,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 200000,
+      "tool": "Smooth",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "smooth",
+            "radiusMeters": 200000,
+            "intensity": 0.7
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 2,
+          "candidateChecks": 13989,
+          "affectedSamples": 8422,
+          "writes": 8251,
+          "peakPreparedBytes": 65536
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 55568,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 20.30000001192093,
+          "snapshotMs": 8.5,
+          "computeMs": 235.5,
+          "proposals": 2,
+          "staleResults": 0,
+          "validationMaxMs": 1.9000000059604645,
+          "commitMaxMs": 1.0999999940395355,
+          "ackWait": {
+            "count": 2,
+            "totalMs": 11.900000005960464,
+            "maxMs": 6.699999988079071,
+            "samples": [
+              6.699999988079071,
+              5.200000017881393
+            ]
+          },
+          "statistics": {
+            "dabs": 2,
+            "candidateChecks": 13989,
+            "affectedSamples": 8422,
+            "writes": 8251,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 9
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "40843208218decc8d20170a573cea8156506bcea474dc5f347db398890160758",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 481494,
+        "textureRevision": 481494,
+        "displayRevision": 481494,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 26,
+          "writes": 38665,
+          "updatedPixels": 120693,
+          "updatedRegions": 59,
+          "fullRebuilds": 0,
+          "maxDabMs": 9.799999982118607,
+          "slices": 255
+        },
+        "history": {
+          "state": 7,
+          "entries": 1,
+          "bytes": 55036
+        },
+        "renderer": "webgl2",
+        "renderTimes": [
+          12.199999988079071,
+          7.199999988079071,
+          7.699999988079071,
+          7.9000000059604645,
+          4.5,
+          11.899999976158142,
+          4.9000000059604645,
+          2.2999999821186066,
+          2.800000011920929,
+          4.0999999940395355,
+          6.399999976158142,
+          7.799999982118607,
+          8.300000011920929,
+          3.5,
+          2,
+          4.199999988079071,
+          4.9000000059604645,
+          2.0999999940395355,
+          5.600000023841858,
+          5.5,
+          3.5999999940395355,
+          4.300000011920929,
+          3.5,
+          3.2000000178813934,
+          4.600000023841858,
+          4.300000011920929,
+          3.7999999821186066,
+          3.7000000178813934,
+          16.099999994039536,
+          5,
+          4.700000017881393,
+          1.800000011920929,
+          4.5999999940395355,
+          2.0999999940395355,
+          4,
+          2.699999988079071,
+          4.5999999940395355,
+          2.300000011920929,
+          4.300000011920929,
+          1.699999988079071,
+          3,
+          5,
+          3.0999999940395355,
+          4,
+          3.5,
+          4
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "reason": "",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 46,
+            "uploadBytes": 8271792,
+            "textureBytes": 6340704,
+            "presentations": 46,
+            "resources": 3
+          },
+          "cpu": {
+            "images": 0,
+            "slices": 0,
+            "computeMs": 0,
+            "maxSliceMs": 0,
+            "snapshotBytes": 0
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 481494,
+          "displayRevision": 481494,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 34
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 55568,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 20.30000001192093,
+          "snapshotMs": 8.5,
+          "computeMs": 235.5,
+          "proposals": 2,
+          "staleResults": 0,
+          "validationMaxMs": 1.9000000059604645,
+          "commitMaxMs": 1.0999999940395355,
+          "ackWait": {
+            "count": 2,
+            "totalMs": 11.900000005960464,
+            "maxMs": 6.699999988079071,
+            "samples": [
+              6.699999988079071,
+              5.200000017881393
+            ]
+          },
+          "statistics": {
+            "dabs": 2,
+            "candidateChecks": 13989,
+            "affectedSamples": 8422,
+            "writes": 8251,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 9
+          }
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 200000,
+      "tool": "Flatten",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "flatten",
+            "radiusMeters": 200000,
+            "intensity": 0.7,
+            "targetElevation": -1600
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 2,
+          "candidateChecks": 13989,
+          "affectedSamples": 8422,
+          "writes": 8420,
+          "peakPreparedBytes": 65536
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 22.299999982118607,
+          "snapshotMs": 9.5,
+          "computeMs": 73.00000008940697,
+          "proposals": 2,
+          "staleResults": 0,
+          "validationMaxMs": 2.9000000059604645,
+          "commitMaxMs": 1.199999988079071,
+          "ackWait": {
+            "count": 2,
+            "totalMs": 14.399999976158142,
+            "maxMs": 7.199999988079071,
+            "samples": [
+              7.199999988079071,
+              7.199999988079071
+            ]
+          },
+          "statistics": {
+            "dabs": 2,
+            "candidateChecks": 13989,
+            "affectedSamples": 8422,
+            "writes": 8420,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "dd0147f5654597d1567cad0e74c742611e008b25b1072b9f794721b483132986",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 503885,
+        "textureRevision": 503885,
+        "displayRevision": 503885,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 28,
+          "writes": 47085,
+          "updatedPixels": 151053,
+          "updatedRegions": 69,
+          "fullRebuilds": 0,
+          "maxDabMs": 9.799999982118607,
+          "slices": 311
+        },
+        "history": {
+          "state": 8,
+          "entries": 1,
+          "bytes": 56404
+        },
+        "renderer": "webgl2",
+        "renderTimes": [
+          12.199999988079071,
+          7.199999988079071,
+          7.699999988079071,
+          7.9000000059604645,
+          4.5,
+          11.899999976158142,
+          4.9000000059604645,
+          2.2999999821186066,
+          2.800000011920929,
+          4.0999999940395355,
+          6.399999976158142,
+          7.799999982118607,
+          8.300000011920929,
+          3.5,
+          2,
+          4.199999988079071,
+          4.9000000059604645,
+          2.0999999940395355,
+          5.600000023841858,
+          5.5,
+          3.5999999940395355,
+          4.300000011920929,
+          3.5,
+          3.2000000178813934,
+          4.600000023841858,
+          4.300000011920929,
+          3.7999999821186066,
+          3.7000000178813934,
+          16.099999994039536,
+          5,
+          4.700000017881393,
+          1.800000011920929,
+          4.5999999940395355,
+          2.0999999940395355,
+          4,
+          2.699999988079071,
+          4.5999999940395355,
+          2.300000011920929,
+          4.300000011920929,
+          1.699999988079071,
+          3,
+          5,
+          3.0999999940395355,
+          4,
+          3.5,
+          4,
+          3.9000000059604645,
+          5.300000011920929,
+          3.5999999940395355,
+          1.800000011920929,
+          2.2999999821186066
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "reason": "",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 51,
+            "uploadBytes": 8757552,
+            "textureBytes": 6340704,
+            "presentations": 51,
+            "resources": 3
+          },
+          "cpu": {
+            "images": 0,
+            "slices": 0,
+            "computeMs": 0,
+            "maxSliceMs": 0,
+            "snapshotBytes": 0
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 503885,
+          "displayRevision": 503885,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 35
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 22.299999982118607,
+          "snapshotMs": 9.5,
+          "computeMs": 73.00000008940697,
+          "proposals": 2,
+          "staleResults": 0,
+          "validationMaxMs": 2.9000000059604645,
+          "commitMaxMs": 1.199999988079071,
+          "ackWait": {
+            "count": 2,
+            "totalMs": 14.399999976158142,
+            "maxMs": 7.199999988079071,
+            "samples": [
+              7.199999988079071,
+              7.199999988079071
+            ]
+          },
+          "statistics": {
+            "dabs": 2,
+            "candidateChecks": 13989,
+            "affectedSamples": 8422,
+            "writes": 8420,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 80000,
+      "tool": "Raise",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "raise",
+            "radiusMeters": 80000,
+            "strengthMeters": 1200
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 10,
+          "candidateChecks": 12521,
+          "affectedSamples": 7017,
+          "writes": 7012,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "7ee91534ab91b3dd1595644aa151cb2d74993e98f761c0c6c0a216dde377d01e",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 518766,
+        "textureRevision": 518766,
+        "displayRevision": 518766,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 38,
+          "writes": 54097,
+          "updatedPixels": 171448,
+          "updatedRegions": 89,
+          "fullRebuilds": 0,
+          "maxDabMs": 9.799999982118607,
+          "slices": 356
+        },
+        "history": {
+          "state": 9,
+          "entries": 1,
+          "bytes": 19108
+        },
+        "renderer": "webgl2",
+        "renderTimes": [
+          12.199999988079071,
+          7.199999988079071,
+          7.699999988079071,
+          7.9000000059604645,
+          4.5,
+          11.899999976158142,
+          4.9000000059604645,
+          2.2999999821186066,
+          2.800000011920929,
+          4.0999999940395355,
+          6.399999976158142,
+          7.799999982118607,
+          8.300000011920929,
+          3.5,
+          2,
+          4.199999988079071,
+          4.9000000059604645,
+          2.0999999940395355,
+          5.600000023841858,
+          5.5,
+          3.5999999940395355,
+          4.300000011920929,
+          3.5,
+          3.2000000178813934,
+          4.600000023841858,
+          4.300000011920929,
+          3.7999999821186066,
+          3.7000000178813934,
+          16.099999994039536,
+          5,
+          4.700000017881393,
+          1.800000011920929,
+          4.5999999940395355,
+          2.0999999940395355,
+          4,
+          2.699999988079071,
+          4.5999999940395355,
+          2.300000011920929,
+          4.300000011920929,
+          1.699999988079071,
+          3,
+          5,
+          3.0999999940395355,
+          4,
+          3.5,
+          4,
+          3.9000000059604645,
+          5.300000011920929,
+          3.5999999940395355,
+          1.800000011920929,
+          2.2999999821186066,
+          2.199999988079071,
+          3.0999999940395355,
+          5.5999999940395355,
+          6.5999999940395355,
+          4.799999982118607,
+          8,
+          9.599999994039536,
+          13.199999988079071,
+          8.5,
+          11.5,
+          13.599999994039536,
+          5.299999982118607,
+          3.800000011920929
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "reason": "",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 63,
+            "uploadBytes": 9083872,
+            "textureBytes": 6340704,
+            "presentations": 64,
+            "resources": 3
+          },
+          "cpu": {
+            "images": 0,
+            "slices": 0,
+            "computeMs": 0,
+            "maxSliceMs": 0,
+            "snapshotBytes": 0
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 518766,
+          "displayRevision": 518766,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 45
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 80000,
+      "tool": "Lower",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "lower",
+            "radiusMeters": 80000,
+            "strengthMeters": 1200
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 10,
+          "candidateChecks": 12521,
+          "affectedSamples": 7017,
+          "writes": 7012,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "f395c1390f672cd225acc29c9c47b706b1da80492f28fcae8607dbbb5661efe4",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 530539,
+        "textureRevision": 530539,
+        "displayRevision": 530539,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 48,
+          "writes": 61109,
+          "updatedPixels": 187786,
+          "updatedRegions": 109,
+          "fullRebuilds": 0,
+          "maxDabMs": 9.799999982118607,
+          "slices": 393
+        },
+        "history": {
+          "state": 10,
+          "entries": 1,
+          "bytes": 19108
+        },
+        "renderer": "webgl2",
+        "renderTimes": [
+          12.199999988079071,
+          7.199999988079071,
+          7.699999988079071,
+          7.9000000059604645,
+          4.5,
+          11.899999976158142,
+          4.9000000059604645,
+          2.2999999821186066,
+          2.800000011920929,
+          4.0999999940395355,
+          6.399999976158142,
+          7.799999982118607,
+          8.300000011920929,
+          3.5,
+          2,
+          4.199999988079071,
+          4.9000000059604645,
+          2.0999999940395355,
+          5.600000023841858,
+          5.5,
+          3.5999999940395355,
+          4.300000011920929,
+          3.5,
+          3.2000000178813934,
+          4.600000023841858,
+          4.300000011920929,
+          3.7999999821186066,
+          3.7000000178813934,
+          16.099999994039536,
+          5,
+          4.700000017881393,
+          1.800000011920929,
+          4.5999999940395355,
+          2.0999999940395355,
+          4,
+          2.699999988079071,
+          4.5999999940395355,
+          2.300000011920929,
+          4.300000011920929,
+          1.699999988079071,
+          3,
+          5,
+          3.0999999940395355,
+          4,
+          3.5,
+          4,
+          3.9000000059604645,
+          5.300000011920929,
+          3.5999999940395355,
+          1.800000011920929,
+          2.2999999821186066,
+          2.199999988079071,
+          3.0999999940395355,
+          5.5999999940395355,
+          6.5999999940395355,
+          4.799999982118607,
+          8,
+          9.599999994039536,
+          13.199999988079071,
+          8.5,
+          11.5,
+          13.599999994039536,
+          5.299999982118607,
+          3.800000011920929,
+          5.9000000059604645,
+          6.199999988079071,
+          5.800000011920929,
+          7,
+          9.299999982118607,
+          11,
+          16.899999976158142,
+          11.899999976158142,
+          8.5,
+          4.0999999940395355,
+          2.800000011920929,
+          5.4000000059604645
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "reason": "",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 75,
+            "uploadBytes": 9345280,
+            "textureBytes": 6340704,
+            "presentations": 76,
+            "resources": 3
+          },
+          "cpu": {
+            "images": 0,
+            "slices": 0,
+            "computeMs": 0,
+            "maxSliceMs": 0,
+            "snapshotBytes": 0
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 530539,
+          "displayRevision": 530539,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 55
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 80000,
+      "tool": "Smooth",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "smooth",
+            "radiusMeters": 80000,
+            "intensity": 0.7
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 10,
+          "candidateChecks": 12521,
+          "affectedSamples": 7017,
+          "writes": 6880,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 1178,
+          "weighted": 9424,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 32.80000001192093,
+          "snapshotMs": 12.800000011920929,
+          "computeMs": 191.90000000596046,
+          "proposals": 10,
+          "staleResults": 0,
+          "validationMaxMs": 1,
+          "commitMaxMs": 0.29999998211860657,
+          "ackWait": {
+            "count": 10,
+            "totalMs": 42.80000001192093,
+            "maxMs": 10.599999994039536,
+            "samples": [
+              1.699999988079071,
+              4.4000000059604645,
+              2.699999988079071,
+              10.599999994039536,
+              7.0999999940395355,
+              3.9000000059604645,
+              2.2000000178813934,
+              1.0999999940395355,
+              6.9000000059604645,
+              2.2000000178813934
+            ]
+          },
+          "statistics": {
+            "dabs": 10,
+            "candidateChecks": 12521,
+            "affectedSamples": 7017,
+            "writes": 6880,
+            "peakPreparedBytes": 32768,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "5877d86d929facef3341cb1fec05f73680ef9d5439c7471dbe4394cce4b598a3",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 542136,
+        "textureRevision": 542136,
+        "displayRevision": 542136,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 58,
+          "writes": 67989,
+          "updatedPixels": 202121,
+          "updatedRegions": 125,
+          "fullRebuilds": 0,
+          "maxDabMs": 9.799999982118607,
+          "slices": 430
+        },
+        "history": {
+          "state": 11,
+          "entries": 1,
+          "bytes": 18844
+        },
+        "renderer": "webgl2",
+        "renderTimes": [
+          12.199999988079071,
+          7.199999988079071,
+          7.699999988079071,
+          7.9000000059604645,
+          4.5,
+          11.899999976158142,
+          4.9000000059604645,
+          2.2999999821186066,
+          2.800000011920929,
+          4.0999999940395355,
+          6.399999976158142,
+          7.799999982118607,
+          8.300000011920929,
+          3.5,
+          2,
+          4.199999988079071,
+          4.9000000059604645,
+          2.0999999940395355,
+          5.600000023841858,
+          5.5,
+          3.5999999940395355,
+          4.300000011920929,
+          3.5,
+          3.2000000178813934,
+          4.600000023841858,
+          4.300000011920929,
+          3.7999999821186066,
+          3.7000000178813934,
+          16.099999994039536,
+          5,
+          4.700000017881393,
+          1.800000011920929,
+          4.5999999940395355,
+          2.0999999940395355,
+          4,
+          2.699999988079071,
+          4.5999999940395355,
+          2.300000011920929,
+          4.300000011920929,
+          1.699999988079071,
+          3,
+          5,
+          3.0999999940395355,
+          4,
+          3.5,
+          4,
+          3.9000000059604645,
+          5.300000011920929,
+          3.5999999940395355,
+          1.800000011920929,
+          2.2999999821186066,
+          2.199999988079071,
+          3.0999999940395355,
+          5.5999999940395355,
+          6.5999999940395355,
+          4.799999982118607,
+          8,
+          9.599999994039536,
+          13.199999988079071,
+          8.5,
+          11.5,
+          13.599999994039536,
+          5.299999982118607,
+          3.800000011920929,
+          5.9000000059604645,
+          6.199999988079071,
+          5.800000011920929,
+          7,
+          9.299999982118607,
+          11,
+          16.899999976158142,
+          11.899999976158142,
+          8.5,
+          4.0999999940395355,
+          2.800000011920929,
+          5.4000000059604645,
+          1.800000011920929,
+          7.299999982118607,
+          7,
+          6.5,
+          6.5999999940395355,
+          4.399999976158142,
+          5,
+          4,
+          4.0999999940395355,
+          3.800000011920929
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "reason": "",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 85,
+            "uploadBytes": 9574640,
+            "textureBytes": 6340704,
+            "presentations": 86,
+            "resources": 3
+          },
+          "cpu": {
+            "images": 0,
+            "slices": 0,
+            "computeMs": 0,
+            "maxSliceMs": 0,
+            "snapshotBytes": 0
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 542136,
+          "displayRevision": 542136,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 56
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 1178,
+          "weighted": 9424,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 32.80000001192093,
+          "snapshotMs": 12.800000011920929,
+          "computeMs": 191.90000000596046,
+          "proposals": 10,
+          "staleResults": 0,
+          "validationMaxMs": 1,
+          "commitMaxMs": 0.29999998211860657,
+          "ackWait": {
+            "count": 10,
+            "totalMs": 42.80000001192093,
+            "maxMs": 10.599999994039536,
+            "samples": [
+              1.699999988079071,
+              4.4000000059604645,
+              2.699999988079071,
+              10.599999994039536,
+              7.0999999940395355,
+              3.9000000059604645,
+              2.2000000178813934,
+              1.0999999940395355,
+              6.9000000059604645,
+              2.2000000178813934
+            ]
+          },
+          "statistics": {
+            "dabs": 10,
+            "candidateChecks": 12521,
+            "affectedSamples": 7017,
+            "writes": 6880,
+            "peakPreparedBytes": 32768,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 80000,
+      "tool": "Flatten",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "flatten",
+            "radiusMeters": 80000,
+            "intensity": 0.7,
+            "targetElevation": -1600
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 10,
+          "candidateChecks": 12521,
+          "affectedSamples": 7017,
+          "writes": 7012,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "7c43f4cedbe9846cb02b7a94fbefba48973333c77f7f43b72153fe71f4156720",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 553889,
+        "textureRevision": 553889,
+        "displayRevision": 553889,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 68,
+          "writes": 75001,
+          "updatedPixels": 218449,
+          "updatedRegions": 145,
+          "fullRebuilds": 0,
+          "maxDabMs": 9.800000011920929,
+          "slices": 465
+        },
+        "history": {
+          "state": 12,
+          "entries": 1,
+          "bytes": 19120
+        },
+        "renderer": "webgl2",
+        "renderTimes": [
+          12.199999988079071,
+          7.199999988079071,
+          7.699999988079071,
+          7.9000000059604645,
+          4.5,
+          11.899999976158142,
+          4.9000000059604645,
+          2.2999999821186066,
+          2.800000011920929,
+          4.0999999940395355,
+          6.399999976158142,
+          7.799999982118607,
+          8.300000011920929,
+          3.5,
+          2,
+          4.199999988079071,
+          4.9000000059604645,
+          2.0999999940395355,
+          5.600000023841858,
+          5.5,
+          3.5999999940395355,
+          4.300000011920929,
+          3.5,
+          3.2000000178813934,
+          4.600000023841858,
+          4.300000011920929,
+          3.7999999821186066,
+          3.7000000178813934,
+          16.099999994039536,
+          5,
+          4.700000017881393,
+          1.800000011920929,
+          4.5999999940395355,
+          2.0999999940395355,
+          4,
+          2.699999988079071,
+          4.5999999940395355,
+          2.300000011920929,
+          4.300000011920929,
+          1.699999988079071,
+          3,
+          5,
+          3.0999999940395355,
+          4,
+          3.5,
+          4,
+          3.9000000059604645,
+          5.300000011920929,
+          3.5999999940395355,
+          1.800000011920929,
+          2.2999999821186066,
+          2.199999988079071,
+          3.0999999940395355,
+          5.5999999940395355,
+          6.5999999940395355,
+          4.799999982118607,
+          8,
+          9.599999994039536,
+          13.199999988079071,
+          8.5,
+          11.5,
+          13.599999994039536,
+          5.299999982118607,
+          3.800000011920929,
+          5.9000000059604645,
+          6.199999988079071,
+          5.800000011920929,
+          7,
+          9.299999982118607,
+          11,
+          16.899999976158142,
+          11.899999976158142,
+          8.5,
+          4.0999999940395355,
+          2.800000011920929,
+          5.4000000059604645,
+          1.800000011920929,
+          7.299999982118607,
+          7,
+          6.5,
+          6.5999999940395355,
+          4.399999976158142,
+          5,
+          4,
+          4.0999999940395355,
+          3.800000011920929,
+          4.5999999940395355,
+          6.300000011920929,
+          6.699999988079071,
+          7.699999988079071,
+          7.699999988079071,
+          7.299999982118607,
+          7.800000011920929,
+          6.0999999940395355,
+          8.199999988079071,
+          7.5999999940395355,
+          5.700000017881393,
+          5.4000000059604645
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "reason": "",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 97,
+            "uploadBytes": 9835888,
+            "textureBytes": 6340704,
+            "presentations": 98,
+            "resources": 3
+          },
+          "cpu": {
+            "images": 0,
+            "slices": 0,
+            "computeMs": 0,
+            "maxSliceMs": 0,
+            "snapshotBytes": 0
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 553889,
+          "displayRevision": 553889,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 66
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 200000,
+      "tool": "Raise",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "raise",
+            "radiusMeters": 200000,
+            "strengthMeters": 1200
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 4,
+          "candidateChecks": 29012,
+          "affectedSamples": 17059,
+          "writes": 17054,
+          "peakPreparedBytes": 65536
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 24.19999998807907,
+          "snapshotMs": 9,
+          "computeMs": 148.30000007152557,
+          "proposals": 4,
+          "staleResults": 0,
+          "validationMaxMs": 1.5,
+          "commitMaxMs": 1.199999988079071,
+          "ackWait": {
+            "count": 4,
+            "totalMs": 24.80000004172325,
+            "maxMs": 9.400000005960464,
+            "samples": [
+              9.400000005960464,
+              4.300000011920929,
+              6.200000017881393,
+              4.9000000059604645
+            ]
+          },
+          "statistics": {
+            "dabs": 4,
+            "candidateChecks": 29012,
+            "affectedSamples": 17059,
+            "writes": 17054,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "dafd286e73b6ea6ca894ca1d32fb5637b2b884ee7b15edeaf6fe072785d6066a",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 584149,
+        "textureRevision": 584149,
+        "displayRevision": 584149,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 72,
+          "writes": 92055,
+          "updatedPixels": 255405,
+          "updatedRegions": 157,
+          "fullRebuilds": 0,
+          "maxDabMs": 9.800000011920929,
+          "slices": 535
+        },
+        "history": {
+          "state": 13,
+          "entries": 1,
+          "bytes": 69772
+        },
+        "renderer": "webgl2",
+        "renderTimes": [
+          12.199999988079071,
+          7.199999988079071,
+          7.699999988079071,
+          7.9000000059604645,
+          4.5,
+          11.899999976158142,
+          4.9000000059604645,
+          2.2999999821186066,
+          2.800000011920929,
+          4.0999999940395355,
+          6.399999976158142,
+          7.799999982118607,
+          8.300000011920929,
+          3.5,
+          2,
+          4.199999988079071,
+          4.9000000059604645,
+          2.0999999940395355,
+          5.600000023841858,
+          5.5,
+          3.5999999940395355,
+          4.300000011920929,
+          3.5,
+          3.2000000178813934,
+          4.600000023841858,
+          4.300000011920929,
+          3.7999999821186066,
+          3.7000000178813934,
+          16.099999994039536,
+          5,
+          4.700000017881393,
+          1.800000011920929,
+          4.5999999940395355,
+          2.0999999940395355,
+          4,
+          2.699999988079071,
+          4.5999999940395355,
+          2.300000011920929,
+          4.300000011920929,
+          1.699999988079071,
+          3,
+          5,
+          3.0999999940395355,
+          4,
+          3.5,
+          4,
+          3.9000000059604645,
+          5.300000011920929,
+          3.5999999940395355,
+          1.800000011920929,
+          2.2999999821186066,
+          2.199999988079071,
+          3.0999999940395355,
+          5.5999999940395355,
+          6.5999999940395355,
+          4.799999982118607,
+          8,
+          9.599999994039536,
+          13.199999988079071,
+          8.5,
+          11.5,
+          13.599999994039536,
+          5.299999982118607,
+          3.800000011920929,
+          5.9000000059604645,
+          6.199999988079071,
+          5.800000011920929,
+          7,
+          9.299999982118607,
+          11,
+          16.899999976158142,
+          11.899999976158142,
+          8.5,
+          4.0999999940395355,
+          2.800000011920929,
+          5.4000000059604645,
+          1.800000011920929,
+          7.299999982118607,
+          7,
+          6.5,
+          6.5999999940395355,
+          4.399999976158142,
+          5,
+          4,
+          4.0999999940395355,
+          3.800000011920929,
+          4.5999999940395355,
+          6.300000011920929,
+          6.699999988079071,
+          7.699999988079071,
+          7.699999988079071,
+          7.299999982118607,
+          7.800000011920929,
+          6.0999999940395355,
+          8.199999988079071,
+          7.5999999940395355,
+          5.700000017881393,
+          5.4000000059604645,
+          5.5,
+          4.4000000059604645,
+          9,
+          7.299999982118607,
+          1.9000000059604645,
+          5.5999999940395355
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "reason": "",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 103,
+            "uploadBytes": 10427184,
+            "textureBytes": 6340704,
+            "presentations": 104,
+            "resources": 3
+          },
+          "cpu": {
+            "images": 0,
+            "slices": 0,
+            "computeMs": 0,
+            "maxSliceMs": 0,
+            "snapshotBytes": 0
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 584149,
+          "displayRevision": 584149,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 67
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 24.19999998807907,
+          "snapshotMs": 9,
+          "computeMs": 148.30000007152557,
+          "proposals": 4,
+          "staleResults": 0,
+          "validationMaxMs": 1.5,
+          "commitMaxMs": 1.199999988079071,
+          "ackWait": {
+            "count": 4,
+            "totalMs": 24.80000004172325,
+            "maxMs": 9.400000005960464,
+            "samples": [
+              9.400000005960464,
+              4.300000011920929,
+              6.200000017881393,
+              4.9000000059604645
+            ]
+          },
+          "statistics": {
+            "dabs": 4,
+            "candidateChecks": 29012,
+            "affectedSamples": 17059,
+            "writes": 17054,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 200000,
+      "tool": "Lower",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "lower",
+            "radiusMeters": 200000,
+            "strengthMeters": 1200
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 4,
+          "candidateChecks": 29012,
+          "affectedSamples": 17059,
+          "writes": 17054,
+          "peakPreparedBytes": 65536
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 20.69999998807907,
+          "snapshotMs": 8.599999994039536,
+          "computeMs": 137.70000007748604,
+          "proposals": 4,
+          "staleResults": 0,
+          "validationMaxMs": 1.9000000059604645,
+          "commitMaxMs": 1.2000000178813934,
+          "ackWait": {
+            "count": 4,
+            "totalMs": 27.499999970197678,
+            "maxMs": 11.199999988079071,
+            "samples": [
+              5.699999988079071,
+              5.699999988079071,
+              11.199999988079071,
+              4.9000000059604645
+            ]
+          },
+          "statistics": {
+            "dabs": 4,
+            "candidateChecks": 29012,
+            "affectedSamples": 17059,
+            "writes": 17054,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "237bc37160c053a82b0671da95aeddc351f01e142aa555094884e4d7413a51ce",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 618630,
+        "textureRevision": 618630,
+        "displayRevision": 618630,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 76,
+          "writes": 109109,
+          "updatedPixels": 298106,
+          "updatedRegions": 169,
+          "fullRebuilds": 0,
+          "maxDabMs": 9.800000011920929,
+          "slices": 610
+        },
+        "history": {
+          "state": 14,
+          "entries": 1,
+          "bytes": 69772
+        },
+        "renderer": "webgl2",
+        "renderTimes": [
+          12.199999988079071,
+          7.199999988079071,
+          7.699999988079071,
+          7.9000000059604645,
+          4.5,
+          11.899999976158142,
+          4.9000000059604645,
+          2.2999999821186066,
+          2.800000011920929,
+          4.0999999940395355,
+          6.399999976158142,
+          7.799999982118607,
+          8.300000011920929,
+          3.5,
+          2,
+          4.199999988079071,
+          4.9000000059604645,
+          2.0999999940395355,
+          5.600000023841858,
+          5.5,
+          3.5999999940395355,
+          4.300000011920929,
+          3.5,
+          3.2000000178813934,
+          4.600000023841858,
+          4.300000011920929,
+          3.7999999821186066,
+          3.7000000178813934,
+          16.099999994039536,
+          5,
+          4.700000017881393,
+          1.800000011920929,
+          4.5999999940395355,
+          2.0999999940395355,
+          4,
+          2.699999988079071,
+          4.5999999940395355,
+          2.300000011920929,
+          4.300000011920929,
+          1.699999988079071,
+          3,
+          5,
+          3.0999999940395355,
+          4,
+          3.5,
+          4,
+          3.9000000059604645,
+          5.300000011920929,
+          3.5999999940395355,
+          1.800000011920929,
+          2.2999999821186066,
+          2.199999988079071,
+          3.0999999940395355,
+          5.5999999940395355,
+          6.5999999940395355,
+          4.799999982118607,
+          8,
+          9.599999994039536,
+          13.199999988079071,
+          8.5,
+          11.5,
+          13.599999994039536,
+          5.299999982118607,
+          3.800000011920929,
+          5.9000000059604645,
+          6.199999988079071,
+          5.800000011920929,
+          7,
+          9.299999982118607,
+          11,
+          16.899999976158142,
+          11.899999976158142,
+          8.5,
+          4.0999999940395355,
+          2.800000011920929,
+          5.4000000059604645,
+          1.800000011920929,
+          7.299999982118607,
+          7,
+          6.5,
+          6.5999999940395355,
+          4.399999976158142,
+          5,
+          4,
+          4.0999999940395355,
+          3.800000011920929,
+          4.5999999940395355,
+          6.300000011920929,
+          6.699999988079071,
+          7.699999988079071,
+          7.699999988079071,
+          7.299999982118607,
+          7.800000011920929,
+          6.0999999940395355,
+          8.199999988079071,
+          7.5999999940395355,
+          5.700000017881393,
+          5.4000000059604645,
+          5.5,
+          4.4000000059604645,
+          9,
+          7.299999982118607,
+          1.9000000059604645,
+          5.5999999940395355,
+          1.800000011920929,
+          6.700000017881393,
+          6.9000000059604645,
+          5.5,
+          4.4000000059604645,
+          3.300000011920929
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "reason": "",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 109,
+            "uploadBytes": 11110400,
+            "textureBytes": 6340704,
+            "presentations": 110,
+            "resources": 3
+          },
+          "cpu": {
+            "images": 0,
+            "slices": 0,
+            "computeMs": 0,
+            "maxSliceMs": 0,
+            "snapshotBytes": 0
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 618630,
+          "displayRevision": 618630,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 68
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 20.69999998807907,
+          "snapshotMs": 8.599999994039536,
+          "computeMs": 137.70000007748604,
+          "proposals": 4,
+          "staleResults": 0,
+          "validationMaxMs": 1.9000000059604645,
+          "commitMaxMs": 1.2000000178813934,
+          "ackWait": {
+            "count": 4,
+            "totalMs": 27.499999970197678,
+            "maxMs": 11.199999988079071,
+            "samples": [
+              5.699999988079071,
+              5.699999988079071,
+              11.199999988079071,
+              4.9000000059604645
+            ]
+          },
+          "statistics": {
+            "dabs": 4,
+            "candidateChecks": 29012,
+            "affectedSamples": 17059,
+            "writes": 17054,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 200000,
+      "tool": "Smooth",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "smooth",
+            "radiusMeters": 200000,
+            "intensity": 0.7
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 4,
+          "candidateChecks": 29012,
+          "affectedSamples": 17059,
+          "writes": 16779,
+          "peakPreparedBytes": 65536
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 55568,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 21.099999994039536,
+          "snapshotMs": 8.300000011920929,
+          "computeMs": 334,
+          "proposals": 4,
+          "staleResults": 0,
+          "validationMaxMs": 2,
+          "commitMaxMs": 1.199999988079071,
+          "ackWait": {
+            "count": 4,
+            "totalMs": 25.69999998807907,
+            "maxMs": 10.100000023841858,
+            "samples": [
+              5.0999999940395355,
+              10.100000023841858,
+              4.399999976158142,
+              6.0999999940395355
+            ]
+          },
+          "statistics": {
+            "dabs": 4,
+            "candidateChecks": 29012,
+            "affectedSamples": 17059,
+            "writes": 16779,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 9
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "004dd14c7d28686094afcad5b7dd110300379bbb82ef1823e972eb730eca74b9",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 652636,
+        "textureRevision": 652636,
+        "displayRevision": 652636,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 80,
+          "writes": 125888,
+          "updatedPixels": 335097,
+          "updatedRegions": 179,
+          "fullRebuilds": 0,
+          "maxDabMs": 9.800000011920929,
+          "slices": 685
+        },
+        "history": {
+          "state": 15,
+          "entries": 1,
+          "bytes": 68572
+        },
+        "renderer": "webgl2",
+        "renderTimes": [
+          12.199999988079071,
+          7.199999988079071,
+          7.699999988079071,
+          7.9000000059604645,
+          4.5,
+          11.899999976158142,
+          4.9000000059604645,
+          2.2999999821186066,
+          2.800000011920929,
+          4.0999999940395355,
+          6.399999976158142,
+          7.799999982118607,
+          8.300000011920929,
+          3.5,
+          2,
+          4.199999988079071,
+          4.9000000059604645,
+          2.0999999940395355,
+          5.600000023841858,
+          5.5,
+          3.5999999940395355,
+          4.300000011920929,
+          3.5,
+          3.2000000178813934,
+          4.600000023841858,
+          4.300000011920929,
+          3.7999999821186066,
+          3.7000000178813934,
+          16.099999994039536,
+          5,
+          4.700000017881393,
+          1.800000011920929,
+          4.5999999940395355,
+          2.0999999940395355,
+          4,
+          2.699999988079071,
+          4.5999999940395355,
+          2.300000011920929,
+          4.300000011920929,
+          1.699999988079071,
+          3,
+          5,
+          3.0999999940395355,
+          4,
+          3.5,
+          4,
+          3.9000000059604645,
+          5.300000011920929,
+          3.5999999940395355,
+          1.800000011920929,
+          2.2999999821186066,
+          2.199999988079071,
+          3.0999999940395355,
+          5.5999999940395355,
+          6.5999999940395355,
+          4.799999982118607,
+          8,
+          9.599999994039536,
+          13.199999988079071,
+          8.5,
+          11.5,
+          13.599999994039536,
+          5.299999982118607,
+          3.800000011920929,
+          5.9000000059604645,
+          6.199999988079071,
+          5.800000011920929,
+          7,
+          9.299999982118607,
+          11,
+          16.899999976158142,
+          11.899999976158142,
+          8.5,
+          4.0999999940395355,
+          2.800000011920929,
+          5.4000000059604645,
+          1.800000011920929,
+          7.299999982118607,
+          7,
+          6.5,
+          6.5999999940395355,
+          4.399999976158142,
+          5,
+          4,
+          4.0999999940395355,
+          3.800000011920929,
+          4.5999999940395355,
+          6.300000011920929,
+          6.699999988079071,
+          7.699999988079071,
+          7.699999988079071,
+          7.299999982118607,
+          7.800000011920929,
+          6.0999999940395355,
+          8.199999988079071,
+          7.5999999940395355,
+          5.700000017881393,
+          5.4000000059604645,
+          5.5,
+          4.4000000059604645,
+          9,
+          7.299999982118607,
+          1.9000000059604645,
+          5.5999999940395355,
+          1.800000011920929,
+          6.700000017881393,
+          6.9000000059604645,
+          5.5,
+          4.4000000059604645,
+          3.300000011920929,
+          4.9000000059604645,
+          7,
+          6.5,
+          2.100000023841858,
+          2.4000000059604645
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "reason": "",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 114,
+            "uploadBytes": 11702256,
+            "textureBytes": 6340704,
+            "presentations": 115,
+            "resources": 3
+          },
+          "cpu": {
+            "images": 0,
+            "slices": 0,
+            "computeMs": 0,
+            "maxSliceMs": 0,
+            "snapshotBytes": 0
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 652636,
+          "displayRevision": 652636,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 69
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 55568,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 21.099999994039536,
+          "snapshotMs": 8.300000011920929,
+          "computeMs": 334,
+          "proposals": 4,
+          "staleResults": 0,
+          "validationMaxMs": 2,
+          "commitMaxMs": 1.199999988079071,
+          "ackWait": {
+            "count": 4,
+            "totalMs": 25.69999998807907,
+            "maxMs": 10.100000023841858,
+            "samples": [
+              5.0999999940395355,
+              10.100000023841858,
+              4.399999976158142,
+              6.0999999940395355
+            ]
+          },
+          "statistics": {
+            "dabs": 4,
+            "candidateChecks": 29012,
+            "affectedSamples": 17059,
+            "writes": 16779,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 9
+          }
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 200000,
+      "tool": "Flatten",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "flatten",
+            "radiusMeters": 200000,
+            "intensity": 0.7,
+            "targetElevation": -1600
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 4,
+          "candidateChecks": 29012,
+          "affectedSamples": 17059,
+          "writes": 17055,
+          "peakPreparedBytes": 65536
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 23.700000017881393,
+          "snapshotMs": 9,
+          "computeMs": 165.59999999403954,
+          "proposals": 4,
+          "staleResults": 0,
+          "validationMaxMs": 1.800000011920929,
+          "commitMaxMs": 1.699999988079071,
+          "ackWait": {
+            "count": 4,
+            "totalMs": 27.80000001192093,
+            "maxMs": 9.699999988079071,
+            "samples": [
+              4.800000011920929,
+              6.800000011920929,
+              9.699999988079071,
+              6.5
+            ]
+          },
+          "statistics": {
+            "dabs": 4,
+            "candidateChecks": 29012,
+            "affectedSamples": 17059,
+            "writes": 17055,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "d2d829c52dabc1d2457451c9824b059005f0e4fb0c0c9b24a96fa6edfbbb2fa6",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 687020,
+        "textureRevision": 687020,
+        "displayRevision": 687020,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 84,
+          "writes": 142943,
+          "updatedPixels": 377770,
+          "updatedRegions": 191,
+          "fullRebuilds": 0,
+          "maxDabMs": 9.800000011920929,
+          "slices": 761
+        },
+        "history": {
+          "state": 16,
+          "entries": 1,
+          "bytes": 69784
+        },
+        "renderer": "webgl2",
+        "renderTimes": [
+          7.199999988079071,
+          7.699999988079071,
+          7.9000000059604645,
+          4.5,
+          11.899999976158142,
+          4.9000000059604645,
+          2.2999999821186066,
+          2.800000011920929,
+          4.0999999940395355,
+          6.399999976158142,
+          7.799999982118607,
+          8.300000011920929,
+          3.5,
+          2,
+          4.199999988079071,
+          4.9000000059604645,
+          2.0999999940395355,
+          5.600000023841858,
+          5.5,
+          3.5999999940395355,
+          4.300000011920929,
+          3.5,
+          3.2000000178813934,
+          4.600000023841858,
+          4.300000011920929,
+          3.7999999821186066,
+          3.7000000178813934,
+          16.099999994039536,
+          5,
+          4.700000017881393,
+          1.800000011920929,
+          4.5999999940395355,
+          2.0999999940395355,
+          4,
+          2.699999988079071,
+          4.5999999940395355,
+          2.300000011920929,
+          4.300000011920929,
+          1.699999988079071,
+          3,
+          5,
+          3.0999999940395355,
+          4,
+          3.5,
+          4,
+          3.9000000059604645,
+          5.300000011920929,
+          3.5999999940395355,
+          1.800000011920929,
+          2.2999999821186066,
+          2.199999988079071,
+          3.0999999940395355,
+          5.5999999940395355,
+          6.5999999940395355,
+          4.799999982118607,
+          8,
+          9.599999994039536,
+          13.199999988079071,
+          8.5,
+          11.5,
+          13.599999994039536,
+          5.299999982118607,
+          3.800000011920929,
+          5.9000000059604645,
+          6.199999988079071,
+          5.800000011920929,
+          7,
+          9.299999982118607,
+          11,
+          16.899999976158142,
+          11.899999976158142,
+          8.5,
+          4.0999999940395355,
+          2.800000011920929,
+          5.4000000059604645,
+          1.800000011920929,
+          7.299999982118607,
+          7,
+          6.5,
+          6.5999999940395355,
+          4.399999976158142,
+          5,
+          4,
+          4.0999999940395355,
+          3.800000011920929,
+          4.5999999940395355,
+          6.300000011920929,
+          6.699999988079071,
+          7.699999988079071,
+          7.699999988079071,
+          7.299999982118607,
+          7.800000011920929,
+          6.0999999940395355,
+          8.199999988079071,
+          7.5999999940395355,
+          5.700000017881393,
+          5.4000000059604645,
+          5.5,
+          4.4000000059604645,
+          9,
+          7.299999982118607,
+          1.9000000059604645,
+          5.5999999940395355,
+          1.800000011920929,
+          6.700000017881393,
+          6.9000000059604645,
+          5.5,
+          4.4000000059604645,
+          3.300000011920929,
+          4.9000000059604645,
+          7,
+          6.5,
+          2.100000023841858,
+          2.4000000059604645,
+          5.5,
+          4,
+          5.0999999940395355,
+          4.4000000059604645,
+          2.5,
+          4.700000017881393
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "reason": "",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 120,
+            "uploadBytes": 12385024,
+            "textureBytes": 6340704,
+            "presentations": 121,
+            "resources": 3
+          },
+          "cpu": {
+            "images": 0,
+            "slices": 0,
+            "computeMs": 0,
+            "maxSliceMs": 0,
+            "snapshotBytes": 0
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 687020,
+          "displayRevision": 687020,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 70
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 23.700000017881393,
+          "snapshotMs": 9,
+          "computeMs": 165.59999999403954,
+          "proposals": 4,
+          "staleResults": 0,
+          "validationMaxMs": 1.800000011920929,
+          "commitMaxMs": 1.699999988079071,
+          "ackWait": {
+            "count": 4,
+            "totalMs": 27.80000001192093,
+            "maxMs": 9.699999988079071,
+            "samples": [
+              4.800000011920929,
+              6.800000011920929,
+              9.699999988079071,
+              6.5
+            ]
+          },
+          "statistics": {
+            "dabs": 4,
+            "candidateChecks": 29012,
+            "affectedSamples": 17059,
+            "writes": 17055,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      }
+    }
+  ],
+  "final": "004dd14c7d28686094afcad5b7dd110300379bbb82ef1823e972eb730eca74b9",
+  "source": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57"
+}

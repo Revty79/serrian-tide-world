@@ -1,0 +1,2 @@
+import base from './a7-p1c-full.config.ts';
+export default { ...base, outputDir: '../test-results/a7-p1c-hardware', workers: 1, use: { ...base.use, channel: 'chrome', headless: false, launchOptions: { args: ['--use-angle=d3d11'] } } };

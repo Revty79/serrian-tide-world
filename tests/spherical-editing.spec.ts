@@ -1,6 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 import { writeFile } from 'node:fs/promises';
-import { toolsPanel } from './workspace-helpers.ts';
+import { toolsPanel, sphericalPresentation } from './workspace-helpers.ts';
 type Host = typeof import('./fixtures/sphere-editor.tsx');
 const canvas = (p: Page) => p.getByRole('img', { name: 'Spherical terrain preview', exact: true });
 const button = (p: Page, name: string) => p.getByRole('button', { name, exact: true });
@@ -9,7 +9,7 @@ const digest = (p: Page) => p.evaluate(async () => (await import(new URL('/tests
 const record = (p: Page) => p.evaluate(async () => (await import(new URL('/tests/fixtures/sphere-editor.tsx', location.origin).href) as Host).startRecording());
 const compare = (p: Page) => p.evaluate(async () => (await import(new URL('/tests/fixtures/sphere-editor.tsx', location.origin).href) as Host).compareRecording());
 const rect = (p: Page, f: Parameters<Host['rect']>[0]) => p.evaluate(async (f) => (await import(new URL('/tests/fixtures/sphere-editor.tsx', location.origin).href) as Host).rect(f), f);
-async function frames(p: Page) { await p.evaluate(() => new Promise<void>((r) => requestAnimationFrame(() => requestAnimationFrame(() => r())))); }
+async function frames(p: Page) { await p.evaluate(() => new Promise<void>((r) => requestAnimationFrame(() => requestAnimationFrame(() => r())))); await sphericalPresentation(p); }
 async function idle(p: Page) { await expect.poll(async () => { const s = await stats(p); return s.pendingBytes === 0 && !s.backlogged && s.revision === s.cacheRevision; }, { timeout: 30000 }).toBe(true); await frames(p); }
 async function fixture(p: Page, n = 128) { await p.goto(`/tests/fixtures/sphere-editor.html?n=${n}`); await expect(canvas(p)).toHaveAttribute('data-mode', 'globe', { timeout: 30000 }); }
 async function drag(p: Page, points: { x: number; y: number }[]) { await p.mouse.move(points[0]!.x, points[0]!.y); await p.mouse.down(); for (const point of points.slice(1)) await p.mouse.move(point.x, point.y, { steps: 5 }); await p.mouse.up(); }
@@ -75,7 +75,7 @@ test('all four tools on globe and connected net match the numerical engine bit f
   }
   const edited = await digest(page); expect(edited).not.toBe(initial);
   for (const view of ['Globe', 'Six-face net', 'Globe']) { await button(page, view).click(); await frames(page); expect(await digest(page)).toBe(edited); }
-  const s = await stats(page); expect(s.fullRebuilds).toBe(0); expect(s.cacheRevision).toBe(s.revision); expect(s.copies).toBe(16);
+  const s = await stats(page); expect(s.fullRebuilds).toBe(0); expect(s.cacheRevision).toBe(s.revision); expect(s.copies).toBe(16 + s.displayEpochCopies);
 });
 
 test('joined net stroke and screen-edge assistance retain physical spacing; gaps/cuts safely end the gesture', async ({ page, context }, info) => {
@@ -113,7 +113,7 @@ test('mouse/pen/touch arbitration, cancellation, shortcuts, recenter and view ch
     await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: x - 50, y: y + 10, id: 1 }, { x: x + 60, y: y + 10, id: 2 }] });
     await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }); await idle(page);
     expect(await digest(page)).toBe(initial); expect((await stats(page)).historyEntries).toBe(0);
-    await button(page, 'Reset View').click();
+    await button(page, 'Reset View').click(); await frames(page);
     await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: x - 25, y: y + 20, id: 3 }] });
     await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: x + 35, y: y + 25, id: 3 }] });
     await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }); await idle(page);
@@ -151,7 +151,7 @@ test('real projected painting across all twelve face boundaries, eight corners, 
       const host = await import(new URL('/tests/fixtures/sphere-editor.tsx', location.origin).href) as Host, p = host.project(direction)[0]!, r = host.rect(p.face);
       return { x: Math.round(Math.max(r.x + 1, Math.min(r.x + r.side - 1, p.x))), y: Math.round(Math.max(r.y + 1, Math.min(r.y + r.side - 1, p.y))) };
     }, direction);
-    await page.mouse.click(point.x, point.y); await button(page, 'Center selection').click(); await button(page, 'Raise').click(); await record(page);
+    await page.mouse.click(point.x, point.y); await button(page, 'Center selection').click(); await frames(page); await button(page, 'Raise').click(); await record(page);
     await drag(page, [{ x: x - 8, y: y + 8 }, { x: x + 8, y: y - 8 }]); await idle(page);
     const replay = await compare(page); expect(replay.operations).toBe(1); expect(replay.exact).toBe(true);
   }

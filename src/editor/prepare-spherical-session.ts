@@ -3,6 +3,7 @@ import type { SphericalTerrain } from '../terrain/spherical.ts';
 import { makeSphericalDisplayCache, sphericalFaceTextureSteps, type FaceTexture } from '../rendering/spherical-raster.ts';
 import { workStep, type PersistenceWork } from '../persistence/cooperative-work.ts';
 import { SphericalSession } from './spherical-session.ts';
+import { prepareSphericalField } from './prepare-spherical-field.ts';
 
 export async function prepareSphericalSession(terrain: SphericalTerrain, name: string, saved: boolean, work: PersistenceWork = {}) {
   const start = performance.now(), source = terrain.copyElevations(), faces = {} as Record<CubeFace, FaceTexture>;
@@ -17,6 +18,8 @@ export async function prepareSphericalSession(terrain: SphericalTerrain, name: s
     } while (!result.done);
     faces[face] = result.value;
   }
-  const cache = makeSphericalDisplayCache(faces, terrain.revision), editor = new SphericalSession(terrain, cache, name, saved);
+  const cache = makeSphericalDisplayCache(faces, terrain.revision);
+  const field = await prepareSphericalField(terrain, cache, work); maxTaskMs = Math.max(maxTaskMs, field.maxTaskMs);
+  const editor = new SphericalSession(terrain, cache, name, saved);
   return { terrain, cache, editor, preparationMs: performance.now() - start, maxPreparationTaskMs: maxTaskMs };
 }

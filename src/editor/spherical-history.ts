@@ -34,6 +34,11 @@ export class SphericalHistory {
     this.pending = undefined; this.undoEntries = []; this.redoEntries = [];
     this.current = ++this.sequence; this.expectedRevision = this.terrain.revision;
   }
+  /** An external revision cannot be folded into this editor's pending Undo entry. */
+  discardUntracked() {
+    this.pending = undefined; this.undoEntries = []; this.redoEntries = [];
+    this.current = ++this.sequence; this.expectedRevision = this.terrain.revision;
+  }
   private synchronized() {
     if (this.terrain.revision !== this.expectedRevision) { this.clear(); throw new Error('Untracked spherical edit: history was cleared to protect current terrain.'); }
   }

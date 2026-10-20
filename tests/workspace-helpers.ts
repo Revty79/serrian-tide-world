@@ -9,6 +9,13 @@ export async function createWorld(page: Page, shape: 'bounded' | 'wrapped' | 'sp
   await page.getByRole('button', { name: 'Create World / Map', exact: true }).click();
   await expect(dialog).not.toBeVisible({ timeout: 30000 });
   await expect(page.getByRole('main', { name: 'Atlas workspace' })).toHaveAttribute('data-world-shape', shape);
+  if (shape === 'sphere') await sphericalPresentation(page);
+}
+/** CPU fallback publishes a complete image asynchronously. Wait for the actual
+ * displayed camera and source epoch rather than assuming two RAFs are enough. */
+export async function sphericalPresentation(page: Page) {
+  await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+  await page.waitForFunction(() => [...document.querySelectorAll<HTMLCanvasElement>('canvas[data-resolution]')].every(c => c.dataset.ready === 'true' && c.dataset.viewPending === 'false' && c.dataset.displayPending !== 'true' && c.dataset.revision === c.dataset.displayRevision), undefined, { timeout: 60000 });
 }
 export async function startAtlas(page: Page) { await page.goto('/'); await createWorld(page, 'bounded'); }
 

@@ -1,18 +1,18 @@
 import { expect, test, type Page } from '@playwright/test';
 import { writeFile } from 'node:fs/promises';
-import { createWorld, toolsPanel } from './workspace-helpers.ts';
+import { createWorld, toolsPanel, sphericalPresentation } from './workspace-helpers.ts';
 type Storage = typeof import('./fixtures/sphere-storage.ts');
 const button = (p: Page, name: string) => p.getByRole('button', { name, exact: true });
 const work = (p: Page) => p.getByLabel('Map work status', { exact: true });
 const main = (p: Page) => p.getByRole('main', { name: 'Atlas workspace' });
-async function frames(p: Page) { await p.evaluate(() => new Promise<void>((r) => requestAnimationFrame(() => requestAnimationFrame(() => r())))); }
+async function frames(p: Page) { await p.evaluate(() => new Promise<void>((r) => requestAnimationFrame(() => requestAnimationFrame(() => r())))); await sphericalPresentation(p); }
 async function saved(p: Page, name: string) {
   await button(p, 'Save').click(); await expect(work(p)).toHaveText('Saved on this device', { timeout: 30000 });
   return p.evaluate(async (name) => { const store = await import(new URL('/src/persistence/local-map-store.ts', location.origin).href) as typeof import('../src/persistence/local-map-store.ts'); const id = (await new store.LocalMapStore().list()).find((m) => m.name === name)!.id; return (await import(new URL('/tests/fixtures/sphere-storage.ts', location.origin).href) as Storage).summary(id); }, name);
 }
 async function open(p: Page, id: string) { await toolsPanel(p, true); await p.getByLabel('Saved maps', { exact: true }).selectOption(id); await button(p, 'Open Map').click(); }
 async function paint(p: Page, sphere = false, net = false) {
-  await toolsPanel(p, false); let x = p.viewportSize()!.width / 2, y = p.viewportSize()!.height / 2;
+  await toolsPanel(p, false); if (sphere) await sphericalPresentation(p); let x = p.viewportSize()!.width / 2, y = p.viewportSize()!.height / 2;
   if (net) { const r = await p.evaluate(async () => { const { netFaceRect, INITIAL_SPHERICAL_VIEW } = await import(new URL('/src/rendering/spherical-view.ts', location.origin).href) as typeof import('../src/rendering/spherical-view.ts'); return netFaceRect('px', { ...INITIAL_SPHERICAL_VIEW, mode: 'net' }, { width: innerWidth, height: innerHeight }); }); x = r.x + r.side * .5; y = r.y + r.side * .5; }
   await p.mouse.move(x - 14, y); await p.mouse.down(); await p.mouse.move(x + 16, y + 8, { steps: 3 }); await p.mouse.up();
   if (sphere) await expect(p.getByRole('img', { name: 'Atlas spherical terrain map', exact: true })).toHaveAttribute('data-processing', 'false');
@@ -37,7 +37,7 @@ test('start directly on any supported shape; setup is explicit, accessible and c
   await button(page, 'Create World / Map').click(); await button(page, 'Cancel preparation').click(); await expect(main(page)).toHaveAttribute('data-world-shape', 'none');
   await page.evaluate(() => (globalThis as typeof globalThis & { restoreYield(): void }).restoreYield());
   await expect(page.locator('canvas')).toHaveCount(0); await expect(button(page, 'New World / Map')).toBeFocused();
-  await createWorld(page, 'sphere', { radius: '735000', n: 256 }); await expect(page.locator('canvas')).toHaveCount(1);
+  await createWorld(page, 'sphere', { radius: '735000', n: 256 }); await expect(page.locator('canvas[role="img"]')).toHaveCount(1); await expect(page.locator('canvas')).toHaveCount(2);
   await expect(main(page)).toHaveAttribute('data-world-shape', 'sphere'); await expect(button(page, 'Return to map')).toHaveCount(0);
   await expect(page.getByRole('img')).toHaveAttribute('data-resolution', '256');
 });
@@ -69,7 +69,7 @@ test('one workflow creates, edits with all four tools, saves and reopens v1/v2/v
   }
   for (const record of records) {
     await open(page, record.id); await expect(work(page)).toHaveText('Saved on this device', { timeout: 30000 }); await expect(button(page, 'Undo')).toBeDisabled(); await expect(button(page, 'Redo')).toBeDisabled();
-    await expect(page.locator('canvas')).toHaveCount(1); const restored = await saved(page, record.name); expect(restored.payloadSha256).toBe(record.payloadSha256); expect(restored.metadata).toEqual(record.metadata); expect(restored.id).toBe(record.id);
+    await expect(page.locator('canvas[role="img"]')).toHaveCount(1); const restored = await saved(page, record.name); expect(restored.payloadSha256).toBe(record.payloadSha256); expect(restored.metadata).toEqual(record.metadata); expect(restored.id).toBe(record.id);
   }
   await toolsPanel(page, true); const options = await page.getByLabel('Saved maps', { exact: true }).locator('option').allTextContents(); expect(options).toHaveLength(4);
   expect(options.some((s) => s.includes('Bounded plane'))).toBe(true); expect(options.some((s) => s.includes('Wrapped plane'))).toBe(true); expect(options.some((s) => s.includes('Sphere'))).toBe(true);
@@ -94,7 +94,7 @@ test('cross-shape New/Open cancellation, corrupt data and storage failures retai
   await page.evaluate(async () => (await import(new URL('/tests/fixtures/sphere-storage.ts', location.origin).href) as Storage).fault('denied'));
   await button(page, 'Save').click(); await expect(work(page)).toHaveText('Unsaved changes'); await expect(page.getByRole('alert')).toContainText('Storage denied'); await expect(button(page, 'Undo')).toBeEnabled();
   await page.evaluate(async () => (await import(new URL('/tests/fixtures/sphere-storage.ts', location.origin).href) as Storage).fault('none')); await saved(page, 'Rich signed sphere');
-  await expect(page.locator('canvas')).toHaveCount(1);
+  await expect(page.locator('canvas[role="img"]')).toHaveCount(1);
 });
 
 test('desktop, ultrawide, square and tall views preserve proportions, context, fullscreen and geography', async ({ page }, info) => {

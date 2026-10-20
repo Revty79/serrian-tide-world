@@ -1,0 +1,130 @@
+{
+  "started": "2026-10-20T04:56:41.910Z",
+  "finished": "2026-10-20T05:56:51.008Z",
+  "frozenSources": 238,
+  "sourceDigest": "35315994ad5095b15c2d5af280171a01b70b25561e342415e213bb8138069d8c",
+  "sourcesUnchanged": true,
+  "phases": [
+    {
+      "name": "preserve-full",
+      "args": [
+        ".local/preserve-p1c.mjs",
+        "full"
+      ],
+      "code": 0,
+      "elapsedMs": 24520
+    },
+    {
+      "name": "preserve-hardware",
+      "args": [
+        ".local/preserve-p1c.mjs",
+        "hardware"
+      ],
+      "code": 0,
+      "elapsedMs": 11638
+    },
+    {
+      "name": "inventory",
+      "args": [
+        ".local/inventory-p1c.mjs"
+      ],
+      "code": 0,
+      "elapsedMs": 9192
+    },
+    {
+      "name": "before-measurements",
+      "code": 0,
+      "elapsedMs": 0,
+      "reusedImmutableBaseline": true,
+      "originalElapsedMs": 1188877,
+      "provenance": "docs/evidence/a7-p1c-baseline-measurement-provenance.json"
+    },
+    {
+      "name": "after-measurements",
+      "args": [
+        ".local/run-measure-p1c.mjs",
+        "after"
+      ],
+      "code": 0,
+      "elapsedMs": 1368681
+    },
+    {
+      "name": "before-sustained",
+      "args": [
+        ".local/run-measure-p1c.mjs",
+        "before-sustained",
+        "--sustained"
+      ],
+      "code": 0,
+      "elapsedMs": 272561
+    },
+    {
+      "name": "after-sustained",
+      "args": [
+        ".local/run-measure-p1c.mjs",
+        "after-sustained",
+        "--sustained"
+      ],
+      "code": 0,
+      "elapsedMs": 361546
+    },
+    {
+      "name": "capture-before",
+      "args": [
+        ".local/capture-p1c.mjs",
+        "before"
+      ],
+      "code": 0,
+      "elapsedMs": 97382
+    },
+    {
+      "name": "capture-after",
+      "args": [
+        ".local/capture-p1c.mjs",
+        "after"
+      ],
+      "code": 0,
+      "elapsedMs": 147597
+    },
+    {
+      "name": "photo-proof",
+      "args": [
+        ".local/photo-proof-p1c.mjs"
+      ],
+      "code": 0,
+      "elapsedMs": 160
+    },
+    {
+      "name": "performance-summary",
+      "args": [
+        ".local/summarize-p1c.mjs"
+      ],
+      "code": 0,
+      "elapsedMs": 405
+    },
+    {
+      "name": "sustained-summary",
+      "args": [
+        ".local/summarize-sustained-p1c.mjs"
+      ],
+      "code": 0,
+      "elapsedMs": 163
+    },
+    {
+      "name": "visual-gallery",
+      "args": [
+        ".local/gallery-p1c.mjs"
+      ],
+      "code": 0,
+      "elapsedMs": 262
+    },
+    {
+      "name": "completion-report",
+      "args": [
+        ".local/report-completion-p1c.mjs"
+      ],
+      "code": 0,
+      "elapsedMs": 149
+    }
+  ]
+}

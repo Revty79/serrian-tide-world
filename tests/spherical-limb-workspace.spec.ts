@@ -1,6 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 import { writeFile } from 'node:fs/promises';
-import { createWorld, toolsPanel } from './workspace-helpers.ts';
+import { createWorld, toolsPanel, sphericalPresentation } from './workspace-helpers.ts';
 import type { SphericalBrushSettings } from '../src/terrain/spherical-brush.ts';
 import type { Vec3 } from '../src/surfaces/cube-sphere.ts';
 type Observer = typeof import('./fixtures/limb-workspace.ts');
@@ -13,7 +13,7 @@ async function settings(p: Page, values: Record<string, string> = {}) { await to
 async function saved(p: Page) { await button(p, 'Save').click(); await expect(status(p)).toHaveText('Saved on this device', { timeout: 30000 }); return p.evaluate(async () => (await import(new URL('/tests/fixtures/sphere-storage.ts', location.origin).href) as Storage).summary()); }
 async function setup(p: Page, n = 128) { await p.goto('/'); await createWorld(p, 'sphere', { name: `Limb N${n}`, n }); await settings(p, { 'Spherical strength (m/dab)': '1200' }); await expect(canvas(p)).toHaveAttribute('data-mode', 'globe'); }
 function limb(p: Page) { const s = p.viewportSize()!; return { x: s.width / 2 + .98 * Math.min(s.width, s.height) * .42, y: s.height / 2 }; }
-async function idle(p: Page) { await expect(canvas(p)).toHaveAttribute('data-processing', 'false', { timeout: 30000 }); }
+async function idle(p: Page) { await expect(canvas(p)).toHaveAttribute('data-processing', 'false', { timeout: 30000 }); await sphericalPresentation(p); }
 async function waitRotation(p: Page, radians = .32) { await expect.poll(async () => Number(await canvas(p).getAttribute('data-limb-radians')), { timeout: 30000 }).toBeGreaterThan(radians); }
 async function stopped(p: Page) { await idle(p); const count = await canvas(p).getAttribute('data-limb-steps'); await p.waitForTimeout(450); expect(await canvas(p).getAttribute('data-limb-steps')).toBe(count); await expect(canvas(p)).toHaveAttribute('data-limb-assisting', 'false'); }
 test.use({ trace: 'on' });
@@ -51,7 +51,7 @@ for (const n of [128, 256]) test(`unified held limb stroke N${n}: native input, 
 });
 
 for (const feature of ['seam', 'corner', 'pole'] as const) test(`assisted geographical continuity at a ${feature} under a manually rotated camera`, async ({ page }, info) => {
-  await setup(page); await canvas(page).focus(); for (let i = 0; i < 3; i++) await page.keyboard.press('ArrowRight');
+  await setup(page); await canvas(page).focus(); for (let i = 0; i < 3; i++) await page.keyboard.press('ArrowRight'); await sphericalPresentation(page);
   const point = await page.evaluate(async (feature) => {
     const { createSphericalTerrain } = await import(new URL('/src/terrain/spherical.ts', location.origin).href) as typeof import('../src/terrain/spherical.ts');
     const { projectSphere } = await import(new URL('/src/rendering/spherical-view.ts', location.origin).href) as typeof import('../src/rendering/spherical-view.ts');
@@ -104,7 +104,7 @@ test('opt-out, actual limb at zoom, pole-facing orientation and preview follow p
   await setup(page); await toolsPanel(page, true); await page.getByLabel('Assist drawing near the globe limb').uncheck(); await toolsPanel(page, false);
   let p = limb(page); await page.mouse.move(p.x, p.y); await page.mouse.down(); await page.waitForTimeout(650); await page.mouse.up(); expect(Number(await canvas(page).getAttribute('data-limb-steps'))).toBe(0);
   await toolsPanel(page, true); await page.getByLabel('Assist drawing near the globe limb').check(); await button(page, 'View pz').click(); await toolsPanel(page, false);
-  await button(page, 'Zoom In').click();
+  await button(page, 'Zoom In').click(); await sphericalPresentation(page);
   const s = page.viewportSize()!, r = Math.min(s.width, s.height) * .42 * 1.25;
   // A visible top limb on desktop; a visible side limb on narrow mobile.
   const phi = s.width > s.height ? Math.PI / 6 : 0;
@@ -116,7 +116,7 @@ test('opt-out, actual limb at zoom, pole-facing orientation and preview follow p
 });
 
 for (const mode of ['Globe', 'Six-face net'] as const) test(`${mode}: contextual radius, strength, intensity and signed target update numerical response and preview`, async ({ page }, info) => {
-  test.setTimeout(120000); await setup(page); await button(page, mode).click(); const record = await saved(page);
+  test.setTimeout(120000); await setup(page); await button(page, mode).click(); await sphericalPresentation(page); const record = await saved(page);
   const point = await page.evaluate(async (mode) => { if (mode === 'Globe') return { x: innerWidth / 2, y: innerHeight / 2 }; const { netFaceRect, INITIAL_SPHERICAL_VIEW } = await import(new URL('/src/rendering/spherical-view.ts', location.origin).href) as typeof import('../src/rendering/spherical-view.ts'); const r = netFaceRect('px', { ...INITIAL_SPHERICAL_VIEW, mode: 'net' }, { width: innerWidth, height: innerHeight }); return { x: r.x + r.side / 2, y: r.y + r.side / 2 }; }, mode);
   const results = [];
   for (const config of [

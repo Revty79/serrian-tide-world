@@ -1,0 +1,4990 @@
+{
+  "records": [
+    {
+      "mode": "Globe",
+      "radius": 80000,
+      "tool": "Raise",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "raise",
+            "radiusMeters": 80000,
+            "strengthMeters": 1200
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 5,
+          "candidateChecks": 5976,
+          "affectedSamples": 3405,
+          "writes": 3404,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "14efb7400a20e51a8cb70bde200083d00bc192088f0804905c085a232fc0fb10",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 398674,
+        "textureRevision": 398674,
+        "displayRevision": 398674,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 5,
+          "writes": 3404,
+          "updatedPixels": 7814,
+          "updatedRegions": 7,
+          "fullRebuilds": 0,
+          "maxDabMs": 10.300000011920929,
+          "slices": 67
+        },
+        "history": {
+          "state": 1,
+          "entries": 1,
+          "bytes": 12376
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.9000000059604645,
+          7.4000000059604645,
+          7.0999999940395355,
+          11.299999982118607,
+          1.5,
+          2.5,
+          7,
+          1.300000011920929,
+          2.2999999821186066
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 9,
+            "slices": 56,
+            "computeMs": 311.19999998807907,
+            "maxSliceMs": 6.299999982118607,
+            "snapshotBytes": 6340704
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 398674,
+          "displayRevision": 398674,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 10
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 80000,
+      "tool": "Lower",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "lower",
+            "radiusMeters": 80000,
+            "strengthMeters": 1200
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 5,
+          "candidateChecks": 5976,
+          "affectedSamples": 3405,
+          "writes": 3404,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "a3247e95fb150eb34392aa32f37b28b4436d5f9ef5464629adb8d8fa96605509",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 405156,
+        "textureRevision": 405156,
+        "displayRevision": 405156,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 10,
+          "writes": 6808,
+          "updatedPixels": 17071,
+          "updatedRegions": 15,
+          "fullRebuilds": 0,
+          "maxDabMs": 10.300000011920929,
+          "slices": 127
+        },
+        "history": {
+          "state": 2,
+          "entries": 1,
+          "bytes": 12376
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.9000000059604645,
+          7.4000000059604645,
+          7.0999999940395355,
+          11.299999982118607,
+          1.5,
+          2.5,
+          7,
+          1.300000011920929,
+          2.2999999821186066,
+          5.799999982118607,
+          3,
+          9.599999994039536,
+          1.5,
+          7.300000011920929,
+          1.2999999821186066,
+          5.5,
+          5.699999988079071,
+          6
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 18,
+            "slices": 108,
+            "computeMs": 599.9000000655651,
+            "maxSliceMs": 6.299999982118607,
+            "snapshotBytes": 6340704
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 405156,
+          "displayRevision": 405156,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 20
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 80000,
+      "tool": "Smooth",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "smooth",
+            "radiusMeters": 80000,
+            "intensity": 0.7
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 5,
+          "candidateChecks": 5976,
+          "affectedSamples": 3405,
+          "writes": 3363,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 1178,
+          "weighted": 9424,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 19.299999982118607,
+          "snapshotMs": 7.9000000059604645,
+          "computeMs": 63.99999997019768,
+          "proposals": 5,
+          "staleResults": 0,
+          "validationMaxMs": 0.5,
+          "commitMaxMs": 0.19999998807907104,
+          "ackWait": {
+            "count": 5,
+            "totalMs": 15.900000005960464,
+            "maxMs": 4.200000017881393,
+            "samples": [
+              1.699999988079071,
+              4.200000017881393,
+              3.0999999940395355,
+              4,
+              2.9000000059604645
+            ]
+          },
+          "statistics": {
+            "dabs": 5,
+            "candidateChecks": 5976,
+            "affectedSamples": 3405,
+            "writes": 3363,
+            "peakPreparedBytes": 32768,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 1
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "e02a33391c4d25c17bbf7ad709c39f97fea2035f856fe81de35e166847a394e4",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 411579,
+        "textureRevision": 411579,
+        "displayRevision": 411579,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 15,
+          "writes": 10171,
+          "updatedPixels": 26198,
+          "updatedRegions": 23,
+          "fullRebuilds": 0,
+          "maxDabMs": 10.300000011920929,
+          "slices": 186
+        },
+        "history": {
+          "state": 3,
+          "entries": 1,
+          "bytes": 12268
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.9000000059604645,
+          7.4000000059604645,
+          7.0999999940395355,
+          11.299999982118607,
+          1.5,
+          2.5,
+          7,
+          1.300000011920929,
+          2.2999999821186066,
+          5.799999982118607,
+          3,
+          9.599999994039536,
+          1.5,
+          7.300000011920929,
+          1.2999999821186066,
+          5.5,
+          5.699999988079071,
+          6,
+          4.800000011920929,
+          3.800000011920929,
+          4.5999999940395355,
+          3.9000000059604645,
+          2.5,
+          2.0999999940395355,
+          3.4000000059604645,
+          3.800000011920929
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 26,
+            "slices": 156,
+            "computeMs": 856.6000000238419,
+            "maxSliceMs": 6.299999982118607,
+            "snapshotBytes": 6340704
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 411579,
+          "displayRevision": 411579,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 21
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 1178,
+          "weighted": 9424,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 19.299999982118607,
+          "snapshotMs": 7.9000000059604645,
+          "computeMs": 63.99999997019768,
+          "proposals": 5,
+          "staleResults": 0,
+          "validationMaxMs": 0.5,
+          "commitMaxMs": 0.19999998807907104,
+          "ackWait": {
+            "count": 5,
+            "totalMs": 15.900000005960464,
+            "maxMs": 4.200000017881393,
+            "samples": [
+              1.699999988079071,
+              4.200000017881393,
+              3.0999999940395355,
+              4,
+              2.9000000059604645
+            ]
+          },
+          "statistics": {
+            "dabs": 5,
+            "candidateChecks": 5976,
+            "affectedSamples": 3405,
+            "writes": 3363,
+            "peakPreparedBytes": 32768,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 1
+          }
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 80000,
+      "tool": "Flatten",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "flatten",
+            "radiusMeters": 80000,
+            "intensity": 0.7,
+            "targetElevation": -1600
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 5,
+          "candidateChecks": 5976,
+          "affectedSamples": 3405,
+          "writes": 3405,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "6a395f0681910c7b3bbb9e9774660bfea3a2eae40f85657e61a05ff00070a910",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 418053,
+        "textureRevision": 418053,
+        "displayRevision": 418053,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 20,
+          "writes": 13576,
+          "updatedPixels": 35418,
+          "updatedRegions": 31,
+          "fullRebuilds": 0,
+          "maxDabMs": 10.300000011920929,
+          "slices": 241
+        },
+        "history": {
+          "state": 4,
+          "entries": 1,
+          "bytes": 12376
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.9000000059604645,
+          7.4000000059604645,
+          7.0999999940395355,
+          11.299999982118607,
+          1.5,
+          2.5,
+          7,
+          1.300000011920929,
+          2.2999999821186066,
+          5.799999982118607,
+          3,
+          9.599999994039536,
+          1.5,
+          7.300000011920929,
+          1.2999999821186066,
+          5.5,
+          5.699999988079071,
+          6,
+          4.800000011920929,
+          3.800000011920929,
+          4.5999999940395355,
+          3.9000000059604645,
+          2.5,
+          2.0999999940395355,
+          3.4000000059604645,
+          3.800000011920929,
+          2.199999988079071,
+          4.5999999940395355,
+          3.9000000059604645,
+          7.399999976158142,
+          5.799999982118607,
+          3.5,
+          2.600000023841858,
+          2.800000011920929
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 34,
+            "slices": 201,
+            "computeMs": 1101.0000000298023,
+            "maxSliceMs": 6.299999982118607,
+            "snapshotBytes": 6340704
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 418053,
+          "displayRevision": 418053,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 31
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 200000,
+      "tool": "Raise",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "raise",
+            "radiusMeters": 200000,
+            "strengthMeters": 1200
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 2,
+          "candidateChecks": 13989,
+          "affectedSamples": 8422,
+          "writes": 8419,
+          "peakPreparedBytes": 65536
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 16.69999998807907,
+          "snapshotMs": 7.299999982118607,
+          "computeMs": 53.900000005960464,
+          "proposals": 2,
+          "staleResults": 0,
+          "validationMaxMs": 1.5999999940395355,
+          "commitMaxMs": 0.9000000059604645,
+          "ackWait": {
+            "count": 2,
+            "totalMs": 11.5,
+            "maxMs": 6.299999982118607,
+            "samples": [
+              6.299999982118607,
+              5.200000017881393
+            ]
+          },
+          "statistics": {
+            "dabs": 2,
+            "candidateChecks": 13989,
+            "affectedSamples": 8422,
+            "writes": 8419,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "cface3461dc8bbc9702911f1c8cec36b551cb0d5332012c57e273441f113cb28",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 436886,
+        "textureRevision": 436886,
+        "displayRevision": 436886,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 22,
+          "writes": 21995,
+          "updatedPixels": 60919,
+          "updatedRegions": 40,
+          "fullRebuilds": 0,
+          "maxDabMs": 10.300000011920929,
+          "slices": 325
+        },
+        "history": {
+          "state": 5,
+          "entries": 1,
+          "bytes": 56392
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.9000000059604645,
+          7.4000000059604645,
+          7.0999999940395355,
+          11.299999982118607,
+          1.5,
+          2.5,
+          7,
+          1.300000011920929,
+          2.2999999821186066,
+          5.799999982118607,
+          3,
+          9.599999994039536,
+          1.5,
+          7.300000011920929,
+          1.2999999821186066,
+          5.5,
+          5.699999988079071,
+          6,
+          4.800000011920929,
+          3.800000011920929,
+          4.5999999940395355,
+          3.9000000059604645,
+          2.5,
+          2.0999999940395355,
+          3.4000000059604645,
+          3.800000011920929,
+          2.199999988079071,
+          4.5999999940395355,
+          3.9000000059604645,
+          7.399999976158142,
+          5.799999982118607,
+          3.5,
+          2.600000023841858,
+          2.800000011920929,
+          0.699999988079071,
+          9.699999988079071,
+          4.699999988079071,
+          3.399999976158142,
+          1.4000000059604645,
+          6.5
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 40,
+            "slices": 256,
+            "computeMs": 1414.4000000953674,
+            "maxSliceMs": 6.299999982118607,
+            "snapshotBytes": 6340704
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 436886,
+          "displayRevision": 436886,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 32
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 16.69999998807907,
+          "snapshotMs": 7.299999982118607,
+          "computeMs": 53.900000005960464,
+          "proposals": 2,
+          "staleResults": 0,
+          "validationMaxMs": 1.5999999940395355,
+          "commitMaxMs": 0.9000000059604645,
+          "ackWait": {
+            "count": 2,
+            "totalMs": 11.5,
+            "maxMs": 6.299999982118607,
+            "samples": [
+              6.299999982118607,
+              5.200000017881393
+            ]
+          },
+          "statistics": {
+            "dabs": 2,
+            "candidateChecks": 13989,
+            "affectedSamples": 8422,
+            "writes": 8419,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 200000,
+      "tool": "Lower",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "lower",
+            "radiusMeters": 200000,
+            "strengthMeters": 1200
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 2,
+          "candidateChecks": 13989,
+          "affectedSamples": 8422,
+          "writes": 8419,
+          "peakPreparedBytes": 65536
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 21.599999994039536,
+          "snapshotMs": 7,
+          "computeMs": 57.60000002384186,
+          "proposals": 2,
+          "staleResults": 0,
+          "validationMaxMs": 1.5,
+          "commitMaxMs": 1,
+          "ackWait": {
+            "count": 2,
+            "totalMs": 8.200000017881393,
+            "maxMs": 4.4000000059604645,
+            "samples": [
+              4.4000000059604645,
+              3.800000011920929
+            ]
+          },
+          "statistics": {
+            "dabs": 2,
+            "candidateChecks": 13989,
+            "affectedSamples": 8422,
+            "writes": 8419,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 1
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "a6f78205f7fab6ec9fa1e2e1a5e6cc6987a5db89e7f212885cfdcdd92d6a22f5",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 459387,
+        "textureRevision": 459387,
+        "displayRevision": 459387,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 24,
+          "writes": 30414,
+          "updatedPixels": 91336,
+          "updatedRegions": 50,
+          "fullRebuilds": 0,
+          "maxDabMs": 10.300000011920929,
+          "slices": 410
+        },
+        "history": {
+          "state": 6,
+          "entries": 1,
+          "bytes": 56392
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.9000000059604645,
+          7.4000000059604645,
+          7.0999999940395355,
+          11.299999982118607,
+          1.5,
+          2.5,
+          7,
+          1.300000011920929,
+          2.2999999821186066,
+          5.799999982118607,
+          3,
+          9.599999994039536,
+          1.5,
+          7.300000011920929,
+          1.2999999821186066,
+          5.5,
+          5.699999988079071,
+          6,
+          4.800000011920929,
+          3.800000011920929,
+          4.5999999940395355,
+          3.9000000059604645,
+          2.5,
+          2.0999999940395355,
+          3.4000000059604645,
+          3.800000011920929,
+          2.199999988079071,
+          4.5999999940395355,
+          3.9000000059604645,
+          7.399999976158142,
+          5.799999982118607,
+          3.5,
+          2.600000023841858,
+          2.800000011920929,
+          0.699999988079071,
+          9.699999988079071,
+          4.699999988079071,
+          3.399999976158142,
+          1.4000000059604645,
+          6.5,
+          4.699999988079071,
+          7.699999988079071,
+          5.0999999940395355,
+          6.5,
+          4.5,
+          3.7000000178813934
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 46,
+            "slices": 310,
+            "computeMs": 1727.6000001728535,
+            "maxSliceMs": 6.299999982118607,
+            "snapshotBytes": 6340704
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 459387,
+          "displayRevision": 459387,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 33
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 21.599999994039536,
+          "snapshotMs": 7,
+          "computeMs": 57.60000002384186,
+          "proposals": 2,
+          "staleResults": 0,
+          "validationMaxMs": 1.5,
+          "commitMaxMs": 1,
+          "ackWait": {
+            "count": 2,
+            "totalMs": 8.200000017881393,
+            "maxMs": 4.4000000059604645,
+            "samples": [
+              4.4000000059604645,
+              3.800000011920929
+            ]
+          },
+          "statistics": {
+            "dabs": 2,
+            "candidateChecks": 13989,
+            "affectedSamples": 8422,
+            "writes": 8419,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 1
+          }
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 200000,
+      "tool": "Smooth",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "smooth",
+            "radiusMeters": 200000,
+            "intensity": 0.7
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 2,
+          "candidateChecks": 13989,
+          "affectedSamples": 8422,
+          "writes": 8251,
+          "peakPreparedBytes": 65536
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 55568,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 15.800000011920929,
+          "snapshotMs": 6.4000000059604645,
+          "computeMs": 134.59999999403954,
+          "proposals": 2,
+          "staleResults": 0,
+          "validationMaxMs": 0.9000000059604645,
+          "commitMaxMs": 1,
+          "ackWait": {
+            "count": 2,
+            "totalMs": 5.399999976158142,
+            "maxMs": 2.699999988079071,
+            "samples": [
+              2.699999988079071,
+              2.699999988079071
+            ]
+          },
+          "statistics": {
+            "dabs": 2,
+            "candidateChecks": 13989,
+            "affectedSamples": 8422,
+            "writes": 8251,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 8
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "40843208218decc8d20170a573cea8156506bcea474dc5f347db398890160758",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 481494,
+        "textureRevision": 481494,
+        "displayRevision": 481494,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 26,
+          "writes": 38665,
+          "updatedPixels": 121485,
+          "updatedRegions": 60,
+          "fullRebuilds": 0,
+          "maxDabMs": 10.300000011920929,
+          "slices": 486
+        },
+        "history": {
+          "state": 7,
+          "entries": 1,
+          "bytes": 55036
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.9000000059604645,
+          7.4000000059604645,
+          7.0999999940395355,
+          11.299999982118607,
+          1.5,
+          2.5,
+          7,
+          1.300000011920929,
+          2.2999999821186066,
+          5.799999982118607,
+          3,
+          9.599999994039536,
+          1.5,
+          7.300000011920929,
+          1.2999999821186066,
+          5.5,
+          5.699999988079071,
+          6,
+          4.800000011920929,
+          3.800000011920929,
+          4.5999999940395355,
+          3.9000000059604645,
+          2.5,
+          2.0999999940395355,
+          3.4000000059604645,
+          3.800000011920929,
+          2.199999988079071,
+          4.5999999940395355,
+          3.9000000059604645,
+          7.399999976158142,
+          5.799999982118607,
+          3.5,
+          2.600000023841858,
+          2.800000011920929,
+          0.699999988079071,
+          9.699999988079071,
+          4.699999988079071,
+          3.399999976158142,
+          1.4000000059604645,
+          6.5,
+          4.699999988079071,
+          7.699999988079071,
+          5.0999999940395355,
+          6.5,
+          4.5,
+          3.7000000178813934,
+          2.699999988079071,
+          4,
+          6.0999999940395355,
+          5.5999999940395355,
+          4.5999999940395355
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 51,
+            "slices": 356,
+            "computeMs": 1994.7000001072884,
+            "maxSliceMs": 6.299999982118607,
+            "snapshotBytes": 6340704
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 481494,
+          "displayRevision": 481494,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 34
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 55568,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 15.800000011920929,
+          "snapshotMs": 6.4000000059604645,
+          "computeMs": 134.59999999403954,
+          "proposals": 2,
+          "staleResults": 0,
+          "validationMaxMs": 0.9000000059604645,
+          "commitMaxMs": 1,
+          "ackWait": {
+            "count": 2,
+            "totalMs": 5.399999976158142,
+            "maxMs": 2.699999988079071,
+            "samples": [
+              2.699999988079071,
+              2.699999988079071
+            ]
+          },
+          "statistics": {
+            "dabs": 2,
+            "candidateChecks": 13989,
+            "affectedSamples": 8422,
+            "writes": 8251,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 8
+          }
+        }
+      }
+    },
+    {
+      "mode": "Globe",
+      "radius": 200000,
+      "tool": "Flatten",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963389410397376,
+            0.5972540824985372,
+            0.09556072374432935
+          ],
+          "settings": {
+            "tool": "flatten",
+            "radiusMeters": 200000,
+            "intensity": 0.7,
+            "targetElevation": -1600
+          },
+          "hemisphere": [
+            1,
+            0,
+            0
+          ],
+          "points": [
+            {
+              "direction": [
+                0.7930847715716545,
+                0.6030330931319168,
+                0.08583492115036624
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7887421318854334,
+                0.6088121037652964,
+                0.08505099468963101
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7832336818660652,
+                0.6145911143986759,
+                0.09392955707721119
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7773421430794731,
+                0.6203701250320555,
+                0.10430772052117647
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7723757643880211,
+                0.6261491356654351,
+                0.10664398009943513
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7687049749441203,
+                0.6319281462988147,
+                0.09879007749517814
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7652394173950755,
+                0.6377071569321942,
+                0.0879671305790027
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "direction": [
+                0.7608208929426576,
+                0.6434861675655739,
+                0.08412562637928732
+              ],
+              "visibility": {
+                "hemisphere": [
+                  1,
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 2,
+          "candidateChecks": 13989,
+          "affectedSamples": 8422,
+          "writes": 8420,
+          "peakPreparedBytes": 65536
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 21.900000005960464,
+          "snapshotMs": 8.199999988079071,
+          "computeMs": 53.900000005960464,
+          "proposals": 2,
+          "staleResults": 0,
+          "validationMaxMs": 1.300000011920929,
+          "commitMaxMs": 0.699999988079071,
+          "ackWait": {
+            "count": 2,
+            "totalMs": 8.999999970197678,
+            "maxMs": 5.299999982118607,
+            "samples": [
+              3.699999988079071,
+              5.299999982118607
+            ]
+          },
+          "statistics": {
+            "dabs": 2,
+            "candidateChecks": 13989,
+            "affectedSamples": 8422,
+            "writes": 8420,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "dd0147f5654597d1567cad0e74c742611e008b25b1072b9f794721b483132986",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 503885,
+        "textureRevision": 503885,
+        "displayRevision": 503885,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 28,
+          "writes": 47085,
+          "updatedPixels": 151845,
+          "updatedRegions": 70,
+          "fullRebuilds": 0,
+          "maxDabMs": 10.300000011920929,
+          "slices": 575
+        },
+        "history": {
+          "state": 8,
+          "entries": 1,
+          "bytes": 56404
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.9000000059604645,
+          7.4000000059604645,
+          7.0999999940395355,
+          11.299999982118607,
+          1.5,
+          2.5,
+          7,
+          1.300000011920929,
+          2.2999999821186066,
+          5.799999982118607,
+          3,
+          9.599999994039536,
+          1.5,
+          7.300000011920929,
+          1.2999999821186066,
+          5.5,
+          5.699999988079071,
+          6,
+          4.800000011920929,
+          3.800000011920929,
+          4.5999999940395355,
+          3.9000000059604645,
+          2.5,
+          2.0999999940395355,
+          3.4000000059604645,
+          3.800000011920929,
+          2.199999988079071,
+          4.5999999940395355,
+          3.9000000059604645,
+          7.399999976158142,
+          5.799999982118607,
+          3.5,
+          2.600000023841858,
+          2.800000011920929,
+          0.699999988079071,
+          9.699999988079071,
+          4.699999988079071,
+          3.399999976158142,
+          1.4000000059604645,
+          6.5,
+          4.699999988079071,
+          7.699999988079071,
+          5.0999999940395355,
+          6.5,
+          4.5,
+          3.7000000178813934,
+          2.699999988079071,
+          4,
+          6.0999999940395355,
+          5.5999999940395355,
+          4.5999999940395355,
+          1.199999988079071,
+          8.899999976158142,
+          4.899999976158142,
+          1.699999988079071,
+          1.2999999821186066,
+          4.200000017881393
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 57,
+            "slices": 415,
+            "computeMs": 2327.500000089407,
+            "maxSliceMs": 6.299999982118607,
+            "snapshotBytes": 6340704
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 503885,
+          "displayRevision": 503885,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 35
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 21.900000005960464,
+          "snapshotMs": 8.199999988079071,
+          "computeMs": 53.900000005960464,
+          "proposals": 2,
+          "staleResults": 0,
+          "validationMaxMs": 1.300000011920929,
+          "commitMaxMs": 0.699999988079071,
+          "ackWait": {
+            "count": 2,
+            "totalMs": 8.999999970197678,
+            "maxMs": 5.299999982118607,
+            "samples": [
+              3.699999988079071,
+              5.299999982118607
+            ]
+          },
+          "statistics": {
+            "dabs": 2,
+            "candidateChecks": 13989,
+            "affectedSamples": 8422,
+            "writes": 8420,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 80000,
+      "tool": "Raise",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "raise",
+            "radiusMeters": 80000,
+            "strengthMeters": 1200
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 10,
+          "candidateChecks": 12521,
+          "affectedSamples": 7017,
+          "writes": 7012,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "7ee91534ab91b3dd1595644aa151cb2d74993e98f761c0c6c0a216dde377d01e",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 518766,
+        "textureRevision": 518766,
+        "displayRevision": 518766,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 38,
+          "writes": 54097,
+          "updatedPixels": 172240,
+          "updatedRegions": 90,
+          "fullRebuilds": 0,
+          "maxDabMs": 10.300000011920929,
+          "slices": 637
+        },
+        "history": {
+          "state": 9,
+          "entries": 1,
+          "bytes": 19108
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.9000000059604645,
+          7.4000000059604645,
+          7.0999999940395355,
+          11.299999982118607,
+          1.5,
+          2.5,
+          7,
+          1.300000011920929,
+          2.2999999821186066,
+          5.799999982118607,
+          3,
+          9.599999994039536,
+          1.5,
+          7.300000011920929,
+          1.2999999821186066,
+          5.5,
+          5.699999988079071,
+          6,
+          4.800000011920929,
+          3.800000011920929,
+          4.5999999940395355,
+          3.9000000059604645,
+          2.5,
+          2.0999999940395355,
+          3.4000000059604645,
+          3.800000011920929,
+          2.199999988079071,
+          4.5999999940395355,
+          3.9000000059604645,
+          7.399999976158142,
+          5.799999982118607,
+          3.5,
+          2.600000023841858,
+          2.800000011920929,
+          0.699999988079071,
+          9.699999988079071,
+          4.699999988079071,
+          3.399999976158142,
+          1.4000000059604645,
+          6.5,
+          4.699999988079071,
+          7.699999988079071,
+          5.0999999940395355,
+          6.5,
+          4.5,
+          3.7000000178813934,
+          2.699999988079071,
+          4,
+          6.0999999940395355,
+          5.5999999940395355,
+          4.5999999940395355,
+          1.199999988079071,
+          8.899999976158142,
+          4.899999976158142,
+          1.699999988079071,
+          1.2999999821186066,
+          4.200000017881393,
+          6.4000000059604645,
+          5.9000000059604645,
+          11.5,
+          12,
+          12.799999982118607,
+          6.0999999940395355,
+          7.4000000059604645,
+          14.600000023841858,
+          12.5,
+          14.299999982118607,
+          5.699999988079071,
+          6.199999988079071,
+          2.800000011920929
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 70,
+            "slices": 458,
+            "computeMs": 2556.8000000417233,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 6340704
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 518766,
+          "displayRevision": 518766,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 45
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 80000,
+      "tool": "Lower",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "lower",
+            "radiusMeters": 80000,
+            "strengthMeters": 1200
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 10,
+          "candidateChecks": 12521,
+          "affectedSamples": 7017,
+          "writes": 7012,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "f395c1390f672cd225acc29c9c47b706b1da80492f28fcae8607dbbb5661efe4",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 530539,
+        "textureRevision": 530539,
+        "displayRevision": 530539,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 48,
+          "writes": 61109,
+          "updatedPixels": 188578,
+          "updatedRegions": 110,
+          "fullRebuilds": 0,
+          "maxDabMs": 10.300000011920929,
+          "slices": 688
+        },
+        "history": {
+          "state": 10,
+          "entries": 1,
+          "bytes": 19108
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.9000000059604645,
+          7.4000000059604645,
+          7.0999999940395355,
+          11.299999982118607,
+          1.5,
+          2.5,
+          7,
+          1.300000011920929,
+          2.2999999821186066,
+          5.799999982118607,
+          3,
+          9.599999994039536,
+          1.5,
+          7.300000011920929,
+          1.2999999821186066,
+          5.5,
+          5.699999988079071,
+          6,
+          4.800000011920929,
+          3.800000011920929,
+          4.5999999940395355,
+          3.9000000059604645,
+          2.5,
+          2.0999999940395355,
+          3.4000000059604645,
+          3.800000011920929,
+          2.199999988079071,
+          4.5999999940395355,
+          3.9000000059604645,
+          7.399999976158142,
+          5.799999982118607,
+          3.5,
+          2.600000023841858,
+          2.800000011920929,
+          0.699999988079071,
+          9.699999988079071,
+          4.699999988079071,
+          3.399999976158142,
+          1.4000000059604645,
+          6.5,
+          4.699999988079071,
+          7.699999988079071,
+          5.0999999940395355,
+          6.5,
+          4.5,
+          3.7000000178813934,
+          2.699999988079071,
+          4,
+          6.0999999940395355,
+          5.5999999940395355,
+          4.5999999940395355,
+          1.199999988079071,
+          8.899999976158142,
+          4.899999976158142,
+          1.699999988079071,
+          1.2999999821186066,
+          4.200000017881393,
+          6.4000000059604645,
+          5.9000000059604645,
+          11.5,
+          12,
+          12.799999982118607,
+          6.0999999940395355,
+          7.4000000059604645,
+          14.600000023841858,
+          12.5,
+          14.299999982118607,
+          5.699999988079071,
+          6.199999988079071,
+          2.800000011920929,
+          4.0999999940395355,
+          1.9000000059604645,
+          13.200000017881393,
+          5.4000000059604645,
+          11.400000005960464,
+          6.4000000059604645,
+          5.699999988079071,
+          8.099999994039536,
+          9,
+          7.200000017881393,
+          8,
+          4,
+          5.800000011920929
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 83,
+            "slices": 497,
+            "computeMs": 2743.6000000834465,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 6340704
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 530539,
+          "displayRevision": 530539,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 55
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 80000,
+      "tool": "Smooth",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "smooth",
+            "radiusMeters": 80000,
+            "intensity": 0.7
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 10,
+          "candidateChecks": 12521,
+          "affectedSamples": 7017,
+          "writes": 6880,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 1178,
+          "weighted": 9424,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 15.899999976158142,
+          "snapshotMs": 7.300000011920929,
+          "computeMs": 105.6999998986721,
+          "proposals": 10,
+          "staleResults": 0,
+          "validationMaxMs": 0.29999998211860657,
+          "commitMaxMs": 0.20000001788139343,
+          "ackWait": {
+            "count": 10,
+            "totalMs": 39.00000002980232,
+            "maxMs": 8.5,
+            "samples": [
+              1.300000011920929,
+              0.9000000059604645,
+              0.7000000178813934,
+              8.5,
+              4.199999988079071,
+              3.699999988079071,
+              2.800000011920929,
+              8.400000005960464,
+              3.9000000059604645,
+              4.5999999940395355
+            ]
+          },
+          "statistics": {
+            "dabs": 10,
+            "candidateChecks": 12521,
+            "affectedSamples": 7017,
+            "writes": 6880,
+            "peakPreparedBytes": 32768,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 1
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "5877d86d929facef3341cb1fec05f73680ef9d5439c7471dbe4394cce4b598a3",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 542136,
+        "textureRevision": 542136,
+        "displayRevision": 542136,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 58,
+          "writes": 67989,
+          "updatedPixels": 203013,
+          "updatedRegions": 127,
+          "fullRebuilds": 0,
+          "maxDabMs": 10.300000011920929,
+          "slices": 737
+        },
+        "history": {
+          "state": 11,
+          "entries": 1,
+          "bytes": 18844
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.9000000059604645,
+          7.4000000059604645,
+          7.0999999940395355,
+          11.299999982118607,
+          1.5,
+          2.5,
+          7,
+          1.300000011920929,
+          2.2999999821186066,
+          5.799999982118607,
+          3,
+          9.599999994039536,
+          1.5,
+          7.300000011920929,
+          1.2999999821186066,
+          5.5,
+          5.699999988079071,
+          6,
+          4.800000011920929,
+          3.800000011920929,
+          4.5999999940395355,
+          3.9000000059604645,
+          2.5,
+          2.0999999940395355,
+          3.4000000059604645,
+          3.800000011920929,
+          2.199999988079071,
+          4.5999999940395355,
+          3.9000000059604645,
+          7.399999976158142,
+          5.799999982118607,
+          3.5,
+          2.600000023841858,
+          2.800000011920929,
+          0.699999988079071,
+          9.699999988079071,
+          4.699999988079071,
+          3.399999976158142,
+          1.4000000059604645,
+          6.5,
+          4.699999988079071,
+          7.699999988079071,
+          5.0999999940395355,
+          6.5,
+          4.5,
+          3.7000000178813934,
+          2.699999988079071,
+          4,
+          6.0999999940395355,
+          5.5999999940395355,
+          4.5999999940395355,
+          1.199999988079071,
+          8.899999976158142,
+          4.899999976158142,
+          1.699999988079071,
+          1.2999999821186066,
+          4.200000017881393,
+          6.4000000059604645,
+          5.9000000059604645,
+          11.5,
+          12,
+          12.799999982118607,
+          6.0999999940395355,
+          7.4000000059604645,
+          14.600000023841858,
+          12.5,
+          14.299999982118607,
+          5.699999988079071,
+          6.199999988079071,
+          2.800000011920929,
+          4.0999999940395355,
+          1.9000000059604645,
+          13.200000017881393,
+          5.4000000059604645,
+          11.400000005960464,
+          6.4000000059604645,
+          5.699999988079071,
+          8.099999994039536,
+          9,
+          7.200000017881393,
+          8,
+          4,
+          5.800000011920929,
+          6.199999988079071,
+          10.199999988079071,
+          6.200000017881393,
+          5.4000000059604645,
+          5.799999982118607,
+          9.099999994039536,
+          9.400000005960464,
+          2.4000000059604645,
+          4.299999982118607,
+          3.9000000059604645
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 93,
+            "slices": 530,
+            "computeMs": 2909.100000143051,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 6340704
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 542136,
+          "displayRevision": 542136,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 56
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 1178,
+          "weighted": 9424,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 15.899999976158142,
+          "snapshotMs": 7.300000011920929,
+          "computeMs": 105.6999998986721,
+          "proposals": 10,
+          "staleResults": 0,
+          "validationMaxMs": 0.29999998211860657,
+          "commitMaxMs": 0.20000001788139343,
+          "ackWait": {
+            "count": 10,
+            "totalMs": 39.00000002980232,
+            "maxMs": 8.5,
+            "samples": [
+              1.300000011920929,
+              0.9000000059604645,
+              0.7000000178813934,
+              8.5,
+              4.199999988079071,
+              3.699999988079071,
+              2.800000011920929,
+              8.400000005960464,
+              3.9000000059604645,
+              4.5999999940395355
+            ]
+          },
+          "statistics": {
+            "dabs": 10,
+            "candidateChecks": 12521,
+            "affectedSamples": 7017,
+            "writes": 6880,
+            "peakPreparedBytes": 32768,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 1
+          }
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 80000,
+      "tool": "Flatten",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "flatten",
+            "radiusMeters": 80000,
+            "intensity": 0.7,
+            "targetElevation": -1600
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 10,
+          "candidateChecks": 12521,
+          "affectedSamples": 7017,
+          "writes": 7012,
+          "peakPreparedBytes": 32768
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "7c43f4cedbe9846cb02b7a94fbefba48973333c77f7f43b72153fe71f4156720",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 553889,
+        "textureRevision": 553889,
+        "displayRevision": 553889,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 68,
+          "writes": 75001,
+          "updatedPixels": 219341,
+          "updatedRegions": 147,
+          "fullRebuilds": 0,
+          "maxDabMs": 10.300000011920929,
+          "slices": 786
+        },
+        "history": {
+          "state": 12,
+          "entries": 1,
+          "bytes": 19120
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.9000000059604645,
+          7.4000000059604645,
+          7.0999999940395355,
+          11.299999982118607,
+          1.5,
+          2.5,
+          7,
+          1.300000011920929,
+          2.2999999821186066,
+          5.799999982118607,
+          3,
+          9.599999994039536,
+          1.5,
+          7.300000011920929,
+          1.2999999821186066,
+          5.5,
+          5.699999988079071,
+          6,
+          4.800000011920929,
+          3.800000011920929,
+          4.5999999940395355,
+          3.9000000059604645,
+          2.5,
+          2.0999999940395355,
+          3.4000000059604645,
+          3.800000011920929,
+          2.199999988079071,
+          4.5999999940395355,
+          3.9000000059604645,
+          7.399999976158142,
+          5.799999982118607,
+          3.5,
+          2.600000023841858,
+          2.800000011920929,
+          0.699999988079071,
+          9.699999988079071,
+          4.699999988079071,
+          3.399999976158142,
+          1.4000000059604645,
+          6.5,
+          4.699999988079071,
+          7.699999988079071,
+          5.0999999940395355,
+          6.5,
+          4.5,
+          3.7000000178813934,
+          2.699999988079071,
+          4,
+          6.0999999940395355,
+          5.5999999940395355,
+          4.5999999940395355,
+          1.199999988079071,
+          8.899999976158142,
+          4.899999976158142,
+          1.699999988079071,
+          1.2999999821186066,
+          4.200000017881393,
+          6.4000000059604645,
+          5.9000000059604645,
+          11.5,
+          12,
+          12.799999982118607,
+          6.0999999940395355,
+          7.4000000059604645,
+          14.600000023841858,
+          12.5,
+          14.299999982118607,
+          5.699999988079071,
+          6.199999988079071,
+          2.800000011920929,
+          4.0999999940395355,
+          1.9000000059604645,
+          13.200000017881393,
+          5.4000000059604645,
+          11.400000005960464,
+          6.4000000059604645,
+          5.699999988079071,
+          8.099999994039536,
+          9,
+          7.200000017881393,
+          8,
+          4,
+          5.800000011920929,
+          6.199999988079071,
+          10.199999988079071,
+          6.200000017881393,
+          5.4000000059604645,
+          5.799999982118607,
+          9.099999994039536,
+          9.400000005960464,
+          2.4000000059604645,
+          4.299999982118607,
+          3.9000000059604645,
+          1.9000000059604645,
+          2.800000011920929,
+          9.900000005960464,
+          11.200000017881393,
+          12.400000005960464,
+          5.5999999940395355,
+          6.199999988079071,
+          8.699999988079071,
+          11.099999994039536,
+          5.4000000059604645,
+          6.199999988079071,
+          1.800000011920929
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 105,
+            "slices": 566,
+            "computeMs": 3084.100000143051,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 6340704
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 553889,
+          "displayRevision": 553889,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 66
+          }
+        },
+        "work": {
+          "backend": "cooperative",
+          "candidates": 1178,
+          "weighted": 1178,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation is cheaper than background handoff"
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 200000,
+      "tool": "Raise",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "raise",
+            "radiusMeters": 200000,
+            "strengthMeters": 1200
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 4,
+          "candidateChecks": 29012,
+          "affectedSamples": 17059,
+          "writes": 17054,
+          "peakPreparedBytes": 65536
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 16.799999982118607,
+          "snapshotMs": 7.199999988079071,
+          "computeMs": 85.39999985694885,
+          "proposals": 4,
+          "staleResults": 0,
+          "validationMaxMs": 1,
+          "commitMaxMs": 0.7999999821186066,
+          "ackWait": {
+            "count": 4,
+            "totalMs": 21.700000017881393,
+            "maxMs": 7.200000017881393,
+            "samples": [
+              4.4000000059604645,
+              6.5,
+              3.5999999940395355,
+              7.200000017881393
+            ]
+          },
+          "statistics": {
+            "dabs": 4,
+            "candidateChecks": 29012,
+            "affectedSamples": 17059,
+            "writes": 17054,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "dafd286e73b6ea6ca894ca1d32fb5637b2b884ee7b15edeaf6fe072785d6066a",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 584149,
+        "textureRevision": 584149,
+        "displayRevision": 584149,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 72,
+          "writes": 92055,
+          "updatedPixels": 256297,
+          "updatedRegions": 159,
+          "fullRebuilds": 0,
+          "maxDabMs": 10.300000011920929,
+          "slices": 853
+        },
+        "history": {
+          "state": 13,
+          "entries": 1,
+          "bytes": 69772
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.9000000059604645,
+          7.4000000059604645,
+          7.0999999940395355,
+          11.299999982118607,
+          1.5,
+          2.5,
+          7,
+          1.300000011920929,
+          2.2999999821186066,
+          5.799999982118607,
+          3,
+          9.599999994039536,
+          1.5,
+          7.300000011920929,
+          1.2999999821186066,
+          5.5,
+          5.699999988079071,
+          6,
+          4.800000011920929,
+          3.800000011920929,
+          4.5999999940395355,
+          3.9000000059604645,
+          2.5,
+          2.0999999940395355,
+          3.4000000059604645,
+          3.800000011920929,
+          2.199999988079071,
+          4.5999999940395355,
+          3.9000000059604645,
+          7.399999976158142,
+          5.799999982118607,
+          3.5,
+          2.600000023841858,
+          2.800000011920929,
+          0.699999988079071,
+          9.699999988079071,
+          4.699999988079071,
+          3.399999976158142,
+          1.4000000059604645,
+          6.5,
+          4.699999988079071,
+          7.699999988079071,
+          5.0999999940395355,
+          6.5,
+          4.5,
+          3.7000000178813934,
+          2.699999988079071,
+          4,
+          6.0999999940395355,
+          5.5999999940395355,
+          4.5999999940395355,
+          1.199999988079071,
+          8.899999976158142,
+          4.899999976158142,
+          1.699999988079071,
+          1.2999999821186066,
+          4.200000017881393,
+          6.4000000059604645,
+          5.9000000059604645,
+          11.5,
+          12,
+          12.799999982118607,
+          6.0999999940395355,
+          7.4000000059604645,
+          14.600000023841858,
+          12.5,
+          14.299999982118607,
+          5.699999988079071,
+          6.199999988079071,
+          2.800000011920929,
+          4.0999999940395355,
+          1.9000000059604645,
+          13.200000017881393,
+          5.4000000059604645,
+          11.400000005960464,
+          6.4000000059604645,
+          5.699999988079071,
+          8.099999994039536,
+          9,
+          7.200000017881393,
+          8,
+          4,
+          5.800000011920929,
+          6.199999988079071,
+          10.199999988079071,
+          6.200000017881393,
+          5.4000000059604645,
+          5.799999982118607,
+          9.099999994039536,
+          9.400000005960464,
+          2.4000000059604645,
+          4.299999982118607,
+          3.9000000059604645,
+          1.9000000059604645,
+          2.800000011920929,
+          9.900000005960464,
+          11.200000017881393,
+          12.400000005960464,
+          5.5999999940395355,
+          6.199999988079071,
+          8.699999988079071,
+          11.099999994039536,
+          5.4000000059604645,
+          6.199999988079071,
+          1.800000011920929,
+          1.5999999940395355,
+          13.599999994039536,
+          8.199999988079071,
+          11.599999994039536,
+          7.700000017881393,
+          4,
+          3.699999988079071
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 112,
+            "slices": 599,
+            "computeMs": 3265.7000001370907,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 6340704
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 584149,
+          "displayRevision": 584149,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 67
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 16.799999982118607,
+          "snapshotMs": 7.199999988079071,
+          "computeMs": 85.39999985694885,
+          "proposals": 4,
+          "staleResults": 0,
+          "validationMaxMs": 1,
+          "commitMaxMs": 0.7999999821186066,
+          "ackWait": {
+            "count": 4,
+            "totalMs": 21.700000017881393,
+            "maxMs": 7.200000017881393,
+            "samples": [
+              4.4000000059604645,
+              6.5,
+              3.5999999940395355,
+              7.200000017881393
+            ]
+          },
+          "statistics": {
+            "dabs": 4,
+            "candidateChecks": 29012,
+            "affectedSamples": 17059,
+            "writes": 17054,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 200000,
+      "tool": "Lower",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "lower",
+            "radiusMeters": 200000,
+            "strengthMeters": 1200
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 4,
+          "candidateChecks": 29012,
+          "affectedSamples": 17059,
+          "writes": 17054,
+          "peakPreparedBytes": 65536
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 16.200000017881393,
+          "snapshotMs": 6.5999999940395355,
+          "computeMs": 89.2000000178814,
+          "proposals": 4,
+          "staleResults": 0,
+          "validationMaxMs": 1.199999988079071,
+          "commitMaxMs": 0.8999999761581421,
+          "ackWait": {
+            "count": 4,
+            "totalMs": 30.5,
+            "maxMs": 13,
+            "samples": [
+              3.800000011920929,
+              9.900000005960464,
+              3.7999999821186066,
+              13
+            ]
+          },
+          "statistics": {
+            "dabs": 4,
+            "candidateChecks": 29012,
+            "affectedSamples": 17059,
+            "writes": 17054,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "237bc37160c053a82b0671da95aeddc351f01e142aa555094884e4d7413a51ce",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 618630,
+        "textureRevision": 618630,
+        "displayRevision": 618630,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 76,
+          "writes": 109109,
+          "updatedPixels": 293440,
+          "updatedRegions": 169,
+          "fullRebuilds": 0,
+          "maxDabMs": 10.300000011920929,
+          "slices": 921
+        },
+        "history": {
+          "state": 14,
+          "entries": 1,
+          "bytes": 69772
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          4.9000000059604645,
+          7.4000000059604645,
+          7.0999999940395355,
+          11.299999982118607,
+          1.5,
+          2.5,
+          7,
+          1.300000011920929,
+          2.2999999821186066,
+          5.799999982118607,
+          3,
+          9.599999994039536,
+          1.5,
+          7.300000011920929,
+          1.2999999821186066,
+          5.5,
+          5.699999988079071,
+          6,
+          4.800000011920929,
+          3.800000011920929,
+          4.5999999940395355,
+          3.9000000059604645,
+          2.5,
+          2.0999999940395355,
+          3.4000000059604645,
+          3.800000011920929,
+          2.199999988079071,
+          4.5999999940395355,
+          3.9000000059604645,
+          7.399999976158142,
+          5.799999982118607,
+          3.5,
+          2.600000023841858,
+          2.800000011920929,
+          0.699999988079071,
+          9.699999988079071,
+          4.699999988079071,
+          3.399999976158142,
+          1.4000000059604645,
+          6.5,
+          4.699999988079071,
+          7.699999988079071,
+          5.0999999940395355,
+          6.5,
+          4.5,
+          3.7000000178813934,
+          2.699999988079071,
+          4,
+          6.0999999940395355,
+          5.5999999940395355,
+          4.5999999940395355,
+          1.199999988079071,
+          8.899999976158142,
+          4.899999976158142,
+          1.699999988079071,
+          1.2999999821186066,
+          4.200000017881393,
+          6.4000000059604645,
+          5.9000000059604645,
+          11.5,
+          12,
+          12.799999982118607,
+          6.0999999940395355,
+          7.4000000059604645,
+          14.600000023841858,
+          12.5,
+          14.299999982118607,
+          5.699999988079071,
+          6.199999988079071,
+          2.800000011920929,
+          4.0999999940395355,
+          1.9000000059604645,
+          13.200000017881393,
+          5.4000000059604645,
+          11.400000005960464,
+          6.4000000059604645,
+          5.699999988079071,
+          8.099999994039536,
+          9,
+          7.200000017881393,
+          8,
+          4,
+          5.800000011920929,
+          6.199999988079071,
+          10.199999988079071,
+          6.200000017881393,
+          5.4000000059604645,
+          5.799999982118607,
+          9.099999994039536,
+          9.400000005960464,
+          2.4000000059604645,
+          4.299999982118607,
+          3.9000000059604645,
+          1.9000000059604645,
+          2.800000011920929,
+          9.900000005960464,
+          11.200000017881393,
+          12.400000005960464,
+          5.5999999940395355,
+          6.199999988079071,
+          8.699999988079071,
+          11.099999994039536,
+          5.4000000059604645,
+          6.199999988079071,
+          1.800000011920929,
+          1.5999999940395355,
+          13.599999994039536,
+          8.199999988079071,
+          11.599999994039536,
+          7.700000017881393,
+          4,
+          3.699999988079071,
+          2.4000000059604645,
+          10.299999982118607,
+          11.599999994039536,
+          4,
+          5.300000011920929,
+          5.299999982118607
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 118,
+            "slices": 628,
+            "computeMs": 3426.5000001192093,
+            "maxSliceMs": 6.399999976158142,
+            "snapshotBytes": 6340704
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 618630,
+          "displayRevision": 618630,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 68
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 16.200000017881393,
+          "snapshotMs": 6.5999999940395355,
+          "computeMs": 89.2000000178814,
+          "proposals": 4,
+          "staleResults": 0,
+          "validationMaxMs": 1.199999988079071,
+          "commitMaxMs": 0.8999999761581421,
+          "ackWait": {
+            "count": 4,
+            "totalMs": 30.5,
+            "maxMs": 13,
+            "samples": [
+              3.800000011920929,
+              9.900000005960464,
+              3.7999999821186066,
+              13
+            ]
+          },
+          "statistics": {
+            "dabs": 4,
+            "candidateChecks": 29012,
+            "affectedSamples": 17059,
+            "writes": 17054,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 200000,
+      "tool": "Smooth",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "smooth",
+            "radiusMeters": 200000,
+            "intensity": 0.7
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 4,
+          "candidateChecks": 29012,
+          "affectedSamples": 17059,
+          "writes": 16779,
+          "peakPreparedBytes": 65536
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 55568,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 15,
+          "snapshotMs": 7.300000011920929,
+          "computeMs": 197.60000002384186,
+          "proposals": 4,
+          "staleResults": 0,
+          "validationMaxMs": 1.0999999940395355,
+          "commitMaxMs": 0.9000000059604645,
+          "ackWait": {
+            "count": 4,
+            "totalMs": 29.69999998807907,
+            "maxMs": 13.900000005960464,
+            "samples": [
+              3.2999999821186066,
+              9.400000005960464,
+              3.0999999940395355,
+              13.900000005960464
+            ]
+          },
+          "statistics": {
+            "dabs": 4,
+            "candidateChecks": 29012,
+            "affectedSamples": 17059,
+            "writes": 16779,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 9
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "004dd14c7d28686094afcad5b7dd110300379bbb82ef1823e972eb730eca74b9",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 652636,
+        "textureRevision": 652636,
+        "displayRevision": 652636,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 80,
+          "writes": 125888,
+          "updatedPixels": 330431,
+          "updatedRegions": 179,
+          "fullRebuilds": 0,
+          "maxDabMs": 10.300000011920929,
+          "slices": 993
+        },
+        "history": {
+          "state": 15,
+          "entries": 1,
+          "bytes": 68572
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          1.5,
+          2.5,
+          7,
+          1.300000011920929,
+          2.2999999821186066,
+          5.799999982118607,
+          3,
+          9.599999994039536,
+          1.5,
+          7.300000011920929,
+          1.2999999821186066,
+          5.5,
+          5.699999988079071,
+          6,
+          4.800000011920929,
+          3.800000011920929,
+          4.5999999940395355,
+          3.9000000059604645,
+          2.5,
+          2.0999999940395355,
+          3.4000000059604645,
+          3.800000011920929,
+          2.199999988079071,
+          4.5999999940395355,
+          3.9000000059604645,
+          7.399999976158142,
+          5.799999982118607,
+          3.5,
+          2.600000023841858,
+          2.800000011920929,
+          0.699999988079071,
+          9.699999988079071,
+          4.699999988079071,
+          3.399999976158142,
+          1.4000000059604645,
+          6.5,
+          4.699999988079071,
+          7.699999988079071,
+          5.0999999940395355,
+          6.5,
+          4.5,
+          3.7000000178813934,
+          2.699999988079071,
+          4,
+          6.0999999940395355,
+          5.5999999940395355,
+          4.5999999940395355,
+          1.199999988079071,
+          8.899999976158142,
+          4.899999976158142,
+          1.699999988079071,
+          1.2999999821186066,
+          4.200000017881393,
+          6.4000000059604645,
+          5.9000000059604645,
+          11.5,
+          12,
+          12.799999982118607,
+          6.0999999940395355,
+          7.4000000059604645,
+          14.600000023841858,
+          12.5,
+          14.299999982118607,
+          5.699999988079071,
+          6.199999988079071,
+          2.800000011920929,
+          4.0999999940395355,
+          1.9000000059604645,
+          13.200000017881393,
+          5.4000000059604645,
+          11.400000005960464,
+          6.4000000059604645,
+          5.699999988079071,
+          8.099999994039536,
+          9,
+          7.200000017881393,
+          8,
+          4,
+          5.800000011920929,
+          6.199999988079071,
+          10.199999988079071,
+          6.200000017881393,
+          5.4000000059604645,
+          5.799999982118607,
+          9.099999994039536,
+          9.400000005960464,
+          2.4000000059604645,
+          4.299999982118607,
+          3.9000000059604645,
+          1.9000000059604645,
+          2.800000011920929,
+          9.900000005960464,
+          11.200000017881393,
+          12.400000005960464,
+          5.5999999940395355,
+          6.199999988079071,
+          8.699999988079071,
+          11.099999994039536,
+          5.4000000059604645,
+          6.199999988079071,
+          1.800000011920929,
+          1.5999999940395355,
+          13.599999994039536,
+          8.199999988079071,
+          11.599999994039536,
+          7.700000017881393,
+          4,
+          3.699999988079071,
+          2.4000000059604645,
+          10.299999982118607,
+          11.599999994039536,
+          4,
+          5.300000011920929,
+          5.299999982118607,
+          1.699999988079071,
+          10.200000017881393,
+          11.599999994039536,
+          6.299999982118607,
+          4.199999988079071,
+          1.800000011920929
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 124,
+            "slices": 657,
+            "computeMs": 3584.2000001072884,
+            "maxSliceMs": 6.699999988079071,
+            "snapshotBytes": 6340704
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 652636,
+          "displayRevision": 652636,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 69
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 55568,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 15,
+          "snapshotMs": 7.300000011920929,
+          "computeMs": 197.60000002384186,
+          "proposals": 4,
+          "staleResults": 0,
+          "validationMaxMs": 1.0999999940395355,
+          "commitMaxMs": 0.9000000059604645,
+          "ackWait": {
+            "count": 4,
+            "totalMs": 29.69999998807907,
+            "maxMs": 13.900000005960464,
+            "samples": [
+              3.2999999821186066,
+              9.400000005960464,
+              3.0999999940395355,
+              13.900000005960464
+            ]
+          },
+          "statistics": {
+            "dabs": 4,
+            "candidateChecks": 29012,
+            "affectedSamples": 17059,
+            "writes": 16779,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 9
+          }
+        }
+      }
+    },
+    {
+      "mode": "Six-face net",
+      "radius": 200000,
+      "tool": "Flatten",
+      "proof": {
+        "mismatches": 0,
+        "newlyExposedChanged": 0,
+        "samples": 393218,
+        "accepted": {
+          "first": [
+            0.7963388356086165,
+            0.5972542037643468,
+            0.09556084442557508
+          ],
+          "settings": {
+            "tool": "flatten",
+            "radiusMeters": 200000,
+            "intensity": 0.7,
+            "targetElevation": -1600
+          },
+          "points": [
+            {
+              "direction": [
+                0.7877703002084385,
+                0.6117417030934894,
+                0.0720419517072082
+              ]
+            },
+            {
+              "direction": [
+                0.7775478202054721,
+                0.6249909361858808,
+                0.06932327876849985
+              ]
+            },
+            {
+              "direction": [
+                0.7658063245663282,
+                0.6369911959097361,
+                0.08822068684665609
+              ]
+            },
+            {
+              "direction": [
+                0.7533795003783047,
+                0.6483417933609387,
+                0.10987377936185551
+              ]
+            },
+            {
+              "direction": [
+                0.7421040586794894,
+                0.6606268415366576,
+                0.11337434600794191
+              ]
+            },
+            {
+              "direction": [
+                0.7323441864880064,
+                0.674295775386372,
+                0.09485357037724827
+              ]
+            },
+            {
+              "direction": [
+                0.7223895035372341,
+                0.6878755044920789,
+                0.07057404267148261
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            },
+            {
+              "direction": [
+                0.7111776882072518,
+                0.700318782717254,
+                0.06148087808101447
+              ]
+            }
+          ]
+        },
+        "statistics": {
+          "dabs": 4,
+          "candidateChecks": 29012,
+          "affectedSamples": 17059,
+          "writes": 17055,
+          "peakPreparedBytes": 65536
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 15,
+          "snapshotMs": 6,
+          "computeMs": 90.7999999821186,
+          "proposals": 4,
+          "staleResults": 0,
+          "validationMaxMs": 1.0999999940395355,
+          "commitMaxMs": 1,
+          "ackWait": {
+            "count": 4,
+            "totalMs": 15.300000011920929,
+            "maxMs": 4.799999982118607,
+            "samples": [
+              3,
+              4.600000023841858,
+              2.9000000059604645,
+              4.799999982118607
+            ]
+          },
+          "statistics": {
+            "dabs": 4,
+            "candidateChecks": 29012,
+            "affectedSamples": 17059,
+            "writes": 17055,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      },
+      "before": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "after": "d2d829c52dabc1d2457451c9824b059005f0e4fb0c0c9b24a96fa6edfbbb2fa6",
+      "display": {
+        "presentationPending": false,
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "revision": 687020,
+        "textureRevision": 687020,
+        "displayRevision": 687020,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "statistics": {
+          "dabs": 84,
+          "writes": 142943,
+          "updatedPixels": 373104,
+          "updatedRegions": 191,
+          "fullRebuilds": 0,
+          "maxDabMs": 10.300000011920929,
+          "slices": 1068
+        },
+        "history": {
+          "state": 16,
+          "entries": 1,
+          "bytes": 69784
+        },
+        "renderer": "cpu",
+        "renderTimes": [
+          9.599999994039536,
+          1.5,
+          7.300000011920929,
+          1.2999999821186066,
+          5.5,
+          5.699999988079071,
+          6,
+          4.800000011920929,
+          3.800000011920929,
+          4.5999999940395355,
+          3.9000000059604645,
+          2.5,
+          2.0999999940395355,
+          3.4000000059604645,
+          3.800000011920929,
+          2.199999988079071,
+          4.5999999940395355,
+          3.9000000059604645,
+          7.399999976158142,
+          5.799999982118607,
+          3.5,
+          2.600000023841858,
+          2.800000011920929,
+          0.699999988079071,
+          9.699999988079071,
+          4.699999988079071,
+          3.399999976158142,
+          1.4000000059604645,
+          6.5,
+          4.699999988079071,
+          7.699999988079071,
+          5.0999999940395355,
+          6.5,
+          4.5,
+          3.7000000178813934,
+          2.699999988079071,
+          4,
+          6.0999999940395355,
+          5.5999999940395355,
+          4.5999999940395355,
+          1.199999988079071,
+          8.899999976158142,
+          4.899999976158142,
+          1.699999988079071,
+          1.2999999821186066,
+          4.200000017881393,
+          6.4000000059604645,
+          5.9000000059604645,
+          11.5,
+          12,
+          12.799999982118607,
+          6.0999999940395355,
+          7.4000000059604645,
+          14.600000023841858,
+          12.5,
+          14.299999982118607,
+          5.699999988079071,
+          6.199999988079071,
+          2.800000011920929,
+          4.0999999940395355,
+          1.9000000059604645,
+          13.200000017881393,
+          5.4000000059604645,
+          11.400000005960464,
+          6.4000000059604645,
+          5.699999988079071,
+          8.099999994039536,
+          9,
+          7.200000017881393,
+          8,
+          4,
+          5.800000011920929,
+          6.199999988079071,
+          10.199999988079071,
+          6.200000017881393,
+          5.4000000059604645,
+          5.799999982118607,
+          9.099999994039536,
+          9.400000005960464,
+          2.4000000059604645,
+          4.299999982118607,
+          3.9000000059604645,
+          1.9000000059604645,
+          2.800000011920929,
+          9.900000005960464,
+          11.200000017881393,
+          12.400000005960464,
+          5.5999999940395355,
+          6.199999988079071,
+          8.699999988079071,
+          11.099999994039536,
+          5.4000000059604645,
+          6.199999988079071,
+          1.800000011920929,
+          1.5999999940395355,
+          13.599999994039536,
+          8.199999988079071,
+          11.599999994039536,
+          7.700000017881393,
+          4,
+          3.699999988079071,
+          2.4000000059604645,
+          10.299999982118607,
+          11.599999994039536,
+          4,
+          5.300000011920929,
+          5.299999982118607,
+          1.699999988079071,
+          10.200000017881393,
+          11.599999994039536,
+          6.299999982118607,
+          4.199999988079071,
+          1.800000011920929,
+          4.299999982118607,
+          5.5,
+          8.299999982118607,
+          9.400000005960464,
+          7.299999982118607,
+          2.199999988079071,
+          2.5
+        ],
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "reason": "Error: Software graphics detected; bounded CPU display is active.",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 0,
+            "uploadBytes": 0,
+            "textureBytes": 0,
+            "presentations": 0,
+            "resources": 0
+          },
+          "cpu": {
+            "images": 131,
+            "slices": 692,
+            "computeMs": 3773.200000077486,
+            "maxSliceMs": 7.5999999940395355,
+            "snapshotBytes": 6340704
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 687020,
+          "displayRevision": 687020,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 70
+          }
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 6946,
+          "weighted": 6946,
+          "threshold": 6000,
+          "coarse": true,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "fallbackReason": "",
+          "readyRoundTripMs": 15,
+          "snapshotMs": 6,
+          "computeMs": 90.7999999821186,
+          "proposals": 4,
+          "staleResults": 0,
+          "validationMaxMs": 1.0999999940395355,
+          "commitMaxMs": 1,
+          "ackWait": {
+            "count": 4,
+            "totalMs": 15.300000011920929,
+            "maxMs": 4.799999982118607,
+            "samples": [
+              3,
+              4.600000023841858,
+              2.9000000059604645,
+              4.799999982118607
+            ]
+          },
+          "statistics": {
+            "dabs": 4,
+            "candidateChecks": 29012,
+            "affectedSamples": 17059,
+            "writes": 17055,
+            "peakPreparedBytes": 65536,
+            "acceptedPositions": 10,
+            "processedPositions": 10,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2
+          }
+        }
+      }
+    }
+  ],
+  "final": "004dd14c7d28686094afcad5b7dd110300379bbb82ef1823e972eb730eca74b9",
+  "source": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57"
+}

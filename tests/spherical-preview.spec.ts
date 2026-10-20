@@ -1,10 +1,10 @@
 import { expect, test, type Page } from '@playwright/test';
 import { writeFile } from 'node:fs/promises';
-import { toolsPanel } from './workspace-helpers.ts';
+import { toolsPanel, sphericalPresentation } from './workspace-helpers.ts';
 
 const globe = (page: Page) => page.getByRole('img', { name: 'Spherical terrain preview', exact: true });
 const readout = (page: Page) => page.getByLabel('Spherical elevation', { exact: true });
-async function painted(page: Page) { await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))); }
+async function painted(page: Page) { await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))); await sphericalPresentation(page); }
 async function fixture(page: Page, n = 128) { await page.goto(`/tests/fixtures/sphere.html?n=${n}`); await expect(globe(page)).toHaveAttribute('data-mode', 'globe', { timeout: 30000 }); }
 async function stats(page: Page) { return page.evaluate(async () => (await import(new URL('/tests/fixtures/sphere.tsx', location.origin).href) as typeof import('./fixtures/sphere.tsx')).statistics()); }
 async function snapshotCanvas(page: Page) {
@@ -77,7 +77,7 @@ test('real viewport: every face, edge and corner is inspectable in both views wi
   }
   await page.mouse.click(5, Math.round(page.viewportSize()!.height / 2)); await painted(page); await expect(readout(page)).toContainText('Outside spherical surface');
   await expect(page.getByRole('button', { name: 'Center selection', exact: true })).toBeDisabled();
-  expect((await stats(page)).exactBitsUnchanged).toBe(true); expect((await stats(page)).copies).toBe(0);
+  expect((await stats(page)).exactBitsUnchanged).toBe(true); expect((await stats(page)).copies).toBe(1);
 });
 
 test('historical N=256 preview validates scale, cancels preparation safely and initializes in scheduled batches', async ({ page }, info) => {
@@ -146,8 +146,9 @@ for (const n of [128, 256]) test(`real browser performance: N=${n} rotation, zoo
   }); await page.mouse.up(); await painted(page);
   const renderedDuringBurst = Number(await canvas.getAttribute('data-renders')) - rendersBeforeBurst;
   const result = await stats(page), sorted = measures.map((m) => m.renderMs).sort((a, b) => a - b), p95 = sorted[Math.floor(sorted.length * .95)]!;
-  expect(result.exactBitsUnchanged).toBe(true); expect(result.copies).toBe(0); expect(result.reads).toBeLessThan(200); expect(renderedDuringBurst).toBeLessThanOrEqual(2);
-  expect(result.cacheBytes).toBeLessThanOrEqual(6 * 513 * 513 * 4); expect(p95).toBeLessThan(cpuRate === 1 ? 200 : 500);
+  expect(result.exactBitsUnchanged).toBe(true); expect(result.copies).toBe(1); expect(result.reads).toBeLessThan(200); expect(renderedDuringBurst).toBeLessThanOrEqual(2);
+  expect(result.fieldBytes).toBeLessThanOrEqual(result.samples * 28 + 6 * (n + 1) ** 2 * 36 + (n + 1) * 8);
+  expect(result.cacheBytes).toBeLessThanOrEqual(6 * 513 * 513 * 4 + result.fieldBytes); expect(p95).toBeLessThan(cpuRate === 1 ? 200 : 500);
   await cdp.send('Emulation.setCPUThrottlingRate', { rate: 1 });
   await writeFile(`docs/evidence/a6-d1-${info.project.name}-n${n}-performance.json`, JSON.stringify({ measuredAt: new Date().toISOString(), browserVersion: context.browser()?.version(), browserProject: info.project.name, viewport: size, cpuRate, n, ...result, startRenders, finalRenders: Number(await canvas.getAttribute('data-renders')), renderedDuring100EventBurst: renderedDuringBurst, rasterBytes: Number(await canvas.getAttribute('data-raster-bytes')), p95RenderMs: p95, measures }, null, 2));
 });

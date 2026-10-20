@@ -1,0 +1,7830 @@
+{
+  "base": "ec1c6e195dd66272bf8aa3ba3232463831e000cb",
+  "method": "Separate final photo pass on the same saved geography. Wait for the selected physical point and each displayed camera. CPU screenshots are retried until sampled compositor colors agree with the completed canvas; readback is a photo-only verification step, never used in painting timing trials. No elevation writes. Hardware and fallback launchers match the timing profiles.",
+  "records": [
+    {
+      "path": "docs/evidence/a7-p1c-before-hardware-desktop-n128-globe.png",
+      "backend": "hardware",
+      "profile": "desktop",
+      "n": 128,
+      "view": "globe",
+      "browser": "134.0.6998.166",
+      "pageCpuThrottle": 1,
+      "fixtureSha": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            0,
+            1,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            1
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ]
+        },
+        "zoom": 1,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 98306,
+      "displayRevision": 98306,
+      "pngSha256": "a2a921231324ff7484cccb1ca06ad4adeae6347c51dc0779be33c3c2df0669c7",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            12,
+            43,
+            70
+          ],
+          "actual": [
+            12,
+            43,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            10,
+            36,
+            58
+          ],
+          "actual": [
+            10,
+            36,
+            58
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            12,
+            45,
+            72
+          ],
+          "actual": [
+            12,
+            45,
+            72
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            93,
+            119,
+            72
+          ],
+          "actual": [
+            93,
+            119,
+            72
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            9,
+            35,
+            56
+          ],
+          "actual": [
+            9,
+            35,
+            56
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            112,
+            149,
+            89
+          ],
+          "actual": [
+            112,
+            149,
+            89
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            19,
+            62,
+            85
+          ],
+          "actual": [
+            19,
+            62,
+            85
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            117,
+            146,
+            90
+          ],
+          "actual": [
+            117,
+            146,
+            90
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-hardware-desktop-n128-zoom-coast.png",
+      "backend": "hardware",
+      "profile": "desktop",
+      "n": 128,
+      "view": "zoom-coast",
+      "browser": "134.0.6998.166",
+      "pageCpuThrottle": 1,
+      "fixtureSha": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            -0.5035384602222337,
+            0.8639728115380843,
+            0
+          ],
+          "up": [
+            -0.1645524388674678,
+            -0.09590403839864992,
+            0.981694917111013
+          ],
+          "forward": [
+            0.8481577176090485,
+            0.4943211469700728,
+            0.19046020507812503
+          ]
+        },
+        "zoom": 2.44140625,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 98306,
+      "displayRevision": 98306,
+      "pngSha256": "c915a711be8c32e60a684c5f353cf95cafeda6665922da95c3c32be67d8bf8cf",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.3,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.3,
+          "rgb": [
+            12,
+            44,
+            70
+          ],
+          "actual": [
+            12,
+            44,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            26,
+            82,
+            112
+          ],
+          "actual": [
+            26,
+            82,
+            112
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.3,
+          "rgb": [
+            113,
+            146,
+            88
+          ],
+          "actual": [
+            113,
+            146,
+            88
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.3,
+          "rgb": [
+            104,
+            137,
+            82
+          ],
+          "actual": [
+            104,
+            137,
+            82
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            12,
+            44,
+            70
+          ],
+          "actual": [
+            12,
+            44,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            33,
+            101,
+            133
+          ],
+          "actual": [
+            33,
+            101,
+            133
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            137,
+            150,
+            100
+          ],
+          "actual": [
+            137,
+            150,
+            100
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            107,
+            138,
+            84
+          ],
+          "actual": [
+            107,
+            138,
+            84
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.6,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            22,
+            71,
+            99
+          ],
+          "actual": [
+            22,
+            71,
+            99
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            121,
+            151,
+            93
+          ],
+          "actual": [
+            121,
+            151,
+            93
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            183,
+            162,
+            126
+          ],
+          "actual": [
+            183,
+            162,
+            126
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.6,
+          "rgb": [
+            103,
+            137,
+            82
+          ],
+          "actual": [
+            103,
+            137,
+            82
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.7,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.7,
+          "rgb": [
+            30,
+            94,
+            124
+          ],
+          "actual": [
+            30,
+            94,
+            124
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            130,
+            151,
+            97
+          ],
+          "actual": [
+            130,
+            151,
+            97
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.7,
+          "rgb": [
+            151,
+            152,
+            106
+          ],
+          "actual": [
+            151,
+            152,
+            106
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.7,
+          "rgb": [
+            34,
+            100,
+            128
+          ],
+          "actual": [
+            34,
+            100,
+            128
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-hardware-desktop-n128-zoom-mountain.png",
+      "backend": "hardware",
+      "profile": "desktop",
+      "n": 128,
+      "view": "zoom-mountain",
+      "browser": "134.0.6998.166",
+      "pageCpuThrottle": 1,
+      "fixtureSha": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            -0.7071068512155125,
+            0.7071067111575756,
+            0
+          ],
+          "up": [
+            -0.07458165708764138,
+            -0.07458167186016844,
+            0.9944220183848524
+          ],
+          "forward": [
+            0.7031624829227912,
+            0.7031626221994874,
+            0.10547440140335648
+          ]
+        },
+        "zoom": 2.44140625,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 98306,
+      "displayRevision": 98306,
+      "pngSha256": "8e9d0874b6db9afda0f3bfddaadde02381074c6c777d2aa67425405e5d5e3ee9",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.3,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.3,
+          "rgb": [
+            21,
+            69,
+            97
+          ],
+          "actual": [
+            21,
+            69,
+            97
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            129,
+            151,
+            97
+          ],
+          "actual": [
+            129,
+            151,
+            97
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.3,
+          "rgb": [
+            117,
+            147,
+            90
+          ],
+          "actual": [
+            117,
+            147,
+            90
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.3,
+          "rgb": [
+            26,
+            80,
+            108
+          ],
+          "actual": [
+            26,
+            80,
+            108
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            32,
+            97,
+            127
+          ],
+          "actual": [
+            32,
+            97,
+            127
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            235,
+            234,
+            224
+          ],
+          "actual": [
+            235,
+            234,
+            224
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            119,
+            148,
+            92
+          ],
+          "actual": [
+            119,
+            148,
+            92
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            24,
+            76,
+            104
+          ],
+          "actual": [
+            24,
+            76,
+            104
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.6,
+          "rgb": [
+            21,
+            69,
+            96
+          ],
+          "actual": [
+            21,
+            69,
+            96
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            118,
+            147,
+            91
+          ],
+          "actual": [
+            118,
+            147,
+            91
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            232,
+            230,
+            218
+          ],
+          "actual": [
+            232,
+            230,
+            218
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            118,
+            147,
+            91
+          ],
+          "actual": [
+            118,
+            147,
+            91
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.6,
+          "rgb": [
+            18,
+            61,
+            87
+          ],
+          "actual": [
+            18,
+            61,
+            87
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.7,
+          "rgb": [
+            28,
+            88,
+            116
+          ],
+          "actual": [
+            28,
+            88,
+            116
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.7,
+          "rgb": [
+            129,
+            149,
+            96
+          ],
+          "actual": [
+            129,
+            149,
+            96
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            160,
+            156,
+            111
+          ],
+          "actual": [
+            160,
+            156,
+            111
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.7,
+          "rgb": [
+            116,
+            146,
+            90
+          ],
+          "actual": [
+            116,
+            146,
+            90
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.7,
+          "rgb": [
+            14,
+            48,
+            74
+          ],
+          "actual": [
+            14,
+            48,
+            74
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-hardware-desktop-n128-net.png",
+      "backend": "hardware",
+      "profile": "desktop",
+      "n": 128,
+      "view": "net",
+      "browser": "134.0.6998.166",
+      "pageCpuThrottle": 1,
+      "fixtureSha": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "pose": {
+        "mode": "net",
+        "frame": {
+          "right": [
+            0,
+            1,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            1
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ]
+        },
+        "zoom": 1,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 98306,
+      "displayRevision": 98306,
+      "pngSha256": "ca59029fab0629692c1b742a4d1892c569fad3d8e3c495deb1d856c61b6a8b2c",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            24,
+            76,
+            105
+          ],
+          "actual": [
+            24,
+            76,
+            105
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            227,
+            230,
+            219
+          ],
+          "actual": [
+            227,
+            230,
+            219
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            12,
+            45,
+            72
+          ],
+          "actual": [
+            12,
+            45,
+            72
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            13,
+            48,
+            75
+          ],
+          "actual": [
+            13,
+            48,
+            75
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            176,
+            186,
+            151
+          ],
+          "actual": [
+            176,
+            186,
+            151
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            112,
+            150,
+            90
+          ],
+          "actual": [
+            112,
+            150,
+            90
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-hardware-desktop-n256-globe.png",
+      "backend": "hardware",
+      "profile": "desktop",
+      "n": 256,
+      "view": "globe",
+      "browser": "134.0.6998.166",
+      "pageCpuThrottle": 1,
+      "fixtureSha": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            0,
+            1,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            1
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ]
+        },
+        "zoom": 1,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 393218,
+      "displayRevision": 393218,
+      "pngSha256": "95c3d9dc4ca86ac8adad59347d35ccae797f02851357d970647758d901b661af",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            12,
+            43,
+            70
+          ],
+          "actual": [
+            12,
+            43,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            10,
+            36,
+            58
+          ],
+          "actual": [
+            10,
+            36,
+            58
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            12,
+            45,
+            72
+          ],
+          "actual": [
+            12,
+            45,
+            72
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            93,
+            119,
+            72
+          ],
+          "actual": [
+            93,
+            119,
+            72
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            9,
+            35,
+            56
+          ],
+          "actual": [
+            9,
+            35,
+            56
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            112,
+            149,
+            89
+          ],
+          "actual": [
+            112,
+            149,
+            89
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            19,
+            62,
+            86
+          ],
+          "actual": [
+            19,
+            62,
+            86
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            117,
+            146,
+            90
+          ],
+          "actual": [
+            117,
+            146,
+            90
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-hardware-desktop-n256-zoom-coast.png",
+      "backend": "hardware",
+      "profile": "desktop",
+      "n": 256,
+      "view": "zoom-coast",
+      "browser": "134.0.6998.166",
+      "pageCpuThrottle": 1,
+      "fixtureSha": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            -0.45508354569351867,
+            0.8904487444199217,
+            0
+          ],
+          "up": [
+            -0.13112927021505028,
+            -0.0670165167929384,
+            0.9890975184327427
+          ],
+          "forward": [
+            0.8807406433972964,
+            0.45012200572503314,
+            0.14726200810185186
+          ]
+        },
+        "zoom": 2.44140625,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 393218,
+      "displayRevision": 393218,
+      "pngSha256": "49c6b83c39d114ce51fff103be166c8c112d7946081dcdd6e27080ca8cb7bbd6",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.3,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.3,
+          "rgb": [
+            12,
+            44,
+            70
+          ],
+          "actual": [
+            12,
+            44,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            25,
+            79,
+            108
+          ],
+          "actual": [
+            25,
+            79,
+            108
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.3,
+          "rgb": [
+            115,
+            146,
+            89
+          ],
+          "actual": [
+            115,
+            146,
+            89
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.3,
+          "rgb": [
+            107,
+            137,
+            84
+          ],
+          "actual": [
+            107,
+            137,
+            84
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            12,
+            44,
+            70
+          ],
+          "actual": [
+            12,
+            44,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            33,
+            101,
+            132
+          ],
+          "actual": [
+            33,
+            101,
+            132
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            197,
+            183,
+            155
+          ],
+          "actual": [
+            197,
+            183,
+            155
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            109,
+            138,
+            85
+          ],
+          "actual": [
+            109,
+            138,
+            85
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.6,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            22,
+            70,
+            99
+          ],
+          "actual": [
+            22,
+            70,
+            99
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            121,
+            151,
+            93
+          ],
+          "actual": [
+            121,
+            151,
+            93
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            212,
+            204,
+            184
+          ],
+          "actual": [
+            212,
+            204,
+            184
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.6,
+          "rgb": [
+            106,
+            138,
+            83
+          ],
+          "actual": [
+            106,
+            138,
+            83
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.7,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.7,
+          "rgb": [
+            30,
+            93,
+            123
+          ],
+          "actual": [
+            30,
+            93,
+            123
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            132,
+            152,
+            98
+          ],
+          "actual": [
+            132,
+            152,
+            98
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.7,
+          "rgb": [
+            157,
+            153,
+            108
+          ],
+          "actual": [
+            157,
+            153,
+            108
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.7,
+          "rgb": [
+            103,
+            136,
+            82
+          ],
+          "actual": [
+            103,
+            136,
+            82
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-hardware-desktop-n256-zoom-mountain.png",
+      "backend": "hardware",
+      "profile": "desktop",
+      "n": 256,
+      "view": "zoom-mountain",
+      "browser": "134.0.6998.166",
+      "pageCpuThrottle": 1,
+      "fixtureSha": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            -0.7071068512155125,
+            0.7071067111575756,
+            0
+          ],
+          "up": [
+            -0.07458165708764138,
+            -0.07458167186016844,
+            0.9944220183848524
+          ],
+          "forward": [
+            0.7031624829227912,
+            0.7031626221994874,
+            0.10547440140335648
+          ]
+        },
+        "zoom": 2.44140625,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 393218,
+      "displayRevision": 393218,
+      "pngSha256": "a0c66368109549b89afcb1bcea5cd3718bfd8b495de6a648f658305ba187ec4d",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.3,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.3,
+          "rgb": [
+            21,
+            69,
+            97
+          ],
+          "actual": [
+            21,
+            69,
+            97
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            129,
+            151,
+            96
+          ],
+          "actual": [
+            129,
+            151,
+            96
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.3,
+          "rgb": [
+            117,
+            147,
+            90
+          ],
+          "actual": [
+            117,
+            147,
+            90
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.3,
+          "rgb": [
+            26,
+            80,
+            108
+          ],
+          "actual": [
+            26,
+            80,
+            108
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            32,
+            97,
+            127
+          ],
+          "actual": [
+            32,
+            97,
+            127
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            235,
+            234,
+            224
+          ],
+          "actual": [
+            235,
+            234,
+            224
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            119,
+            148,
+            92
+          ],
+          "actual": [
+            119,
+            148,
+            92
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            24,
+            76,
+            103
+          ],
+          "actual": [
+            24,
+            76,
+            103
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.6,
+          "rgb": [
+            21,
+            69,
+            96
+          ],
+          "actual": [
+            21,
+            69,
+            96
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            118,
+            147,
+            91
+          ],
+          "actual": [
+            118,
+            147,
+            91
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            232,
+            229,
+            218
+          ],
+          "actual": [
+            232,
+            229,
+            218
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            118,
+            147,
+            91
+          ],
+          "actual": [
+            118,
+            147,
+            91
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.6,
+          "rgb": [
+            18,
+            60,
+            87
+          ],
+          "actual": [
+            18,
+            60,
+            87
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.7,
+          "rgb": [
+            29,
+            88,
+            116
+          ],
+          "actual": [
+            29,
+            88,
+            116
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.7,
+          "rgb": [
+            129,
+            149,
+            96
+          ],
+          "actual": [
+            129,
+            149,
+            96
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            160,
+            156,
+            110
+          ],
+          "actual": [
+            160,
+            156,
+            110
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.7,
+          "rgb": [
+            116,
+            146,
+            90
+          ],
+          "actual": [
+            116,
+            146,
+            90
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.7,
+          "rgb": [
+            14,
+            48,
+            73
+          ],
+          "actual": [
+            14,
+            48,
+            73
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-hardware-desktop-n256-net.png",
+      "backend": "hardware",
+      "profile": "desktop",
+      "n": 256,
+      "view": "net",
+      "browser": "134.0.6998.166",
+      "pageCpuThrottle": 1,
+      "fixtureSha": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "pose": {
+        "mode": "net",
+        "frame": {
+          "right": [
+            0,
+            1,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            1
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ]
+        },
+        "zoom": 1,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 393218,
+      "displayRevision": 393218,
+      "pngSha256": "2f34b12a5632da6701ecedb415cdd641f328015aebfbfdd2bb71ff00bc2cdaa7",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            24,
+            76,
+            105
+          ],
+          "actual": [
+            24,
+            76,
+            105
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            227,
+            230,
+            219
+          ],
+          "actual": [
+            227,
+            230,
+            219
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            12,
+            45,
+            72
+          ],
+          "actual": [
+            12,
+            45,
+            72
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            13,
+            48,
+            74
+          ],
+          "actual": [
+            13,
+            48,
+            74
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            176,
+            186,
+            151
+          ],
+          "actual": [
+            176,
+            186,
+            151
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            113,
+            150,
+            90
+          ],
+          "actual": [
+            113,
+            150,
+            90
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-hardware-mobile-n128-globe.png",
+      "backend": "hardware",
+      "profile": "mobile",
+      "n": 128,
+      "view": "globe",
+      "browser": "134.0.6998.166",
+      "pageCpuThrottle": 4,
+      "fixtureSha": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            0,
+            1,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            1
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ]
+        },
+        "zoom": 1,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 98306,
+      "displayRevision": 98306,
+      "pngSha256": "84abd4648d972e562c40362567d543175ea11e8f6aae5584f04d5a39e5331944",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            9,
+            36,
+            57
+          ],
+          "actual": [
+            9,
+            36,
+            57
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            11,
+            42,
+            67
+          ],
+          "actual": [
+            11,
+            42,
+            67
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            12,
+            45,
+            71
+          ],
+          "actual": [
+            12,
+            45,
+            71
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            126,
+            143,
+            93
+          ],
+          "actual": [
+            125,
+            142,
+            92
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            11,
+            40,
+            65
+          ],
+          "actual": [
+            11,
+            40,
+            65
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            117,
+            146,
+            90
+          ],
+          "actual": [
+            117,
+            146,
+            90
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            133,
+            139,
+            94
+          ],
+          "actual": [
+            133,
+            139,
+            94
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            101,
+            120,
+            76
+          ],
+          "actual": [
+            101,
+            120,
+            76
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-hardware-mobile-n128-zoom-coast.png",
+      "backend": "hardware",
+      "profile": "mobile",
+      "n": 128,
+      "view": "zoom-coast",
+      "browser": "134.0.6998.166",
+      "pageCpuThrottle": 4,
+      "fixtureSha": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            -0.5035384178352952,
+            0.8639728362419317,
+            0
+          ],
+          "up": [
+            -0.1645524984262955,
+            -0.09590406229533296,
+            0.9816949047931932
+          ],
+          "forward": [
+            0.8481577312184283,
+            0.4943210991565353,
+            0.19046026856823206
+          ]
+        },
+        "zoom": 2.44140625,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 98306,
+      "displayRevision": 98306,
+      "pngSha256": "bf6776eb8b330b0e3851d513c91dc68164e83105274e2465f75faa27c59497c4",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.3,
+          "rgb": [
+            11,
+            43,
+            68
+          ],
+          "actual": [
+            11,
+            43,
+            68
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.3,
+          "rgb": [
+            12,
+            44,
+            70
+          ],
+          "actual": [
+            12,
+            44,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            29,
+            87,
+            117
+          ],
+          "actual": [
+            29,
+            87,
+            117
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.3,
+          "rgb": [
+            227,
+            226,
+            217
+          ],
+          "actual": [
+            227,
+            226,
+            217
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.3,
+          "rgb": [
+            87,
+            133,
+            95
+          ],
+          "actual": [
+            86,
+            132,
+            96
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            12,
+            44,
+            70
+          ],
+          "actual": [
+            12,
+            44,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            17,
+            56,
+            84
+          ],
+          "actual": [
+            17,
+            56,
+            84
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            30,
+            93,
+            124
+          ],
+          "actual": [
+            30,
+            93,
+            123
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            140,
+            152,
+            102
+          ],
+          "actual": [
+            139,
+            152,
+            101
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            118,
+            146,
+            91
+          ],
+          "actual": [
+            118,
+            146,
+            91
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.6,
+          "rgb": [
+            28,
+            85,
+            114
+          ],
+          "actual": [
+            28,
+            85,
+            114
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            113,
+            148,
+            89
+          ],
+          "actual": [
+            113,
+            148,
+            89
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            131,
+            151,
+            98
+          ],
+          "actual": [
+            131,
+            151,
+            98
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            209,
+            198,
+            175
+          ],
+          "actual": [
+            208,
+            197,
+            174
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.95,
+          "y": 0.6,
+          "rgb": [
+            134,
+            148,
+            98
+          ],
+          "actual": [
+            134,
+            148,
+            98
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.7,
+          "rgb": [
+            112,
+            142,
+            87
+          ],
+          "actual": [
+            112,
+            142,
+            87
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.7,
+          "rgb": [
+            132,
+            148,
+            97
+          ],
+          "actual": [
+            132,
+            148,
+            97
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            147,
+            151,
+            105
+          ],
+          "actual": [
+            147,
+            151,
+            105
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.7,
+          "rgb": [
+            146,
+            150,
+            104
+          ],
+          "actual": [
+            146,
+            150,
+            104
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.7,
+          "rgb": [
+            130,
+            145,
+            95
+          ],
+          "actual": [
+            130,
+            145,
+            95
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-hardware-mobile-n128-zoom-mountain.png",
+      "backend": "hardware",
+      "profile": "mobile",
+      "n": 128,
+      "view": "zoom-mountain",
+      "browser": "134.0.6998.166",
+      "pageCpuThrottle": 4,
+      "fixtureSha": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            -0.7071068608318597,
+            0.7071067015412265,
+            0
+          ],
+          "up": [
+            -0.07458162060133887,
+            -0.07458163740241507,
+            0.9944220237056562
+          ],
+          "forward": [
+            0.7031624771224577,
+            0.7031626355245716,
+            0.10547435123833361
+          ]
+        },
+        "zoom": 2.44140625,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 98306,
+      "displayRevision": 98306,
+      "pngSha256": "dd3a51553a636edffcc8055b3a1029ab98b27d44410c1095b390edaca113b609",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.3,
+          "rgb": [
+            11,
+            43,
+            68
+          ],
+          "actual": [
+            11,
+            43,
+            68
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.3,
+          "rgb": [
+            22,
+            72,
+            100
+          ],
+          "actual": [
+            22,
+            72,
+            100
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            200,
+            187,
+            161
+          ],
+          "actual": [
+            200,
+            187,
+            161
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.3,
+          "rgb": [
+            108,
+            144,
+            86
+          ],
+          "actual": [
+            108,
+            144,
+            86
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.3,
+          "rgb": [
+            43,
+            109,
+            129
+          ],
+          "actual": [
+            42,
+            108,
+            129
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            25,
+            78,
+            107
+          ],
+          "actual": [
+            24,
+            77,
+            107
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            54,
+            118,
+            127
+          ],
+          "actual": [
+            48,
+            115,
+            131
+          ],
+          "error": 6
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            223,
+            217,
+            200
+          ],
+          "actual": [
+            222,
+            216,
+            198
+          ],
+          "error": 2
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            124,
+            149,
+            94
+          ],
+          "actual": [
+            124,
+            149,
+            94
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            116,
+            146,
+            90
+          ],
+          "actual": [
+            116,
+            146,
+            90
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.6,
+          "rgb": [
+            125,
+            147,
+            94
+          ],
+          "actual": [
+            125,
+            147,
+            94
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            140,
+            152,
+            101
+          ],
+          "actual": [
+            140,
+            152,
+            101
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            159,
+            155,
+            110
+          ],
+          "actual": [
+            159,
+            155,
+            110
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            131,
+            151,
+            97
+          ],
+          "actual": [
+            131,
+            151,
+            97
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.6,
+          "rgb": [
+            110,
+            145,
+            87
+          ],
+          "actual": [
+            110,
+            145,
+            87
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.7,
+          "rgb": [
+            136,
+            146,
+            98
+          ],
+          "actual": [
+            136,
+            146,
+            98
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.7,
+          "rgb": [
+            149,
+            151,
+            105
+          ],
+          "actual": [
+            149,
+            151,
+            105
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            148,
+            151,
+            105
+          ],
+          "actual": [
+            148,
+            151,
+            105
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.7,
+          "rgb": [
+            128,
+            147,
+            95
+          ],
+          "actual": [
+            128,
+            147,
+            95
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.7,
+          "rgb": [
+            33,
+            99,
+            129
+          ],
+          "actual": [
+            33,
+            99,
+            129
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-hardware-mobile-n128-net.png",
+      "backend": "hardware",
+      "profile": "mobile",
+      "n": 128,
+      "view": "net",
+      "browser": "134.0.6998.166",
+      "pageCpuThrottle": 4,
+      "fixtureSha": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "pose": {
+        "mode": "net",
+        "frame": {
+          "right": [
+            0,
+            1,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            1
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ]
+        },
+        "zoom": 1,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 98306,
+      "displayRevision": 98306,
+      "pngSha256": "2f06599250293b7282de01ea5fb9de6c80721b84dd7168c38d1679659ff3d213",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            32,
+            99,
+            130
+          ],
+          "actual": [
+            32,
+            98,
+            129
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            12,
+            45,
+            72
+          ],
+          "actual": [
+            12,
+            45,
+            72
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            227,
+            234,
+            224
+          ],
+          "actual": [
+            229,
+            237,
+            229
+          ],
+          "error": 5
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            12,
+            35,
+            57
+          ],
+          "actual": [
+            12,
+            42,
+            68
+          ],
+          "error": 11
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            31,
+            95,
+            126
+          ],
+          "actual": [
+            31,
+            94,
+            125
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            255,
+            202,
+            123
+          ],
+          "actual": [
+            255,
+            202,
+            123
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-hardware-mobile-n256-globe.png",
+      "backend": "hardware",
+      "profile": "mobile",
+      "n": 256,
+      "view": "globe",
+      "browser": "134.0.6998.166",
+      "pageCpuThrottle": 4,
+      "fixtureSha": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            0,
+            1,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            1
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ]
+        },
+        "zoom": 1,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 393218,
+      "displayRevision": 393218,
+      "pngSha256": "2f1c0eb44c2aab59b9815dc51a0bba40181d183439bb9996a5a904f5ad0393ce",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            9,
+            36,
+            57
+          ],
+          "actual": [
+            9,
+            36,
+            57
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            11,
+            42,
+            67
+          ],
+          "actual": [
+            11,
+            42,
+            67
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            12,
+            45,
+            71
+          ],
+          "actual": [
+            12,
+            45,
+            71
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            126,
+            143,
+            93
+          ],
+          "actual": [
+            125,
+            142,
+            92
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            11,
+            40,
+            65
+          ],
+          "actual": [
+            11,
+            40,
+            65
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            117,
+            146,
+            90
+          ],
+          "actual": [
+            117,
+            146,
+            90
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            133,
+            139,
+            94
+          ],
+          "actual": [
+            133,
+            139,
+            94
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            101,
+            120,
+            76
+          ],
+          "actual": [
+            101,
+            120,
+            76
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-hardware-mobile-n256-zoom-coast.png",
+      "backend": "hardware",
+      "profile": "mobile",
+      "n": 256,
+      "view": "zoom-coast",
+      "browser": "134.0.6998.166",
+      "pageCpuThrottle": 4,
+      "fixtureSha": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            -0.4550836456946085,
+            0.8904486933121437,
+            0
+          ],
+          "up": [
+            -0.13112921313372392,
+            -0.06701650619306557,
+            0.9890975267184755
+          ],
+          "forward": [
+            0.8807406002247395,
+            0.45012210840656425,
+            0.14726195245002963
+          ]
+        },
+        "zoom": 2.44140625,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 393218,
+      "displayRevision": 393218,
+      "pngSha256": "adff6bff5ae530647aef284017646a02f5075b2af19be128ad5fee135ef88e50",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.3,
+          "rgb": [
+            11,
+            43,
+            68
+          ],
+          "actual": [
+            11,
+            43,
+            68
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.3,
+          "rgb": [
+            12,
+            44,
+            70
+          ],
+          "actual": [
+            12,
+            44,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            21,
+            68,
+            97
+          ],
+          "actual": [
+            21,
+            68,
+            97
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.3,
+          "rgb": [
+            227,
+            226,
+            216
+          ],
+          "actual": [
+            227,
+            226,
+            216
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.3,
+          "rgb": [
+            114,
+            143,
+            88
+          ],
+          "actual": [
+            114,
+            143,
+            88
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            12,
+            44,
+            70
+          ],
+          "actual": [
+            12,
+            44,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            16,
+            55,
+            82
+          ],
+          "actual": [
+            16,
+            55,
+            82
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            30,
+            93,
+            123
+          ],
+          "actual": [
+            30,
+            92,
+            122
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            172,
+            157,
+            116
+          ],
+          "actual": [
+            171,
+            157,
+            115
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            133,
+            148,
+            98
+          ],
+          "actual": [
+            133,
+            148,
+            98
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.6,
+          "rgb": [
+            27,
+            84,
+            113
+          ],
+          "actual": [
+            27,
+            84,
+            114
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            113,
+            148,
+            90
+          ],
+          "actual": [
+            113,
+            148,
+            90
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            132,
+            152,
+            98
+          ],
+          "actual": [
+            132,
+            152,
+            98
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            170,
+            156,
+            115
+          ],
+          "actual": [
+            170,
+            156,
+            115
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.6,
+          "rgb": [
+            140,
+            149,
+            100
+          ],
+          "actual": [
+            140,
+            149,
+            100
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.7,
+          "rgb": [
+            110,
+            142,
+            86
+          ],
+          "actual": [
+            110,
+            142,
+            86
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.7,
+          "rgb": [
+            130,
+            148,
+            96
+          ],
+          "actual": [
+            130,
+            148,
+            96
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            148,
+            151,
+            105
+          ],
+          "actual": [
+            148,
+            151,
+            105
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.7,
+          "rgb": [
+            149,
+            151,
+            105
+          ],
+          "actual": [
+            149,
+            151,
+            105
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.7,
+          "rgb": [
+            134,
+            146,
+            97
+          ],
+          "actual": [
+            134,
+            146,
+            97
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-hardware-mobile-n256-zoom-mountain.png",
+      "backend": "hardware",
+      "profile": "mobile",
+      "n": 256,
+      "view": "zoom-mountain",
+      "browser": "134.0.6998.166",
+      "pageCpuThrottle": 4,
+      "fixtureSha": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            -0.7071068608318597,
+            0.7071067015412265,
+            0
+          ],
+          "up": [
+            -0.07458162060133887,
+            -0.07458163740241507,
+            0.9944220237056562
+          ],
+          "forward": [
+            0.7031624771224577,
+            0.7031626355245716,
+            0.10547435123833361
+          ]
+        },
+        "zoom": 2.44140625,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 393218,
+      "displayRevision": 393218,
+      "pngSha256": "86d16b473eb8b302844aae588a11bd806e01f5d67c26e6175dfb4b6abb43f939",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.3,
+          "rgb": [
+            11,
+            43,
+            68
+          ],
+          "actual": [
+            11,
+            43,
+            68
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.3,
+          "rgb": [
+            22,
+            72,
+            101
+          ],
+          "actual": [
+            22,
+            72,
+            101
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            200,
+            187,
+            161
+          ],
+          "actual": [
+            200,
+            187,
+            161
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.3,
+          "rgb": [
+            108,
+            144,
+            86
+          ],
+          "actual": [
+            108,
+            144,
+            86
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.3,
+          "rgb": [
+            47,
+            111,
+            126
+          ],
+          "actual": [
+            46,
+            111,
+            126
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            25,
+            78,
+            107
+          ],
+          "actual": [
+            24,
+            78,
+            107
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            41,
+            112,
+            137
+          ],
+          "actual": [
+            39,
+            111,
+            138
+          ],
+          "error": 2
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            223,
+            218,
+            200
+          ],
+          "actual": [
+            222,
+            216,
+            198
+          ],
+          "error": 2
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            124,
+            149,
+            94
+          ],
+          "actual": [
+            124,
+            149,
+            94
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            116,
+            146,
+            90
+          ],
+          "actual": [
+            116,
+            146,
+            90
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.6,
+          "rgb": [
+            125,
+            147,
+            94
+          ],
+          "actual": [
+            125,
+            147,
+            94
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            139,
+            152,
+            101
+          ],
+          "actual": [
+            139,
+            152,
+            101
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            159,
+            156,
+            110
+          ],
+          "actual": [
+            159,
+            156,
+            110
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            131,
+            151,
+            97
+          ],
+          "actual": [
+            131,
+            151,
+            97
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.6,
+          "rgb": [
+            109,
+            145,
+            87
+          ],
+          "actual": [
+            109,
+            145,
+            87
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.7,
+          "rgb": [
+            136,
+            146,
+            98
+          ],
+          "actual": [
+            136,
+            146,
+            98
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.7,
+          "rgb": [
+            149,
+            151,
+            105
+          ],
+          "actual": [
+            149,
+            151,
+            105
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            148,
+            151,
+            105
+          ],
+          "actual": [
+            148,
+            151,
+            105
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.7,
+          "rgb": [
+            128,
+            147,
+            95
+          ],
+          "actual": [
+            128,
+            147,
+            95
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.7,
+          "rgb": [
+            33,
+            99,
+            129
+          ],
+          "actual": [
+            33,
+            99,
+            129
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-hardware-mobile-n256-net.png",
+      "backend": "hardware",
+      "profile": "mobile",
+      "n": 256,
+      "view": "net",
+      "browser": "134.0.6998.166",
+      "pageCpuThrottle": 4,
+      "fixtureSha": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "pose": {
+        "mode": "net",
+        "frame": {
+          "right": [
+            0,
+            1,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            1
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ]
+        },
+        "zoom": 1,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 393218,
+      "displayRevision": 393218,
+      "pngSha256": "dabe86be9567f93e3686cc35350e517dec542e6b49d7887a23815647f5a90c87",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            32,
+            99,
+            130
+          ],
+          "actual": [
+            32,
+            98,
+            129
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            12,
+            45,
+            72
+          ],
+          "actual": [
+            12,
+            45,
+            72
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            227,
+            234,
+            224
+          ],
+          "actual": [
+            229,
+            238,
+            229
+          ],
+          "error": 5
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            12,
+            35,
+            57
+          ],
+          "actual": [
+            12,
+            42,
+            68
+          ],
+          "error": 11
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            31,
+            95,
+            126
+          ],
+          "actual": [
+            31,
+            94,
+            125
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            255,
+            202,
+            123
+          ],
+          "actual": [
+            255,
+            202,
+            123
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-fallback-desktop-n128-globe.png",
+      "backend": "fallback",
+      "profile": "desktop",
+      "n": 128,
+      "view": "globe",
+      "browser": "156.0.8078.4",
+      "pageCpuThrottle": 1,
+      "fixtureSha": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            0,
+            1,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            1
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ]
+        },
+        "zoom": 1,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 98306,
+      "displayRevision": 98306,
+      "pngSha256": "1b4537d7737da3450f3852dc10bd9219daaa5ebb15f970367a75d954e0778850",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            12,
+            43,
+            70
+          ],
+          "actual": [
+            12,
+            43,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            10,
+            36,
+            58
+          ],
+          "actual": [
+            10,
+            36,
+            58
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            12,
+            45,
+            72
+          ],
+          "actual": [
+            12,
+            45,
+            72
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            92,
+            119,
+            72
+          ],
+          "actual": [
+            92,
+            119,
+            72
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            9,
+            35,
+            56
+          ],
+          "actual": [
+            9,
+            35,
+            56
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            112,
+            149,
+            89
+          ],
+          "actual": [
+            112,
+            149,
+            89
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            19,
+            62,
+            85
+          ],
+          "actual": [
+            19,
+            62,
+            85
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            117,
+            146,
+            90
+          ],
+          "actual": [
+            117,
+            146,
+            90
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-fallback-desktop-n128-zoom-coast.png",
+      "backend": "fallback",
+      "profile": "desktop",
+      "n": 128,
+      "view": "zoom-coast",
+      "browser": "156.0.8078.4",
+      "pageCpuThrottle": 1,
+      "fixtureSha": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            -0.5035384602222337,
+            0.8639728115380843,
+            0
+          ],
+          "up": [
+            -0.1645524388674678,
+            -0.09590403839864992,
+            0.981694917111013
+          ],
+          "forward": [
+            0.8481577176090485,
+            0.4943211469700728,
+            0.19046020507812503
+          ]
+        },
+        "zoom": 2.44140625,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 98306,
+      "displayRevision": 98306,
+      "pngSha256": "534cea41bf1f3cd55a69beaee5e67c615eb7e21e10773a2aea938413e5674d62",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.3,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.3,
+          "rgb": [
+            12,
+            44,
+            70
+          ],
+          "actual": [
+            12,
+            44,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            26,
+            82,
+            111
+          ],
+          "actual": [
+            26,
+            82,
+            111
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.3,
+          "rgb": [
+            113,
+            146,
+            88
+          ],
+          "actual": [
+            113,
+            146,
+            88
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.3,
+          "rgb": [
+            104,
+            137,
+            82
+          ],
+          "actual": [
+            104,
+            137,
+            82
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            12,
+            44,
+            70
+          ],
+          "actual": [
+            12,
+            44,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            33,
+            101,
+            133
+          ],
+          "actual": [
+            33,
+            101,
+            133
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            137,
+            150,
+            100
+          ],
+          "actual": [
+            137,
+            150,
+            100
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            107,
+            138,
+            84
+          ],
+          "actual": [
+            107,
+            138,
+            84
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.6,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            22,
+            70,
+            99
+          ],
+          "actual": [
+            22,
+            70,
+            99
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            121,
+            151,
+            93
+          ],
+          "actual": [
+            121,
+            151,
+            93
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            183,
+            162,
+            126
+          ],
+          "actual": [
+            183,
+            162,
+            126
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.6,
+          "rgb": [
+            103,
+            137,
+            82
+          ],
+          "actual": [
+            103,
+            137,
+            82
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.7,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.7,
+          "rgb": [
+            30,
+            93,
+            123
+          ],
+          "actual": [
+            30,
+            93,
+            123
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            130,
+            151,
+            97
+          ],
+          "actual": [
+            130,
+            151,
+            97
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.7,
+          "rgb": [
+            151,
+            152,
+            106
+          ],
+          "actual": [
+            151,
+            152,
+            106
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.7,
+          "rgb": [
+            33,
+            100,
+            128
+          ],
+          "actual": [
+            33,
+            100,
+            128
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-fallback-desktop-n128-zoom-mountain.png",
+      "backend": "fallback",
+      "profile": "desktop",
+      "n": 128,
+      "view": "zoom-mountain",
+      "browser": "156.0.8078.4",
+      "pageCpuThrottle": 1,
+      "fixtureSha": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            -0.7071068512155125,
+            0.7071067111575756,
+            0
+          ],
+          "up": [
+            -0.07458165708764138,
+            -0.07458167186016844,
+            0.9944220183848524
+          ],
+          "forward": [
+            0.7031624829227912,
+            0.7031626221994874,
+            0.10547440140335648
+          ]
+        },
+        "zoom": 2.44140625,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 98306,
+      "displayRevision": 98306,
+      "pngSha256": "11b674c97f3981d6a8b6e2734a3488905c8f6ae7a911c1c3dbe2c47f8495e974",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.3,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.3,
+          "rgb": [
+            21,
+            69,
+            97
+          ],
+          "actual": [
+            21,
+            69,
+            97
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            129,
+            151,
+            97
+          ],
+          "actual": [
+            129,
+            151,
+            97
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.3,
+          "rgb": [
+            117,
+            147,
+            90
+          ],
+          "actual": [
+            117,
+            147,
+            90
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.3,
+          "rgb": [
+            26,
+            80,
+            108
+          ],
+          "actual": [
+            26,
+            80,
+            108
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            32,
+            97,
+            127
+          ],
+          "actual": [
+            32,
+            97,
+            127
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            235,
+            234,
+            224
+          ],
+          "actual": [
+            235,
+            234,
+            224
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            119,
+            148,
+            92
+          ],
+          "actual": [
+            119,
+            148,
+            92
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            24,
+            76,
+            103
+          ],
+          "actual": [
+            24,
+            76,
+            103
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.6,
+          "rgb": [
+            21,
+            68,
+            95
+          ],
+          "actual": [
+            21,
+            68,
+            95
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            118,
+            147,
+            91
+          ],
+          "actual": [
+            118,
+            147,
+            91
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            232,
+            229,
+            218
+          ],
+          "actual": [
+            232,
+            229,
+            218
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            118,
+            147,
+            91
+          ],
+          "actual": [
+            118,
+            147,
+            91
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.6,
+          "rgb": [
+            18,
+            61,
+            87
+          ],
+          "actual": [
+            18,
+            61,
+            87
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.7,
+          "rgb": [
+            28,
+            87,
+            115
+          ],
+          "actual": [
+            28,
+            87,
+            115
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.7,
+          "rgb": [
+            129,
+            148,
+            96
+          ],
+          "actual": [
+            129,
+            148,
+            96
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            159,
+            156,
+            110
+          ],
+          "actual": [
+            159,
+            156,
+            110
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.7,
+          "rgb": [
+            116,
+            146,
+            90
+          ],
+          "actual": [
+            116,
+            146,
+            90
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.7,
+          "rgb": [
+            14,
+            48,
+            73
+          ],
+          "actual": [
+            14,
+            48,
+            73
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-fallback-desktop-n128-net.png",
+      "backend": "fallback",
+      "profile": "desktop",
+      "n": 128,
+      "view": "net",
+      "browser": "156.0.8078.4",
+      "pageCpuThrottle": 1,
+      "fixtureSha": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "pose": {
+        "mode": "net",
+        "frame": {
+          "right": [
+            0,
+            1,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            1
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ]
+        },
+        "zoom": 1,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 98306,
+      "displayRevision": 98306,
+      "pngSha256": "6d3ae36b19d07e81e996e71681a9cf669786af9ba7497474814cd2637fe55ef3",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            24,
+            76,
+            105
+          ],
+          "actual": [
+            24,
+            76,
+            105
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            226,
+            230,
+            218
+          ],
+          "actual": [
+            226,
+            230,
+            218
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            12,
+            45,
+            72
+          ],
+          "actual": [
+            12,
+            45,
+            72
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            13,
+            47,
+            74
+          ],
+          "actual": [
+            13,
+            47,
+            74
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            175,
+            185,
+            151
+          ],
+          "actual": [
+            175,
+            185,
+            151
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            112,
+            150,
+            90
+          ],
+          "actual": [
+            112,
+            150,
+            90
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-fallback-desktop-n256-globe.png",
+      "backend": "fallback",
+      "profile": "desktop",
+      "n": 256,
+      "view": "globe",
+      "browser": "156.0.8078.4",
+      "pageCpuThrottle": 1,
+      "fixtureSha": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            0,
+            1,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            1
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ]
+        },
+        "zoom": 1,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 393218,
+      "displayRevision": 393218,
+      "pngSha256": "5f8330e7e6ace74c9f117de750f508b028fd6d6db2511d695adc80b09916be40",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            12,
+            43,
+            70
+          ],
+          "actual": [
+            12,
+            43,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            10,
+            36,
+            58
+          ],
+          "actual": [
+            10,
+            36,
+            58
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            12,
+            45,
+            72
+          ],
+          "actual": [
+            12,
+            45,
+            72
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            92,
+            119,
+            72
+          ],
+          "actual": [
+            92,
+            119,
+            72
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            9,
+            35,
+            56
+          ],
+          "actual": [
+            9,
+            35,
+            56
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            112,
+            149,
+            89
+          ],
+          "actual": [
+            112,
+            149,
+            89
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            19,
+            62,
+            85
+          ],
+          "actual": [
+            19,
+            62,
+            85
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            117,
+            146,
+            90
+          ],
+          "actual": [
+            117,
+            146,
+            90
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-fallback-desktop-n256-zoom-coast.png",
+      "backend": "fallback",
+      "profile": "desktop",
+      "n": 256,
+      "view": "zoom-coast",
+      "browser": "156.0.8078.4",
+      "pageCpuThrottle": 1,
+      "fixtureSha": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            -0.45508354569351867,
+            0.8904487444199217,
+            0
+          ],
+          "up": [
+            -0.13112927021505028,
+            -0.0670165167929384,
+            0.9890975184327427
+          ],
+          "forward": [
+            0.8807406433972964,
+            0.45012200572503314,
+            0.14726200810185186
+          ]
+        },
+        "zoom": 2.44140625,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 393218,
+      "displayRevision": 393218,
+      "pngSha256": "e5bf232db3129fe05c04e223648bb366176063ed83402907b5644f45817ee0f7",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.3,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.3,
+          "rgb": [
+            12,
+            44,
+            70
+          ],
+          "actual": [
+            12,
+            44,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            25,
+            79,
+            108
+          ],
+          "actual": [
+            25,
+            79,
+            108
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.3,
+          "rgb": [
+            115,
+            146,
+            89
+          ],
+          "actual": [
+            115,
+            146,
+            89
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.3,
+          "rgb": [
+            107,
+            137,
+            84
+          ],
+          "actual": [
+            107,
+            137,
+            84
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            12,
+            44,
+            70
+          ],
+          "actual": [
+            12,
+            44,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            33,
+            101,
+            132
+          ],
+          "actual": [
+            33,
+            101,
+            132
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            197,
+            183,
+            155
+          ],
+          "actual": [
+            197,
+            183,
+            155
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            109,
+            138,
+            85
+          ],
+          "actual": [
+            109,
+            138,
+            85
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.6,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            21,
+            70,
+            99
+          ],
+          "actual": [
+            21,
+            70,
+            99
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            121,
+            151,
+            93
+          ],
+          "actual": [
+            121,
+            151,
+            93
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            212,
+            204,
+            184
+          ],
+          "actual": [
+            212,
+            204,
+            184
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.6,
+          "rgb": [
+            106,
+            138,
+            83
+          ],
+          "actual": [
+            106,
+            138,
+            83
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.7,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.7,
+          "rgb": [
+            30,
+            92,
+            122
+          ],
+          "actual": [
+            30,
+            92,
+            122
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            132,
+            152,
+            98
+          ],
+          "actual": [
+            132,
+            152,
+            98
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.7,
+          "rgb": [
+            156,
+            153,
+            108
+          ],
+          "actual": [
+            156,
+            153,
+            108
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.7,
+          "rgb": [
+            102,
+            136,
+            81
+          ],
+          "actual": [
+            102,
+            136,
+            81
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-fallback-desktop-n256-zoom-mountain.png",
+      "backend": "fallback",
+      "profile": "desktop",
+      "n": 256,
+      "view": "zoom-mountain",
+      "browser": "156.0.8078.4",
+      "pageCpuThrottle": 1,
+      "fixtureSha": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            -0.7071068512155125,
+            0.7071067111575756,
+            0
+          ],
+          "up": [
+            -0.07458165708764138,
+            -0.07458167186016844,
+            0.9944220183848524
+          ],
+          "forward": [
+            0.7031624829227912,
+            0.7031626221994874,
+            0.10547440140335648
+          ]
+        },
+        "zoom": 2.44140625,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 393218,
+      "displayRevision": 393218,
+      "pngSha256": "767d01edaae90ce1bdf20b6f853e0cd41877311947860abb86d664a69cadddd9",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.3,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.3,
+          "rgb": [
+            21,
+            69,
+            97
+          ],
+          "actual": [
+            21,
+            69,
+            97
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            129,
+            151,
+            96
+          ],
+          "actual": [
+            129,
+            151,
+            96
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.3,
+          "rgb": [
+            117,
+            147,
+            90
+          ],
+          "actual": [
+            117,
+            147,
+            90
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.3,
+          "rgb": [
+            26,
+            80,
+            108
+          ],
+          "actual": [
+            26,
+            80,
+            108
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            11,
+            41,
+            66
+          ],
+          "actual": [
+            11,
+            41,
+            66
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            31,
+            97,
+            127
+          ],
+          "actual": [
+            31,
+            97,
+            127
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            235,
+            234,
+            224
+          ],
+          "actual": [
+            235,
+            234,
+            224
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            119,
+            148,
+            92
+          ],
+          "actual": [
+            119,
+            148,
+            92
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            24,
+            76,
+            103
+          ],
+          "actual": [
+            24,
+            76,
+            103
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.6,
+          "rgb": [
+            21,
+            68,
+            95
+          ],
+          "actual": [
+            21,
+            68,
+            95
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            118,
+            147,
+            91
+          ],
+          "actual": [
+            118,
+            147,
+            91
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            232,
+            229,
+            218
+          ],
+          "actual": [
+            232,
+            229,
+            218
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            118,
+            147,
+            91
+          ],
+          "actual": [
+            118,
+            147,
+            91
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.6,
+          "rgb": [
+            18,
+            60,
+            87
+          ],
+          "actual": [
+            18,
+            60,
+            87
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.7,
+          "rgb": [
+            28,
+            87,
+            116
+          ],
+          "actual": [
+            28,
+            87,
+            116
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.7,
+          "rgb": [
+            129,
+            149,
+            96
+          ],
+          "actual": [
+            129,
+            149,
+            96
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            159,
+            156,
+            110
+          ],
+          "actual": [
+            159,
+            156,
+            110
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.7,
+          "rgb": [
+            116,
+            146,
+            90
+          ],
+          "actual": [
+            116,
+            146,
+            90
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.7,
+          "rgb": [
+            14,
+            48,
+            73
+          ],
+          "actual": [
+            14,
+            48,
+            73
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-fallback-desktop-n256-net.png",
+      "backend": "fallback",
+      "profile": "desktop",
+      "n": 256,
+      "view": "net",
+      "browser": "156.0.8078.4",
+      "pageCpuThrottle": 1,
+      "fixtureSha": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "pose": {
+        "mode": "net",
+        "frame": {
+          "right": [
+            0,
+            1,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            1
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ]
+        },
+        "zoom": 1,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 393218,
+      "displayRevision": 393218,
+      "pngSha256": "b6afb950e9eceaf881730c9f552fb23d4047d43f4ac7b809ff7f213a5a44e077",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            24,
+            76,
+            105
+          ],
+          "actual": [
+            24,
+            76,
+            105
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            226,
+            230,
+            219
+          ],
+          "actual": [
+            226,
+            230,
+            219
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            12,
+            45,
+            72
+          ],
+          "actual": [
+            12,
+            45,
+            72
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            13,
+            47,
+            74
+          ],
+          "actual": [
+            13,
+            47,
+            74
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            176,
+            185,
+            151
+          ],
+          "actual": [
+            176,
+            185,
+            151
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            112,
+            150,
+            90
+          ],
+          "actual": [
+            112,
+            150,
+            90
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-fallback-mobile-n128-globe.png",
+      "backend": "fallback",
+      "profile": "mobile",
+      "n": 128,
+      "view": "globe",
+      "browser": "156.0.8078.4",
+      "pageCpuThrottle": 4,
+      "fixtureSha": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            0,
+            1,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            1
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ]
+        },
+        "zoom": 1,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 98306,
+      "displayRevision": 98306,
+      "pngSha256": "426de031e6affa835b2b6e19aca5ea47bf88618b37ab13eae9fdaed31476a186",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            9,
+            35,
+            57
+          ],
+          "actual": [
+            9,
+            35,
+            56
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            11,
+            42,
+            67
+          ],
+          "actual": [
+            11,
+            42,
+            67
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            12,
+            45,
+            71
+          ],
+          "actual": [
+            12,
+            45,
+            71
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            125,
+            142,
+            92
+          ],
+          "actual": [
+            124,
+            142,
+            91
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            11,
+            40,
+            65
+          ],
+          "actual": [
+            11,
+            40,
+            65
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            117,
+            146,
+            90
+          ],
+          "actual": [
+            116,
+            146,
+            90
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            133,
+            139,
+            94
+          ],
+          "actual": [
+            132,
+            139,
+            94
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            101,
+            119,
+            76
+          ],
+          "actual": [
+            101,
+            119,
+            76
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-fallback-mobile-n128-zoom-coast.png",
+      "backend": "fallback",
+      "profile": "mobile",
+      "n": 128,
+      "view": "zoom-coast",
+      "browser": "156.0.8078.4",
+      "pageCpuThrottle": 4,
+      "fixtureSha": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            -0.5035384178352952,
+            0.8639728362419317,
+            0
+          ],
+          "up": [
+            -0.1645524984262955,
+            -0.09590406229533296,
+            0.9816949047931932
+          ],
+          "forward": [
+            0.8481577312184283,
+            0.4943210991565353,
+            0.19046026856823206
+          ]
+        },
+        "zoom": 2.44140625,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 98306,
+      "displayRevision": 98306,
+      "pngSha256": "fdadb508c8202f5d5730a8a07306248516c6463d1cefe854f19c3a5fc3ba765c",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.3,
+          "rgb": [
+            11,
+            43,
+            68
+          ],
+          "actual": [
+            11,
+            43,
+            68
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.3,
+          "rgb": [
+            12,
+            44,
+            70
+          ],
+          "actual": [
+            12,
+            44,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            28,
+            87,
+            117
+          ],
+          "actual": [
+            28,
+            86,
+            116
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.75,
+          "y": 0.3,
+          "rgb": [
+            227,
+            226,
+            217
+          ],
+          "actual": [
+            227,
+            226,
+            217
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.3,
+          "rgb": [
+            88,
+            132,
+            95
+          ],
+          "actual": [
+            86,
+            131,
+            95
+          ],
+          "error": 2
+        },
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            12,
+            44,
+            70
+          ],
+          "actual": [
+            12,
+            44,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            16,
+            56,
+            84
+          ],
+          "actual": [
+            16,
+            56,
+            84
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            30,
+            93,
+            123
+          ],
+          "actual": [
+            30,
+            93,
+            123
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            140,
+            152,
+            101
+          ],
+          "actual": [
+            138,
+            152,
+            101
+          ],
+          "error": 2
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            118,
+            146,
+            91
+          ],
+          "actual": [
+            118,
+            146,
+            91
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.6,
+          "rgb": [
+            27,
+            84,
+            113
+          ],
+          "actual": [
+            27,
+            84,
+            113
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            112,
+            148,
+            89
+          ],
+          "actual": [
+            112,
+            148,
+            89
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            130,
+            151,
+            97
+          ],
+          "actual": [
+            130,
+            151,
+            97
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            208,
+            198,
+            175
+          ],
+          "actual": [
+            207,
+            197,
+            174
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.95,
+          "y": 0.6,
+          "rgb": [
+            133,
+            148,
+            97
+          ],
+          "actual": [
+            133,
+            148,
+            97
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.7,
+          "rgb": [
+            112,
+            142,
+            87
+          ],
+          "actual": [
+            112,
+            142,
+            87
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.7,
+          "rgb": [
+            132,
+            148,
+            97
+          ],
+          "actual": [
+            132,
+            148,
+            97
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            147,
+            151,
+            104
+          ],
+          "actual": [
+            147,
+            151,
+            104
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.7,
+          "rgb": [
+            146,
+            150,
+            104
+          ],
+          "actual": [
+            146,
+            150,
+            104
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.7,
+          "rgb": [
+            129,
+            145,
+            95
+          ],
+          "actual": [
+            129,
+            145,
+            95
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-fallback-mobile-n128-zoom-mountain.png",
+      "backend": "fallback",
+      "profile": "mobile",
+      "n": 128,
+      "view": "zoom-mountain",
+      "browser": "156.0.8078.4",
+      "pageCpuThrottle": 4,
+      "fixtureSha": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            -0.7071068608318597,
+            0.7071067015412265,
+            0
+          ],
+          "up": [
+            -0.07458162060133887,
+            -0.07458163740241507,
+            0.9944220237056562
+          ],
+          "forward": [
+            0.7031624771224577,
+            0.7031626355245716,
+            0.10547435123833361
+          ]
+        },
+        "zoom": 2.44140625,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 98306,
+      "displayRevision": 98306,
+      "pngSha256": "b0cd9a201f0baa323d1ade1784046a9b5765a17fa18bd63f48dd36d5d5a8b14f",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.3,
+          "rgb": [
+            11,
+            43,
+            68
+          ],
+          "actual": [
+            11,
+            43,
+            68
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.3,
+          "rgb": [
+            22,
+            72,
+            100
+          ],
+          "actual": [
+            22,
+            72,
+            100
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            200,
+            186,
+            160
+          ],
+          "actual": [
+            200,
+            186,
+            160
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.3,
+          "rgb": [
+            108,
+            144,
+            86
+          ],
+          "actual": [
+            108,
+            144,
+            86
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.3,
+          "rgb": [
+            42,
+            108,
+            129
+          ],
+          "actual": [
+            41,
+            107,
+            129
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            24,
+            77,
+            106
+          ],
+          "actual": [
+            24,
+            77,
+            106
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            52,
+            117,
+            128
+          ],
+          "actual": [
+            45,
+            113,
+            132
+          ],
+          "error": 7
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            223,
+            217,
+            200
+          ],
+          "actual": [
+            221,
+            214,
+            197
+          ],
+          "error": 3
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            124,
+            149,
+            94
+          ],
+          "actual": [
+            124,
+            149,
+            94
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            116,
+            146,
+            90
+          ],
+          "actual": [
+            116,
+            146,
+            90
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.6,
+          "rgb": [
+            125,
+            147,
+            94
+          ],
+          "actual": [
+            125,
+            147,
+            94
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            139,
+            152,
+            101
+          ],
+          "actual": [
+            139,
+            152,
+            101
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            158,
+            155,
+            110
+          ],
+          "actual": [
+            157,
+            155,
+            109
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            131,
+            150,
+            97
+          ],
+          "actual": [
+            131,
+            150,
+            97
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.6,
+          "rgb": [
+            109,
+            145,
+            87
+          ],
+          "actual": [
+            109,
+            145,
+            87
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.7,
+          "rgb": [
+            136,
+            146,
+            97
+          ],
+          "actual": [
+            136,
+            146,
+            97
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.7,
+          "rgb": [
+            149,
+            151,
+            104
+          ],
+          "actual": [
+            149,
+            151,
+            104
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            148,
+            151,
+            105
+          ],
+          "actual": [
+            148,
+            151,
+            105
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.7,
+          "rgb": [
+            127,
+            147,
+            95
+          ],
+          "actual": [
+            127,
+            147,
+            95
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.7,
+          "rgb": [
+            32,
+            98,
+            128
+          ],
+          "actual": [
+            32,
+            98,
+            128
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-fallback-mobile-n128-net.png",
+      "backend": "fallback",
+      "profile": "mobile",
+      "n": 128,
+      "view": "net",
+      "browser": "156.0.8078.4",
+      "pageCpuThrottle": 4,
+      "fixtureSha": "2cb5c74ece425908299aa80f0707183545e1c448662a37727bcf3c962b3bd117",
+      "pose": {
+        "mode": "net",
+        "frame": {
+          "right": [
+            0,
+            1,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            1
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ]
+        },
+        "zoom": 1,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 98306,
+      "displayRevision": 98306,
+      "pngSha256": "02e1e70530225b69f49555b0a49b41a8d25c11984a24e140fddd9c0645118712",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            32,
+            99,
+            130
+          ],
+          "actual": [
+            32,
+            98,
+            129
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            12,
+            45,
+            72
+          ],
+          "actual": [
+            12,
+            45,
+            72
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            226,
+            234,
+            224
+          ],
+          "actual": [
+            228,
+            237,
+            229
+          ],
+          "error": 5
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            11,
+            34,
+            56
+          ],
+          "actual": [
+            11,
+            42,
+            68
+          ],
+          "error": 12
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            31,
+            95,
+            125
+          ],
+          "actual": [
+            30,
+            93,
+            124
+          ],
+          "error": 2
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            255,
+            202,
+            123
+          ],
+          "actual": [
+            255,
+            202,
+            123
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-fallback-mobile-n256-globe.png",
+      "backend": "fallback",
+      "profile": "mobile",
+      "n": 256,
+      "view": "globe",
+      "browser": "156.0.8078.4",
+      "pageCpuThrottle": 4,
+      "fixtureSha": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            0,
+            1,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            1
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ]
+        },
+        "zoom": 1,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 393218,
+      "displayRevision": 393218,
+      "pngSha256": "38a1ac5122c427aa40ad37eaf4201e3b9e10b68dd27156591a25a8b53dca14f3",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            9,
+            35,
+            57
+          ],
+          "actual": [
+            9,
+            35,
+            56
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            11,
+            42,
+            67
+          ],
+          "actual": [
+            11,
+            42,
+            67
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            12,
+            45,
+            71
+          ],
+          "actual": [
+            12,
+            45,
+            71
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            125,
+            142,
+            93
+          ],
+          "actual": [
+            124,
+            142,
+            92
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            11,
+            40,
+            65
+          ],
+          "actual": [
+            11,
+            40,
+            65
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            117,
+            146,
+            90
+          ],
+          "actual": [
+            116,
+            146,
+            90
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            133,
+            139,
+            94
+          ],
+          "actual": [
+            132,
+            139,
+            94
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            101,
+            119,
+            76
+          ],
+          "actual": [
+            101,
+            119,
+            76
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-fallback-mobile-n256-zoom-coast.png",
+      "backend": "fallback",
+      "profile": "mobile",
+      "n": 256,
+      "view": "zoom-coast",
+      "browser": "156.0.8078.4",
+      "pageCpuThrottle": 4,
+      "fixtureSha": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            -0.4550836456946085,
+            0.8904486933121437,
+            0
+          ],
+          "up": [
+            -0.13112921313372392,
+            -0.06701650619306557,
+            0.9890975267184755
+          ],
+          "forward": [
+            0.8807406002247395,
+            0.45012210840656425,
+            0.14726195245002963
+          ]
+        },
+        "zoom": 2.44140625,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 393218,
+      "displayRevision": 393218,
+      "pngSha256": "b88e08719d8e994a182f6254ea50923fe62c0e9efb4e7be2a840e5601bba754a",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.3,
+          "rgb": [
+            11,
+            43,
+            68
+          ],
+          "actual": [
+            11,
+            43,
+            68
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.3,
+          "rgb": [
+            12,
+            44,
+            70
+          ],
+          "actual": [
+            12,
+            44,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            21,
+            68,
+            96
+          ],
+          "actual": [
+            21,
+            68,
+            96
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.3,
+          "rgb": [
+            226,
+            225,
+            216
+          ],
+          "actual": [
+            226,
+            225,
+            216
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.3,
+          "rgb": [
+            113,
+            143,
+            88
+          ],
+          "actual": [
+            113,
+            143,
+            88
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            12,
+            44,
+            70
+          ],
+          "actual": [
+            12,
+            44,
+            70
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            16,
+            54,
+            82
+          ],
+          "actual": [
+            16,
+            54,
+            82
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            30,
+            92,
+            122
+          ],
+          "actual": [
+            30,
+            92,
+            122
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            171,
+            157,
+            115
+          ],
+          "actual": [
+            169,
+            157,
+            114
+          ],
+          "error": 2
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            133,
+            148,
+            97
+          ],
+          "actual": [
+            132,
+            148,
+            97
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.05,
+          "y": 0.6,
+          "rgb": [
+            27,
+            83,
+            113
+          ],
+          "actual": [
+            27,
+            83,
+            113
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            113,
+            148,
+            89
+          ],
+          "actual": [
+            113,
+            148,
+            89
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            132,
+            152,
+            98
+          ],
+          "actual": [
+            132,
+            152,
+            98
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            170,
+            156,
+            114
+          ],
+          "actual": [
+            169,
+            156,
+            114
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.95,
+          "y": 0.6,
+          "rgb": [
+            140,
+            149,
+            100
+          ],
+          "actual": [
+            139,
+            149,
+            100
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.05,
+          "y": 0.7,
+          "rgb": [
+            109,
+            142,
+            86
+          ],
+          "actual": [
+            109,
+            142,
+            86
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.7,
+          "rgb": [
+            130,
+            148,
+            96
+          ],
+          "actual": [
+            130,
+            148,
+            96
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            148,
+            151,
+            105
+          ],
+          "actual": [
+            148,
+            151,
+            105
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.7,
+          "rgb": [
+            148,
+            151,
+            104
+          ],
+          "actual": [
+            148,
+            151,
+            104
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.7,
+          "rgb": [
+            133,
+            146,
+            96
+          ],
+          "actual": [
+            133,
+            146,
+            96
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-fallback-mobile-n256-zoom-mountain.png",
+      "backend": "fallback",
+      "profile": "mobile",
+      "n": 256,
+      "view": "zoom-mountain",
+      "browser": "156.0.8078.4",
+      "pageCpuThrottle": 4,
+      "fixtureSha": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "pose": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            -0.7071068608318597,
+            0.7071067015412265,
+            0
+          ],
+          "up": [
+            -0.07458162060133887,
+            -0.07458163740241507,
+            0.9944220237056562
+          ],
+          "forward": [
+            0.7031624771224577,
+            0.7031626355245716,
+            0.10547435123833361
+          ]
+        },
+        "zoom": 2.44140625,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 393218,
+      "displayRevision": 393218,
+      "pngSha256": "2504bdb1cf26f3867362b36b201026c67a4ef381a4ab051da83165cd57e475e5",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.3,
+          "rgb": [
+            11,
+            43,
+            68
+          ],
+          "actual": [
+            11,
+            43,
+            68
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.3,
+          "rgb": [
+            22,
+            72,
+            101
+          ],
+          "actual": [
+            22,
+            72,
+            101
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.3,
+          "rgb": [
+            200,
+            187,
+            160
+          ],
+          "actual": [
+            200,
+            187,
+            160
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.3,
+          "rgb": [
+            108,
+            144,
+            86
+          ],
+          "actual": [
+            108,
+            144,
+            86
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.3,
+          "rgb": [
+            47,
+            111,
+            125
+          ],
+          "actual": [
+            45,
+            110,
+            125
+          ],
+          "error": 2
+        },
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            24,
+            77,
+            107
+          ],
+          "actual": [
+            24,
+            77,
+            106
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            40,
+            111,
+            137
+          ],
+          "actual": [
+            37,
+            109,
+            138
+          ],
+          "error": 3
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            223,
+            217,
+            200
+          ],
+          "actual": [
+            221,
+            214,
+            197
+          ],
+          "error": 3
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            124,
+            149,
+            94
+          ],
+          "actual": [
+            124,
+            149,
+            94
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            116,
+            146,
+            90
+          ],
+          "actual": [
+            116,
+            146,
+            90
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.6,
+          "rgb": [
+            125,
+            147,
+            94
+          ],
+          "actual": [
+            125,
+            147,
+            94
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.6,
+          "rgb": [
+            139,
+            152,
+            101
+          ],
+          "actual": [
+            139,
+            152,
+            101
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            159,
+            156,
+            110
+          ],
+          "actual": [
+            158,
+            155,
+            109
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.75,
+          "y": 0.6,
+          "rgb": [
+            131,
+            151,
+            97
+          ],
+          "actual": [
+            131,
+            151,
+            97
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.6,
+          "rgb": [
+            109,
+            145,
+            87
+          ],
+          "actual": [
+            109,
+            145,
+            87
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.05,
+          "y": 0.7,
+          "rgb": [
+            136,
+            146,
+            97
+          ],
+          "actual": [
+            136,
+            146,
+            97
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.25,
+          "y": 0.7,
+          "rgb": [
+            149,
+            151,
+            104
+          ],
+          "actual": [
+            149,
+            151,
+            104
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.7,
+          "rgb": [
+            148,
+            151,
+            105
+          ],
+          "actual": [
+            148,
+            151,
+            105
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.75,
+          "y": 0.7,
+          "rgb": [
+            128,
+            147,
+            95
+          ],
+          "actual": [
+            128,
+            147,
+            95
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.95,
+          "y": 0.7,
+          "rgb": [
+            32,
+            98,
+            128
+          ],
+          "actual": [
+            32,
+            98,
+            128
+          ],
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/evidence/a7-p1c-before-fallback-mobile-n256-net.png",
+      "backend": "fallback",
+      "profile": "mobile",
+      "n": 256,
+      "view": "net",
+      "browser": "156.0.8078.4",
+      "pageCpuThrottle": 4,
+      "fixtureSha": "efd9ddeeaf38926e8bde42eb75f66afb8fce66e194fc9121bdbffa599751cf57",
+      "pose": {
+        "mode": "net",
+        "frame": {
+          "right": [
+            0,
+            1,
+            0
+          ],
+          "up": [
+            0,
+            0,
+            1
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ]
+        },
+        "zoom": 1,
+        "pan": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "renderer": "cpu",
+      "sourceRevision": 393218,
+      "displayRevision": 393218,
+      "pngSha256": "41d4547414d9511ef78ecb3e370e1f8da771aa33259fe5d7e19334fcd1caad6b",
+      "compositorAttempts": 1,
+      "canvasPixelComparisons": [
+        {
+          "x": 0.05,
+          "y": 0.45,
+          "rgb": [
+            32,
+            99,
+            130
+          ],
+          "actual": [
+            32,
+            98,
+            129
+          ],
+          "error": 1
+        },
+        {
+          "x": 0.25,
+          "y": 0.45,
+          "rgb": [
+            12,
+            45,
+            72
+          ],
+          "actual": [
+            12,
+            45,
+            72
+          ],
+          "error": 0
+        },
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "rgb": [
+            227,
+            234,
+            224
+          ],
+          "actual": [
+            229,
+            238,
+            229
+          ],
+          "error": 5
+        },
+        {
+          "x": 0.75,
+          "y": 0.45,
+          "rgb": [
+            11,
+            34,
+            56
+          ],
+          "actual": [
+            11,
+            42,
+            68
+          ],
+          "error": 12
+        },
+        {
+          "x": 0.95,
+          "y": 0.45,
+          "rgb": [
+            31,
+            95,
+            126
+          ],
+          "actual": [
+            30,
+            93,
+            124
+          ],
+          "error": 2
+        },
+        {
+          "x": 0.5,
+          "y": 0.6,
+          "rgb": [
+            255,
+            202,
+            123
+          ],
+          "actual": [
+            255,
+            202,
+            123
+          ],
+          "error": 0
+        }
+      ]
+    }
+  ]
+}

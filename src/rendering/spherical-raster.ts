@@ -2,9 +2,10 @@ import { CUBE_FACES, QUARTER_PI, type CubeFace } from '../surfaces/cube-sphere.t
 import type { SphericalTerrain } from '../terrain/spherical.ts';
 import { elevationToColor } from './elevation-colors.ts';
 import { sphericalLayout, type SphericalView, type Viewport } from './spherical-view.ts';
+import type { SphericalElevationField } from './spherical-elevation.ts';
 
 export interface FaceTexture { readonly side: number; readonly pixels: Uint8ClampedArray; readonly sampleIndices?: Uint32Array }
-export interface SphericalDisplayCache { readonly faces: Readonly<Record<CubeFace, FaceTexture>>; sourceRevision: number; readonly byteLength: number }
+export interface SphericalDisplayCache { readonly faces: Readonly<Record<CubeFace, FaceTexture>>; sourceRevision: number; readonly byteLength: number; elevationField?: SphericalElevationField }
 // Camera-local rays depend only on viewport/layout/quality, never terrain or orientation.
 // Two entries cover editing/navigation and settled quality. Absolute module-wide cap;
 // no per-world accumulation, elevation copies or background construction.
@@ -92,5 +93,5 @@ export function renderSphericalGlobe(cache: SphericalDisplayCache, view: Spheric
   return { pixels, columns, rows, left, top, width, height };
 }
 export function makeSphericalDisplayCache(faces: Record<CubeFace, FaceTexture>, sourceRevision: number): SphericalDisplayCache {
-  return { faces, sourceRevision, byteLength: CUBE_FACES.reduce((sum, face) => sum + faces[face].pixels.byteLength + (faces[face].sampleIndices?.byteLength ?? 0), 0) };
+  return { faces, sourceRevision, get byteLength() { return CUBE_FACES.reduce((sum, face) => sum + faces[face].pixels.byteLength + (faces[face].sampleIndices?.byteLength ?? 0), 0) + (this.elevationField?.byteLength ?? 0); } };
 }
