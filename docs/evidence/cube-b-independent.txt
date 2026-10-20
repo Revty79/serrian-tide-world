@@ -1,0 +1,81 @@
+{
+  "oracleCases": 301,
+  "oracleElapsedMs": 5040.427100029774,
+  "checkedSegments": 837,
+  "checkedCrossings": 412,
+  "measurements": [
+    {
+      "label": "same-face",
+      "p50Ms": 0.26049999999941065,
+      "p95Ms": 0.29879999999957363,
+      "maxMs": 0.48629999999957363,
+      "retainedLastResultSerializedBytes": 1808,
+      "workUnits": 313
+    },
+    {
+      "label": "adjacent",
+      "p50Ms": 1.2262000000000626,
+      "p95Ms": 1.4324999999998909,
+      "maxMs": 1.7417999999997846,
+      "retainedLastResultSerializedBytes": 2761,
+      "workUnits": 1402
+    },
+    {
+      "label": "opposite-centers-four-ties",
+      "p50Ms": 1.4452999999994063,
+      "p95Ms": 2.6741000000001804,
+      "maxMs": 3.3695999999999913,
+      "retainedLastResultSerializedBytes": 12409,
+      "workUnits": 3266
+    },
+    {
+      "label": "four-faces",
+      "p50Ms": 0.7074000000002343,
+      "p95Ms": 1.0817000000006374,
+      "maxMs": 1.9426999999996042,
+      "retainedLastResultSerializedBytes": 4907,
+      "workUnits": 1803
+    },
+    {
+      "label": "opposite-corners-six-ties",
+      "p50Ms": 6.32759999999962,
+      "p95Ms": 10.858699999999772,
+      "maxMs": 12.922700000000077,
+      "retainedLastResultSerializedBytes": 12714,
+      "workUnits": 18974
+    },
+    {
+      "label": "extreme-sub-ulp",
+      "p50Ms": 4.049199999999473,
+      "p95Ms": 6.824500000000626,
+      "maxMs": 7.8969999999999345,
+      "retainedLastResultSerializedBytes": 9072,
+      "workUnits": 1447
+    }
+  ],
+  "sampleProofs": [
+    {
+      "n": 128,
+      "vertices": 98306,
+      "elevationBytes": 393224,
+      "revisionBefore": 2,
+      "revisionAfter": 2,
+      "beforeSha256": "5265b16332cfeb0589f32a1f863f2f842d38cfb53033edc662a19ff586ad7f81",
+      "afterSha256": "5265b16332cfeb0589f32a1f863f2f842d38cfb53033edc662a19ff586ad7f81",
+      "representationVersion": 1,
+      "configurationVersion": 1
+    },
+    {
+      "n": 256,
+      "vertices": 393218,
+      "elevationBytes": 1572872,
+      "revisionBefore": 2,
+      "revisionAfter": 2,
+      "beforeSha256": "30a7188e26da230e6733841a1b70ca042aa67d1b0ee5bec8ab47679d0fdae17d",
+      "afterSha256": "30a7188e26da230e6733841a1b70ca042aa67d1b0ee5bec8ab47679d0fdae17d",
+      "representationVersion": 1,
+      "configurationVersion": 1
+    }
+  ]
+}
+

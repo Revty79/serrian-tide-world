@@ -1,0 +1,45 @@
+✔ exact IEEE inputs include signed zero, normals and the smallest subnormal (2.0305ms)
+✔ rational predicates reduce signs and compare without tolerances (0.4208ms)
+✔ certified root 0/1 * 2^0 has independently specified Float64 neighbors (0.2931ms)
+✔ certified root 25/4 * 2^0 has independently specified Float64 neighbors (0.98ms)
+✔ certified root 2/1 * 2^0 has independently specified Float64 neighbors (0.2786ms)
+✔ certified root 1/9 * 2^0 has independently specified Float64 neighbors (0.2136ms)
+✔ certified root 1/1 * 2^-2148 has independently specified Float64 neighbors (0.2318ms)
+✔ certified root 2/1 * 2^-2148 has independently specified Float64 neighbors (0.1933ms)
+✔ certified root 1/1 * 2^-2200 has independently specified Float64 neighbors (0.2494ms)
+✔ certified root 1/1 * 2^1000 has independently specified Float64 neighbors (0.2889ms)
+✔ unachievable precision, arithmetic work and finite-range limits fail explicitly (0.758ms)
+✔ the complete fixed graph contains 798 simple sequences; every ordered pair uses at most six faces (1.0998ms)
+✔ px: same-face 3-4-5 path is the exact global Euclidean lower bound (3.7044ms)
+✔ nx: same-face 3-4-5 path is the exact global Euclidean lower bound (0.6739ms)
+✔ py: same-face 3-4-5 path is the exact global Euclidean lower bound (0.5288ms)
+✔ ny: same-face 3-4-5 path is the exact global Euclidean lower bound (0.6942ms)
+✔ pz: same-face 3-4-5 path is the exact global Euclidean lower bound (0.6004ms)
+✔ nz: same-face 3-4-5 path is the exact global Euclidean lower bound (0.4933ms)
+✔ px to py: literal two-square center unfolding has length L (2.4362ms)
+✔ px to ny: literal two-square center unfolding has length L (1.2775ms)
+✔ px to pz: literal two-square center unfolding has length L (1.4882ms)
+✔ px to nz: literal two-square center unfolding has length L (1.15ms)
+✔ opposite face centers have four distinct exact 2L routes, not the 3D chord L (2.9728ms)
+✔ a literal four-square unfolding wins over every three-face strip (1.3314ms)
+✔ opposite corners have six sqrt(5)L routes, no invented smooth corner transport (8.8548ms)
+✔ edge aliases do not count as different shortest curves or create spurious zero segments (2.8004ms)
+✔ corner endpoints and identical aliases reconstruct a constant curve with undefined direction (6.9201ms)
+✔ reversal chooses exactly the reversed physical curves with inverse fold direction and lengths (22.1457ms)
+✔ a subnormal displacement resolves a genuine shortest-path choice far below one output ULP (3.4814ms)
+✔ extreme Cube-A-supported dimension L=2e-162 keeps exact ranking and finite bounds (2.4343ms)
+✔ extreme Cube-A-supported dimension L=1e-160 keeps exact ranking and finite bounds (2.8282ms)
+✔ extreme Cube-A-supported dimension L=1e+100 keeps exact ranking and finite bounds (4.2735ms)
+✔ extreme Cube-A-supported dimension L=5e+153 keeps exact ranking and finite bounds (4.3704ms)
+✔ near-edge and near-corner locations are not snapped; aliases preserve the same physical route (11.0614ms)
+✔ invalid configuration, foreign identities, coordinates, budgets and impossible precision fail closed (6.8839ms)
+✔ N128: existing sample addresses feed physical routes without touching canonical words, revisions or versions (3.3168ms)
+✔ N256: existing sample addresses feed physical routes without touching canonical words, revisions or versions (4.1803ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 37
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 274.0041

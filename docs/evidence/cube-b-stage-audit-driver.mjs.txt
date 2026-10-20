@@ -1,0 +1,15 @@
+import { execFileSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
+import assert from 'node:assert/strict';
+const expected = JSON.parse(readFileSync('.local/cube-b-stage.json', 'utf8'));
+const staged = execFileSync('git', ['diff', '--cached', '--name-only', '-z'], { encoding: 'utf8' }).split('\0').filter(Boolean).sort();
+assert.deepEqual(staged, expected);
+const index = new Map(execFileSync('git', ['ls-files', '--stage', '-z'], { encoding: 'utf8', maxBuffer: 20e6 }).split('\0').filter(Boolean).map((line) => {
+  const [meta, path] = line.split('\t'); return [path, meta.split(' ')[1]];
+}));
+const manifest = JSON.parse(readFileSync('docs/evidence/cube-b-delivery-manifest.json', 'utf8'));
+for (const f of manifest.files) assert.equal(index.get(f.path), f.gitBlob, f.path);
+const preserved = JSON.parse(readFileSync('docs/evidence/cube-b-preservation.json', 'utf8'));
+for (const f of preserved.protectedFiles) assert.equal(index.get(f.path), f.blob, f.path);
+execFileSync('git', ['diff', '--cached', '--check', '--', ...manifest.sourceTestDriverFiles, ...manifest.documentationFiles], { stdio: 'pipe' });
+console.log({ staged: staged.length, auditedManifestFiles: manifest.files.length, protectedIndexBlobsExact: preserved.protectedFiles.length, sourceDocumentationWhitespace: 'clean' });

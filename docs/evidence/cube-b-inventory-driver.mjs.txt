@@ -1,0 +1,39 @@
+import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
+import { readFileSync, writeFileSync, statSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+const sha = (value) => createHash('sha256').update(value).digest('hex');
+const baseline = '09626c6c5d748909ccd5e45ac65e234fe988f7b0';
+assert.equal(execFileSync('git', ['branch', '--show-current'], { encoding: 'utf8' }).trim(), 'main');
+assert.equal(execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(), baseline);
+const sources = ['src/surfaces/cube-route-exact.ts', 'src/surfaces/solid-cube-routing.ts', 'src/surfaces/cube-route-exact.test.ts', 'src/surfaces/solid-cube-routing.test.ts', 'scripts/cube-route-reference.py', 'scripts/verify-solid-cube-routes.mjs'];
+const docs = ['README.md', 'docs/ARCHITECTURE.md', 'docs/PHASE-1-HEIGHTMAP-ROADMAP.md', 'docs/SURFACE-VISUAL-STANDARD.md', 'docs/WORLD-SURFACE-ARCHITECTURE.md', 'docs/SOLID-CUBE-FOUNDATION.md', 'docs/CUBE-SURFACE-ROUTES.md', 'docs/CUBE-B-COMPLETION.md'];
+const manifest = 'docs/evidence/cube-b-delivery-manifest.json';
+const modified = execFileSync('git', ['diff', '--name-only', '-z'], { encoding: 'utf8' }).split('\0').filter(Boolean);
+assert.deepEqual(modified.sort(), docs.slice(0, 6).sort());
+const files = [...new Set([...modified, ...execFileSync('git', ['ls-files', '--others', '--exclude-standard', '-z'], { encoding: 'utf8' }).split('\0').filter(Boolean)])].filter((p) => p !== manifest).sort();
+for (const path of files) {
+  assert.ok(sources.includes(path) || docs.includes(path) || path.startsWith('docs/evidence/cube-b-'), path);
+  assert.ok(statSync(path).size < 40 * 1024 * 1024, path);
+}
+for (const path of [...sources, ...docs]) {
+  const value = readFileSync(path, 'utf8'); assert.ok(value.endsWith('\n'), path);
+  assert.ok(!/[^\S\r\n]+$/m.test(value), `${path}: trailing whitespace`);
+}
+assert.ok(!readFileSync('docs/CUBE-B-COMPLETION.md', 'utf8').includes('inserted after the full run'));
+const phases = JSON.parse(readFileSync('docs/evidence/cube-b-validation.json', 'utf8'));
+assert.equal(phases.length, 7); for (const p of phases) assert.equal(p.exitCode, 0);
+const browser = JSON.parse(readFileSync('docs/evidence/cube-b-browser-result.json', 'utf8'));
+assert.equal(browser.stats.expected, 328); assert.equal(browser.stats.skipped, 4);
+assert.equal(browser.stats.unexpected, 0); assert.equal(browser.stats.flaky, 0); assert.equal(browser.errors.length, 0);
+const freeze = JSON.parse(readFileSync('docs/evidence/cube-b-source-freeze.json', 'utf8'));
+assert.equal(freeze.files, 249); assert.deepEqual(freeze.changed, []);
+const hashes = execFileSync('git', ['hash-object', '--stdin-paths'], { input: files.join('\n') + '\n', encoding: 'utf8', maxBuffer: 20e6 }).trim().split(/\r?\n/);
+assert.equal(files.length, hashes.length);
+for (const f of JSON.parse(readFileSync('docs/evidence/cube-b-tested-source.json', 'utf8')).files) assert.equal(sha(readFileSync(f.path)), f.sha256, f.path);
+const records = files.map((path, i) => ({ path, category: sources.includes(path) ? 'source-test-driver' : docs.includes(path) ? 'documentation' : 'evidence', bytes: statSync(path).size, sha256: sha(readFileSync(path)), gitBlob: hashes[i] }));
+writeFileSync(manifest, JSON.stringify({ baseline, scope: 'Cube-B certified physical solid exterior cube reference routes; numerical only', sourceTestDriverFiles: sources, documentationFiles: docs,
+  totalImplementationFilesIncludingThisManifest: records.length + 1, self: { path: manifest, omittedFromHashesToAvoidSelfReference: true }, files: records }, null, 2) + '\n');
+const stage = [...files, manifest].sort(); writeFileSync('.local/cube-b-files.nul', stage.join('\0') + '\0');
+writeFileSync('.local/cube-b-stage.json', JSON.stringify(stage, null, 2));
+console.log({ implementationFiles: stage.length, sourceTestDriver: sources.length, documentation: docs.length, evidenceIncludingManifest: stage.length - sources.length - docs.length, totalBytes: stage.reduce((n, p) => n + statSync(p).size, 0), manifestSha256: sha(readFileSync(manifest)) });

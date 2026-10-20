@@ -92,7 +92,7 @@ from automated technical verification.
 
 ## Proposed bounded flat/wrapped follow-up
 
-The owner accepted A7-P1C for progression and deferred this overhaul in favor of remaining geometries, beginning with numerical-only Cube-A. This proposal remains future work, not the next authorized assignment. Separately authorize a later pass:
+The owner accepted A7-P1C for progression and deferred this overhaul in favor of remaining geometries, beginning with accepted Cube-A and the separately authorized numerical-only Cube-B routes. This proposal remains future work, not the next authorized assignment. Separately authorize a later pass:
 
 1. Capture matched v1/v2 geography, Fit/Fill/Focus/context views and native-input
    baseline measurements at the supported raster resolution.

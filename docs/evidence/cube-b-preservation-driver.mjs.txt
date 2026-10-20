@@ -1,0 +1,38 @@
+import { execFileSync } from 'node:child_process';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import assert from 'node:assert/strict';
+const baseline = '09626c6c5d748909ccd5e45ac65e234fe988f7b0', sha = (value) => createHash('sha256').update(value).digest('hex');
+const editedDocs = new Set(['README.md', 'docs/ARCHITECTURE.md', 'docs/PHASE-1-HEIGHTMAP-ROADMAP.md', 'docs/SURFACE-VISUAL-STANDARD.md', 'docs/WORLD-SURFACE-ARCHITECTURE.md', 'docs/SOLID-CUBE-FOUNDATION.md']);
+const entries = execFileSync('git', ['ls-tree', '-r', baseline], { encoding: 'utf8', maxBuffer: 20e6 }).trim().split('\n').map((line) => {
+  const [metadata, path] = line.split('\t'); return { path, blob: metadata.split(' ')[2] };
+});
+const protectedFiles = entries.filter((e) => !editedDocs.has(e.path));
+const actual = execFileSync('git', ['hash-object', '--stdin-paths'], { input: protectedFiles.map((e) => e.path).join('\n') + '\n', encoding: 'utf8', maxBuffer: 20e6 }).trim().split(/\r?\n/);
+assert.equal(actual.length, protectedFiles.length);
+for (const [i, file] of protectedFiles.entries()) assert.equal(actual[i], file.blob, file.path);
+const roadmap = readFileSync('docs/PHASE-1-HEIGHTMAP-ROADMAP.md', 'utf8').replaceAll('\r\n', '\n');
+const old = execFileSync('git', ['show', `${baseline}:docs/PHASE-1-HEIGHTMAP-ROADMAP.md`], { encoding: 'utf8' }).replaceAll('\r\n', '\n');
+const table = (s) => s.slice(s.indexOf('| Phase | Required order |'), s.indexOf('\n\n', s.indexOf('| Phase | Required order |')));
+assert.equal(table(roadmap), table(old)); assert.equal(table(roadmap).split('\n').length, 13);
+const geometryOrder = (s) => s.slice(s.indexOf('### Owner-approved geometry priorities after A7-P1C'), s.indexOf('\nNon-destructive shape conversion remains required.'));
+assert.equal(geometryOrder(roadmap), geometryOrder(old));
+assert.equal(geometryOrder(roadmap).split('\n').filter((line) => /^\d+\. /.test(line)).length, 13);
+for (const issue of [1, 2]) assert.ok(roadmap.includes(`https://github.com/Revty79/serrian-tide-world/issues/${issue}`));
+const acceptedBuild = JSON.parse(readFileSync('docs/evidence/a7-p1c-production-source-check.json', 'utf8'));
+const assets = acceptedBuild.builtAssets.map((a) => ({ path: a.path, sha256: sha(readFileSync(a.path)), acceptedSha256: a.sha256 }));
+for (const asset of assets) assert.equal(asset.sha256, asset.acceptedSha256, asset.path);
+for (const asset of assets.filter((a) => a.path.endsWith('.js'))) {
+  const content = readFileSync(asset.path, 'utf8');
+  assert.ok(!content.includes('physical-solid-cube'));
+  assert.ok(!content.includes('cube-simple-face-unfoldings'));
+}
+const source = JSON.parse(readFileSync('docs/evidence/cube-b-tested-source.json', 'utf8'));
+for (const f of source.files) assert.equal(sha(readFileSync(f.path)), f.sha256, f.path);
+writeFileSync('docs/evidence/cube-b-preservation.json', JSON.stringify({ baseline, protectedFileCount: protectedFiles.length,
+  protectedSourceCount: protectedFiles.filter((f) => /^(src\/|tests\/|scripts\/|dev\/|package.*json$|vite.config.ts$|tsconfig.json$|playwright.config.ts$)/.test(f.path)).length,
+  historicalEvidenceFiles: protectedFiles.filter((f) => f.path.startsWith('docs/evidence/')).length,
+  exactProtectedGitBlobs: true, editedExistingDocuments: [...editedDocs], masterElevenPhaseTableUnchanged: true,
+  masterPhaseTableSha256: sha(table(roadmap)), geometryPriorityOrderUnchanged: true, geometryPriorityOrderSha256: sha(geometryOrder(roadmap)), issue1Preserved: true, issue2Preserved: true,
+  builtAssetsIdenticalToAcceptedP1C: assets, testedSourceFilesUnchanged: source.files.length, protectedFiles }, null, 2) + '\n');
+console.log({ protectedFiles: protectedFiles.length, sourceFiles: source.files.length, identicalProductionAssets: assets.length, elevenPhases: 'unchanged' });
