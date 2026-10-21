@@ -6,6 +6,7 @@ import {validateLinkedEntrance,type LinkedEntrance,type PhysicalPassage} from '.
 import {validateHollowCubePassage} from '../surfaces/hollow-cube-passages.ts';
 import type {SolidCubeTerrain} from '../terrain/solid-cube.ts';
 import {workStep,type PersistenceWork} from '../persistence/cooperative-work.ts';
+import {SOLID_CUBE_FACES,SOLID_CUBE_FRAMES,cubeDot} from '../surfaces/solid-cube.ts';
 
 export interface HollowConnections {readonly links:readonly LinkedEntrance[];readonly passages:readonly PhysicalPassage[]}
 export const HOLLOW_CONNECTION_BYTES=256*1024;
@@ -63,29 +64,33 @@ export class HollowCubeDocument {
  async select(role:HollowCubeRole){if(!HOLLOW_ROLES.includes(role)||this.locked||this.changing)return;const at=performance.now();await this.active.drainForSave();this.selectedSurface=role;this.historyScope='terrain';this.status=`Ready to paint ${role==='exterior'?'outside':'inside'} · switched in ${Math.round(performance.now()-at)} ms`;this.changed();}
  async drainForSave(yieldWork?:()=>Promise<void>){for(const role of HOLLOW_ROLES)await this.sessions[role].drainForSave(yieldWork);if(this.changing)throw Error('Wait for the excavation update before saving.');}
  markSaved(name=this.name){this.name=this.savedName=name;for(const s of Object.values(this.sessions))s.markSaved(name);this.checkpoint=this.connectionHistory.stateId;this.changed();}
- private async prepare(input:HollowConnections,work:PersistenceWork={}){
+ private async prepare(input:HollowConnections,work:PersistenceWork={},validateAll=false){
   const started=performance.now(),revisions=HOLLOW_ROLES.map(r=>this.sessions[r].terrain.revision),epoch=this.geometryRevision,connections=validateHollowConnections(this.world,input),words=encode(connections);
   const masks={} as Record<HollowCubeRole,Uint8Array>;
   // Project conservative primitive bounds to each reference face. Expanded support
   // covers bilinear interpolation and edge gradients; computed only on geometry edits.
   const boxes=connections.passages.flatMap(p=>{const nodes=new Map(p.nodes.map(n=>[n.id,n]));return [...p.nodes.map(n=>({a:n.position,b:n.position,r:n.radiusMeters})),...p.segments.map(s=>({a:nodes.get(s.from)!.position,b:nodes.get(s.to)!.position,r:s.radiusMeters}))];});
-  for(const role of HOLLOW_ROLES){const terrain=this.sessions[role].terrain,mask=new Uint8Array(terrain.sampleCount),pad=terrain.sampleSpacingMeters*2;masks[role]=mask;
-   for(let i=0;i<terrain.sampleCount;i++){
-    const key=terrain.keyAt(i),height=terrain.read(key);assertHollowElevation(this.world,role,height);
-    if(boxes.length){const q=terrain.geometry.referencePosition(terrain.positionAt(terrain.owner(key)));if(boxes.some(b=>q.every((v,k)=>v>=Math.min(b.a[k]!,b.b[k]!)-b.r-pad&&v<=Math.max(b.a[k]!,b.b[k]!)+b.r+pad))){mask[i]=1;if(height!==0)throw Error('Excavation needs level ground at 0 m around its volume. Flatten this area to 0 m first.');}}
-    if(i%8192===8191)await workStep(work,'Checking shell and excavation clearance',(HOLLOW_ROLES.indexOf(role)+i/terrain.sampleCount)/2);
+  let slice=performance.now();
+  for(const role of HOLLOW_ROLES){const terrain=this.sessions[role].terrain,mask=new Uint8Array(terrain.sampleCount),step=terrain.sampleSpacingMeters,pad=step*2,half=terrain.metadata.geometry.sideLengthMeters/2,n=terrain.metadata.representation.cellsPerEdge;masks[role]=mask;
+   if(validateAll)for(let i=0;i<terrain.sampleCount;i++){assertHollowElevation(this.world,role,terrain.read(terrain.keyAt(i)));if(i%1024===1023&&performance.now()-slice>=4){await workStep(work,'Validating both surface envelopes',(HOLLOW_ROLES.indexOf(role)+i/terrain.sampleCount)/2);slice=performance.now();}}
+   // Only projected support rectangles need examining on geometry changes.
+   // Canonical resolve also covers aliases without duplicate authority edits.
+   for(const box of boxes)for(const face of SOLID_CUBE_FACES){const f=SOLID_CUBE_FRAMES[face],r=box.r+pad,normalA=cubeDot(box.a,f.normal),normalB=cubeDot(box.b,f.normal);if(half<Math.min(normalA,normalB)-r||half>Math.max(normalA,normalB)+r)continue;
+    const range=(axis:typeof f.u)=>{const a=cubeDot(box.a,axis),b=cubeDot(box.b,axis);return[Math.max(0,Math.ceil((Math.min(a,b)-r+half)/step)),Math.min(n,Math.floor((Math.max(a,b)+r+half)/step))] as const;},[left,right]=range(f.u),[bottom,top]=range(f.v);
+    for(let row=bottom;row<=top;row++){for(let column=left;column<=right;column++){const key=terrain.resolve({...terrain.metadata.identity,patchId:face,column,row});if(mask[key.index])continue;mask[key.index]=1;if(terrain.read(key)!==0)throw Error('Excavation needs level ground at 0 m around its volume. Flatten this area to 0 m first.');}
+     if(performance.now()-slice>=4){await workStep(work,'Checking excavation support',(HOLLOW_ROLES.indexOf(role)+row/(n+1))/2);slice=performance.now();}}
    }
   }
   if(this.disposed||epoch!==this.geometryRevision||HOLLOW_ROLES.some((r,i)=>this.sessions[r].terrain.revision!==revisions[i]))throw Error('Terrain or excavation changed during validation. Retry the change.');
   return{connections,words,masks,ms:performance.now()-started};
  }
- async restore(input:HollowConnections,work:PersistenceWork={}){const ready=await this.prepare(input,work);this.connectionWords.set(ready.words);this.connections=ready.connections;this.masks=ready.masks;this.preparationMs=ready.ms;}
+ async restore(input:HollowConnections,work:PersistenceWork={}){const ready=await this.prepare(input,work,true);this.connectionWords.set(ready.words);this.connections=ready.connections;this.masks=ready.masks;this.preparationMs=ready.ms;}
  async changeConnections(input:HollowConnections,replay?:boolean){
   if(this.locked||this.changing)throw Error('Wait for the current World operation.');
-  await this.drainForSave();this.changing=true;this.changed();
-  try{const ready=await this.prepare(input);if(replay===undefined)this.connectionHistory.replace(ready.words);else if(replay)this.connectionHistory.redo();else this.connectionHistory.undo();
+  this.changing=true;for(const s of Object.values(this.sessions))s.locked=true;this.changed();
+  try{for(const role of HOLLOW_ROLES)await this.sessions[role].drainForSave();const ready=await this.prepare(input,{progress:(stage,fraction)=>{this.status=`${stage} · ${Math.round(fraction*100)}%`;this.changed();}});if(replay===undefined)this.connectionHistory.replace(ready.words);else if(replay)this.connectionHistory.redo();else this.connectionHistory.undo();
    this.connections=ready.connections;this.masks=ready.masks;this.geometryRevision++;this.preparationMs=ready.ms;this.historyScope='connections';this.error='';this.status=`Entrances and excavation updated · ${Math.round(ready.ms)} ms`;this.geometryChanged();
-  }finally{this.changing=false;this.changed();}
+  }finally{this.changing=false;for(const s of Object.values(this.sessions))s.locked=this.locked;this.changed();}
  }
  async replay(redo=false){if(this.historyScope==='terrain')return this.active.replay(redo);const words=this.connectionHistory.preview(redo);if(words)await this.changeConnections(decode(words),redo);}
  dispose(){this.disposed=true;for(const s of Object.values(this.sessions))s.dispose();this.changed=()=>{};this.geometryChanged=()=>{};}

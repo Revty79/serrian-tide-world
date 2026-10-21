@@ -1,6 +1,8 @@
 import type {CubeDisplayField} from './solid-cube-field.ts';
 import {CUBE_DISPLAY_LIMITS,assertCubeDisplayField} from './solid-cube-field.ts';
 import {cubeLayout,CUBE_EXTERIOR_VIEW,type CubeSurfaceView,type CubeCamera,type CubeDisplayMode,type CubeViewport} from './solid-cube-view.ts';
+import {HOLLOW_CUBE_GLSL} from './hollow-cube-glsl.ts';
+import type {HollowExcavation,PassageEye} from '../surfaces/hollow-cube-csg.ts';
 const vertex=`#version 300 es
 void main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);gl_Position=vec4(p*2.-1.,0.,1.);}`;
 export const SOLID_CUBE_FRAGMENT=`#version 300 es
@@ -21,12 +23,13 @@ const vec2 nu[6]=vec2[6](vec2(0,1),vec2(0,-1),vec2(-1,0),vec2(1,0),vec2(1,0),vec
 const vec2 nv[6]=vec2[6](vec2(-1,0),vec2(1,0),vec2(0,-1),vec2(0,1),vec2(0,1),vec2(0,-1));
 vec3 fieldAt(int face,vec2 uv){int n=textureSize(elevations,0).x-1;vec2 q=clamp((uv+1.)*.5,0.,1.)*float(n);ivec2 p=min(ivec2(floor(q)),ivec2(n-1));vec2 f=q-vec2(p);
  return mix(mix(texelFetch(elevations,ivec3(p,face),0).xyz,texelFetch(elevations,ivec3(p+ivec2(1,0),face),0).xyz,f.x),mix(texelFetch(elevations,ivec3(p+ivec2(0,1),face),0).xyz,texelFetch(elevations,ivec3(p+ivec2(1,1),face),0).xyz,f.x),f.y);}
-vec3 colorAt(int face,vec3 value){float h=value.x;vec3 rgb;
+vec3 colorAtOrientation(int face,vec3 value,float normalOrientation){float h=value.x;vec3 rgb;
  if(h<=0.)rgb=mix(vec3(37,111,143),vec3(12,45,72),clamp(-h/1000.,0.,1.));
  else if(h<=2000.)rgb=mix(vec3(109,149,88),vec3(183,160,121),h/2000.);
  else rgb=mix(vec3(183,160,121),vec3(235,234,224),clamp((h-2000.)/3000.,0.,1.));
- rgb=floor(rgb+.5);float factor=h>0.&&relief==1?6.:0.,magnitude=max(1.,max(abs(value.y),abs(value.z)));vec3 normal=orientation*normals[face]/magnitude-factor*((value.y/magnitude)*us[face]+(value.z/magnitude)*vs[face]);
+ rgb=floor(rgb+.5);float factor=h>0.&&relief==1?6.:0.,magnitude=max(1.,max(abs(value.y),abs(value.z)));vec3 normal=normalOrientation*normals[face]/magnitude-factor*((value.y/magnitude)*us[face]+(value.z/magnitude)*vs[face]);
  float shade=clamp(.88+.30*dot(normalize(normal),vec3(-.38,-.48,.78)),.58,1.16);return clamp(floor(rgb*shade+.5),0.,255.)/255.;}
+vec3 colorAt(int face,vec3 value){return colorAtOrientation(face,value,orientation);}
 vec4 ray(vec2 pixel){vec2 s=(pixel/backingSize*viewport-viewCenter)/scale;int face=-1;vec2 uv=vec2(0);
  if(mode==1){vec2 p=vec2(orientation*s.x,s.y)+vec2(.5,0);for(int i=0;i<6;i++){vec2 d=p-centers[i],q=2.*vec2(dot(d,nu[i]),dot(d,nv[i]));if(max(abs(q.x),abs(q.y))<=1.){face=i;uv=q;break;}}}
  else{vec3 origin=cameraRight*s.x+cameraUp*s.y;float best=-1.e20;for(int i=0;i<6;i++){float facing=dot(normals[i],cameraForward);if(orientation*facing<=1.e-7)continue;float t=(1.-dot(normals[i],origin))/facing;vec3 p=origin+t*cameraForward;if(max(max(abs(p.x),abs(p.y)),abs(p.z))>1.000001||orientation*t<=best)continue;face=i;uv=clamp(vec2(dot(p,us[i]),dot(p,vs[i])),-1.,1.);best=orientation*t;}}
@@ -37,9 +40,10 @@ export function cubeBackingSize(size:CubeViewport,dpr=1){const ratio=Math.min(1.
 export class SolidCubeWebGL {
  readonly canvas:HTMLCanvasElement;private invalidate:()=>void;private failShader:boolean;
  private gl:WebGL2RenderingContext|null=null;private program?:WebGLProgram;private texture?:WebGLTexture;private vao?:WebGLVertexArrayObject;
+ private hollow=false;private oppositeTexture?:WebGLTexture;private oppositeUploaded?:CubeDisplayField;
  private uniforms=new Map<string,WebGLUniformLocation>();private uploaded?:CubeDisplayField;private disposed=false;
  readonly statistics={reason:'',renderer:'',software:false,losses:0,recoveries:0,uploads:0,uploadBytes:0,textureBytes:0,resources:0,presentations:0};
- constructor(canvas:HTMLCanvasElement,invalidate:()=>void,failShader=false){this.canvas=canvas;this.invalidate=invalidate;this.failShader=failShader;canvas.addEventListener('webglcontextlost',this.lost);canvas.addEventListener('webglcontextrestored',this.restored);this.initialize();}
+ constructor(canvas:HTMLCanvasElement,invalidate:()=>void,failShader=false,hollow=false){this.hollow=hollow;this.canvas=canvas;this.invalidate=invalidate;this.failShader=failShader;canvas.addEventListener('webglcontextlost',this.lost);canvas.addEventListener('webglcontextrestored',this.restored);this.initialize();}
  get available(){return !this.disposed&&!!this.program&&!!this.gl&&!this.gl.isContextLost();}
  private lost=(e:Event)=>{e.preventDefault();this.statistics.losses++;this.statistics.reason='Graphics context lost; canvas fallback is active.';this.release(false);this.canvas.hidden=true;this.invalidate();};
  private restored=()=>{if(this.disposed)return;this.initialize();if(this.available)this.statistics.recoveries++;this.invalidate();};
@@ -48,16 +52,17 @@ export class SolidCubeWebGL {
   const info=gl.getExtension('WEBGL_debug_renderer_info');this.statistics.renderer=String(gl.getParameter(info?.UNMASKED_RENDERER_WEBGL??gl.RENDERER));this.statistics.software=/swiftshader|llvmpipe|software|basic render/i.test(this.statistics.renderer);
   if(gl.getParameter(gl.MAX_TEXTURE_SIZE)<257||gl.getParameter(gl.MAX_ARRAY_TEXTURE_LAYERS)<6)throw Error('Cube texture limits unavailable');
   const shaders:WebGLShader[]=[];let program:WebGLProgram|null=null;
-  try{for(const [type,code]of[[gl.VERTEX_SHADER,vertex],[gl.FRAGMENT_SHADER,this.failShader?'invalid shader':SOLID_CUBE_FRAGMENT]] as const){const s=gl.createShader(type);if(!s)throw Error('Cube shader allocation failed');shaders.push(s);gl.shaderSource(s,code);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s)??'Cube shader failed');}
+  try{for(const [type,code]of[[gl.VERTEX_SHADER,vertex],[gl.FRAGMENT_SHADER,this.failShader?'invalid shader':this.hollow?SOLID_CUBE_FRAGMENT.replace('vec4 ray(vec2 pixel){',HOLLOW_CUBE_GLSL+'vec4 ray(vec2 pixel){').replace('void main(){outColor=','void main(){if(mode==0&&excavationEnabled==1){outColor=hollowRay(gl_FragCoord.xy);return;}outColor='):SOLID_CUBE_FRAGMENT]] as const){const s=gl.createShader(type);if(!s)throw Error('Cube shader allocation failed');shaders.push(s);gl.shaderSource(s,code);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s)??'Cube shader failed');}
    program=gl.createProgram();if(!program)throw Error('Cube program allocation failed');for(const s of shaders)gl.attachShader(program,s);gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program)??'Cube link failed');this.program=program;
   }catch(e){if(program)gl.deleteProgram(program);throw e;}finally{for(const s of shaders)gl.deleteShader(s);}
   for(const name of['elevations','viewport','backingSize','viewCenter','cameraRight','cameraUp','cameraForward','scale','orientation','mode','relief']){const u=gl.getUniformLocation(this.program!,name);if(u===null)throw Error('Missing cube uniform '+name);this.uniforms.set(name,u);}
   this.texture=gl.createTexture()??undefined;this.vao=gl.createVertexArray()??undefined;if(!this.texture||!this.vao)throw Error('Cube texture allocation failed');
   gl.bindTexture(gl.TEXTURE_2D_ARRAY,this.texture);for(const p of[gl.TEXTURE_MIN_FILTER,gl.TEXTURE_MAG_FILTER])gl.texParameteri(gl.TEXTURE_2D_ARRAY,p,gl.NEAREST);for(const p of[gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T])gl.texParameteri(gl.TEXTURE_2D_ARRAY,p,gl.CLAMP_TO_EDGE);
-  this.statistics.resources=3;this.statistics.reason='';
+  if(this.hollow){for(const name of ['oppositeElevations','excavationEnabled','primitiveCount','perspectiveEye','innerRatio','eyeFov','eyePosition','primitiveA[0]','primitiveB[0]']){const location=gl.getUniformLocation(this.program!,name);if(location===null)throw Error('Missing excavation uniform '+name);this.uniforms.set(name,location);}this.oppositeTexture=gl.createTexture()??undefined;if(!this.oppositeTexture)throw Error('Opposing field texture unavailable');gl.bindTexture(gl.TEXTURE_2D_ARRAY,this.oppositeTexture);for(const p of[gl.TEXTURE_MIN_FILTER,gl.TEXTURE_MAG_FILTER])gl.texParameteri(gl.TEXTURE_2D_ARRAY,p,gl.NEAREST);for(const p of[gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T])gl.texParameteri(gl.TEXTURE_2D_ARRAY,p,gl.CLAMP_TO_EDGE);}
+  this.statistics.resources=this.hollow?4:3;this.statistics.reason='';
  }catch(e){this.statistics.reason=String(e);this.release(true);this.canvas.hidden=true;}}
- present(field:CubeDisplayField,camera:CubeCamera,mode:CubeDisplayMode,size:CubeViewport,relief=true,surface:CubeSurfaceView=CUBE_EXTERIOR_VIEW){
-  assertCubeDisplayField(field);if(!this.available)throw Error('Cube GL unavailable');const at=performance.now(),gl=this.gl!,dimensions=cubeBackingSize(size,devicePixelRatio||1),layout=cubeLayout(camera,mode,size,surface);
+ present(field:CubeDisplayField,camera:CubeCamera,mode:CubeDisplayMode,size:CubeViewport,relief=true,surface:CubeSurfaceView=CUBE_EXTERIOR_VIEW,excavation?:HollowExcavation,opposite?:CubeDisplayField,eye?:PassageEye){
+  assertCubeDisplayField(field);if(!this.available)throw Error('Cube GL unavailable');const at=performance.now(),gl=this.gl!,dimensions=cubeBackingSize(size,devicePixelRatio||1),layout=cubeLayout(camera,mode,size,mode==='physical'&&excavation?.primitives.length?{...surface,physicalScale:1}:surface);
   if(this.canvas.width!==dimensions.width||this.canvas.height!==dimensions.height){this.canvas.width=dimensions.width;this.canvas.height=dimensions.height;}
   gl.useProgram(this.program!);gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D_ARRAY,this.texture!);
   if(this.uploaded!==field){
@@ -67,6 +72,9 @@ export class SolidCubeWebGL {
   }
   const u=(n:string)=>this.uniforms.get(n)!;gl.uniform1i(u('elevations'),0);gl.uniform2f(u('viewport'),size.width,size.height);gl.uniform2f(u('backingSize'),dimensions.width,dimensions.height);gl.uniform3fv(u('cameraRight'),camera.right);gl.uniform3fv(u('cameraUp'),camera.up);gl.uniform3fv(u('cameraForward'),camera.forward);gl.uniform1f(u('scale'),layout.scale);gl.uniform1i(u('mode'),mode==='net'?1:0);gl.uniform1i(u('relief'),relief?1:0);
   gl.uniform2f(u('viewCenter'),layout.x,size.height-layout.y);gl.uniform1f(u('orientation'),surface.orientation);
+  if(this.hollow){const enabled=!!excavation&&excavation.primitives.length>0;gl.uniform1i(u('excavationEnabled'),enabled?1:0);if(enabled){
+   if(!opposite)throw Error('Opposing terrain is not ready');gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D_ARRAY,this.oppositeTexture!);if(this.oppositeUploaded!==opposite){gl.texImage3D(gl.TEXTURE_2D_ARRAY,0,gl.RGBA32F,opposite.n+1,opposite.n+1,6,0,gl.RGBA,gl.FLOAT,opposite.data);this.oppositeUploaded=opposite;this.statistics.uploadBytes+=opposite.bytes;this.statistics.uploads++;}this.statistics.textureBytes=field.bytes+opposite.bytes;gl.uniform1i(u('oppositeElevations'),1);
+   const a=new Float32Array(48*4),b=new Float32Array(48*4);excavation.primitives.forEach((p,i)=>{a.set([...p.a,p.radius],i*4);b.set([...p.b,0],i*4);});gl.uniform4fv(u('primitiveA[0]'),a);gl.uniform4fv(u('primitiveB[0]'),b);gl.uniform1i(u('primitiveCount'),excavation.primitives.length);gl.uniform1f(u('innerRatio'),excavation.innerRatio);gl.uniform1i(u('perspectiveEye'),eye?1:0);gl.uniform1f(u('eyeFov'),(eye?.fov??1)/camera.zoom);gl.uniform3fv(u('eyePosition'),eye?eye.position.map(v=>v/excavation.halfSideMeters):[0,0,0]);}}
   gl.bindVertexArray(this.vao!);gl.viewport(0,0,dimensions.width,dimensions.height);gl.disable(gl.DEPTH_TEST);gl.disable(gl.BLEND);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.drawArrays(gl.TRIANGLES,0,3);
   if(gl.isContextLost()||gl.getError()!==gl.NO_ERROR)throw Error('Cube GL presentation failed');this.canvas.hidden=false;this.statistics.presentations++;return performance.now()-at;
  }
@@ -74,6 +82,6 @@ export class SolidCubeWebGL {
  capture(){const gl=this.gl;if(!gl)return undefined;const pixels=new Uint8Array(this.canvas.width*this.canvas.height*4);gl.readPixels(0,0,this.canvas.width,this.canvas.height,gl.RGBA,gl.UNSIGNED_BYTE,pixels);return pixels;}
  lose(){const extension=this.gl?.getExtension('WEBGL_lose_context');extension?.loseContext();return()=>extension?.restoreContext();}
  fail(e:unknown){this.statistics.reason=String(e);this.release(true);this.canvas.hidden=true;}
- private release(remove:boolean){if(this.gl&&remove){if(this.program)this.gl.deleteProgram(this.program);if(this.texture)this.gl.deleteTexture(this.texture);if(this.vao)this.gl.deleteVertexArray(this.vao);}this.program=undefined;this.texture=undefined;this.vao=undefined;this.uniforms.clear();this.uploaded=undefined;this.statistics.resources=0;this.statistics.textureBytes=0;}
+ private release(remove:boolean){if(this.gl&&remove){if(this.program)this.gl.deleteProgram(this.program);if(this.texture)this.gl.deleteTexture(this.texture);if(this.oppositeTexture)this.gl.deleteTexture(this.oppositeTexture);if(this.vao)this.gl.deleteVertexArray(this.vao);}this.program=undefined;this.texture=undefined;this.oppositeTexture=undefined;this.oppositeUploaded=undefined;this.vao=undefined;this.uniforms.clear();this.uploaded=undefined;this.statistics.resources=0;this.statistics.textureBytes=0;}
  dispose(){this.disposed=true;this.canvas.removeEventListener('webglcontextlost',this.lost);this.canvas.removeEventListener('webglcontextrestored',this.restored);this.release(true);this.gl=null;this.canvas.width=0;}
 }

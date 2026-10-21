@@ -22,8 +22,9 @@ export class TerrainHistory {
   private current = 0;
   private readonly budget: number;
   private readonly limit: number;
+  private readonly strictWords:boolean;
   constructor(terrain: Pick<Terrain,'elevations'> | Uint32Array, budget = HISTORY_BYTES, limit = HISTORY_ENTRIES) {
-    this.budget = budget; this.limit = limit;
+    this.budget = budget; this.limit = limit;this.strictWords=terrain instanceof Uint32Array;
     this.bits = terrain instanceof Uint32Array ? terrain : new Uint32Array(terrain.elevations.buffer, terrain.elevations.byteOffset, terrain.elevations.length);
     if (budget < this.bits.byteLength * 2 + 64 || limit < 1) throw new RangeError('History budget must fit one complete operation.');
   }
@@ -68,27 +69,30 @@ export class TerrainHistory {
     } else {
       entry = { start: first, before: previous.slice(first, last + 1), after: next.slice(first, last + 1), from: this.current, to: this.sequence+1, bytes: span * 8 + 64 };
     }
-    const entries=[...this.undoEntries,entry];
+    const entries=[...this.undoEntries,entry],redo:Entry[]=[];let bytes=entries.reduce((sum,e)=>sum+e.bytes,0);
+    while(bytes>this.budget||entries.length>this.limit)bytes-=entries.shift()!.bytes;
     if(publish)this.bits.set(next);
-    this.redoEntries = [];this.undoEntries=entries;this.sequence=entry.to;
+    this.redoEntries = redo;this.undoEntries=entries;this.sequence=entry.to;
     this.current = entry.to;
-    while (this.retainedBytes > this.budget || this.length > this.limit) this.undoEntries.shift();
     return true;
   }
   private apply(entry: Entry, values: Uint32Array) {
     if (entry.indices) entry.indices.forEach((index, offset) => { this.bits[index] = values[offset]!; });
     else this.bits.set(values, entry.start);
   }
+  private validateSource(entry:Entry,values:Uint32Array){if(!this.strictWords)return;for(let i=0;i<values.length;i++)if(this.bits[entry.indices?.[i]??entry.start+i]!==values[i])throw Error('History source words changed; replay was not published.');}
   undo(): boolean {
     this.commit();
-    const entry = this.undoEntries.pop();
+    const entry = this.undoEntries.at(-1);
     if (!entry) return false;
-    this.apply(entry, entry.before); this.current = entry.from; this.redoEntries.push(entry); return true;
+    this.validateSource(entry,entry.after);const undo=this.undoEntries.slice(0,-1),redo=[...this.redoEntries,entry];
+    this.apply(entry, entry.before); this.current = entry.from;this.undoEntries=undo;this.redoEntries=redo;return true;
   }
   redo(): boolean {
     this.commit();
-    const entry = this.redoEntries.pop();
+    const entry = this.redoEntries.at(-1);
     if (!entry) return false;
-    this.apply(entry, entry.after); this.current = entry.to; this.undoEntries.push(entry); return true;
+    this.validateSource(entry,entry.before);const redo=this.redoEntries.slice(0,-1),undo=[...this.undoEntries,entry];
+    this.apply(entry, entry.after); this.current = entry.to;this.undoEntries=undo;this.redoEntries=redo;return true;
   }
 }

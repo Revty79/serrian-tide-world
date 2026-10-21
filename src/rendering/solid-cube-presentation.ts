@@ -7,6 +7,9 @@ import type {SolidCubeFace} from '../surfaces/solid-cube.ts';
 import {CubeEditorField} from './solid-cube-editor-field.ts';
 import type {CubePublication} from '../editor/solid-cube-history.ts';
 
+import type {HollowExcavation,PassageEye} from '../surfaces/hollow-cube-csg.ts';
+import {presentHollowCanvas,disposeHollowCanvas,hollowCanvasCacheBytes} from './hollow-cube-canvas.ts';
+
 export type CubeBackend='auto'|'canvas';
 /** Read-only presentation owner. Source changes invalidate preparation; camera state never writes. */
 export class CubePresentation {
@@ -17,6 +20,10 @@ export class CubePresentation {
  private source:SolidCubeTerrain|undefined;private onChange:()=>void;private lastFrame=0;
  private editorField?:CubeEditorField;
  readonly surface:CubeSurfaceView;
+ private excavation?:HollowExcavation;private opposingField?:()=>CubeDisplayField|undefined;private eye?:PassageEye;private excavationGpu=false;
+ get displayField(){return this.field;}
+ setExcavation(model:HollowExcavation,opposing:()=>CubeDisplayField|undefined){this.excavation=model;this.opposingField=opposing;if(model.primitives.length&&!this.excavationGpu){this.excavationGpu=true;if(this.gpu){this.gpu.dispose();this.gpu=undefined;if(this.backend==='auto')this.createGpu();}}this.schedule();}
+ setPassageEye(eye?:PassageEye){this.eye=eye;this.schedule();}
  private verifyPixels=false;
  private pixelCanvas?:HTMLCanvasElement;private previousPixels?:Uint8ClampedArray;private pixelRevision=-1;private pixelView='';
  readonly editPresentations:{revision:number;submittedAt:number;changedPixels:number;pixelFingerprint:number;paintOpportunityAt?:number}[]=[];
@@ -28,7 +35,7 @@ export class CubePresentation {
   this.verifyPixels=options.verifyPixels??false;
   this.metrics.seedMs=options.seedMs??0;this.metrics.identityVerificationMs=options.identityVerificationMs??0;this.failShader=options.failShader??false;gpuCanvas.hidden=true;cpuCanvas.hidden=true;
  }
- private createGpu(){const at=performance.now();this.metrics.gpuInitializationStartedMs=at-this.metrics.started;this.gpu=new SolidCubeWebGL(this.gpuCanvas,()=>{this.schedule();if(!this.gpu?.available)void this.ensureAtlas();},this.failShader);if(this.gpu.available&&this.gpu.statistics.software)this.gpu.fail('Software WebGL adapter detected; Canvas2D provides responsive cube navigation.');this.metrics.gpuInitializationMs+=performance.now()-at;return this.gpu.available;}
+ private createGpu(){const at=performance.now();this.metrics.gpuInitializationStartedMs=at-this.metrics.started;this.gpu=new SolidCubeWebGL(this.gpuCanvas,()=>{this.schedule();if(!this.gpu?.available)void this.ensureAtlas();},this.failShader,this.excavationGpu);if(this.gpu.available&&this.gpu.statistics.software)this.gpu.fail('Software WebGL adapter detected; Canvas2D provides responsive cube navigation.');this.metrics.gpuInitializationMs+=performance.now()-at;return this.gpu.available;}
  queuePublication(publication:CubePublication){if(!this.disposed&&this.source)this.editorField?.queue(this.source,publication);}
  async refresh(detail:'complete'|'interactive'='complete'){
   const generation=++this.generation,previous=this.work,started=performance.now();this.metrics.refreshes++;this.metrics.error='';
@@ -63,8 +70,9 @@ export class CubePresentation {
   if(this.disposed||!this.field||!this.source)return;
   if(!this.editorField&&this.field.sourceRevision!==this.source.revision){this.metrics.error='Terrain changed; refresh the read-only display.';this.onChange();return;}
   let field=this.field,ms:number;
-  if(this.backend==='auto'&&this.gpu?.available){try{ms=this.gpu.present(field,this.camera,this.mode,this.size,true,this.surface);this.cpuCanvas.hidden=true;this.metrics.backend=this.gpu.statistics.software?'WebGL2 (software)':'WebGL2';}catch(e){this.gpu.fail(e);void this.ensureAtlas();this.schedule();return;}}
-  else {if(!this.atlas)return;field=this.atlas.field;if(!this.editorField&&field.sourceRevision!==this.source.revision)return;ms=presentCubeCanvas(this.cpuCanvas,this.atlas,this.camera,this.mode,this.size,this.surface);this.gpuCanvas.hidden=true;this.metrics.backend='Canvas2D fallback';}
+  if(this.mode==='physical'&&this.excavation?.primitives.length&&!this.opposingField?.()){this.schedule();return;}
+  if(this.backend==='auto'&&this.gpu?.available){try{ms=this.gpu.present(field,this.camera,this.mode,this.size,true,this.surface,this.excavation,this.opposingField?.(),this.eye);this.cpuCanvas.hidden=true;this.metrics.backend=this.gpu.statistics.software?'WebGL2 (software)':'WebGL2';}catch(e){this.gpu.fail(e);void this.ensureAtlas();this.schedule();return;}}
+  else {if(!this.atlas)return;field=this.atlas.field;if(!this.editorField&&field.sourceRevision!==this.source.revision)return;const opposite=this.opposingField?.();ms=this.mode==='physical'&&this.excavation?.primitives.length&&opposite?presentHollowCanvas(this.cpuCanvas,this.excavation,this.surface.orientation===1?{exterior:field,interior:opposite}:{exterior:opposite,interior:field},this.atlas,this.camera,this.size,this.surface,this.eye):presentCubeCanvas(this.cpuCanvas,this.atlas,this.camera,this.mode,this.size,this.surface);this.gpuCanvas.hidden=true;this.metrics.backend='Canvas2D fallback';}
   const now=performance.now();if(this.lastFrame&&now-this.lastFrame<250)this.retain(this.metrics.frameGaps,now-this.lastFrame);this.lastFrame=now;this.retain(this.metrics.presentMs,ms);this.metrics.draws++;this.metrics.displayedRevision=field.sourceRevision;this.metrics.displayedN=field.n;
   if(this.editorField&&this.verifyPixels&&(this.pixelRevision!==field.sourceRevision||this.pixelView!==JSON.stringify([this.camera,this.mode,this.size]))){
    const canvas=this.cpuCanvas.hidden?this.gpuCanvas:this.cpuCanvas;this.pixelCanvas??=document.createElement('canvas');this.pixelCanvas.width=this.pixelCanvas.height=128;
@@ -84,6 +92,6 @@ export class CubePresentation {
  }
  private retain(array:number[],value:number){if(array.length===240)array.shift();array.push(value);}
  sample(face:SolidCubeFace,u:number,v:number){return this.field&&cubeDisplaySample(this.field,face,u,v);}
- snapshot(){return structuredClone({disposed:this.disposed,...this.metrics,fieldWork:this.editorField?.statistics,editPresentations:this.editPresentations,camera:this.camera,mode:this.mode,viewport:this.size,sourceRevision:this.source?.revision,sourceCells:this.source?.metadata.representation.cellsPerEdge,authorityBytes:this.source?.elevationByteLength??0,fieldBytes:this.field?.bytes??0,cpuAtlasBytes:this.atlas?.bytes??0,gpu:this.gpu?.statistics??{reason:this.backend==='canvas'?'Canvas explicitly selected':'WebGL initialization follows first terrain pixels',renderer:'',software:false,losses:0,recoveries:0,uploads:0,uploadBytes:0,textureBytes:0,resources:0,presentations:0},canvasBytes:4*(this.cpuCanvas.width*this.cpuCanvas.height+this.gpuCanvas.width*this.gpuCanvas.height),pendingPreparation:!!this.atlasWork});}
- dispose(){this.disposed=true;this.generation++;cancelAnimationFrame(this.raf);this.raf=0;this.atlas?.dispose();this.atlas=undefined;this.field=undefined;this.source=undefined;this.gpu?.dispose();this.gpu=undefined;this.cpuCanvas.width=this.cpuCanvas.height=this.gpuCanvas.width=this.gpuCanvas.height=0;this.onChange=()=>{};}
+ snapshot(){return structuredClone({excavationCanvasBytes:hollowCanvasCacheBytes(this.cpuCanvas),excavationPrimitives:this.excavation?.primitives.length??0,eye:this.eye,disposed:this.disposed,...this.metrics,fieldWork:this.editorField?.statistics,editPresentations:this.editPresentations,camera:this.camera,mode:this.mode,viewport:this.size,sourceRevision:this.source?.revision,sourceCells:this.source?.metadata.representation.cellsPerEdge,authorityBytes:this.source?.elevationByteLength??0,fieldBytes:this.field?.bytes??0,cpuAtlasBytes:this.atlas?.bytes??0,gpu:this.gpu?.statistics??{reason:this.backend==='canvas'?'Canvas explicitly selected':'WebGL initialization follows first terrain pixels',renderer:'',software:false,losses:0,recoveries:0,uploads:0,uploadBytes:0,textureBytes:0,resources:0,presentations:0},canvasBytes:4*(this.cpuCanvas.width*this.cpuCanvas.height+this.gpuCanvas.width*this.gpuCanvas.height),pendingPreparation:!!this.atlasWork});}
+ dispose(){this.disposed=true;this.generation++;cancelAnimationFrame(this.raf);this.raf=0;this.atlas?.dispose();disposeHollowCanvas(this.cpuCanvas);this.atlas=undefined;this.field=undefined;this.source=undefined;this.gpu?.dispose();this.gpu=undefined;this.cpuCanvas.width=this.cpuCanvas.height=this.gpuCanvas.width=this.gpuCanvas.height=0;this.onChange=()=>{};}
 }
