@@ -1,0 +1,503 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-21",
+  "acceptedSolidCommit": "d011a377e6a1ad76296e41740422fa5600f69082",
+  "status": "Cube-G foundation verified; stop for Ember GitHub review and owner authorization before Cube-H",
+  "validation": {
+    "numerical": 1001,
+    "hollowBrowser": {
+      "startTime": "2026-10-21T15:20:14.504Z",
+      "duration": 48518.902,
+      "expected": 14,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "solidCubeBrowser": {
+      "startTime": "2026-10-21T15:11:10.378Z",
+      "duration": 205251.807,
+      "expected": 34,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "legacyAndD1Browser": {
+      "startTime": "2026-10-21T15:17:03.448Z",
+      "duration": 122158.17300000001,
+      "expected": 20,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "build": "TypeScript and Vite passed"
+  },
+  "method": {
+    "environment": "Windows development machine; Chromium desktop 1440x950 and Pixel 7 emulation; not physical phone evidence. One browser worker.",
+    "times": "Construction measures two neutral canonical buffers and descriptors. Synthetic seeding and two-surface extrema scan reported separately. Display first/full times start when each accepted CubePresentation is created, after model preparation; not whole page-load latency. Each case is one development-machine run, not a benchmark distribution.",
+    "memory": "Explicit owned authority, derived fields, CPU atlases, GPU texture and canvas backing estimates, summed across two retained surface presentations. Excludes browser/driver overhead, temporary snapshots/resolvers, StrictMode cancelled setup and GC behavior. Fields/atlases are derived caches, not geography.",
+    "interaction": "All faces and both nets, native mouse orbit/zoom, unchanged canonical hashes for both surfaces; no field refresh while changing view/surface. Pixel fixture independently checks all six face centers in both folded/net modes, with inward/outward normals, against analytic flat-ocean lighting.",
+    "scope": "Dev-only reference-shell inspection. The physical sphere/capsule union has actual 3D volume and a reversible through-shell centerline witness, branch and chamber. Terrain remains unexcavated. Linked anchors are not physical volume. Hollow editing and Save/Open are Cube-H."
+  },
+  "rows": [
+    {
+      "case": "desktop-n128-auto",
+      "n": 128,
+      "constructionMs": 0.3,
+      "syntheticSeedMs": 186.1,
+      "clearanceScanMs": 15.8,
+      "modelReadyMs": 203.6,
+      "authorityBytes": 786448,
+      "fieldBytes": 3195072,
+      "cpuAtlasBytes": 52272,
+      "gpuTextureBytes": 3195072,
+      "canvasBackingBytesEstimate": 15102720,
+      "displays": [
+        {
+          "role": "exterior",
+          "backend": "WebGL2",
+          "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "software": false,
+          "firstTerrainMs": 172.9,
+          "fullTerrainMs": 1032.7,
+          "gpuInitializationMs": 623.8,
+          "presentationMs": {
+            "p50": 0.3,
+            "p95": 3.1,
+            "max": 3.1
+          },
+          "refreshesBefore": 1,
+          "refreshesAfter": 1,
+          "revisionBefore": 98306,
+          "revisionAfter": 98306
+        },
+        {
+          "role": "interior",
+          "backend": "WebGL2",
+          "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "software": false,
+          "firstTerrainMs": 172.7,
+          "fullTerrainMs": 1032.5,
+          "gpuInitializationMs": 6.9,
+          "presentationMs": {
+            "p50": 0.3,
+            "p95": 2.8,
+            "max": 55.7
+          },
+          "refreshesBefore": 1,
+          "refreshesAfter": 1,
+          "revisionBefore": 98306,
+          "revisionAfter": 98306
+        }
+      ],
+      "throughShell": true,
+      "hypotheticalProposalRejected": true,
+      "reversibleVolumeWitness": true,
+      "errors": []
+    },
+    {
+      "case": "desktop-n128-canvas",
+      "n": 128,
+      "constructionMs": 0.4,
+      "syntheticSeedMs": 188.1,
+      "clearanceScanMs": 17.9,
+      "modelReadyMs": 207.9,
+      "authorityBytes": 786448,
+      "fieldBytes": 3195072,
+      "cpuAtlasBytes": 3170352,
+      "gpuTextureBytes": 0,
+      "canvasBackingBytesEstimate": 7551360,
+      "displays": [
+        {
+          "role": "exterior",
+          "backend": "Canvas2D fallback",
+          "renderer": "",
+          "software": false,
+          "firstTerrainMs": 72.9,
+          "fullTerrainMs": 619.4,
+          "gpuInitializationMs": 0,
+          "presentationMs": {
+            "p50": 0.1,
+            "p95": 0.5,
+            "max": 0.5
+          },
+          "refreshesBefore": 1,
+          "refreshesAfter": 1,
+          "revisionBefore": 98306,
+          "revisionAfter": 98306
+        },
+        {
+          "role": "interior",
+          "backend": "Canvas2D fallback",
+          "renderer": "",
+          "software": false,
+          "firstTerrainMs": 72.8,
+          "fullTerrainMs": 619.1,
+          "gpuInitializationMs": 0,
+          "presentationMs": {
+            "p50": 0.1,
+            "p95": 0.2,
+            "max": 0.4
+          },
+          "refreshesBefore": 1,
+          "refreshesAfter": 1,
+          "revisionBefore": 98306,
+          "revisionAfter": 98306
+        }
+      ],
+      "throughShell": true,
+      "hypotheticalProposalRejected": true,
+      "reversibleVolumeWitness": true,
+      "errors": []
+    },
+    {
+      "case": "desktop-n256-auto",
+      "n": 256,
+      "constructionMs": 0.6,
+      "syntheticSeedMs": 635.7,
+      "clearanceScanMs": 44.7,
+      "modelReadyMs": 682.1,
+      "authorityBytes": 3145744,
+      "fieldBytes": 12681408,
+      "cpuAtlasBytes": 52272,
+      "gpuTextureBytes": 12681408,
+      "canvasBackingBytesEstimate": 15102720,
+      "displays": [
+        {
+          "role": "exterior",
+          "backend": "WebGL2",
+          "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "software": false,
+          "firstTerrainMs": 75.3,
+          "fullTerrainMs": 558.1,
+          "gpuInitializationMs": 6.3,
+          "presentationMs": {
+            "p50": 0.4,
+            "p95": 6.4,
+            "max": 6.4
+          },
+          "refreshesBefore": 1,
+          "refreshesAfter": 1,
+          "revisionBefore": 393218,
+          "revisionAfter": 393218
+        },
+        {
+          "role": "interior",
+          "backend": "WebGL2",
+          "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "software": false,
+          "firstTerrainMs": 75.1,
+          "fullTerrainMs": 557.9,
+          "gpuInitializationMs": 4.4,
+          "presentationMs": {
+            "p50": 0.3,
+            "p95": 1.1,
+            "max": 7.3
+          },
+          "refreshesBefore": 1,
+          "refreshesAfter": 1,
+          "revisionBefore": 393218,
+          "revisionAfter": 393218
+        }
+      ],
+      "throughShell": true,
+      "hypotheticalProposalRejected": true,
+      "reversibleVolumeWitness": true,
+      "errors": []
+    },
+    {
+      "case": "desktop-n256-canvas",
+      "n": 256,
+      "constructionMs": 0.9,
+      "syntheticSeedMs": 624.1,
+      "clearanceScanMs": 46.2,
+      "modelReadyMs": 672.3,
+      "authorityBytes": 3145744,
+      "fieldBytes": 12681408,
+      "cpuAtlasBytes": 12632112,
+      "gpuTextureBytes": 0,
+      "canvasBackingBytesEstimate": 7551360,
+      "displays": [
+        {
+          "role": "exterior",
+          "backend": "Canvas2D fallback",
+          "renderer": "",
+          "software": false,
+          "firstTerrainMs": 69.5,
+          "fullTerrainMs": 1818.7,
+          "gpuInitializationMs": 0,
+          "presentationMs": {
+            "p50": 0.1,
+            "p95": 0.6,
+            "max": 0.6
+          },
+          "refreshesBefore": 1,
+          "refreshesAfter": 1,
+          "revisionBefore": 393218,
+          "revisionAfter": 393218
+        },
+        {
+          "role": "interior",
+          "backend": "Canvas2D fallback",
+          "renderer": "",
+          "software": false,
+          "firstTerrainMs": 69.3,
+          "fullTerrainMs": 1818.5,
+          "gpuInitializationMs": 0,
+          "presentationMs": {
+            "p50": 0.1,
+            "p95": 0.2,
+            "max": 0.2
+          },
+          "refreshesBefore": 1,
+          "refreshesAfter": 1,
+          "revisionBefore": 393218,
+          "revisionAfter": 393218
+        }
+      ],
+      "throughShell": true,
+      "hypotheticalProposalRejected": true,
+      "reversibleVolumeWitness": true,
+      "errors": []
+    },
+    {
+      "case": "mobile-n128-auto",
+      "n": 128,
+      "constructionMs": 0.4,
+      "syntheticSeedMs": 180.7,
+      "clearanceScanMs": 18,
+      "modelReadyMs": 200.3,
+      "authorityBytes": 786448,
+      "fieldBytes": 3195072,
+      "cpuAtlasBytes": 52272,
+      "gpuTextureBytes": 3195072,
+      "canvasBackingBytesEstimate": 6061344,
+      "displays": [
+        {
+          "role": "exterior",
+          "backend": "WebGL2",
+          "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "software": false,
+          "firstTerrainMs": 162.7,
+          "fullTerrainMs": 962,
+          "gpuInitializationMs": 555.6,
+          "presentationMs": {
+            "p50": 0.3,
+            "p95": 2.5,
+            "max": 2.5
+          },
+          "refreshesBefore": 1,
+          "refreshesAfter": 1,
+          "revisionBefore": 98306,
+          "revisionAfter": 98306
+        },
+        {
+          "role": "interior",
+          "backend": "WebGL2",
+          "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "software": false,
+          "firstTerrainMs": 162.4,
+          "fullTerrainMs": 961.7,
+          "gpuInitializationMs": 7,
+          "presentationMs": {
+            "p50": 0.3,
+            "p95": 7.5,
+            "max": 51.7
+          },
+          "refreshesBefore": 1,
+          "refreshesAfter": 1,
+          "revisionBefore": 98306,
+          "revisionAfter": 98306
+        }
+      ],
+      "throughShell": true,
+      "hypotheticalProposalRejected": true,
+      "reversibleVolumeWitness": true,
+      "errors": []
+    },
+    {
+      "case": "mobile-n128-canvas",
+      "n": 128,
+      "constructionMs": 0.3,
+      "syntheticSeedMs": 193.1,
+      "clearanceScanMs": 18.2,
+      "modelReadyMs": 212.9,
+      "authorityBytes": 786448,
+      "fieldBytes": 3195072,
+      "cpuAtlasBytes": 3170352,
+      "gpuTextureBytes": 0,
+      "canvasBackingBytesEstimate": 3030672,
+      "displays": [
+        {
+          "role": "exterior",
+          "backend": "Canvas2D fallback",
+          "renderer": "",
+          "software": false,
+          "firstTerrainMs": 74.7,
+          "fullTerrainMs": 607.7,
+          "gpuInitializationMs": 0,
+          "presentationMs": {
+            "p50": 0.1,
+            "p95": 0.4,
+            "max": 0.4
+          },
+          "refreshesBefore": 1,
+          "refreshesAfter": 1,
+          "revisionBefore": 98306,
+          "revisionAfter": 98306
+        },
+        {
+          "role": "interior",
+          "backend": "Canvas2D fallback",
+          "renderer": "",
+          "software": false,
+          "firstTerrainMs": 74.6,
+          "fullTerrainMs": 607.5,
+          "gpuInitializationMs": 0,
+          "presentationMs": {
+            "p50": 0.1,
+            "p95": 0.2,
+            "max": 0.5
+          },
+          "refreshesBefore": 1,
+          "refreshesAfter": 1,
+          "revisionBefore": 98306,
+          "revisionAfter": 98306
+        }
+      ],
+      "throughShell": true,
+      "hypotheticalProposalRejected": true,
+      "reversibleVolumeWitness": true,
+      "errors": []
+    },
+    {
+      "case": "mobile-n256-auto",
+      "n": 256,
+      "constructionMs": 0.6,
+      "syntheticSeedMs": 617.9,
+      "clearanceScanMs": 44.7,
+      "modelReadyMs": 664.3,
+      "authorityBytes": 3145744,
+      "fieldBytes": 12681408,
+      "cpuAtlasBytes": 52272,
+      "gpuTextureBytes": 12681408,
+      "canvasBackingBytesEstimate": 6061344,
+      "displays": [
+        {
+          "role": "exterior",
+          "backend": "WebGL2",
+          "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "software": false,
+          "firstTerrainMs": 63.4,
+          "fullTerrainMs": 546.2,
+          "gpuInitializationMs": 6.2,
+          "presentationMs": {
+            "p50": 0.3,
+            "p95": 5.9,
+            "max": 5.9
+          },
+          "refreshesBefore": 1,
+          "refreshesAfter": 1,
+          "revisionBefore": 393218,
+          "revisionAfter": 393218
+        },
+        {
+          "role": "interior",
+          "backend": "WebGL2",
+          "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "software": false,
+          "firstTerrainMs": 63.4,
+          "fullTerrainMs": 546.3,
+          "gpuInitializationMs": 4,
+          "presentationMs": {
+            "p50": 0.3,
+            "p95": 1.7,
+            "max": 7.1
+          },
+          "refreshesBefore": 1,
+          "refreshesAfter": 1,
+          "revisionBefore": 393218,
+          "revisionAfter": 393218
+        }
+      ],
+      "throughShell": true,
+      "hypotheticalProposalRejected": true,
+      "reversibleVolumeWitness": true,
+      "errors": []
+    },
+    {
+      "case": "mobile-n256-canvas",
+      "n": 256,
+      "constructionMs": 0.7,
+      "syntheticSeedMs": 624.3,
+      "clearanceScanMs": 44.3,
+      "modelReadyMs": 670.4,
+      "authorityBytes": 3145744,
+      "fieldBytes": 12681408,
+      "cpuAtlasBytes": 12632112,
+      "gpuTextureBytes": 0,
+      "canvasBackingBytesEstimate": 3030672,
+      "displays": [
+        {
+          "role": "exterior",
+          "backend": "Canvas2D fallback",
+          "renderer": "",
+          "software": false,
+          "firstTerrainMs": 73.6,
+          "fullTerrainMs": 1822.7,
+          "gpuInitializationMs": 0,
+          "presentationMs": {
+            "p50": 0.1,
+            "p95": 0.8,
+            "max": 0.8
+          },
+          "refreshesBefore": 1,
+          "refreshesAfter": 1,
+          "revisionBefore": 393218,
+          "revisionAfter": 393218
+        },
+        {
+          "role": "interior",
+          "backend": "Canvas2D fallback",
+          "renderer": "",
+          "software": false,
+          "firstTerrainMs": 73.6,
+          "fullTerrainMs": 1822.7,
+          "gpuInitializationMs": 0,
+          "presentationMs": {
+            "p50": 0.1,
+            "p95": 0.2,
+            "max": 0.3
+          },
+          "refreshesBefore": 1,
+          "refreshesAfter": 1,
+          "revisionBefore": 393218,
+          "revisionAfter": 393218
+        }
+      ],
+      "throughShell": true,
+      "hypotheticalProposalRejected": true,
+      "reversibleVolumeWitness": true,
+      "errors": []
+    }
+  ],
+  "pixels": [
+    {
+      "project": "desktop",
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "software": false,
+      "cases": 24,
+      "actualGpuCases": 24,
+      "maxCpuChannelError": 0,
+      "maxGpuChannelError": 0
+    },
+    {
+      "project": "mobile",
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "software": false,
+      "cases": 24,
+      "actualGpuCases": 24,
+      "maxCpuChannelError": 0,
+      "maxGpuChannelError": 0
+    }
+  ]
+}

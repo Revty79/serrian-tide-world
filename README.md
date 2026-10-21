@@ -1,18 +1,25 @@
-<!-- Current interface: Cube-E/F corrective pass 2. Historical reports retain their original checkpoints. -->
+<!-- Current checkpoint: Cube-G hollow foundation. Historical reports retain their original checkpoints. -->
 # Serrian Tide Atlas
 
-The solid cube has a terrain editor and versioned local Save/Open. The owner
-rejected correction `0686f5a` for long-stroke interruptions, trailing and excessive
-default strength. Corrective pass 2 adds certified bounded phase for interactive
-spacing, fixes work-window/scheduling barriers, caches local display dependencies
-and adopts the shared 200 m/dab default and proven input primitives. Horizontal
-cube dragging now follows the owner's pull; vertical rotation is unchanged.
-**Stop for Ember's GitHub review and owner hands-on acceptance before further cube work.**
+The owner accepted the solid cube at `d011a377e6a1ad76296e41740422fa5600f69082`
+after hands-on testing: painting, navigation, brushes, exact Undo/Redo and Save/Open.
+Cube-E/F is closed. **Cube-G** adds the hollow reference-shell foundation: two
+independent canonical surfaces, inward orientation, clearance screening and distinct
+linked-entrance / physical-volume passage contracts, using the existing cube systems.
+
+Open `/dev/hollow-cube.html` for the isolated inspection; the current local preview is
+**http://127.0.0.1:5260/dev/hollow-cube.html**. Switch exterior/interior, folded/net and
+shell/passages. This is not yet hollow painting or persistence and adds no normal
+hollow World option. See the [Cube-G report and limitations](docs/CUBE-G-COMPLETION.md)
+and [shared Atlas architecture](docs/ATLAS-SHARED-EDITOR-ARCHITECTURE.md).
+**Stop for Ember's independent GitHub review and owner authorization before Cube-H.**
+
+For the accepted solid cube:
 Run `npm.cmd run dev`, open Atlas, and choose **New World / Map → Solid cube world**.
 Use Raise, Lower, Smooth or Flatten in the 3D cube or unfolded map. Navigate or
 Space + drag moves the view; wheel / pinch zooms. Save, close the tab, then use
 **Browse saved maps → Open Map** to continue. N128 is faster; N256 and wide
-brushes can queue accepted work. See the [current correction and testing instructions](docs/CUBE-EF-CORRECTIVE-2.md)
+brushes can queue accepted work. See the [historical accepted correction](docs/CUBE-EF-CORRECTIVE-2.md)
 and [one Atlas architecture audit and incremental proposal](docs/ATLAS-SHARED-EDITOR-ARCHITECTURE.md).
 [Cube-E](docs/CUBE-E-COMPLETION.md) and [Cube-F](docs/CUBE-F-COMPLETION.md) preserve
 their historical delivery details. Saves live in this browser on this device.

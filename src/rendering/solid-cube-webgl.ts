@@ -1,6 +1,6 @@
 import type {CubeDisplayField} from './solid-cube-field.ts';
 import {CUBE_DISPLAY_LIMITS,assertCubeDisplayField} from './solid-cube-field.ts';
-import {cubeLayout,type CubeCamera,type CubeDisplayMode,type CubeViewport} from './solid-cube-view.ts';
+import {cubeLayout,CUBE_EXTERIOR_VIEW,type CubeSurfaceView,type CubeCamera,type CubeDisplayMode,type CubeViewport} from './solid-cube-view.ts';
 const vertex=`#version 300 es
 void main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);gl_Position=vec4(p*2.-1.,0.,1.);}`;
 export const SOLID_CUBE_FRAGMENT=`#version 300 es
@@ -10,7 +10,7 @@ precision highp sampler2DArray;
 uniform sampler2DArray elevations;
 uniform vec2 viewport,backingSize,viewCenter;
 uniform vec3 cameraRight,cameraUp,cameraForward;
-uniform float scale;
+uniform float scale,orientation;
 uniform int mode,relief;
 out vec4 outColor;
 const vec3 normals[6]=vec3[6](vec3(1,0,0),vec3(-1,0,0),vec3(0,1,0),vec3(0,-1,0),vec3(0,0,1),vec3(0,0,-1));
@@ -25,11 +25,11 @@ vec3 colorAt(int face,vec3 value){float h=value.x;vec3 rgb;
  if(h<=0.)rgb=mix(vec3(37,111,143),vec3(12,45,72),clamp(-h/1000.,0.,1.));
  else if(h<=2000.)rgb=mix(vec3(109,149,88),vec3(183,160,121),h/2000.);
  else rgb=mix(vec3(183,160,121),vec3(235,234,224),clamp((h-2000.)/3000.,0.,1.));
- rgb=floor(rgb+.5);float factor=h>0.&&relief==1?6.:0.,magnitude=max(1.,max(abs(value.y),abs(value.z)));vec3 normal=normals[face]/magnitude-factor*((value.y/magnitude)*us[face]+(value.z/magnitude)*vs[face]);
+ rgb=floor(rgb+.5);float factor=h>0.&&relief==1?6.:0.,magnitude=max(1.,max(abs(value.y),abs(value.z)));vec3 normal=orientation*normals[face]/magnitude-factor*((value.y/magnitude)*us[face]+(value.z/magnitude)*vs[face]);
  float shade=clamp(.88+.30*dot(normalize(normal),vec3(-.38,-.48,.78)),.58,1.16);return clamp(floor(rgb*shade+.5),0.,255.)/255.;}
 vec4 ray(vec2 pixel){vec2 s=(pixel/backingSize*viewport-viewCenter)/scale;int face=-1;vec2 uv=vec2(0);
- if(mode==1){vec2 p=s+vec2(.5,0);for(int i=0;i<6;i++){vec2 d=p-centers[i],q=2.*vec2(dot(d,nu[i]),dot(d,nv[i]));if(max(abs(q.x),abs(q.y))<=1.){face=i;uv=q;break;}}}
- else{vec3 origin=cameraRight*s.x+cameraUp*s.y;float best=-1.e20;for(int i=0;i<6;i++){float facing=dot(normals[i],cameraForward);if(facing<=1.e-7)continue;float t=(1.-dot(normals[i],origin))/facing;vec3 p=origin+t*cameraForward;if(max(max(abs(p.x),abs(p.y)),abs(p.z))>1.000001||t<=best)continue;face=i;uv=clamp(vec2(dot(p,us[i]),dot(p,vs[i])),-1.,1.);best=t;}}
+ if(mode==1){vec2 p=vec2(orientation*s.x,s.y)+vec2(.5,0);for(int i=0;i<6;i++){vec2 d=p-centers[i],q=2.*vec2(dot(d,nu[i]),dot(d,nv[i]));if(max(abs(q.x),abs(q.y))<=1.){face=i;uv=q;break;}}}
+ else{vec3 origin=cameraRight*s.x+cameraUp*s.y;float best=-1.e20;for(int i=0;i<6;i++){float facing=dot(normals[i],cameraForward);if(orientation*facing<=1.e-7)continue;float t=(1.-dot(normals[i],origin))/facing;vec3 p=origin+t*cameraForward;if(max(max(abs(p.x),abs(p.y)),abs(p.z))>1.000001||orientation*t<=best)continue;face=i;uv=clamp(vec2(dot(p,us[i]),dot(p,vs[i])),-1.,1.);best=orientation*t;}}
  if(face<0)return vec4(0);return vec4(colorAt(face,fieldAt(face,uv)),1.);}
 void main(){outColor=(ray(gl_FragCoord.xy+vec2(-.25,-.25))+ray(gl_FragCoord.xy+vec2(.25,-.25))+ray(gl_FragCoord.xy+vec2(-.25,.25))+ray(gl_FragCoord.xy+vec2(.25,.25)))*.25;}`;
 export function cubeBackingSize(size:CubeViewport,dpr=1){const ratio=Math.min(1.5,Math.max(.5,dpr)),factor=Math.min(ratio,Math.sqrt(CUBE_DISPLAY_LIMITS.maxCanvasPixels/(size.width*size.height)));return{width:Math.max(1,Math.floor(size.width*factor)),height:Math.max(1,Math.floor(size.height*factor))};}
@@ -51,13 +51,13 @@ export class SolidCubeWebGL {
   try{for(const [type,code]of[[gl.VERTEX_SHADER,vertex],[gl.FRAGMENT_SHADER,this.failShader?'invalid shader':SOLID_CUBE_FRAGMENT]] as const){const s=gl.createShader(type);if(!s)throw Error('Cube shader allocation failed');shaders.push(s);gl.shaderSource(s,code);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s)??'Cube shader failed');}
    program=gl.createProgram();if(!program)throw Error('Cube program allocation failed');for(const s of shaders)gl.attachShader(program,s);gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program)??'Cube link failed');this.program=program;
   }catch(e){if(program)gl.deleteProgram(program);throw e;}finally{for(const s of shaders)gl.deleteShader(s);}
-  for(const name of['elevations','viewport','backingSize','viewCenter','cameraRight','cameraUp','cameraForward','scale','mode','relief']){const u=gl.getUniformLocation(this.program!,name);if(u===null)throw Error('Missing cube uniform '+name);this.uniforms.set(name,u);}
+  for(const name of['elevations','viewport','backingSize','viewCenter','cameraRight','cameraUp','cameraForward','scale','orientation','mode','relief']){const u=gl.getUniformLocation(this.program!,name);if(u===null)throw Error('Missing cube uniform '+name);this.uniforms.set(name,u);}
   this.texture=gl.createTexture()??undefined;this.vao=gl.createVertexArray()??undefined;if(!this.texture||!this.vao)throw Error('Cube texture allocation failed');
   gl.bindTexture(gl.TEXTURE_2D_ARRAY,this.texture);for(const p of[gl.TEXTURE_MIN_FILTER,gl.TEXTURE_MAG_FILTER])gl.texParameteri(gl.TEXTURE_2D_ARRAY,p,gl.NEAREST);for(const p of[gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T])gl.texParameteri(gl.TEXTURE_2D_ARRAY,p,gl.CLAMP_TO_EDGE);
   this.statistics.resources=3;this.statistics.reason='';
  }catch(e){this.statistics.reason=String(e);this.release(true);this.canvas.hidden=true;}}
- present(field:CubeDisplayField,camera:CubeCamera,mode:CubeDisplayMode,size:CubeViewport,relief=true){
-  assertCubeDisplayField(field);if(!this.available)throw Error('Cube GL unavailable');const at=performance.now(),gl=this.gl!,dimensions=cubeBackingSize(size,devicePixelRatio||1),layout=cubeLayout(camera,mode,size);
+ present(field:CubeDisplayField,camera:CubeCamera,mode:CubeDisplayMode,size:CubeViewport,relief=true,surface:CubeSurfaceView=CUBE_EXTERIOR_VIEW){
+  assertCubeDisplayField(field);if(!this.available)throw Error('Cube GL unavailable');const at=performance.now(),gl=this.gl!,dimensions=cubeBackingSize(size,devicePixelRatio||1),layout=cubeLayout(camera,mode,size,surface);
   if(this.canvas.width!==dimensions.width||this.canvas.height!==dimensions.height){this.canvas.width=dimensions.width;this.canvas.height=dimensions.height;}
   gl.useProgram(this.program!);gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D_ARRAY,this.texture!);
   if(this.uploaded!==field){
@@ -66,7 +66,7 @@ export class SolidCubeWebGL {
    if(gl.getError()!==gl.NO_ERROR)throw Error('Cube texture upload failed');this.uploaded=field;this.statistics.uploads++;this.statistics.textureBytes=field.bytes;
   }
   const u=(n:string)=>this.uniforms.get(n)!;gl.uniform1i(u('elevations'),0);gl.uniform2f(u('viewport'),size.width,size.height);gl.uniform2f(u('backingSize'),dimensions.width,dimensions.height);gl.uniform3fv(u('cameraRight'),camera.right);gl.uniform3fv(u('cameraUp'),camera.up);gl.uniform3fv(u('cameraForward'),camera.forward);gl.uniform1f(u('scale'),layout.scale);gl.uniform1i(u('mode'),mode==='net'?1:0);gl.uniform1i(u('relief'),relief?1:0);
-  gl.uniform2f(u('viewCenter'),layout.x,size.height-layout.y);
+  gl.uniform2f(u('viewCenter'),layout.x,size.height-layout.y);gl.uniform1f(u('orientation'),surface.orientation);
   gl.bindVertexArray(this.vao!);gl.viewport(0,0,dimensions.width,dimensions.height);gl.disable(gl.DEPTH_TEST);gl.disable(gl.BLEND);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.drawArrays(gl.TRIANGLES,0,3);
   if(gl.isContextLost()||gl.getError()!==gl.NO_ERROR)throw Error('Cube GL presentation failed');this.canvas.hidden=false;this.statistics.presentations++;return performance.now()-at;
  }

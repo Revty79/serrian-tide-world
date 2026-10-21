@@ -1,8 +1,9 @@
 # One Atlas, geometry adapters
 
-2026-10-21. Supplemental owner directive for corrective pass 2. This is an audit
-and bounded migration proposal, not authorization for a broad refactor or a new
-geometry. Stabilize the solid cube, then stop for Ember and owner review.
+2026-10-21. Supplemental owner directive for corrective pass 2, followed by explicit
+owner acceptance at `d011a377e6a1ad76296e41740422fa5600f69082` and Cube-G authorization.
+The shared-infrastructure audit and bounded migration proposal remain in force;
+Cube-G adds the small adapters below. No broad refactor or Cube-H is authorized.
 
 ## What is already shared, and what should be
 
@@ -61,3 +62,35 @@ components plus specialized mathematical adapters. Any proposed new executor mus
 identify the established interface it cannot satisfy, demonstrate that limitation
 with a concrete workload, and compare correctness, memory and native long-form
 input-to-terrain latency against reuse. No new shape is authorized by this proposal.
+
+## Cube-G adapter adoption
+
+The owner's separate Cube-G authorization implements the hollow foundation using
+this inventory, with no new numerical executor or authoring workspace:
+
+- `surfaces/hollow-cube.ts`: parent dimensions/identities and a chart isometry
+  (interior V reversal), normal/winding, row and fold adapters around the unchanged
+  strict solid-cube reference mathematics. Public hollow roles remain explicit.
+- `terrain/hollow-cube.ts`: two existing canonical terrain instances, independent
+  revisions/keys and one parent catalog. A zero initial allocation is optional in
+  the shared storage primitive; every prior solid caller retains −100 m by default.
+  Read-only clearance screening accepts proposed samples without publishing edits.
+- Existing `CubeEditorSession`, bounded phase, C1 preparation and exact history run
+  on either intrinsic kernel in numerical integration tests. Surface selection and
+  public-chart conversion are adapter responsibilities. No second brush/history
+  implementation or return to accumulating radicals is involved.
+- `CubePresentation` / GPU / Canvas receive an optional view orientation and physical
+  scale, defaulting to the existing solid exterior. They retain the same fields and
+  textures. Interior cuts, net handedness and normal direction are geometry/view
+  mathematics. The accepted direct-drag helper is shared; a far-wall cutaway reverses
+  its camera delta to retain surface-following input. No full fields are flipped.
+- `surfaces/passages.ts` separates reciprocal linked anchors from connected 3D
+  sphere/capsule volumes. Geometry-specific containment and portals live in
+  `hollow-cube-passages.ts`. These are foundation contracts/queries, not another
+  worker or navigation execution system.
+
+The development inspection is a read-only adapter view, using accepted dark Atlas
+stage styling and presentation ownership. Normal hollow creation, selected-surface
+authoring, shell-safe transactional proposals, parent persistence and full linked/
+physical passage workflows remain Cube-H. The controlled migration proposal above
+is not silently expanded into that work or into another geometry.

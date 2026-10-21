@@ -29,9 +29,10 @@ export function solidCubeSampleCount(cells: number): number {
 }
 
 /** Isolated numerical foundation; not a document format, selectable world or brush engine. */
-export function createSolidCubeTerrain(options: { readonly terrainId: string; readonly geometry: SolidCubeConfiguration; readonly cellsPerEdge?: number }) {
+export function createSolidCubeTerrain(options: { readonly terrainId: string; readonly geometry: SolidCubeConfiguration; readonly cellsPerEdge?: number;readonly initialElevation?:number }) {
   if (!options || typeof options.terrainId !== 'string' || !options.terrainId.trim() || options.terrainId.length > 128) throw new RangeError('Cube terrain identity must contain 1-128 characters.');
   const cells = options.cellsPerEdge === undefined ? DEFAULT_SOLID_CUBE_CELLS : options.cellsPerEdge, count = solidCubeSampleCount(cells);
+  const initialElevation=options.initialElevation??-100;assertFloat32Elevation(initialElevation);
   const geometry = createSolidCubeGeometry(options.geometry), identity = geometry.identity, length = geometry.metadata.sideLengthMeters, half = length / 2;
   const sampleSpacingMeters = length / cells, halfStep = half / cells;
   if (![sampleSpacingMeters, halfStep, sampleSpacingMeters * sampleSpacingMeters].every((value) => Number.isFinite(value) && value > 0)) throw new RangeError('Cube lattice spacing/area is outside the supported precision range.');
@@ -49,7 +50,7 @@ export function createSolidCubeTerrain(options: { readonly terrainId: string; re
     offset += group.count; return group;
   });
   // Only retained sample-sized allocation. No independent face arrays or alias caches.
-  const elevations = new Float32Array(count).fill(-100);
+  const elevations = new Float32Array(count).fill(initialElevation);
   let revision = 0;
   const keyAt = (index: number): SolidCubeSampleKey => {
     if (!Number.isSafeInteger(index) || index < 0 || index >= count) throw new RangeError('Invalid canonical cube sample index.');

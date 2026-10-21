@@ -6,7 +6,7 @@ import type {SurfacePosition} from '../surfaces/contracts.ts';
 import {DEFAULT_ADDITIVE_STRENGTH_METERS} from '../editor/brush-defaults.ts';
 import {pointerSamples} from '../interaction/pointer-samples.ts';
 import {CubePresentation,type CubeBackend} from '../rendering/solid-cube-presentation.ts';
-import {cubeCamera,cubeLayout,cubeRayHit,cubeNetHit,projectCube,rotateCube,type CubeDisplayMode} from '../rendering/solid-cube-view.ts';
+import {cubeCamera,cubeLayout,cubeRayHit,cubeNetHit,projectCube,dragCube,type CubeDisplayMode} from '../rendering/solid-cube-view.ts';
 import {cubeFootprint,type CubeFootprintLine} from '../rendering/solid-cube-footprint.ts';
 import {SOLID_CUBE_FACES,SOLID_CUBE_FRAMES,cubeDot,type SolidCubeFace,type CubeVector} from '../surfaces/solid-cube.ts';
 import type {SphericalViewportHandle,SphericalWorkspaceView} from './SphericalViewport.tsx';
@@ -60,7 +60,7 @@ export function CubeEditor({session,workspace,handleRef}:{session:CubeEditorSess
    }
    if(distance>0)session.accept(hit,inputTime);lastPoint=point;
   };
-  const navigate=(before:Point,after:Point)=>{if(current.mode==='net')current.setView({...current.camera,netX:Math.max(-size().width*3,Math.min(size().width*3,(current.camera.netX??0)+after.x-before.x)),netY:Math.max(-size().height*3,Math.min(size().height*3,(current.camera.netY??0)+after.y-before.y))});else current.setView(rotateCube(current.camera,(before.x-after.x)/180,(after.y-before.y)/180));};
+  const navigate=(before:Point,after:Point)=>{if(current.mode==='net')current.setView({...current.camera,netX:Math.max(-size().width*3,Math.min(size().width*3,(current.camera.netX??0)+after.x-before.x)),netY:Math.max(-size().height*3,Math.min(size().height*3,(current.camera.netY??0)+after.y-before.y))});else current.setView(dragCube(current.camera,after.x-before.x,after.y-before.y));};
   const zoom=(factor:number)=>{finish();const camera=current.camera;if(current.mode==='net')current.setView({...camera,netZoom:Math.max(.65,Math.min(6,(camera.netZoom??1)*factor))});else current.setView({...camera,zoom:Math.max(.65,Math.min(3,camera.zoom*factor))});if(hover)inspect(hover);};
   const down=(event:PointerEvent)=>{
    if(event.button!==0&&event.button!==1&&event.button!==2||session.locked||!readyRef)return;if(event.pointerType==='touch'&&pen)return;
