@@ -1,17 +1,19 @@
-<!-- Current interface: Cube-E/F corrective pass. Historical reports retain their original checkpoints. -->
+<!-- Current interface: Cube-E/F corrective pass 2. Historical reports retain their original checkpoints. -->
 # Serrian Tide Atlas
 
 The solid cube has a terrain editor and versioned local Save/Open. The owner
-rejected E/F at `01e897e` for slow painting and inconsistent workspace styling.
-The corrective pass removes painting/display serialization, updates local terrain
-regions and restores the established dark workspace. Default-brush N256 sustained
-input-to-display p95 measured 39 ms on the development machine; very wide strokes
-remain costly. **Owner hands-on acceptance is required before further cube work.**
+rejected correction `0686f5a` for long-stroke interruptions, trailing and excessive
+default strength. Corrective pass 2 adds certified bounded phase for interactive
+spacing, fixes work-window/scheduling barriers, caches local display dependencies
+and adopts the shared 200 m/dab default and proven input primitives. Horizontal
+cube dragging now follows the owner's pull; vertical rotation is unchanged.
+**Stop for Ember's GitHub review and owner hands-on acceptance before further cube work.**
 Run `npm.cmd run dev`, open Atlas, and choose **New World / Map → Solid cube world**.
 Use Raise, Lower, Smooth or Flatten in the 3D cube or unfolded map. Navigate or
 Space + drag moves the view; wheel / pinch zooms. Save, close the tab, then use
 **Browse saved maps → Open Map** to continue. N128 is faster; N256 and wide
-brushes can queue accepted work. See the [current correction and testing instructions](docs/CUBE-EF-CORRECTIVE-COMPLETION.md).
+brushes can queue accepted work. See the [current correction and testing instructions](docs/CUBE-EF-CORRECTIVE-2.md)
+and [one Atlas architecture audit and incremental proposal](docs/ATLAS-SHARED-EDITOR-ARCHITECTURE.md).
 [Cube-E](docs/CUBE-E-COMPLETION.md) and [Cube-F](docs/CUBE-F-COMPLETION.md) preserve
 their historical delivery details. Saves live in this browser on this device.
 

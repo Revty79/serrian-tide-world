@@ -3,6 +3,8 @@ import {CubeEditorSession} from '../editor/cube-editor-session.ts';
 import {createSolidCubeTerrain} from '../terrain/solid-cube.ts';
 import type {CubeBrushSettings} from '../terrain/solid-cube-brush.ts';
 import type {SurfacePosition} from '../surfaces/contracts.ts';
+import {DEFAULT_ADDITIVE_STRENGTH_METERS} from '../editor/brush-defaults.ts';
+import {pointerSamples} from '../interaction/pointer-samples.ts';
 import {CubePresentation,type CubeBackend} from '../rendering/solid-cube-presentation.ts';
 import {cubeCamera,cubeLayout,cubeRayHit,cubeNetHit,projectCube,rotateCube,type CubeDisplayMode} from '../rendering/solid-cube-view.ts';
 import {cubeFootprint,type CubeFootprintLine} from '../rendering/solid-cube-footprint.ts';
@@ -17,7 +19,7 @@ declare global {interface Window {__cubeEditor?:{snapshot:()=>unknown;words:()=>
 export function CubeEditor({session,workspace,handleRef}:{session:CubeEditorSession;workspace?:(view:SphericalWorkspaceView)=>ReactNode;handleRef?:Ref<SphericalViewportHandle>}){
  const source=session.terrain,n=source.metadata.representation.cellsPerEdge,length=source.metadata.geometry.sideLengthMeters;
  const viewport=useRef<HTMLDivElement>(null),cpu=useRef<HTMLCanvasElement>(null),gpu=useRef<HTMLCanvasElement>(null),overlay=useRef<SVGSVGElement>(null),cursor=useRef<SVGCircleElement>(null),contour=useRef<SVGPathElement>(null),readout=useRef<HTMLOutputElement>(null);
- const scene=useRef<CubePresentation|undefined>(undefined),[,update]=useState(0),[ready,setReady]=useState(false),[tool,setTool]=useState<Tool>('raise'),[radius,setRadius]=useState(length*.045),[strength,setStrength]=useState(650),[intensity,setIntensity]=useState(.45),[target,setTarget]=useState(0),[mode,setMode]=useState<CubeDisplayMode>('physical'),[backend,setBackend]=useState<CubeBackend>(new URLSearchParams(location.search).get('backend')==='canvas'?'canvas':'auto');
+ const scene=useRef<CubePresentation|undefined>(undefined),[,update]=useState(0),[ready,setReady]=useState(false),[tool,setTool]=useState<Tool>('raise'),[radius,setRadius]=useState(length*.045),[strength,setStrength]=useState(DEFAULT_ADDITIVE_STRENGTH_METERS),[intensity,setIntensity]=useState(.45),[target,setTarget]=useState(0),[mode,setMode]=useState<CubeDisplayMode>('physical'),[backend,setBackend]=useState<CubeBackend>(new URLSearchParams(location.search).get('backend')==='canvas'?'canvas':'auto');
  const controls=useRef({tool,radius,strength,intensity,target});controls.current={tool,radius,strength,intensity,target};
  const commands=useRef({finish(){},cancel(){},zoom(_factor:number){},view(_direction?:CubeVector,_mode?:CubeDisplayMode){}});
  useImperativeHandle(handleRef,()=>({finishInteraction:()=>commands.current.finish(),stop:()=>commands.current.cancel(),undo:()=>{commands.current.cancel();void session.replay();},redo:()=>{commands.current.cancel();void session.replay(true);}}),[session]);
@@ -43,10 +45,10 @@ export function CubeEditor({session,workspace,handleRef}:{session:CubeEditorSess
    ++hoverSerial;latestFootprint=hit;if(!hit){clearTimeout(hoverTimer);hoverTimer=0;lines=[];drawFootprint();return;}requestFootprint();
   };
   const paintSettings=():CubeBrushSettings=>{const c=controls.current;return c.tool==='smooth'?{version:1,tool:'smooth',radiusMeters:c.radius,intensity:c.intensity}:c.tool==='flatten'?{version:1,tool:'flatten',radiusMeters:c.radius,intensity:c.intensity,targetElevation:c.target}:{version:1,tool:c.tool==='lower'?'lower':'raise',radiusMeters:c.radius,strengthMeters:c.strength};};
-  const startPaint=(point:Point)=>{const hit=pick(point);if(!hit||!session.begin(hit,paintSettings()))return false;lastPoint=point;return true;};
+  const startPaint=(point:Point,inputTime=performance.now())=>{const hit=pick(point);if(!hit||!session.begin(hit,paintSettings(),{},inputTime))return false;lastPoint=point;return true;};
   const finish=()=>{clearTimeout(pendingTimer);if(active==='touch-pending')touchIntent=[];active='none';lastPoint=undefined;session.release();};
   const cancel=()=>{clearTimeout(pendingTimer);touchIntent=[];active='none';lastPoint=undefined;session.cancel();};
-  const feed=(point:Point,terminal=false)=>{
+  const feed=(point:Point,terminal=false,inputTime=performance.now())=>{
    if(!lastPoint||!session.painting)return;const distance=Math.hypot(point.x-lastPoint.x,point.y-lastPoint.y);if(!terminal&&distance<3)return;
    const hit=pick(point);if(!hit){finish();return;}
    // A straight screen segment must remain on the connected rendered surface.
@@ -56,9 +58,9 @@ export function CubeEditor({session,workspace,handleRef}:{session:CubeEditorSess
     if(!sample){finish();return;}
     if(current.mode==='net'&&previous&&sample.patchId!==previous.patchId){const a=source.geometry.referencePosition(previous),b=source.geometry.referencePosition(sample);if(Math.hypot(...a.map((v,k)=>v-b[k]!))>length*.08){finish();return;}}previous=sample;
    }
-   if(distance>0)session.accept(hit);lastPoint=point;
+   if(distance>0)session.accept(hit,inputTime);lastPoint=point;
   };
-  const navigate=(before:Point,after:Point)=>{if(current.mode==='net')current.setView({...current.camera,netX:Math.max(-size().width*3,Math.min(size().width*3,(current.camera.netX??0)+after.x-before.x)),netY:Math.max(-size().height*3,Math.min(size().height*3,(current.camera.netY??0)+after.y-before.y))});else current.setView(rotateCube(current.camera,(after.x-before.x)/180,(after.y-before.y)/180));};
+  const navigate=(before:Point,after:Point)=>{if(current.mode==='net')current.setView({...current.camera,netX:Math.max(-size().width*3,Math.min(size().width*3,(current.camera.netX??0)+after.x-before.x)),netY:Math.max(-size().height*3,Math.min(size().height*3,(current.camera.netY??0)+after.y-before.y))});else current.setView(rotateCube(current.camera,(before.x-after.x)/180,(after.y-before.y)/180));};
   const zoom=(factor:number)=>{finish();const camera=current.camera;if(current.mode==='net')current.setView({...camera,netZoom:Math.max(.65,Math.min(6,(camera.netZoom??1)*factor))});else current.setView({...camera,zoom:Math.max(.65,Math.min(3,camera.zoom*factor))});if(hover)inspect(hover);};
   const down=(event:PointerEvent)=>{
    if(event.button!==0&&event.button!==1&&event.button!==2||session.locked||!readyRef)return;if(event.pointerType==='touch'&&pen)return;
@@ -67,17 +69,17 @@ export function CubeEditor({session,workspace,handleRef}:{session:CubeEditorSess
    pen=event.pointerType==='pen';paintId=event.pointerId;
    if(space||controls.current.tool==='navigate'||event.button!==0){active='navigate';return;}
    if(event.pointerType==='touch'){active='touch-pending';touchIntent=[point];pendingTimer=window.setTimeout(()=>{if(active==='touch-pending'){active=startPaint(touchIntent[0]!)?'paint':'none';for(const p of touchIntent.slice(1))feed(p);touchIntent=[];}},110);}
-   else active=startPaint(point)?'paint':'none';
+   else active=startPaint(point,event.timeStamp)?'paint':'none';
   };
   const move=(event:PointerEvent)=>{const point=local(event),old=pointers.get(event.pointerId);inspect(point);if(!old)return;
    const before=[...pointers.values()];pointers.set(event.pointerId,point);const after=[...pointers.values()];
    if(active==='navigate'){if(before.length===2){const a=Math.hypot(before[0]!.x-before[1]!.x,before[0]!.y-before[1]!.y),b=Math.hypot(after[0]!.x-after[1]!.x,after[0]!.y-after[1]!.y);if(a>4){const camera=current.camera;if(current.mode==='net')current.setView({...camera,netZoom:Math.max(.65,Math.min(6,(camera.netZoom??1)*b/a))});else current.setView({...camera,zoom:Math.max(.65,Math.min(3,camera.zoom*b/a))});}navigate({x:(before[0]!.x+before[1]!.x)/2,y:(before[0]!.y+before[1]!.y)/2},{x:(after[0]!.x+after[1]!.x)/2,y:(after[0]!.y+after[1]!.y)/2});}else navigate(old,point);}
-   else if(event.pointerId===paintId&&active==='paint')feed(point);
+   else if(event.pointerId===paintId&&active==='paint')for(const sample of pointerSamples(event))feed(local(sample),false,sample.timeStamp);
    else if(active==='touch-pending'&&touchIntent.length<128)touchIntent.push(point);
   };
   const up=(event:PointerEvent)=>{if(!pointers.has(event.pointerId))return;const point=local(event);
    if(active==='touch-pending'){clearTimeout(pendingTimer);if(startPaint(touchIntent[0]??point)){for(const p of touchIntent.slice(1))feed(p);feed(point,true);}touchIntent=[];session.release();active='none';}
-   else if(active==='paint'&&event.pointerId===paintId){feed(point,true);finish();}
+   else if(active==='paint'&&event.pointerId===paintId){feed(point,true,event.timeStamp);finish();}
    pointers.delete(event.pointerId);if(!pointers.size){active='none';pen=false;}if(element.hasPointerCapture(event.pointerId))element.releasePointerCapture(event.pointerId);
   };
   const lost=(event:PointerEvent)=>{if(pointers.has(event.pointerId)){pointers.delete(event.pointerId);cancel();pen=false;}};
@@ -85,9 +87,9 @@ export function CubeEditor({session,workspace,handleRef}:{session:CubeEditorSess
   const key=(event:KeyboardEvent)=>{if(event.target instanceof HTMLInputElement||event.target instanceof HTMLSelectElement)return;if(event.code==='Space'){event.preventDefault();finish();space=true;}if(event.key==='Escape')finish();if(!workspace&&(event.ctrlKey||event.metaKey)&&['z','y'].includes(event.key.toLowerCase())){event.preventDefault();cancel();void session.replay(event.shiftKey||event.key.toLowerCase()==='y');}};
   const keyup=(event:KeyboardEvent)=>{if(event.code==='Space')space=false;};const blur=()=>{pointers.clear();space=false;cancel();};
   let readyRef=false;
-  session.visualize=async()=>{await current.refresh('interactive');if(!alive)return;
+  session.visualize=async()=>{await current.refresh('interactive');if(!alive)return;const preparedAt=performance.now();
    await new Promise<void>(resolve=>requestAnimationFrame(()=>{current.present();resolve();}));
-   if(current.metrics.error)throw Error('Terrain is retained, but display refresh failed. Retry by changing Rendering.');return current.metrics.displayedRevision;
+   if(current.metrics.error)throw Error('Terrain is retained, but display refresh failed. Retry by changing Rendering.');return{revision:current.metrics.displayedRevision,preparedAt};
   };
   void current.refresh().then(async()=>{
    // First Canvas pixels precede driver initialization. Keep the visible loading
@@ -122,7 +124,7 @@ export function CubeEditor({session,workspace,handleRef}:{session:CubeEditorSess
     <svg ref={overlay} className="cube-brush-overlay" aria-hidden="true"><path ref={contour}/><circle ref={cursor} r="3" style={{display:'none'}}/></svg>
     {!ready&&!displayFailure&&<div className="cube-loading" role="status"><span/>Preparing your cube…</div>}
    </div>
-   <footer><output ref={readout}>Move over terrain to inspect</output><span role="status" aria-label="Cube drawing status">{session.processing?`${session.status} · ${session.core.stroke?.statistics.committedDabs??session.core.lastStroke?.statistics.committedDabs??0} dabs · ${session.pendingPoints} queued · ${session.core.stroke?.statistics.acceptedInputs??session.core.lastStroke?.statistics.acceptedInputs??0}/256 points${(session.core.stroke?.statistics.acceptedInputs??0)>=192?' · Release soon to start a new stroke':''}`:session.status}</span></footer>
+   <footer><output ref={readout}>Move over terrain to inspect</output><span role="status" aria-label="Cube drawing status">{session.processing?`${session.status} · ${session.core.stroke?.statistics.committedDabs??session.core.lastStroke?.statistics.committedDabs??0} dabs · ${session.pendingPoints} queued · ${session.core.stroke?.statistics.acceptedInputs??session.core.lastStroke?.statistics.acceptedInputs??0}/${session.gestureInputLimit} points${(session.core.stroke?.statistics.acceptedInputs??0)>=session.gestureInputLimit*.75?' · Release soon to start a new stroke':''}`:session.status}</span></footer>
   </div>
   {(session.error||displayFailure)&&<div className="cube-edit-error" role="alert"><p>{session.error||`Display unavailable: ${displayFailure}. Your numerical geography is retained. You can use New World or Open Map from Atlas tools.`}</p>{session.needsRecovery&&<><button disabled={session.processing||!session.history.canUndo} onClick={()=>void session.replay()}>Undo stopped stroke</button><button disabled={session.processing} onClick={()=>session.keepPartial()}>Keep partial result</button></>}</div>}
  </section>;

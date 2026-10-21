@@ -1,0 +1,2250 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-21",
+  "rejectedCommit": "0686f5adcfff0b762c48d39b7e27918f67ef7b4e",
+  "status": "Technical correction verified; Ember review and owner acceptance pending",
+  "method": {
+    "source": "tests/cube-long-sculpting.spec.ts",
+    "preview": "http://127.0.0.1:5260/",
+    "baseline": "Isolated Git archive of rejected commit, port 5261; eight circle/corner diagnostic replays, not successful editor strokes.",
+    "environment": "Windows development machine, Chromium desktop 1440x950, hardware WebGL2 and forced Canvas, one browser worker; mobile regression is Pixel 7 emulation, not physical hardware.",
+    "gesture": "900 trusted native CDP mouse moves at fixed 60 Hz for 15 seconds, plus initial down and release. Explicit matched 200 m strength; 45 km radius. Four motions: broad curve/reversal, repeated circle, physical edge, circular travel across all three corner faces.",
+    "timing": "Original native event timestamp through canonical commit and actually displayed epoch. All per-dab timing records collected, including early records beyond the 240-record diagnostic ring. Each reported quantile belongs to one case; ranges are not pooled percentiles.",
+    "pixelProbe": "Actual terrain canvas copied to 128x128: first visible change, then 100 ms sampling. Excludes HTML cursor/outline. Instrumentation overhead remains included. Every-frame probe/profile measurements were excluded because readback itself consumed about 3.3 seconds of a 15-second hold.",
+    "releaseBacklog": "Elapsed browser time from native release to idle observation, excluding the explicit 120 ms post-idle delay; includes polling/observation overhead. Failed-baseline release numbers are not successful full-stroke drain times.",
+    "correctness": "All 16 corrected cases completed every admitted input, pending admission zero, exact whole-gesture Undo/Redo by canonical-word SHA256, three repeated Lower gestures, no recovery/error. Native events can coalesce; each coalesced sample reaches the established 3-screen-pixel admission policy, with terminal release included. Smaller observations accumulate to the next admitted point: 451-901 admitted points per case; no accepted input is dropped.",
+    "limits": "Development-machine measurements are not a universal latency guarantee. Finite counts, exact-work, history memory, and representability safeguards remain. Maximum-radius brushes can still be expensive."
+  },
+  "validation": {
+    "numerical": {
+      "command": "npm.cmd test",
+      "passed": 988,
+      "failed": 0
+    },
+    "build": {
+      "command": "npm.cmd run build",
+      "typecheck": "passed",
+      "vite": "passed"
+    },
+    "longNative": {
+      "passed": 16,
+      "failed": 0
+    },
+    "rejectedDiagnosticReplays": {
+      "replays": 8,
+      "editorStrokesFailed": 8
+    },
+    "cubeDesktopMobile": {
+      "startTime": "2026-10-21T14:29:05.307Z",
+      "duration": 214164.058,
+      "expected": 34,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "legacyAndD1DesktopMobile": {
+      "startTime": "2026-10-21T14:33:26.298Z",
+      "duration": 125515.522,
+      "expected": 20,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "hardwareCornerReplay": {
+      "passed": 1,
+      "failed": 0
+    },
+    "horizontalDrag": "Desktop and mobile emulation: surface follows left/right dragging, original up/down behavior retained, canonical hash unchanged; included in 34 cube regressions."
+  },
+  "parity": {
+    "defaultMetersPerDab": 200,
+    "oldCubeDefault": 650,
+    "radiusMeters": 45000,
+    "travelMetersPerLeg": 450000,
+    "matchedSpacingFraction": 0.25,
+    "dabsOneLeg": 41,
+    "dabsOutBack": 81,
+    "centerBeforeMeters": -100,
+    "centerAfterMeters": 1500,
+    "absoluteToleranceMeters": 0.0003,
+    "falloffAtRadiusFractions": [
+      {
+        "fraction": 0,
+        "weight": 1
+      },
+      {
+        "fraction": 0.25,
+        "weight": 0.84375
+      },
+      {
+        "fraction": 0.5,
+        "weight": 0.5
+      },
+      {
+        "fraction": 0.75,
+        "weight": 0.15625
+      }
+    ],
+    "cylinderUiSpacingFractionUnchanged": 0.2371,
+    "cylinderUiDabsOneLeg": 43
+  },
+  "bounds": {
+    "phaseTick": "spacing / 2^64",
+    "phaseError": "m * spacing / 2^65 for m route segments, plus separately certified nearest/even chart rounding",
+    "defaultRadiusMaximumGesturePhaseErrorMetersUpperBound": 2e-11,
+    "observations": 65536,
+    "dabs": 16384,
+    "pathStepWork": 200000,
+    "atomicDabWork": 16000000,
+    "historyReservationWork": 16000000,
+    "outstandingUiObservations": 128,
+    "pendingProviderInputs": 8,
+    "historyEntries": 32,
+    "historyBytes": 8388608,
+    "historyCanonicalSamples": "at most surface sample count",
+    "inverseStencilBytes": {
+      "n128": 2390148,
+      "n256": 9498756
+    }
+  },
+  "baseline": [
+    {
+      "n": 128,
+      "backend": "auto",
+      "motion": "circle",
+      "termination": "failed",
+      "accepted": 179,
+      "executed": 176,
+      "dabs": 97,
+      "nativeMoveDeliveries": 890,
+      "path": {
+        "work": 16000000,
+        "routeWork": 56230,
+        "arcWork": 15943770,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 173457,
+        "peakArcTerms": 63
+      },
+      "historyBookkeepingSteps": 81856,
+      "execution": "failed",
+      "inputToVisibleMs": {
+        "p50": 19.6,
+        "p95": 51.4,
+        "max": 74.2
+      },
+      "inputToCommitMs": {
+        "p50": 14.1,
+        "p95": 41,
+        "max": 55.5
+      },
+      "commitToVisibleMs": {
+        "p50": 7.5,
+        "p95": 17,
+        "max": 25.2
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "preparation": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "history": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "displayPreparation": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "frameWait": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        }
+      },
+      "nativeEventAgeMs": {
+        "p50": 9.7,
+        "p95": 18,
+        "max": 19.4
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.7,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 22.8,
+      "changedWhileHeld": 28,
+      "releaseBacklogMs": 11.9,
+      "longTasks": [],
+      "error": "Stroke stopped early: Cube exact-work limit reached; no partial distance is returned. Its committed portion is retained. Undo it or keep the partial result before continuing."
+    },
+    {
+      "n": 128,
+      "backend": "auto",
+      "motion": "corner",
+      "termination": "failed",
+      "accepted": 108,
+      "executed": 100,
+      "dabs": 100,
+      "nativeMoveDeliveries": 868,
+      "path": {
+        "work": 12929115,
+        "routeWork": 37199,
+        "arcWork": 12891916,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 200000,
+        "peakArcTerms": 76
+      },
+      "historyBookkeepingSteps": 92922,
+      "execution": "failed",
+      "inputToVisibleMs": {
+        "p50": 165.8,
+        "p95": 418.3,
+        "max": 433.8
+      },
+      "inputToCommitMs": {
+        "p50": 156.3,
+        "p95": 404.3,
+        "max": 429.7
+      },
+      "commitToVisibleMs": {
+        "p50": 10.9,
+        "p95": 27.3,
+        "max": 35.9
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "preparation": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "history": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "displayPreparation": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "frameWait": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        }
+      },
+      "nativeEventAgeMs": {
+        "p50": 9.6,
+        "p95": 18,
+        "max": 24
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.8,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 33,
+      "changedWhileHeld": 21,
+      "releaseBacklogMs": 13.6,
+      "longTasks": [],
+      "error": "Stroke stopped early: Cube exact-work limit reached; no partial distance is returned. Its committed portion is retained. Undo it or keep the partial result before continuing."
+    },
+    {
+      "n": 128,
+      "backend": "canvas",
+      "motion": "circle",
+      "termination": "failed",
+      "accepted": 188,
+      "executed": 184,
+      "dabs": 99,
+      "nativeMoveDeliveries": 890,
+      "path": {
+        "work": 16000000,
+        "routeWork": 58794,
+        "arcWork": 15941206,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 168707,
+        "peakArcTerms": 61
+      },
+      "historyBookkeepingSteps": 84459,
+      "execution": "failed",
+      "inputToVisibleMs": {
+        "p50": 22.9,
+        "p95": 58,
+        "max": 84.3
+      },
+      "inputToCommitMs": {
+        "p50": 15.5,
+        "p95": 50.1,
+        "max": 71
+      },
+      "commitToVisibleMs": {
+        "p50": 7.3,
+        "p95": 15.5,
+        "max": 20.5
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "preparation": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "history": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "displayPreparation": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "frameWait": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        }
+      },
+      "nativeEventAgeMs": {
+        "p50": 10.1,
+        "p95": 17.8,
+        "max": 19.3
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.7,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 18.3,
+      "changedWhileHeld": 28,
+      "releaseBacklogMs": 24.4,
+      "longTasks": [],
+      "error": "Stroke stopped early: Cube exact-work limit reached; no partial distance is returned. Its committed portion is retained. Undo it or keep the partial result before continuing."
+    },
+    {
+      "n": 128,
+      "backend": "canvas",
+      "motion": "corner",
+      "termination": "failed",
+      "accepted": 111,
+      "executed": 103,
+      "dabs": 103,
+      "nativeMoveDeliveries": 875,
+      "path": {
+        "work": 12874091,
+        "routeWork": 37903,
+        "arcWork": 12836188,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 200000,
+        "peakArcTerms": 77
+      },
+      "historyBookkeepingSteps": 98164,
+      "execution": "failed",
+      "inputToVisibleMs": {
+        "p50": 54.7,
+        "p95": 105.5,
+        "max": 137
+      },
+      "inputToCommitMs": {
+        "p50": 39.8,
+        "p95": 89.2,
+        "max": 120.7
+      },
+      "commitToVisibleMs": {
+        "p50": 11.8,
+        "p95": 28.6,
+        "max": 38
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "preparation": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "history": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "displayPreparation": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "frameWait": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        }
+      },
+      "nativeEventAgeMs": {
+        "p50": 9.8,
+        "p95": 17.8,
+        "max": 21.7
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.7,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 19.1,
+      "changedWhileHeld": 19,
+      "releaseBacklogMs": 8.7,
+      "longTasks": [],
+      "error": "Stroke stopped early: Cube exact-work limit reached; no partial distance is returned. Its committed portion is retained. Undo it or keep the partial result before continuing."
+    },
+    {
+      "n": 256,
+      "backend": "auto",
+      "motion": "circle",
+      "termination": "failed",
+      "accepted": 173,
+      "executed": 165,
+      "dabs": 94,
+      "nativeMoveDeliveries": 887,
+      "path": {
+        "work": 16000000,
+        "routeWork": 52694,
+        "arcWork": 15947306,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 188931,
+        "peakArcTerms": 69
+      },
+      "historyBookkeepingSteps": 314481,
+      "execution": "failed",
+      "inputToVisibleMs": {
+        "p50": 51.8,
+        "p95": 151.3,
+        "max": 158.9
+      },
+      "inputToCommitMs": {
+        "p50": 33.6,
+        "p95": 131.3,
+        "max": 134.5
+      },
+      "commitToVisibleMs": {
+        "p50": 16.5,
+        "p95": 27.3,
+        "max": 32.1
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "preparation": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "history": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "displayPreparation": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "frameWait": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        }
+      },
+      "nativeEventAgeMs": {
+        "p50": 9.8,
+        "p95": 17.8,
+        "max": 19.1
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.7,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 50.8,
+      "changedWhileHeld": 27,
+      "releaseBacklogMs": 9.9,
+      "longTasks": [],
+      "error": "Stroke stopped early: Cube exact-work limit reached; no partial distance is returned. Its committed portion is retained. Undo it or keep the partial result before continuing."
+    },
+    {
+      "n": 256,
+      "backend": "auto",
+      "motion": "corner",
+      "termination": "failed",
+      "accepted": 120,
+      "executed": 112,
+      "dabs": 114,
+      "nativeMoveDeliveries": 862,
+      "path": {
+        "work": 14890243,
+        "routeWork": 40590,
+        "arcWork": 14849653,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 200000,
+        "peakArcTerms": 76
+      },
+      "historyBookkeepingSteps": 473910,
+      "execution": "failed",
+      "inputToVisibleMs": {
+        "p50": 483.9,
+        "p95": 1212.5,
+        "max": 1288.7
+      },
+      "inputToCommitMs": {
+        "p50": 473.1,
+        "p95": 1192.9,
+        "max": 1270.3
+      },
+      "commitToVisibleMs": {
+        "p50": 19.1,
+        "p95": 31.6,
+        "max": 35.7
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "preparation": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "history": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "displayPreparation": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "frameWait": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        }
+      },
+      "nativeEventAgeMs": {
+        "p50": 9.5,
+        "p95": 17.9,
+        "max": 20.7
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.7,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 49.5,
+      "changedWhileHeld": 31,
+      "releaseBacklogMs": 10.2,
+      "longTasks": [],
+      "error": "Stroke stopped early: Cube exact-work limit reached; no partial distance is returned. Its committed portion is retained. Undo it or keep the partial result before continuing."
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "motion": "circle",
+      "termination": "failed",
+      "accepted": 177,
+      "executed": 172,
+      "dabs": 96,
+      "nativeMoveDeliveries": 891,
+      "path": {
+        "work": 16000000,
+        "routeWork": 54948,
+        "arcWork": 15945052,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 179914,
+        "peakArcTerms": 66
+      },
+      "historyBookkeepingSteps": 324999,
+      "execution": "failed",
+      "inputToVisibleMs": {
+        "p50": 38.7,
+        "p95": 70.2,
+        "max": 71
+      },
+      "inputToCommitMs": {
+        "p50": 26.1,
+        "p95": 52.3,
+        "max": 61.1
+      },
+      "commitToVisibleMs": {
+        "p50": 15.5,
+        "p95": 24.7,
+        "max": 26.4
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "preparation": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "history": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "displayPreparation": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "frameWait": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        }
+      },
+      "nativeEventAgeMs": {
+        "p50": 9.7,
+        "p95": 17.7,
+        "max": 19.7
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.7,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 37.9,
+      "changedWhileHeld": 27,
+      "releaseBacklogMs": 26.4,
+      "longTasks": [],
+      "error": "Stroke stopped early: Cube exact-work limit reached; no partial distance is returned. Its committed portion is retained. Undo it or keep the partial result before continuing."
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "motion": "corner",
+      "termination": "failed",
+      "accepted": 110,
+      "executed": 102,
+      "dabs": 103,
+      "nativeMoveDeliveries": 869,
+      "path": {
+        "work": 12829387,
+        "routeWork": 37369,
+        "arcWork": 12792018,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 200000,
+        "peakArcTerms": 76
+      },
+      "historyBookkeepingSteps": 390605,
+      "execution": "failed",
+      "inputToVisibleMs": {
+        "p50": 412.5,
+        "p95": 1091.7,
+        "max": 1151.3
+      },
+      "inputToCommitMs": {
+        "p50": 396.2,
+        "p95": 1069,
+        "max": 1134.8
+      },
+      "commitToVisibleMs": {
+        "p50": 17.7,
+        "p95": 29.2,
+        "max": 47.6
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "preparation": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "history": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "displayPreparation": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "frameWait": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        }
+      },
+      "nativeEventAgeMs": {
+        "p50": 9.8,
+        "p95": 17.6,
+        "max": 20.2
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.8,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 40.9,
+      "changedWhileHeld": 26,
+      "releaseBacklogMs": 10.3,
+      "longTasks": [],
+      "error": "Stroke stopped early: Cube exact-work limit reached; no partial distance is returned. Its committed portion is retained. Undo it or keep the partial result before continuing."
+    }
+  ],
+  "corrected": [
+    {
+      "n": 128,
+      "backend": "auto",
+      "motion": "circle",
+      "termination": "complete",
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 478,
+      "admission": {
+        "accepted": 901,
+        "processed": 901,
+        "pending": 0,
+        "peak": 3
+      },
+      "nativeMoveDeliveries": 866,
+      "path": {
+        "work": 2714967,
+        "routeWork": 287140,
+        "arcWork": 2427827,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 5514,
+        "peakArcTerms": 0,
+        "spacingErrorBoundMeters": 2.7443867491039356e-13
+      },
+      "historyBookkeepingSteps": 578279,
+      "execution": "cooperative certified fixed-phase",
+      "inputToVisibleMs": {
+        "p50": 16.8,
+        "p95": 28.3,
+        "max": 47.3
+      },
+      "inputToCommitMs": {
+        "p50": 12.8,
+        "p95": 20,
+        "max": 23.1
+      },
+      "commitToVisibleMs": {
+        "p50": 1.6,
+        "p95": 12.2,
+        "max": 32.7
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": 10.2,
+          "p95": 17.6,
+          "max": 18.8
+        },
+        "preparation": {
+          "p50": 1.7,
+          "p95": 2.9,
+          "max": 5.1
+        },
+        "history": {
+          "p50": 0.1,
+          "p95": 0.2,
+          "max": 5.1
+        },
+        "displayPreparation": {
+          "p50": 0.5,
+          "p95": 0.8,
+          "max": 16.4
+        },
+        "frameWait": {
+          "p50": 1,
+          "p95": 11.5,
+          "max": 27
+        }
+      },
+      "stageCpuMs": {
+        "path": 429.8,
+        "preparation": 914,
+        "history": 38.6,
+        "publication": 17.1
+      },
+      "nativeEventAgeMs": {
+        "p50": 12.1,
+        "p95": 16.8,
+        "max": 17.9
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.7,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 16.5,
+      "changedWhileHeld": 129,
+      "releaseBacklogMs": 32.9,
+      "longTasks": []
+    },
+    {
+      "n": 128,
+      "backend": "auto",
+      "motion": "corner",
+      "termination": "complete",
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "admission": {
+        "accepted": 901,
+        "processed": 901,
+        "pending": 0,
+        "peak": 3
+      },
+      "nativeMoveDeliveries": 864,
+      "path": {
+        "work": 4327218,
+        "routeWork": 301609,
+        "arcWork": 4025609,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 5281,
+        "peakArcTerms": 0,
+        "spacingErrorBoundMeters": 2.7443867491039356e-13
+      },
+      "historyBookkeepingSteps": 1805280,
+      "execution": "cooperative certified fixed-phase",
+      "inputToVisibleMs": {
+        "p50": 23.7,
+        "p95": 44.3,
+        "max": 60.3
+      },
+      "inputToCommitMs": {
+        "p50": 15.7,
+        "p95": 20.7,
+        "max": 44.9
+      },
+      "commitToVisibleMs": {
+        "p50": 11.1,
+        "p95": 29.1,
+        "max": 43.5
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": 13.7,
+          "p95": 17.9,
+          "max": 36.8
+        },
+        "preparation": {
+          "p50": 1.4,
+          "p95": 2.3,
+          "max": 14.8
+        },
+        "history": {
+          "p50": 0.1,
+          "p95": 0.2,
+          "max": 12.1
+        },
+        "displayPreparation": {
+          "p50": 0.4,
+          "p95": 12.2,
+          "max": 24.7
+        },
+        "frameWait": {
+          "p50": 9.2,
+          "p95": 26.2,
+          "max": 39.6
+        }
+      },
+      "stageCpuMs": {
+        "path": 581.9,
+        "preparation": 1277.8,
+        "history": 80.6,
+        "publication": 24
+      },
+      "nativeEventAgeMs": {
+        "p50": 12.9,
+        "p95": 16.6,
+        "max": 22.5
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.7,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 17.5,
+      "changedWhileHeld": 137,
+      "releaseBacklogMs": 41.6,
+      "longTasks": []
+    },
+    {
+      "n": 128,
+      "backend": "auto",
+      "motion": "curve-reversal",
+      "termination": "complete",
+      "accepted": 877,
+      "executed": 877,
+      "dabs": 948,
+      "admission": {
+        "accepted": 877,
+        "processed": 877,
+        "pending": 0,
+        "peak": 3
+      },
+      "nativeMoveDeliveries": 874,
+      "path": {
+        "work": 4942763,
+        "routeWork": 279380,
+        "arcWork": 4663383,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 6004,
+        "peakArcTerms": 0,
+        "spacingErrorBoundMeters": 2.671203102461164e-13
+      },
+      "historyBookkeepingSteps": 4566966,
+      "execution": "cooperative certified fixed-phase",
+      "inputToVisibleMs": {
+        "p50": 30.3,
+        "p95": 50.1,
+        "max": 66.2
+      },
+      "inputToCommitMs": {
+        "p50": 14.2,
+        "p95": 23.4,
+        "max": 37.3
+      },
+      "commitToVisibleMs": {
+        "p50": 17.3,
+        "p95": 30.7,
+        "max": 41.7
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": 10.5,
+          "p95": 18.2,
+          "max": 25
+        },
+        "preparation": {
+          "p50": 1.8,
+          "p95": 2.7,
+          "max": 7.6
+        },
+        "history": {
+          "p50": 0.3,
+          "p95": 0.5,
+          "max": 14.3
+        },
+        "displayPreparation": {
+          "p50": 1.4,
+          "p95": 14.4,
+          "max": 30
+        },
+        "frameWait": {
+          "p50": 15.2,
+          "p95": 26.3,
+          "max": 30.9
+        }
+      },
+      "stageCpuMs": {
+        "path": 669.7,
+        "preparation": 1818.1,
+        "history": 216.8,
+        "publication": 34
+      },
+      "nativeEventAgeMs": {
+        "p50": 9.4,
+        "p95": 17.3,
+        "max": 18.4
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.8,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 18.8,
+      "changedWhileHeld": 136,
+      "releaseBacklogMs": 58.3,
+      "longTasks": []
+    },
+    {
+      "n": 128,
+      "backend": "auto",
+      "motion": "edge",
+      "termination": "complete",
+      "accepted": 451,
+      "executed": 451,
+      "dabs": 781,
+      "admission": {
+        "accepted": 451,
+        "processed": 451,
+        "pending": 0,
+        "peak": 2
+      },
+      "nativeMoveDeliveries": 866,
+      "path": {
+        "work": 3883073,
+        "routeWork": 149946,
+        "arcWork": 3733127,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 5305,
+        "peakArcTerms": 0,
+        "spacingErrorBoundMeters": 1.3721933745519678e-13
+      },
+      "historyBookkeepingSteps": 1562685,
+      "execution": "cooperative certified fixed-phase",
+      "inputToVisibleMs": {
+        "p50": 27,
+        "p95": 50.2,
+        "max": 65.1
+      },
+      "inputToCommitMs": {
+        "p50": 14.4,
+        "p95": 30.6,
+        "max": 42.7
+      },
+      "commitToVisibleMs": {
+        "p50": 11.5,
+        "p95": 31.3,
+        "max": 44
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": 10.3,
+          "p95": 18.1,
+          "max": 33.2
+        },
+        "preparation": {
+          "p50": 1.5,
+          "p95": 2.6,
+          "max": 5.6
+        },
+        "history": {
+          "p50": 0.1,
+          "p95": 0.2,
+          "max": 2.1
+        },
+        "displayPreparation": {
+          "p50": 0.4,
+          "p95": 12.6,
+          "max": 24.1
+        },
+        "frameWait": {
+          "p50": 10.7,
+          "p95": 24.9,
+          "max": 33.4
+        }
+      },
+      "stageCpuMs": {
+        "path": 462.7,
+        "preparation": 1258.4,
+        "history": 73.3,
+        "publication": 23
+      },
+      "nativeEventAgeMs": {
+        "p50": 9.6,
+        "p95": 17.1,
+        "max": 18.2
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.8,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 15.4,
+      "changedWhileHeld": 136,
+      "releaseBacklogMs": 57.6,
+      "longTasks": []
+    },
+    {
+      "n": 128,
+      "backend": "canvas",
+      "motion": "circle",
+      "termination": "complete",
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 478,
+      "admission": {
+        "accepted": 901,
+        "processed": 901,
+        "pending": 0,
+        "peak": 3
+      },
+      "nativeMoveDeliveries": 865,
+      "path": {
+        "work": 2714967,
+        "routeWork": 287140,
+        "arcWork": 2427827,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 5514,
+        "peakArcTerms": 0,
+        "spacingErrorBoundMeters": 2.7443867491039356e-13
+      },
+      "historyBookkeepingSteps": 578279,
+      "execution": "cooperative certified fixed-phase",
+      "inputToVisibleMs": {
+        "p50": 15.4,
+        "p95": 24,
+        "max": 35.8
+      },
+      "inputToCommitMs": {
+        "p50": 12.6,
+        "p95": 19.6,
+        "max": 22.1
+      },
+      "commitToVisibleMs": {
+        "p50": 1.6,
+        "p95": 8.5,
+        "max": 23.2
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": 10.2,
+          "p95": 17.2,
+          "max": 18.8
+        },
+        "preparation": {
+          "p50": 1.5,
+          "p95": 2.8,
+          "max": 4.9
+        },
+        "history": {
+          "p50": 0.1,
+          "p95": 0.2,
+          "max": 1.2
+        },
+        "displayPreparation": {
+          "p50": 0.8,
+          "p95": 1.2,
+          "max": 7.9
+        },
+        "frameWait": {
+          "p50": 0.6,
+          "p95": 7.5,
+          "max": 19.1
+        }
+      },
+      "stageCpuMs": {
+        "path": 408.4,
+        "preparation": 822.4,
+        "history": 35,
+        "publication": 15.9
+      },
+      "nativeEventAgeMs": {
+        "p50": 12.2,
+        "p95": 16.1,
+        "max": 18
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.8,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 16.9,
+      "changedWhileHeld": 130,
+      "releaseBacklogMs": 44.6,
+      "longTasks": []
+    },
+    {
+      "n": 128,
+      "backend": "canvas",
+      "motion": "corner",
+      "termination": "complete",
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "admission": {
+        "accepted": 901,
+        "processed": 901,
+        "pending": 0,
+        "peak": 3
+      },
+      "nativeMoveDeliveries": 869,
+      "path": {
+        "work": 4327218,
+        "routeWork": 301609,
+        "arcWork": 4025609,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 5281,
+        "peakArcTerms": 0,
+        "spacingErrorBoundMeters": 2.7443867491039356e-13
+      },
+      "historyBookkeepingSteps": 1805280,
+      "execution": "cooperative certified fixed-phase",
+      "inputToVisibleMs": {
+        "p50": 22.8,
+        "p95": 39.7,
+        "max": 63.8
+      },
+      "inputToCommitMs": {
+        "p50": 15.9,
+        "p95": 20.9,
+        "max": 39.8
+      },
+      "commitToVisibleMs": {
+        "p50": 8.7,
+        "p95": 24.8,
+        "max": 39.2
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": 13.7,
+          "p95": 17.8,
+          "max": 34
+        },
+        "preparation": {
+          "p50": 1.4,
+          "p95": 2.4,
+          "max": 9
+        },
+        "history": {
+          "p50": 0.1,
+          "p95": 0.2,
+          "max": 1.3
+        },
+        "displayPreparation": {
+          "p50": 1.1,
+          "p95": 6,
+          "max": 21.2
+        },
+        "frameWait": {
+          "p50": 7.2,
+          "p95": 20.7,
+          "max": 36.5
+        }
+      },
+      "stageCpuMs": {
+        "path": 573.4,
+        "preparation": 1286.1,
+        "history": 74.6,
+        "publication": 25.6
+      },
+      "nativeEventAgeMs": {
+        "p50": 13.1,
+        "p95": 16.7,
+        "max": 24.5
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.7,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 16.4,
+      "changedWhileHeld": 139,
+      "releaseBacklogMs": 106.2,
+      "longTasks": []
+    },
+    {
+      "n": 128,
+      "backend": "canvas",
+      "motion": "curve-reversal",
+      "termination": "complete",
+      "accepted": 877,
+      "executed": 877,
+      "dabs": 948,
+      "admission": {
+        "accepted": 877,
+        "processed": 877,
+        "pending": 0,
+        "peak": 3
+      },
+      "nativeMoveDeliveries": 879,
+      "path": {
+        "work": 4942763,
+        "routeWork": 279380,
+        "arcWork": 4663383,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 6004,
+        "peakArcTerms": 0,
+        "spacingErrorBoundMeters": 2.671203102461164e-13
+      },
+      "historyBookkeepingSteps": 4566966,
+      "execution": "cooperative certified fixed-phase",
+      "inputToVisibleMs": {
+        "p50": 33.1,
+        "p95": 50.5,
+        "max": 57.4
+      },
+      "inputToCommitMs": {
+        "p50": 16.3,
+        "p95": 21.7,
+        "max": 28.6
+      },
+      "commitToVisibleMs": {
+        "p50": 17.3,
+        "p95": 29.8,
+        "max": 35.6
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": 13.9,
+          "p95": 15.8,
+          "max": 22.6
+        },
+        "preparation": {
+          "p50": 1.5,
+          "p95": 2.3,
+          "max": 4.9
+        },
+        "history": {
+          "p50": 0.2,
+          "p95": 0.4,
+          "max": 1.9
+        },
+        "displayPreparation": {
+          "p50": 1.3,
+          "p95": 14.1,
+          "max": 19.6
+        },
+        "frameWait": {
+          "p50": 15.2,
+          "p95": 20.6,
+          "max": 23.2
+        }
+      },
+      "stageCpuMs": {
+        "path": 598.5,
+        "preparation": 1470.2,
+        "history": 161.1,
+        "publication": 28.2
+      },
+      "nativeEventAgeMs": {
+        "p50": 13.3,
+        "p95": 15.2,
+        "max": 18
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.8,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 16.4,
+      "changedWhileHeld": 138,
+      "releaseBacklogMs": 116.7,
+      "longTasks": []
+    },
+    {
+      "n": 128,
+      "backend": "canvas",
+      "motion": "edge",
+      "termination": "complete",
+      "accepted": 451,
+      "executed": 451,
+      "dabs": 781,
+      "admission": {
+        "accepted": 451,
+        "processed": 451,
+        "pending": 0,
+        "peak": 2
+      },
+      "nativeMoveDeliveries": 877,
+      "path": {
+        "work": 3883073,
+        "routeWork": 149946,
+        "arcWork": 3733127,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 5305,
+        "peakArcTerms": 0,
+        "spacingErrorBoundMeters": 1.3721933745519678e-13
+      },
+      "historyBookkeepingSteps": 1562685,
+      "execution": "cooperative certified fixed-phase",
+      "inputToVisibleMs": {
+        "p50": 24.7,
+        "p95": 46.9,
+        "max": 60.1
+      },
+      "inputToCommitMs": {
+        "p50": 14.6,
+        "p95": 26.8,
+        "max": 40.9
+      },
+      "commitToVisibleMs": {
+        "p50": 10.2,
+        "p95": 30.6,
+        "max": 41.1
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": 10,
+          "p95": 18,
+          "max": 24.4
+        },
+        "preparation": {
+          "p50": 1.6,
+          "p95": 2.8,
+          "max": 8.7
+        },
+        "history": {
+          "p50": 0.1,
+          "p95": 0.2,
+          "max": 6.6
+        },
+        "displayPreparation": {
+          "p50": 0.9,
+          "p95": 12,
+          "max": 27.2
+        },
+        "frameWait": {
+          "p50": 8.6,
+          "p95": 20.2,
+          "max": 32.9
+        }
+      },
+      "stageCpuMs": {
+        "path": 482.2,
+        "preparation": 1316.7,
+        "history": 73.8,
+        "publication": 24.7
+      },
+      "nativeEventAgeMs": {
+        "p50": 9,
+        "p95": 17.2,
+        "max": 23.3
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.8,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 15.9,
+      "changedWhileHeld": 136,
+      "releaseBacklogMs": 121.1,
+      "longTasks": []
+    },
+    {
+      "n": 256,
+      "backend": "auto",
+      "motion": "circle",
+      "termination": "complete",
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 478,
+      "admission": {
+        "accepted": 901,
+        "processed": 901,
+        "pending": 0,
+        "peak": 3
+      },
+      "nativeMoveDeliveries": 844,
+      "path": {
+        "work": 2714967,
+        "routeWork": 287140,
+        "arcWork": 2427827,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 5514,
+        "peakArcTerms": 0,
+        "spacingErrorBoundMeters": 2.7443867491039356e-13
+      },
+      "historyBookkeepingSteps": 2338233,
+      "execution": "cooperative certified fixed-phase",
+      "inputToVisibleMs": {
+        "p50": 27,
+        "p95": 39.1,
+        "max": 48.7
+      },
+      "inputToCommitMs": {
+        "p50": 15.3,
+        "p95": 23.5,
+        "max": 30.7
+      },
+      "commitToVisibleMs": {
+        "p50": 10.1,
+        "p95": 21.4,
+        "max": 27.3
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": 10.2,
+          "p95": 17.7,
+          "max": 23.3
+        },
+        "preparation": {
+          "p50": 3.1,
+          "p95": 7.7,
+          "max": 15.2
+        },
+        "history": {
+          "p50": 0.3,
+          "p95": 1.3,
+          "max": 8.2
+        },
+        "displayPreparation": {
+          "p50": 1.6,
+          "p95": 5.2,
+          "max": 15.1
+        },
+        "frameWait": {
+          "p50": 8.1,
+          "p95": 18.1,
+          "max": 22.5
+        }
+      },
+      "stageCpuMs": {
+        "path": 414.2,
+        "preparation": 1712.4,
+        "history": 122.8,
+        "publication": 39.5
+      },
+      "nativeEventAgeMs": {
+        "p50": 11.1,
+        "p95": 16.8,
+        "max": 18.6
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.8,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 35.1,
+      "changedWhileHeld": 128,
+      "releaseBacklogMs": 56.8,
+      "longTasks": []
+    },
+    {
+      "n": 256,
+      "backend": "auto",
+      "motion": "corner",
+      "termination": "complete",
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "admission": {
+        "accepted": 901,
+        "processed": 901,
+        "pending": 0,
+        "peak": 10
+      },
+      "nativeMoveDeliveries": 856,
+      "path": {
+        "work": 4327218,
+        "routeWork": 301609,
+        "arcWork": 4025609,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 5281,
+        "peakArcTerms": 0,
+        "spacingErrorBoundMeters": 2.7443867491039356e-13
+      },
+      "historyBookkeepingSteps": 7197263,
+      "execution": "cooperative certified fixed-phase",
+      "inputToVisibleMs": {
+        "p50": 36.6,
+        "p95": 92.4,
+        "max": 177.4
+      },
+      "inputToCommitMs": {
+        "p50": 19.5,
+        "p95": 70.5,
+        "max": 159.7
+      },
+      "commitToVisibleMs": {
+        "p50": 16.9,
+        "p95": 31.8,
+        "max": 61.3
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": 13.3,
+          "p95": 57.3,
+          "max": 150.1
+        },
+        "preparation": {
+          "p50": 2.9,
+          "p95": 12.3,
+          "max": 33.1
+        },
+        "history": {
+          "p50": 0.4,
+          "p95": 2.4,
+          "max": 20.2
+        },
+        "displayPreparation": {
+          "p50": 1.9,
+          "p95": 16.8,
+          "max": 46.3
+        },
+        "frameWait": {
+          "p50": 13.7,
+          "p95": 24.9,
+          "max": 45.9
+        }
+      },
+      "stageCpuMs": {
+        "path": 614.1,
+        "preparation": 2942.2,
+        "history": 312.1,
+        "publication": 66.3
+      },
+      "nativeEventAgeMs": {
+        "p50": 8.9,
+        "p95": 17.4,
+        "max": 18.8
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.8,
+        "max": 33.2
+      },
+      "firstChangedPixelsMs": 31.1,
+      "changedWhileHeld": 136,
+      "releaseBacklogMs": 58.3,
+      "longTasks": []
+    },
+    {
+      "n": 256,
+      "backend": "auto",
+      "motion": "curve-reversal",
+      "termination": "complete",
+      "accepted": 877,
+      "executed": 877,
+      "dabs": 948,
+      "admission": {
+        "accepted": 877,
+        "processed": 877,
+        "pending": 0,
+        "peak": 3
+      },
+      "nativeMoveDeliveries": 847,
+      "path": {
+        "work": 4942763,
+        "routeWork": 279380,
+        "arcWork": 4663383,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 6004,
+        "peakArcTerms": 0,
+        "spacingErrorBoundMeters": 2.671203102461164e-13
+      },
+      "historyBookkeepingSteps": 18242564,
+      "execution": "cooperative certified fixed-phase",
+      "inputToVisibleMs": {
+        "p50": 45.6,
+        "p95": 61.8,
+        "max": 77.9
+      },
+      "inputToCommitMs": {
+        "p50": 19.5,
+        "p95": 34.8,
+        "max": 58.1
+      },
+      "commitToVisibleMs": {
+        "p50": 24.5,
+        "p95": 39.6,
+        "max": 46.4
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": 12.9,
+          "p95": 21,
+          "max": 44.2
+        },
+        "preparation": {
+          "p50": 2.7,
+          "p95": 6.5,
+          "max": 20.7
+        },
+        "history": {
+          "p50": 1.6,
+          "p95": 12.6,
+          "max": 24.6
+        },
+        "displayPreparation": {
+          "p50": 7.4,
+          "p95": 23.4,
+          "max": 28.5
+        },
+        "frameWait": {
+          "p50": 15.4,
+          "p95": 25.6,
+          "max": 30.8
+        }
+      },
+      "stageCpuMs": {
+        "path": 630.1,
+        "preparation": 2857.9,
+        "history": 751.3,
+        "publication": 72
+      },
+      "nativeEventAgeMs": {
+        "p50": 12,
+        "p95": 16.2,
+        "max": 18.1
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.7,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 38.7,
+      "changedWhileHeld": 138,
+      "releaseBacklogMs": 120.8,
+      "longTasks": []
+    },
+    {
+      "n": 256,
+      "backend": "auto",
+      "motion": "edge",
+      "termination": "complete",
+      "accepted": 451,
+      "executed": 451,
+      "dabs": 781,
+      "admission": {
+        "accepted": 451,
+        "processed": 451,
+        "pending": 0,
+        "peak": 3
+      },
+      "nativeMoveDeliveries": 840,
+      "path": {
+        "work": 3883073,
+        "routeWork": 149946,
+        "arcWork": 3733127,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 5305,
+        "peakArcTerms": 0,
+        "spacingErrorBoundMeters": 1.3721933745519678e-13
+      },
+      "historyBookkeepingSteps": 6226186,
+      "execution": "cooperative certified fixed-phase",
+      "inputToVisibleMs": {
+        "p50": 39.5,
+        "p95": 65.9,
+        "max": 103.8
+      },
+      "inputToCommitMs": {
+        "p50": 20.4,
+        "p95": 43.2,
+        "max": 81.9
+      },
+      "commitToVisibleMs": {
+        "p50": 16.4,
+        "p95": 32.8,
+        "max": 52.1
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": 10.9,
+          "p95": 22.4,
+          "max": 56.4
+        },
+        "preparation": {
+          "p50": 3,
+          "p95": 9.4,
+          "max": 30.8
+        },
+        "history": {
+          "p50": 0.4,
+          "p95": 2.5,
+          "max": 16.6
+        },
+        "displayPreparation": {
+          "p50": 2,
+          "p95": 17,
+          "max": 30.5
+        },
+        "frameWait": {
+          "p50": 11.6,
+          "p95": 24.4,
+          "max": 45.4
+        }
+      },
+      "stageCpuMs": {
+        "path": 481.3,
+        "preparation": 2707.2,
+        "history": 285,
+        "publication": 61.4
+      },
+      "nativeEventAgeMs": {
+        "p50": 11.7,
+        "p95": 17.1,
+        "max": 24.9
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.7,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 33.8,
+      "changedWhileHeld": 135,
+      "releaseBacklogMs": 59.7,
+      "longTasks": []
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "motion": "circle",
+      "termination": "complete",
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 478,
+      "admission": {
+        "accepted": 901,
+        "processed": 901,
+        "pending": 0,
+        "peak": 3
+      },
+      "nativeMoveDeliveries": 841,
+      "path": {
+        "work": 2714967,
+        "routeWork": 287140,
+        "arcWork": 2427827,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 5514,
+        "peakArcTerms": 0,
+        "spacingErrorBoundMeters": 2.7443867491039356e-13
+      },
+      "historyBookkeepingSteps": 2338233,
+      "execution": "cooperative certified fixed-phase",
+      "inputToVisibleMs": {
+        "p50": 23.2,
+        "p95": 35.3,
+        "max": 42.8
+      },
+      "inputToCommitMs": {
+        "p50": 14.5,
+        "p95": 22.9,
+        "max": 27.8
+      },
+      "commitToVisibleMs": {
+        "p50": 7.8,
+        "p95": 17.3,
+        "max": 24.2
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": 9.8,
+          "p95": 18,
+          "max": 19.9
+        },
+        "preparation": {
+          "p50": 3,
+          "p95": 6.6,
+          "max": 10.8
+        },
+        "history": {
+          "p50": 0.3,
+          "p95": 1.3,
+          "max": 4.5
+        },
+        "displayPreparation": {
+          "p50": 2.4,
+          "p95": 4.4,
+          "max": 10.2
+        },
+        "frameWait": {
+          "p50": 5.3,
+          "p95": 13.7,
+          "max": 19.2
+        }
+      },
+      "stageCpuMs": {
+        "path": 387.5,
+        "preparation": 1632,
+        "history": 115.2,
+        "publication": 40.7
+      },
+      "nativeEventAgeMs": {
+        "p50": 10.6,
+        "p95": 16.9,
+        "max": 19.1
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.7,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 32.3,
+      "changedWhileHeld": 128,
+      "releaseBacklogMs": 50.7,
+      "longTasks": []
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "motion": "corner",
+      "termination": "complete",
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "admission": {
+        "accepted": 901,
+        "processed": 901,
+        "pending": 0,
+        "peak": 5
+      },
+      "nativeMoveDeliveries": 859,
+      "path": {
+        "work": 4327218,
+        "routeWork": 301609,
+        "arcWork": 4025609,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 5281,
+        "peakArcTerms": 0,
+        "spacingErrorBoundMeters": 2.7443867491039356e-13
+      },
+      "historyBookkeepingSteps": 7197263,
+      "execution": "cooperative certified fixed-phase",
+      "inputToVisibleMs": {
+        "p50": 34.2,
+        "p95": 64.8,
+        "max": 104.7
+      },
+      "inputToCommitMs": {
+        "p50": 17.9,
+        "p95": 41.6,
+        "max": 81.6
+      },
+      "commitToVisibleMs": {
+        "p50": 16.2,
+        "p95": 29.4,
+        "max": 44.8
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": 13.2,
+          "p95": 29.4,
+          "max": 60.9
+        },
+        "preparation": {
+          "p50": 2.9,
+          "p95": 11.6,
+          "max": 33.9
+        },
+        "history": {
+          "p50": 0.4,
+          "p95": 2.2,
+          "max": 20.7
+        },
+        "displayPreparation": {
+          "p50": 2.8,
+          "p95": 15.4,
+          "max": 32.3
+        },
+        "frameWait": {
+          "p50": 11.5,
+          "p95": 20.6,
+          "max": 41.3
+        }
+      },
+      "stageCpuMs": {
+        "path": 581.1,
+        "preparation": 2774.2,
+        "history": 316,
+        "publication": 63.4
+      },
+      "nativeEventAgeMs": {
+        "p50": 12.2,
+        "p95": 16.5,
+        "max": 24.3
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.7,
+        "max": 33.3
+      },
+      "firstChangedPixelsMs": 39.2,
+      "changedWhileHeld": 135,
+      "releaseBacklogMs": 112.4,
+      "longTasks": []
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "motion": "curve-reversal",
+      "termination": "complete",
+      "accepted": 877,
+      "executed": 877,
+      "dabs": 948,
+      "admission": {
+        "accepted": 877,
+        "processed": 877,
+        "pending": 0,
+        "peak": 5
+      },
+      "nativeMoveDeliveries": 860,
+      "path": {
+        "work": 4942763,
+        "routeWork": 279380,
+        "arcWork": 4663383,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 6004,
+        "peakArcTerms": 0,
+        "spacingErrorBoundMeters": 2.671203102461164e-13
+      },
+      "historyBookkeepingSteps": 18242564,
+      "execution": "cooperative certified fixed-phase",
+      "inputToVisibleMs": {
+        "p50": 44.9,
+        "p95": 56.8,
+        "max": 83.8
+      },
+      "inputToCommitMs": {
+        "p50": 20.6,
+        "p95": 30.8,
+        "max": 75.3
+      },
+      "commitToVisibleMs": {
+        "p50": 23,
+        "p95": 32.6,
+        "max": 37.3
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": 12.9,
+          "p95": 20.5,
+          "max": 68
+        },
+        "preparation": {
+          "p50": 2.8,
+          "p95": 9.1,
+          "max": 18.1
+        },
+        "history": {
+          "p50": 1.5,
+          "p95": 6.7,
+          "max": 11.1
+        },
+        "displayPreparation": {
+          "p50": 8.4,
+          "p95": 18,
+          "max": 24
+        },
+        "frameWait": {
+          "p50": 13.6,
+          "p95": 18.8,
+          "max": 23.6
+        }
+      },
+      "stageCpuMs": {
+        "path": 586.1,
+        "preparation": 2952.6,
+        "history": 790.7,
+        "publication": 78.2
+      },
+      "nativeEventAgeMs": {
+        "p50": 12,
+        "p95": 15.9,
+        "max": 18.2
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.8,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 31.8,
+      "changedWhileHeld": 138,
+      "releaseBacklogMs": 137.1,
+      "longTasks": []
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "motion": "edge",
+      "termination": "complete",
+      "accepted": 451,
+      "executed": 451,
+      "dabs": 781,
+      "admission": {
+        "accepted": 451,
+        "processed": 451,
+        "pending": 0,
+        "peak": 5
+      },
+      "nativeMoveDeliveries": 837,
+      "path": {
+        "work": 3883073,
+        "routeWork": 149946,
+        "arcWork": 3733127,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 5305,
+        "peakArcTerms": 0,
+        "spacingErrorBoundMeters": 1.3721933745519678e-13
+      },
+      "historyBookkeepingSteps": 6226186,
+      "execution": "cooperative certified fixed-phase",
+      "inputToVisibleMs": {
+        "p50": 42.7,
+        "p95": 75.6,
+        "max": 177.9
+      },
+      "inputToCommitMs": {
+        "p50": 22.8,
+        "p95": 56.2,
+        "max": 153.3
+      },
+      "commitToVisibleMs": {
+        "p50": 15.3,
+        "p95": 31.6,
+        "max": 69.1
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": 12.2,
+          "p95": 33.8,
+          "max": 131.2
+        },
+        "preparation": {
+          "p50": 3.3,
+          "p95": 12.5,
+          "max": 34.8
+        },
+        "history": {
+          "p50": 0.5,
+          "p95": 3.9,
+          "max": 12.8
+        },
+        "displayPreparation": {
+          "p50": 3.2,
+          "p95": 14.7,
+          "max": 36.6
+        },
+        "frameWait": {
+          "p50": 10.6,
+          "p95": 23.1,
+          "max": 32.5
+        }
+      },
+      "stageCpuMs": {
+        "path": 513.2,
+        "preparation": 2823.3,
+        "history": 301,
+        "publication": 69.8
+      },
+      "nativeEventAgeMs": {
+        "p50": 10.4,
+        "p95": 17.6,
+        "max": 22
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.8,
+        "max": 16.8
+      },
+      "firstChangedPixelsMs": 37.3,
+      "changedWhileHeld": 134,
+      "releaseBacklogMs": 138,
+      "longTasks": []
+    }
+  ],
+  "backendVerification": {
+    "note": "Supplementary 15-second N256 corner replay records actual backend explicitly; main matrix used the identical automatic-renderer configuration. Adjacent N128/N256 desktop regressions also report this hardware adapter.",
+    "actualBackend": "WebGL2",
+    "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "software": false,
+    "result": {
+      "n": 256,
+      "backend": "auto",
+      "motion": "corner",
+      "termination": "complete",
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "admission": {
+        "accepted": 901,
+        "processed": 901,
+        "pending": 0,
+        "peak": 10
+      },
+      "nativeMoveDeliveries": 831,
+      "path": {
+        "work": 4327218,
+        "routeWork": 301609,
+        "arcWork": 4025609,
+        "failedRouteWorkAllowance": 0,
+        "peakStepWork": 5281,
+        "peakArcTerms": 0,
+        "spacingErrorBoundMeters": 2.7443867491039356e-13
+      },
+      "historyBookkeepingSteps": 7197263,
+      "execution": "cooperative certified fixed-phase",
+      "inputToVisibleMs": {
+        "p50": 33.7,
+        "p95": 77.6,
+        "max": 182.9
+      },
+      "inputToCommitMs": {
+        "p50": 17.8,
+        "p95": 60.7,
+        "max": 154.4
+      },
+      "commitToVisibleMs": {
+        "p50": 16.3,
+        "p95": 31.3,
+        "max": 52.6
+      },
+      "pipeline": {
+        "inputToPath": {
+          "p50": 12.2,
+          "p95": 46.8,
+          "max": 140.3
+        },
+        "preparation": {
+          "p50": 3,
+          "p95": 14.9,
+          "max": 50.8
+        },
+        "history": {
+          "p50": 0.4,
+          "p95": 1.8,
+          "max": 15.2
+        },
+        "displayPreparation": {
+          "p50": 1.4,
+          "p95": 16.1,
+          "max": 32.5
+        },
+        "frameWait": {
+          "p50": 12.7,
+          "p95": 24.3,
+          "max": 45.4
+        }
+      },
+      "stageCpuMs": {
+        "path": 623.9,
+        "preparation": 3088.1,
+        "history": 327.4,
+        "publication": 66.7
+      },
+      "nativeEventAgeMs": {
+        "p50": 10.3,
+        "p95": 16.9,
+        "max": 27.3
+      },
+      "frameGapMs": {
+        "p50": 16.7,
+        "p95": 16.8,
+        "max": 33.3
+      },
+      "firstChangedPixelsMs": 33.3,
+      "changedWhileHeld": 137,
+      "releaseBacklogMs": 57.2,
+      "longTasks": []
+    }
+  },
+  "sourcePreservation": "C1 brush and exact route/arc primitives, canonical geometry, v1-v5 persistence codecs, accepted D1 shader/palette and camera mathematics unchanged. Optional route pruning and interactive spacing stay behind cube path adapters; legacy exact path remains default for numerical callers."
+}

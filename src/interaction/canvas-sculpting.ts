@@ -3,6 +3,7 @@ import type { Terrain } from '../terrain/model.ts';
 import { isWrapped } from '../terrain/topology.ts';
 import { inspectElevation, viewportToWorld, type ElevationSample, type Point } from '../terrain/sampling.ts';
 import { edgePanVelocity } from '../rendering/edge-pan.ts';
+import {pointerSamples} from './pointer-samples.ts';
 
 type PointerPosition = Pick<PointerEvent, 'clientX' | 'clientY'>;
 
@@ -221,7 +222,7 @@ export function attachCanvasSculpting(canvas: HTMLCanvasElement, options: Sculpt
       active.latest = event;
       let changed = false;
       // Include the dispatched event as well; duplicates carry zero distance.
-      const events = [...(event.getCoalescedEvents?.() ?? []), event];
+      const events = pointerSamples(event);
       for (const sample of events) {
         if (!active) break;
         changed = advance(sample) || changed;

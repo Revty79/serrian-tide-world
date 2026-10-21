@@ -7,10 +7,11 @@ import type {CubePublication} from '../editor/solid-cube-history.ts';
  * A full-resolution epoch is published only after all derived values are ready. */
 export class CubeEditorField {
  private indices?:Uint32Array;
+ private dependencyOffsets?:Uint32Array;private dependencyNodes?:Uint32Array;
  private previousSource?:Uint32Array;private previousData?:Float32Array;private previousRevision=-1;
  private queuedRevision=-1;private pendingWords=new Map<number,number>();private fullRequested=false;
  private readonly word=new DataView(new ArrayBuffer(4));
- readonly statistics={fullRefreshes:0,incrementalRefreshes:0,canonicalWordsRead:0,preparedNodes:0,fieldCopyBytes:0,maxSliceMs:0};
+ readonly statistics={fullRefreshes:0,incrementalRefreshes:0,canonicalWordsRead:0,preparedNodes:0,fieldCopyBytes:0,stencilBytes:0,maxSliceMs:0};
  /** Called only AFTER canonical publication and history promotion. Capture values
   * now so later numerical commits cannot change an in-flight display epoch. */
  queue(terrain:SolidCubeTerrain,publication:CubePublication){
@@ -34,6 +35,22 @@ export class CubeEditorField {
     if(r%8===7){await cubeTaskYield();guard();}
    }guard();this.indices=indices;
   }
+  if(!this.dependencyOffsets){
+   // Invert the ACTUAL accepted height/gradient stencils once. Subsequent local
+   // publications need no repeated topology/alias discovery. Geometry only.
+   const offsets=new Uint32Array(terrain.sampleCount+1),indices=this.indices;
+   const visit=async(add:(canonical:number,node:number)=>void)=>{
+    for(const[fi,face]of SOLID_CUBE_FACES.entries())for(let r=0;r<=n;r++){
+     for(let c=0;c<=n;c++){
+      const node=offset(fi,c,r),neighbor=(dc:number,dr:number)=>{if(c+dc>=0&&c+dc<=n&&r+dr>=0&&r+dr<=n)return indices[offset(fi,c+dc,r+dr)]!;const a=cubeNeighborAddress(face,c,r,dc,dr,n);return indices[offset(SOLID_CUBE_FACES.indexOf(a.face),a.column,a.row)]!;};
+      add(indices[node]!,node);add(neighbor(1,0),node);add(neighbor(-1,0),node);add(neighbor(0,1),node);add(neighbor(0,-1),node);
+     }if(r%8===7){await cubeTaskYield();guard();}
+    }
+   };
+   await visit(index=>{offsets[index+1]=offsets[index+1]!+1;});for(let i=1;i<offsets.length;i++)offsets[i]=offsets[i]!+offsets[i-1]!;
+   const nodes=new Uint32Array(offsets.at(-1)!),cursor=offsets.slice(0,-1);await visit((index,node)=>{const at=cursor[index]!;nodes[at]=node;cursor[index]=at+1;});guard();
+   this.dependencyOffsets=offsets;this.dependencyNodes=nodes;this.statistics.stencilBytes=offsets.byteLength+nodes.byteLength;
+  }
   const full=!this.previousSource||!this.previousData||this.fullRequested||this.queuedRevision!==terrain.revision;
   const revision=terrain.revision,changes=this.pendingWords;this.pendingWords=new Map();this.fullRequested=false;
   let words:Uint32Array;const affected=new Set<number>();let sliceAt=performance.now(),count=0;
@@ -41,10 +58,8 @@ export class CubeEditorField {
   else{
    words=this.previousSource!;for(const[index,value]of changes)words[index]=value;
    for(const index of changes.keys()){
-    const key=terrain.keyAt(index);
-    // A changed vertex affects itself and each connected one-step stencil.
-    // All incident aliases are required, including across folds and corners.
-    for(const node of[key,...terrain.neighbors(key)])for(const a of terrain.aliases(node))affected.add(offset(SOLID_CUBE_FACES.indexOf(a.patchId),a.column,a.row));
+    // Every face alias and gradient that reads this canonical word is included.
+    for(let at=this.dependencyOffsets[index]!;at<this.dependencyOffsets[index+1]!;at++)affected.add(this.dependencyNodes![at]!);
     if(++count%64===0&&performance.now()-sliceAt>=4){this.statistics.maxSliceMs=Math.max(this.statistics.maxSliceMs,performance.now()-sliceAt);await cubeTaskYield();guard();sliceAt=performance.now();}
    }this.statistics.incrementalRefreshes++;
   }

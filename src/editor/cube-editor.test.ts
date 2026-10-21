@@ -48,3 +48,12 @@ test('editor field cache preserves accepted physical gradients, every alias, and
  const compare=async()=>{const actual=await cache.refresh(t,()=>true),expected=await prepareCubeDisplayField(t);assert.deepEqual(new Uint32Array(actual.data.buffer),new Uint32Array(expected.data.buffer));};
  await compare();t.write(t.resolve({...identity,patchId:'px',column:16,row:16}),2500);await compare();
 });
+
+test('long interactive history retains the original per-reservation work ceiling and exact whole-gesture words',()=>{
+ const run=(workWindow:'gesture'|'dab')=>{const t=make(),before=words(t),h=createSolidCubeHistory(t,{capacity:'surface',workWindow,maxBookkeepingSteps:8}),op=h.beginOperation(t);let completed=0,error:unknown;
+  try{for(;completed<60;completed++){op.startDab(point(),{...settings,strengthMeters:1});while(op.stage==='preparing')op.pumpPreparation(256);while(op.stage==='collecting')op.pumpBookkeeping(256);op.commitDab();}}catch(e){error=e;}op.finish(error?'failed':'released');
+  const after=words(t);assert.ok(h.undo());assert.deepEqual(words(t),before);assert.ok(h.redo());assert.deepEqual(words(t),after);assert.equal(h.operations.length,1);assert.equal(h.limits.maxBookkeepingSteps,8);return{completed,error,steps:op.statistics.bookkeepingSteps};};
+ const legacy=run('gesture');assert.ok(legacy.error);assert.ok(legacy.completed<60);const interactive=run('dab');assert.equal(interactive.error,undefined);assert.equal(interactive.completed,60);assert.ok(interactive.steps>8);
+ // Lowering a single reservation below its real cost still fails before commit.
+ const t=make(),h=createSolidCubeHistory(t,{capacity:'surface',workWindow:'dab',maxBookkeepingSteps:1}),op=h.beginOperation(t),before=words(t);op.startDab(point(),settings);while(op.stage==='preparing')op.pumpPreparation(256);assert.throws(()=>{while(op.stage==='collecting')op.pumpBookkeeping(256);},/bookkeeping/);op.finish('failed');assert.deepEqual(words(t),before);
+});

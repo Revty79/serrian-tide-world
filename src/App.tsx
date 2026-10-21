@@ -23,8 +23,9 @@ import type { ViewMode } from './rendering/camera.ts';
 import {CubeEditor} from './components/CubeEditor.tsx';
 import {prepareCubeSession} from './editor/prepare-cube-session.ts';
 import {encodeSolidCubeHeightmap} from './persistence/solid-cube-format.ts';
+import {DEFAULT_ADDITIVE_STRENGTH_METERS} from './editor/brush-defaults.ts';
 
-const defaults: BrushControls = { tool: 'raise', radius: .06, strength: 200, intensity: .5, targetElevation: '0' };
+const defaults: BrushControls = { tool: 'raise', radius: .06, strength: DEFAULT_ADDITIVE_STRENGTH_METERS, intensity: .5, targetElevation: '0' };
 const store = new LocalMapStore();
 
 /** Exactly one active document. Renderers own view state, never document identity. */

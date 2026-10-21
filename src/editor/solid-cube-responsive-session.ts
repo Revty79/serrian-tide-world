@@ -5,11 +5,13 @@ import type {SurfacePosition} from '../surfaces/contracts.ts';
 import type {CubeHistoryLimits} from './solid-cube-history.ts';
 import {createCubeWorkerPath,cubePathWorkerFactory,cubeWorkerIsIdle, type CubeExecutionMode, type CubePathWorkerFactory} from './cube-worker-path.ts';
 import {CUBE_PATH_WORK_LIMITS, type CubePathRole} from './cube-path-work-protocol.ts';
+import {createSolidCubeStrokePath} from '../surfaces/solid-cube-stroke-path.ts';
 
-export interface ResponsiveCubeOptions {readonly mode?:CubeExecutionMode;readonly historyLimits?:CubeHistoryLimits;readonly workerFactory?:CubePathWorkerFactory;readonly startupTimeoutMs?:number;readonly workTimeoutMs?:number;readonly reuseWorkers?:boolean;readonly trackPublications?:boolean}
+export interface ResponsiveCubeOptions {readonly mode?:CubeExecutionMode;readonly historyLimits?:CubeHistoryLimits;readonly workerFactory?:CubePathWorkerFactory;readonly startupTimeoutMs?:number;readonly workTimeoutMs?:number;readonly reuseWorkers?:boolean;readonly trackPublications?:boolean;readonly placement?:'exact'|'bounded-phase'}
 /** One C2B1 authority/history. Only pure physical-path preparation may leave the host. */
 export function createResponsiveSolidCubeSession(terrain:SolidCubeTerrain,options:ResponsiveCubeOptions={}){
  const mode=options.mode??'auto',timeout=options.startupTimeoutMs??CUBE_PATH_WORK_LIMITS.startupTimeoutMs;
+ if(options.placement!==undefined&&options.placement!=='exact'&&options.placement!=='bounded-phase')throw RangeError('Invalid cube spacing policy');
  if(!['auto','cooperative','worker'].includes(mode)||!Number.isSafeInteger(timeout)||timeout<1||timeout>CUBE_PATH_WORK_LIMITS.startupTimeoutMs)throw RangeError('Invalid responsive cube execution options');
  if(options.reuseWorkers!==undefined&&typeof options.reuseWorkers!=='boolean')throw RangeError('Invalid cube worker reuse option');
  if(options.workTimeoutMs!==undefined&&(!Number.isSafeInteger(options.workTimeoutMs)||options.workTimeoutMs<1||options.workTimeoutMs>CUBE_PATH_WORK_LIMITS.workTimeoutMs))throw RangeError('Invalid cube worker request timeout');
@@ -22,6 +24,7 @@ export function createResponsiveSolidCubeSession(terrain:SolidCubeTerrain,option
   worker.onmessage=()=>{};worker.onerror=e=>{e.preventDefault();pool.idleFailures++;destroy(worker);};worker.onmessageerror=()=>{pool.idleFailures++;destroy(worker);};
  };
  const core=createSolidCubeSessionWithPath(terrain,options.historyLimits??{},(configuration,radius,limits={})=>{
+  if(options.placement==='bounded-phase')return createSolidCubeStrokePath(configuration,radius,limits,'bounded-phase');
   bridge=createCubeWorkerPath(configuration,radius,limits,{mode,binding,revision:()=>terrain.revision,factory:acquire,startupTimeoutMs:timeout,workTimeoutMs:options.workTimeoutMs,releaseWorker});return bridge.path;
  },options.trackPublications??false);
  let channel:MessageChannel|undefined,turnPromise:Promise<void>|undefined,resolveTurn:(()=>void)|undefined;
@@ -32,6 +35,7 @@ export function createResponsiveSolidCubeSession(terrain:SolidCubeTerrain,option
  };
  return Object.freeze({terrain:core.terrain,history:core.history,binding:core.binding,
   get stroke(){return core.stroke;},get lastStroke(){return core.lastStroke;},get disposed(){return core.disposed;},get diagnostics(){return bridge?{...bridge.diagnostics,pool:{...pool,retained:Object.keys(cached).length}}:undefined;},
+  get waitingForPath(){return bridge?.waiting??false;},
   begin(first:SurfacePosition,settings:CubeBrushSettings,strokeOptions:CubeStrokeOptions={}){return core.begin(first,settings,strokeOptions);},
   pump:(steps=256)=>core.pump(steps),release:()=>core.release(),cancel:()=>core.cancel(),undo:()=>core.undo(),redo:()=>core.redo(),clearHistory:()=>core.clearHistory(),
   waitForProgress(){return core.disposed||!core.stroke?Promise.resolve():bridge&&(bridge.waiting||bridge.idle&&core.stroke.statistics.lastStage==='idle')?bridge.waitForProgress():turn();},

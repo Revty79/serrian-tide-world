@@ -6,6 +6,9 @@ export const CUBE_ROUTE_ALGORITHM = 'cube-simple-face-unfoldings' as const;
 export const CUBE_ROUTE_VERSION = 1 as const;
 export const CUBE_ROUTE_MAX_CANDIDATES = 252;
 export interface CubeRouteOptions {
+  /** Exact lower-bound pruning. A common-face chord attains the universal 3D
+   * chord bound; a longer unfolded candidate cannot improve a feasible route. */
+  readonly pruneDominated?:boolean;
   readonly maxCandidates?: number;
   readonly maxWorkUnits?: number;
   readonly maxReturnedRoutes?: number;
@@ -106,6 +109,7 @@ export function createSolidCubeRouter(configuration: SolidCubeConfiguration) {
   };
   const route = (first: SurfacePosition, second: SurfacePosition, options: CubeRouteOptions = {}) => {
     if (!options || typeof options !== 'object' || Array.isArray(options)) throw new RangeError('Cube route options must be an object.');
+    if(options.pruneDominated!==undefined&&typeof options.pruneDominated!=='boolean')throw RangeError('Invalid cube route pruning policy.');
     const maxCandidates = options.maxCandidates === undefined ? CUBE_ROUTE_MAX_CANDIDATES : options.maxCandidates;
     const maxRoutes = options.maxReturnedRoutes === undefined ? CUBE_ROUTE_MAX_CANDIDATES : options.maxReturnedRoutes;
     for (const limit of [maxCandidates, maxRoutes]) if (!Number.isSafeInteger(limit) || limit < 1 || limit > CUBE_ROUTE_MAX_CANDIDATES) throw new RangeError('Cube candidate/result limit must be 1-252.');
@@ -154,11 +158,16 @@ export function createSolidCubeRouter(configuration: SolidCubeConfiguration) {
       if (cubeFractionCompare(ctx, hi, CUBE_ONE_FRACTION) > 0) hi = CUBE_ONE_FRACTION;
       return cubeFractionCompare(ctx, lo, hi) <= 0 ? [lo, hi] : null;
     };
-    let bestSquared: bigint | undefined, minimizers: Candidate[] = [];
+    let bestSquared: bigint | undefined, minimizers: Candidate[] = [],dominated=0;
+    const commonFace=options.pruneDominated?SOLID_CUBE_FACES.find(face=>fromAliases.some(a=>a.patchId===face)&&toAliases.some(a=>a.patchId===face)):undefined;
     if (order !== 0) for (const start of fromAliases) for (const end of toAliases) for (const faces of SEQUENCES.get(`${start.patchId}:${end.patchId}`)!) {
+      // Equality in the chord lower bound forces the same physical straight
+      // segment; its canonical one-face representation uses the first face.
+      if(commonFace&&(faces.length!==1||faces[0]!==commonFace))continue;
       if (++visited > maxCandidates) throw new CubeRouteCertificationError('work', 'Cube candidate limit reached before exhaustive certification.');
       ctx.step(); const frames = unfold(faces), p = project(p3, frames[0]!), q = project(q3, frames[frames.length - 1]!), delta: I2 = [q[0] - p[0], q[1] - p[1]];
       const squared = delta[0] * delta[0] + delta[1] * delta[1]; ctx.check(...delta, squared);
+      if(options.pruneDominated&&bestSquared!==undefined&&squared>bestSquared){dominated++;continue;}
       const parameters: CubeFraction[] = [CUBE_ZERO_FRACTION]; let valid = true;
       for (let i = 0; i < frames.length - 1; i++) {
         const frame = frames[i]!, c = SOLID_CUBE_CONNECTIONS.find((c) => c.face === frame.face && c.toFace === frames[i + 1]!.face)!;
@@ -248,7 +257,8 @@ export function createSolidCubeRouter(configuration: SolidCubeConfiguration) {
       start: endpoint(reverse ? toAliases : fromAliases), end: endpoint(reverse ? fromAliases : toAliases),
       directionPolicy: order === 0 ? 'undefined-zero-length' as const : 'one-sided-face-tangents' as const,
       certificate: Object.freeze({ candidateSequences: visited, feasibleSequences: feasible, rejectedInteriorCornerSequences: cornerRejected,
-        peakRetainedMinimizers: peakMinimizers, completePhysicalShortestRoutes: routes.length, maxFaces: 6, maxSequencesPerFacePair: 28, maxCandidates: CUBE_ROUTE_MAX_CANDIDATES, ...ctx.snapshot() }) });
+        peakRetainedMinimizers: peakMinimizers, completePhysicalShortestRoutes: routes.length, maxFaces: 6, maxSequencesPerFacePair: 28, maxCandidates: CUBE_ROUTE_MAX_CANDIDATES,
+        ...(options.pruneDominated?{chordLowerBoundUsed:Boolean(commonFace),dominatedSequences:dominated}:{}),...ctx.snapshot() }) });
   };
   return Object.freeze({ geometry, route, algorithm: CUBE_ROUTE_ALGORITHM, algorithmVersion: CUBE_ROUTE_VERSION });
 }

@@ -1,0 +1,60 @@
+import {test,expect} from '@playwright/test';
+import {performance} from 'node:perf_hooks';
+import {mkdir,writeFile} from 'node:fs/promises';
+import type {CubeEditorSession} from '../src/editor/cube-editor-session.ts';
+test.use({viewport:{width:1440,height:950},launchOptions:{args:process.platform==='win32'?['--use-angle=default']:[]}});
+test.setTimeout(120000);
+const baseline=process.env.CUBE_LONG_BASELINE==='1',duration=15000,steps=900;
+const output=process.env.CUBE_LONG_OUTPUT??'.local/cube-pass2-long';
+type Snapshot=ReturnType<CubeEditorSession['snapshot']>;
+declare global {interface Window {__longSculpt:ReturnType<typeof observe>}}
+function observe(){
+ const audit={held:false,running:true,started:0,released:0,events:0,firstPixels:0,changedWhileHeld:0,maxGap:0,gaps:[] as number[],eventAges:[] as number[],longTasks:[] as number[],timings:new Map<number,Snapshot['timings'][number]>(),errors:[] as string[],samples:[] as {at:number;accepted:number;executed:number;pending:number;revision:number;display:number}[]};
+ let lastFrame=0,lastSample=0,lastCapture=0,lastPixels:Uint8ClampedArray|undefined;
+ const scratch=document.createElement('canvas');scratch.width=scratch.height=128;const context=scratch.getContext('2d',{willReadFrequently:true})!;
+ const capture=(canvas:HTMLCanvasElement)=>{if(!audit.running||!canvas.isConnected||canvas.hidden||canvas.clientWidth<200||canvas.clientHeight<200||performance.now()-lastCapture<(audit.held&&audit.firstPixels?100:8))return;lastCapture=performance.now();context.drawImage(canvas,0,0,128,128);const pixels=context.getImageData(0,0,128,128).data;let changed=0;
+  if(lastPixels)for(let i=0;i<pixels.length;i+=4)if(pixels[i]!==lastPixels[i]||pixels[i+1]!==lastPixels[i+1]||pixels[i+2]!==lastPixels[i+2])changed++;
+  if(changed&&audit.held){audit.changedWhileHeld++;if(!audit.firstPixels)audit.firstPixels=performance.now()-audit.started;}lastPixels=pixels;
+ };
+ const gl=WebGL2RenderingContext.prototype.drawArrays,canvas=CanvasRenderingContext2D.prototype.drawImage;
+ WebGL2RenderingContext.prototype.drawArrays=function(this:WebGL2RenderingContext,...args){Reflect.apply(gl,this,args);queueMicrotask(()=>capture(this.canvas as HTMLCanvasElement));};
+ CanvasRenderingContext2D.prototype.drawImage=function(this:CanvasRenderingContext2D,...args:unknown[]){Reflect.apply(canvas,this,args);if(this.canvas!==scratch)queueMicrotask(()=>capture(this.canvas as HTMLCanvasElement));} as typeof canvas;
+ const viewport=document.querySelector('.cube-viewport')!;
+ viewport.addEventListener('pointerdown',event=>{audit.held=true;audit.started=(event as PointerEvent).timeStamp;},{capture:true});
+ viewport.addEventListener('pointermove',event=>{if(audit.held){audit.events++;audit.eventAges.push(performance.now()-(event as PointerEvent).timeStamp);}},{capture:true});
+ viewport.addEventListener('pointerup',event=>{audit.held=false;audit.released=(event as PointerEvent).timeStamp;},{capture:true});
+ new PerformanceObserver(list=>{for(const entry of list.getEntries())if(audit.held)audit.longTasks.push(entry.duration);}).observe({type:'longtask'});
+ const frame=(now:number)=>{if(!audit.running)return;if(audit.held&&lastFrame){const gap=now-lastFrame;audit.gaps.push(gap);audit.maxGap=Math.max(audit.maxGap,gap);}lastFrame=now;
+  if(now-lastSample>100){lastSample=now;const state=window.__cubeEditor!.snapshot() as {editor:Snapshot;display:{displayedRevision:number}};for(const t of state.editor.timings)audit.timings.set(t.revision,t);
+   if(audit.held&&audit.samples.length<240)audit.samples.push({at:now-audit.started,accepted:state.editor.stroke?.acceptedInputs??0,executed:state.editor.stroke?.fullyExecutedInputs??0,pending:state.editor.pending,revision:state.editor.revision,display:state.display.displayedRevision});if(state.editor.error&&!audit.errors.includes(state.editor.error))audit.errors.push(state.editor.error);
+  }requestAnimationFrame(frame);
+ };requestAnimationFrame(frame);return audit;
+}
+const quantiles=(a:number[])=>{a=a.filter(Number.isFinite).sort((x,y)=>x-y);return{p50:a[Math.floor(a.length*.5)]??null,p95:a[Math.floor(a.length*.95)]??null,max:a.at(-1)??null};};
+for(const n of[128,256])for(const backend of['auto','canvas'])for(const motion of['curve-reversal','circle','edge','corner']){
+ test(`long sculpt N${n} ${backend} ${motion}`,async({page})=>{
+  test.skip(baseline&&motion!=='circle'&&motion!=='corner','Focused rejected-version comparison.');
+  if(backend==='canvas')await page.addInitScript(()=>{const old=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(this:HTMLCanvasElement,type:string,...args:unknown[]){return type==='webgl2'?null:Reflect.apply(old,this,[type,...args]);} as typeof old;});
+  const errors:string[]=[];page.on('pageerror',e=>errors.push(String(e)));
+  await page.goto('/');await page.getByLabel('World shape',{exact:true}).selectOption('cube');await page.getByLabel('World/map name').fill('Long sculpt');await page.getByLabel('Cube resolution',{exact:true}).selectOption(String(n));await page.getByRole('button',{name:'Create World / Map',exact:true}).click();await expect(page.locator('.cube-editor')).toHaveAttribute('data-ready','true',{timeout:60000});
+  await page.getByRole('button',{name:'Open tools',exact:true}).click();const defaultStrength=await page.getByLabel('Brush strength (m)',{exact:true}).inputValue();expect(defaultStrength).toBe(baseline?'650':'200');await page.getByLabel('Brush strength (m)',{exact:true}).fill('200');await page.getByRole('button',{name:'Close tools',exact:true}).click();
+  const view=motion==='edge'||motion==='corner'?'Corner':'View +Z face';await page.getByRole('button',{name:view,exact:true}).click();
+  const points=await page.evaluate(({motion,steps})=>{const project=window.__cubeEditor!.project,center=motion==='corner'?project('pz',1,1):motion==='edge'?project('pz',1,0):project('pz',0,0);return Array.from({length:steps+1},(_,i)=>{const t=i/steps;if(motion==='curve-reversal')return project('pz',.68*Math.sin(t*10*Math.PI),.46*Math.sin(t*16*Math.PI));const theta=12*Math.PI*(t<=.6?t:1.2-t),radius=motion==='corner'?78:motion==='edge'?65:90;return{x:center.x+radius*Math.cos(theta),y:center.y+radius*Math.sin(theta)};});},{motion,steps});
+  await page.mouse.move(points[0]!.x,points[0]!.y);await page.waitForTimeout(150);
+  // Serialize the observer explicitly; no imported page module or editor mutation.
+  await page.evaluate(`window.__longSculpt = (${observe.toString()})()`);
+  await page.getByRole('button',{name:view,exact:true}).click();await page.waitForTimeout(150);await page.mouse.move(points[0]!.x,points[0]!.y);
+  const before=await page.evaluate(()=>window.__cubeEditor!.hash()),cdp=await page.context().newCDPSession(page);if(process.env.CUBE_LONG_PROFILE){await cdp.send('Profiler.enable');await cdp.send('Profiler.setSamplingInterval',{interval:1000});await cdp.send('Profiler.start');}const start=performance.now();await cdp.send('Input.dispatchMouseEvent',{type:'mousePressed',...points[0]!,button:'left',buttons:1,clickCount:1,pointerType:'mouse',timestamp:Date.now()/1000});
+  const deliveries:Promise<unknown>[]=[];for(let i=1;i<=steps;i++){const delay=start+duration*i/steps-performance.now();if(delay>0)await new Promise(r=>setTimeout(r,delay));deliveries.push(cdp.send('Input.dispatchMouseEvent',{type:'mouseMoved',...points[i]!,button:'left',buttons:1,pointerType:'mouse',timestamp:Date.now()/1000}));}
+  deliveries.push(cdp.send('Input.dispatchMouseEvent',{type:'mouseReleased',...points.at(-1)!,button:'left',buttons:0,clickCount:1,pointerType:'mouse',timestamp:Date.now()/1000}));await Promise.all(deliveries);const pointerWallMs=performance.now()-start;await expect(page.locator('.cube-editor')).toHaveAttribute('data-processing','false',{timeout:60000});const profile=process.env.CUBE_LONG_PROFILE?(await cdp.send('Profiler.stop')).profile:undefined;await cdp.detach();await page.waitForTimeout(120);
+  const result=await page.evaluate(()=>{const a=window.__longSculpt,s=window.__cubeEditor!.snapshot() as {editor:Snapshot;display:{displayedRevision:number;backend:string;gpu:{renderer:string;software:boolean}}};a.running=false;for(const t of s.editor.timings)a.timings.set(t.revision,t);return{...a,timings:[...a.timings.values()],completedAt:performance.now(),state:s.editor,backend:s.display.backend,gpu:s.display.gpu};});
+  const latency=quantiles(result.timings.map(t=>t.inputToVisibleMs!)),record={n,backend,actualBackend:result.backend,renderer:result.gpu.renderer,software:result.gpu.software,motion,defaultStrength:Number(defaultStrength),strength:200,duration,pointerWallMs,actualEvents:result.events,termination:result.state.termination,failure:result.state.failure,error:result.state.error,accepted:result.state.stroke?.acceptedInputs,executed:result.state.stroke?.fullyExecutedInputs,dabs:result.state.stroke?.committedDabs,path:result.state.stroke?.path,stageCpuMs:result.state.stroke?.stageCpuMs,historyWork:result.state.stroke?.history.bookkeepingSteps,execution:result.state.executionBackend??result.state.diagnostics?.backend,inputToVisibleMs:latency,inputToCommitMs:quantiles(result.timings.map(t=>t.inputToCommitMs)),commitToVisibleMs:quantiles(result.timings.map(t=>t.commitToVisibleMs!)),pipeline:{inputToPath:quantiles(result.timings.map(t=>t.pathReadyAt!-t.inputAt)),preparation:quantiles(result.timings.map(t=>t.preparationReadyAt!-t.preparationStartedAt!)),history:quantiles(result.timings.map(t=>t.historyReadyAt!-t.preparationReadyAt!)),displayPreparation:quantiles(result.timings.map(t=>t.displayPreparedAt!-t.commitAt)),frameWait:quantiles(result.timings.map(t=>t.visibleAt!-t.displayPreparedAt!))},firstChangedPixelsMs:result.firstPixels,changedWhileHeld:result.changedWhileHeld,frameGapMs:quantiles(result.gaps),longTasks:result.longTasks,releaseBacklogMs:result.completedAt-result.released-120,errors};
+  await mkdir(output,{recursive:true});await writeFile(`${output}/n${n}-${backend}-${motion}.json`,JSON.stringify({...record,injectedMoves:steps,pixelProbeSamplingMs:100,admission:result.state.admission,nativeEventAgeMs:quantiles(result.eventAges)},null,2)+'\n');if(profile)await writeFile(`${output}/n${n}-${backend}-${motion}.cpuprofile`,JSON.stringify(profile));
+  if(baseline)return;
+  expect(result.state.termination).toBe('complete');expect(result.state.needsRecovery).toBe(false);expect(result.state.stroke!.uncompletedInputs).toBe(0);expect(result.state.stroke!.acceptedInputs).toBeGreaterThan(256);expect(result.state.history.entries).toBe(1);expect(result.changedWhileHeld).toBeGreaterThan(80);expect(latency.p95!).toBeLessThan(180);expect(latency.max!).toBeLessThan(500);expect(record.releaseBacklogMs).toBeLessThan(500);expect(errors).toEqual([]);
+  const after=await page.evaluate(()=>window.__cubeEditor!.hash());expect(after).not.toBe(before);await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.locator('.cube-editor')).toHaveAttribute('data-processing','false');expect(await page.evaluate(()=>window.__cubeEditor!.hash())).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await expect(page.locator('.cube-editor')).toHaveAttribute('data-processing','false');expect(await page.evaluate(()=>window.__cubeEditor!.hash())).toBe(after);
+  expect(result.state.admission!.accepted).toBe(result.state.stroke!.acceptedInputs);expect(result.state.admission!.pending).toBe(0);
+  await page.getByRole('button',{name:'Lower',exact:true}).click();for(let j=0;j<3;j++){await page.mouse.move(points[0]!.x,points[0]!.y);await page.mouse.down();await page.mouse.move(points[10]!.x,points[10]!.y,{steps:8});await page.mouse.up();await expect(page.locator('.cube-editor')).toHaveAttribute('data-processing','false');}expect((await page.evaluate(()=>window.__cubeEditor!.snapshot()) as {editor:Snapshot}).editor.needsRecovery).toBe(false);
+  if(n===256&&backend==='auto'&&motion==='corner'){await page.waitForTimeout(100);await page.screenshot({path:output+'/corner.png'});}
+ });
+}

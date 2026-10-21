@@ -4,7 +4,7 @@ import type {SurfacePosition} from '../surfaces/contracts.ts';
 
 const CHUNK=1024, CHUNK_BYTES=CHUNK*12;
 export const CUBE_HISTORY_LIMITS=Object.freeze({maxEntries:32,maxBytes:8*1024*1024,maxStrokeSamples:MAX_CUBE_PATCH_SAMPLES,maxBookkeepingSteps:16_000_000});
-export type CubeHistoryLimits={readonly [K in keyof typeof CUBE_HISTORY_LIMITS]?:number} & {readonly capacity?:'surface'};
+export type CubeHistoryLimits={readonly [K in keyof typeof CUBE_HISTORY_LIMITS]?:number} & {readonly capacity?:'surface';readonly workWindow?:'gesture'|'dab'};
 export type CubeStrokeTermination='released'|'cancelled'|'failed'|'disposed';
 /** Optional derived-display handoff. Never a commit proposal or history authority. */
 export type CubePublication=Readonly<{sourceRevision:number;revision:number;kind:'delta';indices:Uint32Array}>|Readonly<{sourceRevision:number;revision:number;kind:'all'}>;
@@ -26,8 +26,9 @@ export function createSolidCubeHistory(terrain:SolidCubeTerrain,input:CubeHistor
   const preparePublication=(indices:()=>Uint32Array):CubePublication|undefined=>!trackPublications?undefined:publication?Object.freeze({sourceRevision:publication.sourceRevision,revision:terrain.revision,kind:'all'}):Object.freeze({sourceRevision:terrain.revision,revision:terrain.revision,kind:'delta',indices:indices()});
   const published=(next:CubePublication|undefined)=>{if(next)publication=Object.freeze({...next,revision:terrain.revision});};
   if(input.capacity!==undefined&&input.capacity!=='surface')throw new RangeError('Invalid cube history capacity.');
+  if(input.workWindow!==undefined&&input.workWindow!=='gesture'&&input.workWindow!=='dab')throw RangeError('Invalid cube history work window.');
   const hard=input.capacity==='surface'?{...CUBE_HISTORY_LIMITS,maxStrokeSamples:terrain.sampleCount}:CUBE_HISTORY_LIMITS;
-  const {capacity: _capacity,...requested}=input;
+  const {capacity: _capacity,workWindow:_workWindow,...requested}=input;
   const limits=Object.freeze({...hard,...requested});
   for(const k of Object.keys(CUBE_HISTORY_LIMITS) as (keyof typeof limits)[])
     if(!Number.isSafeInteger(limits[k])||limits[k]<1||limits[k]>hard[k])throw new RangeError('Cube history limits may only lower hard budgets.');
@@ -68,7 +69,7 @@ export function createSolidCubeHistory(terrain:SolidCubeTerrain,input:CubeHistor
       if(active)throw new Error('A cube gesture is already active.');synchronized();
       let record=empty(),closed=false,job:PreparedSolidCubeDab|undefined,draft:Record|undefined;
       let iterator:Generator<Change>|undefined,peek:Change|undefined,ended=false,oldSlot=0,lastChange=-1;
-      let stage:CubeDabExecutionStage='none',preparedCount=0,reservedCount=0,bookkeepingSteps=0;
+      let stage:CubeDabExecutionStage='none',preparedCount=0,reservedCount=0,bookkeepingSteps=0,bookkeepingWindowStart=0;
       let peakDraftBytes=0,lastStatistics:PreparedSolidCubeDab['statistics']|undefined;
       let sealed:Readonly<{count:number;bytes:number;dabs:number}>|undefined;
       active=record;
@@ -97,6 +98,7 @@ export function createSolidCubeHistory(terrain:SolidCubeTerrain,input:CubeHistor
           draftBytes:draft&&draft!==record?draft.bytes:0,peakDraftBytes,lastDabStatistics:lastStatistics});},
         startDab(center:SurfacePosition,settings:CubeBrushSettings,dabLimits:CubeDabLimits={}){
           synced();if(job)throw new Error('A cube dab is already pending.');
+          bookkeepingWindowStart=bookkeepingSteps;
           job=prepareSolidCubeDab(terrain,center,settings,dabLimits);synced();
           stage=job.status==='ready'?'collecting':'preparing';if(job.status==='ready')preparedCount++;
         },
@@ -110,7 +112,7 @@ export function createSolidCubeHistory(terrain:SolidCubeTerrain,input:CubeHistor
           if(job.statistics.changesPrepared===0){draft=record;stage='reserved';reservedCount++;return stage;}
           if(!draft){draft=empty();iterator=job.preparedChanges(terrain);oldSlot=0;peek=undefined;ended=false;lastChange=-1;}
           for(let work=0;work<steps;work++){
-            if(bookkeepingSteps>=limits.maxBookkeepingSteps)throw new RangeError('Cube gesture bookkeeping budget exhausted.');bookkeepingSteps++;
+            if(bookkeepingSteps-(input.workWindow==='dab'?bookkeepingWindowStart:0)>=limits.maxBookkeepingSteps)throw new RangeError('Cube history reservation bookkeeping budget exhausted.');bookkeepingSteps++;
             if(!peek&&!ended){const next=iterator!.next();ended=Boolean(next.done);if(!next.done){peek=next.value;
               if(!Number.isSafeInteger(peek.index)||peek.index<=lastChange||peek.index>=terrain.sampleCount||!Number.isFinite(peek.before)||!Number.isFinite(peek.after))throw new Error('Invalid cube dab handoff.');lastChange=peek.index;}}
             const old=oldSlot<record.count?at(record,oldSlot):undefined;

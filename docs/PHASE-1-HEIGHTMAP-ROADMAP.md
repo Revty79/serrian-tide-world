@@ -4,9 +4,10 @@ Updated for Cube-D1 on accepted Cube-C2B2 delivery 77df76f3a0a12273f9277d201277f
 
 ## Current Cube-E/F authorization — 2026-10-21
 
-**Current gate: the owner rejected E/F delivery `01e897e4220d9ffd0357ff358d73dec32691d51b`.**
-Painting performance and normal workspace presentation are corrected in the
-[bounded corrective pass](CUBE-EF-CORRECTIVE-COMPLETION.md). Its automated results
+**Current gate: the owner rejected corrective delivery `0686f5adcfff0b762c48d39b7e27918f67ef7b4e`.**
+Long-form sculpting and shared Atlas architecture are addressed in
+[corrective pass 2](CUBE-EF-CORRECTIVE-2.md) and the
+[shared systems and geometry adapter audit](ATLAS-SHARED-EDITOR-ARCHITECTURE.md). Automated results
 do not constitute owner acceptance. Stop for hands-on review; Cube-G/H, hollow
 worlds, additional shapes and unrelated cartography remain unauthorized.
 

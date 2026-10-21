@@ -1,19 +1,26 @@
 import type { SurfacePosition } from './contracts.ts';
 import { createSolidCubeRouter, type CertifiedCubeRoute, type CubeRouteSegment, type SolidCubeRouteResult } from './solid-cube-routing.ts';
-import { CUBE_ROUTE_MAX_WORK, type CubeExactBudget, type CubeFraction } from './cube-route-exact.ts';
+import { CUBE_ROUTE_MAX_WORK, cubeFraction,cubeFractionCompare,type CubeExactBudget, type CubeFraction } from './cube-route-exact.ts';
+import {CUBE_PHASE_UNIT,cubePhaseLength} from './cube-stroke-phase.ts';
 import { createSolidCubeGeometry, type SolidCubeConfiguration, type SolidCubePosition } from './solid-cube.ts';
 import { cubeArcAdd, cubeArcBudget, cubeArcDivideLength, cubeArcLength, cubeArcRational, cubeArcRound, cubeArcScale, cubeArcSign, cubeNumberRational, cubeRational, cubeRationalAdd, cubeRationalMultiply, type CubeArc, type CubeArcBounds } from './cube-stroke-exact.ts';
 
 export const CUBE_STROKE_PATH_LIMITS=Object.freeze({maxPendingInputs:8,maxAcceptedInputs:256,maxDabs:4096,maxOutputEvents:8,
   maxStepWork:CUBE_ROUTE_MAX_WORK,maxTotalWork:16_000_000});
+/** Same bounded input/dab lifetime as the mature cylinder. Each step retains the
+ * original exact-work ceiling; the lifetime total follows from those finite counts. */
+export const CUBE_INTERACTIVE_PATH_LIMITS=Object.freeze({...CUBE_STROKE_PATH_LIMITS,maxAcceptedInputs:65536,maxDabs:16384,
+ maxTotalWork:CUBE_ROUTE_MAX_WORK*(2*65536+16384+2)});
 export type CubeStrokePathLimits={readonly [K in keyof typeof CUBE_STROKE_PATH_LIMITS]?:number};
 export type CubeStrokePathStatus='accepting'|'draining'|'complete'|'cancelled'|'failed';
 export type CubeStrokeRoutePolicy='unique'|'exact-backtrack'|'continuation'|'canonical-no-context'|'canonical-context-tie'|'corner-reset';
 export interface CubeStrokeDab {
   readonly kind:'dab'; readonly ordinal:number; readonly inputSequence:number;
   readonly center:SolidCubePosition;
-  /** Ideal global arc distance = ordinal * spacingMeters, without accumulated rounding. */
-  readonly rounding:'initial-input'|'nearest-even-chart-coordinates';
+  /** Exact mode rounds the ideal ordinal*spacing arc. Interactive phase mode
+   * carries its explicit accumulated arc-error bound plus chart rounding bounds. */
+  readonly rounding:'initial-input'|'nearest-even-chart-coordinates'|'certified-phase-chart-coordinates';
+  readonly spacingErrorBoundMeters?:number;
   readonly idealFace?:string; readonly coordinateBounds?:Readonly<{u:CubeArcBounds;v:CubeArcBounds}>;
 }
 export interface CubeStrokePathSegment {
@@ -29,22 +36,25 @@ const eq=(a:readonly number[],b:readonly number[])=>a.every((x,i)=>x===b[i]);
 /** Numerical ordered-input provider only. It never owns terrain, a clock, workers or history.
  * Each pump performs ONE bounded route query, spacing decision/dab, or state transition.
  * Hosts must drain output and retain/retry any input rejected by queue backpressure. */
-export function createSolidCubeStrokePath(configuration:SolidCubeConfiguration,radiusMeters:number,inputLimits:CubeStrokePathLimits={}) {
+export function createSolidCubeStrokePath(configuration:SolidCubeConfiguration,radiusMeters:number,inputLimits:CubeStrokePathLimits={},placement:'exact'|'bounded-phase'='exact') {
+  if(placement!=='exact'&&placement!=='bounded-phase')throw RangeError('Invalid cube spacing policy.');
+  const bounded=placement==='bounded-phase',hard=bounded?CUBE_INTERACTIVE_PATH_LIMITS:CUBE_STROKE_PATH_LIMITS;
   const geometry=createSolidCubeGeometry(configuration),router=createSolidCubeRouter(geometry.metadata),spacingMeters=radiusMeters/4;
   if (!Number.isFinite(radiusMeters)||radiusMeters<=0||!Number.isFinite(spacingMeters)||spacingMeters<=0||spacingMeters*4!==radiusMeters) throw new RangeError('Exactly representable positive radius/4 required.');
   if (!inputLimits || typeof inputLimits!=='object' || Array.isArray(inputLimits)) throw new RangeError('Cube path limits required.');
-  const limits=Object.freeze(Object.fromEntries(Object.entries(CUBE_STROKE_PATH_LIMITS).map(([k,max])=>{
+  const limits=Object.freeze(Object.fromEntries(Object.entries(hard).map(([k,max])=>{
     const n=inputLimits[k as keyof CubeStrokePathLimits]??max;
     if (!Number.isSafeInteger(n)||n<1||n>max) throw new RangeError('Cube path limits may only lower hard bounds.'); return [k,n];
   })) as Record<keyof typeof CUBE_STROKE_PATH_LIMITS,number>);
   const queue:{point:SolidCubePosition;sequence:number}[]=[],output:CubeStrokePathEvent[]=[];
   let status:CubeStrokePathStatus='accepting',failure:Readonly<{name:string;message:string}>|undefined;
   let previous:SolidCubePosition|undefined,total:CubeArc=Object.freeze([]),direction:Direction|undefined;
+  let phase=0n;
   let backtrack:Readonly<{from:readonly number[];to:readonly number[];index:number}>|undefined;
-  let active:Readonly<{route:CertifiedCubeRoute;length:CubeArc;after:CubeArc;to:SolidCubePosition;sequence:number}>|undefined;
+  let active:Readonly<{route:CertifiedCubeRoute;length:CubeArc;after:CubeArc;to:SolidCubePosition;sequence:number;phaseLength:bigint;phaseAfter:bigint}>|undefined;
   const stats={acceptedInputs:0,processedInputs:0,discardedInputs:0,pumps:0,dabs:0,routeQueries:0,duplicateInputs:0,workUnits:0,
     routeWorkUnits:0,arcWorkUnits:0,failedRouteWorkAllowance:0,peakPendingInputs:0,peakOutputEvents:0,peakArcTerms:0,peakStepWork:0};
-  const clear=()=>{queue.length=0;output.length=0;active=undefined;direction=undefined;backtrack=undefined;previous=undefined;total=Object.freeze([]);};
+  const clear=()=>{queue.length=0;output.length=0;active=undefined;direction=undefined;backtrack=undefined;previous=undefined;total=Object.freeze([]);phase=0n;};
   const fail=(error:unknown):never=>{failure=Object.freeze({name:error instanceof Error?error.name:'Error',message:String(error instanceof Error?error.message:error)});
     stats.discardedInputs=stats.acceptedInputs-stats.processedInputs;clear();status='failed';throw error;};
   const push=(event:CubeStrokePathEvent)=>{output.push(Object.freeze(event));stats.peakOutputEvents=Math.max(stats.peakOutputEvents,output.length);};
@@ -77,6 +87,16 @@ export function createSolidCubeStrokePath(configuration:SolidCubeConfiguration,r
     return {route,policy:ties===1?'continuation':'canonical-context-tie'};
   };
   const dab=(b:CubeExactBudget):CubeStrokeDab=>{
+    if(bounded){
+      const a=active!,parameter=cubeFraction(b,BigInt(stats.dabs)*CUBE_PHASE_UNIT-phase,a.phaseLength);
+      let segment=a.route.segments.at(-1)!;for(const s of a.route.segments)if(cubeFractionCompare(b,parameter,s.endParameter)<=0){segment=s;break;}
+      const offset=cubeRationalAdd(b,parameter,{n:-segment.startParameter.n,d:segment.startParameter.d});
+      const coordinate=(axis:'u'|'v')=>cubeArcRound(b,cubeArcRational(cubeRationalAdd(b,
+        cubeRationalMultiply(b,offset,cubeRational(b,axis==='u'?segment.direction.du:segment.direction.dv)),cubeRational(b,segment.from[axis]))));
+      const u=coordinate('u'),v=coordinate('v');
+      return Object.freeze({kind:'dab',ordinal:stats.dabs,inputSequence:a.sequence,center:position({...geometry.identity,patchId:segment.face,u:u.value,v:v.value}),
+        rounding:'certified-phase-chart-coordinates',idealFace:segment.face,coordinateBounds:Object.freeze({u:u.bounds,v:v.bounds}),spacingErrorBoundMeters:stats.routeQueries*spacingMeters*2**-65*(1+4*Number.EPSILON)});
+    }
     const a=active!,target=cubeArcRational(cubeRationalMultiply(b,cubeNumberRational(b,spacingMeters),{n:BigInt(stats.dabs),d:1n}));
     const parameter=cubeArcDivideLength(b,cubeArcAdd(b,negate(b,total),target),a.length);
     let segment=a.route.segments.at(-1)!;
@@ -91,7 +111,8 @@ export function createSolidCubeStrokePath(configuration:SolidCubeConfiguration,r
   return Object.freeze({geometry:geometry.metadata,spacingMeters,limits,
     get status(){return status;},get failure(){return failure;},
     get statistics(){return Object.freeze({...stats,pendingInputs:queue.length,outputEvents:output.length,activeRoute:Boolean(active),
-      activeInputSequence:active?.sequence,retainedArcTerms:total.length+(active?.after.length??0)});},
+      activeInputSequence:active?.sequence,retainedArcTerms:total.length+(active?.after.length??0),
+      ...(bounded?{phaseBits:phase.toString(2).length,spacingErrorBoundMeters:stats.routeQueries*spacingMeters*2**-65*(1+4*Number.EPSILON)}:{})});},
     /** false = no acceptance; caller keeps the input. Never coalesces accepted points. */
     accept(p:SurfacePosition):boolean {
       if(status!=='accepting')throw new Error('Cube path is no longer accepting input.');
@@ -112,12 +133,12 @@ export function createSolidCubeStrokePath(configuration:SolidCubeConfiguration,r
         if(remaining<1)throw new RangeError('Cube aggregate path work exhausted.');
         arcAllowance=Math.min(limits.maxStepWork,remaining);b=cubeArcBudget(arcAllowance);
         if(active){
-          const target=cubeArcRational(cubeRationalMultiply(b,cubeNumberRational(b,spacingMeters),{n:BigInt(stats.dabs),d:1n}));
-          if(cubeArcSign(b,cubeArcAdd(b,active.after,negate(b,target)))>=0){
+          const target=bounded?undefined:cubeArcRational(cubeRationalMultiply(b,cubeNumberRational(b,spacingMeters),{n:BigInt(stats.dabs),d:1n}));
+          if(bounded?active.phaseAfter>=BigInt(stats.dabs)*CUBE_PHASE_UNIT:cubeArcSign(b,cubeArcAdd(b,active.after,negate(b,target!)))>=0){
             if(stats.dabs>=limits.maxDabs)throw new RangeError('Cube path dab-count limit exhausted.');
             push(dab(b));stats.dabs++;
           }else{
-            const old=previous!;previous=active.to;total=active.after;
+            const old=previous!;previous=active.to;total=active.after;phase=active.phaseAfter;
             direction=geometry.aliases(previous).length===3?undefined:tangent(b,active.route.segments.at(-1)!,previous);
             backtrack=Object.freeze({from:geometry.referencePosition(old),to:geometry.referencePosition(previous),index:active.route.index});
             active=undefined;stats.processedInputs++;
@@ -129,11 +150,12 @@ export function createSolidCubeStrokePath(configuration:SolidCubeConfiguration,r
           else{
             // Reserve the route's actual certificate work from this same step budget.
             routeAllowance=Math.min(limits.maxStepWork,remaining);routePending=true;stats.routeQueries++;
-            const result=router.route(previous,next.point,{maxWorkUnits:routeAllowance});routePending=false;routeWork=result.certificate.workUnits;
+            const result=router.route(previous,next.point,{maxWorkUnits:routeAllowance,...(bounded?{pruneDominated:true}:{})});routePending=false;routeWork=result.certificate.workUnits;
             if(routeWork>=Math.min(limits.maxStepWork,remaining))throw new RangeError('No step work remains after cube certification.');
             arcAllowance=Math.min(limits.maxStepWork,remaining)-routeWork;b=cubeArcBudget(arcAllowance);
-            const selection=choose(b,result,previous,next.point),length=cubeArcLength(b,result.distanceSquared),after=cubeArcAdd(b,total,length);
-            active=Object.freeze({route:selection.route,length,after,to:next.point,sequence:next.sequence});stats.peakArcTerms=Math.max(stats.peakArcTerms,after.length);
+            const selection=choose(b,result,previous,next.point),length=bounded?Object.freeze([]):cubeArcLength(b,result.distanceSquared),after=bounded?length:cubeArcAdd(b,total,length);
+            const phaseLength=bounded?cubePhaseLength(b,result.distanceSquared,spacingMeters):0n;
+            active=Object.freeze({route:selection.route,length,after,to:next.point,sequence:next.sequence,phaseLength,phaseAfter:phase+phaseLength});stats.peakArcTerms=Math.max(stats.peakArcTerms,after.length);
             push({kind:'path',inputSequence:next.sequence,from:previous,to:next.point,route:selection.route,ambiguity:result.routes.length,policy:selection.policy,certificate:result.certificate});
           }
         }else if(status==='draining') {status='complete';direction=undefined;backtrack=undefined;total=Object.freeze([]);previous=undefined;}

@@ -26,3 +26,14 @@ test('corrected cube navigation remains responsive while accepted drawing drains
  const previous=(await snap(page)).display.camera;await page.getByRole('button',{name:'Navigate',exact:true}).click();await page.mouse.move(points[0]!.x,points[0]!.y);await page.mouse.down();await page.mouse.move(points[0]!.x+40,points[0]!.y+25,{steps:10});await page.mouse.up();await idle(page);expect((await snap(page)).display.camera).not.toEqual(previous);
  const before=await hash(page);for(let i=0;i<40;i++)await page.mouse.move(points[0]!.x+i*3,points[0]!.y+Math.sin(i)*15);await page.mouse.wheel(0,-80);await page.waitForTimeout(100);expect(await hash(page)).toBe(before);expect((await snap(page)).editor.needsRecovery).toBe(false);
 });
+
+test('cube surface follows horizontal dragging and preserves vertical dragging without painting',async({page})=>{
+ await create(page,128);await page.getByRole('button',{name:'Navigate',exact:true}).click();const before=await hash(page);
+ const center=()=>page.evaluate(()=>window.__cubeEditor!.project('pz',0,0));
+ const drag=async(dx:number,dy:number)=>{const p=await center();await page.mouse.move(p.x,p.y);await page.mouse.down();await page.mouse.move(p.x+dx,p.y+dy,{steps:8});await page.mouse.up();};
+ let origin=await center();await drag(-40,0);let moved=await center();expect(moved.x).toBeLessThan(origin.x-10);expect(Math.abs(moved.y-origin.y)).toBeLessThan(1);
+ await page.getByRole('button',{name:'View +Z face',exact:true}).click();origin=await center();await drag(40,0);moved=await center();expect(moved.x).toBeGreaterThan(origin.x+10);
+ await page.getByRole('button',{name:'View +Z face',exact:true}).click();origin=await center();await drag(0,-40);moved=await center();expect(moved.y).toBeLessThan(origin.y-10);expect(Math.abs(moved.x-origin.x)).toBeLessThan(1);
+ await page.getByRole('button',{name:'View +Z face',exact:true}).click();origin=await center();await drag(0,40);moved=await center();expect(moved.y).toBeGreaterThan(origin.y+10);
+ await idle(page);expect(await hash(page)).toBe(before);expect((await snap(page)).editor.history.entries).toBe(0);
+});
