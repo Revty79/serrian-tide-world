@@ -1,0 +1,1141 @@
+{
+  "implementation": "3c0d2d353c1d8b4f6a70530d8744f49f5cd7074f",
+  "baseline": "77df76f3a0a12273f9277d201277f13e9985074d",
+  "method": "Exact committed Git blobs, sizes and SHA256 from git cat-file --batch. Working SHA256 is the classified manifest native-byte hash and can differ for text normalized to LF. Binary artifact hashes were compared to the sealed evidence manifest.",
+  "files": [
+    {
+      "status": "M",
+      "path": "README.md",
+      "blob": "22797fe4a8bc538a88d550a525edafc1df73288a",
+      "bytes": 22469,
+      "gitSha256": "e33a7d9f3f54c34955bcbf1c7997a6bf998f13b953a6e913fa4bfe8fccdb0c13",
+      "category": "documentation",
+      "workingSha256": "19beb1a524e97bb93021abef0a95a0509681ea37f927473ce66a84cf3124d106"
+    },
+    {
+      "status": "A",
+      "path": "dev/cube-preview.html",
+      "blob": "aad5c5d060c748e532d0c2bb5ac1ad3dcefef356",
+      "bytes": 344,
+      "gitSha256": "836559275cb2360ac8608043a3119d66d858c8ba7db876781790b1c61e48f6ec",
+      "category": "runtime-config",
+      "workingSha256": "836559275cb2360ac8608043a3119d66d858c8ba7db876781790b1c61e48f6ec"
+    },
+    {
+      "status": "M",
+      "path": "docs/ARCHITECTURE.md",
+      "blob": "166278b856c7887bd85f8e7543bd97dba60305e5",
+      "bytes": 48158,
+      "gitSha256": "6d614f8cebbac0e4f864259fd45ecb46497d8211821afeda9bf38954962cf269",
+      "category": "documentation",
+      "workingSha256": "b1427c73db48908c9db7fab3a513f4fa22a9a9d30b1e101dbcc58e0380f16191"
+    },
+    {
+      "status": "A",
+      "path": "docs/CUBE-D1-COMPLETION.md",
+      "blob": "4c5f2a88e5c6a57adc95544786e0e1bff66b9b33",
+      "bytes": 19555,
+      "gitSha256": "86fbc7305b958cb53e09b5c335c9bc9e4e9f882ed4cf948fbe453ecbced3f9ce",
+      "category": "documentation",
+      "workingSha256": "86fbc7305b958cb53e09b5c335c9bc9e4e9f882ed4cf948fbe453ecbced3f9ce"
+    },
+    {
+      "status": "M",
+      "path": "docs/PHASE-1-HEIGHTMAP-ROADMAP.md",
+      "blob": "837d97d63702b8c659cd85b150b02e5e741ccec0",
+      "bytes": 43703,
+      "gitSha256": "a5f8d44b4131db3493acca3d451aab3daf029aa1a5fd87024f9000c93a10e741",
+      "category": "documentation",
+      "workingSha256": "cf0fbd77dcfa8b0097634564bc7516856e49e0c5dbf69257b6ac790e2e83195f"
+    },
+    {
+      "status": "M",
+      "path": "docs/SOLID-CUBE-FOUNDATION.md",
+      "blob": "444d31685b7ad0aeea6010e07bad61d39d502f19",
+      "bytes": 12319,
+      "gitSha256": "5e5d8a76f4322497e3324ef71a4e0a6a8447ec72bce47f407485bde90b72fcef",
+      "category": "documentation",
+      "workingSha256": "90b685092456d5b10bd4fb9ce0b180002d759b5d2e5c4aacba8ca7f0788873a1"
+    },
+    {
+      "status": "A",
+      "path": "docs/SOLID-CUBE-VISUAL-PREVIEW.md",
+      "blob": "a72aedfd2332af733433b9947e75e8071766f01d",
+      "bytes": 10101,
+      "gitSha256": "93119b040f4b6a900c9c2290ac8f5c4b485dd235066398502cdccd99ea532fca",
+      "category": "documentation",
+      "workingSha256": "93119b040f4b6a900c9c2290ac8f5c4b485dd235066398502cdccd99ea532fca"
+    },
+    {
+      "status": "M",
+      "path": "docs/SURFACE-VISUAL-STANDARD.md",
+      "blob": "906bc9ea1672cf0454da9b86dbc20a782e32adf7",
+      "bytes": 8042,
+      "gitSha256": "bd67183ec38b268cb561afe248e47b7546add82c0bdada7e3b960c77a1bfba49",
+      "category": "documentation",
+      "workingSha256": "814f6c4e1ce8dbbac4e84eef523de57dfe2d1b40c75f0b4731cb3aab4ee99177"
+    },
+    {
+      "status": "M",
+      "path": "docs/WORLD-SURFACE-ARCHITECTURE.md",
+      "blob": "bed33e938f20309abff30a6c208bdef57aaf4969",
+      "bytes": 42085,
+      "gitSha256": "2784dedf8638ccd7594a3aa20e3a5fc34380783f811bfa31ec8f436b0c4c982d",
+      "category": "documentation",
+      "workingSha256": "2d61f7e774082a667d464235596e99ee79c1d45c0ecd1dbffed538fd0beb1e26"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-apply-startup.mjs.txt",
+      "blob": "d66e7509c28523401ac4bfc6ea96a0981c599fa3",
+      "bytes": 3478,
+      "gitSha256": "04083b948dff83d426c03acc2fefaff0e51fabd326bb59d3b7bc93ffffd1aa24",
+      "category": "evidence",
+      "workingSha256": "04083b948dff83d426c03acc2fefaff0e51fabd326bb59d3b7bc93ffffd1aa24"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-authorization.txt",
+      "blob": "8e1d9a25d870e665dbf48358297868154e0a37ad",
+      "bytes": 8724,
+      "gitSha256": "fd30216e7ee197a54d56df084a4d025900ef247f9eb64650e7c4235bd056e290",
+      "category": "evidence",
+      "workingSha256": "10b16bc9d8b463a1f8a35c3f6e5760bafde05bfaddfd8082a3e0bff90fb732ae"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-before-startup-performance.json.gz",
+      "blob": "e31ad543a62a4ea72a17a89391cc0cd8a08363c6",
+      "bytes": 43421,
+      "gitSha256": "57940f2aed313afdc238bdc97df80ee524485196987092cc801c2984505af793",
+      "category": "evidence",
+      "workingSha256": "57940f2aed313afdc238bdc97df80ee524485196987092cc801c2984505af793"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-before-startup-source-freeze.json",
+      "blob": "829c3b25430b4502ae86dd13c348fb6444fd35fb",
+      "bytes": 32842,
+      "gitSha256": "ab5263e3f1fbede7924933cafe655738a1dcf660079c86b93c7f41c0022f60a5",
+      "category": "evidence",
+      "workingSha256": "ab5263e3f1fbede7924933cafe655738a1dcf660079c86b93c7f41c0022f60a5"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-browser-journal.jsonl.gz",
+      "blob": "28426f43d604dc80b7167eaec4b0a96064fa5ef8",
+      "bytes": 44380,
+      "gitSha256": "d36ba6566c5ebcde09ffbe175ee19a0020a96a55d51681f067588cdddf84f49d",
+      "category": "evidence",
+      "workingSha256": "d36ba6566c5ebcde09ffbe175ee19a0020a96a55d51681f067588cdddf84f49d"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-browser-result.json.gz",
+      "blob": "1c670da5199cb9046b811cc9f6bdd1e31c76b8a9",
+      "bytes": 489438,
+      "gitSha256": "af82c99c19a532d7c3dfda7f19f6d1ba82697c47f37e52db91a94b9471d0256c",
+      "category": "evidence",
+      "workingSha256": "af82c99c19a532d7c3dfda7f19f6d1ba82697c47f37e52db91a94b9471d0256c"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-browser.log.txt.gz",
+      "blob": "91172adc423da302a7d8c2fa7df5aad626cedf32",
+      "bytes": 14576,
+      "gitSha256": "f7ca550f6280593917738cc185c3f2a57fb2d1e62c29dfc1ddc0269770cd10fb",
+      "category": "evidence",
+      "workingSha256": "f7ca550f6280593917738cc185c3f2a57fb2d1e62c29dfc1ddc0269770cd10fb"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-build.log.txt.gz",
+      "blob": "352ce7369174e52453de08ea5cb6206ddf62f9a3",
+      "bytes": 418,
+      "gitSha256": "0cbbddf3241a74a8e9c5be63ca080b474377bb70ca38d2064ba268ad516b19e9",
+      "category": "evidence",
+      "workingSha256": "0cbbddf3241a74a8e9c5be63ca080b474377bb70ca38d2064ba268ad516b19e9"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-current-browser-inventory.json",
+      "blob": "317f008c12e74b798bf325a2a8b498e5167c0e29",
+      "bytes": 231781,
+      "gitSha256": "461fcb440ffff77313096d93abdf979e2abbc72cb29e9960e8f17013fab12e77",
+      "category": "evidence",
+      "workingSha256": "461fcb440ffff77313096d93abdf979e2abbc72cb29e9960e8f17013fab12e77"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-deliver.mjs.txt",
+      "blob": "62e16b2408912a7d2a2992a437eb731ffa35c3c2",
+      "bytes": 8482,
+      "gitSha256": "2c47e14037bae9941408886585c102f7d79878157afb75f5c13077808d0351b7",
+      "category": "evidence",
+      "workingSha256": "2c47e14037bae9941408886585c102f7d79878157afb75f5c13077808d0351b7"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-delivery-manifest.json",
+      "blob": "7668353ce50c7944eaa3df5a397f12fff8b5641c",
+      "bytes": 29885,
+      "gitSha256": "b4f71f8e4fb65c74c5a300320112d243fa59d1b72d246d813ea2d4424a3bcc9e",
+      "category": "evidence",
+      "workingSha256": "b4f71f8e4fb65c74c5a300320112d243fa59d1b72d246d813ea2d4424a3bcc9e"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n128-auto-corner.png",
+      "blob": "27df112fc1f18d4e50f9a3ea6eb0143340381e5b",
+      "bytes": 374817,
+      "gitSha256": "e4cf31dccbb4f7b002ab5f6225a281937c57a23c971d649a6d9df8bfc20b2b8d",
+      "category": "evidence",
+      "workingSha256": "e4cf31dccbb4f7b002ab5f6225a281937c57a23c971d649a6d9df8bfc20b2b8d"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n128-auto-edge.png",
+      "blob": "d0da79a1164d0cde4106d7713224f03a7c11f8c8",
+      "bytes": 321315,
+      "gitSha256": "a7951d79f8a1f74a5f3935076664bfcb040bdd3ce3ea0d66aef260e2182351e5",
+      "category": "evidence",
+      "workingSha256": "a7951d79f8a1f74a5f3935076664bfcb040bdd3ce3ea0d66aef260e2182351e5"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n128-auto-front.png",
+      "blob": "b629e27186ef35e6002b83005e2cf1bc2dac7dff",
+      "bytes": 382876,
+      "gitSha256": "acad9b9c20c30907a968e77485e1b09b7d4266090868784162b20dc88aa35593",
+      "category": "evidence",
+      "workingSha256": "acad9b9c20c30907a968e77485e1b09b7d4266090868784162b20dc88aa35593"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n128-auto-net.png",
+      "blob": "9c9a55fe56594794c8a3b73a4b7db09f765458f0",
+      "bytes": 407115,
+      "gitSha256": "0f39f0d92db159b4c63ba401e285ed5e166869de0e69979702048543d3a398d9",
+      "category": "evidence",
+      "workingSha256": "0f39f0d92db159b4c63ba401e285ed5e166869de0e69979702048543d3a398d9"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n128-auto-opposite.png",
+      "blob": "92a054a00f129a1a6094f16996f25b8d35012f34",
+      "bytes": 357851,
+      "gitSha256": "7cd56a0d9cbe5b3a49bc3ce2799935ed69304d9929b7694149d46218fcdddd44",
+      "category": "evidence",
+      "workingSha256": "7cd56a0d9cbe5b3a49bc3ce2799935ed69304d9929b7694149d46218fcdddd44"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n128-auto-viewing.json",
+      "blob": "a619785cf520032876ef07421e9f05c7faa0a8e9",
+      "bytes": 5420,
+      "gitSha256": "ec12ef1244933e2f1aac334c1c9e6d742e4e5695d5bb94b03b5b1414ae2ba466",
+      "category": "evidence",
+      "workingSha256": "ec12ef1244933e2f1aac334c1c9e6d742e4e5695d5bb94b03b5b1414ae2ba466"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n128-canvas-corner.png",
+      "blob": "b2b6b55ead2b8ef2fc09d0d9ef433b8a85da1a6e",
+      "bytes": 404285,
+      "gitSha256": "d3b8d58ecba55dcde0f5e7d58909c5da02db0e54328c4bea5b0e1c9490e55c97",
+      "category": "evidence",
+      "workingSha256": "d3b8d58ecba55dcde0f5e7d58909c5da02db0e54328c4bea5b0e1c9490e55c97"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n128-canvas-edge.png",
+      "blob": "011466cb33c6a95b1f0d0311386be6f1fc3c63c8",
+      "bytes": 333830,
+      "gitSha256": "4400016d45d839dae8516decaeec67248546b1b8172bdf36170d12b833a8c997",
+      "category": "evidence",
+      "workingSha256": "4400016d45d839dae8516decaeec67248546b1b8172bdf36170d12b833a8c997"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n128-canvas-front.png",
+      "blob": "c8ca4461ecb9f826771efa2d1b8c7666d1654e88",
+      "bytes": 406905,
+      "gitSha256": "10a8a043f8ed436d275013bc6de628b8be5e786be3bdc4730f328efb410668c8",
+      "category": "evidence",
+      "workingSha256": "10a8a043f8ed436d275013bc6de628b8be5e786be3bdc4730f328efb410668c8"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n128-canvas-net.png",
+      "blob": "51742edc0c224f39f619a7fafed3ad7fafa20baf",
+      "bytes": 420355,
+      "gitSha256": "8c0818ff3c739487ed0864ead32b11f389d7bf26fc960b59bfdfbf3341d068af",
+      "category": "evidence",
+      "workingSha256": "8c0818ff3c739487ed0864ead32b11f389d7bf26fc960b59bfdfbf3341d068af"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n128-canvas-opposite.png",
+      "blob": "fb9b7244a5ab057b28e8625742316944e857bb52",
+      "bytes": 375918,
+      "gitSha256": "d2db41d2339bb74e3f2971cb24eff66919011141202a54acd551d3194da49a8a",
+      "category": "evidence",
+      "workingSha256": "d2db41d2339bb74e3f2971cb24eff66919011141202a54acd551d3194da49a8a"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n128-canvas-viewing.json",
+      "blob": "25bf9a2a92985774cd4061e463f4cf7d63b2df0a",
+      "bytes": 5085,
+      "gitSha256": "0ba5e5ae091ba51c911473bc90fee3813c55952fde9d59e478461c5f8a9ab6c6",
+      "category": "evidence",
+      "workingSha256": "0ba5e5ae091ba51c911473bc90fee3813c55952fde9d59e478461c5f8a9ab6c6"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n128-lifecycle.json",
+      "blob": "dba49030b04a55d6a54e4cc41e29e828507d27dd",
+      "bytes": 13798,
+      "gitSha256": "bbdef467de2f4803867aace15bb5d477e8b593fd650f1a839511969a4ad3253f",
+      "category": "evidence",
+      "workingSha256": "bbdef467de2f4803867aace15bb5d477e8b593fd650f1a839511969a4ad3253f"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n128-pixel-proof.json",
+      "blob": "babdcf16acae01409e7f67ac8abc49ad3455355c",
+      "bytes": 108639,
+      "gitSha256": "09653677a70eb6d939f02daaa22d8099c938762f4d38786002aa3ba1fc2a409f",
+      "category": "evidence",
+      "workingSha256": "09653677a70eb6d939f02daaa22d8099c938762f4d38786002aa3ba1fc2a409f"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n256-auto-corner.png",
+      "blob": "7624261abb38e18125886bc9192e9634cb19e07d",
+      "bytes": 374588,
+      "gitSha256": "bb7362b12d0b33adae0495fa8abcd3b068ad195ba1bafb0e39a4649ac2367074",
+      "category": "evidence",
+      "workingSha256": "bb7362b12d0b33adae0495fa8abcd3b068ad195ba1bafb0e39a4649ac2367074"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n256-auto-edge.png",
+      "blob": "9deeec91d9b5184b581484ff633a9258f06c8a0f",
+      "bytes": 321533,
+      "gitSha256": "6909df0ac3bd61f8a302bc3da540c77432afb0350e38a3d10acbe7230cb13cf6",
+      "category": "evidence",
+      "workingSha256": "6909df0ac3bd61f8a302bc3da540c77432afb0350e38a3d10acbe7230cb13cf6"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n256-auto-front.png",
+      "blob": "1e3751703eb6b7960169b23b2c8fdf4bb324be62",
+      "bytes": 383165,
+      "gitSha256": "af4398529271ce134f8ac0c66ef91a87cb9deb6b4ede585709261b8cfa800bb9",
+      "category": "evidence",
+      "workingSha256": "af4398529271ce134f8ac0c66ef91a87cb9deb6b4ede585709261b8cfa800bb9"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n256-auto-net.png",
+      "blob": "2143ea440ade4c58356ab07d2dc6298e9dab86aa",
+      "bytes": 407019,
+      "gitSha256": "243b5592ea688517dd8c3626e91862b619ea358e362f9bcee11eba024bb0babe",
+      "category": "evidence",
+      "workingSha256": "243b5592ea688517dd8c3626e91862b619ea358e362f9bcee11eba024bb0babe"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n256-auto-opposite.png",
+      "blob": "2241555bd4e2d948d9a90a8a23f87692dcdc602b",
+      "bytes": 357834,
+      "gitSha256": "6bc9bd98c4f8ee15e1554b803a6e68c76c92ef2513d6db6a98d85e56d8131b82",
+      "category": "evidence",
+      "workingSha256": "6bc9bd98c4f8ee15e1554b803a6e68c76c92ef2513d6db6a98d85e56d8131b82"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n256-auto-viewing.json",
+      "blob": "0616cdb5ec8434626ac93180432fc1723b646b8e",
+      "bytes": 5365,
+      "gitSha256": "95b7a4df17aa58e15d6779008df5c86ca32ecec94b39f450331fc4abf62004e5",
+      "category": "evidence",
+      "workingSha256": "95b7a4df17aa58e15d6779008df5c86ca32ecec94b39f450331fc4abf62004e5"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n256-canvas-corner.png",
+      "blob": "03771ecf183f51628c3ae4e3b4df16492daef9e1",
+      "bytes": 400663,
+      "gitSha256": "5ad2f685ed2fac66094d3085f0256505d4a552a63e9dc4ae3c535edcb7e371fe",
+      "category": "evidence",
+      "workingSha256": "5ad2f685ed2fac66094d3085f0256505d4a552a63e9dc4ae3c535edcb7e371fe"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n256-canvas-edge.png",
+      "blob": "c3aefe30983b6d141f01e07d949222c773773076",
+      "bytes": 331256,
+      "gitSha256": "d0fb58c62da6602828e8930bd759917ac5c28624a1956a7005a537bc9f4cd94e",
+      "category": "evidence",
+      "workingSha256": "d0fb58c62da6602828e8930bd759917ac5c28624a1956a7005a537bc9f4cd94e"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n256-canvas-front.png",
+      "blob": "1013651c26b3cd8849194677f24c2ec482aa587e",
+      "bytes": 403729,
+      "gitSha256": "39116c9e5be8ac202405e4ebbb8662a56bb098c4a99c4da6ba5641b6054489ea",
+      "category": "evidence",
+      "workingSha256": "39116c9e5be8ac202405e4ebbb8662a56bb098c4a99c4da6ba5641b6054489ea"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n256-canvas-net.png",
+      "blob": "6e5db4e7e8d5a1a300b4b4e19b8f03a0a936a9a9",
+      "bytes": 420176,
+      "gitSha256": "e1b72dc795329da80051bb977a001a399db5850196adaa00aaed836e83a76ce0",
+      "category": "evidence",
+      "workingSha256": "e1b72dc795329da80051bb977a001a399db5850196adaa00aaed836e83a76ce0"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n256-canvas-opposite.png",
+      "blob": "c3d39af22da1d56cb8e37700ad3803a60c27fdcb",
+      "bytes": 374874,
+      "gitSha256": "a75d8a35b1b2db13e3ae1a3512fdfcd9e82cb1059691b63c25cfd0e8f928c84c",
+      "category": "evidence",
+      "workingSha256": "a75d8a35b1b2db13e3ae1a3512fdfcd9e82cb1059691b63c25cfd0e8f928c84c"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n256-canvas-viewing.json",
+      "blob": "884e8690c1cf5b091cc5fdaa3cc1dc734a72be65",
+      "bytes": 5000,
+      "gitSha256": "35c464c9d472a7cf84c12fd6d76851105dfe9a8a1b79336c6939303e58fe6746",
+      "category": "evidence",
+      "workingSha256": "35c464c9d472a7cf84c12fd6d76851105dfe9a8a1b79336c6939303e58fe6746"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n256-lifecycle.json",
+      "blob": "e1fc300b042862935d67eb55beaa5b533b408857",
+      "bytes": 13684,
+      "gitSha256": "9dff041d0427c42454a97041105eabd0039f2b9aee1447f59d0be27bb2b45537",
+      "category": "evidence",
+      "workingSha256": "9dff041d0427c42454a97041105eabd0039f2b9aee1447f59d0be27bb2b45537"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-n256-pixel-proof.json",
+      "blob": "509609ebdf8884893876b0d2e07afda4b740d890",
+      "bytes": 108646,
+      "gitSha256": "4683898c0dd9cf652270a93469044bb46afe4e18ac27ec5d22025f2e5e5d0265",
+      "category": "evidence",
+      "workingSha256": "4683898c0dd9cf652270a93469044bb46afe4e18ac27ec5d22025f2e5e5d0265"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-rapid-lifetime.json",
+      "blob": "93f7633dd03c4577f9d17fbbdc409f429b5f1170",
+      "bytes": 1629,
+      "gitSha256": "3254e2c155575f95426568628ae1870f06c4a2fee42585bff24cc1c65002971b",
+      "category": "evidence",
+      "workingSha256": "3254e2c155575f95426568628ae1870f06c4a2fee42585bff24cc1c65002971b"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-shader-fallback.json",
+      "blob": "8d34eef5b4bce972479acde8bea05aa29b7f65de",
+      "bytes": 1854,
+      "gitSha256": "e714f267133e9689901afdbfb8981c3e0792f71d5e03ac1c606012b34ab99a1f",
+      "category": "evidence",
+      "workingSha256": "e714f267133e9689901afdbfb8981c3e0792f71d5e03ac1c606012b34ab99a1f"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-software-fallback.json",
+      "blob": "7a9f7280b74e2c5e48e30e2631e825f800b86880",
+      "bytes": 1821,
+      "gitSha256": "7b0eec127082eeea034546e23b8d9d7f971a330c43980e4a3913a47dabf2ce73",
+      "category": "evidence",
+      "workingSha256": "7b0eec127082eeea034546e23b8d9d7f971a330c43980e4a3913a47dabf2ce73"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-desktop-unavailable-fallback.json",
+      "blob": "3b0f31e76862cc08845c61d1d2d5344e5210fc19",
+      "bytes": 1741,
+      "gitSha256": "852ee269b53c098a032e4289413a4fda3a6220cc426064b983495c82745aa7ff",
+      "category": "evidence",
+      "workingSha256": "852ee269b53c098a032e4289413a4fda3a6220cc426064b983495c82745aa7ff"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-evidence-manifest.json",
+      "blob": "28881d8406dd5303e4aabe6339952ecfd3132b6b",
+      "bytes": 19451,
+      "gitSha256": "c8ad0a263c790e931273154c97c27a1086cad95db470229e86facc436a6475ce",
+      "category": "evidence",
+      "workingSha256": "c8ad0a263c790e931273154c97c27a1086cad95db470229e86facc436a6475ce"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-final-browser-journal.jsonl",
+      "blob": "692495806b743f7a4b6052783610d58d69e71a64",
+      "bytes": 17082,
+      "gitSha256": "64165a36b0453ab85d1c115211046dd536c7efb1c385135e9b4c25f3bbf49831",
+      "category": "evidence",
+      "workingSha256": "64165a36b0453ab85d1c115211046dd536c7efb1c385135e9b4c25f3bbf49831"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-final-browser-result.json",
+      "blob": "0a6c91c64b3c285b4e9b41fde4129c2681755a9b",
+      "bytes": 38764,
+      "gitSha256": "93f874f2655e9b0f7589420c778e071b6cd91b0c3bcb4fe0a2d02c5cdd8cf1ea",
+      "category": "evidence",
+      "workingSha256": "93f874f2655e9b0f7589420c778e071b6cd91b0c3bcb4fe0a2d02c5cdd8cf1ea"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-final-browser.log.txt.gz",
+      "blob": "396d52239337edf59881b1f5d8beb3f29a08b9ea",
+      "bytes": 787,
+      "gitSha256": "716c5309695459bac66be0378f9a4947394eb7dcdba86b2a39776255bfe7d9cf",
+      "category": "evidence",
+      "workingSha256": "716c5309695459bac66be0378f9a4947394eb7dcdba86b2a39776255bfe7d9cf"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-final.config.ts.txt",
+      "blob": "36df95812265588a90d476edd171bbee5eb9d4f6",
+      "bytes": 347,
+      "gitSha256": "835bb9b753c6e8806008f69abc4ef20bb070d9e05364e2d190cf653f75fe84bb",
+      "category": "evidence",
+      "workingSha256": "835bb9b753c6e8806008f69abc4ef20bb070d9e05364e2d190cf653f75fe84bb"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-inventory.mjs.txt",
+      "blob": "5ac8730bbae1a7f427230b96b09b30a9c20245c0",
+      "bytes": 1685,
+      "gitSha256": "5e763f83787cecc2d53043b516b718e56e6bfe9f68dcd79a3229e40ca74b201a",
+      "category": "evidence",
+      "workingSha256": "5e763f83787cecc2d53043b516b718e56e6bfe9f68dcd79a3229e40ca74b201a"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-journal.mjs.txt",
+      "blob": "98d0283ca313b011b9cba0180ac355625214ac1b",
+      "bytes": 777,
+      "gitSha256": "712c87d8f7e0972aa3ca460a1de047c8691fece74368db4213983e6fe8e618a1",
+      "category": "evidence",
+      "workingSha256": "712c87d8f7e0972aa3ca460a1de047c8691fece74368db4213983e6fe8e618a1"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n128-auto-corner.png",
+      "blob": "025adef1546eccc481c51e6f7c07505630967475",
+      "bytes": 533476,
+      "gitSha256": "f441dd4cb95526e819c1d62ab9a12a1f49873ef409b3647da98bc74c01593814",
+      "category": "evidence",
+      "workingSha256": "f441dd4cb95526e819c1d62ab9a12a1f49873ef409b3647da98bc74c01593814"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n128-auto-edge.png",
+      "blob": "23b2d96a1c15bd52655d2c4fe4500d34d063e810",
+      "bytes": 424056,
+      "gitSha256": "4c9e8080c58ee70ca9e699359ebb578b917f1174bc925226811e0a1f4a11bab3",
+      "category": "evidence",
+      "workingSha256": "4c9e8080c58ee70ca9e699359ebb578b917f1174bc925226811e0a1f4a11bab3"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n128-auto-front.png",
+      "blob": "b7b7603a560fbc54a467f17d09deacf95ac54713",
+      "bytes": 535523,
+      "gitSha256": "a5023525b137ec22b0cca15d82c3590a8626c74f1c2b2dddc809a1ad07af31d1",
+      "category": "evidence",
+      "workingSha256": "a5023525b137ec22b0cca15d82c3590a8626c74f1c2b2dddc809a1ad07af31d1"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n128-auto-net.png",
+      "blob": "48b5920e17308e5f55eea5091711723c7a3cf827",
+      "bytes": 542913,
+      "gitSha256": "2ef947ee9a965e6a45b17b71c32280912dd65dee3934c462800779826149b7bd",
+      "category": "evidence",
+      "workingSha256": "2ef947ee9a965e6a45b17b71c32280912dd65dee3934c462800779826149b7bd"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n128-auto-opposite.png",
+      "blob": "2cb94bc9d73695d6309cdeb813516596f1687741",
+      "bytes": 491400,
+      "gitSha256": "55c0753964ff6580c6e9e59ed5cb84a777c260ff3a3685587ba820cd4aaab3b0",
+      "category": "evidence",
+      "workingSha256": "55c0753964ff6580c6e9e59ed5cb84a777c260ff3a3685587ba820cd4aaab3b0"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n128-auto-viewing.json",
+      "blob": "dcff25dfd300b79d9add5549c3b8c9a5922c0406",
+      "bytes": 5321,
+      "gitSha256": "5bc37d72eec9f27de71eb1a4851d9d5ae7aa2c3fb0518eeb0e06a234c6f31017",
+      "category": "evidence",
+      "workingSha256": "5bc37d72eec9f27de71eb1a4851d9d5ae7aa2c3fb0518eeb0e06a234c6f31017"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n128-canvas-corner.png",
+      "blob": "2cf8542d03ec188d62971c69a517fc757f120e6e",
+      "bytes": 555181,
+      "gitSha256": "a5b00b7089e37b1da72d3bbf8500fedd24758a887a30004d5162b959c450e8e0",
+      "category": "evidence",
+      "workingSha256": "a5b00b7089e37b1da72d3bbf8500fedd24758a887a30004d5162b959c450e8e0"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n128-canvas-edge.png",
+      "blob": "833ed1111dfc8433aad99dd638451cda4114e187",
+      "bytes": 426168,
+      "gitSha256": "ebe17df9f128ca3de18c0af4b577e4e24e0d9c0b735213d20551e6b0c70fe0a2",
+      "category": "evidence",
+      "workingSha256": "ebe17df9f128ca3de18c0af4b577e4e24e0d9c0b735213d20551e6b0c70fe0a2"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n128-canvas-front.png",
+      "blob": "06f2aabf2c826b4d675956bbc42da587f6a8a86f",
+      "bytes": 565917,
+      "gitSha256": "7fff28d6c1a3a39e191caf3f1620f3c10286c0c3c07fb1f70e3a1399ff03f154",
+      "category": "evidence",
+      "workingSha256": "7fff28d6c1a3a39e191caf3f1620f3c10286c0c3c07fb1f70e3a1399ff03f154"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n128-canvas-net.png",
+      "blob": "38f98bb50b38f37adb0f8550d5d29bddd18f2feb",
+      "bytes": 546949,
+      "gitSha256": "ba876fa4b9717b8b40ade58bb2c8866230937653e2da31799b80a3f5152e71ff",
+      "category": "evidence",
+      "workingSha256": "ba876fa4b9717b8b40ade58bb2c8866230937653e2da31799b80a3f5152e71ff"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n128-canvas-opposite.png",
+      "blob": "48ba0a071e7d5b01bab6bf3f1eec866e77a2d221",
+      "bytes": 516108,
+      "gitSha256": "f859d6ded945864def7e6aa2347726888a90f5be802d54951841caabe734ebaa",
+      "category": "evidence",
+      "workingSha256": "f859d6ded945864def7e6aa2347726888a90f5be802d54951841caabe734ebaa"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n128-canvas-viewing.json",
+      "blob": "9bdb29938b2edff8dd487e6aea99fcfb1f681713",
+      "bytes": 5112,
+      "gitSha256": "0c59e19d162001e90b57329be1d00cdb8367a958441640572afc99e38aa51774",
+      "category": "evidence",
+      "workingSha256": "0c59e19d162001e90b57329be1d00cdb8367a958441640572afc99e38aa51774"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n128-lifecycle.json",
+      "blob": "f84c7a1e72da889d5d33a3ca7c505de62c854c8a",
+      "bytes": 13645,
+      "gitSha256": "cb36f2392dff9bd43f7e5339e33b53fe1c5771eb51416509cdf2ff522e18e31d",
+      "category": "evidence",
+      "workingSha256": "cb36f2392dff9bd43f7e5339e33b53fe1c5771eb51416509cdf2ff522e18e31d"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n128-pixel-proof.json",
+      "blob": "e823e4d99ab995c81ef673c6e08bf959f081cffd",
+      "bytes": 108629,
+      "gitSha256": "1c34909eb88d7d26722c5b77275f65a39026a734ca60b454f6f02cd8d29b338f",
+      "category": "evidence",
+      "workingSha256": "1c34909eb88d7d26722c5b77275f65a39026a734ca60b454f6f02cd8d29b338f"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n256-auto-corner.png",
+      "blob": "bd2d3c2e223fdd4e9a94c9c693d02d51710c8c89",
+      "bytes": 534116,
+      "gitSha256": "1663f457dce63dc5d2cbb7d1f87a0f0b5ac27915078493eb0e2181eec86c65b0",
+      "category": "evidence",
+      "workingSha256": "1663f457dce63dc5d2cbb7d1f87a0f0b5ac27915078493eb0e2181eec86c65b0"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n256-auto-edge.png",
+      "blob": "c0f86a83df22791050eadc921d775e7d952bb7ab",
+      "bytes": 424416,
+      "gitSha256": "2f2f827128c1a9fe5145599eb71698ded34a6af3a9e434651c87ebc4d4825681",
+      "category": "evidence",
+      "workingSha256": "2f2f827128c1a9fe5145599eb71698ded34a6af3a9e434651c87ebc4d4825681"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n256-auto-front.png",
+      "blob": "fd343c1c394795676e2b341be3016a52fe7b175c",
+      "bytes": 535619,
+      "gitSha256": "ce3d4823f2f2a33a0c9115a57cb712818465faf84fda16cf02e909c5cafeeba2",
+      "category": "evidence",
+      "workingSha256": "ce3d4823f2f2a33a0c9115a57cb712818465faf84fda16cf02e909c5cafeeba2"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n256-auto-net.png",
+      "blob": "c02b330819b92142ba8d064ec2ae33dc3d6c86e6",
+      "bytes": 543160,
+      "gitSha256": "d60fda7d19b58f0f1e7e275831f984b64ac36e37087226b6f1aeec8a182d17d6",
+      "category": "evidence",
+      "workingSha256": "d60fda7d19b58f0f1e7e275831f984b64ac36e37087226b6f1aeec8a182d17d6"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n256-auto-opposite.png",
+      "blob": "a322c0dc582d5d346b8cd491e2738acb4b2e799d",
+      "bytes": 491800,
+      "gitSha256": "11145ee1fcab4e58d8d089d75b61cee8fabec99bd5eb50bf3e8f80f9336451d5",
+      "category": "evidence",
+      "workingSha256": "11145ee1fcab4e58d8d089d75b61cee8fabec99bd5eb50bf3e8f80f9336451d5"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n256-auto-viewing.json",
+      "blob": "9978a4fe15ce195e75143f06ef066c2b671dfaf4",
+      "bytes": 5371,
+      "gitSha256": "3abe8bf66d76804e80119a570388d9748679b6d9fc5f1bf1a881dc0e7941feff",
+      "category": "evidence",
+      "workingSha256": "3abe8bf66d76804e80119a570388d9748679b6d9fc5f1bf1a881dc0e7941feff"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n256-canvas-corner.png",
+      "blob": "66ee5226db1225d4428d1147af5eaa8a5e73ba80",
+      "bytes": 549234,
+      "gitSha256": "e9b1f272896b0945621a55267c85cecca5b07ac9b5c4e528d9d8d7fa4513f87e",
+      "category": "evidence",
+      "workingSha256": "e9b1f272896b0945621a55267c85cecca5b07ac9b5c4e528d9d8d7fa4513f87e"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n256-canvas-edge.png",
+      "blob": "19b7ac29ce9b72e0a14ab44bb1ed5e6d71d211dd",
+      "bytes": 428761,
+      "gitSha256": "277643e77ea9c6bc9be29919147519a14efbe87fca459fc7a2aa618026ee5ea4",
+      "category": "evidence",
+      "workingSha256": "277643e77ea9c6bc9be29919147519a14efbe87fca459fc7a2aa618026ee5ea4"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n256-canvas-front.png",
+      "blob": "4bd5ef3181100f37caca62dda73bcb1b77d718ea",
+      "bytes": 562619,
+      "gitSha256": "b392459d08c5c3596c84a1cb6bfb08b327b49a468bb5b612e1c4852264726486",
+      "category": "evidence",
+      "workingSha256": "b392459d08c5c3596c84a1cb6bfb08b327b49a468bb5b612e1c4852264726486"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n256-canvas-net.png",
+      "blob": "01b64d24b12af63dd05692a59aa1bcda81d0cc80",
+      "bytes": 547222,
+      "gitSha256": "a264151d28103001d3a1e881387572b52377277b3bc446f62a1d3abb0afdfd06",
+      "category": "evidence",
+      "workingSha256": "a264151d28103001d3a1e881387572b52377277b3bc446f62a1d3abb0afdfd06"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n256-canvas-opposite.png",
+      "blob": "28513814f9b1d71ac6dd47ffbaba174500496f50",
+      "bytes": 513771,
+      "gitSha256": "2fd75eaccdcdee6a155b0df453c696497e4e2466ed73c3f9b7263185722acb55",
+      "category": "evidence",
+      "workingSha256": "2fd75eaccdcdee6a155b0df453c696497e4e2466ed73c3f9b7263185722acb55"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n256-canvas-viewing.json",
+      "blob": "9f2571671d3b12e2b5cdcfad24d93937a7781f14",
+      "bytes": 5054,
+      "gitSha256": "bdacf89113f30bc52a5e40134bfeb46b1138f3c2ca13331ef6eae96fe91b941e",
+      "category": "evidence",
+      "workingSha256": "bdacf89113f30bc52a5e40134bfeb46b1138f3c2ca13331ef6eae96fe91b941e"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n256-lifecycle.json",
+      "blob": "44d6e5cdac6dce023b9d1bd2150f9dcf3b6b3b76",
+      "bytes": 13968,
+      "gitSha256": "e20504b419c0ac50782eaeafd1758a169ea7d5e402522ea4bacf194ee9a9e5fc",
+      "category": "evidence",
+      "workingSha256": "e20504b419c0ac50782eaeafd1758a169ea7d5e402522ea4bacf194ee9a9e5fc"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-n256-pixel-proof.json",
+      "blob": "3b1fdc10ed973a059b99ff309c58c7b75e3ebc3a",
+      "bytes": 108632,
+      "gitSha256": "6a259e04a6eda67ef0a15b659658b9f21c9a7ef9cd3443c45916c6c48c7e2d1f",
+      "category": "evidence",
+      "workingSha256": "6a259e04a6eda67ef0a15b659658b9f21c9a7ef9cd3443c45916c6c48c7e2d1f"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-rapid-lifetime.json",
+      "blob": "2098ec0242dd6f56e2bfbfb5d4d74385aeb7e937",
+      "bytes": 1653,
+      "gitSha256": "6e8b56180545a620147ef9dd6fdfdc547b9d6043913f4e8d024935f0e4ab11bf",
+      "category": "evidence",
+      "workingSha256": "6e8b56180545a620147ef9dd6fdfdc547b9d6043913f4e8d024935f0e4ab11bf"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-shader-fallback.json",
+      "blob": "55e483dea1a3262f221e94629a73f1d91b233112",
+      "bytes": 1836,
+      "gitSha256": "fc689a1038df542aee1326088c92e8149e9af912606b544c2c910744f266add4",
+      "category": "evidence",
+      "workingSha256": "fc689a1038df542aee1326088c92e8149e9af912606b544c2c910744f266add4"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-software-fallback.json",
+      "blob": "9bf8089f9b6a02324e3fabbd12fe8d86f40a6b32",
+      "bytes": 1838,
+      "gitSha256": "be27b9d15a15dd79e8d385f513848a1c99eac7ffe9608270d79dcf618c36239e",
+      "category": "evidence",
+      "workingSha256": "be27b9d15a15dd79e8d385f513848a1c99eac7ffe9608270d79dcf618c36239e"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-mobile-unavailable-fallback.json",
+      "blob": "4bc33565652db964e31a24b8140b24a8af470a74",
+      "bytes": 1727,
+      "gitSha256": "329cc5a80306c46194e80d41c60e6161f69bb222dbbeed3b3beb9649a7b9cbae",
+      "category": "evidence",
+      "workingSha256": "329cc5a80306c46194e80d41c60e6161f69bb222dbbeed3b3beb9649a7b9cbae"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-numerical.log.txt.gz",
+      "blob": "c988ef59967e0f2633b52aa4a069e8f87fec530d",
+      "bytes": 22467,
+      "gitSha256": "0bb8f1479f5ca916d9093c12bb2c4ea63ff71bc9dcab2151ac0d4af17ed7d920",
+      "category": "evidence",
+      "workingSha256": "0bb8f1479f5ca916d9093c12bb2c4ea63ff71bc9dcab2151ac0d4af17ed7d920"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-pack-traces.py.txt",
+      "blob": "48c80ec339cbfaca8f46661bde934789a869db51",
+      "bytes": 1945,
+      "gitSha256": "50297e3d399282c2c198d621bc66350448e548306198b11e3d8030f747bdfcf4",
+      "category": "evidence",
+      "workingSha256": "50297e3d399282c2c198d621bc66350448e548306198b11e3d8030f747bdfcf4"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-performance-journal.jsonl",
+      "blob": "d0b641c1d3c0b26bfcc6a9edb4b07d125bf03967",
+      "bytes": 4018,
+      "gitSha256": "884b71bb42a792985b56ed86a0b33f72bec6e99ecb8a0c3e652aa8eebf0e2ec3",
+      "category": "evidence",
+      "workingSha256": "884b71bb42a792985b56ed86a0b33f72bec6e99ecb8a0c3e652aa8eebf0e2ec3"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-performance-summary.json",
+      "blob": "3a48df4b7c543b3170fc61bc476713983071c769",
+      "bytes": 13156,
+      "gitSha256": "f80a553d68f7126af041d626a8ec87cfc7b6e55a038e03c387242c02f346932b",
+      "category": "evidence",
+      "workingSha256": "f80a553d68f7126af041d626a8ec87cfc7b6e55a038e03c387242c02f346932b"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-performance.json.gz",
+      "blob": "2d0bb042569254dec3ead21beb36a64fde4cd9b1",
+      "bytes": 39396,
+      "gitSha256": "c923b40ad8d9bf67d0a9c01ecc1be4a8ed8f0416db51c1506534e4683601bf53",
+      "category": "evidence",
+      "workingSha256": "c923b40ad8d9bf67d0a9c01ecc1be4a8ed8f0416db51c1506534e4683601bf53"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-performance.mjs.txt",
+      "blob": "4bfe089cb8556b4391a1411eac121867d0516517",
+      "bytes": 7702,
+      "gitSha256": "8b4aaf17c0aef67afdcdcaec42e7d806afc7e0452627a7cfa778097332321ec0",
+      "category": "evidence",
+      "workingSha256": "8b4aaf17c0aef67afdcdcaec42e7d806afc7e0452627a7cfa778097332321ec0"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-preservation.json",
+      "blob": "34000f5600b32af861fd21be20a928bfd2202c83",
+      "bytes": 549743,
+      "gitSha256": "809ac435f5e70fbfade0bd0329cd23ffc210827bfa34b1d752414f0c4bee4772",
+      "category": "evidence",
+      "workingSha256": "809ac435f5e70fbfade0bd0329cd23ffc210827bfa34b1d752414f0c4bee4772"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-reconcile.mjs.txt",
+      "blob": "747b4bd17be59c667d874782557604765d9a6109",
+      "bytes": 2204,
+      "gitSha256": "781ab4742f7379d27933e25afa01cce24c85fbdef51bc99df8722d63a696c0d5",
+      "category": "evidence",
+      "workingSha256": "781ab4742f7379d27933e25afa01cce24c85fbdef51bc99df8722d63a696c0d5"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-report.mjs.txt",
+      "blob": "4704b01c41c7f33565047614ea2974bc62b96a37",
+      "bytes": 11620,
+      "gitSha256": "cedf079637dbf3f41106bd5390b187af47cbeeee60f8c9aafd36038a6d9fe401",
+      "category": "evidence",
+      "workingSha256": "cedf079637dbf3f41106bd5390b187af47cbeeee60f8c9aafd36038a6d9fe401"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-seal.mjs.txt",
+      "blob": "948cde8e523163ac4659ea73c65decbfdef93a49",
+      "bytes": 2940,
+      "gitSha256": "655c4828b51b6e66b66cdd812824f8784fd4a299be26587596ab3d3854ae6a63",
+      "category": "evidence",
+      "workingSha256": "655c4828b51b6e66b66cdd812824f8784fd4a299be26587596ab3d3854ae6a63"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-source-freeze.json",
+      "blob": "fc5f78161e09300c1581a000a3d09a37ec309c18",
+      "bytes": 33012,
+      "gitSha256": "95b23dab98d398046edf2a477d47287caebc65f39c9a392e94b8f197e01b2a64",
+      "category": "evidence",
+      "workingSha256": "95b23dab98d398046edf2a477d47287caebc65f39c9a392e94b8f197e01b2a64"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-startup-validate.mjs.txt",
+      "blob": "1f70f422c493d95ec221e5686ff152711f868e12",
+      "bytes": 2600,
+      "gitSha256": "f6208631a34575ca450e2b3626a45e4f9efcbc7e44972beac419c4a3b3874fa2",
+      "category": "evidence",
+      "workingSha256": "f6208631a34575ca450e2b3626a45e4f9efcbc7e44972beac419c4a3b3874fa2"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-startup.config.ts.txt",
+      "blob": "46ee26d72b245fefa8a1fd97638c4d96cc2da6a5",
+      "bytes": 406,
+      "gitSha256": "bc0f5ffaf18125a5aee7019531fec4c171d3985023e5ea9b9f32971159e19244",
+      "category": "evidence",
+      "workingSha256": "bc0f5ffaf18125a5aee7019531fec4c171d3985023e5ea9b9f32971159e19244"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-summarize.mjs.txt",
+      "blob": "6b1792624b58ce78b4304f9840d1e6084c7c3d14",
+      "bytes": 4191,
+      "gitSha256": "8ef8a7e91144a1c5c1c018e2bb4704c375f8822374978113addc847ba349bb5f",
+      "category": "evidence",
+      "workingSha256": "8ef8a7e91144a1c5c1c018e2bb4704c375f8822374978113addc847ba349bb5f"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-trace-archives.json",
+      "blob": "a71fc79957d3338df4247a2c78352f4ef7defb1e",
+      "bytes": 5482,
+      "gitSha256": "4350cef249bb12cdfe162847c331dd546e679b7d839b1c3a8c0e24563c720331",
+      "category": "evidence",
+      "workingSha256": "7be4ca07bea60b94b9ec9a1b3c0478d1d2ec8a043c1d785e85eac04ff6cf9db4"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-trace-files.json",
+      "blob": "0dfc58ea667b42b8629781f47935d0a06b811f12",
+      "bytes": 4379,
+      "gitSha256": "ef36b42f203f0b1b94896b9343eb9cc3f602d614cd3bc7d75f6331e2dd040e07",
+      "category": "evidence",
+      "workingSha256": "ef36b42f203f0b1b94896b9343eb9cc3f602d614cd3bc7d75f6331e2dd040e07"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-trace-index.json",
+      "blob": "94c6290960adc88128a37fed698824eb23b1c9b8",
+      "bytes": 17989,
+      "gitSha256": "d6e9472c421e791c863f1e16e0d8943d5389f102495543e4285447463a6c886f",
+      "category": "evidence",
+      "workingSha256": "d6e9472c421e791c863f1e16e0d8943d5389f102495543e4285447463a6c886f"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-traces-01.zip",
+      "blob": "a61a8ac68d6bc2b90ab30eeacbe6d8fb7a83c354",
+      "bytes": 19165955,
+      "gitSha256": "f7dacc471b17b218051796858ae0280999c37a471b3e303e4c2401aebac931eb",
+      "category": "evidence",
+      "workingSha256": "f7dacc471b17b218051796858ae0280999c37a471b3e303e4c2401aebac931eb"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-typecheck.log.txt.gz",
+      "blob": "ae211a2cb77f6830fe3b183a87963fc514435a29",
+      "bytes": 20,
+      "gitSha256": "46b50c321b39e89a491b6727a01628c34245605a30beb3e7414c5e01cff90e6e",
+      "category": "evidence",
+      "workingSha256": "46b50c321b39e89a491b6727a01628c34245605a30beb3e7414c5e01cff90e6e"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-validate.mjs.txt",
+      "blob": "bc89e367dbd531b3ee490c870dd2c66bb6df5744",
+      "bytes": 2528,
+      "gitSha256": "46935dbb8a03de6f0f5b6b78d0c5b251aa62c58292e9e1026bd22aac78103c95",
+      "category": "evidence",
+      "workingSha256": "46935dbb8a03de6f0f5b6b78d0c5b251aa62c58292e9e1026bd22aac78103c95"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-verification.json",
+      "blob": "15406f7f1937583fbf1b62f1c214f6d134a3b928",
+      "bytes": 21157,
+      "gitSha256": "22b37d7f508fcba4a7f1eab275466dfb5f59f33692ec626ac5306c4b876e2df6",
+      "category": "evidence",
+      "workingSha256": "22b37d7f508fcba4a7f1eab275466dfb5f59f33692ec626ac5306c4b876e2df6"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/cube-d1-visual-inspection.json",
+      "blob": "e0c4dae78bec2b0b295d7405faa6d2d17d605ad8",
+      "bytes": 1597,
+      "gitSha256": "9acb590f7132f58bdc06e95b6119a226ceafd6c3360f19f9570ae57922931250",
+      "category": "evidence",
+      "workingSha256": "9acb590f7132f58bdc06e95b6119a226ceafd6c3360f19f9570ae57922931250"
+    },
+    {
+      "status": "A",
+      "path": "src/components/CubeDevelopmentPreview.css",
+      "blob": "45e350647f1f8866e2c2a36be3e595deb34c14a7",
+      "bytes": 5422,
+      "gitSha256": "6935f9a90eff852f6aba77bc9bff09d5c0aef8b85b7ddb4ca0379ca3843bcb9f",
+      "category": "runtime-config",
+      "workingSha256": "6c5e479e052755c2f81615168414df6593bdc96a95bee4ba1b533400a353f27f"
+    },
+    {
+      "status": "A",
+      "path": "src/components/CubeDevelopmentPreview.tsx",
+      "blob": "159ed7468e56af03d85ebd84c0fbe87999daa99b",
+      "bytes": 11442,
+      "gitSha256": "4d3c8b9cecedc1e90bbeefcd15b9af82418486254eeca4c5529c6b61d116c5a3",
+      "category": "runtime-config",
+      "workingSha256": "4d3c8b9cecedc1e90bbeefcd15b9af82418486254eeca4c5529c6b61d116c5a3"
+    },
+    {
+      "status": "M",
+      "path": "src/components/NewWorldDialog.tsx",
+      "blob": "ed700aa328175304be4edd4440299150c1a52105",
+      "bytes": 5675,
+      "gitSha256": "df52b2c8689a22b7bb32f8c8f6527dbeaa39d2c91d20b02450a169a5f2454aad",
+      "category": "runtime-config",
+      "workingSha256": "df52b2c8689a22b7bb32f8c8f6527dbeaa39d2c91d20b02450a169a5f2454aad"
+    },
+    {
+      "status": "A",
+      "path": "src/cube-preview-main.tsx",
+      "blob": "218b93a33e795f7a1a35d46bec765eac443f04c2",
+      "bytes": 287,
+      "gitSha256": "4665166d45750220b5cfda18bfbf49d362f4c73e6116755ddc6e0e1985063a22",
+      "category": "runtime-config",
+      "workingSha256": "4665166d45750220b5cfda18bfbf49d362f4c73e6116755ddc6e0e1985063a22"
+    },
+    {
+      "status": "A",
+      "path": "src/rendering/solid-cube-canvas.ts",
+      "blob": "ed08f56d22244a815202fa3611d5a58aef8fa23b",
+      "bytes": 3395,
+      "gitSha256": "133becd17630c637fe8ddfe8d87a48a56b2f553953fb3e59ee3b38a7fbcc8cd0",
+      "category": "runtime-config",
+      "workingSha256": "133becd17630c637fe8ddfe8d87a48a56b2f553953fb3e59ee3b38a7fbcc8cd0"
+    },
+    {
+      "status": "A",
+      "path": "src/rendering/solid-cube-display.test.ts",
+      "blob": "7420f1f86c48b4ac2169c9e5fceeb8b9e689ad31",
+      "bytes": 10397,
+      "gitSha256": "0cda5a7f17b30c4e2072a22019ce892a4cb442c57e8aca4b439a3a9f2ec26cae",
+      "category": "test",
+      "workingSha256": "0cda5a7f17b30c4e2072a22019ce892a4cb442c57e8aca4b439a3a9f2ec26cae"
+    },
+    {
+      "status": "A",
+      "path": "src/rendering/solid-cube-field.ts",
+      "blob": "27e0d5e77cf5a42646bada3ab11b41408676e4f0",
+      "bytes": 6954,
+      "gitSha256": "c73acf23dafa2b8965c2af1be665c88a42fcd2dcc35f7bb30c794227501773ae",
+      "category": "runtime-config",
+      "workingSha256": "c73acf23dafa2b8965c2af1be665c88a42fcd2dcc35f7bb30c794227501773ae"
+    },
+    {
+      "status": "A",
+      "path": "src/rendering/solid-cube-presentation.ts",
+      "blob": "431da8af1eb1c92b0b69544c082210f5baf2270b",
+      "bytes": 9269,
+      "gitSha256": "e7fbe7e8daf69fc15644c5649abc88d73657fb497365690e2a4e3875db92ee2b",
+      "category": "runtime-config",
+      "workingSha256": "e7fbe7e8daf69fc15644c5649abc88d73657fb497365690e2a4e3875db92ee2b"
+    },
+    {
+      "status": "A",
+      "path": "src/rendering/solid-cube-view.ts",
+      "blob": "d517241b234b324ae11f9ead5ae8a115f8649852",
+      "bytes": 3754,
+      "gitSha256": "f6d101a2842027d2e204631719ce6491a9627aaaf2fdd77a30fb7e02da095b46",
+      "category": "runtime-config",
+      "workingSha256": "f6d101a2842027d2e204631719ce6491a9627aaaf2fdd77a30fb7e02da095b46"
+    },
+    {
+      "status": "A",
+      "path": "src/rendering/solid-cube-webgl.ts",
+      "blob": "1038180d31537ee2e554e71662a5ab140c8765ac",
+      "bytes": 10143,
+      "gitSha256": "081a43e314c5675a97addce6264d6a43087f9a2d75409c27af75f1786e4e26da",
+      "category": "runtime-config",
+      "workingSha256": "081a43e314c5675a97addce6264d6a43087f9a2d75409c27af75f1786e4e26da"
+    },
+    {
+      "status": "A",
+      "path": "tests/cube-visual.spec.ts",
+      "blob": "6ac77863d07682753c6f9948f9c8f3808662d3fe",
+      "bytes": 9847,
+      "gitSha256": "b171f2ccad5cc937b8e35610a0aaab262da70f04e93d9ff2f6b2bc2b25bf6930",
+      "category": "test",
+      "workingSha256": "cff412cc88929badc5b925ab35c3a19d43a974cdc3ef2cc8a5ee3f17ce5292e8"
+    },
+    {
+      "status": "A",
+      "path": "tests/fixtures/cube-d1-checks.ts",
+      "blob": "1436a462c14564163d0d4bf4971e5fbb680a9af7",
+      "bytes": 9003,
+      "gitSha256": "f328c9e5bb077b94d5312e78d80f942c7505b99370b3eb16462e6ff1f2282824",
+      "category": "test",
+      "workingSha256": "accccc688c0cd5957d45cb98ad4f7b1b917c38bb335aabc2147c7746f46e5b39"
+    },
+    {
+      "status": "M",
+      "path": "vite.config.ts",
+      "blob": "c8bc6d673afdb5f0e837a8097e861b1d6668a7ce",
+      "bytes": 281,
+      "gitSha256": "15bbd3394d11f06f9aa16eaf82fb4fbb3ddb10f59225e08d233dfcd7ae96ffbe",
+      "category": "runtime-config",
+      "workingSha256": "15bbd3394d11f06f9aa16eaf82fb4fbb3ddb10f59225e08d233dfcd7ae96ffbe"
+    }
+  ]
+}
