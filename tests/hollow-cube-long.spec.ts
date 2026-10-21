@@ -4,7 +4,7 @@ import {mkdirSync,writeFileSync} from 'node:fs';
 import {observe} from './helpers/cube-long-observer.ts';
 import type {CubeEditorSession} from '../src/editor/cube-editor-session.ts';
 type Snapshot=ReturnType<CubeEditorSession['snapshot']>;
-test.setTimeout(150000);test.use({viewport:{width:1440,height:950}});
+test.setTimeout(150000);test.use({viewport:{width:1440,height:950},launchOptions:{args:process.platform==='win32'?['--use-angle=default']:[]}});
 const quantiles=(a:number[])=>{a=a.filter(Number.isFinite).sort((x,y)=>x-y);return{p50:a[Math.floor(a.length*.5)]??null,p95:a[Math.floor(a.length*.95)]??null,max:a.at(-1)??null};};
 for(const n of[128,256])for(const backend of['auto','canvas'])for(const role of['exterior','interior']as const)test(`H5 held corner N${n} ${backend} ${role}`,async({page})=>{
  if(backend==='canvas')await page.addInitScript(()=>{const old=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(this:HTMLCanvasElement,type:string,...args:unknown[]){return type==='webgl2'?null:Reflect.apply(old,this,[type,...args]);}as typeof old;});

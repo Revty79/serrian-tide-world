@@ -2,7 +2,7 @@
 
 Updated for Cube-D1 on accepted Cube-C2B2 delivery 77df76f3a0a12273f9277d201277f13e9985074d (implementation d099606144d827d99f4c6c8ba40fe67933fb474e). A7-P1C remains accepted with its published performance qualifications. The owner's revised sequence below supersedes earlier plans for a separately rebuilt replacement Worlds system. Existing Worlds information, organization, data and functionality must be preserved wherever practical. A7-A begins Phase 2 with the physical capped-cylinder numerical foundation; A7-B1 adds bounded global reference-surface distances. A7-B2A adds isolated numerical four-tool dabs with atomic preparation/commit; A7-B2B1 adds connected physical path construction and bounded distance/residual evaluation. A7-B2B2 adds continuous numerical four-tool strokes with ordered input, corrected spacing, bounded scheduling/cancellation and exact whole-stroke history. A7-C adds a real session-only physical/connected cylinder editor. A7-D adds normal cylinder creation/selection, validated v4 Save/Open and exact saved checkpoints. A7-P1A improves cylinder rendering/navigation and independent pointer feedback. A7-P1A-R corrects geographical presentation after owner/Ember visual rejection, with elevation-first interpolation, optional physical-gradient relief and active-backend diagnostics; A7-P1B adds revision-acknowledged worker preparation for cylinder painting, exact main-thread history/commits, event-driven Save draining and a small shared responsiveness contract. A7-P1C applies elevation-first spherical presentation, persistent Globe/Net GPU rendering, bounded CPU fallback and workload-aware spherical preparation. Cube-A adds the separate physical solid cube numerical/topological foundation. Cube-B adds certified global continuous reference routes, exact comparison and physical path witnesses. Cube-C1 adds isolated four-tool numerical dabs with exact compiled footprints, connected smoothing, cooperative epoch preparation and atomic commit. Cube-C2A adds continuous numerical physical path reconstruction and exact carried dab spacing. Cube-C2B1 adds ordered authoritative numerical stroke execution, exact bounded gesture history and safe committed-prefix termination. Cube-C2B2 adds measured cooperative/paired pure-path-worker scheduling, exact revision acknowledgements and fault-safe prefixes around unchanged host C1/history. Cube-D1 adds the first read-only physical cube and connected net. Further cube rendering, editing/persistence/hollow variants, history-capacity changes, other geometries and Phases 3–11 remain future work.
 
-## Current Cube-G authorization — 2026-10-21
+## Current Cube-H authorization and review gate — 2026-10-21
 
 **The owner explicitly accepted solid-cube checkpoint
 `d011a377e6a1ad76296e41740422fa5600f69082` after hands-on testing. Cube-E/F is closed.**
@@ -10,7 +10,9 @@ Painting responsiveness, navigation, brush behavior, Undo/Redo and Save/Open are
 accepted. Cube-G is authorized and implements the
 [hollow numerical/physical foundation and development inspection](CUBE-G-COMPLETION.md),
 following the [shared editor/adapters audit](ATLAS-SHARED-EDITOR-ARCHITECTURE.md).
-Stop for Ember's independent GitHub review and owner authorization before Cube-H.
+The owner accepted Cube-G at 543cb6211905a8fffc78013eec9b06d144b94e5b and authorized
+Cube-H through H1–H5. The complete hollow editor is now the review checkpoint.
+Stop for Ember's independent source review and owner hands-on acceptance before Cube-I.
 This current gate supersedes historical D1/E/F stop wording below.
 
 The owner accepted Cube-D1 visuals at delivery
@@ -22,7 +24,8 @@ E/F completion reports distinguish technical verification from owner acceptance.
 The approved next sequence remains **Cube-G foundation → Cube-H full hollow
 authoring, both passage types, history and versioned Save/Open → Cube-I final
 solid/hollow family verification and owner acceptance**. Cube-H and other shape
-families are not authorized by the G run. The eleven phases, approved
+families were not authorized by the G run; the subsequent explicit H authorization
+now covers H1–H5 only. The eleven phases, approved
 geometry priority order and all future requirements remain unchanged, including
 hollow worlds with linked entrances and genuine physical caves/tunnels through
 their shells, and later custom irregular worlds. Original website, shared server
@@ -68,8 +71,8 @@ databases, Docker, hosting and Production remain outside scope.
 | Cube-C2B2 | Measured bounded cooperative/paired-path-worker scheduling, validated exact source acknowledgement and safe failure/cancellation | Accepted for development progression after Ember review; implementation d099606, delivery 77df76f. Historical completion and evidence preserved |
 | Cube-D1 | First real planar physical cube, oriented connected net, read-only N128/N256 development preview, WebGL2/Canvas rendering | Implemented for Ember technical review and owner first visual acceptance; see SOLID-CUBE-VISUAL-PREVIEW.md and CUBE-D1-COMPLETION.md |
 | Cube-E/F | Usable solid-cube authoring, bounded responsive painting, correct navigation, exact whole-gesture history and v5 Save/Open | Owner hands-on acceptance granted at d011a377e6a1ad76296e41740422fa5600f69082; E/F closed |
-| Cube-G | Independent inward/outward cube surfaces, positive reference shell, clearance screening, both passage foundations and development inspection | Implemented for independent review; stop before Cube-H. See CUBE-G-COMPLETION.md |
-| Cube-H | Full selected-surface editing/navigation, linked entrances and real excavated through-shell tunnels/caves, history and versioned parent Save/Open | Awaiting review and separate owner authorization after Cube-G |
+| Cube-G | Independent inward/outward cube surfaces, positive reference shell, clearance screening, both passage foundations and development inspection | Owner accepted at 543cb621 for Cube-H progression. See CUBE-G-COMPLETION.md |
+| Cube-H | Full selected-surface editing/navigation, linked entrances and real excavated through-shell tunnels/caves, history and versioned parent Save/Open | Implemented for independent source review and owner hands-on acceptance. See CUBE-H-COMPLETION.md |
 | Cube-I | Final solid/hollow cube-family verification and owner acceptance | Future gated pass |
 | Later geometry checkpoints | Hollow and other agreed geometries/conversions | Future; separately authorized |
 | Later Phase 1 | Remaining inventory below | Planned; pass boundaries and acceptance criteria still require authorization |
@@ -272,4 +275,4 @@ A6-D2-R supplies automatic globe rotation/recentering during a held stroke near 
 
 ## Bounded solid-cube checkpoint sequence
 
-Cube-A through C2B2 provide accepted topology, routes, brushes and bounded execution. Cube-D1 visuals and the usable Cube-E/F solid-cube workflow are accepted; the owner approved d011a377e6a1ad76296e41740422fa5600f69082. Cube-G establishes independent hollow surfaces, shell geometry/clearance and both passage foundations. Cube-H must deliver the full hollow workflow, including linked entrances AND real connected excavated tunnels/caves; Cube-I verifies the complete family for owner acceptance. Stop after G for independent review and renewed H authorization. This sequence refines Phase 2 without changing the eleven master phases or approved geometry order. No unfinished hollow cube is exposed as a normal World choice.
+Cube-A through C2B2 provide accepted topology, routes, brushes and bounded execution. Cube-D1 visuals and the usable Cube-E/F solid-cube workflow are accepted; the owner approved d011a377e6a1ad76296e41740422fa5600f69082. Cube-G establishes independent hollow surfaces, shell geometry/clearance and both passage foundations. Cube-H must deliver the full hollow workflow, including linked entrances AND real connected excavated tunnels/caves; Cube-I verifies the complete family for owner acceptance. G is owner accepted for progression; H is authorized through H1–H5 and stops for independent/owner review before I. This sequence refines Phase 2 without changing the eleven master phases or approved geometry order. Normal hollow creation is exposed with validated two-surface v6 persistence and the functional authoring workflow.

@@ -1,18 +1,26 @@
-<!-- Current checkpoint: Cube-G hollow foundation. Historical reports retain their original checkpoints. -->
+<!-- Current checkpoint: Cube-H, awaiting independent and owner review. -->
 # Serrian Tide Atlas
 
-The owner accepted the solid cube at `d011a377e6a1ad76296e41740422fa5600f69082`
-after hands-on testing: painting, navigation, brushes, exact Undo/Redo and Save/Open.
-Cube-E/F is closed. **Cube-G** adds the hollow reference-shell foundation: two
-independent canonical surfaces, inward orientation, clearance screening and distinct
-linked-entrance / physical-volume passage contracts, using the existing cube systems.
+The owner accepted solid cube d011a377e6a1ad76296e41740422fa5600f69082 and hollow
+foundation 543cb6211905a8fffc78013eec9b06d144b94e5b for progression. **Cube-H**
+adds independent outside/inside terrain editing, real hollow World Save/Open,
+reciprocal entrances and physically excavated tunnels, shafts, branches and chambers.
+The existing Atlas editor, cube painting sessions, exact histories and display
+publication remain shared. See the [Cube-H workflow, checks and limits](docs/CUBE-H-COMPLETION.md)
+and [shared architecture](docs/ATLAS-SHARED-EDITOR-ARCHITECTURE.md).
 
-Open `/dev/hollow-cube.html` for the isolated inspection; the current local preview is
-**http://127.0.0.1:5260/dev/hollow-cube.html**. Switch exterior/interior, folded/net and
-shell/passages. This is not yet hollow painting or persistence and adds no normal
-hollow World option. See the [Cube-G report and limitations](docs/CUBE-G-COMPLETION.md)
-and [shared Atlas architecture](docs/ATLAS-SHARED-EDITOR-ARCHITECTURE.md).
-**Stop for Ember's independent GitHub review and owner authorization before Cube-H.**
+Open **http://127.0.0.1:5260/** on the current local preview, choose **New World / Map
+→ Hollow cube world**, and create N128 or N256. Atlas tools contains **Paint Outside /
+Paint Inside**, entrances and excavation. Unfold either side or sculpt in 3D.
+Use **Dig Tunnel** on level 0 m ground near the middle of a face; **Explore opening**
+and **Travel forward** follow the actual free volume, with branch choices at junctions.
+Save, close, then **Browse saved maps → Open Map** to continue on this device.
+
+Excavation currently uses the physical reference shell and protected level ground,
+with explicit feature-size and shell-clearance limits. Other terrain remains the
+accepted height field; this is not the later global displaced-terrain phase.
+**Stop for Ember's independent source review and owner hands-on acceptance.
+Cube-I and further geometries require separate authorization.**
 
 For the accepted solid cube:
 Run `npm.cmd run dev`, open Atlas, and choose **New World / Map → Solid cube world**.

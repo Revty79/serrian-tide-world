@@ -1,0 +1,842 @@
+{
+  "date": "2026-10-21",
+  "approvedSolid": "d011a377e6a1ad76296e41740422fa5600f69082",
+  "approvedHollowFoundation": "543cb6211905a8fffc78013eec9b06d144b94e5b",
+  "implementationCommits": [
+    "fa3bb8dedcf433fbbb8f6d586b1277e7a06bc238",
+    "e4d6e68d227225b8125a846fcfac95068b5615ff",
+    "7186cbefca6d277a73658d1cfaecfffab1ed35ec",
+    "329e82a098b64344f18201ccf25a38d391626ec1",
+    "5f282804512f0276196f2d848941baf59e4af81a"
+  ],
+  "checks": {
+    "numerical": {
+      "passed": 1019,
+      "failed": 0
+    },
+    "build": "passed",
+    "hollowAndFoundationBrowser": {
+      "startTime": "2026-10-21T16:53:45.051Z",
+      "duration": 110121.159,
+      "expected": 28,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "existingAtlasRegression": {
+      "startTime": "2026-10-21T16:37:01.275Z",
+      "duration": 474251.504,
+      "expected": 86,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "finalSolidPickingConfirmation": {
+      "startTime": "2026-10-21T16:51:42.739Z",
+      "duration": 39787.124,
+      "expected": 6,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "nativeCornerCases": 8,
+    "postGuardN256Confirmation": 4
+  },
+  "conditions": {
+    "viewport": {
+      "width": 1440,
+      "height": 950
+    },
+    "pointer": "trusted native CDP mouse, 900 scheduled moves over 15 seconds; native coalescing retained",
+    "gpu": "ANGLE AMD Radeon RX 6600 D3D11",
+    "terrainStrengthMeters": 200,
+    "excavationLoadedDuringHollowStrokes": true,
+    "pixelProbeSamplingMs": 100,
+    "latency": "existing event-timestamp stage instrumentation plus changed terrain canvas readback; SVG cursor excluded",
+    "baseline": "archived approved d011a377 runtime, same native corner observer; all four gestures complete; N256 Canvas p95 187.9 ms misses the 180 ms target",
+    "deviceQualification": "Pixel 7 browser emulation for functional tests; no physical-phone measurements",
+    "resourceQualification": "declared typed buffers, canvas pixels and GL texture storage, not OS resident RAM or GPU-driver overhead"
+  },
+  "solidBaseline": [
+    {
+      "n": 128,
+      "backend": "auto",
+      "actualBackend": "WebGL2",
+      "termination": "complete",
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "inputToVisibleMs": {
+        "p50": 27.100000023841858,
+        "p95": 53.39999997615814,
+        "max": 122.69999998807907
+      },
+      "inputToCommitMs": {
+        "p50": 15.299999952316284,
+        "p95": 31.099999964237213,
+        "max": 103.69999998807907
+      },
+      "commitToVisibleMs": {
+        "p50": 12.5,
+        "p95": 29.80000001192093,
+        "max": 50.10000002384186
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 50
+      },
+      "firstChangedPixelsMs": 17.099999964237213,
+      "changedWhileHeld": 138,
+      "latency180msTargetPassed": true
+    },
+    {
+      "n": 128,
+      "backend": "canvas",
+      "actualBackend": "Canvas2D fallback",
+      "termination": "complete",
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "inputToVisibleMs": {
+        "p50": 23.099999964237213,
+        "p95": 45.19999998807907,
+        "max": 100.09999996423721
+      },
+      "inputToCommitMs": {
+        "p50": 16.299999952316284,
+        "p95": 23.899999976158142,
+        "max": 97.29999995231628
+      },
+      "commitToVisibleMs": {
+        "p50": 8.300000011920929,
+        "p95": 25.700000047683716,
+        "max": 44.90000003576279
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "max": 33.40000000000009
+      },
+      "firstChangedPixelsMs": 17.599999964237213,
+      "changedWhileHeld": 136,
+      "latency180msTargetPassed": true
+    },
+    {
+      "n": 256,
+      "backend": "auto",
+      "actualBackend": "WebGL2",
+      "termination": "complete",
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "inputToVisibleMs": {
+        "p50": 35.09999996423721,
+        "p95": 61.09999996423721,
+        "max": 106.29999995231628
+      },
+      "inputToCommitMs": {
+        "p50": 18.899999976158142,
+        "p95": 40.69999998807907,
+        "max": 86.29999995231628
+      },
+      "commitToVisibleMs": {
+        "p50": 16,
+        "p95": 30.30000001192093,
+        "max": 41.299999952316284
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "max": 16.80000000000109
+      },
+      "firstChangedPixelsMs": 36.19999998807907,
+      "changedWhileHeld": 135,
+      "latency180msTargetPassed": true
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "actualBackend": "Canvas2D fallback",
+      "termination": "complete",
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "inputToVisibleMs": {
+        "p50": 32,
+        "p95": 187.9000000357628,
+        "max": 234.5
+      },
+      "inputToCommitMs": {
+        "p50": 17.19999998807907,
+        "p95": 167,
+        "max": 223
+      },
+      "commitToVisibleMs": {
+        "p50": 16,
+        "p95": 29.5,
+        "max": 42.59999996423721
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000109
+      },
+      "firstChangedPixelsMs": 40,
+      "changedWhileHeld": 134,
+      "latency180msTargetPassed": false
+    }
+  ],
+  "hollowStrokes": [
+    {
+      "n": 128,
+      "backend": "auto",
+      "role": "exterior",
+      "injectedMoves": 900,
+      "heldDurationMs": 15000,
+      "pointerWallMs": 15019.017,
+      "actualEvents": 873,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "historyEntries": 1,
+      "termination": "complete",
+      "error": "",
+      "uncompletedInputs": 0,
+      "inputToVisibleMs": {
+        "p50": 22.600000023841858,
+        "p95": 42.30000001192093,
+        "max": 71.79999995231628
+      },
+      "inputToCommitMs": {
+        "p50": 17.5,
+        "p95": 22.100000023841858,
+        "max": 32.69999998807907
+      },
+      "commitToVisibleMs": {
+        "p50": 10.799999952316284,
+        "p95": 29,
+        "max": 50.89999997615814
+      },
+      "preparationMs": {
+        "p50": 1.300000011920929,
+        "p95": 2.100000023841858,
+        "max": 4.699999988079071
+      },
+      "displayPreparationMs": {
+        "p50": 0.3999999761581421,
+        "p95": 12.399999976158142,
+        "max": 25.69999998807907
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000291
+      },
+      "firstChangedPixelsMs": 35.69999998807907,
+      "changedWhileHeld": 138,
+      "releaseBacklogMs": 26.099999964237213,
+      "undoMs": 26.356900000002497,
+      "redoMs": 34.88790000000154,
+      "longTasks": [],
+      "coarseJsHeapBytes": 27281584,
+      "errors": []
+    },
+    {
+      "n": 128,
+      "backend": "auto",
+      "role": "interior",
+      "injectedMoves": 900,
+      "heldDurationMs": 15000,
+      "pointerWallMs": 15016.560000000001,
+      "actualEvents": 881,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 1050,
+      "historyEntries": 1,
+      "termination": "complete",
+      "error": "",
+      "uncompletedInputs": 0,
+      "inputToVisibleMs": {
+        "p50": 34.69999998807907,
+        "p95": 52.5,
+        "max": 71.69999998807907
+      },
+      "inputToCommitMs": {
+        "p50": 17.30000001192093,
+        "p95": 23.69999998807907,
+        "max": 38.89999997615814
+      },
+      "commitToVisibleMs": {
+        "p50": 17.399999976158142,
+        "p95": 31.600000023841858,
+        "max": 47.5
+      },
+      "preparationMs": {
+        "p50": 1.399999976158142,
+        "p95": 2.099999964237213,
+        "max": 10.399999976158142
+      },
+      "displayPreparationMs": {
+        "p50": 1.0999999642372131,
+        "p95": 15.599999964237213,
+        "max": 29.399999976158142
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000291
+      },
+      "firstChangedPixelsMs": 42.89999997615814,
+      "changedWhileHeld": 141,
+      "releaseBacklogMs": 111.60000002384186,
+      "undoMs": 23.62220000000525,
+      "redoMs": 36.76430000000255,
+      "longTasks": [],
+      "coarseJsHeapBytes": 61070564,
+      "errors": []
+    },
+    {
+      "n": 128,
+      "backend": "canvas",
+      "role": "exterior",
+      "injectedMoves": 900,
+      "heldDurationMs": 15000,
+      "pointerWallMs": 15001.450899999996,
+      "actualEvents": 879,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "historyEntries": 1,
+      "termination": "complete",
+      "error": "",
+      "uncompletedInputs": 0,
+      "inputToVisibleMs": {
+        "p50": 21.899999976158142,
+        "p95": 39.09999996423721,
+        "max": 55.69999998807907
+      },
+      "inputToCommitMs": {
+        "p50": 17,
+        "p95": 20.899999976158142,
+        "max": 34.39999997615814
+      },
+      "commitToVisibleMs": {
+        "p50": 5.199999988079071,
+        "p95": 22.5,
+        "max": 33.89999997615814
+      },
+      "preparationMs": {
+        "p50": 1.300000011920929,
+        "p95": 1.800000011920929,
+        "max": 4
+      },
+      "displayPreparationMs": {
+        "p50": 0.8999999761581421,
+        "p95": 5.5,
+        "max": 18.19999998807907
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "max": 16.80000000000291
+      },
+      "firstChangedPixelsMs": 39.5,
+      "changedWhileHeld": 141,
+      "releaseBacklogMs": 104.10000002384186,
+      "undoMs": 21.763200000001234,
+      "redoMs": 60.664599999996426,
+      "longTasks": [],
+      "coarseJsHeapBytes": 24793228,
+      "errors": []
+    },
+    {
+      "n": 128,
+      "backend": "canvas",
+      "role": "interior",
+      "injectedMoves": 900,
+      "heldDurationMs": 15000,
+      "pointerWallMs": 15019.156300000002,
+      "actualEvents": 887,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 1050,
+      "historyEntries": 1,
+      "termination": "complete",
+      "error": "",
+      "uncompletedInputs": 0,
+      "inputToVisibleMs": {
+        "p50": 28.899999976158142,
+        "p95": 50.90000003576279,
+        "max": 72
+      },
+      "inputToCommitMs": {
+        "p50": 13,
+        "p95": 22.19999998807907,
+        "max": 54.89999997615814
+      },
+      "commitToVisibleMs": {
+        "p50": 18,
+        "p95": 30.80000001192093,
+        "max": 42.19999998807907
+      },
+      "preparationMs": {
+        "p50": 1.300000011920929,
+        "p95": 1.899999976158142,
+        "max": 7.600000023841858
+      },
+      "displayPreparationMs": {
+        "p50": 1.800000011920929,
+        "p95": 15,
+        "max": 30.200000047683716
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "max": 16.80000000000291
+      },
+      "firstChangedPixelsMs": 39.30000001192093,
+      "changedWhileHeld": 143,
+      "releaseBacklogMs": 44,
+      "undoMs": 26.955000000001746,
+      "redoMs": 67.2378999999928,
+      "longTasks": [],
+      "coarseJsHeapBytes": 31393432,
+      "errors": []
+    },
+    {
+      "n": 256,
+      "backend": "auto",
+      "role": "exterior",
+      "injectedMoves": 900,
+      "heldDurationMs": 15000,
+      "pointerWallMs": 15010.194800000001,
+      "actualEvents": 873,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "historyEntries": 1,
+      "termination": "complete",
+      "error": "",
+      "uncompletedInputs": 0,
+      "inputToVisibleMs": {
+        "p50": 35.30000001192093,
+        "p95": 59.10000002384186,
+        "max": 89.10000002384186
+      },
+      "inputToCommitMs": {
+        "p50": 18.700000047683716,
+        "p95": 33.700000047683716,
+        "max": 60.10000002384186
+      },
+      "commitToVisibleMs": {
+        "p50": 16.30000001192093,
+        "p95": 31.900000035762787,
+        "max": 48.80000001192093
+      },
+      "preparationMs": {
+        "p50": 2.699999988079071,
+        "p95": 6.599999964237213,
+        "max": 43.89999997615814
+      },
+      "displayPreparationMs": {
+        "p50": 1.699999988079071,
+        "p95": 16.299999952316284,
+        "max": 35.39999997615814
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 33.30799999999999
+      },
+      "firstChangedPixelsMs": 43.89999997615814,
+      "changedWhileHeld": 137,
+      "releaseBacklogMs": 109.5,
+      "undoMs": 62.76090000000113,
+      "redoMs": 60.88539999999921,
+      "longTasks": [],
+      "coarseJsHeapBytes": 42739092,
+      "errors": []
+    },
+    {
+      "n": 256,
+      "backend": "auto",
+      "role": "interior",
+      "injectedMoves": 900,
+      "heldDurationMs": 15000,
+      "pointerWallMs": 15012.023699999998,
+      "actualEvents": 884,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 1050,
+      "historyEntries": 1,
+      "termination": "complete",
+      "error": "",
+      "uncompletedInputs": 0,
+      "inputToVisibleMs": {
+        "p50": 37.5,
+        "p95": 64.80000001192093,
+        "max": 87.40000003576279
+      },
+      "inputToCommitMs": {
+        "p50": 19.5,
+        "p95": 38.10000002384186,
+        "max": 68.39999997615814
+      },
+      "commitToVisibleMs": {
+        "p50": 17.80000001192093,
+        "p95": 33.90000003576279,
+        "max": 47.5
+      },
+      "preparationMs": {
+        "p50": 2.600000023841858,
+        "p95": 6,
+        "max": 29.900000035762787
+      },
+      "displayPreparationMs": {
+        "p50": 1.899999976158142,
+        "p95": 18.400000035762787,
+        "max": 33.30000001192093
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "max": 16.80000000000291
+      },
+      "firstChangedPixelsMs": 45.90000003576279,
+      "changedWhileHeld": 142,
+      "releaseBacklogMs": 67.60000002384186,
+      "undoMs": 85.28250000000116,
+      "redoMs": 68.39240000000427,
+      "longTasks": [],
+      "coarseJsHeapBytes": 48887792,
+      "errors": []
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "role": "exterior",
+      "injectedMoves": 900,
+      "heldDurationMs": 15000,
+      "pointerWallMs": 15007.855199999998,
+      "actualEvents": 885,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "historyEntries": 1,
+      "termination": "complete",
+      "error": "",
+      "uncompletedInputs": 0,
+      "inputToVisibleMs": {
+        "p50": 32.700000047683716,
+        "p95": 55.90000003576279,
+        "max": 89.19999998807907
+      },
+      "inputToCommitMs": {
+        "p50": 18.100000023841858,
+        "p95": 33.10000002384186,
+        "max": 72.30000001192093
+      },
+      "commitToVisibleMs": {
+        "p50": 11,
+        "p95": 28.200000047683716,
+        "max": 43
+      },
+      "preparationMs": {
+        "p50": 2.600000023841858,
+        "p95": 7.300000011920929,
+        "max": 26.19999998807907
+      },
+      "displayPreparationMs": {
+        "p50": 2.299999952316284,
+        "p95": 13.100000023841858,
+        "max": 30.100000023841858
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000291
+      },
+      "firstChangedPixelsMs": 41.700000047683716,
+      "changedWhileHeld": 140,
+      "releaseBacklogMs": 48.299999952316284,
+      "undoMs": 163.52739999999903,
+      "redoMs": 120.79980000000069,
+      "longTasks": [],
+      "coarseJsHeapBytes": 21944368,
+      "errors": []
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "role": "interior",
+      "injectedMoves": 900,
+      "heldDurationMs": 15000,
+      "pointerWallMs": 15016.403899999998,
+      "actualEvents": 850,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 1050,
+      "historyEntries": 1,
+      "termination": "complete",
+      "error": "",
+      "uncompletedInputs": 0,
+      "inputToVisibleMs": {
+        "p50": 38.60000002384186,
+        "p95": 109.29999995231628,
+        "max": 331.5
+      },
+      "inputToCommitMs": {
+        "p50": 19,
+        "p95": 89,
+        "max": 312.69999998807907
+      },
+      "commitToVisibleMs": {
+        "p50": 18.299999952316284,
+        "p95": 32.30000001192093,
+        "max": 51.09999996423721
+      },
+      "preparationMs": {
+        "p50": 2.799999952316284,
+        "p95": 9.5,
+        "max": 40.59999996423721
+      },
+      "displayPreparationMs": {
+        "p50": 3.5,
+        "p95": 17.900000035762787,
+        "max": 37.69999998807907
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000291
+      },
+      "firstChangedPixelsMs": 39.80000001192093,
+      "changedWhileHeld": 139,
+      "releaseBacklogMs": 121.89999997615814,
+      "undoMs": 156.57080000000133,
+      "redoMs": 176.24310000000696,
+      "longTasks": [],
+      "coarseJsHeapBytes": 25955012,
+      "errors": []
+    }
+  ],
+  "switching": [
+    {
+      "role": "interior",
+      "clickToPaintOpportunityMs": 64.39999997615814,
+      "hostDrainMs": 14.5
+    },
+    {
+      "role": "exterior",
+      "clickToPaintOpportunityMs": 64.30000001192093,
+      "hostDrainMs": 14.400000035762787
+    },
+    {
+      "role": "interior",
+      "clickToPaintOpportunityMs": 64.69999998807907,
+      "hostDrainMs": 14.5
+    },
+    {
+      "role": "exterior",
+      "clickToPaintOpportunityMs": 64.79999995231628,
+      "hostDrainMs": 14.700000047683716
+    },
+    {
+      "role": "interior",
+      "clickToPaintOpportunityMs": 64.39999997615814,
+      "hostDrainMs": 14.300000011920929
+    },
+    {
+      "role": "exterior",
+      "clickToPaintOpportunityMs": 63.60000002384186,
+      "hostDrainMs": 14.5
+    }
+  ],
+  "persistenceN256": {
+    "saveMs": 167.6923999999999,
+    "openMs": 2025.8679999999995,
+    "exactBothSurfacesAndConnections": true
+  },
+  "physicalWorkflows": [
+    {
+      "device": "desktop",
+      "backend": "auto",
+      "firstPortalPixelsBefore": [
+        41,
+        124,
+        159,
+        255
+      ],
+      "firstPortalPixelsAfter": [
+        31,
+        93,
+        119,
+        255
+      ],
+      "network": {
+        "nodes": 6,
+        "segments": 5,
+        "portals": 2
+      },
+      "geometryPreparationMs": 2.600000023841858,
+      "saveMs": 67.45799999999963,
+      "openMs": 1112.5649000000003
+    },
+    {
+      "device": "desktop",
+      "backend": "canvas",
+      "firstPortalPixelsBefore": [
+        41,
+        124,
+        159,
+        255
+      ],
+      "firstPortalPixelsAfter": [
+        31,
+        93,
+        119,
+        255
+      ],
+      "network": {
+        "nodes": 6,
+        "segments": 5,
+        "portals": 2
+      },
+      "geometryPreparationMs": 1.800000011920929,
+      "saveMs": 125.84660000000076,
+      "openMs": 1104.7927000000018
+    },
+    {
+      "device": "mobile",
+      "backend": "auto",
+      "firstPortalPixelsBefore": [
+        41,
+        124,
+        159,
+        255
+      ],
+      "firstPortalPixelsAfter": [
+        31,
+        93,
+        119,
+        255
+      ],
+      "network": {
+        "nodes": 6,
+        "segments": 5,
+        "portals": 2
+      },
+      "geometryPreparationMs": 2.5,
+      "saveMs": 127.05549999999948,
+      "openMs": 1136.4602999999997
+    },
+    {
+      "device": "mobile",
+      "backend": "canvas",
+      "firstPortalPixelsBefore": [
+        41,
+        124,
+        159,
+        255
+      ],
+      "firstPortalPixelsAfter": [
+        31,
+        93,
+        119,
+        255
+      ],
+      "network": {
+        "nodes": 6,
+        "segments": 5,
+        "portals": 2
+      },
+      "geometryPreparationMs": 1.699999988079071,
+      "saveMs": 126.01569999999992,
+      "openMs": 1101.3250000000007
+    }
+  ],
+  "memory": {
+    "solid": [
+      {
+        "n": 128,
+        "backend": "auto",
+        "resources": {
+          "hostBufferBytes": 786448,
+          "fieldBytes": 1597536,
+          "stencilBytes": 2390148,
+          "cpuAtlasBytes": 1585176,
+          "gpuTextureBytes": 1597536,
+          "canvasBytes": 8870400,
+          "excavationCanvasBytes": 0,
+          "declaredBufferAndPixelBytes": 16827244
+        }
+      },
+      {
+        "n": 128,
+        "backend": "canvas",
+        "resources": {
+          "hostBufferBytes": 786448,
+          "fieldBytes": 1597536,
+          "stencilBytes": 2390148,
+          "cpuAtlasBytes": 1585176,
+          "gpuTextureBytes": 0,
+          "canvasBytes": 4615200,
+          "excavationCanvasBytes": 0,
+          "declaredBufferAndPixelBytes": 10974508
+        }
+      },
+      {
+        "n": 256,
+        "backend": "auto",
+        "resources": {
+          "hostBufferBytes": 3145744,
+          "fieldBytes": 6340704,
+          "stencilBytes": 9498756,
+          "cpuAtlasBytes": 6316056,
+          "gpuTextureBytes": 6340704,
+          "canvasBytes": 8870400,
+          "excavationCanvasBytes": 0,
+          "declaredBufferAndPixelBytes": 40512364
+        }
+      },
+      {
+        "n": 256,
+        "backend": "canvas",
+        "resources": {
+          "hostBufferBytes": 3145744,
+          "fieldBytes": 6340704,
+          "stencilBytes": 9498756,
+          "cpuAtlasBytes": 6316056,
+          "gpuTextureBytes": 0,
+          "canvasBytes": 4615200,
+          "excavationCanvasBytes": 0,
+          "declaredBufferAndPixelBytes": 29916460
+        }
+      }
+    ],
+    "hollowN256WithPassage": {
+      "hostBufferBytes": 7343796,
+      "fieldBytes": 12681408,
+      "stencilBytes": 18997512,
+      "cpuAtlasBytes": 12632112,
+      "gpuTextureBytes": 25362816,
+      "canvasBytes": 17740800,
+      "excavationCanvasBytes": 0,
+      "declaredBufferAndPixelBytes": 94758444
+    }
+  },
+  "limits": {
+    "worldConnectionsBytes": 262144,
+    "connectionHistoryBytes": 4194304,
+    "connectionHistoryEntries": 64,
+    "physicalPrimitives": 48,
+    "networks": 8,
+    "linkedEntrances": 128,
+    "site": "exactly 0 m protected ground; ordinary weighted Flatten is not an exact site-reset command",
+    "shell": "reference shell; no global displaced terrain mesh claim",
+    "independentNetworks": "conservative bounds overlap rejected; intentional connected volumes belong to one network",
+    "radiusMinimumFractionOfOuterSide": 0.00001,
+    "excavationWallThicknessMinimumFraction": 0.0001
+  }
+}

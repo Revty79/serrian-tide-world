@@ -3,7 +3,8 @@
 2026-10-21. Supplemental owner directive for corrective pass 2, followed by explicit
 owner acceptance at `d011a377e6a1ad76296e41740422fa5600f69082` and Cube-G authorization.
 The shared-infrastructure audit and bounded migration proposal remain in force;
-Cube-G adds the small adapters below. No broad refactor or Cube-H is authorized.
+Cube-G adds the small adapters below. The owner accepted G at 543cb6211905a8fffc78013eec9b06d144b94e5b
+and authorized Cube-H through H1–H5. No broad refactor or later geometry is authorized.
 
 ## What is already shared, and what should be
 
@@ -94,3 +95,51 @@ stage styling and presentation ownership. Normal hollow creation, selected-surfa
 authoring, shell-safe transactional proposals, parent persistence and full linked/
 physical passage workflows remain Cube-H. The controlled migration proposal above
 is not silently expanded into that work or into another geometry.
+
+## Cube-H adoption and remaining shared migration
+
+H1–H5 keep the accepted execution path. HollowCubeDocument owns two ordinary
+CubeEditorSession instances and a parent identity. Two cached CubeEditor
+viewports supply ONE WorkspaceChrome through their existing view/tool contract.
+The inward G chart is used at the public picking/annotation boundary; numerical
+storage stays intrinsic. Coalesced pointer admission, touch/pen arbitration,
+owner-corrected drag, bounded-phase spacing, C1 preparation, whole-gesture history
+and independent local display scheduling are reused, without another executor.
+
+Terrain publication adds a host policy around the accepted atomic publisher.
+cubePatchBlocks factors its existing intrinsic-view/descriptor validation so
+the hollow guard can inspect detached descriptors, then check both-surface and
+excavation leases before the existing exact source validation and atomic write.
+Changed samples get O(1) protected-ground lookups; support rectangles are prepared
+cooperatively only on geometry changes. Save/Open uses the same support validator.
+
+Entrances/excavation reuse TerrainHistory with a bounded Uint32 metadata buffer:
+candidate preview, allocation-before-replacement and exact source-word replay.
+This is the existing word journal, not a copied passage history. Each terrain
+keeps its accepted cube history; the creator explicitly selects the Undo scope.
+The shared IndexedDB store and App replacement lifecycle delegate a strict v6
+parent codec; v1–v5 codecs retain their original contracts.
+
+New geometry capabilities are isolated in hollow-cube-csg and its small GPU/Canvas
+adapters. The established renderer projects six reference planes; those planes
+cannot expose excavated walls or a camera inside a tunnel. The added adapter
+therefore intersects rays with the reference shell DIFFERENCE the existing
+sphere/capsule union. CPU passability, continuous camera routes, WebGL ray casting
+and Canvas hit caches use that same volume. Canvas retains the established
+affine terrain atlas and replaces only projected excavation regions; physical
+inspection uses a bounded 24k-pixel fallback. No global terrain mesher is added.
+The base solid shader stays selected for solid Worlds. Hollow CSG shader/secondary
+terrain textures are created lazily when an excavation exists.
+
+The geometry-neutral linked-anchor and physical-passage contracts remain separate.
+Cube containment, planar apertures, shell subtraction and wall-relative controls
+belong to cube adapters. Perspective eye placement is an optional presentation
+view; the existing pointer controller handles looking and zooming. Traversal
+follows continuously inside authored capsule/ball volumes and offers connected
+branches at junctions. It does not switch maps to simulate passage travel.
+
+Before another geometry, retain this inventory and the controlled migration above.
+Extract shared lifecycle/transport/pointer infrastructure incrementally after cube
+acceptance. A proposed new execution system must demonstrate the established
+interface/workload limitation and compare against reuse. Cube-H does not authorize
+Cube-I, that migration, or another geometry.
