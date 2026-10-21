@@ -1,0 +1,416 @@
+{
+  "oracle": "Small: accepted independent Python Fraction/C1 finite Float32 formulas. Large: complete-word sequential-composition and raw history oracle; reused accepted C1 primitive in a separate executor.",
+  "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+  "smallGestures": 44,
+  "largeGestures": 8,
+  "geometryCases": 7022,
+  "independentlyCalculatedSmallDabs": 255,
+  "independentlyCalculatedSmallWords": 6630,
+  "largeSequentialWordComparisons": 5898288,
+  "historyWords": 3826,
+  "faultCases": 4,
+  "independentFaultDabWords": 392,
+  "elapsedMs": 54042.28549997788,
+  "smallResults": [
+    {
+      "label": "face-px",
+      "dabs": 2,
+      "independentlyCalculatedFloat32Words": 52,
+      "historyWords": 2,
+      "status": "complete"
+    },
+    {
+      "label": "face-nx",
+      "dabs": 2,
+      "independentlyCalculatedFloat32Words": 52,
+      "historyWords": 2,
+      "status": "complete"
+    },
+    {
+      "label": "face-py",
+      "dabs": 2,
+      "independentlyCalculatedFloat32Words": 52,
+      "historyWords": 2,
+      "status": "complete"
+    },
+    {
+      "label": "face-ny",
+      "dabs": 2,
+      "independentlyCalculatedFloat32Words": 52,
+      "historyWords": 2,
+      "status": "complete"
+    },
+    {
+      "label": "face-pz",
+      "dabs": 2,
+      "independentlyCalculatedFloat32Words": 52,
+      "historyWords": 2,
+      "status": "complete"
+    },
+    {
+      "label": "face-nz",
+      "dabs": 2,
+      "independentlyCalculatedFloat32Words": 52,
+      "historyWords": 2,
+      "status": "complete"
+    },
+    {
+      "label": "edge-px:ny",
+      "dabs": 5,
+      "independentlyCalculatedFloat32Words": 130,
+      "historyWords": 15,
+      "status": "complete"
+    },
+    {
+      "label": "edge-px:py",
+      "dabs": 5,
+      "independentlyCalculatedFloat32Words": 130,
+      "historyWords": 15,
+      "status": "complete"
+    },
+    {
+      "label": "edge-px:nz",
+      "dabs": 5,
+      "independentlyCalculatedFloat32Words": 130,
+      "historyWords": 15,
+      "status": "complete"
+    },
+    {
+      "label": "edge-px:pz",
+      "dabs": 5,
+      "independentlyCalculatedFloat32Words": 130,
+      "historyWords": 15,
+      "status": "complete"
+    },
+    {
+      "label": "edge-nx:py",
+      "dabs": 5,
+      "independentlyCalculatedFloat32Words": 130,
+      "historyWords": 15,
+      "status": "complete"
+    },
+    {
+      "label": "edge-nx:ny",
+      "dabs": 5,
+      "independentlyCalculatedFloat32Words": 130,
+      "historyWords": 15,
+      "status": "complete"
+    },
+    {
+      "label": "edge-nx:nz",
+      "dabs": 5,
+      "independentlyCalculatedFloat32Words": 130,
+      "historyWords": 15,
+      "status": "complete"
+    },
+    {
+      "label": "edge-nx:pz",
+      "dabs": 5,
+      "independentlyCalculatedFloat32Words": 130,
+      "historyWords": 15,
+      "status": "complete"
+    },
+    {
+      "label": "edge-py:nz",
+      "dabs": 5,
+      "independentlyCalculatedFloat32Words": 130,
+      "historyWords": 15,
+      "status": "complete"
+    },
+    {
+      "label": "edge-py:pz",
+      "dabs": 5,
+      "independentlyCalculatedFloat32Words": 130,
+      "historyWords": 15,
+      "status": "complete"
+    },
+    {
+      "label": "edge-ny:nz",
+      "dabs": 5,
+      "independentlyCalculatedFloat32Words": 130,
+      "historyWords": 15,
+      "status": "complete"
+    },
+    {
+      "label": "edge-ny:pz",
+      "dabs": 5,
+      "independentlyCalculatedFloat32Words": 130,
+      "historyWords": 15,
+      "status": "complete"
+    },
+    {
+      "label": "corner----",
+      "dabs": 9,
+      "independentlyCalculatedFloat32Words": 234,
+      "historyWords": 21,
+      "status": "complete"
+    },
+    {
+      "label": "corner---+",
+      "dabs": 9,
+      "independentlyCalculatedFloat32Words": 234,
+      "historyWords": 21,
+      "status": "complete"
+    },
+    {
+      "label": "corner--+-",
+      "dabs": 9,
+      "independentlyCalculatedFloat32Words": 234,
+      "historyWords": 21,
+      "status": "complete"
+    },
+    {
+      "label": "corner--++",
+      "dabs": 9,
+      "independentlyCalculatedFloat32Words": 234,
+      "historyWords": 21,
+      "status": "complete"
+    },
+    {
+      "label": "corner-+--",
+      "dabs": 9,
+      "independentlyCalculatedFloat32Words": 234,
+      "historyWords": 21,
+      "status": "complete"
+    },
+    {
+      "label": "corner-+-+",
+      "dabs": 9,
+      "independentlyCalculatedFloat32Words": 234,
+      "historyWords": 21,
+      "status": "complete"
+    },
+    {
+      "label": "corner-++-",
+      "dabs": 9,
+      "independentlyCalculatedFloat32Words": 234,
+      "historyWords": 21,
+      "status": "complete"
+    },
+    {
+      "label": "corner-+++",
+      "dabs": 9,
+      "independentlyCalculatedFloat32Words": 234,
+      "historyWords": 21,
+      "status": "complete"
+    },
+    {
+      "label": "four-face-raise",
+      "dabs": 11,
+      "independentlyCalculatedFloat32Words": 286,
+      "historyWords": 17,
+      "status": "complete"
+    },
+    {
+      "label": "dense-four-face-raise",
+      "dabs": 11,
+      "independentlyCalculatedFloat32Words": 286,
+      "historyWords": 17,
+      "status": "complete"
+    },
+    {
+      "label": "four-face-lower",
+      "dabs": 11,
+      "independentlyCalculatedFloat32Words": 286,
+      "historyWords": 17,
+      "status": "complete"
+    },
+    {
+      "label": "dense-four-face-lower",
+      "dabs": 11,
+      "independentlyCalculatedFloat32Words": 286,
+      "historyWords": 17,
+      "status": "complete"
+    },
+    {
+      "label": "four-face-smooth",
+      "dabs": 11,
+      "independentlyCalculatedFloat32Words": 286,
+      "historyWords": 17,
+      "status": "complete"
+    },
+    {
+      "label": "dense-four-face-smooth",
+      "dabs": 11,
+      "independentlyCalculatedFloat32Words": 286,
+      "historyWords": 17,
+      "status": "complete"
+    },
+    {
+      "label": "four-face-flatten",
+      "dabs": 11,
+      "independentlyCalculatedFloat32Words": 286,
+      "historyWords": 17,
+      "status": "complete"
+    },
+    {
+      "label": "dense-four-face-flatten",
+      "dabs": 11,
+      "independentlyCalculatedFloat32Words": 286,
+      "historyWords": 17,
+      "status": "complete"
+    },
+    {
+      "label": "cancel-raise",
+      "dabs": 2,
+      "independentlyCalculatedFloat32Words": 52,
+      "historyWords": 2,
+      "status": "cancelled"
+    },
+    {
+      "label": "cancel-lower",
+      "dabs": 2,
+      "independentlyCalculatedFloat32Words": 52,
+      "historyWords": 2,
+      "status": "cancelled"
+    },
+    {
+      "label": "cancel-smooth",
+      "dabs": 2,
+      "independentlyCalculatedFloat32Words": 52,
+      "historyWords": 2,
+      "status": "cancelled"
+    },
+    {
+      "label": "cancel-flatten",
+      "dabs": 2,
+      "independentlyCalculatedFloat32Words": 52,
+      "historyWords": 2,
+      "status": "cancelled"
+    },
+    {
+      "label": "cancel-zero",
+      "dabs": 0,
+      "independentlyCalculatedFloat32Words": 0,
+      "historyWords": 0,
+      "status": "cancelled"
+    },
+    {
+      "label": "fail-path",
+      "dabs": 1,
+      "independentlyCalculatedFloat32Words": 26,
+      "historyWords": 1,
+      "status": "failed"
+    },
+    {
+      "label": "fail-work",
+      "dabs": 2,
+      "independentlyCalculatedFloat32Words": 52,
+      "historyWords": 2,
+      "status": "failed"
+    },
+    {
+      "label": "fail-history",
+      "dabs": 2,
+      "independentlyCalculatedFloat32Words": 52,
+      "historyWords": 2,
+      "status": "failed"
+    },
+    {
+      "label": "no-op",
+      "dabs": 9,
+      "independentlyCalculatedFloat32Words": 234,
+      "historyWords": 0,
+      "status": "complete"
+    },
+    {
+      "label": "signed-zero",
+      "dabs": 1,
+      "independentlyCalculatedFloat32Words": 26,
+      "historyWords": 1,
+      "status": "complete"
+    }
+  ],
+  "largeResults": [
+    {
+      "label": "N128-raise",
+      "n": 128,
+      "dabs": 3,
+      "completeSequentialWordComparisons": 294918,
+      "historyWords": 167,
+      "allReplayWordsExact": true
+    },
+    {
+      "label": "N256-raise",
+      "n": 256,
+      "dabs": 3,
+      "completeSequentialWordComparisons": 1179654,
+      "historyWords": 667,
+      "allReplayWordsExact": true
+    },
+    {
+      "label": "N128-lower",
+      "n": 128,
+      "dabs": 3,
+      "completeSequentialWordComparisons": 294918,
+      "historyWords": 167,
+      "allReplayWordsExact": true
+    },
+    {
+      "label": "N256-lower",
+      "n": 256,
+      "dabs": 3,
+      "completeSequentialWordComparisons": 1179654,
+      "historyWords": 667,
+      "allReplayWordsExact": true
+    },
+    {
+      "label": "N128-smooth",
+      "n": 128,
+      "dabs": 3,
+      "completeSequentialWordComparisons": 294918,
+      "historyWords": 164,
+      "allReplayWordsExact": true
+    },
+    {
+      "label": "N256-smooth",
+      "n": 256,
+      "dabs": 3,
+      "completeSequentialWordComparisons": 1179654,
+      "historyWords": 650,
+      "allReplayWordsExact": true
+    },
+    {
+      "label": "N128-flatten",
+      "n": 128,
+      "dabs": 3,
+      "completeSequentialWordComparisons": 294918,
+      "historyWords": 167,
+      "allReplayWordsExact": true
+    },
+    {
+      "label": "N256-flatten",
+      "n": 256,
+      "dabs": 3,
+      "completeSequentialWordComparisons": 1179654,
+      "historyWords": 667,
+      "allReplayWordsExact": true
+    }
+  ],
+  "faultResults": [
+    {
+      "kind": "external-disjoint",
+      "allCanonicalWordsExact": 98,
+      "historyWords": 1,
+      "foreignWordsProtected": true
+    },
+    {
+      "kind": "external-overlap",
+      "allCanonicalWordsExact": 98,
+      "historyWords": 1,
+      "foreignWordsProtected": true
+    },
+    {
+      "kind": "publication-rejection",
+      "allCanonicalWordsExact": 98,
+      "historyWords": 1,
+      "foreignWordsProtected": true
+    },
+    {
+      "kind": "history-samples",
+      "allCanonicalWordsExact": 98,
+      "historyWords": 1,
+      "foreignWordsProtected": true
+    }
+  ]
+}

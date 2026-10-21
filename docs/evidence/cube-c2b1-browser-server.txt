@@ -1,0 +1,15 @@
+
+  VITE v8.3.4  ready in 226 ms
+
+  ➜  Local:   http://127.0.0.1:5247/
+5:53:54 PM [vite] (client) [Unhandled error] Error: Cylinder display epoch is not prepared.
+ > CylinderDisplayCache.elevationSnapshot src/rendering/cylindrical-raster.ts:28:61
+    26 |    /** Coherent read-only elevation epoch; the terrain remains the only authority. */
+    27 |    elevationSnapshot() {
+    28 |      if (this.sourceRevision !== this.terrain.revision) throw new Error('Cylinder display epoch is not prepared.');
+       |                                                               ^
+    29 |      return this.terrain.copyElevations();
+    30 |    }
+ > cylinderRasterSteps src/rendering/cylindrical-raster.ts:59:25
+ > paint src/components/CylinderPreview.tsx:149:54
+

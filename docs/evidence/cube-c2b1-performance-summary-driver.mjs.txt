@@ -1,0 +1,21 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {cpus,totalmem} from 'node:os';
+const data=JSON.parse(readFileSync('docs/evidence/cube-c2b1-performance.json','utf8'));
+const summarize=values=>{const sorted=values.toSorted((a,b)=>a-b);return {count:sorted.length,min:sorted[0],p50:sorted[Math.ceil(sorted.length*.5)-1],p95:sorted[Math.ceil(sorted.length*.95)-1],max:sorted.at(-1)};};
+const groups=[];
+for(const n of [128,256])for(const label of ['ordinary-edge','ordinary-corner','wide-edge','wide-corner','bending-65']){
+ const trials=data.trials.filter(t=>t.n===n&&t.label===label),pumps=trials.flatMap(t=>t.pumps);
+ groups.push({n,label,trials:trials.length,completed:trials.filter(t=>t.status==='complete').length,stoppedPrefixes:trials.filter(t=>t.status==='failed').length,
+  beginMs:summarize(trials.map(t=>t.beginMs)),executionWallMs:summarize(trials.map(t=>t.executionWallMs)),pumpMs:summarize(pumps.map(p=>p.ms)),
+  stages:Object.fromEntries([...new Set(pumps.map(p=>p.stage))].map(stage=>[stage,summarize(pumps.filter(p=>p.stage===stage).map(p=>p.ms))])),
+  maxNodeTurnGapMs:Math.max(...trials.map(t=>t.maxNodeTurnGapMs)),maxUndoMs:Math.max(...trials.map(t=>t.undoMs)),maxRedoMs:Math.max(...trials.map(t=>t.redoMs))});
+}
+const allPumps=data.trials.flatMap(t=>t.pumps),result={machine:{node:data.node,platform:data.platform,architecture:data.architecture,cpu:cpus()[0].model,logicalCpus:cpus().length,totalMemoryBytes:totalmem()},
+ quantile:'Nearest rank; all trials/pumps retained, no warmup exclusion; unequal workload counts. Milliseconds.',notes:data.notes,
+ trials:data.trials.length,completed:data.trials.filter(t=>t.status==='complete').length,beginMs:summarize(data.trials.map(t=>t.beginMs)),groups,
+ overallStages:Object.fromEntries([...new Set(allPumps.map(p=>p.stage))].map(stage=>[stage,summarize(allPumps.filter(p=>p.stage===stage).map(p=>p.ms))])),
+ stoppedPrefixes:data.trials.filter(t=>t.status==='failed').map(t=>({n:t.n,tool:t.tool,label:t.label,committedDabs:t.statistics.committedDabs,reason:t.error,failure:t.statistics.history.lastDabStatistics,exactFullWordReplay:t.completeWordReplayVerified})),
+ maxima:{pumpMs:Math.max(...data.trials.map(t=>t.maxPumpMs)),nodeTurnGapMs:Math.max(...data.trials.map(t=>t.maxNodeTurnGapMs)),undoMs:Math.max(...data.trials.map(t=>t.undoMs)),redoMs:Math.max(...data.trials.map(t=>t.redoMs)),
+  retainedHistoryBytes:Math.max(...data.trials.map(t=>t.history.retainedBytes)),historyAndDraftBytes:Math.max(...data.trials.map(t=>t.history.peakTypedBytes)),preparedDabBytes:Math.max(...data.trials.map(t=>t.statistics.peakPreparedDabBytes)),
+  observedProcessRss:Math.max(...data.trials.map(t=>t.memoryAfterExecution.rss)),observedHeapUsed:Math.max(...data.trials.map(t=>t.memoryAfterExecution.heapUsed)),observedArrayBuffers:Math.max(...data.trials.map(t=>t.memoryAfterExecution.arrayBuffers))}};
+writeFileSync('docs/evidence/cube-c2b1-performance-summary.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({trials:result.trials,completed:result.completed,stopped:result.stoppedPrefixes.length,beginMs:result.beginMs,maxima:result.maxima,stages:result.overallStages,groups:groups.map(g=>({n:g.n,label:g.label,trials:g.trials,complete:g.completed,wall:g.executionWallMs,pump:g.pumpMs,maxNodeGap:g.maxNodeTurnGapMs}))},null,2));

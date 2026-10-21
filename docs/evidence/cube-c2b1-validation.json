@@ -1,0 +1,178 @@
+[
+  {
+    "label": "focused",
+    "command": [
+      "node",
+      "--test",
+      "src/editor/solid-cube-session.test.ts",
+      "src/surfaces/solid-cube-stroke-path.test.ts",
+      "src/surfaces/cube-brush-distance.test.ts",
+      "src/terrain/solid-cube-brush.test.ts"
+    ],
+    "exitCode": 0,
+    "elapsedMs": 10568
+  },
+  {
+    "label": "independent-execution",
+    "command": [
+      "node",
+      "scripts/verify-solid-cube-execution.mjs",
+      "docs/evidence/cube-c2b1-"
+    ],
+    "exitCode": 0,
+    "elapsedMs": 57441
+  },
+  {
+    "label": "independent-strokes",
+    "command": [
+      "node",
+      "scripts/verify-solid-cube-strokes.mjs",
+      "docs/evidence/cube-c2b1-c2a-"
+    ],
+    "exitCode": 0,
+    "elapsedMs": 5992
+  },
+  {
+    "label": "independent-c1",
+    "command": [
+      "node",
+      "scripts/verify-solid-cube-dabs.mjs",
+      "docs/evidence/cube-c2b1-c1-"
+    ],
+    "exitCode": 0,
+    "elapsedMs": 18937
+  },
+  {
+    "label": "performance",
+    "command": [
+      "node",
+      "--expose-gc",
+      "scripts/measure-solid-cube-execution.mjs",
+      "docs/evidence/cube-c2b1-performance.json"
+    ],
+    "exitCode": 0,
+    "elapsedMs": 26375
+  },
+  {
+    "label": "cube-b-certificate",
+    "command": [
+      "node",
+      "--expose-gc",
+      "scripts/verify-solid-cube-routes.mjs",
+      "docs/evidence/cube-c2b1-cube-b-"
+    ],
+    "exitCode": 0,
+    "elapsedMs": 8001
+  },
+  {
+    "label": "cube-a-certificate",
+    "command": [
+      "node",
+      "scripts/verify-solid-cube.mjs"
+    ],
+    "exitCode": 0,
+    "elapsedMs": 10788
+  },
+  {
+    "label": "numerical-regression",
+    "command": [
+      "node",
+      "--test",
+      "src/terrain/brush.test.ts",
+      "src/terrain/cylindrical-brush-reference.test.ts",
+      "src/terrain/cylindrical-brush.test.ts",
+      "src/terrain/cylindrical-patch.test.ts",
+      "src/terrain/cylindrical-stroke-reference.test.ts",
+      "src/terrain/cylindrical-stroke.test.ts",
+      "src/terrain/cylindrical.test.ts",
+      "src/terrain/model.test.ts",
+      "src/terrain/refinement.test.ts",
+      "src/terrain/sampling.test.ts",
+      "src/terrain/solid-cube-brush.test.ts",
+      "src/terrain/solid-cube.test.ts",
+      "src/terrain/spherical-brush.test.ts",
+      "src/terrain/spherical-tools.test.ts",
+      "src/terrain/spherical.test.ts",
+      "src/terrain/wrapping.test.ts",
+      "src/rendering/camera.test.ts",
+      "src/rendering/cylindrical-elevation.test.ts",
+      "src/rendering/cylindrical-view.test.ts",
+      "src/rendering/display-raster.test.ts",
+      "src/rendering/edge-pan.test.ts",
+      "src/rendering/elevation-raster.test.ts",
+      "src/rendering/fit-map.test.ts",
+      "src/rendering/periodic-view.test.ts",
+      "src/rendering/spherical-editing.test.ts",
+      "src/rendering/spherical-elevation.test.ts",
+      "src/rendering/spherical-limb-assist.test.ts",
+      "src/rendering/spherical-raster-cache.test.ts",
+      "src/rendering/spherical-view.test.ts",
+      "src/rendering/surface-renderer.test.ts",
+      "src/rendering/wrapping-camera.test.ts",
+      "src/editor/cylinder-persistence.test.ts",
+      "src/editor/cylinder-preview-session.test.ts",
+      "src/editor/cylinder-worker-certification.test.ts",
+      "src/editor/cylinder-worker.test.ts",
+      "src/editor/cylindrical-history.test.ts",
+      "src/editor/solid-cube-session.test.ts",
+      "src/editor/sphere-worker.test.ts",
+      "src/editor/spherical-history.test.ts",
+      "src/editor/spherical-limb-session.test.ts",
+      "src/editor/spherical-persistence.test.ts",
+      "src/editor/spherical-session.test.ts",
+      "src/editor/terrain-history.test.ts",
+      "src/persistence/cylindrical-format.test.ts",
+      "src/persistence/spherical-format.test.ts",
+      "src/persistence/terrain-format.test.ts",
+      "src/persistence/wrapped-format.test.ts",
+      "src/surfaces/compatibility.test.ts",
+      "src/surfaces/cube-brush-distance.test.ts",
+      "src/surfaces/cube-route-exact.test.ts",
+      "src/surfaces/cube-sphere.test.ts",
+      "src/surfaces/cylinder-distance.test.ts",
+      "src/surfaces/cylinder-path-spacing.test.ts",
+      "src/surfaces/cylinder-path.test.ts",
+      "src/surfaces/cylinder-spacing-decimal.test.ts",
+      "src/surfaces/cylinder.test.ts",
+      "src/surfaces/rectangular.test.ts",
+      "src/surfaces/solid-cube-routing.test.ts",
+      "src/surfaces/solid-cube-stroke-path.test.ts",
+      "src/surfaces/solid-cube.test.ts",
+      "src/surfaces/world.test.ts"
+    ],
+    "exitCode": 0,
+    "elapsedMs": 21098
+  },
+  {
+    "label": "typecheck",
+    "command": [
+      "node",
+      "node_modules/typescript/bin/tsc",
+      "--noEmit"
+    ],
+    "exitCode": 0,
+    "elapsedMs": 678
+  },
+  {
+    "label": "build",
+    "command": [
+      "node",
+      "node_modules/vite/bin/vite.js",
+      "build"
+    ],
+    "exitCode": 0,
+    "elapsedMs": 537
+  },
+  {
+    "label": "browser-regression",
+    "command": [
+      "node",
+      "D:\\serrian-tide-world/node_modules/@playwright/test/cli.js",
+      "test",
+      "-c",
+      "D:\\serrian-tide-world/.local/cube-c2b1.config.ts"
+    ],
+    "exitCode": 0,
+    "elapsedMs": 1664623
+  }
+]

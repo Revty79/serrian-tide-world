@@ -1,0 +1,22 @@
+import {readFileSync,writeFileSync,readdirSync,copyFileSync,statSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+const prefix='docs/evidence/cube-c2b1-',directory='.local/cube-c2b1-browser/docs/evidence',sha=v=>createHash('sha256').update(v).digest('hex');
+const entries=readdirSync(directory).sort().map(file=>{
+ const path=`${directory}/${file}`,data=readFileSync(path);if(!statSync(path).isFile())throw Error('Expected flat evidence directory');
+ const input=/^a7-p1c-saved-geography-n(128|256)\.json$/.test(file);if(input&&sha(data)!==sha(readFileSync(`docs/evidence/${file}`)))throw Error('Input fixture mismatch');
+ return {archivePath:file,role:input?'accepted input fixture':'generated regression evidence',bytes:data.length,sha256:sha(data)};
+});
+const archives=[];let current;
+for(const entry of entries){
+ if(!current||current.uncompressedBytes+entry.bytes>32*1024*1024){current={archive:`${prefix}browser-artifacts-${archives.length+1}.zip`,files:0,uncompressedBytes:0};archives.push(current);}
+ current.uncompressedBytes+=entry.bytes;current.files++;entry.archive=current.archive;
+}
+writeFileSync(prefix+'browser-artifacts.json',JSON.stringify({archives,scope:'Actual unchanged-editor desktop/mobile browser regressions. Cube-C2B1 is numerical only and has no UI. Extract all archives into one evidence directory.',files:entries.length,generated:entries.filter(e=>e.role==='generated regression evidence').length,uncompressedBytes:entries.reduce((a,e)=>a+e.bytes,0),entries},null,2)+'\n');
+for(const [source,name] of [
+ ['.local/cube-c2b1-validate.mjs','validation-driver.mjs.txt'],['.local/cube-c2b1.config.ts','browser-config.ts.txt'],
+ ['.local/cube-c2b1-summarize.mjs','performance-summary-driver.mjs.txt'],['.local/cube-c2b1-preserve.mjs','preservation-driver.mjs.txt'],
+ ['.local/cube-c2b1-split-zip.ps1','archive-command.ps1.txt'],['.local/cube-c2b1-package.mjs','evidence-package-driver.mjs.txt'],
+ ['.local/cube-c2b1-inventory.mjs','inventory-driver.mjs.txt'],['.local/cube-c2b1-check-stage.mjs','stage-audit-driver.mjs.txt'],
+ ['.local/cube-c2b1-finalize-browser.mjs','report-finalizer.mjs.txt'],['.local/cube-c2b1-write-receipt.mjs','delivery-driver.mjs.txt']
+])copyFileSync(source,prefix+name);
+console.log({files:entries.length,generated:entries.filter(e=>e.role==='generated regression evidence').length,bytes:entries.reduce((a,e)=>a+e.bytes,0),archives:archives.length});

@@ -1,0 +1,15 @@
+import {execFileSync} from 'node:child_process';
+import {readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const manifest=JSON.parse(readFileSync('docs/evidence/cube-c2b1-delivery-manifest.json','utf8'));
+const paths=[...manifest.entries.map(e=>e.path),manifest.manifestPath].sort();
+const staged=execFileSync('git',['diff','--cached','--name-only'],{encoding:'utf8'}).trim().split(/\r?\n/).filter(Boolean).sort();assert.deepEqual(staged,paths);
+for(const e of manifest.entries)assert.equal(createHash('sha256').update(readFileSync(e.path)).digest('hex'),e.sha256,e.path);
+const tested=JSON.parse(readFileSync('docs/evidence/cube-c2b1-tested-source.json','utf8')).files;
+for(const f of tested)assert.equal(createHash('sha256').update(readFileSync(f.path)).digest('hex'),f.sha256,f.path);
+assert.equal(execFileSync('git',['diff','--name-only'],{encoding:'utf8'}).trim(),'');
+const rawStdout=['docs/evidence/cube-c2b1-browser-server.txt','docs/evidence/cube-c2b1-build.txt','docs/evidence/cube-c2b1-cube-b-certificate.txt','docs/evidence/cube-c2b1-independent-c1.txt','docs/evidence/cube-c2b1-independent-execution.txt','docs/evidence/cube-c2b1-independent-strokes.txt'];
+// Preserve exact tool stdout, including its trailing spaces/blank lines.
+execFileSync('git',['diff','--cached','--check','--','.',...rawStdout.map(p=>':(exclude)'+p)]);
+console.log({exactStagedPaths:staged.length,counts:manifest.counts,testedSourceUnchanged:tested.length,sourceDocumentationAndNonRawEvidenceWhitespace:'clean',rawStdoutWhitespaceRetained:rawStdout,unstagedTrackedChanges:0});
