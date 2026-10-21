@@ -25,6 +25,7 @@ export class CubeEditorSession {
  private readonly word=new DataView(new ArrayBuffer(4));
  private failure='';private unresolved=false;private inputAt=0;private inputTimes:number[]=[];
  status='Ready to sculpt';readonly timings:CubeEditTiming[]=[];maxPumpMs=0;
+ beforeOperation=()=>{};
  constructor(terrain:SolidCubeTerrain,name:string,saved=false,options:ResponsiveCubeOptions={}){
   this.terrain=terrain;this.name=name;this.baselineName=name;this.hasSaved=saved;
   this.baseline=new Uint32Array(terrain.copyElevations().buffer);
@@ -40,7 +41,7 @@ export class CubeEditorSession {
  snapshot(){return {status:this.status,error:this.error,needsRecovery:this.unresolved,modified:this.modified,processing:this.processing,painting:this.painting,pending:this.queue.length,admission:this.admission&&{accepted:this.admission.accepted,processed:this.admission.processed,pending:this.admission.pending,peak:this.admission.peak},revision:this.terrain.revision,history:this.history.statistics,operations:this.history.operations,stroke:this.core.stroke?.statistics??this.core.lastStroke?.statistics,termination:this.core.lastStroke?.status,failure:this.core.lastStroke?.failure,placement:this.placement,executionBackend:this.core.diagnostics?.backend??'cooperative certified fixed-phase',diagnostics:this.core.diagnostics,timings:this.timings.slice(),maxPumpMs:this.maxPumpMs};}
  begin(point:SurfacePosition,settings:CubeBrushSettings,options:CubeStrokeOptions={},inputTime=performance.now()){
   if(this.closed||this.locked||this.job||this.unresolved)return false;
-  try{const now=performance.now();this.inputAt=Number.isFinite(inputTime)&&inputTime>=0&&inputTime<=now?inputTime:now;this.core.begin(point,settings,{workWindow:this.placement==='bounded-phase'?'dab':'gesture',...options});this.admission=new OrderedSurfaceInput(CUBE_EDITOR_INPUT_LIMIT,this.gestureInputLimit);this.failure='';this.queue=[];this.inputTimes=[this.inputAt];this.released=false;this.status='Drawing';this.start();return true;}
+  try{this.beforeOperation();const now=performance.now();this.inputAt=Number.isFinite(inputTime)&&inputTime>=0&&inputTime<=now?inputTime:now;this.core.begin(point,settings,{workWindow:this.placement==='bounded-phase'?'dab':'gesture',...options});this.admission=new OrderedSurfaceInput(CUBE_EDITOR_INPUT_LIMIT,this.gestureInputLimit);this.failure='';this.queue=[];this.inputTimes=[this.inputAt];this.released=false;this.status='Drawing';this.start();return true;}
   catch(error){this.failed(error);return false;}
  }
  accept(point:SurfacePosition,inputTime=performance.now()){
@@ -111,7 +112,7 @@ export class CubeEditorSession {
  }
  async replay(redo=false){
   if(this.closed||this.locked)return;this.cancel();await this.job;
-  try{if(redo?this.core.redo():this.core.undo()){this.collectPublication();this.unresolved=false;this.failure='';this.status=redo?'Redo · updating terrain':'Undo · updating terrain';
+  try{this.beforeOperation();if(redo?this.core.redo():this.core.undo()){this.collectPublication();this.unresolved=false;this.failure='';this.status=redo?'Redo · updating terrain':'Undo · updating terrain';
     this.job=(async()=>{this.requestDisplay();await this.displayJob;await this.reconcile();})().finally(()=>{this.job=undefined;if(!this.unresolved)this.status=redo?'Redo complete':'Undo complete';this.changed();});await this.job;
    }else this.changed();
   }catch(error){this.failed(error);}
