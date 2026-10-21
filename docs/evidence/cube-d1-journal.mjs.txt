@@ -1,0 +1,6 @@
+import {appendFileSync} from 'node:fs';
+export default class Journal {
+ onBegin(config,suite){appendFileSync('browser-journal.jsonl',JSON.stringify({event:'begin',at:new Date().toISOString(),expected:suite.allTests().map(t=>({id:t.id,title:t.titlePath()}))})+'\n');}
+ onTestEnd(test,result){appendFileSync('browser-journal.jsonl',JSON.stringify({event:'end',at:new Date().toISOString(),id:test.id,title:test.titlePath(),status:result.status,expectedStatus:test.expectedStatus,duration:result.duration,retry:result.retry,errors:result.errors,attachments:result.attachments.map(({name,path,contentType})=>({name,path,contentType}))})+'\n');}
+ onEnd(result){appendFileSync('browser-journal.jsonl',JSON.stringify({event:'complete',at:new Date().toISOString(),...result})+'\n');}
+}

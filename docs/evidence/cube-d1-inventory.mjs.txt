@@ -1,0 +1,10 @@
+import {readFileSync,writeFileSync,statSync} from 'node:fs';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+const baseline='77df76f3a0a12273f9277d201277f13e9985074d';
+const git=(...args)=>execFileSync('git',args,{encoding:'utf8'}).trim(),hash=b=>createHash('sha256').update(b).digest('hex');
+const paths=[...new Set([...git('diff','--name-only',baseline,'--').split(/\r?\n/),...git('ls-files','--others','--exclude-standard').split(/\r?\n/)])].filter(Boolean).sort();
+const files=paths.filter(p=>!p.endsWith('cube-d1-delivery-manifest.json')).map(path=>{const bytes=readFileSync(path);return{path,category:path.startsWith('docs/evidence/')?'evidence':path==='README.md'||path.startsWith('docs/')?'documentation':path.startsWith('tests/')||path.endsWith('.test.ts')?'test':'runtime-config',change:git('ls-tree',baseline,'--',path)?'modified':'added',bytes:bytes.length,sha256:hash(bytes)};});
+if(files.some(f=>!f.path.startsWith('docs/evidence/cube-d1-')&&f.category==='evidence'))throw Error('Unrelated evidence changed');
+writeFileSync('docs/evidence/cube-d1-delivery-manifest.json',JSON.stringify({baseline,generated:new Date().toISOString(),categories:Object.fromEntries(['runtime-config','test','documentation','evidence'].map(c=>[c,files.filter(f=>f.category===c).length])),note:'Working-byte SHA256 includes native line endings. Exact committed Git blobs are in the post-implementation receipt. This manifest excludes itself.',files},null,2)+'\n');
+console.log(JSON.stringify({files:files.length+1,categories:Object.fromEntries(['runtime-config','test','documentation','evidence'].map(c=>[c,files.filter(f=>f.category===c).length]))}));

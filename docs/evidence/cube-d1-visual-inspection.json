@@ -1,0 +1,20 @@
+{
+  "scope": "Agent visual inspection of selected actual final browser screenshots; this is not owner visual acceptance or Ember technical approval.",
+  "filesInspected": [
+    "cube-d1-desktop-n256-auto-front.png",
+    "cube-d1-desktop-n256-auto-opposite.png",
+    "cube-d1-desktop-n256-auto-edge.png",
+    "cube-d1-desktop-n256-auto-net.png",
+    "cube-d1-mobile-n256-canvas-corner.png",
+    "cube-d1-mobile-n256-auto-net.png"
+  ],
+  "observations": [
+    "Planar square faces and sharp physical corners are visible in overview and corner views. The exact edge-facing orthographic preset correctly has a rectangular two-face silhouette.",
+    "The opposite preset exposes the opposite three faces, including the underside. The geography is consistent with the oriented net.",
+    "The complete net has six labeled connected panels, local U/V arrows and visible continuation of the ridge/coastlines across its uncut joins.",
+    "Mobile captures retain the read-only header, visible cube/net and native-size controls. These are high-DPR browser-emulated screenshots, not physical-phone evidence.",
+    "The Canvas corner capture has thin quad-edge antialias coverage creases. The geometry is not expanded to hide them.",
+    "The mobile automatic net capture includes a temporary native text-selection highlight on the disabled minus glyph after touch automation. Screenshots are preserved as captured."
+  ],
+  "geographyProof": "Exact source words/revisions, 156-point per-resolution pixel fixtures and topology/projection tests supply numerical proof separately from this visual inspection."
+}

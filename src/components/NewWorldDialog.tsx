@@ -27,7 +27,7 @@ export function NewWorldDialog({ busy, hasDocument, create, close, error }: { bu
         <div className="map-actions"><button type="submit" disabled={!valid}>Create World / Map</button></div>
       </fieldset>
       {busy && <p role="status">Preparing world…</p>}
-      {error && <p role="alert">{error}</p>}<button type="button" onClick={close}>{busy ? 'Cancel preparation' : hasDocument ? 'Cancel' : 'Browse saved maps'}</button>
+      {error && <p role="alert">{error}</p>}<p className="hint"><a href="/dev/cube-preview.html" target="_blank" rel="noopener" style={{color:'inherit'}}>Development preview: inspect the physical cube (read-only)</a></p><button type="button" onClick={close}>{busy ? 'Cancel preparation' : hasDocument ? 'Cancel' : 'Browse saved maps'}</button>
     </form>
   </dialog>;
 }

@@ -1,0 +1,20 @@
+import {readFileSync,writeFileSync,copyFileSync} from 'node:fs';
+if(!JSON.parse(readFileSync('.local/cube-d1-final-browser/validation-complete.json')).frozenSourcesUnchanged)throw Error('Wait for full unchanged initial regression and performance');
+function edit(path,changes){let s=readFileSync(path,'utf8');copyFileSync(path,'.local/cube-d1-before-startup-'+path.split('/').at(-1)+'.txt');for(const[a,b]of changes){if(!s.includes(a))throw Error('Missing exact patch in '+path+': '+a);s=s.replace(a,b);}writeFileSync(path,s);}
+edit('src/rendering/solid-cube-presentation.ts',[
+ ["gpuInitializationMs:0,firstVisibleFieldN:0","gpuInitializationMs:0,gpuInitializationStartedMs:-1,firstVisibleBackend:'',firstVisibleFieldN:0"],
+ ["this.failShader=options.failShader??false;if(this.backend==='auto')this.createGpu();gpuCanvas.hidden=true;cpuCanvas.hidden=true;","this.failShader=options.failShader??false;gpuCanvas.hidden=true;cpuCanvas.hidden=true;"],
+ ["private createGpu(){const at=performance.now();","private createGpu(){const at=performance.now();this.metrics.gpuInitializationStartedMs=at-this.metrics.started;"],
+ ["this.metrics.gpuInitializationMs+=performance.now()-at;}","this.metrics.gpuInitializationMs+=performance.now()-at;return this.gpu.available;}"],
+ ["if(this.backend==='canvas'||!this.gpu?.available)await this.ensureAtlas();this.metrics.updateMs","if(this.backend==='canvas'||this.gpu&&!this.gpu.available)await this.ensureAtlas();this.metrics.updateMs"],
+ ["else if(!this.gpu)this.createGpu();if(backend==='canvas'||!this.gpu?.available)","else if(!this.gpu&&this.metrics.firstVisibleMs!==undefined)this.createGpu();if(backend==='canvas'||this.gpu&&!this.gpu.available)"],
+ ["if(first){const canvas=","if(first){this.metrics.firstVisibleBackend=this.metrics.backend;const canvas="],
+ ["if(first&&this.metrics.firstVisibleMs===undefined)this.metrics.firstVisibleMs=performance.now()-this.metrics.started;","if(first&&this.metrics.firstVisibleMs===undefined){this.metrics.firstVisibleMs=performance.now()-this.metrics.started;\n     // Real coarse Canvas pixels get paint opportunities before synchronous GL startup.\n     requestAnimationFrame(()=>{if(!this.disposed&&this.backend==='auto'&&!this.gpu){if(!this.createGpu())void this.ensureAtlas();this.schedule();}});\n    }"],
+ ["{reason:'Canvas explicitly selected',renderer:","{reason:this.backend==='canvas'?'Canvas explicitly selected':'WebGL initialization follows first terrain pixels',renderer:"],
+ ["this.cpuCanvas.width=this.cpuCanvas.height=0;this.onChange","this.cpuCanvas.width=this.cpuCanvas.height=this.gpuCanvas.width=this.gpuCanvas.height=0;this.onChange"],
+]);
+edit('tests/cube-visual.spec.ts',[
+ ["expect(initial.firstVisibleFieldN).toBe(16);","expect(initial.firstVisibleFieldN).toBe(16);expect(initial.firstVisibleBackend).toBe('Canvas2D fallback');"],
+ ["}else expect(initial.gpu.presentations).toBeGreaterThan(0);","}else {expect(initial.gpu.presentations).toBeGreaterThan(0);expect(initial.gpuInitializationStartedMs).toBeGreaterThanOrEqual(initial.firstVisibleMs!);}"],
+]);
+writeFileSync('.local/cube-d1-startup-correction.json',JSON.stringify({at:new Date().toISOString(),changes:['Defer GPU initialization until after actual coarse Canvas first pixels and subsequent RAF','Retain full CPU preparation only when requested or GPU actually failed','Zero both canvases when disposed, including pre-GPU startup','Assert actual initial backend and GPU initialization ordering']},null,2));

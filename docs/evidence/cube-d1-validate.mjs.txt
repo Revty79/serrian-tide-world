@@ -1,0 +1,22 @@
+import {spawn} from 'node:child_process';
+import {mkdirSync,copyFileSync,writeFileSync,readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+const root='D:/serrian-tide-world',out=root+'/.local/cube-d1-final-browser';
+mkdirSync(out+'/docs/evidence',{recursive:true});
+for(const name of ['a7-p1c-saved-geography-n128.json','a7-p1c-saved-geography-n256.json'])copyFileSync(root+'/docs/evidence/'+name,out+'/docs/evidence/'+name);
+const list=execFileSync('git',['ls-files','--cached','--others','--exclude-standard','--','src','tests','scripts','dev','package.json','package-lock.json','tsconfig.json','vite.config.ts','playwright.config.ts'],{cwd:root,encoding:'utf8'}).trim().split(/\r?\n/).sort();
+const manifest=()=>Object.fromEntries(list.map(p=>[p,createHash('sha256').update(readFileSync(root+'/'+p)).digest('hex')]));
+const before=manifest();writeFileSync(out+'/source-freeze.json',JSON.stringify({at:new Date().toISOString(),baseline:'77df76f3a0a12273f9277d201277f13e9985074d',files:before},null,2));
+async function run(name,args,cwd=root){const logfile=await import('node:fs').then(fs=>fs.openSync(out+'/'+name+'.log','w'));return await new Promise((resolve,reject)=>{const p=spawn(process.execPath,args,{cwd,stdio:['ignore',logfile,logfile],windowsHide:true});p.on('error',reject);p.on('exit',code=>{writeFileSync(out+'/'+name+'-status.json',JSON.stringify({code,at:new Date().toISOString()}));code===0?resolve():reject(Error(name+' failed '+code));});});}
+try{
+ const tests=list.filter(p=>/^src\/(terrain|rendering|editor|persistence|surfaces)\/[^/]+\.test\.ts$/.test(p));
+ await run('numerical',['--test',...tests]);
+ await run('typecheck',['node_modules/typescript/bin/tsc','--noEmit']);
+ await run('build',['node_modules/vite/bin/vite.js','build']);
+ await run('browser',[root+'/node_modules/@playwright/test/cli.js','test','-c',root+'/.local/cube-d1-final.config.ts'],out);
+ if(JSON.stringify(manifest())!==JSON.stringify(before))throw Error('Frozen sources changed during regression');
+ await run('performance',[root+'/.local/cube-d1-performance.mjs'],out);
+ if(JSON.stringify(manifest())!==JSON.stringify(before))throw Error('Frozen sources changed during performance');
+ writeFileSync(out+'/validation-complete.json',JSON.stringify({status:'passed',at:new Date().toISOString(),frozenSourcesUnchanged:true}));
+}catch(e){writeFileSync(out+'/validation-failed.json',JSON.stringify({error:String(e),at:new Date().toISOString()}));process.exitCode=1;}

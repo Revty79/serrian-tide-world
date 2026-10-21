@@ -1,0 +1,1143 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "-c",
+      "D:/serrian-tide-world/.local/cube-d1-startup.config.ts"
+    ],
+    "configFile": "D:\\serrian-tide-world\\.local\\cube-d1-startup.config.ts",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/serrian-tide-world/test-results/cube-d1-startup",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "cube-visual.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/serrian-tide-world/test-results/cube-d1-startup",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "cube-visual.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\serrian-tide-world\\test-results\\cube-d1-startup",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": "cube-visual.spec.ts",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5260",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\serrian-tide-world\\test-results\\cube-d1-startup",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mobile",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": "cube-visual.spec.ts",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5260",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Mobile Safari/537.36",
+          "viewport": {
+            "width": 412,
+            "height": 839
+          },
+          "screen": {
+            "width": 412,
+            "height": 915
+          },
+          "deviceScaleFactor": 2.625,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "D:\\serrian-tide-world\\.local\\cube-d1-journal.mjs",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:/serrian-tide-world/.local/cube-d1-final-startup/browser-result.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "cube-visual.spec.ts",
+      "file": "cube-visual.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Cube-D1 N128 auto: visible geography, all viewpoints, net, navigation and exact source",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3455,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:45:49.703Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-N128-a-3347b-navigation-and-exact-source-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-be05902807475b194897",
+          "file": "cube-visual.spec.ts",
+          "line": 6,
+          "column": 81
+        },
+        {
+          "title": "Cube-D1 N128 canvas: visible geography, all viewpoints, net, navigation and exact source",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2966,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:45:53.330Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-N128-c-10500-navigation-and-exact-source-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-ffa154492c7b45871568",
+          "file": "cube-visual.spec.ts",
+          "line": 6,
+          "column": 81
+        },
+        {
+          "title": "Cube-D1 N256 auto: visible geography, all viewpoints, net, navigation and exact source",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3031,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:45:56.384Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-N256-a-b0bda-navigation-and-exact-source-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-1d60d4bcccda5ec31f67",
+          "file": "cube-visual.spec.ts",
+          "line": 6,
+          "column": 81
+        },
+        {
+          "title": "Cube-D1 N256 canvas: visible geography, all viewpoints, net, navigation and exact source",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3767,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:45:59.502Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-N256-c-e2b32-navigation-and-exact-source-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-a1b9e18dc1e7eb4317e9",
+          "file": "cube-visual.spec.ts",
+          "line": 6,
+          "column": 81
+        },
+        {
+          "title": "Cube-D1 N128: actual GPU/Canvas pixels on every face, edge, corner and net",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 691,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:03.360Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-N128-a-ad95d-ry-face-edge-corner-and-net-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-01929252b81cfc68b439",
+          "file": "cube-visual.spec.ts",
+          "line": 21,
+          "column": 34
+        },
+        {
+          "title": "Cube-D1 N256: actual GPU/Canvas pixels on every face, edge, corner and net",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1542,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:04.075Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-N256-a-9f1c3-ry-face-edge-corner-and-net-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-5da0c988eb1a5fdb0224",
+          "file": "cube-visual.spec.ts",
+          "line": 21,
+          "column": 34
+        },
+        {
+          "title": "Cube-D1 N128 context loss, recovery, revision refresh and queued disposal preserve geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 906,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:05.642Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-N128-c-c015c-disposal-preserve-geography-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-63ca453750d11808258c",
+          "file": "cube-visual.spec.ts",
+          "line": 25,
+          "column": 34
+        },
+        {
+          "title": "Cube-D1 N256 context loss, recovery, revision refresh and queued disposal preserve geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2381,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:06.574Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-N256-c-18e69-disposal-preserve-geography-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-7dbe7f284d7801ed642d",
+          "file": "cube-visual.spec.ts",
+          "line": 25,
+          "column": 34
+        },
+        {
+          "title": "Cube-D1 unavailable: independently functional real-terrain Canvas fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 840,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:08.977Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-unavai-54164-eal-terrain-Canvas-fallback-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-bd614346d42ce399c730",
+          "file": "cube-visual.spec.ts",
+          "line": 28,
+          "column": 55
+        },
+        {
+          "title": "Cube-D1 shader: independently functional real-terrain Canvas fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 875,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:09.862Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-shader-6c31b-eal-terrain-Canvas-fallback-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-726db8018ec849c649a5",
+          "file": "cube-visual.spec.ts",
+          "line": 28,
+          "column": 55
+        },
+        {
+          "title": "Cube-D1 rapid resolution/mode changes keep latest authority and the main app exposes only a read-only link",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1266,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:10.776Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-rapid--20768-poses-only-a-read-only-link-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-1239bbf7b0d7e33ef1e2",
+          "file": "cube-visual.spec.ts",
+          "line": 32,
+          "column": 1
+        },
+        {
+          "title": "Cube-D1 actual software WebGL selects responsive real-terrain Canvas and releases GL resources",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2029,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:12.086Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-actual-d935f-s-and-releases-GL-resources-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-a950089781bbe985753f",
+          "file": "cube-visual.spec.ts",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "Cube-D1 N128 auto: visible geography, all viewpoints, net, navigation and exact source",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4055,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:14.628Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-N128-a-3347b-navigation-and-exact-source-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-cb0b04aa4b666fe4d06a",
+          "file": "cube-visual.spec.ts",
+          "line": 6,
+          "column": 81
+        },
+        {
+          "title": "Cube-D1 N128 canvas: visible geography, all viewpoints, net, navigation and exact source",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3491,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:18.863Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-N128-c-10500-navigation-and-exact-source-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-ced3d27ba36b3f7e128b",
+          "file": "cube-visual.spec.ts",
+          "line": 6,
+          "column": 81
+        },
+        {
+          "title": "Cube-D1 N256 auto: visible geography, all viewpoints, net, navigation and exact source",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3638,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:22.432Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-N256-a-b0bda-navigation-and-exact-source-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-f0ac0873bb8b249b6ce7",
+          "file": "cube-visual.spec.ts",
+          "line": 6,
+          "column": 81
+        },
+        {
+          "title": "Cube-D1 N256 canvas: visible geography, all viewpoints, net, navigation and exact source",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4235,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:26.160Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-N256-c-e2b32-navigation-and-exact-source-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-9bd047e3fe015354b93c",
+          "file": "cube-visual.spec.ts",
+          "line": 6,
+          "column": 81
+        },
+        {
+          "title": "Cube-D1 N128: actual GPU/Canvas pixels on every face, edge, corner and net",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 912,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:30.484Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-N128-a-ad95d-ry-face-edge-corner-and-net-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-e7055feca0294226d416",
+          "file": "cube-visual.spec.ts",
+          "line": 21,
+          "column": 34
+        },
+        {
+          "title": "Cube-D1 N256: actual GPU/Canvas pixels on every face, edge, corner and net",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1788,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:31.424Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-N256-a-9f1c3-ry-face-edge-corner-and-net-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-daab14e19179da366464",
+          "file": "cube-visual.spec.ts",
+          "line": 21,
+          "column": 34
+        },
+        {
+          "title": "Cube-D1 N128 context loss, recovery, revision refresh and queued disposal preserve geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 954,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:33.237Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-N128-c-c015c-disposal-preserve-geography-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-5ad92084a451f9bce4e2",
+          "file": "cube-visual.spec.ts",
+          "line": 25,
+          "column": 34
+        },
+        {
+          "title": "Cube-D1 N256 context loss, recovery, revision refresh and queued disposal preserve geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2407,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:34.213Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-N256-c-18e69-disposal-preserve-geography-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-8a3de3703b71ec2709ee",
+          "file": "cube-visual.spec.ts",
+          "line": 25,
+          "column": 34
+        },
+        {
+          "title": "Cube-D1 unavailable: independently functional real-terrain Canvas fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 927,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:36.647Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-unavai-54164-eal-terrain-Canvas-fallback-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-869493c9938d1e1bcae3",
+          "file": "cube-visual.spec.ts",
+          "line": 28,
+          "column": 55
+        },
+        {
+          "title": "Cube-D1 shader: independently functional real-terrain Canvas fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 978,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:37.608Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-shader-6c31b-eal-terrain-Canvas-fallback-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-3b3fccdf165a09a7d854",
+          "file": "cube-visual.spec.ts",
+          "line": 28,
+          "column": 55
+        },
+        {
+          "title": "Cube-D1 rapid resolution/mode changes keep latest authority and the main app exposes only a read-only link",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1318,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:38.622Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-rapid--20768-poses-only-a-read-only-link-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-9ca61209959d9ca265f7",
+          "file": "cube-visual.spec.ts",
+          "line": 32,
+          "column": 1
+        },
+        {
+          "title": "Cube-D1 actual software WebGL selects responsive real-terrain Canvas and releases GL resources",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1929,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T04:46:39.980Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-d1-startup\\cube-visual-Cube-D1-actual-d935f-s-and-releases-GL-resources-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947874d851575bd4b9e-2e5acf608695ee9fbd53",
+          "file": "cube-visual.spec.ts",
+          "line": 37,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-21T04:45:49.157Z",
+    "duration": 52897.001,
+    "expected": 24,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

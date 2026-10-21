@@ -1,0 +1,36 @@
+import hashlib, json, pathlib, zipfile
+
+root = pathlib.Path('D:/serrian-tide-world')
+source = root / '.local/cube-d1-traces'
+dest = root / 'docs/evidence'
+files = sorted(source.iterdir())
+assert len(files) == 24 and all(f.is_file() for f in files)
+catalogue = {f['file']: f for f in json.loads((dest / 'cube-d1-trace-files.json').read_text(encoding='utf-8'))}
+parts, group, count = [], [], 0
+for file in files:
+    if group and count + file.stat().st_size > 38 * 1024**2:
+        parts.append(group)
+        group, count = [], 0
+    group.append(file)
+    count += file.stat().st_size
+if group:
+    parts.append(group)
+archives = []
+for index, group in enumerate(parts, 1):
+    target = dest / f'cube-d1-traces-{index:02d}.zip'
+    with zipfile.ZipFile(target, 'x', compression=zipfile.ZIP_STORED) as archive:
+        for file in group:
+            archive.write(file, file.name)
+    entries = []
+    with zipfile.ZipFile(target) as archive:
+        for info in archive.infolist():
+            data = archive.read(info.filename)
+            digest = hashlib.sha256(data).hexdigest()
+            expected = catalogue[info.filename]
+            assert len(data) == expected['bytes'] and digest == expected['sha256']
+            entries.append(dict(file=info.filename, bytes=len(data), sha256=digest))
+    assert target.stat().st_size < 40 * 1024**2
+    archives.append(dict(file=target.name, bytes=target.stat().st_size, sha256=hashlib.sha256(target.read_bytes()).hexdigest(), entries=entries))
+assert sum(len(a['entries']) for a in archives) == 24
+(dest / 'cube-d1-trace-archives.json').write_text(json.dumps(dict(method='Exact original final Playwright trace.zip files in bounded stored ZIP parts; all extracted byte streams verified against SHA256 and lengths. No trace repacking.', archives=archives), indent=2) + '\n', encoding='utf-8')
+print(json.dumps([dict(file=a['file'], bytes=a['bytes'], entries=len(a['entries'])) for a in archives]))

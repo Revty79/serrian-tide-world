@@ -1,0 +1,18 @@
+import {spawn,execFileSync} from 'node:child_process';
+import {mkdirSync,writeFileSync,readFileSync,openSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+const root='D:/serrian-tide-world',out=root+'/.local/cube-d1-final-startup';mkdirSync(out+'/docs/evidence',{recursive:true});
+if(!JSON.parse(readFileSync(root+'/.local/cube-d1-final-browser/validation-complete.json')).frozenSourcesUnchanged)throw Error('Full pre-correction regression not complete');
+const initial=JSON.parse(readFileSync(root+'/.local/cube-d1-final-browser/source-freeze.json')).files;
+const manifest=()=>Object.fromEntries(Object.keys(initial).map(p=>[p,createHash('sha256').update(readFileSync(root+'/'+p)).digest('hex')]));
+const before=manifest(),changed=Object.keys(initial).filter(p=>initial[p]!==before[p]);if(changed.length!==2||!changed.includes('src/rendering/solid-cube-presentation.ts')||!changed.includes('tests/cube-visual.spec.ts'))throw Error('Unexpected startup correction scope '+changed.join(','));
+writeFileSync(out+'/source-freeze.json',JSON.stringify({at:new Date().toISOString(),baseline:'77df76f3a0a12273f9277d201277f13e9985074d',changedSinceFullRegression:changed,numericalAndLegacyDependenciesUnchanged:true,files:before},null,2));
+async function run(name,args,cwd=root){const log=openSync(out+'/'+name+'.log','w');await new Promise((resolve,reject)=>{const p=spawn(process.execPath,args,{cwd,stdio:['ignore',log,log],windowsHide:true});p.on('error',reject);p.on('exit',code=>{writeFileSync(out+'/'+name+'-status.json',JSON.stringify({code,at:new Date().toISOString()}));code===0?resolve():reject(Error(name+' failed '+code));});});}
+try{
+ await run('typecheck',['node_modules/typescript/bin/tsc','--noEmit']);await run('build',['node_modules/vite/bin/vite.js','build']);
+ await run('browser',[root+'/node_modules/@playwright/test/cli.js','test','-c',root+'/.local/cube-d1-startup.config.ts'],out);
+ if(JSON.stringify(manifest())!==JSON.stringify(before))throw Error('Final sources changed during affected browser checks');
+ await run('performance',[root+'/.local/cube-d1-performance.mjs'],out);
+ if(JSON.stringify(manifest())!==JSON.stringify(before))throw Error('Final sources changed during performance');
+ writeFileSync(out+'/validation-complete.json',JSON.stringify({status:'passed',at:new Date().toISOString(),frozenSourcesUnchanged:true,changedSinceFullRegression:changed,affectedBrowserCases:24,numericalAndLegacyDependenciesUnchanged:true}));
+}catch(e){writeFileSync(out+'/validation-failed.json',JSON.stringify({error:String(e),at:new Date().toISOString()}));process.exitCode=1;}

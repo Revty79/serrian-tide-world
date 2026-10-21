@@ -1,0 +1,2 @@
+import base from '../playwright.config.ts';
+export default {...base,testDir:'../tests',outputDir:'../test-results/cube-d1-regression',use:{...base.use,baseURL:'http://127.0.0.1:5260'},reporter:[['list'],['./cube-d1-journal.mjs'],['json',{outputFile:'D:/serrian-tide-world/.local/cube-d1-final-browser/browser-result.json'}]],webServer:undefined};

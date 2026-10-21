@@ -1,0 +1,2 @@
+import base from '../playwright.config.ts';
+export default {...base,testDir:'../tests',testMatch:'cube-visual.spec.ts',workers:1,fullyParallel:false,outputDir:'../test-results/cube-d1-startup',use:{...base.use,baseURL:'http://127.0.0.1:5260'},reporter:[['list'],['./cube-d1-journal.mjs'],['json',{outputFile:'D:/serrian-tide-world/.local/cube-d1-final-startup/browser-result.json'}]],webServer:undefined};
