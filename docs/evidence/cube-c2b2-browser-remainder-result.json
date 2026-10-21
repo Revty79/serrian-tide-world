@@ -1,0 +1,4066 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "-c",
+      "D:\\serrian-tide-world/.local/cube-c2b2-remainder.config.ts",
+      "--test-list",
+      "D:\\serrian-tide-world/.local/cube-c2b2-remainder-list.txt"
+    ],
+    "configFile": "D:\\serrian-tide-world\\.local\\cube-c2b2-remainder.config.ts",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/serrian-tide-world/test-results/cube-c2b2-remainder",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/serrian-tide-world/test-results/cube-c2b2-remainder",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "desktop",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5255",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "mobile",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5255",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Mobile Safari/537.36",
+          "viewport": {
+            "width": 412,
+            "height": 839
+          },
+          "screen": {
+            "width": 412,
+            "height": 915
+          },
+          "deviceScaleFactor": 2.625,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:/serrian-tide-world/docs/evidence/cube-c2b2-browser-remainder-result.json"
+        }
+      ],
+      [
+        "D:\\serrian-tide-world\\.local\\cube-c2b2-journal-reporter.mjs",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "cylinder-painting.spec.ts",
+      "file": "cylinder-painting.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "ordered worker hardware N64 all four brushes, fast/slow input, exact full history and v4",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 24893,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:33:57.344Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-painting-ordered--aa3f9-t-exact-full-history-and-v4-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ba4b39155cfd18020877-a418992e115f6f30a7de",
+          "file": "cylinder-painting.spec.ts",
+          "line": 22,
+          "column": 90
+        },
+        {
+          "title": "ordered worker hardware N128 all four brushes, fast/slow input, exact full history and v4",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 25677,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:33:57.314Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-painting-ordered--4b6f3-t-exact-full-history-and-v4-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ba4b39155cfd18020877-7b708d43d2a19e5ce6b6",
+          "file": "cylinder-painting.spec.ts",
+          "line": 22,
+          "column": 90
+        },
+        {
+          "title": "ordered worker hardware N256 all four brushes, fast/slow input, exact full history and v4",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13228,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:34:22.849Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-painting-ordered--973aa-t-exact-full-history-and-v4-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ba4b39155cfd18020877-dcb8c17b3376a81ce7f0",
+          "file": "cylinder-painting.spec.ts",
+          "line": 22,
+          "column": 90
+        },
+        {
+          "title": "ordered worker fallback N64 all four brushes, fast/slow input, exact full history and v4",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 9148,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:34:23.917Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-painting-ordered--87b4b-t-exact-full-history-and-v4-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ba4b39155cfd18020877-3598cece5eefd80b90cc",
+          "file": "cylinder-painting.spec.ts",
+          "line": 22,
+          "column": 90
+        },
+        {
+          "title": "ordered worker fallback N128 all four brushes, fast/slow input, exact full history and v4",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 9715,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:34:33.548Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-painting-ordered--8d49f-t-exact-full-history-and-v4-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ba4b39155cfd18020877-6f4330123f9ea3b52919",
+          "file": "cylinder-painting.spec.ts",
+          "line": 22,
+          "column": 90
+        },
+        {
+          "title": "ordered worker fallback N256 all four brushes, fast/slow input, exact full history and v4",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14817,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:34:37.673Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-painting-ordered--63ac6-t-exact-full-history-and-v4-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ba4b39155cfd18020877-af2a1a8ea4bb89487907",
+          "file": "cylinder-painting.spec.ts",
+          "line": 22,
+          "column": 90
+        },
+        {
+          "title": "worker startup failure safely uses existing engine and reports exact history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2108,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:34:43.948Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-painting-worker-s-01b10-e-and-reports-exact-history-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ba4b39155cfd18020877-933b2243835c7780e0da",
+          "file": "cylinder-painting.spec.ts",
+          "line": 39,
+          "column": 1
+        },
+        {
+          "title": "backlog cancellation, stale result, recovery, Save drain, context loss and disposal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 7278,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:34:46.172Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-painting-backlog--56dc0-n-context-loss-and-disposal-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ba4b39155cfd18020877-ae25a47de77b14e13af6",
+          "file": "cylinder-painting.spec.ts",
+          "line": 44,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "native worker input",
+          "file": "cylinder-painting.spec.ts",
+          "line": 58,
+          "column": 6,
+          "specs": [
+            {
+              "title": "unified N256 pen, touch, two-finger takeover and Undo during backlog",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 5219,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-21T02:34:54.061Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-painting-native-w-1e8cb-ver-and-Undo-during-backlog-mobile\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ba4b39155cfd18020877-186255993fcfcdd84653",
+              "file": "cylinder-painting.spec.ts",
+              "line": 60,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "cylinder-preview.spec.ts",
+      "file": "cylinder-preview.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "cylinder measured navigation, cap tools, repeated and long/cancelled strokes N256",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 27969,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:34:54.767Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-preview-cylinder--ae954-long-cancelled-strokes-N256-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0babfb25369b3a20ce88-918e4135649a4a60669a",
+          "file": "cylinder-preview.spec.ts",
+          "line": 117,
+          "column": 26
+        }
+      ]
+    },
+    {
+      "title": "cylinder-rendering.spec.ts",
+      "file": "cylinder-rendering.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "GPU palette and projected coverage agree with independent double-precision authority at every cylinder detail",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 16054,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:43:16.003Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-rendering-GPU-pal-a0832-ty-at-every-cylinder-detail-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3abcf65ac97e7c967021-47ea6a5e3dede3194ae0",
+          "file": "cylinder-rendering.spec.ts",
+          "line": 18,
+          "column": 1
+        },
+        {
+          "title": "unified N128 rapid navigation, cuts, caps, resize and v4 preserve exact terrain",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 32327,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:43:23.805Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-rendering-unified-55cc4-d-v4-preserve-exact-terrain-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3abcf65ac97e7c967021-afbd1477b029485ff1e0",
+          "file": "cylinder-rendering.spec.ts",
+          "line": 24,
+          "column": 25
+        },
+        {
+          "title": "unified N256 rapid navigation, cuts, caps, resize and v4 preserve exact terrain",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 28512,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:43:32.234Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-rendering-unified-e8b30-d-v4-preserve-exact-terrain-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3abcf65ac97e7c967021-9a44f4d696a561ea7715",
+          "file": "cylinder-rendering.spec.ts",
+          "line": 24,
+          "column": 25
+        },
+        {
+          "title": "device loss and recovery retain held accepted work and exact history; fallback remains editable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4675,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:43:56.861Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-rendering-device--34adc-y-fallback-remains-editable-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3abcf65ac97e7c967021-29a4a190e470766d5bf7",
+          "file": "cylinder-rendering.spec.ts",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "unavailable WebGL uses correct CPU fallback, readouts, Undo/Redo and v4 Save/Open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 5122,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:44:01.563Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-rendering-unavail-2674a--Undo-Redo-and-v4-Save-Open-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3abcf65ac97e7c967021-cc7271143a0d89346a02",
+          "file": "cylinder-rendering.spec.ts",
+          "line": 56,
+          "column": 62
+        },
+        {
+          "title": "shader-failure WebGL uses correct CPU fallback, readouts, Undo/Redo and v4 Save/Open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4978,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:44:01.710Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-rendering-shader--fbe58--Undo-Redo-and-v4-Save-Open-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3abcf65ac97e7c967021-043b333e9ee16b36b3c0",
+          "file": "cylinder-rendering.spec.ts",
+          "line": 56,
+          "column": 62
+        },
+        {
+          "title": "independent pointer follows held N256 input while exact numerical work is pending",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7175,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:44:06.855Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-rendering-indepen-547a9-t-numerical-work-is-pending-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3abcf65ac97e7c967021-39600cc3208a5caf3ded",
+          "file": "cylinder-rendering.spec.ts",
+          "line": 63,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "cylinder-rims.spec.ts",
+      "file": "cylinder-rims.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "cylinder start rim: all four tools continue in both directions with exact words",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 12130,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:35:00.524Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-rims-cylinder-sta-aa666-directions-with-exact-words-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8bbfd25d329b61c25f0b-17901e48d43795892e7a",
+          "file": "cylinder-rims.spec.ts",
+          "line": 10,
+          "column": 31
+        },
+        {
+          "title": "cylinder end rim: all four tools continue in both directions with exact words",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 12052,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:35:13.300Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-rims-cylinder-end-5dc02-directions-with-exact-words-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8bbfd25d329b61c25f0b-37bdd0ba0539d9e235f0",
+          "file": "cylinder-rims.spec.ts",
+          "line": 10,
+          "column": 31
+        }
+      ]
+    },
+    {
+      "title": "cylinder-visual-correction.spec.ts",
+      "file": "cylinder-visual-correction.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "elevation-first hardware",
+          "file": "cylinder-visual-correction.spec.ts",
+          "line": 11,
+          "column": 63,
+          "specs": [
+            {
+              "title": "relief pixels agree with independent physical finite-difference gradients on both caps and side",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 14179,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-21T02:44:07.475Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-visual-correction-e2ce6-ients-on-both-caps-and-side-mobile\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "533bdb0703262df09e59-a195c26d17b306f47ef8",
+              "file": "cylinder-visual-correction.spec.ts",
+              "line": 12,
+              "column": 31
+            },
+            {
+              "title": "N128 unified display diagnostics, terrain appearance, exact stencil, history and v4",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 16845,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-21T02:44:14.830Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-visual-correction-31d3e-xact-stencil-history-and-v4-mobile\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "533bdb0703262df09e59-54b0801401dcb140bd20",
+              "file": "cylinder-visual-correction.spec.ts",
+              "line": 17,
+              "column": 31
+            },
+            {
+              "title": "N256 unified display diagnostics, terrain appearance, exact stencil, history and v4",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 8106,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-21T02:44:21.838Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-visual-correction-c54c6-xact-stencil-history-and-v4-mobile\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "533bdb0703262df09e59-f8af15f4f79427f02fc6",
+              "file": "cylinder-visual-correction.spec.ts",
+              "line": 17,
+              "column": 31
+            }
+          ]
+        },
+        {
+          "title": "elevation-first fallback",
+          "file": "cylinder-visual-correction.spec.ts",
+          "line": 11,
+          "column": 63,
+          "specs": [
+            {
+              "title": "N128 unified display diagnostics, terrain appearance, exact stencil, history and v4",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 5446,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-21T02:44:30.292Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-visual-correction-e4d6e-xact-stencil-history-and-v4-mobile\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "533bdb0703262df09e59-93cca550b8f675deb78e",
+              "file": "cylinder-visual-correction.spec.ts",
+              "line": 17,
+              "column": 31
+            },
+            {
+              "title": "N256 unified display diagnostics, terrain appearance, exact stencil, history and v4",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7753,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-21T02:44:32.001Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-visual-correction-b3c6a-xact-stencil-history-and-v4-mobile\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "533bdb0703262df09e59-88fc6676eff908e39105",
+              "file": "cylinder-visual-correction.spec.ts",
+              "line": 17,
+              "column": 31
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "cylinder-workspace.spec.ts",
+      "file": "cylinder-workspace.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "normal Atlas creates, sculpts all four tools and both rims, saves, switches and reopens exact v4 geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14903,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:35:24.392Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-workspace-normal--94620--reopens-exact-v4-geography-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e5134e589d5d4b4378bc-461a12ec7144c9b6579c",
+          "file": "cylinder-workspace.spec.ts",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "normal cylinder detail 64: exact saved words, signed-zero restoration and persistence timing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 10010,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:35:25.947Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-workspace-normal--eb063-tion-and-persistence-timing-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e5134e589d5d4b4378bc-e320678f7aeab228d946",
+          "file": "cylinder-workspace.spec.ts",
+          "line": 42,
+          "column": 29
+        },
+        {
+          "title": "normal cylinder detail 128: exact saved words, signed-zero restoration and persistence timing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 10866,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:35:36.133Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-workspace-normal--ad6e6-tion-and-persistence-timing-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e5134e589d5d4b4378bc-eb65db7bcb16676dc60b",
+          "file": "cylinder-workspace.spec.ts",
+          "line": 42,
+          "column": 29
+        },
+        {
+          "title": "normal cylinder detail 256: exact saved words, signed-zero restoration and persistence timing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14374,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:35:39.832Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-workspace-normal--74587-tion-and-persistence-timing-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e5134e589d5d4b4378bc-3eb5f3cbc09b9600f398",
+          "file": "cylinder-workspace.spec.ts",
+          "line": 42,
+          "column": 29
+        },
+        {
+          "title": "normal cylinder protects unsaved work, rejects damaged records, rolls back both stores, and disposes replaced sessions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 8506,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:35:47.191Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-workspace-normal--67763--disposes-replaced-sessions-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e5134e589d5d4b4378bc-f2960a16c516e4a8e71a",
+          "file": "cylinder-workspace.spec.ts",
+          "line": 49,
+          "column": 1
+        },
+        {
+          "title": "held high-detail cylinder updates the saved badge before release and Undo returns exactly to its checkpoint",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 8216,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:35:56.027Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-workspace-held-hi-04c57-s-exactly-to-its-checkpoint-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e5134e589d5d4b4378bc-4a6da145c540c6415c35",
+          "file": "cylinder-workspace.spec.ts",
+          "line": 86,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "unified cylinder native input",
+          "file": "cylinder-workspace.spec.ts",
+          "line": 65,
+          "column": 6,
+          "specs": [
+            {
+              "title": "held stroke Save drains, native pen and touch edit, two fingers navigate, cancellation stays reversible",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile",
+                  "projectName": "mobile",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4719,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-21T02:35:54.473Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\cylinder-workspace-unified-d514a-ncellation-stays-reversible-mobile\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e5134e589d5d4b4378bc-f3b66e6235ecd4aba279",
+              "file": "cylinder-workspace.spec.ts",
+              "line": 67,
+              "column": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "focused-view.spec.ts",
+      "file": "focused-view.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "same saved world in full-height, focused and Fit views: real widths, previews, proportions and responsive screenshots",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13670,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:35:59.381Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\focused-view-same-saved-wo-6bcee--and-responsive-screenshots-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-8e9ed78e3753d67d310b",
+          "file": "focused-view.spec.ts",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "view choices, movable cuts, vertical exploration, toolbar, fullscreen and zoom preserve data and pending Redo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4001,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:36:04.413Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\focused-view-view-choices--9a533-serve-data-and-pending-Redo-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-2254c64c1892918cc56a",
+          "file": "focused-view.spec.ts",
+          "line": 79,
+          "column": 1
+        },
+        {
+          "title": "focused raise preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 11591,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:36:08.507Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\focused-view-focused-raise-0a3f3-d-pans-with-exact-Undo-Redo-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-a671b5ae84962c4043c2",
+          "file": "focused-view.spec.ts",
+          "line": 100,
+          "column": 3
+        },
+        {
+          "title": "focused lower preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11332,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:36:13.153Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\focused-view-focused-lower-60d4e-d-pans-with-exact-Undo-Redo-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-d92b81cd4906844de685",
+          "file": "focused-view.spec.ts",
+          "line": 100,
+          "column": 3
+        },
+        {
+          "title": "focused smooth preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 11431,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:36:20.181Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\focused-view-focused-smoot-07a49-d-pans-with-exact-Undo-Redo-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-8b14e57966faff3f140e",
+          "file": "focused-view.spec.ts",
+          "line": 100,
+          "column": 3
+        },
+        {
+          "title": "focused flatten preview coordinates match one numerical dab after repeated pans, with exact Undo/Redo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11334,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:36:24.555Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\focused-view-focused-flatt-5c2c0-d-pans-with-exact-Undo-Redo-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-fd1fc65c5d259ab150c6",
+          "file": "focused-view.spec.ts",
+          "line": 100,
+          "column": 3
+        },
+        {
+          "title": "edge-assisted drawing crosses the focused boundary and periodic phase cut as one mouse/touch stroke",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 5441,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:36:31.698Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\focused-view-edge-assisted-c0360-t-as-one-mouse-touch-stroke-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b705bd3cde308c0b7026-dd7aaae4922afd294ff9",
+          "file": "focused-view.spec.ts",
+          "line": 134,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "navigation-stabilization.spec.ts",
+      "file": "navigation-stabilization.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "actual editor: Space from a focused button and multiple drags with one held key pan both ways without sculpting",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4607,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:36:35.984Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\navigation-stabilization-a-ff449-both-ways-without-sculpting-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-8ddc0a76c1731c4e15b6",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 48,
+          "column": 1
+        },
+        {
+          "title": "bounded wide editor: no horizontal room at Fill, zoom creates room, Pan traverses both bounds, Fit remains separate",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2700,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:36:37.248Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\navigation-stabilization-b-b73bf-bounds-Fit-remains-separate-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-493dc2162052e8ef1147",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 63,
+          "column": 1
+        },
+        {
+          "title": "repeated views share exactly one dab; long pans, seam strokes and aligned readouts match direct numerical editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 17753,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:36:40.015Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\navigation-stabilization-r-0a132-ch-direct-numerical-editing-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-e54560e167b8856c8060",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 78,
+          "column": 1
+        },
+        {
+          "title": "actual raise: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13065,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:36:40.737Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\navigation-stabilization-a-4a9bd-n-one-exact-undoable-stroke-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-1f56d1e17ef938028f70",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 126,
+          "column": 3
+        },
+        {
+          "title": "actual lower: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11508,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:36:54.041Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\navigation-stabilization-a-a5317-n-one-exact-undoable-stroke-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-e1b177de907a827675c5",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 126,
+          "column": 3
+        },
+        {
+          "title": "actual smooth: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 11867,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:36:58.131Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\navigation-stabilization-a-6fec7-n-one-exact-undoable-stroke-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-fc5c949f5ffee2947c8f",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 126,
+          "column": 3
+        },
+        {
+          "title": "actual flatten: screen-edge scrolling crosses a phase rebase in one exact undoable stroke",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12057,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:37:05.777Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\navigation-stabilization-a-1d4fc-n-one-exact-undoable-stroke-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-6ec91c7a81d87f8fc5d7",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 126,
+          "column": 3
+        },
+        {
+          "title": "left-edge assistance crosses the opposite phase cut and an unrelated host resize safely ends it",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 8538,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:37:10.208Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\navigation-stabilization-l-e8a54--host-resize-safely-ends-it-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-5c9a32e22057439811c0",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 160,
+          "column": 1
+        },
+        {
+          "title": "bounded edge scroll moves both axes, stops at real boundaries without time-strength, can be disabled, and never starts on hover",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10576,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:37:18.063Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\navigation-stabilization-b-623b8-d-and-never-starts-on-hover-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-58228f0663958c07fa07",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 175,
+          "column": 1
+        },
+        {
+          "title": "Escape, cancel, lost capture, blur, tool changes and toolbar obstruction leave no continuing camera or stray dabs",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 36352,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:37:18.938Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\navigation-stabilization-E-3ad1e-inuing-camera-or-stray-dabs-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-77b39ae5ed0f172e960d",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 201,
+          "column": 1
+        },
+        {
+          "title": "native touch and pen navigate horizontally, touch edge strokes stay one operation, two fingers cancel assistance safely",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10396,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:37:28.875Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\navigation-stabilization-n-cd8eb-rs-cancel-assistance-safely-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "060024113e4fdbbed6f6-6f8bc2c1a288c43969cb",
+          "file": "navigation-stabilization.spec.ts",
+          "line": 230,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "sphere-standards.spec.ts",
+      "file": "sphere-standards.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "spherical standards N128: actual Globe/Net ordinary and large brushes, accepted input, exact history and v3 reopening",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 24891,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:37:39.543Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\sphere-standards-spherical-f88e8-ct-history-and-v3-reopening-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aca7ed7a7544f8baa604-c1b0b1f876caf8cdc448",
+          "file": "sphere-standards.spec.ts",
+          "line": 24,
+          "column": 29
+        },
+        {
+          "title": "spherical standards N256: actual Globe/Net ordinary and large brushes, accepted input, exact history and v3 reopening",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 32696,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:37:56.153Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\sphere-standards-spherical-81821-ct-history-and-v3-reopening-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aca7ed7a7544f8baa604-1ea1724b3f13daadad52",
+          "file": "sphere-standards.spec.ts",
+          "line": 24,
+          "column": 29
+        },
+        {
+          "title": "sphere appearance, navigation and source synchronization never rewrite geography; hardware context loss/restoration and CPU fallback are safe",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5707,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:38:05.482Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\sphere-standards-sphere-ap-b49ed-n-and-CPU-fallback-are-safe-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aca7ed7a7544f8baa604-e5297e03dd236c16ecb6",
+          "file": "sphere-standards.spec.ts",
+          "line": 46,
+          "column": 1
+        },
+        {
+          "title": "N256 background limb strokes preserve native mouse/pen/touch continuity and stop on two-finger or failed-worker interruption",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16266,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:38:11.352Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\sphere-standards-N256-back-a8430--failed-worker-interruption-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aca7ed7a7544f8baa604-b658d4c06c2aba7ef94b",
+          "file": "sphere-standards.spec.ts",
+          "line": 64,
+          "column": 1
+        },
+        {
+          "title": "WebGL unavailable and worker construction failure retain ordered exact painting and recoverable single-operation history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4885,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:38:28.048Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\sphere-standards-WebGL-una-0cace-le-single-operation-history-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aca7ed7a7544f8baa604-78868ba86b56e812a5f3",
+          "file": "sphere-standards.spec.ts",
+          "line": 92,
+          "column": 1
+        },
+        {
+          "title": "pending CPU background work cannot masquerade as painted terrain through a quality-only redraw",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 6148,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:38:30.073Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\sphere-standards-pending-C-45a67-rough-a-quality-only-redraw-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aca7ed7a7544f8baa604-70a5e41d3ed6b79d2c9c",
+          "file": "sphere-standards.spec.ts",
+          "line": 100,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "spherical-editing.spec.ts",
+      "file": "spherical-editing.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "historical blank overlay: real continent, shared net/rotated screenshots, discard and reload guards, planar preservation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5056,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:38:33.110Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-editing-historic-2d677--guards-planar-preservation-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-290c51517fcd246595de",
+          "file": "spherical-editing.spec.ts",
+          "line": 22,
+          "column": 1
+        },
+        {
+          "title": "all four tools on globe and connected net match the numerical engine bit for bit with exact Undo/Redo and readouts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 9495,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:38:36.486Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-editing-all-four-0d307-xact-Undo-Redo-and-readouts-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-8ed81f7470bc6146def2",
+          "file": "spherical-editing.spec.ts",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "joined net stroke and screen-edge assistance retain physical spacing; gaps/cuts safely end the gesture",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3570,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:38:38.318Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-editing-joined-n-4ae2d-cuts-safely-end-the-gesture-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-e06b6607edba9734369b",
+          "file": "spherical-editing.spec.ts",
+          "line": 81,
+          "column": 1
+        },
+        {
+          "title": "mouse/pen/touch arbitration, cancellation, shortcuts, recenter and view changes protect single operations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5558,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:38:42.055Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-editing-mouse-pe-2254a-s-protect-single-operations-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-ea0e0594f6301e68e06b",
+          "file": "spherical-editing.spec.ts",
+          "line": 107,
+          "column": 1
+        },
+        {
+          "title": "real projected painting across all twelve face boundaries, eight corners, poles, and a clipped globe limb",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 20684,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:38:46.286Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-editing-real-pro-94367-es-and-a-clipped-globe-limb-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-a4782b0fd6a5347f1af2",
+          "file": "spherical-editing.spec.ts",
+          "line": 145,
+          "column": 1
+        },
+        {
+          "title": "actual N256 blank preparation, physical controls focus, responsive narrow/square/ultrawide layout and fullscreen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5203,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:38:47.820Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-editing-actual-N-e2c74-awide-layout-and-fullscreen-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-eb10e4c326941fdf7d4f",
+          "file": "spherical-editing.spec.ts",
+          "line": 168,
+          "column": 1
+        },
+        {
+          "title": "brush-to-screen and rotation performance N=128",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16298,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:38:53.096Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-editing-brush-to-906ec--rotation-performance-N-128-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-e45b6012a64fe78c184f",
+          "file": "spherical-editing.spec.ts",
+          "line": 187,
+          "column": 29
+        },
+        {
+          "title": "brush-to-screen and rotation performance N=256",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 29562,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:39:07.820Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-editing-brush-to-1cfe7--rotation-performance-N-256-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53fc226a7c7eb8d0346e-3afbe99233bb679b2127",
+          "file": "spherical-editing.spec.ts",
+          "line": 187,
+          "column": 29
+        }
+      ]
+    },
+    {
+      "title": "spherical-limb-workspace.spec.ts",
+      "file": "spherical-limb-workspace.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "unified held limb stroke N128: native input, dynamic visibility, exact samples/history and Save/Open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19193,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:39:10.091Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-limb-workspace-u-bd789-mples-history-and-Save-Open-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0db52292fe991d14412d-f3281ea9e720ef88b85d",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 24,
+          "column": 29
+        },
+        {
+          "title": "unified held limb stroke N256: native input, dynamic visibility, exact samples/history and Save/Open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 33513,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:39:29.713Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-limb-workspace-u-23e83-mples-history-and-Save-Open-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0db52292fe991d14412d-21edd7114e4e47a891c3",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 24,
+          "column": 29
+        },
+        {
+          "title": "assisted geographical continuity at a seam under a manually rotated camera",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4230,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:39:38.732Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-limb-workspace-a-d4f80-r-a-manually-rotated-camera-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0db52292fe991d14412d-d3ad96c5d600c47cf6e4",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 53,
+          "column": 60
+        },
+        {
+          "title": "assisted geographical continuity at a corner under a manually rotated camera",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3915,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:39:43.126Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-limb-workspace-a-ac16e-r-a-manually-rotated-camera-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0db52292fe991d14412d-a59089e09fff748d6875",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 53,
+          "column": 60
+        },
+        {
+          "title": "assisted geographical continuity at a pole under a manually rotated camera",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3887,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:39:47.184Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-limb-workspace-a-a564c-r-a-manually-rotated-camera-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0db52292fe991d14412d-f00f461e7e71a83319a7",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 53,
+          "column": 60
+        },
+        {
+          "title": "native pen assistance stops on release and remains one exact operation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4176,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:39:51.211Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-limb-workspace-n-4a594-remains-one-exact-operation-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0db52292fe991d14412d-1bcd2f49754959679644",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 69,
+          "column": 1
+        },
+        {
+          "title": "assistance stops on pointercancel without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3981,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:39:55.527Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-limb-workspace-a-6beaf-ut-damaging-applied-history-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0db52292fe991d14412d-400e604160ba54cf3167",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "assistance stops on lostcapture without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4180,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:39:59.642Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-limb-workspace-a-41998-ut-damaging-applied-history-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0db52292fe991d14412d-cf2b7e54d93b44107798",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "assistance stops on Space without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4556,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:40:03.740Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-limb-workspace-a-6a001-ut-damaging-applied-history-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0db52292fe991d14412d-5c6dd1490064214eb55f",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "assistance stops on navigation without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4421,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:40:03.988Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-limb-workspace-a-a2bb6-ut-damaging-applied-history-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0db52292fe991d14412d-321fc01f6f988de2f9b0",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "assistance stops on blur without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4678,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:40:08.466Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-limb-workspace-a-dcc6e-ut-damaging-applied-history-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0db52292fe991d14412d-2df26d354204bce8a8a8",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "assistance stops on resize without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4470,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:40:08.591Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-limb-workspace-a-cd708-ut-damaging-applied-history-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0db52292fe991d14412d-5f6e1aa052925057593d",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "assistance stops on wheel without damaging applied history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4645,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:40:13.226Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-limb-workspace-a-197f1-ut-damaging-applied-history-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0db52292fe991d14412d-9cc423ec72a531ccd3ca",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 77,
+          "column": 121
+        },
+        {
+          "title": "native two-finger takeover stops assisted painting and continues globe navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4525,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:40:13.320Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-limb-workspace-n-14377--continues-globe-navigation-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0db52292fe991d14412d-186349ea3054a22c6d46",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 91,
+          "column": 1
+        },
+        {
+          "title": "opt-out, actual limb at zoom, pole-facing orientation and preview follow physical geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7459,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:40:18.047Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-limb-workspace-o-99643-w-follow-physical-geography-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0db52292fe991d14412d-85683cdc68872c18cd90",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 103,
+          "column": 1
+        },
+        {
+          "title": "Globe: contextual radius, strength, intensity and signed target update numerical response and preview",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 11530,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:40:18.084Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-limb-workspace-G-e443d-erical-response-and-preview-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0db52292fe991d14412d-e1f0d3d1f0a0c6670c4b",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 118,
+          "column": 56
+        },
+        {
+          "title": "Six-face net: contextual radius, strength, intensity and signed target update numerical response and preview",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10177,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:40:25.781Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-limb-workspace-S-9d963-erical-response-and-preview-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0db52292fe991d14412d-50e0946583523f47ece9",
+          "file": "spherical-limb-workspace.spec.ts",
+          "line": 118,
+          "column": 56
+        }
+      ]
+    },
+    {
+      "title": "spherical-performance.spec.ts",
+      "file": "spherical-performance.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "controlled spherical editing N128",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 75170,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:40:30.179Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-performance-controlled-spherical-editing-N128-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73418ad06ce0bf9f12bf-1837e6b23b135f0e867a",
+          "file": "spherical-performance.spec.ts",
+          "line": 10,
+          "column": 29
+        },
+        {
+          "title": "controlled spherical editing N256",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 115672,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:40:36.530Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-performance-controlled-spherical-editing-N256-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73418ad06ce0bf9f12bf-1f1f93a77e0c6d04f51c",
+          "file": "spherical-performance.spec.ts",
+          "line": 10,
+          "column": 29
+        },
+        {
+          "title": "CPU profile actual N256 repeated editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Explicit profiling run only",
+                  "location": {
+                    "file": "D:\\serrian-tide-world\\tests\\spherical-performance.spec.ts",
+                    "line": 50,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "skipped",
+                  "duration": 128,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:41:47.246Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Explicit profiling run only",
+                      "location": {
+                        "file": "D:\\serrian-tide-world\\tests\\spherical-performance.spec.ts",
+                        "line": 50,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-performance-CPU--ebb3d-ctual-N256-repeated-editing-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "73418ad06ce0bf9f12bf-e0b2f0a5d6990e74e596",
+          "file": "spherical-performance.spec.ts",
+          "line": 49,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "spherical-persistence.spec.ts",
+      "file": "spherical-persistence.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "actual UI: blank and sculpted sphere survives reload, reopens exact geography and continues all four tools",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 8928,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:41:47.429Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-persistence-actu-e325a-nd-continues-all-four-tools-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e07dfa3f339ffbd09d33-8a25e440bba43430ea22",
+          "file": "spherical-persistence.spec.ts",
+          "line": 21,
+          "column": 1
+        },
+        {
+          "title": "Ctrl-S while a real brush is held drains queued input exactly; saved/modified/name checkpoints and unload guards work",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3738,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:41:56.704Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-persistence-Ctrl-0355c-ints-and-unload-guards-work-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e07dfa3f339ffbd09d33-5d959f4df97cfb0d9ba3",
+          "file": "spherical-persistence.spec.ts",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "existing DB v1 and mixed library preserve legacy records; spherical signed-zero/edge/corner restoration and overwrite guards",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3064,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:42:00.586Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-persistence-exis-ccbd3-ration-and-overwrite-guards-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e07dfa3f339ffbd09d33-6772cbe103cc77d225f8",
+          "file": "spherical-persistence.spec.ts",
+          "line": 56,
+          "column": 1
+        },
+        {
+          "title": "quota, interrupted transaction and storage denial retain edits and old saves; bad opens and discard cancellation preserve active sphere",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 7434,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:42:03.762Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-persistence-quot-6b494-tion-preserve-active-sphere-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e07dfa3f339ffbd09d33-dbbada88738b32da3ba6",
+          "file": "spherical-persistence.spec.ts",
+          "line": 69,
+          "column": 1
+        },
+        {
+          "title": "real IndexedDB persistence timing, responsiveness and memory payloads N=128",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 15101,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:42:11.480Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-persistence-real-f2178-s-and-memory-payloads-N-128-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e07dfa3f339ffbd09d33-4b7ed7be568343750d22",
+          "file": "spherical-persistence.spec.ts",
+          "line": 88,
+          "column": 29
+        },
+        {
+          "title": "real IndexedDB persistence timing, responsiveness and memory payloads N=256",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 48020,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:42:26.674Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\spherical-persistence-real-9cf28-s-and-memory-payloads-N-256-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e07dfa3f339ffbd09d33-807c5651e39cccc5aab2",
+          "file": "spherical-persistence.spec.ts",
+          "line": 88,
+          "column": 29
+        }
+      ]
+    },
+    {
+      "title": "unified-workspace.spec.ts",
+      "file": "unified-workspace.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "start directly on any supported shape; setup is explicit, accessible and cancellable without creating a hidden flat document",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3511,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:42:34.503Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\unified-workspace-start-di-c8c49-ting-a-hidden-flat-document-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "afa49328af5a27a98259-42ad19fbf8c7be3ea7e0",
+          "file": "unified-workspace.spec.ts",
+          "line": 26,
+          "column": 1
+        },
+        {
+          "title": "one workflow creates, edits with all four tools, saves and reopens v1/v2/v3 with exact history and shared globe/net authority",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 25271,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:42:38.111Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\unified-workspace-one-work-96d92--shared-globe-net-authority-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "afa49328af5a27a98259-d21c7a3fd4842996ee37",
+          "file": "unified-workspace.spec.ts",
+          "line": 45,
+          "column": 1
+        },
+        {
+          "title": "cross-shape New/Open cancellation, corrupt data and storage failures retain the current document and history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4681,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:43:04.125Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\unified-workspace-cross-sh-87df3-urrent-document-and-history-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "afa49328af5a27a98259-19c95e22b31da6e86575",
+          "file": "unified-workspace.spec.ts",
+          "line": 80,
+          "column": 1
+        },
+        {
+          "title": "desktop, ultrawide, square and tall views preserve proportions, context, fullscreen and geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13466,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-21T02:43:08.972Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\serrian-tide-world\\test-results\\cube-c2b2-remainder\\unified-workspace-desktop--9cfb5-xt-fullscreen-and-geography-mobile\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "afa49328af5a27a98259-1f6366e017769429d6d8",
+          "file": "unified-workspace.spec.ts",
+          "line": 100,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-21T02:33:56.585Z",
+    "duration": 643617.4269999999,
+    "expected": 92,
+    "skipped": 1,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

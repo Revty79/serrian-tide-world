@@ -1,0 +1,9 @@
+import {writeFileSync,appendFileSync} from 'node:fs';
+const prefix='D:/serrian-tide-world/docs/evidence/cube-c2b2-';
+export default class {
+ onBegin(config,suite){
+  const tests=suite.allTests().map(t=>({id:t.id,project:t.titlePath()[1],file:t.location.file.split(/[\\/]/).at(-1),line:t.location.line,column:t.location.column,titles:t.titlePath().slice(3)}));
+  writeFileSync(prefix+(process.env.CUBE_LIST==='1'?'browser-collected-tests.json':'browser-remainder-collected-tests.json'),JSON.stringify({collectedOnly:true,tests},null,2)+'\n');
+ }
+ onTestEnd(test,result){appendFileSync(prefix+'browser-remainder-journal.jsonl',JSON.stringify({id:test.id,project:test.titlePath()[1],file:test.location.file.split(/[\\/]/).at(-1),line:test.location.line,column:test.location.column,titles:test.titlePath().slice(3),status:result.status,duration:result.duration,retry:result.retry})+'\n');}
+}

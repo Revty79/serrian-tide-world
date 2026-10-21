@@ -1,0 +1,8 @@
+import {readFileSync,writeFileSync,readdirSync,renameSync} from 'node:fs';
+import {gzipSync,gunzipSync} from 'node:zlib';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const dir='docs/evidence/',prefix='cube-c2b2-',sha=b=>createHash('sha256').update(b).digest('hex'),proofs=[];
+for(const name of readdirSync(dir).filter(n=>n.startsWith(prefix)&&n.endsWith('.json'))){const path=dir+name,raw=readFileSync(path);if(raw.length<4*1024*1024)continue;const gz=gzipSync(raw,{level:9});assert.equal(sha(gunzipSync(gz)),sha(raw));writeFileSync(path+'.gz',gz);renameSync(path,'.local/'+name);proofs.push({path:path+'.gz',rawBytes:raw.length,rawSha256:sha(raw),compressedBytes:gz.length,compressedSha256:sha(gz),exactDecompressedBytes:true});}
+writeFileSync(dir+prefix+'evidence-compression.json',JSON.stringify({instructions:'Gunzip any JSON.gz into its original JSON path before replaying archived analysis/verification scripts that reference raw JSON. Every decompressed byte stream is verified below. .local raw copies are convenience only, not delivery.',files:proofs},null,2)+'\n');
+const reportPath='docs/CUBE-C2B2-COMPLETION.md';let report=readFileSync(reportPath,'utf8');for(const p of proofs)report=report.replaceAll('evidence/'+p.path.slice(dir.length,-3)+')','evidence/'+p.path.slice(dir.length)+')');report+='\nLarge JSON evidence is delivered as exact verified gzip streams; see the [compression catalogue](evidence/cube-c2b2-evidence-compression.json). Decompress to the original JSON names before replaying archived analysis scripts.\n';writeFileSync(reportPath,report);console.log(proofs.map(p=>({path:p.path,raw:p.rawBytes,gzip:p.compressedBytes})));

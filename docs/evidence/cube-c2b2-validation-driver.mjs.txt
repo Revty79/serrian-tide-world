@@ -1,0 +1,46 @@
+import assert from 'node:assert/strict';
+import {spawn,execFileSync} from 'node:child_process';
+import {createWriteStream,writeFileSync,readFileSync,readdirSync,mkdirSync,copyFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+const prefix='docs/evidence/cube-c2b2-',phases=[],root=process.cwd(),sha=b=>createHash('sha256').update(b).digest('hex');
+const baseline=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();assert.equal(baseline,'701062a9c257a1546dbde566e8571ed88f979456');
+const files=[...new Set(execFileSync('git',['ls-files','--cached','--others','--exclude-standard','--','src','tests','scripts','dev','package.json','package-lock.json','tsconfig.json','vite.config.ts','playwright.config.ts'],{encoding:'utf8'}).trim().split(/\r?\n/))].sort();
+const frozen=files.map(path=>({path,sha256:sha(readFileSync(path))}));writeFileSync(prefix+'tested-source.json',JSON.stringify({baseline,files:frozen},null,2)+'\n');
+const check=()=>{for(const f of frozen)assert.equal(sha(readFileSync(f.path)),f.sha256,f.path);};
+async function run(label,args,cwd=root){
+ check();const at=Date.now(),log=createWriteStream(prefix+label+'.txt');console.log('start',label);
+ const child=spawn(process.execPath,args,{cwd,windowsHide:true,stdio:['ignore','pipe','pipe']});child.stdout.pipe(log);child.stderr.pipe(log);
+ const exitCode=await new Promise((resolve,reject)=>{child.once('error',reject);child.once('exit',resolve);});await new Promise(r=>log.end(r));
+ phases.push({label,command:['node',...args],exitCode,elapsedMs:Date.now()-at});writeFileSync(prefix+'validation.json',JSON.stringify(phases,null,2)+'\n');console.log(phases.at(-1));assert.equal(exitCode,0);check();
+}
+if(process.env.CUBE_RESUME_BROWSER==='1'){
+ const previous=JSON.parse(readFileSync(prefix+'pre-browser-tested-source.json','utf8')).files;
+ const changed=previous.filter(f=>sha(readFileSync(f.path))!==f.sha256);assert.deepEqual(changed.map(f=>f.path),['tests/cube-responsive.spec.ts']);
+ phases.push(...JSON.parse(readFileSync(prefix+'validation.json','utf8')).filter(p=>p.label!=='browser-regression'));assert.equal(phases.length,10);assert.ok(phases.every(p=>p.exitCode===0));
+ writeFileSync(prefix+'browser-setup-correction.json',JSON.stringify({changed,finalSha256:sha(readFileSync(changed[0].path)),change:'Move Playwright trace use from describe to file scope, as required by runner. No numerical/runtime/fixture/algorithm change. Initial browser attempt ran zero tests. Numerical phases retain the prior registry; runtime hashes are identical to final registry.'},null,2)+'\n');
+ await run('browser-correction-typecheck',['node_modules/typescript/bin/tsc','--noEmit']);
+}else{
+await run('focused',['--test','src/editor/cube-responsive.test.ts','src/editor/solid-cube-session.test.ts','src/surfaces/solid-cube-stroke-path.test.ts','src/surfaces/cube-brush-distance.test.ts','src/terrain/solid-cube-brush.test.ts']);
+await run('independent-worker',['scripts/verify-cube-responsive.mjs',prefix+'worker-']);
+await run('independent-execution',['scripts/verify-solid-cube-execution.mjs',prefix+'native-']);
+await run('independent-strokes',['scripts/verify-solid-cube-strokes.mjs',prefix+'c2a-']);
+await run('independent-c1',['scripts/verify-solid-cube-dabs.mjs',prefix+'c1-']);
+await run('cube-b-certificate',['--expose-gc','scripts/verify-solid-cube-routes.mjs',prefix+'cube-b-']);
+await run('cube-a-certificate',['scripts/verify-solid-cube.mjs']);
+const tests=['src/terrain','src/rendering','src/editor','src/persistence','src/surfaces'].flatMap(d=>readdirSync(d).filter(f=>f.endsWith('.test.ts')).map(f=>`${d}/${f}`));
+await run('numerical-regression',['--test',...tests]);
+await run('typecheck',['node_modules/typescript/bin/tsc','--noEmit']);
+await run('build',['node_modules/vite/bin/vite.js','build']);
+}
+const browserCwd=root+'/.local/cube-c2b2-browser',config=root+'/.local/cube-c2b2.config.ts';mkdirSync(browserCwd+'/docs/evidence',{recursive:true});
+for(const n of[128,256])copyFileSync(`docs/evidence/a7-p1c-saved-geography-n${n}.json`,`${browserCwd}/docs/evidence/a7-p1c-saved-geography-n${n}.json`);
+writeFileSync(config,`import base from '../playwright.config.ts';\nimport {fileURLToPath} from 'node:url';\nexport default {...base,testDir:'../tests',outputDir:'../test-results/cube-c2b2-regression',reporter:[['list'],['json',{outputFile:fileURLToPath(new URL('../docs/evidence/cube-c2b2-browser-result.json',import.meta.url))}]],use:{...base.use,baseURL:'http://127.0.0.1:5255'},webServer:undefined};\n`);
+const serverLog=createWriteStream(prefix+'browser-server.txt');let serverText='';
+const server=spawn(process.execPath,['node_modules/vite/bin/vite.js','--host','127.0.0.1','--port','5255','--strictPort'],{windowsHide:true,stdio:['ignore','pipe','pipe']});
+for(const stream of[server.stdout,server.stderr]){stream.pipe(serverLog,{end:false});stream.on('data',b=>serverText+=b);}
+try{
+ for(let i=0;;i++){if(server.exitCode!==null||i>300)throw Error('Owned strict server unavailable');if(serverText.includes('127.0.0.1:5255')&&(await fetch('http://127.0.0.1:5255')).ok)break;await new Promise(r=>setTimeout(r,100));}
+ await run('browser-regression',[root+'/node_modules/@playwright/test/cli.js','test','-c',config],browserCwd);
+}finally{server.kill();server.unref();serverLog.end();}
+check();writeFileSync(prefix+'source-freeze.json',JSON.stringify({files:frozen.length,changed:[],sha256:sha(JSON.stringify(frozen)),scope:'All numerical/runtime sources are identical throughout focused, independent worker/native/C2A/C1/A/B, full numerical/browser, type/build. The first ten phases use pre-browser-tested-source.json; only the browser spec trace option moved to file scope afterward (browser-setup-correction.json). Final browser/typecheck and separate performance phases use tested-source.json.'},null,2)+'\n');
+console.log('ALL COMPLETE; source frozen',frozen.length);

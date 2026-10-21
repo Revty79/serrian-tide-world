@@ -1,0 +1,81 @@
+{
+  "oracleCases": 301,
+  "oracleElapsedMs": 5547.955299960449,
+  "checkedSegments": 837,
+  "checkedCrossings": 412,
+  "measurements": [
+    {
+      "label": "same-face",
+      "p50Ms": 0.2683999999999287,
+      "p95Ms": 0.313600000000406,
+      "maxMs": 0.5322999999998501,
+      "retainedLastResultSerializedBytes": 1808,
+      "workUnits": 313
+    },
+    {
+      "label": "adjacent",
+      "p50Ms": 1.147200000000339,
+      "p95Ms": 1.3613000000004831,
+      "maxMs": 1.9089999999996508,
+      "retainedLastResultSerializedBytes": 2761,
+      "workUnits": 1402
+    },
+    {
+      "label": "opposite-centers-four-ties",
+      "p50Ms": 1.92029999999977,
+      "p95Ms": 2.8004000000000815,
+      "maxMs": 11.64509999999973,
+      "retainedLastResultSerializedBytes": 12409,
+      "workUnits": 3266
+    },
+    {
+      "label": "four-faces",
+      "p50Ms": 0.7710999999999331,
+      "p95Ms": 1.107600000000275,
+      "maxMs": 1.8222999999998137,
+      "retainedLastResultSerializedBytes": 4907,
+      "workUnits": 1803
+    },
+    {
+      "label": "opposite-corners-six-ties",
+      "p50Ms": 6.63839999999982,
+      "p95Ms": 11.144800000000032,
+      "maxMs": 11.672899999999572,
+      "retainedLastResultSerializedBytes": 12714,
+      "workUnits": 18974
+    },
+    {
+      "label": "extreme-sub-ulp",
+      "p50Ms": 3.9283000000004904,
+      "p95Ms": 5.130699999999706,
+      "maxMs": 7.441499999999905,
+      "retainedLastResultSerializedBytes": 9072,
+      "workUnits": 1447
+    }
+  ],
+  "sampleProofs": [
+    {
+      "n": 128,
+      "vertices": 98306,
+      "elevationBytes": 393224,
+      "revisionBefore": 2,
+      "revisionAfter": 2,
+      "beforeSha256": "5265b16332cfeb0589f32a1f863f2f842d38cfb53033edc662a19ff586ad7f81",
+      "afterSha256": "5265b16332cfeb0589f32a1f863f2f842d38cfb53033edc662a19ff586ad7f81",
+      "representationVersion": 1,
+      "configurationVersion": 1
+    },
+    {
+      "n": 256,
+      "vertices": 393218,
+      "elevationBytes": 1572872,
+      "revisionBefore": 2,
+      "revisionAfter": 2,
+      "beforeSha256": "30a7188e26da230e6733841a1b70ca042aa67d1b0ee5bec8ab47679d0fdae17d",
+      "afterSha256": "30a7188e26da230e6733841a1b70ca042aa67d1b0ee5bec8ab47679d0fdae17d",
+      "representationVersion": 1,
+      "configurationVersion": 1
+    }
+  ]
+}
+

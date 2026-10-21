@@ -1,0 +1,23 @@
+import {execFileSync} from 'node:child_process';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const baseline='701062a9c257a1546dbde566e8571ed88f979456',sha=b=>createHash('sha256').update(b).digest('hex');
+const editedDocs=new Set(['README.md','docs/ARCHITECTURE.md','docs/PHASE-1-HEIGHTMAP-ROADMAP.md','docs/SURFACE-VISUAL-STANDARD.md','docs/WORLD-SURFACE-ARCHITECTURE.md','docs/SOLID-CUBE-FOUNDATION.md']);
+const allowed=new Set([...editedDocs,'src/editor/solid-cube-session.ts']);
+const entries=execFileSync('git',['ls-tree','-r',baseline],{encoding:'utf8',maxBuffer:20e6}).trim().split('\n').map(line=>{const[m,path]=line.split('\t');return{path,blob:m.split(' ')[2]};}),protectedFiles=entries.filter(f=>!allowed.has(f.path));
+const hashes=execFileSync('git',['hash-object','--stdin-paths'],{input:protectedFiles.map(f=>f.path).join('\n')+'\n',encoding:'utf8',maxBuffer:20e6}).trim().split(/\r?\n/);
+assert.equal(hashes.length,protectedFiles.length);for(const[i,f]of protectedFiles.entries())assert.equal(hashes[i],f.blob,f.path);
+const oldRegistry=JSON.parse(readFileSync('docs/evidence/cube-c2b1-tested-source.json','utf8'));for(const f of oldRegistry.files)if(f.path!=='src/editor/solid-cube-session.ts')assert.equal(sha(readFileSync(f.path)),f.sha256,f.path);
+const current=JSON.parse(readFileSync('docs/evidence/cube-c2b2-tested-source.json','utf8'));for(const f of current.files)assert.equal(sha(readFileSync(f.path)),f.sha256,f.path);
+const roadmap=readFileSync('docs/PHASE-1-HEIGHTMAP-ROADMAP.md','utf8').replaceAll('\r\n','\n'),old=execFileSync('git',['show',`${baseline}:docs/PHASE-1-HEIGHTMAP-ROADMAP.md`],{encoding:'utf8'}).replaceAll('\r\n','\n');
+const table=s=>s.slice(s.indexOf('| Phase | Required order |'),s.indexOf('\n\n',s.indexOf('| Phase | Required order |')));
+const geometryOrder=s=>s.slice(s.indexOf('### Owner-approved geometry priorities after A7-P1C'),s.indexOf('\nNon-destructive shape conversion remains required.'));
+assert.equal(table(roadmap),table(old));assert.equal(table(roadmap).split('\n').length,13);assert.equal(geometryOrder(roadmap),geometryOrder(old));assert.equal(geometryOrder(roadmap).split('\n').filter(l=>/^\d+\. /.test(l)).length,13);
+for(const issue of[1,2])assert.ok(roadmap.includes(`https://github.com/Revty79/serrian-tide-world/issues/${issue}`));
+const accepted=JSON.parse(readFileSync('docs/evidence/a7-p1c-production-source-check.json','utf8')),assets=accepted.builtAssets.map(a=>({path:a.path,sha256:sha(readFileSync(a.path)),acceptedSha256:a.sha256}));for(const a of assets)assert.equal(a.sha256,a.acceptedSha256,a.path);
+const changed=execFileSync('git',['diff','--name-only',baseline],{encoding:'utf8'}).trim().split(/\r?\n/).filter(Boolean);assert.deepEqual(changed.toSorted(),[...allowed].toSorted());
+const data={baseline,protectedFileCount:protectedFiles.length,unchangedAcceptedSourceCount:oldRegistry.files.length-1,historicalEvidenceFiles:protectedFiles.filter(f=>f.path.startsWith('docs/evidence/')).length,exactProtectedGitBlobs:true,
+ allCubeABC1C2AMathAndC2B1HistoryUnchanged:true,onlyModifiedExistingSource:'src/editor/solid-cube-session.ts',coreChange:'Trusted path factory, health check and acknowledgement hooks; original constructor remains cooperative',editedExistingDocuments:[...editedDocs],currentTestedFiles:current.files.length,
+ masterElevenPhaseTableUnchanged:true,masterPhaseTableSha256:sha(table(roadmap)),geometryPriorityOrderUnchanged:true,geometryPriorityOrderSha256:sha(geometryOrder(roadmap)),issue1Preserved:true,issue2Preserved:true,builtAssetsIdenticalToAcceptedP1C:assets,productionUIUnchanged:true,protectedFiles};
+writeFileSync('docs/evidence/cube-c2b2-preservation.json',JSON.stringify(data,null,2)+'\n');console.log({protectedFiles:protectedFiles.length,historicalEvidenceFiles:data.historicalEvidenceFiles,unchangedAcceptedSourceFiles:data.unchangedAcceptedSourceCount,currentSourceFiles:current.files.length,productionAssets:assets.length,elevenPhases:'unchanged',geometryOrder:'unchanged'});

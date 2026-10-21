@@ -1,0 +1,10 @@
+{
+  "changed": [
+    {
+      "path": "tests/cube-responsive.spec.ts",
+      "sha256": "e4f9f72d0d3babf9c97ffa288d76c94c4dd05ca50a0536c84cda068dc191deed"
+    }
+  ],
+  "finalSha256": "46ea4670ed51c82107f625c1bc7ce09b7431b671119ece8fc4410069e647682c",
+  "change": "Move Playwright trace use from describe to file scope, as required by runner. No numerical/runtime/fixture/algorithm change. Initial browser attempt ran zero tests. Numerical phases retain the prior registry; runtime hashes are identical to final registry."
+}

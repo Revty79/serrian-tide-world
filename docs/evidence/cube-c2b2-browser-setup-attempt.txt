@@ -1,0 +1,349 @@
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+Cannot use({ trace }) in a describe group, because it forces a new worker.
+Make it top-level in the test file or put in the configuration file.
+
+   at cube-responsive.spec.ts:4
+
+  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);
+  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{
+> 4 |  test.use({trace:'on'});
+    |       ^
+  5 |  test.setTimeout(180_000);
+  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{
+  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});
+

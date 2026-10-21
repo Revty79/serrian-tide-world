@@ -1,0 +1,59 @@
+[
+  {
+    "label": "warm-baseline",
+    "args": [
+      ".local/cube-c2b2-warm.mjs",
+      "cooperative",
+      "warm-baseline",
+      "3",
+      "ordinary-edge,wide-edge,bending-65"
+    ],
+    "exitCode": 0,
+    "elapsedMs": 330607
+  },
+  {
+    "label": "final-auto",
+    "args": [
+      ".local/cube-c2b2-measure.mjs",
+      "auto",
+      "final-auto",
+      "2"
+    ],
+    "exitCode": 0,
+    "elapsedMs": 1247726
+  },
+  {
+    "label": "final-worker",
+    "args": [
+      ".local/cube-c2b2-measure.mjs",
+      "worker",
+      "final-worker",
+      "1",
+      "ordinary-edge,wide-edge,bending-65,ambiguous-reverse"
+    ],
+    "exitCode": 0,
+    "elapsedMs": 299570
+  },
+  {
+    "label": "warm-final",
+    "args": [
+      ".local/cube-c2b2-warm.mjs",
+      "auto",
+      "warm-final",
+      "3",
+      "ordinary-edge,wide-edge,bending-65"
+    ],
+    "exitCode": 0,
+    "elapsedMs": 327640
+  },
+  {
+    "label": "final-trace",
+    "args": [
+      ".local/cube-c2b2-trace.mjs",
+      "auto",
+      "final"
+    ],
+    "exitCode": 0,
+    "elapsedMs": 134353
+  }
+]

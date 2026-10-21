@@ -1,0 +1,12 @@
+import {readFileSync} from 'node:fs';
+import base from '../vite.config.ts';
+export default {...base,plugins:[...(base.plugins??[]),{name:'cube-measurement-only',enforce:'pre' as const,transform(code:string,id:string){
+ if(process.env.CUBE_ORIGINAL_BASELINE==='1'&&id.endsWith('/src/editor/solid-cube-session.ts'))return readFileSync('.local/cube-c2b2-original-session.ts','utf8');
+ if(!id.endsWith('/src/surfaces/solid-cube-stroke-path.ts'))return;
+ for(const [from,to]of [
+  ['router.route(previous,next.point,{maxWorkUnits:routeAllowance})',"globalThis.__cubeStage('routeCertification',()=>router.route(previous,next.point,{maxWorkUnits:routeAllowance}))"],
+  ['push(dab(b))',"push(globalThis.__cubeStage('spacingCenter',()=>dab(b!)))"]]){
+  if(code.split(from).length!==2)throw Error('Unexpected accepted path instrumentation site');code=code.replace(from,to);
+ }
+ return code;
+ }}],server:{port:5249,strictPort:true,host:'127.0.0.1'}};

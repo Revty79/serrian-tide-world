@@ -1,0 +1,6 @@
+import base from './cube-c2b2-vite.config.ts';
+export default {...base,plugins:[...(base.plugins??[]),{name:'cube-fixture-trace-marks',enforce:'pre' as const,transform(code:string,id:string){
+ if(!id.endsWith('/tests/fixtures/cube-execution.ts'))return;
+ const replacements=[['const started=performance.now();let at=',"performance.mark('cube-inner-start');const started=performance.now();let at="],['const drainMs=performance.now()-started;observing=false;',"const drainMs=performance.now()-started;performance.mark('cube-inner-end');observing=false;"]];
+ for(const [a,b]of replacements){if(code.split(a).length!==2)throw Error('Unexpected trace marking site');code=code.replace(a,b);}return code;
+ }}],server:{port:5250,strictPort:true,host:'127.0.0.1'}};

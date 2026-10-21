@@ -1,0 +1,34 @@
+import {chromium,devices} from '@playwright/test';
+import {spawn} from 'node:child_process';
+import {writeFileSync,readFileSync} from 'node:fs';
+import {gzipSync} from 'node:zlib';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const mode=process.argv[2]??'cooperative',label=process.argv[3]??'baseline',prefix=`docs/evidence/cube-c2b2-${label}-trace-`,sha=b=>createHash('sha256').update(b).digest('hex');
+if(label==='baseline')for(const f of JSON.parse(readFileSync('docs/evidence/cube-c2b1-tested-source.json','utf8')).files)assert.equal(sha(readFileSync(f.path)),f.sha256,f.path);
+const server=spawn(process.execPath,['node_modules/vite/bin/vite.js','--config','.local/cube-c2b2-trace.config.ts'],{windowsHide:true,stdio:['ignore','pipe','pipe']});let logs='';for(const stream of[server.stdout,server.stderr])stream.on('data',b=>logs+=b);
+let browser;const results=[];
+try{
+ for(let i=0;;i++){if(server.exitCode!==null||i>300)throw Error(logs);if(logs.includes('127.0.0.1:5250')&&(await fetch('http://127.0.0.1:5250/dev/cube-work.html')).ok)break;await new Promise(r=>setTimeout(r,100));}
+ browser=await chromium.launch();
+ for(const profile of ['desktop','mobile']){
+  const context=await browser.newContext(profile==='mobile'?devices['Pixel 7']:{viewport:{width:1440,height:900}}),page=await context.newPage(),cdp=await context.newCDPSession(page);if(profile==='mobile')await cdp.send('Emulation.setCPUThrottlingRate',{rate:4});
+  await page.goto('http://127.0.0.1:5250/dev/cube-work.html');await page.evaluate(async()=>{await import('/tests/fixtures/cube-execution.ts');});
+  const trials=[];await cdp.send('Tracing.start',{categories:'devtools.timeline,toplevel,blink.user_timing',transferMode:'ReturnAsStream'});
+  for(const n of[128,256])for(const label of['ordinary-edge','wide-edge','bending-65'])for(const tool of['raise','lower','smooth','flatten']){
+   const result=await page.evaluate(async options=>(await import('/tests/fixtures/cube-execution.ts')).run(options),{n,tool,label,mode,trial:0});trials.push(result);console.log(profile,n,tool,label,result.status);
+  }
+  const ended=new Promise(resolve=>cdp.once('Tracing.tracingComplete',resolve));await cdp.send('Tracing.end');const {stream}=await ended;let raw='';
+  for(;;){const chunk=await cdp.send('IO.read',{handle:stream});raw+=chunk.base64Encoded?Buffer.from(chunk.data,'base64').toString('utf8'):chunk.data;if(chunk.eof)break;}await cdp.send('IO.close',{handle:stream});
+  const trace=JSON.parse(raw),events=trace.traceEvents,starts=events.filter(e=>e.name==='cube-inner-start'&&e.ph!=='M'),ends=events.filter(e=>e.name==='cube-inner-end'&&e.ph!=='M');
+  assert.equal(starts.length,trials.length);assert.equal(ends.length,trials.length);
+  const threadNames=events.filter(e=>e.ph==='M'&&e.name==='thread_name').map(e=>({pid:e.pid,tid:e.tid,name:e.args.name}));
+  const windows=starts.map((s,i)=>({trial:i,pid:s.pid,tid:s.tid,start:s.ts,end:ends[i].ts}));
+  const taskEvents=events.filter(e=>e.ph==='X'&&e.dur>0&&e.cat?.includes('toplevel'));
+  const tasks=windows.flatMap(w=>taskEvents.filter(e=>e.pid===w.pid&&e.tid===w.tid&&e.ts<w.end&&e.ts+e.dur>w.start).map(e=>({trial:w.trial,name:e.name,fullTaskMs:e.dur/1000,executionOverlapMs:(Math.min(e.ts+e.dur,w.end)-Math.max(e.ts,w.start))/1000})));
+  const compressed=gzipSync(raw,{level:9}),path=prefix+profile+'.json.gz';writeFileSync(path,compressed);
+  const result={profile,mode,trialCount:trials.length,tracePath:path,compressedBytes:compressed.length,compressedSha256:sha(compressed),rawBytes:Buffer.byteLength(raw),rawSha256:sha(raw),threadNames,tasks,windows,trials,scope:'Tracing overhead is present. Actual toplevel task durations and clipped execution overlaps are separate. Seeding/assertions may share a task that overlaps the start/end marks; they are outside the execution overlap.'};
+  writeFileSync(prefix+profile+'-summary.json',JSON.stringify(result,null,2)+'\n');results.push({profile,trials:trials.length,tasks:tasks.length,tracePath:path});await context.close();
+ }
+}finally{await browser?.close();server.kill();writeFileSync(prefix+'server.txt',logs);}
+console.log('COMPLETE',results);

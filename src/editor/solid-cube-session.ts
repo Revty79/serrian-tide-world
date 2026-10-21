@@ -30,9 +30,20 @@ export interface SolidCubeStroke {
   release():CubeStrokeStatus;cancel():CubeStrokeStatus;dispose():CubeStrokeStatus;pump(steps?:number):CubeStrokeStatus;
 }
 const owners=new WeakMap<SolidCubeTerrain,object>();
+/** Internal scheduling adapter. Geometry, C1 preparation and history remain owned by this session. */
+export type CubeExecutionPath=SolidCubeStrokePath & {
+  synchronized?():void;
+  acknowledge?(revision:number,committedDabs:number,writes:number):void;
+};
+export type CubeExecutionPathFactory=(...args:Parameters<typeof createSolidCubeStrokePath>)=>CubeExecutionPath;
 
 /** A cooperative numerical session, not an editor, worker or persistence adapter. */
 export function createSolidCubeSession(terrain:SolidCubeTerrain,historyLimits:CubeHistoryLimits={}) {
+  return createSolidCubeSessionWithPath(terrain,historyLimits,createSolidCubeStrokePath);
+}
+
+/** @internal Only trusted, validated scheduling adapters may supply physical path events. */
+export function createSolidCubeSessionWithPath(terrain:SolidCubeTerrain,historyLimits:CubeHistoryLimits,pathFactory:CubeExecutionPathFactory) {
   const history=createSolidCubeHistory(terrain,historyLimits),token=Object.freeze({}),key=Object.freeze({...terrain.keyAt(0)});
   const binding=Object.freeze({...key,sampleCount:terrain.sampleCount,elevationByteLength:terrain.elevationByteLength});
   let active:SolidCubeStroke|undefined,last:SolidCubeStroke|undefined,disposed=false,beginning=false;
@@ -47,7 +58,7 @@ export function createSolidCubeSession(terrain:SolidCubeTerrain,historyLimits:Cu
     begin(first:SurfacePosition,inputSettings:CubeBrushSettings,input:CubeStrokeOptions={}):SolidCubeStroke {
       available();if(active||beginning||owners.has(terrain))throw new Error('One cube stroke may own this authority at a time.');
       beginning=true;owners.set(terrain,token);
-      let path:SolidCubeStrokePath|undefined,operation:SolidCubeHistoryOperation|undefined;
+      let path:CubeExecutionPath|undefined,operation:SolidCubeHistoryOperation|undefined;
       try{
         history.synchronized();
         const raw=Object.freeze({...inputSettings}),options=Object.freeze({...input,dabLimits:Object.freeze({...input.dabLimits})});
@@ -56,7 +67,7 @@ export function createSolidCubeSession(terrain:SolidCubeTerrain,historyLimits:Cu
         }
         const maxDabWork=options.maxDabWorkUnits??CUBE_STROKE_EXECUTION_LIMITS.maxDabWorkUnits;
         if(!Number.isSafeInteger(maxDabWork)||maxDabWork<1||maxDabWork>CUBE_STROKE_EXECUTION_LIMITS.maxDabWorkUnits)throw new RangeError('Cube stroke work can only lower its hard limit.');
-        path=createSolidCubeStrokePath(terrain.metadata.geometry,raw.radiusMeters,options.pathLimits);path.accept(first);path.pump();
+        path=pathFactory(terrain.metadata.geometry,raw.radiusMeters,options.pathLimits);path.accept(first);path.pump();
         const initial=path.take();if(!initial||initial.kind!=='dab'||initial.ordinal!==0)throw new Error('Cube initial path certificate is missing.');
         operation=history.beginOperation(terrain);
         const p=path,op=operation;
@@ -66,7 +77,7 @@ export function createSolidCubeSession(terrain:SolidCubeTerrain,historyLimits:Cu
           lastCommittedDabOrdinal:undefined as number|undefined,lastCommittedInputSequence:undefined as number|undefined,
           lastCommittedCenter:undefined as SurfacePosition|undefined,
           completedDabWork:0,failedInitializationWorkAllowance:0,peakPreparedDabBytes:0,lastStage:'initialize'};
-        const synchronized=()=>{bound();op.synchronized();};
+        const synchronized=()=>{bound();op.synchronized();p.synchronized?.();};
         const account=()=>{const current=op.current;if(current){stats.completedDabWork+=current.statistics.workUnits;stats.peakPreparedDabBytes=Math.max(stats.peakPreparedDabBytes,current.statistics.peakPreparedBytes);}};
         const progress=()=>{if(op.stage==='none'&&p.statistics.dabs===stats.committedDabs)stats.fullyExecutedInputs=p.statistics.processedInputs;};
         const finish=(reason:'complete'|'cancelled'|'failed'|'disposed')=>{
@@ -113,6 +124,7 @@ export function createSolidCubeSession(terrain:SolidCubeTerrain,historyLimits:Cu
                 stats.lastStage='publication';const current=op.current!,work=current.statistics.workUnits,peak=current.statistics.peakPreparedBytes;
                 const writes=op.commitDab();stats.completedDabWork+=work;stats.peakPreparedDabBytes=Math.max(stats.peakPreparedDabBytes,peak);
                 stats.committedDabs++;if(writes)stats.changingDabs++;stats.writes+=writes;stats.lastCommittedDabOrdinal=pendingOrdinal;stats.lastCommittedInputSequence=pendingInput;stats.lastCommittedCenter=current.center;progress();
+                p.acknowledge?.(terrain.revision,stats.committedDabs,stats.writes);
               }else{
                 const event=p.take();
                 if(event?.kind==='dab'){

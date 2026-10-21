@@ -1,0 +1,21 @@
+import {readFileSync,writeFileSync,readdirSync,copyFileSync,statSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const prefix='docs/evidence/cube-c2b2-',sha=v=>createHash('sha256').update(v).digest('hex'),entries=[];
+const add=(source,archivePath,role)=>{const data=readFileSync(source);entries.push({source,archivePath,role,bytes:data.length,sha256:sha(data)});};
+const directory='.local/cube-c2b2-browser/docs/evidence';
+for(const file of readdirSync(directory).sort()){
+ const source=`${directory}/${file}`;assert.ok(statSync(source).isFile());const input=/^a7-p1c-saved-geography-n(128|256)\.json$/.test(file);if(input)assert.equal(sha(readFileSync(source)),sha(readFileSync('docs/evidence/'+file)));
+ add(source,'regression/'+file,input?'accepted input fixture':'generated existing-editor evidence');
+}
+const nativeRoot='test-results/cube-c2b2-regression';
+const walk=path=>readdirSync(path,{withFileTypes:true}).flatMap(entry=>entry.isDirectory()?walk(path+'/'+entry.name):[path+'/'+entry.name]);
+for(const dir of readdirSync(nativeRoot).filter(name=>name.startsWith('cube-responsive-')).sort())for(const source of walk(nativeRoot+'/'+dir))add(source,'native/'+source.slice(nativeRoot.length+1),'native worker interaction evidence');
+for(const profile of['desktop','mobile']){const screenshots=entries.filter(e=>e.archivePath.endsWith('/cube-numerical-native-workers.png')&&e.archivePath.includes('-'+profile+'/'));assert.equal(screenshots.length,1);copyFileSync(screenshots[0].source,prefix+'native-'+profile+'.png');}
+const archives=[];let current;for(const entry of entries){if(!current||current.uncompressedBytes+entry.bytes>32*1024*1024){current={archive:`${prefix}browser-artifacts-${archives.length+1}.zip`,files:0,uncompressedBytes:0};archives.push(current);}current.uncompressedBytes+=entry.bytes;current.files++;entry.archive=current.archive;}
+writeFileSync(prefix+'browser-artifacts.json',JSON.stringify({archives,scope:'Actual unchanged-editor regressions plus native numerical cube-worker traces/screenshots. No cube terrain renderer or cube input UI. Extract all archives into one directory.',files:entries.length,generated:entries.filter(e=>e.role!=='accepted input fixture').length,uncompressedBytes:entries.reduce((n,e)=>n+e.bytes,0),entries},null,2)+'\n');
+for(const [source,name]of[
+ ['.local/cube-c2b2-validate.mjs','validation-driver.mjs.txt'],['.local/cube-c2b2-resume-browser.mjs','browser-resumption-driver.mjs.txt'],['.local/cube-c2b2.config.ts','browser-config.ts.txt'],['.local/cube-c2b2-summarize.mjs','performance-summary-driver.mjs.txt'],['.local/cube-c2b2-preserve.mjs','preservation-driver.mjs.txt'],['.local/cube-c2b2-package.mjs','evidence-package-driver.mjs.txt'],['.local/cube-c2b2-archive.py','archive-driver.py.txt'],['.local/cube-c2b2-finalize.mjs','report-finalizer.mjs.txt'],['.local/cube-c2b2-inventory.mjs','inventory-driver.mjs.txt'],['.local/cube-c2b2-check-stage.mjs','stage-audit-driver.mjs.txt'],['.local/cube-c2b2-write-receipt.mjs','delivery-driver.mjs.txt'],['.local/cube-c2b2-compact.mjs','compression-driver.mjs.txt']
+ ,['.local/cube-c2b2-finish-validation.mjs','browser-completion-driver.mjs.txt'],['.local/cube-c2b2-journal-reporter.mjs','browser-journal-reporter.mjs.txt'],['.local/cube-c2b2-remainder.config.ts','browser-remainder-config.ts.txt'],['.local/cube-c2b2-remainder-list.txt','browser-remainder-test-list.txt'],['.local/cube-c2b2-recover-traces.py','trace-recovery-driver.py.txt']
+])copyFileSync(source,prefix+name);
+console.log({files:entries.length,bytes:entries.reduce((n,e)=>n+e.bytes,0),archives:archives.length,nativeFiles:entries.filter(e=>e.role==='native worker interaction evidence').length});

@@ -1,0 +1,30 @@
+import {chromium,devices} from '@playwright/test';
+import {spawn,execFileSync} from 'node:child_process';
+import {writeFileSync,readFileSync,mkdirSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const mode=process.argv[2]??'cooperative',label=process.argv[3]??'baseline',rounds=Number(process.argv[4]??2),prefix=`${label.startsWith('pilot')?'.local':'docs/evidence'}/cube-c2b2-${label}-`,registry=JSON.parse(readFileSync('docs/evidence/cube-c2b1-tested-source.json','utf8'));
+const selectedLabels=process.argv[5]?.split(','),selectedNs=process.argv[6]?.split(',').map(Number)??[128,256];
+const sha=b=>createHash('sha256').update(b).digest('hex');
+if(label==='baseline'){assert.equal(execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),'701062a9c257a1546dbde566e8571ed88f979456');for(const f of registry.files)assert.equal(sha(readFileSync(f.path)),f.sha256,f.path);}
+writeFileSync(prefix+'source.json',JSON.stringify({head:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),acceptedRegistry:'docs/evidence/cube-c2b1-tested-source.json',harnessSha256:sha(readFileSync('tests/fixtures/cube-execution.ts')),instrumentationSha256:sha(readFileSync('.local/cube-c2b2-vite.config.ts')),acceptedSourceUnchanged:label==='baseline'},null,2)+'\n');
+const server=spawn(process.execPath,['node_modules/vite/bin/vite.js','--config','.local/cube-c2b2-vite.config.ts'],{windowsHide:true,stdio:['ignore','pipe','pipe']});let logs='';for(const stream of[server.stdout,server.stderr])stream.on('data',b=>logs+=b);
+const trials=[];let browser;
+try{
+ for(let i=0;;i++){if(server.exitCode!==null||i>300)throw Error(logs);if(logs.includes('127.0.0.1:5249')&&(await fetch('http://127.0.0.1:5249/dev/cube-work.html')).ok)break;await new Promise(r=>setTimeout(r,100));}
+ browser=await chromium.launch();
+ for(const profile of ['desktop','mobile']){
+  const context=await browser.newContext(profile==='mobile'?devices['Pixel 7']:{viewport:{width:1440,height:900}}),page=await context.newPage(),cdp=await context.newCDPSession(page);if(profile==='mobile')await cdp.send('Emulation.setCPUThrottlingRate',{rate:4});
+  page.on('pageerror',e=>console.error('fixture page error',e));await page.goto('http://127.0.0.1:5249/dev/cube-work.html');
+  const workloads=(await page.evaluate(async()=> (await import('/tests/fixtures/cube-execution.ts')).workloads.map(w=>w.label))).filter(label=>!selectedLabels||selectedLabels.includes(label));
+  for(let trial=0;trial<rounds;trial++)for(const n of selectedNs)for(const workload of workloads)for(const tool of ['raise','lower','smooth','flatten']){
+   const memoryBefore=await cdp.send('Runtime.getHeapUsage'),result=await page.evaluate(async options=>(await import('/tests/fixtures/cube-execution.ts')).run(options),{n,tool,label:workload,mode,trial});
+   result.profile=profile;result.pageCpuThrottle=profile==='mobile'?4:1;result.memoryBefore=memoryBefore;result.memoryAfter=await cdp.send('Runtime.getHeapUsage');trials.push(result);
+   writeFileSync(prefix+'performance.json',JSON.stringify({mode,label,rounds,conditions:'Sequential trials; one Chromium page, one profile at a time; page-target CDP 4x mobile emulation, not physical hardware or a guarantee that separate worker threads receive identical CPU throttling. MessageChannel cooperative turn yields. No map renderer or terrain pixels. Source seeding outside timers. Route/center instrumentation in Vite fixture transform only.',trials},null,2)+'\n');
+   console.log(profile,trial,n,tool,workload,result.status,result.drainMs.toFixed(1));
+  }
+  await page.screenshot({path:prefix+profile+'.png'});await context.close();
+ }
+}finally{await browser?.close();server.kill();writeFileSync(prefix+'server.txt',logs);}
+if(label==='baseline')for(const f of registry.files)assert.equal(sha(readFileSync(f.path)),f.sha256,f.path);
+console.log('COMPLETE',trials.length);

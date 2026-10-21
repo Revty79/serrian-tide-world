@@ -1,0 +1,44 @@
+import {spawn,execFileSync} from 'node:child_process';
+import {readFileSync,writeFileSync,createWriteStream,copyFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const root=process.cwd(),prefix='docs/evidence/cube-c2b2-',sha=b=>createHash('sha256').update(b).digest('hex');
+const frozen=JSON.parse(readFileSync(prefix+'tested-source.json')).files;
+const check=()=>{for(const f of frozen)assert.equal(sha(readFileSync(f.path)),f.sha256,f.path);};check();
+copyFileSync(prefix+'browser-regression.txt',prefix+'browser-second-interrupted-log.txt');
+execFileSync(process.execPath,['node_modules/@playwright/test/cli.js','test','-c','.local/cube-c2b2-remainder.config.ts','--list','--reporter','./.local/cube-c2b2-journal-reporter.mjs'],{env:{...process.env,CUBE_LIST:'1'},windowsHide:true,stdio:'pipe'});
+const tests=JSON.parse(readFileSync(prefix+'browser-collected-tests.json')).tests;assert.equal(tests.length,390);
+const key=t=>[t.project,t.file,t.line,t.column,t.titles.join(' > ')].join('|'),done=new Map();
+for(const line of readFileSync(prefix+'browser-second-interrupted-log.txt','utf8').split(/\r?\n/)){
+ const m=line.match(/^\s+(ok|-)\s+(\d+)\s+\[([^\]]+)\]\s+\u203a\s+(.*?)\s+\u203a\s+(.*?)(?:\s+\(([^()]*)\))?$/u);if(!m)continue;
+ const location=m[4].replaceAll('\\','/').match(/([^/]+):(\d+):(\d+)$/);assert.ok(location,line);
+ const titles=m[5].split(/\s+\u203a\s+/u),entry={project:m[3],file:location[1],line:Number(location[2]),column:Number(location[3]),titles,status:m[1]==='ok'?'passed':'skipped',evidence:prefix+'browser-second-interrupted-log.txt',logLine:line};
+ assert.ok(tests.some(t=>key(t)===key(entry)),JSON.stringify(entry));assert.ok(!done.has(key(entry)));done.set(key(entry),entry);
+}
+assert.equal(done.size,297);writeFileSync(prefix+'browser-recovered-completions.json',JSON.stringify({source:'Actual Playwright list-reporter completion lines, not an inferred process exit. Interrupted process has no successful exit code.',tests:[...done.values()]},null,2)+'\n');
+const remaining=tests.filter(t=>!done.has(key(t)));assert.equal(remaining.length,93);
+writeFileSync('.local/cube-c2b2-remainder-list.txt',remaining.map(t=>`[${t.project}] > ${t.file} > ${t.titles.join(' > ')}`).join('\n')+'\n');
+const log=createWriteStream(prefix+'browser-remainder-server.txt');let ready='';
+const server=spawn(process.execPath,['node_modules/vite/bin/vite.js','--host','127.0.0.1','--port','5255','--strictPort'],{windowsHide:true,stdio:['ignore','pipe','pipe']});
+for(const stream of[server.stdout,server.stderr]){stream.pipe(log,{end:false});stream.on('data',b=>ready+=b);}
+const at=Date.now();let exitCode;
+try{
+ for(let i=0;;i++){if(server.exitCode!==null||i>300)throw Error(ready);if(ready.includes('127.0.0.1:5255')&&(await fetch('http://127.0.0.1:5255')).ok)break;await new Promise(r=>setTimeout(r,100));}
+ const args=[root+'/node_modules/@playwright/test/cli.js','test','-c',root+'/.local/cube-c2b2-remainder.config.ts','--test-list',root+'/.local/cube-c2b2-remainder-list.txt'],out=createWriteStream(prefix+'browser-remainder.txt');
+ const child=spawn(process.execPath,args,{cwd:root+'/.local/cube-c2b2-browser',windowsHide:true,stdio:['ignore','pipe','pipe']});child.stdout.pipe(out);child.stderr.pipe(out);
+ console.log('Running only the 93 missing browser cases; preserving 297 recorded completions.');
+ exitCode=await new Promise((resolve,reject)=>{child.once('error',reject);child.once('exit',resolve);});await new Promise(r=>out.end(r));assert.equal(exitCode,0);check();
+}finally{server.kill();log.end();}
+const journal=readFileSync(prefix+'browser-remainder-journal.jsonl','utf8').trim().split('\n').map(JSON.parse);assert.equal(journal.length,remaining.length);
+for(const t of journal){assert.ok(!done.has(key(t)));assert.ok(remaining.some(r=>key(r)===key(t)));assert.ok(['passed','skipped'].includes(t.status));assert.equal(t.retry,0);done.set(key(t),{...t,evidence:prefix+'browser-remainder-journal.jsonl'});}
+assert.equal(done.size,390);
+const results=tests.map(t=>({...t,...done.get(key(t))})),stats={expected:results.filter(t=>t.status==='passed').length,skipped:results.filter(t=>t.status==='skipped').length,unexpected:0,flaky:0};assert.equal(stats.expected,386);assert.equal(stats.skipped,4);
+const suites=results.map(t=>({title:t.file,file:t.file,specs:[{title:t.titles.at(-1),file:t.file,line:t.line,column:t.column,tests:[{projectName:t.project,results:[{status:t.status,duration:t.duration,evidence:t.evidence}]}]}]}));
+writeFileSync(prefix+'browser-aggregate-result.json',JSON.stringify({kind:'Verified aggregation of actual test completions across interrupted and resumed segments; not a single Playwright process report.',collected:390,coverage:'Every current collected test ID matched exactly once by project/file/location/full title. Three prior skips and one resumed skip match the accepted four conditional skips. All 58 native-worker traces survive in original output directory.',recovered:297,resumed:93,stats,results,suites},null,2)+'\n');
+const phases=JSON.parse(readFileSync(prefix+'validation.json'));assert.equal(phases.length,11);
+phases.push({label:'browser-regression',command:['node','.local/cube-c2b2-finish-validation.mjs'],exitCode:0,remainderProcessExitCode:exitCode,elapsedMs:Date.now()-at,coverage:{collected:390,recoveredCompletions:297,resumedCases:93,passed:386,skipped:4},qualification:'The two earlier full-suite processes were interrupted. Completion is the verified union of actual recorded cases and the successful 93-case remainder, not a claimed successful full-suite process exit.'});
+writeFileSync(prefix+'validation.json',JSON.stringify(phases,null,2)+'\n');
+writeFileSync(prefix+'source-freeze.json',JSON.stringify({files:frozen.length,changed:[],sha256:sha(JSON.stringify(frozen)),scope:'All numerical/runtime/fixture hashes unchanged across original reference checks and all browser segments. Only the previously recorded trace-option placement correction changed a browser spec. Exact full browser coverage is recorded by browser-aggregate-result.json.'},null,2)+'\n');
+console.log('BROWSER COMPLETE',stats);
+const perf=spawn(process.execPath,['.local/cube-c2b2-performance-all.mjs'],{windowsHide:true,stdio:'inherit'});assert.equal(await new Promise((r,j)=>{perf.once('error',j);perf.once('exit',r);}),0);
+console.log('VALIDATION AND PERFORMANCE COMPLETE');

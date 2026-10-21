@@ -1,0 +1,19 @@
+import pathlib, zipfile, json, hashlib
+rows=[]
+for path in sorted(pathlib.Path('test-results/cube-c2b2-regression').glob('cube-responsive-*/trace.zip')):
+    with zipfile.ZipFile(path) as z:
+        attachments=[]
+        for line in z.read('test.trace').decode('utf-8').splitlines():
+            event=json.loads(line)
+            attachments.extend(a for a in event.get('attachments',[]) if a.get('name')=='native-worker-proof')
+        assert len(attachments)==1
+        entry=attachments[0]['file']; raw=z.read(entry); proof=json.loads(raw)
+        assert proof['exactWords'] and proof['exactHistory'] and proof['allWorkersTerminated']
+        assert proof['diagnostics']['sourceElevationCopies']==0
+        project='mobile' if path.parent.name.endswith('-mobile') else 'desktop'
+        rows.append(dict(project=project,title=path.parent.name,archive=str(path).replace('\\','/'),entry=entry,rawBytes=len(raw),sha256=hashlib.sha256(raw).hexdigest(),proof=proof))
+assert len(rows)==58
+assert sum(r['proof']['nativeErrors']>0 for r in rows)==6
+assert sum(r['project']=='mobile' for r in rows)==29
+pathlib.Path('docs/evidence/cube-c2b2-native-trace-recovery.json').write_text(json.dumps(dict(scope='Actual proof attachments extracted byte-for-byte from all 58 completed native-worker Playwright traces after the browser process was interrupted. Original trace ZIPs retain exact attachment bytes and complete interactions.',proofs=rows),indent=2)+'\n',encoding='utf-8')
+print('Recovered and verified 58 native-worker proof attachments, including six observed crashes.')

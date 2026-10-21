@@ -1,0 +1,22 @@
+import hashlib, json, pathlib, zipfile
+manifest = json.loads(pathlib.Path('docs/evidence/cube-c2b2-browser-artifacts.json').read_text(encoding='utf-8'))
+proofs = []
+for archive in manifest['archives']:
+    target = pathlib.Path(archive['archive'])
+    if target.exists():
+        raise RuntimeError('Do not overwrite an existing archive')
+    entries = [e for e in manifest['entries'] if e['archive'] == archive['archive']]
+    with zipfile.ZipFile(target, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as output:
+        for entry in entries:
+            output.write(entry['source'], entry['archivePath'])
+    with zipfile.ZipFile(target) as output:
+        assert sorted(output.namelist()) == sorted(e['archivePath'] for e in entries)
+        for entry in entries:
+            data = output.read(entry['archivePath'])
+            assert len(data) == entry['bytes']
+            assert hashlib.sha256(data).hexdigest() == entry['sha256']
+    data = target.read_bytes()
+    assert len(data) < 40 * 1024 * 1024
+    proofs.append(dict(archive=str(target).replace('\\', '/'), bytes=len(data), sha256=hashlib.sha256(data).hexdigest(), checkedEntries=len(entries), exactEntryHashes=True))
+pathlib.Path('docs/evidence/cube-c2b2-browser-archive-proof.json').write_text(json.dumps(proofs, indent=2)+'\n', encoding='utf-8')
+print(json.dumps(proofs, indent=2))

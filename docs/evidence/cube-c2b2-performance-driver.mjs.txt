@@ -1,0 +1,23 @@
+import {readFileSync,writeFileSync,existsSync,copyFileSync} from 'node:fs';
+import {spawn,execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {cpus,totalmem} from 'node:os';
+import assert from 'node:assert/strict';
+const prefix='docs/evidence/cube-c2b2-',sha=v=>createHash('sha256').update(v).digest('hex');
+while(!existsSync(prefix+'source-freeze.json'))await new Promise(r=>setTimeout(r,1000));
+const frozen=JSON.parse(readFileSync(prefix+'tested-source.json','utf8')).files,phases=[];
+const check=()=>{for(const f of frozen)assert.equal(sha(readFileSync(f.path)),f.sha256,f.path);};
+check();assert.equal(sha(readFileSync('.local/cube-c2b2-original-session.ts')),sha(execFileSync('git',['show','701062a9c257a1546dbde566e8571ed88f979456:src/editor/solid-cube-session.ts'])));
+writeFileSync(prefix+'performance-environment.json',JSON.stringify({node:process.version,platform:process.platform,architecture:process.arch,cpu:cpus()[0].model,logicalCpus:cpus().length,totalMemoryBytes:totalmem(),baseline:'701062a9c257a1546dbde566e8571ed88f979456',conditions:'Sequential controlled workloads; no numerical suite or browser regression runs concurrently. Warm control loads the exact accepted Core through a measurement-only Vite transform; all other accepted algorithms are unchanged. One session at a time, three trials, round zero retained as cold and rounds one/two as warm. Page-target CDP4x does not establish equal worker throttling or physical-phone performance.'},null,2)+'\n');
+for(const [source,name]of[['.local/cube-c2b2-measure.mjs','final-measure.mjs.txt'],['.local/cube-c2b2-vite.config.ts','final-vite.config.ts.txt'],['.local/cube-c2b2-warm.mjs','warm-driver.mjs.txt'],['.local/cube-c2b2-warm.config.ts','warm-vite.config.ts.txt'],['.local/cube-c2b2-original-session.ts','warm-original-session.ts.txt'],['.local/cube-c2b2-trace.mjs','final-trace.mjs.txt'],['.local/cube-c2b2-trace.config.ts','final-trace.config.ts.txt'],['.local/cube-c2b2-performance-all.mjs','performance-driver.mjs.txt']])copyFileSync(source,prefix+name);
+for(const [label,args]of[
+ ['warm-baseline',['.local/cube-c2b2-warm.mjs','cooperative','warm-baseline','3','ordinary-edge,wide-edge,bending-65']],
+ ['final-auto',['.local/cube-c2b2-measure.mjs','auto','final-auto','2']],
+ ['final-worker',['.local/cube-c2b2-measure.mjs','worker','final-worker','1','ordinary-edge,wide-edge,bending-65,ambiguous-reverse']],
+ ['warm-final',['.local/cube-c2b2-warm.mjs','auto','warm-final','3','ordinary-edge,wide-edge,bending-65']],
+ ['final-trace',['.local/cube-c2b2-trace.mjs','auto','final']],
+]){
+ check();console.log('start',label);const at=Date.now(),child=spawn(process.execPath,args,{windowsHide:true,stdio:['ignore','pipe','pipe']});let log='';child.stdout.on('data',b=>{log+=b;});child.stderr.on('data',b=>{log+=b;});
+ const exitCode=await new Promise((resolve,reject)=>{child.once('error',reject);child.once('exit',resolve);});writeFileSync(prefix+label+'-run.txt',log);phases.push({label,args,exitCode,elapsedMs:Date.now()-at});writeFileSync(prefix+'performance-validation.json',JSON.stringify(phases,null,2)+'\n');console.log(phases.at(-1));assert.equal(exitCode,0,log.slice(-3000));check();
+}
+writeFileSync(prefix+'performance-source-freeze.json',JSON.stringify({files:frozen.length,changed:[],sha256:sha(JSON.stringify(frozen)),sequentialPhases:phases.length},null,2)+'\n');console.log('PERFORMANCE COMPLETE');

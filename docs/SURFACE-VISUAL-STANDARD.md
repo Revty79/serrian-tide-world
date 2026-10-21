@@ -92,7 +92,7 @@ from automated technical verification.
 
 ## Proposed bounded flat/wrapped follow-up
 
-The owner accepted A7-P1C for progression and deferred this overhaul in favor of remaining geometries, beginning with accepted Cube-A/B/C1/C2A and the separately authorized numerical-only Cube-C2B1 execution/history. C2B1 adds no visual changes and claims no interactive responsiveness acceptance. Its proposed C2B2 worker checkpoint requires separate authorization. This flat/wrapped proposal remains future work, not the next authorized assignment. Separately authorize a later pass:
+The owner accepted A7-P1C for progression and deferred this overhaul in favor of remaining geometries, beginning with accepted Cube-A/B/C1/C2A and accepted numerical-only Cube-C2B1 execution/history. The authorized C2B2 responsive execution checkpoint also adds no visual changes and claims no first-visible terrain-pixel or final interactive acceptance. Its browser evidence measures numerical processing and frame/task scheduling. Stop after C2B2; cube rendering and any gesture-history capacity improvement require separate authorization. This flat/wrapped proposal remains future work, not the next authorized assignment. Separately authorize a later pass:
 
 1. Capture matched v1/v2 geography, Fit/Fill/Focus/context views and native-input
    baseline measurements at the supported raster resolution.

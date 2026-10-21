@@ -1,0 +1,422 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "-c",
+      "D:\\serrian-tide-world/.local/cube-c2b2.config.ts"
+    ],
+    "configFile": "D:\\serrian-tide-world\\.local\\cube-c2b2.config.ts",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {},
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/serrian-tide-world/test-results/cube-c2b2-regression",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/serrian-tide-world/test-results/cube-c2b2-regression",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\serrian-tide-world\\test-results\\cube-c2b2-regression",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "name": "desktop",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5255",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\serrian-tide-world\\test-results\\cube-c2b2-regression",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "name": "mobile",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5255",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Mobile Safari/537.36",
+          "viewport": {
+            "width": 412,
+            "height": 839
+          },
+          "screen": {
+            "width": 412,
+            "height": 915
+          },
+          "deviceScaleFactor": 2.625,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:\\serrian-tide-world\\docs\\evidence\\cube-c2b2-browser-result.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [],
+  "errors": [
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    },
+    {
+      "message": "Cannot use({ trace }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "D:\\serrian-tide-world\\tests\\cube-responsive.spec.ts",
+        "line": 4,
+        "column": 7
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcube-responsive.spec.ts:4\n\n  2 | const proof=(value:unknown)=>JSON.stringify(value,(_key,item)=>typeof item==='bigint'?{$bigint:item.toString()}:Object.is(item,-0)?{$float64:'-0'}:item);\n  3 | test.describe('Cube-C2B2 isolated native worker execution (no cube renderer)',()=>{\n> 4 |  test.use({trace:'on'});\n    |       ^\n  5 |  test.setTimeout(180_000);\n  6 |  for(const n of[128,256])for(const tool of['raise','lower','smooth','flatten'] as const)test(`N${n} ${tool}: every canonical word, epoch and history`,async({page},info)=>{\n  7 |   await page.goto('/dev/cube-work.html');const result=await page.evaluate(async options=>(await import(/* @vite-ignore */new URL('/tests/fixtures/cube-worker-exercise.ts',location.origin).href)).exercise(options),{scenario:'normal',n,tool});"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-10-21T01:59:16.071Z",
+    "duration": 399.701,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

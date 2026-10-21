@@ -1,0 +1,266 @@
+{
+  "node": "v24.18.0",
+  "platform": "win32",
+  "recordedAtUtc": "2026-10-21T01:58:20.918Z",
+  "oracleCases": 301,
+  "oracleVerified": true,
+  "oracleScriptSha256": "8c6bb6d0a3f4e2a8834206dd1637c0c60673253827becf57ad2f9f8144136af8",
+  "gcAvailable": true,
+  "conditions": "Single Windows Node process, ten warmups and 100 timed queries per group. Python Fraction verification completes before timing. No browser/mobile latency claim. Memory snapshots include runtime, garbage and retained last result; serialized result size is not heap/RSS. No elevation or sample-sized routing cache.",
+  "measurements": [
+    {
+      "label": "same-face",
+      "trials": 100,
+      "p50Ms": 0.2683999999999287,
+      "p95Ms": 0.313600000000406,
+      "maxMs": 0.5322999999998501,
+      "retainedLastResultSerializedBytes": 1808,
+      "before": {
+        "rss": 101519360,
+        "heapTotal": 48525312,
+        "heapUsed": 12589520,
+        "external": 20593223,
+        "arrayBuffers": 4862415
+      },
+      "after": {
+        "rss": 109338624,
+        "heapTotal": 48525312,
+        "heapUsed": 16164752,
+        "external": 14277661,
+        "arrayBuffers": 4862415
+      },
+      "heapDeltaBeforeGc": 3575232,
+      "certificate": {
+        "candidateSequences": 1,
+        "feasibleSequences": 1,
+        "rejectedInteriorCornerSequences": 0,
+        "peakRetainedMinimizers": 1,
+        "completePhysicalShortestRoutes": 1,
+        "maxFaces": 6,
+        "maxSequencesPerFacePair": 28,
+        "maxCandidates": 252,
+        "workUnits": 313,
+        "peakIntegerBits": 1025,
+        "rootComparisons": 128,
+        "workLimit": 200000,
+        "integerBitLimit": 16384
+      }
+    },
+    {
+      "label": "adjacent",
+      "trials": 100,
+      "p50Ms": 1.147200000000339,
+      "p95Ms": 1.3613000000004831,
+      "maxMs": 1.9089999999996508,
+      "retainedLastResultSerializedBytes": 2761,
+      "before": {
+        "rss": 110592000,
+        "heapTotal": 47214592,
+        "heapUsed": 12600064,
+        "external": 14279469,
+        "arrayBuffers": 4862415
+      },
+      "after": {
+        "rss": 117637120,
+        "heapTotal": 47738880,
+        "heapUsed": 21025848,
+        "external": 14277661,
+        "arrayBuffers": 4862415
+      },
+      "heapDeltaBeforeGc": 8425784,
+      "certificate": {
+        "candidateSequences": 26,
+        "feasibleSequences": 6,
+        "rejectedInteriorCornerSequences": 8,
+        "peakRetainedMinimizers": 1,
+        "completePhysicalShortestRoutes": 1,
+        "maxFaces": 6,
+        "maxSequencesPerFacePair": 28,
+        "maxCandidates": 252,
+        "workUnits": 1402,
+        "peakIntegerBits": 1027,
+        "rootComparisons": 192,
+        "workLimit": 200000,
+        "integerBitLimit": 16384
+      }
+    },
+    {
+      "label": "opposite-centers-four-ties",
+      "trials": 100,
+      "p50Ms": 1.92029999999977,
+      "p95Ms": 2.8004000000000815,
+      "maxMs": 11.64509999999973,
+      "retainedLastResultSerializedBytes": 12409,
+      "before": {
+        "rss": 117686272,
+        "heapTotal": 47476736,
+        "heapUsed": 12743768,
+        "external": 14277661,
+        "arrayBuffers": 4862415
+      },
+      "after": {
+        "rss": 117637120,
+        "heapTotal": 47476736,
+        "heapUsed": 16934328,
+        "external": 14277661,
+        "arrayBuffers": 4862415
+      },
+      "heapDeltaBeforeGc": 4190560,
+      "certificate": {
+        "candidateSequences": 28,
+        "feasibleSequences": 12,
+        "rejectedInteriorCornerSequences": 8,
+        "peakRetainedMinimizers": 4,
+        "completePhysicalShortestRoutes": 4,
+        "maxFaces": 6,
+        "maxSequencesPerFacePair": 28,
+        "maxCandidates": 252,
+        "workUnits": 3266,
+        "peakIntegerBits": 1029,
+        "rootComparisons": 832,
+        "workLimit": 200000,
+        "integerBitLimit": 16384
+      }
+    },
+    {
+      "label": "four-faces",
+      "trials": 100,
+      "p50Ms": 0.7710999999999331,
+      "p95Ms": 1.107600000000275,
+      "maxMs": 1.8222999999998137,
+      "retainedLastResultSerializedBytes": 4907,
+      "before": {
+        "rss": 117678080,
+        "heapTotal": 47738880,
+        "heapUsed": 12635880,
+        "external": 14290070,
+        "arrayBuffers": 4862415
+      },
+      "after": {
+        "rss": 117600256,
+        "heapTotal": 47738880,
+        "heapUsed": 25286600,
+        "external": 14277661,
+        "arrayBuffers": 4862415
+      },
+      "heapDeltaBeforeGc": 12650720,
+      "certificate": {
+        "candidateSequences": 28,
+        "feasibleSequences": 12,
+        "rejectedInteriorCornerSequences": 3,
+        "peakRetainedMinimizers": 2,
+        "completePhysicalShortestRoutes": 1,
+        "maxFaces": 6,
+        "maxSequencesPerFacePair": 28,
+        "maxCandidates": 252,
+        "workUnits": 1803,
+        "peakIntegerBits": 1032,
+        "rootComparisons": 320,
+        "workLimit": 200000,
+        "integerBitLimit": 16384
+      }
+    },
+    {
+      "label": "opposite-corners-six-ties",
+      "trials": 100,
+      "p50Ms": 6.63839999999982,
+      "p95Ms": 11.144800000000032,
+      "maxMs": 11.672899999999572,
+      "retainedLastResultSerializedBytes": 12714,
+      "before": {
+        "rss": 117207040,
+        "heapTotal": 47738880,
+        "heapUsed": 12753928,
+        "external": 14277661,
+        "arrayBuffers": 4862415
+      },
+      "after": {
+        "rss": 117641216,
+        "heapTotal": 48525312,
+        "heapUsed": 18732064,
+        "external": 14277661,
+        "arrayBuffers": 4862415
+      },
+      "heapDeltaBeforeGc": 5978136,
+      "certificate": {
+        "candidateSequences": 240,
+        "feasibleSequences": 150,
+        "rejectedInteriorCornerSequences": 30,
+        "peakRetainedMinimizers": 150,
+        "completePhysicalShortestRoutes": 6,
+        "maxFaces": 6,
+        "maxSequencesPerFacePair": 28,
+        "maxCandidates": 252,
+        "workUnits": 18974,
+        "peakIntegerBits": 1027,
+        "rootComparisons": 832,
+        "workLimit": 200000,
+        "integerBitLimit": 16384
+      }
+    },
+    {
+      "label": "extreme-sub-ulp",
+      "trials": 100,
+      "p50Ms": 3.9283000000004904,
+      "p95Ms": 5.130699999999706,
+      "maxMs": 7.441499999999905,
+      "retainedLastResultSerializedBytes": 9072,
+      "before": {
+        "rss": 117751808,
+        "heapTotal": 48263168,
+        "heapUsed": 12800512,
+        "external": 14277661,
+        "arrayBuffers": 4862415
+      },
+      "after": {
+        "rss": 118095872,
+        "heapTotal": 48263168,
+        "heapUsed": 21509576,
+        "external": 14277661,
+        "arrayBuffers": 4862415
+      },
+      "heapDeltaBeforeGc": 8709064,
+      "certificate": {
+        "candidateSequences": 28,
+        "feasibleSequences": 12,
+        "rejectedInteriorCornerSequences": 0,
+        "peakRetainedMinimizers": 1,
+        "completePhysicalShortestRoutes": 1,
+        "maxFaces": 6,
+        "maxSequencesPerFacePair": 28,
+        "maxCandidates": 252,
+        "workUnits": 1447,
+        "peakIntegerBits": 6344,
+        "rootComparisons": 256,
+        "workLimit": 200000,
+        "integerBitLimit": 16384
+      }
+    }
+  ],
+  "sampleProofs": [
+    {
+      "n": 128,
+      "vertices": 98306,
+      "elevationBytes": 393224,
+      "revisionBefore": 2,
+      "revisionAfter": 2,
+      "beforeSha256": "5265b16332cfeb0589f32a1f863f2f842d38cfb53033edc662a19ff586ad7f81",
+      "afterSha256": "5265b16332cfeb0589f32a1f863f2f842d38cfb53033edc662a19ff586ad7f81",
+      "representationVersion": 1,
+      "configurationVersion": 1
+    },
+    {
+      "n": 256,
+      "vertices": 393218,
+      "elevationBytes": 1572872,
+      "revisionBefore": 2,
+      "revisionAfter": 2,
+      "beforeSha256": "30a7188e26da230e6733841a1b70ca042aa67d1b0ee5bec8ab47679d0fdae17d",
+      "afterSha256": "30a7188e26da230e6733841a1b70ca042aa67d1b0ee5bec8ab47679d0fdae17d",
+      "representationVersion": 1,
+      "configurationVersion": 1
+    }
+  ],
+  "peakProofWorkUnits": 18974,
+  "peakProofIntegerBits": 6344
+}

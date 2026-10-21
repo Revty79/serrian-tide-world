@@ -1,0 +1,38 @@
+import {createSolidCubeTerrain} from '../../src/terrain/solid-cube.ts';
+import {prepareSolidCubeDab, type CubeBrushSettings} from '../../src/terrain/solid-cube-brush.ts';
+import type {SolidCubePosition} from '../../src/surfaces/solid-cube.ts';
+
+const identity={worldId:'cube-c2b2-probe',surfaceId:'exterior'},geometry={identity,provider:'physical-solid-cube' as const,version:1 as const,configuration:'solid' as const,role:'exterior' as const,sideLengthMeters:1024};
+const centers:SolidCubePosition[]=[{...identity,patchId:'px',u:500,v:0},{...identity,patchId:'py',u:-500,v:0},{...identity,patchId:'py',u:-490,v:0}];
+const channel=new MessageChannel();let resume:(()=>void)|undefined;channel.port1.onmessage=()=>{resume?.();resume=undefined;};
+const turn=()=>new Promise<void>(r=>{resume=r;channel.port2.postMessage(0);});
+export async function preparationProbe(options:{n:number;tool:CubeBrushSettings['tool'];radius:number;mode:'cooperative'|'verified-worker'}){
+ const t=createSolidCubeTerrain({terrainId:'cube-probe-'+options.n,geometry,cellsPerEdge:options.n});for(const key of t.samples())t.write(key,key.index===0?-0:((key.index*17)%41-20)*3);
+ const settings={version:1,tool:options.tool,radiusMeters:options.radius,...(options.tool==='raise'||options.tool==='lower'?{strengthMeters:30}:{intensity:.8,...(options.tool==='flatten'?{targetElevation:43}:{})})} as CubeBrushSettings;
+ let worker:Worker|undefined,pendingResolve:((m:any)=>void)|undefined,pendingReject:((e:Error)=>void)|undefined;
+ const wait=()=>new Promise<any>((resolve,reject)=>{pendingResolve=resolve;pendingReject=reject;});
+ const started=performance.now();let startupMs=0,loadMs=0,sourceCopyMs=0,sourceCopies=0,sourceBytes=0;const dabs=[];
+ try{
+  if(options.mode==='verified-worker'){
+   const at=performance.now();worker=new Worker(new URL('./cube-preparation-probe.worker.ts',import.meta.url),{type:'module'});
+   worker.onmessage=e=>{const resolve=pendingResolve,reject=pendingReject;pendingResolve=pendingReject=undefined;e.data.type==='error'?reject?.(Error(e.data.message)):resolve?.(e.data);};worker.onerror=e=>pendingReject?.(Error(e.message));
+   const ready=wait(),copyAt=performance.now(),values=t.copyElevations();sourceCopyMs=performance.now()-copyAt;sourceCopies++;sourceBytes=values.byteLength;
+   worker.postMessage({type:'start',geometry,n:options.n,terrainId:t.metadata.terrainId,values,revision:t.revision},[values.buffer]);const m=await ready;startupMs=performance.now()-at;loadMs=m.loadMs;
+  }
+  for(const [index,center]of centers.entries()){
+   const began=performance.now(),source=t.revision,reply=worker?wait():undefined;if(worker)worker.postMessage({type:'prepare',sequence:index+1,revision:source,center,settings});
+   const at=performance.now(),job=prepareSolidCubeDab(t,center,settings),initializationMs=performance.now()-at,pumps:number[]=[];
+   while(job.status==='preparing'){const at=performance.now();job.pump(256);pumps.push(performance.now()-at);await turn();}
+   const hostReadyMs=performance.now()-began,m=reply?await reply:undefined;let verificationMs=0,proposalBytes=0;
+   if(m){const at=performance.now();let count=0;proposalBytes=m.indices.byteLength+m.before.byteLength+m.after.byteLength;
+    if(m.type!=='prepared'||m.sequence!==index+1||m.revision!==source||!(m.indices instanceof Uint32Array)||!(m.before instanceof Float32Array)||!(m.after instanceof Float32Array)||m.indices.length!==m.before.length||m.indices.length!==m.after.length||proposalBytes>786432)throw Error('Probe proposal invalid');
+    for(const c of job.preparedChanges(t)){if(m.indices[count]!==c.index||!Object.is(m.before[count],c.before)||!Object.is(m.after[count],c.after))throw Error('Probe exact full footprint/word mismatch');count++;}if(count!==m.indices.length)throw Error('Probe omitted/extra changes');verificationMs=performance.now()-at;
+   }
+   const commitAt=performance.now(),writes=job.commit(),publicationMs=performance.now()-commitAt,firstCommitAt=performance.now()-started;
+   let ackMs=0;if(worker){const at=performance.now(),ack=wait();worker.postMessage({type:'ack',sequence:index+1,revision:t.revision});const m=await ack;if(m.type!=='ack'||m.sequence!==index+1||m.revision!==t.revision)throw Error('Probe acknowledgement invalid');ackMs=performance.now()-at;}
+   dabs.push({sequence:index+1,sourceRevision:source,resultRevision:t.revision,writes,initializationMs,pumps,hostReadyMs,verificationMs,publicationMs,firstCommitAt,ackMs,proposalBytes,workerPreparationMs:m?.prepareMs,workerMaxPumpMs:m?.maxPumpMs,wallMs:performance.now()-began});
+  }
+  const drainMs=performance.now()-started,values=t.copyElevations(),sha256=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',values.buffer))).map(v=>v.toString(16).padStart(2,'0')).join('');
+  return {...options,startupMs,loadMs,sourceCopies,sourceBytes,sourceCopyMs,drainMs,dabs,sha256,scope:'Standalone three-dab timing probe, not a held-stroke history-capacity test. Host recomputes unchanged C1 completely before accepting worker values; scratch advances only on exact canonical acknowledgement.'};
+ }finally{worker?.terminate();}
+}
