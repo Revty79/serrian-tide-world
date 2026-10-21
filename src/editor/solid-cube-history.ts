@@ -6,6 +6,8 @@ const CHUNK=1024, CHUNK_BYTES=CHUNK*12;
 export const CUBE_HISTORY_LIMITS=Object.freeze({maxEntries:32,maxBytes:8*1024*1024,maxStrokeSamples:MAX_CUBE_PATCH_SAMPLES,maxBookkeepingSteps:16_000_000});
 export type CubeHistoryLimits={readonly [K in keyof typeof CUBE_HISTORY_LIMITS]?:number} & {readonly capacity?:'surface'};
 export type CubeStrokeTermination='released'|'cancelled'|'failed'|'disposed';
+/** Optional derived-display handoff. Never a commit proposal or history authority. */
+export type CubePublication=Readonly<{sourceRevision:number;revision:number;kind:'delta';indices:Uint32Array}>|Readonly<{sourceRevision:number;revision:number;kind:'all'}>;
 type Chunk=CubePatchBlock & {readonly beforeWords:Uint32Array;readonly afterWords:Uint32Array;count:number};
 interface Record {chunks:Chunk[];count:number;bytes:number;dabs:number;reason:CubeStrokeTermination}
 type Change=Readonly<{index:number;before:number;after:number}>;
@@ -18,7 +20,11 @@ const at=(r:Record,slot:number):Change=>{
 
 /** One authority, exact sorted net patches, and a revision lease. No view or timers.
  * C1 jobs are created privately: arbitrary caller-supplied commit proposals cannot enter history. */
-export function createSolidCubeHistory(terrain:SolidCubeTerrain,input:CubeHistoryLimits={}) {
+export function createSolidCubeHistory(terrain:SolidCubeTerrain,input:CubeHistoryLimits={},trackPublications=false) {
+  if(typeof trackPublications!=='boolean')throw new RangeError('Invalid cube publication tracking option.');
+  let publication:CubePublication|undefined;
+  const preparePublication=(indices:()=>Uint32Array):CubePublication|undefined=>!trackPublications?undefined:publication?Object.freeze({sourceRevision:publication.sourceRevision,revision:terrain.revision,kind:'all'}):Object.freeze({sourceRevision:terrain.revision,revision:terrain.revision,kind:'delta',indices:indices()});
+  const published=(next:CubePublication|undefined)=>{if(next)publication=Object.freeze({...next,revision:terrain.revision});};
   if(input.capacity!==undefined&&input.capacity!=='surface')throw new RangeError('Invalid cube history capacity.');
   const hard=input.capacity==='surface'?{...CUBE_HISTORY_LIMITS,maxStrokeSamples:terrain.sampleCount}:CUBE_HISTORY_LIMITS;
   const {capacity: _capacity,...requested}=input;
@@ -39,8 +45,9 @@ export function createSolidCubeHistory(terrain:SolidCubeTerrain,input:CubeHistor
     // Explicit Undo/Redo may retain disjoint external edits. C1 validates EVERY
     // target source word and this current epoch before its atomic publication.
     const blocks:CubePatchBlock[]=r.chunks.map(c=>({indices:c.indices,before:redo?c.before:c.after,after:redo?c.after:c.before,count:c.count}));
+    const next=preparePublication(()=>{const indices=new Uint32Array(r.count);let at=0;for(const c of r.chunks){indices.set(c.indices.subarray(0,c.count),at);at+=c.count;}return indices;});
     const writes=terrain.commitPreparedPatch(binding,revision,blocks,input.capacity==='surface'?'history':'dab');
-    expectedRevision=revision+writes;cursor+=redo?1:-1;return true;
+    expectedRevision=revision+writes;cursor+=redo?1:-1;published(next);return true;
   };
   return Object.freeze({limits,
     get expectedRevision(){return expectedRevision;},
@@ -49,6 +56,7 @@ export function createSolidCubeHistory(terrain:SolidCubeTerrain,input:CubeHistor
       activeSamples:active?.count??0,evictions,branches,conflicts,peakTypedBytes});},
     get operations(){return Object.freeze(entries.slice(0,size).map(r=>Object.freeze({samples:r!.count,bytes:r!.bytes,dabs:r!.dabs,termination:r!.reason})));},
     synchronized,undo:()=>apply(false),redo:()=>apply(true),
+    takePublication(){const value=publication;publication=undefined;return value;},
     clear(){if(active)throw new Error('End the cube gesture before clearing history.');entries.fill(undefined);size=cursor=bytes=0;expectedRevision=terrain.revision;},
     *changes(operation:number){
       if(!Number.isSafeInteger(operation)||operation<0||operation>=size)throw new RangeError('Invalid cube history operation.');
@@ -124,6 +132,7 @@ export function createSolidCubeHistory(terrain:SolidCubeTerrain,input:CubeHistor
           if(changed)while(keepBytes+draft.bytes>limits.maxBytes){
             if(evict>=cursor)throw new RangeError('Cube history cannot reserve this committed prefix.');keepBytes-=entries[evict++]!.bytes;
           }
+          const next=changed?preparePublication(()=>Uint32Array.from(job!.preparedChanges(terrain),c=>c.index)):undefined;
           synced();const writes=job.commit();
           // Everything below is private bounded bookkeeping; no allocation or
           // caller callback separates publication from prefix promotion.
@@ -133,7 +142,7 @@ export function createSolidCubeHistory(terrain:SolidCubeTerrain,input:CubeHistor
             for(let i=0;i<evict;i++){bytes-=entries[i]!.bytes;evictions++;}
             if(evict){for(let i=evict;i<size;i++)entries[i-evict]=entries[i];for(let i=size-evict;i<size;i++)entries[i]=undefined;size-=evict;cursor=size;}
           }
-          lastStatistics=job.statistics;job=undefined;draft=undefined;iterator=undefined;peek=undefined;stage='none';synced();return writes;
+          lastStatistics=job.statistics;job=undefined;draft=undefined;iterator=undefined;peek=undefined;stage='none';synced();published(next);return writes;
         },
         cancelPending,
         finish(reason:CubeStrokeTermination){

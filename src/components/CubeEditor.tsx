@@ -2,6 +2,7 @@ import {useEffect,useImperativeHandle,useRef,useState,type Ref,type ReactNode} f
 import {CubeEditorSession} from '../editor/cube-editor-session.ts';
 import {createSolidCubeTerrain} from '../terrain/solid-cube.ts';
 import type {CubeBrushSettings} from '../terrain/solid-cube-brush.ts';
+import type {SurfacePosition} from '../surfaces/contracts.ts';
 import {CubePresentation,type CubeBackend} from '../rendering/solid-cube-presentation.ts';
 import {cubeCamera,cubeLayout,cubeRayHit,cubeNetHit,projectCube,rotateCube,type CubeDisplayMode} from '../rendering/solid-cube-view.ts';
 import {cubeFootprint,type CubeFootprintLine} from '../rendering/solid-cube-footprint.ts';
@@ -22,19 +23,24 @@ export function CubeEditor({session,workspace,handleRef}:{session:CubeEditorSess
  useImperativeHandle(handleRef,()=>({finishInteraction:()=>commands.current.finish(),stop:()=>commands.current.cancel(),undo:()=>{commands.current.cancel();void session.replay();},redo:()=>{commands.current.cancel();void session.replay(true);}}),[session]);
  useEffect(()=>{
   setReady(false);
-  let alive=true,space=false,active:'none'|'paint'|'navigate'|'touch-pending'='none',paintId=-1,pendingTimer=0,hoverSerial=0,hoverTimer=0,lastPoint:Point|undefined,hover:Point|undefined,lines:CubeFootprintLine[]=[],touchIntent:Point[]=[],pen=false;
+  let alive=true,space=false,active:'none'|'paint'|'navigate'|'touch-pending'='none',paintId=-1,pendingTimer=0,hoverSerial=0,hoverTimer=0,lastPoint:Point|undefined,hover:Point|undefined,lines:CubeFootprintLine[]=[],touchIntent:Point[]=[],pen=false,uiFrame=0,lastUi=0,signature='',footprintKey='',lastOutline='',footprintBusy=false,lastFootprintAt=0,latestFootprint:SurfacePosition|undefined;
+  const interaction={cursorEvents:0,cursorMaxMs:0,footprintRequests:0,footprintCompleted:0,footprintCancelled:0,footprintMaxMs:0,footprintMs:[] as number[]};
   const pointers=new Map<number,Point>(),element=viewport.current!,size=()=>({width:element.clientWidth,height:element.clientHeight});
-  const changed=()=>{if(alive)update(v=>v+1);};session.changed=changed;
-  const current=new CubePresentation(source,cpu.current!,gpu.current!,()=>{changed();drawFootprint();},{editor:true,backend});scene.current=current;current.resize(size());
+  const changed=()=>{if(!alive||uiFrame)return;uiFrame=requestAnimationFrame(()=>{uiFrame=0;if(!alive)return;const now=performance.now(),key=JSON.stringify([session.modified,session.processing,session.error,session.needsRecovery,session.history.canUndo,session.history.canRedo,current.metrics.error]);if(key!==signature||session.processing&&now-lastUi>=100){signature=key;lastUi=now;update(v=>v+1);}drawFootprint();});};session.changed=changed;
+  const current=new CubePresentation(source,cpu.current!,gpu.current!,changed,{editor:true,backend,verifyPixels:new URLSearchParams(location.search).get('verifyPixels')==='1'});scene.current=current;current.resize(size());
+  session.published=publication=>current.queuePublication(publication);
   const pick=(point:Point)=>{const l=cubeLayout(current.camera,current.mode,size()),x=(point.x-l.x)/l.scale,y=(l.y-point.y)/l.scale,hit=current.mode==='net'?cubeNetHit(x+.5,y):cubeRayHit(x,y,current.camera);return hit?{...source.metadata.identity,patchId:hit.face,u:hit.u*length/2,v:hit.v*length/2}:undefined;};
   const local=(event:PointerEvent)=>{const r=element.getBoundingClientRect();return{x:event.clientX-r.left,y:event.clientY-r.top};};
   function drawFootprint(){if(!contour.current)return;const commands:string[]=[];
    for(const line of lines){if(current.mode==='physical'&&cubeDot(SOLID_CUBE_FRAMES[line.face].normal,current.camera.forward)<=0)continue;const a=projectCube(line.face,line.u,line.v,current.camera,current.mode,size()),b=projectCube(line.face,line.u2,line.v2,current.camera,current.mode,size());commands.push(`M${a.x},${a.y}L${b.x},${b.y}`);}
-   contour.current.setAttribute('d',commands.join(''));}
-  const inspect=(point:Point)=>{hover=point;const hit=pick(point);if(cursor.current){cursor.current.style.display=hit?'':'none';cursor.current.setAttribute('cx',String(point.x));cursor.current.setAttribute('cy',String(point.y));}
+   const value=commands.join('');if(value!==lastOutline){lastOutline=value;contour.current.setAttribute('d',value);}}
+  const requestFootprint=()=>{if(!alive||footprintBusy||hoverTimer||!latestFootprint)return;hoverTimer=window.setTimeout(()=>{hoverTimer=0;if(!latestFootprint||!alive)return;const hit=latestFootprint,serial=hoverSerial,radius=controls.current.radius,started=performance.now();lastFootprintAt=started;footprintBusy=true;interaction.footprintRequests++;
+   void cubeFootprint(source,hit,radius,()=>alive&&serial===hoverSerial).then(result=>{if(alive&&serial===hoverSerial){lines=result;interaction.footprintCompleted++;drawFootprint();}else interaction.footprintCancelled++;}).catch(()=>{if(alive&&serial===hoverSerial&&readout.current)readout.current.textContent='Brush outline unavailable here. Terrain drawing remains available.';}).finally(()=>{footprintBusy=false;const ms=performance.now()-started;interaction.footprintMaxMs=Math.max(interaction.footprintMaxMs,ms);if(interaction.footprintMs.length===240)interaction.footprintMs.shift();interaction.footprintMs.push(ms);if(alive&&serial!==hoverSerial)requestFootprint();});
+  },Math.max(0,40-(performance.now()-lastFootprintAt)));};
+  const inspect=(point:Point)=>{const started=performance.now();hover=point;const hit=pick(point);if(cursor.current){cursor.current.style.display=hit?'':'none';cursor.current.setAttribute('cx',String(point.x));cursor.current.setAttribute('cy',String(point.y));}interaction.cursorEvents++;interaction.cursorMaxMs=Math.max(interaction.cursorMaxMs,performance.now()-started);
    if(hit){const column=Math.round((hit.u/length+.5)*n),row=Math.round((hit.v/length+.5)*n),height=source.read(source.resolve({...hit,column,row}));if(readout.current)readout.current.textContent=`${labels[hit.patchId as SolidCubeFace]} · ${height.toLocaleString(undefined,{maximumFractionDigits:1})} m · ${(controls.current.radius/1000).toFixed(1)} km brush`;}
-   const serial=++hoverSerial;clearTimeout(hoverTimer);if(!hit){lines=[];drawFootprint();return;}
-   hoverTimer=window.setTimeout(()=>{void cubeFootprint(source,hit,controls.current.radius,()=>alive&&serial===hoverSerial).then(result=>{if(alive&&serial===hoverSerial){lines=result;drawFootprint();}}).catch(()=>{if(serial===hoverSerial){lines=[];drawFootprint();}});},24);
+   const key=hit?JSON.stringify([hit.patchId,hit.u,hit.v,controls.current.radius]):'';if(key===footprintKey)return;footprintKey=key;
+   ++hoverSerial;latestFootprint=hit;if(!hit){clearTimeout(hoverTimer);hoverTimer=0;lines=[];drawFootprint();return;}requestFootprint();
   };
   const paintSettings=():CubeBrushSettings=>{const c=controls.current;return c.tool==='smooth'?{version:1,tool:'smooth',radiusMeters:c.radius,intensity:c.intensity}:c.tool==='flatten'?{version:1,tool:'flatten',radiusMeters:c.radius,intensity:c.intensity,targetElevation:c.target}:{version:1,tool:c.tool==='lower'?'lower':'raise',radiusMeters:c.radius,strengthMeters:c.strength};};
   const startPaint=(point:Point)=>{const hit=pick(point);if(!hit||!session.begin(hit,paintSettings()))return false;lastPoint=point;return true;};
@@ -81,14 +87,19 @@ export function CubeEditor({session,workspace,handleRef}:{session:CubeEditorSess
   let readyRef=false;
   session.visualize=async()=>{await current.refresh('interactive');if(!alive)return;
    await new Promise<void>(resolve=>requestAnimationFrame(()=>{current.present();resolve();}));
-   if(current.snapshot().displayedRevision!==source.revision)throw Error('Terrain is retained, but display refresh failed. Retry by changing Rendering.');if(hover)inspect(hover);
+   if(current.metrics.error)throw Error('Terrain is retained, but display refresh failed. Retry by changing Rendering.');return current.metrics.displayedRevision;
   };
-  void current.refresh().then(()=>{if(alive){readyRef=true;setReady(true);}});
+  void current.refresh().then(async()=>{
+   // First Canvas pixels precede driver initialization. Keep the visible loading
+   // state until that one-time work finishes, rather than freezing a first stroke.
+   while(alive&&!current.metrics.error&&(current.metrics.firstVisibleMs===undefined||backend==='auto'&&current.metrics.gpuInitializationStartedMs<0))await new Promise<void>(r=>requestAnimationFrame(()=>r()));
+   if(alive){readyRef=!current.metrics.error;setReady(true);}
+  });
   const observer=new ResizeObserver(()=>{current.resize(size());drawFootprint();});observer.observe(element);
   commands.current={finish,cancel,zoom,view:(direction,nextMode)=>{finish();const selected=nextMode??current.mode;current.setView(direction?cubeCamera(direction):cubeCamera(),selected);setMode(selected);if(hover)inspect(hover);}};
-  window.__cubeEditor={snapshot:()=>({editor:session.snapshot(),display:current.snapshot()}),words:()=>Array.from(new Uint32Array(source.copyElevations().buffer)),hash:async()=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',source.copyElevations().buffer as ArrayBuffer))).map(v=>v.toString(16).padStart(2,'0')).join(''),project:(face,u,v)=>{const r=element.getBoundingClientRect(),p=projectCube(face,u,v,current.camera,current.mode,size());return{x:p.x+r.left,y:p.y+r.top};}};
+  window.__cubeEditor={snapshot:()=>({editor:session.snapshot(),display:current.snapshot(),interaction:structuredClone(interaction)}),words:()=>Array.from(new Uint32Array(source.copyElevations().buffer)),hash:async()=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',source.copyElevations().buffer as ArrayBuffer))).map(v=>v.toString(16).padStart(2,'0')).join(''),project:(face,u,v)=>{const r=element.getBoundingClientRect(),p=projectCube(face,u,v,current.camera,current.mode,size());return{x:p.x+r.left,y:p.y+r.top};}};
   element.addEventListener('pointerdown',down);element.addEventListener('pointermove',move);element.addEventListener('pointerup',up);element.addEventListener('pointercancel',lost);element.addEventListener('lostpointercapture',lost);element.addEventListener('wheel',wheel,{passive:false});element.addEventListener('contextmenu',preventContext);window.addEventListener('keydown',key);window.addEventListener('keyup',keyup);window.addEventListener('blur',blur);
-  return()=>{alive=false;hoverSerial++;clearTimeout(pendingTimer);clearTimeout(hoverTimer);observer.disconnect();session.release();session.changed=()=>{};session.visualize=async()=>{};current.dispose();scene.current=undefined;delete window.__cubeEditor;element.removeEventListener('pointerdown',down);element.removeEventListener('pointermove',move);element.removeEventListener('pointerup',up);element.removeEventListener('pointercancel',lost);element.removeEventListener('lostpointercapture',lost);element.removeEventListener('wheel',wheel);element.removeEventListener('contextmenu',preventContext);window.removeEventListener('keydown',key);window.removeEventListener('keyup',keyup);window.removeEventListener('blur',blur);};
+  return()=>{alive=false;hoverSerial++;cancelAnimationFrame(uiFrame);clearTimeout(pendingTimer);clearTimeout(hoverTimer);observer.disconnect();session.release();session.changed=()=>{};session.published=()=>{};session.visualize=async()=>{};current.dispose();scene.current=undefined;delete window.__cubeEditor;element.removeEventListener('pointerdown',down);element.removeEventListener('pointermove',move);element.removeEventListener('pointerup',up);element.removeEventListener('pointercancel',lost);element.removeEventListener('lostpointercapture',lost);element.removeEventListener('wheel',wheel);element.removeEventListener('contextmenu',preventContext);window.removeEventListener('keydown',key);window.removeEventListener('keyup',keyup);window.removeEventListener('blur',blur);};
   // The editor owns the source lifetime; controls are read from a current ref.
  },[session]);
  useEffect(()=>{scene.current?.setBackend(backend);},[backend]);

@@ -6,7 +6,7 @@ import type {CubeHistoryLimits} from './solid-cube-history.ts';
 import {createCubeWorkerPath,cubePathWorkerFactory,cubeWorkerIsIdle, type CubeExecutionMode, type CubePathWorkerFactory} from './cube-worker-path.ts';
 import {CUBE_PATH_WORK_LIMITS, type CubePathRole} from './cube-path-work-protocol.ts';
 
-export interface ResponsiveCubeOptions {readonly mode?:CubeExecutionMode;readonly historyLimits?:CubeHistoryLimits;readonly workerFactory?:CubePathWorkerFactory;readonly startupTimeoutMs?:number;readonly workTimeoutMs?:number;readonly reuseWorkers?:boolean}
+export interface ResponsiveCubeOptions {readonly mode?:CubeExecutionMode;readonly historyLimits?:CubeHistoryLimits;readonly workerFactory?:CubePathWorkerFactory;readonly startupTimeoutMs?:number;readonly workTimeoutMs?:number;readonly reuseWorkers?:boolean;readonly trackPublications?:boolean}
 /** One C2B1 authority/history. Only pure physical-path preparation may leave the host. */
 export function createResponsiveSolidCubeSession(terrain:SolidCubeTerrain,options:ResponsiveCubeOptions={}){
  const mode=options.mode??'auto',timeout=options.startupTimeoutMs??CUBE_PATH_WORK_LIMITS.startupTimeoutMs;
@@ -23,7 +23,7 @@ export function createResponsiveSolidCubeSession(terrain:SolidCubeTerrain,option
  };
  const core=createSolidCubeSessionWithPath(terrain,options.historyLimits??{},(configuration,radius,limits={})=>{
   bridge=createCubeWorkerPath(configuration,radius,limits,{mode,binding,revision:()=>terrain.revision,factory:acquire,startupTimeoutMs:timeout,workTimeoutMs:options.workTimeoutMs,releaseWorker});return bridge.path;
- });
+ },options.trackPublications??false);
  let channel:MessageChannel|undefined,turnPromise:Promise<void>|undefined,resolveTurn:(()=>void)|undefined;
  const turn=()=>{
   if(typeof setImmediate==='function')return new Promise<void>(r=>setImmediate(r));

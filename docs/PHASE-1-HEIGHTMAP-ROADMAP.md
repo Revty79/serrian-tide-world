@@ -4,6 +4,12 @@ Updated for Cube-D1 on accepted Cube-C2B2 delivery 77df76f3a0a12273f9277d201277f
 
 ## Current Cube-E/F authorization — 2026-10-21
 
+**Current gate: the owner rejected E/F delivery `01e897e4220d9ffd0357ff358d73dec32691d51b`.**
+Painting performance and normal workspace presentation are corrected in the
+[bounded corrective pass](CUBE-EF-CORRECTIVE-COMPLETION.md). Its automated results
+do not constitute owner acceptance. Stop for hands-on review; Cube-G/H, hollow
+worlds, additional shapes and unrelated cartography remain unauthorized.
+
 The owner accepted Cube-D1 visuals at delivery
 `3a267b77b4d9b1b2dc654ac0c519f363841407ce`, waived optional D2 and authorized
 Cube-E interactive editing followed directly by Cube-F Save/Open and normal cube

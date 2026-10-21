@@ -43,8 +43,8 @@ export function createSolidCubeSession(terrain:SolidCubeTerrain,historyLimits:Cu
 }
 
 /** @internal Only trusted, validated scheduling adapters may supply physical path events. */
-export function createSolidCubeSessionWithPath(terrain:SolidCubeTerrain,historyLimits:CubeHistoryLimits,pathFactory:CubeExecutionPathFactory) {
-  const history=createSolidCubeHistory(terrain,historyLimits),token=Object.freeze({}),key=Object.freeze({...terrain.keyAt(0)});
+export function createSolidCubeSessionWithPath(terrain:SolidCubeTerrain,historyLimits:CubeHistoryLimits,pathFactory:CubeExecutionPathFactory,trackPublications=false) {
+  const history=createSolidCubeHistory(terrain,historyLimits,trackPublications),token=Object.freeze({}),key=Object.freeze({...terrain.keyAt(0)});
   const binding=Object.freeze({...key,sampleCount:terrain.sampleCount,elevationByteLength:terrain.elevationByteLength});
   let active:SolidCubeStroke|undefined,last:SolidCubeStroke|undefined,disposed=false,beginning=false;
   const bound=()=>{

@@ -1,14 +1,19 @@
-<!-- Current interface: Cube-E/F. Historical completion reports describe their original checkpoints. -->
+<!-- Current interface: Cube-E/F corrective pass. Historical reports retain their original checkpoints. -->
 # Serrian Tide Atlas
 
-The solid cube now has a working terrain editor and versioned local Save/Open.
+The solid cube has a terrain editor and versioned local Save/Open. The owner
+rejected E/F at `01e897e` for slow painting and inconsistent workspace styling.
+The corrective pass removes painting/display serialization, updates local terrain
+regions and restores the established dark workspace. Default-brush N256 sustained
+input-to-display p95 measured 39 ms on the development machine; very wide strokes
+remain costly. **Owner hands-on acceptance is required before further cube work.**
 Run `npm.cmd run dev`, open Atlas, and choose **New World / Map → Solid cube world**.
 Use Raise, Lower, Smooth or Flatten in the 3D cube or unfolded map. Navigate or
 Space + drag moves the view; wheel / pinch zooms. Save, close the tab, then use
 **Browse saved maps → Open Map** to continue. N128 is faster; N256 and wide
-brushes can queue accepted work. See [Cube-E](docs/CUBE-E-COMPLETION.md) and
-[Cube-F](docs/CUBE-F-COMPLETION.md) for exact history, limits, testing and performance.
-Saves live in this browser on this device. E/F technical delivery awaits owner review.
+brushes can queue accepted work. See the [current correction and testing instructions](docs/CUBE-EF-CORRECTIVE-COMPLETION.md).
+[Cube-E](docs/CUBE-E-COMPLETION.md) and [Cube-F](docs/CUBE-F-COMPLETION.md) preserve
+their historical delivery details. Saves live in this browser on this device.
 
 Pass A7-P1C: Sphere Globe/Net presentation now reconstructs numerical elevation before terrain colors, with coast coverage, optional physical-gradient relief, persistent hardware WebGL2 and coherent CPU fallback. A measured hybrid path retains inexpensive cooperative strokes and prepares expensive spherical dabs in revision-acknowledged workers. Exact geography, history, v3 saves and mixed libraries remain authoritative. See [completion and measured evidence](docs/A7-P1C-COMPLETION.md), the [visual standard and proposed flat/wrapped follow-up](docs/SURFACE-VISUAL-STANDARD.md), and the [shared painting contract](docs/SURFACE-PAINTING-CONTRACT.md). The owner now accepts A7-P1C for development progression after hands-on testing and Ember published-source/evidence review. Ember did not independently rerun the complete suites.
 

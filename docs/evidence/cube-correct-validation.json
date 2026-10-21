@@ -1,0 +1,196 @@
+{
+  "date": "2026-10-21",
+  "baseline": "01e897e4220d9ffd0357ff358d73dec32691d51b",
+  "acceptance": "Owner rejected baseline; correction technically verified; owner hands-on acceptance outstanding. Stop for solid-cube review.",
+  "numerical": {
+    "command": "npm.cmd test",
+    "passed": 980,
+    "failed": 0
+  },
+  "build": {
+    "command": "npm.cmd run build",
+    "passed": true
+  },
+  "browser": {
+    "projects": [
+      "Chromium desktop 1440x950",
+      "Chromium Pixel 7 emulation; not physical phone"
+    ],
+    "workers": 1,
+    "cube": {
+      "passed": 32,
+      "failed": 0,
+      "durationMs": 219237.087,
+      "coverage": [
+        "N128/N256 hardware WebGL/Canvas",
+        "sustained drawing",
+        "all four tools; net/physical edges/corners",
+        "exact Undo/Redo including >65536 words",
+        "native browser pen/touch; two-finger navigation",
+        "v5 Save/Close/Open/Paint; failed storage/corrupt Open"
+      ]
+    },
+    "legacyAndD1": {
+      "passed": 20,
+      "failed": 0,
+      "durationMs": 117190.95999999999,
+      "coverage": [
+        "v1-v4 create/all four tools/history/save/open",
+        "setup and cross-shape failures",
+        "D1 GPU/Canvas pixels all faces N128/N256",
+        "context loss/recovery and rapid changes"
+      ]
+    }
+  },
+  "measurements": {
+    "pairs": 10,
+    "identicalCanonicalHashesAndInputCounts": true,
+    "benchmarks": "Raise, default 45km radius, sustained 180 native moves over nominal 3 seconds; ordinary, edge and corner scenarios",
+    "limitations": [
+      "Development-machine measurements, probes/profiles add overhead",
+      "Very wide N256 four-face draw/Undo/Redo case still takes 17-18 seconds",
+      "Main-thread immutable derived buffer copy remains 6.34MB per N256 display epoch",
+      "Physical phone and low-end hardware latency unverified",
+      "Owner drawing acceptance pending"
+    ]
+  },
+  "preservation": {
+    "checkedAgainst": "01e897e4220d9ffd0357ff358d73dec32691d51b",
+    "existingTrackedEvidenceAndHistoricalEFReceiptsUnchanged": true,
+    "terrainSurfacesPersistenceSourceUnchanged": true,
+    "changedExistingPaths": [
+      "README.md",
+      "docs/PHASE-1-HEIGHTMAP-ROADMAP.md",
+      "src/components/CubeEditor.css",
+      "src/components/CubeEditor.tsx",
+      "src/editor/cube-editor-session.ts",
+      "src/editor/cube-editor.test.ts",
+      "src/editor/solid-cube-history.ts",
+      "src/editor/solid-cube-responsive-session.ts",
+      "src/editor/solid-cube-session.ts",
+      "src/rendering/solid-cube-canvas.ts",
+      "src/rendering/solid-cube-editor-field.ts",
+      "src/rendering/solid-cube-footprint.ts",
+      "src/rendering/solid-cube-presentation.ts",
+      "tests/cube-editor.spec.ts"
+    ]
+  },
+  "sourceInventory": "docs/CUBE-EF-CORRECTIVE-SOURCE-INVENTORY.json",
+  "artifacts": [
+    {
+      "path": "docs/evidence/cube-correct-browser.txt",
+      "bytes": 5138,
+      "sha256": "626cf1e97fecdd235873ec4c885c06abe7b21c4f06f076c04c15db9b7fdb2b5e"
+    },
+    {
+      "path": "docs/evidence/cube-correct-build.txt",
+      "bytes": 1380,
+      "sha256": "779fbc8c31d2236d11b28e6d02ac50bc80a8e19f16217b63aa589189ad6b4a79"
+    },
+    {
+      "path": "docs/evidence/cube-correct-desktop-n128-auto.json",
+      "bytes": 85574,
+      "sha256": "face56ef0e54a37a25de643e5eb1e56064cf77f39fc633bd576ba3ad0fe0f80c"
+    },
+    {
+      "path": "docs/evidence/cube-correct-desktop-n128-auto.png",
+      "bytes": 269989,
+      "sha256": "cf8bb700d3474a678017f5c28ff93f7ee20c1ad9735c66abd8294c647a71ff0d"
+    },
+    {
+      "path": "docs/evidence/cube-correct-desktop-n128-canvas.json",
+      "bytes": 85874,
+      "sha256": "36d03e03ce6f68a0005dc11d865a76afd94363df96edad258dbc3602b0855325"
+    },
+    {
+      "path": "docs/evidence/cube-correct-desktop-n128-canvas.png",
+      "bytes": 276354,
+      "sha256": "b69375207fbeb90f10078842923cf8674d672feae5aaccaec62ddbee641526c2"
+    },
+    {
+      "path": "docs/evidence/cube-correct-desktop-n256-auto.json",
+      "bytes": 85946,
+      "sha256": "2455294b0c89f53b7e9cbfeaf9e74f070cf864f56fcdb048166af875e0b54259"
+    },
+    {
+      "path": "docs/evidence/cube-correct-desktop-n256-auto.png",
+      "bytes": 270917,
+      "sha256": "dd500fceeee3d5631303abbf74c3c820a00d9cfa0ce4ca1f7492caddf56e2a83"
+    },
+    {
+      "path": "docs/evidence/cube-correct-desktop-n256-canvas.json",
+      "bytes": 86627,
+      "sha256": "cfd08574e8335158942d08201f53467f4175403e25a26997b44fa5aed06a7ca8"
+    },
+    {
+      "path": "docs/evidence/cube-correct-desktop-n256-canvas.png",
+      "bytes": 251366,
+      "sha256": "0ff6230bc9fabfaa41c5a8cb5628d28f0e48e77c8d82d9547484bd5b0585cf69"
+    },
+    {
+      "path": "docs/evidence/cube-correct-desktop-n256-corner.png",
+      "bytes": 255187,
+      "sha256": "3493cc4b031ebc4517b9c4abf9edcf5137201b6035f27ce53f1ace00a8744f50"
+    },
+    {
+      "path": "docs/evidence/cube-correct-desktop-n256-edge-canvas.png",
+      "bytes": 260410,
+      "sha256": "68f0add7de3637ab1a14b17d21692517f44207f75cfd783837fef7c51789897b"
+    },
+    {
+      "path": "docs/evidence/cube-correct-mobile-n128-auto.json",
+      "bytes": 86463,
+      "sha256": "8b4aaafccc1bed52019c3a3f396ed375699855d708a9211be9139939f6f72947"
+    },
+    {
+      "path": "docs/evidence/cube-correct-mobile-n128-auto.png",
+      "bytes": 387229,
+      "sha256": "de091ef4773896b3b84e08464d62cf59aa274c3dfe559b3ff864b6b3fd22bb46"
+    },
+    {
+      "path": "docs/evidence/cube-correct-mobile-n128-canvas.json",
+      "bytes": 87143,
+      "sha256": "9d08e16fec823fdb576ae7f09aa0102693be3f521d199979d53a9ae7fa0421ec"
+    },
+    {
+      "path": "docs/evidence/cube-correct-mobile-n128-canvas.png",
+      "bytes": 396789,
+      "sha256": "8736a2be75e2ca7704dbbbd2485273123f144f15be61f27c360ed2bfd5d7b4e6"
+    },
+    {
+      "path": "docs/evidence/cube-correct-mobile-n256-auto.json",
+      "bytes": 87018,
+      "sha256": "dccc76b029abfd732da71176c06177392502aa6d25721b4e4ddd4a931ff022c2"
+    },
+    {
+      "path": "docs/evidence/cube-correct-mobile-n256-auto.png",
+      "bytes": 386632,
+      "sha256": "63e33ce30bfc2315e0a84f141801e2c2f48b5755b6a629169e0a5eed870b8179"
+    },
+    {
+      "path": "docs/evidence/cube-correct-mobile-n256-canvas.json",
+      "bytes": 86801,
+      "sha256": "22475aa19795f6771a8f262f543349b846f5e04ea3de3fed0c55a725a3a99b0f"
+    },
+    {
+      "path": "docs/evidence/cube-correct-mobile-n256-canvas.png",
+      "bytes": 397292,
+      "sha256": "e95a507f8f5caddfc06df2d417386439cbad30778cfc875373237d5572166def"
+    },
+    {
+      "path": "docs/evidence/cube-correct-numerical.txt",
+      "bytes": 92526,
+      "sha256": "89bf7253afa6e3b7f81318feef7d6d90770b4d6f6f5ec8baafea7cb5c7110126"
+    },
+    {
+      "path": "docs/evidence/cube-correct-performance.json",
+      "bytes": 134471,
+      "sha256": "8999fce09fcbf32254ef22c8b596f1ceb83fd9ecaa5b341dc16628e6640cf402"
+    },
+    {
+      "path": "docs/evidence/cube-correct-regression.txt",
+      "bytes": 3466,
+      "sha256": "9b97bd4b4b9ae1d1bdd8f138736c95d2b1a4bf5f452054a111a7f98d7d155d73"
+    }
+  ]
+}

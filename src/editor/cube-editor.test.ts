@@ -25,6 +25,17 @@ test('UI scheduler drains retained inputs, one held gesture, exact undo/redo and
  assert.equal(editor.core.lastStroke?.status,'complete');assert.equal(editor.history.operations.length,1);const after=words(t);assert.notDeepEqual(after,original);assert.equal(editor.modified,true);
  await editor.replay();assert.deepEqual(words(t),original);assert.equal(editor.modified,false);await editor.replay(true);assert.deepEqual(words(t),after);editor.markSaved();assert.equal(editor.modified,false);assert.equal(editor.hasSaved,true);editor.dispose();
 });
+
+test('a slow display cannot block accepted numerical work, but Save waits for the final visible epoch',async()=>{
+ const t=make(),editor=new CubeEditorSession(t,'Concurrent display',false,{mode:'cooperative'});let resume!:()=>void,firstRevision=0;
+ editor.visualize=async()=>{const revision=t.revision;if(!firstRevision){firstRevision=revision;await new Promise<void>(r=>{resume=r;});}return revision;};
+ editor.begin(point(-2),settings);while(!resume)await cubeTaskYield();editor.accept(point(2));editor.release();
+ const deadline=performance.now()+5000;while(editor.core.stroke&&performance.now()<deadline)await cubeTaskYield();
+ assert.equal(editor.core.lastStroke?.status,'complete');assert.ok(t.revision>firstRevision);assert.equal(editor.processing,true);
+ let saved=false;const drain=editor.drainForSave().then(()=>{saved=true;});await cubeTaskYield();assert.equal(saved,false);resume();await drain;
+ assert.equal(editor.processing,false);assert.equal(editor.timings.at(-1)?.revision,t.revision);assert.ok(editor.timings.every(t=>t.visibleAt!==undefined));
+ assert.equal(editor.history.operations.length,1);assert.equal(editor.modified,true);editor.dispose();
+});
 test('UI overflow is explicit, recoverable, never a successful truncated stroke or save',async()=>{
  const t=make(),editor=new CubeEditorSession(t,'Test',false,{mode:'cooperative'});let unblock!:()=>void;editor.visualize=()=>new Promise<void>(r=>{unblock=r;});
  editor.begin(point(),settings);while(!unblock)await cubeTaskYield();const prefix=words(t);
