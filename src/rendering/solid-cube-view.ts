@@ -1,7 +1,7 @@
 import {SOLID_CUBE_FACES,SOLID_CUBE_FRAMES,cubeDot,type CubeVector,type SolidCubeFace} from '../surfaces/solid-cube.ts';
 import {cross3,unitDirection} from '../surfaces/cube-sphere.ts';
 
-export interface CubeCamera {right:CubeVector;up:CubeVector;forward:CubeVector;zoom:number}
+export interface CubeCamera {right:CubeVector;up:CubeVector;forward:CubeVector;zoom:number;netZoom?:number;netX?:number;netY?:number}
 export type CubeDisplayMode='physical'|'net';
 export interface CubeViewport {width:number;height:number}
 export const CUBE_NET=Object.freeze({
@@ -24,7 +24,7 @@ export function rotateCube(camera:CubeCamera,dx:number,dy:number):CubeCamera{
 export function cubeLayout(camera:CubeCamera,mode:CubeDisplayMode,size:CubeViewport){
  if(![size.width,size.height].every(v=>Number.isFinite(v)&&v>0))throw RangeError('Positive cube viewport required');
  const width=mode==='net'?4:2*camera.right.reduce((n,v)=>n+Math.abs(v),0),height=mode==='net'?3:2*camera.up.reduce((n,v)=>n+Math.abs(v),0);
- return {x:size.width/2,y:size.height/2,scale:Math.min(size.width*.86/width,size.height*.82/height)*(mode==='net'?1:camera.zoom)};
+ return {x:size.width/2+(mode==='net'?(camera.netX??0):0),y:size.height/2+(mode==='net'?(camera.netY??0):0),scale:Math.min(size.width*.86/width,size.height*.82/height)*(mode==='net'?(camera.netZoom??1):camera.zoom)};
 }
 export interface CubeDisplayHit {face:SolidCubeFace;u:number;v:number}
 /** Orthographic ray against the six actual planes; reference half-side is one. */

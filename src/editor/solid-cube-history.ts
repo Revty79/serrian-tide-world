@@ -4,7 +4,7 @@ import type {SurfacePosition} from '../surfaces/contracts.ts';
 
 const CHUNK=1024, CHUNK_BYTES=CHUNK*12;
 export const CUBE_HISTORY_LIMITS=Object.freeze({maxEntries:32,maxBytes:8*1024*1024,maxStrokeSamples:MAX_CUBE_PATCH_SAMPLES,maxBookkeepingSteps:16_000_000});
-export type CubeHistoryLimits={readonly [K in keyof typeof CUBE_HISTORY_LIMITS]?:number};
+export type CubeHistoryLimits={readonly [K in keyof typeof CUBE_HISTORY_LIMITS]?:number} & {readonly capacity?:'surface'};
 export type CubeStrokeTermination='released'|'cancelled'|'failed'|'disposed';
 type Chunk=CubePatchBlock & {readonly beforeWords:Uint32Array;readonly afterWords:Uint32Array;count:number};
 interface Record {chunks:Chunk[];count:number;bytes:number;dabs:number;reason:CubeStrokeTermination}
@@ -19,9 +19,12 @@ const at=(r:Record,slot:number):Change=>{
 /** One authority, exact sorted net patches, and a revision lease. No view or timers.
  * C1 jobs are created privately: arbitrary caller-supplied commit proposals cannot enter history. */
 export function createSolidCubeHistory(terrain:SolidCubeTerrain,input:CubeHistoryLimits={}) {
-  const limits=Object.freeze({...CUBE_HISTORY_LIMITS,...input});
+  if(input.capacity!==undefined&&input.capacity!=='surface')throw new RangeError('Invalid cube history capacity.');
+  const hard=input.capacity==='surface'?{...CUBE_HISTORY_LIMITS,maxStrokeSamples:terrain.sampleCount}:CUBE_HISTORY_LIMITS;
+  const {capacity: _capacity,...requested}=input;
+  const limits=Object.freeze({...hard,...requested});
   for(const k of Object.keys(CUBE_HISTORY_LIMITS) as (keyof typeof limits)[])
-    if(!Number.isSafeInteger(limits[k])||limits[k]<1||limits[k]>CUBE_HISTORY_LIMITS[k])throw new RangeError('Cube history limits may only lower hard budgets.');
+    if(!Number.isSafeInteger(limits[k])||limits[k]<1||limits[k]>hard[k])throw new RangeError('Cube history limits may only lower hard budgets.');
   const binding=terrain.keyAt(0),entries:(Record|undefined)[]=new Array(limits.maxEntries);
   let size=0,cursor=0,bytes=0,expectedRevision=terrain.revision,active:Record|undefined;
   let evictions=0,branches=0,conflicts=0,peakTypedBytes=0;
@@ -36,7 +39,7 @@ export function createSolidCubeHistory(terrain:SolidCubeTerrain,input:CubeHistor
     // Explicit Undo/Redo may retain disjoint external edits. C1 validates EVERY
     // target source word and this current epoch before its atomic publication.
     const blocks:CubePatchBlock[]=r.chunks.map(c=>({indices:c.indices,before:redo?c.before:c.after,after:redo?c.after:c.before,count:c.count}));
-    const writes=terrain.commitPreparedPatch(binding,revision,blocks);
+    const writes=terrain.commitPreparedPatch(binding,revision,blocks,input.capacity==='surface'?'history':'dab');
     expectedRevision=revision+writes;cursor+=redo?1:-1;return true;
   };
   return Object.freeze({limits,

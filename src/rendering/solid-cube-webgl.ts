@@ -8,7 +8,7 @@ precision highp float;
 precision highp int;
 precision highp sampler2DArray;
 uniform sampler2DArray elevations;
-uniform vec2 viewport,backingSize;
+uniform vec2 viewport,backingSize,viewCenter;
 uniform vec3 cameraRight,cameraUp,cameraForward;
 uniform float scale;
 uniform int mode,relief;
@@ -27,7 +27,7 @@ vec3 colorAt(int face,vec3 value){float h=value.x;vec3 rgb;
  else rgb=mix(vec3(183,160,121),vec3(235,234,224),clamp((h-2000.)/3000.,0.,1.));
  rgb=floor(rgb+.5);float factor=h>0.&&relief==1?6.:0.,magnitude=max(1.,max(abs(value.y),abs(value.z)));vec3 normal=normals[face]/magnitude-factor*((value.y/magnitude)*us[face]+(value.z/magnitude)*vs[face]);
  float shade=clamp(.88+.30*dot(normalize(normal),vec3(-.38,-.48,.78)),.58,1.16);return clamp(floor(rgb*shade+.5),0.,255.)/255.;}
-vec4 ray(vec2 pixel){vec2 s=(pixel/backingSize*viewport-.5*viewport)/scale;int face=-1;vec2 uv=vec2(0);
+vec4 ray(vec2 pixel){vec2 s=(pixel/backingSize*viewport-viewCenter)/scale;int face=-1;vec2 uv=vec2(0);
  if(mode==1){vec2 p=s+vec2(.5,0);for(int i=0;i<6;i++){vec2 d=p-centers[i],q=2.*vec2(dot(d,nu[i]),dot(d,nv[i]));if(max(abs(q.x),abs(q.y))<=1.){face=i;uv=q;break;}}}
  else{vec3 origin=cameraRight*s.x+cameraUp*s.y;float best=-1.e20;for(int i=0;i<6;i++){float facing=dot(normals[i],cameraForward);if(facing<=1.e-7)continue;float t=(1.-dot(normals[i],origin))/facing;vec3 p=origin+t*cameraForward;if(max(max(abs(p.x),abs(p.y)),abs(p.z))>1.000001||t<=best)continue;face=i;uv=clamp(vec2(dot(p,us[i]),dot(p,vs[i])),-1.,1.);best=t;}}
  if(face<0)return vec4(0);return vec4(colorAt(face,fieldAt(face,uv)),1.);}
@@ -51,7 +51,7 @@ export class SolidCubeWebGL {
   try{for(const [type,code]of[[gl.VERTEX_SHADER,vertex],[gl.FRAGMENT_SHADER,this.failShader?'invalid shader':SOLID_CUBE_FRAGMENT]] as const){const s=gl.createShader(type);if(!s)throw Error('Cube shader allocation failed');shaders.push(s);gl.shaderSource(s,code);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s)??'Cube shader failed');}
    program=gl.createProgram();if(!program)throw Error('Cube program allocation failed');for(const s of shaders)gl.attachShader(program,s);gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program)??'Cube link failed');this.program=program;
   }catch(e){if(program)gl.deleteProgram(program);throw e;}finally{for(const s of shaders)gl.deleteShader(s);}
-  for(const name of['elevations','viewport','backingSize','cameraRight','cameraUp','cameraForward','scale','mode','relief']){const u=gl.getUniformLocation(this.program!,name);if(u===null)throw Error('Missing cube uniform '+name);this.uniforms.set(name,u);}
+  for(const name of['elevations','viewport','backingSize','viewCenter','cameraRight','cameraUp','cameraForward','scale','mode','relief']){const u=gl.getUniformLocation(this.program!,name);if(u===null)throw Error('Missing cube uniform '+name);this.uniforms.set(name,u);}
   this.texture=gl.createTexture()??undefined;this.vao=gl.createVertexArray()??undefined;if(!this.texture||!this.vao)throw Error('Cube texture allocation failed');
   gl.bindTexture(gl.TEXTURE_2D_ARRAY,this.texture);for(const p of[gl.TEXTURE_MIN_FILTER,gl.TEXTURE_MAG_FILTER])gl.texParameteri(gl.TEXTURE_2D_ARRAY,p,gl.NEAREST);for(const p of[gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T])gl.texParameteri(gl.TEXTURE_2D_ARRAY,p,gl.CLAMP_TO_EDGE);
   this.statistics.resources=3;this.statistics.reason='';
@@ -60,8 +60,13 @@ export class SolidCubeWebGL {
   assertCubeDisplayField(field);if(!this.available)throw Error('Cube GL unavailable');const at=performance.now(),gl=this.gl!,dimensions=cubeBackingSize(size,devicePixelRatio||1),layout=cubeLayout(camera,mode,size);
   if(this.canvas.width!==dimensions.width||this.canvas.height!==dimensions.height){this.canvas.width=dimensions.width;this.canvas.height=dimensions.height;}
   gl.useProgram(this.program!);gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D_ARRAY,this.texture!);
-  if(this.uploaded!==field){gl.texImage3D(gl.TEXTURE_2D_ARRAY,0,gl.RGBA32F,field.n+1,field.n+1,6,0,gl.RGBA,gl.FLOAT,field.data);if(gl.getError()!==gl.NO_ERROR)throw Error('Cube texture upload failed');this.uploaded=field;this.statistics.uploads++;this.statistics.uploadBytes+=field.bytes;this.statistics.textureBytes=field.bytes;}
+  if(this.uploaded!==field){
+   if(field.updates&&this.uploaded?.n===field.n&&this.uploaded.sourceRevision===field.updates.baseRevision){const side=field.n+1;for(const r of field.updates.rects){const patch=new Float32Array(r.width*r.height*4);for(let y=0;y<r.height;y++){const start=((r.face*side+r.row+y)*side+r.column)*4;patch.set(field.data.subarray(start,start+r.width*4),y*r.width*4);}gl.texSubImage3D(gl.TEXTURE_2D_ARRAY,0,r.column,r.row,r.face,r.width,r.height,1,gl.RGBA,gl.FLOAT,patch);this.statistics.uploadBytes+=patch.byteLength;}}
+   else {gl.texImage3D(gl.TEXTURE_2D_ARRAY,0,gl.RGBA32F,field.n+1,field.n+1,6,0,gl.RGBA,gl.FLOAT,field.data);this.statistics.uploadBytes+=field.bytes;}
+   if(gl.getError()!==gl.NO_ERROR)throw Error('Cube texture upload failed');this.uploaded=field;this.statistics.uploads++;this.statistics.textureBytes=field.bytes;
+  }
   const u=(n:string)=>this.uniforms.get(n)!;gl.uniform1i(u('elevations'),0);gl.uniform2f(u('viewport'),size.width,size.height);gl.uniform2f(u('backingSize'),dimensions.width,dimensions.height);gl.uniform3fv(u('cameraRight'),camera.right);gl.uniform3fv(u('cameraUp'),camera.up);gl.uniform3fv(u('cameraForward'),camera.forward);gl.uniform1f(u('scale'),layout.scale);gl.uniform1i(u('mode'),mode==='net'?1:0);gl.uniform1i(u('relief'),relief?1:0);
+  gl.uniform2f(u('viewCenter'),layout.x,size.height-layout.y);
   gl.bindVertexArray(this.vao!);gl.viewport(0,0,dimensions.width,dimensions.height);gl.disable(gl.DEPTH_TEST);gl.disable(gl.BLEND);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.drawArrays(gl.TRIANGLES,0,3);
   if(gl.isContextLost()||gl.getError()!==gl.NO_ERROR)throw Error('Cube GL presentation failed');this.canvas.hidden=false;this.statistics.presentations++;return performance.now()-at;
  }

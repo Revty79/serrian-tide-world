@@ -121,11 +121,13 @@ export function createSolidCubeTerrain(options: { readonly terrainId: string; re
       }
     },
     /** C1: validate the entire bounded patch, then publish without callbacks or allocations. */
-    commitPreparedPatch: (binding: SolidCubeSampleKey, expectedRevision: number, blocks: readonly CubePatchBlock[]): number => {
+    commitPreparedPatch: (binding: SolidCubeSampleKey, expectedRevision: number, blocks: readonly CubePatchBlock[], capacity: 'dab' | 'history' = 'dab'): number => {
       checkedKey(binding);
+      if (capacity !== 'dab' && capacity !== 'history') throw new RangeError('Invalid cube publication capacity.');
+      const maximum = capacity === 'history' ? count : MAX_CUBE_PATCH_SAMPLES;
       if (!Number.isSafeInteger(expectedRevision) || expectedRevision < 0 || !Array.isArray(blocks)) throw new RangeError('Invalid cube patch epoch or block count.');
       const blockCount = blocks.length;
-      if (!Number.isSafeInteger(blockCount) || blockCount < 0 || blockCount > 64) throw new RangeError('Invalid cube patch block count.');
+      if (!Number.isSafeInteger(blockCount) || blockCount < 0 || blockCount > Math.ceil(maximum / 1024)) throw new RangeError('Invalid cube patch block count.');
       // Finish ALL caller descriptor reads before value validation. Do not invoke
       // caller .map/species or typed-view buffer/length property overrides.
       const prepared: CubePatchBlock[] = [];
@@ -142,7 +144,7 @@ export function createSolidCubeTerrain(options: { readonly terrainId: string; re
         }
         if (!Number.isSafeInteger(b.count) || b.count < 0 || b.count > cubeViewLength.call(b.indices) || b.count > cubeViewLength.call(b.before) || b.count > cubeViewLength.call(b.after)) throw new RangeError('Invalid cube patch extent.');
         total += b.count;
-        if (total > MAX_CUBE_PATCH_SAMPLES) throw new RangeError('Cube atomic patch sample limit exceeded.');
+        if (total > maximum) throw new RangeError('Cube atomic patch sample limit exceeded.');
         for (let i = 0; i < b.count; i++) {
           const index = b.indices[i]!, before = b.before[i]!, after = b.after[i]!;
           if (index <= previous || index >= count || !Number.isFinite(before) || !Number.isFinite(after)

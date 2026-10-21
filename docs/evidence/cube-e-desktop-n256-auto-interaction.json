@@ -1,0 +1,5348 @@
+{
+  "firstGesture": {
+    "editor": {
+      "status": "Stroke complete",
+      "error": "",
+      "needsRecovery": false,
+      "modified": true,
+      "processing": false,
+      "painting": false,
+      "pending": 0,
+      "revision": 54193,
+      "history": {
+        "entries": 1,
+        "cursor": 1,
+        "retainedBytes": 110592,
+        "activeBytes": 0,
+        "activeSamples": 0,
+        "evictions": 0,
+        "branches": 0,
+        "conflicts": 0,
+        "peakTypedBytes": 221184
+      },
+      "operations": [
+        {
+          "samples": 8903,
+          "bytes": 110592,
+          "dabs": 130,
+          "termination": "released"
+        }
+      ],
+      "stroke": {
+        "pumps": 4684,
+        "initializedDabs": 130,
+        "committedDabs": 130,
+        "changingDabs": 130,
+        "writes": 54193,
+        "fullyExecutedInputs": 5,
+        "lastCommittedDabOrdinal": 129,
+        "lastCommittedInputSequence": 4,
+        "lastCommittedCenter": {
+          "worldId": "62e1f8a4-8f0f-4ea7-a632-a2db37e2183a",
+          "surfaceId": "7c26f9d9-cfbc-4e81-8a59-3704da0224ca",
+          "patchId": "px",
+          "u": -224999.90254438025,
+          "v": 205259.8489736346
+        },
+        "completedDabWork": 582323,
+        "failedInitializationWorkAllowance": 0,
+        "peakPreparedDabBytes": 12288,
+        "lastStage": "finish",
+        "acceptedInputs": 5,
+        "generatedDabs": 130,
+        "preparedDabs": 130,
+        "reservedDabs": 130,
+        "uncompletedInputs": 0,
+        "uncommittedGeneratedDabs": 0,
+        "dabWorkUnits": 582323,
+        "path": {
+          "acceptedInputs": 5,
+          "processedInputs": 5,
+          "discardedInputs": 0,
+          "pumps": 139,
+          "dabs": 130,
+          "routeQueries": 4,
+          "duplicateInputs": 0,
+          "workUnits": 1538023,
+          "routeWorkUnits": 3554,
+          "arcWorkUnits": 1534469,
+          "failedRouteWorkAllowance": 0,
+          "peakPendingInputs": 4,
+          "peakOutputEvents": 1,
+          "peakArcTerms": 4,
+          "peakStepWork": 16058,
+          "pendingInputs": 0,
+          "outputEvents": 0,
+          "activeRoute": false,
+          "retainedArcTerms": 0
+        },
+        "history": {
+          "preparedDabs": 130,
+          "reservedDabs": 130,
+          "committedDabs": 130,
+          "bookkeepingSteps": 607054,
+          "activeSamples": 0,
+          "activeBytes": 0,
+          "prefixSamples": 8903,
+          "prefixBytes": 110592,
+          "draftBytes": 0,
+          "peakDraftBytes": 110592,
+          "lastDabStatistics": {
+            "pumps": 10,
+            "workUnits": 3383,
+            "initializationWork": 955,
+            "scanSlots": 529,
+            "aliasSlotsSkipped": 0,
+            "candidates": 529,
+            "sequenceTests": 0,
+            "portalTests": 0,
+            "squaredRejected": 0,
+            "chordRejected": 112,
+            "commonFace": 417,
+            "rootComparisons": 953,
+            "rootFallbacks": 0,
+            "affectedSamples": 417,
+            "changesPrepared": 417,
+            "writes": 417,
+            "sourceReads": 417,
+            "maxSmoothNeighbors": 0,
+            "preparedBytes": 0,
+            "peakPreparedBytes": 12288,
+            "maxFalloffError": 9.99200722162641e-16,
+            "maxPreRoundElevationErrorMeters": 1.4174807421657262e-10
+          }
+        },
+        "pendingDabStage": "none",
+        "expectedSourceRevision": 54193
+      },
+      "termination": "complete",
+      "diagnostics": {
+        "mode": "auto",
+        "backend": "cooperative",
+        "fallbackReason": "Error: Optional cube replay log budget; staying cooperative",
+        "failureReason": "",
+        "workerAttachments": 0,
+        "workersReleased": 0,
+        "peakWorkers": 0,
+        "sourceElevationCopies": 0,
+        "pathActionCopies": 0,
+        "replayActionBytes": 0,
+        "replayWorkUnits": 0,
+        "requests": 0,
+        "acceptedAcks": 0,
+        "verifiedSteps": 0,
+        "verifiedDabs": 0,
+        "staleMessages": 0,
+        "peakStoredResponses": 0,
+        "peakPendingInputs": 4,
+        "comparisonNodes": 0,
+        "comparisonBytes": 0,
+        "task": 1,
+        "generation": 1,
+        "policy": {
+          "offloadAfterCertifiedIntervals": 8
+        },
+        "stages": {},
+        "retainedReplayBytes": 0,
+        "liveWorkers": 0,
+        "pool": {
+          "created": 0,
+          "reused": 0,
+          "terminated": 0,
+          "idleFailures": 0,
+          "retained": 0
+        }
+      },
+      "timings": [
+        {
+          "inputAt": 2004.9000000357628,
+          "commitAt": 2029.800000011921,
+          "revision": 415,
+          "inputToCommitMs": 24.899999976158142,
+          "visibleAt": 2102.800000011921,
+          "commitToVisibleMs": 73,
+          "inputToVisibleMs": 97.89999997615814
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2127.300000011921,
+          "revision": 834,
+          "inputToCommitMs": 61,
+          "visibleAt": 2244.800000011921,
+          "commitToVisibleMs": 117.5,
+          "inputToVisibleMs": 178.5
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2162.100000023842,
+          "revision": 1253,
+          "inputToCommitMs": 95.80000001192093,
+          "visibleAt": 2244.800000011921,
+          "commitToVisibleMs": 82.69999998807907,
+          "inputToVisibleMs": 178.5
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2271.600000023842,
+          "revision": 1668,
+          "inputToCommitMs": 205.30000001192093,
+          "visibleAt": 2368.400000035763,
+          "commitToVisibleMs": 96.80000001192093,
+          "inputToVisibleMs": 302.10000002384186
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2323.100000023842,
+          "revision": 2085,
+          "inputToCommitMs": 256.80000001192093,
+          "visibleAt": 2368.400000035763,
+          "commitToVisibleMs": 45.30000001192093,
+          "inputToVisibleMs": 302.10000002384186
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2383.300000011921,
+          "revision": 2503,
+          "inputToCommitMs": 317,
+          "visibleAt": 2460.600000023842,
+          "commitToVisibleMs": 77.30000001192093,
+          "inputToVisibleMs": 394.30000001192093
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2400,
+          "revision": 2921,
+          "inputToCommitMs": 333.69999998807907,
+          "visibleAt": 2460.600000023842,
+          "commitToVisibleMs": 60.60000002384186,
+          "inputToVisibleMs": 394.30000001192093
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2415.900000035763,
+          "revision": 3337,
+          "inputToCommitMs": 349.60000002384186,
+          "visibleAt": 2460.600000023842,
+          "commitToVisibleMs": 44.69999998807907,
+          "inputToVisibleMs": 394.30000001192093
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2474,
+          "revision": 3755,
+          "inputToCommitMs": 407.69999998807907,
+          "visibleAt": 2553.5,
+          "commitToVisibleMs": 79.5,
+          "inputToVisibleMs": 487.19999998807907
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2486.300000011921,
+          "revision": 4175,
+          "inputToCommitMs": 420,
+          "visibleAt": 2553.5,
+          "commitToVisibleMs": 67.19999998807907,
+          "inputToVisibleMs": 487.19999998807907
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2511.800000011921,
+          "revision": 4592,
+          "inputToCommitMs": 445.5,
+          "visibleAt": 2553.5,
+          "commitToVisibleMs": 41.69999998807907,
+          "inputToVisibleMs": 487.19999998807907
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2565.800000011921,
+          "revision": 5008,
+          "inputToCommitMs": 499.5,
+          "visibleAt": 2634.699999988079,
+          "commitToVisibleMs": 68.89999997615814,
+          "inputToVisibleMs": 568.3999999761581
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2573.600000023842,
+          "revision": 5424,
+          "inputToCommitMs": 507.30000001192093,
+          "visibleAt": 2634.699999988079,
+          "commitToVisibleMs": 61.09999996423721,
+          "inputToVisibleMs": 568.3999999761581
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2583.600000023842,
+          "revision": 5844,
+          "inputToCommitMs": 517.3000000119209,
+          "visibleAt": 2634.699999988079,
+          "commitToVisibleMs": 51.09999996423721,
+          "inputToVisibleMs": 568.3999999761581
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2607.800000011921,
+          "revision": 6259,
+          "inputToCommitMs": 541.5,
+          "visibleAt": 2634.699999988079,
+          "commitToVisibleMs": 26.899999976158142,
+          "inputToVisibleMs": 568.3999999761581
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2679.800000011921,
+          "revision": 6678,
+          "inputToCommitMs": 613.5,
+          "visibleAt": 2717.900000035763,
+          "commitToVisibleMs": 38.10000002384186,
+          "inputToVisibleMs": 651.6000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2730.5,
+          "revision": 7096,
+          "inputToCommitMs": 664.1999999880791,
+          "visibleAt": 2784.900000035763,
+          "commitToVisibleMs": 54.40000003576279,
+          "inputToVisibleMs": 718.6000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2738.699999988079,
+          "revision": 7512,
+          "inputToCommitMs": 672.3999999761581,
+          "visibleAt": 2784.900000035763,
+          "commitToVisibleMs": 46.200000047683716,
+          "inputToVisibleMs": 718.6000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2761.100000023842,
+          "revision": 7929,
+          "inputToCommitMs": 694.8000000119209,
+          "visibleAt": 2784.900000035763,
+          "commitToVisibleMs": 23.80000001192093,
+          "inputToVisibleMs": 718.6000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2792.5,
+          "revision": 8343,
+          "inputToCommitMs": 726.1999999880791,
+          "visibleAt": 2851.199999988079,
+          "commitToVisibleMs": 58.69999998807907,
+          "inputToVisibleMs": 784.8999999761581
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2806,
+          "revision": 8762,
+          "inputToCommitMs": 739.6999999880791,
+          "visibleAt": 2851.199999988079,
+          "commitToVisibleMs": 45.19999998807907,
+          "inputToVisibleMs": 784.8999999761581
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2827.800000011921,
+          "revision": 9177,
+          "inputToCommitMs": 761.5,
+          "visibleAt": 2851.199999988079,
+          "commitToVisibleMs": 23.399999976158142,
+          "inputToVisibleMs": 784.8999999761581
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2859.100000023842,
+          "revision": 9595,
+          "inputToCommitMs": 792.8000000119209,
+          "visibleAt": 2920.400000035763,
+          "commitToVisibleMs": 61.30000001192093,
+          "inputToVisibleMs": 854.1000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2871.100000023842,
+          "revision": 10016,
+          "inputToCommitMs": 804.8000000119209,
+          "visibleAt": 2920.400000035763,
+          "commitToVisibleMs": 49.30000001192093,
+          "inputToVisibleMs": 854.1000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2880.199999988079,
+          "revision": 10433,
+          "inputToCommitMs": 813.8999999761581,
+          "visibleAt": 2920.400000035763,
+          "commitToVisibleMs": 40.200000047683716,
+          "inputToVisibleMs": 854.1000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2897.600000023842,
+          "revision": 10849,
+          "inputToCommitMs": 831.3000000119209,
+          "visibleAt": 2920.400000035763,
+          "commitToVisibleMs": 22.80000001192093,
+          "inputToVisibleMs": 854.1000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2927.800000011921,
+          "revision": 11261,
+          "inputToCommitMs": 861.5,
+          "visibleAt": 3012.199999988079,
+          "commitToVisibleMs": 84.39999997615814,
+          "inputToVisibleMs": 945.8999999761581
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2939.600000023842,
+          "revision": 11677,
+          "inputToCommitMs": 873.3000000119209,
+          "visibleAt": 3012.199999988079,
+          "commitToVisibleMs": 72.59999996423721,
+          "inputToVisibleMs": 945.8999999761581
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2970.600000023842,
+          "revision": 12092,
+          "inputToCommitMs": 904.3000000119209,
+          "visibleAt": 3012.199999988079,
+          "commitToVisibleMs": 41.59999996423721,
+          "inputToVisibleMs": 945.8999999761581
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3031,
+          "revision": 12512,
+          "inputToCommitMs": 964.6999999880791,
+          "visibleAt": 3102.600000023842,
+          "commitToVisibleMs": 71.60000002384186,
+          "inputToVisibleMs": 1036.300000011921
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3045,
+          "revision": 12933,
+          "inputToCommitMs": 978.6999999880791,
+          "visibleAt": 3102.600000023842,
+          "commitToVisibleMs": 57.60000002384186,
+          "inputToVisibleMs": 1036.300000011921
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3116,
+          "revision": 13353,
+          "inputToCommitMs": 1049.699999988079,
+          "visibleAt": 3189.300000011921,
+          "commitToVisibleMs": 73.30000001192093,
+          "inputToVisibleMs": 1123
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3130.5,
+          "revision": 13767,
+          "inputToCommitMs": 1064.199999988079,
+          "visibleAt": 3189.300000011921,
+          "commitToVisibleMs": 58.80000001192093,
+          "inputToVisibleMs": 1123
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3157.300000011921,
+          "revision": 14182,
+          "inputToCommitMs": 1091,
+          "visibleAt": 3189.300000011921,
+          "commitToVisibleMs": 32,
+          "inputToVisibleMs": 1123
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3203.800000011921,
+          "revision": 14597,
+          "inputToCommitMs": 1137.5,
+          "visibleAt": 3267.900000035763,
+          "commitToVisibleMs": 64.10000002384186,
+          "inputToVisibleMs": 1201.6000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3217.5,
+          "revision": 15011,
+          "inputToCommitMs": 1151.199999988079,
+          "visibleAt": 3267.900000035763,
+          "commitToVisibleMs": 50.40000003576279,
+          "inputToVisibleMs": 1201.6000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3240.800000011921,
+          "revision": 15431,
+          "inputToCommitMs": 1174.5,
+          "visibleAt": 3267.900000035763,
+          "commitToVisibleMs": 27.100000023841858,
+          "inputToVisibleMs": 1201.6000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3275.100000023842,
+          "revision": 15852,
+          "inputToCommitMs": 1208.800000011921,
+          "visibleAt": 3336,
+          "commitToVisibleMs": 60.89999997615814,
+          "inputToVisibleMs": 1269.699999988079
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3284.100000023842,
+          "revision": 16272,
+          "inputToCommitMs": 1217.800000011921,
+          "visibleAt": 3336,
+          "commitToVisibleMs": 51.89999997615814,
+          "inputToVisibleMs": 1269.699999988079
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3293.5,
+          "revision": 16687,
+          "inputToCommitMs": 1227.199999988079,
+          "visibleAt": 3336,
+          "commitToVisibleMs": 42.5,
+          "inputToVisibleMs": 1269.699999988079
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3312.900000035763,
+          "revision": 17103,
+          "inputToCommitMs": 1246.6000000238419,
+          "visibleAt": 3336,
+          "commitToVisibleMs": 23.099999964237213,
+          "inputToVisibleMs": 1269.699999988079
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3346.400000035763,
+          "revision": 17515,
+          "inputToCommitMs": 1280.1000000238419,
+          "visibleAt": 3422.400000035763,
+          "commitToVisibleMs": 76,
+          "inputToVisibleMs": 1356.1000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3355.800000011921,
+          "revision": 17931,
+          "inputToCommitMs": 1289.5,
+          "visibleAt": 3422.400000035763,
+          "commitToVisibleMs": 66.60000002384186,
+          "inputToVisibleMs": 1356.1000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3366.400000035763,
+          "revision": 18348,
+          "inputToCommitMs": 1300.1000000238419,
+          "visibleAt": 3422.400000035763,
+          "commitToVisibleMs": 56,
+          "inputToVisibleMs": 1356.1000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3391,
+          "revision": 18769,
+          "inputToCommitMs": 1324.699999988079,
+          "visibleAt": 3422.400000035763,
+          "commitToVisibleMs": 31.400000035762787,
+          "inputToVisibleMs": 1356.1000000238419
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3442.300000011921,
+          "revision": 19187,
+          "inputToCommitMs": 1205.5,
+          "visibleAt": 3501.300000011921,
+          "commitToVisibleMs": 59,
+          "inputToVisibleMs": 1264.5
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3466.100000023842,
+          "revision": 19602,
+          "inputToCommitMs": 1229.300000011921,
+          "visibleAt": 3501.300000011921,
+          "commitToVisibleMs": 35.19999998807907,
+          "inputToVisibleMs": 1264.5
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3512.5,
+          "revision": 20022,
+          "inputToCommitMs": 1275.699999988079,
+          "visibleAt": 3563.900000035763,
+          "commitToVisibleMs": 51.40000003576279,
+          "inputToVisibleMs": 1327.1000000238419
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3524.100000023842,
+          "revision": 20436,
+          "inputToCommitMs": 1287.300000011921,
+          "visibleAt": 3563.900000035763,
+          "commitToVisibleMs": 39.80000001192093,
+          "inputToVisibleMs": 1327.1000000238419
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3542.5,
+          "revision": 20853,
+          "inputToCommitMs": 1305.699999988079,
+          "visibleAt": 3563.900000035763,
+          "commitToVisibleMs": 21.400000035762787,
+          "inputToVisibleMs": 1327.1000000238419
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3575.199999988079,
+          "revision": 21269,
+          "inputToCommitMs": 1338.3999999761581,
+          "visibleAt": 3641.300000011921,
+          "commitToVisibleMs": 66.10000002384186,
+          "inputToVisibleMs": 1404.5
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3585.5,
+          "revision": 21687,
+          "inputToCommitMs": 1348.699999988079,
+          "visibleAt": 3641.300000011921,
+          "commitToVisibleMs": 55.80000001192093,
+          "inputToVisibleMs": 1404.5
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3609.800000011921,
+          "revision": 22106,
+          "inputToCommitMs": 1373,
+          "visibleAt": 3641.300000011921,
+          "commitToVisibleMs": 31.5,
+          "inputToVisibleMs": 1404.5
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3656,
+          "revision": 22521,
+          "inputToCommitMs": 1419.199999988079,
+          "visibleAt": 3717.5,
+          "commitToVisibleMs": 61.5,
+          "inputToVisibleMs": 1480.699999988079
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3668.699999988079,
+          "revision": 22941,
+          "inputToCommitMs": 1431.8999999761581,
+          "visibleAt": 3717.5,
+          "commitToVisibleMs": 48.80000001192093,
+          "inputToVisibleMs": 1480.699999988079
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3684.900000035763,
+          "revision": 23358,
+          "inputToCommitMs": 1448.1000000238419,
+          "visibleAt": 3717.5,
+          "commitToVisibleMs": 32.59999996423721,
+          "inputToVisibleMs": 1480.699999988079
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3727.199999988079,
+          "revision": 23774,
+          "inputToCommitMs": 1490.3999999761581,
+          "visibleAt": 3786.100000023842,
+          "commitToVisibleMs": 58.90000003576279,
+          "inputToVisibleMs": 1549.300000011921
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3733.699999988079,
+          "revision": 24190,
+          "inputToCommitMs": 1496.8999999761581,
+          "visibleAt": 3786.100000023842,
+          "commitToVisibleMs": 52.40000003576279,
+          "inputToVisibleMs": 1549.300000011921
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3741.699999988079,
+          "revision": 24610,
+          "inputToCommitMs": 1504.8999999761581,
+          "visibleAt": 3786.100000023842,
+          "commitToVisibleMs": 44.40000003576279,
+          "inputToVisibleMs": 1549.300000011921
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3757.800000011921,
+          "revision": 25028,
+          "inputToCommitMs": 1521,
+          "visibleAt": 3786.100000023842,
+          "commitToVisibleMs": 28.30000001192093,
+          "inputToVisibleMs": 1549.300000011921
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3797.900000035763,
+          "revision": 25442,
+          "inputToCommitMs": 1561.1000000238419,
+          "visibleAt": 3868.400000035763,
+          "commitToVisibleMs": 70.5,
+          "inputToVisibleMs": 1631.6000000238419
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3808.199999988079,
+          "revision": 25860,
+          "inputToCommitMs": 1571.3999999761581,
+          "visibleAt": 3868.400000035763,
+          "commitToVisibleMs": 60.200000047683716,
+          "inputToVisibleMs": 1631.6000000238419
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3834.800000011921,
+          "revision": 26278,
+          "inputToCommitMs": 1598,
+          "visibleAt": 3868.400000035763,
+          "commitToVisibleMs": 33.60000002384186,
+          "inputToVisibleMs": 1631.6000000238419
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3880.300000011921,
+          "revision": 26695,
+          "inputToCommitMs": 1643.5,
+          "visibleAt": 3937,
+          "commitToVisibleMs": 56.69999998807907,
+          "inputToVisibleMs": 1700.199999988079
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3892.300000011921,
+          "revision": 27110,
+          "inputToCommitMs": 1655.5,
+          "visibleAt": 3937,
+          "commitToVisibleMs": 44.69999998807907,
+          "inputToVisibleMs": 1700.199999988079
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3911.699999988079,
+          "revision": 27529,
+          "inputToCommitMs": 1674.8999999761581,
+          "visibleAt": 3937,
+          "commitToVisibleMs": 25.30000001192093,
+          "inputToVisibleMs": 1700.199999988079
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3951.199999988079,
+          "revision": 27948,
+          "inputToCommitMs": 1714.3999999761581,
+          "visibleAt": 4054.800000011921,
+          "commitToVisibleMs": 103.60000002384186,
+          "inputToVisibleMs": 1818
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 3965.800000011921,
+          "revision": 28363,
+          "inputToCommitMs": 1564.6000000238419,
+          "visibleAt": 4054.800000011921,
+          "commitToVisibleMs": 89,
+          "inputToVisibleMs": 1653.6000000238419
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 3987.699999988079,
+          "revision": 28779,
+          "inputToCommitMs": 1586.5,
+          "visibleAt": 4054.800000011921,
+          "commitToVisibleMs": 67.10000002384186,
+          "inputToVisibleMs": 1653.6000000238419
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4074.300000011921,
+          "revision": 29196,
+          "inputToCommitMs": 1673.1000000238419,
+          "visibleAt": 4140.5,
+          "commitToVisibleMs": 66.19999998807907,
+          "inputToVisibleMs": 1739.300000011921
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4085.699999988079,
+          "revision": 29617,
+          "inputToCommitMs": 1684.5,
+          "visibleAt": 4140.5,
+          "commitToVisibleMs": 54.80000001192093,
+          "inputToVisibleMs": 1739.300000011921
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4109.199999988079,
+          "revision": 30037,
+          "inputToCommitMs": 1708,
+          "visibleAt": 4140.5,
+          "commitToVisibleMs": 31.30000001192093,
+          "inputToVisibleMs": 1739.300000011921
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4153.100000023842,
+          "revision": 30451,
+          "inputToCommitMs": 1751.9000000357628,
+          "visibleAt": 4233.800000011921,
+          "commitToVisibleMs": 80.69999998807907,
+          "inputToVisibleMs": 1832.6000000238419
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4165.199999988079,
+          "revision": 30865,
+          "inputToCommitMs": 1764,
+          "visibleAt": 4233.800000011921,
+          "commitToVisibleMs": 68.60000002384186,
+          "inputToVisibleMs": 1832.6000000238419
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4186.800000011921,
+          "revision": 31281,
+          "inputToCommitMs": 1785.6000000238419,
+          "visibleAt": 4233.800000011921,
+          "commitToVisibleMs": 47,
+          "inputToVisibleMs": 1832.6000000238419
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4253,
+          "revision": 31696,
+          "inputToCommitMs": 1851.800000011921,
+          "visibleAt": 4351.199999988079,
+          "commitToVisibleMs": 98.19999998807907,
+          "inputToVisibleMs": 1950
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4284.900000035763,
+          "revision": 32114,
+          "inputToCommitMs": 1883.7000000476837,
+          "visibleAt": 4351.199999988079,
+          "commitToVisibleMs": 66.29999995231628,
+          "inputToVisibleMs": 1950
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4368.699999988079,
+          "revision": 32531,
+          "inputToCommitMs": 1967.5,
+          "visibleAt": 4421.300000011921,
+          "commitToVisibleMs": 52.60000002384186,
+          "inputToVisibleMs": 2020.1000000238419
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4380,
+          "revision": 32945,
+          "inputToCommitMs": 1978.800000011921,
+          "visibleAt": 4421.300000011921,
+          "commitToVisibleMs": 41.30000001192093,
+          "inputToVisibleMs": 2020.1000000238419
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4401.400000035763,
+          "revision": 33364,
+          "inputToCommitMs": 2000.2000000476837,
+          "visibleAt": 4421.300000011921,
+          "commitToVisibleMs": 19.899999976158142,
+          "inputToVisibleMs": 2020.1000000238419
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4433.100000023842,
+          "revision": 33780,
+          "inputToCommitMs": 2031.9000000357628,
+          "visibleAt": 4501.5,
+          "commitToVisibleMs": 68.39999997615814,
+          "inputToVisibleMs": 2100.300000011921
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4443.100000023842,
+          "revision": 34197,
+          "inputToCommitMs": 2041.9000000357628,
+          "visibleAt": 4501.5,
+          "commitToVisibleMs": 58.39999997615814,
+          "inputToVisibleMs": 2100.300000011921
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4469.199999988079,
+          "revision": 34613,
+          "inputToCommitMs": 2068,
+          "visibleAt": 4501.5,
+          "commitToVisibleMs": 32.30000001192093,
+          "inputToVisibleMs": 2100.300000011921
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4524.300000011921,
+          "revision": 35031,
+          "inputToCommitMs": 2123.100000023842,
+          "visibleAt": 4589.100000023842,
+          "commitToVisibleMs": 64.80000001192093,
+          "inputToVisibleMs": 2187.900000035763
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4556.5,
+          "revision": 35447,
+          "inputToCommitMs": 2155.300000011921,
+          "visibleAt": 4589.100000023842,
+          "commitToVisibleMs": 32.60000002384186,
+          "inputToVisibleMs": 2187.900000035763
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4601.199999988079,
+          "revision": 35866,
+          "inputToCommitMs": 2200,
+          "visibleAt": 4667.600000023842,
+          "commitToVisibleMs": 66.40000003576279,
+          "inputToVisibleMs": 2266.400000035763
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4615,
+          "revision": 36286,
+          "inputToCommitMs": 2213.800000011921,
+          "visibleAt": 4667.600000023842,
+          "commitToVisibleMs": 52.60000002384186,
+          "inputToVisibleMs": 2266.400000035763
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4633.900000035763,
+          "revision": 36702,
+          "inputToCommitMs": 2232.7000000476837,
+          "visibleAt": 4667.600000023842,
+          "commitToVisibleMs": 33.69999998807907,
+          "inputToVisibleMs": 2266.400000035763
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4683.699999988079,
+          "revision": 37119,
+          "inputToCommitMs": 2282.5,
+          "visibleAt": 4734.199999988079,
+          "commitToVisibleMs": 50.5,
+          "inputToVisibleMs": 2333
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4694.699999988079,
+          "revision": 37536,
+          "inputToCommitMs": 2293.5,
+          "visibleAt": 4734.199999988079,
+          "commitToVisibleMs": 39.5,
+          "inputToVisibleMs": 2333
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4714,
+          "revision": 37953,
+          "inputToCommitMs": 2312.800000011921,
+          "visibleAt": 4734.199999988079,
+          "commitToVisibleMs": 20.19999998807907,
+          "inputToVisibleMs": 2333
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4745.5,
+          "revision": 38369,
+          "inputToCommitMs": 2344.300000011921,
+          "visibleAt": 4817.5,
+          "commitToVisibleMs": 72,
+          "inputToVisibleMs": 2416.300000011921
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4757.900000035763,
+          "revision": 38790,
+          "inputToCommitMs": 2356.7000000476837,
+          "visibleAt": 4817.5,
+          "commitToVisibleMs": 59.59999996423721,
+          "inputToVisibleMs": 2416.300000011921
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4783,
+          "revision": 39210,
+          "inputToCommitMs": 2381.800000011921,
+          "visibleAt": 4817.5,
+          "commitToVisibleMs": 34.5,
+          "inputToVisibleMs": 2416.300000011921
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4827.699999988079,
+          "revision": 39624,
+          "inputToCommitMs": 2426.5,
+          "visibleAt": 4884.800000011921,
+          "commitToVisibleMs": 57.10000002384186,
+          "inputToVisibleMs": 2483.600000023842
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4836.400000035763,
+          "revision": 40039,
+          "inputToCommitMs": 2435.2000000476837,
+          "visibleAt": 4884.800000011921,
+          "commitToVisibleMs": 48.39999997615814,
+          "inputToVisibleMs": 2483.600000023842
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4843.400000035763,
+          "revision": 40455,
+          "inputToCommitMs": 2442.2000000476837,
+          "visibleAt": 4884.800000011921,
+          "commitToVisibleMs": 41.39999997615814,
+          "inputToVisibleMs": 2483.600000023842
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4859.300000011921,
+          "revision": 40869,
+          "inputToCommitMs": 2458.100000023842,
+          "visibleAt": 4884.800000011921,
+          "commitToVisibleMs": 25.5,
+          "inputToVisibleMs": 2483.600000023842
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4894.300000011921,
+          "revision": 41288,
+          "inputToCommitMs": 2493.100000023842,
+          "visibleAt": 4950.600000023842,
+          "commitToVisibleMs": 56.30000001192093,
+          "inputToVisibleMs": 2549.400000035763
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4901.400000035763,
+          "revision": 41707,
+          "inputToCommitMs": 2500.2000000476837,
+          "visibleAt": 4950.600000023842,
+          "commitToVisibleMs": 49.19999998807907,
+          "inputToVisibleMs": 2549.400000035763
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4912.100000023842,
+          "revision": 42119,
+          "inputToCommitMs": 2510.900000035763,
+          "visibleAt": 4950.600000023842,
+          "commitToVisibleMs": 38.5,
+          "inputToVisibleMs": 2549.400000035763
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4928.400000035763,
+          "revision": 42539,
+          "inputToCommitMs": 2527.2000000476837,
+          "visibleAt": 4950.600000023842,
+          "commitToVisibleMs": 22.19999998807907,
+          "inputToVisibleMs": 2549.400000035763
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4961,
+          "revision": 42954,
+          "inputToCommitMs": 2559.800000011921,
+          "visibleAt": 5035.699999988079,
+          "commitToVisibleMs": 74.69999998807907,
+          "inputToVisibleMs": 2634.5
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4972.800000011921,
+          "revision": 43370,
+          "inputToCommitMs": 2571.600000023842,
+          "visibleAt": 5035.699999988079,
+          "commitToVisibleMs": 62.89999997615814,
+          "inputToVisibleMs": 2634.5
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4999.699999988079,
+          "revision": 43786,
+          "inputToCommitMs": 2598.5,
+          "visibleAt": 5035.699999988079,
+          "commitToVisibleMs": 36,
+          "inputToVisibleMs": 2634.5
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 5048.100000023842,
+          "revision": 44205,
+          "inputToCommitMs": 2646.900000035763,
+          "visibleAt": 5101.800000011921,
+          "commitToVisibleMs": 53.69999998807907,
+          "inputToVisibleMs": 2700.600000023842
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 5060.199999988079,
+          "revision": 44619,
+          "inputToCommitMs": 2659,
+          "visibleAt": 5101.800000011921,
+          "commitToVisibleMs": 41.60000002384186,
+          "inputToVisibleMs": 2700.600000023842
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 5076.800000011921,
+          "revision": 45039,
+          "inputToCommitMs": 2675.600000023842,
+          "visibleAt": 5101.800000011921,
+          "commitToVisibleMs": 25,
+          "inputToVisibleMs": 2700.600000023842
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5113.199999988079,
+          "revision": 45453,
+          "inputToCommitMs": 2581,
+          "visibleAt": 5167.600000023842,
+          "commitToVisibleMs": 54.40000003576279,
+          "inputToVisibleMs": 2635.400000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5120.699999988079,
+          "revision": 45869,
+          "inputToCommitMs": 2588.5,
+          "visibleAt": 5167.600000023842,
+          "commitToVisibleMs": 46.90000003576279,
+          "inputToVisibleMs": 2635.400000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5127.199999988079,
+          "revision": 46284,
+          "inputToCommitMs": 2595,
+          "visibleAt": 5167.600000023842,
+          "commitToVisibleMs": 40.40000003576279,
+          "inputToVisibleMs": 2635.400000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5145,
+          "revision": 46702,
+          "inputToCommitMs": 2612.800000011921,
+          "visibleAt": 5167.600000023842,
+          "commitToVisibleMs": 22.600000023841858,
+          "inputToVisibleMs": 2635.400000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5179.900000035763,
+          "revision": 47121,
+          "inputToCommitMs": 2647.7000000476837,
+          "visibleAt": 5239.100000023842,
+          "commitToVisibleMs": 59.19999998807907,
+          "inputToVisibleMs": 2706.900000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5194.100000023842,
+          "revision": 47539,
+          "inputToCommitMs": 2661.900000035763,
+          "visibleAt": 5239.100000023842,
+          "commitToVisibleMs": 45,
+          "inputToVisibleMs": 2706.900000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5214.600000023842,
+          "revision": 47954,
+          "inputToCommitMs": 2682.400000035763,
+          "visibleAt": 5239.100000023842,
+          "commitToVisibleMs": 24.5,
+          "inputToVisibleMs": 2706.900000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5251.300000011921,
+          "revision": 48370,
+          "inputToCommitMs": 2719.100000023842,
+          "visibleAt": 5301.100000023842,
+          "commitToVisibleMs": 49.80000001192093,
+          "inputToVisibleMs": 2768.900000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5257.900000035763,
+          "revision": 48784,
+          "inputToCommitMs": 2725.7000000476837,
+          "visibleAt": 5301.100000023842,
+          "commitToVisibleMs": 43.19999998807907,
+          "inputToVisibleMs": 2768.900000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5264.400000035763,
+          "revision": 49199,
+          "inputToCommitMs": 2732.2000000476837,
+          "visibleAt": 5301.100000023842,
+          "commitToVisibleMs": 36.69999998807907,
+          "inputToVisibleMs": 2768.900000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5280.5,
+          "revision": 49614,
+          "inputToCommitMs": 2748.300000011921,
+          "visibleAt": 5301.100000023842,
+          "commitToVisibleMs": 20.600000023841858,
+          "inputToVisibleMs": 2768.900000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5313.400000035763,
+          "revision": 50032,
+          "inputToCommitMs": 2781.2000000476837,
+          "visibleAt": 5386.300000011921,
+          "commitToVisibleMs": 72.89999997615814,
+          "inputToVisibleMs": 2854.100000023842
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5326.600000023842,
+          "revision": 50449,
+          "inputToCommitMs": 2794.400000035763,
+          "visibleAt": 5386.300000011921,
+          "commitToVisibleMs": 59.69999998807907,
+          "inputToVisibleMs": 2854.100000023842
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5353.100000023842,
+          "revision": 50866,
+          "inputToCommitMs": 2820.900000035763,
+          "visibleAt": 5386.300000011921,
+          "commitToVisibleMs": 33.19999998807907,
+          "inputToVisibleMs": 2854.100000023842
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5397.699999988079,
+          "revision": 51280,
+          "inputToCommitMs": 2865.5,
+          "visibleAt": 5484.600000023842,
+          "commitToVisibleMs": 86.90000003576279,
+          "inputToVisibleMs": 2952.400000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5411.100000023842,
+          "revision": 51697,
+          "inputToCommitMs": 2878.900000035763,
+          "visibleAt": 5484.600000023842,
+          "commitToVisibleMs": 73.5,
+          "inputToVisibleMs": 2952.400000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5437.699999988079,
+          "revision": 52112,
+          "inputToCommitMs": 2905.5,
+          "visibleAt": 5484.600000023842,
+          "commitToVisibleMs": 46.90000003576279,
+          "inputToVisibleMs": 2952.400000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5499.900000035763,
+          "revision": 52528,
+          "inputToCommitMs": 2967.7000000476837,
+          "visibleAt": 5551.800000011921,
+          "commitToVisibleMs": 51.89999997615814,
+          "inputToVisibleMs": 3019.600000023842
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5509.900000035763,
+          "revision": 52944,
+          "inputToCommitMs": 2977.7000000476837,
+          "visibleAt": 5551.800000011921,
+          "commitToVisibleMs": 41.89999997615814,
+          "inputToVisibleMs": 3019.600000023842
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5529,
+          "revision": 53358,
+          "inputToCommitMs": 2996.800000011921,
+          "visibleAt": 5551.800000011921,
+          "commitToVisibleMs": 22.80000001192093,
+          "inputToVisibleMs": 3019.600000023842
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5562.699999988079,
+          "revision": 53776,
+          "inputToCommitMs": 3030.5,
+          "visibleAt": 5601.300000011921,
+          "commitToVisibleMs": 38.60000002384186,
+          "inputToVisibleMs": 3069.100000023842
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5569.699999988079,
+          "revision": 54193,
+          "inputToCommitMs": 3037.5,
+          "visibleAt": 5601.300000011921,
+          "commitToVisibleMs": 31.600000023841858,
+          "inputToVisibleMs": 3069.100000023842
+        }
+      ],
+      "maxPumpMs": 5.399999976158142
+    },
+    "display": {
+      "disposed": false,
+      "started": 372.10000002384186,
+      "firstVisibleMs": 925.3000000119209,
+      "completeMs": 925.3000000119209,
+      "seedMs": 0,
+      "identityVerificationMs": 0,
+      "gpuInitializationMs": 7,
+      "gpuInitializationStartedMs": 942.1999999880791,
+      "firstVisibleBackend": "Canvas2D fallback",
+      "firstVisibleFieldN": 256,
+      "preparationMs": 24.399999976158142,
+      "coarsePreparationMs": 0,
+      "fullPreparationMs": 0,
+      "cpuPreparationMs": 646.2000000476837,
+      "firstPixelVerified": true,
+      "displayedRevision": 54193,
+      "displayedN": 256,
+      "draws": 91,
+      "refreshes": 45,
+      "updateMs": 24.399999976158142,
+      "error": "",
+      "backend": "WebGL2",
+      "frameGaps": [
+        93,
+        166.4000000357628,
+        4.5,
+        135.89999997615814,
+        5.899999976158142,
+        121.5,
+        2.600000023841858,
+        89.30000001192093,
+        3,
+        88.5,
+        3.899999976158142,
+        79.40000003576279,
+        2.299999952316284,
+        80.80000001192093,
+        2.5,
+        64.19999998807907,
+        2.800000011920929,
+        63.69999998807907,
+        2.5,
+        66.5,
+        2.600000023841858,
+        88.89999997615814,
+        2.600000023841858,
+        87.5,
+        2.899999976158142,
+        83.70000004768372,
+        3.099999964237213,
+        76.69999998807907,
+        2.200000047683716,
+        65.89999997615814,
+        2.100000023841858,
+        83.39999997615814,
+        2.899999976158142,
+        76.60000002384186,
+        2.399999976158142,
+        60.700000047683716,
+        2,
+        74.19999998807907,
+        2.899999976158142,
+        74.10000002384186,
+        2.300000011920929,
+        66.19999998807907,
+        2.399999976158142,
+        80.19999998807907,
+        2.300000011920929,
+        66.40000003576279,
+        2.099999964237213,
+        115.30000001192093,
+        2.399999976158142,
+        83.70000004768372,
+        2.099999964237213,
+        89.40000003576279,
+        3.599999964237213,
+        115.30000001192093,
+        2.199999988079071,
+        67.90000003576279,
+        2.399999976158142,
+        78.10000002384186,
+        2.199999988079071,
+        84.59999996423721,
+        2.700000047683716,
+        76.29999995231628,
+        2.300000011920929,
+        64.69999998807907,
+        2.100000023841858,
+        81,
+        2.199999988079071,
+        64.60000002384186,
+        2.599999964237213,
+        63.700000047683716,
+        2.199999988079071,
+        82.80000001192093,
+        2.199999988079071,
+        64,
+        2.199999988079071,
+        63.69999998807907,
+        2.100000023841858,
+        69.09999996423721,
+        2.300000011920929,
+        59.80000001192093,
+        2.300000011920929,
+        82.5,
+        2.599999964237213,
+        96.10000002384186,
+        2.300000011920929,
+        64.89999997615814,
+        2.199999988079071,
+        47.5,
+        2.100000023841858
+      ],
+      "presentMs": [
+        0.6000000238418579,
+        10.199999988079071,
+        0.19999998807907104,
+        1.600000023841858,
+        0.30000001192092896,
+        0.699999988079071,
+        0.2999999523162842,
+        0.5,
+        0.19999998807907104,
+        0.40000003576278687,
+        0.30000001192092896,
+        1.199999988079071,
+        0.30000001192092896,
+        0.30000001192092896,
+        0.19999998807907104,
+        0.5,
+        0.19999998807907104,
+        0.3999999761581421,
+        0.19999998807907104,
+        0.3999999761581421,
+        0.2999999523162842,
+        0.2999999523162842,
+        0.19999998807907104,
+        0.6000000238418579,
+        0.10000002384185791,
+        0.6000000238418579,
+        0.19999998807907104,
+        0.40000003576278687,
+        0.19999998807907104,
+        0.5,
+        0.10000002384185791,
+        0.30000001192092896,
+        0,
+        0.699999988079071,
+        0.09999996423721313,
+        0.3999999761581421,
+        0.09999996423721313,
+        0.5,
+        0.10000002384185791,
+        0.40000003576278687,
+        0.09999996423721313,
+        0.40000003576278687,
+        0.10000002384185791,
+        0.699999988079071,
+        0.09999996423721313,
+        0.2999999523162842,
+        0.19999998807907104,
+        0.40000003576278687,
+        0.19999998807907104,
+        0.5,
+        0.09999996423721313,
+        0.40000003576278687,
+        0.09999996423721313,
+        0.3999999761581421,
+        0.09999996423721313,
+        0.3999999761581421,
+        0.09999996423721313,
+        0.5,
+        0.10000002384185791,
+        0.5,
+        0.19999998807907104,
+        0.3999999761581421,
+        0,
+        0.5999999642372131,
+        0.09999996423721313,
+        0.5,
+        0.10000002384185791,
+        0.5,
+        0.09999996423721313,
+        0.30000001192092896,
+        0.09999996423721313,
+        0.40000003576278687,
+        0.10000002384185791,
+        0.3999999761581421,
+        0,
+        0.6000000238418579,
+        0.19999998807907104,
+        0.3999999761581421,
+        0.10000002384185791,
+        0.3999999761581421,
+        0.09999996423721313,
+        0.30000001192092896,
+        0.10000002384185791,
+        0.5,
+        0.09999996423721313,
+        0.5,
+        0.10000002384185791,
+        0.30000001192092896,
+        0,
+        0.5,
+        0.19999998807907104
+      ],
+      "editPresentations": [
+        {
+          "revision": 0,
+          "submittedAt": 1279.5,
+          "changedPixels": 0,
+          "pixelFingerprint": 3739236431,
+          "paintOpportunityAt": 1297.4000000357628
+        },
+        {
+          "revision": 0,
+          "submittedAt": 1935,
+          "changedPixels": 0,
+          "pixelFingerprint": 1015204570,
+          "paintOpportunityAt": 1964.800000011921
+        },
+        {
+          "revision": 415,
+          "submittedAt": 2101,
+          "changedPixels": 10,
+          "pixelFingerprint": 2964750105,
+          "paintOpportunityAt": 2114.800000011921
+        },
+        {
+          "revision": 1253,
+          "submittedAt": 2242.699999988079,
+          "changedPixels": 12,
+          "pixelFingerprint": 3622448799,
+          "paintOpportunityAt": 2265.900000035763
+        },
+        {
+          "revision": 2085,
+          "submittedAt": 2367.100000023842,
+          "changedPixels": 12,
+          "pixelFingerprint": 2098957116,
+          "paintOpportunityAt": 2401.300000011921
+        },
+        {
+          "revision": 3337,
+          "submittedAt": 2459.300000011921,
+          "changedPixels": 14,
+          "pixelFingerprint": 2759258685,
+          "paintOpportunityAt": 2481.5
+        },
+        {
+          "revision": 4592,
+          "submittedAt": 2551.199999988079,
+          "changedPixels": 15,
+          "pixelFingerprint": 790617750,
+          "paintOpportunityAt": 2582.800000011921
+        },
+        {
+          "revision": 6259,
+          "submittedAt": 2633.699999988079,
+          "changedPixels": 16,
+          "pixelFingerprint": 1805622405,
+          "paintOpportunityAt": 2682.699999988079
+        },
+        {
+          "revision": 6678,
+          "submittedAt": 2716.800000011921,
+          "changedPixels": 11,
+          "pixelFingerprint": 1301764917,
+          "paintOpportunityAt": 2763.600000023842
+        },
+        {
+          "revision": 7929,
+          "submittedAt": 2784,
+          "changedPixels": 14,
+          "pixelFingerprint": 177744344,
+          "paintOpportunityAt": 2830.5
+        },
+        {
+          "revision": 9177,
+          "submittedAt": 2850,
+          "changedPixels": 14,
+          "pixelFingerprint": 3259481672,
+          "paintOpportunityAt": 2892.199999988079
+        },
+        {
+          "revision": 10849,
+          "submittedAt": 2919.199999988079,
+          "changedPixels": 15,
+          "pixelFingerprint": 2391516044,
+          "paintOpportunityAt": 2969.400000035763
+        },
+        {
+          "revision": 12092,
+          "submittedAt": 3010.800000011921,
+          "changedPixels": 14,
+          "pixelFingerprint": 988322465,
+          "paintOpportunityAt": 3032.5
+        },
+        {
+          "revision": 12933,
+          "submittedAt": 3100.900000035763,
+          "changedPixels": 12,
+          "pixelFingerprint": 2472050734,
+          "paintOpportunityAt": 3147.5
+        },
+        {
+          "revision": 14182,
+          "submittedAt": 3187.800000011921,
+          "changedPixels": 13,
+          "pixelFingerprint": 2317576718,
+          "paintOpportunityAt": 3217.600000023842
+        },
+        {
+          "revision": 15431,
+          "submittedAt": 3267,
+          "changedPixels": 14,
+          "pixelFingerprint": 1564781782,
+          "paintOpportunityAt": 3308.800000011921
+        },
+        {
+          "revision": 17103,
+          "submittedAt": 3335.100000023842,
+          "changedPixels": 16,
+          "pixelFingerprint": 924518519,
+          "paintOpportunityAt": 3377.5
+        },
+        {
+          "revision": 18769,
+          "submittedAt": 3421.100000023842,
+          "changedPixels": 15,
+          "pixelFingerprint": 4256988707,
+          "paintOpportunityAt": 3464.100000023842
+        },
+        {
+          "revision": 19602,
+          "submittedAt": 3500.300000011921,
+          "changedPixels": 13,
+          "pixelFingerprint": 1561505142,
+          "paintOpportunityAt": 3546.400000035763
+        },
+        {
+          "revision": 20853,
+          "submittedAt": 3563.100000023842,
+          "changedPixels": 13,
+          "pixelFingerprint": 3281041661,
+          "paintOpportunityAt": 3583.900000035763
+        },
+        {
+          "revision": 22106,
+          "submittedAt": 3639.900000035763,
+          "changedPixels": 11,
+          "pixelFingerprint": 3183313018,
+          "paintOpportunityAt": 3666.300000011921
+        },
+        {
+          "revision": 23358,
+          "submittedAt": 3716.5,
+          "changedPixels": 14,
+          "pixelFingerprint": 2999180138,
+          "paintOpportunityAt": 3760.199999988079
+        },
+        {
+          "revision": 25028,
+          "submittedAt": 3785,
+          "changedPixels": 15,
+          "pixelFingerprint": 2432022100,
+          "paintOpportunityAt": 3832.199999988079
+        },
+        {
+          "revision": 26278,
+          "submittedAt": 3867.5,
+          "changedPixels": 14,
+          "pixelFingerprint": 4183229747,
+          "paintOpportunityAt": 3910.400000035763
+        },
+        {
+          "revision": 27529,
+          "submittedAt": 3936.100000023842,
+          "changedPixels": 13,
+          "pixelFingerprint": 3808359195,
+          "paintOpportunityAt": 3975
+        },
+        {
+          "revision": 28779,
+          "submittedAt": 4053.699999988079,
+          "changedPixels": 13,
+          "pixelFingerprint": 166494472,
+          "paintOpportunityAt": 4083.699999988079
+        },
+        {
+          "revision": 30037,
+          "submittedAt": 4139.600000023842,
+          "changedPixels": 15,
+          "pixelFingerprint": 3053699150,
+          "paintOpportunityAt": 4166.699999988079
+        },
+        {
+          "revision": 31281,
+          "submittedAt": 4232.400000035763,
+          "changedPixels": 15,
+          "pixelFingerprint": 3866764884,
+          "paintOpportunityAt": 4252
+        },
+        {
+          "revision": 32114,
+          "submittedAt": 4350,
+          "changedPixels": 12,
+          "pixelFingerprint": 1380040460,
+          "paintOpportunityAt": 4391.300000011921
+        },
+        {
+          "revision": 33364,
+          "submittedAt": 4420.300000011921,
+          "changedPixels": 16,
+          "pixelFingerprint": 3516633452,
+          "paintOpportunityAt": 4465
+        },
+        {
+          "revision": 34613,
+          "submittedAt": 4500.699999988079,
+          "changedPixels": 13,
+          "pixelFingerprint": 1427235028,
+          "paintOpportunityAt": 4548.300000011921
+        },
+        {
+          "revision": 35447,
+          "submittedAt": 4588,
+          "changedPixels": 11,
+          "pixelFingerprint": 1842210865,
+          "paintOpportunityAt": 4616.199999988079
+        },
+        {
+          "revision": 36702,
+          "submittedAt": 4666.5,
+          "changedPixels": 13,
+          "pixelFingerprint": 2392069784,
+          "paintOpportunityAt": 4707.5
+        },
+        {
+          "revision": 37953,
+          "submittedAt": 4733.400000035763,
+          "changedPixels": 15,
+          "pixelFingerprint": 2120040826,
+          "paintOpportunityAt": 4781.199999988079
+        },
+        {
+          "revision": 39210,
+          "submittedAt": 4816.600000023842,
+          "changedPixels": 14,
+          "pixelFingerprint": 2685506829,
+          "paintOpportunityAt": 4861.699999988079
+        },
+        {
+          "revision": 40869,
+          "submittedAt": 4883.800000011921,
+          "changedPixels": 16,
+          "pixelFingerprint": 3933269498,
+          "paintOpportunityAt": 4923.699999988079
+        },
+        {
+          "revision": 42539,
+          "submittedAt": 4949.699999988079,
+          "changedPixels": 15,
+          "pixelFingerprint": 1179390008,
+          "paintOpportunityAt": 4997.5
+        },
+        {
+          "revision": 43786,
+          "submittedAt": 5034.699999988079,
+          "changedPixels": 13,
+          "pixelFingerprint": 1517441864,
+          "paintOpportunityAt": 5079.400000035763
+        },
+        {
+          "revision": 45039,
+          "submittedAt": 5101,
+          "changedPixels": 12,
+          "pixelFingerprint": 2872639184,
+          "paintOpportunityAt": 5143.300000011921
+        },
+        {
+          "revision": 46702,
+          "submittedAt": 5166.699999988079,
+          "changedPixels": 14,
+          "pixelFingerprint": 3908395755,
+          "paintOpportunityAt": 5210.5
+        },
+        {
+          "revision": 47954,
+          "submittedAt": 5238.199999988079,
+          "changedPixels": 11,
+          "pixelFingerprint": 2542204039,
+          "paintOpportunityAt": 5265.600000023842
+        },
+        {
+          "revision": 49614,
+          "submittedAt": 5300.300000011921,
+          "changedPixels": 13,
+          "pixelFingerprint": 1832061128,
+          "paintOpportunityAt": 5349
+        },
+        {
+          "revision": 50866,
+          "submittedAt": 5385.100000023842,
+          "changedPixels": 10,
+          "pixelFingerprint": 338582646,
+          "paintOpportunityAt": 5429.400000035763
+        },
+        {
+          "revision": 52112,
+          "submittedAt": 5483.600000023842,
+          "changedPixels": 11,
+          "pixelFingerprint": 1998764397,
+          "paintOpportunityAt": 5523.100000023842
+        },
+        {
+          "revision": 53358,
+          "submittedAt": 5550.900000035763,
+          "changedPixels": 12,
+          "pixelFingerprint": 2190813015,
+          "paintOpportunityAt": 5585.699999988079
+        },
+        {
+          "revision": 54193,
+          "submittedAt": 5600.5,
+          "changedPixels": 10,
+          "pixelFingerprint": 3291862471,
+          "paintOpportunityAt": 5638
+        }
+      ],
+      "camera": {
+        "forward": [
+          0.5773502691896258,
+          0.5773502691896258,
+          0.5773502691896258
+        ],
+        "right": [
+          -0.7071067811865475,
+          0.7071067811865475,
+          0
+        ],
+        "up": [
+          -0.4082482904638631,
+          -0.4082482904638631,
+          0.8164965809277261
+        ],
+        "zoom": 1
+      },
+      "mode": "physical",
+      "viewport": {
+        "width": 1155,
+        "height": 840
+      },
+      "sourceRevision": 54193,
+      "sourceCells": 256,
+      "authorityBytes": 1572872,
+      "fieldBytes": 6340704,
+      "cpuAtlasBytes": 6316056,
+      "gpu": {
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "software": false,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 45,
+        "uploadBytes": 6890848,
+        "textureBytes": 6340704,
+        "resources": 3,
+        "presentations": 90
+      },
+      "canvasBytes": 7761600,
+      "pendingPreparation": false
+    }
+  },
+  "final": {
+    "editor": {
+      "status": "Stroke complete",
+      "error": "",
+      "needsRecovery": false,
+      "modified": true,
+      "processing": false,
+      "painting": false,
+      "pending": 0,
+      "revision": 122908,
+      "history": {
+        "entries": 4,
+        "cursor": 4,
+        "retainedBytes": 245760,
+        "activeBytes": 0,
+        "activeSamples": 0,
+        "evictions": 0,
+        "branches": 0,
+        "conflicts": 0,
+        "peakTypedBytes": 282624
+      },
+      "operations": [
+        {
+          "samples": 8903,
+          "bytes": 110592,
+          "dabs": 130,
+          "termination": "released"
+        },
+        {
+          "samples": 4193,
+          "bytes": 61440,
+          "dabs": 58,
+          "termination": "released"
+        },
+        {
+          "samples": 2472,
+          "bytes": 36864,
+          "dabs": 32,
+          "termination": "released"
+        },
+        {
+          "samples": 2472,
+          "bytes": 36864,
+          "dabs": 32,
+          "termination": "released"
+        }
+      ],
+      "stroke": {
+        "pumps": 724,
+        "initializedDabs": 32,
+        "committedDabs": 32,
+        "changingDabs": 32,
+        "writes": 13366,
+        "fullyExecutedInputs": 2,
+        "lastCommittedDabOrdinal": 31,
+        "lastCommittedInputSequence": 1,
+        "lastCommittedCenter": {
+          "worldId": "62e1f8a4-8f0f-4ea7-a632-a2db37e2183a",
+          "surfaceId": "7c26f9d9-cfbc-4e81-8a59-3704da0224ca",
+          "patchId": "px",
+          "u": 0,
+          "v": 401250.1063330248
+        },
+        "completedDabWork": 136815,
+        "failedInitializationWorkAllowance": 0,
+        "peakPreparedDabBytes": 12288,
+        "lastStage": "finish",
+        "acceptedInputs": 2,
+        "generatedDabs": 32,
+        "preparedDabs": 32,
+        "reservedDabs": 32,
+        "uncompletedInputs": 0,
+        "uncommittedGeneratedDabs": 0,
+        "dabWorkUnits": 136815,
+        "path": {
+          "acceptedInputs": 2,
+          "processedInputs": 2,
+          "discardedInputs": 0,
+          "pumps": 35,
+          "dabs": 32,
+          "routeQueries": 1,
+          "duplicateInputs": 0,
+          "workUnits": 82113,
+          "routeWorkUnits": 1887,
+          "arcWorkUnits": 80226,
+          "failedRouteWorkAllowance": 0,
+          "peakPendingInputs": 1,
+          "peakOutputEvents": 1,
+          "peakArcTerms": 1,
+          "peakStepWork": 2740,
+          "pendingInputs": 0,
+          "outputEvents": 0,
+          "activeRoute": false,
+          "retainedArcTerms": 0
+        },
+        "history": {
+          "preparedDabs": 32,
+          "reservedDabs": 32,
+          "committedDabs": 32,
+          "bookkeepingSteps": 46309,
+          "activeSamples": 0,
+          "activeBytes": 0,
+          "prefixSamples": 2472,
+          "prefixBytes": 36864,
+          "draftBytes": 0,
+          "peakDraftBytes": 36864,
+          "lastDabStatistics": {
+            "pumps": 10,
+            "workUnits": 3395,
+            "initializationWork": 955,
+            "scanSlots": 529,
+            "aliasSlotsSkipped": 0,
+            "candidates": 529,
+            "sequenceTests": 0,
+            "portalTests": 0,
+            "squaredRejected": 0,
+            "chordRejected": 110,
+            "commonFace": 419,
+            "rootComparisons": 963,
+            "rootFallbacks": 0,
+            "affectedSamples": 419,
+            "changesPrepared": 419,
+            "writes": 419,
+            "sourceReads": 419,
+            "maxSmoothNeighbors": 0,
+            "preparedBytes": 0,
+            "peakPreparedBytes": 12288,
+            "maxFalloffError": 9.99200722162641e-16,
+            "maxPreRoundElevationErrorMeters": 1.5399194512859953e-10
+          }
+        },
+        "pendingDabStage": "none",
+        "expectedSourceRevision": 122908
+      },
+      "termination": "complete",
+      "diagnostics": {
+        "mode": "auto",
+        "backend": "cooperative",
+        "fallbackReason": "",
+        "failureReason": "",
+        "workerAttachments": 0,
+        "workersReleased": 0,
+        "peakWorkers": 0,
+        "sourceElevationCopies": 0,
+        "pathActionCopies": 0,
+        "replayActionBytes": 0,
+        "replayWorkUnits": 0,
+        "requests": 0,
+        "acceptedAcks": 0,
+        "verifiedSteps": 0,
+        "verifiedDabs": 0,
+        "staleMessages": 0,
+        "peakStoredResponses": 0,
+        "peakPendingInputs": 1,
+        "comparisonNodes": 0,
+        "comparisonBytes": 0,
+        "task": 4,
+        "generation": 1,
+        "policy": {
+          "offloadAfterCertifiedIntervals": 8
+        },
+        "stages": {},
+        "retainedReplayBytes": 0,
+        "liveWorkers": 0,
+        "pool": {
+          "created": 0,
+          "reused": 0,
+          "terminated": 0,
+          "idleFailures": 0,
+          "retained": 0
+        }
+      },
+      "timings": [
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2573.600000023842,
+          "revision": 5424,
+          "inputToCommitMs": 507.30000001192093,
+          "visibleAt": 2634.699999988079,
+          "commitToVisibleMs": 61.09999996423721,
+          "inputToVisibleMs": 568.3999999761581
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2583.600000023842,
+          "revision": 5844,
+          "inputToCommitMs": 517.3000000119209,
+          "visibleAt": 2634.699999988079,
+          "commitToVisibleMs": 51.09999996423721,
+          "inputToVisibleMs": 568.3999999761581
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2607.800000011921,
+          "revision": 6259,
+          "inputToCommitMs": 541.5,
+          "visibleAt": 2634.699999988079,
+          "commitToVisibleMs": 26.899999976158142,
+          "inputToVisibleMs": 568.3999999761581
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2679.800000011921,
+          "revision": 6678,
+          "inputToCommitMs": 613.5,
+          "visibleAt": 2717.900000035763,
+          "commitToVisibleMs": 38.10000002384186,
+          "inputToVisibleMs": 651.6000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2730.5,
+          "revision": 7096,
+          "inputToCommitMs": 664.1999999880791,
+          "visibleAt": 2784.900000035763,
+          "commitToVisibleMs": 54.40000003576279,
+          "inputToVisibleMs": 718.6000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2738.699999988079,
+          "revision": 7512,
+          "inputToCommitMs": 672.3999999761581,
+          "visibleAt": 2784.900000035763,
+          "commitToVisibleMs": 46.200000047683716,
+          "inputToVisibleMs": 718.6000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2761.100000023842,
+          "revision": 7929,
+          "inputToCommitMs": 694.8000000119209,
+          "visibleAt": 2784.900000035763,
+          "commitToVisibleMs": 23.80000001192093,
+          "inputToVisibleMs": 718.6000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2792.5,
+          "revision": 8343,
+          "inputToCommitMs": 726.1999999880791,
+          "visibleAt": 2851.199999988079,
+          "commitToVisibleMs": 58.69999998807907,
+          "inputToVisibleMs": 784.8999999761581
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2806,
+          "revision": 8762,
+          "inputToCommitMs": 739.6999999880791,
+          "visibleAt": 2851.199999988079,
+          "commitToVisibleMs": 45.19999998807907,
+          "inputToVisibleMs": 784.8999999761581
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2827.800000011921,
+          "revision": 9177,
+          "inputToCommitMs": 761.5,
+          "visibleAt": 2851.199999988079,
+          "commitToVisibleMs": 23.399999976158142,
+          "inputToVisibleMs": 784.8999999761581
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2859.100000023842,
+          "revision": 9595,
+          "inputToCommitMs": 792.8000000119209,
+          "visibleAt": 2920.400000035763,
+          "commitToVisibleMs": 61.30000001192093,
+          "inputToVisibleMs": 854.1000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2871.100000023842,
+          "revision": 10016,
+          "inputToCommitMs": 804.8000000119209,
+          "visibleAt": 2920.400000035763,
+          "commitToVisibleMs": 49.30000001192093,
+          "inputToVisibleMs": 854.1000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2880.199999988079,
+          "revision": 10433,
+          "inputToCommitMs": 813.8999999761581,
+          "visibleAt": 2920.400000035763,
+          "commitToVisibleMs": 40.200000047683716,
+          "inputToVisibleMs": 854.1000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2897.600000023842,
+          "revision": 10849,
+          "inputToCommitMs": 831.3000000119209,
+          "visibleAt": 2920.400000035763,
+          "commitToVisibleMs": 22.80000001192093,
+          "inputToVisibleMs": 854.1000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2927.800000011921,
+          "revision": 11261,
+          "inputToCommitMs": 861.5,
+          "visibleAt": 3012.199999988079,
+          "commitToVisibleMs": 84.39999997615814,
+          "inputToVisibleMs": 945.8999999761581
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2939.600000023842,
+          "revision": 11677,
+          "inputToCommitMs": 873.3000000119209,
+          "visibleAt": 3012.199999988079,
+          "commitToVisibleMs": 72.59999996423721,
+          "inputToVisibleMs": 945.8999999761581
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 2970.600000023842,
+          "revision": 12092,
+          "inputToCommitMs": 904.3000000119209,
+          "visibleAt": 3012.199999988079,
+          "commitToVisibleMs": 41.59999996423721,
+          "inputToVisibleMs": 945.8999999761581
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3031,
+          "revision": 12512,
+          "inputToCommitMs": 964.6999999880791,
+          "visibleAt": 3102.600000023842,
+          "commitToVisibleMs": 71.60000002384186,
+          "inputToVisibleMs": 1036.300000011921
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3045,
+          "revision": 12933,
+          "inputToCommitMs": 978.6999999880791,
+          "visibleAt": 3102.600000023842,
+          "commitToVisibleMs": 57.60000002384186,
+          "inputToVisibleMs": 1036.300000011921
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3116,
+          "revision": 13353,
+          "inputToCommitMs": 1049.699999988079,
+          "visibleAt": 3189.300000011921,
+          "commitToVisibleMs": 73.30000001192093,
+          "inputToVisibleMs": 1123
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3130.5,
+          "revision": 13767,
+          "inputToCommitMs": 1064.199999988079,
+          "visibleAt": 3189.300000011921,
+          "commitToVisibleMs": 58.80000001192093,
+          "inputToVisibleMs": 1123
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3157.300000011921,
+          "revision": 14182,
+          "inputToCommitMs": 1091,
+          "visibleAt": 3189.300000011921,
+          "commitToVisibleMs": 32,
+          "inputToVisibleMs": 1123
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3203.800000011921,
+          "revision": 14597,
+          "inputToCommitMs": 1137.5,
+          "visibleAt": 3267.900000035763,
+          "commitToVisibleMs": 64.10000002384186,
+          "inputToVisibleMs": 1201.6000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3217.5,
+          "revision": 15011,
+          "inputToCommitMs": 1151.199999988079,
+          "visibleAt": 3267.900000035763,
+          "commitToVisibleMs": 50.40000003576279,
+          "inputToVisibleMs": 1201.6000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3240.800000011921,
+          "revision": 15431,
+          "inputToCommitMs": 1174.5,
+          "visibleAt": 3267.900000035763,
+          "commitToVisibleMs": 27.100000023841858,
+          "inputToVisibleMs": 1201.6000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3275.100000023842,
+          "revision": 15852,
+          "inputToCommitMs": 1208.800000011921,
+          "visibleAt": 3336,
+          "commitToVisibleMs": 60.89999997615814,
+          "inputToVisibleMs": 1269.699999988079
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3284.100000023842,
+          "revision": 16272,
+          "inputToCommitMs": 1217.800000011921,
+          "visibleAt": 3336,
+          "commitToVisibleMs": 51.89999997615814,
+          "inputToVisibleMs": 1269.699999988079
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3293.5,
+          "revision": 16687,
+          "inputToCommitMs": 1227.199999988079,
+          "visibleAt": 3336,
+          "commitToVisibleMs": 42.5,
+          "inputToVisibleMs": 1269.699999988079
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3312.900000035763,
+          "revision": 17103,
+          "inputToCommitMs": 1246.6000000238419,
+          "visibleAt": 3336,
+          "commitToVisibleMs": 23.099999964237213,
+          "inputToVisibleMs": 1269.699999988079
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3346.400000035763,
+          "revision": 17515,
+          "inputToCommitMs": 1280.1000000238419,
+          "visibleAt": 3422.400000035763,
+          "commitToVisibleMs": 76,
+          "inputToVisibleMs": 1356.1000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3355.800000011921,
+          "revision": 17931,
+          "inputToCommitMs": 1289.5,
+          "visibleAt": 3422.400000035763,
+          "commitToVisibleMs": 66.60000002384186,
+          "inputToVisibleMs": 1356.1000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3366.400000035763,
+          "revision": 18348,
+          "inputToCommitMs": 1300.1000000238419,
+          "visibleAt": 3422.400000035763,
+          "commitToVisibleMs": 56,
+          "inputToVisibleMs": 1356.1000000238419
+        },
+        {
+          "inputAt": 2066.300000011921,
+          "commitAt": 3391,
+          "revision": 18769,
+          "inputToCommitMs": 1324.699999988079,
+          "visibleAt": 3422.400000035763,
+          "commitToVisibleMs": 31.400000035762787,
+          "inputToVisibleMs": 1356.1000000238419
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3442.300000011921,
+          "revision": 19187,
+          "inputToCommitMs": 1205.5,
+          "visibleAt": 3501.300000011921,
+          "commitToVisibleMs": 59,
+          "inputToVisibleMs": 1264.5
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3466.100000023842,
+          "revision": 19602,
+          "inputToCommitMs": 1229.300000011921,
+          "visibleAt": 3501.300000011921,
+          "commitToVisibleMs": 35.19999998807907,
+          "inputToVisibleMs": 1264.5
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3512.5,
+          "revision": 20022,
+          "inputToCommitMs": 1275.699999988079,
+          "visibleAt": 3563.900000035763,
+          "commitToVisibleMs": 51.40000003576279,
+          "inputToVisibleMs": 1327.1000000238419
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3524.100000023842,
+          "revision": 20436,
+          "inputToCommitMs": 1287.300000011921,
+          "visibleAt": 3563.900000035763,
+          "commitToVisibleMs": 39.80000001192093,
+          "inputToVisibleMs": 1327.1000000238419
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3542.5,
+          "revision": 20853,
+          "inputToCommitMs": 1305.699999988079,
+          "visibleAt": 3563.900000035763,
+          "commitToVisibleMs": 21.400000035762787,
+          "inputToVisibleMs": 1327.1000000238419
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3575.199999988079,
+          "revision": 21269,
+          "inputToCommitMs": 1338.3999999761581,
+          "visibleAt": 3641.300000011921,
+          "commitToVisibleMs": 66.10000002384186,
+          "inputToVisibleMs": 1404.5
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3585.5,
+          "revision": 21687,
+          "inputToCommitMs": 1348.699999988079,
+          "visibleAt": 3641.300000011921,
+          "commitToVisibleMs": 55.80000001192093,
+          "inputToVisibleMs": 1404.5
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3609.800000011921,
+          "revision": 22106,
+          "inputToCommitMs": 1373,
+          "visibleAt": 3641.300000011921,
+          "commitToVisibleMs": 31.5,
+          "inputToVisibleMs": 1404.5
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3656,
+          "revision": 22521,
+          "inputToCommitMs": 1419.199999988079,
+          "visibleAt": 3717.5,
+          "commitToVisibleMs": 61.5,
+          "inputToVisibleMs": 1480.699999988079
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3668.699999988079,
+          "revision": 22941,
+          "inputToCommitMs": 1431.8999999761581,
+          "visibleAt": 3717.5,
+          "commitToVisibleMs": 48.80000001192093,
+          "inputToVisibleMs": 1480.699999988079
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3684.900000035763,
+          "revision": 23358,
+          "inputToCommitMs": 1448.1000000238419,
+          "visibleAt": 3717.5,
+          "commitToVisibleMs": 32.59999996423721,
+          "inputToVisibleMs": 1480.699999988079
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3727.199999988079,
+          "revision": 23774,
+          "inputToCommitMs": 1490.3999999761581,
+          "visibleAt": 3786.100000023842,
+          "commitToVisibleMs": 58.90000003576279,
+          "inputToVisibleMs": 1549.300000011921
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3733.699999988079,
+          "revision": 24190,
+          "inputToCommitMs": 1496.8999999761581,
+          "visibleAt": 3786.100000023842,
+          "commitToVisibleMs": 52.40000003576279,
+          "inputToVisibleMs": 1549.300000011921
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3741.699999988079,
+          "revision": 24610,
+          "inputToCommitMs": 1504.8999999761581,
+          "visibleAt": 3786.100000023842,
+          "commitToVisibleMs": 44.40000003576279,
+          "inputToVisibleMs": 1549.300000011921
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3757.800000011921,
+          "revision": 25028,
+          "inputToCommitMs": 1521,
+          "visibleAt": 3786.100000023842,
+          "commitToVisibleMs": 28.30000001192093,
+          "inputToVisibleMs": 1549.300000011921
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3797.900000035763,
+          "revision": 25442,
+          "inputToCommitMs": 1561.1000000238419,
+          "visibleAt": 3868.400000035763,
+          "commitToVisibleMs": 70.5,
+          "inputToVisibleMs": 1631.6000000238419
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3808.199999988079,
+          "revision": 25860,
+          "inputToCommitMs": 1571.3999999761581,
+          "visibleAt": 3868.400000035763,
+          "commitToVisibleMs": 60.200000047683716,
+          "inputToVisibleMs": 1631.6000000238419
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3834.800000011921,
+          "revision": 26278,
+          "inputToCommitMs": 1598,
+          "visibleAt": 3868.400000035763,
+          "commitToVisibleMs": 33.60000002384186,
+          "inputToVisibleMs": 1631.6000000238419
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3880.300000011921,
+          "revision": 26695,
+          "inputToCommitMs": 1643.5,
+          "visibleAt": 3937,
+          "commitToVisibleMs": 56.69999998807907,
+          "inputToVisibleMs": 1700.199999988079
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3892.300000011921,
+          "revision": 27110,
+          "inputToCommitMs": 1655.5,
+          "visibleAt": 3937,
+          "commitToVisibleMs": 44.69999998807907,
+          "inputToVisibleMs": 1700.199999988079
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3911.699999988079,
+          "revision": 27529,
+          "inputToCommitMs": 1674.8999999761581,
+          "visibleAt": 3937,
+          "commitToVisibleMs": 25.30000001192093,
+          "inputToVisibleMs": 1700.199999988079
+        },
+        {
+          "inputAt": 2236.800000011921,
+          "commitAt": 3951.199999988079,
+          "revision": 27948,
+          "inputToCommitMs": 1714.3999999761581,
+          "visibleAt": 4054.800000011921,
+          "commitToVisibleMs": 103.60000002384186,
+          "inputToVisibleMs": 1818
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 3965.800000011921,
+          "revision": 28363,
+          "inputToCommitMs": 1564.6000000238419,
+          "visibleAt": 4054.800000011921,
+          "commitToVisibleMs": 89,
+          "inputToVisibleMs": 1653.6000000238419
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 3987.699999988079,
+          "revision": 28779,
+          "inputToCommitMs": 1586.5,
+          "visibleAt": 4054.800000011921,
+          "commitToVisibleMs": 67.10000002384186,
+          "inputToVisibleMs": 1653.6000000238419
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4074.300000011921,
+          "revision": 29196,
+          "inputToCommitMs": 1673.1000000238419,
+          "visibleAt": 4140.5,
+          "commitToVisibleMs": 66.19999998807907,
+          "inputToVisibleMs": 1739.300000011921
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4085.699999988079,
+          "revision": 29617,
+          "inputToCommitMs": 1684.5,
+          "visibleAt": 4140.5,
+          "commitToVisibleMs": 54.80000001192093,
+          "inputToVisibleMs": 1739.300000011921
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4109.199999988079,
+          "revision": 30037,
+          "inputToCommitMs": 1708,
+          "visibleAt": 4140.5,
+          "commitToVisibleMs": 31.30000001192093,
+          "inputToVisibleMs": 1739.300000011921
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4153.100000023842,
+          "revision": 30451,
+          "inputToCommitMs": 1751.9000000357628,
+          "visibleAt": 4233.800000011921,
+          "commitToVisibleMs": 80.69999998807907,
+          "inputToVisibleMs": 1832.6000000238419
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4165.199999988079,
+          "revision": 30865,
+          "inputToCommitMs": 1764,
+          "visibleAt": 4233.800000011921,
+          "commitToVisibleMs": 68.60000002384186,
+          "inputToVisibleMs": 1832.6000000238419
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4186.800000011921,
+          "revision": 31281,
+          "inputToCommitMs": 1785.6000000238419,
+          "visibleAt": 4233.800000011921,
+          "commitToVisibleMs": 47,
+          "inputToVisibleMs": 1832.6000000238419
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4253,
+          "revision": 31696,
+          "inputToCommitMs": 1851.800000011921,
+          "visibleAt": 4351.199999988079,
+          "commitToVisibleMs": 98.19999998807907,
+          "inputToVisibleMs": 1950
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4284.900000035763,
+          "revision": 32114,
+          "inputToCommitMs": 1883.7000000476837,
+          "visibleAt": 4351.199999988079,
+          "commitToVisibleMs": 66.29999995231628,
+          "inputToVisibleMs": 1950
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4368.699999988079,
+          "revision": 32531,
+          "inputToCommitMs": 1967.5,
+          "visibleAt": 4421.300000011921,
+          "commitToVisibleMs": 52.60000002384186,
+          "inputToVisibleMs": 2020.1000000238419
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4380,
+          "revision": 32945,
+          "inputToCommitMs": 1978.800000011921,
+          "visibleAt": 4421.300000011921,
+          "commitToVisibleMs": 41.30000001192093,
+          "inputToVisibleMs": 2020.1000000238419
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4401.400000035763,
+          "revision": 33364,
+          "inputToCommitMs": 2000.2000000476837,
+          "visibleAt": 4421.300000011921,
+          "commitToVisibleMs": 19.899999976158142,
+          "inputToVisibleMs": 2020.1000000238419
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4433.100000023842,
+          "revision": 33780,
+          "inputToCommitMs": 2031.9000000357628,
+          "visibleAt": 4501.5,
+          "commitToVisibleMs": 68.39999997615814,
+          "inputToVisibleMs": 2100.300000011921
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4443.100000023842,
+          "revision": 34197,
+          "inputToCommitMs": 2041.9000000357628,
+          "visibleAt": 4501.5,
+          "commitToVisibleMs": 58.39999997615814,
+          "inputToVisibleMs": 2100.300000011921
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4469.199999988079,
+          "revision": 34613,
+          "inputToCommitMs": 2068,
+          "visibleAt": 4501.5,
+          "commitToVisibleMs": 32.30000001192093,
+          "inputToVisibleMs": 2100.300000011921
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4524.300000011921,
+          "revision": 35031,
+          "inputToCommitMs": 2123.100000023842,
+          "visibleAt": 4589.100000023842,
+          "commitToVisibleMs": 64.80000001192093,
+          "inputToVisibleMs": 2187.900000035763
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4556.5,
+          "revision": 35447,
+          "inputToCommitMs": 2155.300000011921,
+          "visibleAt": 4589.100000023842,
+          "commitToVisibleMs": 32.60000002384186,
+          "inputToVisibleMs": 2187.900000035763
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4601.199999988079,
+          "revision": 35866,
+          "inputToCommitMs": 2200,
+          "visibleAt": 4667.600000023842,
+          "commitToVisibleMs": 66.40000003576279,
+          "inputToVisibleMs": 2266.400000035763
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4615,
+          "revision": 36286,
+          "inputToCommitMs": 2213.800000011921,
+          "visibleAt": 4667.600000023842,
+          "commitToVisibleMs": 52.60000002384186,
+          "inputToVisibleMs": 2266.400000035763
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4633.900000035763,
+          "revision": 36702,
+          "inputToCommitMs": 2232.7000000476837,
+          "visibleAt": 4667.600000023842,
+          "commitToVisibleMs": 33.69999998807907,
+          "inputToVisibleMs": 2266.400000035763
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4683.699999988079,
+          "revision": 37119,
+          "inputToCommitMs": 2282.5,
+          "visibleAt": 4734.199999988079,
+          "commitToVisibleMs": 50.5,
+          "inputToVisibleMs": 2333
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4694.699999988079,
+          "revision": 37536,
+          "inputToCommitMs": 2293.5,
+          "visibleAt": 4734.199999988079,
+          "commitToVisibleMs": 39.5,
+          "inputToVisibleMs": 2333
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4714,
+          "revision": 37953,
+          "inputToCommitMs": 2312.800000011921,
+          "visibleAt": 4734.199999988079,
+          "commitToVisibleMs": 20.19999998807907,
+          "inputToVisibleMs": 2333
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4745.5,
+          "revision": 38369,
+          "inputToCommitMs": 2344.300000011921,
+          "visibleAt": 4817.5,
+          "commitToVisibleMs": 72,
+          "inputToVisibleMs": 2416.300000011921
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4757.900000035763,
+          "revision": 38790,
+          "inputToCommitMs": 2356.7000000476837,
+          "visibleAt": 4817.5,
+          "commitToVisibleMs": 59.59999996423721,
+          "inputToVisibleMs": 2416.300000011921
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4783,
+          "revision": 39210,
+          "inputToCommitMs": 2381.800000011921,
+          "visibleAt": 4817.5,
+          "commitToVisibleMs": 34.5,
+          "inputToVisibleMs": 2416.300000011921
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4827.699999988079,
+          "revision": 39624,
+          "inputToCommitMs": 2426.5,
+          "visibleAt": 4884.800000011921,
+          "commitToVisibleMs": 57.10000002384186,
+          "inputToVisibleMs": 2483.600000023842
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4836.400000035763,
+          "revision": 40039,
+          "inputToCommitMs": 2435.2000000476837,
+          "visibleAt": 4884.800000011921,
+          "commitToVisibleMs": 48.39999997615814,
+          "inputToVisibleMs": 2483.600000023842
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4843.400000035763,
+          "revision": 40455,
+          "inputToCommitMs": 2442.2000000476837,
+          "visibleAt": 4884.800000011921,
+          "commitToVisibleMs": 41.39999997615814,
+          "inputToVisibleMs": 2483.600000023842
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4859.300000011921,
+          "revision": 40869,
+          "inputToCommitMs": 2458.100000023842,
+          "visibleAt": 4884.800000011921,
+          "commitToVisibleMs": 25.5,
+          "inputToVisibleMs": 2483.600000023842
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4894.300000011921,
+          "revision": 41288,
+          "inputToCommitMs": 2493.100000023842,
+          "visibleAt": 4950.600000023842,
+          "commitToVisibleMs": 56.30000001192093,
+          "inputToVisibleMs": 2549.400000035763
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4901.400000035763,
+          "revision": 41707,
+          "inputToCommitMs": 2500.2000000476837,
+          "visibleAt": 4950.600000023842,
+          "commitToVisibleMs": 49.19999998807907,
+          "inputToVisibleMs": 2549.400000035763
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4912.100000023842,
+          "revision": 42119,
+          "inputToCommitMs": 2510.900000035763,
+          "visibleAt": 4950.600000023842,
+          "commitToVisibleMs": 38.5,
+          "inputToVisibleMs": 2549.400000035763
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4928.400000035763,
+          "revision": 42539,
+          "inputToCommitMs": 2527.2000000476837,
+          "visibleAt": 4950.600000023842,
+          "commitToVisibleMs": 22.19999998807907,
+          "inputToVisibleMs": 2549.400000035763
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4961,
+          "revision": 42954,
+          "inputToCommitMs": 2559.800000011921,
+          "visibleAt": 5035.699999988079,
+          "commitToVisibleMs": 74.69999998807907,
+          "inputToVisibleMs": 2634.5
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4972.800000011921,
+          "revision": 43370,
+          "inputToCommitMs": 2571.600000023842,
+          "visibleAt": 5035.699999988079,
+          "commitToVisibleMs": 62.89999997615814,
+          "inputToVisibleMs": 2634.5
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 4999.699999988079,
+          "revision": 43786,
+          "inputToCommitMs": 2598.5,
+          "visibleAt": 5035.699999988079,
+          "commitToVisibleMs": 36,
+          "inputToVisibleMs": 2634.5
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 5048.100000023842,
+          "revision": 44205,
+          "inputToCommitMs": 2646.900000035763,
+          "visibleAt": 5101.800000011921,
+          "commitToVisibleMs": 53.69999998807907,
+          "inputToVisibleMs": 2700.600000023842
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 5060.199999988079,
+          "revision": 44619,
+          "inputToCommitMs": 2659,
+          "visibleAt": 5101.800000011921,
+          "commitToVisibleMs": 41.60000002384186,
+          "inputToVisibleMs": 2700.600000023842
+        },
+        {
+          "inputAt": 2401.199999988079,
+          "commitAt": 5076.800000011921,
+          "revision": 45039,
+          "inputToCommitMs": 2675.600000023842,
+          "visibleAt": 5101.800000011921,
+          "commitToVisibleMs": 25,
+          "inputToVisibleMs": 2700.600000023842
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5113.199999988079,
+          "revision": 45453,
+          "inputToCommitMs": 2581,
+          "visibleAt": 5167.600000023842,
+          "commitToVisibleMs": 54.40000003576279,
+          "inputToVisibleMs": 2635.400000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5120.699999988079,
+          "revision": 45869,
+          "inputToCommitMs": 2588.5,
+          "visibleAt": 5167.600000023842,
+          "commitToVisibleMs": 46.90000003576279,
+          "inputToVisibleMs": 2635.400000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5127.199999988079,
+          "revision": 46284,
+          "inputToCommitMs": 2595,
+          "visibleAt": 5167.600000023842,
+          "commitToVisibleMs": 40.40000003576279,
+          "inputToVisibleMs": 2635.400000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5145,
+          "revision": 46702,
+          "inputToCommitMs": 2612.800000011921,
+          "visibleAt": 5167.600000023842,
+          "commitToVisibleMs": 22.600000023841858,
+          "inputToVisibleMs": 2635.400000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5179.900000035763,
+          "revision": 47121,
+          "inputToCommitMs": 2647.7000000476837,
+          "visibleAt": 5239.100000023842,
+          "commitToVisibleMs": 59.19999998807907,
+          "inputToVisibleMs": 2706.900000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5194.100000023842,
+          "revision": 47539,
+          "inputToCommitMs": 2661.900000035763,
+          "visibleAt": 5239.100000023842,
+          "commitToVisibleMs": 45,
+          "inputToVisibleMs": 2706.900000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5214.600000023842,
+          "revision": 47954,
+          "inputToCommitMs": 2682.400000035763,
+          "visibleAt": 5239.100000023842,
+          "commitToVisibleMs": 24.5,
+          "inputToVisibleMs": 2706.900000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5251.300000011921,
+          "revision": 48370,
+          "inputToCommitMs": 2719.100000023842,
+          "visibleAt": 5301.100000023842,
+          "commitToVisibleMs": 49.80000001192093,
+          "inputToVisibleMs": 2768.900000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5257.900000035763,
+          "revision": 48784,
+          "inputToCommitMs": 2725.7000000476837,
+          "visibleAt": 5301.100000023842,
+          "commitToVisibleMs": 43.19999998807907,
+          "inputToVisibleMs": 2768.900000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5264.400000035763,
+          "revision": 49199,
+          "inputToCommitMs": 2732.2000000476837,
+          "visibleAt": 5301.100000023842,
+          "commitToVisibleMs": 36.69999998807907,
+          "inputToVisibleMs": 2768.900000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5280.5,
+          "revision": 49614,
+          "inputToCommitMs": 2748.300000011921,
+          "visibleAt": 5301.100000023842,
+          "commitToVisibleMs": 20.600000023841858,
+          "inputToVisibleMs": 2768.900000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5313.400000035763,
+          "revision": 50032,
+          "inputToCommitMs": 2781.2000000476837,
+          "visibleAt": 5386.300000011921,
+          "commitToVisibleMs": 72.89999997615814,
+          "inputToVisibleMs": 2854.100000023842
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5326.600000023842,
+          "revision": 50449,
+          "inputToCommitMs": 2794.400000035763,
+          "visibleAt": 5386.300000011921,
+          "commitToVisibleMs": 59.69999998807907,
+          "inputToVisibleMs": 2854.100000023842
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5353.100000023842,
+          "revision": 50866,
+          "inputToCommitMs": 2820.900000035763,
+          "visibleAt": 5386.300000011921,
+          "commitToVisibleMs": 33.19999998807907,
+          "inputToVisibleMs": 2854.100000023842
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5397.699999988079,
+          "revision": 51280,
+          "inputToCommitMs": 2865.5,
+          "visibleAt": 5484.600000023842,
+          "commitToVisibleMs": 86.90000003576279,
+          "inputToVisibleMs": 2952.400000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5411.100000023842,
+          "revision": 51697,
+          "inputToCommitMs": 2878.900000035763,
+          "visibleAt": 5484.600000023842,
+          "commitToVisibleMs": 73.5,
+          "inputToVisibleMs": 2952.400000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5437.699999988079,
+          "revision": 52112,
+          "inputToCommitMs": 2905.5,
+          "visibleAt": 5484.600000023842,
+          "commitToVisibleMs": 46.90000003576279,
+          "inputToVisibleMs": 2952.400000035763
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5499.900000035763,
+          "revision": 52528,
+          "inputToCommitMs": 2967.7000000476837,
+          "visibleAt": 5551.800000011921,
+          "commitToVisibleMs": 51.89999997615814,
+          "inputToVisibleMs": 3019.600000023842
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5509.900000035763,
+          "revision": 52944,
+          "inputToCommitMs": 2977.7000000476837,
+          "visibleAt": 5551.800000011921,
+          "commitToVisibleMs": 41.89999997615814,
+          "inputToVisibleMs": 3019.600000023842
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5529,
+          "revision": 53358,
+          "inputToCommitMs": 2996.800000011921,
+          "visibleAt": 5551.800000011921,
+          "commitToVisibleMs": 22.80000001192093,
+          "inputToVisibleMs": 3019.600000023842
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5562.699999988079,
+          "revision": 53776,
+          "inputToCommitMs": 3030.5,
+          "visibleAt": 5601.300000011921,
+          "commitToVisibleMs": 38.60000002384186,
+          "inputToVisibleMs": 3069.100000023842
+        },
+        {
+          "inputAt": 2532.199999988079,
+          "commitAt": 5569.699999988079,
+          "revision": 54193,
+          "inputToCommitMs": 3037.5,
+          "visibleAt": 5601.300000011921,
+          "commitToVisibleMs": 31.600000023841858,
+          "inputToVisibleMs": 3069.100000023842
+        },
+        {
+          "inputAt": 6653.600000023842,
+          "commitAt": 6665,
+          "revision": 72420,
+          "inputToCommitMs": 11.399999976158142,
+          "visibleAt": 6709.900000035763,
+          "commitToVisibleMs": 44.90000003576279,
+          "inputToVisibleMs": 56.30000001192093
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 6730.699999988079,
+          "revision": 72841,
+          "inputToCommitMs": 42.09999996423721,
+          "visibleAt": 6784.5,
+          "commitToVisibleMs": 53.80000001192093,
+          "inputToVisibleMs": 95.89999997615814
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 6755.300000011921,
+          "revision": 73260,
+          "inputToCommitMs": 66.69999998807907,
+          "visibleAt": 6784.5,
+          "commitToVisibleMs": 29.19999998807907,
+          "inputToVisibleMs": 95.89999997615814
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 6797.199999988079,
+          "revision": 73677,
+          "inputToCommitMs": 108.59999996423721,
+          "visibleAt": 6868.900000035763,
+          "commitToVisibleMs": 71.70000004768372,
+          "inputToVisibleMs": 180.30000001192093
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 6808,
+          "revision": 74088,
+          "inputToCommitMs": 119.39999997615814,
+          "visibleAt": 6868.900000035763,
+          "commitToVisibleMs": 60.90000003576279,
+          "inputToVisibleMs": 180.30000001192093
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 6830.300000011921,
+          "revision": 74503,
+          "inputToCommitMs": 141.69999998807907,
+          "visibleAt": 6868.900000035763,
+          "commitToVisibleMs": 38.60000002384186,
+          "inputToVisibleMs": 180.30000001192093
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 6876.600000023842,
+          "revision": 74922,
+          "inputToCommitMs": 188,
+          "visibleAt": 6969.400000035763,
+          "commitToVisibleMs": 92.80000001192093,
+          "inputToVisibleMs": 280.80000001192093
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 6887.100000023842,
+          "revision": 75339,
+          "inputToCommitMs": 198.5,
+          "visibleAt": 6969.400000035763,
+          "commitToVisibleMs": 82.30000001192093,
+          "inputToVisibleMs": 280.80000001192093
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 6895.699999988079,
+          "revision": 75760,
+          "inputToCommitMs": 207.0999999642372,
+          "visibleAt": 6969.400000035763,
+          "commitToVisibleMs": 73.70000004768372,
+          "inputToVisibleMs": 280.80000001192093
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 6917.600000023842,
+          "revision": 76181,
+          "inputToCommitMs": 229,
+          "visibleAt": 6969.400000035763,
+          "commitToVisibleMs": 51.80000001192093,
+          "inputToVisibleMs": 280.80000001192093
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 6988.400000035763,
+          "revision": 76600,
+          "inputToCommitMs": 299.80000001192093,
+          "visibleAt": 7049.300000011921,
+          "commitToVisibleMs": 60.89999997615814,
+          "inputToVisibleMs": 360.69999998807907
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7002.900000035763,
+          "revision": 77019,
+          "inputToCommitMs": 314.30000001192093,
+          "visibleAt": 7049.300000011921,
+          "commitToVisibleMs": 46.39999997615814,
+          "inputToVisibleMs": 360.69999998807907
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7060.600000023842,
+          "revision": 77432,
+          "inputToCommitMs": 372,
+          "visibleAt": 7129.199999988079,
+          "commitToVisibleMs": 68.59999996423721,
+          "inputToVisibleMs": 440.5999999642372
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7066.900000035763,
+          "revision": 77845,
+          "inputToCommitMs": 378.30000001192093,
+          "visibleAt": 7129.199999988079,
+          "commitToVisibleMs": 62.299999952316284,
+          "inputToVisibleMs": 440.5999999642372
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7077.5,
+          "revision": 78264,
+          "inputToCommitMs": 388.89999997615814,
+          "visibleAt": 7129.199999988079,
+          "commitToVisibleMs": 51.69999998807907,
+          "inputToVisibleMs": 440.5999999642372
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7099.699999988079,
+          "revision": 78683,
+          "inputToCommitMs": 411.0999999642372,
+          "visibleAt": 7129.199999988079,
+          "commitToVisibleMs": 29.5,
+          "inputToVisibleMs": 440.5999999642372
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7140.800000011921,
+          "revision": 79104,
+          "inputToCommitMs": 452.19999998807907,
+          "visibleAt": 7212.400000035763,
+          "commitToVisibleMs": 71.60000002384186,
+          "inputToVisibleMs": 523.8000000119209
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7156.300000011921,
+          "revision": 79525,
+          "inputToCommitMs": 467.69999998807907,
+          "visibleAt": 7212.400000035763,
+          "commitToVisibleMs": 56.10000002384186,
+          "inputToVisibleMs": 523.8000000119209
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7184.300000011921,
+          "revision": 79942,
+          "inputToCommitMs": 495.69999998807907,
+          "visibleAt": 7212.400000035763,
+          "commitToVisibleMs": 28.100000023841858,
+          "inputToVisibleMs": 523.8000000119209
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7226.199999988079,
+          "revision": 80361,
+          "inputToCommitMs": 537.5999999642372,
+          "visibleAt": 7296.800000011921,
+          "commitToVisibleMs": 70.60000002384186,
+          "inputToVisibleMs": 608.1999999880791
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7242.600000023842,
+          "revision": 80776,
+          "inputToCommitMs": 554,
+          "visibleAt": 7296.800000011921,
+          "commitToVisibleMs": 54.19999998807907,
+          "inputToVisibleMs": 608.1999999880791
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7273.900000035763,
+          "revision": 81187,
+          "inputToCommitMs": 585.3000000119209,
+          "visibleAt": 7296.800000011921,
+          "commitToVisibleMs": 22.899999976158142,
+          "inputToVisibleMs": 608.1999999880791
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7314,
+          "revision": 81604,
+          "inputToCommitMs": 625.3999999761581,
+          "visibleAt": 7385.699999988079,
+          "commitToVisibleMs": 71.69999998807907,
+          "inputToVisibleMs": 697.0999999642372
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7344.300000011921,
+          "revision": 82023,
+          "inputToCommitMs": 655.6999999880791,
+          "visibleAt": 7385.699999988079,
+          "commitToVisibleMs": 41.39999997615814,
+          "inputToVisibleMs": 697.0999999642372
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7403.699999988079,
+          "revision": 82442,
+          "inputToCommitMs": 715.0999999642372,
+          "visibleAt": 7468.699999988079,
+          "commitToVisibleMs": 65,
+          "inputToVisibleMs": 780.0999999642372
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7433.199999988079,
+          "revision": 82863,
+          "inputToCommitMs": 744.5999999642372,
+          "visibleAt": 7468.699999988079,
+          "commitToVisibleMs": 35.5,
+          "inputToVisibleMs": 780.0999999642372
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7478.300000011921,
+          "revision": 83284,
+          "inputToCommitMs": 789.6999999880791,
+          "visibleAt": 7551.100000023842,
+          "commitToVisibleMs": 72.80000001192093,
+          "inputToVisibleMs": 862.5
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7487.100000023842,
+          "revision": 83703,
+          "inputToCommitMs": 798.5,
+          "visibleAt": 7551.100000023842,
+          "commitToVisibleMs": 64,
+          "inputToVisibleMs": 862.5
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7498.900000035763,
+          "revision": 84120,
+          "inputToCommitMs": 810.3000000119209,
+          "visibleAt": 7551.100000023842,
+          "commitToVisibleMs": 52.19999998807907,
+          "inputToVisibleMs": 862.5
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7524.699999988079,
+          "revision": 84531,
+          "inputToCommitMs": 836.0999999642372,
+          "visibleAt": 7551.100000023842,
+          "commitToVisibleMs": 26.400000035762787,
+          "inputToVisibleMs": 862.5
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7561.300000011921,
+          "revision": 84946,
+          "inputToCommitMs": 872.6999999880791,
+          "visibleAt": 7617.699999988079,
+          "commitToVisibleMs": 56.39999997615814,
+          "inputToVisibleMs": 929.0999999642372
+        },
+        {
+          "inputAt": 6688.600000023842,
+          "commitAt": 7570,
+          "revision": 85365,
+          "inputToCommitMs": 881.3999999761581,
+          "visibleAt": 7617.699999988079,
+          "commitToVisibleMs": 47.69999998807907,
+          "inputToVisibleMs": 929.0999999642372
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7592.100000023842,
+          "revision": 85782,
+          "inputToCommitMs": 769.9000000357628,
+          "visibleAt": 7617.699999988079,
+          "commitToVisibleMs": 25.599999964237213,
+          "inputToVisibleMs": 795.5
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7626.300000011921,
+          "revision": 86203,
+          "inputToCommitMs": 804.1000000238419,
+          "visibleAt": 7694,
+          "commitToVisibleMs": 67.69999998807907,
+          "inputToVisibleMs": 871.8000000119209
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7631.800000011921,
+          "revision": 86624,
+          "inputToCommitMs": 809.6000000238419,
+          "visibleAt": 7694,
+          "commitToVisibleMs": 62.19999998807907,
+          "inputToVisibleMs": 871.8000000119209
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7638.199999988079,
+          "revision": 87043,
+          "inputToCommitMs": 816,
+          "visibleAt": 7694,
+          "commitToVisibleMs": 55.80000001192093,
+          "inputToVisibleMs": 871.8000000119209
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7646.300000011921,
+          "revision": 87462,
+          "inputToCommitMs": 824.1000000238419,
+          "visibleAt": 7694,
+          "commitToVisibleMs": 47.69999998807907,
+          "inputToVisibleMs": 871.8000000119209
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7664.100000023842,
+          "revision": 87875,
+          "inputToCommitMs": 841.9000000357628,
+          "visibleAt": 7694,
+          "commitToVisibleMs": 29.899999976158142,
+          "inputToVisibleMs": 871.8000000119209
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7706,
+          "revision": 88288,
+          "inputToCommitMs": 883.8000000119209,
+          "visibleAt": 7767.100000023842,
+          "commitToVisibleMs": 61.10000002384186,
+          "inputToVisibleMs": 944.9000000357628
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7713.600000023842,
+          "revision": 88707,
+          "inputToCommitMs": 891.4000000357628,
+          "visibleAt": 7767.100000023842,
+          "commitToVisibleMs": 53.5,
+          "inputToVisibleMs": 944.9000000357628
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7722.800000011921,
+          "revision": 89126,
+          "inputToCommitMs": 900.6000000238419,
+          "visibleAt": 7767.100000023842,
+          "commitToVisibleMs": 44.30000001192093,
+          "inputToVisibleMs": 944.9000000357628
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7744.400000035763,
+          "revision": 89547,
+          "inputToCommitMs": 922.2000000476837,
+          "visibleAt": 7767.100000023842,
+          "commitToVisibleMs": 22.69999998807907,
+          "inputToVisibleMs": 944.9000000357628
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7775.699999988079,
+          "revision": 89968,
+          "inputToCommitMs": 953.5,
+          "visibleAt": 7825.699999988079,
+          "commitToVisibleMs": 50,
+          "inputToVisibleMs": 1003.5
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7783.400000035763,
+          "revision": 90385,
+          "inputToCommitMs": 961.2000000476837,
+          "visibleAt": 7825.699999988079,
+          "commitToVisibleMs": 42.299999952316284,
+          "inputToVisibleMs": 1003.5
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7790,
+          "revision": 90804,
+          "inputToCommitMs": 967.8000000119209,
+          "visibleAt": 7825.699999988079,
+          "commitToVisibleMs": 35.69999998807907,
+          "inputToVisibleMs": 1003.5
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7805,
+          "revision": 91219,
+          "inputToCommitMs": 982.8000000119209,
+          "visibleAt": 7825.699999988079,
+          "commitToVisibleMs": 20.69999998807907,
+          "inputToVisibleMs": 1003.5
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7834.199999988079,
+          "revision": 91630,
+          "inputToCommitMs": 1012,
+          "visibleAt": 7900.199999988079,
+          "commitToVisibleMs": 66,
+          "inputToVisibleMs": 1078
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7841.900000035763,
+          "revision": 92047,
+          "inputToCommitMs": 1019.7000000476837,
+          "visibleAt": 7900.199999988079,
+          "commitToVisibleMs": 58.299999952316284,
+          "inputToVisibleMs": 1078
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7847.800000011921,
+          "revision": 92466,
+          "inputToCommitMs": 1025.6000000238419,
+          "visibleAt": 7900.199999988079,
+          "commitToVisibleMs": 52.39999997615814,
+          "inputToVisibleMs": 1078
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7871.100000023842,
+          "revision": 92885,
+          "inputToCommitMs": 1048.9000000357628,
+          "visibleAt": 7900.199999988079,
+          "commitToVisibleMs": 29.099999964237213,
+          "inputToVisibleMs": 1078
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7912.900000035763,
+          "revision": 93306,
+          "inputToCommitMs": 1090.7000000476837,
+          "visibleAt": 7985,
+          "commitToVisibleMs": 72.09999996423721,
+          "inputToVisibleMs": 1162.800000011921
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7925.600000023842,
+          "revision": 93727,
+          "inputToCommitMs": 1103.4000000357628,
+          "visibleAt": 7985,
+          "commitToVisibleMs": 59.39999997615814,
+          "inputToVisibleMs": 1162.800000011921
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7950.300000011921,
+          "revision": 94146,
+          "inputToCommitMs": 1128.1000000238419,
+          "visibleAt": 7985,
+          "commitToVisibleMs": 34.69999998807907,
+          "inputToVisibleMs": 1162.800000011921
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 7995.800000011921,
+          "revision": 94563,
+          "inputToCommitMs": 1173.6000000238419,
+          "visibleAt": 8068.100000023842,
+          "commitToVisibleMs": 72.30000001192093,
+          "inputToVisibleMs": 1245.9000000357628
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 8005.600000023842,
+          "revision": 94974,
+          "inputToCommitMs": 1183.4000000357628,
+          "visibleAt": 8068.100000023842,
+          "commitToVisibleMs": 62.5,
+          "inputToVisibleMs": 1245.9000000357628
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 8015.100000023842,
+          "revision": 95389,
+          "inputToCommitMs": 1192.9000000357628,
+          "visibleAt": 8068.100000023842,
+          "commitToVisibleMs": 53,
+          "inputToVisibleMs": 1245.9000000357628
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 8034.300000011921,
+          "revision": 95808,
+          "inputToCommitMs": 1212.1000000238419,
+          "visibleAt": 8068.100000023842,
+          "commitToVisibleMs": 33.80000001192093,
+          "inputToVisibleMs": 1245.9000000357628
+        },
+        {
+          "inputAt": 6822.199999988079,
+          "commitAt": 8080.300000011921,
+          "revision": 96225,
+          "inputToCommitMs": 1258.1000000238419,
+          "visibleAt": 8130.800000011921,
+          "commitToVisibleMs": 50.5,
+          "inputToVisibleMs": 1308.6000000238419
+        },
+        {
+          "inputAt": 8370,
+          "commitAt": 8390.5,
+          "revision": 96646,
+          "inputToCommitMs": 20.5,
+          "visibleAt": 8473.100000023842,
+          "commitToVisibleMs": 82.60000002384186,
+          "inputToVisibleMs": 103.10000002384186
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 8500.5,
+          "revision": 97065,
+          "inputToCommitMs": 80.5,
+          "visibleAt": 8579.900000035763,
+          "commitToVisibleMs": 79.40000003576279,
+          "inputToVisibleMs": 159.9000000357628
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 8545,
+          "revision": 97482,
+          "inputToCommitMs": 125,
+          "visibleAt": 8579.900000035763,
+          "commitToVisibleMs": 34.90000003576279,
+          "inputToVisibleMs": 159.9000000357628
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 8593.900000035763,
+          "revision": 97897,
+          "inputToCommitMs": 173.9000000357628,
+          "visibleAt": 8659.300000011921,
+          "commitToVisibleMs": 65.39999997615814,
+          "inputToVisibleMs": 239.30000001192093
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 8625.100000023842,
+          "revision": 98308,
+          "inputToCommitMs": 205.10000002384186,
+          "visibleAt": 8659.300000011921,
+          "commitToVisibleMs": 34.19999998807907,
+          "inputToVisibleMs": 239.30000001192093
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 8679,
+          "revision": 98721,
+          "inputToCommitMs": 259,
+          "visibleAt": 8745.100000023842,
+          "commitToVisibleMs": 66.10000002384186,
+          "inputToVisibleMs": 325.10000002384186
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 8707.5,
+          "revision": 99138,
+          "inputToCommitMs": 287.5,
+          "visibleAt": 8745.100000023842,
+          "commitToVisibleMs": 37.60000002384186,
+          "inputToVisibleMs": 325.10000002384186
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 8766.800000011921,
+          "revision": 99555,
+          "inputToCommitMs": 346.80000001192093,
+          "visibleAt": 8824.5,
+          "commitToVisibleMs": 57.69999998807907,
+          "inputToVisibleMs": 404.5
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 8796.900000035763,
+          "revision": 99976,
+          "inputToCommitMs": 376.9000000357628,
+          "visibleAt": 8824.5,
+          "commitToVisibleMs": 27.599999964237213,
+          "inputToVisibleMs": 404.5
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 8843.300000011921,
+          "revision": 100397,
+          "inputToCommitMs": 423.30000001192093,
+          "visibleAt": 8906.400000035763,
+          "commitToVisibleMs": 63.10000002384186,
+          "inputToVisibleMs": 486.4000000357628
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 8874.199999988079,
+          "revision": 100812,
+          "inputToCommitMs": 454.19999998807907,
+          "visibleAt": 8906.400000035763,
+          "commitToVisibleMs": 32.200000047683716,
+          "inputToVisibleMs": 486.4000000357628
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 8924.699999988079,
+          "revision": 101227,
+          "inputToCommitMs": 504.69999998807907,
+          "visibleAt": 8989.600000023842,
+          "commitToVisibleMs": 64.90000003576279,
+          "inputToVisibleMs": 569.6000000238419
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 8956.100000023842,
+          "revision": 101640,
+          "inputToCommitMs": 536.1000000238419,
+          "visibleAt": 8989.600000023842,
+          "commitToVisibleMs": 33.5,
+          "inputToVisibleMs": 569.6000000238419
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 9008.100000023842,
+          "revision": 102053,
+          "inputToCommitMs": 588.1000000238419,
+          "visibleAt": 9068,
+          "commitToVisibleMs": 59.89999997615814,
+          "inputToVisibleMs": 648
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 9036.100000023842,
+          "revision": 102468,
+          "inputToCommitMs": 616.1000000238419,
+          "visibleAt": 9068,
+          "commitToVisibleMs": 31.899999976158142,
+          "inputToVisibleMs": 648
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 9079.900000035763,
+          "revision": 102881,
+          "inputToCommitMs": 659.9000000357628,
+          "visibleAt": 9151.400000035763,
+          "commitToVisibleMs": 71.5,
+          "inputToVisibleMs": 731.4000000357628
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 9099.199999988079,
+          "revision": 103302,
+          "inputToCommitMs": 679.1999999880791,
+          "visibleAt": 9151.400000035763,
+          "commitToVisibleMs": 52.200000047683716,
+          "inputToVisibleMs": 731.4000000357628
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 9129.100000023842,
+          "revision": 103723,
+          "inputToCommitMs": 709.1000000238419,
+          "visibleAt": 9151.400000035763,
+          "commitToVisibleMs": 22.30000001192093,
+          "inputToVisibleMs": 731.4000000357628
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 9162.900000035763,
+          "revision": 104139,
+          "inputToCommitMs": 742.9000000357628,
+          "visibleAt": 9218.800000011921,
+          "commitToVisibleMs": 55.89999997615814,
+          "inputToVisibleMs": 798.8000000119209
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 9174.800000011921,
+          "revision": 104556,
+          "inputToCommitMs": 754.8000000119209,
+          "visibleAt": 9218.800000011921,
+          "commitToVisibleMs": 44,
+          "inputToVisibleMs": 798.8000000119209
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 9195.800000011921,
+          "revision": 104969,
+          "inputToCommitMs": 775.8000000119209,
+          "visibleAt": 9218.800000011921,
+          "commitToVisibleMs": 23,
+          "inputToVisibleMs": 798.8000000119209
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 9233.100000023842,
+          "revision": 105380,
+          "inputToCommitMs": 813.1000000238419,
+          "visibleAt": 9317.5,
+          "commitToVisibleMs": 84.39999997615814,
+          "inputToVisibleMs": 897.5
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 9243.800000011921,
+          "revision": 105795,
+          "inputToCommitMs": 823.8000000119209,
+          "visibleAt": 9317.5,
+          "commitToVisibleMs": 73.69999998807907,
+          "inputToVisibleMs": 897.5
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 9266.800000011921,
+          "revision": 106214,
+          "inputToCommitMs": 846.8000000119209,
+          "visibleAt": 9317.5,
+          "commitToVisibleMs": 50.69999998807907,
+          "inputToVisibleMs": 897.5
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 9342.900000035763,
+          "revision": 106631,
+          "inputToCommitMs": 922.9000000357628,
+          "visibleAt": 9400.400000035763,
+          "commitToVisibleMs": 57.5,
+          "inputToVisibleMs": 980.4000000357628
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 9377.300000011921,
+          "revision": 107052,
+          "inputToCommitMs": 957.3000000119209,
+          "visibleAt": 9400.400000035763,
+          "commitToVisibleMs": 23.100000023841858,
+          "inputToVisibleMs": 980.4000000357628
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 9414.699999988079,
+          "revision": 107470,
+          "inputToCommitMs": 994.6999999880791,
+          "visibleAt": 9467.199999988079,
+          "commitToVisibleMs": 52.5,
+          "inputToVisibleMs": 1047.199999988079
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 9424.300000011921,
+          "revision": 107886,
+          "inputToCommitMs": 1004.3000000119209,
+          "visibleAt": 9467.199999988079,
+          "commitToVisibleMs": 42.89999997615814,
+          "inputToVisibleMs": 1047.199999988079
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 9442.900000035763,
+          "revision": 108301,
+          "inputToCommitMs": 1022.9000000357628,
+          "visibleAt": 9467.199999988079,
+          "commitToVisibleMs": 24.299999952316284,
+          "inputToVisibleMs": 1047.199999988079
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 9479.199999988079,
+          "revision": 108712,
+          "inputToCommitMs": 1059.199999988079,
+          "visibleAt": 9567.600000023842,
+          "commitToVisibleMs": 88.40000003576279,
+          "inputToVisibleMs": 1147.6000000238419
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 9496.699999988079,
+          "revision": 109125,
+          "inputToCommitMs": 1076.699999988079,
+          "visibleAt": 9567.600000023842,
+          "commitToVisibleMs": 70.90000003576279,
+          "inputToVisibleMs": 1147.6000000238419
+        },
+        {
+          "inputAt": 8420,
+          "commitAt": 9525.699999988079,
+          "revision": 109542,
+          "inputToCommitMs": 1105.699999988079,
+          "visibleAt": 9567.600000023842,
+          "commitToVisibleMs": 41.90000003576279,
+          "inputToVisibleMs": 1147.6000000238419
+        },
+        {
+          "inputAt": 9954.100000023842,
+          "commitAt": 9965.100000023842,
+          "revision": 109963,
+          "inputToCommitMs": 11,
+          "visibleAt": 10006.800000011921,
+          "commitToVisibleMs": 41.69999998807907,
+          "inputToVisibleMs": 52.69999998807907
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10024.5,
+          "revision": 110384,
+          "inputToCommitMs": 36.59999996423721,
+          "visibleAt": 10105.699999988079,
+          "commitToVisibleMs": 81.19999998807907,
+          "inputToVisibleMs": 117.79999995231628
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10037.699999988079,
+          "revision": 110803,
+          "inputToCommitMs": 49.799999952316284,
+          "visibleAt": 10105.699999988079,
+          "commitToVisibleMs": 68,
+          "inputToVisibleMs": 117.79999995231628
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10059.600000023842,
+          "revision": 111220,
+          "inputToCommitMs": 71.69999998807907,
+          "visibleAt": 10105.699999988079,
+          "commitToVisibleMs": 46.09999996423721,
+          "inputToVisibleMs": 117.79999995231628
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10119.900000035763,
+          "revision": 111631,
+          "inputToCommitMs": 132,
+          "visibleAt": 10190.600000023842,
+          "commitToVisibleMs": 70.69999998807907,
+          "inputToVisibleMs": 202.69999998807907
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10131.300000011921,
+          "revision": 112046,
+          "inputToCommitMs": 143.39999997615814,
+          "visibleAt": 10190.600000023842,
+          "commitToVisibleMs": 59.30000001192093,
+          "inputToVisibleMs": 202.69999998807907
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10156.699999988079,
+          "revision": 112465,
+          "inputToCommitMs": 168.79999995231628,
+          "visibleAt": 10190.600000023842,
+          "commitToVisibleMs": 33.90000003576279,
+          "inputToVisibleMs": 202.69999998807907
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10202.600000023842,
+          "revision": 112882,
+          "inputToCommitMs": 214.69999998807907,
+          "visibleAt": 10269,
+          "commitToVisibleMs": 66.39999997615814,
+          "inputToVisibleMs": 281.0999999642372
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10213.400000035763,
+          "revision": 113303,
+          "inputToCommitMs": 225.5,
+          "visibleAt": 10269,
+          "commitToVisibleMs": 55.59999996423721,
+          "inputToVisibleMs": 281.0999999642372
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10239.199999988079,
+          "revision": 113724,
+          "inputToCommitMs": 251.29999995231628,
+          "visibleAt": 10269,
+          "commitToVisibleMs": 29.80000001192093,
+          "inputToVisibleMs": 281.0999999642372
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10279,
+          "revision": 114143,
+          "inputToCommitMs": 291.0999999642372,
+          "visibleAt": 10350.199999988079,
+          "commitToVisibleMs": 71.19999998807907,
+          "inputToVisibleMs": 362.2999999523163
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10293.699999988079,
+          "revision": 114562,
+          "inputToCommitMs": 305.7999999523163,
+          "visibleAt": 10350.199999988079,
+          "commitToVisibleMs": 56.5,
+          "inputToVisibleMs": 362.2999999523163
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10312.600000023842,
+          "revision": 114975,
+          "inputToCommitMs": 324.69999998807907,
+          "visibleAt": 10350.199999988079,
+          "commitToVisibleMs": 37.59999996423721,
+          "inputToVisibleMs": 362.2999999523163
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10367.199999988079,
+          "revision": 115388,
+          "inputToCommitMs": 379.2999999523163,
+          "visibleAt": 10451.900000035763,
+          "commitToVisibleMs": 84.70000004768372,
+          "inputToVisibleMs": 464
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10377.900000035763,
+          "revision": 115807,
+          "inputToCommitMs": 390,
+          "visibleAt": 10451.900000035763,
+          "commitToVisibleMs": 74,
+          "inputToVisibleMs": 464
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10406.400000035763,
+          "revision": 116226,
+          "inputToCommitMs": 418.5,
+          "visibleAt": 10451.900000035763,
+          "commitToVisibleMs": 45.5,
+          "inputToVisibleMs": 464
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10460.300000011921,
+          "revision": 116647,
+          "inputToCommitMs": 472.39999997615814,
+          "visibleAt": 10538.300000011921,
+          "commitToVisibleMs": 78,
+          "inputToVisibleMs": 550.3999999761581
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10466.600000023842,
+          "revision": 117068,
+          "inputToCommitMs": 478.69999998807907,
+          "visibleAt": 10538.300000011921,
+          "commitToVisibleMs": 71.69999998807907,
+          "inputToVisibleMs": 550.3999999761581
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10479.300000011921,
+          "revision": 117485,
+          "inputToCommitMs": 491.39999997615814,
+          "visibleAt": 10538.300000011921,
+          "commitToVisibleMs": 59,
+          "inputToVisibleMs": 550.3999999761581
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10507.100000023842,
+          "revision": 117904,
+          "inputToCommitMs": 519.1999999880791,
+          "visibleAt": 10538.300000011921,
+          "commitToVisibleMs": 31.19999998807907,
+          "inputToVisibleMs": 550.3999999761581
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10552.300000011921,
+          "revision": 118319,
+          "inputToCommitMs": 564.3999999761581,
+          "visibleAt": 10624,
+          "commitToVisibleMs": 71.69999998807907,
+          "inputToVisibleMs": 636.0999999642372
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10568.900000035763,
+          "revision": 118730,
+          "inputToCommitMs": 581,
+          "visibleAt": 10624,
+          "commitToVisibleMs": 55.09999996423721,
+          "inputToVisibleMs": 636.0999999642372
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10599.800000011921,
+          "revision": 119147,
+          "inputToCommitMs": 611.8999999761581,
+          "visibleAt": 10624,
+          "commitToVisibleMs": 24.19999998807907,
+          "inputToVisibleMs": 636.0999999642372
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10641.900000035763,
+          "revision": 119566,
+          "inputToCommitMs": 654,
+          "visibleAt": 10700.900000035763,
+          "commitToVisibleMs": 59,
+          "inputToVisibleMs": 713
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10669.900000035763,
+          "revision": 119985,
+          "inputToCommitMs": 682,
+          "visibleAt": 10700.900000035763,
+          "commitToVisibleMs": 31,
+          "inputToVisibleMs": 713
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10710.199999988079,
+          "revision": 120406,
+          "inputToCommitMs": 722.2999999523163,
+          "visibleAt": 10767.100000023842,
+          "commitToVisibleMs": 56.90000003576279,
+          "inputToVisibleMs": 779.1999999880791
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10715.699999988079,
+          "revision": 120827,
+          "inputToCommitMs": 727.7999999523163,
+          "visibleAt": 10767.100000023842,
+          "commitToVisibleMs": 51.40000003576279,
+          "inputToVisibleMs": 779.1999999880791
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10721.800000011921,
+          "revision": 121246,
+          "inputToCommitMs": 733.8999999761581,
+          "visibleAt": 10767.100000023842,
+          "commitToVisibleMs": 45.30000001192093,
+          "inputToVisibleMs": 779.1999999880791
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10728.400000035763,
+          "revision": 121663,
+          "inputToCommitMs": 740.5,
+          "visibleAt": 10767.100000023842,
+          "commitToVisibleMs": 38.69999998807907,
+          "inputToVisibleMs": 779.1999999880791
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10743.5,
+          "revision": 122074,
+          "inputToCommitMs": 755.5999999642372,
+          "visibleAt": 10767.100000023842,
+          "commitToVisibleMs": 23.600000023841858,
+          "inputToVisibleMs": 779.1999999880791
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10774.100000023842,
+          "revision": 122489,
+          "inputToCommitMs": 786.1999999880791,
+          "visibleAt": 10829.900000035763,
+          "commitToVisibleMs": 55.80000001192093,
+          "inputToVisibleMs": 842
+        },
+        {
+          "inputAt": 9987.900000035763,
+          "commitAt": 10783.600000023842,
+          "revision": 122908,
+          "inputToCommitMs": 795.6999999880791,
+          "visibleAt": 10829.900000035763,
+          "commitToVisibleMs": 46.30000001192093,
+          "inputToVisibleMs": 842
+        }
+      ],
+      "maxPumpMs": 5.399999976158142
+    },
+    "display": {
+      "disposed": false,
+      "started": 372.10000002384186,
+      "firstVisibleMs": 925.3000000119209,
+      "completeMs": 925.3000000119209,
+      "seedMs": 0,
+      "identityVerificationMs": 0,
+      "gpuInitializationMs": 7,
+      "gpuInitializationStartedMs": 942.1999999880791,
+      "firstVisibleBackend": "Canvas2D fallback",
+      "firstVisibleFieldN": 256,
+      "preparationMs": 37.80000001192093,
+      "coarsePreparationMs": 0,
+      "fullPreparationMs": 0,
+      "cpuPreparationMs": 646.2000000476837,
+      "firstPixelVerified": true,
+      "displayedRevision": 122908,
+      "displayedN": 256,
+      "draws": 186,
+      "refreshes": 91,
+      "updateMs": 37.80000001192093,
+      "error": "",
+      "backend": "WebGL2",
+      "frameGaps": [
+        93,
+        166.4000000357628,
+        4.5,
+        135.89999997615814,
+        5.899999976158142,
+        121.5,
+        2.600000023841858,
+        89.30000001192093,
+        3,
+        88.5,
+        3.899999976158142,
+        79.40000003576279,
+        2.299999952316284,
+        80.80000001192093,
+        2.5,
+        64.19999998807907,
+        2.800000011920929,
+        63.69999998807907,
+        2.5,
+        66.5,
+        2.600000023841858,
+        88.89999997615814,
+        2.600000023841858,
+        87.5,
+        2.899999976158142,
+        83.70000004768372,
+        3.099999964237213,
+        76.69999998807907,
+        2.200000047683716,
+        65.89999997615814,
+        2.100000023841858,
+        83.39999997615814,
+        2.899999976158142,
+        76.60000002384186,
+        2.399999976158142,
+        60.700000047683716,
+        2,
+        74.19999998807907,
+        2.899999976158142,
+        74.10000002384186,
+        2.300000011920929,
+        66.19999998807907,
+        2.399999976158142,
+        80.19999998807907,
+        2.300000011920929,
+        66.40000003576279,
+        2.099999964237213,
+        115.30000001192093,
+        2.399999976158142,
+        83.70000004768372,
+        2.099999964237213,
+        89.40000003576279,
+        3.599999964237213,
+        115.30000001192093,
+        2.199999988079071,
+        67.90000003576279,
+        2.399999976158142,
+        78.10000002384186,
+        2.199999988079071,
+        84.59999996423721,
+        2.700000047683716,
+        76.29999995231628,
+        2.300000011920929,
+        64.69999998807907,
+        2.100000023841858,
+        81,
+        2.199999988079071,
+        64.60000002384186,
+        2.599999964237213,
+        63.700000047683716,
+        2.199999988079071,
+        82.80000001192093,
+        2.199999988079071,
+        64,
+        2.199999988079071,
+        63.69999998807907,
+        2.100000023841858,
+        69.09999996423721,
+        2.300000011920929,
+        59.80000001192093,
+        2.300000011920929,
+        82.5,
+        2.599999964237213,
+        96.10000002384186,
+        2.300000011920929,
+        64.89999997615814,
+        2.199999988079071,
+        47.5,
+        2.100000023841858,
+        2.899999976158142,
+        81.10000002384186,
+        3.800000011920929,
+        211.5,
+        83.09999996423721,
+        66.70000004768372,
+        107,
+        3.799999952316284,
+        72,
+        2.600000023841858,
+        81.80000001192093,
+        2.599999964237213,
+        97.20000004768372,
+        3.299999952316284,
+        76.90000003576279,
+        3,
+        78,
+        2.199999988079071,
+        80,
+        2.899999976158142,
+        82.30000001192093,
+        2.300000011920929,
+        86,
+        2.899999976158142,
+        79.90000003576279,
+        2.800000011920929,
+        80.5,
+        2.199999988079071,
+        64.5,
+        2.199999988079071,
+        73.39999997615814,
+        2.600000023841858,
+        71.39999997615814,
+        2,
+        56.40000003576279,
+        2,
+        72.09999996423721,
+        2.5,
+        81.60000002384186,
+        2.899999976158142,
+        80.5,
+        2.700000047683716,
+        60.19999998807907,
+        2.5,
+        3,
+        103.89999997615814,
+        2.899999976158142,
+        76.90000003576279,
+        2.5,
+        83,
+        2.599999964237213,
+        77.20000004768372,
+        2.299999952316284,
+        78.80000001192093,
+        3.199999988079071,
+        80.30000001192093,
+        2.800000011920929,
+        76.5,
+        2.199999988079071,
+        81.5,
+        2,
+        65.40000003576279,
+        2,
+        96.39999997615814,
+        2.100000023841858,
+        81,
+        2,
+        64.89999997615814,
+        2,
+        98.10000002384186,
+        2.099999964237213,
+        2.399999976158142,
+        96,
+        2.699999988079071,
+        82.30000001192093,
+        2.600000023841858,
+        76.29999995231628,
+        2.200000047683716,
+        78.89999997615814,
+        2.100000023841858,
+        98.79999995231628,
+        2.900000035762787,
+        84,
+        2.599999964237213,
+        83.5,
+        2.200000047683716,
+        74.89999997615814,
+        2.199999988079071,
+        64,
+        2.100000023841858,
+        59.59999996423721,
+        2.900000035762787
+      ],
+      "presentMs": [
+        0.6000000238418579,
+        10.199999988079071,
+        0.19999998807907104,
+        1.600000023841858,
+        0.30000001192092896,
+        0.699999988079071,
+        0.2999999523162842,
+        0.5,
+        0.19999998807907104,
+        0.40000003576278687,
+        0.30000001192092896,
+        1.199999988079071,
+        0.30000001192092896,
+        0.30000001192092896,
+        0.19999998807907104,
+        0.5,
+        0.19999998807907104,
+        0.3999999761581421,
+        0.19999998807907104,
+        0.3999999761581421,
+        0.2999999523162842,
+        0.2999999523162842,
+        0.19999998807907104,
+        0.6000000238418579,
+        0.10000002384185791,
+        0.6000000238418579,
+        0.19999998807907104,
+        0.40000003576278687,
+        0.19999998807907104,
+        0.5,
+        0.10000002384185791,
+        0.30000001192092896,
+        0,
+        0.699999988079071,
+        0.09999996423721313,
+        0.3999999761581421,
+        0.09999996423721313,
+        0.5,
+        0.10000002384185791,
+        0.40000003576278687,
+        0.09999996423721313,
+        0.40000003576278687,
+        0.10000002384185791,
+        0.699999988079071,
+        0.09999996423721313,
+        0.2999999523162842,
+        0.19999998807907104,
+        0.40000003576278687,
+        0.19999998807907104,
+        0.5,
+        0.09999996423721313,
+        0.40000003576278687,
+        0.09999996423721313,
+        0.3999999761581421,
+        0.09999996423721313,
+        0.3999999761581421,
+        0.09999996423721313,
+        0.5,
+        0.10000002384185791,
+        0.5,
+        0.19999998807907104,
+        0.3999999761581421,
+        0,
+        0.5999999642372131,
+        0.09999996423721313,
+        0.5,
+        0.10000002384185791,
+        0.5,
+        0.09999996423721313,
+        0.30000001192092896,
+        0.09999996423721313,
+        0.40000003576278687,
+        0.10000002384185791,
+        0.3999999761581421,
+        0,
+        0.6000000238418579,
+        0.19999998807907104,
+        0.3999999761581421,
+        0.10000002384185791,
+        0.3999999761581421,
+        0.09999996423721313,
+        0.30000001192092896,
+        0.10000002384185791,
+        0.5,
+        0.09999996423721313,
+        0.5,
+        0.10000002384185791,
+        0.30000001192092896,
+        0,
+        0.5,
+        0.19999998807907104,
+        1.2999999523162842,
+        0.19999998807907104,
+        1.100000023841858,
+        0.19999998807907104,
+        0.30000001192092896,
+        0.2999999523162842,
+        0.30000001192092896,
+        0.5,
+        0.2999999523162842,
+        0.5,
+        0.19999998807907104,
+        0.5,
+        0.09999996423721313,
+        0.40000003576278687,
+        0.19999998807907104,
+        0.6000000238418579,
+        0.30000001192092896,
+        0.5,
+        0.10000002384185791,
+        0.3999999761581421,
+        0.2999999523162842,
+        1,
+        0.19999998807907104,
+        0.6000000238418579,
+        0.19999998807907104,
+        0.40000003576278687,
+        0.20000004768371582,
+        0.6000000238418579,
+        0.10000002384185791,
+        0.40000003576278687,
+        0.19999998807907104,
+        0.5,
+        0.19999998807907104,
+        0.5,
+        0.09999996423721313,
+        0.40000003576278687,
+        0,
+        0.5,
+        0.19999998807907104,
+        0.19999998807907104,
+        0.19999998807907104,
+        0.5,
+        0.20000004768371582,
+        0.30000001192092896,
+        0.19999998807907104,
+        0.5,
+        0.20000004768371582,
+        0.5,
+        0.19999998807907104,
+        0.3999999761581421,
+        0.10000002384185791,
+        0.40000003576278687,
+        0.19999998807907104,
+        0.5,
+        0.09999996423721313,
+        0.3999999761581421,
+        0.2999999523162842,
+        0.5,
+        0.10000002384185791,
+        0.3999999761581421,
+        0.19999998807907104,
+        0.30000001192092896,
+        0.09999996423721313,
+        0.3999999761581421,
+        0.10000002384185791,
+        0.5,
+        0.10000002384185791,
+        0.5,
+        0.10000002384185791,
+        0.30000001192092896,
+        0.10000002384185791,
+        0.40000003576278687,
+        0,
+        0.5,
+        0.19999998807907104,
+        0.3999999761581421,
+        0.19999998807907104,
+        0.3999999761581421,
+        0.20000004768371582,
+        0.2999999523162842,
+        0.20000004768371582,
+        0.3999999761581421,
+        0.10000002384185791,
+        0.5,
+        0.19999998807907104,
+        0.6000000238418579,
+        0.19999998807907104,
+        0.3999999761581421,
+        0.10000002384185791,
+        0.5,
+        0.19999998807907104,
+        0.3999999761581421,
+        0.10000002384185791,
+        0.5,
+        0.19999998807907104
+      ],
+      "editPresentations": [
+        {
+          "revision": 0,
+          "submittedAt": 1279.5,
+          "changedPixels": 0,
+          "pixelFingerprint": 3739236431,
+          "paintOpportunityAt": 1297.4000000357628
+        },
+        {
+          "revision": 0,
+          "submittedAt": 1935,
+          "changedPixels": 0,
+          "pixelFingerprint": 1015204570,
+          "paintOpportunityAt": 1964.800000011921
+        },
+        {
+          "revision": 415,
+          "submittedAt": 2101,
+          "changedPixels": 10,
+          "pixelFingerprint": 2964750105,
+          "paintOpportunityAt": 2114.800000011921
+        },
+        {
+          "revision": 1253,
+          "submittedAt": 2242.699999988079,
+          "changedPixels": 12,
+          "pixelFingerprint": 3622448799,
+          "paintOpportunityAt": 2265.900000035763
+        },
+        {
+          "revision": 2085,
+          "submittedAt": 2367.100000023842,
+          "changedPixels": 12,
+          "pixelFingerprint": 2098957116,
+          "paintOpportunityAt": 2401.300000011921
+        },
+        {
+          "revision": 3337,
+          "submittedAt": 2459.300000011921,
+          "changedPixels": 14,
+          "pixelFingerprint": 2759258685,
+          "paintOpportunityAt": 2481.5
+        },
+        {
+          "revision": 4592,
+          "submittedAt": 2551.199999988079,
+          "changedPixels": 15,
+          "pixelFingerprint": 790617750,
+          "paintOpportunityAt": 2582.800000011921
+        },
+        {
+          "revision": 6259,
+          "submittedAt": 2633.699999988079,
+          "changedPixels": 16,
+          "pixelFingerprint": 1805622405,
+          "paintOpportunityAt": 2682.699999988079
+        },
+        {
+          "revision": 6678,
+          "submittedAt": 2716.800000011921,
+          "changedPixels": 11,
+          "pixelFingerprint": 1301764917,
+          "paintOpportunityAt": 2763.600000023842
+        },
+        {
+          "revision": 7929,
+          "submittedAt": 2784,
+          "changedPixels": 14,
+          "pixelFingerprint": 177744344,
+          "paintOpportunityAt": 2830.5
+        },
+        {
+          "revision": 9177,
+          "submittedAt": 2850,
+          "changedPixels": 14,
+          "pixelFingerprint": 3259481672,
+          "paintOpportunityAt": 2892.199999988079
+        },
+        {
+          "revision": 10849,
+          "submittedAt": 2919.199999988079,
+          "changedPixels": 15,
+          "pixelFingerprint": 2391516044,
+          "paintOpportunityAt": 2969.400000035763
+        },
+        {
+          "revision": 12092,
+          "submittedAt": 3010.800000011921,
+          "changedPixels": 14,
+          "pixelFingerprint": 988322465,
+          "paintOpportunityAt": 3032.5
+        },
+        {
+          "revision": 12933,
+          "submittedAt": 3100.900000035763,
+          "changedPixels": 12,
+          "pixelFingerprint": 2472050734,
+          "paintOpportunityAt": 3147.5
+        },
+        {
+          "revision": 14182,
+          "submittedAt": 3187.800000011921,
+          "changedPixels": 13,
+          "pixelFingerprint": 2317576718,
+          "paintOpportunityAt": 3217.600000023842
+        },
+        {
+          "revision": 15431,
+          "submittedAt": 3267,
+          "changedPixels": 14,
+          "pixelFingerprint": 1564781782,
+          "paintOpportunityAt": 3308.800000011921
+        },
+        {
+          "revision": 17103,
+          "submittedAt": 3335.100000023842,
+          "changedPixels": 16,
+          "pixelFingerprint": 924518519,
+          "paintOpportunityAt": 3377.5
+        },
+        {
+          "revision": 18769,
+          "submittedAt": 3421.100000023842,
+          "changedPixels": 15,
+          "pixelFingerprint": 4256988707,
+          "paintOpportunityAt": 3464.100000023842
+        },
+        {
+          "revision": 19602,
+          "submittedAt": 3500.300000011921,
+          "changedPixels": 13,
+          "pixelFingerprint": 1561505142,
+          "paintOpportunityAt": 3546.400000035763
+        },
+        {
+          "revision": 20853,
+          "submittedAt": 3563.100000023842,
+          "changedPixels": 13,
+          "pixelFingerprint": 3281041661,
+          "paintOpportunityAt": 3583.900000035763
+        },
+        {
+          "revision": 22106,
+          "submittedAt": 3639.900000035763,
+          "changedPixels": 11,
+          "pixelFingerprint": 3183313018,
+          "paintOpportunityAt": 3666.300000011921
+        },
+        {
+          "revision": 23358,
+          "submittedAt": 3716.5,
+          "changedPixels": 14,
+          "pixelFingerprint": 2999180138,
+          "paintOpportunityAt": 3760.199999988079
+        },
+        {
+          "revision": 25028,
+          "submittedAt": 3785,
+          "changedPixels": 15,
+          "pixelFingerprint": 2432022100,
+          "paintOpportunityAt": 3832.199999988079
+        },
+        {
+          "revision": 26278,
+          "submittedAt": 3867.5,
+          "changedPixels": 14,
+          "pixelFingerprint": 4183229747,
+          "paintOpportunityAt": 3910.400000035763
+        },
+        {
+          "revision": 27529,
+          "submittedAt": 3936.100000023842,
+          "changedPixels": 13,
+          "pixelFingerprint": 3808359195,
+          "paintOpportunityAt": 3975
+        },
+        {
+          "revision": 28779,
+          "submittedAt": 4053.699999988079,
+          "changedPixels": 13,
+          "pixelFingerprint": 166494472,
+          "paintOpportunityAt": 4083.699999988079
+        },
+        {
+          "revision": 30037,
+          "submittedAt": 4139.600000023842,
+          "changedPixels": 15,
+          "pixelFingerprint": 3053699150,
+          "paintOpportunityAt": 4166.699999988079
+        },
+        {
+          "revision": 31281,
+          "submittedAt": 4232.400000035763,
+          "changedPixels": 15,
+          "pixelFingerprint": 3866764884,
+          "paintOpportunityAt": 4252
+        },
+        {
+          "revision": 32114,
+          "submittedAt": 4350,
+          "changedPixels": 12,
+          "pixelFingerprint": 1380040460,
+          "paintOpportunityAt": 4391.300000011921
+        },
+        {
+          "revision": 33364,
+          "submittedAt": 4420.300000011921,
+          "changedPixels": 16,
+          "pixelFingerprint": 3516633452,
+          "paintOpportunityAt": 4465
+        },
+        {
+          "revision": 34613,
+          "submittedAt": 4500.699999988079,
+          "changedPixels": 13,
+          "pixelFingerprint": 1427235028,
+          "paintOpportunityAt": 4548.300000011921
+        },
+        {
+          "revision": 35447,
+          "submittedAt": 4588,
+          "changedPixels": 11,
+          "pixelFingerprint": 1842210865,
+          "paintOpportunityAt": 4616.199999988079
+        },
+        {
+          "revision": 36702,
+          "submittedAt": 4666.5,
+          "changedPixels": 13,
+          "pixelFingerprint": 2392069784,
+          "paintOpportunityAt": 4707.5
+        },
+        {
+          "revision": 37953,
+          "submittedAt": 4733.400000035763,
+          "changedPixels": 15,
+          "pixelFingerprint": 2120040826,
+          "paintOpportunityAt": 4781.199999988079
+        },
+        {
+          "revision": 39210,
+          "submittedAt": 4816.600000023842,
+          "changedPixels": 14,
+          "pixelFingerprint": 2685506829,
+          "paintOpportunityAt": 4861.699999988079
+        },
+        {
+          "revision": 40869,
+          "submittedAt": 4883.800000011921,
+          "changedPixels": 16,
+          "pixelFingerprint": 3933269498,
+          "paintOpportunityAt": 4923.699999988079
+        },
+        {
+          "revision": 42539,
+          "submittedAt": 4949.699999988079,
+          "changedPixels": 15,
+          "pixelFingerprint": 1179390008,
+          "paintOpportunityAt": 4997.5
+        },
+        {
+          "revision": 43786,
+          "submittedAt": 5034.699999988079,
+          "changedPixels": 13,
+          "pixelFingerprint": 1517441864,
+          "paintOpportunityAt": 5079.400000035763
+        },
+        {
+          "revision": 45039,
+          "submittedAt": 5101,
+          "changedPixels": 12,
+          "pixelFingerprint": 2872639184,
+          "paintOpportunityAt": 5143.300000011921
+        },
+        {
+          "revision": 46702,
+          "submittedAt": 5166.699999988079,
+          "changedPixels": 14,
+          "pixelFingerprint": 3908395755,
+          "paintOpportunityAt": 5210.5
+        },
+        {
+          "revision": 47954,
+          "submittedAt": 5238.199999988079,
+          "changedPixels": 11,
+          "pixelFingerprint": 2542204039,
+          "paintOpportunityAt": 5265.600000023842
+        },
+        {
+          "revision": 49614,
+          "submittedAt": 5300.300000011921,
+          "changedPixels": 13,
+          "pixelFingerprint": 1832061128,
+          "paintOpportunityAt": 5349
+        },
+        {
+          "revision": 50866,
+          "submittedAt": 5385.100000023842,
+          "changedPixels": 10,
+          "pixelFingerprint": 338582646,
+          "paintOpportunityAt": 5429.400000035763
+        },
+        {
+          "revision": 52112,
+          "submittedAt": 5483.600000023842,
+          "changedPixels": 11,
+          "pixelFingerprint": 1998764397,
+          "paintOpportunityAt": 5523.100000023842
+        },
+        {
+          "revision": 53358,
+          "submittedAt": 5550.900000035763,
+          "changedPixels": 12,
+          "pixelFingerprint": 2190813015,
+          "paintOpportunityAt": 5585.699999988079
+        },
+        {
+          "revision": 54193,
+          "submittedAt": 5600.5,
+          "changedPixels": 10,
+          "pixelFingerprint": 3291862471,
+          "paintOpportunityAt": 5638
+        },
+        {
+          "revision": 63096,
+          "submittedAt": 6151.400000035763,
+          "changedPixels": 213,
+          "pixelFingerprint": 1015204570,
+          "paintOpportunityAt": 6190.199999988079
+        },
+        {
+          "revision": 71999,
+          "submittedAt": 6235.699999988079,
+          "changedPixels": 213,
+          "pixelFingerprint": 3291862471,
+          "paintOpportunityAt": 6275
+        },
+        {
+          "revision": 71999,
+          "submittedAt": 6452,
+          "changedPixels": 0,
+          "pixelFingerprint": 1927316833,
+          "paintOpportunityAt": 6486.400000035763
+        },
+        {
+          "revision": 71999,
+          "submittedAt": 6533.699999988079,
+          "changedPixels": 0,
+          "pixelFingerprint": 3750909032,
+          "paintOpportunityAt": 6565.300000011921
+        },
+        {
+          "revision": 71999,
+          "submittedAt": 6600.300000011921,
+          "changedPixels": 0,
+          "pixelFingerprint": 30392341,
+          "paintOpportunityAt": 6630.600000023842
+        },
+        {
+          "revision": 72420,
+          "submittedAt": 6708.400000035763,
+          "changedPixels": 6,
+          "pixelFingerprint": 2339208885,
+          "paintOpportunityAt": 6730.800000011921
+        },
+        {
+          "revision": 73260,
+          "submittedAt": 6783.100000023842,
+          "changedPixels": 8,
+          "pixelFingerprint": 1787125877,
+          "paintOpportunityAt": 6822.199999988079
+        },
+        {
+          "revision": 74503,
+          "submittedAt": 6867.699999988079,
+          "changedPixels": 8,
+          "pixelFingerprint": 4115187813,
+          "paintOpportunityAt": 6906.199999988079
+        },
+        {
+          "revision": 76181,
+          "submittedAt": 6967.699999988079,
+          "changedPixels": 8,
+          "pixelFingerprint": 797590289,
+          "paintOpportunityAt": 6998.900000035763
+        },
+        {
+          "revision": 77019,
+          "submittedAt": 7047.900000035763,
+          "changedPixels": 6,
+          "pixelFingerprint": 1927461637,
+          "paintOpportunityAt": 7068.199999988079
+        },
+        {
+          "revision": 78683,
+          "submittedAt": 7128.400000035763,
+          "changedPixels": 6,
+          "pixelFingerprint": 1176295365,
+          "paintOpportunityAt": 7152.400000035763
+        },
+        {
+          "revision": 79942,
+          "submittedAt": 7211.100000023842,
+          "changedPixels": 6,
+          "pixelFingerprint": 100812950,
+          "paintOpportunityAt": 7235.5
+        },
+        {
+          "revision": 81187,
+          "submittedAt": 7295.900000035763,
+          "changedPixels": 6,
+          "pixelFingerprint": 3688744566,
+          "paintOpportunityAt": 7316.199999988079
+        },
+        {
+          "revision": 82023,
+          "submittedAt": 7384.600000023842,
+          "changedPixels": 5,
+          "pixelFingerprint": 2558735655,
+          "paintOpportunityAt": 7432.100000023842
+        },
+        {
+          "revision": 82863,
+          "submittedAt": 7467.300000011921,
+          "changedPixels": 6,
+          "pixelFingerprint": 941606687,
+          "paintOpportunityAt": 7513.800000011921
+        },
+        {
+          "revision": 84531,
+          "submittedAt": 7550.100000023842,
+          "changedPixels": 11,
+          "pixelFingerprint": 1375211263,
+          "paintOpportunityAt": 7594.600000023842
+        },
+        {
+          "revision": 85782,
+          "submittedAt": 7617,
+          "changedPixels": 6,
+          "pixelFingerprint": 1003401807,
+          "paintOpportunityAt": 7657.199999988079
+        },
+        {
+          "revision": 87875,
+          "submittedAt": 7692.800000011921,
+          "changedPixels": 8,
+          "pixelFingerprint": 3321416603,
+          "paintOpportunityAt": 7714.800000011921
+        },
+        {
+          "revision": 89547,
+          "submittedAt": 7766.400000035763,
+          "changedPixels": 8,
+          "pixelFingerprint": 4231039875,
+          "paintOpportunityAt": 7808.800000011921
+        },
+        {
+          "revision": 91219,
+          "submittedAt": 7824.800000011921,
+          "changedPixels": 10,
+          "pixelFingerprint": 1453430275,
+          "paintOpportunityAt": 7848.800000011921
+        },
+        {
+          "revision": 92885,
+          "submittedAt": 7899.199999988079,
+          "changedPixels": 8,
+          "pixelFingerprint": 2177775463,
+          "paintOpportunityAt": 7915.5
+        },
+        {
+          "revision": 94146,
+          "submittedAt": 7983.699999988079,
+          "changedPixels": 6,
+          "pixelFingerprint": 426865519,
+          "paintOpportunityAt": 8024.600000023842
+        },
+        {
+          "revision": 95808,
+          "submittedAt": 8066.800000011921,
+          "changedPixels": 8,
+          "pixelFingerprint": 4242022111,
+          "paintOpportunityAt": 8106.600000023842
+        },
+        {
+          "revision": 96225,
+          "submittedAt": 8129.699999988079,
+          "changedPixels": 4,
+          "pixelFingerprint": 1411119371,
+          "paintOpportunityAt": 8147.800000011921
+        },
+        {
+          "revision": 96646,
+          "submittedAt": 8471.600000023842,
+          "changedPixels": 0,
+          "pixelFingerprint": 1411119371,
+          "paintOpportunityAt": 8500.699999988079
+        },
+        {
+          "revision": 97482,
+          "submittedAt": 8578.5,
+          "changedPixels": 0,
+          "pixelFingerprint": 1411119371,
+          "paintOpportunityAt": 8604.100000023842
+        },
+        {
+          "revision": 98308,
+          "submittedAt": 8658.199999988079,
+          "changedPixels": 0,
+          "pixelFingerprint": 1411119371,
+          "paintOpportunityAt": 8680.800000011921
+        },
+        {
+          "revision": 99138,
+          "submittedAt": 8743.699999988079,
+          "changedPixels": 0,
+          "pixelFingerprint": 1411119371,
+          "paintOpportunityAt": 8768.400000035763
+        },
+        {
+          "revision": 99976,
+          "submittedAt": 8823.300000011921,
+          "changedPixels": 0,
+          "pixelFingerprint": 1411119371,
+          "paintOpportunityAt": 8851.400000035763
+        },
+        {
+          "revision": 100812,
+          "submittedAt": 8905,
+          "changedPixels": 0,
+          "pixelFingerprint": 1411119371,
+          "paintOpportunityAt": 8934.5
+        },
+        {
+          "revision": 101640,
+          "submittedAt": 8988.199999988079,
+          "changedPixels": 0,
+          "pixelFingerprint": 1411119371,
+          "paintOpportunityAt": 9017.400000035763
+        },
+        {
+          "revision": 102468,
+          "submittedAt": 9067.100000023842,
+          "changedPixels": 0,
+          "pixelFingerprint": 1411119371,
+          "paintOpportunityAt": 9114.100000023842
+        },
+        {
+          "revision": 103723,
+          "submittedAt": 9150.699999988079,
+          "changedPixels": 0,
+          "pixelFingerprint": 1411119371,
+          "paintOpportunityAt": 9192.300000011921
+        },
+        {
+          "revision": 104969,
+          "submittedAt": 9217.900000035763,
+          "changedPixels": 0,
+          "pixelFingerprint": 1411119371,
+          "paintOpportunityAt": 9258.900000035763
+        },
+        {
+          "revision": 106214,
+          "submittedAt": 9316.5,
+          "changedPixels": 1,
+          "pixelFingerprint": 246957474,
+          "paintOpportunityAt": 9364.5
+        },
+        {
+          "revision": 107052,
+          "submittedAt": 9399.600000023842,
+          "changedPixels": 1,
+          "pixelFingerprint": 139677739,
+          "paintOpportunityAt": 9440.199999988079
+        },
+        {
+          "revision": 108301,
+          "submittedAt": 9466.400000035763,
+          "changedPixels": 0,
+          "pixelFingerprint": 139677739,
+          "paintOpportunityAt": 9510.900000035763
+        },
+        {
+          "revision": 109542,
+          "submittedAt": 9566.699999988079,
+          "changedPixels": 0,
+          "pixelFingerprint": 139677739,
+          "paintOpportunityAt": 9600.300000011921
+        },
+        {
+          "revision": 109963,
+          "submittedAt": 10005.900000035763,
+          "changedPixels": 4,
+          "pixelFingerprint": 1902974832,
+          "paintOpportunityAt": 10033.900000035763
+        },
+        {
+          "revision": 111220,
+          "submittedAt": 10104.5,
+          "changedPixels": 8,
+          "pixelFingerprint": 2933143459,
+          "paintOpportunityAt": 10146.900000035763
+        },
+        {
+          "revision": 112465,
+          "submittedAt": 10189.400000035763,
+          "changedPixels": 8,
+          "pixelFingerprint": 1987614474,
+          "paintOpportunityAt": 10216
+        },
+        {
+          "revision": 113724,
+          "submittedAt": 10268,
+          "changedPixels": 8,
+          "pixelFingerprint": 799491576,
+          "paintOpportunityAt": 10308.400000035763
+        },
+        {
+          "revision": 114975,
+          "submittedAt": 10349,
+          "changedPixels": 10,
+          "pixelFingerprint": 3733948581,
+          "paintOpportunityAt": 10367.100000023842
+        },
+        {
+          "revision": 116226,
+          "submittedAt": 10450.5,
+          "changedPixels": 8,
+          "pixelFingerprint": 2631585874,
+          "paintOpportunityAt": 10495.199999988079
+        },
+        {
+          "revision": 117904,
+          "submittedAt": 10537.199999988079,
+          "changedPixels": 10,
+          "pixelFingerprint": 2714578177,
+          "paintOpportunityAt": 10568.400000035763
+        },
+        {
+          "revision": 119147,
+          "submittedAt": 10623.100000023842,
+          "changedPixels": 8,
+          "pixelFingerprint": 2941176353,
+          "paintOpportunityAt": 10651.800000011921
+        },
+        {
+          "revision": 119985,
+          "submittedAt": 10700.199999988079,
+          "changedPixels": 5,
+          "pixelFingerprint": 3218803098,
+          "paintOpportunityAt": 10746
+        },
+        {
+          "revision": 122074,
+          "submittedAt": 10766.300000011921,
+          "changedPixels": 10,
+          "pixelFingerprint": 4140892100,
+          "paintOpportunityAt": 10805.199999988079
+        },
+        {
+          "revision": 122908,
+          "submittedAt": 10828.5,
+          "changedPixels": 6,
+          "pixelFingerprint": 3022028672,
+          "paintOpportunityAt": 10848.199999988079
+        }
+      ],
+      "camera": {
+        "forward": [
+          0.5244943656729226,
+          -0.6993258208972302,
+          0.48564293117863205
+        ],
+        "right": [
+          0.8,
+          0.6000000000000001,
+          0
+        ],
+        "up": [
+          -0.29138575870717925,
+          0.38851434494290565,
+          0.8741572761215377
+        ],
+        "zoom": 1
+      },
+      "mode": "net",
+      "viewport": {
+        "width": 1155,
+        "height": 840
+      },
+      "sourceRevision": 122908,
+      "sourceCells": 256,
+      "authorityBytes": 1572872,
+      "fieldBytes": 6340704,
+      "cpuAtlasBytes": 6316056,
+      "gpu": {
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "software": false,
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 91,
+        "uploadBytes": 8647008,
+        "textureBytes": 6340704,
+        "resources": 3,
+        "presentations": 185
+      },
+      "canvasBytes": 7761600,
+      "pendingPreparation": false
+    }
+  },
+  "longTasks": [],
+  "errors": []
+}

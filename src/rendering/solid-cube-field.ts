@@ -2,7 +2,7 @@ import {SOLID_CUBE_FACES,SOLID_CUBE_FRAMES,solidCubeConnection,cubeDot,type Cube
 import {createSolidCubeTerrain,type SolidCubeTerrain} from '../terrain/solid-cube.ts';
 import {elevationToColor} from './elevation-colors.ts';
 
-export interface CubeDisplayField {readonly n:number;readonly sourceRevision:number;readonly data:Float32Array;readonly bytes:number;readonly sourceCells:number}
+export interface CubeDisplayField {readonly n:number;readonly sourceRevision:number;readonly data:Float32Array;readonly bytes:number;readonly sourceCells:number;readonly updates?:{readonly baseRevision:number;readonly rects:readonly {face:number;column:number;row:number;width:number;height:number}[]}}
 export const CUBE_DISPLAY_LIMITS=Object.freeze({maxCells:256,coarseCells:16,maxFieldBytes:6*257**2*16,maxTextureBytes:6*257**2*16,maxCpuFacePixels:6*513**2,maxCanvasPixels:1_200_000});
 export function assertCubeDisplayField(field:CubeDisplayField){if(!field||!Number.isSafeInteger(field.n)||field.n<2||field.n>256||!Number.isSafeInteger(field.sourceCells)||field.sourceCells<field.n||field.sourceCells>256||field.sourceCells%field.n||!Number.isSafeInteger(field.sourceRevision)||field.sourceRevision<0||!(field.data instanceof Float32Array)||!(field.data.buffer instanceof ArrayBuffer)||field.data.length!==6*(field.n+1)**2*4||field.bytes!==field.data.byteLength||field.bytes>CUBE_DISPLAY_LIMITS.maxFieldBytes)throw RangeError('Invalid or oversized cube display field');}
 /** Normal tasks, never a high-priority microtask spin. */

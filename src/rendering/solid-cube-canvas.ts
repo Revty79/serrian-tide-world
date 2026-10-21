@@ -6,15 +6,25 @@ import {cubeBackingSize} from './solid-cube-webgl.ts';
 export interface CubeCanvasAtlas {readonly field:CubeDisplayField;readonly faces:ReadonlyMap<SolidCubeFace,HTMLCanvasElement>;readonly bytes:number;dispose():void}
 /** Reconstructed elevation is colored at 2N+1 points, never six independent maps.
  * Camera interaction uses six affine planes and requires no geography preparation. */
-export async function prepareCubeCanvasAtlas(field:CubeDisplayField,relief=true,yieldWork=cubeTaskYield,alive=()=>true):Promise<CubeCanvasAtlas>{
+export async function prepareCubeCanvasAtlas(field:CubeDisplayField,relief=true,yieldWork=cubeTaskYield,alive=()=>true,previous?:CubeCanvasAtlas):Promise<CubeCanvasAtlas>{
  assertCubeDisplayField(field);
  const faces=new Map<SolidCubeFace,HTMLCanvasElement>(),size=2*field.n+1;
  try{for(const face of SOLID_CUBE_FACES){
-  const canvas=document.createElement('canvas');canvas.width=canvas.height=size;faces.set(face,canvas);const context=canvas.getContext('2d');if(!context)throw Error('Canvas2D unavailable');const image=context.createImageData(size,size);
-  for(let r=0;r<size;r++){
-   for(let c=0;c<size;c++){const value=cubeDisplaySample(field,face,2*c/(size-1)-1,1-2*r/(size-1)),color=cubeDisplayColor(face,value.height,value.du,value.dv,relief),at=(r*size+c)*4;image.data[at]=color[0];image.data[at+1]=color[1];image.data[at+2]=color[2];image.data[at+3]=255;}
+  const canvas=document.createElement('canvas');canvas.width=canvas.height=size;faces.set(face,canvas);const context=canvas.getContext('2d');if(!context)throw Error('Canvas2D unavailable');
+  let left=0,right=size-1,top=0,bottom=size-1;
+  if(previous?.field.n===field.n){
+   const old=previous.faces.get(face);if(old)context.drawImage(old,0,0);
+   left=top=size;right=bottom=-1;const s=field.n+1,base=SOLID_CUBE_FACES.indexOf(face)*s*s*4;
+   for(let r=0;r<s;r++)for(let c=0;c<s;c++){const at=base+(r*s+c)*4;
+    if(!Object.is(field.data[at],previous.field.data[at])||!Object.is(field.data[at+1],previous.field.data[at+1])||!Object.is(field.data[at+2],previous.field.data[at+2])){left=Math.min(left,2*c-2);right=Math.max(right,2*c+2);top=Math.min(top,2*(field.n-r)-2);bottom=Math.max(bottom,2*(field.n-r)+2);}
+   }left=Math.max(0,left);right=Math.min(size-1,right);top=Math.max(0,top);bottom=Math.min(size-1,bottom);
+  }
+  if(right<left||bottom<top)continue;
+  const width=right-left+1,image=context.createImageData(width,bottom-top+1);
+  for(let r=top;r<=bottom;r++){
+   for(let c=left;c<=right;c++){const value=cubeDisplaySample(field,face,2*c/(size-1)-1,1-2*r/(size-1)),color=cubeDisplayColor(face,value.height,value.du,value.dv,relief),at=((r-top)*width+c-left)*4;image.data[at]=color[0];image.data[at+1]=color[1];image.data[at+2]=color[2];image.data[at+3]=255;}
    if(r%8===7){await yieldWork();if(!alive())throw Error('Cube canvas preparation disposed');}
-  }context.putImageData(image,0,0);
+  }context.putImageData(image,left,top);
  }return Object.freeze({field,faces,bytes:6*size*size*4,dispose(){for(const canvas of faces.values()){canvas.width=canvas.height=0;}faces.clear();}});
  }catch(e){for(const canvas of faces.values())canvas.width=canvas.height=0;faces.clear();throw e;}
 }
