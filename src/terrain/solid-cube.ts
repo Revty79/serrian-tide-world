@@ -14,6 +14,32 @@ const cubeViewBuffer = Object.getOwnPropertyDescriptor(cubeViewPrototype, 'buffe
 const cubeViewLength = Object.getOwnPropertyDescriptor(cubeViewPrototype, 'length')!.get!;
 const cubeViewName = Object.getOwnPropertyDescriptor(cubeViewPrototype, Symbol.toStringTag)!.get!;
 const cubeUnsharedBuffer = Object.getOwnPropertyDescriptor(ArrayBuffer.prototype, 'byteLength')!.get!;
+
+/** Shared descriptor boundary: bounded intrinsic views, detached plain descriptors.
+ * Host geometry policies can inspect these without invoking caller accessors. */
+export function cubePatchBlocks(blocks:readonly CubePatchBlock[],maximum:number):readonly CubePatchBlock[]{
+ if(!Number.isSafeInteger(maximum)||maximum<0||maximum>6*MAX_SOLID_CUBE_CELLS**2+2)throw RangeError('Invalid cube patch capacity.');
+ if(!Array.isArray(blocks))throw RangeError('Invalid cube patch blocks.');
+ const blockCount = blocks.length;
+ if (!Number.isSafeInteger(blockCount) || blockCount < 0 || blockCount > Math.ceil(maximum / 1024)) throw new RangeError('Invalid cube patch block count.');
+ // Finish ALL caller descriptor reads before value validation. Do not invoke
+ // caller .map/species or typed-view buffer/length property overrides.
+ const prepared: CubePatchBlock[] = [];
+ for (let i = 0; i < blockCount; i++) {
+   const b = blocks[i]!; prepared.push({ indices: b.indices, before: b.before, after: b.after, count: b.count });
+ }
+ let total=0;
+ for(const b of prepared){
+  for (const [array, prototype] of [[b.indices, Uint32Array.prototype], [b.before, Float32Array.prototype], [b.after, Float32Array.prototype]] as const) {
+    if (!ArrayBuffer.isView(array) || Object.getPrototypeOf(array) !== prototype
+      || cubeViewName.call(array) !== (prototype === Uint32Array.prototype ? 'Uint32Array' : 'Float32Array')) throw new RangeError('Cube patches require intrinsic Uint32/Float32 views.');
+    try { cubeUnsharedBuffer.call(cubeViewBuffer.call(array)); }
+    catch { throw new RangeError('Cube patches require actual nonshared ArrayBuffers.'); }
+  }
+  if (!Number.isSafeInteger(b.count) || b.count < 0 || b.count > cubeViewLength.call(b.indices) || b.count > cubeViewLength.call(b.before) || b.count > cubeViewLength.call(b.after)) throw new RangeError('Invalid cube patch extent.');
+  total+=b.count;if(total>maximum)throw RangeError('Cube atomic patch sample limit exceeded.');
+ }return prepared;
+}
 export interface SolidCubeSampleAddress extends SurfaceIdentity { readonly patchId: SolidCubeFace; readonly column: number; readonly row: number }
 export interface SolidCubeSampleKey extends SurfaceIdentity {
   readonly terrainId: string;
@@ -127,23 +153,9 @@ export function createSolidCubeTerrain(options: { readonly terrainId: string; re
       if (capacity !== 'dab' && capacity !== 'history') throw new RangeError('Invalid cube publication capacity.');
       const maximum = capacity === 'history' ? count : MAX_CUBE_PATCH_SAMPLES;
       if (!Number.isSafeInteger(expectedRevision) || expectedRevision < 0 || !Array.isArray(blocks)) throw new RangeError('Invalid cube patch epoch or block count.');
-      const blockCount = blocks.length;
-      if (!Number.isSafeInteger(blockCount) || blockCount < 0 || blockCount > Math.ceil(maximum / 1024)) throw new RangeError('Invalid cube patch block count.');
-      // Finish ALL caller descriptor reads before value validation. Do not invoke
-      // caller .map/species or typed-view buffer/length property overrides.
-      const prepared: CubePatchBlock[] = [];
-      for (let i = 0; i < blockCount; i++) {
-        const b = blocks[i]!; prepared.push({ indices: b.indices, before: b.before, after: b.after, count: b.count });
-      }
+      const prepared=cubePatchBlocks(blocks,maximum);
       let previous = -1, total = 0, changed = 0;
       for (const b of prepared) {
-        for (const [array, prototype] of [[b.indices, Uint32Array.prototype], [b.before, Float32Array.prototype], [b.after, Float32Array.prototype]] as const) {
-          if (!ArrayBuffer.isView(array) || Object.getPrototypeOf(array) !== prototype
-            || cubeViewName.call(array) !== (prototype === Uint32Array.prototype ? 'Uint32Array' : 'Float32Array')) throw new RangeError('Cube patches require intrinsic Uint32/Float32 views.');
-          try { cubeUnsharedBuffer.call(cubeViewBuffer.call(array)); }
-          catch { throw new RangeError('Cube patches require actual nonshared ArrayBuffers.'); }
-        }
-        if (!Number.isSafeInteger(b.count) || b.count < 0 || b.count > cubeViewLength.call(b.indices) || b.count > cubeViewLength.call(b.before) || b.count > cubeViewLength.call(b.after)) throw new RangeError('Invalid cube patch extent.');
         total += b.count;
         if (total > maximum) throw new RangeError('Cube atomic patch sample limit exceeded.');
         for (let i = 0; i < b.count; i++) {

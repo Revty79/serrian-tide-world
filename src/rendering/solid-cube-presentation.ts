@@ -9,6 +9,8 @@ import type {CubePublication} from '../editor/solid-cube-history.ts';
 
 import type {HollowExcavation,PassageEye} from '../surfaces/hollow-cube-csg.ts';
 import {presentHollowCanvas,disposeHollowCanvas,hollowCanvasCacheBytes} from './hollow-cube-canvas.ts';
+import {hollowFreeVolume} from '../surfaces/hollow-cube-csg.ts';
+import type {SurfacePosition} from '../surfaces/contracts.ts';
 
 export type CubeBackend='auto'|'canvas';
 /** Read-only presentation owner. Source changes invalidate preparation; camera state never writes. */
@@ -20,9 +22,11 @@ export class CubePresentation {
  private source:SolidCubeTerrain|undefined;private onChange:()=>void;private lastFrame=0;
  private editorField?:CubeEditorField;
  readonly surface:CubeSurfaceView;
+ fieldPublished=()=>{};
  private excavation?:HollowExcavation;private opposingField?:()=>CubeDisplayField|undefined;private eye?:PassageEye;private excavationGpu=false;
  get displayField(){return this.field;}
- setExcavation(model:HollowExcavation,opposing:()=>CubeDisplayField|undefined){this.excavation=model;this.opposingField=opposing;if(model.primitives.length&&!this.excavationGpu){this.excavationGpu=true;if(this.gpu){this.gpu.dispose();this.gpu=undefined;if(this.backend==='auto')this.createGpu();}}this.schedule();}
+ surfacePointAvailable(position:SurfacePosition){return !this.excavation?.primitives.length||!this.source||!hollowFreeVolume(this.excavation,this.source.geometry.referencePosition(position));}
+ setExcavation(model:HollowExcavation,opposing:()=>CubeDisplayField|undefined){this.excavation=model;this.opposingField=opposing;if(!model.primitives.length)disposeHollowCanvas(this.cpuCanvas);if(model.primitives.length&&!this.excavationGpu){this.excavationGpu=true;if(this.gpu){this.gpu.dispose();this.gpu=undefined;if(this.backend==='auto')this.createGpu();}}this.schedule();}
  setPassageEye(eye?:PassageEye){this.eye=eye;this.schedule();}
  private verifyPixels=false;
  private pixelCanvas?:HTMLCanvasElement;private previousPixels?:Uint8ClampedArray;private pixelRevision=-1;private pixelView='';
@@ -42,7 +46,7 @@ export class CubePresentation {
   this.work=(async()=>{await previous.catch(()=>{});if(this.disposed||generation!==this.generation)return;
    const source=this.source!,alive=()=>!this.disposed&&generation===this.generation;
    try{
-    if(this.editorField){this.field=await this.editorField.refresh(source,alive);if(!alive())return;
+    if(this.editorField){this.field=await this.editorField.refresh(source,alive);if(!alive())return;this.fieldPublished();
      if(this.backend==='canvas'||!this.gpu?.available)await this.ensureAtlas();this.metrics.preparationMs=this.metrics.updateMs=performance.now()-started;this.schedule();this.onChange();return;}
     let at=performance.now();const coarse=await prepareCubeDisplayField(source,Math.min(detail==='interactive'?32:16,source.metadata.representation.cellsPerEdge),undefined,alive);if(!alive())return;this.metrics.coarsePreparationMs=performance.now()-at;this.field=coarse;this.metrics.error='';this.schedule();
     await this.ensureAtlas();if(!alive())return;
