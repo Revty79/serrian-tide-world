@@ -1,0 +1,981 @@
+{
+  "baseline": "701062a9c257a1546dbde566e8571ed88f979456",
+  "implementation": "d099606144d827d99f4c6c8ba40fe67933fb474e",
+  "files": 193,
+  "counts": {
+    "sourceTestsDriversFixtures": 20,
+    "modifiedExistingSource": 1,
+    "addedSourceTestsDriversFixtures": 19,
+    "documentation": 8,
+    "evidenceIncludingManifest": 165
+  },
+  "manifestPath": "docs/evidence/cube-c2b2-delivery-manifest.json",
+  "manifestSha256": "36ee076d61945248aefbf96d3c3c6618b2a56ff2c845fcfbf798a978ba9afb9e",
+  "entries": [
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "gitBlob": "ae71806120fa63be96a2d7527ba6f0e1df026446"
+    },
+    {
+      "path": "dev/cube-preparation.html",
+      "mode": "100644",
+      "gitBlob": "171c88d5d6a8d6057392c164cb1eed9409c518bd"
+    },
+    {
+      "path": "dev/cube-work.html",
+      "mode": "100644",
+      "gitBlob": "2acc32d44dd487efcbd2559a3ee90bd9d713dfb6"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "mode": "100644",
+      "gitBlob": "4dd2fe1a29b4ebeae83d224d327139428befb742"
+    },
+    {
+      "path": "docs/CUBE-C2B2-COMPLETION.md",
+      "mode": "100644",
+      "gitBlob": "89a1fc0b82577181163a8adf1e68a474ee3db6c8"
+    },
+    {
+      "path": "docs/CUBE-RESPONSIVE-EXECUTION.md",
+      "mode": "100644",
+      "gitBlob": "3c654579427212a6cce3bf7a62d3643b3b4715f7"
+    },
+    {
+      "path": "docs/PHASE-1-HEIGHTMAP-ROADMAP.md",
+      "mode": "100644",
+      "gitBlob": "79993978cde7a7a78dbd0997d158d53ad92f37c1"
+    },
+    {
+      "path": "docs/SOLID-CUBE-FOUNDATION.md",
+      "mode": "100644",
+      "gitBlob": "983874176170c32ca3e81ae284e146fec37de107"
+    },
+    {
+      "path": "docs/SURFACE-VISUAL-STANDARD.md",
+      "mode": "100644",
+      "gitBlob": "1dc9e745bf9e2b2c4a8cbc659f67066274502f82"
+    },
+    {
+      "path": "docs/WORLD-SURFACE-ARCHITECTURE.md",
+      "mode": "100644",
+      "gitBlob": "0e4a4f17bcef9bf6107ade7834e30d4df472f7cd"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-archive-driver.py.txt",
+      "mode": "100644",
+      "gitBlob": "a305806b2554da761aeafe374e55097f53fac571"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-baseline-compression.json",
+      "mode": "100644",
+      "gitBlob": "6048c32cf6c2bd8567a52f7761e1a36416bce41a"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-baseline-cube-c2b2-measure.mjs.txt",
+      "mode": "100644",
+      "gitBlob": "d694adacdeeb5608294b44c1ca61ee6e60c25108"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-baseline-cube-c2b2-trace.config.ts.txt",
+      "mode": "100644",
+      "gitBlob": "9e360d8e321da450251cc1493c4f133b674e1da3"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-baseline-cube-c2b2-trace.mjs.txt",
+      "mode": "100644",
+      "gitBlob": "604f55138d5689f42528835336d8da00ef8a0a4f"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-baseline-cube-c2b2-vite.config.ts.txt",
+      "mode": "100644",
+      "gitBlob": "cd6bfb4f543c6770a081b3fd862ce8fd29cae215"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-baseline-desktop.png",
+      "mode": "100644",
+      "gitBlob": "f24efb2b7986aba764b2e5e409226dd73814a840"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-baseline-freeze.json",
+      "mode": "100644",
+      "gitBlob": "723881ca15cee254d49a5eb07f19f8e5b79d7edb"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-baseline-mobile.png",
+      "mode": "100644",
+      "gitBlob": "d2f6253ab1ca688223acd97a1bc30e89de297d8a"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-baseline-performance.json.gz",
+      "mode": "100644",
+      "gitBlob": "9a114a7e62bb37b70c0a532a63d898e75ab100a7"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-baseline-server.txt",
+      "mode": "100644",
+      "gitBlob": "fed7d439229af92a10f141d7286ee0e6c04eaf0f"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-baseline-source.json",
+      "mode": "100644",
+      "gitBlob": "cf1332356f76462ba62ba80c73261f9ce8068c42"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-baseline-summary.json",
+      "mode": "100644",
+      "gitBlob": "c98e682eab9179dcd44d1c0b232741410e2254a2"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-baseline-trace-desktop-summary.json.gz",
+      "mode": "100644",
+      "gitBlob": "d47bf8c155df7b4ad64d7e800c7ffc038482d569"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-baseline-trace-desktop.json.gz",
+      "mode": "100644",
+      "gitBlob": "a3366ec46a9f5e5914599f55b12673bc6a49184a"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-baseline-trace-mobile-summary.json.gz",
+      "mode": "100644",
+      "gitBlob": "99bda75af74b2d00ee138c7b342e35e9f7b9b133"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-baseline-trace-mobile.json.gz",
+      "mode": "100644",
+      "gitBlob": "afd6a25963ab6ddf614740bf5a480182d8d15d98"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-baseline-trace-server.txt",
+      "mode": "100644",
+      "gitBlob": "85439152ab4a45cac8177339829ef5e22cea416e"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-aggregate-result.json",
+      "mode": "100644",
+      "gitBlob": "ba63fc405ff12b568bfd028ded5589f6e4c1093b"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-archive-proof.json",
+      "mode": "100644",
+      "gitBlob": "1a53fdecebb1546ee31e8856950d26952d23cf37"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-artifacts-1.zip",
+      "mode": "100644",
+      "gitBlob": "97afdde0a350eceed625c25cd6a5ddd23e663253"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-artifacts-2.zip",
+      "mode": "100644",
+      "gitBlob": "183ea0a029df7e4741618f9cdf4424d55c03933d"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-artifacts-3.zip",
+      "mode": "100644",
+      "gitBlob": "0e611c2bdfe39626faffbbe614816f86a0ab66b2"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-artifacts.json",
+      "mode": "100644",
+      "gitBlob": "bf7873d4b19a036515ea9993f92853477e7ab6cb"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-collected-tests.json",
+      "mode": "100644",
+      "gitBlob": "67aa12f9e3292a4e1c32a5636013d21b3728b493"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-completion-driver.mjs.txt",
+      "mode": "100644",
+      "gitBlob": "d7b3cb3dd75e32b51c7cf232d483c8aea28a7e17"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-config.ts.txt",
+      "mode": "100644",
+      "gitBlob": "34aa826516daf2222e915666030289cef912771b"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-correction-typecheck.txt",
+      "mode": "100644",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-interrupted-log.txt",
+      "mode": "100644",
+      "gitBlob": "0f35cdf7a98ef97c12b7dee6adc060fee7814644"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-journal-reporter.mjs.txt",
+      "mode": "100644",
+      "gitBlob": "2bfde969481afb3441eb8326370cb238a22bc4d6"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-recovered-completions.json",
+      "mode": "100644",
+      "gitBlob": "a590ec0fccb7a818a1d97bb662ec41ed512c1cca"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-regression.txt",
+      "mode": "100644",
+      "gitBlob": "e6a51f03ef66c855bb4399896952f3a14743a396"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-remainder-collected-tests.json",
+      "mode": "100644",
+      "gitBlob": "04e8355cb52469a2d1918d1d0613be206b37f900"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-remainder-config.ts.txt",
+      "mode": "100644",
+      "gitBlob": "c165ef224f23efb2b97976f46dddd665f06823c2"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-remainder-journal.jsonl",
+      "mode": "100644",
+      "gitBlob": "62cc76839e78f7d7fcad85b005e80001695ad081"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-remainder-result.json",
+      "mode": "100644",
+      "gitBlob": "7684bc6362573ce82c77a2618c159d95af0a77f2"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-remainder-server.txt",
+      "mode": "100644",
+      "gitBlob": "c8827518eefda9aa183815f70c08dfa7b3b4e7d1"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-remainder-test-list.txt",
+      "mode": "100644",
+      "gitBlob": "5de8ea3fc2779b2ba35a9af153ff30b006c9ce67"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-remainder.txt",
+      "mode": "100644",
+      "gitBlob": "2b3b577831a6e42e5e09f47f7e0ca071c1e17f31"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-resumption-driver.mjs.txt",
+      "mode": "100644",
+      "gitBlob": "5efabafb4a25d64ab3b3425f2bec94262b1b3618"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-resumption.json",
+      "mode": "100644",
+      "gitBlob": "d4b77c1e1bb761b20bdce5e2f4183a82f8a77114"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-second-interrupted-log.txt",
+      "mode": "100644",
+      "gitBlob": "e6a51f03ef66c855bb4399896952f3a14743a396"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-server.txt",
+      "mode": "100644",
+      "gitBlob": "4130e6e6533a7efa13b72b96d79d14af8d5ea42c"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-setup-attempt.txt",
+      "mode": "100644",
+      "gitBlob": "f095892608cd47db351e645184dc5d7c624c4109"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-setup-correction.json",
+      "mode": "100644",
+      "gitBlob": "f5bf153e74e4672f89a2ab0196d177bbf68b2305"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-setup-result.json",
+      "mode": "100644",
+      "gitBlob": "f63fd8f670ae449fcc093c617f2826cbe8bea080"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-browser-skip-preservation.json",
+      "mode": "100644",
+      "gitBlob": "22e4f8a298d5602c2db317657531bb6c653de625"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-build.txt",
+      "mode": "100644",
+      "gitBlob": "47b077e2d5552de15ceca2b993bfb123d46da948"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-c1-oracle-certificate.json",
+      "mode": "100644",
+      "gitBlob": "a31c35e0112711aba301c11318b4859b1063ce1e"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-c1-oracle-input.json",
+      "mode": "100644",
+      "gitBlob": "5791f1199208ea7581f4f017968665fc01d6ea0a"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-c1-oracle-stderr.txt",
+      "mode": "100644",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-c1-sample-preservation.json",
+      "mode": "100644",
+      "gitBlob": "f8caa215c9093bad22c81798b070eef973e0b089"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-c2a-dab-oracle-certificate.json",
+      "mode": "100644",
+      "gitBlob": "f4e9e15495695e1282020568794d52ebfbab733d"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-c2a-dab-oracle-input.json",
+      "mode": "100644",
+      "gitBlob": "d60e4dc2005dcb5b4c16b760070aa9171f49357d"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-c2a-stroke-oracle-certificate.json",
+      "mode": "100644",
+      "gitBlob": "977164c47ce6e050bfce429ab6d2ec99fa4f48a6"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-c2a-stroke-oracle-input.json",
+      "mode": "100644",
+      "gitBlob": "c02e1f8aa6a78d61ce6d9728dc524afc434d313b"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-c2a-terrain-preservation.json",
+      "mode": "100644",
+      "gitBlob": "8e9fcc10e770c15be8d44293b24c2407c53400a8"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-compression-driver.mjs.txt",
+      "mode": "100644",
+      "gitBlob": "43422effd4edbcffbd2744ba507dd768ac1a9017"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-cube-a-certificate.txt",
+      "mode": "100644",
+      "gitBlob": "c3b2cbc2106acb032990f19e8c044e2af2892428"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-cube-b-certificate.txt",
+      "mode": "100644",
+      "gitBlob": "04ad8bb5ca68f5ce7a1d669b3d97b0d6c14fc5ff"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-cube-b-oracle-certificate.json",
+      "mode": "100644",
+      "gitBlob": "17a5ccad1335edbddefc917de0922b3dce51fc1e"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-cube-b-oracle-input.json.gz",
+      "mode": "100644",
+      "gitBlob": "c01a6a56d534c99ad2997613e54cbecf0b00fc9d"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-cube-b-oracle-stderr.txt",
+      "mode": "100644",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-cube-b-performance.json",
+      "mode": "100644",
+      "gitBlob": "22be9bb2151b2da32eeb5c0a864fc9a5c2a51e2e"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-cube-b-sample-preservation.json",
+      "mode": "100644",
+      "gitBlob": "adb327ebfca8f84a004fe01c34fc1e71aecf8fda"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-delivery-driver.mjs.txt",
+      "mode": "100644",
+      "gitBlob": "c81e8242f09fe1b23a69c6324c942835dd935982"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-delivery-manifest.json",
+      "mode": "100644",
+      "gitBlob": "9cc56ce8f89d0ff2198ec49e195f2153e27e101f"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-evidence-compression.json",
+      "mode": "100644",
+      "gitBlob": "a379d814fddc65f393a6d6c04e4206ef40351d73"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-evidence-package-driver.mjs.txt",
+      "mode": "100644",
+      "gitBlob": "b9629aaa44560eb24a712c3278e00f5e14ab3de3"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-auto-desktop.png",
+      "mode": "100644",
+      "gitBlob": "b14dcc3198a64dd7c84243c15754a0b18d9e7fb8"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-auto-mobile.png",
+      "mode": "100644",
+      "gitBlob": "d32cf09aa2cc431b1da385404e32d4b0af7b5589"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-auto-performance.json.gz",
+      "mode": "100644",
+      "gitBlob": "5d7246673c6ed0402ee5fb0ce1afef0ada9277cd"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-auto-run.txt",
+      "mode": "100644",
+      "gitBlob": "5dee094dbbb4d99bdd7c53e13fccb4c92a89241a"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-auto-server.txt",
+      "mode": "100644",
+      "gitBlob": "56a47ced7650d532113885144f953c7e79fe5f36"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-auto-source.json",
+      "mode": "100644",
+      "gitBlob": "359262373bbe521374959abd3d3220edb62592d1"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-compression.json",
+      "mode": "100644",
+      "gitBlob": "a61a1f7d219b839d45e957560d3ebb60de079ec7"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-measure.mjs.txt",
+      "mode": "100644",
+      "gitBlob": "00919a08edb602aef1bdc24926909dd357065b26"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-trace-desktop-summary.json.gz",
+      "mode": "100644",
+      "gitBlob": "30ff48b42e5c7fd75f90741c14852977eeb86c21"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-trace-desktop.json.gz",
+      "mode": "100644",
+      "gitBlob": "e5e1fecc237bcd00992107767254089bfab8a22e"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-trace-mobile-summary.json.gz",
+      "mode": "100644",
+      "gitBlob": "89ab101783a5ad17116058291b3ce4485375496b"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-trace-mobile.json.gz",
+      "mode": "100644",
+      "gitBlob": "a2ef0deddcaca22148187925ba53709606316657"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-trace-run.txt",
+      "mode": "100644",
+      "gitBlob": "a46e220bf007b09085527c405ea796a487b9f4b1"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-trace-server.txt",
+      "mode": "100644",
+      "gitBlob": "241c9653888bbc75b9df010fa9c1af0d5823ab9c"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-trace.config.ts.txt",
+      "mode": "100644",
+      "gitBlob": "9e360d8e321da450251cc1493c4f133b674e1da3"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-trace.mjs.txt",
+      "mode": "100644",
+      "gitBlob": "604f55138d5689f42528835336d8da00ef8a0a4f"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-vite.config.ts.txt",
+      "mode": "100644",
+      "gitBlob": "cd6bfb4f543c6770a081b3fd862ce8fd29cae215"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-worker-desktop.png",
+      "mode": "100644",
+      "gitBlob": "2c29925d4f2e01b74b5b700f61849eae69a77f7e"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-worker-mobile.png",
+      "mode": "100644",
+      "gitBlob": "2e84e6db982355fe2cdcfaee580cd7cc542f1bf8"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-worker-performance.json.gz",
+      "mode": "100644",
+      "gitBlob": "5f4c1b5ef5ea7ada94f559679d54225fde289da1"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-worker-run.txt",
+      "mode": "100644",
+      "gitBlob": "c68371725ecb07d598a1bcbb59471aa618a0e402"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-worker-server.txt",
+      "mode": "100644",
+      "gitBlob": "e1d289ce649cc32b8b97323ba5a6cc08a3cd17fb"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-final-worker-source.json",
+      "mode": "100644",
+      "gitBlob": "359262373bbe521374959abd3d3220edb62592d1"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-focused.txt",
+      "mode": "100644",
+      "gitBlob": "729d66c926a8ea8513997c33096d0b0153f77e04"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-independent-c1.txt",
+      "mode": "100644",
+      "gitBlob": "f13fbfd1d2fbb026566111c5e14b189f78561b48"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-independent-execution.txt",
+      "mode": "100644",
+      "gitBlob": "d3629906c8ba36823a2e922760cd139949d3c72a"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-independent-strokes.txt",
+      "mode": "100644",
+      "gitBlob": "96bc5d91dd5eae8acdb65b84b3873558efcc97b5"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-independent-worker.txt",
+      "mode": "100644",
+      "gitBlob": "e896cd57b901a2b99b79abbe28f85d5e6a5cbb68"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-inventory-driver.mjs.txt",
+      "mode": "100644",
+      "gitBlob": "c4050fb7ceb0de156bbe3fb5875d191e3efb4e4a"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-native-desktop.png",
+      "mode": "100644",
+      "gitBlob": "b45ec6a8110aec39bf34137b28b832c851083c10"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-native-execution-oracle-certificate.json",
+      "mode": "100644",
+      "gitBlob": "b7498b9a449b46e67bdd6d8a979a20ffd6600401"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-native-execution-oracle-input.json.gz",
+      "mode": "100644",
+      "gitBlob": "f6a79073bb393dcff7d47395daa922a4ef990555"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-native-execution-oracle-stderr.txt",
+      "mode": "100644",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-native-full-words-N128-flatten.bin.gz",
+      "mode": "100644",
+      "gitBlob": "c7446b032fef0751f90eaac0d7f7c2d4010e18e7"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-native-full-words-N128-lower.bin.gz",
+      "mode": "100644",
+      "gitBlob": "287f26181355dd4f3555562d681d02cb7cb93e91"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-native-full-words-N128-raise.bin.gz",
+      "mode": "100644",
+      "gitBlob": "bb14db3d3d7823d4de8809e6f44892b76d0ee02e"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-native-full-words-N128-smooth.bin.gz",
+      "mode": "100644",
+      "gitBlob": "57f6b9874e8f948a84af432b1d49a2eb83322429"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-native-full-words-N256-flatten.bin.gz",
+      "mode": "100644",
+      "gitBlob": "c547a0be2df6c7beeb532191fddc2002d38f08b0"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-native-full-words-N256-lower.bin.gz",
+      "mode": "100644",
+      "gitBlob": "e7624ce19baf638379207bd740e411ccabf69275"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-native-full-words-N256-raise.bin.gz",
+      "mode": "100644",
+      "gitBlob": "9de22538394f04208325dac0b3b8dfc9930ebe72"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-native-full-words-N256-smooth.bin.gz",
+      "mode": "100644",
+      "gitBlob": "7380799685f7e46684529f8bea1f54a65a0be4db"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-native-mobile.png",
+      "mode": "100644",
+      "gitBlob": "2dbfc1cf0fa14f861a2b22730215dfc441003252"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-native-resource-prefix-evidence.json",
+      "mode": "100644",
+      "gitBlob": "5793be660dab090f1d39a8a47b70af79a024bcda"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-native-trace-recovery.json.gz",
+      "mode": "100644",
+      "gitBlob": "aae3639620f32d4e13a88aa148b110834db66011"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-native-worker-proofs.json.gz",
+      "mode": "100644",
+      "gitBlob": "57ce4d925038591fdb1f067c161c982911433b71"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-native-worker-summary.json",
+      "mode": "100644",
+      "gitBlob": "968b42cc9da90ff028d07d39ea62ffcd97c6a51a"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-numerical-regression.txt",
+      "mode": "100644",
+      "gitBlob": "6a6b98ac7e8b71ea32046aa0326cd1e34c7f2604"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-performance-driver.mjs.txt",
+      "mode": "100644",
+      "gitBlob": "a30b661054bb2e53e8b1220c3fa7174d46ccfd68"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-performance-environment.json",
+      "mode": "100644",
+      "gitBlob": "0c2c62f41a7b0c5e8d6d6cbd829a0bac5ee2d254"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-performance-source-freeze.json",
+      "mode": "100644",
+      "gitBlob": "7c25d7ffeae0aa8697123d39e13e9365dfdc40e1"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-performance-summary-driver.mjs.txt",
+      "mode": "100644",
+      "gitBlob": "2b771ee51ea5fa09bee8b7b913196531e2be379e"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-performance-summary.json",
+      "mode": "100644",
+      "gitBlob": "5848b3c81ac14885099eb546270de998b1c7ae17"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-performance-validation.json",
+      "mode": "100644",
+      "gitBlob": "980f53d49f254094d83e76f14ca2301e677a0b5b"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-pre-browser-tested-source.json",
+      "mode": "100644",
+      "gitBlob": "88cd9b778d6975cb7575154a73b646d7a29adc80"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-preparation-evaluation.json.gz",
+      "mode": "100644",
+      "gitBlob": "45d96aa7f6be0496cc22a82a4a75e71748fbe50c"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-preparation-executed-source.ts.txt",
+      "mode": "100644",
+      "gitBlob": "d9d2b4e8d58c4c87fa2dc6f236b06689002938d2"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-preparation-server.txt",
+      "mode": "100644",
+      "gitBlob": "40475b1fb6d5a319f112c56563034d67019eed96"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-preparation-source-check.json",
+      "mode": "100644",
+      "gitBlob": "b6b5df3067657897b95f447d9b7b86ee98b226c0"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-preparation-summary.json",
+      "mode": "100644",
+      "gitBlob": "2f167fafe97a4a60fb2d3258a58261a2fb320625"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-preservation-driver.mjs.txt",
+      "mode": "100644",
+      "gitBlob": "67e7664f04ee9202d05f02ca25c3861c598b22ef"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-preservation.json",
+      "mode": "100644",
+      "gitBlob": "362d59f0750ccb7cd827430bc3e9dafcc8a76c9a"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-report-finalizer.mjs.txt",
+      "mode": "100644",
+      "gitBlob": "26a59fd843411c6c23d3f5151927d6161b6e6899"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-source-freeze.json",
+      "mode": "100644",
+      "gitBlob": "458b769b0ef050c00228cc4d2aea49ea346546ec"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-stage-audit-driver.mjs.txt",
+      "mode": "100644",
+      "gitBlob": "b8c6acdfba935df4f43981bdef121fc4601d59b3"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-tested-source.json",
+      "mode": "100644",
+      "gitBlob": "4f199da9253b7696a637ce5e41be24692763b373"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-trace-recovery-driver.py.txt",
+      "mode": "100644",
+      "gitBlob": "3046d3d2408ad0ad125423d6551ca77d70e9b9dc"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-typecheck.txt",
+      "mode": "100644",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-validation-driver.mjs.txt",
+      "mode": "100644",
+      "gitBlob": "82979582fa1102056c289ac5be4e50beb78abc92"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-validation.json",
+      "mode": "100644",
+      "gitBlob": "a44f265ca868fcb718a23c033455abadd003fe18"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-warm-baseline-desktop.png",
+      "mode": "100644",
+      "gitBlob": "0432a2004b4be64b8444f04a77e36e75b7337ffb"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-warm-baseline-mobile.png",
+      "mode": "100644",
+      "gitBlob": "cd1f99fba1fb8899d2d48c982999ac9cc757f89b"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-warm-baseline-performance.json.gz",
+      "mode": "100644",
+      "gitBlob": "71ca88c309d02e56968aa934997a81bcb13b24e2"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-warm-baseline-run.txt",
+      "mode": "100644",
+      "gitBlob": "f19a03c62d3e9b71cf2d5e231026608ccd35cdb4"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-warm-baseline-server.txt",
+      "mode": "100644",
+      "gitBlob": "93525f7facf0c1f0ffce67473b6f3e8e8a31ba86"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-warm-baseline-source.json",
+      "mode": "100644",
+      "gitBlob": "8bdde57366099eaba31833b5a24cd2787aa5f05e"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-warm-driver.mjs.txt",
+      "mode": "100644",
+      "gitBlob": "11020ce2f2740c36c047c88cb119f85a3e02a313"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-warm-final-desktop.png",
+      "mode": "100644",
+      "gitBlob": "60a4c05f7801c92d612d6d92b1ceaa5b5fd91c2c"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-warm-final-mobile.png",
+      "mode": "100644",
+      "gitBlob": "cc91edfca676cd644ad0d9102785b6e47e4a2a1e"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-warm-final-performance.json.gz",
+      "mode": "100644",
+      "gitBlob": "3e2c63a06151b93b270f29f5b5d856ffa0b3f03a"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-warm-final-run.txt",
+      "mode": "100644",
+      "gitBlob": "0aed65d3e2b12e32c50a2cc12d01a390d73bf579"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-warm-final-server.txt",
+      "mode": "100644",
+      "gitBlob": "c9f8ba85e26058ac5723461092f30c05f3d4d323"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-warm-final-source.json",
+      "mode": "100644",
+      "gitBlob": "8bdde57366099eaba31833b5a24cd2787aa5f05e"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-warm-original-session.ts.txt",
+      "mode": "100644",
+      "gitBlob": "9403d721c307ad7413a187b492148db53358a409"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-warm-vite.config.ts.txt",
+      "mode": "100644",
+      "gitBlob": "290e348309b1de94444044f3555e54ccb0500422"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-worker-execution-oracle-certificate.json",
+      "mode": "100644",
+      "gitBlob": "65de07d46e6c32c2fb82044d719dfbe5b703b047"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-worker-execution-oracle-input.json.gz",
+      "mode": "100644",
+      "gitBlob": "a8a044cd877335fb0515a427d0935a92fd801817"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-worker-execution-oracle-stderr.txt",
+      "mode": "100644",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-worker-full-words-N128-flatten.bin.gz",
+      "mode": "100644",
+      "gitBlob": "c7446b032fef0751f90eaac0d7f7c2d4010e18e7"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-worker-full-words-N128-lower.bin.gz",
+      "mode": "100644",
+      "gitBlob": "287f26181355dd4f3555562d681d02cb7cb93e91"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-worker-full-words-N128-raise.bin.gz",
+      "mode": "100644",
+      "gitBlob": "bb14db3d3d7823d4de8809e6f44892b76d0ee02e"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-worker-full-words-N128-smooth.bin.gz",
+      "mode": "100644",
+      "gitBlob": "57f6b9874e8f948a84af432b1d49a2eb83322429"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-worker-full-words-N256-flatten.bin.gz",
+      "mode": "100644",
+      "gitBlob": "c547a0be2df6c7beeb532191fddc2002d38f08b0"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-worker-full-words-N256-lower.bin.gz",
+      "mode": "100644",
+      "gitBlob": "e7624ce19baf638379207bd740e411ccabf69275"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-worker-full-words-N256-raise.bin.gz",
+      "mode": "100644",
+      "gitBlob": "9de22538394f04208325dac0b3b8dfc9930ebe72"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-worker-full-words-N256-smooth.bin.gz",
+      "mode": "100644",
+      "gitBlob": "7380799685f7e46684529f8bea1f54a65a0be4db"
+    },
+    {
+      "path": "docs/evidence/cube-c2b2-worker-resource-prefix-evidence.json",
+      "mode": "100644",
+      "gitBlob": "fdadfce469c257abe666ef483f2746c806ff941b"
+    },
+    {
+      "path": "scripts/verify-cube-responsive.mjs",
+      "mode": "100644",
+      "gitBlob": "f7bf6ee66992f2f745d2d240d9f98dab6ff482da"
+    },
+    {
+      "path": "src/editor/cube-path-certificate.ts",
+      "mode": "100644",
+      "gitBlob": "dc9b663195de24138900ad21d6469aec50a2149c"
+    },
+    {
+      "path": "src/editor/cube-path-work-protocol.ts",
+      "mode": "100644",
+      "gitBlob": "3b6bbad49b88f17a8487913ee2d060b1bb61495c"
+    },
+    {
+      "path": "src/editor/cube-path-work-runtime.ts",
+      "mode": "100644",
+      "gitBlob": "3a5f6c0eef1b52deec3cd8ace7ca39fa65774a3a"
+    },
+    {
+      "path": "src/editor/cube-path.worker.ts",
+      "mode": "100644",
+      "gitBlob": "af64a77c22d43e1256d9671dbfe433ddcdacbfbd"
+    },
+    {
+      "path": "src/editor/cube-responsive.test.ts",
+      "mode": "100644",
+      "gitBlob": "a14505918e4d2bc9244bc0f7591960b6adabe3f0"
+    },
+    {
+      "path": "src/editor/cube-work-value.ts",
+      "mode": "100644",
+      "gitBlob": "0f78602d62c4a6a08e593ea9049f39107548630f"
+    },
+    {
+      "path": "src/editor/cube-worker-path.ts",
+      "mode": "100644",
+      "gitBlob": "25e1f5530f44198e7b8185915437200589c3a519"
+    },
+    {
+      "path": "src/editor/solid-cube-responsive-session.ts",
+      "mode": "100644",
+      "gitBlob": "af57fce85806fe88170dc49e6ab0d1064495d178"
+    },
+    {
+      "path": "src/editor/solid-cube-session.ts",
+      "mode": "100644",
+      "gitBlob": "3c064ea9c663e914d37a785f67d50508e0ce0ff8"
+    },
+    {
+      "path": "tests/cube-responsive.spec.ts",
+      "mode": "100644",
+      "gitBlob": "ee8d7c87527d514ce34f248aac72c30833f3537b"
+    },
+    {
+      "path": "tests/fixtures/cube-execution.ts",
+      "mode": "100644",
+      "gitBlob": "318ecb823188b0dd542ce05bab7bdd424d159c46"
+    },
+    {
+      "path": "tests/fixtures/cube-fault.worker.ts",
+      "mode": "100644",
+      "gitBlob": "3402e4ce436cdb0bfd78ced058490c22089af3ad"
+    },
+    {
+      "path": "tests/fixtures/cube-node-worker.ts",
+      "mode": "100644",
+      "gitBlob": "db3cd96c9d7e0fa5ba4cee7d04baef75175e7b91"
+    },
+    {
+      "path": "tests/fixtures/cube-preparation-probe.ts",
+      "mode": "100644",
+      "gitBlob": "d7ac0d93e5a117359a4f42b0c608168073e4c203"
+    },
+    {
+      "path": "tests/fixtures/cube-preparation-probe.worker.ts",
+      "mode": "100644",
+      "gitBlob": "094dcb304ac6033a7a2e73f4e017e2e555e13e3f"
+    },
+    {
+      "path": "tests/fixtures/cube-warm.ts",
+      "mode": "100644",
+      "gitBlob": "69a5674997d04725413ecbcd80136106ebff380d"
+    },
+    {
+      "path": "tests/fixtures/cube-worker-exercise.ts",
+      "mode": "100644",
+      "gitBlob": "f3def7db80045eb92e6ec6423899559307a74a9d"
+    }
+  ]
+}
