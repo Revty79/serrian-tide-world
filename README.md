@@ -1,10 +1,14 @@
 <!-- Current workstream: authorized hollow-world geometry; owner acceptance remains separate. -->
 # Serrian Tide Atlas
 
-Current overnight work extends the accepted editor into a **Hollow Sphere**, then
-capped Hollow Cylinder and a separately assessed Open Cylinder. The owner permits
-progress after technically stable checkpoints while Cube-I hands-on acceptance
-remains pending. See the [reuse inventory and current hollow-world handoff](docs/HOLLOW-WORLDS-OVERNIGHT.md).
+The overnight Hollow Sphere and capped Hollow Cylinder checkpoints are published
+with independent Outside/Inside editing, fitted Inside views, separate immersive
+inspection, editable maps, basic holes, physical tunnels, reciprocal map links
+and versioned Save/Open. Open Cylinder has a measured **numerical prototype**
+under the authorized safe-adapter fallback; its interactive editor remains
+unimplemented. Hands-on acceptance remains pending. See the
+[current hollow-world handoff](docs/HOLLOW-WORLDS-OVERNIGHT.md) and
+[Open Cylinder assessment](docs/OPEN-CYLINDER-ASSESSMENT.md).
 
 For the new spherical workflow, open **http://127.0.0.1:5260/**, choose **Hollow
 sphere world**, enter outer radius **1,000,000 m**, inner radius **800,000 m** and
@@ -22,7 +26,7 @@ manage branches/chambers/openings, inspect connected physical sections, or place
 conceptual reciprocal links. See the [network checkpoint](docs/HOLLOW-SPHERE-CONNECTIONS.md);
 The capped hollow-cylinder checkpoints extend this shared workflow.
 
-The capped Hollow Cylinder now has a [numerical two-bank foundation](docs/HOLLOW-CYLINDER-FOUNDATION.md) and a [normal editor with three views and v11 Save/Open](docs/HOLLOW-CYLINDER-EDITOR.md). Choose **Capped hollow cylinder world**, with explicit outer/inner radius and length. Paint Inside opens fitted editing; View from inside is read-only cavity inspection; Surface map remains editable. Basic [cylinder wall and cap holes](docs/HOLLOW-CYLINDER-HOLES.md) now add actual cuts, preview/confirmation, independent sizing, movement, exact history and v12 Save/Open on protected 0 m ground. The [physical network and map-link checkpoint](docs/HOLLOW-CYLINDER-CONNECTIONS.md) adds independently picked wall/cap routes, branches, chambers, XYZ edits, continuous inspection and strict v13 Save/Open. The safe Open Cylinder assessment follows.
+The capped Hollow Cylinder now has a [numerical two-bank foundation](docs/HOLLOW-CYLINDER-FOUNDATION.md) and a [normal editor with three views and v11 Save/Open](docs/HOLLOW-CYLINDER-EDITOR.md). Choose **Capped hollow cylinder world**, with explicit outer/inner radius and length. Paint Inside opens fitted editing; View from inside is read-only cavity inspection; Surface map remains editable. Basic [cylinder wall and cap holes](docs/HOLLOW-CYLINDER-HOLES.md) now add actual cuts, preview/confirmation, independent sizing, movement, exact history and v12 Save/Open on protected 0 m ground. The [physical network and map-link checkpoint](docs/HOLLOW-CYLINDER-CONNECTIONS.md) adds independently picked wall/cap routes, branches, chambers, XYZ edits, continuous inspection and strict v13 Save/Open. The [Open Cylinder assessment](docs/OPEN-CYLINDER-ASSESSMENT.md) delivers actual annular geometry and basic numerical cuts/links while documenting the terrain-topology and global-distance work needed for an operational editor.
 
 The following cube checkpoints and acceptance qualifications remain preserved.
 

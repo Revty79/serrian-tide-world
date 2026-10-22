@@ -1,0 +1,411 @@
+{
+  "measuredAtUtc": "2026-10-22T09:29:01.164Z",
+  "base": "95c7284541c71968b685017c5c011e9aa9e7eb36",
+  "status": "Numerical reference prototype under the explicitly authorized safe-adapter fallback. Interactive open-cylinder authoring is not implemented.",
+  "ownerAcceptance": false,
+  "sourceFingerprint": {
+    "sha256": "88273a8af438c10ece365abab52290e13e2c261362ae861a2680f1e186cbddd1",
+    "files": 292,
+    "algorithm": "SHA256 over sorted src paths in POSIX form followed by bytes with CRLF normalized to LF"
+  },
+  "configuration": {
+    "provider": "physical-open-cylinder-reference-prototype",
+    "version": 1,
+    "configuration": "both-open",
+    "worldId": "open-reference-evidence",
+    "outerRadiusMeters": 1000,
+    "innerRadiusMeters": 800,
+    "lengthMeters": 1600,
+    "rimOwnership": "midpoint-split-prototype-v1",
+    "surfaces": {
+      "exterior": {
+        "surfaceId": "outside-reference"
+      },
+      "interior": {
+        "surfaceId": "inside-reference"
+      }
+    }
+  },
+  "dimensions": {
+    "outerRadiusMeters": 1000,
+    "innerRadiusMeters": 800,
+    "lengthMeters": 1600,
+    "wallThicknessMeters": 200,
+    "middleRadiusMeters": 900,
+    "halfLengthMeters": 800,
+    "materialVolumeMeters3": 1809557368.467721
+  },
+  "closedKernelCounterexample": {
+    "radiusMeters": 800,
+    "lengthMeters": 100,
+    "closed": {
+      "value": 1700.0000000003638,
+      "units": "meters",
+      "scope": "global-reference-surface",
+      "method": "continuous-route-affine-bounds-v1",
+      "lowerBoundMeters": 1699.999499966444,
+      "upperBoundMeters": 1700.0000000003638,
+      "absoluteErrorBoundMeters": 0.000500033919706766,
+      "requestedToleranceMeters": 0.0007999999999999999,
+      "bestRoute": "via-start-cap",
+      "possibleRouteClasses": [
+        "via-start-cap",
+        "via-end-cap"
+      ],
+      "bestAngles": [
+        3.141592653589793,
+        0
+      ],
+      "evaluatedBoxes": 42,
+      "objectiveEvaluations": 422,
+      "peakQueuedBoxes": 2
+    },
+    "validOpenBoundaryLowerBoundMeters": 2513.2741228718346,
+    "gapMeters": 813.2741228714708,
+    "reason": "Any actual open-boundary path has radius at least 800 m and angular variation at least pi. The accepted closed kernel crosses a disk cap that does not exist."
+  },
+  "annularMetric": {
+    "outerRadiusMeters": 1000,
+    "innerRadiusMeters": 800,
+    "closedDiskChordMeters": 2000,
+    "actualAnnularRouteMeters": 2683.6723488025796,
+    "method": "Exact disk-obstacle tangents plus inner circular arc"
+  },
+  "topologyWitness": {
+    "closedCapCenterIndices": [
+      144,
+      144
+    ],
+    "actualInnerRimOppositePointsMeters": [
+      [
+        800,
+        0,
+        -800
+      ],
+      [
+        -800,
+        -9.797174393178826e-14,
+        -800
+      ]
+    ],
+    "meaning": "The old cap collapses all row-zero angular addresses to one disk center. A real annular inner edge has distinct angular points and no center sample."
+  },
+  "observations": {
+    "naturalAxisRays": [
+      {
+        "fromMeters": [
+          0,
+          0,
+          -2000
+        ],
+        "hit": null,
+        "freeAtEndPlane": true
+      },
+      {
+        "fromMeters": [
+          0,
+          0,
+          2000
+        ],
+        "hit": null,
+        "freeAtEndPlane": true
+      }
+    ],
+    "outerWall": {
+      "boundary": "outer-wall",
+      "pointMeters": [
+        1000,
+        0,
+        0
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "distanceMeters": 1000
+    },
+    "innerWall": {
+      "boundary": "inner-wall",
+      "pointMeters": [
+        800.0000000000001,
+        0,
+        0
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "distanceMeters": 800.0000000000001
+    },
+    "annularEnd": {
+      "boundary": "rim-end",
+      "pointMeters": [
+        900,
+        0,
+        800
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "distanceMeters": 1200
+    },
+    "uncutWallFree": false,
+    "authoredBoreFree": true,
+    "throughBore": {
+      "boundary": "inner-wall",
+      "pointMeters": [
+        -799.9999999999998,
+        0,
+        0
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "distanceMeters": 2800
+    }
+  },
+  "referenceFeatures": {
+    "naturalOpenEndAuthoredHoleCount": 0,
+    "hole": {
+      "kind": "through-hole",
+      "version": 1,
+      "id": "reference-wall-hole",
+      "worldId": "open-reference-evidence",
+      "geometry": "circular-open-cylinder-wall",
+      "radiusMeters": 15,
+      "mouths": [
+        {
+          "id": "f7cad4bc-5392-4349-9114-5055e9b4a8e6",
+          "position": {
+            "worldId": "open-reference-evidence",
+            "surfaceId": "outside-reference",
+            "patchId": "side",
+            "u": 0,
+            "v": 800
+          }
+        },
+        {
+          "id": "d40f2bb1-7b0a-420a-bc0a-ce02b01f2acb",
+          "position": {
+            "worldId": "open-reference-evidence",
+            "surfaceId": "inside-reference",
+            "patchId": "side",
+            "u": 0,
+            "v": 800
+          }
+        }
+      ]
+    },
+    "passage": {
+      "kind": "physical-passage",
+      "version": 1,
+      "id": "reference-wall-rim-network",
+      "worldId": "open-reference-evidence",
+      "geometry": "sphere-capsule-union",
+      "nodes": [
+        {
+          "id": "4a5e9370-7ab1-415d-ba55-00bdf38216d5",
+          "position": [
+            1000,
+            0,
+            0
+          ],
+          "radiusMeters": 10
+        },
+        {
+          "id": "b60fbce1-7215-4d15-b40c-f66a27f93395",
+          "position": [
+            900,
+            0,
+            0
+          ],
+          "radiusMeters": 10
+        },
+        {
+          "id": "5162214b-4cf6-4a33-84b0-8b836c4cc100",
+          "position": [
+            900,
+            0,
+            700
+          ],
+          "radiusMeters": 10
+        },
+        {
+          "id": "19550329-ed62-4c4a-acf1-e4b4e3cec124",
+          "position": [
+            872.0211795395803,
+            -222.66356332907066,
+            700
+          ],
+          "radiusMeters": 10
+        },
+        {
+          "id": "c338c6bd-6176-4a97-a5e4-3d3f22549c7b",
+          "position": [
+            789.8243057013354,
+            -431.4829847437827,
+            700
+          ],
+          "radiusMeters": 10
+        },
+        {
+          "id": "b56bb093-6416-4afd-b71b-af357ee5b6a0",
+          "position": [
+            745.9451776068169,
+            -407.51170781357257,
+            700
+          ],
+          "radiusMeters": 10
+        },
+        {
+          "id": "537e5f9a-57c6-4b67-9120-b560f647e925",
+          "position": [
+            745.9451776068169,
+            -407.51170781357257,
+            800
+          ],
+          "radiusMeters": 10
+        }
+      ],
+      "segments": [
+        {
+          "id": "ca2f556a-66db-4c7d-b42b-4a79cbb6ad29",
+          "from": "4a5e9370-7ab1-415d-ba55-00bdf38216d5",
+          "to": "b60fbce1-7215-4d15-b40c-f66a27f93395",
+          "radiusMeters": 10
+        },
+        {
+          "id": "bbc199dc-5d5b-4210-acde-f90173932a4b",
+          "from": "b60fbce1-7215-4d15-b40c-f66a27f93395",
+          "to": "5162214b-4cf6-4a33-84b0-8b836c4cc100",
+          "radiusMeters": 10
+        },
+        {
+          "id": "7656d677-8a70-4000-bb36-3962c5be0737",
+          "from": "5162214b-4cf6-4a33-84b0-8b836c4cc100",
+          "to": "19550329-ed62-4c4a-acf1-e4b4e3cec124",
+          "radiusMeters": 10
+        },
+        {
+          "id": "c55ab6ac-a9af-4bc0-9d20-e5037e9272c1",
+          "from": "19550329-ed62-4c4a-acf1-e4b4e3cec124",
+          "to": "c338c6bd-6176-4a97-a5e4-3d3f22549c7b",
+          "radiusMeters": 10
+        },
+        {
+          "id": "f1ec8f18-b012-4cd5-ad53-56422c830b47",
+          "from": "c338c6bd-6176-4a97-a5e4-3d3f22549c7b",
+          "to": "b56bb093-6416-4afd-b71b-af357ee5b6a0",
+          "radiusMeters": 10
+        },
+        {
+          "id": "2e690cab-a85c-4fc9-9f60-7f3f6457ad93",
+          "from": "b56bb093-6416-4afd-b71b-af357ee5b6a0",
+          "to": "537e5f9a-57c6-4b67-9120-b560f647e925",
+          "radiusMeters": 10
+        }
+      ],
+      "portals": [
+        {
+          "id": "e3846c52-655b-422b-85fb-90ae50f3d380",
+          "nodeId": "4a5e9370-7ab1-415d-ba55-00bdf38216d5",
+          "position": {
+            "worldId": "open-reference-evidence",
+            "surfaceId": "outside-reference",
+            "patchId": "side",
+            "u": 0,
+            "v": 800
+          },
+          "apertureRadiusMeters": 10
+        },
+        {
+          "id": "7fff5a3a-99d8-4fdd-a552-396bb7967282",
+          "nodeId": "537e5f9a-57c6-4b67-9120-b560f647e925",
+          "position": {
+            "worldId": "open-reference-evidence",
+            "surfaceId": "inside-reference",
+            "patchId": "rim-end",
+            "u": 0.5,
+            "v": 850
+          },
+          "apertureRadiusMeters": 10
+        }
+      ]
+    },
+    "link": {
+      "kind": "linked-entrance",
+      "version": 1,
+      "id": "reference-conceptual-link",
+      "worldId": "open-reference-evidence",
+      "anchors": [
+        {
+          "id": "d3b87b48-c5da-4eba-85e5-4303cd2b9ac4",
+          "targetAnchorId": "2ad22752-33f0-4fd8-9121-e567e38a1875",
+          "location": {
+            "kind": "surface",
+            "position": {
+              "worldId": "open-reference-evidence",
+              "surfaceId": "outside-reference",
+              "patchId": "rim-start",
+              "u": 0,
+              "v": 950
+            }
+          }
+        },
+        {
+          "id": "2ad22752-33f0-4fd8-9121-e567e38a1875",
+          "targetAnchorId": "d3b87b48-c5da-4eba-85e5-4303cd2b9ac4",
+          "location": {
+            "kind": "surface",
+            "position": {
+              "worldId": "open-reference-evidence",
+              "surfaceId": "inside-reference",
+              "patchId": "side",
+              "u": 0.5,
+              "v": 800
+            }
+          }
+        }
+      ]
+    }
+  },
+  "limits": [
+    "Prototype only: no open-world selector, terrain authority, brush/worker integration, renderer integration or saved-map format.",
+    "Both ends open only. The documented rim ownership split is a prototype policy, not an accepted terrain storage layout.",
+    "Reference-shell geometry and analytic cuts only. No displaced terrain, water simulation or free flight."
+  ],
+  "verification": {
+    "verifiedAtUtc": "2026-10-22T09:35:58.831466+00:00",
+    "numerical": {
+      "passed": 1276,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "prototypeCases": 8,
+      "durationMs": 50198.3676,
+      "log": ".local/open-cylinder-numerical-final.log",
+      "command": "npm.cmd test"
+    },
+    "typecheck": "passed as part of build",
+    "build": "passed",
+    "buildLog": ".local/open-cylinder-build-receipt.log",
+    "buildCommand": "npm.cmd run build",
+    "applicationIntegration": "No application source changes in this prototype checkpoint; no imports from application code. Main output remains main-BGiCNjcs.js, 485.57 kB, matching the capped-cylinder checkpoint.",
+    "diagram": {
+      "path": "docs/evidence/open-cylinder-prototype.svg",
+      "renderedForReview": ".local/open-cylinder-prototype-diagram.png",
+      "width": 1280,
+      "height": 760,
+      "review": "Visually inspected for geometry, labels and clipping. Numerical diagram, not an application screenshot."
+    },
+    "browser": "No Open Cylinder browser campaign: no operational Open Cylinder UI. Sphere and capped-cylinder campaigns are separately recorded in their published receipts.",
+    "ownerAcceptance": false,
+    "reproduction": "node --test src/surfaces/open-cylinder-prototype.test.ts; node scripts/measure-open-cylinder-prototype.mjs .local/open-cylinder-measurement.json .local/open-cylinder-measurement.svg"
+  }
+}

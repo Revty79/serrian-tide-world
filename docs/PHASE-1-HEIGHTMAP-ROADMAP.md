@@ -21,8 +21,16 @@ connection history. [Radial-hole review](HOLLOW-SPHERE-HOLES.md). The following
 guided inspection and reciprocal links with strict v10 persistence. The capped
 hollow cylinder now has a [three-view editor and v11 persistence](HOLLOW-CYLINDER-EDITOR.md).
 Its [basic wall/cap holes](HOLLOW-CYLINDER-HOLES.md) now have v12 persistence.
-Its [physical networks and reciprocal links](HOLLOW-CYLINDER-CONNECTIONS.md) now add v13 persistence and continuous wall/cap inspection. The safe Open Cylinder assessment follows. The eleven
-phases and the advanced displaced-terrain deferral remain unchanged.
+Its [physical networks and reciprocal links](HOLLOW-CYLINDER-CONNECTIONS.md) now
+add v13 persistence and continuous wall/cap inspection. The
+[Open Cylinder numerical prototype and measured assessment](OPEN-CYLINDER-ASSESSMENT.md)
+complete the originally authorized safe-adapter fallback: actual annular geometry,
+reference holes, passage graphs and conceptual links are numerically verified;
+interactive Open Cylinder terrain, views, controls, history and Save/Open remain
+unimplemented. The accepted disk-cap kernel has proven topology and distance
+incompatibilities with annular ends. Completed capped functionality is preserved.
+Owner acceptance, the eleven phases and the advanced displaced-terrain deferral
+remain separate and unchanged. No pyramid work began.
 
 Current Cube-I scope authority (2026-10-21): finish Phase 2 reference-shell editing;
 preserve isolated material research; pause major 3D integration. The current

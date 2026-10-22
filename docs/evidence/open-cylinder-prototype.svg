@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+<title id="title">Open cylinder numerical reference prototype</title><desc id="desc">Real annular end rims, open axis and the invalid closed disk shortcut. This is a numerical diagram, not an interactive editor.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10" fill="#287b88"/></marker></defs>
+<rect width="1280" height="760" fill="#f4f3ec"/>
+<g font-family="system-ui, sans-serif" fill="#203743"><text x="32" y="42" font-size="27" font-weight="650">Open Cylinder: numerical reference prototype</text><text x="32" y="77" font-size="17">Actual walls and annular rims. No disk caps. No interactive open-world editor claim.</text>
+<rect x="25" y="110" width="590" height="515" rx="8" fill="#fff" stroke="#bdc9c8"/><rect x="640" y="110" width="615" height="515" rx="8" fill="#fff" stroke="#bdc9c8"/>
+<text x="48" y="144" font-size="19" font-weight="600">Reference X/Z section: length 1,600 m</text>
+<rect x="110" y="210" width="40" height="320" fill="#c6b18b" stroke="#344d59" stroke-width="2"/><rect x="470" y="210" width="40" height="320" fill="#c6b18b" stroke="#344d59" stroke-width="2"/>
+<line x1="150" y1="210" x2="150" y2="530" stroke="#168a8b" stroke-width="3"/><line x1="470" y1="210" x2="470" y2="530" stroke="#168a8b" stroke-width="3"/>
+<path d="M310 175 L310 565" fill="none" stroke="#287b88" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="235" y="350" font-size="17">open interior</text><text x="240" y="377" font-size="15">R = 800 m</text>
+<text x="67" y="192" font-size="15">annular rim</text><text x="420" y="192" font-size="15">annular rim</text>
+<text x="72" y="557" font-size="14">-1,000</text><text x="128" y="557" font-size="14">-800</text><text x="451" y="557" font-size="14">800</text><text x="497" y="557" font-size="14">1,000 m</text>
+<text x="62" y="595" font-size="16">The axis crosses both empty end planes freely.</text>
+<text x="662" y="144" font-size="19" font-weight="600">Annular end rim: radii 800 / 1,000 m</text>
+<circle cx="950" cy="350" r="180" fill="#c6b18b" stroke="#344d59" stroke-width="2"/><circle cx="950" cy="350" r="162" fill="#b4d8d3" stroke="#597a80" stroke-dasharray="5 4"/><circle cx="950" cy="350" r="144" fill="#fff" stroke="#168a8b" stroke-width="2"/>
+<path d="M1130.000,350.000 L1065.200,263.600 A144,144 0 0 0 834.800,263.600 L770.000,350.000" fill="none" stroke="#b27622" stroke-width="5"/>
+<line x1="770" y1="350" x2="1130" y2="350" stroke="#bc5554" stroke-width="3" stroke-dasharray="8 5"/>
+<circle cx="770" cy="350" r="5" fill="#203743"/><circle cx="1130" cy="350" r="5" fill="#203743"/>
+<text x="876" y="326" font-size="17">no material</text><text x="837" y="387" font-size="15" fill="#a43e3c">closed chord: 2,000 m (invalid)</text>
+<text x="675" y="566" font-size="16">Actual rim route: 2683.672 m</text><text x="675" y="593" font-size="14">Dashed circle: explicit prototype bank interface at R = 900 m.</text>
+<text x="32" y="664" font-size="17">Short-cylinder global witness (inner R = 800 m, length = 100 m):</text><text x="32" y="696" font-size="18" font-weight="600">closed cap route 1700.000 m; valid open material boundary at least 2513.274 m.</text>
+<text x="32" y="735" font-size="14">Source: measured prototype geometry and accepted closed kernel. Terrain topology, brushing and Save/Open need a separate annular provider.</text></g></svg>

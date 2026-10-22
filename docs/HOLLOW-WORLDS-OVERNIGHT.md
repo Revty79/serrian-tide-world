@@ -15,6 +15,58 @@ Each item requires its own tested stable checkpoint. New round-world connections
 are still pending at the sphere-editor checkpoint; existing cube features work.
 Displaced mountain/seabed excavation and a future full 3D engine remain deferred.
 
+## Final overnight handoff, 2026-10-22
+
+The historical checkpoint sections below describe incremental delivery. This
+table states the final status of the authorized sequence; technical verification
+does not imply owner acceptance.
+
+| Deliverable | Published result | Review |
+| --- | --- | --- |
+| Hollow Sphere editor, three views, exact two-bank Save/Open | `3150267` | [Editor receipt](evidence/hollow-sphere-editor.json) |
+| Independent spherical radial holes | `8687797` | [Holes](HOLLOW-SPHERE-HOLES.md) |
+| Spherical physical networks, branches/chambers/openings, continuous inspection, reciprocal links, v10 | `6ce3592` | [Connections](HOLLOW-SPHERE-CONNECTIONS.md) |
+| Capped Hollow Cylinder foundation and three-view editor, v11 | `8af3dc5`, `e71bccc` | [Editor](HOLLOW-CYLINDER-EDITOR.md) |
+| Independent radial wall and axial cap holes, v12 | `9980399` | [Holes](HOLLOW-CYLINDER-HOLES.md) |
+| Capped physical networks, branches/chambers/XYZ edits/openings, continuous inspection, reciprocal links, v13 | `95c7284` | [Connections and reproduction](HOLLOW-CYLINDER-CONNECTIONS.md) |
+| Both-open Cylinder numerical geometry, applicable cuts/links, measured safe-adapter assessment | Final prototype checkpoint accompanying this document | [Assessment, diagram and remaining operational work](OPEN-CYLINDER-ASSESSMENT.md) |
+
+**Open Cylinder is a numerical prototype, not an operational editor.** The
+original instruction explicitly permits this fallback when small compatible
+adapters cannot implement the topology safely. The accepted closed solver crosses
+absent disk material, and its collapsed cap-center storage cannot represent a
+real inner annular edge. The prototype supplies measured counterexamples and
+actual annular walls/rims, independent wall holes, physical passage graphs and
+reciprocal conceptual links. Open terrain authority, three-view editing,
+transactional authoring/history and Save/Open remain unfinished. No selector
+option or saved-format reinterpretation claims otherwise.
+
+For hands-on review, use the existing owner preview at
+<http://127.0.0.1:5260/> or start `npm.cmd run dev` on its own port. Choose Hollow
+sphere world (outer radius 1,000,000 m, inner 800,000 m, N128), or Capped hollow
+cylinder world using the dimensions in its editor review. Paint Outside and
+Inside independently. Inside defaults to fitted editing; View from inside is
+read-only immersion; the unfolded map remains editable. Open Connection tools
+on untouched 0 m reference ground, preview/confirm a hole or independently picked
+tunnel, inspect the route, manage a branch/chamber/opening and place a conceptual
+map link. Check Undo/Redo, Save, reload, Open Map and continued editing. Refer to
+the shape-specific review for supported dimensions, normal controls and
+renderer-specific physical cut visibility.
+
+Final verification includes **1,276 numerical tests** and typecheck/build. The
+Sphere and capped-cylinder receipts record their separately completed browser,
+held-painting, physical-travel, save-upgrade and prior-format compatibility
+campaigns. Those groups overlap; the final numerical prototype does not add an
+Open Cylinder browser campaign. The new eight numerical cases and reproducible
+measurement script are committed. Native Pixel 7 browser emulation is not a
+physical-device test. Owner acceptance remains pending for the new experience.
+
+The original website, databases, Production, Docker and pyramids were untouched.
+Full displaced-terrain excavation, the visual Tunnel Network Designer and free
+collision-aware travel remain future requirements. This closes the named
+overnight sequence at its authorized prototype fallback, without treating
+unfinished Open Cylinder features as operational or expanding into another shape.
+
 ## Pass 1: architecture inspected before implementation
 
 | Existing system | Reuse | Geometry-specific addition |
