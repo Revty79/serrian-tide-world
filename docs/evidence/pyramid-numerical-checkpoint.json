@@ -1,0 +1,135 @@
+{
+  "checkpoint": "Solid Pyramid numerical adapters",
+  "tests": 19,
+  "rows": [
+    {
+      "n": 128,
+      "patchId": "south",
+      "samples": 49154,
+      "policy": {
+        "minimum": 7812.5,
+        "maximum": 384000,
+        "defaultRadius": 133920,
+        "maxSpacing": 15625,
+        "wellSampled": true
+      },
+      "p95DabMs": 8.929500000000004,
+      "maxDabMs": 18.68509999999999,
+      "statistics": {
+        "pumps": 20,
+        "candidates": 1221,
+        "chordRejected": 976,
+        "distanceQueries": 245,
+        "refinements": 0,
+        "distanceBoxes": 0,
+        "failedQueryBoxAllowance": 0,
+        "affectedSamples": 245,
+        "changesPrepared": 245,
+        "writes": 245,
+        "preparedBytes": 0,
+        "peakPreparedBytes": 8192,
+        "sourceReads": 245,
+        "maxSmoothNeighbors": 0,
+        "maxFalloffError": 3.258943943518911e-14,
+        "maxPreRoundElevationErrorMeters": 1.6861337862570066e-10
+      }
+    },
+    {
+      "n": 128,
+      "patchId": "base",
+      "samples": 49154,
+      "policy": {
+        "minimum": 7812.5,
+        "maximum": 384000,
+        "defaultRadius": 133920,
+        "maxSpacing": 15625,
+        "wellSampled": true
+      },
+      "p95DabMs": 6.42919999999998,
+      "maxDabMs": 9.796899999999994,
+      "statistics": {
+        "pumps": 32,
+        "candidates": 2034,
+        "chordRejected": 1803,
+        "distanceQueries": 231,
+        "refinements": 0,
+        "distanceBoxes": 0,
+        "failedQueryBoxAllowance": 0,
+        "affectedSamples": 231,
+        "changesPrepared": 231,
+        "writes": 231,
+        "preparedBytes": 0,
+        "peakPreparedBytes": 8192,
+        "sourceReads": 231,
+        "maxSmoothNeighbors": 0,
+        "maxFalloffError": 3.4977044215214005e-14,
+        "maxPreRoundElevationErrorMeters": 1.6852893431091256e-10
+      }
+    },
+    {
+      "n": 256,
+      "patchId": "south",
+      "samples": 196610,
+      "policy": {
+        "minimum": 3906.25,
+        "maximum": 384000,
+        "defaultRadius": 133920,
+        "maxSpacing": 7812.5,
+        "wellSampled": true
+      },
+      "p95DabMs": 14.151000000000067,
+      "maxDabMs": 14.387499999999989,
+      "statistics": {
+        "pumps": 70,
+        "candidates": 4448,
+        "chordRejected": 3471,
+        "distanceQueries": 977,
+        "refinements": 0,
+        "distanceBoxes": 0,
+        "failedQueryBoxAllowance": 0,
+        "affectedSamples": 977,
+        "changesPrepared": 977,
+        "writes": 977,
+        "preparedBytes": 0,
+        "peakPreparedBytes": 8192,
+        "sourceReads": 977,
+        "maxSmoothNeighbors": 0,
+        "maxFalloffError": 3.2783046863563497e-14,
+        "maxPreRoundElevationErrorMeters": 1.688307917457473e-10
+      }
+    },
+    {
+      "n": 256,
+      "patchId": "base",
+      "samples": 196610,
+      "policy": {
+        "minimum": 3906.25,
+        "maximum": 384000,
+        "defaultRadius": 133920,
+        "maxSpacing": 7812.5,
+        "wellSampled": true
+      },
+      "p95DabMs": 14.744400000000041,
+      "maxDabMs": 14.866600000000062,
+      "statistics": {
+        "pumps": 116,
+        "candidates": 7391,
+        "chordRejected": 6469,
+        "distanceQueries": 922,
+        "refinements": 0,
+        "distanceBoxes": 0,
+        "failedQueryBoxAllowance": 0,
+        "affectedSamples": 922,
+        "changesPrepared": 922,
+        "writes": 922,
+        "preparedBytes": 0,
+        "peakPreparedBytes": 8192,
+        "sourceReads": 922,
+        "maxSmoothNeighbors": 0,
+        "maxFalloffError": 3.519728728979741e-14,
+        "maxPreRoundElevationErrorMeters": 1.6909338230751867e-10
+      }
+    }
+  ],
+  "qualification": "Node numerical dab preparation plus canonical commit only. Not browser input-to-visible evidence."
+}

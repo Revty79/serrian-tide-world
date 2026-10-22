@@ -55,13 +55,55 @@ routes with straight unfolded candidates and verified edge crossings. See
 Arithmetic enclosure, ambiguous crossings and work limits must be explicit;
 an unsupported certificate rejects before terrain publication.
 
+## Checkpoint 2: certified routes and numerical editing
+
+`pyramid-path.ts` exhaustively unfolds simple face routes. Outward binary64
+intervals enclose each transform and portal predicate; only proven side or
+ordering exclusions remove a possible shortest route. Ambiguous grazing routes
+retain their lower bounds. The upper bound comes from a feasible sequence of
+actual common-edge points joined within convex faces, with outward-rounded
+physical lengths. A requested precision or work limit that cannot be established
+rejects explicitly. The fixed five-face enumeration is bounded independently
+of resolution; no recursive distance boxes or closed-volume shortcuts are used.
+The separate route count is exposed, while the accepted executor's recursive
+box count remains zero for this finite analytic adapter.
+
+`pyramid-brush.ts` adapts the unchanged connected dab and stroke executors.
+Candidate discovery projects the ambient brush ball conservatively into each
+real face lattice, deduplicates canonical words and publishes ordered patches.
+Actual intrinsic distances determine falloff. Raise/Lower/Flatten use the
+accepted kernels, and Smooth reuses the connected half-CFL arithmetic with
+positive physical-neighbor conductances. History remains the accepted exact
+whole-gesture journal. Cancellation or failed preparation publishes no partial
+dab; committed prefixes remain governed by that journal.
+
+The radius policy measures the longest lattice edge. The preferred default is
+at least three such intervals, subject to the explicit bounded footprint domain.
+`wellSampled` is false when the requested dimensions/detail cannot meet it;
+the operational editor must reject or request greater detail rather than silently
+claiming an adequately sampled default. At the standard 2,000,000 m base width /
+1,600,000 m height, the default is 133,920 m at N128 and N256, spanning 8.6 and
+17.1 longest lattice intervals respectively. No strength multiplier is added.
+
+All 19 pyramid tests and the complete 1,384-test numerical/unit suite pass,
+with TypeScript clean. Added cases include all face pairs, apex/base/corner
+transitions, all four tools, exact replay, atomic failure, independent adjacent
+normal-section witnesses at aspect extremes, and 300 seeded complete-boundary
+route comparisons. Existing regression thresholds are unchanged.
+
+[The numerical receipt](evidence/pyramid-numerical-checkpoint.json) records
+30 dabs per N128/N256 side/base case. N256 p95 numerical preparation plus
+canonical commit was 14.2 ms on a side and 14.7 ms on the base. These Node
+measurements are not browser input, rendering or visible-response evidence.
+The operational checkpoint must measure those independently, including joins,
+sustained painting, actual pixels and camera motion.
+
 ## Remaining authorized sequence
 
-1. Certified paths, physically sampled brushes and four-tool numerical editing.
-2. Operational Solid Pyramid in New World / Map, views, pixel/performance tests
+1. Operational Solid Pyramid in New World / Map, views, pixel/performance tests
    and a strict new save version. Publish before the full hollow implementation.
-3. Nested closed Hollow Pyramid, independent banks and proven shell clearance.
-4. Operational hollow outside/inside editing, read-only cavity inspection,
+2. Nested closed Hollow Pyramid, independent banks and proven shell clearance.
+3. Operational hollow outside/inside editing, read-only cavity inspection,
    editable nets, persistence and compatible connection interfaces.
-5. Final existing-family regressions, actual Canvas/WebGL pixels and measured
+4. Final existing-family regressions, actual Canvas/WebGL pixels and measured
    input-to-commit / commit-to-visible evidence, then stop for owner review.
