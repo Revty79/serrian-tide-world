@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-21",
+  "base": "6d4b129835d9567e1faabc0342f5fd04c83a9e2f",
+  "status": "Numerical foundation only; no interactive hollow sphere yet",
+  "numerical": {
+    "passed": 1219,
+    "failed": 0
+  },
+  "typecheck": "passed",
+  "build": "passed",
+  "existingSphereBrowser": {
+    "initial": {
+      "startTime": "2026-10-22T02:15:34.957Z",
+      "duration": 243294.262,
+      "expected": 24,
+      "skipped": 0,
+      "unexpected": 4,
+      "flaky": 0
+    },
+    "unchangedBaseline": {
+      "startTime": "2026-10-22T02:20:00.621Z",
+      "duration": 37516.903,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "freshCurrent": {
+      "startTime": "2026-10-22T02:23:01.332Z",
+      "duration": 38410.363999999994,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "aggregatePassed": 28,
+    "unresolved": 0,
+    "rerunCases": [
+      "joined net stroke and screen-edge assistance retain physical spacing; gaps/cuts safely end the gesture|desktop",
+      "joined net stroke and screen-edge assistance retain physical spacing; gaps/cuts safely end the gesture|mobile",
+      "real projected painting across all twelve face boundaries, eight corners, poles, and a clipped globe limb|desktop",
+      "real projected painting across all twelve face boundaries, eight corners, poles, and a clipped globe limb|mobile"
+    ],
+    "diagnosis": "Timestamped HMR fixture entry was dynamically imported a second time without timestamp. Fresh current server resolves the fixture duplication; no test or runtime workaround."
+  },
+  "limits": [
+    "Reference-surface numerical geography only; no excavation or displaced rendering.",
+    "No owner acceptance.",
+    "Supported radial envelope and dimensions documented in HOLLOW-WORLDS-OVERNIGHT.md."
+  ]
+}

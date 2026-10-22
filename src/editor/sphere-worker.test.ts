@@ -31,6 +31,10 @@ function seed(t: ReturnType<typeof make>) {
   for (const k of t.samples()) { const d = t.directionAt(k); t.write(k, k.index % 11 ? 3000 * d[0] * d[1] - 1000 * d[2] : -0); }
 }
 const path: Vec3[] = [[1, .97, .04], [1, 1, .12], [.97, 1, .18], [1, 1, 1], [.03, .04, 1]];
+test('host spherical elevation policy rejects a whole worker dab before publication',async()=>{
+ const t=createSphericalTerrain({terrainId:'bounded',identity:{worldId:'w',surfaceId:'s'},radiusMeters:1000,cellsPerEdge:16,initialElevation:0,validateElevation:h=>{if(h>10)throw RangeError('Reserved shell clearance.');}}),before=words(t),history=new SphericalHistory(t),stroke=beginSphereWorkerStroke(t,history,[1,0,0],{tool:'raise',radiusMeters:500,strengthMeters:50},undefined,()=>{},factory());
+ stroke.release();await finish(stroke);assert.equal(stroke.status,'failed');assert.deepEqual(words(t),before);assert.equal(t.revision,0);assert.equal(history.canUndo,false);
+});
 for (const n of [16, 128, 256]) for (const tool of ['raise', 'lower', 'smooth', 'flatten'] as const) test(`sphere worker N${n} ${tool}: complete words/history across face edge, corner and pole`, async () => {
   const t = make(n), reference = make(n); seed(t); seed(reference);
   const before = words(t), history = new SphericalHistory(t), expected = new SphericalHistory(reference), brush = settings(tool);

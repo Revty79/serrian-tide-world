@@ -19,7 +19,7 @@ export function sphericalSampleCount(cells: number): number {
 }
 
 /** A numerical sphere, separate from the planar v1/v2 model and all save codecs/UI. */
-export function createSphericalTerrain(options: { readonly terrainId: string; readonly identity: SurfaceIdentity; readonly radiusMeters: number; readonly cellsPerEdge?: number }) {
+export function createSphericalTerrain(options: { readonly terrainId: string; readonly identity: SurfaceIdentity; readonly radiusMeters: number; readonly cellsPerEdge?: number; readonly initialElevation?:number; readonly validateElevation?:(height:number)=>void }) {
   assertIdentity(options.identity);
   for (const id of [options.terrainId, options.identity.worldId, options.identity.surfaceId]) if (typeof id !== 'string' || !id.trim() || id.length > 128) throw new RangeError('Spherical identities must contain 1–128 characters.');
   const cells = options.cellsPerEdge ?? DEFAULT_SPHERICAL_CELLS, count = sphericalSampleCount(cells), side = cells - 1;
@@ -31,7 +31,9 @@ export function createSphericalTerrain(options: { readonly terrainId: string; re
     elevationUnits: 'meters' as const, seaLevel: 0,
   });
   // The only authoritative elevation allocation. Face views are address resolvers, not arrays.
-  const elevations = new Float32Array(count).fill(-100);
+  const validateElevation=(height:number)=>{assertFloat32Elevation(height);options.validateElevation?.(Math.fround(height));};
+  const initial=options.initialElevation??-100;validateElevation(initial);
+  const elevations = new Float32Array(count).fill(initial);
   let revision = 0;
   const assertIndex = (index: number) => {
     if (!Number.isInteger(index) || index < 0 || index >= count) throw new RangeError('Invalid canonical spherical sample index.');
@@ -117,11 +119,11 @@ export function createSphericalTerrain(options: { readonly terrainId: string; re
     return { address: target, sample: resolve(target), reverseDirection, seam: geometry.crossEdge(positionAt(address), edge) };
   };
   return Object.freeze({
-    metadata, geometry, sampleCount: count, elevationByteLength: elevations.byteLength, keyAt, resolve, aliases, positionAt, neighbors, step,
+    metadata, geometry, sampleCount: count, elevationByteLength: elevations.byteLength, keyAt, resolve, aliases, positionAt, neighbors, step,validateElevation,
     read: (key: SphericalSampleKey): number => elevations[checkedKey(key)]!,
     get revision() { return revision; },
     write: (key: SphericalSampleKey, value: number): void => {
-      const index = checkedKey(key); assertFloat32Elevation(value); const next = Math.fround(value);
+      const index = checkedKey(key); validateElevation(value); const next = Math.fround(value);
       if (!Object.is(elevations[index], next)) { elevations[index] = next; revision++; }
     },
     copyElevations: (): Float32Array => elevations.slice(),
