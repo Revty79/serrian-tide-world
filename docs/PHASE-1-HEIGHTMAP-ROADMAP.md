@@ -18,8 +18,9 @@ Verified standalone hollow-sphere checkpoints now include the fitted/immersive/n
 editor and basic radial reference-shell holes with v9 persistence and exact
 connection history. [Radial-hole review](HOLLOW-SPHERE-HOLES.md). The following
 [network checkpoint](HOLLOW-SPHERE-CONNECTIONS.md) adds physical tunnel graphs,
-guided inspection and reciprocal links with strict v10 persistence. Capped Hollow Cylinder and
-its basic connections, then the safe Open Cylinder configuration. The eleven
+guided inspection and reciprocal links with strict v10 persistence. The capped
+hollow cylinder now has a [three-view editor and v11 persistence](HOLLOW-CYLINDER-EDITOR.md).
+Its basic connections follow, then the safe Open Cylinder configuration. The eleven
 phases and the advanced displaced-terrain deferral remain unchanged.
 
 Current Cube-I scope authority (2026-10-21): finish Phase 2 reference-shell editing;

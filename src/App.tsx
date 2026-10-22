@@ -1,3 +1,5 @@
+import {HollowCylinderEditor} from './components/HollowCylinderEditor.tsx';
+import {encodeHollowCylinder} from './persistence/hollow-cylinder-format.ts';
 'use client';
 import { CylinderWorkspace, type CylinderViewportHandle } from './components/CylinderPreview.tsx';
 import { prepareCylinderSession } from './editor/prepare-cylinder-session.ts';
@@ -41,20 +43,20 @@ export function App() {
   const [openPanel, setPanel] = useState(false), [newWorld, setNewWorld] = useState(true);
   const [zoom, setZoom] = useState(1), [viewMode, setViewMode] = useState<ViewMode>('fill');
   const planar = useRef<TerrainCanvasHandle>(null), spherical = useRef<SphericalViewportHandle>(null), cylindrical = useRef<CylinderViewportHandle>(null), root = useRef<HTMLElement>(null);
-  const cube=useRef<SphericalViewportHandle>(null);
+  const cube=useRef<SphericalViewportHandle>(null),hollowCylinder=useRef<CylinderViewportHandle>(null);
   const [fullscreenSupported, setFullscreenSupported] = useState(false), [fullscreen, setFullscreen] = useState(false);
   const [maps, setMaps] = useState<LocalMapSummary[]>([]), [selected, setSelected] = useState('');
   const [busy, setBusy] = useState(false), busyRef = useRef(false), [message, setMessage] = useState(''), [error, setError] = useState('');
   const operation = useRef(0), mounted = useRef(true), dialogOpen = useRef(newWorld); dialogOpen.current = newWorld;
   const report = (cause: unknown) => setError(cause instanceof Error ? cause.message : 'Local storage operation failed.');
   const list = async () => { try { const result = await store.list(); if (mounted.current) setMaps(result); } catch (cause) { if (mounted.current) report(cause); } };
-  useEffect(() => { mounted.current = true; void list(); return () => { mounted.current = false; operation.current++; if (activeRef.current?.kind === 'cylinder'||(activeRef.current?.kind==='cube'||activeRef.current?.kind==='hollow-cube'||activeRef.current?.kind==='hollow-sphere')) activeRef.current.editor.dispose(); }; }, []);
+  useEffect(() => { mounted.current = true; void list(); return () => { mounted.current = false; operation.current++; if (activeRef.current?.kind === 'cylinder'||(activeRef.current?.kind==='cube'||activeRef.current?.kind==='hollow-cube'||activeRef.current?.kind==='hollow-sphere'||activeRef.current?.kind==='hollow-cylinder')) activeRef.current.editor.dispose(); }; }, []);
   useEffect(() => {
     setFullscreenSupported(!!document.fullscreenEnabled && typeof root.current?.requestFullscreen === 'function');
     const changed = () => setFullscreen(document.fullscreenElement === root.current);
     document.addEventListener('fullscreenchange', changed); return () => document.removeEventListener('fullscreenchange', changed);
   }, []);
-  const finish = () => { if(activeRef.current?.kind==='cube'||activeRef.current?.kind==='hollow-cube'||activeRef.current?.kind==='hollow-sphere')cube.current?.finishInteraction();else if (activeRef.current?.kind === 'cylinder') cylindrical.current?.finishInteraction(); else if (activeRef.current?.kind === 'sphere') spherical.current?.finishInteraction(); else planar.current?.finishInteraction(); };
+  const finish = () => { if(activeRef.current?.kind==='hollow-cylinder')hollowCylinder.current?.finishInteraction();else if(activeRef.current?.kind==='cube'||activeRef.current?.kind==='hollow-cube'||activeRef.current?.kind==='hollow-sphere')cube.current?.finishInteraction();else if (activeRef.current?.kind === 'cylinder') cylindrical.current?.finishInteraction(); else if (activeRef.current?.kind === 'sphere') spherical.current?.finishInteraction(); else planar.current?.finishInteraction(); };
   const lock = () => {
     if (busyRef.current) return null;
     finish(); busyRef.current = true; setBusy(true); setError(''); setMessage('Finishing accepted brush input');
@@ -65,7 +67,7 @@ export function App() {
   const workFor = (token: number): PersistenceWork => ({ progress: (stage, fraction) => { if (token === operation.current) setMessage(`${stage} · ${Math.round(fraction * 100)}%`); }, yield: async () => { await yieldPersistence(); if (!mounted.current || token !== operation.current) throw new Error('World preparation canceled.'); } });
   const drain = async (current: AtlasDocument | null, work: PersistenceWork) => { if (current && current.kind !== 'planar') await current.editor.drainForSave(work.yield); };
   const guard = (current: AtlasDocument | null) => !current || !documentModified(current) || window.confirm('Discard unsaved changes to this world/map? Save first to keep your work.');
-  const dispose = (candidate: AtlasDocument | null) => { if (candidate?.kind === 'cylinder'||(candidate?.kind==='cube'||candidate?.kind==='hollow-cube'||candidate?.kind==='hollow-sphere')) candidate.editor.dispose(); };
+  const dispose = (candidate: AtlasDocument | null) => { if (candidate?.kind === 'cylinder'||(candidate?.kind==='cube'||candidate?.kind==='hollow-cube'||candidate?.kind==='hollow-sphere'||candidate?.kind==='hollow-cylinder')) candidate.editor.dispose(); };
   const replace = (candidate: AtlasDocument) => { dispose(activeRef.current); activeRef.current = candidate; setActive(candidate); setGeneration((v) => v + 1); setControls(defaults); setPan(false); setPanel(false); setNewWorld(false); setMessage(''); setError(''); };
   const create = async (setup: WorldSetup) => {
     const locked = lock(); if (!locked) return;
@@ -83,7 +85,7 @@ export function App() {
     const { current, token } = locked, work = workFor(token); if (!current) return;
     try {
       await drain(current, work);
-      const record = current.kind==='hollow-sphere'?await encodeHollowSphere(current.editor,undefined,work):current.kind === 'hollow-cube' ? await encodeHollowCube(current.editor,undefined,work) : current.kind === 'cube' ? await encodeSolidCubeHeightmap(current.terrain,current.editor.name,undefined,work) : current.kind === 'cylinder' ? await encodeCylindricalHeightmap(current.terrain, current.editor.name, undefined, work) : current.kind === 'sphere' ? await encodeSphericalHeightmap(current.terrain, current.editor.name, undefined, work) : await encodeMap(current.document.terrain, current.document.name);
+      const record = current.kind==='hollow-cylinder'?await encodeHollowCylinder(current.editor,undefined,work):current.kind==='hollow-sphere'?await encodeHollowSphere(current.editor,undefined,work):current.kind === 'hollow-cube' ? await encodeHollowCube(current.editor,undefined,work) : current.kind === 'cube' ? await encodeSolidCubeHeightmap(current.terrain,current.editor.name,undefined,work) : current.kind === 'cylinder' ? await encodeCylindricalHeightmap(current.terrain, current.editor.name, undefined, work) : current.kind === 'sphere' ? await encodeSphericalHeightmap(current.terrain, current.editor.name, undefined, work) : await encodeMap(current.document.terrain, current.document.name);
       await store.save(record, work);
       if (current.kind !== 'planar') current.editor.markSaved(record.name); else { current.document.name = record.name; current.document.markSaved(); }
       setSelected(record.id); update(); await list(); setMessage('');
@@ -96,7 +98,7 @@ export function App() {
     try {
       await drain(current, work);
       const loaded = await store.openAny(selected, work);
-      const candidate: AtlasDocument = loaded.kind==='hollow-sphere'?loaded:loaded.kind === 'hollow-cube' ? loaded : loaded.kind === 'cube' ? {kind:'cube',...await prepareCubeSession(loaded.terrain,loaded.name,true,work)} : loaded.kind === 'cylinder' ? { kind: 'cylinder', ...await prepareCylinderSession(loaded.terrain, loaded.name, true, work) } : loaded.kind === 'sphere' ? { kind: 'sphere', ...await prepareSphericalSession(loaded.terrain, loaded.name, true, work) } : { kind: 'planar', document: new TerrainDocument(loaded.terrain, loaded.name, true) };
+      const candidate: AtlasDocument = loaded.kind==='hollow-cylinder'||loaded.kind==='hollow-sphere'?loaded:loaded.kind === 'hollow-cube' ? loaded : loaded.kind === 'cube' ? {kind:'cube',...await prepareCubeSession(loaded.terrain,loaded.name,true,work)} : loaded.kind === 'cylinder' ? { kind: 'cylinder', ...await prepareCylinderSession(loaded.terrain, loaded.name, true, work) } : loaded.kind === 'sphere' ? { kind: 'sphere', ...await prepareSphericalSession(loaded.terrain, loaded.name, true, work) } : { kind: 'planar', document: new TerrainDocument(loaded.terrain, loaded.name, true) };
       if (token !== operation.current || !mounted.current || !guard(current)) { dispose(candidate); setMessage(''); return; }
       replace(candidate);
       if (candidate.kind === 'planar') setControls({ ...defaults, radius: Math.min(candidate.document.terrain.metadata.dimensions.width, candidate.document.terrain.metadata.dimensions.height) * .06 });
@@ -105,7 +107,8 @@ export function App() {
   };
   const history = (redo = false) => {
     if (busyRef.current) return; const current = activeRef.current; if (!current) return;
-    if(current.kind==='cube'||current.kind==='hollow-cube'||current.kind==='hollow-sphere'){if(redo)cube.current?.redo();else cube.current?.undo();}
+    if(current.kind==='hollow-cylinder'){if(redo)hollowCylinder.current?.redo();else hollowCylinder.current?.undo();}
+    else if(current.kind==='cube'||current.kind==='hollow-cube'||current.kind==='hollow-sphere'){if(redo)cube.current?.redo();else cube.current?.undo();}
     else if (current.kind === 'cylinder') { if (redo) cylindrical.current?.redo(); else cylindrical.current?.undo(); }
     else if (current.kind === 'sphere') { if (redo) spherical.current?.redo(); else spherical.current?.undo(); }
     else { finish(); if (redo ? current.document.history.redo() : current.document.history.undo()) { setRevision((v) => v + 1); update(); } }
@@ -126,7 +129,7 @@ export function App() {
       if (key === 's') { event.preventDefault(); void actions.current.save(); }
       else if (!isTextInput(event.target) && ['z', 'y'].includes(key)) { event.preventDefault(); actions.current.history(event.shiftKey || key === 'y'); }
     };
-    const beforeunload = (event: BeforeUnloadEvent) => { actions.current.finish(); if (busyRef.current || activeRef.current && (documentModified(activeRef.current) || (activeRef.current.kind === 'cylinder'||activeRef.current.kind==='cube'||activeRef.current.kind==='hollow-cube'||activeRef.current.kind==='hollow-sphere') && activeRef.current.editor.painting)) { event.preventDefault(); event.returnValue = ''; } };
+    const beforeunload = (event: BeforeUnloadEvent) => { actions.current.finish(); if (busyRef.current || activeRef.current && (documentModified(activeRef.current) || (activeRef.current.kind === 'cylinder'||activeRef.current.kind==='cube'||activeRef.current.kind==='hollow-cube'||activeRef.current.kind==='hollow-sphere'||activeRef.current.kind==='hollow-cylinder') && activeRef.current.editor.painting)) { event.preventDefault(); event.returnValue = ''; } };
     window.addEventListener('keydown', keydown); window.addEventListener('beforeunload', beforeunload);
     return () => { window.removeEventListener('keydown', keydown); window.removeEventListener('beforeunload', beforeunload); };
   }, []);
@@ -143,7 +146,7 @@ export function App() {
   };
   return <main ref={root} className="atlas-app" data-panel-open={openPanel} data-world-shape={active ? documentShape(active) : 'none'} aria-label="Atlas workspace">
     {active?.kind === 'planar' && <TerrainCanvas key={generation} ref={planar} terrain={active.document.terrain} brush={busy ? undefined : brushFromControls(controls)} pan={pan} fullscreen initialView={isWrapped(active.document.terrain) ? 'focus' : 'fill'} edgePan={edgePan} revision={revision} onZoom={setZoom} onViewChange={setViewMode} onStrokeBegin={() => active.document.history.begin()} onStrokeEnd={() => { if (active.document.history.commit()) update(); }} />}
-    {active?.kind==='hollow-sphere'?<HollowSphereEditor key={generation} editor={active.editor} handleRef={cube} workspace={chrome}/>:active?.kind==='hollow-cube'?<HollowCubeEditor key={generation} editor={active.editor} handleRef={cube} workspace={chrome}/>:active?.kind==='cube'?<CubeEditor key={generation} session={active.editor} handleRef={cube} workspace={chrome}/>:active?.kind === 'cylinder' ? <CylinderWorkspace key={generation} session={active.editor} preparationMs={active.preparationMs} handleRef={cylindrical} workspace={chrome} /> : active?.kind === 'sphere' ? <SphericalViewport key={generation} {...active} handleRef={spherical} onClose={() => {}} workspace={chrome} /> : chrome()}
+    {active?.kind==='hollow-cylinder'?<HollowCylinderEditor key={generation} editor={active.editor} handleRef={hollowCylinder} workspace={chrome}/>:active?.kind==='hollow-sphere'?<HollowSphereEditor key={generation} editor={active.editor} handleRef={cube} workspace={chrome}/>:active?.kind==='hollow-cube'?<HollowCubeEditor key={generation} editor={active.editor} handleRef={cube} workspace={chrome}/>:active?.kind==='cube'?<CubeEditor key={generation} session={active.editor} handleRef={cube} workspace={chrome}/>:active?.kind === 'cylinder' ? <CylinderWorkspace key={generation} session={active.editor} preparationMs={active.preparationMs} handleRef={cylindrical} workspace={chrome} /> : active?.kind === 'sphere' ? <SphericalViewport key={generation} {...active} handleRef={spherical} onClose={() => {}} workspace={chrome} /> : chrome()}
     {active?.kind === 'planar' && isWrapped(active.document.terrain) && <p className="surface-status">{viewMode === 'focus' ? 'Horizontal wrap · focused view' : 'Horizontal wrap · same terrain repeats'}</p>}
     {newWorld && <NewWorldDialog busy={busy} hasDocument={!!active} error={error} create={(setup) => void create(setup)} close={closeSetup} />}
   </main>;

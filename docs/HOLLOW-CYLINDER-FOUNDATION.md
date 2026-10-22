@@ -36,8 +36,8 @@ Legacy cylinders still initialize and display at -100 m.
 
 ## Supported initial envelope
 
-- Each radius and length: 1?1,000,000,000 m.
-- Each bank's length/radius ratio: 0.1?20.
+- Each radius and length: 1–1,000,000,000 m.
+- Each bank's length/radius ratio: 0.1–20.
 - Inner radius and length strictly smaller than the outer values.
 - Radial thickness: at least `max(0.001 m, outerRadius * 1e-9)`.
 - Each end thickness: at least `max(0.001 m, outerLength * 1e-9)`.

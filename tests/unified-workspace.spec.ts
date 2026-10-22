@@ -26,7 +26,7 @@ test.afterEach(({ page }) => expect(errors.get(page)).toEqual([]));
 test('start directly on any supported shape; setup is explicit, accessible and cancellable without creating a hidden flat document', async ({ page }, info) => {
   await page.goto('/'); const dialog = page.getByRole('dialog', { name: 'New World / Map' }); await expect(dialog).toBeVisible();
   await expect(page.locator('canvas')).toHaveCount(0); await expect(page.getByLabel('World/map name')).toBeFocused();
-  expect(await page.getByLabel('World shape', { exact: true }).locator('option').allTextContents()).toEqual(['Bounded flat map', 'Horizontally wrapped flat map', 'Spherical world', 'Hollow sphere world', 'Physical capped cylinder', 'Solid cube world', 'Hollow cube world']);
+  expect(await page.getByLabel('World shape', { exact: true }).locator('option').allTextContents()).toEqual(['Bounded flat map', 'Horizontally wrapped flat map', 'Spherical world', 'Hollow sphere world', 'Physical capped cylinder', 'Capped hollow cylinder world', 'Solid cube world', 'Hollow cube world']);
   await page.getByLabel('World shape', { exact: true }).selectOption('sphere');
   for (const value of ['', '0', '-1']) { await page.getByLabel('Sphere reference radius (m)', { exact: true }).fill(value); await expect(button(page, 'Create World / Map')).toBeDisabled(); }
   await page.getByLabel('Sphere reference radius (m)', { exact: true }).fill('735000'); await page.getByLabel('Spherical resolution', { exact: true }).selectOption('256');

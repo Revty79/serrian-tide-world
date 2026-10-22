@@ -3,7 +3,7 @@ import type { CylindricalBrushSettings } from '../terrain/cylindrical-brush.ts';
 import { prepareCylindricalDab } from '../terrain/cylindrical-brush.ts';
 import type { SurfacePosition } from '../surfaces/contracts.ts';
 import { elevationToColor } from './elevation-colors.ts';
-import { cylinderLayout, cylinderMapHit, cylinderPositionVisible, cylinderRayHit, type CylinderRayHit, type CylinderView, type CylinderViewport } from './cylindrical-view.ts';
+import { cylinderLayout, cylinderCenterInspection, cylinderInsideRayHit, cylinderMapHit, cylinderPositionVisible, cylinderRayHit, type CylinderRayHit, type CylinderView, type CylinderViewport } from './cylindrical-view.ts';
 import { dot3 } from '../surfaces/cube-sphere.ts';
 import { cylinderElevationSampler, cylinderElevationColor, cylinderRelief, type CylinderAppearance } from './cylindrical-elevation.ts';
 
@@ -61,19 +61,19 @@ export function* cylinderRasterSteps(cache: CylinderDisplayCache, view: Cylinder
   const tx = dot3(view.target, view.frame.right), ty = dot3(view.target, view.frame.up);
   const dx = size.width / columns / l.scale, dy = size.height / rows / l.scale;
   const halfWidth = Math.hypot(view.frame.right[0], view.frame.right[1]) + l.h * Math.abs(view.frame.right[2]), halfHeight = Math.hypot(view.frame.up[0], view.frame.up[1]) + l.h * Math.abs(view.frame.up[2]);
-  const hitAt = (x: number, y: number) => view.mode === 'physical' ? cylinderRayHit(x + tx, y + ty, view.frame, l.h) : cylinderMapHit(x - view.pan.x, y - view.pan.y, l.h, view.phase);
+  const hitAt = (x: number, y: number) => cylinderCenterInspection(view)?cylinderInsideRayHit(x,y,view.frame,l.h,view.eyeMeters?.map(v=>v/cache.terrain.metadata.geometry.radiusMeters)as unknown as readonly[number,number,number]):view.mode === 'physical' ? cylinderRayHit(x + tx, y + ty, view.frame, l.h) : cylinderMapHit(x - view.pan.x, y - view.pan.y, l.h, view.phase);
   const displayColor = (hit: CylinderRayHit) => {
     const field = fieldAt(hit);
     const c = cylinderElevationColor(field.height, cache.terrain.metadata.seaLevel);
     const facing = hit.region === 'side' ? Math.cos(hit.theta) * view.frame.forward[0] + Math.sin(hit.theta) * view.frame.forward[1] : (hit.region === 'cap-end' ? 1 : -1) * view.frame.forward[2];
-    const shade = (view.mode === 'map' ? 1 : .74 + .26 * Math.max(0, facing)) * (appearance === 'relief' && field.height > cache.terrain.metadata.seaLevel ? cylinderRelief(field.dx, field.dy) : 1);
+    const shade = (view.mode === 'map'||cylinderCenterInspection(view) ? 1 : .74 + .26 * Math.max(0, facing)) * (appearance === 'relief' && field.height > cache.terrain.metadata.seaLevel ? cylinderRelief(field.dx, field.dy) : 1);
     return { c, shade, field, facing };
   };
   try { for (let i = 0; i < columns * rows; i++) {
     const x = ((i % columns + .5) * size.width / columns - l.x) / l.scale, y = (l.y - (Math.floor(i / columns) + .5) * size.height / rows) / l.scale;
     const hit = hitAt(x, y), offset = i * 4;
     const insideBounds = view.mode === 'physical' ? Math.abs(x + tx) <= halfWidth + dx && Math.abs(y + ty) <= halfHeight + dy : Math.abs(x - view.pan.x) <= Math.PI + dx && Math.abs(y - view.pan.y) <= l.h + 2 + dy;
-    const nearBoundary = hit ? hit.region === 'side' ? view.mode === 'physical' ? Math.abs(Math.cos(hit.theta) * view.frame.forward[0] + Math.sin(hit.theta) * view.frame.forward[1]) < .15 : Math.PI - Math.abs(x - view.pan.x) < dx || l.h - Math.abs(hit.z) < dy : 1 - hit.radial < 2 * Math.max(dx, dy) : insideBounds;
+    const nearBoundary = !cylinderCenterInspection(view)&&(hit ? hit.region === 'side' ? view.mode === 'physical' ? Math.abs(Math.cos(hit.theta) * view.frame.forward[0] + Math.sin(hit.theta) * view.frame.forward[1]) < .15 : Math.PI - Math.abs(x - view.pan.x) < dx || l.h - Math.abs(hit.z) < dy : 1 - hit.radial < 2 * Math.max(dx, dy) : insideBounds);
     const center = hit && displayColor(hit);
     const nearCoast = center && center.field.crossesSea;
     if (nearBoundary || nearCoast) {

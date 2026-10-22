@@ -22,7 +22,7 @@ manage branches/chambers/openings, inspect connected physical sections, or place
 conceptual reciprocal links. See the [network checkpoint](docs/HOLLOW-SPHERE-CONNECTIONS.md);
 Hollow/Open Cylinder follow after the sphere's basic connections are stable.
 
-The capped Hollow Cylinder now has a [numerical two-bank foundation](docs/HOLLOW-CYLINDER-FOUNDATION.md). Its interactive editor and basic connections are still in progress; it is not yet a creation option.
+The capped Hollow Cylinder now has a [numerical two-bank foundation](docs/HOLLOW-CYLINDER-FOUNDATION.md) and a [normal editor with three views and v11 Save/Open](docs/HOLLOW-CYLINDER-EDITOR.md). Choose **Capped hollow cylinder world**, with explicit outer/inner radius and length. Paint Inside opens fitted editing; View from inside is read-only cavity inspection; Surface map remains editable. Basic cylinder holes, tunnels and links are the next checkpoint, followed by the safe Open Cylinder assessment.
 
 The following cube checkpoints and acceptance qualifications remain preserved.
 

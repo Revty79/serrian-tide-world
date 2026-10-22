@@ -6,7 +6,7 @@ verification and the owner/Ember hands-on acceptance are separate.
 
 ## Creator workflow
 
-In Atlas tools, choose **Connection tools ? Physical tunnels**. Set a supported
+In Atlas tools, choose **Connection tools → Physical tunnels**. Set a supported
 width, choose the entrance, then independently choose the exit. Dimensions and
 object selection pause during each location pick; Cancel unlocks them. Switch Inside /
 Outside or Globe / Net between those picks. Review the proposed actual geometry
@@ -22,7 +22,7 @@ endpoint-node and first-segment identities; existing interior branches remain
 connected. The proposed replacement is rendered in place of the original network.
 Remove network and Undo / Redo use the parent's exact connection journal.
 
-**Inspect tunnel ? Start passage inspection** starts in the actual free space
+**Inspect tunnel → Start passage inspection** starts in the actual free space
 beside a chosen portal. Travel follows its radial approach and connected graph
 sections. Every section stops at its real junction; choose a connected branch,
 reverse, or emerge through an opening. Drag to look and wheel / two fingers to
@@ -30,7 +30,7 @@ zoom during travel. Returning restores the editing pose and brush choices.
 Painting, geometry controls and Undo / Redo pause during this read-only view.
 This is bounded guided travel, without free flight or displaced-terrain collision.
 
-**Connection tools ? Map links** places two conceptual local anchors or one local
+**Connection tools → Map links** places two conceptual local anchors or one local
 anchor and an explicit external World/map/location identity. Selected anchors can
 be relocated; reciprocal identities remain stable. Follow map link can focus a
 local destination. External destinations are retained and report clearly that
@@ -103,10 +103,10 @@ sphere/radial-hole/cube-view cases; and four existing cube physical-passage case
 Groups overlap and are not summed as unique coverage.
 
 With one seven-primitive northern tunnel present, all sustained cases injected
-900 moves over 15 seconds. Chromium dispatched 891?900 trusted moves, with
-110?127 changing-terrain observations while held. First changed pixels appeared
-at 70.4?190.6 ms on a 100 ms observer cadence; release to coherent display took
-33.8?335.4 ms. This is painting away from protected opening support. Exact whole
+900 moves over 15 seconds. Chromium dispatched 891–900 trusted moves, with
+110–127 changing-terrain observations while held. First changed pixels appeared
+at 70.4–190.6 ms on a 100 ms observer cadence; release to coherent display took
+33.8–335.4 ms. This is painting away from protected opening support. Exact whole
 terrain Undo/Redo passed, and the other bank stayed unchanged. N256 WebGL2 inside
 Save took 1.64 s and reopen 5.08 s, retaining both hashes and the network.
 

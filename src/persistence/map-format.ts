@@ -1,3 +1,4 @@
+import type {SavedHollowCylinder} from './hollow-cylinder-format.ts';
 import type { Terrain } from '../terrain/model.ts';
 import { isWrapped } from '../terrain/topology.ts';
 import { decodeHeightmap, encodeHeightmap, record, type SavedHeightmap } from './terrain-format.ts';
@@ -10,7 +11,7 @@ import type {SavedHollowCube} from './hollow-cube-format.ts';
 import type {SavedHollowSphere} from './hollow-sphere-format.ts';
 
 export type PlanarSavedMap = SavedHeightmap | SavedWrappedHeightmap;
-export type SavedMap = PlanarSavedMap | SavedSphericalHeightmap | SavedCylindricalHeightmap | SavedSolidCubeHeightmap | SavedHollowCube | SavedHollowSphere;
+export type SavedMap = PlanarSavedMap | SavedSphericalHeightmap | SavedCylindricalHeightmap | SavedSolidCubeHeightmap | SavedHollowCube | SavedHollowSphere | SavedHollowCylinder;
 export const encodeMap = (terrain: Terrain, name: string, savedAt?: string): Promise<PlanarSavedMap> => isWrapped(terrain) ? encodeWrappedHeightmap(terrain, name, savedAt) : encodeHeightmap(terrain, name, savedAt);
 export function decodeMap(value: unknown): Promise<{ terrain: Terrain; name: string }> {
   const version = record(value).formatVersion;

@@ -225,7 +225,7 @@ network/inspection matrix; eight real v8/v9 upgrades with continued two-bank
 painting; four final native/Home checks; four final placement checks; eight
 15-second sustained strokes with a real network; 22 prior sphere/hole/cube-view
 cases; and four cube physical-passage cases. Groups overlap. First changing pixels
-were observed at 70.4?190.6 ms, release to coherent display at 33.8?335.4 ms, with
+were observed at 70.4–190.6 ms, release to coherent display at 33.8–335.4 ms, with
 exact whole-terrain Undo/Redo and unchanged opposing terrain. The receipt qualifies
 input coalescing, observer cadence, memory accounting and human/device acceptance.
 
@@ -243,3 +243,20 @@ corrected without weakening the cache epoch guard. See the
 This is numerical infrastructure only: the capped hollow editor, its three views,
 Save/Open and basic connections remain the next work. It does not claim a completed
 capped/open cylinder experience or owner acceptance.
+
+
+## Capped hollow-cylinder editor checkpoint
+
+The normal shape selector now creates a capped hollow cylinder with explicit
+outer/inner radius and length. Both independent accepted terrain banks retain
+history/cache, shared controls and their own editing poses. Paint Inside opens
+a fitted editable physical projection. View from inside is explicit read-only
+cavity inspection; Surface map remains editable. Strict version 11 Save/Open
+preserves both exact banks and versions 1 through 10 retain their meaning.
+
+[Hands-on review and limits](HOLLOW-CYLINDER-EDITOR.md) and the
+[compact receipt](evidence/hollow-cylinder-editor.json) record 1,257 numerical
+checks, build/typecheck and browser editing, real terrain pixels, fallback,
+held painting and compatibility evidence. Pixel 7 is emulation, and owner
+acceptance remains separate. Basic capped-cylinder holes, physical tunnel graphs
+and reciprocal links are next, then the safe open-cylinder assessment.

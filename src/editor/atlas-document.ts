@@ -1,3 +1,5 @@
+import {createHollowCylinderWorld} from '../terrain/hollow-cylinder.ts';
+import {prepareHollowCylinderDocument} from './hollow-cylinder-document.ts';
 import { createCylindricalTerrain } from '../terrain/cylindrical.ts';
 import { prepareCylinderSession } from './prepare-cylinder-session.ts';
 import { assertInteractiveCylinderDimensions, cylinderResolution } from './cylinder-configuration.ts';
@@ -16,17 +18,21 @@ import {prepareHollowCubeDocument} from './hollow-cube-document.ts';
 import {createHollowSphereWorld} from '../terrain/hollow-sphere.ts';
 import {prepareHollowSphereDocument} from './hollow-sphere-document.ts';
 
-export type WorldShape = 'bounded' | 'wrapped' | 'sphere' | 'cylinder' | 'cube' | 'hollow-cube' | 'hollow-sphere';
-export interface WorldSetup { shape: WorldShape; name: string; radiusMeters: number; cellsPerEdge: 128 | 256; lengthMeters?: number; cylinderDetail?: 64 | 128 | 256; sideLengthMeters?:number;innerSideLengthMeters?:number;innerRadiusMeters?:number }
-export type AtlasDocument = ({kind:'hollow-sphere'} & Awaited<ReturnType<typeof prepareHollowSphereDocument>>) | ({kind:'hollow-cube'} & Awaited<ReturnType<typeof prepareHollowCubeDocument>>) | ({ kind: 'cube' } & Awaited<ReturnType<typeof prepareCubeSession>>) | ({ kind: 'cylinder' } & Awaited<ReturnType<typeof prepareCylinderSession>>) | { kind: 'planar'; document: TerrainDocument } | ({ kind: 'sphere' } & Awaited<ReturnType<typeof prepareSphericalSession>>);
-export function documentShape(active: AtlasDocument): WorldShape { return active.kind==='hollow-sphere'?'hollow-sphere':active.kind === 'hollow-cube' ? 'hollow-cube' : active.kind === 'cube' ? 'cube' : active.kind === 'cylinder' ? 'cylinder' : active.kind === 'sphere' ? 'sphere' : isWrapped(active.document.terrain) ? 'wrapped' : 'bounded'; }
-export const shapeName = (shape: WorldShape) => ({ bounded: 'Bounded flat map', wrapped: 'Horizontally wrapped flat map', sphere: 'Spherical world', cylinder: 'Physical capped cylinder', cube:'Solid cube world', 'hollow-cube':'Hollow cube world','hollow-sphere':'Hollow sphere world' })[shape];
+export type WorldShape = 'bounded' | 'wrapped' | 'sphere' | 'cylinder' | 'cube' | 'hollow-cube' | 'hollow-sphere' | 'hollow-cylinder';
+export interface WorldSetup { shape: WorldShape; name: string; radiusMeters: number; cellsPerEdge: 128 | 256; lengthMeters?: number; cylinderDetail?: 64 | 128 | 256; sideLengthMeters?:number;innerSideLengthMeters?:number;innerRadiusMeters?:number;innerLengthMeters?:number }
+export type AtlasDocument = ({kind:'hollow-cylinder'} & Awaited<ReturnType<typeof prepareHollowCylinderDocument>>) | ({kind:'hollow-sphere'} & Awaited<ReturnType<typeof prepareHollowSphereDocument>>) | ({kind:'hollow-cube'} & Awaited<ReturnType<typeof prepareHollowCubeDocument>>) | ({ kind: 'cube' } & Awaited<ReturnType<typeof prepareCubeSession>>) | ({ kind: 'cylinder' } & Awaited<ReturnType<typeof prepareCylinderSession>>) | { kind: 'planar'; document: TerrainDocument } | ({ kind: 'sphere' } & Awaited<ReturnType<typeof prepareSphericalSession>>);
+export function documentShape(active: AtlasDocument): WorldShape { return active.kind==='hollow-cylinder'?'hollow-cylinder':active.kind==='hollow-sphere'?'hollow-sphere':active.kind === 'hollow-cube' ? 'hollow-cube' : active.kind === 'cube' ? 'cube' : active.kind === 'cylinder' ? 'cylinder' : active.kind === 'sphere' ? 'sphere' : isWrapped(active.document.terrain) ? 'wrapped' : 'bounded'; }
+export const shapeName = (shape: WorldShape) => ({ bounded: 'Bounded flat map', wrapped: 'Horizontally wrapped flat map', sphere: 'Spherical world', cylinder: 'Physical capped cylinder', cube:'Solid cube world', 'hollow-cube':'Hollow cube world','hollow-sphere':'Hollow sphere world','hollow-cylinder':'Capped hollow cylinder world' })[shape];
 export const documentName = (active: AtlasDocument) => active.kind !== 'planar' ? active.editor.name : active.document.name;
 export const documentModified = (active: AtlasDocument) => active.kind !== 'planar' ? active.editor.modified : active.document.dirty;
 export async function createAtlasDocument(setup: WorldSetup, work?: PersistenceWork): Promise<AtlasDocument> {
-  if (!['bounded', 'wrapped', 'sphere', 'cylinder', 'cube', 'hollow-cube','hollow-sphere'].includes(setup.shape)) throw new RangeError('Unsupported world shape.');
+  if (!['bounded', 'wrapped', 'sphere', 'cylinder', 'cube', 'hollow-cube','hollow-sphere','hollow-cylinder'].includes(setup.shape)) throw new RangeError('Unsupported world shape.');
   if (!setup.name.trim() || setup.name.trim().length > 120) throw new RangeError('Enter a world/map name of 1–120 characters.');
   const id = crypto.randomUUID(), name = setup.name.trim();
+  if(setup.shape==='hollow-cylinder'){
+    const world=createHollowCylinderWorld({provider:'physical-hollow-cylinder',version:1,configuration:'capped',worldId:id,outerRadiusMeters:setup.radiusMeters,innerRadiusMeters:setup.innerRadiusMeters??NaN,outerLengthMeters:setup.lengthMeters??NaN,innerLengthMeters:setup.innerLengthMeters??NaN,surfaces:{exterior:{surfaceId:crypto.randomUUID(),terrainId:crypto.randomUUID()},interior:{surfaceId:crypto.randomUUID(),terrainId:crypto.randomUUID()}}},cylinderResolution(setup.cylinderDetail??NaN));
+    return{kind:'hollow-cylinder',...await prepareHollowCylinderDocument(world,name,false,'exterior',work)};
+  }
   if(setup.shape==='hollow-sphere'){
     if(![128,256].includes(setup.cellsPerEdge))throw RangeError('Select N128 or N256.');
     const world=createHollowSphereWorld({provider:'physical-hollow-sphere',version:1,worldId:id,outerRadiusMeters:setup.radiusMeters,innerRadiusMeters:setup.innerRadiusMeters??NaN,surfaces:{exterior:{surfaceId:crypto.randomUUID(),terrainId:crypto.randomUUID()},interior:{surfaceId:crypto.randomUUID(),terrainId:crypto.randomUUID()}}},setup.cellsPerEdge);

@@ -9,12 +9,15 @@ export interface CylinderView {
   readonly mode: 'physical' | 'map'; readonly frame: CylinderFrame; readonly zoom: number;
   /** Normalized reference XYZ target (z is centered); map translation is in radius units. */
   readonly target: Vec3; readonly pan: CylinderScreenPoint; readonly phase: number;
+  readonly interior?:boolean;readonly interiorView?:'edit'|'center';readonly eyeMeters?:Vec3;
 }
+export const cylinderCenterInspection=(view:CylinderView)=>view.mode==='physical'&&view.interior===true&&view.interiorView==='center';
 export function initialCylinderView(mode: CylinderView['mode'] = 'physical'): CylinderView {
   const forward = unitDirection([1, -.55, .65]), right = unitDirection(cross3([0, 0, 1], forward));
   return { mode, frame: { right, up: unitDirection(cross3(forward, right)), forward }, zoom: 1, target: [0, 0, 0], pan: { x: 0, y: 0 }, phase: 0 };
 }
 export function cylinderLayout(geometry: CylinderGeometry, view: CylinderView, size: CylinderViewport) {
+  if(view.eyeMeters&&(view.eyeMeters.length!==3||!view.eyeMeters.every(Number.isFinite)))throw RangeError('Finite cylinder inspection eye required.');
   if (![size.width, size.height, view.zoom].every(v => Number.isFinite(v) && v > 0) || view.zoom < .6 || view.zoom > 6 || !['physical', 'map'].includes(view.mode)
     || ![...view.target, view.pan.x, view.pan.y, view.phase].every(Number.isFinite)) throw new RangeError('Invalid cylinder view/viewport.');
   const { right, up, forward } = view.frame;
@@ -24,9 +27,17 @@ export function cylinderLayout(geometry: CylinderGeometry, view: CylinderView, s
   if (!Number.isFinite(h) || h <= 0) throw new RangeError('Unrepresentable cylinder view aspect ratio.');
   const halfWidth = view.mode === 'map' ? Math.PI : Math.hypot(right[0], right[1]) + h * Math.abs(right[2]);
   const halfHeight = view.mode === 'map' ? h + 2 : Math.hypot(up[0], up[1]) + h * Math.abs(up[2]);
-  return { x: size.width / 2, y: size.height / 2, scale: Math.min(size.width * .84 / (2 * halfWidth), size.height * .70 / (2 * halfHeight)) * view.zoom, h };
+  return { x: size.width / 2, y: size.height / 2, scale: cylinderCenterInspection(view)?Math.min(size.width,size.height)*.5*view.zoom:Math.min(size.width * .84 / (2 * halfWidth), size.height * .70 / (2 * halfHeight)) * view.zoom, h };
 }
 export interface CylinderRayHit { readonly region: CylinderRegion; readonly theta: number; readonly radial: number; readonly z: number; readonly depth: number }
+/** Nearest positive exit from the actual convex reference cylinder. The initial
+ * inspection camera lies in its cavity; material-passage cameras use CSG later. */
+export function cylinderInsideRayHit(x:number,y:number,frame:CylinderFrame,h:number,eye:Vec3=[0,0,0]):CylinderRayHit|undefined{
+ if(!Number.isFinite(x+y)||!Number.isFinite(h)||h<=0||eye.length!==3||!eye.every(Number.isFinite))throw RangeError('Finite cylinder inspection ray required.');
+ if(Math.hypot(eye[0],eye[1])>=1||Math.abs(eye[2])>=h)return;
+ const d=unitDirection(frame.right.map((v,i)=>-v*x+frame.up[i]!*y+frame.forward[i]!)as unknown as Vec3),a=d[0]**2+d[1]**2,b=eye[0]*d[0]+eye[1]*d[1],c=eye[0]**2+eye[1]**2-1,root=Math.sqrt(Math.max(0,b*b-a*c)),side=a?(b>=0?c/(-b-root):(-b+root)/a):Infinity,cap=d[2]?(Math.sign(d[2])*h-eye[2])/d[2]:Infinity;
+ const distance=Math.min(side,cap);if(!Number.isFinite(distance)||distance<=0)return;const p=eye.map((v,i)=>v+d[i]!*distance),region=side<=cap?'side':d[2]>0?'cap-end':'cap-start';return{region,theta:Math.atan2(p[1]!,p[0]!),radial:Math.min(1,Math.hypot(p[0]!,p[1]!)),z:Math.max(-h,Math.min(h,p[2]!)),depth:distance};
+}
 /** Frontmost intersection of an orthographic ray with the convex solid, in radius units. */
 export function cylinderRayHit(x: number, y: number, frame: CylinderFrame, h: number): CylinderRayHit | undefined {
   const f = frame.forward, o = frame.right.map((v, i) => v * x + frame.up[i]! * y);
@@ -59,7 +70,7 @@ export function hitToCylinderPosition(geometry: CylinderGeometry, hit: CylinderR
 }
 export function unprojectCylinder(geometry: CylinderGeometry, point: CylinderScreenPoint, view: CylinderView, size: CylinderViewport): CylinderPosition | undefined {
   const l = cylinderLayout(geometry, view, size), x = (point.x - l.x) / l.scale, y = (l.y - point.y) / l.scale;
-  const hit = view.mode === 'map' ? cylinderMapHit(x - view.pan.x, y - view.pan.y, l.h, view.phase)
+  const hit = cylinderCenterInspection(view)?cylinderInsideRayHit(x,y,view.frame,l.h,view.eyeMeters?.map(v=>v/geometry.metadata.radiusMeters)as unknown as Vec3):view.mode === 'map' ? cylinderMapHit(x - view.pan.x, y - view.pan.y, l.h, view.phase)
     : cylinderRayHit(x + dot3(view.target, view.frame.right), y + dot3(view.target, view.frame.up), view.frame, l.h);
   return hit && hitToCylinderPosition(geometry, hit);
 }
@@ -81,6 +92,7 @@ export function cylinderPositionVisible(geometry: CylinderGeometry, position: Su
 export function projectCylinder(geometry: CylinderGeometry, input: SurfacePosition, view: CylinderView, size: CylinderViewport): CylinderScreenPoint | undefined {
   const p = geometry.normalize(input), l = cylinderLayout(geometry, view, size); let x: number, y: number;
   if (view.mode === 'physical') {
+    if(cylinderCenterInspection(view)){const q=normalizedXYZ(geometry,p).map((v,i)=>v-(view.eyeMeters?.[i]??0)/geometry.metadata.radiusMeters)as unknown as Vec3,z=dot3(q,view.frame.forward);if(z<=1e-12)return;return{x:l.x-l.scale*dot3(q,view.frame.right)/z,y:l.y-l.scale*dot3(q,view.frame.up)/z};}
     if (!cylinderPositionVisible(geometry, p, view.frame)) return;
     const xyz = normalizedXYZ(geometry, p).map((v, i) => v - view.target[i]!) as unknown as Vec3;
     x = dot3(xyz, view.frame.right); y = dot3(xyz, view.frame.up);

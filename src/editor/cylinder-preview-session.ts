@@ -215,5 +215,6 @@ export class CylinderPreviewSession {
     }
     if (this.statistics.failures !== failures) throw new Error('Queued cylinder input failed. Applied edits are retained; inspect them before retrying Save.');
   }
+  releaseViewport(){if(this.disposed)return;this.cancel('Surface view released');this.warmWorker?.terminate();this.warmWorker=undefined;this.workerFactory=undefined;this.baseWorkerFactory=undefined;this.lastDab=undefined;}
   dispose() { this.cancel('Cylinder closed'); this.disposed = true; this.warmWorker?.terminate(); this.warmWorker = undefined; this.history.clear(); this.cache.dispose(); this.lastDab = undefined; this.presentationTimes = []; this.checkpointDifferences.clear(); this.changed = () => {}; this.stopped = () => {}; }
 }

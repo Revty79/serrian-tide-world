@@ -1,0 +1,19 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {cylinderInsideRayHit,cylinderCenterInspection,initialCylinderView,projectCylinder,unprojectCylinder,type CylinderFrame} from './cylindrical-view.ts';
+import {createHollowCylinderWorld} from '../terrain/hollow-cylinder.ts';
+import {CylinderDisplayCache,cylinderRasterSteps} from './cylindrical-raster.ts';
+import {dot3,unitDirection,type Vec3} from '../surfaces/cube-sphere.ts';
+const config={provider:'physical-hollow-cylinder' as const,version:1 as const,configuration:'capped' as const,worldId:'view',outerRadiusMeters:1000,innerRadiusMeters:800,outerLengthMeters:1600,innerLengthMeters:1200,surfaces:{exterior:{surfaceId:'out',terrainId:'a'},interior:{surfaceId:'in',terrainId:'b'}}};
+const frame:CylinderFrame={forward:[1,0,0],right:[0,1,0],up:[0,0,1]};
+test('cavity rays hit actual curved wall or either disk cap, including axial rays and stable exits close to a wall',()=>{
+ for(const h of[.05,.75,10]){const side=cylinderInsideRayHit(0,0,frame,h)!;assert.equal(side.region,'side');assert.equal(side.radial,1);assert.equal(side.z,0);for(const sign of[-1,1]){const axial:CylinderFrame={right:[1,0,0],up:[0,sign,0],forward:[0,0,sign]},hit=cylinderInsideRayHit(0,0,axial,h)!;assert.equal(hit.region,sign>0?'cap-end':'cap-start');assert.equal(hit.radial,0);assert.equal(hit.z,sign*h);}for(const x of[-2,-.3,0,.3,2])for(const y of[-3,0,3]){const hit=cylinderInsideRayHit(x,y,frame,h)!;assert(hit.depth>0);if(hit.region==='side')assert(Math.abs(hit.radial-1)<1e-12);else assert.equal(Math.abs(hit.z),h);}}
+ const close=cylinderInsideRayHit(0,0,frame,1,[1-1e-12,0,0])!;assert(close.depth>0&&close.depth<2e-12);assert.equal(cylinderInsideRayHit(0,0,frame,1,[1,0,0]),undefined);assert.throws(()=>cylinderInsideRayHit(0,0,frame,1,[Infinity,0,0]));
+});
+test('cylinder inspection projects and picks the same inner side/cap geography, while ordinary fitted/map views retain their modes',()=>{
+ const w=createHollowCylinderWorld(config,{angularSamples:16,axialCells:8,radialCells:4}),t=w.surfaces.interior.terrain,size={width:900,height:600},view={...initialCylinderView(),interior:true,interiorView:'center' as const};assert(cylinderCenterInspection(view));assert(!cylinderCenterInspection({...view,mode:'map'}));assert(!cylinderCenterInspection({...view,interiorView:'edit'}));let samples=0;
+ for(const key of t.samples()){const p=t.positionAt(t.owner(key)),q=projectCylinder(t.geometry,p,view,size);if(!q||q.x<0||q.y<0||q.x>size.width||q.y>size.height)continue;const picked=unprojectCylinder(t.geometry,q,view,size)!;const a=t.geometry.referencePosition(p),b=t.geometry.referencePosition(picked);assert(Math.hypot(...a.map((v,i)=>v-b[i]!))<1e-8);samples++;}assert(samples>20);
+ const center=unprojectCylinder(t.geometry,{x:450,y:300},view,size)!,xyz=t.geometry.referencePosition(center),ray:Vec3=[xyz[0],xyz[1],xyz[2]-600];assert(dot3(unitDirection(ray),view.frame.forward)>1-1e-12);
+});
+test('Canvas cavity presentation fills the view from actual terrain and never changes either bank',()=>{
+ const w=createHollowCylinderWorld(config,{angularSamples:8,axialCells:4,radialCells:3}),t=w.surfaces.interior.terrain,cache=new CylinderDisplayCache(t),before=t.copyElevations(),outside=w.surfaces.exterior.terrain.copyElevations();for(const _ of cache.prepare())void _;const job=cylinderRasterSteps(cache,{...initialCylinderView(),interior:true,interiorView:'center'},{width:80,height:60},4800,undefined,'elevation');let result=job.next();while(!result.done)result=job.next();const image=result.value;for(let i=0;i<image.pixels.length;i+=4){assert.equal(image.pixels[i+3],255);assert(image.pixels[i+2]!>image.pixels[i]!);}assert.deepEqual(t.copyElevations(),before);assert.deepEqual(w.surfaces.exterior.terrain.copyElevations(),outside);
+});

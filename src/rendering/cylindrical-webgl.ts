@@ -1,4 +1,4 @@
-import { cylinderLayout, type CylinderView, type CylinderViewport } from './cylindrical-view.ts';
+import { cylinderLayout, cylinderCenterInspection, type CylinderView, type CylinderViewport } from './cylindrical-view.ts';
 import { CylinderDisplayCache } from './cylindrical-raster.ts';
 import { surfaceDisplayDimensions, type SurfaceRenderer } from './surface-renderer.ts';
 import { dot3 } from '../surfaces/cube-sphere.ts';
@@ -11,18 +11,18 @@ const vertex=`#version 300 es
 precision highp float;
 precision highp int;
 layout(location=0) in vec4 point;
-uniform vec3 cameraRight,cameraUp,cameraForward;
+uniform vec3 cameraRight,cameraUp,cameraForward,inspectionEye;
 uniform vec2 viewport,translation;
 uniform float scale,depthExtent;
 uniform int mode;
 flat out int region;
-void main(){region=int(point.w);vec2 p=mode==0?vec2(dot(point.xyz,cameraRight),dot(point.xyz,cameraUp))-translation:point.xy+translation;gl_Position=vec4(p*scale*2./viewport,mode==0?-dot(point.xyz,cameraForward)/depthExtent:0.,1.);}`;
+void main(){region=int(point.w);if(mode==2){vec3 q=point.xyz-inspectionEye;float z=dot(q,cameraForward),near=.00001,far=depthExtent;gl_Position=vec4(vec2(-dot(q,cameraRight),dot(q,cameraUp))*scale*2./viewport,(far+near)/(far-near)*z-2.*far*near/(far-near),z);return;}vec2 p=mode==0?vec2(dot(point.xyz,cameraRight),dot(point.xyz,cameraUp))-translation:point.xy+translation;gl_Position=vec4(p*scale*2./viewport,mode==0?-dot(point.xyz,cameraForward)/depthExtent:0.,1.);}`;
 export const CYLINDER_FRAGMENT_SHADER=`#version 300 es
 precision highp float;
 precision highp int;
 uniform sampler2D sideElevations,startElevations,endElevations;
 uniform vec3 cameraForward;
-uniform vec3 cameraRight,cameraUp;
+uniform vec3 cameraRight,cameraUp,inspectionEye;
 uniform vec2 viewport,translation,backingSize;
 uniform float scale;
 uniform float h,phase,radiusMeters,lengthMeters,seaLevel,heightScale;
@@ -63,7 +63,7 @@ vec3 elevationColor(float normalized){
 }
 vec3 surfaceField(vec3 p){
  float theta,r,z;
- if(mode==0){r=length(p.xy);theta=r==0.?0.:atan(p.y,p.x);z=p.z;}
+ if(mode==0||mode==2){r=length(p.xy);theta=r==0.?0.:atan(p.y,p.x);z=p.z;}
  else if(region==0){theta=phase+p.x;r=1.;z=p.y;}
  else {float sign=region==1?1.:-1.,center=region==1?-h-1.:h+1.;vec2 local=vec2(p.x,p.y-center);r=length(local);theta=r==0.?0.:phase+atan(local.x,sign*local.y);z=region==1?-h:h;}
  return region==0?field(sideElevations,theta,r,z,true):region==1?field(startElevations,theta,r,z,false):field(endElevations,-theta,r,z,false);
@@ -78,6 +78,7 @@ vec3 referenceAt(vec2 fragment){
  // determine geographical coordinates through imprecise varyings/derivatives.
  vec2 screen=(fragment/backingSize*viewport-.5*viewport)/scale;
  if(mode==1)return vec3(screen-translation,0.);
+ if(mode==2){vec3 ray=normalize(-cameraRight*screen.x+cameraUp*screen.y+cameraForward);if(region!=0){float z=region==1?-h:h;return inspectionEye+ray*((z-inspectionEye.z)/ray.z);}float a=dot(ray.xy,ray.xy),b=dot(inspectionEye.xy,ray.xy),c=dot(inspectionEye.xy,inspectionEye.xy)-1.,root=sqrt(max(0.,b*b-a*c));float distance=b>=0.?-c/max(b+root,1e-20):(-b+root)/max(a,1e-20);return inspectionEye+ray*distance;}
  vec3 origin=cameraRight*(screen.x+translation.x)+cameraUp*(screen.y+translation.y);
  if(region!=0){float z=region==1?-h:h;return origin+cameraForward*((z-origin.z)/cameraForward.z);}
  float a=dot(cameraForward.xy,cameraForward.xy),b=dot(origin.xy,cameraForward.xy),c=dot(origin.xy,origin.xy)-1.;
@@ -93,9 +94,9 @@ void main(){
   // Filter only actual class coverage; keep ordinary ramps/relief unblurred.
   if(any(notEqual(greaterThan(vec4(a.x,b.x,c.x,d.x),vec4(seaLevel/heightScale)),bvec4(value.x>seaLevel/heightScale))))rgb=(colorAt(a)+colorAt(b)+colorAt(c)+colorAt(d))*.25;
  }
- float theta=region==0?(mode==0?atan(p.y,p.x):phase+p.x):0.;
+ float theta=region==0?(mode==0||mode==2?atan(p.y,p.x):phase+p.x):0.;
  float facing=region==0?dot(vec2(cos(theta),sin(theta)),cameraForward.xy):(region==2?1.:-1.)*cameraForward.z;
- outColor=vec4(rgb*(mode==1?1.:.74+.26*max(0.,facing)),1.);
+ outColor=vec4(rgb*(mode==1||mode==2?1.:.74+.26*max(0.,facing)),1.);
 }`;
 function vertices(h:number,map:boolean){
  const data:number[]=[],add=(x:number,y:number,z:number,region:number)=>data.push(x,y,z,region);
@@ -126,7 +127,7 @@ export class CylinderWebGLRenderer implements SurfaceRenderer<CylinderView>{
   const shaders:WebGLShader[]=[];let program:WebGLProgram|null=null;
   try{shaders.push(compile(gl.VERTEX_SHADER,vertex));shaders.push(compile(gl.FRAGMENT_SHADER,CYLINDER_FRAGMENT_SHADER));program=gl.createProgram();if(!program)throw Error('Program allocation failed');gl.attachShader(program,shaders[0]!);gl.attachShader(program,shaders[1]!);gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program)??'Program linking failed');this.program=program;}
   catch(e){if(program)gl.deleteProgram(program);throw e;}finally{for(const shader of shaders)gl.deleteShader(shader);}
-  this.uniforms.clear();for(const name of ['sideElevations','startElevations','endElevations','viewport','translation','backingSize','cameraRight','cameraUp','cameraForward','scale','depthExtent','h','phase','mode','radiusMeters','lengthMeters','seaLevel','heightScale','relief']){const u=gl.getUniformLocation(this.program!,name);if(u===null)throw Error(`Missing graphics uniform ${name}`);this.uniforms.set(name,u);}
+  this.uniforms.clear();for(const name of ['sideElevations','startElevations','endElevations','viewport','translation','backingSize','cameraRight','cameraUp','cameraForward','inspectionEye','scale','depthExtent','h','phase','mode','radiusMeters','lengthMeters','seaLevel','heightScale','relief']){const u=gl.getUniformLocation(this.program!,name);if(u===null)throw Error(`Missing graphics uniform ${name}`);this.uniforms.set(name,u);}
   // R32F is fetched explicitly. Float-linear extensions are not required.
   for(let i=0;i<3;i++){const texture=gl.createTexture();if(!texture)throw Error('Texture allocation failed');this.textures.push(texture);gl.bindTexture(gl.TEXTURE_2D,texture);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.NEAREST);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.NEAREST);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.REPEAT);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);}
   const h=this.cache.terrain.metadata.geometry.lengthMeters/this.cache.terrain.metadata.geometry.radiusMeters/2;
@@ -157,7 +158,7 @@ export class CylinderWebGLRenderer implements SurfaceRenderer<CylinderView>{
   gl.uniform1f(u('radiusMeters'),this.cache.terrain.metadata.geometry.radiusMeters);gl.uniform1f(u('lengthMeters'),this.cache.terrain.metadata.geometry.lengthMeters);gl.uniform1f(u('seaLevel'),this.cache.terrain.metadata.seaLevel);gl.uniform1f(u('heightScale'),this.heightScale);gl.uniform1i(u('relief'),appearance==='relief'?1:0);
   gl.uniform2f(u('viewport'),size.width,size.height);gl.uniform2f(u('translation'),view.mode==='map'?view.pan.x:dot3(view.target,view.frame.right),view.mode==='map'?view.pan.y:dot3(view.target,view.frame.up));
   gl.uniform2f(u('backingSize'),dimensions.width,dimensions.height);
-  gl.uniform3fv(u('cameraRight'),view.frame.right);gl.uniform3fv(u('cameraUp'),view.frame.up);gl.uniform3fv(u('cameraForward'),view.frame.forward);gl.uniform1f(u('scale'),l.scale);gl.uniform1f(u('h'),l.h);gl.uniform1f(u('phase'),view.phase);gl.uniform1f(u('depthExtent'),Math.hypot(view.frame.forward[0],view.frame.forward[1])+l.h*Math.abs(view.frame.forward[2])+.01);gl.uniform1i(u('mode'),view.mode==='map'?1:0);
+  gl.uniform3fv(u('inspectionEye'),(view.eyeMeters??[0,0,0]).map(v=>v/this.cache.terrain.metadata.geometry.radiusMeters));gl.uniform3fv(u('cameraRight'),view.frame.right);gl.uniform3fv(u('cameraUp'),view.frame.up);gl.uniform3fv(u('cameraForward'),view.frame.forward);gl.uniform1f(u('scale'),l.scale);gl.uniform1f(u('h'),l.h);gl.uniform1f(u('phase'),view.phase);gl.uniform1f(u('depthExtent'),cylinderCenterInspection(view)?4*l.h+4:Math.hypot(view.frame.forward[0],view.frame.forward[1])+l.h*Math.abs(view.frame.forward[2])+.01);gl.uniform1i(u('mode'),cylinderCenterInspection(view)?2:view.mode==='map'?1:0);
   const mesh=this.meshes[view.mode==='physical'?0:1]!;gl.bindVertexArray(mesh.vao);gl.viewport(0,0,dimensions.width,dimensions.height);gl.disable(gl.BLEND);gl.disable(gl.CULL_FACE);gl.enable(gl.DEPTH_TEST);gl.depthFunc(gl.LEQUAL);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.drawArrays(gl.TRIANGLES,0,mesh.count);
   if(gl.isContextLost())throw Error('Graphics context lost during presentation');this.canvas.hidden=false;this.statistics.presentations++;
   return{revision:this.uploadedRevision,...dimensions,resizeMs:resized-at,uploadMs:uploaded-resized,submitMs:performance.now()-uploaded};
