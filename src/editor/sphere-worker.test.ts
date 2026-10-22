@@ -35,6 +35,11 @@ test('host spherical elevation policy rejects a whole worker dab before publicat
  const t=createSphericalTerrain({terrainId:'bounded',identity:{worldId:'w',surfaceId:'s'},radiusMeters:1000,cellsPerEdge:16,initialElevation:0,validateElevation:h=>{if(h>10)throw RangeError('Reserved shell clearance.');}}),before=words(t),history=new SphericalHistory(t),stroke=beginSphereWorkerStroke(t,history,[1,0,0],{tool:'raise',radiusMeters:500,strengthMeters:50},undefined,()=>{},factory());
  stroke.release();await finish(stroke);assert.equal(stroke.status,'failed');assert.deepEqual(words(t),before);assert.equal(t.revision,0);assert.equal(history.canUndo,false);
 });
+test('host sample protection rejects cooperative and worker dabs atomically at a later protected sample',async()=>{
+ for(const worker of[false,true]){let protectedIndex=-1;const checked:number[]=[],t=createSphericalTerrain({terrainId:'support',identity:{worldId:'w',surfaceId:'s'},radiusMeters:1000,cellsPerEdge:16,initialElevation:0,validateSample:(i,h,b)=>{checked.push(i);if(i===protectedIndex&&!Object.is(h,b))throw Error('Protected ground.');}});protectedIndex=t.resolve({...t.metadata.identity,patchId:'px',column:8,row:8}).index;const before=words(t),history=new SphericalHistory(t),brush={tool:'raise' as const,radiusMeters:500,strengthMeters:50};
+ if(worker){const stroke=beginSphereWorkerStroke(t,history,[1,0,0],brush,undefined,()=>{},factory());stroke.release();await finish(stroke);assert.equal(stroke.status,'failed');}else assert.throws(()=>startSphericalBrushStroke(t,{...t.metadata.identity,direction:[1,0,0]},brush,history),/Protected/);
+ assert(checked.length>1);assert.deepEqual(words(t),before);assert.equal(t.revision,0);assert(!history.canUndo);}
+});
 for (const n of [16, 128, 256]) for (const tool of ['raise', 'lower', 'smooth', 'flatten'] as const) test(`sphere worker N${n} ${tool}: complete words/history across face edge, corner and pole`, async () => {
   const t = make(n), reference = make(n); seed(t); seed(reference);
   const before = words(t), history = new SphericalHistory(t), expected = new SphericalHistory(reference), brush = settings(tool);

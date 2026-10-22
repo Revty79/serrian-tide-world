@@ -14,6 +14,13 @@ basic-excavation deferral. Advanced displaced-terrain excavation, the full 3D
 engine, pyramids, website, database, Docker and Production remain excluded. See the
 [current inventory, delivered checkpoints and limitations](HOLLOW-WORLDS-OVERNIGHT.md).
 
+Verified standalone hollow-sphere checkpoints now include the fitted/immersive/net
+editor and basic radial reference-shell holes with v9 persistence and exact
+connection history. [Radial-hole review](HOLLOW-SPHERE-HOLES.md). Sphere physical
+tunnels and reciprocal links are next, followed by capped Hollow Cylinder and
+its basic connections, then the safe Open Cylinder configuration. The eleven
+phases and the advanced displaced-terrain deferral remain unchanged.
+
 Current Cube-I scope authority (2026-10-21): finish Phase 2 reference-shell editing;
 preserve isolated material research; pause major 3D integration. The current
 scope/order sections below supersede historical checkpoint descriptions.

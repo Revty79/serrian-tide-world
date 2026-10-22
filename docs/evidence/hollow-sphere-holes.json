@@ -1,0 +1,1036 @@
+{
+  "verifiedAtUtc": "2026-10-22T04:52:28.587263+00:00",
+  "base": "3150267e8178726fb6b87e0e7d83a237410bfa67",
+  "status": "Basic hollow sphere radial holes technically verified; sphere tunnels and map links remain the next authorized checkpoint",
+  "ownerAcceptance": false,
+  "sourceFingerprint": {
+    "sha256": "97ac623b78204564c0c2f00318d31b775c1c9ba6dc095875582cba3f90348d19",
+    "algorithm": "SHA256 over sorted src paths in POSIX form followed by each file bytes with CRLF normalized to LF"
+  },
+  "numerical": {
+    "passed": 1235,
+    "failed": 0,
+    "log": ".local/sphere-holes-numerical-receipt.log"
+  },
+  "typecheck": "passed",
+  "build": "passed",
+  "buildLog": ".local/sphere-holes-build-final.log",
+  "browser": {
+    "workflowMatrix": {
+      "stats": {
+        "startTime": "2026-10-22T04:10:55.265Z",
+        "duration": 225428.937,
+        "expected": 22,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "cases": [
+        {
+          "title": "sphere holes N128 auto: radial cut preview, independent object, sizing, move, exact history and v9 reopen",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "sphere holes N128 canvas: radial cut preview, independent object, sizing, move, exact history and v9 reopen",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "sphere holes N256 auto: radial cut preview, independent object, sizing, move, exact history and v9 reopen",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "sphere holes N256 canvas: radial cut preview, independent object, sizing, move, exact history and v9 reopen",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "sphere holes N128 auto: radial cut preview, independent object, sizing, move, exact history and v9 reopen",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "sphere holes N128 canvas: radial cut preview, independent object, sizing, move, exact history and v9 reopen",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "sphere holes N256 auto: radial cut preview, independent object, sizing, move, exact history and v9 reopen",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "sphere holes N256 canvas: radial cut preview, independent object, sizing, move, exact history and v9 reopen",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "hollow sphere N128 auto: independent geography, cavity camera, exact history and v8 reopen",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "hollow sphere N128 canvas: independent geography, cavity camera, exact history and v8 reopen",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "hollow sphere N256 auto: independent geography, cavity camera, exact history and v8 reopen",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "hollow sphere N256 canvas: independent geography, cavity camera, exact history and v8 reopen",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "hollow sphere: unsupported dimensions, stopped input, native touch/pen and graphics loss preserve both authorities",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "hollow sphere N128 auto: independent geography, cavity camera, exact history and v8 reopen",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "hollow sphere N128 canvas: independent geography, cavity camera, exact history and v8 reopen",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "hollow sphere N256 auto: independent geography, cavity camera, exact history and v8 reopen",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "hollow sphere N256 canvas: independent geography, cavity camera, exact history and v8 reopen",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "hollow sphere: unsupported dimensions, stopped input, native touch/pen and graphics loss preserve both authorities",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "hollow cube auto: optional cavity inspection preserves editing, banks and connection identities",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "hollow cube canvas: optional cavity inspection preserves editing, banks and connection identities",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "hollow cube auto: optional cavity inspection preserves editing, banks and connection identities",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "hollow cube canvas: optional cavity inspection preserves editing, banks and connection identities",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        }
+      ],
+      "localReport": ".local/sphere-holes-workflow-final.json"
+    },
+    "nativeInputAndSharedPalette": {
+      "stats": {
+        "startTime": "2026-10-22T04:20:36.437Z",
+        "duration": 52964.823000000004,
+        "expected": 8,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "cases": [
+        {
+          "title": "sphere radial holes auto: trusted pen/touch placement, cancellation and two-contact navigation preserve independent terrain",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "sphere radial holes canvas: trusted pen/touch placement, cancellation and two-contact navigation preserve independent terrain",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "sphere radial holes auto: trusted pen/touch placement, cancellation and two-contact navigation preserve independent terrain",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "sphere radial holes canvas: trusted pen/touch placement, cancellation and two-contact navigation preserve independent terrain",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "sphere holes N128 auto: radial cut preview, independent object, sizing, move, exact history and v9 reopen",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "sphere holes N128 canvas: radial cut preview, independent object, sizing, move, exact history and v9 reopen",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "sphere holes N128 auto: radial cut preview, independent object, sizing, move, exact history and v9 reopen",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "sphere holes N128 canvas: radial cut preview, independent object, sizing, move, exact history and v9 reopen",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        }
+      ],
+      "localReport": ".local/sphere-holes-input-and-palette.json"
+    },
+    "physicalCursor": {
+      "stats": {
+        "startTime": "2026-10-22T04:27:31.356Z",
+        "duration": 43145.377,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "cases": [
+        {
+          "title": "sphere holes N128 auto: radial cut preview, independent object, sizing, move, exact history and v9 reopen",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "sphere holes N128 canvas: radial cut preview, independent object, sizing, move, exact history and v9 reopen",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "sphere holes N128 auto: radial cut preview, independent object, sizing, move, exact history and v9 reopen",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "sphere holes N128 canvas: radial cut preview, independent object, sizing, move, exact history and v9 reopen",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        }
+      ],
+      "localReport": ".local/sphere-holes-physical-cursor.json"
+    },
+    "thinShellLimit": {
+      "stats": {
+        "startTime": "2026-10-22T04:44:05.214Z",
+        "duration": 7461.761,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "cases": [
+        {
+          "title": "a thin hollow sphere explains the supported hole limit while retaining its two editable terrain banks",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "a thin hollow sphere explains the supported hole limit while retaining its two editable terrain banks",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        }
+      ],
+      "localReport": ".local/sphere-holes-precision-ui.json"
+    },
+    "heldPaintingWithHole": {
+      "stats": {
+        "startTime": "2026-10-22T04:30:14.155Z",
+        "duration": 168131.209,
+        "expected": 8,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "cases": [
+        {
+          "title": "held sphere N128 auto exterior: ordinary 15-second painting and exact replay with radial hole",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "held sphere N128 auto interior: ordinary 15-second painting and exact replay with radial hole",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "held sphere N128 canvas exterior: ordinary 15-second painting and exact replay with radial hole",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "held sphere N128 canvas interior: ordinary 15-second painting and exact replay with radial hole",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "held sphere N256 auto exterior: ordinary 15-second painting and exact replay with radial hole",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "held sphere N256 auto interior: ordinary 15-second painting and exact replay with radial hole",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "held sphere N256 canvas exterior: ordinary 15-second painting and exact replay with radial hole",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "held sphere N256 canvas interior: ordinary 15-second painting and exact replay with radial hole",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        }
+      ],
+      "localReport": ".local/sphere-holes-long-final.json"
+    },
+    "solidSphereCompatibility": {
+      "stats": {
+        "startTime": "2026-10-22T04:34:00.599Z",
+        "duration": 112296.86600000001,
+        "expected": 20,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "cases": [
+        {
+          "title": "historical blank overlay: real continent, shared net/rotated screenshots, discard and reload guards, planar preservation",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "all four tools on globe and connected net match the numerical engine bit for bit with exact Undo/Redo and readouts",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "joined net stroke and screen-edge assistance retain physical spacing; gaps/cuts safely end the gesture",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "mouse/pen/touch arbitration, cancellation, shortcuts, recenter and view changes protect single operations",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "real projected painting across all twelve face boundaries, eight corners, poles, and a clipped globe limb",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "actual N256 blank preparation, physical controls focus, responsive narrow/square/ultrawide layout and fullscreen",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "historical blank overlay: real continent, shared net/rotated screenshots, discard and reload guards, planar preservation",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "all four tools on globe and connected net match the numerical engine bit for bit with exact Undo/Redo and readouts",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "joined net stroke and screen-edge assistance retain physical spacing; gaps/cuts safely end the gesture",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "mouse/pen/touch arbitration, cancellation, shortcuts, recenter and view changes protect single operations",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "real projected painting across all twelve face boundaries, eight corners, poles, and a clipped globe limb",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "actual N256 blank preparation, physical controls focus, responsive narrow/square/ultrawide layout and fullscreen",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "actual UI: blank and sculpted sphere survives reload, reopens exact geography and continues all four tools",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "Ctrl-S while a real brush is held drains queued input exactly; saved/modified/name checkpoints and unload guards work",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "existing DB v1 and mixed library preserve legacy records; spherical signed-zero/edge/corner restoration and overwrite guards",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "quota, interrupted transaction and storage denial retain edits and old saves; bad opens and discard cancellation preserve active sphere",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "actual UI: blank and sculpted sphere survives reload, reopens exact geography and continues all four tools",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "Ctrl-S while a real brush is held drains queued input exactly; saved/modified/name checkpoints and unload guards work",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "existing DB v1 and mixed library preserve legacy records; spherical signed-zero/edge/corner restoration and overwrite guards",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "quota, interrupted transaction and storage denial retain edits and old saves; bad opens and discard cancellation preserve active sphere",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        }
+      ],
+      "localReport": ".local/sphere-holes-sphere-compat.json"
+    },
+    "cubePhysicalCompatibility": {
+      "stats": {
+        "startTime": "2026-10-22T04:37:51.022Z",
+        "duration": 43643.147,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "cases": [
+        {
+          "title": "H4 auto: real openings, branch/chamber authoring, continuous travel, removal and exact save restore",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "H4 canvas: real openings, branch/chamber authoring, continuous travel, removal and exact save restore",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "H4 auto: real openings, branch/chamber authoring, continuous travel, removal and exact save restore",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "H4 canvas: real openings, branch/chamber authoring, continuous travel, removal and exact save restore",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        }
+      ],
+      "localReport": ".local/sphere-holes-cube-compat.json"
+    }
+  },
+  "sharedCubeShader": {
+    "base": "3150267e8178726fb6b87e0e7d83a237410bfa67",
+    "identical": true,
+    "sha256": "0d15e71dba9193f0aca76b41fd5de1ab49b8128d7bd476d3aa6f082efe19764d"
+  },
+  "heldPainting": [
+    {
+      "n": 128,
+      "backend": "auto",
+      "role": "exterior",
+      "startupMs": 2124.5998,
+      "holePreparationMs": 887.4409999999998,
+      "referenceHoles": 1,
+      "releaseToCoherentMs": 34.660100000000966,
+      "injectedMoves": 900,
+      "durationMs": 15000,
+      "events": 896,
+      "changedWhileHeld": 128,
+      "firstChangedPixelsMs": 115.89999997615814,
+      "frameGaps": {
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "max": 83.30000000000018
+      },
+      "brushDrainPresentationMs": {
+        "p50": 1.7999999523162842,
+        "p95": 2.600000023841858,
+        "max": 18.19999998807907
+      },
+      "cacheBytes": 7933232,
+      "parentAuthorityBytes": 786448,
+      "connectionBytes": 262144,
+      "protectionBytes": 196612,
+      "connectionHistoryBytes": 1272,
+      "historyEntries": 1,
+      "exactUndoRedo": true,
+      "opposingSurfaceUnchanged": true,
+      "gpu": {
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "reason": "",
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 437,
+        "uploadBytes": 3807216,
+        "textureBytes": 3195072,
+        "presentations": 440,
+        "resources": 4
+      },
+      "cpu": {
+        "images": 0,
+        "slices": 0,
+        "computeMs": 0,
+        "maxSliceMs": 0,
+        "snapshotBytes": 0
+      },
+      "persistence": null,
+      "bankCacheConnectionSupportBytes": 17112940
+    },
+    {
+      "n": 128,
+      "backend": "auto",
+      "role": "interior",
+      "startupMs": 1243.806800000002,
+      "holePreparationMs": 856.8804999999993,
+      "referenceHoles": 1,
+      "releaseToCoherentMs": 27.12090000000171,
+      "injectedMoves": 900,
+      "durationMs": 15000,
+      "events": 899,
+      "changedWhileHeld": 119,
+      "firstChangedPixelsMs": 86.40000003576279,
+      "frameGaps": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000109
+      },
+      "brushDrainPresentationMs": {
+        "p50": 0.699999988079071,
+        "p95": 2.300000011920929,
+        "max": 10
+      },
+      "cacheBytes": 7933232,
+      "parentAuthorityBytes": 786448,
+      "connectionBytes": 262144,
+      "protectionBytes": 196612,
+      "connectionHistoryBytes": 1272,
+      "historyEntries": 1,
+      "exactUndoRedo": true,
+      "opposingSurfaceUnchanged": true,
+      "gpu": {
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "reason": "",
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 351,
+        "uploadBytes": 2304976,
+        "textureBytes": 1597536,
+        "presentations": 351,
+        "resources": 3
+      },
+      "cpu": {
+        "images": 0,
+        "slices": 0,
+        "computeMs": 0,
+        "maxSliceMs": 0,
+        "snapshotBytes": 0
+      },
+      "persistence": null,
+      "bankCacheConnectionSupportBytes": 17112940
+    },
+    {
+      "n": 128,
+      "backend": "canvas",
+      "role": "exterior",
+      "startupMs": 1339.6354999999967,
+      "holePreparationMs": 1182.331299999998,
+      "referenceHoles": 1,
+      "releaseToCoherentMs": 253.0633999999991,
+      "injectedMoves": 900,
+      "durationMs": 15000,
+      "events": 893,
+      "changedWhileHeld": 120,
+      "firstChangedPixelsMs": 120,
+      "frameGaps": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000109
+      },
+      "brushDrainPresentationMs": {
+        "p50": 254.5,
+        "p95": 1154.3999999761581,
+        "max": 1254.3999999761581
+      },
+      "cacheBytes": 7933232,
+      "parentAuthorityBytes": 786448,
+      "connectionBytes": 262144,
+      "protectionBytes": 196612,
+      "connectionHistoryBytes": 1272,
+      "historyEntries": 1,
+      "exactUndoRedo": true,
+      "opposingSurfaceUnchanged": true,
+      "gpu": {
+        "renderer": "",
+        "reason": "Error: WebGL2 unavailable; bounded CPU display is active.",
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 0,
+        "uploadBytes": 0,
+        "textureBytes": 0,
+        "presentations": 0,
+        "resources": 0
+      },
+      "cpu": {
+        "images": 292,
+        "slices": 976,
+        "computeMs": 5266.799998760223,
+        "maxSliceMs": 6.399999976158142,
+        "snapshotBytes": 3195072
+      },
+      "persistence": null,
+      "bankCacheConnectionSupportBytes": 17112940
+    },
+    {
+      "n": 128,
+      "backend": "canvas",
+      "role": "interior",
+      "startupMs": 1328.997000000003,
+      "holePreparationMs": 1161.7220000000016,
+      "referenceHoles": 1,
+      "releaseToCoherentMs": 201.15180000000692,
+      "injectedMoves": 900,
+      "durationMs": 15000,
+      "events": 897,
+      "changedWhileHeld": 119,
+      "firstChangedPixelsMs": 118.5,
+      "frameGaps": {
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "max": 16.80000000000291
+      },
+      "brushDrainPresentationMs": {
+        "p50": 152.60000002384186,
+        "p95": 423.39999997615814,
+        "max": 489.39999997615814
+      },
+      "cacheBytes": 7933232,
+      "parentAuthorityBytes": 786448,
+      "connectionBytes": 262144,
+      "protectionBytes": 196612,
+      "connectionHistoryBytes": 1272,
+      "historyEntries": 1,
+      "exactUndoRedo": true,
+      "opposingSurfaceUnchanged": true,
+      "gpu": {
+        "renderer": "",
+        "reason": "Error: WebGL2 unavailable; bounded CPU display is active.",
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 0,
+        "uploadBytes": 0,
+        "textureBytes": 0,
+        "presentations": 0,
+        "resources": 0
+      },
+      "cpu": {
+        "images": 298,
+        "slices": 919,
+        "computeMs": 4427.000000655651,
+        "maxSliceMs": 6.299999952316284,
+        "snapshotBytes": 1597536
+      },
+      "persistence": null,
+      "bankCacheConnectionSupportBytes": 17112940
+    },
+    {
+      "n": 256,
+      "backend": "auto",
+      "role": "exterior",
+      "startupMs": 3419.4507000000012,
+      "holePreparationMs": 922.7896000000037,
+      "referenceHoles": 1,
+      "releaseToCoherentMs": 41.194900000002235,
+      "injectedMoves": 900,
+      "durationMs": 15000,
+      "events": 900,
+      "changedWhileHeld": 126,
+      "firstChangedPixelsMs": 68.70000004768372,
+      "frameGaps": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000291
+      },
+      "brushDrainPresentationMs": {
+        "p50": 3.100000023841858,
+        "p95": 4.300000011920929,
+        "max": 24.900000035762787
+      },
+      "cacheBytes": 31594800,
+      "parentAuthorityBytes": 3145744,
+      "connectionBytes": 262144,
+      "protectionBytes": 786436,
+      "connectionHistoryBytes": 1272,
+      "historyEntries": 1,
+      "exactUndoRedo": true,
+      "opposingSurfaceUnchanged": true,
+      "gpu": {
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "reason": "",
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 438,
+        "uploadBytes": 14644256,
+        "textureBytes": 12681408,
+        "presentations": 441,
+        "resources": 4
+      },
+      "cpu": {
+        "images": 0,
+        "slices": 0,
+        "computeMs": 0,
+        "maxSliceMs": 0,
+        "snapshotBytes": 0
+      },
+      "persistence": null,
+      "bankCacheConnectionSupportBytes": 67385196
+    },
+    {
+      "n": 256,
+      "backend": "auto",
+      "role": "interior",
+      "startupMs": 3477.6472000000067,
+      "holePreparationMs": 923.565300000002,
+      "referenceHoles": 1,
+      "releaseToCoherentMs": 26.662200000006123,
+      "injectedMoves": 900,
+      "durationMs": 15000,
+      "events": 900,
+      "changedWhileHeld": 119,
+      "firstChangedPixelsMs": 105.30000001192093,
+      "frameGaps": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000291
+      },
+      "brushDrainPresentationMs": {
+        "p50": 0.7000000476837158,
+        "p95": 4.800000011920929,
+        "max": 15.5
+      },
+      "cacheBytes": 31594800,
+      "parentAuthorityBytes": 3145744,
+      "connectionBytes": 262144,
+      "protectionBytes": 786436,
+      "connectionHistoryBytes": 1272,
+      "historyEntries": 1,
+      "exactUndoRedo": true,
+      "opposingSurfaceUnchanged": true,
+      "gpu": {
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "reason": "",
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 351,
+        "uploadBytes": 8694864,
+        "textureBytes": 6340704,
+        "presentations": 351,
+        "resources": 3
+      },
+      "cpu": {
+        "images": 0,
+        "slices": 0,
+        "computeMs": 0,
+        "maxSliceMs": 0,
+        "snapshotBytes": 0
+      },
+      "persistence": {
+        "saveMs": 1475.2391999999963,
+        "openMs": 5095.674899999998
+      },
+      "bankCacheConnectionSupportBytes": 67385196
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "role": "exterior",
+      "startupMs": 4130.572100000005,
+      "holePreparationMs": 1516.7404999999999,
+      "referenceHoles": 1,
+      "releaseToCoherentMs": 365.1857000000018,
+      "injectedMoves": 900,
+      "durationMs": 15000,
+      "events": 893,
+      "changedWhileHeld": 95,
+      "firstChangedPixelsMs": 203.30000001192093,
+      "frameGaps": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000291
+      },
+      "brushDrainPresentationMs": {
+        "p50": 1338.2000000476837,
+        "p95": 2255.100000023842,
+        "max": 2337.900000035763
+      },
+      "cacheBytes": 31594800,
+      "parentAuthorityBytes": 3145744,
+      "connectionBytes": 262144,
+      "protectionBytes": 786436,
+      "connectionHistoryBytes": 1272,
+      "historyEntries": 1,
+      "exactUndoRedo": true,
+      "opposingSurfaceUnchanged": true,
+      "gpu": {
+        "renderer": "",
+        "reason": "Error: WebGL2 unavailable; bounded CPU display is active.",
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 0,
+        "uploadBytes": 0,
+        "textureBytes": 0,
+        "presentations": 0,
+        "resources": 0
+      },
+      "cpu": {
+        "images": 195,
+        "slices": 1006,
+        "computeMs": 5457.700000226498,
+        "maxSliceMs": 6.900000035762787,
+        "snapshotBytes": 12681408
+      },
+      "persistence": null,
+      "bankCacheConnectionSupportBytes": 67385196
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "role": "interior",
+      "startupMs": 4254.034299999999,
+      "holePreparationMs": 1465.2907000000123,
+      "referenceHoles": 1,
+      "releaseToCoherentMs": 281.3733999999822,
+      "injectedMoves": 900,
+      "durationMs": 15000,
+      "events": 896,
+      "changedWhileHeld": 113,
+      "firstChangedPixelsMs": 154,
+      "frameGaps": {
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "max": 16.80000000000291
+      },
+      "brushDrainPresentationMs": {
+        "p50": 976.8999999761581,
+        "p95": 1910.699999988079,
+        "max": 1993.7999999523163
+      },
+      "cacheBytes": 31594800,
+      "parentAuthorityBytes": 3145744,
+      "connectionBytes": 262144,
+      "protectionBytes": 786436,
+      "connectionHistoryBytes": 1272,
+      "historyEntries": 1,
+      "exactUndoRedo": true,
+      "opposingSurfaceUnchanged": true,
+      "gpu": {
+        "renderer": "",
+        "reason": "Error: WebGL2 unavailable; bounded CPU display is active.",
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 0,
+        "uploadBytes": 0,
+        "textureBytes": 0,
+        "presentations": 0,
+        "resources": 0
+      },
+      "cpu": {
+        "images": 229,
+        "slices": 934,
+        "computeMs": 4799.300000190735,
+        "maxSliceMs": 6.699999988079071,
+        "snapshotBytes": 6340704
+      },
+      "persistence": null,
+      "bankCacheConnectionSupportBytes": 67385196
+    }
+  ],
+  "initialFailure": {
+    "report": ".local/sphere-holes-workflow-initial.json",
+    "passed": 20,
+    "failed": 2,
+    "cause": "Starting placement unnecessarily reset an already editable view. Canvas needed another frame before safe picking, so the stale-view guard ignored a premature first click.",
+    "fix": "preparePick preserves existing editable Globe/Net views and exits immersive inspection only when needed. The stale-view guard remains intact. Both failing Canvas cases and the final full matrix passed."
+  },
+  "contracts": {
+    "hole": "Independent v1 circular-radial ThroughHole with separate mouth identities, real radial sphere/capsule bore clipped by two spherical reference surfaces; no network nodes.",
+    "views": "Physical subtraction in Outside Globe and read-only View from inside. Inside editing overview and Net show exact mouth markers; physical-cut controls explain this limit.",
+    "protection": "Level 0 m support on both banks, conservative 4*pi*surfaceRadius/N padding. Whole dabs and whole history replays validate before any write or stack mutation.",
+    "persistence": "v9 exact banks, immutable World/surface IDs, hole objects, selected role and bounded connection journal, all checksummed and guarded before promotion. Explicit same-geometry v8-to-v9 upgrade; v1-v8 meanings preserved.",
+    "limits": "Hole radius >= Rout*1e-5 and <= min(Rin*.1,thickness*.25); thickness >= Rout*1e-4. Thin Worlds remain editable with a clear unavailable-hole explanation. No displaced terrain excavation."
+  },
+  "qualifications": [
+    "Browser input is trusted CDP mouse/pen/touch and Pixel 7 emulation, not physical-device or human acceptance.",
+    "Browser groups overlap; counts are not summed as unique cases.",
+    "Each long case injects 900 moves over 15 seconds. Chromium can coalesce them before trusted pointer dispatch; both counts are recorded. No editor-side input is dropped.",
+    "First changed terrain pixels are sampled at 100 ms cadence; coherent-drain timings are not per-input first-visible latency.",
+    "Memory subtotal includes banks, two prepared field caches, connection words, support masks and one hole journal entry. It excludes terrain histories, active GPU/canvas resources, transient snapshots, workers and process/driver overhead.",
+    "Sphere tunnel graphs, reciprocal links and hollow/open cylinders are not implemented in this checkpoint. They remain authorized next work.",
+    "No website, server, shared database, Docker or Production changes; historical receipts and screenshot evidence remain intact."
+  ]
+}

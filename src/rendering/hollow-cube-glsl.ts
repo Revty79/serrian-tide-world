@@ -1,3 +1,4 @@
+import {NO_HIT_GLSL,SPHERE_INTERVAL_GLSL,CAPSULE_INTERVAL_GLSL} from './excavation-interval-glsl.ts';
 /** Geometry-only analytic difference adapter. No terrain/input/history authority. */
 export const HOLLOW_CUBE_GLSL=`
 uniform sampler2DArray oppositeElevations;
@@ -5,10 +6,10 @@ uniform int excavationEnabled,primitiveCount,perspectiveEye;
 uniform float innerRatio,eyeFov;
 uniform vec3 eyePosition;
 uniform vec4 primitiveA[48],primitiveB[48];
-vec2 noHit(){return vec2(1.e20,-1.e20);}
+${NO_HIT_GLSL}
 vec2 boxInterval(vec3 o,vec3 d,float h){float lo=-1.e20,hi=1.e20;for(int k=0;k<3;k++){if(abs(d[k])<1.e-8){if(abs(o[k])>h)return noHit();}else{vec2 t=vec2(-h-o[k],h-o[k])/d[k];lo=max(lo,min(t.x,t.y));hi=min(hi,max(t.x,t.y));}}return vec2(lo,hi);}
-vec2 sphereInterval(vec3 o,vec3 d,vec3 c,float r){vec3 v=o-c;float b=dot(v,d);vec3 closest=v-d*b;float q=r*r-dot(closest,closest);if(q<0.)return noHit();q=sqrt(max(0.,q));return vec2(-b-q,-b+q);}
-vec2 capsuleInterval(vec3 o,vec3 d,int i){vec3 a=primitiveA[i].xyz,b=primitiveB[i].xyz,axis=b-a;float r=primitiveA[i].w,len=length(axis);vec2 ends=sphereInterval(o,d,a,r);if(len<1.e-8)return ends;vec2 other=sphereInterval(o,d,b,r);ends=vec2(min(ends.x,other.x),max(ends.y,other.y));vec3 n=axis/len,v=o-a;float dn=dot(d,n),vn=dot(v,n);vec3 pd=d-dn*n,pv=v-vn*n;float aa=dot(pd,pd),bb=dot(pd,pv),cc=dot(pv,pv)-r*r;vec2 radial=noHit();if(aa<1.e-12){if(cc<=0.)radial=vec2(-1.e20,1.e20);}else{float center=-bb/aa;vec3 closest=pv+pd*center;float delta=(r*r-dot(closest,closest))/aa;if(delta>=0.)radial=vec2(center-sqrt(delta),center+sqrt(delta));}vec2 axial=vec2(-1.e20,1.e20);if(abs(dn)<1.e-8){if(vn<0.||vn>len)axial=noHit();}else{axial=vec2(-vn,len-vn)/dn;if(axial.x>axial.y)axial=axial.yx;}vec2 tube=vec2(max(radial.x,axial.x),min(radial.y,axial.y));if(tube.x<=tube.y)ends=vec2(min(ends.x,tube.x),max(ends.y,tube.y));return ends;}
+${SPHERE_INTERVAL_GLSL}
+${CAPSULE_INTERVAL_GLSL}
 vec3 otherFieldAt(int face,vec2 uv){int n=textureSize(oppositeElevations,0).x-1;vec2 q=clamp((uv+1.)*.5,0.,1.)*float(n);ivec2 p=min(ivec2(floor(q)),ivec2(n-1));vec2 f=q-vec2(p);return mix(mix(texelFetch(oppositeElevations,ivec3(p,face),0).xyz,texelFetch(oppositeElevations,ivec3(p+ivec2(1,0),face),0).xyz,f.x),mix(texelFetch(oppositeElevations,ivec3(p+ivec2(0,1),face),0).xyz,texelFetch(oppositeElevations,ivec3(p+ivec2(1,1),face),0).xyz,f.x),f.y);}
 vec4 hollowRay(vec2 pixel){vec2 screen=pixel/backingSize*viewport;vec3 o,d;
  if(perspectiveEye==1){o=eyePosition;vec2 xy=(screen-viewport*.5)/(viewport.y*.5)*tan(eyeFov*.5);d=normalize(-cameraForward+cameraRight*xy.x+cameraUp*xy.y);}

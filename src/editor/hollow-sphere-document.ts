@@ -2,27 +2,40 @@ import {prepareSphericalSession} from './prepare-spherical-session.ts';
 import {HOLLOW_SPHERE_ROLES,type HollowSphereRole} from '../surfaces/hollow-sphere.ts';
 import type {HollowSphereWorld} from '../terrain/hollow-sphere.ts';
 import type {PersistenceWork} from '../persistence/cooperative-work.ts';
+import {TerrainHistory,type WordHistoryJournal} from './terrain-history.ts';
+import {EMPTY_SPHERE_CONNECTIONS,SPHERE_CONNECTION_BYTES,sphereConnectionWords,decodeSphereConnectionWords,validateSphereConnections,validateSphereConnectionJournal,prepareSphereProtection,type SphereConnections} from './hollow-sphere-connections.ts';
 type Prepared=Awaited<ReturnType<typeof prepareSphericalSession>>;
 /** Parent lifecycle only. Each surface retains the accepted spherical session. */
 export class HollowSphereDocument {
  readonly world:HollowSphereWorld;readonly surfaces:Record<HollowSphereRole,Prepared>;
  name:string;hasSaved:boolean;selectedSurface:HollowSphereRole;error='';changed=()=>{};
+ readonly connectionWords=new Uint32Array(SPHERE_CONNECTION_BYTES/4);readonly connectionHistory=new TerrainHistory(this.connectionWords,4*1024*1024,64);
+ connectionFormat:8|9=8;connections:SphereConnections=EMPTY_SPHERE_CONNECTIONS;historyScope:'terrain'|'connections'='terrain';status='Ready';geometryRevision=0;
+ private masks:Record<HollowSphereRole,Uint8Array>;private connectionCheckpoint=0;private changing=false;private disposed=false;
  private checkpointName:string;private checkpointRole:HollowSphereRole;private hostLocked=false;private switching=false;
- constructor(world:HollowSphereWorld,surfaces:Record<HollowSphereRole,Prepared>,name:string,saved:boolean,selected:HollowSphereRole){this.world=world;this.surfaces=surfaces;this.name=this.checkpointName=name;this.hasSaved=saved;this.selectedSurface=this.checkpointRole=selected;}
- get modified(){return this.name!==this.checkpointName||this.selectedSurface!==this.checkpointRole||HOLLOW_SPHERE_ROLES.some(r=>this.surfaces[r].editor.modified);}
+ constructor(world:HollowSphereWorld,surfaces:Record<HollowSphereRole,Prepared>,name:string,saved:boolean,selected:HollowSphereRole){this.world=world;this.surfaces=surfaces;this.name=this.checkpointName=name;this.hasSaved=saved;this.selectedSurface=this.checkpointRole=selected;this.connectionWords.set(sphereConnectionWords(this.connections));this.masks={exterior:new Uint8Array(surfaces.exterior.terrain.sampleCount),interior:new Uint8Array(surfaces.interior.terrain.sampleCount)};world.setExcavationProtection((r,i,h,b)=>{if(this.disposed)throw Error('This spherical document is closed.');if(this.masks[r][i]&&!Object.is(h,b))throw Error('This terrain supports a reference-shell opening. Move or remove the hole before sculpting its protected ground.');});for(const r of HOLLOW_SPHERE_ROLES)surfaces[r].editor.beforeOperation=()=>{this.historyScope='terrain';this.changed();};}
+ get modified(){return this.connectionHistory.stateId!==this.connectionCheckpoint||this.name!==this.checkpointName||this.selectedSurface!==this.checkpointRole||HOLLOW_SPHERE_ROLES.some(r=>this.surfaces[r].editor.modified);}
  get painting(){return HOLLOW_SPHERE_ROLES.some(r=>this.surfaces[r].editor.painting);}
- get processing(){return this.switching||HOLLOW_SPHERE_ROLES.some(r=>this.surfaces[r].editor.processing);}
- get locked(){return this.hostLocked||this.switching;}
+ get processing(){return this.changing||this.switching||HOLLOW_SPHERE_ROLES.some(r=>this.surfaces[r].editor.processing);}
+ get locked(){return this.hostLocked||this.switching||this.changing;}
+ get protectionBytes(){return this.masks.exterior.byteLength+this.masks.interior.byteLength;}
+ get canUndo(){return this.historyScope==='connections'?this.connectionHistory.canUndo:this.surfaces[this.selectedSurface].editor.history.canUndo;}
+ get canRedo(){return this.historyScope==='connections'?this.connectionHistory.canRedo:this.surfaces[this.selectedSurface].editor.history.canRedo;}
  set locked(value:boolean){this.hostLocked=value;this.syncLock();}
  private syncLock(){for(const role of HOLLOW_SPHERE_ROLES)this.surfaces[role].editor.locked=this.locked;}
- markSaved(name:string){this.name=this.checkpointName=name;this.checkpointRole=this.selectedSurface;this.hasSaved=true;for(const r of HOLLOW_SPHERE_ROLES)this.surfaces[r].editor.markSaved(name);this.changed();}
- async drainForSave(yieldWork?:()=>Promise<void>){for(const r of HOLLOW_SPHERE_ROLES)await this.surfaces[r].editor.drainForSave(yieldWork);}
+ markSaved(name:string){this.name=this.checkpointName=name;this.checkpointRole=this.selectedSurface;this.connectionCheckpoint=this.connectionHistory.stateId;this.hasSaved=true;for(const r of HOLLOW_SPHERE_ROLES)this.surfaces[r].editor.markSaved(name);this.changed();}
+ async drainForSave(yieldWork?:()=>Promise<void>){if(this.changing)throw Error('Wait for the spherical opening update.');for(const r of HOLLOW_SPHERE_ROLES)await this.surfaces[r].editor.drainForSave(yieldWork);}
  async select(role:HollowSphereRole){if(!HOLLOW_SPHERE_ROLES.includes(role))throw RangeError('Unknown spherical surface.');if(this.locked||role===this.selectedSurface)return;this.switching=true;this.syncLock();this.changed();try{await this.surfaces[this.selectedSurface].editor.drainForSave();this.selectedSurface=role;this.error='';}catch(cause){this.error=String(cause);throw cause;}finally{this.switching=false;this.syncLock();this.changed();}}
- dispose(){for(const r of HOLLOW_SPHERE_ROLES){this.surfaces[r].editor.disableBackground();this.surfaces[r].editor.releaseDisplay();}this.changed=()=>{};}
+ private async prepareConnections(input:SphereConnections,work:PersistenceWork={}){const epoch=this.geometryRevision,revisions=HOLLOW_SPHERE_ROLES.map(r=>this.surfaces[r].terrain.revision),connections=validateSphereConnections(this.world,input),words=sphereConnectionWords(connections),masks=await prepareSphereProtection(this.world,connections,(r,i)=>this.surfaces[r].terrain.read(this.surfaces[r].terrain.keyAt(i)),work,Object.fromEntries(HOLLOW_SPHERE_ROLES.map(r=>[r,this.surfaces[r].cache.elevationField!.directions])));if(this.disposed||epoch!==this.geometryRevision||HOLLOW_SPHERE_ROLES.some((r,i)=>this.surfaces[r].terrain.revision!==revisions[i]))throw Error('Terrain or spherical openings changed during validation. Retry.');return{connections,words,masks};}
+ async changeConnections(input:SphereConnections,replay?:boolean,preview=false){if(this.locked)throw Error('Wait for the current World operation.');this.changing=true;this.syncLock();this.changed();try{for(const r of HOLLOW_SPHERE_ROLES)await this.surfaces[r].editor.drainForSave();const ready=await this.prepareConnections(input,{progress:(stage,fraction)=>{this.status=`${stage} ${Math.round(fraction*100)}%`;this.changed();}});if(preview)return ready.connections;if(replay===undefined)this.connectionHistory.replace(ready.words);else if(replay)this.connectionHistory.redo();else this.connectionHistory.undo();this.connections=ready.connections;this.masks=ready.masks;this.connectionFormat=9;this.geometryRevision++;this.historyScope='connections';this.status='Spherical openings updated';this.error='';return this.connections;}finally{this.changing=false;this.syncLock();this.changed();}}
+ checkConnections(input:SphereConnections){return this.changeConnections(input,undefined,true);}
+ async replay(redo=false){try{if(this.historyScope==='terrain'){const s=this.surfaces[this.selectedSurface].editor;return redo?s.redo():s.undo();}const words=this.connectionHistory.preview(redo);if(words)await this.changeConnections(decodeSphereConnectionWords(words),redo);}finally{this.changed();}}
+ async restoreConnections(input:SphereConnections,journal?:WordHistoryJournal,work:PersistenceWork={}){const ready=await this.prepareConnections(input,work);this.connectionWords.set(ready.words);this.connectionFormat=9;this.connections=ready.connections;this.masks=ready.masks;if(journal){const canonical=validateSphereConnectionJournal(this.world,this.connections,journal);this.connectionHistory.restoreJournal(canonical);}this.connectionCheckpoint=this.connectionHistory.stateId;if(this.connectionHistory.canUndo||this.connectionHistory.canRedo)this.historyScope='connections';}
+ dispose(){this.disposed=true;for(const r of HOLLOW_SPHERE_ROLES){this.surfaces[r].editor.disableBackground();this.surfaces[r].editor.releaseDisplay();}this.changed=()=>{};}
 }
-export async function prepareHollowSphereDocument(world:HollowSphereWorld,name:string,saved=false,selected:HollowSphereRole='exterior',work:PersistenceWork={}){
+export async function prepareHollowSphereDocument(world:HollowSphereWorld,name:string,saved=false,selected:HollowSphereRole='exterior',work:PersistenceWork={},connections?:SphereConnections,journal?:WordHistoryJournal){
  if(!HOLLOW_SPHERE_ROLES.includes(selected))throw RangeError('Unknown spherical surface.');
  const started=performance.now(),surfaces={} as Record<HollowSphereRole,Prepared>;
- try{for(const r of HOLLOW_SPHERE_ROLES)surfaces[r]=await prepareSphericalSession(world.surfaces[r].terrain,name,saved,work);return{editor:new HollowSphereDocument(world,surfaces,name,saved,selected),preparationMs:performance.now()-started};}
+ try{for(const r of HOLLOW_SPHERE_ROLES)surfaces[r]=await prepareSphericalSession(world.surfaces[r].terrain,name,saved,work);const editor=new HollowSphereDocument(world,surfaces,name,saved,selected);if(connections)await editor.restoreConnections(connections,journal,work);return{editor,preparationMs:performance.now()-started};}
  catch(cause){for(const r of HOLLOW_SPHERE_ROLES)surfaces[r]?.editor.disableBackground();throw cause;}
 }

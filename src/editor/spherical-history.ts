@@ -65,19 +65,22 @@ export class SphericalHistory {
   }
   private apply(entry: Entry, words: Uint32Array) {
     const floats = new Float32Array(words.buffer, words.byteOffset, words.length);
+    // Geometry support can change between gestures. Reject the whole replay
+    // before any write or history-stack mutation if a sample is now protected.
+    for (let i = 0; i < words.length; i++) this.terrain.validateSample(this.terrain.keyAt(entry.indices ? entry.indices[i]! : entry.start + i), floats[i]!);
     for (let i = 0; i < words.length; i++) this.terrain.write(this.terrain.keyAt(entry.indices ? entry.indices[i]! : entry.start + i), floats[i]!);
     this.expectedRevision = this.terrain.revision;
   }
   undo(): boolean {
     if (this.pending) throw new Error('End and commit the spherical operation before Undo.');
-    this.synchronized(); const entry = this.undoEntries.pop();
+    this.synchronized(); const entry = this.undoEntries.at(-1);
     if (!entry) return false;
-    this.apply(entry, entry.before); this.current = entry.from; this.redoEntries.push(entry); return true;
+    this.apply(entry, entry.before); this.undoEntries.pop(); this.current = entry.from; this.redoEntries.push(entry); return true;
   }
   redo(): boolean {
     if (this.pending) throw new Error('End and commit the spherical operation before Redo.');
-    this.synchronized(); const entry = this.redoEntries.pop();
+    this.synchronized(); const entry = this.redoEntries.at(-1);
     if (!entry) return false;
-    this.apply(entry, entry.after); this.current = entry.to; this.undoEntries.push(entry); return true;
+    this.apply(entry, entry.after); this.redoEntries.pop(); this.current = entry.to; this.undoEntries.push(entry); return true;
   }
 }

@@ -80,7 +80,7 @@ export function startSphericalBrushStroke(terrain: SphericalTerrain, point: Sphe
       chunk.indices[chunk.count] = sample.key.index; chunk.values[chunk.count++] = next;
     }
     // Host geometry bounds are checked for the whole prepared dab before any write.
-    for(const block of chunks)for(let i=0;i<block.count;i++)terrain.validateElevation(block.values[i]!);
+    for(const block of chunks)for(let i=0;i<block.count;i++)terrain.validateSample(terrain.keyAt(block.indices[i]!),block.values[i]!);
     // All affected elevations are checked and prepared before the first write of this dab.
     stats.peakPreparedBytes = Math.max(stats.peakPreparedBytes, allocated); let changed = false;
     if (preparation.commitReady) {

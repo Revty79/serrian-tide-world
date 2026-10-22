@@ -13,8 +13,11 @@ Undo/Redo, explore Globe/Net, Save, reload, then Browse saved maps / Open Map.
 Paint Inside opens a fitted editing globe. View from inside selects a separate read-only cavity camera; Globe or Six-face net returns to editing.
 Elevations remain the accepted reference-surface color/relief presentation;
 complete displaced terrain and terrain-aware excavation remain future work.
-The revised assignment adds basic reference-shell holes, tunnels and map links
-after this editor checkpoint; the handoff records their current implementation status.
+Basic spherical **radial holes** now support preview, sizing, moving, removal,
+exact connection history and v9 Save/Open on level 0 m ground. See the
+[hole checkpoint and hands-on review](docs/HOLLOW-SPHERE-HOLES.md). Sphere physical
+tunnel networks and reciprocal map links are the next authorized checkpoint;
+Hollow/Open Cylinder follow after the sphere's basic connections are stable.
 
 The following cube checkpoints and acceptance qualifications remain preserved.
 

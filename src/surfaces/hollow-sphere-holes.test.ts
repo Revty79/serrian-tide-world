@@ -1,0 +1,18 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {createHollowSphereWorld} from '../terrain/hollow-sphere.ts';
+import {cutSphereHoleAt,validateSphereHole,resizeSphereHole,moveSphereHole,sphereHoleCut} from './hollow-sphere-holes.ts';
+import {sphereExcavation,traceSphereExcavation,sphereFreeVolume} from './hollow-sphere-excavation.ts';
+import {dot3,unitDirection,type Vec3} from './cube-sphere.ts';
+const world=()=>createHollowSphereWorld({provider:'physical-hollow-sphere',version:1,worldId:'radial',outerRadiusMeters:1000000,innerRadiusMeters:800000,surfaces:{exterior:{surfaceId:'out',terrainId:'a'},interior:{surfaceId:'in',terrainId:'b'}}},8);
+test('radial holes: both banks, chart seams and poles have aligned physical mouths; move/resize preserve independent identities',()=>{
+ const w=world();for(const role of['exterior','interior']as const)for(const d of[[1,0,0],[0,0,1],[1,1,1]]as Vec3[]){const g=w.surfaces[role].geometry,h=cutSphereHoleAt(w,g.positionsForDirection(d)[0]!,10000);assert.equal(h.kind,'through-hole');assert.equal(h.geometry,'circular-radial');assert(!('nodes'in h));const dirs=h.mouths.map(m=>w.select(m.position).geometry.direction(m.position));assert(dot3(dirs[0]!,dirs[1]!)>1-1e-14);const resized=resizeSphereHole(w,h,15000),moved=moveSphereHole(w,resized,g.positionsForDirection([0,-1,0])[0]!);assert.equal(moved.id,h.id);assert.deepEqual(moved.mouths.map(m=>m.id),h.mouths.map(m=>m.id));assert.equal(moved.radiusMeters,15000);assert.throws(()=>resizeSphereHole(w,h,1));assert.throws(()=>resizeSphereHole(w,h,50001));assert.throws(()=>validateSphereHole(w,{...h,mouths:[h.mouths[0]!,{...h.mouths[1]!,position:w.surfaces.interior.geometry.positionsForDirection([0,1,0])[0]!}]}));}
+});
+test('radial holes: genuine shell subtraction, rock bore walls and continuous clearance are shape-specific',()=>{
+ const w=world(),p=w.surfaces.exterior.geometry.positionsForDirection([1,0,0])[0]!,hole=cutSphereHoleAt(w,p,10000),closed=sphereExcavation(w,[]),cut=sphereExcavation(w,[hole]);assert.equal(traceSphereExcavation(closed,[4,0,0],[-1,0,0])!.kind,'exterior');const through=traceSphereExcavation(cut,[4,0,0],[-1,0,0])!;assert.equal(through.kind,'interior');assert(Math.abs(through.point[0]+.8)<1e-10);const wall=traceSphereExcavation(cut,[.9,0,0],[0,1,0])!;assert.equal(wall.kind,'rock');assert(Math.abs(wall.point[1]-.01)<1e-10);for(let x=780000;x<=1020000;x+=1000)assert(sphereFreeVolume(cut,[x,0,0],100));assert(!sphereFreeVolume(cut,[900000,20000,0]));assert.equal(traceSphereExcavation(closed,[0,0,0],[1,0,0])!.kind,'interior');const c=sphereHoleCut(w,hole);assert(dot3(unitDirection(c.a),unitDirection(c.b))>1-1e-14);
+});
+test('a valid thin spherical World safely rejects holes below the reference-cut precision envelope',()=>{
+ const w=world(),thin=createHollowSphereWorld({...w.configuration,innerRadiusMeters:999950},8),g=thin.surfaces.exterior.geometry;assert.throws(()=>cutSphereHoleAt(thin,g.positionsForDirection([1,0,0])[0]!,10),/shell thickness/);assert.equal(thin.surfaces.exterior.terrain.revision,0);assert.equal(thin.surfaces.interior.terrain.revision,0);
+});
+test('radial mouth validation rejects a shifted anchor even when its direction cosine rounds to one',()=>{
+ const w=world(),hole=cutSphereHoleAt(w,w.surfaces.exterior.geometry.positionsForDirection([1,0,0])[0]!,10000),shifted=w.surfaces.interior.geometry.positionsForDirection([1,1e-8,0])[0]!;assert.equal(dot3([1,0,0],w.surfaces.interior.geometry.direction(shifted)),1);assert.throws(()=>validateSphereHole(w,{...hole,mouths:[hole.mouths[0]!,{...hole.mouths[1]!,position:shifted}]}),/align/);
+});

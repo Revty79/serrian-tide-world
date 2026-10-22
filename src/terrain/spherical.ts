@@ -19,7 +19,7 @@ export function sphericalSampleCount(cells: number): number {
 }
 
 /** A numerical sphere, separate from the planar v1/v2 model and all save codecs/UI. */
-export function createSphericalTerrain(options: { readonly terrainId: string; readonly identity: SurfaceIdentity; readonly radiusMeters: number; readonly cellsPerEdge?: number; readonly initialElevation?:number; readonly validateElevation?:(height:number)=>void }) {
+export function createSphericalTerrain(options: { readonly terrainId: string; readonly identity: SurfaceIdentity; readonly radiusMeters: number; readonly cellsPerEdge?: number; readonly initialElevation?:number; readonly validateElevation?:(height:number)=>void; readonly validateSample?:(index:number,height:number,before:number)=>void }) {
   assertIdentity(options.identity);
   for (const id of [options.terrainId, options.identity.worldId, options.identity.surfaceId]) if (typeof id !== 'string' || !id.trim() || id.length > 128) throw new RangeError('Spherical identities must contain 1–128 characters.');
   const cells = options.cellsPerEdge ?? DEFAULT_SPHERICAL_CELLS, count = sphericalSampleCount(cells), side = cells - 1;
@@ -46,6 +46,7 @@ export function createSphericalTerrain(options: { readonly terrainId: string; re
     if (key.worldId !== identity.worldId || key.surfaceId !== identity.surfaceId || key.terrainId !== metadata.terrainId || key.representationVersion !== 1 || key.cellsPerEdge !== cells) throw new RangeError('Sample belongs to another terrain, surface or representation.');
     assertIndex(key.index); return key.index;
   };
+  const validateSample=(key:SphericalSampleKey,value:number)=>{const index=checkedKey(key);validateElevation(value);options.validateSample?.(index,Math.fround(value),elevations[index]!);};
   const checkedAddress = (address: SphericalSampleAddress) => {
     if (address.worldId !== identity.worldId || address.surfaceId !== identity.surfaceId || !(CUBE_FACES as readonly string[]).includes(address.patchId)) throw new RangeError('Address belongs to another spherical surface or face.');
     if (![address.column, address.row].every((value) => Number.isInteger(value) && value >= 0 && value <= cells)) throw new RangeError('Invalid spherical face sample coordinates.');
@@ -119,11 +120,11 @@ export function createSphericalTerrain(options: { readonly terrainId: string; re
     return { address: target, sample: resolve(target), reverseDirection, seam: geometry.crossEdge(positionAt(address), edge) };
   };
   return Object.freeze({
-    metadata, geometry, sampleCount: count, elevationByteLength: elevations.byteLength, keyAt, resolve, aliases, positionAt, neighbors, step,validateElevation,
+    metadata, geometry, sampleCount: count, elevationByteLength: elevations.byteLength, keyAt, resolve, aliases, positionAt, neighbors, step,validateElevation,validateSample,
     read: (key: SphericalSampleKey): number => elevations[checkedKey(key)]!,
     get revision() { return revision; },
     write: (key: SphericalSampleKey, value: number): void => {
-      const index = checkedKey(key); validateElevation(value); const next = Math.fround(value);
+      const index = checkedKey(key); validateSample(key,value); const next = Math.fround(value);
       if (!Object.is(elevations[index], next)) { elevations[index] = next; revision++; }
     },
     copyElevations: (): Float32Array => elevations.slice(),

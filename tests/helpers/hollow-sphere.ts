@@ -12,3 +12,7 @@ export async function sphereSide(p:Page,role:'exterior'|'interior'){
 export async function sphereDraw(p:Page,tool='Raise'){
  await p.getByRole('button',{name:tool,exact:true}).click();const r=(await sphereCanvas(p).boundingBox())!;await p.mouse.move(r.x+r.width*.45,r.y+r.height*.48);await p.mouse.down();await p.mouse.move(r.x+r.width*.55,r.y+r.height*.52,{steps:12});await p.mouse.up();await expect(sphereCanvas(p)).toHaveAttribute('data-processing','false');await sphericalPresentation(p);
 }
+
+export async function createNorthSphereHole(p:Page){
+ await toolsPanel(p,true);await p.getByRole('button',{name:'View pz',exact:true}).click();await p.getByLabel('Opening width (m)',{exact:true}).fill('30000');await p.getByRole('button',{name:'Cut Hole',exact:true}).click();await toolsPanel(p,false);await sphericalPresentation(p);const r=(await sphereCanvas(p).boundingBox())!;await p.mouse.click(r.x+r.width*.5,r.y+r.height*.5);await toolsPanel(p,true);await expect(p.getByRole('button',{name:'Create Hole',exact:true})).toBeVisible({timeout:30000});await p.getByRole('button',{name:'Create Hole',exact:true}).click();await expect.poll(()=>p.evaluate(()=>window.__hollowSphereEditor!.snapshot().connections.holes.length)).toBe(1);await toolsPanel(p,false);await p.getByRole('button',{name:'Reset View',exact:true}).click();await sphericalPresentation(p);
+}

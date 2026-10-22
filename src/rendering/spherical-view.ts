@@ -5,7 +5,7 @@ import type { SphericalTerrain } from '../terrain/spherical.ts';
 export interface ScreenPoint { readonly x: number; readonly y: number }
 export interface Viewport { readonly width: number; readonly height: number }
 export interface SphereFrame { readonly right: Vec3; readonly up: Vec3; readonly forward: Vec3 }
-export interface SphericalView { readonly mode: 'globe' | 'net'; readonly frame: SphereFrame; readonly zoom: number; readonly pan: ScreenPoint; readonly interior?:boolean; readonly interiorView?:'edit'|'center' }
+export interface SphericalView { readonly mode: 'globe' | 'net'; readonly frame: SphereFrame; readonly zoom: number; readonly pan: ScreenPoint; readonly interior?:boolean; readonly interiorView?:'edit'|'center';readonly eyeMeters?:Vec3 }
 /** An inside bank uses the fitted editing projection unless inspection is explicit. */
 export const sphereCenterInspection=(view:SphericalView)=>view.mode==='globe'&&view.interior===true&&view.interiorView==='center';
 export const INITIAL_SPHERICAL_VIEW: SphericalView = Object.freeze({ mode: 'globe', frame: Object.freeze({ right: [0, 1, 0] as Vec3, up: [0, 0, 1] as Vec3, forward: [1, 0, 0] as Vec3 }), zoom: 1, pan: Object.freeze({ x: 0, y: 0 }) });
@@ -13,6 +13,7 @@ export const NET_FACES: Readonly<Record<CubeFace, readonly [number, number]>> = 
 const Q = Math.PI / 4;
 const finitePoint = (point: ScreenPoint) => Number.isFinite(point.x) && Number.isFinite(point.y);
 export function sphericalLayout(view: SphericalView, size: Viewport) {
+  if(view.eyeMeters&&(view.eyeMeters.length!==3||!view.eyeMeters.every(Number.isFinite)))throw RangeError('Finite spherical inspection eye required.');
   if (!(size.width > 0 && size.height > 0) || !Number.isFinite(size.width + size.height) || !Number.isFinite(view.zoom) || view.zoom < 1 || view.zoom > 4 || !finitePoint(view.pan)) throw new RangeError('Invalid spherical viewport or view.');
   const f = view.frame;
   if (!['globe', 'net'].includes(view.mode) || ![f.right, f.up, f.forward].every((v) => v.length === 3 && v.every(Number.isFinite) && Math.abs(Math.hypot(...v) - 1) < 1e-10)

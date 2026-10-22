@@ -41,6 +41,7 @@ export class SphericalSession {
   private strokeRevision = 0;
   changed = () => {};
   error = (_message: string) => {};
+  beforeOperation=()=>{};
   readonly statistics = { dabs: 0, writes: 0, updatedPixels: 0, updatedRegions: 0, fullRebuilds: 0, maxDabMs: 0, slices: 0 };
   constructor(terrain: SphericalTerrain, cache: SphericalDisplayCache, name = 'Untitled sphere', saved = false) {
     this.name = name; this.checkpointName = name; this.hasSaved = saved;
@@ -72,6 +73,7 @@ export class SphericalSession {
   releaseDisplay() { this.displayJob?.return([]); this.displayJob = undefined; this.field = undefined; }
   begin(direction: Vec3, settings: SphericalBrushSettings, hemisphere?: Vec3) {
     if (this.painting || this.locked) return false;
+    this.beforeOperation();
     const start = performance.now();
     this.strokeRevision = this.terrain.revision;
     const decision = sphericalWorkDecision(this.terrain, direction, settings, this.coarse); this.lastWork = { ...decision, backend: this.workerFactory ? decision.backend : 'cooperative' };

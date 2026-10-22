@@ -6,6 +6,11 @@ import { SphericalHistory } from './spherical-history.ts';
 
 const make = () => createSphericalTerrain({ terrainId: 'history', identity: { worldId: 'w', surfaceId: 's' }, radiusMeters: 1000, cellsPerEdge: 16 });
 const words = (terrain: ReturnType<typeof make>) => new Uint32Array(terrain.copyElevations().buffer);
+
+test('protected spherical support rejects whole Undo/Redo before terrain or history stacks change',()=>{
+ let blocked=false;const t=createSphericalTerrain({terrainId:'protected',identity:{worldId:'w',surfaceId:'s'},radiusMeters:1000,cellsPerEdge:16,initialElevation:0,validateSample:(i,h,b)=>{if(blocked&&i===8&&!Object.is(h,b))throw Error('Protected excavation support.');}}),h=new SphericalHistory(t),before=words(t);
+ h.begin();t.write(t.keyAt(0),10);t.write(t.keyAt(8),20);h.commit();const after=words(t),state=h.stateId,bytes=h.retainedBytes;blocked=true;assert.throws(()=>h.undo(),/Protected/);assert.deepEqual(words(t),after);assert.equal(h.stateId,state);assert.equal(h.retainedBytes,bytes);assert(h.canUndo);assert(!h.canRedo);blocked=false;assert(h.undo());assert.deepEqual(words(t),before);blocked=true;assert.throws(()=>h.redo(),/Protected/);assert.deepEqual(words(t),before);assert(h.canRedo);blocked=false;assert(h.redo());assert.deepEqual(words(t),after);
+});
 test('spherical history branches, no-ops, idempotent writes and signed-zero changes retain exact bits and state IDs', () => {
   const terrain = make(), history = new SphericalHistory(terrain), key = terrain.keyAt(0), initial = words(terrain);
   history.begin(); terrain.write(key, -0); assert.equal(history.commit(), true); const zero = words(terrain), saved = history.stateId;

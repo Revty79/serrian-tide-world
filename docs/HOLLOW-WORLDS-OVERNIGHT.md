@@ -44,7 +44,8 @@ after the preceding capped hollow editor is stable.
   inspection checks, eight sustained-painting cases, 62 cube preservation cases,
   and two corrected setup compatibility checks. The earlier 42 passing legacy
   cases cover solid sphere/cylinder/cube and flat/wrapped editing/Save/Open.
-  Sphere connections are next; cylinders have not yet been implemented.
+  The radial-hole checkpoint below is now verified; sphere tunnels/links are
+  next. Cylinders have not yet been implemented.
   [Compact receipt](evidence/hollow-sphere-editor.json).
 
 Foundation validation: **1,219 numerical tests**, typecheck/build and **28 existing
@@ -133,9 +134,10 @@ entrances/exits. Reciprocal map links connect distinct locations/maps/Worlds
 without inherently excavating material. These remain distinct permanent contracts.
 The cube's accepted v6/v7 identities, history and functionality are preserved.
 
-Sphere follow-up needs radial mouth correspondence, spherical chart adapters,
-physical shell intersection/clearance, opening-aware picking/rendering and guarded
-parent connection records. Cylinder follow-up additionally needs wall/cap/rim
+Sphere radial holes now provide aligned mouths, spherical chart adapters,
+physical shell subtraction, opening-aware picking/rendering, protected ground
+and guarded parent connection records. Sphere physical tunnel graphs and map
+links are the next checkpoint. Cylinder follow-up additionally needs wall/cap/rim
 correspondence and axial versus radial shell thickness. Open annular rims must not
 be confused with excavated holes. Map links need role-aware canonical anchors,
 reciprocal identity validation and unresolved-destination behavior on each shape.
@@ -164,3 +166,35 @@ transient snapshots, workers and process/driver overhead. No total-process or
 per-input-first-pixel latency claim is made. The compact receipt records every
 case and the bounds of the timing evidence. Screenshots show the fitted editor
 on desktop, Canvas and mobile emulation.
+
+## Basic spherical radial-hole checkpoint
+
+The updated Phase 2 authorization now has a verified direct-hole workflow.
+[Hands-on/source review](HOLLOW-SPHERE-HOLES.md) and
+[compact receipt](evidence/hollow-sphere-holes.json) record its scope.
+Outside Globe and View from inside show real reference-shell subtraction.
+The fitted inside editing overview and Net show mouth markers; their tools state
+that the physical cut volume is inspected in the physical views. Visible opposite
+terrain is identified in the readout and cannot be painted through the opening.
+
+The final full numerical suite passed **1,235** cases, typecheck/build passed,
+and the browser matrix passed **22** cases. Additional focused groups passed:
+eight native-input/shared-palette cases, four physical-cursor cases, two thin-shell
+limit cases, eight sustained painting cases with an actual hole, twenty solid
+sphere compatibility cases and four existing cube physical-passage cases. Groups
+overlap; this is not a count of unique cases. The extracted common cube shader
+is byte-identical to the published sphere-editor checkpoint's cube shader.
+
+With a real pole hole present, first changed terrain pixels were observed at
+68.7-203.3 ms (100 ms observer cadence); release to coherent display was
+26.7-365.2 ms. All eight whole-gesture Undo/Redo checks were exact and the other
+bank stayed untouched. N256 WebGL2 inside Save took 1.48 s and reopen 5.10 s,
+including reference-support validation, with exact two-bank hashes and the hole.
+The counted bank/cache/connection/support subtotal is 17,112,940 bytes at N128
+and 67,385,196 bytes at N256, excluding terrain histories, GPU/canvas resources,
+transient snapshots, workers and process/driver overhead.
+
+Sphere physical tunnels and reciprocal map links remain **next authorized work**.
+The earlier basic-excavation deferral is superseded; advanced displaced-terrain
+excavation and full 3D material reconstruction remain deferred. No owner
+acceptance or cylinder implementation is inferred from this checkpoint.
