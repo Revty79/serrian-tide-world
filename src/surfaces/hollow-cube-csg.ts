@@ -18,15 +18,15 @@ export function hollowExcavation(world:HollowCubeWorld,passages:readonly Physica
 export function rayBoxInterval(origin:CubeVector,direction:CubeVector,half:number):Interval|undefined {
  let lo=-Infinity,hi=Infinity;for(let i=0;i<3;i++){if(Math.abs(direction[i]!)<1e-14){if(Math.abs(origin[i]!)>half)return;continue;}const a=(-half-origin[i]!)/direction[i]!,b=(half-origin[i]!)/direction[i]!;lo=Math.max(lo,Math.min(a,b));hi=Math.min(hi,Math.max(a,b));if(hi<lo)return;}return[lo,hi];
 }
-function raySphere(o:CubeVector,d:CubeVector,c:CubeVector,r:number):Interval|undefined {const v=sub(o,c),b=cubeDot(v,d),disc=b*b-cubeDot(v,v)+r*r;if(disc<0)return;const q=Math.sqrt(disc);return[-b-q,-b+q];}
+function raySphere(o:CubeVector,d:CubeVector,c:CubeVector,r:number):Interval|undefined {const v=sub(o,c),b=cubeDot(v,d),perpendicular=add(v,d,-b),disc=r*r-cubeDot(perpendicular,perpendicular);if(disc<0)return;const q=Math.sqrt(disc);return[-b-q,-b+q];}
 /** Analytic convex capsule intersection: clipped cylinder plus both endpoint balls. */
 export function rayCapsuleInterval(o:CubeVector,d:CubeVector,p:ExcavationPrimitive):Interval|undefined {
- const axis=sub(p.b,p.a),length=Math.hypot(...axis);if(length<1e-14)return raySphere(o,d,p.a,p.radius);
+ const axis=sub(p.b,p.a),length=Math.hypot(...axis);if(length===0)return raySphere(o,d,p.a,p.radius);
  const n=unit(axis),v=sub(o,p.a),dv=cubeDot(d,n),vv=cubeDot(v,n),perpD=add(d,n,-dv),perpV=add(v,n,-vv),aa=cubeDot(perpD,perpD),bb=cubeDot(perpD,perpV),cc=cubeDot(perpV,perpV)-p.radius*p.radius;
  let lo=Infinity,hi=-Infinity;const include=(v:Interval|undefined)=>{if(v){lo=Math.min(lo,v[0]);hi=Math.max(hi,v[1]);}};
  include(raySphere(o,d,p.a,p.radius));include(raySphere(o,d,p.b,p.radius));
- let radial:Interval|undefined;if(aa<1e-14){if(cc<=0)radial=[-Infinity,Infinity];}else {const det=bb*bb-aa*cc;if(det>=0){const s=Math.sqrt(det);radial=[(-bb-s)/aa,(-bb+s)/aa];}}
- if(radial){let a=-Infinity,b=Infinity;if(Math.abs(dv)<1e-14){if(vv<0||vv>length)a=Infinity;}else{a=-vv/dv;b=(length-vv)/dv;if(a>b)[a,b]=[b,a];}const start=Math.max(a,radial[0]),end=Math.min(b,radial[1]);if(start<=end)include([start,end]);}
+ let radial:Interval|undefined;if(aa===0){if(cc<=0)radial=[-Infinity,Infinity];}else {const center=-bb/aa,closest=add(perpV,perpD,center),disc=p.radius*p.radius-cubeDot(closest,closest);if(disc>=0){const s=Math.sqrt(disc/aa);radial=[center-s,center+s];}}
+ if(radial){let a=-Infinity,b=Infinity;if(dv===0){if(vv<0||vv>length)a=Infinity;}else{a=-vv/dv;b=(length-vv)/dv;if(a>b)[a,b]=[b,a];}const start=Math.max(a,radial[0]),end=Math.min(b,radial[1]);if(start<=end)include([start,end]);}
  return lo<=hi?[lo,hi]:undefined;
 }
 export interface ExcavationHit {readonly distance:number;readonly point:CubeVector;readonly normal:CubeVector;readonly kind:'exterior'|'interior'|'rock';readonly face?:SolidCubeFace;readonly u?:number;readonly v?:number}

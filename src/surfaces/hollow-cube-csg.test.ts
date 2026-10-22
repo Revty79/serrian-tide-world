@@ -16,6 +16,14 @@ test('H4 genuine difference: open portal ray crosses shell into cavity, rock wal
  for(let z=380000;z<=520000;z+=500)assert(hollowFreeVolume(model,[0,0,z],100));assert.equal(hollowFreeVolume(model,[20000,0,450000]),false);
 });
 test('H4 exact capsule intervals: axial, perpendicular, tangent and no-hit',()=>{const p:ExcavationPrimitive={a:[0,0,0],b:[0,0,2],radius:1};assert.deepEqual(rayCapsuleInterval([0,0,-3],[0,0,1],p),[2,6]);assert.deepEqual(rayCapsuleInterval([-3,0,1],[1,0,0],p),[2,4]);assert.equal(rayCapsuleInterval([-3,2,1],[1,0,0],p),undefined);assert.deepEqual(rayCapsuleInterval([-3,1,1],[1,0,0],p),[3,3]);});
+
+test('shared capsule ray precision: submeter opening at a world-scale ray distance',()=>{
+ const cut:ExcavationPrimitive={a:[1000000000,2000000000,0],b:[1000000000,2000000000,100000],radius:.125};
+ const interval=rayCapsuleInterval([1000000000,2000000000,-1000000000],[0,0,1],cut)!;
+ assert.deepEqual(interval,[1000000000-.125,1000100000+.125]);
+ // The old squared-distance subtraction incorrectly reported a hit here.
+ assert.equal(rayCapsuleInterval([1000000000+.25,2000000000,-1000000000],[0,0,1],cut),undefined);
+});
 test('H4/H5 protected ground, safe chamber changes, exact metadata replay and restored physical holes',async()=>{
  const world=createHollowCubeWorld(config),prepared=await prepareHollowCubeDocument(world,'Physical'),doc=prepared.editor,p=tunnelAt(world,{...world.surfaces.exterior.geometry.identity,patchId:'pz',u:0,v:0},8000);await doc.changeConnections({links:[],passages:[p]});assert(doc.canUndo);
  const session=doc.sessions.exterior;session.begin({...world.surfaces.exterior.geometry.identity,patchId:'pz',u:0,v:0},{version:1,tool:'raise',radiusMeters:15000,strengthMeters:200});session.release();await assert.rejects(session.drainForSave(),/Resolve/);assert.equal(session.terrain.revision,0);session.keepPartial();
