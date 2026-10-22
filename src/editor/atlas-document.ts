@@ -17,9 +17,10 @@ import {createHollowCubeWorld} from '../terrain/hollow-cube.ts';
 import {prepareHollowCubeDocument} from './hollow-cube-document.ts';
 import {createHollowSphereWorld} from '../terrain/hollow-sphere.ts';
 import {prepareHollowSphereDocument} from './hollow-sphere-document.ts';
+import {hollowStartingElevation,type HollowTerrainStart} from '../terrain/initial-elevation.ts';
 
 export type WorldShape = 'bounded' | 'wrapped' | 'sphere' | 'cylinder' | 'cube' | 'hollow-cube' | 'hollow-sphere' | 'hollow-cylinder';
-export interface WorldSetup { shape: WorldShape; name: string; radiusMeters: number; cellsPerEdge: 128 | 256; lengthMeters?: number; cylinderDetail?: 64 | 128 | 256; sideLengthMeters?:number;innerSideLengthMeters?:number;innerRadiusMeters?:number;innerLengthMeters?:number }
+export interface WorldSetup { shape: WorldShape; name: string; radiusMeters: number; cellsPerEdge: 128 | 256; lengthMeters?: number; cylinderDetail?: 64 | 128 | 256; sideLengthMeters?:number;innerSideLengthMeters?:number;innerRadiusMeters?:number;innerLengthMeters?:number;terrainStart?:HollowTerrainStart }
 export type AtlasDocument = ({kind:'hollow-cylinder'} & Awaited<ReturnType<typeof prepareHollowCylinderDocument>>) | ({kind:'hollow-sphere'} & Awaited<ReturnType<typeof prepareHollowSphereDocument>>) | ({kind:'hollow-cube'} & Awaited<ReturnType<typeof prepareHollowCubeDocument>>) | ({ kind: 'cube' } & Awaited<ReturnType<typeof prepareCubeSession>>) | ({ kind: 'cylinder' } & Awaited<ReturnType<typeof prepareCylinderSession>>) | { kind: 'planar'; document: TerrainDocument } | ({ kind: 'sphere' } & Awaited<ReturnType<typeof prepareSphericalSession>>);
 export function documentShape(active: AtlasDocument): WorldShape { return active.kind==='hollow-cylinder'?'hollow-cylinder':active.kind==='hollow-sphere'?'hollow-sphere':active.kind === 'hollow-cube' ? 'hollow-cube' : active.kind === 'cube' ? 'cube' : active.kind === 'cylinder' ? 'cylinder' : active.kind === 'sphere' ? 'sphere' : isWrapped(active.document.terrain) ? 'wrapped' : 'bounded'; }
 export const shapeName = (shape: WorldShape) => ({ bounded: 'Bounded flat map', wrapped: 'Horizontally wrapped flat map', sphere: 'Spherical world', cylinder: 'Physical capped cylinder', cube:'Solid cube world', 'hollow-cube':'Hollow cube world','hollow-sphere':'Hollow sphere world','hollow-cylinder':'Capped hollow cylinder world' })[shape];
@@ -30,17 +31,18 @@ export async function createAtlasDocument(setup: WorldSetup, work?: PersistenceW
   if (!setup.name.trim() || setup.name.trim().length > 120) throw new RangeError('Enter a world/map name of 1–120 characters.');
   const id = crypto.randomUUID(), name = setup.name.trim();
   if(setup.shape==='hollow-cylinder'){
-    const world=createHollowCylinderWorld({provider:'physical-hollow-cylinder',version:1,configuration:'capped',worldId:id,outerRadiusMeters:setup.radiusMeters,innerRadiusMeters:setup.innerRadiusMeters??NaN,outerLengthMeters:setup.lengthMeters??NaN,innerLengthMeters:setup.innerLengthMeters??NaN,surfaces:{exterior:{surfaceId:crypto.randomUUID(),terrainId:crypto.randomUUID()},interior:{surfaceId:crypto.randomUUID(),terrainId:crypto.randomUUID()}}},cylinderResolution(setup.cylinderDetail??NaN));
+    const start=hollowStartingElevation(setup.terrainStart,Math.min(setup.radiusMeters-(setup.innerRadiusMeters??NaN),((setup.lengthMeters??NaN)-(setup.innerLengthMeters??NaN))/2));
+    const world=createHollowCylinderWorld({provider:'physical-hollow-cylinder',version:1,configuration:'capped',worldId:id,outerRadiusMeters:setup.radiusMeters,innerRadiusMeters:setup.innerRadiusMeters??NaN,outerLengthMeters:setup.lengthMeters??NaN,innerLengthMeters:setup.innerLengthMeters??NaN,surfaces:{exterior:{surfaceId:crypto.randomUUID(),terrainId:crypto.randomUUID()},interior:{surfaceId:crypto.randomUUID(),terrainId:crypto.randomUUID()}}},cylinderResolution(setup.cylinderDetail??NaN),start);
     return{kind:'hollow-cylinder',...await prepareHollowCylinderDocument(world,name,false,'exterior',work)};
   }
   if(setup.shape==='hollow-sphere'){
     if(![128,256].includes(setup.cellsPerEdge))throw RangeError('Select N128 or N256.');
-    const world=createHollowSphereWorld({provider:'physical-hollow-sphere',version:1,worldId:id,outerRadiusMeters:setup.radiusMeters,innerRadiusMeters:setup.innerRadiusMeters??NaN,surfaces:{exterior:{surfaceId:crypto.randomUUID(),terrainId:crypto.randomUUID()},interior:{surfaceId:crypto.randomUUID(),terrainId:crypto.randomUUID()}}},setup.cellsPerEdge);
+    const world=createHollowSphereWorld({provider:'physical-hollow-sphere',version:1,worldId:id,outerRadiusMeters:setup.radiusMeters,innerRadiusMeters:setup.innerRadiusMeters??NaN,surfaces:{exterior:{surfaceId:crypto.randomUUID(),terrainId:crypto.randomUUID()},interior:{surfaceId:crypto.randomUUID(),terrainId:crypto.randomUUID()}}},setup.cellsPerEdge,hollowStartingElevation(setup.terrainStart,setup.radiusMeters-(setup.innerRadiusMeters??NaN)));
     return{kind:'hollow-sphere',...await prepareHollowSphereDocument(world,name,false,'exterior',work)};
   }
   if(setup.shape==='hollow-cube'){
     const outer=setup.sideLengthMeters??NaN,inner=setup.innerSideLengthMeters??NaN;assertInteractiveCube(outer,setup.cellsPerEdge);assertInteractiveCube(inner,setup.cellsPerEdge);
-    const world=createHollowCubeWorld({provider:'physical-hollow-cube',version:1,worldId:id,outerSideLengthMeters:outer,innerSideLengthMeters:inner,surfaces:{exterior:{surfaceId:crypto.randomUUID(),terrainId:crypto.randomUUID()},interior:{surfaceId:crypto.randomUUID(),terrainId:crypto.randomUUID()}}},setup.cellsPerEdge);
+    const world=createHollowCubeWorld({provider:'physical-hollow-cube',version:1,worldId:id,outerSideLengthMeters:outer,innerSideLengthMeters:inner,surfaces:{exterior:{surfaceId:crypto.randomUUID(),terrainId:crypto.randomUUID()},interior:{surfaceId:crypto.randomUUID(),terrainId:crypto.randomUUID()}}},setup.cellsPerEdge,hollowStartingElevation(setup.terrainStart,(outer-inner)/2));
     return{kind:'hollow-cube',...await prepareHollowCubeDocument(world,name,false,undefined,work)};
   }
   if(setup.shape==='cube'){

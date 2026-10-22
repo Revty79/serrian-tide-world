@@ -1,11 +1,11 @@
 import {createSphericalTerrain,type SphericalSampleAddress,type SphericalSampleKey} from './spherical.ts';
 import {hollowSphereElevationValidator,createHollowSphereSurfaceGeometry,hollowSphereConfiguration,hollowSphereDimensions,HOLLOW_SPHERE_ROLES,type HollowSphereConfiguration,type HollowSphereRole} from '../surfaces/hollow-sphere.ts';
 import {defineWorld} from '../surfaces/world.ts';
-export function createHollowSphereWorld(input:HollowSphereConfiguration,cellsPerEdge=128){
+export function createHollowSphereWorld(input:HollowSphereConfiguration,cellsPerEdge=128,initialElevation=0){
  const configuration=hollowSphereConfiguration(input),dimensions=hollowSphereDimensions(configuration);
  let protection=(role:HollowSphereRole,index:number,height:number,before:number)=>{void role;void index;void height;void before;};
  const make=(role:HollowSphereRole)=>{
-  const geometry=createHollowSphereSurfaceGeometry(configuration,role),terrain=createSphericalTerrain({terrainId:configuration.surfaces[role].terrainId,identity:geometry.identity,radiusMeters:geometry.radiusMeters,cellsPerEdge,initialElevation:0,validateElevation:hollowSphereElevationValidator(configuration,role),validateSample:(i,h,b)=>protection(role,i,h,b)});
+  const geometry=createHollowSphereSurfaceGeometry(configuration,role),terrain=createSphericalTerrain({terrainId:configuration.surfaces[role].terrainId,identity:geometry.identity,radiusMeters:geometry.radiusMeters,cellsPerEdge,initialElevation,validateElevation:hollowSphereElevationValidator(configuration,role),validateSample:(i,h,b)=>protection(role,i,h,b)});
   const address=(a:SphericalSampleAddress)=>({...a,row:role==='interior'?cellsPerEdge-a.row:a.row});
   return Object.freeze({role,geometry,terrain,
    resolve:(a:SphericalSampleAddress)=>terrain.resolve(address(a)),

@@ -1,0 +1,4 @@
+import base from './playwright.hollow-worlds.config.mjs';
+export default {...base,testMatch:['hollow-world-views.spec.ts','hollow-cylinder-workflow.spec.ts','hollow-cylinder-view-proof.spec.ts','hollow-sphere-hole-input.spec.ts','hollow-sphere-connections.spec.ts','hollow-cylinder-network-guide.spec.ts','hollow-cube-editor.spec.ts','cube-family.spec.ts','cylinder-workspace.spec.ts','spherical-editing.spec.ts','spherical-persistence.spec.ts'],
+ grep:/hollow cube |hollow cylinder (auto|canvas): fitted|trusted pen\/touch|thin hollow sphere|cylinder network |H1\/H2|H4 |H5 native|I3 |I4\/I5 |I6 v1|normal Atlas creates|normal cylinder detail|actual UI:|all four tools on globe|mouse\/pen\/touch|sphere guided|sphere connections N128|capped hollow cylinder (128|256)/,
+ reporter:[['list'],['json',{outputFile:process.env.HOLLOW_POLISH_REPORT??'.local/hollow-polish-regression.json'}]]};

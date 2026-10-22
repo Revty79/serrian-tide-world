@@ -9,7 +9,7 @@ const active=(p:Page)=>p.locator('.cube-editor:visible');
 const hash=(p:Page)=>p.evaluate(()=>window.__cubeEditor!.hash());
 const checksum=(p:Page)=>p.evaluate(()=>new Promise<string>((resolve,reject)=>{const request=indexedDB.open('serrian-tide-atlas',1);request.onsuccess=()=>{const db=request.result,tx=db.transaction('heightmaps','readonly'),read=tx.objectStore('heightmaps').getAll();tx.oncomplete=()=>{db.close();resolve(read.result[0].checksum);};tx.onabort=()=>{db.close();reject(tx.error);};};}));
 async function create(p:Page,shape='hollow-cube',n=128){
- await p.goto('/?verifyPixels=1');await p.getByLabel('World shape').selectOption(shape);await p.getByLabel('World/map name').fill('Cube-I workflow');await p.getByLabel('Cube resolution').selectOption(String(n));await button(p,'Create World / Map').click();await expect(active(p)).toHaveAttribute('data-ready','true',{timeout:90000});await button(p,'View +Z face').click();
+ await p.goto('/?verifyPixels=1');await p.getByLabel('World shape').selectOption(shape);if(shape==='hollow-cube')await p.getByLabel('Starting terrain',{exact:true}).selectOption('reference-shell');await p.getByLabel('World/map name').fill('Cube-I workflow');await p.getByLabel('Cube resolution').selectOption(String(n));await button(p,'Create World / Map').click();await expect(active(p)).toHaveAttribute('data-ready','true',{timeout:90000});await button(p,'View +Z face').click();
 }
 async function draw(p:Page,u=.55,v=.4){const at=await p.evaluate(({u,v})=>window.__cubeEditor!.project('pz',u,v),{u,v});await p.mouse.move(at.x,at.y);await p.mouse.down();await p.mouse.move(at.x+15,at.y,{steps:6});await p.mouse.up();await expect(active(p)).toHaveAttribute('data-processing','false');}
 async function dig(p:Page){await createStraightTunnel(p);}
@@ -27,7 +27,13 @@ for(const backend of ['auto','canvas'])test(`I4/I5 ${backend}: inspect while mov
  const camera=await page.evaluate(()=>window.__hollowEditor!.snapshot().displays.exterior!.camera);expect(camera.zoom).toBeGreaterThan(1);await button(page,'Open tools').click();await button(page,'Travel forward').click();await page.waitForTimeout(100);if(await button(page,'Pause travel').count())await button(page,'Pause travel').click({force:true,timeout:1000});expect(await page.evaluate(()=>window.__hollowEditor!.snapshot().displays.exterior!.camera)).toEqual(camera);
  await page.getByLabel('Passage travel').focus();await page.keyboard.press('End');await button(page,'Follow to point 2').click();await page.getByLabel('Passage travel').focus();await page.keyboard.press('End');await button(page,'Follow to point 3').click();await page.getByLabel('Passage travel').focus();await page.keyboard.press('End');await button(page,'Close tools').click();await page.waitForTimeout(650);
  mkdirSync('.local/cube-i-shots',{recursive:true});await page.screenshot({path:`.local/cube-i-shots/${info.project.name}-${backend}-inspection.png`});const inspected=await page.evaluate(()=>window.__hollowEditor!.snapshot());writeFileSync(`.local/cube-i-shots/${info.project.name}-${backend}-inspection.json`,JSON.stringify(inspected,null,2));
- if(backend==='canvas'){expect(inspected.displays.exterior!.excavationCanvasBytes).toBeGreaterThan(0);expect(inspected.displays.exterior!.excavationCanvasBytes).toBeLessThan(25000*17);}
+ if(backend==='canvas'){
+  const display=inspected.displays.exterior!,quality=display.excavationQuality,budget=await page.evaluate(()=>matchMedia('(pointer: coarse)').matches?650000:1500000);
+  expect(display.excavationCanvasBytes).toBeGreaterThan(0);expect(quality.width*quality.height).toBeLessThanOrEqual(Math.max(24000,budget));
+  // Refined images discard the large hit arrays. During preparation allow one
+  // bounded hit/image/coverage job and the existing small coherent cache.
+  expect(display.excavationCanvasBytes).toBeLessThanOrEqual((quality.refined?8:30)*budget+25000*21);
+ }
  await button(page,'Return to terrain').click();expect(await hash(page)).toBe(geography);await button(page,'View +Z face').click();await draw(page);expect(await hash(page)).not.toBe(geography);
 });
 

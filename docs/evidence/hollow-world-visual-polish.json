@@ -1,0 +1,1209 @@
+{
+  "measuredAtUtc": "2026-10-22T16:02:30.824Z",
+  "base": "b5636ecb2d717fa1617382adc3f7329f186224c0",
+  "status": "Visual correction and cube three-view verification complete. Open Cylinder operational implementation remains the next authorized checkpoint.",
+  "sourceFingerprint": {
+    "sha256": "aa029fa1dcfd0731fd70c854466e84f418825443e56e01e07cfb25b20266e4cd",
+    "files": 297,
+    "algorithm": "SHA256 over sorted src POSIX paths followed by bytes with CRLF normalized to LF"
+  },
+  "ownerAcceptance": {
+    "roundedCoastlineAndNewWorldOceanDefault": true,
+    "allViewsAndFeatures": false,
+    "openCylinder": false
+  },
+  "numerical": {
+    "passed": 1287,
+    "failed": 0,
+    "localLog": ".local/hollow-mask-numerical.log"
+  },
+  "productionBuild": {
+    "passed": true,
+    "localLog": ".local/hollow-mask-build.log"
+  },
+  "validations": {
+    "matchedPixels": {
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "durationMs": 78430.269,
+      "localReport": ".local/atlas-mask-parity.json"
+    },
+    "compatibility": {
+      "passed": 68,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "durationMs": 698713.2829999999,
+      "localReport": ".local/hollow-mask-regression.json"
+    },
+    "desktopGeographyAndViews": {
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "durationMs": 202814.385,
+      "localReport": ".local/hollow-mask-quality-desktop.json"
+    },
+    "mobileViews": {
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "durationMs": 184375.761,
+      "localReport": ".local/hollow-mask-quality-mobile.json"
+    },
+    "ordinaryHeldPainting": {
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "durationMs": 536717.753,
+      "localReport": ".local/hollow-mask-release-held.json"
+    },
+    "newWorldOceanSaveOpen": {
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "durationMs": 92901.113,
+      "localReport": ".local/hollow-ocean-final.json"
+    }
+  },
+  "matchedPixels": {
+    "initialElevationsMeters": [
+      -100,
+      0
+    ],
+    "resolutions": [
+      128,
+      256
+    ],
+    "devicePixelRatio": 1.5,
+    "geometryAndAuthorityUnchanged": true,
+    "maxStableChannelError": 1,
+    "maxPremultipliedTwoPixelEnvelopeError": 1,
+    "violations": 0,
+    "observations": [
+      {
+        "shape": "cube",
+        "n": 128,
+        "initialElevation": -100,
+        "backend": "canvas",
+        "sourceHash": "d3f3a24e5e2f54e8200ed3a1a6b78d8f3966e2fb4b3475262e282e618a842a38",
+        "finalHash": "d3f3a24e5e2f54e8200ed3a1a6b78d8f3966e2fb4b3475262e282e618a842a38",
+        "width": 960,
+        "height": 720,
+        "renderer": "",
+        "checked": 87616,
+        "stableChecked": 85099,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0,
+        "fixtureMs": 554.1999999880791
+      },
+      {
+        "shape": "cube",
+        "n": 128,
+        "initialElevation": 0,
+        "backend": "canvas",
+        "sourceHash": "a98439197ad3886dbc08fd97c7a0098bd2d126f030a7bf64e2b1729dfc66015f",
+        "finalHash": "a98439197ad3886dbc08fd97c7a0098bd2d126f030a7bf64e2b1729dfc66015f",
+        "width": 960,
+        "height": 720,
+        "renderer": "",
+        "checked": 87616,
+        "stableChecked": 84953,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0,
+        "fixtureMs": 284.69999998807907
+      },
+      {
+        "shape": "cube",
+        "n": 128,
+        "initialElevation": -100,
+        "backend": "webgl",
+        "sourceHash": "d3f3a24e5e2f54e8200ed3a1a6b78d8f3966e2fb4b3475262e282e618a842a38",
+        "finalHash": "d3f3a24e5e2f54e8200ed3a1a6b78d8f3966e2fb4b3475262e282e618a842a38",
+        "width": 960,
+        "height": 720,
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "checked": 87025,
+        "stableChecked": 85198,
+        "stableMax": 1,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0.00012640045963803505,
+        "fixtureMs": 3656.599999964237
+      },
+      {
+        "shape": "cube",
+        "n": 128,
+        "initialElevation": 0,
+        "backend": "webgl",
+        "sourceHash": "a98439197ad3886dbc08fd97c7a0098bd2d126f030a7bf64e2b1729dfc66015f",
+        "finalHash": "a98439197ad3886dbc08fd97c7a0098bd2d126f030a7bf64e2b1729dfc66015f",
+        "width": 960,
+        "height": 720,
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "checked": 87025,
+        "stableChecked": 85121,
+        "stableMax": 1,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0.00019534616489514506,
+        "fixtureMs": 200.10000002384186
+      },
+      {
+        "shape": "cube",
+        "n": 256,
+        "initialElevation": -100,
+        "backend": "canvas",
+        "sourceHash": "d86de3a2c42660505fefe4d304d2cc32b542a0957391b62106f978050ab96ba3",
+        "finalHash": "d86de3a2c42660505fefe4d304d2cc32b542a0957391b62106f978050ab96ba3",
+        "width": 960,
+        "height": 720,
+        "renderer": "",
+        "checked": 87616,
+        "stableChecked": 85206,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0,
+        "fixtureMs": 936.4000000357628
+      },
+      {
+        "shape": "cube",
+        "n": 256,
+        "initialElevation": 0,
+        "backend": "canvas",
+        "sourceHash": "12294d0c005939399692d8155ea0c0b7d187973c072688c3a4042dd9af6de89c",
+        "finalHash": "12294d0c005939399692d8155ea0c0b7d187973c072688c3a4042dd9af6de89c",
+        "width": 960,
+        "height": 720,
+        "renderer": "",
+        "checked": 87616,
+        "stableChecked": 85097,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0,
+        "fixtureMs": 891.0999999642372
+      },
+      {
+        "shape": "cube",
+        "n": 256,
+        "initialElevation": -100,
+        "backend": "webgl",
+        "sourceHash": "d86de3a2c42660505fefe4d304d2cc32b542a0957391b62106f978050ab96ba3",
+        "finalHash": "d86de3a2c42660505fefe4d304d2cc32b542a0957391b62106f978050ab96ba3",
+        "width": 960,
+        "height": 720,
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "checked": 87025,
+        "stableChecked": 85200,
+        "stableMax": 1,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0.0003102556736569951,
+        "fixtureMs": 3812.7999999523163
+      },
+      {
+        "shape": "cube",
+        "n": 256,
+        "initialElevation": 0,
+        "backend": "webgl",
+        "sourceHash": "12294d0c005939399692d8155ea0c0b7d187973c072688c3a4042dd9af6de89c",
+        "finalHash": "12294d0c005939399692d8155ea0c0b7d187973c072688c3a4042dd9af6de89c",
+        "width": 960,
+        "height": 720,
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "checked": 87025,
+        "stableChecked": 85107,
+        "stableMax": 1,
+        "envelopeMax": 1,
+        "envelopeViolations": 0,
+        "meanError": 0.0002757828210284401,
+        "fixtureMs": 446.30000001192093
+      },
+      {
+        "shape": "cylinder",
+        "n": 128,
+        "initialElevation": -100,
+        "backend": "canvas",
+        "sourceHash": "08b3f4dd4cd8019957eef57e1880170aaaa3f0c881efd57d7401ef28afe72297",
+        "finalHash": "08b3f4dd4cd8019957eef57e1880170aaaa3f0c881efd57d7401ef28afe72297",
+        "width": 640,
+        "height": 480,
+        "renderer": "",
+        "checked": 21634,
+        "stableChecked": 20601,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0.1148654895072571,
+        "fixtureMs": 1535.3999999761581
+      },
+      {
+        "shape": "cylinder",
+        "n": 128,
+        "initialElevation": 0,
+        "backend": "canvas",
+        "sourceHash": "65fdbc1c8a0eeea2a141fcceff024de6a7ee767ada401fdebc6856777caf9dea",
+        "finalHash": "65fdbc1c8a0eeea2a141fcceff024de6a7ee767ada401fdebc6856777caf9dea",
+        "width": 640,
+        "height": 480,
+        "renderer": "",
+        "checked": 21634,
+        "stableChecked": 20474,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0.1148654895072571,
+        "fixtureMs": 1406.800000011921
+      },
+      {
+        "shape": "cylinder",
+        "n": 128,
+        "initialElevation": -100,
+        "backend": "webgl",
+        "sourceHash": "08b3f4dd4cd8019957eef57e1880170aaaa3f0c881efd57d7401ef28afe72297",
+        "finalHash": "08b3f4dd4cd8019957eef57e1880170aaaa3f0c881efd57d7401ef28afe72297",
+        "width": 960,
+        "height": 720,
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "checked": 48719,
+        "stableChecked": 46865,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0,
+        "fixtureMs": 48115.5
+      },
+      {
+        "shape": "cylinder",
+        "n": 128,
+        "initialElevation": 0,
+        "backend": "webgl",
+        "sourceHash": "65fdbc1c8a0eeea2a141fcceff024de6a7ee767ada401fdebc6856777caf9dea",
+        "finalHash": "65fdbc1c8a0eeea2a141fcceff024de6a7ee767ada401fdebc6856777caf9dea",
+        "width": 960,
+        "height": 720,
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "checked": 48719,
+        "stableChecked": 46710,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0,
+        "fixtureMs": 134.39999997615814
+      },
+      {
+        "shape": "cylinder",
+        "n": 256,
+        "initialElevation": -100,
+        "backend": "canvas",
+        "sourceHash": "36ce526aa16b3021bf052b51563f5209b06fa7b264a0e5074339f7c24ba13532",
+        "finalHash": "36ce526aa16b3021bf052b51563f5209b06fa7b264a0e5074339f7c24ba13532",
+        "width": 640,
+        "height": 480,
+        "renderer": "",
+        "checked": 21634,
+        "stableChecked": 20603,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0.1148654895072571,
+        "fixtureMs": 779.5999999642372
+      },
+      {
+        "shape": "cylinder",
+        "n": 256,
+        "initialElevation": 0,
+        "backend": "canvas",
+        "sourceHash": "77b15ac889075119deb64b5eade197756f49994620b3f9a404a29da1aae3e898",
+        "finalHash": "77b15ac889075119deb64b5eade197756f49994620b3f9a404a29da1aae3e898",
+        "width": 640,
+        "height": 480,
+        "renderer": "",
+        "checked": 21634,
+        "stableChecked": 20492,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0.1148654895072571,
+        "fixtureMs": 666.2999999523163
+      },
+      {
+        "shape": "cylinder",
+        "n": 256,
+        "initialElevation": -100,
+        "backend": "webgl",
+        "sourceHash": "36ce526aa16b3021bf052b51563f5209b06fa7b264a0e5074339f7c24ba13532",
+        "finalHash": "36ce526aa16b3021bf052b51563f5209b06fa7b264a0e5074339f7c24ba13532",
+        "width": 960,
+        "height": 720,
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "checked": 48719,
+        "stableChecked": 46872,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0,
+        "fixtureMs": 143.10000002384186
+      },
+      {
+        "shape": "cylinder",
+        "n": 256,
+        "initialElevation": 0,
+        "backend": "webgl",
+        "sourceHash": "77b15ac889075119deb64b5eade197756f49994620b3f9a404a29da1aae3e898",
+        "finalHash": "77b15ac889075119deb64b5eade197756f49994620b3f9a404a29da1aae3e898",
+        "width": 960,
+        "height": 720,
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "checked": 48719,
+        "stableChecked": 46718,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0,
+        "fixtureMs": 126.5
+      },
+      {
+        "shape": "sphere",
+        "n": 128,
+        "initialElevation": -100,
+        "backend": "canvas",
+        "sourceHash": "faa37fcbab8052b60c2c9d6b0f911415855663415d73418d1a0123d85629ab74",
+        "finalHash": "faa37fcbab8052b60c2c9d6b0f911415855663415d73418d1a0123d85629ab74",
+        "width": 640,
+        "height": 480,
+        "renderer": "",
+        "checked": 32221,
+        "stableChecked": 30333,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0.030289830466186038,
+        "fixtureMs": 625.9000000357628
+      },
+      {
+        "shape": "sphere",
+        "n": 128,
+        "initialElevation": 0,
+        "backend": "canvas",
+        "sourceHash": "186347d2b9a35232f358b8132788eae4eccd026e239bf733340e33dea50ba03b",
+        "finalHash": "186347d2b9a35232f358b8132788eae4eccd026e239bf733340e33dea50ba03b",
+        "width": 640,
+        "height": 480,
+        "renderer": "",
+        "checked": 32221,
+        "stableChecked": 30226,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0.03698343121737072,
+        "fixtureMs": 635.6999999880791
+      },
+      {
+        "shape": "sphere",
+        "n": 128,
+        "initialElevation": -100,
+        "backend": "webgl",
+        "sourceHash": "faa37fcbab8052b60c2c9d6b0f911415855663415d73418d1a0123d85629ab74",
+        "finalHash": "faa37fcbab8052b60c2c9d6b0f911415855663415d73418d1a0123d85629ab74",
+        "width": 960,
+        "height": 720,
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "checked": 72062,
+        "stableChecked": 69696,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0,
+        "fixtureMs": 1292.3999999761581
+      },
+      {
+        "shape": "sphere",
+        "n": 128,
+        "initialElevation": 0,
+        "backend": "webgl",
+        "sourceHash": "186347d2b9a35232f358b8132788eae4eccd026e239bf733340e33dea50ba03b",
+        "finalHash": "186347d2b9a35232f358b8132788eae4eccd026e239bf733340e33dea50ba03b",
+        "width": 960,
+        "height": 720,
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "checked": 72062,
+        "stableChecked": 69653,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0,
+        "fixtureMs": 484.5
+      },
+      {
+        "shape": "sphere",
+        "n": 256,
+        "initialElevation": -100,
+        "backend": "canvas",
+        "sourceHash": "df831398ad6cc53db84f9e299b7f0935ad271be688c04f115ae459451847569f",
+        "finalHash": "df831398ad6cc53db84f9e299b7f0935ad271be688c04f115ae459451847569f",
+        "width": 640,
+        "height": 480,
+        "renderer": "",
+        "checked": 32221,
+        "stableChecked": 30335,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0.030289830466186038,
+        "fixtureMs": 1731
+      },
+      {
+        "shape": "sphere",
+        "n": 256,
+        "initialElevation": 0,
+        "backend": "canvas",
+        "sourceHash": "c35ae68e91acd9bb04e48e4cf3c92058d5a2792f47adaa5922c4a21965a3befe",
+        "finalHash": "c35ae68e91acd9bb04e48e4cf3c92058d5a2792f47adaa5922c4a21965a3befe",
+        "width": 640,
+        "height": 480,
+        "renderer": "",
+        "checked": 32221,
+        "stableChecked": 30232,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0.034531614079479286,
+        "fixtureMs": 1837.8999999761581
+      },
+      {
+        "shape": "sphere",
+        "n": 256,
+        "initialElevation": -100,
+        "backend": "webgl",
+        "sourceHash": "df831398ad6cc53db84f9e299b7f0935ad271be688c04f115ae459451847569f",
+        "finalHash": "df831398ad6cc53db84f9e299b7f0935ad271be688c04f115ae459451847569f",
+        "width": 960,
+        "height": 720,
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "checked": 72062,
+        "stableChecked": 69691,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0,
+        "fixtureMs": 1529.3999999761581
+      },
+      {
+        "shape": "sphere",
+        "n": 256,
+        "initialElevation": 0,
+        "backend": "webgl",
+        "sourceHash": "c35ae68e91acd9bb04e48e4cf3c92058d5a2792f47adaa5922c4a21965a3befe",
+        "finalHash": "c35ae68e91acd9bb04e48e4cf3c92058d5a2792f47adaa5922c4a21965a3befe",
+        "width": 960,
+        "height": 720,
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "checked": 72062,
+        "stableChecked": 69641,
+        "stableMax": 0,
+        "envelopeMax": 0,
+        "envelopeViolations": 0,
+        "meanError": 0,
+        "fixtureMs": 1692.199999988079
+      }
+    ]
+  },
+  "ordinaryHeldPainting": {
+    "runInIsolation": true,
+    "thresholdsUnchanged": true,
+    "cases": [
+      {
+        "shape": "cube",
+        "n": 128,
+        "backend": "auto",
+        "role": "exterior",
+        "inputToVisibleMs": {
+          "p50": 34.59999996423721,
+          "p95": 58.80000001192093,
+          "max": 86.69999998807907
+        },
+        "inputToCommitMs": {
+          "p50": 17.5,
+          "p95": 30.69999998807907,
+          "max": 56.10000002384186
+        },
+        "commitToVisibleMs": {
+          "p50": 17.600000023841858,
+          "p95": 38.60000002384186,
+          "max": 61.09999996423721
+        },
+        "preparationMs": {
+          "p50": 1.399999976158142,
+          "p95": 2.599999964237213,
+          "max": 37
+        },
+        "displayPreparationMs": {
+          "p50": 1,
+          "p95": 21.80000001192093,
+          "max": 41.40000003576279
+        },
+        "frameGapMs": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 33.400000000001455
+        },
+        "firstChangedPixelsMs": 57,
+        "changedWhileHeld": 138,
+        "releaseBacklogMs": 108.10000002384186,
+        "undoMs": 46.78369999999995,
+        "redoMs": 65.22169999999824
+      },
+      {
+        "shape": "cube",
+        "n": 128,
+        "backend": "auto",
+        "role": "interior",
+        "inputToVisibleMs": {
+          "p50": 30.899999976158142,
+          "p95": 54.10000002384186,
+          "max": 98.69999998807907
+        },
+        "inputToCommitMs": {
+          "p50": 15,
+          "p95": 32.30000001192093,
+          "max": 70.39999997615814
+        },
+        "commitToVisibleMs": {
+          "p50": 16.599999964237213,
+          "p95": 34.09999996423721,
+          "max": 53.40000003576279
+        },
+        "preparationMs": {
+          "p50": 1.600000023841858,
+          "p95": 3.100000023841858,
+          "max": 45.69999998807907
+        },
+        "displayPreparationMs": {
+          "p50": 0.9000000357627869,
+          "p95": 17.80000001192093,
+          "max": 31.400000035762787
+        },
+        "frameGapMs": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 33.40000000000009
+        },
+        "firstChangedPixelsMs": 59.89999997615814,
+        "changedWhileHeld": 136,
+        "releaseBacklogMs": 106.80000001192093,
+        "undoMs": 54.367599999997765,
+        "redoMs": 67.34070000000065
+      },
+      {
+        "shape": "cube",
+        "n": 128,
+        "backend": "canvas",
+        "role": "exterior",
+        "inputToVisibleMs": {
+          "p50": 22.099999964237213,
+          "p95": 44.80000001192093,
+          "max": 71.39999997615814
+        },
+        "inputToCommitMs": {
+          "p50": 17.099999964237213,
+          "p95": 23.30000001192093,
+          "max": 48.39999997615814
+        },
+        "commitToVisibleMs": {
+          "p50": 4.399999976158142,
+          "p95": 26,
+          "max": 40.799999952316284
+        },
+        "preparationMs": {
+          "p50": 1.5999999642372131,
+          "p95": 2.800000011920929,
+          "max": 24.799999952316284
+        },
+        "displayPreparationMs": {
+          "p50": 1,
+          "p95": 5.099999964237213,
+          "max": 30.19999998807907
+        },
+        "frameGapMs": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000291
+        },
+        "firstChangedPixelsMs": 54.89999997615814,
+        "changedWhileHeld": 135,
+        "releaseBacklogMs": 49.30000001192093,
+        "undoMs": 101.11389999999665,
+        "redoMs": 112.25620000000345
+      },
+      {
+        "shape": "cube",
+        "n": 128,
+        "backend": "canvas",
+        "role": "interior",
+        "inputToVisibleMs": {
+          "p50": 24.100000023841858,
+          "p95": 54.30000001192093,
+          "max": 79
+        },
+        "inputToCommitMs": {
+          "p50": 17.600000023841858,
+          "p95": 29.200000047683716,
+          "max": 60.30000001192093
+        },
+        "commitToVisibleMs": {
+          "p50": 9.100000023841858,
+          "p95": 28.100000023841858,
+          "max": 38.80000001192093
+        },
+        "preparationMs": {
+          "p50": 1.9000000357627869,
+          "p95": 5.800000011920929,
+          "max": 42.10000002384186
+        },
+        "displayPreparationMs": {
+          "p50": 1.300000011920929,
+          "p95": 12.099999964237213,
+          "max": 26.299999952316284
+        },
+        "frameGapMs": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "firstChangedPixelsMs": 62.40000003576279,
+        "changedWhileHeld": 136,
+        "releaseBacklogMs": 50.700000047683716,
+        "undoMs": 100.76660000000265,
+        "redoMs": 122.7451000000001
+      },
+      {
+        "shape": "cube",
+        "n": 256,
+        "backend": "auto",
+        "role": "exterior",
+        "inputToVisibleMs": {
+          "p50": 44.40000003576279,
+          "p95": 73.90000003576279,
+          "max": 110.10000002384186
+        },
+        "inputToCommitMs": {
+          "p50": 20.30000001192093,
+          "p95": 49.40000003576279,
+          "max": 78.10000002384186
+        },
+        "commitToVisibleMs": {
+          "p50": 18.19999998807907,
+          "p95": 43.90000003576279,
+          "max": 62.89999997615814
+        },
+        "preparationMs": {
+          "p50": 2.900000035762787,
+          "p95": 8.899999976158142,
+          "max": 44
+        },
+        "displayPreparationMs": {
+          "p50": 1.699999988079071,
+          "p95": 28,
+          "max": 51.700000047683716
+        },
+        "frameGapMs": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 33.400000000001455
+        },
+        "firstChangedPixelsMs": 40.90000003576279,
+        "changedWhileHeld": 136,
+        "releaseBacklogMs": 61.700000047683716,
+        "undoMs": 66.48489999999583,
+        "redoMs": 83.41830000000482
+      },
+      {
+        "shape": "cube",
+        "n": 256,
+        "backend": "auto",
+        "role": "interior",
+        "inputToVisibleMs": {
+          "p50": 53.80000001192093,
+          "p95": 122.20000004768372,
+          "max": 172.4000000357628
+        },
+        "inputToCommitMs": {
+          "p50": 31.600000023841858,
+          "p95": 102.5,
+          "max": 161.4000000357628
+        },
+        "commitToVisibleMs": {
+          "p50": 21.69999998807907,
+          "p95": 46.39999997615814,
+          "max": 56.799999952316284
+        },
+        "preparationMs": {
+          "p50": 6,
+          "p95": 25.900000035762787,
+          "max": 47.80000001192093
+        },
+        "displayPreparationMs": {
+          "p50": 1.699999988079071,
+          "p95": 27.899999976158142,
+          "max": 41.30000001192093
+        },
+        "frameGapMs": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 33.399999999999636
+        },
+        "firstChangedPixelsMs": 63.10000002384186,
+        "changedWhileHeld": 137,
+        "releaseBacklogMs": 106.69999998807907,
+        "undoMs": 97.71810000001278,
+        "redoMs": 113.55289999999513
+      },
+      {
+        "shape": "cube",
+        "n": 256,
+        "backend": "canvas",
+        "role": "exterior",
+        "inputToVisibleMs": {
+          "p50": 43.39999997615814,
+          "p95": 99.80000001192093,
+          "max": 161.10000002384186
+        },
+        "inputToCommitMs": {
+          "p50": 25.19999998807907,
+          "p95": 78.39999997615814,
+          "max": 142.69999998807907
+        },
+        "commitToVisibleMs": {
+          "p50": 16.5,
+          "p95": 32.30000001192093,
+          "max": 51.5
+        },
+        "preparationMs": {
+          "p50": 4.899999976158142,
+          "p95": 15.100000023841858,
+          "max": 33.69999998807907
+        },
+        "displayPreparationMs": {
+          "p50": 3,
+          "p95": 16.099999964237213,
+          "max": 37
+        },
+        "frameGapMs": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 33.399999999999636
+        },
+        "firstChangedPixelsMs": 47.30000001192093,
+        "changedWhileHeld": 134,
+        "releaseBacklogMs": 248.30000001192093,
+        "undoMs": 126.9423999999999,
+        "redoMs": 132.17499999998836
+      },
+      {
+        "shape": "cube",
+        "n": 256,
+        "backend": "canvas",
+        "role": "interior",
+        "inputToVisibleMs": {
+          "p50": 54.30000001192093,
+          "p95": 136.69999998807907,
+          "max": 258.69999998807907
+        },
+        "inputToCommitMs": {
+          "p50": 31.30000001192093,
+          "p95": 122.19999998807907,
+          "max": 239.69999998807907
+        },
+        "commitToVisibleMs": {
+          "p50": 17.899999976158142,
+          "p95": 32,
+          "max": 53
+        },
+        "preparationMs": {
+          "p50": 6.900000035762787,
+          "p95": 18.900000035762787,
+          "max": 81.59999996423721
+        },
+        "displayPreparationMs": {
+          "p50": 4.199999988079071,
+          "p95": 16.600000023841858,
+          "max": 32.60000002384186
+        },
+        "frameGapMs": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "firstChangedPixelsMs": 68.80000001192093,
+        "changedWhileHeld": 133,
+        "releaseBacklogMs": 121,
+        "undoMs": 167.38999999998487,
+        "redoMs": 174.96970000001602
+      },
+      {
+        "shape": "sphere",
+        "n": 128,
+        "backend": "auto",
+        "role": "exterior",
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000291
+        },
+        "firstChangedPixelsMs": 85.19999998807907,
+        "changedWhileHeld": 127,
+        "releaseToCoherentMs": 27.333400000003166,
+        "brushDrainPresentationMs": {
+          "p50": 1.800000011920929,
+          "p95": 2.899999976158142,
+          "max": 14.899999976158142
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "shape": "sphere",
+        "n": 128,
+        "backend": "auto",
+        "role": "interior",
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000291
+        },
+        "firstChangedPixelsMs": 102.69999998807907,
+        "changedWhileHeld": 125,
+        "releaseToCoherentMs": 37.689400000002934,
+        "brushDrainPresentationMs": {
+          "p50": 0.6000000238418579,
+          "p95": 2.100000023841858,
+          "max": 3.799999952316284
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "shape": "sphere",
+        "n": 128,
+        "backend": "canvas",
+        "role": "exterior",
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000291
+        },
+        "firstChangedPixelsMs": 163.29999995231628,
+        "changedWhileHeld": 109,
+        "releaseToCoherentMs": 365.9347000000125,
+        "brushDrainPresentationMs": {
+          "p50": 1333.9000000357628,
+          "p95": 2250.900000035763,
+          "max": 2317.5
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "shape": "sphere",
+        "n": 128,
+        "backend": "canvas",
+        "role": "interior",
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "firstChangedPixelsMs": 136.19999998807907,
+        "changedWhileHeld": 120,
+        "releaseToCoherentMs": 763.6848000000464,
+        "brushDrainPresentationMs": {
+          "p50": 204.5,
+          "p95": 754.3999999761581,
+          "max": 837.5
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "shape": "sphere",
+        "n": 256,
+        "backend": "auto",
+        "role": "exterior",
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000291
+        },
+        "firstChangedPixelsMs": 88.30000001192093,
+        "changedWhileHeld": 129,
+        "releaseToCoherentMs": 37.78330000001006,
+        "brushDrainPresentationMs": {
+          "p50": 3,
+          "p95": 3.799999952316284,
+          "max": 22
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "shape": "sphere",
+        "n": 256,
+        "backend": "auto",
+        "role": "interior",
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000291
+        },
+        "firstChangedPixelsMs": 88,
+        "changedWhileHeld": 126,
+        "releaseToCoherentMs": 30.490799999970477,
+        "brushDrainPresentationMs": {
+          "p50": 0.6000000238418579,
+          "p95": 4,
+          "max": 17.69999998807907
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "shape": "sphere",
+        "n": 256,
+        "backend": "canvas",
+        "role": "exterior",
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000291
+        },
+        "firstChangedPixelsMs": 179.80000001192093,
+        "changedWhileHeld": 90,
+        "releaseToCoherentMs": 320.48399999999674,
+        "brushDrainPresentationMs": {
+          "p50": 1301.699999988079,
+          "p95": 2201.600000023842,
+          "max": 2268.600000023842
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "shape": "sphere",
+        "n": 256,
+        "backend": "canvas",
+        "role": "interior",
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000291
+        },
+        "firstChangedPixelsMs": 137.10000002384186,
+        "changedWhileHeld": 118,
+        "releaseToCoherentMs": 692.0997000000207,
+        "brushDrainPresentationMs": {
+          "p50": 121.5,
+          "p95": 523,
+          "max": 606
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "shape": "cylinder",
+        "detail": 128,
+        "backend": "auto",
+        "role": "exterior",
+        "frameGaps": {
+          "p50": 16.69999999999709,
+          "p95": 16.799999999995634,
+          "max": 100
+        },
+        "firstChangedPixelsMs": 216.4000000357628,
+        "changedWhileHeld": 64,
+        "releaseToCoherentMs": 46.44489999999496,
+        "brushDrainPresentationMs": {
+          "p50": 134.39999997615814,
+          "p95": 267.5,
+          "max": 301.4000000357628
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "shape": "cylinder",
+        "detail": 128,
+        "backend": "auto",
+        "role": "interior",
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000291
+        },
+        "firstChangedPixelsMs": 373.80000001192093,
+        "changedWhileHeld": 49,
+        "releaseToCoherentMs": 59.83199999999488,
+        "brushDrainPresentationMs": {
+          "p50": 167.89999997615814,
+          "p95": 317.10000002384186,
+          "max": 367.19999998807907
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "shape": "cylinder",
+        "detail": 128,
+        "backend": "canvas",
+        "role": "exterior",
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000291
+        },
+        "firstChangedPixelsMs": 792.8000000119209,
+        "changedWhileHeld": 44,
+        "releaseToCoherentMs": 280.94109999999637,
+        "brushDrainPresentationMs": {
+          "p50": 325,
+          "p95": 508.0999999642372,
+          "max": 541.0999999642372
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "shape": "cylinder",
+        "detail": 128,
+        "backend": "canvas",
+        "role": "interior",
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000291
+        },
+        "firstChangedPixelsMs": 399,
+        "changedWhileHeld": 49,
+        "releaseToCoherentMs": 114.43219999999565,
+        "brushDrainPresentationMs": {
+          "p50": 172.60000002384186,
+          "p95": 329.10000002384186,
+          "max": 379.30000001192093
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "shape": "cylinder",
+        "detail": 256,
+        "backend": "auto",
+        "role": "exterior",
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000291
+        },
+        "firstChangedPixelsMs": 143,
+        "changedWhileHeld": 65,
+        "releaseToCoherentMs": 44.55250000000524,
+        "brushDrainPresentationMs": {
+          "p50": 136.89999997615814,
+          "p95": 252.20000004768372,
+          "max": 285.80000001192093
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "shape": "cylinder",
+        "detail": 256,
+        "backend": "auto",
+        "role": "interior",
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000291
+        },
+        "firstChangedPixelsMs": 360.60000002384186,
+        "changedWhileHeld": 49,
+        "releaseToCoherentMs": 69.10339999999269,
+        "brushDrainPresentationMs": {
+          "p50": 168.69999998807907,
+          "p95": 317.9000000357628,
+          "max": 368.60000002384186
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "shape": "cylinder",
+        "detail": 256,
+        "backend": "canvas",
+        "role": "exterior",
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000291
+        },
+        "firstChangedPixelsMs": 839.0999999642372,
+        "changedWhileHeld": 45,
+        "releaseToCoherentMs": 309.59109999999055,
+        "brushDrainPresentationMs": {
+          "p50": 373.60000002384186,
+          "p95": 556.9000000357628,
+          "max": 617.2000000476837
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "shape": "cylinder",
+        "detail": 256,
+        "backend": "canvas",
+        "role": "interior",
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000291
+        },
+        "firstChangedPixelsMs": 413.69999998807907,
+        "changedWhileHeld": 49,
+        "releaseToCoherentMs": 80.31870000000345,
+        "brushDrainPresentationMs": {
+          "p50": 177.9000000357628,
+          "p95": 327.9000000357628,
+          "max": 378
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      }
+    ]
+  },
+  "environment": {
+    "platform": "Windows",
+    "gpu": [
+      "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    ],
+    "mobile": "Pixel 7 browser emulation and trusted browser pen/touch input; no physical-device claim",
+    "ownerPreview": "http://127.0.0.1:5173",
+    "ownedValidationPreview": "http://127.0.0.1:5262"
+  },
+  "limits": [
+    "New-world initialization only: no migration or cosmetic alteration of existing geography.",
+    "Reference shell (0 m) remains explicit for basic excavation; displaced terrain remains deferred.",
+    "Idle refinement is bounded, cooperative and separate from active painting.",
+    "Saved formats v1-v13 retain their meaning.",
+    "Open Cylinder, broader owner acceptance and physical-device acceptance are not claimed by this checkpoint."
+  ]
+}

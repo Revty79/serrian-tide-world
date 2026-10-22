@@ -1,4 +1,4 @@
-import {NO_HIT_GLSL,SPHERE_INTERVAL_GLSL,CAPSULE_INTERVAL_GLSL} from './excavation-interval-glsl.ts';
+import {NO_HIT_GLSL,SPHERE_INTERVAL_GLSL,CAPSULE_INTERVAL_GLSL,PROJECTED_CUT_GLSL} from './excavation-interval-glsl.ts';
 /** Reference spherical shell subtraction. Uses the same capsule cutting math as
  * the cube; spherical intervals, normals and chart lookup are shape-specific. */
 export const HOLLOW_SPHERE_GLSL=`
@@ -10,6 +10,8 @@ uniform vec4 primitiveA[48],primitiveB[48];
 ${NO_HIT_GLSL}
 ${SPHERE_INTERVAL_GLSL}
 ${CAPSULE_INTERVAL_GLSL}
+${PROJECTED_CUT_GLSL}
+bool sphereCutAffects(vec2 pixel){if(interior==1)return true;vec2 xy=(pixel-viewport*.5)/globeRadius;xy.y=-xy.y;return projectedCutAt(xy,2./globeRadius,cutterCount);}
 vec4 sphereCutField(vec3 p,int kind){
  vec3 a=abs(p);int face;float normal,u,v;
  if(a.x>=a.y&&a.x>=a.z){face=p.x>=0.?0:1;normal=a.x;u=p.x>=0.?p.y:-p.y;v=p.z;}else if(a.y>=a.z){face=p.y>=0.?2:3;normal=a.y;u=p.y>=0.?-p.x:p.x;v=p.z;}else{face=p.z>=0.?4:5;normal=a.z;u=p.x;v=p.z>=0.?p.y:-p.y;}

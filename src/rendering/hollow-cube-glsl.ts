@@ -1,4 +1,4 @@
-import {NO_HIT_GLSL,SPHERE_INTERVAL_GLSL,CAPSULE_INTERVAL_GLSL} from './excavation-interval-glsl.ts';
+import {NO_HIT_GLSL,SPHERE_INTERVAL_GLSL,CAPSULE_INTERVAL_GLSL,PROJECTED_CUT_GLSL} from './excavation-interval-glsl.ts';
 /** Geometry-only analytic difference adapter. No terrain/input/history authority. */
 export const HOLLOW_CUBE_GLSL=`
 uniform sampler2DArray oppositeElevations;
@@ -10,8 +10,11 @@ ${NO_HIT_GLSL}
 vec2 boxInterval(vec3 o,vec3 d,float h){float lo=-1.e20,hi=1.e20;for(int k=0;k<3;k++){if(abs(d[k])<1.e-8){if(abs(o[k])>h)return noHit();}else{vec2 t=vec2(-h-o[k],h-o[k])/d[k];lo=max(lo,min(t.x,t.y));hi=min(hi,max(t.x,t.y));}}return vec2(lo,hi);}
 ${SPHERE_INTERVAL_GLSL}
 ${CAPSULE_INTERVAL_GLSL}
+${PROJECTED_CUT_GLSL}
+vec4 ray(vec2 pixel);
 vec3 otherFieldAt(int face,vec2 uv){int n=textureSize(oppositeElevations,0).x-1;vec2 q=clamp((uv+1.)*.5,0.,1.)*float(n);ivec2 p=min(ivec2(floor(q)),ivec2(n-1));vec2 f=q-vec2(p);return mix(mix(texelFetch(oppositeElevations,ivec3(p,face),0).xyz,texelFetch(oppositeElevations,ivec3(p+ivec2(1,0),face),0).xyz,f.x),mix(texelFetch(oppositeElevations,ivec3(p+ivec2(0,1),face),0).xyz,texelFetch(oppositeElevations,ivec3(p+ivec2(1,1),face),0).xyz,f.x),f.y);}
 vec4 hollowRay(vec2 pixel){vec2 screen=pixel/backingSize*viewport;vec3 o,d;
+ if(perspectiveEye==0&&orientation>0.&&!projectedCutAt((screen-viewCenter)/scale,3./scale,primitiveCount))return(ray(pixel+vec2(-.25,-.25))+ray(pixel+vec2(.25,-.25))+ray(pixel+vec2(-.25,.25))+ray(pixel+vec2(.25,.25)))*.25;
  if(perspectiveEye==1){o=eyePosition;vec2 xy=(screen-viewport*.5)/(viewport.y*.5)*tan(eyeFov*.5);d=normalize(-cameraForward+cameraRight*xy.x+cameraUp*xy.y);}
  else{vec2 s=(screen-viewCenter)/scale;o=cameraRight*s.x+cameraUp*s.y+cameraForward*4.;d=-cameraForward;}
  vec2 shell=boxInterval(o,d,1.);if(shell.x>shell.y||shell.y<=0.)return vec4(0);vec2 holes[49];holes[0]=boxInterval(o,d,innerRatio);for(int i=0;i<48;i++){if(i>=primitiveCount)break;holes[i+1]=capsuleInterval(o,d,i);}

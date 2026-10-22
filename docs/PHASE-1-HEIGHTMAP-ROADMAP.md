@@ -1,5 +1,28 @@
 # Atlas master roadmap — Phase 1 and long-term requirements
 
+Permanent architecture standard (2026-10-22): **Use what works. Reinvent only
+when proven unworkable.** Reuse accepted rendering, painting, navigation, input,
+scheduling, history, persistence and workspace mechanisms across all subsequent
+shapes. Keep geometry mathematics in adapters and extract shared presentation
+incrementally. [The rendering standard](ATLAS-RENDERING-STANDARD.md) defines the
+matched solid/hollow pixel and responsiveness acceptance gate. This does not
+authorize future geometries or a wholesale renderer rewrite.
+
+Current follow-up authority (2026-10-22), starting at `b5636ec`: the owner accepts
+Hollow Sphere and Capped Hollow Cylinder core painting for development
+progression. Correct visual quality across hollow cube/sphere/cylinder and verify
+the cube's discoverable three-view workflow, then complete operational Open
+Cylinder geometry, normal editing, versioned Save/Open and applicable basic
+connections. The [visual correction](HOLLOW-WORLD-VISUAL-POLISH.md) records its
+source/evidence and preserves the accepted numerical geography. The historical
+[Open Cylinder prototype assessment](OPEN-CYLINDER-ASSESSMENT.md) remains a
+foundation, not the completion of this newer assignment. Correct new annular
+mathematics is authorized; an incorrect disk shortcut or replacement painting
+engine is not. Report a major architectural obstacle rather than forcing a false
+completion. Stop after Open Cylinder for Ember review and owner approval.
+Pyramids, website/database/Docker/Production, full displaced terrain, the full
+Tunnel Network Designer and free 3D flight remain outside this pass.
+
 Current overnight authority (2026-10-21): after technically stable Cube-I `6d4b129`,
 proceed through **Hollow Sphere → capped Hollow Cylinder → Open Cylinder** in
 verified increments. The owner's later overnight authorization supersedes the

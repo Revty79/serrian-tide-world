@@ -35,7 +35,7 @@ vec4 ray(vec2 pixel){vec2 s=(pixel/backingSize*viewport-viewCenter)/scale;int fa
  else{vec3 origin=cameraRight*s.x+cameraUp*s.y;float best=-1.e20;for(int i=0;i<6;i++){float facing=dot(normals[i],cameraForward);if(orientation*facing<=1.e-7)continue;float t=(1.-dot(normals[i],origin))/facing;vec3 p=origin+t*cameraForward;if(max(max(abs(p.x),abs(p.y)),abs(p.z))>1.000001||orientation*t<=best)continue;face=i;uv=clamp(vec2(dot(p,us[i]),dot(p,vs[i])),-1.,1.);best=orientation*t;}}
  if(face<0)return vec4(0);return vec4(colorAt(face,fieldAt(face,uv)),1.);}
 void main(){outColor=(ray(gl_FragCoord.xy+vec2(-.25,-.25))+ray(gl_FragCoord.xy+vec2(.25,-.25))+ray(gl_FragCoord.xy+vec2(-.25,.25))+ray(gl_FragCoord.xy+vec2(.25,.25)))*.25;}`;
-export function cubeBackingSize(size:CubeViewport,dpr=1){const ratio=Math.min(1.5,Math.max(.5,dpr)),factor=Math.min(ratio,Math.sqrt(CUBE_DISPLAY_LIMITS.maxCanvasPixels/(size.width*size.height)));return{width:Math.max(1,Math.floor(size.width*factor)),height:Math.max(1,Math.floor(size.height*factor))};}
+export function cubeBackingSize(size:CubeViewport,dpr=1,physicalCut=false){const ratio=Math.min(1.5,Math.max(physicalCut?1.5:.5,dpr)),factor=Math.min(ratio,Math.sqrt((physicalCut?3000000:CUBE_DISPLAY_LIMITS.maxCanvasPixels)/(size.width*size.height)));return{width:Math.max(1,Math.floor(size.width*factor)),height:Math.max(1,Math.floor(size.height*factor))};}
 /** Three bounded GL objects; no numerical writes, tessellation or displaced vertices. */
 export class SolidCubeWebGL {
  readonly canvas:HTMLCanvasElement;private invalidate:()=>void;private failShader:boolean;
@@ -62,7 +62,7 @@ export class SolidCubeWebGL {
   this.statistics.resources=this.hollow?4:3;this.statistics.reason='';
  }catch(e){this.statistics.reason=String(e);this.release(true);this.canvas.hidden=true;}}
  present(field:CubeDisplayField,camera:CubeCamera,mode:CubeDisplayMode,size:CubeViewport,relief=true,surface:CubeSurfaceView=CUBE_EXTERIOR_VIEW,excavation?:HollowExcavation,opposite?:CubeDisplayField,eye?:PassageEye){
-  assertCubeDisplayField(field);if(!this.available)throw Error('Cube GL unavailable');const at=performance.now(),gl=this.gl!,dimensions=cubeBackingSize(size,devicePixelRatio||1),layout=cubeLayout(camera,mode,size,mode==='physical'&&excavation?.primitives.length?{...surface,physicalScale:1}:surface);
+  assertCubeDisplayField(field);if(!this.available)throw Error('Cube GL unavailable');const at=performance.now(),gl=this.gl!,dimensions=cubeBackingSize(size,devicePixelRatio||1,mode==='physical'&&!!excavation&&(excavation.primitives.length>0||!!eye)),layout=cubeLayout(camera,mode,size,mode==='physical'&&excavation?.primitives.length?{...surface,physicalScale:1}:surface);
   if(this.canvas.width!==dimensions.width||this.canvas.height!==dimensions.height){this.canvas.width=dimensions.width;this.canvas.height=dimensions.height;}
   gl.useProgram(this.program!);gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D_ARRAY,this.texture!);
   if(this.uploaded!==field){

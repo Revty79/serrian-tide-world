@@ -1,4 +1,5 @@
-import {cylinderCutView,cylinderCutRaster,type CylinderExcavationDisplay} from './hollow-cylinder-display.ts';
+import {cylinderCutView,cylinderCutHit,cylinderCutSurfaceHit,type CylinderExcavationDisplay} from './hollow-cylinder-display.ts';
+import {rasterEdgeCoverage} from './raster-quality.ts';
 import type { CylindricalTerrain } from '../terrain/cylindrical.ts';
 import type { CylindricalBrushSettings } from '../terrain/cylindrical-brush.ts';
 import { prepareCylindricalDab } from '../terrain/cylindrical-brush.ts';
@@ -54,41 +55,52 @@ export function cylinderInterpolatedColor(colors: Uint32Array, terrain: Cylindri
 export interface CylinderRaster { readonly pixels: Uint8ClampedArray; readonly columns: number; readonly rows: number; readonly revision: number; readonly snapshotBytes: number }
 /** One coherent color epoch. Each next() covers at most 2,048 pixels / 10,240 subpixel rays. */
 export function* cylinderRasterSteps(cache: CylinderDisplayCache, view: CylinderView, size: CylinderViewport, pixelBudget: number, reusable?: Uint8ClampedArray, appearance: CylinderAppearance = 'elevation',excavation?:CylinderExcavationDisplay): Generator<void, CylinderRaster> {
-  if (!Number.isInteger(pixelBudget) || pixelBudget < 1 || pixelBudget > 180000) throw new RangeError('Cylinder raster budget exceeded.');
-  if(cylinderCutView(view,excavation))return yield* cylinderCutRaster(cache,view,size,pixelBudget,reusable,appearance,excavation!);
+  if (!Number.isInteger(pixelBudget) || pixelBudget < 1 || pixelBudget > 1500000) throw new RangeError('Cylinder raster budget exceeded.');
+  const cut=cylinderCutView(view,excavation)?excavation:undefined;
   const l = cylinderLayout(cache.terrain.geometry, view, size), factor = Math.min(1.5, Math.sqrt(pixelBudget / (size.width * size.height))), columns = Math.max(1, Math.floor(size.width * factor)), rows = Math.max(1, Math.floor(size.height * factor));
   const pixels = reusable?.length === columns * rows * 4 ? reusable : new Uint8ClampedArray(columns * rows * 4), revision = cache.sourceRevision;
-  let elevations = cache.elevationSnapshot(); const snapshotBytes = elevations.byteLength;
+  let elevations = cache.elevationSnapshot();
   const fieldAt = cylinderElevationSampler(elevations, cache.terrain, appearance === 'relief' ? 'land' : 'none');
+  const opposite=cut?.opposite.elevationSnapshot(),oppositeField=cut&&opposite?cylinderElevationSampler(opposite,cut.opposite.terrain,appearance==='relief'?'land':'none'):undefined,labels=cut?new Uint8Array(columns*rows):undefined;
+  const snapshotBytes=elevations.byteLength+(opposite?.byteLength??0)+(labels?.byteLength??0);
   const tx = dot3(view.target, view.frame.right), ty = dot3(view.target, view.frame.up);
   const dx = size.width / columns / l.scale, dy = size.height / rows / l.scale;
   const halfWidth = Math.hypot(view.frame.right[0], view.frame.right[1]) + l.h * Math.abs(view.frame.right[2]), halfHeight = Math.hypot(view.frame.up[0], view.frame.up[1]) + l.h * Math.abs(view.frame.up[2]);
   const hitAt = (x: number, y: number) => cylinderCenterInspection(view)?cylinderInsideRayHit(x,y,view.frame,l.h,view.eyeMeters?.map(v=>v/cache.terrain.metadata.geometry.radiusMeters)as unknown as readonly[number,number,number]):view.mode === 'physical' ? cylinderRayHit(x + tx, y + ty, view.frame, l.h) : cylinderMapHit(x - view.pan.x, y - view.pan.y, l.h, view.phase);
-  const displayColor = (hit: CylinderRayHit) => {
-    const field = fieldAt(hit);
-    const c = cylinderElevationColor(field.height, cache.terrain.metadata.seaLevel);
-    const facing = hit.region === 'side' ? Math.cos(hit.theta) * view.frame.forward[0] + Math.sin(hit.theta) * view.frame.forward[1] : (hit.region === 'cap-end' ? 1 : -1) * view.frame.forward[2];
-    const shade = (view.mode === 'map'||cylinderCenterInspection(view) ? 1 : .74 + .26 * Math.max(0, facing)) * (appearance === 'relief' && field.height > cache.terrain.metadata.seaLevel ? cylinderRelief(field.dx, field.dy) : 1);
-    return { c, shade, field, facing };
+  const displayColor = (hit: CylinderRayHit,source=cache,sample=fieldAt,normalFacing?:number,inside=false) => {
+    const field = sample(hit),sea=source.terrain.metadata.seaLevel;
+    const c = cylinderElevationColor(field.height, sea);
+    const facing = normalFacing??(hit.region === 'side' ? Math.cos(hit.theta) * view.frame.forward[0] + Math.sin(hit.theta) * view.frame.forward[1] : (hit.region === 'cap-end' ? 1 : -1) * view.frame.forward[2]);
+    const shade = (view.mode === 'map'||cylinderCenterInspection(view) ? 1 : .74 + .26 * Math.max(0, facing)) * (appearance === 'relief' && field.height > sea ? cylinderRelief(field.dx, field.dy) : 1);
+    return { c, shade, field, facing,hit,label:(inside?4:2)+(field.height>sea?1:0) };
+  };
+  // Excavation supplies intersections and physical normals. Terrain then uses
+  // this same accepted sampler, palette, relief and coastline coverage pass.
+  const sampleAt=(x:number,y:number)=>{
+    if(!cut){const hit=hitAt(x,y);return hit?displayColor(hit):undefined;}
+    const hit=cylinderCutHit(cut,view,size,{x:l.x+x*l.scale,y:l.y-y*l.scale},cache);if(!hit)return;
+    if(hit.kind==='rock')return{c:[164,145,114]as const,shade:Math.max(.28,Math.min(1.1,.64+.36*dot3(hit.normal,[-.38,-.48,.78]))),field:{height:0,dx:0,dy:0,crossesSea:false},facing:1,hit:undefined,label:6};
+    const own=hit.kind===cut.role,source=own?cache:cut.opposite;
+    return displayColor(cylinderCutSurfaceHit(hit,cut,source),source,own?fieldAt:oppositeField!,dot3(hit.normal,view.frame.forward),hit.kind==='interior');
   };
   try { for (let i = 0; i < columns * rows; i++) {
     const x = ((i % columns + .5) * size.width / columns - l.x) / l.scale, y = (l.y - (Math.floor(i / columns) + .5) * size.height / rows) / l.scale;
-    const hit = hitAt(x, y), offset = i * 4;
+    const center=sampleAt(x,y),hit=center?.hit,offset=i*4;if(labels)labels[i]=center?Math.floor(center.label/2):0;
     const insideBounds = view.mode === 'physical' ? Math.abs(x + tx) <= halfWidth + dx && Math.abs(y + ty) <= halfHeight + dy : Math.abs(x - view.pan.x) <= Math.PI + dx && Math.abs(y - view.pan.y) <= l.h + 2 + dy;
-    const nearBoundary = !cylinderCenterInspection(view)&&(hit ? hit.region === 'side' ? view.mode === 'physical' ? Math.abs(Math.cos(hit.theta) * view.frame.forward[0] + Math.sin(hit.theta) * view.frame.forward[1]) < .15 : Math.PI - Math.abs(x - view.pan.x) < dx || l.h - Math.abs(hit.z) < dy : 1 - hit.radial < 2 * Math.max(dx, dy) : insideBounds);
-    const center = hit && displayColor(hit);
+    const nearBoundary = center?.label!==6&&!cylinderCenterInspection(view)&&(hit ? hit.region === 'side' ? view.mode === 'physical' ? Math.abs(Math.cos(hit.theta) * view.frame.forward[0] + Math.sin(hit.theta) * view.frame.forward[1]) < .15 : Math.PI - Math.abs(x - view.pan.x) < dx || l.h - Math.abs(hit.z) < dy : 1 - hit.radial < 2 * Math.max(dx, dy) : insideBounds);
     const nearCoast = center && center.field.crossesSea;
     if (nearBoundary || nearCoast) {
       // Four actual subpixel rays cover the silhouette AND interpolated sea contour.
       // Coverage never enters inverse projection or numerical brush membership.
-      let red = 0, green = 0, blue = 0, covered = 0, land = 0;
-      for (const ox of [-.25, .25]) for (const oy of [-.25, .25]) { const sub = hitAt(x + ox * dx, y + oy * dy); if (!sub) continue; const { c, shade, field } = displayColor(sub); red += c[0] * shade; green += c[1] * shade; blue += c[2] * shade; covered++; if (field.height > cache.terrain.metadata.seaLevel) land++; }
-      const uniformClass = !nearBoundary && covered === 4 && center && land === (center.field.height > cache.terrain.metadata.seaLevel ? 4 : 0);
+      let red=0,green=0,blue=0,covered=0,sameClass=true;
+      for(const ox of[-.25,.25])for(const oy of[-.25,.25]){const sub=sampleAt(x+ox*dx,y+oy*dy);if(!sub){sameClass=false;continue;}const{c,shade}=sub;red+=c[0]*shade;green+=c[1]*shade;blue+=c[2]*shade;covered++;sameClass&&=sub.label===center?.label;}
+      const uniformClass=!nearBoundary&&covered===4&&center&&sameClass;
       pixels[offset] = uniformClass ? center.c[0] * center.shade : covered ? red / covered : 0; pixels[offset + 1] = uniformClass ? center.c[1] * center.shade : covered ? green / covered : 0; pixels[offset + 2] = uniformClass ? center.c[2] * center.shade : covered ? blue / covered : 0; pixels[offset + 3] = covered / 4 * 255;
-    } else if (!hit) { pixels[offset] = pixels[offset + 1] = pixels[offset + 2] = pixels[offset + 3] = 0; }
+    } else if (!center) { pixels[offset] = pixels[offset + 1] = pixels[offset + 2] = pixels[offset + 3] = 0; }
     else { const { c, shade } = center!; pixels[offset] = c[0] * shade; pixels[offset + 1] = c[1] * shade; pixels[offset + 2] = c[2] * shade; pixels[offset + 3] = 255; }
-    if (i % 2048 === 2047) yield;
+    if(i%(cut?256:2048)===(cut?255:2047))yield;
   }
+  if(labels)yield* rasterEdgeCoverage(pixels,labels,columns,rows,(x,y,out)=>{const value=sampleAt((x*size.width/columns-l.x)/l.scale,(l.y-y*size.height/rows)/l.scale);if(!value){out.fill(0);return 0;}for(let k=0;k<3;k++)out[k]=Math.min(255,value.c[k]!*value.shade);out[3]=1;return Math.floor(value.label/2);});
   return { pixels, columns, rows, revision, snapshotBytes };
   } finally { elevations = new Float32Array(0); }
 }

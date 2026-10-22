@@ -1,6 +1,7 @@
+import {cutDisplayDimensions} from './raster-quality.ts';
 import {sphereCenterInspection} from './spherical-view.ts';
 import { CUBE_FACES } from '../surfaces/cube-sphere.ts';
-import { surfaceDisplayDimensions, type SurfaceRenderer } from './surface-renderer.ts';
+import { type SurfaceRenderer } from './surface-renderer.ts';
 import { sphericalLayout, type SphericalView, type Viewport } from './spherical-view.ts';
 import { SphericalElevationField, type SphereAppearance } from './spherical-elevation.ts';
 import {HOLLOW_SPHERE_GLSL} from './hollow-sphere-glsl.ts';
@@ -42,7 +43,7 @@ vec3 palette(float h){
 vec3 color(vec4 v,float depth){vec3 rgb=palette(v.x);if(relief==1){if(v.x>0.){vec3 g=clamp(v.yzw*5.,vec3(-1e6),vec3(1e6));rgb*=clamp((1.-dot(g,vec3(-.6,-.6,.5291502622129182)))/length(vec4(1.,g)),.55,1.25);}if(mode==0&&interior==0)rgb*=.74+.26*depth;}return rgb;}
 vec4 shade(vec2 pixel){vec4 value;float alpha,depth;if(!hit(pixel,value,alpha,depth))return vec4(0.);return vec4(color(value,depth)*alpha,alpha);}
 ${HOLLOW_SPHERE_GLSL}
-void main(){vec2 pixel=vec2(gl_FragCoord.x/backingSize.x*viewport.x,(1.-gl_FragCoord.y/backingSize.y)*viewport.y);if(mode==0&&excavationEnabled==1){outColor=sphereCutRay(pixel);return;}vec4 v;float alpha,depth;if(!hit(pixel,v,alpha,depth)){outColor=vec4(0.);return;}
+void main(){vec2 pixel=vec2(gl_FragCoord.x/backingSize.x*viewport.x,(1.-gl_FragCoord.y/backingSize.y)*viewport.y);if(mode==0&&excavationEnabled==1&&sphereCutAffects(pixel)){outColor=sphereCutRay(pixel);return;}vec4 v;float alpha,depth;if(!hit(pixel,v,alpha,depth)){outColor=vec4(0.);return;}
  vec2 step=viewport/backingSize*.25;
  // Four geographical rays only where coast coverage or silhouette requires it.
  if(abs(v.x)<fwidth(v.x)||alpha<1.)outColor=(shade(pixel+vec2(-step.x,-step.y))+shade(pixel+vec2(step.x,-step.y))+shade(pixel+vec2(-step.x,step.y))+shade(pixel+step))*.25;
@@ -74,7 +75,7 @@ export class SphereWebGLRenderer implements SurfaceRenderer<SphericalView> {
   gl.texStorage3D(gl.TEXTURE_2D_ARRAY,1,gl.RGBA32F,this.field.n+1,this.field.n+1,6);if(gl.getError()!==gl.NO_ERROR)throw Error('Sphere display texture allocation failed.');this.statistics.textureBytes=6*(this.field.n+1)**2*16;this.statistics.resources=3;this.statistics.reason='';
  }catch(e){this.statistics.reason=String(e);this.release(true);this.canvas.hidden=true;}}
  present(view:SphericalView,size:Viewport,appearance:SphereAppearance='relief'){
-  if(!this.available||this.field.sourceRevision<0)throw Error('Sphere display is not ready.');const gl=this.gl!,at=performance.now(),dimensions=surfaceDisplayDimensions(size,devicePixelRatio||1),layout=sphericalLayout(view,size);
+  if(!this.available||this.field.sourceRevision<0)throw Error('Sphere display is not ready.');const gl=this.gl!,at=performance.now(),dimensions=cutDisplayDimensions(size,devicePixelRatio||1,!!this.excavation&&this.excavation.model.primitives.length>0&&view.mode==='globe'&&(!view.interior||sphereCenterInspection(view))),layout=sphericalLayout(view,size);
   if(this.canvas.width!==dimensions.width||this.canvas.height!==dimensions.height){this.canvas.width=dimensions.width;this.canvas.height=dimensions.height;}const resized=performance.now();gl.useProgram(this.program!);gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D_ARRAY,this.texture!);
   if(this.uploadedRevision!==this.field.sourceRevision){const regions=this.uploadedRevision===this.field.previousRevision?this.field.regions:CUBE_FACES.map(face=>({face,left:0,top:0,right:this.field.n,bottom:this.field.n}));gl.pixelStorei(gl.UNPACK_ALIGNMENT,4);gl.pixelStorei(gl.UNPACK_ROW_LENGTH,this.field.n+1);gl.pixelStorei(gl.UNPACK_IMAGE_HEIGHT,this.field.n+1);
    try{for(const r of regions){gl.pixelStorei(gl.UNPACK_SKIP_PIXELS,r.left);gl.pixelStorei(gl.UNPACK_SKIP_ROWS,r.top);gl.texSubImage3D(gl.TEXTURE_2D_ARRAY,0,r.left,r.top,CUBE_FACES.indexOf(r.face),r.right-r.left+1,r.bottom-r.top+1,1,gl.RGBA,gl.FLOAT,this.field.data[r.face]);this.statistics.uploadBytes+=(r.right-r.left+1)*(r.bottom-r.top+1)*16;}}finally{gl.pixelStorei(gl.UNPACK_ROW_LENGTH,0);gl.pixelStorei(gl.UNPACK_IMAGE_HEIGHT,0);gl.pixelStorei(gl.UNPACK_SKIP_PIXELS,0);gl.pixelStorei(gl.UNPACK_SKIP_ROWS,0);}

@@ -35,7 +35,7 @@ test('derived palette interpolation has correct cap orientation, rim aliases, ce
  const s=make(),t=s.terrain;for(const k of t.samples())t.write(k,k.index*2-500);for(const _ of s.cache.prepare())void _;const colors=s.cache.snapshot(),{radiusMeters:r,lengthMeters:l}=t.metadata.geometry;
  for(const k of t.samples()){const q=t.positionAt(t.owner(k)),xyz=t.geometry.referencePosition(q);const c=cylinderInterpolatedColor(colors,t,{region:q.patchId,theta:Math.atan2(xyz[1],xyz[0]),radial:Math.hypot(xyz[0],xyz[1])/r,z:(xyz[2]-l/2)/r,depth:0});assert.equal(c,colors[k.index]);}
  const job=cylinderRasterSteps(s.cache,initialCylinderView('map'),{width:800,height:600},20000),first=job.next();assert.equal(first.done,false);const revision=s.cache.sourceRevision;t.write(t.keyAt(0),9000);s.cache.refresh([0]);let result=job.next();while(!result.done)result=job.next();assert.equal(result.value.revision,revision);assert.ok(result.value.pixels.byteLength<=80000);assert.equal(result.value.snapshotBytes,t.sampleCount*4);
- assert.throws(()=>new CylinderDisplayCache(createCylinderPreviewTerrain(512)));assert.throws(()=>cylinderRasterSteps(s.cache,initialCylinderView(),{width:800,height:600},180001).next());
+ assert.throws(()=>new CylinderDisplayCache(createCylinderPreviewTerrain(512)));assert.throws(()=>cylinderRasterSteps(s.cache,initialCylinderView(),{width:800,height:600},1500001).next());
 });
 test('physical controls validate contextual parameters and supported preview detail explicitly',()=>{
  const defaults=defaultCylinderControls(1000000);assert.equal(cylinderBrushFromControls(defaults,1000000)!.radiusMeters,83700);

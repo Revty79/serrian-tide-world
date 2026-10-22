@@ -3,7 +3,7 @@ import {test,expect} from '@playwright/test';
 import {mkdirSync,writeFileSync} from 'node:fs';
 test.setTimeout(180000);
 export async function createHollow(page:import('@playwright/test').Page,n=128){
- await page.goto('/');await page.getByLabel('World shape').selectOption('hollow-cube');await page.getByLabel('World/map name').fill('Hollow acceptance');await page.getByLabel('Cube resolution').selectOption(String(n));await page.getByRole('button',{name:'Create World / Map',exact:true}).click();await expect(page.locator('.cube-editor[data-surface=exterior]')).toHaveAttribute('data-ready','true',{timeout:90000});
+ await page.goto('/');await page.getByLabel('World shape').selectOption('hollow-cube');await page.getByLabel('Starting terrain',{exact:true}).selectOption('reference-shell');await page.getByLabel('World/map name').fill('Hollow acceptance');await page.getByLabel('Cube resolution').selectOption(String(n));await page.getByRole('button',{name:'Create World / Map',exact:true}).click();await expect(page.locator('.cube-editor[data-surface=exterior]')).toHaveAttribute('data-ready','true',{timeout:90000});
 }
 const active=(page:import('@playwright/test').Page)=>page.locator('.cube-editor:visible');
 const hash=(page:import('@playwright/test').Page)=>page.evaluate(()=>window.__cubeEditor!.hash());

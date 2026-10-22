@@ -48,11 +48,15 @@ export async function updateCubeCanvasAtlas(field:CubeDisplayField,previous:Cube
 export function presentCubeCanvas(canvas:HTMLCanvasElement,atlas:CubeCanvasAtlas,camera:CubeCamera,mode:CubeDisplayMode,size:CubeViewport,surface:CubeSurfaceView=CUBE_EXTERIOR_VIEW){
  const at=performance.now(),dimensions=cubeBackingSize(size,devicePixelRatio||1);if(canvas.width!==dimensions.width||canvas.height!==dimensions.height){canvas.width=dimensions.width;canvas.height=dimensions.height;}
  const context=canvas.getContext('2d');if(!context)throw Error('Canvas2D unavailable');context.setTransform(1,0,0,1,0,0);context.clearRect(0,0,canvas.width,canvas.height);context.imageSmoothingEnabled=true;context.imageSmoothingQuality='high';
- const rx=canvas.width/size.width,ry=canvas.height/size.height;
+ drawCubeAtlas(context,atlas,camera,mode,size,surface);canvas.hidden=false;return performance.now()-at;
+}
+/** Accepted atlas projection, also used for untouched terrain inside a cut crop. */
+export function drawCubeAtlas(context:CanvasRenderingContext2D,atlas:CubeCanvasAtlas,camera:CubeCamera,mode:CubeDisplayMode,size:CubeViewport,surface:CubeSurfaceView=CUBE_EXTERIOR_VIEW,crop={x:0,y:0,width:size.width,height:size.height}){
+ context.imageSmoothingEnabled=true;context.imageSmoothingQuality='high';const rx=context.canvas.width/crop.width,ry=context.canvas.height/crop.height;
  const visible=SOLID_CUBE_FACES.filter(face=>mode==='net'||surface.orientation*cubeDot(SOLID_CUBE_FRAMES[face].normal,camera.forward)>1e-10).toSorted((a,b)=>surface.orientation*(cubeDot(SOLID_CUBE_FRAMES[a].normal,camera.forward)-cubeDot(SOLID_CUBE_FRAMES[b].normal,camera.forward)));
  for(const face of visible){const image=atlas.faces.get(face);if(!image)continue;const p=projectCube(face,-1,1,camera,mode,size,surface),u=projectCube(face,1,1,camera,mode,size,surface),v=projectCube(face,-1,-1,camera,mode,size,surface);
-  context.setTransform((u.x-p.x)*rx, (u.y-p.y)*ry,(v.x-p.x)*rx,(v.y-p.y)*ry,p.x*rx,p.y*ry);
+  context.setTransform((u.x-p.x)*rx, (u.y-p.y)*ry,(v.x-p.x)*rx,(v.y-p.y)*ry,(p.x-crop.x)*rx,(p.y-crop.y)*ry);
   // Endpoint texels are centered on the exact reference boundaries.
   context.drawImage(image,.5,.5,image.width-1,image.height-1,0,0,1,1);
- }context.setTransform(1,0,0,1,0,0);canvas.hidden=false;return performance.now()-at;
+ }context.setTransform(1,0,0,1,0,0);
 }

@@ -21,6 +21,7 @@ vec4 cylinderCutRay(vec2 fragment){
  vec2 shell=cylinderInterval(o,d,1.,outerHalf);if(shell.x>shell.y||shell.y<=0.)return vec4(0);vec2 free[49];free[0]=cylinderInterval(o,d,innerRatio,innerHalf);for(int i=0;i<48;i++){if(i>=cutterCount)break;free[i+1]=capsuleInterval(o,d,i);}
  float cursor=max(0.,shell.x);int hit=-2;for(int pass=0;pass<50;pass++){float previous=cursor;for(int i=0;i<49;i++){if(i>cutterCount)break;vec2 v=free[i];if(v.x<=cursor+1.e-7&&v.y>cursor){cursor=v.y;hit=i-1;}}if(previous==cursor)break;}
  if(cursor>=shell.y-1.e-7)return vec4(0);vec3 p=o+d*cursor;
+ if(inspection==0&&hit==-2)discard; // Keep the accepted ordinary terrain pass.
  if(hit>=0){vec3 axis=primitiveB[hit].xyz-primitiveA[hit].xyz;float len=dot(axis,axis),t=len>1.e-14?clamp(dot(p-primitiveA[hit].xyz,axis)/len,0.,1.):0.;vec3 normal=normalize(primitiveA[hit].xyz+axis*t-p);return vec4(vec3(164,145,114)/255.*clamp(.64+.36*dot(normal,vec3(-.38,-.48,.78)),.28,1.1),1.);}
  bool inside=hit==-1,own=inside==(selectedInside==1);float ratio=inside?innerRatio:1.,halfLength=inside?innerHalf:outerHalf,radial=length(p.xy);int patchIndex=abs(abs(p.z)-halfLength)<abs(radial-ratio)?(p.z<0.?1:2):0;
  vec3 normal=(patchIndex==0?vec3(p.xy/radial,0.):vec3(0,0,patchIndex==1?-1.:1.))*(inside?-1.:1.);

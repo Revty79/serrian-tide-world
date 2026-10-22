@@ -1,3 +1,4 @@
+import {BLANK_OCEAN_ELEVATION} from './initial-elevation.ts';
 /** In-memory terrain contract. A future file format must declare its own encoding. */
 export const TERRAIN_DATA_VERSION = 1 as const;
 
@@ -56,7 +57,7 @@ export function createBlankTerrain({
   width = 1,
   height = 1,
   seaLevel = 0,
-  initialElevation = -100,
+  initialElevation = BLANK_OCEAN_ELEVATION,
 }: BlankTerrainOptions): Terrain<BoundedTerrainMetadata> {
   if (id.trim().length === 0) throw new RangeError('A terrain ID is required.');
   if (![columns, rows].every((size) => Number.isSafeInteger(size) && size >= 2)) {

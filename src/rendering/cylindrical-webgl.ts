@@ -1,10 +1,12 @@
+import {cutDisplayDimensions} from './raster-quality.ts';
 import {HOLLOW_CYLINDER_GLSL} from './hollow-cylinder-glsl.ts';
 import {cylinderCutView,type CylinderExcavationDisplay} from './hollow-cylinder-display.ts';
 import { cylinderLayout, cylinderCenterInspection, type CylinderView, type CylinderViewport } from './cylindrical-view.ts';
 import { CylinderDisplayCache } from './cylindrical-raster.ts';
-import { surfaceDisplayDimensions, type SurfaceRenderer } from './surface-renderer.ts';
+import { type SurfaceRenderer } from './surface-renderer.ts';
 import { dot3 } from '../surfaces/cube-sphere.ts';
 import { cylinderDisplayIndex, type CylinderAppearance } from './cylindrical-elevation.ts';
+import {projectedCutBounds} from './excavation-projection.ts';
 
 // Display tessellation only: sagitta <= 1-cos(pi/4096) radius units.
 // These vertices are reusable reference geometry, never elevation samples.
@@ -156,7 +158,7 @@ export class CylinderWebGLRenderer implements SurfaceRenderer<CylinderView>{
  }catch(e){this.statistics.reason=String(e);this.release(true);this.canvas.hidden=true;this.canvas.width=0;}}
  present(view:CylinderView,size:CylinderViewport,appearance:CylinderAppearance='elevation'){
   if(!this.available)throw Error('Graphics renderer unavailable');
-  const gl=this.gl!,at=performance.now(),dimensions=surfaceDisplayDimensions(size,devicePixelRatio||1),l=cylinderLayout(this.cache.terrain.geometry,view,size);
+  const gl=this.gl!,at=performance.now(),dimensions=cutDisplayDimensions(size,devicePixelRatio||1,cylinderCutView(view,this.excavation)||cylinderCenterInspection(view)),l=cylinderLayout(this.cache.terrain.geometry,view,size);
   if(this.canvas.width!==dimensions.width||this.canvas.height!==dimensions.height){this.canvas.width=dimensions.width;this.canvas.height=dimensions.height;}
   const excavation=this.excavation,enabled=cylinderCutView(view,excavation),opposite=enabled?excavation!.opposite:undefined;
   const resized=performance.now();this.useProgram(enabled);
@@ -183,7 +185,15 @@ export class CylinderWebGLRenderer implements SurfaceRenderer<CylinderView>{
   gl.uniform2f(u('viewport'),size.width,size.height);gl.uniform2f(u('translation'),view.mode==='map'?view.pan.x:dot3(view.target,view.frame.right),view.mode==='map'?view.pan.y:dot3(view.target,view.frame.up));
   gl.uniform2f(u('backingSize'),dimensions.width,dimensions.height);
   gl.uniform3fv(u('inspectionEye'),(view.eyeMeters??[0,0,0]).map(v=>v/this.cache.terrain.metadata.geometry.radiusMeters));gl.uniform3fv(u('cameraRight'),view.frame.right);gl.uniform3fv(u('cameraUp'),view.frame.up);gl.uniform3fv(u('cameraForward'),view.frame.forward);gl.uniform1f(u('scale'),l.scale);gl.uniform1f(u('h'),l.h);gl.uniform1f(u('phase'),view.phase);gl.uniform1f(u('depthExtent'),cylinderCenterInspection(view)?4*l.h+4:Math.hypot(view.frame.forward[0],view.frame.forward[1])+l.h*Math.abs(view.frame.forward[2])+.01);gl.uniform1i(u('mode'),enabled?3:cylinderCenterInspection(view)?2:view.mode==='map'?1:0);
-  const mesh=this.meshes[enabled?2:view.mode==='physical'?0:1]!;gl.bindVertexArray(mesh.vao);gl.viewport(0,0,dimensions.width,dimensions.height);gl.disable(gl.BLEND);gl.disable(gl.CULL_FACE);gl.enable(gl.DEPTH_TEST);gl.depthFunc(gl.LEQUAL);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.drawArrays(gl.TRIANGLES,0,mesh.count);
+  gl.viewport(0,0,dimensions.width,dimensions.height);gl.disable(gl.BLEND);gl.disable(gl.CULL_FACE);gl.enable(gl.DEPTH_TEST);gl.depthFunc(gl.LEQUAL);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+  if(enabled&&!cylinderCenterInspection(view)){
+   // Accepted terrain mesh/program first. Excavation replaces only real changed
+   // material, preserving the exact ordinary coastline and MSAA everywhere else.
+   gl.uniform1i(u('excavationEnabled'),0);gl.uniform1i(u('mode'),0);const base=this.meshes[0]!;gl.bindVertexArray(base.vao);gl.drawArrays(gl.TRIANGLES,0,base.count);
+   gl.uniform1i(u('excavationEnabled'),1);gl.uniform1i(u('mode'),3);gl.disable(gl.DEPTH_TEST);
+   const ratio=this.cache.terrain.metadata.geometry.radiusMeters/excavation!.model.radiusMeters,tx=dot3(view.target,view.frame.right),ty=dot3(view.target,view.frame.up),bounds=projectedCutBounds(excavation!.model.primitives,size,p=>({x:l.x+(dot3(p,view.frame.right)/ratio-tx)*l.scale,y:l.y-(dot3(p,view.frame.up)/ratio-ty)*l.scale}),l.scale/ratio);
+   if(bounds.width&&bounds.height){const x=Math.floor(bounds.x/size.width*dimensions.width),y=Math.floor((size.height-bounds.y-bounds.height)/size.height*dimensions.height),right=Math.ceil((bounds.x+bounds.width)/size.width*dimensions.width),top=Math.ceil((size.height-bounds.y)/size.height*dimensions.height);gl.enable(gl.SCISSOR_TEST);try{gl.scissor(x,y,right-x,top-y);const overlay=this.meshes[2]!;gl.bindVertexArray(overlay.vao);gl.drawArrays(gl.TRIANGLES,0,overlay.count);}finally{gl.disable(gl.SCISSOR_TEST);}}
+  }else{const mesh=this.meshes[enabled?2:view.mode==='physical'?0:1]!;gl.bindVertexArray(mesh.vao);gl.drawArrays(gl.TRIANGLES,0,mesh.count);}
   if(gl.isContextLost())throw Error('Graphics context lost during presentation');this.canvas.hidden=false;this.statistics.presentations++;
   return{revision:this.uploadedRevision,...dimensions,resizeMs:resized-at,uploadMs:uploaded-resized,submitMs:performance.now()-uploaded};
  }

@@ -1,3 +1,4 @@
+import {BLANK_OCEAN_ELEVATION} from './initial-elevation.ts';
 import type { SurfaceIdentity } from '../surfaces/contracts.ts';
 import { createCylinderGeometry, cylinderAngle, type CylinderConfiguration, type CylinderRegion } from '../surfaces/cylinder.ts';
 import { assertFloat32Elevation } from './model.ts';
@@ -47,7 +48,7 @@ export function createCylindricalTerrain(options: { readonly terrainId: string; 
   const metadata = Object.freeze({ terrainId: options.terrainId, identity, geometry: geometry.metadata,
     representation: Object.freeze({ provider: CYLINDRICAL_REPRESENTATION, version: 1 as const, resolution, ownership: 'side-rims-cap-interiors-single-centers' as const }), elevationUnits: 'meters' as const, seaLevel: 0 });
   // Only retained sample-sized storage: one private connected exterior authority. No alias/neighbor tables.
-  const validateElevation=options.validateElevation,validateSample=options.validateSample,initial=options.initialElevation??-100;assertFloat32Elevation(initial);validateElevation?.(Math.fround(initial));
+  const validateElevation=options.validateElevation,validateSample=options.validateSample,initial=options.initialElevation??BLANK_OCEAN_ELEVATION;assertFloat32Elevation(initial);validateElevation?.(Math.fround(initial));
   const elevations = new Float32Array(count).fill(initial);
   let revision = 0;
   const wrap = (c: number) => ((c % a) + a) % a;

@@ -1,6 +1,27 @@
 <!-- Current workstream: authorized hollow-world geometry; owner acceptance remains separate. -->
 # Serrian Tide Atlas
 
+Standing owner requirement: [Atlas rendering and shared editor standard](docs/ATLAS-RENDERING-STANDARD.md).
+Reuse the accepted solid presentation and editor mechanisms across shapes;
+geometry-specific mathematics do not justify a lower-quality hollow renderer.
+New shapes require matched output-pixel and ordinary responsiveness evidence.
+
+New hollow sphere, cylinder and cube Worlds now default to **Blank ocean
+(-100 m)**, matching solids and their rounded painted-coastline behavior.
+Choose **Reference shell (0 m)** for basic hole/tunnel authoring; those features
+still require local 0 m ground on both surfaces. Existing maps keep their exact
+heights. See the [accepted coastline correction](docs/HOLLOW-WORLD-VISUAL-POLISH.md).
+
+The owner accepts Hollow Sphere and Capped Hollow Cylinder painting for
+development progression. The current follow-up restores smooth hollow-world
+presentation and verifies the cube's separate read-only cavity view, then
+continues to an **operational Open Cylinder**. See the
+[visual correction and actual comparisons](docs/HOLLOW-WORLD-VISUAL-POLISH.md).
+The Open Cylinder prototype below remains its numerical starting point; its
+operational editor and basic connections are the next authorized work. Stop for
+Ember's technical review and owner hands-on approval after that delivery, before
+pyramids.
+
 The overnight Hollow Sphere and capped Hollow Cylinder checkpoints are published
 with independent Outside/Inside editing, fitted Inside views, separate immersive
 inspection, editable maps, basic holes, physical tunnels, reciprocal map links

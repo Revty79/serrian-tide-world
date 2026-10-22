@@ -1,3 +1,4 @@
+import {BLANK_OCEAN_ELEVATION} from './initial-elevation.ts';
 import type { PatchEdge, SurfaceIdentity } from '../surfaces/contracts.ts';
 import { createSolidCubeGeometry, cubeDot, SOLID_CUBE_FACES, SOLID_CUBE_FRAMES, solidCubeConnection, type CubeVector, type SolidCubeConfiguration, type SolidCubeFace } from '../surfaces/solid-cube.ts';
 import { assertFloat32Elevation } from './model.ts';
@@ -58,7 +59,7 @@ export function solidCubeSampleCount(cells: number): number {
 export function createSolidCubeTerrain(options: { readonly terrainId: string; readonly geometry: SolidCubeConfiguration; readonly cellsPerEdge?: number;readonly initialElevation?:number }) {
   if (!options || typeof options.terrainId !== 'string' || !options.terrainId.trim() || options.terrainId.length > 128) throw new RangeError('Cube terrain identity must contain 1-128 characters.');
   const cells = options.cellsPerEdge === undefined ? DEFAULT_SOLID_CUBE_CELLS : options.cellsPerEdge, count = solidCubeSampleCount(cells);
-  const initialElevation=options.initialElevation??-100;assertFloat32Elevation(initialElevation);
+  const initialElevation=options.initialElevation??BLANK_OCEAN_ELEVATION;assertFloat32Elevation(initialElevation);
   const geometry = createSolidCubeGeometry(options.geometry), identity = geometry.identity, length = geometry.metadata.sideLengthMeters, half = length / 2;
   const sampleSpacingMeters = length / cells, halfStep = half / cells;
   if (![sampleSpacingMeters, halfStep, sampleSpacingMeters * sampleSpacingMeters].every((value) => Number.isFinite(value) && value > 0)) throw new RangeError('Cube lattice spacing/area is outside the supported precision range.');

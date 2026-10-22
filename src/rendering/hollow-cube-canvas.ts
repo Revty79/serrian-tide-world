@@ -1,39 +1,53 @@
 import {cubeDisplayColor,cubeDisplaySample,type CubeDisplayField} from './solid-cube-field.ts';
-import {cubeLayout,type CubeCamera,type CubeSurfaceView,type CubeViewport} from './solid-cube-view.ts';
+import {cubeLayout,cubeRayHit,type CubeCamera,type CubeSurfaceView,type CubeViewport} from './solid-cube-view.ts';
 import {presentCubeCanvas,type CubeCanvasAtlas} from './solid-cube-canvas.ts';
 import {traceHollowExcavation,type HollowExcavation,type PassageEye,excavationVector} from '../surfaces/hollow-cube-csg.ts';
 import {cubeDot,SOLID_CUBE_FACES,type CubeVector} from '../surfaces/solid-cube.ts';
 import {cubeBackingSize} from './solid-cube-webgl.ts';
+import {rasterEdgeCoverage,settledRasterBudget} from './raster-quality.ts';
+import {projectedCutBounds} from './excavation-projection.ts';
 
-interface Cache {model:HollowExcavation;view:string;rect:{x:number;y:number;width:number;height:number};canvas:HTMLCanvasElement;kind:Int8Array;u:Float32Array;v:Float32Array;shade:Float32Array}
-const caches=new WeakMap<HTMLCanvasElement,Cache>();
-export function hollowCanvasCacheBytes(canvas:HTMLCanvasElement){const c=caches.get(canvas);return c?c.kind.byteLength+c.u.byteLength+c.v.byteLength+c.shade.byteLength+c.canvas.width*c.canvas.height*4:0;}
-export function disposeHollowCanvas(canvas:HTMLCanvasElement){const c=caches.get(canvas);if(c)c.canvas.width=c.canvas.height=0;caches.delete(canvas);}
-/** Existing six affine terrain planes remain the base. Only the projected
- * excavation region is ray-cast; cached hit geometry survives terrain updates.
- * Perspective inspection uses a bounded 24k-pixel version of the SAME CSG. */
-export function presentHollowCanvas(canvas:HTMLCanvasElement,model:HollowExcavation,fields:{exterior:CubeDisplayField;interior:CubeDisplayField},atlas:CubeCanvasAtlas,camera:CubeCamera,size:CubeViewport,surface:CubeSurfaceView,eye?:PassageEye){
+type Fields={exterior:CubeDisplayField;interior:CubeDisplayField};
+interface Cache {model:HollowExcavation;view:string;rect:{x:number;y:number;width:number;height:number};canvas:HTMLCanvasElement;mask?:HTMLCanvasElement;changed:boolean;kind:Int8Array;u:Float32Array;v:Float32Array;shade:Float32Array;colorKey:string;refined:boolean;coarse?:Cache;transientBytes:number;sliceMaxMs:number}
+interface Refinement {key:string;timer:number;raf:number;work?:Generator<void,Cache>;cache?:Cache}
+const caches=new WeakMap<HTMLCanvasElement,Cache>(),refinements=new WeakMap<HTMLCanvasElement,Refinement>();
+const cacheBytes=(c:Cache|undefined):number=>c?c.kind.byteLength+c.u.byteLength+c.v.byteLength+c.shade.byteLength+c.canvas.width*c.canvas.height*4+(c.mask?c.mask.width*c.mask.height*4:0)+c.transientBytes+cacheBytes(c.coarse):0;
+export function hollowCanvasCacheBytes(canvas:HTMLCanvasElement){return cacheBytes(caches.get(canvas))+cacheBytes(refinements.get(canvas)?.cache);}
+export function hollowCanvasQuality(canvas:HTMLCanvasElement){const c=caches.get(canvas),job=refinements.get(canvas);return{width:c?.canvas.width??0,height:c?.canvas.height??0,refined:c?.refined??false,refining:!!job,maxSliceMs:Math.max(c?.sliceMaxMs??0,job?.cache?.sliceMaxMs??0)};}
+function cancelRefinement(canvas:HTMLCanvasElement){const job=refinements.get(canvas);if(job){clearTimeout(job.timer);cancelAnimationFrame(job.raf);job.work?.return(undefined as never);if(job.cache)release(job.cache);refinements.delete(canvas);}}
+function release(c:Cache|undefined){if(c){c.canvas.width=c.canvas.height=0;if(c.mask)c.mask.width=c.mask.height=0;release(c.coarse);}}
+export function disposeHollowCanvas(canvas:HTMLCanvasElement){cancelRefinement(canvas);release(caches.get(canvas));caches.delete(canvas);}
+
+/** A small coherent image is immediate. Idle geometry/color refinement yields
+ * behind it, is discarded on input/publication, and never writes source terrain. */
+export function presentHollowCanvas(canvas:HTMLCanvasElement,model:HollowExcavation,fields:Fields,atlas:CubeCanvasAtlas,camera:CubeCamera,size:CubeViewport,surface:CubeSurfaceView,eye?:PassageEye,invalidate=()=>{},idle=()=>true){
  const started=performance.now();if(!eye)presentCubeCanvas(canvas,atlas,camera,'physical',size,surface);else {const backing=cubeBackingSize(size,devicePixelRatio||1);if(canvas.width!==backing.width||canvas.height!==backing.height){canvas.width=backing.width;canvas.height=backing.height;}}
- const context=canvas.getContext('2d')!,layout=cubeLayout(camera,'physical',size,{...surface,physicalScale:1}),view=JSON.stringify([camera,size,surface,eye]);
+ const context=canvas.getContext('2d')!,layout=cubeLayout(camera,'physical',size,{...surface,physicalScale:1}),view=JSON.stringify([camera,size,surface,eye]),colorKey=`${fields.exterior.n}:${fields.exterior.sourceRevision}:${fields.interior.n}:${fields.interior.sourceRevision}`;
  if(!eye&&surface.orientation===-1){context.globalCompositeOperation='source-atop';context.fillStyle='rgba(0,0,0,.25)';context.fillRect(0,0,canvas.width,canvas.height);context.globalCompositeOperation='source-over';}
+ const {add,unit}=excavationVector,base=eye?eye.position.map(v=>v/model.halfSideMeters)as unknown as CubeVector:camera.forward.map(v=>v*4)as unknown as CubeVector;
+ const ray=(sx:number,sy:number)=>{let o:CubeVector,d:CubeVector;if(eye){o=base;const f=Math.tan(eye.fov/2)/camera.zoom,a=(sx-size.width/2)/(size.height/2)*f,b=(size.height/2-sy)/(size.height/2)*f;d=unit(add(add(camera.forward.map(v=>-v)as unknown as CubeVector,camera.right,a),camera.up,b));}else{o=add(add(base,camera.right,(sx-layout.x)/layout.scale),camera.up,(layout.y-sy)/layout.scale);d=camera.forward.map(v=>-v)as unknown as CubeVector;}return traceHollowExcavation(model,o,d,!eye&&surface.orientation===-1);};
+ const ordinary=cubeLayout(camera,'physical',size,surface),own=surface.orientation===1?'exterior':'interior';
+ const unchanged=(sx:number,sy:number,hit:ReturnType<typeof ray>)=>{if(eye)return false;if(hit)return hit.kind===own;return !cubeRayHit((sx-ordinary.x)/ordinary.scale,(ordinary.y-sy)/ordinary.scale,camera,surface.orientation);};
+ const color=(kind:number,u:number,v:number,shade:number,out:Float64Array)=>{if(!kind){out.fill(0);return 0;}if(kind===1){out.set([164*shade,145*shade,114*shade,1]);return 1;}const inside=kind>=8,face=SOLID_CUBE_FACES[kind-(inside?8:2)]!,value=cubeDisplaySample(inside?fields.interior:fields.exterior,face,u,v),rgb=cubeDisplayColor(face,value.height,value.du,value.dv,true,inside?-1:1);out.set([rgb[0]*(inside?.75:1),rgb[1]*(inside?.75:1),rgb[2]*(inside?.75:1),1]);return kind+(value.height>0?16:0);};
+ const shadeHit=(hit:ReturnType<typeof ray>,out:Float64Array)=>hit?hit.kind==='rock'?color(1,0,0,Math.max(.28,Math.min(1.1,.64+.36*cubeDot(hit.normal,[-.38,-.48,.78]))),out):color((hit.kind==='interior'?8:2)+SOLID_CUBE_FACES.indexOf(hit.face!),hit.u!,hit.v!,0,out):color(0,0,0,0,out);
  let cache=caches.get(canvas);
- if(!cache||cache.model!==model||cache.view!==view){
-  let left=0,top=0,right=size.width,bottom=size.height;
-  if(!eye){left=top=Infinity;right=bottom=-Infinity;for(const p of model.primitives)for(const q of [p.a,p.b]){const x=layout.x+cubeDot(q,camera.right)*layout.scale,y=layout.y-cubeDot(q,camera.up)*layout.scale,r=p.radius*layout.scale+3;left=Math.min(left,x-r);right=Math.max(right,x+r);top=Math.min(top,y-r);bottom=Math.max(bottom,y+r);}left=Math.max(0,Math.floor(left));right=Math.min(size.width,Math.ceil(right));top=Math.max(0,Math.floor(top));bottom=Math.min(size.height,Math.ceil(bottom));}
-  const rect={x:left,y:top,width:Math.max(1,right-left),height:Math.max(1,bottom-top)},factor=Math.min(1,Math.sqrt(24000/(rect.width*rect.height))),width=Math.max(1,Math.ceil(rect.width*factor)),height=Math.max(1,Math.ceil(rect.height*factor)),patch=cache?.canvas??document.createElement('canvas');patch.width=width;patch.height=height;
-  cache={model,view,rect,canvas:patch,kind:new Int8Array(width*height),u:new Float32Array(width*height),v:new Float32Array(width*height),shade:new Float32Array(width*height)};
-  const {add,unit}=excavationVector,base=eye?eye.position.map(v=>v/model.halfSideMeters) as unknown as CubeVector:camera.forward.map(v=>v*4) as unknown as CubeVector;
-  for(let y=0;y<height;y++)for(let x=0;x<width;x++){
-   const sx=rect.x+(x+.5)/width*rect.width,sy=rect.y+(y+.5)/height*rect.height;let o:CubeVector,d:CubeVector;
-   if(eye){o=base;const f=Math.tan(eye.fov/2)/camera.zoom,a=(sx-size.width/2)/(size.height/2)*f,b=(size.height/2-sy)/(size.height/2)*f;d=unit(add(add(camera.forward.map(v=>-v) as unknown as CubeVector,camera.right,a),camera.up,b));}
-   else{o=add(add(base,camera.right,(sx-layout.x)/layout.scale),camera.up,(layout.y-sy)/layout.scale);d=camera.forward.map(v=>-v) as unknown as CubeVector;}
-   const hit=traceHollowExcavation(model,o,d,!eye&&surface.orientation===-1);if(!hit)continue;const i=y*width+x;
-   if(hit.kind==='rock'){cache.kind[i]=1;cache.shade[i]=Math.max(.28,Math.min(1.1,.64+.36*cubeDot(hit.normal,[-.38,-.48,.78])));}
-   else {cache.kind[i]=(hit.kind==='interior'?8:2)+SOLID_CUBE_FACES.indexOf(hit.face!);cache.u[i]=hit.u!;cache.v[i]=hit.v!;}
-  }caches.set(canvas,cache);
+ if(cache&&(cache.model!==model||cache.view!==view)){disposeHollowCanvas(canvas);cache=undefined;}
+ if(cache?.refined&&cache.colorKey!==colorKey){const coarse=cache.coarse!;cache.coarse=undefined;release(cache);cache=coarse;caches.set(canvas,cache);cancelRefinement(canvas);}
+ function* prepare(target:Cache){const width=target.canvas.width,height=target.canvas.height,count=width*height,rect=target.rect;
+  for(let i=0;i<count;i++){const x=rect.x+(i%width+.5)/width*rect.width,y=rect.y+(Math.floor(i/width)+.5)/height*rect.height,hit=ray(x,y);if(unchanged(x,y,hit))target.kind[i]=-1;else{target.changed=true;if(hit){if(hit.kind==='rock'){target.kind[i]=1;target.shade[i]=Math.max(.28,Math.min(1.1,.64+.36*cubeDot(hit.normal,[-.38,-.48,.78])));}else{target.kind[i]=(hit.kind==='interior'?8:2)+SOLID_CUBE_FACES.indexOf(hit.face!);target.u[i]=hit.u!;target.v[i]=hit.v!;}}}if(i%128===127)yield;}
+  yield* paint(target);return target;
  }
- const patch=cache.canvas,ctx=patch.getContext('2d')!,image=ctx.createImageData(patch.width,patch.height);
- for(let i=0;i<cache.kind.length;i++){const kind=cache.kind[i]!;if(!kind)continue;let rgb:readonly number[];if(kind===1){const shade=cache.shade[i]!;rgb=[164*shade,145*shade,114*shade];}else{const inside=kind>=8,face=SOLID_CUBE_FACES[kind-(inside?8:2)]!,value=cubeDisplaySample(inside?fields.interior:fields.exterior,face,cache.u[i]!,cache.v[i]!);rgb=cubeDisplayColor(face,value.height,value.du,value.dv,true,inside?-1:1).map(v=>v*(inside?.75:1));}const at=i*4;image.data[at]=rgb[0]!;image.data[at+1]=rgb[1]!;image.data[at+2]=rgb[2]!;image.data[at+3]=255;}
- ctx.putImageData(image,0,0);const rx=canvas.width/size.width,ry=canvas.height/size.height,r=cache.rect;
- if(eye)context.clearRect(0,0,canvas.width,canvas.height);context.clearRect(r.x*rx,r.y*ry,r.width*rx,r.height*ry);context.imageSmoothingEnabled=true;context.drawImage(patch,r.x*rx,r.y*ry,r.width*rx,r.height*ry);canvas.hidden=false;return performance.now()-started;
+ function* paint(target:Cache){if(!target.changed){target.colorKey=colorKey;return;}const width=target.canvas.width,height=target.canvas.height,ctx=target.canvas.getContext('2d')!,image=ctx.createImageData(width,height),mask=!eye?ctx.createImageData(width,height):undefined,labels=new Uint8Array(width*height),value=new Float64Array(6);target.transientBytes=image.data.byteLength+labels.byteLength+(mask?.data.byteLength??0);
+  for(let i=0;i<labels.length;i++){const kind=target.kind[i]!,at=i*4;if(kind===-1)labels[i]=255;else{labels[i]=color(kind,target.u[i]!,target.v[i]!,target.shade[i]!,value);for(let k=0;k<3;k++)image.data[at+k]=value[k]!;image.data[at+3]=value[3]!*255;if(mask)mask.data[at+3]=255;}if(i%256===255)yield;}
+  const rect=target.rect;yield* rasterEdgeCoverage(image.data,labels,width,height,(x,y,out)=>{const sx=rect.x+x/width*rect.width,sy=rect.y+y/height*rect.height,hit=ray(sx,sy);if(unchanged(sx,sy,hit)){out.fill(0);return 255;}const label=shadeHit(hit,out);if(mask)out[4]=1;return label;},mask?.data);ctx.putImageData(image,0,0);if(mask){target.mask??=document.createElement('canvas');if(target.mask.width!==width)target.mask.width=width;if(target.mask.height!==height)target.mask.height=height;target.mask.getContext('2d')!.putImageData(mask,0,0);}target.transientBytes=0;target.colorKey=colorKey;
+ }
+ const allocate=(rect:Cache['rect'],budget:number,refined:boolean):Cache=>{const factor=Math.min(1.5,Math.sqrt(budget/(rect.width*rect.height))),width=Math.max(1,Math.floor(rect.width*factor)),height=Math.max(1,Math.floor(rect.height*factor)),patch=document.createElement('canvas');patch.width=width;patch.height=height;return{model,view,rect,canvas:patch,changed:!!eye,kind:new Int8Array(width*height),u:new Float32Array(width*height),v:new Float32Array(width*height),shade:new Float32Array(width*height),colorKey:'',refined,transientBytes:0,sliceMaxMs:0};};
+ if(!cache){const rect=eye?{x:0,y:0,width:size.width,height:size.height}:projectedCutBounds(model.primitives,size,q=>({x:layout.x+cubeDot(q,camera.right)*layout.scale,y:layout.y-cubeDot(q,camera.up)*layout.scale}),layout.scale),rx=canvas.width/size.width,ry=canvas.height/size.height,left=Math.floor(rect.x*rx),top=Math.floor(rect.y*ry),right=Math.ceil((rect.x+rect.width)*rx),bottom=Math.ceil((rect.y+rect.height)*ry);cache=allocate({x:left/rx,y:top/ry,width:Math.max(1,(right-left)/rx),height:Math.max(1,(bottom-top)/ry)},24000,false);const work=prepare(cache);while(!work.next().done){}caches.set(canvas,cache);}
+ else if(cache.colorKey!==colorKey){const work=paint(cache);while(!work.next().done){}}
+ const current=cache,jobKey=`${view}:${colorKey}`,budget=settledRasterBudget({width:current.rect.width,height:current.rect.height},devicePixelRatio||1,matchMedia('(pointer: coarse)').matches);
+ if(refinements.has(canvas)&&(refinements.get(canvas)!.key!==jobKey||!idle()))cancelRefinement(canvas);
+ if(idle()&&!current.refined&&current.canvas.width*current.canvas.height<budget*.99&&getComputedStyle(canvas).visibility!=='hidden'){
+  if(refinements.get(canvas)?.key!==jobKey){cancelRefinement(canvas);const job:Refinement={key:jobKey,timer:0,raf:0};refinements.set(canvas,job);job.timer=window.setTimeout(()=>{if(refinements.get(canvas)!==job)return;if(!idle()){cancelRefinement(canvas);return;}job.cache=allocate(current.rect,budget,true);job.work=prepare(job.cache);const pump=()=>{if(refinements.get(canvas)!==job)return;if(!idle()){cancelRefinement(canvas);return;}const at=performance.now();let result=job.work!.next();while(!result.done&&performance.now()-at<3)result=job.work!.next();job.cache!.sliceMaxMs=Math.max(job.cache!.sliceMaxMs,performance.now()-at);if(!result.done){job.raf=requestAnimationFrame(pump);return;}const high=result.value;high.coarse=current;high.kind=new Int8Array(0);high.u=high.v=high.shade=new Float32Array(0);caches.set(canvas,high);refinements.delete(canvas);invalidate();};job.raf=requestAnimationFrame(pump);},180);}
+ }
+ const rx=canvas.width/size.width,ry=canvas.height/size.height,r=current.rect,x=Math.round(r.x*rx),y=Math.round(r.y*ry),width=Math.round((r.x+r.width)*rx)-x,height=Math.round((r.y+r.height)*ry)-y;if(eye)context.clearRect(0,0,canvas.width,canvas.height);context.imageSmoothingEnabled=true;context.imageSmoothingQuality='high';if(current.changed){if(current.mask){context.globalCompositeOperation='destination-out';context.drawImage(current.mask,x,y,width,height);context.globalCompositeOperation='lighter';}try{context.drawImage(current.canvas,x,y,width,height);}finally{context.globalCompositeOperation='source-over';}}canvas.hidden=false;return performance.now()-started;
 }

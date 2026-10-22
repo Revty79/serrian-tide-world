@@ -1,5 +1,20 @@
 # Hollow-world development: authorized sequence and reuse inventory
 
+Follow-up owner direction, 2026-10-22: core Hollow Sphere and Capped Hollow
+Cylinder painting is accepted for progression. The new assignment corrects
+visual smoothness and cube cavity-view behavior, then authorizes operational
+Open Cylinder. See [the visual correction](HOLLOW-WORLD-VISUAL-POLISH.md). The
+completed overnight prototype fallback below is historical; it does not close
+the newer operational Open Cylinder assignment. Pyramids still require the
+subsequent technical and hands-on review gate.
+
+The owner subsequently approved and accepted the painted-coastline correction:
+new hollow Worlds default to the shared -100 m blank ocean. Select **Reference
+shell (0 m)** to reproduce the original hole/tunnel workflows described below.
+Existing saved geography remains exact. The [permanent Atlas standard](ATLAS-RENDERING-STANDARD.md)
+requires reuse of accepted presentation/editor mechanisms and matched pixel and
+ordinary responsiveness checks for every subsequent geometry.
+
 Owner authorization, 2026-10-21: Hollow Sphere → capped Hollow Cylinder → Open
 Cylinder. Cube-I is technically stable at `6d4b129`; owner acceptance remains
 pending. Each verified milestone is committed and pushed to standalone `main`.

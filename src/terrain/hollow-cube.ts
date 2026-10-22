@@ -5,10 +5,10 @@ import {assertFloat32Elevation} from './model.ts';
 
 /** Two ordinary accepted cube buffers. Orientation lives in the adapter, never
  * in negated elevation values, reinterpreted v1 metadata or shared ownership. */
-export function createHollowCubeWorld(input:HollowCubeConfiguration,cellsPerEdge=128){
- const configuration=hollowCubeConfiguration(input),dimensions=hollowCubeDimensions(configuration);
+export function createHollowCubeWorld(input:HollowCubeConfiguration,cellsPerEdge=128,initialElevation=0){
+ const configuration=hollowCubeConfiguration(input),dimensions=hollowCubeDimensions(configuration);assertFloat32Elevation(initialElevation);if(initialElevation< -dimensions.nominalWallThicknessMeters/4||initialElevation>dimensions.innerSideLengthMeters/4)throw RangeError('Initial hollow terrain must preserve shell and cavity clearance. No heights were clamped.');
  const make=(role:HollowCubeRole)=>{
-  const geometry=createHollowCubeSurfaceGeometry(configuration,role),referenceTerrain=createSolidCubeTerrain({terrainId:configuration.surfaces[role].terrainId,geometry:geometry.kernelConfiguration,cellsPerEdge,initialElevation:0});
+  const geometry=createHollowCubeSurfaceGeometry(configuration,role),referenceTerrain=createSolidCubeTerrain({terrainId:configuration.surfaces[role].terrainId,geometry:geometry.kernelConfiguration,cellsPerEdge,initialElevation});
   const address=(a:SolidCubeSampleAddress)=>({...a,row:role==='interior'?cellsPerEdge-a.row:a.row});
   return Object.freeze({role,geometry,referenceTerrain,
    resolve:(a:SolidCubeSampleAddress)=>referenceTerrain.resolve(address(a)),

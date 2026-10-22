@@ -1,7 +1,7 @@
 import { CUBE_FACES, FACE_BASES, QUARTER_PI, dot3, type CubeFace, type Vec3 } from '../surfaces/cube-sphere.ts';
 import type { SphericalTerrain } from '../terrain/spherical.ts';
 import type { SphericalDisplayCache } from './spherical-raster.ts';
-import { elevationToColor } from './elevation-colors.ts';
+import { elevationColorInto } from './elevation-colors.ts';
 
 export type SphereAppearance = 'elevation' | 'relief';
 export const SPHERE_RELIEF_EXAGGERATION = 5;
@@ -91,4 +91,10 @@ export function sampleSphereFaceInto(field:SphereFieldSnapshot,face:CubeFace,u:n
  out.fill(0);let low=Infinity,high=-Infinity;for(let row=0;row<2;row++)for(let col=0;col<2;col++){const p=((top+row)*side+left+col)*4,w=(row?fy:1-fy)*(col?fx:1-fx);low=Math.min(low,data[p]!);high=Math.max(high,data[p]!);for(let channel=0;channel<4;channel++)out[channel]!+=data[p+channel]!*w;}out[4]=low<=0&&high>0?1:0;
 }
 export function sphereRelief(gradient:Vec3){const g=gradient.map(v=>clampSlope(v*SPHERE_RELIEF_EXAGGERATION)) as unknown as Vec3;return Math.max(.55,Math.min(1.25,(1-dot3(g,LIGHT))/Math.hypot(1,...g)));}
-export function sphereDisplayColor(height:number,gradient:Vec3,appearance:SphereAppearance,formShade=1){const color=elevationToColor(height,0),gain=(appearance==='relief'?height>0?sphereRelief(gradient):1:1)*formShade;return color.map(v=>Math.max(0,Math.min(255,v*gain))) as unknown as Vec3;}
+/** One accepted color pass for ordinary terrain and excavation intersections. */
+export function sphereDisplayColorInto(height:number,gx:number,gy:number,gz:number,appearance:SphereAppearance,formShade:number,out:Float64Array){
+ elevationColorInto(height,0,out);let gain=formShade;
+ if(appearance==='relief'&&height>0){const x=clampSlope(gx*SPHERE_RELIEF_EXAGGERATION),y=clampSlope(gy*SPHERE_RELIEF_EXAGGERATION),z=clampSlope(gz*SPHERE_RELIEF_EXAGGERATION);gain*=Math.max(.55,Math.min(1.25,(1+.6*x+.6*y-.5291502622129182*z)/Math.hypot(1,x,y,z)));}
+ for(let k=0;k<3;k++)out[k]=Math.max(0,Math.min(255,out[k]!*gain));
+}
+export function sphereDisplayColor(height:number,gradient:Vec3,appearance:SphereAppearance,formShade=1){const out=new Float64Array(3);sphereDisplayColorInto(height,...gradient,appearance,formShade,out);return [out[0]!,out[1]!,out[2]!]as Vec3;}

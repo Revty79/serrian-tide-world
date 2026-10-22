@@ -1,3 +1,4 @@
+import {BLANK_OCEAN_ELEVATION} from './initial-elevation.ts';
 import { assertIdentity, type SurfaceIdentity } from '../surfaces/contracts.ts';
 import { CUBE_FACES, FACE_BASES, QUARTER_PI, createCubeSphereGeometry, dot3, faceConnection, type CubeFace, type Vec3 } from '../surfaces/cube-sphere.ts';
 import { assertFloat32Elevation } from './model.ts';
@@ -32,7 +33,7 @@ export function createSphericalTerrain(options: { readonly terrainId: string; re
   });
   // The only authoritative elevation allocation. Face views are address resolvers, not arrays.
   const validateElevation=(height:number)=>{assertFloat32Elevation(height);options.validateElevation?.(Math.fround(height));};
-  const initial=options.initialElevation??-100;validateElevation(initial);
+  const initial=options.initialElevation??BLANK_OCEAN_ELEVATION;validateElevation(initial);
   const elevations = new Float32Array(count).fill(initial);
   let revision = 0;
   const assertIndex = (index: number) => {
