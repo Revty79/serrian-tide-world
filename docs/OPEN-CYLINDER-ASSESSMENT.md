@@ -1,5 +1,13 @@
 # Open Cylinder: measured assessment and numerical prototype
 
+**Current work:** the later visual-polish prompt authorizes the operational Open
+Cylinder. Its [connected numerical foundation](OPEN-CYLINDER-NUMERICAL-FOUNDATION.md)
+is now verified: one parent terrain, true shared annular rings, bounded certified
+paths and the accepted shared editing/history core. The normal Open Cylinder
+editor, rendering, Save/Open and connection authoring remain in progress. The
+original prototype/fallback report below is historical evidence, not the current
+stopping point or a claim that the operational shape is delivered.
+
 The authorized overnight sequence ends with a **numerical reference prototype**
 for a cylinder with both ends open. The completed capped hollow-cylinder editor
 and its holes, physical networks, links and v13 Save/Open remain available.

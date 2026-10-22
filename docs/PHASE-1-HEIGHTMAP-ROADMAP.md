@@ -8,6 +8,13 @@ incrementally. [The rendering standard](ATLAS-RENDERING-STANDARD.md) defines the
 matched solid/hollow pixel and responsiveness acceptance gate. This does not
 authorize future geometries or a wholesale renderer rewrite.
 
+Verified milestones in this follow-up: the owner-approved coastline/visual
+correction is published at `2303bd2`. The new
+[Open Cylinder connected numerical foundation](OPEN-CYLINDER-NUMERICAL-FOUNDATION.md)
+has one parent authority, actual shared annuli, bounded certified paths and the
+accepted shared painting/history mechanisms. Its operational rendering, editor,
+Save/Open and connection tools remain required before Open Cylinder delivery.
+
 Current follow-up authority (2026-10-22), starting at `b5636ec`: the owner accepts
 Hollow Sphere and Capped Hollow Cylinder core painting for development
 progression. Correct visual quality across hollow cube/sphere/cylinder and verify

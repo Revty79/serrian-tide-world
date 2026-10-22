@@ -1,0 +1,215 @@
+{
+  "measuredAtUtc": "2026-10-22T16:54:10.408Z",
+  "base": "2303bd22bf9359dac053a4a6de7499ab98841d19",
+  "status": "Connected Open Cylinder numerical foundation verified. Operational editor, rendering, persistence and connection authoring remain required; no owner acceptance claimed.",
+  "sourceFingerprint": {
+    "sha256": "d3022a4f75d0ffb1dc792c2cef96d8b470e69f89e53db9ece677ed55e6cadb09",
+    "files": 317,
+    "algorithm": "SHA256 over sorted src POSIX paths followed by bytes with CRLF normalized to LF"
+  },
+  "numerical": {
+    "passed": 1312,
+    "failed": 0,
+    "localLog": ".local/open-foundation-verified-numerical.log"
+  },
+  "productionBuild": {
+    "passed": true,
+    "localLog": ".local/open-foundation-verified-build.log"
+  },
+  "validations": {
+    "matchedPixels": {
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "durationMs": 69984.773,
+      "localReport": ".local/open-foundation-parity.json"
+    },
+    "cylinderCompatibility": {
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "durationMs": 165948.473,
+      "localReport": ".local/open-foundation-compatibility.json"
+    },
+    "ordinaryCylinderHeldPainting": {
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "durationMs": 183743.935,
+      "localReport": ".local/open-foundation-held.json"
+    }
+  },
+  "independentOracle": {
+    "decimalDigits": 85,
+    "innerRimCases": 45,
+    "meridianCases": 48,
+    "allEnclosed": true,
+    "fixture": "src/surfaces/fixtures/open-cylinder-distance-oracle.json",
+    "reproduce": "python scripts/check-open-cylinder-distance.py"
+  },
+  "foundation": {
+    "configuration": "both-open",
+    "connectedSurfaceCount": 1,
+    "independentWallRegions": true,
+    "sharedAnnularAuthority": true,
+    "sampleCount": "A * (2Z + 4P)",
+    "actualAnnuli": true,
+    "certification": "Successful queries have independent global lower bounds and physically contained upper witnesses; unsupported routes/precision/work throw.",
+    "painting": "Accepted shared four-tool, atomic Float32 authority, whole-gesture history, ordered stroke and carried spacing cores; geometry adapters only.",
+    "sharedCorrection": "Certified zero-influence boundary tails can complete within the existing absolute influence error contract. Omitted errors are accounted. Polynomial, strength, radius, spacing and scheduling are unchanged; genuine precision/work failure remains atomic."
+  },
+  "ordinaryHeldPainting": {
+    "runInIsolation": true,
+    "thresholdsUnchanged": true,
+    "qualification": "Existing capped cylinder sessions after shared-core extraction, not an Open Cylinder browser/performance claim. Changing pixels sampled separately from coherent release.",
+    "cases": [
+      {
+        "detail": 128,
+        "backend": "auto",
+        "role": "exterior",
+        "events": 894,
+        "firstChangedPixelsMs": 141.39999997615814,
+        "changedWhileHeld": 65,
+        "releaseToCoherentMs": 36.92500000000291,
+        "brushDrainPresentationMs": {
+          "p50": 134.30000001192093,
+          "p95": 251.19999998807907,
+          "max": 300.2999999523163
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "detail": 128,
+        "backend": "auto",
+        "role": "interior",
+        "events": 900,
+        "firstChangedPixelsMs": 354.7999999523163,
+        "changedWhileHeld": 49,
+        "releaseToCoherentMs": 49.19430000000284,
+        "brushDrainPresentationMs": {
+          "p50": 167.0999999642372,
+          "p95": 317.4000000357628,
+          "max": 367.5
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "detail": 128,
+        "backend": "canvas",
+        "role": "exterior",
+        "events": 899,
+        "firstChangedPixelsMs": 694.1000000238419,
+        "changedWhileHeld": 50,
+        "releaseToCoherentMs": 215.2335999999923,
+        "brushDrainPresentationMs": {
+          "p50": 333.80000001192093,
+          "p95": 534.3000000119209,
+          "max": 584.3000000119209
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "detail": 128,
+        "backend": "canvas",
+        "role": "interior",
+        "events": 896,
+        "firstChangedPixelsMs": 383.69999998807907,
+        "changedWhileHeld": 49,
+        "releaseToCoherentMs": 78.25259999999253,
+        "brushDrainPresentationMs": {
+          "p50": 183.69999998807907,
+          "p95": 333.9000000357628,
+          "max": 392.0999999642372
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "detail": 256,
+        "backend": "auto",
+        "role": "exterior",
+        "events": 898,
+        "firstChangedPixelsMs": 93.59999996423721,
+        "changedWhileHeld": 65,
+        "releaseToCoherentMs": 43.58890000000247,
+        "brushDrainPresentationMs": {
+          "p50": 135.9000000357628,
+          "p95": 252.10000002384186,
+          "max": 286.10000002384186
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "detail": 256,
+        "backend": "auto",
+        "role": "interior",
+        "events": 898,
+        "firstChangedPixelsMs": 356.69999998807907,
+        "changedWhileHeld": 49,
+        "releaseToCoherentMs": 56.72930000000633,
+        "brushDrainPresentationMs": {
+          "p50": 168.89999997615814,
+          "p95": 318.19999998807907,
+          "max": 368.19999998807907
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "detail": 256,
+        "backend": "canvas",
+        "role": "exterior",
+        "events": 900,
+        "firstChangedPixelsMs": 711.8000000119209,
+        "changedWhileHeld": 47,
+        "releaseToCoherentMs": 166.14690000002156,
+        "brushDrainPresentationMs": {
+          "p50": 352.7000000476837,
+          "p95": 568.9000000357628,
+          "max": 603.3999999761581
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "detail": 256,
+        "backend": "canvas",
+        "role": "interior",
+        "events": 898,
+        "firstChangedPixelsMs": 386,
+        "changedWhileHeld": 49,
+        "releaseToCoherentMs": 79.71700000000419,
+        "brushDrainPresentationMs": {
+          "p50": 177.20000004768372,
+          "p95": 326.80000001192093,
+          "max": 393.9000000357628
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      }
+    ]
+  },
+  "renderingRegression": {
+    "maxStableChannelError": 1,
+    "maxPremultipliedTwoPixelEnvelopeError": 1,
+    "violations": 0,
+    "gpu": [
+      "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    ]
+  },
+  "limitations": [
+    "Open Cylinder is not yet selectable in Atlas.",
+    "New Open Cylinder rendering, three-view browser workflow, Save/Open and operational connections remain delivery gates.",
+    "A bounded certified query set is implemented; arbitrary far wall/rim pairs are not claimed. Ordinary brush footprints use the explicit single-crease radius limit.",
+    "Closed worker interfaces and hard capacities are unchanged. No Open Cylinder terrain is sent to a closed worker.",
+    "Existing v1-v13 save interpretations are unchanged; no new saved-map version is claimed here.",
+    "Desktop Chromium and Pixel 7 emulation are browser evidence, not physical-device or owner acceptance."
+  ]
+}

@@ -12,6 +12,11 @@ Choose **Reference shell (0 m)** for basic hole/tunnel authoring; those features
 still require local 0 m ground on both surfaces. Existing maps keep their exact
 heights. See the [accepted coastline correction](docs/HOLLOW-WORLD-VISUAL-POLISH.md).
 
+The [connected Open Cylinder numerical foundation](docs/OPEN-CYLINDER-NUMERICAL-FOUNDATION.md)
+is verified: true annular rims, one shared parent terrain, certified supported
+paths and the accepted shared editing/history core. Its normal editor, rendering,
+Save/Open and basic connections remain the next authorized implementation work.
+
 The owner accepts Hollow Sphere and Capped Hollow Cylinder painting for
 development progression. The current follow-up restores smooth hollow-world
 presentation and verifies the cube's separate read-only cavity view, then
@@ -25,8 +30,8 @@ pyramids.
 The overnight Hollow Sphere and capped Hollow Cylinder checkpoints are published
 with independent Outside/Inside editing, fitted Inside views, separate immersive
 inspection, editable maps, basic holes, physical tunnels, reciprocal map links
-and versioned Save/Open. Open Cylinder has a measured **numerical prototype**
-under the authorized safe-adapter fallback; its interactive editor remains
+and versioned Save/Open. Open Cylinder has progressed from its measured prototype
+to a verified connected numerical foundation; its interactive editor remains
 unimplemented. Hands-on acceptance remains pending. See the
 [current hollow-world handoff](docs/HOLLOW-WORLDS-OVERNIGHT.md) and
 [Open Cylinder assessment](docs/OPEN-CYLINDER-ASSESSMENT.md).

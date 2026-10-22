@@ -1,7 +1,7 @@
 import {BLANK_OCEAN_ELEVATION} from './initial-elevation.ts';
 import type { SurfaceIdentity } from '../surfaces/contracts.ts';
 import { createCylinderGeometry, cylinderAngle, type CylinderConfiguration, type CylinderRegion } from '../surfaces/cylinder.ts';
-import { assertFloat32Elevation } from './model.ts';
+import { createIndexedFloat32Authority, MAX_INDEXED_PATCH_SAMPLES, type IndexedPatchBlock } from './indexed-float32.ts';
 
 export const CYLINDRICAL_REPRESENTATION = 'cylinder-rings-shared-rims' as const;
 export interface CylinderResolution {
@@ -23,8 +23,8 @@ export interface CylinderSampleKey extends SurfaceIdentity, CylinderResolution {
   readonly lengthMeters: number;
   readonly index: number;
 }
-export const MAX_CYLINDER_PATCH_SAMPLES = 65536;
-export interface CylinderPatchBlock { readonly indices: Uint32Array; readonly values: Float32Array; readonly count: number }
+export const MAX_CYLINDER_PATCH_SAMPLES = MAX_INDEXED_PATCH_SAMPLES;
+export interface CylinderPatchBlock extends IndexedPatchBlock {}
 export function cylindricalSampleCount(r: CylinderResolution): number {
   if (!Number.isInteger(r.angularSamples) || r.angularSamples < 4 || r.angularSamples > 1024
     || !Number.isInteger(r.axialCells) || r.axialCells < 2 || r.axialCells > 512
@@ -48,9 +48,7 @@ export function createCylindricalTerrain(options: { readonly terrainId: string; 
   const metadata = Object.freeze({ terrainId: options.terrainId, identity, geometry: geometry.metadata,
     representation: Object.freeze({ provider: CYLINDRICAL_REPRESENTATION, version: 1 as const, resolution, ownership: 'side-rims-cap-interiors-single-centers' as const }), elevationUnits: 'meters' as const, seaLevel: 0 });
   // Only retained sample-sized storage: one private connected exterior authority. No alias/neighbor tables.
-  const validateElevation=options.validateElevation,validateSample=options.validateSample,initial=options.initialElevation??BLANK_OCEAN_ELEVATION;assertFloat32Elevation(initial);validateElevation?.(Math.fround(initial));
-  const elevations = new Float32Array(count).fill(initial);
-  let revision = 0;
+  const authority = createIndexedFloat32Authority({ count, initialElevation: options.initialElevation ?? BLANK_OCEAN_ELEVATION, validateElevation: options.validateElevation, validateSample: options.validateSample });
   const wrap = (c: number) => ((c % a) + a) % a;
   const keyAt = (index: number): CylinderSampleKey => {
     if (!Number.isSafeInteger(index) || index < 0 || index >= count) throw new RangeError('Invalid cylinder canonical sample index.');
@@ -121,44 +119,16 @@ export function createCylindricalTerrain(options: { readonly terrainId: string; 
     return { address: target, sample: resolve(target), transport: seam.transport };
   };
   return Object.freeze({
-    metadata, geometry, sampleCount: count, elevationByteLength: elevations.byteLength, keyAt, resolve, owner, aliases, positionAt, neighbors, crossRim,
+    metadata, geometry, sampleCount: count, elevationByteLength: authority.byteLength, keyAt, resolve, owner, aliases, positionAt, neighbors, crossRim,
     referencePositionAt: (key: CylinderSampleKey) => geometry.referencePosition(positionAt(owner(key))),
-    get revision() { return revision; },
-    read: (key: CylinderSampleKey) => elevations[checkedKey(key)]!,
-    write: (key: CylinderSampleKey, value: number) => {
-      const index = checkedKey(key); assertFloat32Elevation(value); const next = Math.fround(value);validateElevation?.(next);validateSample?.(index,next,elevations[index]!);
-      if (!Object.is(elevations[index], next)) { elevations[index] = next; revision++; }
-    },
-    /** Validate completely, then apply without allocation/callbacks. Revision remains per changed word. */
+    get revision() { return authority.revision; },
+    read: (key: CylinderSampleKey) => authority.read(checkedKey(key)),
+    write: (key: CylinderSampleKey, value: number) => authority.write(checkedKey(key), value),
     commitPreparedPatch: (key: CylinderSampleKey, expectedRevision: number, blocks: readonly CylinderPatchBlock[]): number => {
-      checkedKey(key);
-      if (!Number.isSafeInteger(expectedRevision) || expectedRevision < 0 || !Array.isArray(blocks) || blocks.length > 256) throw new RangeError('Invalid cylinder patch guard or block count.');
-      // Detach descriptors before validation; no caller property access in the write loop.
-      const prepared: CylinderPatchBlock[] = blocks.map((block) => ({ indices: block.indices, values: block.values, count: block.count }));
-      let previous = -1, total = 0, changed = 0;
-      for (const block of prepared) {
-        if (!ArrayBuffer.isView(block.indices) || Object.getPrototypeOf(block.indices) !== Uint32Array.prototype
-          || !ArrayBuffer.isView(block.values) || Object.getPrototypeOf(block.values) !== Float32Array.prototype
-          || !(block.indices.buffer instanceof ArrayBuffer) || !(block.values.buffer instanceof ArrayBuffer)
-          || !Number.isSafeInteger(block.count) || block.count < 0 || block.count > block.indices.length || block.count > block.values.length) throw new RangeError('Invalid or shared cylinder patch arrays.');
-        total += block.count;
-        if (total > MAX_CYLINDER_PATCH_SAMPLES) throw new RangeError('Cylinder patch sample budget exceeded.');
-        for (let i = 0; i < block.count; i++) {
-          const index = block.indices[i]!, value = block.values[i]!;
-          if (index <= previous || index >= count || !Number.isFinite(value)) throw new RangeError('Cylinder patch must have unique ordered indices and finite values.');
-          validateElevation?.(value);validateSample?.(index,value,elevations[index]!);
-          previous = index; if (!Object.is(elevations[index], value)) changed++;
-        }
-      }
-      if (revision !== expectedRevision || !Number.isSafeInteger(revision + changed)) throw new Error('Cylinder patch source revision changed or overflowed.');
-      for (const block of prepared) for (let i = 0; i < block.count; i++) {
-        const index = block.indices[i]!, value = block.values[i]!;
-        if (!Object.is(elevations[index], value)) { elevations[index] = value; revision++; }
-      }
-      return changed;
+      checkedKey(key); return authority.commitPreparedPatch(expectedRevision, blocks);
     },
-    copyElevations: () => elevations.slice(),
-    snapshot: () => Object.freeze({ metadata, revision, elevations: elevations.slice() }),
+    copyElevations: authority.copyElevations,
+    snapshot: () => Object.freeze({ metadata, revision: authority.revision, elevations: authority.copyElevations() }),
     *samples(): Generator<CylinderSampleKey> { for (let i = 0; i < count; i++) yield keyAt(i); },
   });
 }

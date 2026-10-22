@@ -68,10 +68,13 @@ test('global cap shortcuts influence side geography; interior 3D chords never pa
   assert.ok(q.geometry.globalDistance(p('cap-start', 0, 0), q.positionAt(q.owner(opposite))).lowerBoundMeters > .913);
 });
 
-test('unresolved exact boundary fails before any commit, including previously prepared changes', () => {
+test('a certified zero-influence exact boundary preserves its samples while the interior dab commits', () => {
   const t = make(4, 2, 2, 2); seed(t); const before = t.snapshot(), j = prepareCylindricalDab(t, p('side', 0, 1), raise(1));
-  assert.throws(() => { while (j.status === 'preparing') j.pump(1); j.commit(); }, /precision|tolerance|boundary/i);
-  assert.equal(j.status, 'failed'); assert.equal(j.statistics.preparedBytes, 0); assert.deepEqual(t.copyElevations(), before.elevations); assert.equal(t.revision, before.revision);
+  while(j.status==='preparing')j.pump(1);assert.equal(j.commit(),1);const center=t.resolve({...identity,patchId:'side',column:0,row:1});
+  for(const key of t.samples())assert.ok(Object.is(t.read(key),key.index===center.index?Math.fround(before.elevations[key.index]!+100):before.elevations[key.index]));assert.equal(j.statistics.preparedBytes,0);assert.ok(j.statistics.maxFalloffError<=1e-6);
+});
+test('a genuinely unresolved subprecision influence still fails before any commit',()=>{
+ const t=make(4,2,2,2);seed(t);const before=t.snapshot(),job=prepareCylindricalDab(t,p('side',1e-13,1),raise(1e-12));assert.throws(()=>{while(job.status==='preparing')job.pump(1);job.commit();},/precision|tolerance/);assert.equal(job.status,'failed');assert.deepEqual(t.copyElevations(),before.elevations);assert.equal(t.revision,before.revision);
 });
 
 test('cancellation, source conflicts, failed distance and memory/work limits preserve atomicity', () => {
@@ -183,4 +186,11 @@ test('maximum-resolution safe stop leaves every source sample and revision uncha
   assert.throws(() => { while (j.status === 'preparing') j.pump(64); j.commit(); }, /budget/);
   assert.equal(j.status, 'failed'); assert.equal(t.revision, 0); assert.ok(t.copyElevations().every((v) => v === -100)); assert.equal(j.statistics.preparedBytes, 0);
   assert.equal(j.statistics.distanceQueries, 20);
+});
+
+test('an oblique zero-influence radius boundary completes within the existing influence contract and preserves signed-zero ground',()=>{
+ const terrain=createCylindricalTerrain({terrainId:'boundary-regression',geometry:{identity,provider:'physical-closed-cylinder',version:1,configuration:'solid-capped',role:'exterior',radiusMeters:1000,lengthMeters:1600},resolution:{angularSamples:128,axialCells:64,radialCells:32},initialElevation:0}),boundary=terrain.resolve({...identity,patchId:'side',column:0,row:32});terrain.write(boundary,-0);
+ // The 42/56/70 unfolded-wall triangle previously exhausted sub-ULP distance
+ // refinement even though its complete influence enclosure was effectively 0.
+ const job=prepareCylindricalDab(terrain,{...identity,patchId:'side',u:.056,v:842},{version:1,tool:'raise',radiusMeters:70,strengthMeters:2});while(job.status==='preparing')job.pump(32);assert.equal(job.status,'ready');assert.ok(job.commit()>0);assert.equal(job.status,'committed');assert.ok(Object.is(terrain.read(boundary),-0));assert.ok(job.statistics.maxFalloffError<=1e-6);assert.ok(job.statistics.maxPreRoundElevationErrorMeters<2.0001e-6);
 });

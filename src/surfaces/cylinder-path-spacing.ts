@@ -1,64 +1,8 @@
-import { CylinderDistanceUnsupportedError } from './cylinder-distance.ts';
-import type { CylinderPhysicalPath, CylinderPathLocation } from './cylinder-path.ts';
-
-export interface CylinderPathSpacingOptions {
-  readonly spacingMeters: number;
-  /** Distance already traveled since the preceding point, in [0,spacing). */
-  readonly residualMeters?: number;
-  /** Accumulated uncertainty carried with the incoming residual. */
-  readonly residualErrorBoundMeters?: number;
-  readonly fromMeters?: number;
-  readonly toMeters?: number;
-  /** Limits point count, not the physical path. Use an explicit partial range to continue later. */
-  readonly maxPoints?: number;
-}
-export interface CylinderPathSpacingEnd {
-  readonly status: 'complete' | 'cancelled';
-  readonly residualMeters: number;
-  readonly traversedToMeters: number;
-  readonly emittedPoints: number;
-  readonly roundoffBoundMeters: number;
-}
-/** Bounded O(1)-storage lazy physical spacing. Never applies terrain dabs or evaluates a global metric. */
-export function cylinderPathSpacings(path: CylinderPhysicalPath, options: CylinderPathSpacingOptions) {
-  const spacing = options.spacingMeters, residual = options.residualMeters ?? 0, from = options.fromMeters ?? 0, to = options.toMeters ?? path.lengthMeters, max = options.maxPoints ?? 65536;
-  if (path.provider !== 'physical-cylinder-path' || path.version !== 1 || ![spacing, residual, from, to].every(Number.isFinite) || spacing <= 0 || residual < 0 || residual >= spacing
-    || from < 0 || to < from || to > path.lengthMeters || !Number.isInteger(max) || max < 1 || max > 65536) throw new RangeError('Invalid cylinder path spacing or traversal range.');
-  const span = to - from, incomingError = options.residualErrorBoundMeters ?? 0;
-  if (!Number.isFinite(incomingError) || incomingError < 0) throw new RangeError('Invalid incoming cylinder spacing uncertainty.');
-  const error = incomingError + (span === 0 ? 0 : 64 * Number.EPSILON * Math.max(spacing, Math.abs(from), Math.abs(to), span, Number.MIN_VALUE) + 64 * Number.MIN_VALUE);
-  if (spacing <= 4 * error) throw new CylinderDistanceUnsupportedError('precision', 'Cylinder path spacing is below traveled-distance resolution.');
-  const total = residual + span;
-  if (!Number.isFinite(total)) throw new CylinderDistanceUnsupportedError('range', 'Unrepresentable cylinder spacing residual.');
-  // Division can round just below an integer (0.3/0.1). Offer only the
-  // adjacent endpoint step, under the same meter error bound used by next().
-  const nearest = Math.round(total / spacing);
-  const count = span === 0 ? 0 : nearest > 0 && Math.abs(nearest * spacing - total) <= error ? nearest : Math.floor(total / spacing);
-  if (!Number.isSafeInteger(count) || count > max) throw new CylinderDistanceUnsupportedError('work-budget', 'Cylinder path spacing point budget exceeded; select a partial range.');
-  let emitted = 0, traversed = from, end: CylinderPathSpacingEnd | undefined;
-  const finish = (status: CylinderPathSpacingEnd['status'], target: number) => {
-    let remainder = residual + (target - from) - emitted * spacing;
-    if (remainder < -error || remainder >= spacing + error) throw new CylinderDistanceUnsupportedError('precision', 'Cylinder path spacing residual lost its certified range.');
-    // A rounded exact multiple is zero, never a residual equal to one full step.
-    remainder = remainder < 0 || remainder >= spacing || target > from && Math.abs(remainder) <= error ? 0 : remainder;
-    end = Object.freeze({ status, residualMeters: remainder, traversedToMeters: target, emittedPoints: emitted, roundoffBoundMeters: error });
-    return { done: true as const, value: end };
-  };
-  return Object.freeze({
-    expectedPoints: count, roundoffBoundMeters: error,
-    get status() { return end?.status ?? 'active'; },
-    [Symbol.iterator]() { return this; },
-    next(): IteratorResult<CylinderPathLocation, CylinderPathSpacingEnd> {
-      if (end) return { done: true, value: end };
-      if (emitted === count) return finish('complete', to);
-      const next = from + ((emitted + 1) * spacing - residual);
-      if (!(next > traversed) || next > to + error) throw new CylinderDistanceUnsupportedError('precision', 'Cylinder path spacing cannot represent its next physical advance.');
-      const target = emitted + 1 === count && Math.abs(next - to) <= error ? to : Math.min(to, next);
-      if (!(target > traversed)) throw new CylinderDistanceUnsupportedError('precision', 'Cylinder path spacing would duplicate an endpoint.');
-      const value = path.atDistance(target);
-      emitted++; traversed = target;
-      return { done: false, value };
-    },
-    return(): IteratorReturnResult<CylinderPathSpacingEnd> { return end ? { done: true, value: end } : finish('cancelled', traversed); },
-  });
+import type {CylinderPhysicalPath} from './cylinder-path.ts';
+import {physicalPathSpacings,type CylinderPathSpacingOptions} from './physical-path-spacing.ts';
+export * from './physical-path-spacing.ts';
+/** The accepted closed wrapper retains its provider validation. */
+export function cylinderPathSpacings(path:CylinderPhysicalPath,options:CylinderPathSpacingOptions){
+ if(path.provider!=='physical-cylinder-path'||path.version!==1)throw RangeError('Invalid cylinder path spacing or traversal range.');
+ return physicalPathSpacings(path,options);
 }

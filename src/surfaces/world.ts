@@ -1,6 +1,7 @@
 import { assertIdentity, type SurfaceIdentity, type SurfaceUnits } from './contracts.ts';
 import {hollowCubeDimensions} from './hollow-cube.ts';
 import {hollowCylinderDimensions} from './hollow-cylinder.ts';
+import {openCylinderDimensions} from './open-cylinder.ts';
 
 export interface VersionedProvider { readonly id: string; readonly version: number }
 export type PlanarOutline = (
@@ -16,6 +17,7 @@ export type WorldShape =
   | { readonly kind: 'hollow-sphere'; readonly outerRadiusMeters: number; readonly innerRadiusMeters: number }
   | { readonly kind: 'hollow-cube'; readonly outerSideLengthMeters:number; readonly innerSideLengthMeters:number }
   | {readonly kind:'hollow-cylinder';readonly configuration:'capped';readonly outerRadiusMeters:number;readonly innerRadiusMeters:number;readonly outerLengthMeters:number;readonly innerLengthMeters:number}
+  | {readonly kind:'open-cylinder';readonly configuration:'both-open';readonly outerRadiusMeters:number;readonly innerRadiusMeters:number;readonly lengthMeters:number}
   | { readonly kind: 'custom'; readonly geometry: VersionedProvider };
 export type SurfaceRole = 'sheet' | 'exterior' | 'interior' | 'custom';
 export interface SurfaceDefinition {
@@ -65,6 +67,7 @@ function shapeSnapshot(shape: WorldShape): WorldShape {
       return Object.freeze({ ...shape });
     case 'hollow-cube': hollowCubeDimensions(shape); return Object.freeze({...shape});
     case 'hollow-cylinder': if(shape.configuration!=='capped')throw RangeError('Unsupported hollow cylinder closure.');hollowCylinderDimensions(shape);return Object.freeze({...shape});
+    case 'open-cylinder': if(shape.configuration!=='both-open')throw RangeError('Only both-open cylinders are supported.');openCylinderDimensions(shape);return Object.freeze({...shape});
     case 'custom': return Object.freeze({ kind: 'custom', geometry: provider(shape.geometry) });
     default: throw new RangeError('Unsupported world shape.');
   }
@@ -84,6 +87,7 @@ export function defineWorld(input: WorldDefinition): WorldDefinition {
       if (!['exterior', 'interior'].includes(surface.role) || hollowRoles.has(surface.role)) throw new RangeError('A hollow World accepts unique interior/exterior surfaces.');
       hollowRoles.add(surface.role);
     }
+    if(shape.kind==='open-cylinder'&&(input.surfaces.length!==1||surface.role!=='custom'))throw RangeError('An Open Cylinder has one connected material-boundary surface and authority.');
     ids.add(surface.identity.surfaceId); terrainIds.add(surface.terrainId);
     return Object.freeze({ identity: Object.freeze({ ...surface.identity }), role: surface.role, terrainId: surface.terrainId, topology: provider(surface.topology), representation: provider(surface.representation) });
   });

@@ -32,9 +32,9 @@ for (const c of fixture.cases) for (const tool of ['raise', 'lower', 'smooth', '
     if (!Object.is(value, source.elevations[s.index])) actualChanged++;
   }
   assert.equal(actualChanged, changed);
-  // An already-tight feasible upper endpoint can certify the inside case on
-  // its first query. The outside fixture requires tightening the lower bound.
-  if (c.name === 'boundary-outside') assert.ok(job.statistics.refinements > 0);
+  // The actual Decimal heights and error contract above remain the gate.
+  // A zero boundary tail can now be certified on the first query, so requiring
+  // extra lower-bound refinement would reinstate the corrected precision bug.
 });
 
 test('independent Decimal boundary tails are enclosed without a large absolute rounding floor', () => {

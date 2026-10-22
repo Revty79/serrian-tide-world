@@ -38,15 +38,15 @@ test('external edits fail a pending stroke without overwriting data and preserve
  for(const overlap of [false,true]){const t=make(),h=createCylindricalHistory(t),s=beginCylindricalStroke(t,h,p('cap-start',0),settings());drain(s);s.move(p('cap-start',.3));s.pump();s.pump();const index=overlap?t.resolve({...identity,patchId:'cap-start',row:0,column:0}).index:0;t.write(t.keyAt(index),1234);const external=words(t);assert.throws(()=>s.pump());assert.deepEqual(words(t),external);assert.equal(s.status,'failed');if(overlap){assert.throws(()=>h.undo(),/externally/);assert.deepEqual(words(t),external);}else{h.undo();assert.equal(t.read(t.keyAt(index)),1234);}}
 });
 test('queue, path, dab, history and accumulated-error failures preserve the committed prefix',()=>{
- const configurations: {options:CylinderStrokeOptions; history?:{maxStrokeSamples:number}; target:ReturnType<typeof p>; enqueue?:number}[]=[
+ const configurations: {options:CylinderStrokeOptions; history?:{maxStrokeSamples:number}; first?:ReturnType<typeof p>; target:ReturnType<typeof p>; enqueue?:number}[]=[
  {options:{maxPendingPositions:1},target:p('cap-start',.1),enqueue:2},
  {options:{maxDabs:1},target:p('cap-start',.5)},
- {options:{pathMaxBoxes:1},target:p('cap-end',.8,2.4)},
+ {options:{pathMaxBoxes:1},first:p('cap-start',.5),target:p('cap-end',.8,2.4)},
  {options:{maxSpacingErrorMeters:1e-15},target:p('cap-start',.3)},
  {options:{dabLimits:{maxDistanceQueries:1}},target:p('cap-start',.3)},
  {options:{},history:{maxStrokeSamples:1},target:p('cap-start',.5)},
  ];
- for(const c of configurations){const t=make(),before=words(t),h=createCylindricalHistory(t,c.history),s=beginCylindricalStroke(t,h,p('cap-start',0),settings(),c.options);try{drain(s);s.move(c.target,'shortest-surface');if(c.enqueue)s.move(c.target);s.release();drain(s);}catch{}assert.equal(s.status,'failed');const partial=words(t);if(h.canUndo){h.undo();assert.deepEqual(words(t),before);h.redo();assert.deepEqual(words(t),partial);}else assert.deepEqual(partial,before);}
+ for(const c of configurations){const t=make(),before=words(t),h=createCylindricalHistory(t,c.history),s=beginCylindricalStroke(t,h,c.first??p('cap-start',0),settings(),c.options);try{drain(s);s.move(c.target,'shortest-surface');if(c.enqueue)s.move(c.target);s.release();drain(s);}catch{}assert.equal(s.status,'failed',JSON.stringify(c));if(c.options.pathMaxBoxes)assert.match(s.failure!.message,/box|budget/i);const partial=words(t);if(h.canUndo){h.undo();assert.deepEqual(words(t),before);h.redo();assert.deepEqual(words(t),partial);}else assert.deepEqual(partial,before);}
 });
 test('no-op strokes retain Redo, replacement is safe, and foreign/invalid input ends explicitly',()=>{
  const t=make(),h=createCylindricalHistory(t),s=beginCylindricalStroke(t,h,p('cap-start',0),settings());s.release();drain(s);h.undo();const noop=beginCylindricalStroke(t,h,p('cap-start',0),{version:1,tool:'smooth',radiusMeters:.713,intensity:0});noop.release();drain(noop);assert.ok(h.canRedo);
