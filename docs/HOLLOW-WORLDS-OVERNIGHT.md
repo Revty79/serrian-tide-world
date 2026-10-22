@@ -280,3 +280,24 @@ acceptance. A bounded worker-cancellation correction preserves the real rejectio
 message. The cut GPU program is prepared separately on first use, preserving the
 ordinary terrain path. Physical networks and reciprocal links are next, followed
 by the safe open-cylinder assessment; advanced displaced excavation stays deferred.
+
+
+## Capped hollow-cylinder networks and links
+
+Basic cylindrical connections now include independently chosen wall/cap entrance
+and exit, branches, chambers, additional openings, XYZ junction edits and
+identity-preserving opening relocation. Whole-volume cylinder certificates and
+shape-specific normal staging precede every preview and confirmed transaction.
+Guided read-only travel follows each physical section into the real cavity or
+exterior; native look/pinch, Home and the return editing pose retain the actual eye.
+Reciprocal conceptual links remain independent of physical cuts and brush distance.
+
+Strict version 13 preserves both banks and the exact parent journal; versions 11
+and 12 stay featureless/holes-only respectively, including every historical state.
+[Review and limits](HOLLOW-CYLINDER-CONNECTIONS.md) and the
+[compact receipt](evidence/hollow-cylinder-connections.json) record automated
+geometry, persistence, input, travel, performance and compatibility verification.
+Owner/physical-device acceptance remains separate. The safe Open Cylinder
+assessment follows; the original authorization permits a documented numerical
+prototype/design if the closed kernel cannot adapt safely through small changes.
+Pyramids, full displaced terrain, free flight and host integration remain excluded.

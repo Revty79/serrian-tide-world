@@ -1,3 +1,5 @@
+import {validateCylinderPassage} from '../surfaces/hollow-cylinder-passages.ts';
+import {validateCylinderLink} from '../surfaces/hollow-cylinder-links.ts';
 import type {HollowCylinderWorld} from '../terrain/hollow-cylinder.ts';
 import type {HollowCylinderRole} from '../surfaces/hollow-cylinder.ts';
 import {validateCylinderHole,type CylinderThroughHole} from '../surfaces/hollow-cylinder-holes.ts';
@@ -15,11 +17,11 @@ export function cylinderConnectionWords(value:CylinderConnections){
 export function decodeCylinderConnectionWords(words:Uint32Array):CylinderConnections{
  if(words.length!==CYLINDER_CONNECTION_BYTES/4||words[0]!>CYLINDER_CONNECTION_BYTES-4)throw Error('Invalid cylindrical connection words.');return JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(new Uint8Array(words.buffer,words.byteOffset+4,words[0])));
 }
-export function validateCylinderConnections(world:HollowCylinderWorld,input:CylinderConnections,capability:'holes'='holes'):CylinderConnections{
+export function validateCylinderConnections(world:HollowCylinderWorld,input:CylinderConnections,capability:'holes'|'all'='all'):CylinderConnections{
  if(!input||Object.keys(input).sort().join(',')!=='holes,links,passages')throw RangeError('Unsupported cylindrical connection fields.');
  for(const[list,max]of[[input.holes,48],[input.links,128],[input.passages,8]]as const)if(!Array.isArray(list)||list.length>max||Object.keys(list).some((key,i)=>key!==String(i))||Object.keys(list).length!==list.length)throw RangeError('Cylindrical connections require bounded dense arrays.');
- if(input.links.length||input.passages.length)throw RangeError('Version 12 supports cylinder holes only.');void capability;
- const holes=input.holes.map(h=>validateCylinderHole(world,h)),passages:PhysicalPassage[]=[],links:LinkedEntrance[]=[];
+ if(capability==='holes'&&(input.links.length||input.passages.length))throw RangeError('Version 12 supports cylinder holes only; networks and links require version 13.');
+ const holes=input.holes.map(h=>validateCylinderHole(world,h)),passages=input.passages.map(p=>validateCylinderPassage(world,p)),links=input.links.map(l=>validateCylinderLink(world,l));
  const ids=[...holes.flatMap(h=>[h.id,...h.mouths.map(m=>m.id)]),...passages.flatMap(p=>[p.id,...p.nodes.map(n=>n.id),...p.segments.map(s=>s.id),...p.portals.map(a=>a.id)]),...links.flatMap(l=>[l.id,...l.anchors.map(a=>a.id)])];
  if(new Set(ids).size!==ids.length)throw RangeError('Duplicate cylindrical connection or component identity.');
  if(holes.length+passages.reduce((n,p)=>n+p.nodes.length+p.segments.length,0)>48)throw RangeError('The World supports at most 48 hole, node and segment cutting primitives.');
@@ -27,7 +29,7 @@ export function validateCylinderConnections(world:HollowCylinderWorld,input:Cyli
  for(let i=0;i<bounds.length;i++)for(let j=0;j<i;j++)if(bounds[i]!.every((b,k)=>b[0]!<=bounds[j]![k]![1]!&&b[1]!>=bounds[j]![k]![0]!))throw RangeError('Independent hole or network bounds overlap. Move the object or add a branch within one network.');
  const result=Object.freeze({holes:Object.freeze(holes),links:Object.freeze(links),passages:Object.freeze(passages)});cylinderConnectionWords(result);return result;
 }
-export function validateCylinderConnectionJournal(world:HollowCylinderWorld,connections:CylinderConnections,journal:WordHistoryJournal,capability:'holes'='holes'){
+export function validateCylinderConnectionJournal(world:HollowCylinderWorld,connections:CylinderConnections,journal:WordHistoryJournal,capability:'holes'|'all'='all'){
  const words=cylinderConnectionWords(validateCylinderConnections(world,connections,capability)),history=new TerrainHistory(words,4*1024*1024,64);
  history.restoreJournal(journal,state=>{const canonical=cylinderConnectionWords(validateCylinderConnections(world,decodeCylinderConnectionWords(state),capability));if(canonical.some((v,i)=>v!==state[i]))throw Error('Noncanonical cylindrical connection history.');});return history.exportJournal();
 }

@@ -21,7 +21,7 @@ connection history. [Radial-hole review](HOLLOW-SPHERE-HOLES.md). The following
 guided inspection and reciprocal links with strict v10 persistence. The capped
 hollow cylinder now has a [three-view editor and v11 persistence](HOLLOW-CYLINDER-EDITOR.md).
 Its [basic wall/cap holes](HOLLOW-CYLINDER-HOLES.md) now have v12 persistence.
-Physical tunnel networks and map links follow, then the safe Open Cylinder configuration. The eleven
+Its [physical networks and reciprocal links](HOLLOW-CYLINDER-CONNECTIONS.md) now add v13 persistence and continuous wall/cap inspection. The safe Open Cylinder assessment follows. The eleven
 phases and the advanced displaced-terrain deferral remain unchanged.
 
 Current Cube-I scope authority (2026-10-21): finish Phase 2 reference-shell editing;
