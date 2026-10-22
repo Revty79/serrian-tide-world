@@ -1,5 +1,11 @@
 # One Atlas, geometry adapters
 
+**Current authorization, Cube-I (2026-10-21):** targeted cube-family verification
+and hardening is authorized on provisional Cube-H acceptance. The owner has not
+yet confirmed Cube-H hands-on acceptance. Stop after Cube-I for Ember/owner review;
+no pyramid implementation or broad architecture migration is authorized. This
+supersedes the historical authorization wording below.
+
 2026-10-21. Supplemental owner directive for corrective pass 2, followed by explicit
 owner acceptance at `d011a377e6a1ad76296e41740422fa5600f69082` and Cube-G authorization.
 The shared-infrastructure audit and bounded migration proposal remain in force;
@@ -143,3 +149,103 @@ Extract shared lifecycle/transport/pointer infrastructure incrementally after cu
 acceptance. A proposed new execution system must demonstrate the established
 interface/workload limitation and compare against reuse. Cube-H does not authorize
 Cube-I, that migration, or another geometry.
+
+## Cube-I readiness inventory
+
+These are working reuse boundaries, not a claim that every editor already uses one
+generic implementation. Preserve the accepted numerical/provider validators.
+
+| Contract | Reuse | Geometry-specific responsibility / remaining work |
+| --- | --- | --- |
+| Parent World and surface identity | `contracts.ts`, App/`atlas-document`, shared document replacement and local catalog | Provider dimensions, surface roles and stable terrain/surface IDs; never identify a public hollow interior as a solid exterior. |
+| Physical geometry/topology | Surface contracts, canonical-key/alias ownership pattern | Charts, face domains, reference positions, positive normal, folds, winding and physical units. Cube's square six-face topology is not a generic polyhedron. |
+| Brush candidates | C1 staged prepare/reserve/commit pattern and shared `brush-math` falloff/Float32 policy | Conservative discovery, distance certification and connected smoothing stencils. Share execution separately from candidate geometry. |
+| Distance and spacing | Ordered path admission, bounded continuation/error contract, radius/4 cube/sphere convention | Certified route candidates, physical geodesics, ambiguity/tie policy, corner events and accumulated spacing bounds. Right-angle cube unfoldings do not apply unchanged to pyramids. |
+| Input and gestures | `pointerSamples`, proven mouse/pen/touch arbitration, capture/cancel, Space/navigation conventions | Hit testing, visible domain, chart conversion, projection cuts, camera transforms and geometry-aware edge assistance. An incremental shared DOM adapter is a later extraction, not a copied new controller. |
+| Numerical authority | Host revision/source leases, exact before/after words, atomic publication, bounded work/progress | Provider keys/layout, source validation and shell-specific policy. Workers remain proposals, never a second authority. |
+| Scheduling | `surface-work`, stage metrics, ordered cooperative/worker lifetimes and independent display scheduling | Provider work envelopes/validators differ; reuse transport/lifecycle incrementally without exchanging incompatible proposal payloads. |
+| Rendering/publication | Existing presentation ownership, local dirty regions, epoch coherence, GPU resource lifecycle and Canvas fallback | Field sampling, gradients, face interpolation, projection/picking and optional material-volume renderer. Cube's six-plane shaders are not arbitrary-face shaders. |
+| Projections | One workspace's view/tool contract, navigation and derived views | Globe/net/side/cap/polyhedral arrangements and orientation. Views never convert authoritative terrain. |
+| History | One gesture, exact word patches, reserve-before-publication, bounded retention and explicit stopped-prefix recovery | Existing providers retain their journals until a measured extraction preserves each stronger contract. Connection edits already reuse `TerrainHistory`. |
+| Persistence | Shared IndexedDB catalog, App locking/draining, checkpoints, atomic Save/Open replacement and corruption handling | Strict versioned geometry/layout/orientation/word codecs. v1–v6 keep their established meaning. |
+| Inside/outside | H parent host, independent sessions and cached fields, one workspace and selected history scope | Provider inward chart/normal, separate canonical identities, shell-envelope and clearance validator. Two cached surfaces are not two applications. |
+| Connections/excavation | Geometry-neutral reciprocal links and physical passage graph, metadata journal and validated promotion | Provider containment, apertures, shell subtraction and normal/depth frames. Guided inspection is distinct from linked-map navigation and future free movement. |
+
+Cube-I uses one optional **UI control value** in the existing CubeEditor for hollow
+surfaces: tool, strength, intensity, target, requested physical radius and backend
+follow the creator. Each surface enforces its existing radius range; no brush math
+or execution has moved into React. A solid editor keeps local controls/defaults.
+Passage movement updates the eye without resetting camera/zoom on every frame;
+choosing a new segment aligns the view once. Canvas inspection retains its accepted 24k budget; optional higher-detail trials
+were deferred to preserve responsiveness. Direct opening navigation reuses the
+existing selected-surface/focus action; no new traversal or rendering engine is added.
+
+## Practical Pyramid-A proposal (documentation only)
+
+No pyramid code is included. Adopt unchanged the App lifecycle, WorkspaceChrome,
+shared library/error/progress/checkpoint behavior, pointer-sample policy, physical
+brush defaults/falloff, source leases and word-journal contracts. Keep mature
+execution/display scheduling and worker transport patterns. A provider adapter must
+first prove where direct adoption of a cube-specific implementation is impossible;
+do not copy CubeEditor/CubePresentation and invent another execution system.
+
+Proposed separately reviewable Pyramid-A boundaries:
+
+1. **A1, physical contract:** settle the approved pyramid definition/dimensions,
+   base and triangular faces, convexity/degeneracy limits, outward/inward orientation,
+   reference charts and stable identities. Supply explicit seam/vertex witnesses.
+2. **A2, canonical topology:** unique sample ownership on triangular faces/base,
+   edge/vertex aliases, connected neighbor stencils and memory/layout limits. Reuse
+   typed Float32 authority and atomic-patch contracts, rather than a separate map state.
+3. **A3, metric adapter:** certify routes/unfoldings with non-right dihedral angles,
+   candidate discovery, physical distance bounds and spacing through apex/edges.
+   Verify against independent witnesses before adapting the existing brush executor.
+4. **A4, readiness review:** demonstrate four-tool numerical parity, exact gesture
+   replay and bounded failure/cancellation with accepted shared host contracts;
+   identify the minimal triangular projection/field/picking and strict persistence
+   adapters for the following usable-editor checkpoint. Keep creator testing early
+   in that next sequence, rather than another prolonged read-only delivery campaign.
+
+Each boundary is bounded by the one-week rule and owner/Ember review. A is not a
+license for a broad refactor, hollow pyramid editor or later geometry. Any new
+execution system proposal must document a demonstrated workload/interface limitation,
+the reuse alternatives tested and the regression/performance comparison.
+
+## Required underground architecture beyond the cube checkpoint
+
+See [Underground access and network design](UNDERGROUND-NETWORK-ROADMAP.md) for the
+owner's permanent distinction among physical breaches, network entrances and
+linked-map access. The current capsule graph can express explicit branches/loops
+and real connected voids, but fixed small buffers and cube-shell containment cannot
+serve as the final world-spanning model. The plan requires a visual plan/profile
+designer, explicit depth/region/level frames, versioned extensible volume contracts,
+spatial paging/precision and later continuous collision-aware first-person movement.
+Reuse the host, history and rendering systems; do not create a separate tunnel app.
+
+## Cube-I correction: shared cuts, distinct authorship
+
+`ThroughHole` is a separate versioned authored object with two physically
+corresponding mouths, its own identity and circular size; it contains no tunnel
+graph. `PhysicalPassage` retains independently anchored network portals and the
+existing graph/volume contract. `LinkedEntrance` retains abstract reciprocal
+World/map/location semantics. Hole selection and counts never use the network list.
+
+Both physical types adapt to the accepted CSG ray, WebGL, Canvas and margin-clearance
+machinery. Initial network proposals reuse the accepted Cube-B certified route
+on the middle reference shell and existing perpendicular entrance necks. Preview
+validation uses the same host leases and support validator as atomic publication.
+The existing CubeEditor owns pointer handling and physical footprints; a generic
+on-map control slot supplies sizing buttons. No brush engine is replaced.
+
+The existing `TerrainHistory` gains bounded metadata-journal export/restore. v7
+persists exact Undo/Redo chains, validates sources and every historical geometry,
+and restores them without writing the current authority. v1-v6 interpretations and
+original checksums remain intact; only explicit Save upgrades v6. This persistence
+extension is required by the owner's hole edit-history supplement.
+
+[Terrain-aware excavation checkpoints](CUBE-I-TERRAIN-EXCAVATION-CHECKPOINTS.md)
+identify the missing watertight material reconstruction and geometry-specific
+surface/aperture adapter. This substantial extension is a final-acceptance blocker.
+It must preserve accepted canonical heights, coordinates, brush/history scheduling
+and independent surface identities while bringing rendering, preview and clearance
+into agreement. A reference-plane guard removal is not an implementation.

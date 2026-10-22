@@ -29,3 +29,10 @@ export async function seedUnrenderable(){
  const terrain=createSolidCubeTerrain({terrainId:'finite-extreme-cube',cellsPerEdge:128,geometry:{identity:{worldId:'finite-extreme',surfaceId:'exterior'},provider:'physical-solid-cube',version:1,configuration:'solid',role:'exterior',sideLengthMeters:1}});
  terrain.write(terrain.keyAt(0),3.4028234663852886e38);await store.save(await encodeSolidCubeHeightmap(terrain,'Extreme finite cube'));return await summary('finite-extreme-cube');
 }
+
+// A real old-format header verifies that Open does not rewrite v6 data.
+export async function seedHollowV6(){
+ const {createHollowCubeWorld}=await import('../../src/terrain/hollow-cube.ts'),{HollowCubeDocument}=await import('../../src/editor/hollow-cube-document.ts'),{encodeHollowCube}=await import('../../src/persistence/hollow-cube-format.ts'),{payloadChecksum}=await import('../../src/persistence/heightmap-payload.ts');
+ const world=createHollowCubeWorld({provider:'physical-hollow-cube',version:1,worldId:'legacy-v6-hollow',outerSideLengthMeters:1000000,innerSideLengthMeters:800000,surfaces:{exterior:{surfaceId:'legacy-out',terrainId:'legacy-ot'},interior:{surfaceId:'legacy-in',terrainId:'legacy-it'}}},128),editor=new HollowCubeDocument(world,'Legacy v6 hollow');
+ try{const current=await encodeHollowCube(editor),old={...((({connectionHistory,...rest})=>rest)(current)),formatVersion:6 as const,connections:{links:current.connections.links,passages:current.connections.passages}}, {elevations,checksum,...header}=old;old.checksum=await payloadChecksum(header,elevations);await store.save(old);return old.id;}finally{editor.dispose();}
+}

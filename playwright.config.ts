@@ -1,4 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
 
 export default defineConfig({
   testDir: './tests',
@@ -7,6 +9,8 @@ export default defineConfig({
   retries: 0,
   workers: 2,
   reporter: 'list',
+  // Trace HTML in the Vite tree broadcasts full-page reloads to creator tabs.
+  outputDir: join(tmpdir(), 'serrian-atlas-playwright'),
   use: {
     baseURL: 'http://127.0.0.1:5173',
     trace: 'retain-on-failure',

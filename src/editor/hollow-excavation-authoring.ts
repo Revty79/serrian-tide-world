@@ -2,7 +2,24 @@ import type {HollowCubeWorld} from '../terrain/hollow-cube.ts';
 import {SOLID_CUBE_FRAMES,cubeDot,type CubeVector} from '../surfaces/solid-cube.ts';
 import type {SurfacePosition} from '../surfaces/contracts.ts';
 import type {PhysicalPassage} from '../surfaces/passages.ts';
+import {createSolidCubeRouter} from '../surfaces/solid-cube-routing.ts';
+import {cubeArcBudget,cubeArcRound,cubeArcRational,cubeRational} from '../surfaces/cube-stroke-exact.ts';
 const id=()=>crypto.randomUUID();
+/** Two creator-picked openings joined through shell material. Reuse Cube-B's
+ * certified face route on the middle shell, plus existing perpendicular necks.
+ * This is a bounded authoring template, not a new route/execution engine. */
+export function tunnelBetween(world:HollowCubeWorld,start:SurfacePosition,end:SurfacePosition,radiusMeters:number):PhysicalPassage {
+ const a=world.select(start),b=world.select(end),pa=a.geometry.normalize(start),pb=b.geometry.normalize(end),qa=a.geometry.referencePosition(pa),qb=b.geometry.referencePosition(pb),thickness=world.dimensions.nominalWallThicknessMeters;
+ if(!Number.isFinite(radiusMeters)||radiusMeters<=0||radiusMeters>=thickness/4)throw Error('Choose a tunnel radius smaller than one quarter of the wall thickness.');
+ if(Math.hypot(...qa.map((v,i)=>v-qb[i]!))<=2*radiusMeters)throw Error('Choose separate entrance and exit locations, farther apart than the opening width.');
+ const side=(world.dimensions.outerSideLengthMeters+world.dimensions.innerSideLengthMeters)/2,identity={worldId:world.definition.id,surfaceId:'shell-route'},router=createSolidCubeRouter({identity,provider:'physical-solid-cube',version:1,configuration:'solid',role:'exterior',sideLengthMeters:side});
+ const middle=(surface:typeof a,p:SurfacePosition)=>{const q=surface.geometry.toReferenceChart(p),scale=side/surface.geometry.metadata.sideLengthMeters;return{...identity,patchId:q.patchId,u:q.u*scale,v:q.v*scale};},route=router.route(middle(a,pa),middle(b,pb),{pruneDominated:true}).selected,budget=cubeArcBudget();
+ const points=route.vertices.map(p=>p.numerator.map(n=>cubeArcRound(budget,cubeArcRational(cubeRational(budget,{n,d:p.denominator,exponent:p.exponent}))).value) as unknown as CubeVector);
+ const neck=(surface:typeof a,p:SurfacePosition,q:CubeVector)=>q.map((v,i)=>v-surface.geometry.normal(p)[i]!*thickness/4) as unknown as CubeVector;
+ const coordinates=[qa,neck(a,pa,qa),...points,neck(b,pb,qb),qb].filter((q,i,list)=>i===0||q.some((v,k)=>v!==list[i-1]![k]));
+ const nodes=coordinates.map(position=>({id:id(),position,radiusMeters})),portals=[pa,pb].map((position,i)=>({id:id(),nodeId:nodes[i?nodes.length-1:0]!.id,position,apertureRadiusMeters:radiusMeters}));
+ return{kind:'physical-passage',version:1,id:id(),worldId:world.definition.id,geometry:'sphere-capsule-union',nodes,segments:nodes.slice(1).map((n,i)=>({id:id(),from:nodes[i]!.id,to:n.id,radiusMeters})),portals};
+}
 export function tunnelAt(world:HollowCubeWorld,position:SurfacePosition,radiusMeters:number):PhysicalPassage {
  const surface=world.select(position),ref=surface.geometry.toReferenceChart(position),face=ref.patchId,frame=SOLID_CUBE_FRAMES[face],half=world.dimensions.outerSideLengthMeters/2,thickness=world.dimensions.nominalWallThicknessMeters;
  const point=(depth:number):CubeVector=>frame.normal.map((v,i)=>v*(half-depth)+frame.u[i]!*ref.u+frame.v[i]!*ref.v) as unknown as CubeVector;

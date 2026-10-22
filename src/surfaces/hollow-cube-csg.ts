@@ -1,6 +1,7 @@
 import {cubeDot,SOLID_CUBE_FACES,SOLID_CUBE_FRAMES,type CubeVector,type SolidCubeFace} from './solid-cube.ts';
 import {segmentPointDistance,type PhysicalPassage} from './passages.ts';
 import type {HollowCubeWorld} from '../terrain/hollow-cube.ts';
+import {holeCut,type ThroughHole} from './through-hole.ts';
 
 export interface ExcavationPrimitive {readonly a:CubeVector;readonly b:CubeVector;readonly radius:number}
 export interface HollowExcavation {readonly halfSideMeters:number;readonly innerRatio:number;readonly primitives:readonly ExcavationPrimitive[]}
@@ -9,9 +10,9 @@ type Interval=readonly [number,number];
 const add=(a:CubeVector,b:CubeVector,t=1):CubeVector=>[a[0]+b[0]*t,a[1]+b[1]*t,a[2]+b[2]*t];
 const sub=(a:CubeVector,b:CubeVector):CubeVector=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]];
 const unit=(v:CubeVector):CubeVector=>{const n=Math.hypot(...v);return n?[v[0]/n,v[1]/n,v[2]/n]:[0,0,1];};
-export function hollowExcavation(world:HollowCubeWorld,passages:readonly PhysicalPassage[]):HollowExcavation {
+export function hollowExcavation(world:HollowCubeWorld,passages:readonly PhysicalPassage[],holes:readonly ThroughHole[]=[]):HollowExcavation {
  const halfSideMeters=world.dimensions.outerSideLengthMeters/2,normalize=(p:CubeVector)=>p.map(x=>x/halfSideMeters) as unknown as CubeVector;
- const primitives=passages.flatMap(p=>{const nodes=new Map(p.nodes.map(n=>[n.id,n]));return [...p.nodes.map(n=>({a:normalize(n.position),b:normalize(n.position),radius:n.radiusMeters/halfSideMeters})),...p.segments.map(s=>({a:normalize(nodes.get(s.from)!.position),b:normalize(nodes.get(s.to)!.position),radius:s.radiusMeters/halfSideMeters}))];});
+ const primitives=[...holes.map(h=>{const c=holeCut(world,h);return{a:normalize(c.a),b:normalize(c.b),radius:c.r/halfSideMeters};}),...passages.flatMap(p=>{const nodes=new Map(p.nodes.map(n=>[n.id,n]));return [...p.nodes.map(n=>({a:normalize(n.position),b:normalize(n.position),radius:n.radiusMeters/halfSideMeters})),...p.segments.map(s=>({a:normalize(nodes.get(s.from)!.position),b:normalize(nodes.get(s.to)!.position),radius:s.radiusMeters/halfSideMeters}))];})];
  return Object.freeze({halfSideMeters,innerRatio:world.dimensions.innerSideLengthMeters/world.dimensions.outerSideLengthMeters,primitives:Object.freeze(primitives)});
 }
 export function rayBoxInterval(origin:CubeVector,direction:CubeVector,half:number):Interval|undefined {

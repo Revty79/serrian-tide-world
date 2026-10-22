@@ -16,19 +16,24 @@ import type {HollowCubeSurfaceGeometry} from '../surfaces/hollow-cube.ts';
 import type {CubeSurfaceView} from '../rendering/solid-cube-view.ts';
 
 type Point={x:number;y:number};type Tool='raise'|'lower'|'smooth'|'flatten'|'navigate';
+export interface CubeEditorControls {tool:Tool;radius:number;strength:number;intensity:number;target:number;backend:CubeBackend}
 const labels={px:'+X',nx:'−X',py:'+Y',ny:'−Y',pz:'+Z',nz:'−Z'};
 declare global {interface Window {__cubeEditor?:{snapshot:()=>unknown;words:()=>number[];project:(face:SolidCubeFace,u:number,v:number)=>Point;hash:()=>Promise<string>}}}
 export interface CubeEditorAdapter {geometry:HollowCubeSurfaceGeometry;outerSideLengthMeters:number}
 export interface CubeAnnotation {id:string;position:SurfacePosition;label:string;netOnly?:boolean}
-export function CubeEditor({session,workspace,handleRef,adapter,active=true,onPick,onPresentation,focus,annotations=[],onWorkspaceView,inspecting=false,previewRadius}:{session:CubeEditorSession;workspace?:(view:SphericalWorkspaceView)=>ReactNode;handleRef?:Ref<SphericalViewportHandle>;adapter?:CubeEditorAdapter;active?:boolean;onPick?:(p:SurfacePosition)=>void;onPresentation?:(p:CubePresentation|undefined)=>void;focus?:SurfacePosition;annotations?:readonly CubeAnnotation[];onWorkspaceView?:(view:SphericalWorkspaceView)=>void;inspecting?:boolean;previewRadius?:number}){
+export function CubeEditor({session,workspace,handleRef,adapter,active=true,onPick,onPresentation,focus,annotations=[],onWorkspaceView,inspecting=false,previewRadius,mapControls,sharedControls}:{session:CubeEditorSession;workspace?:(view:SphericalWorkspaceView)=>ReactNode;handleRef?:Ref<SphericalViewportHandle>;adapter?:CubeEditorAdapter;active?:boolean;onPick?:(p:SurfacePosition)=>void;onPresentation?:(p:CubePresentation|undefined)=>void;focus?:SurfacePosition;annotations?:readonly CubeAnnotation[];onWorkspaceView?:(view:SphericalWorkspaceView)=>void;inspecting?:boolean;previewRadius?:number;mapControls?:ReactNode;sharedControls?:{value:CubeEditorControls;change:(patch:Partial<CubeEditorControls>)=>void}}){
  const activeRef=useRef(active),pickRef=useRef(onPick),probe=useRef<Window['__cubeEditor']>(undefined);activeRef.current=active;pickRef.current=onPick;
  const appearance:CubeSurfaceView=adapter?{orientation:adapter.geometry.orientation,physicalScale:adapter.geometry.metadata.sideLengthMeters/adapter.outerSideLengthMeters}:{orientation:1,physicalScale:1};
  const source=session.terrain,n=source.metadata.representation.cellsPerEdge,length=source.metadata.geometry.sideLengthMeters;
  const annotationGroup=useRef<SVGGElement>(null),annotationRef=useRef(annotations);annotationRef.current=annotations;
  const viewport=useRef<HTMLDivElement>(null),cpu=useRef<HTMLCanvasElement>(null),gpu=useRef<HTMLCanvasElement>(null),overlay=useRef<SVGSVGElement>(null),cursor=useRef<SVGCircleElement>(null),contour=useRef<SVGPathElement>(null),readout=useRef<HTMLOutputElement>(null);
- const scene=useRef<CubePresentation|undefined>(undefined),[,update]=useState(0),[ready,setReady]=useState(false),[tool,setTool]=useState<Tool>('raise'),[radius,setRadius]=useState(length*.045),[strength,setStrength]=useState(DEFAULT_ADDITIVE_STRENGTH_METERS),[intensity,setIntensity]=useState(.45),[target,setTarget]=useState(0),[mode,setMode]=useState<CubeDisplayMode>('physical'),[backend,setBackend]=useState<CubeBackend>(new URLSearchParams(location.search).get('backend')==='canvas'?'canvas':'auto');
+ const scene=useRef<CubePresentation|undefined>(undefined),[,update]=useState(0),[ready,setReady]=useState(false),[mode,setMode]=useState<CubeDisplayMode>('physical');
+ const [localControls,setLocalControls]=useState<CubeEditorControls>(()=>({tool:'raise',radius:length*.045,strength:DEFAULT_ADDITIVE_STRENGTH_METERS,intensity:.45,target:0,backend:new URLSearchParams(location.search).get('backend')==='canvas'?'canvas':'auto'}));
+ const selectedControls=sharedControls?.value??localControls,{tool,strength,intensity,target,backend}=selectedControls,radius=Math.max(length/n*2,Math.min(length*.3,selectedControls.radius));
+ const changeControls=(patch:Partial<CubeEditorControls>)=>{if(sharedControls)sharedControls.change(patch);else setLocalControls(previous=>({...previous,...patch}));};
+ const setTool=(tool:Tool)=>changeControls({tool}),setRadius=(radius:number)=>changeControls({radius}),setStrength=(strength:number)=>changeControls({strength}),setIntensity=(intensity:number)=>changeControls({intensity}),setTarget=(target:number)=>changeControls({target}),setBackend=(backend:CubeBackend)=>changeControls({backend});
  const inspectionRef=useRef(inspecting);inspectionRef.current=inspecting;const controls=useRef({tool,radius,strength,intensity,target});controls.current={tool,radius:onPick&&previewRadius!==undefined?previewRadius:radius,strength,intensity,target};
- const commands=useRef({finish(){},cancel(){},zoom(_factor:number){},view(_direction?:CubeVector,_mode?:CubeDisplayMode){}});
+ const commands=useRef({preview(){},finish(){},cancel(){},zoom(_factor:number){},view(_direction?:CubeVector,_mode?:CubeDisplayMode){}});
  useImperativeHandle(handleRef,()=>({finishInteraction:()=>commands.current.finish(),stop:()=>commands.current.cancel(),undo:()=>{commands.current.cancel();void session.replay();},redo:()=>{commands.current.cancel();void session.replay(true);}}),[session]);
  useEffect(()=>{
   setReady(false);
@@ -75,7 +80,7 @@ export function CubeEditor({session,workspace,handleRef,adapter,active=true,onPi
    event.preventDefault();element.focus();const point=local(event);pointers.set(event.pointerId,point);element.setPointerCapture(event.pointerId);inspect(point);
    if(pointers.size>1){clearTimeout(pendingTimer);if(active==='paint')session.cancel();active='navigate';touchIntent=[];return;}
    pen=event.pointerType==='pen';paintId=event.pointerId;
-   if(inspectionRef.current||space||controls.current.tool==='navigate'||event.button!==0){active='navigate';return;}
+   if(inspectionRef.current||space||controls.current.tool==='navigate'&&!pickRef.current||event.button!==0){active='navigate';return;}
    if(event.pointerType==='touch'){active='touch-pending';touchIntent=[point];pendingTimer=window.setTimeout(()=>{if(active==='touch-pending'){active=startPaint(touchIntent[0]!)?'paint':'none';for(const p of touchIntent.slice(1))feed(p);touchIntent=[];}},110);}
    else active=startPaint(point,event.timeStamp)?'paint':'none';
   };
@@ -106,7 +111,7 @@ export function CubeEditor({session,workspace,handleRef,adapter,active=true,onPi
    if(alive){readyRef=!current.metrics.error;setReady(true);}
   });
   const observer=new ResizeObserver(()=>{current.resize(size());drawFootprint();});observer.observe(element);
-  commands.current={finish,cancel,zoom,view:(direction,nextMode)=>{finish();const selected=nextMode??current.mode;current.setView(direction?cubeCamera(direction):cubeCamera(),selected);setMode(selected);if(hover)inspect(hover);}};
+  commands.current={preview(){if(hover)inspect(hover);},finish,cancel,zoom,view:(direction,nextMode)=>{finish();const selected=nextMode??current.mode;current.setView(direction?cubeCamera(direction):cubeCamera(),selected);setMode(selected);if(hover)inspect(hover);}};
   probe.current={snapshot:()=>({editor:session.snapshot(),display:current.snapshot(),interaction:structuredClone(interaction)}),words:()=>Array.from(new Uint32Array(source.copyElevations().buffer)),hash:async()=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',source.copyElevations().buffer as ArrayBuffer))).map(v=>v.toString(16).padStart(2,'0')).join(''),project:(face,u,v)=>{const r=element.getBoundingClientRect(),p=projectCube(face,u,v,current.camera,current.mode,size(),appearance);return{x:p.x+r.left,y:p.y+r.top};}};
   if(activeRef.current)window.__cubeEditor=probe.current;
   element.addEventListener('pointerdown',down);element.addEventListener('pointermove',move);element.addEventListener('pointerup',up);element.addEventListener('pointercancel',lost);element.addEventListener('lostpointercapture',lost);element.addEventListener('wheel',wheel,{passive:false});element.addEventListener('contextmenu',preventContext);window.addEventListener('keydown',key);window.addEventListener('keyup',keyup);window.addEventListener('blur',blur);
@@ -115,6 +120,7 @@ export function CubeEditor({session,workspace,handleRef,adapter,active=true,onPi
  },[session]);
  useEffect(()=>{scene.current?.setBackend(backend);},[backend]);
  useEffect(()=>{scene.current?.schedule();},[annotations]);
+ useEffect(()=>{commands.current.preview();},[previewRadius]);
  useEffect(()=>{if(active){window.__cubeEditor=probe.current;scene.current?.schedule();}else commands.current.finish();},[active]);
  useEffect(()=>{if(focus){const p=adapter?adapter.geometry.toReferenceChart(focus):focus,f=SOLID_CUBE_FRAMES[p.patchId as SolidCubeFace];commands.current.view(f.normal.map(v=>v*appearance.orientation) as unknown as CubeVector,'physical');}},[focus]);
  const choose=(next:Tool)=>{commands.current.finish();setTool(next);};
@@ -132,8 +138,9 @@ export function CubeEditor({session,workspace,handleRef,adapter,active=true,onPi
  return <section className={`cube-editor ${workspace?'cube-integrated':'cube-development'}`} data-inspecting={inspecting} data-ready={ready} data-processing={session.processing} data-surface={adapter?.geometry.metadata.role} style={active?undefined:{visibility:"hidden",pointerEvents:"none"}}>
   {workspace?workspace({tools,toolPicker:picker,navigation,canUndo:session.history.canUndo,canRedo:session.history.canRedo,processing:session.processing}):<aside className="cube-sidebar"><a className="cube-brand" href="/">SERRIAN TIDE <span>ATLAS</span></a><h1>Sculpt a world.</h1><p>Solid cube · N{n}</p><section className="cube-editor-picker">{picker}</section>{tools}<section className="cube-editor-nav">{navigation}</section><section>{history}</section><p className="hint">Cube-E working session. Save/Open arrives in Cube-F. Keep this tab open to retain this drawing.</p></aside>}
   <div className="cube-stage"><header><span>{session.name} · N{n}</span><div className="cube-face-buttons" style={inspecting?{display:"none"}:undefined}><button onClick={()=>commands.current.view([1,1,1],'physical')}>Corner</button>{SOLID_CUBE_FACES.map(face=><button key={face} aria-label={`View ${labels[face]} face`} onClick={()=>commands.current.view(SOLID_CUBE_FRAMES[face].normal.map(v=>v*appearance.orientation) as unknown as CubeVector,'physical')}>{labels[face]}</button>)}</div></header>
-   <div ref={viewport} className={`cube-viewport ${tool==='navigate'?'':'cube-paint-mode'}`} role="application" aria-label="Solid cube terrain editor" tabIndex={0}>
+   <div ref={viewport} className={`cube-viewport ${tool==='navigate'?'':'cube-paint-mode'}`} role="application" aria-label={adapter?`${adapter.geometry.orientation===1?'Outside':'Inside'} cube terrain editor`:"Solid cube terrain editor"} tabIndex={0}>
     <canvas ref={cpu} className="cube-canvas" aria-label="Cube Canvas2D terrain"/><canvas ref={gpu} className="cube-canvas" aria-label="Cube WebGL2 terrain"/>
+    {mapControls&&<div className="cube-map-controls" onPointerDownCapture={e=>e.stopPropagation()} onPointerMoveCapture={e=>e.stopPropagation()} onPointerUpCapture={e=>e.stopPropagation()} onWheelCapture={e=>e.stopPropagation()}>{mapControls}</div>}
     <svg ref={overlay} className="cube-brush-overlay" aria-hidden="true"><path ref={contour}/><circle ref={cursor} r="3" style={{display:'none'}}/><g ref={annotationGroup} className="cube-annotations"/></svg>
     {!ready&&!displayFailure&&<div className="cube-loading" role="status"><span/>Preparing your cube…</div>}
    </div>

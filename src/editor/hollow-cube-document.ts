@@ -1,5 +1,5 @@
 import {CubeEditorSession} from './cube-editor-session.ts';
-import {TerrainHistory} from './terrain-history.ts';
+import {TerrainHistory,type WordHistoryJournal} from './terrain-history.ts';
 import type {HollowCubeWorld} from '../terrain/hollow-cube.ts';
 import type {HollowCubeRole} from '../surfaces/hollow-cube.ts';
 import {validateLinkedEntrance,type LinkedEntrance,type PhysicalPassage} from '../surfaces/passages.ts';
@@ -7,8 +7,10 @@ import {validateHollowCubePassage} from '../surfaces/hollow-cube-passages.ts';
 import {cubePatchBlocks,MAX_CUBE_PATCH_SAMPLES,type SolidCubeTerrain} from '../terrain/solid-cube.ts';
 import {workStep,type PersistenceWork} from '../persistence/cooperative-work.ts';
 import {SOLID_CUBE_FACES,SOLID_CUBE_FRAMES,cubeDot} from '../surfaces/solid-cube.ts';
+import {validateHollowHole,holeCut,type ThroughHole} from '../surfaces/through-hole.ts';
 
-export interface HollowConnections {readonly links:readonly LinkedEntrance[];readonly passages:readonly PhysicalPassage[]}
+export interface HollowConnections {readonly links:readonly LinkedEntrance[];readonly passages:readonly PhysicalPassage[];readonly holes?:readonly ThroughHole[]}
+export interface HollowConnectionState extends HollowConnections {readonly holes:readonly ThroughHole[]}
 export const HOLLOW_CONNECTION_BYTES=256*1024;
 export const HOLLOW_PRIMITIVE_LIMIT=48;
 export const HOLLOW_ROLES=['exterior','interior'] as const;
@@ -18,19 +20,29 @@ const boundedId=(value:unknown)=>{if(typeof value!=='string'||value.length<1||va
 const exactPosition=(p:unknown)=>{exactFields(p,['worldId','surfaceId','patchId','u','v']);const q=p as {worldId:string;surfaceId:string;patchId:string};boundedId(q.worldId);boundedId(q.surfaceId);boundedId(q.patchId);};
 const encode=(value:HollowConnections)=>{const bytes=new TextEncoder().encode(JSON.stringify(value));if(bytes.length>HOLLOW_CONNECTION_BYTES-4)throw RangeError('Entrances and tunnels exceed the 256 KiB World limit.');const words=new Uint32Array(HOLLOW_CONNECTION_BYTES/4);words[0]=bytes.length;new Uint8Array(words.buffer,4).set(bytes);return words;};
 const decode=(words:Uint32Array):HollowConnections=>JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(new Uint8Array(words.buffer,words.byteOffset+4,words[0])));
-export function validateHollowConnections(world:HollowCubeWorld,input:HollowConnections):HollowConnections {
- if(!input||Object.keys(input).sort().join(',')!=='links,passages'||!Array.isArray(input.links)||!Array.isArray(input.passages)||input.links.length>128||input.passages.length>8)throw RangeError('Unsupported or oversized World connections.');
- denseArray(input.links,128);denseArray(input.passages,8);
+export function validateHollowConnections(world:HollowCubeWorld,input:HollowConnections):HollowConnectionState {
+ if(!input||!['links,passages','holes,links,passages'].includes(Object.keys(input).sort().join(','))||!Array.isArray(input.links)||!Array.isArray(input.passages)||input.links.length>128||input.passages.length>8)throw RangeError('Unsupported or oversized World connections.');
+ denseArray(input.links,128);denseArray(input.passages,8);if('holes' in input)denseArray(input.holes,HOLLOW_PRIMITIVE_LIMIT);
  for(const link of input.links){exactFields(link,['kind','version','id','worldId','anchors']);boundedId(link.id);boundedId(link.worldId);denseArray(link.anchors,2);if(!Array.isArray(link.anchors)||link.anchors.length!==2)throw RangeError('Two entrance anchors are required.');for(const a of link.anchors){exactFields(a,['id','targetAnchorId','location']);boundedId(a.id);boundedId(a.targetAnchorId);if(a.location?.kind==='surface'){exactFields(a.location,['kind','position']);exactPosition(a.location.position);}else {exactFields(a.location,['kind','worldId','mapId','locationId']);const l=a.location;boundedId(l.worldId);boundedId(l.mapId);boundedId(l.locationId);}}}
  for(const p of input.passages){exactFields(p,['kind','version','id','worldId','geometry','nodes','segments','portals']);boundedId(p.id);boundedId(p.worldId);denseArray(p.nodes,48);denseArray(p.segments,48);denseArray(p.portals,48);if(!Array.isArray(p.nodes)||!Array.isArray(p.segments)||!Array.isArray(p.portals)||p.nodes.length+p.segments.length>HOLLOW_PRIMITIVE_LIMIT||p.portals.length>HOLLOW_PRIMITIVE_LIMIT)throw RangeError('Excavation exceeds its bounded geometry budget.');for(const n of p.nodes){exactFields(n,['id','position','radiusMeters']);boundedId(n.id);denseArray(n.position,3);if(n.position.length!==3||!n.position.every(Number.isFinite))throw RangeError('Finite dense three-dimensional passage position required.');if(n.radiusMeters<world.dimensions.outerSideLengthMeters*1e-5)throw RangeError('Excavation radius is below the supported display precision: use at least 0.001% of the outer side length.');}for(const s of p.segments){exactFields(s,['id','from','to','radiusMeters']);boundedId(s.id);boundedId(s.from);boundedId(s.to);if(s.radiusMeters<world.dimensions.outerSideLengthMeters*1e-5)throw RangeError('Tunnel segment radius is below supported display precision.');}for(const a of p.portals){exactFields(a,['id','nodeId','position','apertureRadiusMeters']);boundedId(a.id);boundedId(a.nodeId);exactPosition(a.position);}if(world.dimensions.nominalWallThicknessMeters<world.dimensions.outerSideLengthMeters*1e-4)throw RangeError('Shell is too thin for supported excavation precision. Use wall thickness of at least 0.01% of the outer side.');}
  const links=input.links.map(link=>{if(link.worldId!==world.definition.id)throw RangeError('Entrance belongs to another World.');return validateLinkedEntrance(link,p=>world.select(p).geometry.normalize(p));});
  const passages=input.passages.map(p=>validateHollowCubePassage(world,p).passage);
- const ids=[...links,...passages].map(p=>p.id);if(new Set(ids).size!==ids.length)throw RangeError('Duplicate connection identity.');
- if(passages.reduce((n,p)=>n+p.nodes.length+p.segments.length,0)>HOLLOW_PRIMITIVE_LIMIT)throw RangeError(`This World supports ${HOLLOW_PRIMITIVE_LIMIT} tunnel balls and segments. Split or simplify the excavation.`);
+ const holes=(input.holes??[]).map(h=>validateHollowHole(world,h));
+ const ids=[...links,...passages,...holes].map(p=>p.id);if(new Set(ids).size!==ids.length)throw RangeError('Duplicate connection identity.');
+ if(holes.length+passages.reduce((n,p)=>n+p.nodes.length+p.segments.length,0)>HOLLOW_PRIMITIVE_LIMIT)throw RangeError(`This World supports ${HOLLOW_PRIMITIVE_LIMIT} cutting primitives across holes and tunnels. Remove or simplify an excavation.`);
  // Independent networks may not intersect silently. Connected branches belong to one network.
- const bounds=passages.map(p=>[0,1,2].map(axis=>[Math.min(...p.nodes.map(n=>n.position[axis]!-n.radiusMeters)),Math.max(...p.nodes.map(n=>n.position[axis]!+n.radiusMeters))]));
- for(let i=0;i<bounds.length;i++)for(let j=0;j<i;j++)if(bounds[i]!.every((b,k)=>b[0]!<=bounds[j]![k]![1]!&&b[1]!>=bounds[j]![k]![0]!))throw RangeError('Separate excavation bounds overlap. Add branches to the existing network instead.');
- const result=Object.freeze({links:Object.freeze(links),passages:Object.freeze(passages)});encode(result);return result;
+ const bounds=[...passages.map(p=>[0,1,2].map(axis=>[Math.min(...p.nodes.map(n=>n.position[axis]!-n.radiusMeters)),Math.max(...p.nodes.map(n=>n.position[axis]!+n.radiusMeters))])),...holes.map(h=>{const c=holeCut(world,h);return [0,1,2].map(axis=>[Math.min(c.a[axis]!,c.b[axis]!)-c.r,Math.max(c.a[axis]!,c.b[axis]!)+c.r]);})];
+ for(let i=0;i<bounds.length;i++)for(let j=0;j<i;j++)if(bounds[i]!.every((b,k)=>b[0]!<=bounds[j]![k]![1]!&&b[1]!>=bounds[j]![k]![0]!))throw RangeError('Separate excavation bounds overlap. Move the hole, or add branches within the existing tunnel network.');
+ const result=Object.freeze({links:Object.freeze(links),passages:Object.freeze(passages),holes:Object.freeze(holes)});encode(result);return result;
+}
+/** Validate exact replay chains and every geometry state without requiring old
+ * states to be replayable against today's terrain. Replay rechecks support. */
+export function validateHollowJournal(world:HollowCubeWorld,connections:HollowConnections,journal:WordHistoryJournal){
+ const words=encode(validateHollowConnections(world,connections)),history=new TerrainHistory(words,4*1024*1024,64);
+ restoreHollowJournal(world,history,journal);return history.exportJournal();
+}
+function restoreHollowJournal(world:HollowCubeWorld,history:TerrainHistory,journal:WordHistoryJournal){
+ history.restoreJournal(journal,words=>{const canonical=encode(validateHollowConnections(world,decode(words)));if(canonical.some((v,i)=>v!==words[i]))throw Error('History contains noncanonical connection words.');});
 }
 /** Explicit conservative envelope, not a global displaced terrain mesh certificate. */
 export function assertHollowElevation(world:HollowCubeWorld,role:HollowCubeRole,height:number){
@@ -43,7 +55,7 @@ export async function prepareHollowProtection(world:HollowCubeWorld,connections:
   const masks={} as Record<HollowCubeRole,Uint8Array>;
   // Project conservative primitive bounds to each reference face. Expanded support
   // covers bilinear interpolation and edge gradients; computed only on geometry edits.
-  const boxes=connections.passages.flatMap(p=>{const nodes=new Map(p.nodes.map(n=>[n.id,n]));return [...p.nodes.map(n=>({a:n.position,b:n.position,r:n.radiusMeters})),...p.segments.map(s=>({a:nodes.get(s.from)!.position,b:nodes.get(s.to)!.position,r:s.radiusMeters}))];});
+  const boxes=[...(connections.holes??[]).map(h=>holeCut(world,h)),...connections.passages.flatMap(p=>{const nodes=new Map(p.nodes.map(n=>[n.id,n]));return [...p.nodes.map(n=>({a:n.position,b:n.position,r:n.radiusMeters})),...p.segments.map(s=>({a:nodes.get(s.from)!.position,b:nodes.get(s.to)!.position,r:s.radiusMeters}))];})];
   let slice=performance.now();
   for(const role of HOLLOW_ROLES){const terrain=world.surfaces[role].referenceTerrain,mask=new Uint8Array(terrain.sampleCount),step=terrain.sampleSpacingMeters,pad=step*2,half=terrain.metadata.geometry.sideLengthMeters/2,n=terrain.metadata.representation.cellsPerEdge;masks[role]=mask;
 
@@ -51,7 +63,7 @@ export async function prepareHollowProtection(world:HollowCubeWorld,connections:
    // Canonical resolve also covers aliases without duplicate authority edits.
    for(const box of boxes)for(const face of SOLID_CUBE_FACES){const f=SOLID_CUBE_FRAMES[face],r=box.r+pad,normalA=cubeDot(box.a,f.normal),normalB=cubeDot(box.b,f.normal),intrusion=world.dimensions.nominalWallThicknessMeters/4,minLevel=role==='exterior'?half-intrusion:half,maxLevel=role==='interior'?half+intrusion:half;if(maxLevel<Math.min(normalA,normalB)-r||minLevel>Math.max(normalA,normalB)+r)continue;
     const range=(axis:typeof f.u)=>{const a=cubeDot(box.a,axis),b=cubeDot(box.b,axis);return[Math.max(0,Math.ceil((Math.min(a,b)-r+half)/step)),Math.min(n,Math.floor((Math.max(a,b)+r+half)/step))] as const;},[left,right]=range(f.u),[bottom,top]=range(f.v);
-    for(let row=bottom;row<=top;row++){for(let column=left;column<=right;column++){const key=terrain.resolve({...terrain.metadata.identity,patchId:face,column,row});if(mask[key.index])continue;mask[key.index]=1;if(read(role,key.index)!==0)throw Error('Excavation needs level ground at exactly 0 m. Choose an untouched area, or dig before sculpting its supporting ground.');}
+    for(let row=bottom;row<=top;row++){for(let column=left;column<=right;column++){const key=terrain.resolve({...terrain.metadata.identity,patchId:face,column,row});if(mask[key.index])continue;mask[key.index]=1;if(read(role,key.index)!==0)throw Error('This checkpoint only supports level ground at exactly 0 m. Terrain-aware holes and tunnels are required but not available yet. No excavation was changed.');}
      if(performance.now()-slice>=4){await workStep(work,'Checking excavation support',(HOLLOW_ROLES.indexOf(role)+row/(n+1))/2);slice=performance.now();}}
    }
   }
@@ -63,7 +75,7 @@ export class HollowCubeDocument {
  readonly sessions:Record<HollowCubeRole,CubeEditorSession>;
  readonly connectionWords=new Uint32Array(HOLLOW_CONNECTION_BYTES/4);
  readonly connectionHistory=new TerrainHistory(this.connectionWords,4*1024*1024,64);
- connections:HollowConnections=Object.freeze({links:[],passages:[]});
+ connections:HollowConnectionState=Object.freeze({links:[],passages:[],holes:[]});
  selectedSurface:HollowCubeRole='exterior';historyScope:'terrain'|'connections'='terrain';
  changed=()=>{};geometryChanged=()=>{};status='Ready to paint outside';error='';preparationMs=0;
  lastSurfaceSwitchMs=0;
@@ -79,7 +91,7 @@ export class HollowCubeDocument {
    const guarded:SolidCubeTerrain={...raw,get revision(){return raw.revision;},commitPreparedPatch:(binding,revision,blocks,capacity)=>{
     raw.read(binding);const key=raw.keyAt(binding.index),prepared=cubePatchBlocks(blocks,capacity==='history'?raw.sampleCount:MAX_CUBE_PATCH_SAMPLES);
     if(this.disposed||opposingRevision!==other.revision||geometryRevision!==this.geometryRevision)throw Error('The opposite surface or excavation changed. Start the edit again.');
-    for(const block of prepared)for(let i=0;i<block.count;i++){assertHollowElevation(world,role,block.after[i]!);if(this.masks[role][block.indices[i]!]&&!Object.is(block.after[i],block.before[i]))throw Error('This terrain supports an excavation. Remove or move the tunnel before sculpting its protected ground.');}
+    for(const block of prepared)for(let i=0;i<block.count;i++){assertHollowElevation(world,role,block.after[i]!);if(this.masks[role][block.indices[i]!]&&!Object.is(block.after[i],block.before[i]))throw Error('This terrain supports an excavation. Remove or move the hole or tunnel before sculpting its protected ground.');}
     return raw.commitPreparedPatch(key,revision,prepared,capacity);
    }};
    const session=new CubeEditorSession(guarded,name,saved);session.beforeOperation=()=>{if(this.changing)throw Error('Wait for the excavation update.');opposingRevision=other.revision;geometryRevision=this.geometryRevision;this.historyScope='terrain';this.changed();};this.sessions[role]=session;
@@ -101,12 +113,21 @@ export class HollowCubeDocument {
   if(this.disposed||epoch!==this.geometryRevision||HOLLOW_ROLES.some((r,i)=>this.sessions[r].terrain.revision!==revisions[i]))throw Error('Terrain or excavation changed during validation. Retry the change.');
   return{connections,words,masks,ms:performance.now()-started};
  }
+ /** Validate a proposal with the same leases and safeguards as publication,
+  * without writing history, geometry, connection words or terrain. */
+ async checkConnections(input:HollowConnections){
+  if(this.locked||this.changing)throw Error('Wait for the current World operation.');
+  this.changing=true;for(const s of Object.values(this.sessions))s.locked=true;this.changed();
+  try{for(const role of HOLLOW_ROLES)await this.sessions[role].drainForSave();return(await this.prepare(input,{progress:(stage,fraction)=>{this.status=`${stage} ? ${Math.round(fraction*100)}%`;this.changed();}})).connections;}
+  finally{this.changing=false;for(const s of Object.values(this.sessions))s.locked=this.locked;this.changed();}
+ }
+ restoreJournal(journal:WordHistoryJournal){restoreHollowJournal(this.world,this.connectionHistory,journal);this.checkpoint=this.connectionHistory.stateId;if(this.connectionHistory.canUndo||this.connectionHistory.canRedo)this.historyScope='connections';}
  async restore(input:HollowConnections,work:PersistenceWork={}){const ready=await this.prepare(input,work,true);this.connectionWords.set(ready.words);this.connections=ready.connections;this.masks=ready.masks;this.preparationMs=ready.ms;}
  async changeConnections(input:HollowConnections,replay?:boolean){
   if(this.locked||this.changing)throw Error('Wait for the current World operation.');
   this.changing=true;for(const s of Object.values(this.sessions))s.locked=true;this.changed();
   try{for(const role of HOLLOW_ROLES)await this.sessions[role].drainForSave();const ready=await this.prepare(input,{progress:(stage,fraction)=>{this.status=`${stage} · ${Math.round(fraction*100)}%`;this.changed();}});if(replay===undefined)this.connectionHistory.replace(ready.words);else if(replay)this.connectionHistory.redo();else this.connectionHistory.undo();
-   this.connections=ready.connections;this.masks=ready.masks;this.geometryRevision++;this.preparationMs=ready.ms;this.historyScope='connections';this.error='';this.status=`Entrances and excavation updated · ${Math.round(ready.ms)} ms`;this.geometryChanged();
+   this.connections=ready.connections;this.masks=ready.masks;this.geometryRevision++;this.preparationMs=ready.ms;this.historyScope='connections';this.error='';this.status=`Holes, tunnels and map links updated · ${Math.round(ready.ms)} ms`;this.geometryChanged();
   }finally{this.changing=false;for(const s of Object.values(this.sessions))s.locked=this.locked;this.changed();}
  }
  async replay(redo=false){if(this.historyScope==='terrain')return this.active.replay(redo);const words=this.connectionHistory.preview(redo);if(words)await this.changeConnections(decode(words),redo);}

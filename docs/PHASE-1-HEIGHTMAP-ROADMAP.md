@@ -2,7 +2,19 @@
 
 Updated for Cube-D1 on accepted Cube-C2B2 delivery 77df76f3a0a12273f9277d201277f13e9985074d (implementation d099606144d827d99f4c6c8ba40fe67933fb474e). A7-P1C remains accepted with its published performance qualifications. The owner's revised sequence below supersedes earlier plans for a separately rebuilt replacement Worlds system. Existing Worlds information, organization, data and functionality must be preserved wherever practical. A7-A begins Phase 2 with the physical capped-cylinder numerical foundation; A7-B1 adds bounded global reference-surface distances. A7-B2A adds isolated numerical four-tool dabs with atomic preparation/commit; A7-B2B1 adds connected physical path construction and bounded distance/residual evaluation. A7-B2B2 adds continuous numerical four-tool strokes with ordered input, corrected spacing, bounded scheduling/cancellation and exact whole-stroke history. A7-C adds a real session-only physical/connected cylinder editor. A7-D adds normal cylinder creation/selection, validated v4 Save/Open and exact saved checkpoints. A7-P1A improves cylinder rendering/navigation and independent pointer feedback. A7-P1A-R corrects geographical presentation after owner/Ember visual rejection, with elevation-first interpolation, optional physical-gradient relief and active-backend diagnostics; A7-P1B adds revision-acknowledged worker preparation for cylinder painting, exact main-thread history/commits, event-driven Save draining and a small shared responsiveness contract. A7-P1C applies elevation-first spherical presentation, persistent Globe/Net GPU rendering, bounded CPU fallback and workload-aware spherical preparation. Cube-A adds the separate physical solid cube numerical/topological foundation. Cube-B adds certified global continuous reference routes, exact comparison and physical path witnesses. Cube-C1 adds isolated four-tool numerical dabs with exact compiled footprints, connected smoothing, cooperative epoch preparation and atomic commit. Cube-C2A adds continuous numerical physical path reconstruction and exact carried dab spacing. Cube-C2B1 adds ordered authoritative numerical stroke execution, exact bounded gesture history and safe committed-prefix termination. Cube-C2B2 adds measured cooperative/paired pure-path-worker scheduling, exact revision acknowledgements and fault-safe prefixes around unchanged host C1/history. Cube-D1 adds the first read-only physical cube and connected net. Further cube rendering, editing/persistence/hollow variants, history-capacity changes, other geometries and Phases 3–11 remain future work.
 
-## Current Cube-H authorization and review gate — 2026-10-21
+## Cube-I owner correction: holes, tunnels and map links
+
+The authoritative correction separates direct authored **Holes** from designed
+physical **Tunnel** networks and abstract **Map Links**. Holes have adjustable
+circular dimensions, preview, identity-preserving resize and their own persisted
+objects/counts. Terrain-aware excavation at positive/negative elevations on either
+surface is required for both physical operations and blocks final cube acceptance.
+The zero-height reference-shell restriction is interim, not acceptable final
+behavior. See [current correction checkpoints](CUBE-I-TERRAIN-EXCAVATION-CHECKPOINTS.md).
+The future visual designer and full free-exploration requirements remain mandatory;
+this correction changes neither the eleven phases nor the approved geometry order.
+
+## Current Cube-I authorization and review gate — 2026-10-21
 
 **The owner explicitly accepted solid-cube checkpoint
 `d011a377e6a1ad76296e41740422fa5600f69082` after hands-on testing. Cube-E/F is closed.**
@@ -11,8 +23,11 @@ accepted. Cube-G is authorized and implements the
 [hollow numerical/physical foundation and development inspection](CUBE-G-COMPLETION.md),
 following the [shared editor/adapters audit](ATLAS-SHARED-EDITOR-ARCHITECTURE.md).
 The owner accepted Cube-G at 543cb6211905a8fffc78013eec9b06d144b94e5b and authorized
-Cube-H through H1–H5. The complete hollow editor is now the review checkpoint.
-Stop for Ember's independent source review and owner hands-on acceptance before Cube-I.
+Cube-H through H1–H5, delivered at `407447d7271913f44a6c6c18a5fec48c25d43205`.
+The owner has authorized Cube-I verification and targeted hardening on the provisional
+assumption that H will be accepted. **Cube-H hands-on acceptance has not been
+confirmed.** Prioritize reported H defects. Stop after Cube-I for Ember's independent
+GitHub review and the owner's final cube-family acceptance; no pyramid code is authorized.
 This current gate supersedes historical D1/E/F stop wording below.
 
 The owner accepted Cube-D1 visuals at delivery
@@ -25,7 +40,8 @@ The approved next sequence remains **Cube-G foundation → Cube-H full hollow
 authoring, both passage types, history and versioned Save/Open → Cube-I final
 solid/hollow family verification and owner acceptance**. Cube-H and other shape
 families were not authorized by the G run; the subsequent explicit H authorization
-now covers H1–H5 only. The eleven phases, approved
+covered H1–H5; the subsequent explicit Cube-I authorization covers final verification
+and targeted hardening only. The eleven phases, approved
 geometry priority order and all future requirements remain unchanged, including
 hollow worlds with linked entrances and genuine physical caves/tunnels through
 their shells, and later custom irregular worlds. Original website, shared server
@@ -73,7 +89,7 @@ databases, Docker, hosting and Production remain outside scope.
 | Cube-E/F | Usable solid-cube authoring, bounded responsive painting, correct navigation, exact whole-gesture history and v5 Save/Open | Owner hands-on acceptance granted at d011a377e6a1ad76296e41740422fa5600f69082; E/F closed |
 | Cube-G | Independent inward/outward cube surfaces, positive reference shell, clearance screening, both passage foundations and development inspection | Owner accepted at 543cb621 for Cube-H progression. See CUBE-G-COMPLETION.md |
 | Cube-H | Full selected-surface editing/navigation, linked entrances and real excavated through-shell tunnels/caves, history and versioned parent Save/Open | Implemented for independent source review and owner hands-on acceptance. See CUBE-H-COMPLETION.md |
-| Cube-I | Final solid/hollow cube-family verification and owner acceptance | Future gated pass |
+| Cube-I | Final solid/hollow cube-family verification and targeted hardening | Authorized for technical delivery; H and final cube-family owner acceptance remain pending |
 | Later geometry checkpoints | Hollow and other agreed geometries/conversions | Future; separately authorized |
 | Later Phase 1 | Remaining inventory below | Planned; pass boundaries and acceptance criteria still require authorization |
 
@@ -121,8 +137,8 @@ This complete sequence replaces the previous three-step downstream integration p
 | 2 | Implement all required world geometries and non-destructive conversions. |
 | 3 | Complete comprehensive Azgaar-style Heightmap Studio. |
 | 4 | Develop real geographical measurements and terrain intelligence. |
-| 5 | Complete professional illustrated 2D mapmaking, including settlements, city/town maps, buildings, interiors/floors, dungeons/underground levels and linked-map navigation. |
-| 6 | Complete true 3D terrain and geographic exploration. |
+| 5 | Complete professional illustrated 2D mapmaking, including settlements, city/town maps, buildings, interiors/floors, dungeons/underground levels, linked-map navigation and the visual Tunnel Network Designer. |
+| 6 | Complete true 3D terrain and geographic exploration, including continuous free, collision-aware navigation through physical breaches and complete tunnel/cave networks. |
 | 7 | Integrate Atlas into an isolated development version of the existing Serrian Tide Worlds section. Production remains untouched. |
 | 8 | Develop bidirectional functionality between Atlas and existing Worlds records. |
 | 9 | Connect geographical changes with existing Worlds living-history and alternate-timeline functionality. |
@@ -138,6 +154,43 @@ Affordable consumer hardware and GPU-free hosting remain requirements throughout
 See [World/surface architecture](WORLD-SURFACE-ARCHITECTURE.md), [numerical foundation](A6-A-COMPLETION.md), [editing](SPHERICAL-EDITING.md) and [E preservation](SPHERICAL-PERSISTENCE.md). A6-F1 hosts A5.2 planar/wrapped and D2/E spherical editing/preservation in one Atlas workspace with one active document and a shared mixed library. The six charts represent a round sphere, not a physical cube. Bounded/periodic saves keep exact v1/v2 interpretations without conversion or migration; spheres use their own v3 format.
 
 ## Complete future geometry and editing requirements
+
+### Permanent underground-access and network requirement
+
+The owner requires distinct authoring workflows for **physical through-holes /
+breaches** directly through a surface/shell, and **physical tunnel entrances** into
+designed underground networks. Breaches need no extended network and may be extremely
+large, vehicle/ship navigable or underwater (including exterior/interior ocean access).
+Tunnel networks may curve, branch, loop, span enormous geographic distances and
+contain chambers, caves/caverns, shafts, slopes, multiple levels and many entrances.
+Both remove actual material; neither is inherently a teleport or merely a map link.
+
+**Linked-map access is a separate supporting capability.** A surface opening may
+immediately enter a corresponding local underground map/region at its physical
+location/depth, enter a physical network, or combine both. Scale/layer transitions
+are valid; they must not simulate physical travel along an extended route. Local
+access must not require a tunnel across the whole world or through both sides of
+a hollow shell. H's matching exterior/interior shaft is an initial through-hole
+template, not the complete designer or universal underground access.
+
+The required **Tunnel Network Designer** belongs alongside Phase 5's professional
+multiscale mapmaking, using Atlas's shared workspace and execution systems. Creators
+draw/edit/delete/extend/reconnect routes visually in top-down and side-profile views,
+eventually 3D; set width, height, shape and depth; author natural or constructed
+passages; and link mines, basements, dungeons and underground regions without manual
+XYZ construction. Stable geographic/level identities and scalable spatial storage
+must support long-distance routes across multiple maps/regions and future shapes.
+
+Phase 6 must make these actual volumes freely explorable in first-person-style,
+bidirectionally and continuously, with collision/clearance, real surface connections,
+curves, branches, chambers and underground levels. Guided centerline inspection may
+remain an optional aid; Cube-H/I does **not** fulfill free navigation. Editor,
+excavation, visibility, collision and renderer must use coherent physical geography.
+
+The [underground contract assessment and bounded pass proposal](UNDERGROUND-NETWORK-ROADMAP.md)
+records missing curve/section/anchor/paging/precision/collision contracts, direct
+breach/local-access checkpoints, the visual designer and later full exploration.
+This records mandatory future scope; it starts no excavation-engine refactor in I.
 
 | Owner requirement | Current status and required future work |
 | --- | --- |

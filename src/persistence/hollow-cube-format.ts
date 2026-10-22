@@ -6,18 +6,21 @@ import {SOLID_CUBE_FACES} from '../surfaces/solid-cube.ts';
 import {solidCubeSampleCount} from '../terrain/solid-cube.ts';
 import {createHollowCubeWorld} from '../terrain/hollow-cube.ts';
 import {assertInteractiveCube} from '../editor/cube-configuration.ts';
-import {assertHollowElevation,HOLLOW_ROLES,prepareHollowCubeDocument,prepareHollowProtection,validateHollowConnections,type HollowConnections,type HollowCubeDocument} from '../editor/hollow-cube-document.ts';
+import {assertHollowElevation,validateHollowJournal,HOLLOW_ROLES,prepareHollowCubeDocument,prepareHollowProtection,validateHollowConnections,type HollowConnections,type HollowCubeDocument} from '../editor/hollow-cube-document.ts';
+
+import type {WordHistoryJournal} from '../editor/terrain-history.ts';
 
 export interface SavedHollowCube extends SavedMapSummary {
- format:typeof SAVE_FORMAT;formatVersion:6;
+ format:typeof SAVE_FORMAT;formatVersion:6|7;
  metadata:{configuration:HollowCubeConfiguration;cellsPerEdge:128|256;representation:'physical-cube-shared-boundary-vertices-v1';ownership:'first-incident-face';faces:typeof SOLID_CUBE_FACES;orientation:'outside-outward_inside-inward-v-reversed'};
  sampleCountPerSurface:number;selectedSurface:'exterior'|'interior';connections:HollowConnections;
+ connectionHistory?:WordHistoryJournal;
  elevationEncoding:'float32-le-canonical-exterior-interior';elevations:ArrayBuffer;checksum:string;
 }
 const exact=(value:Record<string,unknown>,keys:string[])=>{if(Object.keys(value).sort().join(',')!==keys.sort().join(','))throw Error('Unsupported hollow World record fields.');};
 export function hollowCubeHeader(value:unknown){
- const root=record(value);exact(root,['format','formatVersion','id','name','savedAt','metadata','sampleCountPerSurface','selectedSurface','connections','elevationEncoding','elevations','checksum']);
- if(root.format!==SAVE_FORMAT||root.formatVersion!==6||root.elevationEncoding!=='float32-le-canonical-exterior-interior'||!HOLLOW_ROLES.includes(root.selectedSurface as 'exterior'))throw Error('Unsupported hollow World format or surface.');
+ const root=record(value);if(root.formatVersion!==6&&root.formatVersion!==7)throw Error('Unsupported hollow World format.');exact(root,[...(root.formatVersion===7?['connectionHistory']:[]),'format','formatVersion','id','name','savedAt','metadata','sampleCountPerSurface','selectedSurface','connections','elevationEncoding','elevations','checksum']);
+ if(root.format!==SAVE_FORMAT||(root.formatVersion!==6&&root.formatVersion!==7)||root.elevationEncoding!=='float32-le-canonical-exterior-interior'||!HOLLOW_ROLES.includes(root.selectedSurface as 'exterior'))throw Error('Unsupported hollow World format or surface.');
  const meta=record(root.metadata);exact(meta,['configuration','cellsPerEdge','representation','ownership','faces','orientation']);
  const config=record(meta.configuration);exact(config,['provider','version','worldId','outerSideLengthMeters','innerSideLengthMeters','surfaces']);const surfaces=record(config.surfaces);exact(surfaces,['exterior','interior']);for(const r of HOLLOW_ROLES)exact(record(surfaces[r]),['surfaceId','terrainId']);
  const configuration=hollowCubeConfiguration(config as unknown as HollowCubeConfiguration),n=meta.cellsPerEdge;assertInteractiveCube(configuration.outerSideLengthMeters,n as number);assertInteractiveCube(configuration.innerSideLengthMeters,n as number);
@@ -26,9 +29,12 @@ export function hollowCubeHeader(value:unknown){
  const count=solidCubeSampleCount(n as number);if(root.sampleCountPerSurface!==count)throw Error('Incorrect hollow World sample count.');
  // Validate bounded connection fields before hashing or allocating full-resolution
  // terrain. The N2 descriptor reuses G geometry with only 52 temporary samples.
- const connections=validateHollowConnections(createHollowCubeWorld(configuration,2),root.connections as HollowConnections);
+ exact(record(root.connections),root.formatVersion===6?['links','passages']:['links','passages','holes']);
+ const checked=validateHollowConnections(createHollowCubeWorld(configuration,2),root.connections as HollowConnections);
+ // Preserve the exact v6 checksum header. Only an explicit Save writes v7.
+ const connections:HollowConnections=root.formatVersion===6?{links:checked.links,passages:checked.passages}:checked;
 
- return{format:SAVE_FORMAT,formatVersion:6,id,name,savedAt,metadata:{configuration,cellsPerEdge:n as 128|256,representation:'physical-cube-shared-boundary-vertices-v1',ownership:'first-incident-face',faces:SOLID_CUBE_FACES,orientation:'outside-outward_inside-inward-v-reversed'},sampleCountPerSurface:count,selectedSurface:root.selectedSurface as 'exterior'|'interior',connections,elevationEncoding:'float32-le-canonical-exterior-interior'} as const;
+ return{format:SAVE_FORMAT,formatVersion:root.formatVersion as 6|7,id,name,savedAt,metadata:{configuration,cellsPerEdge:n as 128|256,representation:'physical-cube-shared-boundary-vertices-v1',ownership:'first-incident-face',faces:SOLID_CUBE_FACES,orientation:'outside-outward_inside-inward-v-reversed'},sampleCountPerSurface:count,selectedSurface:root.selectedSurface as 'exterior'|'interior',connections,...(root.formatVersion===7?{connectionHistory:validateHollowJournal(createHollowCubeWorld(configuration,2),connections,root.connectionHistory as WordHistoryJournal)}:{}),elevationEncoding:'float32-le-canonical-exterior-interior'} as const;
 }
 export async function validateHollowCube(value:unknown,work:PersistenceWork={}):Promise<SavedHollowCube>{
  const header=hollowCubeHeader(value),root=record(value),input=root.elevations;if(!(input instanceof ArrayBuffer)||input.byteLength!==header.sampleCountPerSurface*8||input.byteLength>(6*256**2+2)*8)throw Error('Incorrect hollow World elevation size.');
@@ -43,7 +49,7 @@ export async function validateHollowCube(value:unknown,work:PersistenceWork={}):
 }
 export async function encodeHollowCube(editor:HollowCubeDocument,savedAt=new Date().toISOString(),work:PersistenceWork={}):Promise<SavedHollowCube>{
  const world=editor.world,n=world.surfaces.exterior.referenceTerrain.metadata.representation.cellsPerEdge,revision=editor.revision,revisions=HOLLOW_ROLES.map(r=>editor.sessions[r].terrain.revision);
- const header=hollowCubeHeader({format:SAVE_FORMAT,formatVersion:6,id:world.definition.id,name:editor.name.trim(),savedAt,metadata:{configuration:world.configuration,cellsPerEdge:n,representation:'physical-cube-shared-boundary-vertices-v1',ownership:'first-incident-face',faces:SOLID_CUBE_FACES,orientation:'outside-outward_inside-inward-v-reversed'},sampleCountPerSurface:world.surfaces.exterior.referenceTerrain.sampleCount,selectedSurface:editor.selectedSurface,connections:editor.connections,elevationEncoding:'float32-le-canonical-exterior-interior',elevations:null,checksum:null});
+ const header=hollowCubeHeader({format:SAVE_FORMAT,formatVersion:7,id:world.definition.id,name:editor.name.trim(),savedAt,metadata:{configuration:world.configuration,cellsPerEdge:n,representation:'physical-cube-shared-boundary-vertices-v1',ownership:'first-incident-face',faces:SOLID_CUBE_FACES,orientation:'outside-outward_inside-inward-v-reversed'},sampleCountPerSurface:world.surfaces.exterior.referenceTerrain.sampleCount,selectedSurface:editor.selectedSurface,connections:editor.connections,connectionHistory:editor.connectionHistory.exportJournal(),elevationEncoding:'float32-le-canonical-exterior-interior',elevations:null,checksum:null});
  const elevations=new ArrayBuffer(header.sampleCountPerSurface*8),view=new DataView(elevations);
  for(const [r,role] of HOLLOW_ROLES.entries()){const terrain=editor.sessions[role].terrain,source=terrain.copyElevations(),words=new Uint32Array(source.buffer);for(let i=0;i<source.length;i++){assertHollowElevation(world,role,source[i]!);view.setUint32((r*source.length+i)*4,words[i]!,true);if(i%8192===8191)await workStep(work,'Encoding both hollow surfaces',(r+i/source.length)/2);}}
  const checksum=await payloadChecksum(header,elevations);if(editor.revision!==revision||HOLLOW_ROLES.some((r,i)=>editor.sessions[r].terrain.revision!==revisions[i]))throw Error('World changed during Save. Finish the edit and retry.');return{...header,elevations,checksum};
@@ -51,5 +57,5 @@ export async function encodeHollowCube(editor:HollowCubeDocument,savedAt=new Dat
 export async function decodeHollowCube(value:unknown,work:PersistenceWork={}){
  const saved=await validateHollowCube(value,work),world=createHollowCubeWorld(saved.metadata.configuration,saved.metadata.cellsPerEdge),view=new DataView(saved.elevations),count=saved.sampleCountPerSurface;
  for(const [r,role] of HOLLOW_ROLES.entries()){const terrain=world.surfaces[role].referenceTerrain;for(let i=0;i<count;i++){terrain.write(terrain.keyAt(i),view.getFloat32((r*count+i)*4,true));if(i%8192===8191)await workStep(work,'Restoring both hollow surfaces',(r+i/count)/2);}}
- const prepared=await prepareHollowCubeDocument(world,saved.name,true,saved.connections,work);prepared.editor.selectedSurface=saved.selectedSurface;return prepared;
+ const prepared=await prepareHollowCubeDocument(world,saved.name,true,saved.connections,work);prepared.editor.selectedSurface=saved.selectedSurface;if(saved.connectionHistory)prepared.editor.restoreJournal(saved.connectionHistory);return prepared;
 }

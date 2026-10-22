@@ -1,4 +1,4 @@
-<!-- Current checkpoint: Cube-H, awaiting independent and owner review. -->
+<!-- Current checkpoint: Cube-I; Cube-H and final family owner acceptance pending. -->
 # Serrian Tide Atlas
 
 The owner accepted solid cube d011a377e6a1ad76296e41740422fa5600f69082 and hollow
@@ -9,18 +9,34 @@ The existing Atlas editor, cube painting sessions, exact histories and display
 publication remain shared. See the [Cube-H workflow, checks and limits](docs/CUBE-H-COMPLETION.md)
 and [shared architecture](docs/ATLAS-SHARED-EDITOR-ARCHITECTURE.md).
 
-Open **http://127.0.0.1:5260/** on the current local preview, choose **New World / Map
-→ Hollow cube world**, and create N128 or N256. Atlas tools contains **Paint Outside /
-Paint Inside**, entrances and excavation. Unfold either side or sculpt in 3D.
-Use **Dig Tunnel** on level 0 m ground near the middle of a face; **Explore opening**
-and **Travel forward** follow the actual free volume, with branch choices at junctions.
-Save, close, then **Browse saved maps → Open Map** to continue on this device.
+**Cube-I correction checkpoint** separates **Cut Hole**, **Create Tunnel** and
+advanced **Map Links**. Holes are independent circular breaches, with adjustable
+width, on-map Smaller/Larger controls, move/resize/removal, and exact metadata
+Undo/Redo retained through v7 Save/Open. A tunnel uses independently picked ends
+and a validated preview before explicit creation. Existing v1-v6 saves keep their
+meaning. The accepted brush engine remains unchanged.
 
-Excavation currently uses the physical reference shell and protected level ground,
-with explicit feature-size and shell-clearance limits. Other terrain remains the
-accepted height field; this is not the later global displaced-terrain phase.
-**Stop for Ember's independent source review and owner hands-on acceptance.
-Cube-I and further geometries require separate authorization.**
+Open **http://127.0.0.1:5260/**, create a Hollow cube at N128/N256, and open Atlas
+tools. **Cut Hole** takes one placement and calculates the opposite mouth. Set
+**Opening width (m)** before placement; select an existing hole to edit its width
+or move it. **Create Tunnel** asks for an entrance and exit; switch Inside/Outside
+or rotate between picks, inspect the proposal, then choose **Create proposed
+tunnel**. Map Links remain in their own advanced section. Save, reload and use
+Browse saved maps / Open Map on this browser and device.
+
+**Terrain-aware excavation is unfinished and blocks final acceptance.** This
+checkpoint safely retains reference-shell/zero-height support checks. It cannot
+cut a mountain, seabed or other sculpted endpoint yet; flattening geography or
+removing the validator is not a solution. The [dependency and checkpoint plan](docs/CUBE-I-TERRAIN-EXCAVATION-CHECKPOINTS.md)
+identifies the shared displaced-material, aperture, WebGL/Canvas, preview,
+clearance and versioned persistence work required for both holes and tunnels.
+See the [current verification record](docs/CUBE-I-COMPLETION.md).
+
+Cube-H hands-on acceptance and final cube-family acceptance remain pending.
+**Stop for Ember's review and owner acceptance; no pyramid or unrelated geometry
+implementation.** The permanent [underground designer roadmap](docs/UNDERGROUND-NETWORK-ROADMAP.md)
+requires visual network editing alongside professional multiscale mapmaking and
+free collision-aware exploration in the established comprehensive 3D phase.
 
 For the accepted solid cube:
 Run `npm.cmd run dev`, open Atlas, and choose **New World / Map → Solid cube world**.
