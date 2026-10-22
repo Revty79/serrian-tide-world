@@ -245,7 +245,21 @@ extension is required by the owner's hole edit-history supplement.
 
 [Terrain-aware excavation checkpoints](CUBE-I-TERRAIN-EXCAVATION-CHECKPOINTS.md)
 identify the missing watertight material reconstruction and geometry-specific
-surface/aperture adapter. This substantial extension is a final-acceptance blocker.
+surface/aperture adapter. The owner's later scope correction defers this substantial
+extension to a deliberately designed shared physical 3D architecture; it no longer
+blocks Phase 2 cube-family acceptance.
 It must preserve accepted canonical heights, coordinates, brush/history scheduling
 and independent surface identities while bringing rendering, preview and clearance
 into agreement. A reference-plane guard removal is not an implementation.
+
+The first internal implementation is the geometry-only
+[bilinear material adapter](CUBE-I-TERRAIN-MATERIAL.md). It snapshots the existing
+canonical banks, defines explicit closed edge/corner joins and intersects the
+existing capsule/sphere cutters. It does not introduce a new editor, execution
+system or terrain authority. Normal editing still uses the saved reference-shell
+contract. Further renderer, input, collision and persistence integration is paused.
+The experiment is not the approved architecture for spheres, cylinders, pyramids
+or irregular worlds. Design their shared requirements before resuming that work.
+The Pyramid-A proposal above is retained as future documentation, not the next
+authorized pass: the revised order is Hollow Sphere, Hollow/Open Cylinder, then
+Solid/Hollow Pyramids, each requiring authorization after cube-family acceptance.

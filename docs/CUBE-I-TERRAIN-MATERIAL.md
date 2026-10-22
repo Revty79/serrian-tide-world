@@ -64,6 +64,12 @@ an independent occupancy search, submeter through-cuts, bent connected passages,
 ball clearance, cancellation, stale sources and invalid shell envelopes. A shared
 capsule test covers a 0.25 m diameter at a billion-meter ray distance.
 
+The combined numerical suite passed **1,213/1,213** tests. Moving the standalone
+capsule precision regression beside the existing CSG tests was then checked with
+the complete material/CSG subset: **20/20 passed**. These establish the stated
+fixtures and legacy numerical behavior; they do not prove an all-scale material
+certificate, renderer agreement or creator-facing displaced excavation.
+
 Future work, requiring a shared architecture design and separate authorization:
 derive actual circular mouth/rim intersections, prepare the same material
 for both renderers, connect accurate picking/preview/inspection, and version the

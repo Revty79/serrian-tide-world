@@ -1,9 +1,18 @@
 # Cube-I correction: physical excavation checkpoints
 
-The owner's Hole/Tunnel/Map Link correction and adjustable-hole supplement are
-authoritative. Terrain-aware endpoints are required for both physical operations.
-The zero-height restriction is an unfinished capability, not acceptable final
-behavior. Cube-I and cube-family acceptance remain open.
+The owner's Hole/Tunnel/Map Link correction and adjustable-hole supplement remain
+authoritative. **The later scope correction defers terrain-aware endpoints to the
+future shared physical 3D architecture. They no longer block Cube-I Phase 2.**
+Keep reference-shell functions and explicit zero-height safeguards. Cube-family
+acceptance still requires Ember's review and the owner's approval of actual use.
+
+The latest owner priority correction cancels dedicated extreme fast-brush
+optimization. Ordinary painting is owner-accepted and remains protected by
+regression tests; extreme-speed measurements are optional diagnostics. The subsequent
+scope correction pauses major terrain-aware rendering/editor/collision/persistence
+integration. Preserve the [isolated material research](CUBE-I-TERRAIN-MATERIAL.md)
+and verify current Phase 2 functionality. The following material dependencies are
+required future work, not authorization to continue their implementation now.
 
 ## Checkpoint 1: separate authorship and reviewable placement
 
@@ -46,7 +55,7 @@ and renderers remain in use. Holes only adapt to the same CSG primitives. The
 v7 journal API extends the existing history class; it introduces no replacement
 execution or replay engine.
 
-## Why terrain-aware excavation is still blocked
+## Why reference-shell safeguards remain necessary
 
 The current material is an outer reference cube minus its inner reference cavity
 and authored ball/capsule cuts. Terrain is stored independently on each canonical
@@ -77,7 +86,7 @@ define a watertight displaced solid. A new reconstruction must explicitly resolv
 these joins. Do not silently change accepted surface coordinates, normals, brush
 distances, canonical samples or stored heights to hide this missing contract.
 
-## Next bounded checkpoints within the correction
+## Future bounded checkpoints, separately authorized
 
 1. **Terrain material and aperture contract.** Specify a versioned, watertight
    reconstruction from both canonical height banks, including bilinear/triangle
@@ -101,13 +110,13 @@ distances, canonical samples or stored heights to hide this missing contract.
    chambers and exact history. Larger scales need the documented precision,
    paging and bounded-resource contracts rather than one larger synchronous array.
 4. **Acceptance regression.** Compare accepted solid/hollow N128/N256 painting,
-   rapid input, navigation, both renderers, physical cuts/clearance, metadata and
+   ordinary input, navigation, both renderers, physical cuts/clearance, metadata and
    terrain replay, and v1-v7 saves. Terrain-aware excavation is complete only when
    the editor, visible surface, cutter, preview and passability agree. Guided
    inspection remains distinct from future free, collision-aware 3D navigation.
 
-This substantial material/presentation extension is explicitly identified before
-implementation; checkpoint 1 must not be reported as completing it. Preserve
+This substantial material/presentation extension is postponed by explicit owner
+direction. Checkpoint 1 must not be reported as completing it. Preserve
 working checkpoints. If any individual pass approaches one week, stop and request
 owner/Ember direction on narrowing or deferring that pass. No pyramid or unrelated
 geometry work may start while this cube correction and its acceptance are open.

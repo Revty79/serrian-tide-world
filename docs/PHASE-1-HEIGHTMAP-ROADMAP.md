@@ -1,5 +1,9 @@
 # Atlas master roadmap — Phase 1 and long-term requirements
 
+Current Cube-I scope authority (2026-10-21): finish Phase 2 reference-shell editing;
+preserve isolated material research; pause major 3D integration. The current
+scope/order sections below supersede historical checkpoint descriptions.
+
 Updated for Cube-D1 on accepted Cube-C2B2 delivery 77df76f3a0a12273f9277d201277f13e9985074d (implementation d099606144d827d99f4c6c8ba40fe67933fb474e). A7-P1C remains accepted with its published performance qualifications. The owner's revised sequence below supersedes earlier plans for a separately rebuilt replacement Worlds system. Existing Worlds information, organization, data and functionality must be preserved wherever practical. A7-A begins Phase 2 with the physical capped-cylinder numerical foundation; A7-B1 adds bounded global reference-surface distances. A7-B2A adds isolated numerical four-tool dabs with atomic preparation/commit; A7-B2B1 adds connected physical path construction and bounded distance/residual evaluation. A7-B2B2 adds continuous numerical four-tool strokes with ordered input, corrected spacing, bounded scheduling/cancellation and exact whole-stroke history. A7-C adds a real session-only physical/connected cylinder editor. A7-D adds normal cylinder creation/selection, validated v4 Save/Open and exact saved checkpoints. A7-P1A improves cylinder rendering/navigation and independent pointer feedback. A7-P1A-R corrects geographical presentation after owner/Ember visual rejection, with elevation-first interpolation, optional physical-gradient relief and active-backend diagnostics; A7-P1B adds revision-acknowledged worker preparation for cylinder painting, exact main-thread history/commits, event-driven Save draining and a small shared responsiveness contract. A7-P1C applies elevation-first spherical presentation, persistent Globe/Net GPU rendering, bounded CPU fallback and workload-aware spherical preparation. Cube-A adds the separate physical solid cube numerical/topological foundation. Cube-B adds certified global continuous reference routes, exact comparison and physical path witnesses. Cube-C1 adds isolated four-tool numerical dabs with exact compiled footprints, connected smoothing, cooperative epoch preparation and atomic commit. Cube-C2A adds continuous numerical physical path reconstruction and exact carried dab spacing. Cube-C2B1 adds ordered authoritative numerical stroke execution, exact bounded gesture history and safe committed-prefix termination. Cube-C2B2 adds measured cooperative/paired pure-path-worker scheduling, exact revision acknowledgements and fault-safe prefixes around unchanged host C1/history. Cube-D1 adds the first read-only physical cube and connected net. Further cube rendering, editing/persistence/hollow variants, history-capacity changes, other geometries and Phases 3–11 remain future work.
 
 ## Cube-I owner correction: holes, tunnels and map links
@@ -7,12 +11,34 @@ Updated for Cube-D1 on accepted Cube-C2B2 delivery 77df76f3a0a12273f9277d201277f
 The authoritative correction separates direct authored **Holes** from designed
 physical **Tunnel** networks and abstract **Map Links**. Holes have adjustable
 circular dimensions, preview, identity-preserving resize and their own persisted
-objects/counts. Terrain-aware excavation at positive/negative elevations on either
-surface is required for both physical operations and blocks final cube acceptance.
-The zero-height reference-shell restriction is interim, not acceptable final
-behavior. See [current correction checkpoints](CUBE-I-TERRAIN-EXCAVATION-CHECKPOINTS.md).
-The future visual designer and full free-exploration requirements remain mandatory;
-this correction changes neither the eleven phases nor the approved geometry order.
+objects/counts. The owner's later scope correction explicitly defers terrain-aware
+excavation through displaced geography to the shared future physical 3D architecture.
+It is mandatory future work, **not a Cube-I Phase 2 acceptance blocker**. Keep the
+safe reference-shell/zero-height domain explicit. See
+[preserved research and future checkpoints](CUBE-I-TERRAIN-EXCAVATION-CHECKPOINTS.md).
+The future visual designer and full free-exploration requirements remain mandatory.
+The eleven phases remain unchanged; the owner's latest geometry order below
+supersedes the older ordering.
+
+### Current corrective priorities
+
+The owner accepts ordinary hollow-cube painting. Extreme-speed brush optimization
+is explicitly removed from Cube-I: the historical three-second stress backlog is
+optional diagnostic evidence, not a release blocker or reason to redesign the
+accepted brush engine. Preserve ordinary responsiveness and its regression tests.
+The later scope correction pauses integration of experimental terrain material
+into renderers, excavation editing, collision or persisted World formats. Finish
+Phase 2 cube editing, independent geography, ordinary responsiveness, navigation,
+supported holes/tunnels, history, Save/Open and both renderers. Preserve all existing
+shapes and the 0 m guard. Retain isolated research and compatible verified bug fixes.
+Do not build a global mesher, tiled terrain system or major zoom architecture here.
+
+Mandatory future work: watertight displaced material and correct shell thickness
+for every compatible shape; small features on enormous Worlds; mountain/seabed
+apertures; scalable coordinate precision, local detail and rendering; the Phase 5
+visual Tunnel Network Designer; and Phase 6 free collision-aware travel through
+real connected caves, tunnels and through-holes. All must share one coherent
+physical geography model. Deferral does not cancel any requirement.
 
 ## Current Cube-I authorization and review gate — 2026-10-21
 
@@ -26,7 +52,8 @@ The owner accepted Cube-G at 543cb6211905a8fffc78013eec9b06d144b94e5b and author
 Cube-H through H1–H5, delivered at `407447d7271913f44a6c6c18a5fec48c25d43205`.
 The owner has authorized Cube-I verification and targeted hardening on the provisional
 assumption that H will be accepted. **Cube-H hands-on acceptance has not been
-confirmed.** Prioritize reported H defects. Stop after Cube-I for Ember's independent
+confirmed for the full workflow; the owner explicitly accepts ordinary painting.**
+Prioritize reported ordinary-use defects. Stop after Cube-I for Ember's independent
 GitHub review and the owner's final cube-family acceptance; no pyramid code is authorized.
 This current gate supersedes historical D1/E/F stop wording below.
 
@@ -107,15 +134,15 @@ The owner supplied Ember's A5.2, A6-C, D1, D2 and E technical approvals and sepa
 
 The owner reports that the sphere looks and runs smoothly in hands-on use. Published first-visible terrain p50 nevertheless increased in 31/32 groups; smoother navigation/shorter main-thread blocking and faster numerical drain in 48/64 sustained trials are distinct results. Preserve the first-visible latency regression, weak-device and CPU-fallback costs, and lack of physical-phone testing as explicit follow-ups. Do not describe universal painting-latency improvements or make these costs the assumed standard for future geometries. Historical P1C reports and measurements remain unchanged.
 
-### Owner-approved geometry priorities after A7-P1C
+### Owner-approved geometry priorities, revised by Cube-I scope correction
 
 The owner deferred the flat/horizontally wrapped visual overhaul. This order refines Phase 2 and does not remove or reorder any of the eleven master phases:
 
 1. Cube worlds: solid, followed by hollow.
-2. Pyramid worlds: solid and hollow.
-3. Tetrahedra and other polyhedra.
-4. Hollow spherical worlds.
-5. Hollow and open cylindrical worlds.
+2. Hollow spherical worlds.
+3. Hollow and open cylindrical worlds.
+4. Pyramid worlds: solid and hollow.
+5. Tetrahedra and other polyhedra.
 6. Floating-island and fragmented worlds.
 7. Torus worlds.
 8. Ringworlds with independently mappable inner and outer bands.

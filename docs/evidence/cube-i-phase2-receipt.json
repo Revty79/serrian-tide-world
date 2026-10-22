@@ -1,0 +1,373 @@
+{
+  "date": "2026-10-21",
+  "sourceCheckpoint": "204f460dc95ae7312514bf5c339c1f16d8a9d40b",
+  "status": "Phase 2 technical verification complete; Ember and owner acceptance pending",
+  "scope": "Existing reference-shell editor. Advanced terrain material integration paused by owner; extreme fast strokes optional diagnostics.",
+  "checks": {
+    "numerical": {
+      "passed": 1213,
+      "failed": 0
+    },
+    "targetedMaterialAndCsg": {
+      "passed": 20,
+      "failed": 0
+    },
+    "typecheck": "passed",
+    "build": "passed",
+    "familyBrowser": {
+      "passed": 62,
+      "failed": 0,
+      "projects": [
+        "desktop",
+        "Pixel 7 emulation"
+      ]
+    },
+    "ordinaryPainting": {
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "interruptedRun": {
+        "planned": 12,
+        "completed": 11,
+        "completedTitles": [
+          "long sculpt N128 auto corner",
+          "long sculpt N128 canvas corner",
+          "long sculpt N256 auto corner",
+          "long sculpt N256 canvas corner",
+          "H5 held corner N128 auto exterior",
+          "H5 held corner N128 auto interior",
+          "H5 held corner N128 canvas exterior",
+          "H5 held corner N128 canvas interior",
+          "H5 held corner N256 auto exterior",
+          "H5 held corner N256 auto interior",
+          "H5 held corner N256 canvas exterior"
+        ]
+      },
+      "completionRun": {
+        "stats": {
+          "startTime": "2026-10-22T01:59:31.952Z",
+          "duration": 21339.54,
+          "expected": 1,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "completedTitles": [
+          "H5 held corner N256 canvas interior"
+        ]
+      },
+      "note": "The application interruption occurred before the twelfth case completed. Eleven logged passes were retained; only the remaining case was rerun. No runtime source changed between runs."
+    },
+    "priorLegacy": {
+      "passed": 372,
+      "skipped": 2,
+      "rerunNow": false,
+      "source": "cube-i-receipt.json",
+      "reason": "No sphere/cylinder/flat runtime delta; hollow CSG change covered by fresh numerical/family/ordinary runs."
+    }
+  },
+  "conditions": {
+    "durationMs": 15000,
+    "injectedMoves": 900,
+    "trialCountPerCase": 1,
+    "physicalPhone": false,
+    "graphics": "Windows AMD Radeon RX 6600, ANGLE D3D11 hardware for auto cases",
+    "hollowPrimitives": 9,
+    "hollowRadiusComparison": "Current and prior I both 45000m; historical H interior was 36000m.",
+    "baselineSource": "cube-i-receipt.json",
+    "experimentalGeometryBundled": false
+  },
+  "ordinaryStrokes": [
+    {
+      "n": 128,
+      "backend": "auto",
+      "role": "solid",
+      "actualBackend": "WebGL2",
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "software": false,
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 23.19999998807907,
+        "p95": 45.60000002384186,
+        "max": 99.19999998807907
+      },
+      "previousIp95": 41.19999998807907,
+      "approvedSolidOrHp95": 53.39999997615814,
+      "changedWhileHeld": 139,
+      "releaseBacklogMs": 58.19999998807907,
+      "exactUndoRedo": true
+    },
+    {
+      "n": 128,
+      "backend": "auto",
+      "role": "exterior",
+      "actualBackend": "WebGL2",
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "software": false,
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 32,
+        "p95": 49.80000001192093,
+        "max": 68.89999997615814
+      },
+      "previousIp95": 50,
+      "approvedSolidOrHp95": 42.30000001192093,
+      "changedWhileHeld": 137,
+      "releaseBacklogMs": 42.19999998807907,
+      "exactUndoRedo": true
+    },
+    {
+      "n": 128,
+      "backend": "auto",
+      "role": "interior",
+      "actualBackend": "WebGL2",
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "software": false,
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 840,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 28.799999952316284,
+        "p95": 53.799999952316284,
+        "max": 105.60000002384186
+      },
+      "previousIp95": 47.10000002384186,
+      "approvedSolidOrHp95": 52.5,
+      "changedWhileHeld": 137,
+      "releaseBacklogMs": 105.90000003576279,
+      "exactUndoRedo": true
+    },
+    {
+      "n": 128,
+      "backend": "canvas",
+      "role": "solid",
+      "actualBackend": "Canvas2D fallback",
+      "renderer": "",
+      "software": false,
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 22.69999998807907,
+        "p95": 41.69999998807907,
+        "max": 62.60000002384186
+      },
+      "previousIp95": 36.80000001192093,
+      "approvedSolidOrHp95": 45.19999998807907,
+      "changedWhileHeld": 138,
+      "releaseBacklogMs": 45.40000003576279,
+      "exactUndoRedo": true
+    },
+    {
+      "n": 128,
+      "backend": "canvas",
+      "role": "exterior",
+      "actualBackend": "Canvas2D fallback",
+      "renderer": "",
+      "software": false,
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 21.69999998807907,
+        "p95": 41.40000003576279,
+        "max": 66.90000003576279
+      },
+      "previousIp95": 39.30000001192093,
+      "approvedSolidOrHp95": 39.09999996423721,
+      "changedWhileHeld": 140,
+      "releaseBacklogMs": 51,
+      "exactUndoRedo": true
+    },
+    {
+      "n": 128,
+      "backend": "canvas",
+      "role": "interior",
+      "actualBackend": "Canvas2D fallback",
+      "renderer": "",
+      "software": false,
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 840,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 21.69999998807907,
+        "p95": 44.39999997615814,
+        "max": 71.5
+      },
+      "previousIp95": 39.09999996423721,
+      "approvedSolidOrHp95": 50.90000003576279,
+      "changedWhileHeld": 139,
+      "releaseBacklogMs": 45.69999998807907,
+      "exactUndoRedo": true
+    },
+    {
+      "n": 256,
+      "backend": "auto",
+      "role": "solid",
+      "actualBackend": "WebGL2",
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "software": false,
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 34.69999998807907,
+        "p95": 76,
+        "max": 123
+      },
+      "previousIp95": 57.19999998807907,
+      "approvedSolidOrHp95": 61.09999996423721,
+      "changedWhileHeld": 137,
+      "releaseBacklogMs": 128.10000002384186,
+      "exactUndoRedo": true
+    },
+    {
+      "n": 256,
+      "backend": "auto",
+      "role": "exterior",
+      "actualBackend": "WebGL2",
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "software": false,
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 37.5,
+        "p95": 68.5,
+        "max": 102.30000001192093
+      },
+      "previousIp95": 59.30000001192093,
+      "approvedSolidOrHp95": 59.10000002384186,
+      "changedWhileHeld": 136,
+      "releaseBacklogMs": 112.80000001192093,
+      "exactUndoRedo": true
+    },
+    {
+      "n": 256,
+      "backend": "auto",
+      "role": "interior",
+      "actualBackend": "WebGL2",
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "software": false,
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 840,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 48.19999998807907,
+        "p95": 110.19999998807907,
+        "max": 222.89999997615814
+      },
+      "previousIp95": 62.39999997615814,
+      "approvedSolidOrHp95": 64.80000001192093,
+      "changedWhileHeld": 135,
+      "releaseBacklogMs": 122,
+      "exactUndoRedo": true
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "role": "solid",
+      "actualBackend": "Canvas2D fallback",
+      "renderer": "",
+      "software": false,
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 33.5,
+        "p95": 71.5,
+        "max": 129.60000002384186
+      },
+      "previousIp95": 51.69999998807907,
+      "approvedSolidOrHp95": 187.9000000357628,
+      "changedWhileHeld": 136,
+      "releaseBacklogMs": 42.10000002384186,
+      "exactUndoRedo": true
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "role": "exterior",
+      "actualBackend": "Canvas2D fallback",
+      "renderer": "",
+      "software": false,
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 36,
+        "p95": 75.10000002384186,
+        "max": 125.60000002384186
+      },
+      "previousIp95": 52.59999996423721,
+      "approvedSolidOrHp95": 55.90000003576279,
+      "changedWhileHeld": 138,
+      "releaseBacklogMs": 137.89999997615814,
+      "exactUndoRedo": true
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "role": "interior",
+      "actualBackend": "Canvas2D fallback",
+      "renderer": "",
+      "software": false,
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 840,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 44.10000002384186,
+        "p95": 117.30000001192093,
+        "max": 198.19999998807907
+      },
+      "previousIp95": 76.90000003576279,
+      "approvedSolidOrHp95": 109.29999995231628,
+      "changedWhileHeld": 136,
+      "releaseBacklogMs": 138,
+      "exactUndoRedo": true
+    }
+  ],
+  "limits": [
+    "Reference-shell zero-height support retained; no sculpted-terrain apertures.",
+    "Current world-relative display precision guards and face-fit/domain limits retained.",
+    "Current 3x physical/6x net zoom retained.",
+    "Canvas inspection remains coarser; max-network performance and physical-phone use unproven.",
+    "Research is numerical and unintegrated; no universal material/error certificate or new saved interpretation."
+  ],
+  "future": [
+    "Shared watertight displaced geography and shell thickness across compatible shapes.",
+    "Small-scale features, local precision/detail and scalable rendering.",
+    "Terrain-aware mountain/seabed apertures.",
+    "Phase 5 visual Tunnel Network Designer.",
+    "Phase 6 free collision-aware travel through connected physical spaces."
+  ]
+}

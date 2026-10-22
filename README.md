@@ -24,20 +24,27 @@ or rotate between picks, inspect the proposal, then choose **Create proposed
 tunnel**. Map Links remain in their own advanced section. Save, reload and use
 Browse saved maps / Open Map on this browser and device.
 
-**Terrain-aware excavation is unfinished and blocks final acceptance.** This
-checkpoint safely retains reference-shell/zero-height support checks. It cannot
+**Terrain-aware excavation is deferred to the future shared physical 3D architecture.**
+It no longer blocks Cube-I Phase 2 acceptance. This checkpoint safely retains
+reference-shell/zero-height support checks. It cannot
 cut a mountain, seabed or other sculpted endpoint yet; flattening geography or
 removing the validator is not a solution. The [dependency and checkpoint plan](docs/CUBE-I-TERRAIN-EXCAVATION-CHECKPOINTS.md)
 identifies the shared displaced-material, aperture, WebGL/Canvas, preview,
-clearance and versioned persistence work required for both holes and tunnels.
-Extreme fast sweeps can still queue several seconds of work; this remains a
-measured limitation. See the [current verification record](docs/CUBE-I-COMPLETION.md).
+clearance and versioned persistence work eventually required for both holes and
+tunnels. [Numerical material research](docs/CUBE-I-TERRAIN-MATERIAL.md) is preserved
+as an isolated experiment, unintegrated with normal editing or saved formats.
+The owner accepts ordinary hollow painting. Extreme fast sweeps remain optional
+diagnostics; dedicated optimization is cancelled and their backlog is not a
+release blocker. See the [Phase 2 verification and review handoff](docs/CUBE-I-PHASE2-FINAL.md)
+and [published correction audit](docs/CUBE-I-COMPLETION.md).
 
 Cube-H hands-on acceptance and final cube-family acceptance remain pending.
 **Stop for Ember's review and owner acceptance; no pyramid or unrelated geometry
 implementation.** The permanent [underground designer roadmap](docs/UNDERGROUND-NETWORK-ROADMAP.md)
 requires visual network editing alongside professional multiscale mapmaking and
 free collision-aware exploration in the established comprehensive 3D phase.
+After cube-family acceptance and separate authorization, the revised geometry
+order is Hollow Sphere, Hollow/Open Cylinder, then Solid/Hollow Pyramids.
 
 For the accepted solid cube:
 Run `npm.cmd run dev`, open Atlas, and choose **New World / Map → Solid cube world**.

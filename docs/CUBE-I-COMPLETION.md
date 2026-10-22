@@ -1,11 +1,25 @@
 # Cube-I correction checkpoint: separate holes, tunnels and map links
 
+See the [current Phase 2 scope and final verification handoff](CUBE-I-PHASE2-FINAL.md).
+The measurements below preserve the earlier published checkpoint and its conditions.
+
+**Later owner priority correction:** ordinary hollow painting is accepted.
+Dedicated extreme-speed optimization is cancelled; its historical measurements
+below remain optional diagnostics, not acceptance gates. The subsequent scope
+correction defers advanced displaced-terrain excavation/precision/detail to the
+future shared physical 3D architecture. Cube-I completes the supported Phase 2
+workflow, preserving isolated research and verified compatible fixes. The accepted
+brush engine is preserved. The master roadmap now places Hollow Sphere, Hollow/Open
+Cylinder, then Solid/Hollow Pyramids after cube-family review.
+
 2026-10-21. Based on Cube-H delivery `407447d7271913f44a6c6c18a5fec48c25d43205`,
 owner-approved solid `d011a377e6a1ad76296e41740422fa5600f69082` and hollow foundation
 `543cb6211905a8fffc78013eec9b06d144b94e5b`.
 
-**Initial correction checkpoint technically verified. Final Cube-I acceptance remains blocked by unfinished terrain-aware excavation.** Cube-H owner testing has not been declared
-accepted. I is authorized provisionally; owner-reported H defects take priority.
+**Published correction checkpoint and current Phase 2 technical verification
+complete after the scope correction.** Terrain-aware excavation is deferred,
+not an acceptance blocker. Ordinary hollow painting is owner-accepted; full
+cube-family owner acceptance remains pending. Ordinary-use defects take priority.
 Stop after I for Ember's independent GitHub review and final owner acceptance.
 No pyramid code, original website, database, Docker, hosting or Production changes.
 
@@ -71,13 +85,13 @@ stated domain; it is not owner acceptance or a promise of future capabilities.
 | v5/v6/v7 persistence | All canonical Float32 words, signed zero, identities and geometry; N128/N256 codecs, ordinary reopen/continue and corrupt Open. I mixed library opens v1-v7 without rewriting old records. | Browser/profile/origin/device local; no export/cloud/crash-autosave claim. |
 | Linked entrances | Reciprocal picked locations, side navigation, metadata Undo/Redo, removal, external identities and unavailable-destination feedback. | Links remove no shell material; external maps cannot be opened here. |
 | Independent direct holes | Own ThroughHole/mouth identities; matching opposite-side placement, accurate circular preview, numerical/on-map resize, move/remove, zero network entries, exact persisted metadata replay and both renderers. | Circular reference cuts; custom outlines, unequal end sizes and terrain-aware apertures are unfinished. |
-| Physical excavation | Actual outer material minus inner cavity and capsule/ball union; CPU rays/free-volume, rendered opening/rock pixels and restored geometry checked. | Reference-shell geometry only. Terrain-aware excavation remains an explicit final-acceptance blocker, with the guard retained until replaced correctly. |
+| Physical excavation | Actual outer material minus inner cavity and capsule/ball union; CPU rays/free-volume, rendered opening/rock pixels and restored geometry checked. | Reference-shell geometry only. Terrain-aware excavation is mandatory future work, explicitly deferred from Phase 2; the zero-height guard remains. |
 | Tunnel/branch/chamber authoring | Browser resize/reposition, third opening, branches, chamber growth, removal/restoration and v7 reopen; I numerical bent loop and vertical shaft. | Current node/segment controls are not the future visual Tunnel Network Designer. |
 | Bidirectional inspection | Continuous positions, branch choices, reverse/emerge, look/zoom while moving and return to terrain; both renderers. | Guided centerline routes, not free first-person collision-aware travel. Crossings need explicit authored graph junctions. |
 | Shell safety/recovery | Strict envelope/precision/edge/overlap/ground tests, stale opposing/geometry leases, invalid publication and corrupt rehashed saves rejected atomically. | Conservative support/AABB tests can reject otherwise plausible sites/networks. Reject unsupported terrain atomically; do not recommend flattening geography as a solution. |
 | Performance/resources | Native timestamp/stage and changed-terrain-pixel observer, held gestures, presentation/frame gaps, switching, Save/Open and declared retained resources. | Measurements and remaining fallback costs are reported below; no physical-device or maximum-network-speed claim. |
 
-## Verification and measurements
+## Published correction verification and measurements (95561ca / 7c29a59)
 
 - Numerical suite: **1,196 passed**. TypeScript and production build passed.
 - Family browser run: **58 passed**, desktop and Pixel 7 emulation. After the
@@ -138,8 +152,9 @@ H's correctness safeguards remain: lowering is limited to one quarter of nominal
 wall thickness per side; inner positive height to one quarter of the inner side;
 outer positive height to the outer side. The interim validator still requires excavation interpolation support at exactly
 0 m throughout the permitted lowering envelope. The owner rejects that as final
-behavior. Terrain-aware positive/negative mouths are a required remaining feature,
-not deferred to an unrelated geometry or waived by this checkpoint.
+behavior. Terrain-aware positive/negative mouths are required future work, now
+explicitly deferred by the owner to the shared physical 3D architecture. This
+changes Cube-I acceptance scope, not the permanent requirement.
 Mouths require valid perpendicular cuts away from face edges/corners. Minimum
 radius is 0.001% of the outer side and minimum excavatable wall thickness is 0.01%
 of that side, matching the existing display-precision safeguards. These bounds
@@ -171,7 +186,8 @@ They authorize no code and remain subject to the one-week narrowing rule.
 
 The [terrain-aware dependency/checkpoint plan](CUBE-I-TERRAIN-EXCAVATION-CHECKPOINTS.md)
 records the substantial shared material, aperture and presentation work that must
-agree with clearance, preview, exact history and saves before this correction is complete.
+agree with clearance, preview, exact history and saves in a future authorized pass.
+The current scope correction pauses integration of the isolated numerical research.
 
 The owner's [permanent underground roadmap](UNDERGROUND-NETWORK-ROADMAP.md)
 separates physical through-holes/breaches, physical tunnel-network entrances and
@@ -205,14 +221,18 @@ The following delivery commit records that receipt and the test synchronization
 repairs; it changes no runtime code.
 
 Stop here for Ember's published-source review and the owner's checkpoint testing.
-This is a functional initial circular-hole checkpoint, not final Cube-I or
-cube-family acceptance. Terrain-aware excavation remains required next work.
+This published correction remains a functional reference-shell checkpoint. Final
+Phase 2 verification follows the later scope correction; owner acceptance remains
+separate. Terrain-aware excavation is mandatory future work, not the next active task.
 
 To reproduce checks, use the installed Node 24 toolchain, `npm.cmd test`,
 `npm.cmd run build`, and the three `playwright.cube-i*.config.mjs` configurations.
 Set `ATLAS_PREVIEW_URL` to the running preview (5260 in this delivery; otherwise
 Vite defaults to 5173). The long configuration uses `CUBE_LONG_OUTPUT` and
 `CUBE_HOLLOW_LONG_OUTPUT` to keep current metrics separate from historical H data.
+The long configuration now defaults to the twelve ordinary corner-stroke cases;
+set `CUBE_EXTREME_DIAGNOSTIC=1` only to request the two optional fast-sweep diagnostics.
+Use `CUBE_I_LONG_REPORT` to retain an independent JSON result for each checkpoint.
 Run the legacy configuration from `.local/cube-i-regression-run` after creating
 its `docs/evidence` directory: older tests use relative evidence paths, so running
 from the repository root would overwrite historical receipts/screenshots. The

@@ -15,8 +15,10 @@ reciprocal World/map/location connections; they can support interiors, undergrou
 layers, solar systems and games, and do not inherently remove material.
 
 Both physical operations must intersect actual positive/negative sculpted terrain
-on both sides. The reference-shell/zero-height restriction is an unfinished
-capability and a final-acceptance blocker, not a supported final-domain decision.
+on both sides in the future shared physical 3D architecture. The owner explicitly
+defers that advanced integration; it no longer blocks Phase 2 Cube-I acceptance.
+The reference-shell/zero-height restriction remains an explicit temporary domain,
+not fulfillment of the future requirement.
 [Correction checkpoints and dependencies](CUBE-I-TERRAIN-EXCAVATION-CHECKPOINTS.md)
 record the implemented separate circular-hole and reviewed-tunnel workflow, v7
 metadata history, and the remaining terrain material/rendering/clearance work.
@@ -104,8 +106,9 @@ Current limitations and required future extensions:
   at connected unions, chunk joins and surface apertures.
 - Reference-shell/zero-height support is retained only as a safe interim guard.
   Terrain-aware physical material, apertures and matching render/clearance queries
-  are required now for completing the corrected hole/tunnel workflow, before final
-  cube acceptance. Future free exploration still belongs in comprehensive 3D.
+  are mandatory future work under the deliberately designed shared physical 3D
+  architecture. The owner pauses that integration during Phase 2 Cube-I. Future
+  free exploration still belongs in comprehensive 3D.
 
 ## Proposed bounded checkpoints
 
