@@ -16,7 +16,10 @@ complete displaced terrain and terrain-aware excavation remain future work.
 Basic spherical **radial holes** now support preview, sizing, moving, removal,
 exact connection history and v9 Save/Open on level 0 m ground. See the
 [hole checkpoint and hands-on review](docs/HOLLOW-SPHERE-HOLES.md). Sphere physical
-tunnel networks and reciprocal map links are the next authorized checkpoint;
+tunnel networks and reciprocal map links now use the same parent document and
+versioned v10 Save/Open. Choose **Connection tools** to preview/confirm routes,
+manage branches/chambers/openings, inspect connected physical sections, or place
+conceptual reciprocal links. See the [network checkpoint](docs/HOLLOW-SPHERE-CONNECTIONS.md);
 Hollow/Open Cylinder follow after the sphere's basic connections are stable.
 
 The following cube checkpoints and acceptance qualifications remain preserved.

@@ -2,12 +2,15 @@ import type {HollowSphereWorld} from '../terrain/hollow-sphere.ts';
 import {sphereHoleCut,type RadialThroughHole} from './hollow-sphere-holes.ts';
 import {rayCapsuleInterval,type ExcavationPrimitive} from './hollow-cube-csg.ts';
 import {dot3,unitDirection,type Vec3} from './cube-sphere.ts';
-import {segmentPointDistance} from './passages.ts';
+import {segmentPointDistance,type PhysicalPassage} from './passages.ts';
 
 export interface SphereExcavation {readonly radiusMeters:number;readonly innerRatio:number;readonly primitives:readonly ExcavationPrimitive[]}
-export function sphereExcavation(world:HollowSphereWorld,holes:readonly RadialThroughHole[]):SphereExcavation{
+export function sphereCutPrimitives(world:HollowSphereWorld,holes:readonly RadialThroughHole[],passages:readonly PhysicalPassage[]=[]){
+ return [...holes.map(h=>sphereHoleCut(world,h)),...passages.flatMap(p=>{const nodes=new Map(p.nodes.map(n=>[n.id,n]));return[...p.nodes.map(n=>({a:n.position,b:n.position,r:n.radiusMeters})),...p.segments.map(s=>({a:nodes.get(s.from)!.position,b:nodes.get(s.to)!.position,r:s.radiusMeters}))];})];
+}
+export function sphereExcavation(world:HollowSphereWorld,holes:readonly RadialThroughHole[],passages:readonly PhysicalPassage[]=[]):SphereExcavation{
  const radiusMeters=world.dimensions.outerRadiusMeters;
- return Object.freeze({radiusMeters,innerRatio:world.dimensions.innerRadiusMeters/radiusMeters,primitives:Object.freeze(holes.map(h=>{const c=sphereHoleCut(world,h);return{a:c.a.map(v=>v/radiusMeters)as unknown as Vec3,b:c.b.map(v=>v/radiusMeters)as unknown as Vec3,radius:c.r/radiusMeters};}))});
+ return Object.freeze({radiusMeters,innerRatio:world.dimensions.innerRadiusMeters/radiusMeters,primitives:Object.freeze(sphereCutPrimitives(world,holes,passages).map(c=>({a:c.a.map(v=>v/radiusMeters)as unknown as Vec3,b:c.b.map(v=>v/radiusMeters)as unknown as Vec3,radius:c.r/radiusMeters})))});
 }
 /** Stable perpendicular-distance sphere interval, in normalized World units. */
 export function sphereShellInterval(o:Vec3,d:Vec3,r:number):readonly[number,number]|undefined{
@@ -27,6 +30,7 @@ export function traceSphereExcavation(model:SphereExcavation,origin:Vec3,directi
  const kind=which===-1?'interior':'exterior',n=unitDirection(point);return{distance:cursor,point,normal:n.map(v=>v*(kind==='interior'?-1:1))as unknown as Vec3,kind};
 }
 export function sphereFreeVolume(model:SphereExcavation,pointMeters:Vec3,marginMeters=0){
+ if(!Array.isArray(pointMeters)||pointMeters.length!==3||!pointMeters.every(Number.isFinite)||!Number.isFinite(marginMeters)||marginMeters<0)throw RangeError('A finite physical point and nonnegative clearance are required.');
  const p=pointMeters.map(v=>v/model.radiusMeters)as unknown as Vec3,m=marginMeters/model.radiusMeters,r=Math.hypot(...p);
  return r>1+m||r<model.innerRatio-m||model.primitives.some(c=>c.radius>m&&segmentPointDistance(p,c.a,c.b)<c.radius-m);
 }

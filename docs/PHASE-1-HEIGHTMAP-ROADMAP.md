@@ -16,8 +16,9 @@ engine, pyramids, website, database, Docker and Production remain excluded. See 
 
 Verified standalone hollow-sphere checkpoints now include the fitted/immersive/net
 editor and basic radial reference-shell holes with v9 persistence and exact
-connection history. [Radial-hole review](HOLLOW-SPHERE-HOLES.md). Sphere physical
-tunnels and reciprocal links are next, followed by capped Hollow Cylinder and
+connection history. [Radial-hole review](HOLLOW-SPHERE-HOLES.md). The following
+[network checkpoint](HOLLOW-SPHERE-CONNECTIONS.md) adds physical tunnel graphs,
+guided inspection and reciprocal links with strict v10 persistence. Capped Hollow Cylinder and
 its basic connections, then the safe Open Cylinder configuration. The eleven
 phases and the advanced displaced-terrain deferral remain unchanged.
 

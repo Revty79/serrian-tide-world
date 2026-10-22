@@ -3,5 +3,8 @@
 .hollow-view-navigation{display:contents}.cube-editor[data-inspecting=true] .cube-brush-overlay{visibility:hidden}.hollow-controls+fieldset{border:0;margin:0;padding:0;min-width:0}.hollow-editor .tool-panel fieldset fieldset{min-width:0}.hollow-editor .tool-panel fieldset:disabled{opacity:.65}
 
 .hollow-sphere-editor .cube-map-controls{bottom:12rem}
+.hollow-sphere-editor .cube-map-controls[hidden]{display:none}
 
 .hollow-sphere-editor{position:absolute;inset:0;color:#edf3ee;font:13px/1.5 Inter,ui-sans-serif,system-ui,sans-serif}
+.hollow-sphere-editor .hollow-controls label,.hollow-sphere-editor .hollow-controls output{display:block;margin:8px 0}
+.hollow-sphere-editor .hollow-controls button{margin:3px 3px 3px 0}

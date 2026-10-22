@@ -198,3 +198,33 @@ Sphere physical tunnels and reciprocal map links remain **next authorized work**
 The earlier basic-excavation deferral is superseded; advanced displaced-terrain
 excavation and full 3D material reconstruction remain deferred. No owner
 acceptance or cylinder implementation is inferred from this checkpoint.
+
+
+## Spherical physical networks and map links
+
+The next stable checkpoint adds creator-selected independent tunnel openings,
+whole-volume spherical containment, preview/confirmation, branches, chambers,
+additional openings and identity-preserving relocation. Guided physical travel
+follows connected centerlines through the real subtracted material, with look
+and zoom retained while moving. Home keeps the physical eye at its current point.
+Both editable reference views and the explicit read-only physical views remain.
+Reciprocal conceptual links have independent anchor identities, local relocation,
+explicit external references and unavailable-destination feedback. They remove no
+material. All connection objects use the existing parent history and lifecycle.
+
+[Hands-on/source review](HOLLOW-SPHERE-CONNECTIONS.md) and the
+[compact receipt](evidence/hollow-sphere-connections.json) distinguish completed
+technical gates from human acceptance. Versions 8 and 9 keep their original
+meaning; networks/links use version 10. Advanced displaced-terrain excavation,
+free flight and the full 3D engine remain deferred. Capped Hollow Cylinder and its
+basic connections follow this checkpoint, then the safe Open Cylinder assessment.
+
+
+Network verification: **1,243 numerical tests**; typecheck/build; a 12-case
+network/inspection matrix; eight real v8/v9 upgrades with continued two-bank
+painting; four final native/Home checks; four final placement checks; eight
+15-second sustained strokes with a real network; 22 prior sphere/hole/cube-view
+cases; and four cube physical-passage cases. Groups overlap. First changing pixels
+were observed at 70.4?190.6 ms, release to coherent display at 33.8?335.4 ms, with
+exact whole-terrain Undo/Redo and unchanged opposing terrain. The receipt qualifies
+input coalescing, observer cadence, memory accounting and human/device acceptance.
