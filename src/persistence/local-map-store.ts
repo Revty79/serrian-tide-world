@@ -6,9 +6,10 @@ import type { PersistenceWork } from './cooperative-work.ts';
 import {decodeSolidCubeHeightmap,solidCubeHeader,validateSolidCubeHeightmap} from './solid-cube-format.ts';
 
 import {decodeHollowCube,hollowCubeHeader,validateHollowCube} from './hollow-cube-format.ts';
+import {decodeHollowSphere,hollowSphereHeader,validateHollowSphere} from './hollow-sphere-format.ts';
 
-export interface LocalMapSummary extends SavedMapSummary { kind?: 'bounded' | 'wrapped' | 'sphere' | 'cylinder' | 'cube' | 'hollow-cube' }
-export const localMapType = (map: LocalMapSummary) => map.kind === 'hollow-cube' ? 'Hollow cube' : map.kind === 'cube' ? 'Solid cube' : map.kind === 'cylinder' ? 'Physical cylinder' : map.kind === 'sphere' ? 'Sphere' : map.kind === 'wrapped' ? 'Wrapped plane' : map.kind === 'bounded' ? 'Bounded plane' : 'Planar (legacy)';
+export interface LocalMapSummary extends SavedMapSummary { kind?: 'bounded' | 'wrapped' | 'sphere' | 'cylinder' | 'cube' | 'hollow-cube' | 'hollow-sphere' }
+export const localMapType = (map: LocalMapSummary) => map.kind==='hollow-sphere'?'Hollow sphere':map.kind === 'hollow-cube' ? 'Hollow cube' : map.kind === 'cube' ? 'Solid cube' : map.kind === 'cylinder' ? 'Physical cylinder' : map.kind === 'sphere' ? 'Sphere' : map.kind === 'wrapped' ? 'Wrapped plane' : map.kind === 'bounded' ? 'Bounded plane' : 'Planar (legacy)';
 
 const DB_NAME = 'serrian-tide-atlas';
 const DB_VERSION = 1;
@@ -42,15 +43,15 @@ export class LocalMapStore {
       });
       return values.map((value) => {
         const summary = decodeSummary(value), kind = (value as LocalMapSummary).kind;
-        if (kind !== undefined && !['bounded', 'wrapped', 'sphere', 'cylinder', 'cube', 'hollow-cube'].includes(kind)) throw new Error('Unknown saved map type.');
+        if (kind !== undefined && !['bounded', 'wrapped', 'sphere', 'cylinder', 'cube', 'hollow-cube','hollow-sphere'].includes(kind)) throw new Error('Unknown saved map type.');
         return { ...summary, ...(kind ? { kind } : {}) };
       }).sort((a, b) => b.savedAt.localeCompare(a.savedAt));
     } finally { db.close(); }
   }
   async save(input: SavedMap, work: PersistenceWork = {}): Promise<void> {
     // Validate before starting the transaction: async hashing would let IDB auto-close it.
-    const value = (input.formatVersion === 6 || input.formatVersion === 7) ? await validateHollowCube(input,work) : input.formatVersion === 5 ? await validateSolidCubeHeightmap(input, work) : input.formatVersion === 4 ? await validateCylindricalHeightmap(input, work) : input.formatVersion === 3 ? await validateSphericalHeightmap(input, work) : input;
-    if (value.formatVersion !== 6 && value.formatVersion !== 7 && value.formatVersion !== 3 && value.formatVersion !== 4 && value.formatVersion !== 5) await decodeMap(value);
+    const value = input.formatVersion===8?await validateHollowSphere(input,work):(input.formatVersion === 6 || input.formatVersion === 7) ? await validateHollowCube(input,work) : input.formatVersion === 5 ? await validateSolidCubeHeightmap(input, work) : input.formatVersion === 4 ? await validateCylindricalHeightmap(input, work) : input.formatVersion === 3 ? await validateSphericalHeightmap(input, work) : input;
+    if (value.formatVersion !== 8 && value.formatVersion !== 6 && value.formatVersion !== 7 && value.formatVersion !== 3 && value.formatVersion !== 4 && value.formatVersion !== 5) await decodeMap(value);
     work.progress?.('Writing local map transaction', 0);
     const db = await this.database();
     try {
@@ -77,8 +78,9 @@ export class LocalMapStore {
           if((previous?.formatVersion===6||previous?.formatVersion===7)&&(value.formatVersion===6||value.formatVersion===7)&&JSON.stringify(hollowCubeHeader(previous).metadata)!==JSON.stringify(value.metadata)){
             reason=new Error('Cannot replace another hollow World geometry, resolution or identity.');tx.abort();return;
           }
+          if(previous?.formatVersion===8&&value.formatVersion===8&&JSON.stringify(hollowSphereHeader(previous).metadata)!==JSON.stringify(value.metadata)){reason=new Error('Cannot replace another hollow sphere geometry, resolution or identity.');tx.abort();return;}
           store.put(value);
-          tx.objectStore('catalog').put({ id: value.id, name: value.name, savedAt: value.savedAt, kind: (value.formatVersion === 6 || value.formatVersion === 7) ? 'hollow-cube' : value.formatVersion === 5 ? 'cube' : value.formatVersion === 4 ? 'cylinder' : value.formatVersion === 3 ? 'sphere' : value.formatVersion === 2 ? 'wrapped' : 'bounded' });
+          tx.objectStore('catalog').put({ id: value.id, name: value.name, savedAt: value.savedAt, kind: value.formatVersion===8?'hollow-sphere':(value.formatVersion === 6 || value.formatVersion === 7) ? 'hollow-cube' : value.formatVersion === 5 ? 'cube' : value.formatVersion === 4 ? 'cylinder' : value.formatVersion === 3 ? 'sphere' : value.formatVersion === 2 ? 'wrapped' : 'bounded' });
           } catch (cause) { reason = cause instanceof Error ? cause : new Error('Map transaction failed.'); try { tx.abort(); } catch { /* An interrupted write may already have aborted it. */ } }
         };
         tx.oncomplete = () => resolve();
@@ -103,6 +105,7 @@ export class LocalMapStore {
   async open(id: string) { return decodeMap(await this.readRecord(id)); }
   async openAny(id: string, work: PersistenceWork = {}) {
     work.progress?.('Reading local map', 0); const value = await this.readRecord(id);
+    if((value as SavedMap).formatVersion===8)return{kind:'hollow-sphere' as const,...await decodeHollowSphere(value,work)};
     if((value as SavedMap).formatVersion===6||(value as SavedMap).formatVersion===7)return{kind:'hollow-cube' as const,...await decodeHollowCube(value,work)};
     if((value as SavedMap).formatVersion===5)return{kind:'cube' as const,...await decodeSolidCubeHeightmap(value,work)};
     if ((value as SavedMap).formatVersion === 4) return { kind: 'cylinder' as const, ...await decodeCylindricalHeightmap(value, work) };

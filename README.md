@@ -1,5 +1,22 @@
-<!-- Current checkpoint: Cube-I; Cube-H and final family owner acceptance pending. -->
+<!-- Current workstream: authorized hollow-world geometry; owner acceptance remains separate. -->
 # Serrian Tide Atlas
+
+Current overnight work extends the accepted editor into a **Hollow Sphere**, then
+capped Hollow Cylinder and a separately assessed Open Cylinder. The owner permits
+progress after technically stable checkpoints while Cube-I hands-on acceptance
+remains pending. See the [reuse inventory and current hollow-world handoff](docs/HOLLOW-WORLDS-OVERNIGHT.md).
+
+For the new spherical workflow, open **http://127.0.0.1:5260/**, choose **Hollow
+sphere world**, enter outer radius **1,000,000 m**, inner radius **800,000 m** and
+N128, then create. Paint Outside and Paint Inside are in Atlas tools. Sculpt each,
+Undo/Redo, explore Globe/Net, Save, reload, then Browse saved maps / Open Map.
+Paint Inside opens a fitted editing globe. View from inside selects a separate read-only cavity camera; Globe or Six-face net returns to editing.
+Elevations remain the accepted reference-surface color/relief presentation;
+complete displaced terrain and terrain-aware excavation remain future work.
+The revised assignment adds basic reference-shell holes, tunnels and map links
+after this editor checkpoint; the handoff records their current implementation status.
+
+The following cube checkpoints and acceptance qualifications remain preserved.
 
 The owner accepted solid cube d011a377e6a1ad76296e41740422fa5600f69082 and hollow
 foundation 543cb6211905a8fffc78013eec9b06d144b94e5b for progression. **Cube-H**

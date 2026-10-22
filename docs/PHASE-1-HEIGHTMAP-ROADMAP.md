@@ -1,5 +1,19 @@
 # Atlas master roadmap — Phase 1 and long-term requirements
 
+Current overnight authority (2026-10-21): after technically stable Cube-I `6d4b129`,
+proceed through **Hollow Sphere → capped Hollow Cylinder → Open Cylinder** in
+verified increments. The owner's later overnight authorization supersedes the
+Cube-I stop gate for these named passes only; Cube-I and new geometries still
+require hands-on acceptance. Preserve isolated material research, all existing
+formats and the eleven phases. The owner's latest update also authorizes basic
+reference-shell holes, physical tunnel graphs and reciprocal map links in the new
+hollow shapes during Phase 2. Sequence: sphere editor/views/Save, sphere holes,
+sphere tunnels/links, capped hollow cylinder editor, its basic connections, then
+Open Cylinder with applicable physical features. This supersedes the earlier
+basic-excavation deferral. Advanced displaced-terrain excavation, the full 3D
+engine, pyramids, website, database, Docker and Production remain excluded. See the
+[current inventory, delivered checkpoints and limitations](HOLLOW-WORLDS-OVERNIGHT.md).
+
 Current Cube-I scope authority (2026-10-21): finish Phase 2 reference-shell editing;
 preserve isolated material research; pause major 3D integration. The current
 scope/order sections below supersede historical checkpoint descriptions.

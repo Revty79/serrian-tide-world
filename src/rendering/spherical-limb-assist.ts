@@ -1,3 +1,4 @@
+import {sphereCenterInspection} from './spherical-view.ts';
 import { cross3, dot3, unitDirection, type Vec3 } from '../surfaces/cube-sphere.ts';
 import { sphericalLayout, type ScreenPoint, type SphericalView, type Viewport } from './spherical-view.ts';
 
@@ -8,7 +9,7 @@ export const MAX_LIMB_FRAME_MS = 32;
 
 /** The orthographic limb, independent of viewport edges, chart boundaries and zoom. */
 export function globeLimbZone(view: SphericalView, point: ScreenPoint, size: Viewport) {
-  if (view.mode !== 'globe' || !Number.isFinite(point.x + point.y) || point.x < 0 || point.y < 0 || point.x > size.width || point.y > size.height) return null;
+  if (view.mode !== 'globe' || sphereCenterInspection(view) || !Number.isFinite(point.x + point.y) || point.x < 0 || point.y < 0 || point.x > size.width || point.y > size.height) return null;
   const layout = sphericalLayout(view, size), x = (point.x - layout.x) / layout.radius, y = (layout.y - point.y) / layout.radius, rho = Math.hypot(x, y);
   if (rho < LIMB_ZONE || rho > 1) return null;
   return { x, y, rho, speed: ((rho - LIMB_ZONE) / (1 - LIMB_ZONE)) ** 2 };

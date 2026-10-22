@@ -1,0 +1,284 @@
+{
+  "date": "2026-10-21",
+  "foundation": "0719684216f8b7af351ebe4322bbf70334c57ca2",
+  "status": "Hollow sphere editor and standard hollow views technically verified; sphere holes/tunnels/links are the next authorized checkpoints",
+  "sourceFingerprintSHA256": "304c31cecf6a27e343a6009b08edb7930e9fd53cc4e87758765d7d7181fea38d",
+  "ownerAcceptance": false,
+  "numerical": {
+    "passed": 1226,
+    "failed": 0,
+    "log": ".local/hollow-sphere-view-numerical.log"
+  },
+  "typecheck": "passed",
+  "build": "passed",
+  "buildLog": ".local/hollow-sphere-base-final-build.log",
+  "browser": {
+    "workflow": {
+      "startTime": "2026-10-22T03:11:32.682Z",
+      "duration": 125624.092,
+      "expected": 14,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "inspectionFinal": {
+      "startTime": "2026-10-22T03:24:43.228Z",
+      "duration": 53987.782,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "heldPainting": {
+      "startTime": "2026-10-22T03:14:44.578Z",
+      "duration": 153495.06100000002,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cubePreservation": {
+      "startTime": "2026-10-22T03:18:40.088Z",
+      "duration": 287961.04099999997,
+      "expected": 62,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "setupRecheck": {
+      "startTime": "2026-10-22T03:24:33.925Z",
+      "duration": 8724.251,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "earlierCompatibility": {
+    "passed": 42,
+    "failed": 2,
+    "qualification": "Only two exact New World option-list assertions omitted the authorized Hollow sphere option. Updated expected list; both exact desktop/mobile cases passed separately. Other 42 legacy cases passed, including sphere, cylinder, cube, bounded and wrapped editing/persistence.",
+    "report": ".local/hollow-sphere-legacy.json"
+  },
+  "initialWorkflowCorrection": "Eight new test failures expected Lower after their drawing helper explicitly selected Raise. Corrected the helper call to draw with Lower; all final workflows passed. No terrain or history assertion weakened.",
+  "views": {
+    "insideEditing": "Fitted accepted globe projection over independent inner bank; actual inward geometry and identity preserved",
+    "insideInspection": "Explicit cavity-center camera; painting and brush outline disabled; Globe or Net returns to editing with retained controls",
+    "net": "Accepted connected editable spherical charts",
+    "cubeExtension": "Existing accepted cutaway editor preserved; fixed cavity-center inspection reuses existing passage CSG renderer, handles zero cuts, restores prior camera; four desktop/mobile backend cases verify actual opaque terrain pixels and unchanged banks/connections"
+  },
+  "heldPainting": [
+    {
+      "n": 128,
+      "backend": "auto",
+      "role": "exterior",
+      "startupMs": 1870.5246000000002,
+      "releaseToCoherentMs": 35.03529999999955,
+      "injectedMoves": 900,
+      "durationMs": 15000,
+      "events": 896,
+      "changedWhileHeld": 128,
+      "firstChangedPixelsMs": 91.10000002384186,
+      "frameGaps": {
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "max": 66.56799999999976
+      },
+      "cacheBytes": 7933232,
+      "selectedAuthorityBytes": 393224,
+      "parentAuthorityBytes": 786448,
+      "historyEntries": 1,
+      "exactUndoRedo": true,
+      "opposingSurfaceUnchanged": true,
+      "errors": [],
+      "persistence": null
+    },
+    {
+      "n": 128,
+      "backend": "auto",
+      "role": "interior",
+      "startupMs": 1263.576100000002,
+      "releaseToCoherentMs": 35.843800000002375,
+      "injectedMoves": 900,
+      "durationMs": 15000,
+      "events": 898,
+      "changedWhileHeld": 126,
+      "firstChangedPixelsMs": 84.89999997615814,
+      "frameGaps": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000109
+      },
+      "cacheBytes": 7933232,
+      "selectedAuthorityBytes": 393224,
+      "parentAuthorityBytes": 786448,
+      "historyEntries": 1,
+      "exactUndoRedo": true,
+      "opposingSurfaceUnchanged": true,
+      "errors": [],
+      "persistence": null
+    },
+    {
+      "n": 128,
+      "backend": "canvas",
+      "role": "exterior",
+      "startupMs": 1357.9424999999974,
+      "releaseToCoherentMs": 247.5387000000046,
+      "injectedMoves": 900,
+      "durationMs": 15000,
+      "events": 893,
+      "changedWhileHeld": 117,
+      "firstChangedPixelsMs": 114.89999997615814,
+      "frameGaps": {
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "max": 16.80000000000109
+      },
+      "cacheBytes": 7933232,
+      "selectedAuthorityBytes": 393224,
+      "parentAuthorityBytes": 786448,
+      "historyEntries": 1,
+      "exactUndoRedo": true,
+      "opposingSurfaceUnchanged": true,
+      "errors": [],
+      "persistence": null
+    },
+    {
+      "n": 128,
+      "backend": "canvas",
+      "role": "interior",
+      "startupMs": 1383.1808999999994,
+      "releaseToCoherentMs": 220.790599999993,
+      "injectedMoves": 900,
+      "durationMs": 15000,
+      "events": 891,
+      "changedWhileHeld": 117,
+      "firstChangedPixelsMs": 115.39999997615814,
+      "frameGaps": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000109
+      },
+      "cacheBytes": 7933232,
+      "selectedAuthorityBytes": 393224,
+      "parentAuthorityBytes": 786448,
+      "historyEntries": 1,
+      "exactUndoRedo": true,
+      "opposingSurfaceUnchanged": true,
+      "errors": [],
+      "persistence": null
+    },
+    {
+      "n": 256,
+      "backend": "auto",
+      "role": "exterior",
+      "startupMs": 3437.3743000000104,
+      "releaseToCoherentMs": 34.55059999998775,
+      "injectedMoves": 900,
+      "durationMs": 15000,
+      "events": 900,
+      "changedWhileHeld": 131,
+      "firstChangedPixelsMs": 72.39999997615814,
+      "frameGaps": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000291
+      },
+      "cacheBytes": 31594800,
+      "selectedAuthorityBytes": 1572872,
+      "parentAuthorityBytes": 3145744,
+      "historyEntries": 1,
+      "exactUndoRedo": true,
+      "opposingSurfaceUnchanged": true,
+      "errors": [],
+      "persistence": null
+    },
+    {
+      "n": 256,
+      "backend": "auto",
+      "role": "interior",
+      "startupMs": 3683.891699999993,
+      "releaseToCoherentMs": 26.270799999998417,
+      "injectedMoves": 900,
+      "durationMs": 15000,
+      "events": 899,
+      "changedWhileHeld": 122,
+      "firstChangedPixelsMs": 104.80000001192093,
+      "frameGaps": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000109
+      },
+      "cacheBytes": 31594800,
+      "selectedAuthorityBytes": 1572872,
+      "parentAuthorityBytes": 3145744,
+      "historyEntries": 1,
+      "exactUndoRedo": true,
+      "opposingSurfaceUnchanged": true,
+      "errors": [],
+      "persistence": {
+        "saveMs": 100.22500000000582,
+        "openMs": 3061.8430999999982
+      }
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "role": "exterior",
+      "startupMs": 3614.4590999999928,
+      "releaseToCoherentMs": 235.6601999999839,
+      "injectedMoves": 900,
+      "durationMs": 15000,
+      "events": 895,
+      "changedWhileHeld": 115,
+      "firstChangedPixelsMs": 120.39999997615814,
+      "frameGaps": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000291
+      },
+      "cacheBytes": 31594800,
+      "selectedAuthorityBytes": 1572872,
+      "parentAuthorityBytes": 3145744,
+      "historyEntries": 1,
+      "exactUndoRedo": true,
+      "opposingSurfaceUnchanged": true,
+      "errors": [],
+      "persistence": null
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "role": "interior",
+      "startupMs": 3562.238400000002,
+      "releaseToCoherentMs": 216.81599999999162,
+      "injectedMoves": 900,
+      "durationMs": 15000,
+      "events": 885,
+      "changedWhileHeld": 114,
+      "firstChangedPixelsMs": 137.4000000357628,
+      "frameGaps": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000291
+      },
+      "cacheBytes": 31594800,
+      "selectedAuthorityBytes": 1572872,
+      "parentAuthorityBytes": 3145744,
+      "historyEntries": 1,
+      "exactUndoRedo": true,
+      "opposingSurfaceUnchanged": true,
+      "errors": [],
+      "persistence": null
+    }
+  ],
+  "qualifications": [
+    "Pixel 7 browser emulation, not physical-device acceptance.",
+    "Native Chromium pointermove events can be fewer than 900 injected moves due to input coalescing; both counts recorded; no editor-side input removed.",
+    "Actual changing terrain pixels observed at 100 ms cadence, separate from coherent-drain timing; no per-input first-pixel latency claim.",
+    "Memory accounts for two authorities plus derived caches; excludes histories, GPU/canvas resources, transient snapshots, workers and process/driver overhead.",
+    "v8 preserves exact two-bank bits, immutable metadata and selected role. Spherical terrain histories remain session-only. v1-v7 retain existing interpretations.",
+    "Basic sphere connections and hollow/open cylinders are pending under the updated sequence. No advanced displaced excavation, collision, website, DB, Docker or Production changes."
+  ],
+  "historicalEvidence": "Preserved; cube preservation browser output ran from .local/cube-i-regression-run to avoid overwriting old receipts/screenshots."
+}

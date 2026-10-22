@@ -7,9 +7,10 @@ import type { SavedSphericalHeightmap } from './spherical-format.ts';
 import type {SavedSolidCubeHeightmap} from './solid-cube-format.ts';
 
 import type {SavedHollowCube} from './hollow-cube-format.ts';
+import type {SavedHollowSphere} from './hollow-sphere-format.ts';
 
 export type PlanarSavedMap = SavedHeightmap | SavedWrappedHeightmap;
-export type SavedMap = PlanarSavedMap | SavedSphericalHeightmap | SavedCylindricalHeightmap | SavedSolidCubeHeightmap | SavedHollowCube;
+export type SavedMap = PlanarSavedMap | SavedSphericalHeightmap | SavedCylindricalHeightmap | SavedSolidCubeHeightmap | SavedHollowCube | SavedHollowSphere;
 export const encodeMap = (terrain: Terrain, name: string, savedAt?: string): Promise<PlanarSavedMap> => isWrapped(terrain) ? encodeWrappedHeightmap(terrain, name, savedAt) : encodeHeightmap(terrain, name, savedAt);
 export function decodeMap(value: unknown): Promise<{ terrain: Terrain; name: string }> {
   const version = record(value).formatVersion;

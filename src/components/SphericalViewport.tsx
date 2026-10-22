@@ -12,7 +12,7 @@ import { edgePanVelocity } from '../rendering/edge-pan.ts';
 import { advanceGlobeLimb, globeLimbZone, LIMB_DWELL_MS } from '../rendering/spherical-limb-assist.ts';
 import type { SphericalBrushVisibility } from '../terrain/spherical-brush.ts';
 import { isTextInput } from '../interaction/canvas-navigation.ts';
-import { SphericalBrushControls, defaultSphericalControls, sphericalBrushFromControls } from './SphericalBrushControls.tsx';
+import { SphericalBrushControls, defaultSphericalControls, sphericalBrushFromControls,type SphericalControlState } from './SphericalBrushControls.tsx';
 import { type SphericalDisplayCache } from '../rendering/spherical-raster.ts';
 import { SphereWebGLRenderer } from '../rendering/spherical-webgl.ts';
 import { sphericalFieldRaster } from '../rendering/spherical-field-raster.ts';
@@ -20,27 +20,30 @@ import { type SphereAppearance, type SphereFieldSnapshot } from '../rendering/sp
 import { prepareSphericalField } from '../editor/prepare-spherical-field.ts';
 import { surfaceDisplayDimensions } from '../rendering/surface-renderer.ts';
 import { yieldPersistence } from '../persistence/cooperative-work.ts';
-import { INITIAL_SPHERICAL_VIEW, inspectSphere, netEdgeIsJoined, netFaceCoordinates, netFaceRect, panSphereNet, projectSphere, recenterSphere, rotateSphere, sphericalLayout, unprojectSphere, zoomSphere, type ScreenPoint, type SphericalView } from '../rendering/spherical-view.ts';
+import { INITIAL_SPHERICAL_VIEW, sphereCenterInspection, inspectSphere, netEdgeIsJoined, netFaceCoordinates, netFaceRect, panSphereNet, projectSphere, recenterSphere, rotateSphere, sphericalLayout, unprojectSphere, zoomSphere, type ScreenPoint, type SphericalView } from '../rendering/spherical-view.ts';
 import styles from './SphericalPreview.module.css';
 import { SphericalStorageControls, type SphericalPersistenceUi } from './SphericalStorageControls.tsx';
 
-export interface SphericalViewportHandle { finishInteraction(): void; stop(): void; undo(): void; redo(): void }
+export interface SphericalViewportHandle { finishInteraction(): void; stop(): void; undo(): void; redo(): void; editView?():void }
 export interface SphericalWorkspaceView { tools: ReactNode; toolPicker: ReactNode; navigation: ReactNode; canUndo: boolean; canRedo: boolean; processing: boolean }
-export interface SphericalViewportProps { readonly terrain: SphericalTerrain; readonly cache: SphericalDisplayCache; readonly onClose: () => void; readonly preparationMs?: number; readonly maxPreparationTaskMs?: number; readonly editor?: SphericalSession; readonly persistence?: SphericalPersistenceUi; readonly workspace?: (view: SphericalWorkspaceView) => ReactNode; readonly handleRef?: Ref<SphericalViewportHandle> }
-export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, maxPreparationTaskMs = 0, editor, persistence, workspace, handleRef }: SphericalViewportProps) {
+export interface SphericalViewportProps { readonly terrain: SphericalTerrain; readonly cache: SphericalDisplayCache; readonly onClose: () => void; readonly preparationMs?: number; readonly maxPreparationTaskMs?: number; readonly editor?: SphericalSession; readonly persistence?: SphericalPersistenceUi; readonly workspace?: (view: SphericalWorkspaceView) => ReactNode; readonly handleRef?: Ref<SphericalViewportHandle>;readonly surfaceRole?:'exterior'|'interior';readonly initialView?:SphericalView;readonly onViewChange?:(view:SphericalView)=>void;readonly sharedControls?:{value:SphericalControlState;change:(value:SphericalControlState)=>void} }
+export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, maxPreparationTaskMs = 0, editor, persistence, workspace, handleRef,surfaceRole,initialView,onViewChange,sharedControls }: SphericalViewportProps) {
   const persistenceRef = useRef(persistence); persistenceRef.current = persistence;
   const canvasRef = useRef<HTMLCanvasElement>(null), rootRef = useRef<HTMLElement>(null), readoutRef = useRef<HTMLOutputElement>(null);
   const gpuRef = useRef<HTMLCanvasElement>(null), selectionMarkers = useRef<SVGGElement>(null), pendingRef = useRef<HTMLDivElement>(null);
   const diagnosticsRef = useRef<HTMLOutputElement>(null);
   const [appearance, setAppearance] = useState<SphereAppearance>('relief'), appearanceRef = useRef(appearance); appearanceRef.current = appearance;
-  const viewRef = useRef<SphericalView>(INITIAL_SPHERICAL_VIEW), selectedRef = useRef<Vec3 | null>(null);
+  const viewRef = useRef<SphericalView>(initialView??(surfaceRole==='interior'?{...INITIAL_SPHERICAL_VIEW,interior:true}:INITIAL_SPHERICAL_VIEW)), selectedRef = useRef<Vec3 | null>(null);
+  const onViewChangeRef=useRef(onViewChange);onViewChangeRef.current=onViewChange;
   const previewRef = useRef<SVGPathElement>(null);
   const commands = useRef({ change(_fn: (view: SphericalView) => SphericalView) {}, inspect(_point: ScreenPoint, _select: boolean) {}, reset() {}, stop() {}, undo() {}, redo() {}, repaint() {}, prepareSave() {} });
-  useImperativeHandle(handleRef, () => ({ finishInteraction: () => commands.current.prepareSave(), stop: () => commands.current.stop(), undo: () => commands.current.undo(), redo: () => commands.current.redo() }), []);
-  const [controls, setControls] = useState(() => defaultSphericalControls(terrain.metadata.geometry.radiusMeters));
+  useImperativeHandle(handleRef, () => ({ finishInteraction: () => commands.current.prepareSave(), stop: () => commands.current.stop(), undo: () => commands.current.undo(), redo: () => commands.current.redo(),editView:()=>commands.current.change(view=>({...view,mode:'globe',interiorView:'edit'})) }), []);
+  const [ownControls, setOwnControls] = useState(() => defaultSphericalControls(terrain.metadata.geometry.radiusMeters));
+  const controls=sharedControls?.value??ownControls,setControls=sharedControls?.change??setOwnControls;
   const controlsRef = useRef(controls); controlsRef.current = controls;
+  const [inspecting,setInspecting]=useState(sphereCenterInspection(viewRef.current));
   const [editorState, setEditorState] = useState({ modified: false, canUndo: false, canRedo: false, busy: false });
-  const [panel, setPanel] = useState(false), [mode, setMode] = useState<'globe' | 'net'>('globe'), [zoom, setZoom] = useState(1), [hasSelection, setHasSelection] = useState(false);
+  const [panel, setPanel] = useState(false), [mode, setMode] = useState<'globe' | 'net'>(viewRef.current.mode), [zoom, setZoom] = useState(viewRef.current.zoom), [hasSelection, setHasSelection] = useState(false);
   const [fullscreen, setFullscreen] = useState(false), [fullscreenSupported, setFullscreenSupported] = useState(false), [error, setError] = useState('');
   const toggleRef = useRef<HTMLButtonElement>(null), panelRef = useRef<HTMLElement>(null);
   // Focus during the panel commit; a delayed RAF can steal focus from subsequent typing.
@@ -73,7 +76,7 @@ export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, 
         if (select) { selectedRef.current = null; setHasSelection(false); } return;
       }
       const sample = inspectSphere(terrain, direction);
-      output.textContent = `${sample.elevation.toLocaleString(undefined, { maximumFractionDigits: 2 })} m · ${sample.position.patchId} · sample ${sample.key.index} · direction ${sample.direction.map((v) => v.toFixed(4)).join(', ')}`;
+      output.textContent = `${surfaceRole?surfaceRole==='interior'?'Inside · ':'Outside · ':''}${sample.elevation.toLocaleString(undefined, { maximumFractionDigits: 2 })} m · ${sample.position.patchId} · sample ${sample.key.index} · direction ${sample.direction.map((v) => v.toFixed(4)).join(', ')}`;
       output.dataset.sample = String(sample.key.index); output.dataset.elevation = String(sample.elevation); output.dataset.direction = JSON.stringify(sample.direction);
       if (select) { selectedRef.current = sample.direction; setHasSelection(true); }
     };
@@ -173,7 +176,7 @@ export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, 
         canvas.dataset.limbSteps = String(limbSteps); canvas.dataset.limbRadians = String(limbRadians);
       }
       if (pendingInspection) { showInspection(pendingInspection.direction, pendingInspection.select); pendingInspection = undefined; }
-      if (applied) { const brush = sphericalBrushFromControls(controlsRef.current, terrain.metadata.geometry.radiusMeters), center = hover && poseCurrent() ? unprojectSphere(terrain, hover, applied, appliedSize) : null, segments = center && brush ? sphericalBrushPreview(terrain, center, brush.radiusMeters, applied, appliedSize) : []; previewRef.current?.setAttribute('d', segments.map(s=>s.points.map((p,i)=>`${i?'L':'M'}${p.x.toFixed(3)},${p.y.toFixed(3)}`).join(' ')).join(' ')); canvas.dataset.previewCenter = center && brush ? JSON.stringify(center) : ''; canvas.dataset.previewRadius = brush ? String(brush.radiusMeters) : ''; const markers = selectedRef.current ? projectSphere(terrain, selectedRef.current, applied, appliedSize) : []; const key = JSON.stringify(markers); if (key !== selectionKey) { selectionKey = key; selectionMarkers.current?.replaceChildren(...markers.map(p => { const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle'); circle.setAttribute('cx', String(p.x)); circle.setAttribute('cy', String(p.y)); circle.setAttribute('r', '7'); return circle; })); } }
+      if (applied) { const brush = sphereCenterInspection(applied)?null:sphericalBrushFromControls(controlsRef.current, terrain.metadata.geometry.radiusMeters), center = hover && poseCurrent() ? unprojectSphere(terrain, hover, applied, appliedSize) : null, segments = center && brush ? sphericalBrushPreview(terrain, center, brush.radiusMeters, applied, appliedSize) : []; previewRef.current?.setAttribute('d', segments.map(s=>s.points.map((p,i)=>`${i?'L':'M'}${p.x.toFixed(3)},${p.y.toFixed(3)}`).join(' ')).join(' ')); canvas.dataset.previewCenter = center && brush ? JSON.stringify(center) : ''; canvas.dataset.previewRadius = brush ? String(brush.radiusMeters) : ''; const markers = selectedRef.current ? projectSphere(terrain, selectedRef.current, applied, appliedSize) : []; const key = JSON.stringify(markers); if (key !== selectionKey) { selectionKey = key; selectionMarkers.current?.replaceChildren(...markers.map(p => { const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle'); circle.setAttribute('cx', String(p.x)); circle.setAttribute('cy', String(p.y)); circle.setAttribute('r', '7'); return circle; })); } }
       const pending = !poseCurrent() || sceneKey !== lastSceneKey || !!editor && (editor.backlogged || editor.displayPending || displayRevision !== terrain.revision); if (pendingRef.current) { pendingRef.current.hidden = !hover || !pending; pendingRef.current.dataset.pending = String(pending); pendingRef.current.textContent = editor?.backlogged ? 'Preparing terrain' : 'Updating terrain'; if (hover) pendingRef.current.style.transform = `translate(${hover.x + 12}px,${hover.y + 12}px)`; }
       canvas.dataset.displayPending = String(pending);
       if (rendered) { renderTimes.push(performance.now() - start); if (renderTimes.length > 120) renderTimes.shift(); paints++; }
@@ -192,20 +195,20 @@ export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, 
       inputAt ||= performance.now();
       const next = fn(viewRef.current);
       if (JSON.stringify(next) === JSON.stringify(viewRef.current)) { schedule(false); return; }
-      pendingAssistance = undefined; viewRef.current = next; serial++; canvas.dataset.viewPending = 'true'; setMode(viewRef.current.mode); setZoom(viewRef.current.zoom);
+      pendingAssistance = undefined; viewRef.current = next; serial++; canvas.dataset.viewPending = 'true'; setMode(viewRef.current.mode); setZoom(viewRef.current.zoom); setInspecting(sphereCenterInspection(viewRef.current));
       if (interactive) { interactiveUntil = performance.now() + 160; clearTimeout(refinementTimer); refinementTimer = window.setTimeout(() => schedule(), 180); }
       schedule();
     };
-    const reset = () => change((view) => ({ ...INITIAL_SPHERICAL_VIEW, mode: view.mode }));
+    const reset = () => change((view) => ({ ...INITIAL_SPHERICAL_VIEW, mode: view.mode,...(view.interior?{interior:true,interiorView:view.interiorView}:{}) }));
     const inspect = (point: ScreenPoint, select: boolean) => { if (!poseCurrent()) return; pendingInspection = { direction: unprojectSphere(terrain, point, applied!, appliedSize), select }; schedule(select); };
     const navigationActions = {
-      drag(dx, dy) { change((view) => view.mode === 'globe' ? rotateSphere(view, dx / sphericalLayout(view, size()).radius, dy / sphericalLayout(view, size()).radius) : panSphereNet(view, dx, dy, size()), true); },
+      drag(dx, dy) { change((view) => view.mode === 'globe' ? rotateSphere(view, (sphereCenterInspection(view)?-dx:dx) / sphericalLayout(view, size()).radius, dy / sphericalLayout(view, size()).radius) : panSphereNet(view, dx, dy, size()), true); },
       zoom: (factor) => change((view) => zoomSphere(view, factor), true), inspect, reset,
     } satisfies Parameters<typeof attachSphericalNavigation>[1];
     const navigation = editor ? editingNavigation = attachSphericalEditing(canvas, {
-      ...navigationActions, paintingEnabled: () => initialized && !!sphericalBrushFromControls(controlsRef.current, terrain.metadata.geometry.radiusMeters),
+      ...navigationActions, paintingEnabled: () => initialized && !sphereCenterInspection(viewRef.current) && !!sphericalBrushFromControls(controlsRef.current, terrain.metadata.geometry.radiusMeters),
       begin(point) {
-        if (!poseCurrent()) return false;
+        if (sphereCenterInspection(viewRef.current) || !poseCurrent()) return false;
         const direction = unprojectSphere(terrain, point, applied!, appliedSize), brush = sphericalBrushFromControls(controlsRef.current, terrain.metadata.geometry.radiusMeters);
         if (!direction || !brush || editor.processing) return false;
         try { strokeDisplayEpoch = cache.elevationField!.sourceRevision; const result = editor.begin(direction, brush, applied!.mode === 'globe' ? applied!.frame.forward : undefined); if (result) inspect(point, true); return result; }
@@ -247,7 +250,7 @@ export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, 
     const activate = () => { if (!active) return; const field = cache.elevationField!; editor?.useElevationField(field); if (editor && typeof Worker !== 'undefined') editor.enableBackground(matchMedia('(pointer: coarse)').matches); gpu = new SphereWebGLRenderer(gpuRef.current!, field, () => { lastSceneKey = ''; appliedSerial = -1; canvas.dataset.viewPending = 'true'; schedule(); }); initialized = true; schedule(); };
     if (cache.elevationField) activate(); else void prepareSphericalField(terrain, cache, { yield: async () => { await yieldPersistence(); if (!active) throw new Error('Spherical display preparation cancelled.'); } }).then(activate).catch(cause => { if (active) setError(String(cause)); });
     canvas.focus({ preventScroll: true });
-    return () => { active = false; cancelAnimationFrame(frame); clearTimeout(refinementTimer); cpuJob?.return(undefined as never); gpu?.dispose(); navigation.dispose(); observer.disconnect(); window.removeEventListener('keydown', key); window.removeEventListener('beforeunload', beforeUnload); document.removeEventListener('fullscreenchange', fullscreenChange); if (editor) { editor.changed = () => {}; editor.error = () => {}; editor.disableBackground(); editor.releaseDisplay(); } };
+    return () => { onViewChangeRef.current?.(viewRef.current);active = false; cancelAnimationFrame(frame); clearTimeout(refinementTimer); cpuJob?.return(undefined as never); gpu?.dispose(); navigation.dispose(); observer.disconnect(); window.removeEventListener('keydown', key); window.removeEventListener('beforeunload', beforeUnload); document.removeEventListener('fullscreenchange', fullscreenChange); if (editor) { editor.changed = () => {}; editor.error = () => {}; editor.disableBackground(); editor.releaseDisplay(); } };
   }, [terrain, cache, editor]);
   const change = (fn: (view: SphericalView) => SphericalView) => commands.current.change(fn);
   const full = async () => {
@@ -258,15 +261,15 @@ export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, 
   const requestClose = () => { if (editor?.locked) return; commands.current.stop(); if (editor?.modified && !window.confirm(persistence ? 'Discard unsaved spherical changes? Save first to keep this sphere. Your planar map is preserved.' : 'Discard modified session-only spherical terrain? Spherical saving is not available yet. Your planar map is preserved.')) return; onClose(); };
   const saveSphere = () => { if (editor?.locked) return; commands.current.prepareSave(); persistence?.save(); };
   const displayTools = <><h2>Terrain display</h2><label>Spherical terrain appearance<select aria-label="Spherical terrain appearance" value={appearance} onChange={e => setAppearance(e.target.value as SphereAppearance)}><option value="relief">Shaded relief · 5× display</option><option value="elevation">Elevation colors</option></select></label><p>Coasts follow numerical elevation. Relief shows physical slopes with 5× display exaggeration; it adds no geographic detail or displacement.</p><details><summary>Display diagnostics</summary><output ref={diagnosticsRef} aria-label="Spherical display diagnostics">Preparing display…</output></details></>;
-  return <section ref={rootRef} className={`${styles.workspace} ${workspace ? styles.embedded : ''}`} aria-label={workspace ? 'Spherical surface view' : 'Spherical development preview'}>
+  return <section ref={rootRef} data-surface-role={surfaceRole} data-inspecting={inspecting} className={`${styles.workspace} ${workspace ? styles.embedded : ''}`} aria-label={workspace ? 'Spherical surface view' : 'Spherical development preview'}>
     <canvas ref={canvasRef} className={styles.canvas} tabIndex={0} role="img" aria-label={workspace ? 'Atlas spherical terrain map' : 'Spherical terrain preview'} aria-describedby="sphere-help" data-samples={terrain.sampleCount} data-authority-bytes={terrain.elevationByteLength} data-cache-bytes={cache.byteLength} data-preparation-ms={preparationMs} data-preparation-max-task-ms={maxPreparationTaskMs} data-radius={terrain.metadata.geometry.radiusMeters} data-resolution={terrain.metadata.representation.cellsPerEdge} />
     <canvas ref={gpuRef} className={`${styles.gpu} sphere-gpu`} aria-hidden="true" hidden />
     <svg className={styles.brushPreview} aria-hidden="true"><path ref={previewRef} fill="none" stroke="#fff0b0" strokeWidth="1.5" /><g ref={selectionMarkers} fill="none" stroke="white" strokeWidth="2" /></svg>
     <div ref={pendingRef} className={`${styles.pending} sphere-pending-pointer`} aria-hidden="true" hidden />
     {workspace ? workspace({ canUndo: editorState.canUndo, canRedo: editorState.canRedo, processing: editorState.busy,
-      toolPicker: (['navigate', 'raise', 'lower', 'smooth', 'flatten'] as const).map((tool) => <button key={tool} disabled={editor?.locked} aria-pressed={controls.tool === tool} onClick={() => { commands.current.stop(); setControls({ ...controls, tool }); }}>{tool === 'navigate' ? 'Rotate / Pan' : tool.charAt(0).toUpperCase() + tool.slice(1)}</button>),
-      tools: <><p id="sphere-help" className="hint">Reference radius: {terrain.metadata.geometry.radiusMeters.toLocaleString()} m · N={terrain.metadata.representation.cellsPerEdge}. Globe and Net edit the same spherical samples. Space + drag or two fingers to navigate. Arrow keys, +/−, Enter and Home work on the canvas.</p><SphericalBrushControls value={controls} radius={terrain.metadata.geometry.radiusMeters} onChange={(value) => { commands.current.stop(); setControls(value); }} />{displayTools}<p className="hint">Solid net lines join faces. Dashed amber cuts lead to adjoining geography. These charts describe a round sphere, not a physical cube.</p><div className={styles.faces}>{CUBE_FACES.map((face) => <button key={face} onClick={() => change((view) => ({ ...recenterSphere(view, FACE_BASES[face].normal), mode: 'globe' }))}>View {face}</button>)}</div></>,
-      navigation: <><button aria-pressed={mode === 'globe'} onClick={() => change((view) => ({ ...view, mode: 'globe' }))}>Globe</button><button aria-pressed={mode === 'net'} onClick={() => change((view) => ({ ...view, mode: 'net' }))}>Six-face net</button><button aria-label="Zoom Out" disabled={zoom <= 1} onClick={() => change((view) => zoomSphere(view, .8))}>−</button><output aria-label="Map zoom">{Math.round(zoom * 100)}%</output><button aria-label="Zoom In" disabled={zoom >= 4} onClick={() => change((view) => zoomSphere(view, 1.25))}>+</button><button onClick={() => commands.current.reset()}>Reset View</button><button disabled={!hasSelection} onClick={() => change((view) => ({ ...recenterSphere(view, selectedRef.current!), mode: 'globe' }))}>Center selection</button></>
+      toolPicker: inspecting?<span>View from inside · drag to look · painting paused</span>:(['navigate', 'raise', 'lower', 'smooth', 'flatten'] as const).map((tool) => <button key={tool} disabled={editor?.locked} aria-pressed={controls.tool === tool} onClick={() => { commands.current.stop(); setControls({ ...controls, tool }); }}>{tool === 'navigate' ? 'Rotate / Pan' : tool.charAt(0).toUpperCase() + tool.slice(1)}</button>),
+      tools: <>{inspecting&&<p role="status">View from inside is read-only. Choose Globe or Six-face net to edit. Your brush choices are retained.</p>}<p id="sphere-help" className="hint">Reference radius: {terrain.metadata.geometry.radiusMeters.toLocaleString()} m · N={terrain.metadata.representation.cellsPerEdge}. Globe and Net edit the same spherical samples. Space + drag or two fingers to navigate. Arrow keys, +/−, Enter and Home work on the canvas.</p><fieldset disabled={inspecting}><SphericalBrushControls value={controls} radius={terrain.metadata.geometry.radiusMeters} onChange={(value) => { commands.current.stop(); setControls(value); }} /></fieldset>{displayTools}<p className="hint">Solid net lines join faces. Dashed amber cuts lead to adjoining geography. These charts describe a round sphere, not a physical cube.</p><div className={styles.faces}>{CUBE_FACES.map((face) => <button key={face} onClick={() => change((view) => ({ ...recenterSphere(view, FACE_BASES[face].normal), mode: 'globe' }))}>View {face}</button>)}</div></>,
+      navigation: <><button aria-pressed={mode === 'globe'&&!inspecting} onClick={() => change((view) => ({ ...view, mode: 'globe',interiorView:'edit' }))}>Globe</button>{surfaceRole==='interior'&&<button aria-pressed={inspecting} onClick={()=>change(view=>({...view,mode:'globe',interiorView:'center'}))}>View from inside</button>}<button aria-pressed={mode === 'net'} onClick={() => change((view) => ({ ...view, mode: 'net' }))}>Six-face net</button><button aria-label="Zoom Out" disabled={zoom <= 1} onClick={() => change((view) => zoomSphere(view, .8))}>−</button><output aria-label="Map zoom">{Math.round(zoom * 100)}%</output><button aria-label="Zoom In" disabled={zoom >= 4} onClick={() => change((view) => zoomSphere(view, 1.25))}>+</button><button onClick={() => commands.current.reset()}>Reset View</button><button disabled={!hasSelection} onClick={() => change((view) => ({ ...recenterSphere(view, selectedRef.current!), mode: 'globe' }))}>Center selection</button></>
     }) : <>
     <header className={styles.header}><button disabled={persistence?.busy} onClick={requestClose}>Return to map</button><span>{editor ? 'Spherical editor' : 'Spherical preview'} <small>{persistence ? persistence.name : editor ? 'Blank sphere · session-only editing' : 'Session-only · viewing and inspection'}</small></span></header>
     <button ref={toggleRef} className={styles.toggle} aria-expanded={panel} aria-controls="sphere-controls" onClick={() => { commands.current.stop(); setPanel(!panel); }}>View controls</button>
@@ -274,7 +277,7 @@ export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, 
       <h2>Inspect this sphere</h2><p>Reference radius: {terrain.metadata.geometry.radiusMeters.toLocaleString()} m<br />{terrain.sampleCount.toLocaleString()} unique samples · N={terrain.metadata.representation.cellsPerEdge}</p>
       <p>{editor ? 'Blank ocean starts at −100 m with sea level 0. All views edit the same physical samples.' : 'Deterministic test geography crosses shared chart edges and corners. No Earth geography or scale is assumed.'}</p>
       <p id="sphere-help">{editor ? 'Select Raise, Lower, Smooth or Flatten to draw. Select Rotate / Pan, hold Space, or use two fingers to navigate. ' : ''}Drag to rotate the globe or pan the net. Pinch or wheel to zoom. Tap/click to select. On the focused canvas: arrow keys navigate, +/− zoom, Enter inspects the center, Home resets.</p>
-      {editor && <SphericalBrushControls value={controls} radius={terrain.metadata.geometry.radiusMeters} onChange={(value) => { commands.current.stop(); setControls(value); }} />}
+      {editor && <fieldset disabled={inspecting}><SphericalBrushControls value={controls} radius={terrain.metadata.geometry.radiusMeters} onChange={(value) => { commands.current.stop(); setControls(value); }} /></fieldset>}
       {displayTools}
       {persistence && <SphericalStorageControls value={persistence} open={() => { commands.current.prepareSave(); persistence.open(persistence.selected); }} />}
       <p>Solid lines join faces. Dashed amber edges are visual cuts into adjoining geography, not world boundaries. Face labels name numerical charts of a round sphere.</p>
@@ -283,7 +286,7 @@ export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, 
       <button onClick={() => { setPanel(false); toggleRef.current?.focus(); }}>Close view controls</button>
     </aside>
     <div className={styles.views} role="group" aria-label="Spherical projection">
-      <button aria-pressed={mode === 'globe'} onClick={() => change((view) => ({ ...view, mode: 'globe' }))}>Globe</button>
+      <button aria-pressed={mode === 'globe'&&!inspecting} onClick={() => change((view) => ({ ...view, mode: 'globe',interiorView:'edit' }))}>Globe</button>
       <button aria-pressed={mode === 'net'} onClick={() => change((view) => ({ ...view, mode: 'net' }))}>Six-face net</button>
     </div>
     {editor && <><div className={styles.editorHud}><div className={styles.editingTools} role="group" aria-label="Spherical tools">{(['navigate', 'raise', 'lower', 'smooth', 'flatten'] as const).map((tool) => <button key={tool} disabled={persistence?.busy} aria-pressed={controls.tool === tool} onClick={() => { commands.current.stop(); setControls({ ...controls, tool }); }}>{tool === 'navigate' ? 'Rotate / Pan' : tool.charAt(0).toUpperCase() + tool.slice(1)}</button>)}</div>

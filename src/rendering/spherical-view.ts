@@ -5,7 +5,9 @@ import type { SphericalTerrain } from '../terrain/spherical.ts';
 export interface ScreenPoint { readonly x: number; readonly y: number }
 export interface Viewport { readonly width: number; readonly height: number }
 export interface SphereFrame { readonly right: Vec3; readonly up: Vec3; readonly forward: Vec3 }
-export interface SphericalView { readonly mode: 'globe' | 'net'; readonly frame: SphereFrame; readonly zoom: number; readonly pan: ScreenPoint }
+export interface SphericalView { readonly mode: 'globe' | 'net'; readonly frame: SphereFrame; readonly zoom: number; readonly pan: ScreenPoint; readonly interior?:boolean; readonly interiorView?:'edit'|'center' }
+/** An inside bank uses the fitted editing projection unless inspection is explicit. */
+export const sphereCenterInspection=(view:SphericalView)=>view.mode==='globe'&&view.interior===true&&view.interiorView==='center';
 export const INITIAL_SPHERICAL_VIEW: SphericalView = Object.freeze({ mode: 'globe', frame: Object.freeze({ right: [0, 1, 0] as Vec3, up: [0, 0, 1] as Vec3, forward: [1, 0, 0] as Vec3 }), zoom: 1, pan: Object.freeze({ x: 0, y: 0 }) });
 export const NET_FACES: Readonly<Record<CubeFace, readonly [number, number]>> = Object.freeze({ ny: [0, 1], px: [1, 1], py: [2, 1], nx: [3, 1], pz: [1, 0], nz: [1, 2] });
 const Q = Math.PI / 4;
@@ -71,6 +73,7 @@ export function netEdgeIsJoined(terrain: SphericalTerrain, face: CubeFace, edge:
 export function projectSphere(terrain: SphericalTerrain, input: Vec3, view: SphericalView, size: Viewport): readonly (ScreenPoint & { readonly face: CubeFace })[] {
   const direction = unitDirection(input), l = sphericalLayout(view, size), positions = terrain.geometry.positionsForDirection(direction);
   if (view.mode === 'globe') {
+    if(sphereCenterInspection(view)){const z=dot3(direction,view.frame.forward);if(z<=1e-12)return[];const p={x:l.x-l.radius*dot3(direction,view.frame.right)/z,y:l.y-l.radius*dot3(direction,view.frame.up)/z,face:positions[0]!.patchId};return p.x>=-1e-9&&p.y>=-1e-9&&p.x<=size.width+1e-9&&p.y<=size.height+1e-9?[{...p,x:Math.max(0,Math.min(size.width,p.x)),y:Math.max(0,Math.min(size.height,p.y))}]:[];}
     if (dot3(direction, view.frame.forward) < -1e-14) return [];
     const point = { x: l.x + l.radius * dot3(direction, view.frame.right), y: l.y - l.radius * dot3(direction, view.frame.up), face: positions[0]!.patchId };
     return point.x >= 0 && point.y >= 0 && point.x <= size.width && point.y <= size.height ? [point] : [];
@@ -85,6 +88,7 @@ export function unprojectSphere(terrain: SphericalTerrain, point: ScreenPoint, v
   const l = sphericalLayout(view, size);
   if (view.mode === 'globe') {
     const x = (point.x - l.x) / l.radius, y = (l.y - point.y) / l.radius, squared = x * x + y * y;
+    if(sphereCenterInspection(view)){const f=view.frame;return unitDirection([0,1,2].map(i=>-f.right[i]!*x+f.up[i]!*y+f.forward[i]!)as unknown as Vec3);}
     if (squared > 1 + 1e-14) return null;
     const z = Math.sqrt(Math.max(0, 1 - squared)), f = view.frame;
     return unitDirection([0, 1, 2].map((i) => f.right[i]! * x + f.up[i]! * y + f.forward[i]! * z) as unknown as Vec3);

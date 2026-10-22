@@ -1,7 +1,8 @@
+import {sphereCenterInspection} from './spherical-view.ts';
 import { CUBE_FACES, FACE_BASES, FACE_CONNECTIONS, FACE_EDGES, QUARTER_PI, cross3, dot3, unitDirection, type CubeFace, type Vec3 } from '../surfaces/cube-sphere.ts';
 import { greatCircleArc } from '../surfaces/great-circle.ts';
 import type { SphericalTerrain } from '../terrain/spherical.ts';
-import { netEdgeIsJoined, netFaceCoordinates, netFaceRect, sphericalLayout, type ScreenPoint, type SphericalView, type Viewport } from './spherical-view.ts';
+import { projectSphere,netEdgeIsJoined, netFaceCoordinates, netFaceRect, sphericalLayout, type ScreenPoint, type SphericalView, type Viewport } from './spherical-view.ts';
 
 const TAU = Math.PI * 2;
 /** Roots of a+b cos(t)+c sin(t)=0, in one full turn. */
@@ -24,6 +25,11 @@ export function sphericalBrushPreview(terrain: SphericalTerrain, centerInput: Ve
   const normal = Math.abs(center[2]) < .9 ? [0, 0, 1] as Vec3 : [0, 1, 0] as Vec3;
   const a = unitDirection(cross3(normal, center)), b = cross3(center, a), cosine = Math.cos(alpha), sine = Math.sin(alpha);
   const curve = (t: number): Vec3 => unitDirection([0, 1, 2].map((i) => center[i]! * cosine + (a[i]! * Math.cos(t) + b[i]! * Math.sin(t)) * sine) as unknown as Vec3);
+  if(sphereCenterInspection(view)){
+    const result:BrushPreviewSegment[]=[];let points:ScreenPoint[]=[],directions:Vec3[]=[];
+    const finish=()=>{if(points.length>1)result.push({points,directions,kind:'cap'});points=[];directions=[];};
+    for(let i=0;i<=128;i++){const d=curve(i/128*TAU),p=projectSphere(terrain,d,view,size)[0];if(p){points.push(p);directions.push(d);}else finish();}finish();return result;
+  }
   const l = sphericalLayout(view, size), segments: BrushPreviewSegment[] = [];
   const project = (direction: Vec3, face?: CubeFace): ScreenPoint => {
     if (view.mode === 'globe') return { x: l.x + l.radius * dot3(direction, view.frame.right), y: l.y - l.radius * dot3(direction, view.frame.up) };

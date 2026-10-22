@@ -109,7 +109,7 @@ export function App() {
       if (loaded.kind === 'sphere') {
         setSpherePreview({ radiusMeters: loaded.terrain.metadata.geometry.radiusMeters, cellsPerEdge: loaded.terrain.metadata.representation.cellsPerEdge, kind: 'blank', initial: { terrain: loaded.terrain, name: loaded.name } }); return;
       }
-      if (loaded.kind === 'cylinder'||loaded.kind==='cube'||loaded.kind==='hollow-cube') throw new Error('Physical worlds use the unified Atlas workspace.');
+      if (loaded.kind === 'cylinder'||loaded.kind==='cube'||loaded.kind==='hollow-cube'||loaded.kind==='hollow-sphere') throw new Error('Physical worlds use the unified Atlas workspace.');
       if (!guardDiscard()) return;
       setDocument(new TerrainDocument(loaded.terrain, loaded.name, true));
       setControls({ ...defaults, radius: Math.min(loaded.terrain.metadata.dimensions.width, loaded.terrain.metadata.dimensions.height) * 0.06 });

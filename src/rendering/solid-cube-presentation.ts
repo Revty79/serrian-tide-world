@@ -26,8 +26,8 @@ export class CubePresentation {
  private excavation?:HollowExcavation;private opposingField?:()=>CubeDisplayField|undefined;private eye?:PassageEye;private excavationGpu=false;
  get displayField(){return this.field;}
  surfacePointAvailable(position:SurfacePosition){return !this.excavation?.primitives.length||!this.source||!hollowFreeVolume(this.excavation,this.source.geometry.referencePosition(position));}
- setExcavation(model:HollowExcavation,opposing:()=>CubeDisplayField|undefined){this.excavation=model;this.opposingField=opposing;if(!model.primitives.length)disposeHollowCanvas(this.cpuCanvas);if(model.primitives.length&&!this.excavationGpu){this.excavationGpu=true;if(this.gpu){this.gpu.dispose();this.gpu=undefined;if(this.backend==='auto')this.createGpu();}}this.schedule();}
- setPassageEye(eye?:PassageEye){this.eye=eye;this.schedule();}
+ setExcavation(model:HollowExcavation,opposing:()=>CubeDisplayField|undefined){this.excavation=model;this.opposingField=opposing;if(!model.primitives.length)disposeHollowCanvas(this.cpuCanvas);if((model.primitives.length||this.eye)&&!this.excavationGpu){this.excavationGpu=true;if(this.gpu){this.gpu.dispose();this.gpu=undefined;if(this.backend==='auto')this.createGpu();}}this.schedule();}
+ setPassageEye(eye?:PassageEye){this.eye=eye;if(eye&&this.excavation)this.setExcavation(this.excavation,this.opposingField!);this.schedule();}
  private verifyPixels=false;
  private pixelCanvas?:HTMLCanvasElement;private previousPixels?:Uint8ClampedArray;private pixelRevision=-1;private pixelView='';
  readonly editPresentations:{revision:number;submittedAt:number;changedPixels:number;pixelFingerprint:number;paintOpportunityAt?:number}[]=[];
@@ -74,9 +74,9 @@ export class CubePresentation {
   if(this.disposed||!this.field||!this.source)return;
   if(!this.editorField&&this.field.sourceRevision!==this.source.revision){this.metrics.error='Terrain changed; refresh the read-only display.';this.onChange();return;}
   let field=this.field,ms:number;
-  if(this.mode==='physical'&&this.excavation?.primitives.length&&!this.opposingField?.()){this.schedule();return;}
+  if(this.mode==='physical'&&this.excavation&&(this.excavation.primitives.length||this.eye)&&!this.opposingField?.()){this.schedule();return;}
   if(this.backend==='auto'&&this.gpu?.available){try{ms=this.gpu.present(field,this.camera,this.mode,this.size,true,this.surface,this.excavation,this.opposingField?.(),this.eye);this.cpuCanvas.hidden=true;this.metrics.backend=this.gpu.statistics.software?'WebGL2 (software)':'WebGL2';}catch(e){this.gpu.fail(e);void this.ensureAtlas();this.schedule();return;}}
-  else {if(!this.atlas)return;field=this.atlas.field;if(!this.editorField&&field.sourceRevision!==this.source.revision)return;const opposite=this.opposingField?.();ms=this.mode==='physical'&&this.excavation?.primitives.length&&opposite?presentHollowCanvas(this.cpuCanvas,this.excavation,this.surface.orientation===1?{exterior:field,interior:opposite}:{exterior:opposite,interior:field},this.atlas,this.camera,this.size,this.surface,this.eye):presentCubeCanvas(this.cpuCanvas,this.atlas,this.camera,this.mode,this.size,this.surface);this.gpuCanvas.hidden=true;this.metrics.backend='Canvas2D fallback';}
+  else {if(!this.atlas)return;field=this.atlas.field;if(!this.editorField&&field.sourceRevision!==this.source.revision)return;const opposite=this.opposingField?.();ms=this.mode==='physical'&&this.excavation&&(this.excavation.primitives.length||this.eye)&&opposite?presentHollowCanvas(this.cpuCanvas,this.excavation,this.surface.orientation===1?{exterior:field,interior:opposite}:{exterior:opposite,interior:field},this.atlas,this.camera,this.size,this.surface,this.eye):presentCubeCanvas(this.cpuCanvas,this.atlas,this.camera,this.mode,this.size,this.surface);this.gpuCanvas.hidden=true;this.metrics.backend='Canvas2D fallback';}
   const now=performance.now();if(this.lastFrame&&now-this.lastFrame<250)this.retain(this.metrics.frameGaps,now-this.lastFrame);this.lastFrame=now;this.retain(this.metrics.presentMs,ms);this.metrics.draws++;this.metrics.displayedRevision=field.sourceRevision;this.metrics.displayedN=field.n;
   if(this.editorField&&this.verifyPixels&&(this.pixelRevision!==field.sourceRevision||this.pixelView!==JSON.stringify([this.camera,this.mode,this.size]))){
    const canvas=this.cpuCanvas.hidden?this.gpuCanvas:this.cpuCanvas;this.pixelCanvas??=document.createElement('canvas');this.pixelCanvas.width=this.pixelCanvas.height=128;
