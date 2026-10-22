@@ -82,8 +82,10 @@ export class CylinderPreviewSession {
   get pendingWork() { return !!this.stroke?.statistics.hasPendingWork; }
   get previewPending() { return !!this.preview || !!this.remotePreview; }
   private clearPreview() { clearTimeout(this.previewTimeout); this.remotePreview?.terminate(); this.remotePreview = undefined; this.previewTask++; this.preview?.job.cancel(); this.preview = undefined; this.previewKey = ''; this.stencil = undefined; this.previewMessage = ''; }
+  beforeOperation=()=>{};
   begin(center: SurfacePosition, settings: CylindricalBrushSettings, view: CylinderView, at = performance.now()) {
     if (this.disposed || this.stroke || this.locked) return false;
+    this.beforeOperation();
     this.clearPreview(); this.lastDab = undefined;
     const real = this.history, guard = cylinderVisibilityGuard(this.terrain, view);
     // Inherit the real closure-backed history. Override only its handoff to stage
@@ -145,6 +147,9 @@ export class CylinderPreviewSession {
     return !!this.stroke && (this.stroke.statistics.hasPendingWork || this.processing);
   }
   cancel(reason = 'Drawing interrupted') {
+    // A worker can fail between input events, before the next render pump sees
+    // it. Preserve the real rejection when navigation then releases its input.
+    if(this.stroke?.status==='failed'){this.fail(this.stroke.failure?.message??'Cylinder preparation failed.');this.clearPreview();return;}
     if (this.stroke) { this.stroke.cancel(); this.statistics.cancellations++; const dropped = this.stroke.statistics.discardedPositions; this.message = `${reason}. Pending input discarded (${dropped}); committed prefix remains one undoable operation.`; this.finish(); }
     this.clearPreview(); this.changed();
   }

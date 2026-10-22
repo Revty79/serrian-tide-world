@@ -1,0 +1,1682 @@
+{
+  "verifiedAtUtc": "2026-10-22T08:07:50.223383+00:00",
+  "base": "e71bcccf507a5241ea654771fbefc3bc9d10719b",
+  "status": "Capped cylindrical wall/cap holes, physical cut views, protected ground and exact version 12 connection history technically verified. Physical networks and map links are next.",
+  "ownerAcceptance": false,
+  "sourceFingerprint": {
+    "sha256": "be39f71bac3100fd0bea7bf107dbaa62a15940297d58556efd3a547edfece9d9",
+    "files": 284,
+    "algorithm": "SHA256 over sorted src paths in POSIX form followed by bytes with CRLF normalized to LF"
+  },
+  "numerical": {
+    "passed": 1262,
+    "failed": 0,
+    "log": ".local/cylinder-holes-numerical-receipt.log"
+  },
+  "typecheck": "passed",
+  "build": "passed",
+  "buildLog": ".local/cylinder-holes-build-publish.log",
+  "postSplitRenderingUnits": {
+    "passed": 18,
+    "failed": 0,
+    "log": ".local/cylinder-holes-rendering-final.log"
+  },
+  "browser": {
+    "holeWorkflowMatrix": {
+      "report": ".local/cylinder-holes-browser-matrix.json",
+      "stats": {
+        "startTime": "2026-10-22T07:37:31.591Z",
+        "duration": 122158.53,
+        "expected": 8,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "cases": [
+        {
+          "title": "cylinder holes N128 auto: real wall and axial cap cuts, preview, identity, exact history and v12 reopen",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "cylinder holes N128 canvas: real wall and axial cap cuts, preview, identity, exact history and v12 reopen",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "cylinder holes N256 auto: real wall and axial cap cuts, preview, identity, exact history and v12 reopen",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "cylinder holes N256 canvas: real wall and axial cap cuts, preview, identity, exact history and v12 reopen",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "cylinder holes N128 auto: real wall and axial cap cuts, preview, identity, exact history and v12 reopen",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "cylinder holes N128 canvas: real wall and axial cap cuts, preview, identity, exact history and v12 reopen",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "cylinder holes N256 auto: real wall and axial cap cuts, preview, identity, exact history and v12 reopen",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "cylinder holes N256 canvas: real wall and axial cap cuts, preview, identity, exact history and v12 reopen",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        }
+      ]
+    },
+    "pixelAndNativeInput": {
+      "report": ".local/cylinder-holes-pixels-input-verified8.json",
+      "stats": {
+        "startTime": "2026-10-22T07:42:30.616Z",
+        "duration": 81477.43000000001,
+        "expected": 8,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "cases": [
+        {
+          "title": "cylinder hole auto: native touch placement, two contacts, pen relocation and atomic rim rejection",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "cylinder hole canvas: native touch placement, two contacts, pen relocation and atomic rim rejection",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "cylinder hole auto: native touch placement, two contacts, pen relocation and atomic rim rejection",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "cylinder hole canvas: native touch placement, two contacts, pen relocation and atomic rim rejection",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "cylinder hole auto: actual opposite cap terrain pixels, bore wall, read-only eye and protected ground",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "cylinder hole canvas: actual opposite cap terrain pixels, bore wall, read-only eye and protected ground",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "cylinder hole auto: actual opposite cap terrain pixels, bore wall, read-only eye and protected ground",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "cylinder hole canvas: actual opposite cap terrain pixels, bore wall, read-only eye and protected ground",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        }
+      ]
+    },
+    "heldWithPhysicalHoleBeforeProgramSplit": {
+      "report": ".local/cylinder-holes-long-final.json",
+      "stats": {
+        "startTime": "2026-10-22T07:48:40.207Z",
+        "duration": 158961.69799999997,
+        "expected": 8,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "cases": [
+        {
+          "title": "held capped hollow cylinder 128 auto exterior: ordinary 15-second painting, visible progress and exact replay",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "held capped hollow cylinder 128 auto interior: ordinary 15-second painting, visible progress and exact replay",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "held capped hollow cylinder 128 canvas exterior: ordinary 15-second painting, visible progress and exact replay",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "held capped hollow cylinder 128 canvas interior: ordinary 15-second painting, visible progress and exact replay",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "held capped hollow cylinder 256 auto exterior: ordinary 15-second painting, visible progress and exact replay",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "held capped hollow cylinder 256 auto interior: ordinary 15-second painting, visible progress and exact replay",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "held capped hollow cylinder 256 canvas exterior: ordinary 15-second painting, visible progress and exact replay",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "held capped hollow cylinder 256 canvas interior: ordinary 15-second painting, visible progress and exact replay",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        }
+      ]
+    },
+    "gpuPixelsAndNativeAfterProgramSplit": {
+      "report": ".local/cylinder-holes-lazy-pixels.json",
+      "stats": {
+        "startTime": "2026-10-22T07:52:12.686Z",
+        "duration": 61894.442,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "cases": [
+        {
+          "title": "cylinder hole auto: native touch placement, two contacts, pen relocation and atomic rim rejection",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "cylinder hole auto: native touch placement, two contacts, pen relocation and atomic rim rejection",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "cylinder hole auto: actual opposite cap terrain pixels, bore wall, read-only eye and protected ground",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "cylinder hole auto: actual opposite cap terrain pixels, bore wall, read-only eye and protected ground",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        }
+      ]
+    },
+    "gpuHeldAfterProgramSplit": {
+      "report": ".local/cylinder-holes-long-lazy.json",
+      "stats": {
+        "startTime": "2026-10-22T07:53:32.805Z",
+        "duration": 92737.045,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "cases": [
+        {
+          "title": "held capped hollow cylinder 128 auto exterior: ordinary 15-second painting, visible progress and exact replay",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "held capped hollow cylinder 128 auto interior: ordinary 15-second painting, visible progress and exact replay",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "held capped hollow cylinder 256 auto exterior: ordinary 15-second painting, visible progress and exact replay",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "held capped hollow cylinder 256 auto interior: ordinary 15-second painting, visible progress and exact replay",
+          "project": "",
+          "statuses": [
+            "passed"
+          ]
+        }
+      ]
+    },
+    "legacyFormatsAndCylinder": {
+      "report": ".local/cylinder-holes-legacy.json",
+      "stats": {
+        "startTime": "2026-10-22T07:55:38.407Z",
+        "duration": 176308.446,
+        "expected": 18,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "cases": [
+        {
+          "title": "replacing and reopening a Canvas cylinder under native CPU throttling never renders a disposed cache or changes saved geography",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "replacing and reopening a Canvas cylinder under native CPU throttling never renders a disposed cache or changes saved geography",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "unavailable WebGL uses correct CPU fallback, readouts, Undo/Redo and v4 Save/Open",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "unavailable WebGL uses correct CPU fallback, readouts, Undo/Redo and v4 Save/Open",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "normal Atlas creates, sculpts all four tools and both rims, saves, switches and reopens exact v4 geography",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "normal cylinder detail 64: exact saved words, signed-zero restoration and persistence timing",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "normal cylinder detail 128: exact saved words, signed-zero restoration and persistence timing",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "normal cylinder detail 256: exact saved words, signed-zero restoration and persistence timing",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "normal Atlas creates, sculpts all four tools and both rims, saves, switches and reopens exact v4 geography",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "normal cylinder detail 64: exact saved words, signed-zero restoration and persistence timing",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "normal cylinder detail 128: exact saved words, signed-zero restoration and persistence timing",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "normal cylinder detail 256: exact saved words, signed-zero restoration and persistence timing",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "start directly on any supported shape; setup is explicit, accessible and cancellable without creating a hidden flat document",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "one workflow creates, edits with all four tools, saves and reopens v1/v2/v3 with exact history and shared globe/net authority",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "cross-shape New/Open cancellation, corrupt data and storage failures retain the current document and history",
+          "project": "desktop",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "start directly on any supported shape; setup is explicit, accessible and cancellable without creating a hidden flat document",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "one workflow creates, edits with all four tools, saves and reopens v1/v2/v3 with exact history and shared globe/net authority",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        },
+        {
+          "title": "cross-shape New/Open cancellation, corrupt data and storage failures retain the current document and history",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        }
+      ]
+    },
+    "baseEditorAndViews": {
+      "report": ".local/cylinder-holes-base-views.json",
+      "stats": {
+        "startTime": "2026-10-22T07:59:03.198Z",
+        "duration": 162951.437,
+        "expected": 22,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "finalReadOnlyCutPixels": {
+      "report": ".local/cylinder-holes-readonly-final.json",
+      "stats": {
+        "startTime": "2026-10-22T08:02:50.551Z",
+        "duration": 73948.94200000001,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "priorSphereVersions8To10": {
+      "report": ".local/cylinder-holes-sphere.json",
+      "stats": {
+        "startTime": "2026-10-22T08:04:26.649Z",
+        "duration": 154194.46600000001,
+        "expected": 12,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  },
+  "campaignQualification": "Overlapping groups. Desktop and Pixel 7 Chromium emulation; no physical device or owner acceptance. Runtime source frozen per campaign. Historical evidence kept isolated. GPU program split was followed by targeted GPU pixel/native and held checks; Canvas adapter unchanged. Final JSX-only guard hides on-map sizing in read-only inspection; four actual cut pixel/read-only/fallback cases passed afterward. Final accounting-only correction keeps opposing GPU texture allocation bytes after disabling cut views; build/typecheck passed.",
+  "heldPainting": {
+    "summary": {
+      "nativeEvents": [
+        891,
+        900
+      ],
+      "changingHeldObservations": [
+        53,
+        69
+      ],
+      "firstChangingPixelsMs": [
+        313.30000001192093,
+        505.2000000476837
+      ],
+      "releaseToCoherentMs": [
+        34.29320000000007,
+        325.6568999999872
+      ]
+    },
+    "qualification": "900 injected moves over 15 seconds each; native dispatch may coalesce. Terrain pixel observations at 100 ms cadence. Release coherent timing is separate from per-input latency. Every run asserts both full-bank hashes across Undo/Redo and retains the opposite bank and authored hole.",
+    "currentCases": [
+      {
+        "detail": 128,
+        "backend": "auto",
+        "role": "exterior",
+        "startupMs": 6000.6507,
+        "releaseToCoherentMs": 38.964899999999034,
+        "injectedMoves": 900,
+        "durationMs": 15000,
+        "events": 894,
+        "changedWhileHeld": 69,
+        "firstChangedPixelsMs": 323.69999998807907,
+        "frameGaps": {
+          "p50": 16.69999999999709,
+          "p95": 16.700000000004366,
+          "max": 99.89999999999782
+        },
+        "longTasks": {
+          "p50": 104,
+          "p95": 104,
+          "max": 104
+        },
+        "brushDrainPresentationMs": {
+          "p50": 134.5,
+          "p95": 251.39999997615814,
+          "max": 317.39999997615814
+        },
+        "renderer": {
+          "kind": "webgl2",
+          "width": 1440,
+          "height": 950,
+          "losses": 0,
+          "recoveries": 0,
+          "uploads": 72,
+          "presentations": 78,
+          "textureBytes": 134144,
+          "geometryBytes": 1179792,
+          "antialias": true,
+          "reason": "",
+          "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "cacheBytes": 65032,
+        "parentAuthorityBytes": 130064,
+        "connections": {
+          "holes": [
+            {
+              "kind": "through-hole",
+              "version": 1,
+              "id": "347960a2-e285-458e-bc5f-0620058c0da3",
+              "worldId": "99f5717d-bf6e-4567-8fa8-e011c5925399",
+              "geometry": "circular-cylinder-normal",
+              "radiusMeters": 15000,
+              "mouths": [
+                {
+                  "id": "44052f39-c3d1-4fbc-a415-15784692daba",
+                  "position": {
+                    "worldId": "99f5717d-bf6e-4567-8fa8-e011c5925399",
+                    "surfaceId": "94740e3a-c1cf-4c78-a673-379716283833",
+                    "patchId": "cap-start",
+                    "u": 0,
+                    "v": 2.220446049250313e-10
+                  }
+                },
+                {
+                  "id": "d0610247-8989-4328-9477-2a9974e36e10",
+                  "position": {
+                    "worldId": "99f5717d-bf6e-4567-8fa8-e011c5925399",
+                    "surfaceId": "e5304039-586e-49bd-846b-7e8d25066222",
+                    "patchId": "cap-start",
+                    "u": 0,
+                    "v": 2.220446049250313e-10
+                  }
+                }
+              ]
+            }
+          ],
+          "links": [],
+          "passages": []
+        },
+        "protectionBytes": 32516,
+        "heapBytes": 14372476,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "statistics": {
+          "strokes": 1,
+          "dabs": 70,
+          "writes": 372,
+          "failures": 0,
+          "cancellations": 0,
+          "sliceMaxMs": 0.20000004768371582,
+          "slices": 914,
+          "previewMaxMs": 0,
+          "stagedDisplayPeakBytes": 48,
+          "droppedTimingRecords": 0,
+          "lastStroke": {
+            "pumps": 2168,
+            "paths": 895,
+            "pathBoxes": 0,
+            "failedPathBoxAllowance": 0,
+            "committedDabs": 70,
+            "writes": 372,
+            "distanceQueries": 372,
+            "distanceBoxes": 0,
+            "failedQueryBoxAllowance": 0,
+            "dabCandidates": 3079,
+            "peakPreparedDabBytes": 8192,
+            "sumPreRoundElevationErrorMeters": 2.1236168572057416e-07,
+            "maxPreRoundElevationErrorMeters": 3.1466047034942956e-09,
+            "maxFalloffError": 1.5173417647279233e-11,
+            "maximumPathPieces": 1,
+            "traveledMeters": 737878.2353051627,
+            "residualMeters": 1682.735305162446,
+            "spacingErrorBoundMeters": 0.0026020179935386523,
+            "lastCommittedCenter": {
+              "worldId": "99f5717d-bf6e-4567-8fa8-e011c5925399",
+              "surfaceId": "94740e3a-c1cf-4c78-a673-379716283833",
+              "patchId": "side",
+              "u": 0.03290502792413128,
+              "v": 792357.6169411662
+            },
+            "acceptedPositions": 896,
+            "processedPositions": 896,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2,
+            "hasPendingWork": false,
+            "pendingPositions": 0
+          },
+          "lastTermination": "complete"
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true,
+        "errors": [],
+        "nativeEventQualification": "Chromium may coalesce injected moves before trusted pointer dispatch; both counts are retained.",
+        "latencyQualification": "Changing terrain pixels are observed separately from coherent-drain timing, at 100 ms cadence. Coherent drain is not per-input first-visible latency."
+      },
+      {
+        "detail": 128,
+        "backend": "auto",
+        "role": "interior",
+        "startupMs": 939.6511000000028,
+        "releaseToCoherentMs": 44.06210000000283,
+        "injectedMoves": 900,
+        "durationMs": 15000,
+        "events": 899,
+        "changedWhileHeld": 53,
+        "firstChangedPixelsMs": 412.80000001192093,
+        "frameGaps": {
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "longTasks": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "brushDrainPresentationMs": {
+          "p50": 167.69999998807907,
+          "p95": 317.60000002384186,
+          "max": 367.69999998807907
+        },
+        "renderer": {
+          "kind": "webgl2",
+          "width": 1440,
+          "height": 950,
+          "losses": 0,
+          "recoveries": 0,
+          "uploads": 55,
+          "presentations": 56,
+          "textureBytes": 67072,
+          "geometryBytes": 1179792,
+          "antialias": true,
+          "reason": "",
+          "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "cacheBytes": 65032,
+        "parentAuthorityBytes": 130064,
+        "connections": {
+          "holes": [
+            {
+              "kind": "through-hole",
+              "version": 1,
+              "id": "c3aa6dd3-8514-4e67-86c9-465f3a1bd1a6",
+              "worldId": "fd7de0c0-69de-4dea-bc48-e2b9e4d469db",
+              "geometry": "circular-cylinder-normal",
+              "radiusMeters": 15000,
+              "mouths": [
+                {
+                  "id": "7bba06ab-444e-40ec-8951-d3582ff01c65",
+                  "position": {
+                    "worldId": "fd7de0c0-69de-4dea-bc48-e2b9e4d469db",
+                    "surfaceId": "8df3b6d2-9c8e-46b0-b79e-a52d3ecbfe95",
+                    "patchId": "cap-start",
+                    "u": 0,
+                    "v": 2.220446049250313e-10
+                  }
+                },
+                {
+                  "id": "a0731bb7-f3f5-41e7-990c-ea0379dc3d41",
+                  "position": {
+                    "worldId": "fd7de0c0-69de-4dea-bc48-e2b9e4d469db",
+                    "surfaceId": "76f9a617-36da-4dff-94b1-3d5cf31ebac0",
+                    "patchId": "cap-start",
+                    "u": 0,
+                    "v": 2.220446049250313e-10
+                  }
+                }
+              ]
+            }
+          ],
+          "links": [],
+          "passages": []
+        },
+        "protectionBytes": 32516,
+        "heapBytes": 18888304,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "statistics": {
+          "strokes": 1,
+          "dabs": 54,
+          "writes": 474,
+          "failures": 0,
+          "cancellations": 0,
+          "sliceMaxMs": 0.20000004768371582,
+          "slices": 907,
+          "previewMaxMs": 0,
+          "stagedDisplayPeakBytes": 88,
+          "droppedTimingRecords": 0,
+          "lastStroke": {
+            "pumps": 2123,
+            "paths": 900,
+            "pathBoxes": 0,
+            "failedPathBoxAllowance": 0,
+            "committedDabs": 54,
+            "writes": 474,
+            "distanceQueries": 474,
+            "distanceBoxes": 0,
+            "failedQueryBoxAllowance": 0,
+            "dabCandidates": 2940,
+            "peakPreparedDabBytes": 8192,
+            "sumPreRoundElevationErrorMeters": 1.332772534310261e-07,
+            "maxPreRoundElevationErrorMeters": 2.573918397062559e-09,
+            "maxFalloffError": 1.2141674281796639e-11,
+            "maximumPathPieces": 1,
+            "traveledMeters": 568751.0934098007,
+            "residualMeters": 3267.59340980017,
+            "spacingErrorBoundMeters": 0.001962462077365501,
+            "lastCommittedCenter": {
+              "worldId": "fd7de0c0-69de-4dea-bc48-e2b9e4d469db",
+              "surfaceId": "76f9a617-36da-4dff-94b1-3d5cf31ebac0",
+              "patchId": "side",
+              "u": 0.03132834592763116,
+              "v": 596067.0261539142
+            },
+            "acceptedPositions": 901,
+            "processedPositions": 901,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2,
+            "hasPendingWork": false,
+            "pendingPositions": 0
+          },
+          "lastTermination": "complete"
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true,
+        "errors": [],
+        "nativeEventQualification": "Chromium may coalesce injected moves before trusted pointer dispatch; both counts are retained.",
+        "latencyQualification": "Changing terrain pixels are observed separately from coherent-drain timing, at 100 ms cadence. Coherent drain is not per-input first-visible latency."
+      },
+      {
+        "detail": 256,
+        "backend": "auto",
+        "role": "exterior",
+        "startupMs": 794.2579999999944,
+        "releaseToCoherentMs": 40.434599999993225,
+        "injectedMoves": 900,
+        "durationMs": 15000,
+        "events": 899,
+        "changedWhileHeld": 69,
+        "firstChangedPixelsMs": 313.30000001192093,
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "longTasks": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "brushDrainPresentationMs": {
+          "p50": 135.80000001192093,
+          "p95": 253.0999999642372,
+          "max": 302.30000001192093
+        },
+        "renderer": {
+          "kind": "webgl2",
+          "width": 1440,
+          "height": 950,
+          "losses": 0,
+          "recoveries": 0,
+          "uploads": 72,
+          "presentations": 78,
+          "textureBytes": 530432,
+          "geometryBytes": 1179792,
+          "antialias": true,
+          "reason": "",
+          "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "cacheBytes": 261128,
+        "parentAuthorityBytes": 522256,
+        "connections": {
+          "holes": [
+            {
+              "kind": "through-hole",
+              "version": 1,
+              "id": "99d96dc0-d05b-496a-b084-18e7f2b8925d",
+              "worldId": "ea3806d4-55c3-4ee0-9d0b-a555b9ec4398",
+              "geometry": "circular-cylinder-normal",
+              "radiusMeters": 15000,
+              "mouths": [
+                {
+                  "id": "65044704-5b8f-4ea8-9d6d-1e15b8218f3e",
+                  "position": {
+                    "worldId": "ea3806d4-55c3-4ee0-9d0b-a555b9ec4398",
+                    "surfaceId": "b1809713-43fb-49a2-b8c7-2a4c7b34ac1a",
+                    "patchId": "cap-start",
+                    "u": 0,
+                    "v": 2.220446049250313e-10
+                  }
+                },
+                {
+                  "id": "2788e481-ce30-4650-894a-84d337d8f749",
+                  "position": {
+                    "worldId": "ea3806d4-55c3-4ee0-9d0b-a555b9ec4398",
+                    "surfaceId": "57b1627f-33c2-4eb0-afd9-b13dfa9404ef",
+                    "patchId": "cap-start",
+                    "u": 0,
+                    "v": 2.220446049250313e-10
+                  }
+                }
+              ]
+            }
+          ],
+          "links": [],
+          "passages": []
+        },
+        "protectionBytes": 130564,
+        "heapBytes": 17902712,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "statistics": {
+          "strokes": 1,
+          "dabs": 70,
+          "writes": 1449,
+          "failures": 0,
+          "cancellations": 0,
+          "sliceMaxMs": 0.19999998807907104,
+          "slices": 920,
+          "previewMaxMs": 0,
+          "stagedDisplayPeakBytes": 184,
+          "droppedTimingRecords": 0,
+          "lastStroke": {
+            "pumps": 2349,
+            "paths": 900,
+            "pathBoxes": 0,
+            "failedPathBoxAllowance": 0,
+            "committedDabs": 70,
+            "writes": 1449,
+            "distanceQueries": 1449,
+            "distanceBoxes": 0,
+            "failedQueryBoxAllowance": 0,
+            "dabCandidates": 6016,
+            "peakPreparedDabBytes": 8192,
+            "sumPreRoundElevationErrorMeters": 2.1551059906533817e-07,
+            "maxPreRoundElevationErrorMeters": 3.1465917722563942e-09,
+            "maxFalloffError": 1.51733083118639e-11,
+            "maximumPathPieces": 1,
+            "traveledMeters": 737888.1784688543,
+            "residualMeters": 1692.678468853931,
+            "spacingErrorBoundMeters": 0.002616570666880591,
+            "lastCommittedCenter": {
+              "worldId": "ea3806d4-55c3-4ee0-9d0b-a555b9ec4398",
+              "surfaceId": "b1809713-43fb-49a2-b8c7-2a4c7b34ac1a",
+              "patchId": "side",
+              "u": 0.03290412116680659,
+              "v": 792367.5186731031
+            },
+            "acceptedPositions": 901,
+            "processedPositions": 901,
+            "discardedPositions": 0,
+            "peakPendingPositions": 3,
+            "hasPendingWork": false,
+            "pendingPositions": 0
+          },
+          "lastTermination": "complete"
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true,
+        "errors": [],
+        "nativeEventQualification": "Chromium may coalesce injected moves before trusted pointer dispatch; both counts are retained.",
+        "latencyQualification": "Changing terrain pixels are observed separately from coherent-drain timing, at 100 ms cadence. Coherent drain is not per-input first-visible latency."
+      },
+      {
+        "detail": 256,
+        "backend": "auto",
+        "role": "interior",
+        "startupMs": 888.0816999999952,
+        "releaseToCoherentMs": 34.29320000000007,
+        "injectedMoves": 900,
+        "durationMs": 15000,
+        "events": 900,
+        "changedWhileHeld": 53,
+        "firstChangedPixelsMs": 398.19999998807907,
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000291
+        },
+        "longTasks": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "brushDrainPresentationMs": {
+          "p50": 168.60000002384186,
+          "p95": 335.10000002384186,
+          "max": 368.89999997615814
+        },
+        "renderer": {
+          "kind": "webgl2",
+          "width": 1440,
+          "height": 950,
+          "losses": 0,
+          "recoveries": 0,
+          "uploads": 55,
+          "presentations": 56,
+          "textureBytes": 265216,
+          "geometryBytes": 1179792,
+          "antialias": true,
+          "reason": "",
+          "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "cacheBytes": 261128,
+        "parentAuthorityBytes": 522256,
+        "connections": {
+          "holes": [
+            {
+              "kind": "through-hole",
+              "version": 1,
+              "id": "5d1864f5-59a6-43a8-923b-e6a2603a26af",
+              "worldId": "bb61ab60-d74c-4d0b-8733-54d160d59cb4",
+              "geometry": "circular-cylinder-normal",
+              "radiusMeters": 15000,
+              "mouths": [
+                {
+                  "id": "44e3bb50-cc78-4472-bdb4-35ca94d335c5",
+                  "position": {
+                    "worldId": "bb61ab60-d74c-4d0b-8733-54d160d59cb4",
+                    "surfaceId": "cf032cdc-2441-40a5-b58c-dffbc62ab091",
+                    "patchId": "cap-start",
+                    "u": 0,
+                    "v": 2.220446049250313e-10
+                  }
+                },
+                {
+                  "id": "681f8594-47cc-48d8-966c-f40619483642",
+                  "position": {
+                    "worldId": "bb61ab60-d74c-4d0b-8733-54d160d59cb4",
+                    "surfaceId": "8d8146db-f934-4537-8385-67b6d8385493",
+                    "patchId": "cap-start",
+                    "u": 0,
+                    "v": 2.220446049250313e-10
+                  }
+                }
+              ]
+            }
+          ],
+          "links": [],
+          "passages": []
+        },
+        "protectionBytes": 130564,
+        "heapBytes": 19438364,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "statistics": {
+          "strokes": 1,
+          "dabs": 54,
+          "writes": 1873,
+          "failures": 0,
+          "cancellations": 0,
+          "sliceMaxMs": 0.20000004768371582,
+          "slices": 907,
+          "previewMaxMs": 0,
+          "stagedDisplayPeakBytes": 296,
+          "droppedTimingRecords": 0,
+          "lastStroke": {
+            "pumps": 2335,
+            "paths": 901,
+            "pathBoxes": 0,
+            "failedPathBoxAllowance": 0,
+            "committedDabs": 54,
+            "writes": 1873,
+            "distanceQueries": 1873,
+            "distanceBoxes": 0,
+            "failedQueryBoxAllowance": 0,
+            "dabCandidates": 6316,
+            "peakPreparedDabBytes": 8192,
+            "sumPreRoundElevationErrorMeters": 1.3427865967894091e-07,
+            "maxPreRoundElevationErrorMeters": 2.573929504098126e-09,
+            "maxFalloffError": 1.2141730118547296e-11,
+            "maximumPathPieces": 1,
+            "traveledMeters": 568751.1573082415,
+            "residualMeters": 3267.657308240995,
+            "spacingErrorBoundMeters": 0.0019646450162724705,
+            "lastCommittedCenter": {
+              "worldId": "bb61ab60-d74c-4d0b-8733-54d160d59cb4",
+              "surfaceId": "8d8146db-f934-4537-8385-67b6d8385493",
+              "patchId": "side",
+              "u": 0.03132833052525507,
+              "v": 596067.088853049
+            },
+            "acceptedPositions": 902,
+            "processedPositions": 902,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2,
+            "hasPendingWork": false,
+            "pendingPositions": 0
+          },
+          "lastTermination": "complete"
+        },
+        "persistence": {
+          "saveMs": 348.88030000000435,
+          "openMs": 516.3032999999996
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true,
+        "errors": [],
+        "nativeEventQualification": "Chromium may coalesce injected moves before trusted pointer dispatch; both counts are retained.",
+        "latencyQualification": "Changing terrain pixels are observed separately from coherent-drain timing, at 100 ms cadence. Coherent drain is not per-input first-visible latency."
+      },
+      {
+        "detail": 128,
+        "backend": "canvas",
+        "role": "exterior",
+        "startupMs": 527.0787999999957,
+        "releaseToCoherentMs": 325.6568999999872,
+        "injectedMoves": 900,
+        "durationMs": 15000,
+        "events": 891,
+        "changedWhileHeld": 65,
+        "firstChangedPixelsMs": 505.2000000476837,
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "longTasks": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "brushDrainPresentationMs": {
+          "p50": 216.60000002384186,
+          "p95": 409,
+          "max": 492.10000002384186
+        },
+        "renderer": {
+          "kind": "cpu",
+          "width": 348,
+          "height": 229,
+          "losses": 0,
+          "recoveries": 0,
+          "uploads": 0,
+          "presentations": 0,
+          "textureBytes": 0,
+          "geometryBytes": 0,
+          "antialias": false,
+          "reason": "Error: WebGL2 unavailable; using CPU fallback.",
+          "renderer": ""
+        },
+        "cacheBytes": 65032,
+        "parentAuthorityBytes": 130064,
+        "connections": {
+          "holes": [
+            {
+              "kind": "through-hole",
+              "version": 1,
+              "id": "d2cbc256-f5ce-4a20-b1f0-a6013b52aa6b",
+              "worldId": "b8c25964-48d6-46f2-8fb9-73421501b6f3",
+              "geometry": "circular-cylinder-normal",
+              "radiusMeters": 15000,
+              "mouths": [
+                {
+                  "id": "9fdf1e03-4223-4ff0-a744-65e16b3989fb",
+                  "position": {
+                    "worldId": "b8c25964-48d6-46f2-8fb9-73421501b6f3",
+                    "surfaceId": "33c83a1d-6ece-4c03-ab57-031b5221450b",
+                    "patchId": "cap-start",
+                    "u": 0,
+                    "v": 2.220446049250313e-10
+                  }
+                },
+                {
+                  "id": "f88179b0-675b-48dd-aa92-2a88688b7c54",
+                  "position": {
+                    "worldId": "b8c25964-48d6-46f2-8fb9-73421501b6f3",
+                    "surfaceId": "e915a4d6-9a78-431f-87be-90ed2922e6a4",
+                    "patchId": "cap-start",
+                    "u": 0,
+                    "v": 2.220446049250313e-10
+                  }
+                }
+              ]
+            }
+          ],
+          "links": [],
+          "passages": []
+        },
+        "protectionBytes": 32516,
+        "heapBytes": 15146304,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "statistics": {
+          "strokes": 1,
+          "dabs": 70,
+          "writes": 372,
+          "failures": 0,
+          "cancellations": 0,
+          "sliceMaxMs": 0.30000001192092896,
+          "slices": 964,
+          "previewMaxMs": 0,
+          "stagedDisplayPeakBytes": 48,
+          "droppedTimingRecords": 0,
+          "lastStroke": {
+            "pumps": 2162,
+            "paths": 892,
+            "pathBoxes": 0,
+            "failedPathBoxAllowance": 0,
+            "committedDabs": 70,
+            "writes": 372,
+            "distanceQueries": 372,
+            "distanceBoxes": 0,
+            "failedQueryBoxAllowance": 0,
+            "dabCandidates": 3079,
+            "peakPreparedDabBytes": 8192,
+            "sumPreRoundElevationErrorMeters": 2.123618202574513e-07,
+            "maxPreRoundElevationErrorMeters": 3.146620349955944e-09,
+            "maxFalloffError": 1.517336254810984e-11,
+            "maximumPathPieces": 1,
+            "traveledMeters": 737886.581302683,
+            "residualMeters": 1691.081302682721,
+            "spacingErrorBoundMeters": 0.002593286389533489,
+            "lastCommittedCenter": {
+              "worldId": "b8c25964-48d6-46f2-8fb9-73421501b6f3",
+              "surfaceId": "33c83a1d-6ece-4c03-ab57-031b5221450b",
+              "patchId": "side",
+              "u": 0.0329042668188515,
+              "v": 792365.9281620971
+            },
+            "acceptedPositions": 893,
+            "processedPositions": 893,
+            "discardedPositions": 0,
+            "peakPendingPositions": 3,
+            "hasPendingWork": false,
+            "pendingPositions": 0
+          },
+          "lastTermination": "complete"
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true,
+        "errors": [],
+        "nativeEventQualification": "Chromium may coalesce injected moves before trusted pointer dispatch; both counts are retained.",
+        "latencyQualification": "Changing terrain pixels are observed separately from coherent-drain timing, at 100 ms cadence. Coherent drain is not per-input first-visible latency."
+      },
+      {
+        "detail": 128,
+        "backend": "canvas",
+        "role": "interior",
+        "startupMs": 832.0648000000074,
+        "releaseToCoherentMs": 44.775700000012876,
+        "injectedMoves": 900,
+        "durationMs": 15000,
+        "events": 900,
+        "changedWhileHeld": 53,
+        "firstChangedPixelsMs": 431.80000001192093,
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "longTasks": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "brushDrainPresentationMs": {
+          "p50": 168.60000002384186,
+          "p95": 318.89999997615814,
+          "max": 368.7999999523163
+        },
+        "renderer": {
+          "kind": "cpu",
+          "width": 246,
+          "height": 162,
+          "losses": 0,
+          "recoveries": 0,
+          "uploads": 0,
+          "presentations": 0,
+          "textureBytes": 0,
+          "geometryBytes": 0,
+          "antialias": false,
+          "reason": "Error: WebGL2 unavailable; using CPU fallback.",
+          "renderer": ""
+        },
+        "cacheBytes": 65032,
+        "parentAuthorityBytes": 130064,
+        "connections": {
+          "holes": [
+            {
+              "kind": "through-hole",
+              "version": 1,
+              "id": "48d392e4-35c5-4abd-9208-6794537e8e21",
+              "worldId": "777cb571-f28b-4f24-9171-425a9cbacdd2",
+              "geometry": "circular-cylinder-normal",
+              "radiusMeters": 15000,
+              "mouths": [
+                {
+                  "id": "ca7b62d8-0bd7-4dbe-a3cd-a841fd14f621",
+                  "position": {
+                    "worldId": "777cb571-f28b-4f24-9171-425a9cbacdd2",
+                    "surfaceId": "3d4e8f8c-2716-4dc4-b3ad-5107660b30b5",
+                    "patchId": "cap-start",
+                    "u": 0,
+                    "v": 2.220446049250313e-10
+                  }
+                },
+                {
+                  "id": "183b6958-a459-4ddc-aa71-8bb0056c51d5",
+                  "position": {
+                    "worldId": "777cb571-f28b-4f24-9171-425a9cbacdd2",
+                    "surfaceId": "58f69606-673a-4a0c-b9c5-2044c9c35b15",
+                    "patchId": "cap-start",
+                    "u": 0,
+                    "v": 2.220446049250313e-10
+                  }
+                }
+              ]
+            }
+          ],
+          "links": [],
+          "passages": []
+        },
+        "protectionBytes": 32516,
+        "heapBytes": 16547972,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "statistics": {
+          "strokes": 1,
+          "dabs": 54,
+          "writes": 474,
+          "failures": 0,
+          "cancellations": 0,
+          "sliceMaxMs": 0.20000004768371582,
+          "slices": 911,
+          "previewMaxMs": 0,
+          "stagedDisplayPeakBytes": 88,
+          "droppedTimingRecords": 0,
+          "lastStroke": {
+            "pumps": 2125,
+            "paths": 901,
+            "pathBoxes": 0,
+            "failedPathBoxAllowance": 0,
+            "committedDabs": 54,
+            "writes": 474,
+            "distanceQueries": 474,
+            "distanceBoxes": 0,
+            "failedQueryBoxAllowance": 0,
+            "dabCandidates": 2940,
+            "peakPreparedDabBytes": 8192,
+            "sumPreRoundElevationErrorMeters": 1.3327722018427322e-07,
+            "maxPreRoundElevationErrorMeters": 2.573929504098126e-09,
+            "maxFalloffError": 1.2141674283321758e-11,
+            "maximumPathPieces": 1,
+            "traveledMeters": 568751.1573082415,
+            "residualMeters": 3267.657308240995,
+            "spacingErrorBoundMeters": 0.0019646450162724705,
+            "lastCommittedCenter": {
+              "worldId": "777cb571-f28b-4f24-9171-425a9cbacdd2",
+              "surfaceId": "58f69606-673a-4a0c-b9c5-2044c9c35b15",
+              "patchId": "side",
+              "u": 0.03132833052525507,
+              "v": 596067.088853049
+            },
+            "acceptedPositions": 902,
+            "processedPositions": 902,
+            "discardedPositions": 0,
+            "peakPendingPositions": 2,
+            "hasPendingWork": false,
+            "pendingPositions": 0
+          },
+          "lastTermination": "complete"
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true,
+        "errors": [],
+        "nativeEventQualification": "Chromium may coalesce injected moves before trusted pointer dispatch; both counts are retained.",
+        "latencyQualification": "Changing terrain pixels are observed separately from coherent-drain timing, at 100 ms cadence. Coherent drain is not per-input first-visible latency."
+      },
+      {
+        "detail": 256,
+        "backend": "canvas",
+        "role": "exterior",
+        "startupMs": 807.7436000000016,
+        "releaseToCoherentMs": 214.4672000000137,
+        "injectedMoves": 900,
+        "durationMs": 15000,
+        "events": 900,
+        "changedWhileHeld": 68,
+        "firstChangedPixelsMs": 495.89999997615814,
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000291
+        },
+        "longTasks": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "brushDrainPresentationMs": {
+          "p50": 141.80000001192093,
+          "p95": 258.9000000357628,
+          "max": 306.0999999642372
+        },
+        "renderer": {
+          "kind": "cpu",
+          "width": 348,
+          "height": 229,
+          "losses": 0,
+          "recoveries": 0,
+          "uploads": 0,
+          "presentations": 0,
+          "textureBytes": 0,
+          "geometryBytes": 0,
+          "antialias": false,
+          "reason": "Error: WebGL2 unavailable; using CPU fallback.",
+          "renderer": ""
+        },
+        "cacheBytes": 261128,
+        "parentAuthorityBytes": 522256,
+        "connections": {
+          "holes": [
+            {
+              "kind": "through-hole",
+              "version": 1,
+              "id": "75093ba5-76f4-4350-a949-7062bc7804ce",
+              "worldId": "d65a57cc-4601-4998-a477-fcb8ba1ae05d",
+              "geometry": "circular-cylinder-normal",
+              "radiusMeters": 15000,
+              "mouths": [
+                {
+                  "id": "3990666c-86e3-4acd-bf94-feeee0935b1a",
+                  "position": {
+                    "worldId": "d65a57cc-4601-4998-a477-fcb8ba1ae05d",
+                    "surfaceId": "b9ea194e-201a-4b25-861f-4a354d0ac1a2",
+                    "patchId": "cap-start",
+                    "u": 0,
+                    "v": 2.220446049250313e-10
+                  }
+                },
+                {
+                  "id": "63bd76bb-79e9-4fa7-acfb-3d84fd701482",
+                  "position": {
+                    "worldId": "d65a57cc-4601-4998-a477-fcb8ba1ae05d",
+                    "surfaceId": "3863831b-6532-4de6-9bba-f53a6a60ffd1",
+                    "patchId": "cap-start",
+                    "u": 0,
+                    "v": 2.220446049250313e-10
+                  }
+                }
+              ]
+            }
+          ],
+          "links": [],
+          "passages": []
+        },
+        "protectionBytes": 130564,
+        "heapBytes": 21765252,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "statistics": {
+          "strokes": 1,
+          "dabs": 70,
+          "writes": 1449,
+          "failures": 0,
+          "cancellations": 0,
+          "sliceMaxMs": 0.10000002384185791,
+          "slices": 958,
+          "previewMaxMs": 0,
+          "stagedDisplayPeakBytes": 184,
+          "droppedTimingRecords": 0,
+          "lastStroke": {
+            "pumps": 2351,
+            "paths": 901,
+            "pathBoxes": 0,
+            "failedPathBoxAllowance": 0,
+            "committedDabs": 70,
+            "writes": 1449,
+            "distanceQueries": 1449,
+            "distanceBoxes": 0,
+            "failedQueryBoxAllowance": 0,
+            "dabCandidates": 6016,
+            "peakPreparedDabBytes": 8192,
+            "sumPreRoundElevationErrorMeters": 2.1551071292947206e-07,
+            "maxPreRoundElevationErrorMeters": 3.1465916886682494e-09,
+            "maxFalloffError": 1.5173419319025206e-11,
+            "maximumPathPieces": 1,
+            "traveledMeters": 737888.4545268352,
+            "residualMeters": 1692.9545268349075,
+            "spacingErrorBoundMeters": 0.002619481201548979,
+            "lastCommittedCenter": {
+              "worldId": "d65a57cc-4601-4998-a477-fcb8ba1ae05d",
+              "surfaceId": "b9ea194e-201a-4b25-861f-4a354d0ac1a2",
+              "patchId": "side",
+              "u": 0.032904095991962444,
+              "v": 792367.7935807896
+            },
+            "acceptedPositions": 902,
+            "processedPositions": 902,
+            "discardedPositions": 0,
+            "peakPendingPositions": 3,
+            "hasPendingWork": false,
+            "pendingPositions": 0
+          },
+          "lastTermination": "complete"
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true,
+        "errors": [],
+        "nativeEventQualification": "Chromium may coalesce injected moves before trusted pointer dispatch; both counts are retained.",
+        "latencyQualification": "Changing terrain pixels are observed separately from coherent-drain timing, at 100 ms cadence. Coherent drain is not per-input first-visible latency."
+      },
+      {
+        "detail": 256,
+        "backend": "canvas",
+        "role": "interior",
+        "startupMs": 789.7709000000032,
+        "releaseToCoherentMs": 47.812799999985145,
+        "injectedMoves": 900,
+        "durationMs": 15000,
+        "events": 899,
+        "changedWhileHeld": 53,
+        "firstChangedPixelsMs": 424.69999998807907,
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000291
+        },
+        "longTasks": {
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "brushDrainPresentationMs": {
+          "p50": 167.19999998807907,
+          "p95": 318.80000001192093,
+          "max": 367.80000001192093
+        },
+        "renderer": {
+          "kind": "cpu",
+          "width": 246,
+          "height": 162,
+          "losses": 0,
+          "recoveries": 0,
+          "uploads": 0,
+          "presentations": 0,
+          "textureBytes": 0,
+          "geometryBytes": 0,
+          "antialias": false,
+          "reason": "Error: WebGL2 unavailable; using CPU fallback.",
+          "renderer": ""
+        },
+        "cacheBytes": 261128,
+        "parentAuthorityBytes": 522256,
+        "connections": {
+          "holes": [
+            {
+              "kind": "through-hole",
+              "version": 1,
+              "id": "038cc8c1-855f-46da-bc03-47f7c3fbb8db",
+              "worldId": "763cd20a-863b-4561-9a54-c3f2b47eaafc",
+              "geometry": "circular-cylinder-normal",
+              "radiusMeters": 15000,
+              "mouths": [
+                {
+                  "id": "de22e36f-a226-40f4-8dbc-d407ba3c4c3c",
+                  "position": {
+                    "worldId": "763cd20a-863b-4561-9a54-c3f2b47eaafc",
+                    "surfaceId": "64478653-6a58-4622-80d1-565be786f0e2",
+                    "patchId": "cap-start",
+                    "u": 0,
+                    "v": 2.220446049250313e-10
+                  }
+                },
+                {
+                  "id": "30158200-0789-4129-941e-b665f482b6a3",
+                  "position": {
+                    "worldId": "763cd20a-863b-4561-9a54-c3f2b47eaafc",
+                    "surfaceId": "19ce4726-cdb2-4eb5-af5f-db780f2cfdc4",
+                    "patchId": "cap-start",
+                    "u": 0,
+                    "v": 2.220446049250313e-10
+                  }
+                }
+              ]
+            }
+          ],
+          "links": [],
+          "passages": []
+        },
+        "protectionBytes": 130564,
+        "heapBytes": 19476316,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "statistics": {
+          "strokes": 1,
+          "dabs": 54,
+          "writes": 1873,
+          "failures": 0,
+          "cancellations": 0,
+          "sliceMaxMs": 0.30000001192092896,
+          "slices": 912,
+          "previewMaxMs": 0,
+          "stagedDisplayPeakBytes": 296,
+          "droppedTimingRecords": 0,
+          "lastStroke": {
+            "pumps": 2333,
+            "paths": 900,
+            "pathBoxes": 0,
+            "failedPathBoxAllowance": 0,
+            "committedDabs": 54,
+            "writes": 1873,
+            "distanceQueries": 1873,
+            "distanceBoxes": 0,
+            "failedQueryBoxAllowance": 0,
+            "dabCandidates": 6316,
+            "peakPreparedDabBytes": 8192,
+            "sumPreRoundElevationErrorMeters": 1.3427865967291997e-07,
+            "maxPreRoundElevationErrorMeters": 2.573929504098126e-09,
+            "maxFalloffError": 1.2141730118547296e-11,
+            "maximumPathPieces": 1,
+            "traveledMeters": 568751.0685754289,
+            "residualMeters": 3267.568575428436,
+            "spacingErrorBoundMeters": 0.001962462077365501,
+            "lastCommittedCenter": {
+              "worldId": "763cd20a-863b-4561-9a54-c3f2b47eaafc",
+              "surfaceId": "19ce4726-cdb2-4eb5-af5f-db780f2cfdc4",
+              "patchId": "side",
+              "u": 0.03132835191382313,
+              "v": 596067.0017856574
+            },
+            "acceptedPositions": 901,
+            "processedPositions": 901,
+            "discardedPositions": 0,
+            "peakPendingPositions": 3,
+            "hasPendingWork": false,
+            "pendingPositions": 0
+          },
+          "lastTermination": "complete"
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true,
+        "errors": [],
+        "nativeEventQualification": "Chromium may coalesce injected moves before trusted pointer dispatch; both counts are retained.",
+        "latencyQualification": "Changing terrain pixels are observed separately from coherent-drain timing, at 100 ms cadence. Coherent drain is not per-input first-visible latency."
+      }
+    ],
+    "startupQualification": "Scripted New World startup includes page navigation/form automation and graphics preparation. First post-split case 6000.7 ms; later cases faster. Do not treat this as isolated shader compilation time.",
+    "saveOpenN256AutoInsideMs": [
+      348.8803,
+      516.3033
+    ]
+  },
+  "version": 12,
+  "geometry": "Finite outer cylindrical solid minus finite inner cavity and independent axis-normal capsule bores. Radial wall pairs share physical angle/z; axial cap pairs share physical XY.",
+  "views": {
+    "insideEditing": "Editable fitted inner-bank projection with mouth markers",
+    "surfaceMap": "Editable accepted wall/disks with mouth markers",
+    "outsideAndInspection": "Actual analytic cut, rock/opposite terrain/void; painting excludes nonselected geography"
+  },
+  "limits": [
+    "Protected exactly-zero ground and conservative radius/rim/thickness constraints.",
+    "No cylinder network or map link authoring at this holes checkpoint.",
+    "Reference terrain only; no displaced mountain/seabed excavation or free flight.",
+    "Browser-local saves; not host integration or owner acceptance."
+  ],
+  "developmentCorrections": [
+    "Initial cut shader rejected an undeclared interval sentinel and reserved identifier; fixed and actual GPU/Canvas checks passed.",
+    "Initial post-shader workflow expected removal on saved Undo, but the correct prior journal entry was a cap relocation. Corrected the oracle; no history implementation changed.",
+    "Native worker rejection could arrive before the next render pump; cancellation now keeps its actual protected-ground reason. Four prior pixel cases failed only this message check, then all eight final pixel/native cases passed.",
+    "Initial Canvas held setup clicked before a coherent picker frame; the existing stale-view guard correctly refused it. Added the missing helper wait, then all eight held cases passed.",
+    "Kept the accepted ordinary GPU terrain path separate from the larger cut program, prepared on first supported cut view.",
+    "Final inspection check found hole-size buttons in read-only cavity navigation. Hid them in inspection; the same desktop Canvas case changed from red to green and all four final GPU/Canvas desktop/mobile pixel cases passed."
+  ],
+  "evidence": [
+    "hollow-cylinder-holes-through.png",
+    "hollow-cylinder-holes-cavity.png",
+    "hollow-cylinder-holes-mobile-canvas.png"
+  ]
+}

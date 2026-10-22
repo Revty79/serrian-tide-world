@@ -260,3 +260,23 @@ checks, build/typecheck and browser editing, real terrain pixels, fallback,
 held painting and compatibility evidence. Pixel 7 is emulation, and owner
 acceptance remains separate. Basic capped-cylinder holes, physical tunnel graphs
 and reciprocal links are next, then the safe open-cylinder assessment.
+
+
+## Capped hollow-cylinder direct holes
+
+The capped cylinder now supports independent radial wall and axial end-cap holes
+with actual corresponding physical mouths, preview/confirmation, resizing,
+identity-preserving relocation, removal and exact parent connection history.
+Finite-cylinder shell subtraction displays real rock/opposite-bank/void in
+Outside Physical view and read-only inspection. Inside editing and Surface map
+retain editable reference geography and mouth markers. Both terrain banks have
+protected exactly-zero opening support; invalid edits retain prior words/history.
+
+Version 12 adds holes and their journal while version 11 stays featureless.
+Existing formats retain their meaning. [Hands-on review](HOLLOW-CYLINDER-HOLES.md)
+and the [compact receipt](evidence/hollow-cylinder-holes.json) distinguish actual
+geometry, tested backend/input capabilities and measured performance from owner
+acceptance. A bounded worker-cancellation correction preserves the real rejection
+message. The cut GPU program is prepared separately on first use, preserving the
+ordinary terrain path. Physical networks and reciprocal links are next, followed
+by the safe open-cylinder assessment; advanced displaced excavation stays deferred.

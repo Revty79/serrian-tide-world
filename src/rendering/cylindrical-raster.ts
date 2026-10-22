@@ -1,3 +1,4 @@
+import {cylinderCutView,cylinderCutRaster,type CylinderExcavationDisplay} from './hollow-cylinder-display.ts';
 import type { CylindricalTerrain } from '../terrain/cylindrical.ts';
 import type { CylindricalBrushSettings } from '../terrain/cylindrical-brush.ts';
 import { prepareCylindricalDab } from '../terrain/cylindrical-brush.ts';
@@ -52,8 +53,9 @@ export function cylinderInterpolatedColor(colors: Uint32Array, terrain: Cylindri
 }
 export interface CylinderRaster { readonly pixels: Uint8ClampedArray; readonly columns: number; readonly rows: number; readonly revision: number; readonly snapshotBytes: number }
 /** One coherent color epoch. Each next() covers at most 2,048 pixels / 10,240 subpixel rays. */
-export function* cylinderRasterSteps(cache: CylinderDisplayCache, view: CylinderView, size: CylinderViewport, pixelBudget: number, reusable?: Uint8ClampedArray, appearance: CylinderAppearance = 'elevation'): Generator<void, CylinderRaster> {
+export function* cylinderRasterSteps(cache: CylinderDisplayCache, view: CylinderView, size: CylinderViewport, pixelBudget: number, reusable?: Uint8ClampedArray, appearance: CylinderAppearance = 'elevation',excavation?:CylinderExcavationDisplay): Generator<void, CylinderRaster> {
   if (!Number.isInteger(pixelBudget) || pixelBudget < 1 || pixelBudget > 180000) throw new RangeError('Cylinder raster budget exceeded.');
+  if(cylinderCutView(view,excavation))return yield* cylinderCutRaster(cache,view,size,pixelBudget,reusable,appearance,excavation!);
   const l = cylinderLayout(cache.terrain.geometry, view, size), factor = Math.min(1.5, Math.sqrt(pixelBudget / (size.width * size.height))), columns = Math.max(1, Math.floor(size.width * factor)), rows = Math.max(1, Math.floor(size.height * factor));
   const pixels = reusable?.length === columns * rows * 4 ? reusable : new Uint8ClampedArray(columns * rows * 4), revision = cache.sourceRevision;
   let elevations = cache.elevationSnapshot(); const snapshotBytes = elevations.byteLength;

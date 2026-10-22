@@ -1,26 +1,41 @@
 import {prepareCylinderSession} from './prepare-cylinder-session.ts';
-import type {HollowCylinderWorld} from '../terrain/hollow-cylinder.ts';
 import {HOLLOW_CYLINDER_ROLES,type HollowCylinderRole} from '../surfaces/hollow-cylinder.ts';
+import type {HollowCylinderWorld} from '../terrain/hollow-cylinder.ts';
 import type {PersistenceWork} from '../persistence/cooperative-work.ts';
+import {TerrainHistory,type WordHistoryJournal} from './terrain-history.ts';
+import {EMPTY_CYLINDER_CONNECTIONS,CYLINDER_CONNECTION_BYTES,cylinderConnectionWords,decodeCylinderConnectionWords,validateCylinderConnections,validateCylinderConnectionJournal,prepareCylinderProtection,type CylinderConnections} from './hollow-cylinder-connections.ts';
 type Prepared=Awaited<ReturnType<typeof prepareCylinderSession>>;
-/** Parent lifecycle; accepted cylindrical sessions retain all numerical work. */
+/** Parent lifecycle only. Each surface retains the accepted cylinder session. */
 export class HollowCylinderDocument {
  readonly world:HollowCylinderWorld;readonly surfaces:Record<HollowCylinderRole,Prepared>;
  name:string;hasSaved:boolean;selectedSurface:HollowCylinderRole;error='';changed=()=>{};
- private checkpointName:string;private checkpointRole:HollowCylinderRole;private hostLocked=false;private switching=false;private disposed=false;
- constructor(world:HollowCylinderWorld,surfaces:Record<HollowCylinderRole,Prepared>,name:string,saved:boolean,selected:HollowCylinderRole){this.world=world;this.surfaces=surfaces;this.name=this.checkpointName=name;this.hasSaved=saved;this.selectedSurface=this.checkpointRole=selected;world.setExcavationProtection(()=>{if(this.disposed)throw Error('This cylindrical document is closed.');});}
- get modified(){return this.name!==this.checkpointName||this.selectedSurface!==this.checkpointRole||HOLLOW_CYLINDER_ROLES.some(r=>this.surfaces[r].editor.modified);}
+ readonly connectionWords=new Uint32Array(CYLINDER_CONNECTION_BYTES/4);readonly connectionHistory=new TerrainHistory(this.connectionWords,4*1024*1024,64);
+ connectionFormat:11|12=11;connections:CylinderConnections=EMPTY_CYLINDER_CONNECTIONS;historyScope:'terrain'|'connections'='terrain';status='Ready';geometryRevision=0;
+ private masks:Record<HollowCylinderRole,Uint8Array>;private connectionCheckpoint=0;private changing=false;private disposed=false;
+ private checkpointName:string;private checkpointRole:HollowCylinderRole;private hostLocked=false;private switching=false;
+ constructor(world:HollowCylinderWorld,surfaces:Record<HollowCylinderRole,Prepared>,name:string,saved:boolean,selected:HollowCylinderRole){this.world=world;this.surfaces=surfaces;this.name=this.checkpointName=name;this.hasSaved=saved;this.selectedSurface=this.checkpointRole=selected;this.connectionWords.set(cylinderConnectionWords(this.connections));this.masks={exterior:new Uint8Array(surfaces.exterior.terrain.sampleCount),interior:new Uint8Array(surfaces.interior.terrain.sampleCount)};world.setExcavationProtection((r,i,h,b)=>{if(this.disposed)throw Error('This cylinder document is closed.');if(this.masks[r][i]&&!Object.is(h,b))throw Error('This terrain supports a reference-shell opening. Move or remove the hole or network before sculpting its protected ground.');});for(const r of HOLLOW_CYLINDER_ROLES)surfaces[r].editor.beforeOperation=()=>{this.historyScope='terrain';this.changed();};}
+ get modified(){return this.connectionHistory.stateId!==this.connectionCheckpoint||this.name!==this.checkpointName||this.selectedSurface!==this.checkpointRole||HOLLOW_CYLINDER_ROLES.some(r=>this.surfaces[r].editor.modified);}
  get painting(){return HOLLOW_CYLINDER_ROLES.some(r=>this.surfaces[r].editor.painting);}
- get processing(){return this.switching||HOLLOW_CYLINDER_ROLES.some(r=>this.surfaces[r].editor.processing);}
- get locked(){return this.hostLocked||this.switching;}
+ get processing(){return this.changing||this.switching||HOLLOW_CYLINDER_ROLES.some(r=>this.surfaces[r].editor.processing);}
+ get locked(){return this.hostLocked||this.switching||this.changing;}
+ get protectionBytes(){return this.masks.exterior.byteLength+this.masks.interior.byteLength;}
+ get canUndo(){return this.historyScope==='connections'?this.connectionHistory.canUndo:this.surfaces[this.selectedSurface].editor.history.canUndo;}
+ get canRedo(){return this.historyScope==='connections'?this.connectionHistory.canRedo:this.surfaces[this.selectedSurface].editor.history.canRedo;}
  set locked(value:boolean){this.hostLocked=value;this.syncLock();}
- private syncLock(){for(const r of HOLLOW_CYLINDER_ROLES)this.surfaces[r].editor.locked=this.locked;}
- markSaved(name:string){this.name=this.checkpointName=name;this.checkpointRole=this.selectedSurface;this.hasSaved=true;for(const r of HOLLOW_CYLINDER_ROLES)this.surfaces[r].editor.markSaved(name);this.changed();}
- async drainForSave(yieldWork?:()=>Promise<void>){for(const r of HOLLOW_CYLINDER_ROLES)await this.surfaces[r].editor.drainForSave(yieldWork);}
- async select(role:HollowCylinderRole){if(!HOLLOW_CYLINDER_ROLES.includes(role))throw RangeError('Unknown cylindrical surface.');if(this.locked||role===this.selectedSurface)return;this.switching=true;this.syncLock();this.changed();try{await this.surfaces[this.selectedSurface].editor.drainForSave();this.selectedSurface=role;this.error='';}catch(e){this.error=String(e);throw e;}finally{this.switching=false;this.syncLock();this.changed();}}
+ private syncLock(){for(const role of HOLLOW_CYLINDER_ROLES)this.surfaces[role].editor.locked=this.locked;}
+ markSaved(name:string){this.name=this.checkpointName=name;this.checkpointRole=this.selectedSurface;this.connectionCheckpoint=this.connectionHistory.stateId;this.hasSaved=true;for(const r of HOLLOW_CYLINDER_ROLES)this.surfaces[r].editor.markSaved(name);this.changed();}
+ async drainForSave(yieldWork?:()=>Promise<void>){if(this.changing)throw Error('Wait for the cylinder opening update.');for(const r of HOLLOW_CYLINDER_ROLES)await this.surfaces[r].editor.drainForSave(yieldWork);}
+ async select(role:HollowCylinderRole){if(!HOLLOW_CYLINDER_ROLES.includes(role))throw RangeError('Unknown cylinder surface.');if(this.locked||role===this.selectedSurface)return;this.switching=true;this.syncLock();this.changed();try{await this.surfaces[this.selectedSurface].editor.drainForSave();this.selectedSurface=role;this.error='';}catch(cause){this.error=String(cause);throw cause;}finally{this.switching=false;this.syncLock();this.changed();}}
+ private async prepareConnections(input:CylinderConnections,work:PersistenceWork={}){const epoch=this.geometryRevision,revisions=HOLLOW_CYLINDER_ROLES.map(r=>this.surfaces[r].terrain.revision),connections=validateCylinderConnections(this.world,input),words=cylinderConnectionWords(connections),masks=await prepareCylinderProtection(this.world,connections,(r,i)=>this.surfaces[r].terrain.read(this.surfaces[r].terrain.keyAt(i)),work);if(this.disposed||epoch!==this.geometryRevision||HOLLOW_CYLINDER_ROLES.some((r,i)=>this.surfaces[r].terrain.revision!==revisions[i]))throw Error('Terrain or cylinder openings changed during validation. Retry.');return{connections,words,masks};}
+ async changeConnections(input:CylinderConnections,replay?:boolean,preview=false){if(this.locked)throw Error('Wait for the current World operation.');this.changing=true;this.syncLock();this.changed();try{for(const r of HOLLOW_CYLINDER_ROLES)await this.surfaces[r].editor.drainForSave();const ready=await this.prepareConnections(input,{progress:(stage,fraction)=>{this.status=`${stage} ${Math.round(fraction*100)}%`;this.changed();}});if(preview)return ready.connections;if(replay===undefined)this.connectionHistory.replace(ready.words);else if(replay)this.connectionHistory.redo();else this.connectionHistory.undo();this.connections=ready.connections;this.masks=ready.masks;this.connectionFormat=12;this.geometryRevision++;this.historyScope='connections';this.status='Cylinder openings updated';this.error='';return this.connections;}finally{this.changing=false;this.syncLock();this.changed();}}
+ checkConnections(input:CylinderConnections){return this.changeConnections(input,undefined,true);}
+ async replay(redo=false){try{if(this.historyScope==='terrain'){const s=this.surfaces[this.selectedSurface].editor;return redo?s.redo():s.undo();}const words=this.connectionHistory.preview(redo);if(words)await this.changeConnections(decodeCylinderConnectionWords(words),redo);}finally{this.changed();}}
+ async restoreConnections(input:CylinderConnections,journal?:WordHistoryJournal,work:PersistenceWork={}){const ready=await this.prepareConnections(input,work),canonical=journal?validateCylinderConnectionJournal(this.world,ready.connections,journal):undefined;this.connectionWords.set(ready.words);this.connectionFormat=12;this.connections=ready.connections;this.masks=ready.masks;if(canonical)this.connectionHistory.restoreJournal(canonical);this.connectionCheckpoint=this.connectionHistory.stateId;if(this.connectionHistory.canUndo||this.connectionHistory.canRedo)this.historyScope='connections';}
  dispose(){this.disposed=true;for(const r of HOLLOW_CYLINDER_ROLES)this.surfaces[r].editor.dispose();this.changed=()=>{};}
 }
-export async function prepareHollowCylinderDocument(world:HollowCylinderWorld,name:string,saved=false,selected:HollowCylinderRole='exterior',work:PersistenceWork={}){
- if(!HOLLOW_CYLINDER_ROLES.includes(selected))throw RangeError('Unknown cylindrical surface.');const started=performance.now(),surfaces={}as Record<HollowCylinderRole,Prepared>;
- try{for(const r of HOLLOW_CYLINDER_ROLES)surfaces[r]=await prepareCylinderSession(world.surfaces[r].terrain,name,saved,work);return{editor:new HollowCylinderDocument(world,surfaces,name,saved,selected),preparationMs:performance.now()-started};}catch(e){for(const r of HOLLOW_CYLINDER_ROLES)surfaces[r]?.editor.dispose();throw e;}
+export async function prepareHollowCylinderDocument(world:HollowCylinderWorld,name:string,saved=false,selected:HollowCylinderRole='exterior',work:PersistenceWork={},connections?:CylinderConnections,journal?:WordHistoryJournal){
+ if(!HOLLOW_CYLINDER_ROLES.includes(selected))throw RangeError('Unknown cylinder surface.');
+ const started=performance.now(),surfaces={} as Record<HollowCylinderRole,Prepared>;
+ try{for(const r of HOLLOW_CYLINDER_ROLES)surfaces[r]=await prepareCylinderSession(world.surfaces[r].terrain,name,saved,work);const editor=new HollowCylinderDocument(world,surfaces,name,saved,selected);if(connections)await editor.restoreConnections(connections,journal,work);return{editor,preparationMs:performance.now()-started};}
+ catch(cause){for(const r of HOLLOW_CYLINDER_ROLES)surfaces[r]?.editor.dispose();throw cause;}
 }

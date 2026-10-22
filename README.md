@@ -20,9 +20,9 @@ tunnel networks and reciprocal map links now use the same parent document and
 versioned v10 Save/Open. Choose **Connection tools** to preview/confirm routes,
 manage branches/chambers/openings, inspect connected physical sections, or place
 conceptual reciprocal links. See the [network checkpoint](docs/HOLLOW-SPHERE-CONNECTIONS.md);
-Hollow/Open Cylinder follow after the sphere's basic connections are stable.
+The capped hollow-cylinder checkpoints extend this shared workflow.
 
-The capped Hollow Cylinder now has a [numerical two-bank foundation](docs/HOLLOW-CYLINDER-FOUNDATION.md) and a [normal editor with three views and v11 Save/Open](docs/HOLLOW-CYLINDER-EDITOR.md). Choose **Capped hollow cylinder world**, with explicit outer/inner radius and length. Paint Inside opens fitted editing; View from inside is read-only cavity inspection; Surface map remains editable. Basic cylinder holes, tunnels and links are the next checkpoint, followed by the safe Open Cylinder assessment.
+The capped Hollow Cylinder now has a [numerical two-bank foundation](docs/HOLLOW-CYLINDER-FOUNDATION.md) and a [normal editor with three views and v11 Save/Open](docs/HOLLOW-CYLINDER-EDITOR.md). Choose **Capped hollow cylinder world**, with explicit outer/inner radius and length. Paint Inside opens fitted editing; View from inside is read-only cavity inspection; Surface map remains editable. Basic [cylinder wall and cap holes](docs/HOLLOW-CYLINDER-HOLES.md) now add actual cuts, preview/confirmation, independent sizing, movement, exact history and v12 Save/Open on protected 0 m ground. Physical networks and map links follow, then the safe Open Cylinder assessment.
 
 The following cube checkpoints and acceptance qualifications remain preserved.
 
