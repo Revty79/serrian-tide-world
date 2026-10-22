@@ -1,0 +1,613 @@
+{
+  "date": "2026-10-21",
+  "implementation": "95561ca32087c661fdb1f59de020b8bf94afc30c",
+  "status": "Initial hole/tunnel/map-link authoring checkpoint; terrain-aware excavation unfinished and final Cube-I acceptance pending",
+  "checks": {
+    "numerical": {
+      "passed": 1196,
+      "failed": 0
+    },
+    "build": "passed",
+    "cubeFamily": {
+      "passed": 58,
+      "failed": 0
+    },
+    "dimensionsAfterClearanceCorrection": {
+      "passed": 22,
+      "failed": 0
+    },
+    "nativeLongAndFast": {
+      "startTime": "2026-10-22T00:37:01.169Z",
+      "duration": 250191.248,
+      "expected": 14,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "existingGeometryRegressions": {
+      "initialStats": {
+        "startTime": "2026-10-22T00:42:03.515Z",
+        "duration": 1701496.075,
+        "expected": 368,
+        "skipped": 2,
+        "unexpected": 4,
+        "flaky": 0
+      },
+      "repairsStats": {
+        "startTime": "2026-10-22T01:10:32.958Z",
+        "duration": 11723.748000000001,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "repairs": "Wait for completed Open before opening tools; wait for completed Zoom before capturing preserved camera bounds. Assertions unchanged; no flat-editor runtime changes.",
+      "repairedCases": [
+        {
+          "title": "actual Save, close, reopen, Open and continued editing preserve the full numerical map and identity",
+          "project": "desktop"
+        },
+        {
+          "title": "corrupt save rejection leaves unsaved terrain, camera and history intact",
+          "project": "desktop"
+        },
+        {
+          "title": "actual Save, close, reopen, Open and continued editing preserve the full numerical map and identity",
+          "project": "mobile"
+        },
+        {
+          "title": "corrupt save rejection leaves unsaved terrain, camera and history intact",
+          "project": "mobile"
+        }
+      ],
+      "finalPassed": 372,
+      "skipped": 2,
+      "unresolvedFailures": 0
+    }
+  },
+  "conditions": {
+    "viewport": {
+      "width": 1440,
+      "height": 950
+    },
+    "gpu": "ANGLE AMD Radeon RX 6600 D3D11",
+    "ordinary": "900 scheduled native moves over 15 seconds, real terrain-pixel readback; exact Undo/Redo",
+    "fast": "240 moves over 3 seconds, N256 exterior; exact completion/progress/Undo check, not a latency acceptance",
+    "radius": "I uses a shared 45000 m radius on both sides. Historical H inner default was 36000 m; inner timing comparisons have different footprints.",
+    "resourceQualification": "Declared typed buffers, canvas pixels and GL texture storage; excludes JS objects, transient Save journal serialization, OS resident RAM and GPU-driver overhead.",
+    "deviceQualification": "Pixel 7 emulation; no physical phone validation"
+  },
+  "ordinaryStrokes": [
+    {
+      "n": 128,
+      "backend": "auto",
+      "actualBackend": "WebGL2",
+      "role": "solid",
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 22.899999976158142,
+        "p95": 41.19999998807907,
+        "max": 61.89999997615814
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000109
+      },
+      "changedWhileHeld": 139,
+      "releaseBacklogMs": 57.69999998807907
+    },
+    {
+      "n": 128,
+      "backend": "canvas",
+      "actualBackend": "Canvas2D fallback",
+      "role": "solid",
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 20.100000023841858,
+        "p95": 36.80000001192093,
+        "max": 50.69999998807907
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "max": 33.40000000000009
+      },
+      "changedWhileHeld": 137,
+      "releaseBacklogMs": 41.799999952316284
+    },
+    {
+      "n": 256,
+      "backend": "auto",
+      "actualBackend": "WebGL2",
+      "role": "solid",
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 33.59999996423721,
+        "p95": 57.19999998807907,
+        "max": 82.69999998807907
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000109
+      },
+      "changedWhileHeld": 136,
+      "releaseBacklogMs": 58
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "actualBackend": "Canvas2D fallback",
+      "role": "solid",
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 32.90000003576279,
+        "p95": 51.69999998807907,
+        "max": 117
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "max": 16.80000000000109
+      },
+      "changedWhileHeld": 137,
+      "releaseBacklogMs": 55.59999996423721
+    },
+    {
+      "n": 128,
+      "backend": "auto",
+      "actualBackend": "WebGL2",
+      "role": "exterior",
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "historyEntries": 1,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 31.69999998807907,
+        "p95": 50,
+        "max": 71.10000002384186
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000291
+      },
+      "changedWhileHeld": 139,
+      "releaseBacklogMs": 51.40000003576279,
+      "undoMs": 59.99369999999908,
+      "redoMs": 67.01169999999911
+    },
+    {
+      "n": 128,
+      "backend": "auto",
+      "actualBackend": "WebGL2",
+      "role": "interior",
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 840,
+      "historyEntries": 1,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 29.100000023841858,
+        "p95": 47.10000002384186,
+        "max": 65.19999998807907
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000109
+      },
+      "changedWhileHeld": 140,
+      "releaseBacklogMs": 46.5,
+      "undoMs": 44.03450000000157,
+      "redoMs": 67.5914000000048
+    },
+    {
+      "n": 128,
+      "backend": "canvas",
+      "actualBackend": "Canvas2D fallback",
+      "role": "exterior",
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "historyEntries": 1,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 21.80000001192093,
+        "p95": 39.30000001192093,
+        "max": 56.30000001192093
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000291
+      },
+      "changedWhileHeld": 141,
+      "releaseBacklogMs": 44,
+      "undoMs": 64.21240000000398,
+      "redoMs": 84.05619999999908
+    },
+    {
+      "n": 128,
+      "backend": "canvas",
+      "actualBackend": "Canvas2D fallback",
+      "role": "interior",
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 840,
+      "historyEntries": 1,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 22.399999976158142,
+        "p95": 39.09999996423721,
+        "max": 62.19999998807907
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000291
+      },
+      "changedWhileHeld": 138,
+      "releaseBacklogMs": 117,
+      "undoMs": 98.34380000000237,
+      "redoMs": 112.34150000000955
+    },
+    {
+      "n": 256,
+      "backend": "auto",
+      "actualBackend": "WebGL2",
+      "role": "exterior",
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "historyEntries": 1,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 34.80000001192093,
+        "p95": 59.30000001192093,
+        "max": 89.39999997615814
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "max": 16.80000000000291
+      },
+      "changedWhileHeld": 138,
+      "releaseBacklogMs": 106.69999998807907,
+      "undoMs": 57.993699999991804,
+      "redoMs": 65.44230000000971
+    },
+    {
+      "n": 256,
+      "backend": "auto",
+      "actualBackend": "WebGL2",
+      "role": "interior",
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 840,
+      "historyEntries": 1,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 43.5,
+        "p95": 62.39999997615814,
+        "max": 105.89999997615814
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000109
+      },
+      "changedWhileHeld": 138,
+      "releaseBacklogMs": 137.39999997615814,
+      "undoMs": 91.62759999999253,
+      "redoMs": 76.46489999999176
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "actualBackend": "Canvas2D fallback",
+      "role": "exterior",
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 841,
+      "historyEntries": 1,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 31.399999976158142,
+        "p95": 52.59999996423721,
+        "max": 72.19999998807907
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 16.80000000000291
+      },
+      "changedWhileHeld": 139,
+      "releaseBacklogMs": 107,
+      "undoMs": 121.71510000000126,
+      "redoMs": 117.53699999998207
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "actualBackend": "Canvas2D fallback",
+      "role": "interior",
+      "radiusMeters": 45000,
+      "accepted": 901,
+      "executed": 901,
+      "dabs": 840,
+      "historyEntries": 1,
+      "termination": "complete",
+      "inputToVisibleMs": {
+        "p50": 40.299999952316284,
+        "p95": 76.90000003576279,
+        "max": 142.19999998807907
+      },
+      "frameGapMs": {
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "max": 33.30000000000018
+      },
+      "changedWhileHeld": 137,
+      "releaseBacklogMs": 109.40000003576279,
+      "undoMs": 127.8579000000027,
+      "redoMs": 172.234300000011
+    }
+  ],
+  "historicalComparison": {
+    "source": "cube-h-receipt.json",
+    "approvedSolid": [
+      {
+        "n": 128,
+        "backend": "auto",
+        "inputToVisibleMs": {
+          "p50": 27.100000023841858,
+          "p95": 53.39999997615814,
+          "max": 122.69999998807907
+        }
+      },
+      {
+        "n": 128,
+        "backend": "canvas",
+        "inputToVisibleMs": {
+          "p50": 23.099999964237213,
+          "p95": 45.19999998807907,
+          "max": 100.09999996423721
+        }
+      },
+      {
+        "n": 256,
+        "backend": "auto",
+        "inputToVisibleMs": {
+          "p50": 35.09999996423721,
+          "p95": 61.09999996423721,
+          "max": 106.29999995231628
+        }
+      },
+      {
+        "n": 256,
+        "backend": "canvas",
+        "inputToVisibleMs": {
+          "p50": 32,
+          "p95": 187.9000000357628,
+          "max": 234.5
+        }
+      }
+    ],
+    "hollowH": [
+      {
+        "n": 128,
+        "backend": "auto",
+        "role": "exterior",
+        "inputToVisibleMs": {
+          "p50": 22.600000023841858,
+          "p95": 42.30000001192093,
+          "max": 71.79999995231628
+        }
+      },
+      {
+        "n": 128,
+        "backend": "auto",
+        "role": "interior",
+        "inputToVisibleMs": {
+          "p50": 34.69999998807907,
+          "p95": 52.5,
+          "max": 71.69999998807907
+        }
+      },
+      {
+        "n": 128,
+        "backend": "canvas",
+        "role": "exterior",
+        "inputToVisibleMs": {
+          "p50": 21.899999976158142,
+          "p95": 39.09999996423721,
+          "max": 55.69999998807907
+        }
+      },
+      {
+        "n": 128,
+        "backend": "canvas",
+        "role": "interior",
+        "inputToVisibleMs": {
+          "p50": 28.899999976158142,
+          "p95": 50.90000003576279,
+          "max": 72
+        }
+      },
+      {
+        "n": 256,
+        "backend": "auto",
+        "role": "exterior",
+        "inputToVisibleMs": {
+          "p50": 35.30000001192093,
+          "p95": 59.10000002384186,
+          "max": 89.10000002384186
+        }
+      },
+      {
+        "n": 256,
+        "backend": "auto",
+        "role": "interior",
+        "inputToVisibleMs": {
+          "p50": 37.5,
+          "p95": 64.80000001192093,
+          "max": 87.40000003576279
+        }
+      },
+      {
+        "n": 256,
+        "backend": "canvas",
+        "role": "exterior",
+        "inputToVisibleMs": {
+          "p50": 32.700000047683716,
+          "p95": 55.90000003576279,
+          "max": 89.19999998807907
+        }
+      },
+      {
+        "n": 256,
+        "backend": "canvas",
+        "role": "interior",
+        "inputToVisibleMs": {
+          "p50": 38.60000002384186,
+          "p95": 109.29999995231628,
+          "max": 331.5
+        }
+      }
+    ]
+  },
+  "fastSweeps": [
+    {
+      "n": 256,
+      "backend": "auto",
+      "role": "exterior",
+      "injectedMoves": 240,
+      "durationMs": 3000,
+      "backlogMs": 2877.8594999999914,
+      "inputToVisibleMs": {
+        "p50": 2469.5,
+        "p95": 2715,
+        "max": 2754
+      },
+      "accepted": 241,
+      "executed": 241,
+      "dabs": 891,
+      "uncompletedInputs": 0,
+      "termination": "complete",
+      "needsRecovery": false,
+      "changedWhileHeld": 28,
+      "exactUndo": true
+    },
+    {
+      "n": 256,
+      "backend": "canvas",
+      "role": "exterior",
+      "injectedMoves": 240,
+      "durationMs": 3000,
+      "backlogMs": 2907.4473,
+      "inputToVisibleMs": {
+        "p50": 2508.100000023842,
+        "p95": 2737.899999976158,
+        "max": 2803.599999964237
+      },
+      "accepted": 241,
+      "executed": 241,
+      "dabs": 891,
+      "uncompletedInputs": 0,
+      "termination": "complete",
+      "needsRecovery": false,
+      "changedWhileHeld": 27,
+      "exactUndo": true
+    }
+  ],
+  "switching": [
+    {
+      "role": "interior",
+      "clickToPaintOpportunityMs": 64.30000001192093,
+      "hostDrainMs": 14.199999988079071
+    },
+    {
+      "role": "exterior",
+      "clickToPaintOpportunityMs": 63.5,
+      "hostDrainMs": 11.900000035762787
+    },
+    {
+      "role": "interior",
+      "clickToPaintOpportunityMs": 64.69999998807907,
+      "hostDrainMs": 14.199999988079071
+    },
+    {
+      "role": "exterior",
+      "clickToPaintOpportunityMs": 64.69999998807907,
+      "hostDrainMs": 14.299999952316284
+    },
+    {
+      "role": "interior",
+      "clickToPaintOpportunityMs": 65.09999996423721,
+      "hostDrainMs": 14.699999988079071
+    },
+    {
+      "role": "exterior",
+      "clickToPaintOpportunityMs": 64.5,
+      "hostDrainMs": 14.600000023841858
+    }
+  ],
+  "persistenceN256": {
+    "saveMs": 155.1886000000004,
+    "openMs": 2023.0156000000006,
+    "exactBothSurfacesAndConnections": true
+  },
+  "retainedResourcesN256WithNinePrimitiveNetwork": {
+    "hostBufferBytes": 7343812,
+    "fieldBytes": 12681408,
+    "stencilBytes": 18997512,
+    "cpuAtlasBytes": 12632112,
+    "gpuTextureBytes": 25362816,
+    "canvasBytes": 17740800,
+    "excavationCanvasBytes": 0,
+    "declaredBufferAndPixelBytes": 94758460
+  },
+  "historicalHResources": {
+    "hostBufferBytes": 7343796,
+    "fieldBytes": 12681408,
+    "stencilBytes": 18997512,
+    "cpuAtlasBytes": 12632112,
+    "gpuTextureBytes": 25362816,
+    "canvasBytes": 17740800,
+    "excavationCanvasBytes": 0,
+    "declaredBufferAndPixelBytes": 94758444
+  },
+  "limitations": [
+    "Terrain-aware mountain/coast/seabed/interior-mountain excavation unfinished; zero-height safeguard remains.",
+    "Fast sweeps accumulate roughly 2.9 seconds of release backlog despite exact completion and visible progress.",
+    "Circular perpendicular reference-shell holes only; face fit and supported World-relative precision apply.",
+    "Point/margin and guided traversal are not full actor/vehicle collision or free first-person exploration.",
+    "Largest 48-primitive workload, maximum serialized journal latency and physical-phone behavior are not established."
+  ]
+}

@@ -4,7 +4,7 @@
 owner-approved solid `d011a377e6a1ad76296e41740422fa5600f69082` and hollow foundation
 `543cb6211905a8fffc78013eec9b06d144b94e5b`.
 
-**Correction checkpoint verification in progress. Final Cube-I acceptance is blocked by unfinished terrain-aware excavation.** Cube-H owner testing has not been declared
+**Initial correction checkpoint technically verified. Final Cube-I acceptance remains blocked by unfinished terrain-aware excavation.** Cube-H owner testing has not been declared
 accepted. I is authorized provisionally; owner-reported H defects take priority.
 Stop after I for Ember's independent GitHub review and final owner acceptance.
 No pyramid code, original website, database, Docker, hosting or Production changes.
@@ -79,7 +79,58 @@ stated domain; it is not owner acceptance or a promise of future capabilities.
 
 ## Verification and measurements
 
-Final run counts, native timings and resources will be recorded here before delivery.
+- Numerical suite: **1,196 passed**. TypeScript and production build passed.
+- Family browser run: **58 passed**, desktop and Pixel 7 emulation. After the
+  inspection-radius correction: **22 targeted checks passed**, including the new
+  small resized-hole cases, both renderers, persisted history and v6 upgrade guards.
+  Automatic hole cases explicitly verified hardware WebGL2 and changed rim pixels;
+  Canvas cases verified the same dimension change. No physical phone was used.
+- Native sustained/fast cases: **14 passed**. All twelve ordinary 15-second,
+  900-move corner strokes completed, with exact full-gesture Undo/Redo and changing
+  terrain pixels while held. All p95 latencies were below 180 ms; largest ordinary
+  observed input-to-visible latency was 142.2 ms.
+- Broader existing-geometry coverage: **372 passed, 2 intentional skips** across
+  desktop/mobile. The original 374-case run had 368 passes and four failures in
+  two older flat-map tests: a tools-panel action raced asynchronous Open, and a
+  camera snapshot preceded completed Zoom. Their data/history/camera assertions
+  were retained; the tests now wait for the actual completed UI state. The exact
+  four cases then passed a targeted rerun. No flat-editor runtime change was needed.
+  Both the original outcome and matching rerun are retained in the receipt.
+
+Input-to-visible p95 in milliseconds, one current trial per case:
+
+| N | Renderer | Approved solid d011 | H outside | H inside | I solid | I outside | I inside |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 128 | WebGL2 | 53.4 | 42.3 | 52.5 | 41.2 | 50.0 | 47.1 |
+| 128 | Canvas | 45.2 | 39.1 | 50.9 | 36.8 | 39.3 | 39.1 |
+| 256 | WebGL2 | 61.1 | 59.1 | 64.8 | 57.2 | 59.3 | 62.4 |
+| 256 | Canvas | 187.9 | 55.9 | 109.3 | 51.7 | 52.6 | 76.9 |
+
+Historical figures come from the preserved H receipt, not rerun campaigns.
+I's shared physical brush radius is 45 km on both sides; historical H inside used
+36 km. Inner comparisons therefore have different physical footprints. The approved
+solid N256 Canvas sample missed the 180 ms target at 187.9 ms; preserve that
+qualification. These are current measurements, not a guarantee across devices.
+
+The extreme N256 exterior sweep sends 240 moves over three seconds and produced
+891 exact dabs. Both renderers completed all 241 accepted inputs with zero
+uncompleted inputs and exact Undo, with 27-28 changed-terrain observations while
+held. However, p95 input-to-visible latency was **2,715 / 2,738 ms**, with roughly
+**2.88 / 2.91 seconds** of release backlog. This stress case remains visibly delayed;
+passing its correctness/progress test does **not** mean fast-motion lag is fixed.
+The accepted brush executor has not been replaced or work silently thinned.
+
+Six N256 side-switch samples took **63.5-65.1 ms** from click to two paint
+opportunities (host drain 11.9-14.7 ms), comparable to H's 63.6-64.8 ms. One N256
+v7 Save/Open trial took **155 ms / 2,023 ms** and restored both exact terrain hashes
+and all connections. These are samples, not distributions.
+
+Declared retained buffers/textures/pixels with the same nine-primitive N256 network
+remain **90.4 MiB** (94,758,460 bytes), versus H's 94,758,444 bytes; the extra 16 bytes
+are retained metadata history. The approved single solid baseline was 38.6 MiB.
+This excludes JS object overhead, transient history serialization, process RAM and
+GPU-driver overhead. Largest 48-primitive or maximum-history performance is unproven.
+
 
 ## Remaining limits and unfinished requirements
 
@@ -125,7 +176,7 @@ agree with clearance, preview, exact history and saves before this correction is
 The owner's [permanent underground roadmap](UNDERGROUND-NETWORK-ROADMAP.md)
 separates physical through-holes/breaches, physical tunnel-network entrances and
 supporting linked-map navigation. Direct local underground access must not require
-an extended shaft or opposite-surface connection. Future large/underwater/vehicle
+an extended shaft or opposite-surface connection. Terrain-aware/underwater and vehicle-validated
 breaches and scalable world-spanning networks need versioned aperture, coordinate,
 depth/level, curve/section and spatial-paging contracts.
 
@@ -147,4 +198,24 @@ independent picks followed by preview/confirmation. Sculpted endpoints fail clea
 and atomically; they remain unfinished. Inspect either physical feature, reverse
 travel, then return to terrain. Save/Open restores the World geometry.
 
-Implementation/evidence SHAs and final checks will be added before push.
+Implementation: [95561ca32087c661fdb1f59de020b8bf94afc30c](https://github.com/Revty79/serrian-tide-world/commit/95561ca32087c661fdb1f59de020b8bf94afc30c).
+The [compact verification receipt](evidence/cube-i-receipt.json) records current
+cases, original/rerun regression outcomes, timings, retained resources and limits.
+The following delivery commit records that receipt and the test synchronization
+repairs; it changes no runtime code.
+
+Stop here for Ember's published-source review and the owner's checkpoint testing.
+This is a functional initial circular-hole checkpoint, not final Cube-I or
+cube-family acceptance. Terrain-aware excavation remains required next work.
+
+To reproduce checks, use the installed Node 24 toolchain, `npm.cmd test`,
+`npm.cmd run build`, and the three `playwright.cube-i*.config.mjs` configurations.
+Set `ATLAS_PREVIEW_URL` to the running preview (5260 in this delivery; otherwise
+Vite defaults to 5173). The long configuration uses `CUBE_LONG_OUTPUT` and
+`CUBE_HOLLOW_LONG_OUTPUT` to keep current metrics separate from historical H data.
+Run the legacy configuration from `.local/cube-i-regression-run` after creating
+its `docs/evidence` directory: older tests use relative evidence paths, so running
+from the repository root would overwrite historical receipts/screenshots. The
+configuration's testDir and server cwd remain the repository root. Set
+`CUBE_I_REGRESSION_REPORT` to a separate absolute JSON path for a targeted rerun.
+These steps keep historical evidence intact; no extra benchmark archive is needed.

@@ -120,6 +120,7 @@ test('actual Save, close, reopen, Open and continued editing preserve the full n
   const reopened = await context.newPage(); await page.close(); await startAtlas(reopened);
   await toolsPanel(reopened, true); await reopened.getByRole('combobox', { name: 'Saved maps', exact: true }).selectOption(before.id);
   await reopened.getByRole('button', { name: 'Open Map', exact: true }).click();
+  await expect(reopened.getByLabel('Map work status')).toHaveText('Saved on this device');
   await toolsPanel(reopened, true);
   await expect(reopened.getByRole('textbox', { name: 'Map name', exact: true })).toHaveValue('Serrian coast');
   await expect(reopened.getByRole('button', { name: 'Undo', exact: true })).toBeDisabled();
@@ -133,7 +134,8 @@ test('actual Save, close, reopen, Open and continued editing preserve the full n
 test('corrupt save rejection leaves unsaved terrain, camera and history intact', async ({ page }) => {
   await startAtlas(page);
   await page.getByRole('button', { name: 'Fit Entire Map', exact: true }).click(); await sculpt(page); await save(page); const saved = await savedState(page);
-  await sculpt(page, .7, .5); await page.getByRole('button', { name: 'Zoom In', exact: true }).click();
+  await sculpt(page, .7, .5); const beforeZoom=await bounds(page); await page.getByRole('button', { name: 'Zoom In', exact: true }).click();
+  await expect.poll(async()=>(await bounds(page)).width).toBeCloseTo(beforeZoom.width*1.5,1);
   const rect = await bounds(page);
   await page.evaluate(async (id) => {
     await new Promise<void>((resolve, reject) => {

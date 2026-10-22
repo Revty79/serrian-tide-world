@@ -30,7 +30,8 @@ cut a mountain, seabed or other sculpted endpoint yet; flattening geography or
 removing the validator is not a solution. The [dependency and checkpoint plan](docs/CUBE-I-TERRAIN-EXCAVATION-CHECKPOINTS.md)
 identifies the shared displaced-material, aperture, WebGL/Canvas, preview,
 clearance and versioned persistence work required for both holes and tunnels.
-See the [current verification record](docs/CUBE-I-COMPLETION.md).
+Extreme fast sweeps can still queue several seconds of work; this remains a
+measured limitation. See the [current verification record](docs/CUBE-I-COMPLETION.md).
 
 Cube-H hands-on acceptance and final cube-family acceptance remain pending.
 **Stop for Ember's review and owner acceptance; no pyramid or unrelated geometry
