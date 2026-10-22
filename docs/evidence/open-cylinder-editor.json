@@ -1,0 +1,1265 @@
+{
+  "measuredAtUtc": "2026-10-22T19:38:22.052Z",
+  "base": "00deebbd301f421d327e7712ea0e8193853fd7e6",
+  "status": "Operational both-open Open Cylinder verified in the normal Atlas editor; stop for Ember technical review and owner hands-on approval before subsequent geometry.",
+  "sourceFingerprint": {
+    "sha256": "2248bbf5f5043baa73185aee886b1a911ad72b5eeed53fc5b61828df6e2b7e6d",
+    "files": 352,
+    "algorithm": "SHA256 over sorted src POSIX paths followed by bytes with CRLF normalized to LF"
+  },
+  "numerical": {
+    "passed": 1334,
+    "failed": 0,
+    "localLog": ".local/open-final-numerical.log",
+    "targetedAfterMessageCleanup": {
+      "passed": 22,
+      "failed": 0,
+      "localLog": ".local/open-final-targeted.log"
+    }
+  },
+  "productionBuild": {
+    "passed": true,
+    "localLog": ".local/open-final-build.log",
+    "qualification": "Large-chunk warning reported; build exits zero."
+  },
+  "validations": {
+    "finalConnectionValidation": {
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "durationMs": 77398.07,
+      "localReport": ".local/open-final-validation-confirmation.json"
+    },
+    "normalOpenEditor": {
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "durationMs": 240086.929,
+      "localReport": ".local/open-cylinder-workflow-final.json"
+    },
+    "paintedOpenPresentation": {
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "durationMs": 88712.383,
+      "localReport": ".local/open-final-painted-presentation.json"
+    },
+    "cappedConnectionControls": {
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "durationMs": 205481.935,
+      "localReport": ".local/open-final-capped-connections.json"
+    },
+    "matchedSolidHollowPixels": {
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "durationMs": 51700.456999999995,
+      "localReport": ".local/open-final-parity.json"
+    },
+    "actualOpenPixels": {
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "durationMs": 52793.483,
+      "localReport": ".local/open-render-final.json"
+    },
+    "ordinaryOpenPainting": {
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "durationMs": 164288.095,
+      "localReport": ".local/open-cylinder-held-final.json"
+    },
+    "ordinaryCappedPainting": {
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "durationMs": 142901.86800000002,
+      "localReport": ".local/open-final-capped-held.json"
+    },
+    "existingSolidAndHollowEditors": {
+      "passed": 68,
+      "failed": 0,
+      "coverageDefinition": "68 distinct logical cases, retaining the original raw failure and independently corrected case results",
+      "initialRun": {
+        "passed": 67,
+        "testFailures": 1,
+        "localReport": ".local/open-final-regression-first.json"
+      },
+      "correctedRelatedGuideRun": {
+        "passed": 12,
+        "failed": 0,
+        "localReport": ".local/open-final-guide-regression.json"
+      },
+      "repair": "Test-only pause-control race: a completed leg changes Pause to disabled Travel while the panel scrolls. Atomic conditional interaction with the persistent control preserves every camera/containment/word assertion. No application source change. All affected guide variants rerun.",
+      "failedCase": "mobile|hollow-cylinder-network-guide.spec.ts|cylinder network canvas: native look/pinch and Home retain real eye, every mixed wall/cap section emerges continuously and returns exact editing pose",
+      "finalLogicalCoveragePassed": 68
+    }
+  },
+  "browserChecks": {
+    "finalPassedCoverageCases": 155,
+    "passedExecutionCount": 166,
+    "initialTestOnlyFailureCount": 1,
+    "initialFailureResolved": true
+  },
+  "geometry": {
+    "configuration": "both-open",
+    "connectedSurfaceCount": 1,
+    "parentAuthority": "A*(2Z+4P) Float32 words; no terrain alias/neighbor table",
+    "profiles": {
+      "N64": 8192,
+      "N128": 32768,
+      "N256": 131072
+    },
+    "wallGeographyIndependent": true,
+    "annuliAndCreasesShared": true,
+    "negativeClearance": "-min(radial thickness, axial length)/4; checked before first v14 publication",
+    "thinReferenceBrushControls": true,
+    "annularMidpointChartCases": 400,
+    "canonicalOwnershipUnchanged": true
+  },
+  "sharedInfrastructure": {
+    "presentation": "Actual accepted Hermite/raster/cache/GLSL field-color-coast/CSG interval/GPU resource components",
+    "editor": "Actual accepted ConnectedPreviewSession and ConnectedWorkspace, surface input adapter, physical tools and graph guide",
+    "numerical": "Accepted connected brush, smoothing, stroke, physical path spacing, atomic Float32 and whole-gesture history cores",
+    "workers": "Closed worker provider validation/wire contract/capacities preserved. Open is cooperative and sends no fabricated closed metadata.",
+    "closedExtraction": {
+      "canvas": {
+        "baseline": "00deebb",
+        "allPixelsExact": true,
+        "cases": [
+          {
+            "mode": "physical",
+            "cut": false,
+            "hash": "000465517049a5994793105245c1bc577027601c9d26220965a70f8780b7fd1d",
+            "columns": 320,
+            "rows": 240,
+            "snapshotBytes": 16136
+          },
+          {
+            "mode": "physical",
+            "cut": true,
+            "hash": "bd846a189092b283cf0b4e1f08db067df09353a392a71bda679c37974ad891f5",
+            "columns": 320,
+            "rows": 240,
+            "snapshotBytes": 109072
+          },
+          {
+            "mode": "map",
+            "cut": false,
+            "hash": "483dc2a5db85710c6f57dd2ef667d056a9b07599c8d109b1b710da66371320d5",
+            "columns": 320,
+            "rows": 240,
+            "snapshotBytes": 16136
+          },
+          {
+            "mode": "cavity",
+            "cut": false,
+            "hash": "71ac7fd88659bd71cba3e88b04610a88820c6cc681b03d921b0b27dd5aa2508e",
+            "columns": 320,
+            "rows": 240,
+            "snapshotBytes": 16136
+          },
+          {
+            "mode": "cavity",
+            "cut": true,
+            "hash": "71ac7fd88659bd71cba3e88b04610a88820c6cc681b03d921b0b27dd5aa2508e",
+            "columns": 320,
+            "rows": 240,
+            "snapshotBytes": 109072
+          }
+        ]
+      },
+      "shader": {
+        "baseline": "00deebb",
+        "exact": true,
+        "length": 10843,
+        "sha256": "be607184ce270536d16cd34e9d06be84221576b6a06875f9e3069642229875bd"
+      }
+    }
+  },
+  "persistence": {
+    "newVersion": 14,
+    "existingVersions": "v1-v13 interpretations unchanged",
+    "wholeParentWordsExact": true,
+    "signedZeroExact": true,
+    "selectedScope": true,
+    "connectionJournal": "Complete bounded word Undo/Redo journal persisted",
+    "terrainHistory": "Runtime-only, matching the accepted cylinder editor; reopened geography starts fresh gesture history",
+    "strictFieldsIdentityOwnershipFramesChecksum": true,
+    "candidateReplacementAtomic": true,
+    "heightmapCatalogTransactionAtomic": true
+  },
+  "features": {
+    "fourBrushes": true,
+    "fittedOutsideInside": true,
+    "actualImmersiveReadOnlyInspection": true,
+    "connectedEditableMap": true,
+    "naturalEndsNotAuthoredHoles": true,
+    "wallHoles": true,
+    "independentWallRimPortals": true,
+    "continuousContainedNetworks": true,
+    "branchesChambersJunctionEdits": true,
+    "additionalRelocatedOpenings": true,
+    "reciprocalLocalExternalMapLinks": true,
+    "sharedPreviewConfirmation": true,
+    "boundedGuidedTravel": true,
+    "referenceShellProtection": "One parent mask covers exact 0 m interpolation/gradient support, with atomic validation and terrain revision checks"
+  },
+  "openPixelCases": [
+    {
+      "scene": "axial",
+      "n": 128,
+      "sourceHash": "927f77a4fefab36b8ea2c473ee3029b7ceff511c8d7623c1d6cc8934a218ee9d",
+      "finalHash": "927f77a4fefab36b8ea2c473ee3029b7ceff511c8d7623c1d6cc8934a218ee9d",
+      "width": 960,
+      "height": 720,
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "constructorMs": 12.299999952316284,
+      "readyWaitMs": 12.100000023841858,
+      "compileFrames": 3,
+      "compileFrameMaxGapMs": 16.536000000000058,
+      "presentMs": 10.699999988079071,
+      "checked": 37611,
+      "stableChecked": 35440,
+      "stableMax": 1,
+      "envelopeMax": 1,
+      "envelopeViolations": 0,
+      "meanError": 1.2959480460712105,
+      "worst": [],
+      "centerAlpha": 0,
+      "gpuStatistics": {
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 1,
+        "textureBytes": 133120,
+        "geometryBytes": 1573296,
+        "antialias": true,
+        "baseCompileMs": 12.399999976158142,
+        "cutCompileMs": 0,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "fixtureMs": 586.3000000119209
+    },
+    {
+      "scene": "cavity",
+      "n": 128,
+      "sourceHash": "927f77a4fefab36b8ea2c473ee3029b7ceff511c8d7623c1d6cc8934a218ee9d",
+      "finalHash": "927f77a4fefab36b8ea2c473ee3029b7ceff511c8d7623c1d6cc8934a218ee9d",
+      "width": 960,
+      "height": 720,
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "constructorMs": 12.199999988079071,
+      "readyWaitMs": 12,
+      "compileFrames": 3,
+      "compileFrameMaxGapMs": 16.61200000000008,
+      "presentMs": 10,
+      "checked": 155501,
+      "stableChecked": 154286,
+      "stableMax": 1,
+      "envelopeMax": 1,
+      "envelopeViolations": 0,
+      "meanError": 1.003748415463188,
+      "worst": [],
+      "centerAlpha": 255,
+      "gpuStatistics": {
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 1,
+        "textureBytes": 133120,
+        "geometryBytes": 1573296,
+        "antialias": true,
+        "baseCompileMs": 12.300000011920929,
+        "cutCompileMs": 0,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "fixtureMs": 817.6999999880791
+    },
+    {
+      "scene": "hole",
+      "n": 128,
+      "sourceHash": "927f77a4fefab36b8ea2c473ee3029b7ceff511c8d7623c1d6cc8934a218ee9d",
+      "finalHash": "927f77a4fefab36b8ea2c473ee3029b7ceff511c8d7623c1d6cc8934a218ee9d",
+      "width": 960,
+      "height": 720,
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "constructorMs": 13.099999964237213,
+      "readyWaitMs": 18122.19999998808,
+      "compileFrames": 1090,
+      "compileFrameMaxGapMs": 16.80000000000291,
+      "presentMs": 10.599999964237213,
+      "checked": 48721,
+      "stableChecked": 47030,
+      "stableMax": 3,
+      "envelopeMax": 1,
+      "envelopeViolations": 0,
+      "meanError": 1.1517400999931184,
+      "worst": [],
+      "centerAlpha": 255,
+      "gpuStatistics": {
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 1,
+        "textureBytes": 133120,
+        "geometryBytes": 1573296,
+        "antialias": true,
+        "baseCompileMs": 23.400000035762787,
+        "cutCompileMs": 18099.099999964237,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "fixtureMs": 19731.69999998808
+    },
+    {
+      "scene": "inside",
+      "n": 128,
+      "sourceHash": "927f77a4fefab36b8ea2c473ee3029b7ceff511c8d7623c1d6cc8934a218ee9d",
+      "finalHash": "927f77a4fefab36b8ea2c473ee3029b7ceff511c8d7623c1d6cc8934a218ee9d",
+      "width": 960,
+      "height": 720,
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "constructorMs": 13,
+      "readyWaitMs": 20.400000035762787,
+      "compileFrames": 3,
+      "compileFrameMaxGapMs": 33.281999999999925,
+      "presentMs": 10.199999988079071,
+      "checked": 31906,
+      "stableChecked": 30401,
+      "stableMax": 3,
+      "envelopeMax": 1,
+      "envelopeViolations": 0,
+      "meanError": 1.2999437071888866,
+      "worst": [],
+      "centerAlpha": 255,
+      "gpuStatistics": {
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 1,
+        "textureBytes": 133120,
+        "geometryBytes": 1573296,
+        "antialias": true,
+        "baseCompileMs": 20.69999998807907,
+        "cutCompileMs": 0,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "fixtureMs": 436.80000001192093
+    },
+    {
+      "scene": "map",
+      "n": 128,
+      "sourceHash": "927f77a4fefab36b8ea2c473ee3029b7ceff511c8d7623c1d6cc8934a218ee9d",
+      "finalHash": "927f77a4fefab36b8ea2c473ee3029b7ceff511c8d7623c1d6cc8934a218ee9d",
+      "width": 960,
+      "height": 720,
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "constructorMs": 12.600000023841858,
+      "readyWaitMs": 21.399999976158142,
+      "compileFrames": 4,
+      "compileFrameMaxGapMs": 16.700000000000045,
+      "presentMs": 7.899999976158142,
+      "checked": 95004,
+      "stableChecked": 93306,
+      "stableMax": 1,
+      "envelopeMax": 1,
+      "envelopeViolations": 0,
+      "meanError": 0.998242179276662,
+      "worst": [],
+      "centerAlpha": 255,
+      "gpuStatistics": {
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 1,
+        "textureBytes": 133120,
+        "geometryBytes": 1573296,
+        "antialias": true,
+        "baseCompileMs": 21.599999964237213,
+        "cutCompileMs": 0,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "fixtureMs": 249
+    },
+    {
+      "scene": "outside",
+      "n": 128,
+      "sourceHash": "927f77a4fefab36b8ea2c473ee3029b7ceff511c8d7623c1d6cc8934a218ee9d",
+      "finalHash": "927f77a4fefab36b8ea2c473ee3029b7ceff511c8d7623c1d6cc8934a218ee9d",
+      "width": 960,
+      "height": 720,
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "constructorMs": 41.59999996423721,
+      "readyWaitMs": 14373.200000047684,
+      "compileFrames": 865,
+      "compileFrameMaxGapMs": 31.212000011920964,
+      "presentMs": 11.800000011920929,
+      "checked": 48721,
+      "stableChecked": 47103,
+      "stableMax": 3,
+      "envelopeMax": 1,
+      "envelopeViolations": 0,
+      "meanError": 1.145315765517225,
+      "worst": [],
+      "centerAlpha": 255,
+      "gpuStatistics": {
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 1,
+        "textureBytes": 133120,
+        "geometryBytes": 1573296,
+        "antialias": true,
+        "baseCompileMs": 14373.5,
+        "cutCompileMs": 0,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "fixtureMs": 15686.199999988079
+    },
+    {
+      "scene": "axial",
+      "n": 256,
+      "sourceHash": "abcf583fb04deac699a633fdd270a53cde5880756df6efd1aaad978300b1e349",
+      "finalHash": "abcf583fb04deac699a633fdd270a53cde5880756df6efd1aaad978300b1e349",
+      "width": 960,
+      "height": 720,
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "constructorMs": 12.300000011920929,
+      "readyWaitMs": 21.399999976158142,
+      "compileFrames": 4,
+      "compileFrameMaxGapMs": 16.700000000000045,
+      "presentMs": 16.400000035762787,
+      "checked": 37611,
+      "stableChecked": 35452,
+      "stableMax": 1,
+      "envelopeMax": 1,
+      "envelopeViolations": 0,
+      "meanError": 1.297197680486674,
+      "worst": [],
+      "centerAlpha": 0,
+      "gpuStatistics": {
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 1,
+        "textureBytes": 528384,
+        "geometryBytes": 1573296,
+        "antialias": true,
+        "baseCompileMs": 22,
+        "cutCompileMs": 0,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "fixtureMs": 602.8999999761581
+    },
+    {
+      "scene": "cavity",
+      "n": 256,
+      "sourceHash": "abcf583fb04deac699a633fdd270a53cde5880756df6efd1aaad978300b1e349",
+      "finalHash": "abcf583fb04deac699a633fdd270a53cde5880756df6efd1aaad978300b1e349",
+      "width": 960,
+      "height": 720,
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "constructorMs": 13,
+      "readyWaitMs": 12.300000011920929,
+      "compileFrames": 3,
+      "compileFrameMaxGapMs": 16.597999999999956,
+      "presentMs": 18.69999998807907,
+      "checked": 155501,
+      "stableChecked": 154345,
+      "stableMax": 1,
+      "envelopeMax": 1,
+      "envelopeViolations": 0,
+      "meanError": 1.005266090590679,
+      "worst": [],
+      "centerAlpha": 255,
+      "gpuStatistics": {
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 1,
+        "textureBytes": 528384,
+        "geometryBytes": 1573296,
+        "antialias": true,
+        "baseCompileMs": 12.5,
+        "cutCompileMs": 0,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "fixtureMs": 850.0999999642372
+    },
+    {
+      "scene": "hole",
+      "n": 256,
+      "sourceHash": "abcf583fb04deac699a633fdd270a53cde5880756df6efd1aaad978300b1e349",
+      "finalHash": "abcf583fb04deac699a633fdd270a53cde5880756df6efd1aaad978300b1e349",
+      "width": 960,
+      "height": 720,
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "constructorMs": 12.099999964237213,
+      "readyWaitMs": 46.40000003576279,
+      "compileFrames": 5,
+      "compileFrameMaxGapMs": 16.699999999999818,
+      "presentMs": 16.30000001192093,
+      "checked": 48721,
+      "stableChecked": 47068,
+      "stableMax": 3,
+      "envelopeMax": 1,
+      "envelopeViolations": 0,
+      "meanError": 1.1529716018095837,
+      "worst": [],
+      "centerAlpha": 255,
+      "gpuStatistics": {
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 1,
+        "textureBytes": 528384,
+        "geometryBytes": 1573296,
+        "antialias": true,
+        "baseCompileMs": 12.5,
+        "cutCompileMs": 34.10000002384186,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "fixtureMs": 668.3999999761581
+    },
+    {
+      "scene": "inside",
+      "n": 256,
+      "sourceHash": "abcf583fb04deac699a633fdd270a53cde5880756df6efd1aaad978300b1e349",
+      "finalHash": "abcf583fb04deac699a633fdd270a53cde5880756df6efd1aaad978300b1e349",
+      "width": 960,
+      "height": 720,
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "constructorMs": 12.300000011920929,
+      "readyWaitMs": 22.5,
+      "compileFrames": 4,
+      "compileFrameMaxGapMs": 16.663999999999987,
+      "presentMs": 17.100000023841858,
+      "checked": 31906,
+      "stableChecked": 30422,
+      "stableMax": 3,
+      "envelopeMax": 1,
+      "envelopeViolations": 0,
+      "meanError": 1.300413838198728,
+      "worst": [],
+      "centerAlpha": 255,
+      "gpuStatistics": {
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 1,
+        "textureBytes": 528384,
+        "geometryBytes": 1573296,
+        "antialias": true,
+        "baseCompileMs": 22.80000001192093,
+        "cutCompileMs": 0,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "fixtureMs": 474.19999998807907
+    },
+    {
+      "scene": "map",
+      "n": 256,
+      "sourceHash": "abcf583fb04deac699a633fdd270a53cde5880756df6efd1aaad978300b1e349",
+      "finalHash": "abcf583fb04deac699a633fdd270a53cde5880756df6efd1aaad978300b1e349",
+      "width": 960,
+      "height": 720,
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "constructorMs": 13.300000011920929,
+      "readyWaitMs": 8.100000023841858,
+      "compileFrames": 3,
+      "compileFrameMaxGapMs": 16.700000000000045,
+      "presentMs": 18.899999976158142,
+      "checked": 95004,
+      "stableChecked": 93343,
+      "stableMax": 1,
+      "envelopeMax": 1,
+      "envelopeViolations": 0,
+      "meanError": 0.9984000673655846,
+      "worst": [],
+      "centerAlpha": 255,
+      "gpuStatistics": {
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 1,
+        "textureBytes": 528384,
+        "geometryBytes": 1573296,
+        "antialias": true,
+        "baseCompileMs": 8.5,
+        "cutCompileMs": 0,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "fixtureMs": 277.39999997615814
+    },
+    {
+      "scene": "outside",
+      "n": 256,
+      "sourceHash": "abcf583fb04deac699a633fdd270a53cde5880756df6efd1aaad978300b1e349",
+      "finalHash": "abcf583fb04deac699a633fdd270a53cde5880756df6efd1aaad978300b1e349",
+      "width": 960,
+      "height": 720,
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "constructorMs": 12.200000047683716,
+      "readyWaitMs": 20.299999952316284,
+      "compileFrames": 4,
+      "compileFrameMaxGapMs": 16.634000000000015,
+      "presentMs": 17.80000001192093,
+      "checked": 48721,
+      "stableChecked": 47141,
+      "stableMax": 3,
+      "envelopeMax": 1,
+      "envelopeViolations": 0,
+      "meanError": 1.1465472673336903,
+      "worst": [],
+      "centerAlpha": 255,
+      "gpuStatistics": {
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 1,
+        "presentations": 1,
+        "textureBytes": 528384,
+        "geometryBytes": 1573296,
+        "antialias": true,
+        "baseCompileMs": 20.599999964237213,
+        "cutCompileMs": 0,
+        "reason": "",
+        "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "fixtureMs": 543.7000000476837
+    }
+  ],
+  "matchedPixelSummary": {
+    "proofs": 24,
+    "startingElevations": [
+      -100,
+      0
+    ],
+    "maxStableError": 1,
+    "envelopeViolations": 0,
+    "sourceWordsUnchanged": true
+  },
+  "ordinaryHeldPainting": {
+    "runInIsolation": true,
+    "originalThresholdsUnchanged": true,
+    "open": [
+      {
+        "n": 128,
+        "backend": "auto",
+        "scope": "exterior",
+        "events": 894,
+        "changedWhileHeld": 77,
+        "firstChangedPixelsMs": 295.2000000476837,
+        "releaseToCoherentMs": 57.959200000004785,
+        "frameGaps": {
+          "p50": 16.69999999999709,
+          "p95": 16.799999999999272,
+          "max": 100
+        },
+        "brushDrainPresentationMs": {
+          "p50": 102,
+          "p95": 202.19999998807907,
+          "max": 252.19999998807907
+        },
+        "heapBytes": 21770128,
+        "cacheBytes": 131072,
+        "parentAuthorityBytes": 131072,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "exactUndoRedo": true,
+        "opposingWallUnchanged": true
+      },
+      {
+        "n": 128,
+        "backend": "auto",
+        "scope": "interior",
+        "events": 900,
+        "changedWhileHeld": 71,
+        "firstChangedPixelsMs": 315,
+        "releaseToCoherentMs": 60.35759999999573,
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000291
+        },
+        "brushDrainPresentationMs": {
+          "p50": 102.10000002384186,
+          "p95": 235.69999998807907,
+          "max": 268
+        },
+        "heapBytes": 21951832,
+        "cacheBytes": 131072,
+        "parentAuthorityBytes": 131072,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "exactUndoRedo": true,
+        "opposingWallUnchanged": true
+      },
+      {
+        "n": 128,
+        "backend": "canvas",
+        "scope": "exterior",
+        "events": 899,
+        "changedWhileHeld": 77,
+        "firstChangedPixelsMs": 362.39999997615814,
+        "releaseToCoherentMs": 116.41559999999299,
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000109
+        },
+        "brushDrainPresentationMs": {
+          "p50": 103.90000003576279,
+          "p95": 218.30000001192093,
+          "max": 268.69999998807907
+        },
+        "heapBytes": 14891176,
+        "cacheBytes": 131072,
+        "parentAuthorityBytes": 131072,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "exactUndoRedo": true,
+        "opposingWallUnchanged": true
+      },
+      {
+        "n": 128,
+        "backend": "canvas",
+        "scope": "interior",
+        "events": 894,
+        "changedWhileHeld": 70,
+        "firstChangedPixelsMs": 362.5999999642372,
+        "releaseToCoherentMs": 101.2213000000047,
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000291
+        },
+        "brushDrainPresentationMs": {
+          "p50": 118.80000001192093,
+          "p95": 235.5999999642372,
+          "max": 269.30000001192093
+        },
+        "heapBytes": 14970476,
+        "cacheBytes": 131072,
+        "parentAuthorityBytes": 131072,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "exactUndoRedo": true,
+        "opposingWallUnchanged": true
+      },
+      {
+        "n": 256,
+        "backend": "auto",
+        "scope": "exterior",
+        "events": 900,
+        "changedWhileHeld": 77,
+        "firstChangedPixelsMs": 298,
+        "releaseToCoherentMs": 45.584399999992456,
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000109
+        },
+        "brushDrainPresentationMs": {
+          "p50": 124.5,
+          "p95": 225,
+          "max": 275
+        },
+        "heapBytes": 14635628,
+        "cacheBytes": 524288,
+        "parentAuthorityBytes": 524288,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "exactUndoRedo": true,
+        "opposingWallUnchanged": true
+      },
+      {
+        "n": 256,
+        "backend": "auto",
+        "scope": "interior",
+        "events": 899,
+        "changedWhileHeld": 71,
+        "firstChangedPixelsMs": 320.39999997615814,
+        "releaseToCoherentMs": 54.54409999999916,
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "brushDrainPresentationMs": {
+          "p50": 138.9000000357628,
+          "p95": 256.10000002384186,
+          "max": 289.69999998807907
+        },
+        "heapBytes": 14718816,
+        "cacheBytes": 524288,
+        "parentAuthorityBytes": 524288,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "exactUndoRedo": true,
+        "opposingWallUnchanged": true
+      },
+      {
+        "n": 256,
+        "backend": "canvas",
+        "scope": "exterior",
+        "events": 899,
+        "changedWhileHeld": 77,
+        "firstChangedPixelsMs": 352.9000000357628,
+        "releaseToCoherentMs": 140.39540000000852,
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000109
+        },
+        "brushDrainPresentationMs": {
+          "p50": 101.60000002384186,
+          "p95": 217.39999997615814,
+          "max": 252.80000001192093
+        },
+        "heapBytes": 49444612,
+        "cacheBytes": 524288,
+        "parentAuthorityBytes": 524288,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "exactUndoRedo": true,
+        "opposingWallUnchanged": true
+      },
+      {
+        "n": 256,
+        "backend": "canvas",
+        "scope": "interior",
+        "events": 899,
+        "changedWhileHeld": 70,
+        "firstChangedPixelsMs": 348.30000001192093,
+        "releaseToCoherentMs": 106.24760000000242,
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "brushDrainPresentationMs": {
+          "p50": 118.30000001192093,
+          "p95": 234.60000002384186,
+          "max": 267.69999998807907
+        },
+        "heapBytes": 34439096,
+        "cacheBytes": 524288,
+        "parentAuthorityBytes": 524288,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "exactUndoRedo": true,
+        "opposingWallUnchanged": true
+      }
+    ],
+    "cappedAfterSharedExtraction": [
+      {
+        "detail": 128,
+        "backend": "auto",
+        "role": "exterior",
+        "events": 896,
+        "changedWhileHeld": 69,
+        "firstChangedPixelsMs": 335,
+        "releaseToCoherentMs": 40.735100000001694,
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 83.29999999999927
+        },
+        "brushDrainPresentationMs": {
+          "p50": 133.80000001192093,
+          "p95": 251.19999998807907,
+          "max": 317.39999997615814
+        },
+        "heapBytes": 17629568,
+        "cacheBytes": 65032,
+        "parentAuthorityBytes": 130064,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "detail": 128,
+        "backend": "auto",
+        "role": "interior",
+        "events": 899,
+        "changedWhileHeld": 53,
+        "firstChangedPixelsMs": 410.10000002384186,
+        "releaseToCoherentMs": 38.5879999999961,
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000109
+        },
+        "brushDrainPresentationMs": {
+          "p50": 167.69999998807907,
+          "p95": 317,
+          "max": 367.10000002384186
+        },
+        "heapBytes": 17895932,
+        "cacheBytes": 65032,
+        "parentAuthorityBytes": 130064,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "detail": 128,
+        "backend": "canvas",
+        "role": "exterior",
+        "events": 900,
+        "changedWhileHeld": 68,
+        "firstChangedPixelsMs": 340.19999998807907,
+        "releaseToCoherentMs": 35.247699999999895,
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "max": 16.80000000000109
+        },
+        "brushDrainPresentationMs": {
+          "p50": 134.60000002384186,
+          "p95": 251.80000001192093,
+          "max": 301.80000001192093
+        },
+        "heapBytes": 14947968,
+        "cacheBytes": 65032,
+        "parentAuthorityBytes": 130064,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "detail": 128,
+        "backend": "canvas",
+        "role": "interior",
+        "events": 900,
+        "changedWhileHeld": 53,
+        "firstChangedPixelsMs": 427,
+        "releaseToCoherentMs": 31.97259999999369,
+        "frameGaps": {
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000291
+        },
+        "brushDrainPresentationMs": {
+          "p50": 167.79999995231628,
+          "p95": 334.69999998807907,
+          "max": 368.0999999642372
+        },
+        "heapBytes": 17370996,
+        "cacheBytes": 65032,
+        "parentAuthorityBytes": 130064,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "detail": 256,
+        "backend": "auto",
+        "role": "exterior",
+        "events": 900,
+        "changedWhileHeld": 69,
+        "firstChangedPixelsMs": 336.5,
+        "releaseToCoherentMs": 35.403899999990244,
+        "frameGaps": {
+          "p50": 16.699999999999818,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "brushDrainPresentationMs": {
+          "p50": 134.60000002384186,
+          "p95": 252.30000001192093,
+          "max": 318.39999997615814
+        },
+        "heapBytes": 17798036,
+        "cacheBytes": 261128,
+        "parentAuthorityBytes": 522256,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "detail": 256,
+        "backend": "auto",
+        "role": "interior",
+        "events": 900,
+        "changedWhileHeld": 53,
+        "firstChangedPixelsMs": 411.60000002384186,
+        "releaseToCoherentMs": 44.723299999997835,
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "brushDrainPresentationMs": {
+          "p50": 168.10000002384186,
+          "p95": 319,
+          "max": 368
+        },
+        "heapBytes": 18093916,
+        "cacheBytes": 261128,
+        "parentAuthorityBytes": 522256,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "detail": 256,
+        "backend": "canvas",
+        "role": "exterior",
+        "events": 900,
+        "changedWhileHeld": 68,
+        "firstChangedPixelsMs": 341.30000001192093,
+        "releaseToCoherentMs": 35.90090000000782,
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "brushDrainPresentationMs": {
+          "p50": 134.80000001192093,
+          "p95": 251.30000001192093,
+          "max": 300.69999998807907
+        },
+        "heapBytes": 16332436,
+        "cacheBytes": 261128,
+        "parentAuthorityBytes": 522256,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      },
+      {
+        "detail": 256,
+        "backend": "canvas",
+        "role": "interior",
+        "events": 899,
+        "changedWhileHeld": 53,
+        "firstChangedPixelsMs": 426.10000002384186,
+        "releaseToCoherentMs": 31.98399999999674,
+        "frameGaps": {
+          "p50": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "max": 16.80000000000109
+        },
+        "brushDrainPresentationMs": {
+          "p50": 168.10000002384186,
+          "p95": 335.10000002384186,
+          "max": 369.10000002384186
+        },
+        "heapBytes": 14657824,
+        "cacheBytes": 261128,
+        "parentAuthorityBytes": 522256,
+        "history": {
+          "entries": 1,
+          "cursor": 1,
+          "retainedBytes": 12288,
+          "activeBytes": 0,
+          "activeSamples": 0,
+          "evictions": 0,
+          "branches": 0,
+          "peakTypedBytes": 12288
+        },
+        "exactUndoRedo": true,
+        "opposingSurfaceUnchanged": true
+      }
+    ],
+    "qualification": "900 injected moves over15s percase; Chromium may coalesce dispatch. Pixel changes sampled independently of coherent release. No photon/GPU-completion latency claim."
+  },
+  "canvasRefinement": {
+    "desktopPixels": 1500000,
+    "coarsePointerPixels": 650000,
+    "yieldsToPaintingAndDraining": true,
+    "settledNormalEditorCaptureGate": true
+  },
+  "graphicsPreparation": {
+    "nonblockingConstructor": true,
+    "backgroundCompletionFramesVerified": true,
+    "noExtensionAndLinkFailureEditableCanvas": true,
+    "pendingDisposalVerified": true,
+    "heldContextLossExactHistoryAndRecovery": true,
+    "apiReference": "https://registry.khronos.org/webgl/extensions/KHR_parallel_shader_compile/"
+  },
+  "captures": [
+    {
+      "path": "open-cylinder-editor/open-128-terrain-cpu-gpu.png",
+      "local": ".local/open-render-final/desktop-128-outside.png"
+    },
+    {
+      "path": "open-cylinder-editor/open-256-real-axial-void.png",
+      "local": ".local/open-render-final/desktop-256-axial.png"
+    },
+    {
+      "path": "open-cylinder-editor/open-128-physical-cut-cpu-gpu.png",
+      "local": ".local/open-render-final/desktop-128-hole.png"
+    },
+    {
+      "path": "open-cylinder-editor/desktop-128-inside-edit.png",
+      "local": ".local/open-cylinder-workflow-shots/desktop-128-auto-inside.png"
+    },
+    {
+      "path": "open-cylinder-editor/mobile-256-settled-inside.png",
+      "local": ".local/open-cylinder-workflow-shots/mobile-256-canvas-inside.png"
+    },
+    {
+      "path": "open-cylinder-editor/desktop-connections-after-reopen.png",
+      "local": ".local/open-cylinder-workflow-shots/desktop-auto-connections.png"
+    }
+  ],
+  "limitations": [
+    "Both ends open only.",
+    "Reference-surface elevation/color/relief presentation; displaced terrain and terrain-aware excavation are deferred.",
+    "Basic cuts need protected exactly0m ground; whole containment/precision/48-cutter limits apply.",
+    "Certified bounded brush/path domain only; arbitrary far transitions are not claimed. Ordinary radius is strictly below min(.24*min(T,L),.2*Ri). Failures retain an exact undoable committed prefix.",
+    "External map-link identifiers persist; the standalone host cannot open external destinations.",
+    "Desktop Chromium and Pixel7 emulation are browser evidence, not physical-device evidence or owner acceptance.",
+    "No pyramids, full Network Designer, free flight, tiled high-resolution worlds, site/DB/Docker/hosting/Production changes."
+  ]
+}

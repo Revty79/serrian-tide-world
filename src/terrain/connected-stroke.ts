@@ -140,3 +140,5 @@ export function beginConnectedStroke<T extends IndexedTerrain<{readonly index:nu
     },
   });
 }
+
+export type ConnectedStrokeStatistics=ReturnType<typeof beginConnectedStroke<IndexedTerrain<{readonly index:number}>>>['statistics'];

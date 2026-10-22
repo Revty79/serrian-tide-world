@@ -1,3 +1,4 @@
+import {terrainHermiteGrid} from './terrain-hermite.ts';
 import type { CylindricalTerrain } from '../terrain/cylindrical.ts';
 import type { CylinderRayHit } from './cylindrical-view.ts';
 import { elevationToColor } from './elevation-colors.ts';
@@ -13,15 +14,6 @@ export function cylinderDisplayIndex(terrain: CylindricalTerrain, region: Cylind
   if (region === 'side') return Math.min(z, row) * a + c;
   if (row >= p) return (end ? z * a : 0) + (end ? (a - c) % a : c);
   return a * (z + 1) + (end ? 1 + a * (p - 1) : 0) + (row === 0 ? 0 : 1 + (row - 1) * a + c);
-}
-
-function tangent(a: number, b: number, c: number) {
-  const u = b - a, v = c - b;
-  return u > 0 && v > 0 || u < 0 && v < 0 ? 2 * u * (v / (u + v)) : 0;
-}
-function cubic(a: number, b: number, c: number, d: number, t: number) {
-  const m = tangent(a, b, c), n = tangent(b, c, d), q = 3 * (c - b) - 2 * m - n, r = 2 * (b - c) + m + n;
-  return b + t * (m + t * (q + t * r));
 }
 
 /** Shape-preserving tensor Hermite reconstruction through actual samples.
@@ -43,7 +35,7 @@ export function cylinderElevationSampler(values: Float32Array, terrain: Cylindri
       const r = Math.max(0, Math.min(last, top + dr - 1)), base = side ? r * a : r === p ? end ? z * a : 0 : capBase + (end ? 1 + a * (p - 1) : 0) + (r === 0 ? 0 : 1 + (r - 1) * a);
       for (let dc = 0; dc < 4; dc++) { const c = columns[dc]!; q[dr * 4 + dc] = values[base + (side ? c : r === 0 ? 0 : r === p && end ? (a - c) % a : c)]!; }
     }
-    const height = cubic(cubic(q[0]!, q[1]!, q[2]!, q[3]!, x), cubic(q[4]!, q[5]!, q[6]!, q[7]!, x), cubic(q[8]!, q[9]!, q[10]!, q[11]!, x), cubic(q[12]!, q[13]!, q[14]!, q[15]!, x), y);
+    const height = terrainHermiteGrid(q, x, y);
     const sea = terrain.metadata.seaLevel, crossesSea = Math.min(q[5]!, q[6]!, q[9]!, q[10]!) <= sea && Math.max(q[5]!, q[6]!, q[9]!, q[10]!) > sea;
     if (light === 'none' || light === 'land' && height <= sea) return { height, dx: 0, dy: 0, crossesSea };
     // Continuous interpolation of actual sample finite-difference normals avoids

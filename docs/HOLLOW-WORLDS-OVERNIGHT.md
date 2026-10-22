@@ -8,6 +8,12 @@ completed overnight prototype fallback below is historical; it does not close
 the newer operational Open Cylinder assignment. Pyramids still require the
 subsequent technical and hands-on review gate.
 
+The subsequent [operational Open Cylinder](OPEN-CYLINDER-EDITOR.md) completes
+that newer assignment with actual annular topology, the shared accepted
+rendering/session/workspace, three views, v14 Save/Open and basic connections.
+The earlier prototype receipts below remain historical and unchanged. Stop for
+Ember/owner review before any further geometry.
+
 The owner subsequently approved and accepted the painted-coastline correction:
 new hollow Worlds default to the shared -100 m blank ocean. Select **Reference
 shell (0 m)** to reproduce the original hole/tunnel workflows described below.

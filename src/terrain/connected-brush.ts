@@ -212,3 +212,5 @@ export function prepareConnectedDab<T extends IndexedTerrain<{readonly index:num
     cancel(): void { if (status === 'preparing' || status === 'ready') { status = 'cancelled'; release(); } },
   });
 }
+
+export type ConnectedDabStatistics=ReturnType<typeof prepareConnectedDab<IndexedTerrain<{readonly index:number}>>>['statistics'];

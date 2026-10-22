@@ -1,0 +1,47 @@
+import type {OpenCylinderWorld} from '../terrain/open-cylinder.ts';
+import type {SurfacePosition} from '../surfaces/contracts.ts';
+import type {Vec3} from '../surfaces/cube-sphere.ts';
+import {segmentPointDistance,type PhysicalPassage,type LinkedEntrance,type PassageLocation} from '../surfaces/passages.ts';
+import {createOpenCylinderPrototype,validateOpenHole,openWallHoleAt,resizeOpenHole,moveOpenHole,openHoleRadiusBounds,validateOpenPassage,openPassageBetween,openPassageRadiusBounds,validateOpenLink,openMapLink,relocateOpenLink,openCylinderExcavation,type OpenCylinderWallHole} from '../surfaces/open-cylinder-prototype.ts';
+import {TerrainHistory,type WordHistoryJournal} from './terrain-history.ts';
+import {workStep,type PersistenceWork} from '../persistence/cooperative-work.ts';
+export interface OpenCylinderConnections{readonly holes:readonly OpenCylinderWallHole[];readonly passages:readonly PhysicalPassage[];readonly links:readonly LinkedEntrance[]}
+export const OPEN_CONNECTION_BYTES=256*1024;
+export const EMPTY_OPEN_CONNECTIONS:OpenCylinderConnections=Object.freeze({holes:Object.freeze([]),links:Object.freeze([]),passages:Object.freeze([])});
+function boundedConnectionArray(value:unknown,max:number){if(!Array.isArray(value)||value.length>max||Object.keys(value).length!==value.length||Object.keys(value).some((k,i)=>k!==String(i)))throw RangeError('Connection components require bounded dense arrays.');}
+/** Transient oriented charts for proven annular material mathematics. These are
+ * never terrain identities, persisted surfaces, banks or worker providers. The
+ * public World retains its one actual connected surface and canonical words. */
+export function openConnectionGeometry(w:OpenCylinderWorld){
+ const g=w.geometry,d=g.metadata,prototype=createOpenCylinderPrototype({provider:'physical-open-cylinder-reference-prototype',version:1,configuration:'both-open',worldId:d.identity.worldId,outerRadiusMeters:d.outerRadiusMeters,innerRadiusMeters:d.innerRadiusMeters,lengthMeters:d.lengthMeters,rimOwnership:'midpoint-split-prototype-v1',surfaces:{exterior:{surfaceId:'annular-material-chart:exterior'},interior:{surfaceId:'annular-material-chart:interior'}}});
+ const toChart=(input:SurfacePosition):SurfacePosition=>{if(!input||Object.keys(input).sort().join(',')!=='patchId,surfaceId,u,v,worldId')throw RangeError('Unsupported open-cylinder position fields.');const p=g.normalize(input),q=g.physical(p),role=p.patchId.endsWith('wall')?g.canonicalScope(p):q.radius>=prototype.dimensions.middleRadiusMeters?'exterior':'interior';return prototype.normalize({...prototype.identity(role),patchId:p.patchId.endsWith('wall')?'side':p.patchId,u:p.u*(p.patchId==='inner-wall'||p.patchId==='rim-end'?-1:1),v:p.patchId.endsWith('wall')?q.z:q.radius});};
+ const fromChart=(input:SurfacePosition):SurfacePosition=>{const p=prototype.normalize(input),q=prototype.referencePosition(p),patchId=p.patchId==='side'?(prototype.roleOf(p)==='exterior'?'outer-wall':'inner-wall'):p.patchId;return g.normalize({...g.identity,patchId,u:p.u*(p.patchId==='side'&&prototype.roleOf(p)==='interior'||p.patchId==='rim-end'?-1:1),v:patchId==='outer-wall'?q[2]+d.lengthMeters/2:patchId==='inner-wall'?d.lengthMeters/2-q[2]:patchId==='rim-end'?d.outerRadiusMeters-p.v:p.v-d.innerRadiusMeters});};
+ // Preserve the accepted validators' deep immutability across chart conversion.
+ const holeIn=(h:OpenCylinderWallHole)=>{boundedConnectionArray(h.mouths,2);return{...h,mouths:h.mouths.map(m=>({...m,position:toChart(m.position)}))};},holeOut=(h:OpenCylinderWallHole):OpenCylinderWallHole=>Object.freeze({...h,mouths:Object.freeze(h.mouths.map(m=>Object.freeze({...m,position:fromChart(m.position)})))});
+ const passageIn=(p:PhysicalPassage)=>{boundedConnectionArray(p.nodes,48);boundedConnectionArray(p.segments,48);boundedConnectionArray(p.portals,48);return{...p,portals:p.portals.map(a=>({...a,position:toChart(a.position)}))};},passageOut=(p:PhysicalPassage):PhysicalPassage=>Object.freeze({...p,portals:Object.freeze(p.portals.map(a=>Object.freeze({...a,position:fromChart(a.position)})))});
+ const location=(l:PassageLocation,convert:(p:SurfacePosition)=>SurfacePosition):PassageLocation=>l.kind==='surface'&&l.position.worldId===g.identity.worldId?{...l,position:convert(l.position)}:l;
+ const linkIn=(l:LinkedEntrance)=>{boundedConnectionArray(l.anchors,2);return{...l,anchors:l.anchors.map(a=>({...a,location:location(a.location,toChart)}))};},linkOut=(l:LinkedEntrance):LinkedEntrance=>Object.freeze({...l,anchors:Object.freeze(l.anchors.map(a=>Object.freeze({...a,location:Object.freeze(location(a.location,fromChart))})))});
+ const validatePassage=(p:PhysicalPassage)=>passageOut(validateOpenPassage(prototype,passageIn(p)));
+ return{prototype,toChart,fromChart,holeIn,holeOut,passageIn,passageOut,linkIn,linkOut,validatePassage,
+  holeBounds:()=>openHoleRadiusBounds(prototype),passageBounds:()=>openPassageRadiusBounds(prototype),
+  hole:(p:SurfacePosition,r:number)=>holeOut(openWallHoleAt(prototype,toChart(p),r)),resizeHole:(h:OpenCylinderWallHole,r:number)=>holeOut(resizeOpenHole(prototype,holeIn(h),r)),moveHole:(h:OpenCylinderWallHole,p:SurfacePosition)=>holeOut(moveOpenHole(prototype,holeIn(h),toChart(p))),
+  passage:(a:SurfacePosition,b:SurfacePosition,r:number)=>passageOut(openPassageBetween(prototype,toChart(a),toChart(b),r)),
+  mapLink:(p:SurfacePosition,to:PassageLocation)=>linkOut(openMapLink(prototype,toChart(p),location(to,toChart))),relocateLink:(l:LinkedEntrance,id:string,to:PassageLocation)=>linkOut(relocateOpenLink(prototype,linkIn(l),id,location(to,toChart))),
+  model:(c:OpenCylinderConnections)=>openCylinderExcavation(prototype,c.holes.map(holeIn),c.passages.map(passageIn)),
+ };
+}
+export function openConnectionWords(value:OpenCylinderConnections){const bytes=new TextEncoder().encode(JSON.stringify(value));if(bytes.length>OPEN_CONNECTION_BYTES-4)throw RangeError('Connections exceed the 256 KiB World limit.');const words=new Uint32Array(OPEN_CONNECTION_BYTES/4);words[0]=bytes.length;new Uint8Array(words.buffer,4).set(bytes);return words;}
+export function decodeOpenConnectionWords(words:Uint32Array):OpenCylinderConnections{if(words.length!==OPEN_CONNECTION_BYTES/4||words[0]!>OPEN_CONNECTION_BYTES-4)throw Error('Invalid open-cylinder connection words.');return JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(new Uint8Array(words.buffer,words.byteOffset+4,words[0])));}
+export function validateOpenConnections(w:OpenCylinderWorld,input:OpenCylinderConnections):OpenCylinderConnections{
+ if(!input||Object.keys(input).sort().join(',')!=='holes,links,passages')throw RangeError('Unsupported open-cylinder connection fields.');for(const[list,max]of[[input.holes,48],[input.links,128],[input.passages,8]]as const)if(!Array.isArray(list)||list.length>max||Object.keys(list).length!==list.length||Object.keys(list).some((k,i)=>k!==String(i)))throw RangeError('Connections require bounded dense arrays.');
+ const a=openConnectionGeometry(w),holes=input.holes.map(h=>a.holeOut(validateOpenHole(a.prototype,a.holeIn(h)))),passages=input.passages.map(a.validatePassage),links=input.links.map(l=>a.linkOut(validateOpenLink(a.prototype,a.linkIn(l)))),ids=[...holes.flatMap(h=>[h.id,...h.mouths.map(m=>m.id)]),...passages.flatMap(p=>[p.id,...p.nodes.map(n=>n.id),...p.segments.map(s=>s.id),...p.portals.map(p=>p.id)]),...links.flatMap(l=>[l.id,...l.anchors.map(a=>a.id)])];if(new Set(ids).size!==ids.length)throw RangeError('Duplicate connection or component identity.');
+ const result=Object.freeze({holes:Object.freeze(holes),links:Object.freeze(links),passages:Object.freeze(passages)});a.model(result);openConnectionWords(result);return result;
+}
+export function validateOpenConnectionJournal(w:OpenCylinderWorld,c:OpenCylinderConnections,journal:WordHistoryJournal){const words=openConnectionWords(validateOpenConnections(w,c)),history=new TerrainHistory(words,4*1024*1024,64);history.restoreJournal(journal,state=>{const canonical=openConnectionWords(validateOpenConnections(w,decodeOpenConnectionWords(state)));if(canonical.some((v,i)=>v!==state[i]))throw Error('Noncanonical open-cylinder connection history.');});return history.exportJournal();}
+/** Same conservative reference-shell support policy as accepted cylinders,
+ * applied once to the actual parent words, including shared annular creases. */
+export async function prepareOpenProtection(w:OpenCylinderWorld,c:OpenCylinderConnections,read:(index:number)=>number,work:PersistenceWork={}){
+ const t=w.terrain,g=w.geometry,d=g.metadata,r=t.metadata.representation.resolution,model=openConnectionGeometry(w).model(c),mask=new Uint8Array(t.sampleCount),pad=4*Math.max(2*Math.PI*d.outerRadiusMeters/r.angularSamples,d.lengthMeters/r.axialCells,g.thicknessMeters/(2*r.radialCells));if(!model.primitives.length)return mask;let slice=performance.now();
+ for(let i=0;i<t.sampleCount;i++){const q=t.referencePositionAt(t.keyAt(i)),p:Vec3=[q[0]/d.outerRadiusMeters,q[1]/d.outerRadiusMeters,(q[2]-d.lengthMeters/2)/d.outerRadiusMeters];if(model.primitives.some(c=>segmentPointDistance(p,c.a,c.b)<=c.radius+pad/d.outerRadiusMeters)){mask[i]=1;if(read(i)!==0)throw Error('Reference-shell cuts require level ground at exactly 0 m around openings. Move the opening or restore level ground; no excavation was changed.');}if(i%512===511&&performance.now()-slice>=4){await workStep(work,'Checking annular opening support',i/t.sampleCount);slice=performance.now();}}
+ return mask;
+}

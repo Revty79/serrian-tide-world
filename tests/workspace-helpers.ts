@@ -1,5 +1,15 @@
 import { expect, type Page } from '@playwright/test';
 
+/** A short leg can finish while the panel scrolls into view. Inspect the
+ * persistent control atomically instead of waiting for a past button label.
+ * Camera, progress, containment and exact-geography assertions still follow. */
+export async function pausePassageTravelIfMoving(page:Page){
+  await page.getByRole('button',{name:/^(Pause passage travel|Travel passage)$/}).evaluate(element=>{
+    const button=element as HTMLButtonElement;
+    if(!button.disabled&&button.textContent?.trim()==='Pause passage travel')button.click();
+  });
+}
+
 export async function createWorld(page: Page, shape: 'bounded' | 'wrapped' | 'sphere', options: { name?: string; radius?: string; n?: number } = {}) {
   const dialog = page.getByRole('dialog', { name: 'New World / Map' });
   if (!await dialog.isVisible()) { await toolsPanel(page, true); await page.getByRole('button', { name: 'New World / Map', exact: true }).click(); }

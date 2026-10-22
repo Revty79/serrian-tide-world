@@ -16,19 +16,22 @@ export function initialCylinderView(mode: CylinderView['mode'] = 'physical'): Cy
   const forward = unitDirection([1, -.55, .65]), right = unitDirection(cross3([0, 0, 1], forward));
   return { mode, frame: { right, up: unitDirection(cross3(forward, right)), forward }, zoom: 1, target: [0, 0, 0], pan: { x: 0, y: 0 }, phase: 0 };
 }
-export function cylinderLayout(geometry: CylinderGeometry, view: CylinderView, size: CylinderViewport) {
+export function cylinderFrameLayout(extents:{readonly radiusMeters:number;readonly lengthMeters:number},view:CylinderView,size:CylinderViewport,mapExtents?:{readonly halfWidth:number;readonly halfHeight:number}) {
+  if(![extents.radiusMeters,extents.lengthMeters].every(v=>Number.isFinite(v)&&v>0)||mapExtents&&![mapExtents.halfWidth,mapExtents.halfHeight].every(v=>Number.isFinite(v)&&v>0))throw RangeError('Positive finite cylinder presentation extents required.');
   if(view.eyeMeters&&(view.eyeMeters.length!==3||!view.eyeMeters.every(Number.isFinite)))throw RangeError('Finite cylinder inspection eye required.');
   if (![size.width, size.height, view.zoom].every(v => Number.isFinite(v) && v > 0) || view.zoom < .6 || view.zoom > 6 || !['physical', 'map'].includes(view.mode)
     || ![...view.target, view.pan.x, view.pan.y, view.phase].every(Number.isFinite)) throw new RangeError('Invalid cylinder view/viewport.');
   const { right, up, forward } = view.frame;
   if (![right, up, forward].every(v => v.length === 3 && v.every(Number.isFinite) && Math.abs(Math.hypot(...v) - 1) < 1e-10)
     || Math.abs(dot3(right, up)) > 1e-10 || dot3(cross3(right, up), forward) < 1 - 1e-10) throw new RangeError('Orthonormal right-handed cylinder camera required.');
-  const h = geometry.metadata.lengthMeters / geometry.metadata.radiusMeters / 2;
+  const h = extents.lengthMeters / extents.radiusMeters / 2;
   if (!Number.isFinite(h) || h <= 0) throw new RangeError('Unrepresentable cylinder view aspect ratio.');
-  const halfWidth = view.mode === 'map' ? Math.PI : Math.hypot(right[0], right[1]) + h * Math.abs(right[2]);
-  const halfHeight = view.mode === 'map' ? h + 2 : Math.hypot(up[0], up[1]) + h * Math.abs(up[2]);
+  const halfWidth = view.mode === 'map' ? (mapExtents?.halfWidth??Math.PI) : Math.hypot(right[0], right[1]) + h * Math.abs(right[2]);
+  const halfHeight = view.mode === 'map' ? (mapExtents?.halfHeight??h+2) : Math.hypot(up[0], up[1]) + h * Math.abs(up[2]);
   return { x: size.width / 2, y: size.height / 2, scale: cylinderCenterInspection(view)?Math.min(size.width,size.height)*.5*view.zoom:Math.min(size.width * .84 / (2 * halfWidth), size.height * .70 / (2 * halfHeight)) * view.zoom, h };
 }
+/** Accepted closed wrapper over the common camera/backing layout policy. */
+export function cylinderLayout(geometry:CylinderGeometry,view:CylinderView,size:CylinderViewport){return cylinderFrameLayout(geometry.metadata,view,size);}
 export interface CylinderRayHit { readonly region: CylinderRegion; readonly theta: number; readonly radial: number; readonly z: number; readonly depth: number }
 /** Nearest positive exit from the actual convex reference cylinder. The initial
  * inspection camera lies in its cavity; material-passage cameras use CSG later. */

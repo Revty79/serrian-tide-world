@@ -3,10 +3,13 @@
 **Current work:** the later visual-polish prompt authorizes the operational Open
 Cylinder. Its [connected numerical foundation](OPEN-CYLINDER-NUMERICAL-FOUNDATION.md)
 is now verified: one parent terrain, true shared annular rings, bounded certified
-paths and the accepted shared editing/history core. The normal Open Cylinder
-editor, rendering, Save/Open and connection authoring remain in progress. The
-original prototype/fallback report below is historical evidence, not the current
-stopping point or a claim that the operational shape is delivered.
+paths and the accepted shared editing/history core. The later
+[operational editor](OPEN-CYLINDER-EDITOR.md) adds shared rendering/workspace,
+three views, v14 Save/Open and connection authoring. The original prototype and
+fallback report below is historical evidence. Its receipt remains unchanged;
+current delivery and owner-review status belong to the later editor receipt.
+
+## Historical prototype checkpoint
 
 The authorized overnight sequence ends with a **numerical reference prototype**
 for a cylinder with both ends open. The completed capped hollow-cylinder editor

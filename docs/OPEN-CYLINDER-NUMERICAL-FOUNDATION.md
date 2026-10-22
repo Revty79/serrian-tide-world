@@ -2,9 +2,11 @@
 
 This is the next checkpoint after published visual correction `2303bd2`.
 The connected terrain, bounded metric, continuous paths and shared brush/history
-integration are implemented and verified as a numerical milestone. The normal Atlas selector,
-three-view editor, new Save/Open interpretation and operational connections are
-still required. This document does not claim their delivery or owner acceptance.
+integration were verified as a numerical milestone. This document records that
+checkpoint; the subsequent [operational editor](OPEN-CYLINDER-EDITOR.md) supplies
+the normal selector, shared presentation, three views, v14 Save/Open and basic
+connections. The original numerical receipt remains unchanged. Owner acceptance
+is separate from both technical checkpoints.
 
 The older [assessment](OPEN-CYLINDER-ASSESSMENT.md) remains the evidence that a
 closed-cylinder provider cannot be relabeled as open. Its reference prototype

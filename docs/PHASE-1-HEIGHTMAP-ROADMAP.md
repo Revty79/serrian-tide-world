@@ -12,8 +12,10 @@ Verified milestones in this follow-up: the owner-approved coastline/visual
 correction is published at `2303bd2`. The new
 [Open Cylinder connected numerical foundation](OPEN-CYLINDER-NUMERICAL-FOUNDATION.md)
 has one parent authority, actual shared annuli, bounded certified paths and the
-accepted shared painting/history mechanisms. Its operational rendering, editor,
-Save/Open and connection tools remain required before Open Cylinder delivery.
+accepted shared painting/history mechanisms. The subsequent
+[operational Open Cylinder](OPEN-CYLINDER-EDITOR.md) adds the normal selector,
+shared presentation/workspace, three views, strict v14 Save/Open and basic
+holes, networks, links and guided inspection. Owner acceptance remains separate.
 
 Current follow-up authority (2026-10-22), starting at `b5636ec`: the owner accepts
 Hollow Sphere and Capped Hollow Cylinder core painting for development
@@ -54,11 +56,12 @@ Its [basic wall/cap holes](HOLLOW-CYLINDER-HOLES.md) now have v12 persistence.
 Its [physical networks and reciprocal links](HOLLOW-CYLINDER-CONNECTIONS.md) now
 add v13 persistence and continuous wall/cap inspection. The
 [Open Cylinder numerical prototype and measured assessment](OPEN-CYLINDER-ASSESSMENT.md)
-complete the originally authorized safe-adapter fallback: actual annular geometry,
-reference holes, passage graphs and conceptual links are numerically verified;
-interactive Open Cylinder terrain, views, controls, history and Save/Open remain
-unimplemented. The accepted disk-cap kernel has proven topology and distance
-incompatibilities with annular ends. Completed capped functionality is preserved.
+completed the originally authorized safe-adapter fallback: actual annular geometry,
+reference holes, passage graphs and conceptual links were numerically verified.
+The later [operational editor](OPEN-CYLINDER-EDITOR.md) completes connected terrain,
+views, shared controls/history and v14 Save/Open. Its annular distance adapter
+addresses the proven disk-cap incompatibility without relabeling closed terrain.
+Completed capped functionality is preserved.
 Owner acceptance, the eleven phases and the advanced displaced-terrain deferral
 remain separate and unchanged. No pyramid work began.
 

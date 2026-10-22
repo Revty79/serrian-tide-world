@@ -49,9 +49,10 @@ export function createOpenCylinderGeometry(input:OpenCylinderConfiguration){
  const crossRim=(input:SurfacePosition)=>{const p=normalize(input),i=patchIndex(p.patchId);if(p.v!==0&&p.v!==limits[i])throw RangeError('A physical wall/rim crease is required.');
   const next=p.v===0?(i+3)%4:(i+1)%4;return Object.freeze({position:normalize({...p,patchId:OPEN_CYLINDER_PATCHES[next]!,v:p.v===0?limits[next]!:0}),transport:IDENTITY_TRANSPORT});
  };
- const canonicalScope=(input:SurfacePosition):OpenCylinderScope=>{const p=normalize(input);return p.patchId==='outer-wall'?'exterior':p.patchId==='inner-wall'?'interior':physical(p).radius>=(ro+ri)/2?'exterior':'interior';};
+ const canonicalScope=(input:SurfacePosition):OpenCylinderScope=>{const p=normalize(input);return p.patchId==='outer-wall'?'exterior':p.patchId==='inner-wall'?'interior':(p.patchId==='rim-end'?p.v<=T/2:p.v>=T/2)?'exterior':'interior';};
  return Object.freeze({identity,metadata,thicknessMeters:T,meridianLengthMeters:perimeter,normalize,physical,referencePosition,normal,tangentVector,meridianAt,fromMeridian,crossRim,canonicalScope,
   aliases:(input:SurfacePosition)=>{const p=normalize(input),i=patchIndex(p.patchId);return p.v===0||p.v===limits[i]?Object.freeze([p,crossRim(p).position]):Object.freeze([p]);},
+  scopeContains:(input:SurfacePosition,scope:OpenCylinderScope)=>{const p=normalize(input);if(!['exterior','interior'].includes(scope))throw RangeError('Unknown open-cylinder editing scope.');return!p.patchId.endsWith('wall')&&p.v===T/2||canonicalScope(p)===scope;},
   advance:(input:SurfacePosition,d:SurfaceTangent)=>{const p=normalize(input);if(![d.du,d.dv].every(Number.isFinite))throw RangeError('Finite chart displacement required.');return Object.freeze({position:fromMeridian(p.u+d.du,meridianAt(p)+d.dv),transport:IDENTITY_TRANSPORT});},
  });
 }

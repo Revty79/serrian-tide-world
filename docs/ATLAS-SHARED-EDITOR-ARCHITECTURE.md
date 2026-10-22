@@ -1,5 +1,14 @@
 # One Atlas, geometry adapters
 
+**Current follow-up, 2026-10-22:** the owner-authorized hollow visual correction
+and [operational Open Cylinder](OPEN-CYLINDER-EDITOR.md) reuse the actual accepted
+cylinder field/raster/GPU components, session, viewport/input/scheduling and
+physical connection controls. Closed public wrappers and worker provider
+validation remain intact. Geometry hooks provide the actual annular mathematics;
+one connected Open authority is never relabeled as closed-cylinder terrain.
+The older Cube-I authorization below is historical. Stop after Open Cylinder for
+Ember's review and owner hands-on approval; future geometry is not authorized.
+
 **Current authorization, Cube-I (2026-10-21):** targeted cube-family verification
 and hardening is authorized on provisional Cube-H acceptance. The owner has not
 yet confirmed Cube-H hands-on acceptance. Stop after Cube-I for Ember/owner review;
