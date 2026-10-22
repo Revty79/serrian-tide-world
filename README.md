@@ -22,6 +22,8 @@ manage branches/chambers/openings, inspect connected physical sections, or place
 conceptual reciprocal links. See the [network checkpoint](docs/HOLLOW-SPHERE-CONNECTIONS.md);
 Hollow/Open Cylinder follow after the sphere's basic connections are stable.
 
+The capped Hollow Cylinder now has a [numerical two-bank foundation](docs/HOLLOW-CYLINDER-FOUNDATION.md). Its interactive editor and basic connections are still in progress; it is not yet a creation option.
+
 The following cube checkpoints and acceptance qualifications remain preserved.
 
 The owner accepted solid cube d011a377e6a1ad76296e41740422fa5600f69082 and hollow

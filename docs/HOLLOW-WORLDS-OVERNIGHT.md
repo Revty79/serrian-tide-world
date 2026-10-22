@@ -228,3 +228,18 @@ cases; and four cube physical-passage cases. Groups overlap. First changing pixe
 were observed at 70.4?190.6 ms, release to coherent display at 33.8?335.4 ms, with
 exact whole-terrain Undo/Redo and unchanged opposing terrain. The receipt qualifies
 input coalescing, observer cadence, memory accounting and human/device acceptance.
+
+
+## Capped hollow-cylinder numerical foundation
+
+Two independent zero-height cylindrical banks now have a centered parent adapter,
+inward U reflection, exact canonical sample/rim ownership, their own accepted
+physical metrics, and conservative cap/wall height bounds. Generic direct/whole
+patch writes apply captured host policies; legacy -100 m initialization remains.
+A queued-viewport disposal race found by strengthened legacy Save/Open tests was
+corrected without weakening the cache epoch guard. See the
+[foundation review](HOLLOW-CYLINDER-FOUNDATION.md) and
+[compact receipt](evidence/hollow-cylinder-foundation.json).
+This is numerical infrastructure only: the capped hollow editor, its three views,
+Save/Open and basic connections remain the next work. It does not claim a completed
+capped/open cylinder experience or owner acceptance.

@@ -21,7 +21,7 @@ export class CylinderDisplayCache {
     this.colors = new Uint32Array(terrain.sampleCount); this.sourceRevision = terrain.revision;
   }
   get byteLength() { return this.colors.byteLength; }
-  *prepare() { const revision = this.terrain.revision; if (revision === 0) { this.colors.fill(cylinderPackedColor(-100, this.terrain.metadata.seaLevel)); return; } for (const key of this.terrain.samples()) { if (this.terrain.revision !== revision) throw new Error('Cylinder changed during display preparation.'); this.colors[key.index] = cylinderPackedColor(this.terrain.read(key), this.terrain.metadata.seaLevel); if (key.index % 512 === 511) yield; } this.sourceRevision = revision; }
+  *prepare() { const revision = this.terrain.revision; if (revision === 0) { this.colors.fill(cylinderPackedColor(this.terrain.read(this.terrain.keyAt(0)), this.terrain.metadata.seaLevel)); return; } for (const key of this.terrain.samples()) { if (this.terrain.revision !== revision) throw new Error('Cylinder changed during display preparation.'); this.colors[key.index] = cylinderPackedColor(this.terrain.read(key), this.terrain.metadata.seaLevel); if (key.index % 512 === 511) yield; } this.sourceRevision = revision; }
   snapshot() { return this.colors.slice(); }
   /** Coherent read-only elevation epoch; the terrain remains the only authority. */
   elevationSnapshot() {

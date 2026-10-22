@@ -119,7 +119,7 @@ export function CylinderWorkspace({ session, preparationMs = 0, detail = 128, se
       if (inputAt) { bounded(metrics.inputLatencies, [performance.now() - inputAt]); opportunityAt ||= inputAt; inputAt = 0; }
     };
     function paint() {
-      frame = 0; if (!alive) return; const frameStart = performance.now();
+      frame = 0; if (!alive||session.closed) return; const frameStart = performance.now();
       // Following-RAF opportunity is a browser presentation proxy, not GPU completion or photons.
       if (opportunityAt) { bounded(metrics.presentationOpportunityLatencies, [frameStart - opportunityAt]); opportunityAt = 0; }
       if (lastFrame) { const gap = frameStart - lastFrame; bounded(metrics.frameGaps, [gap]); metrics.maxFrameGapMs = Math.max(metrics.maxFrameGapMs, gap); } lastFrame = frameStart;

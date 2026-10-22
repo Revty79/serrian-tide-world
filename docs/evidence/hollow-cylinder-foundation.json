@@ -1,0 +1,184 @@
+{
+  "verifiedAtUtc": "2026-10-22T06:23:42.359450+00:00",
+  "base": "6ce359249cacc629e5915e7b5c7d03ac02273ce8",
+  "status": "Capped hollow-cylinder numerical foundation and bounded existing-viewport retirement correction technically verified. Interactive hollow-cylinder editor, three views, persistence and connections remain next work.",
+  "ownerAcceptance": false,
+  "sourceFingerprint": {
+    "sha256": "dc6eca9cac98e75724bfb733f0b92c16845c2cb3a4b8d4ec4932e7bbd4ebc775",
+    "files": 271,
+    "algorithm": "SHA256 over sorted src paths in POSIX form followed by bytes with CRLF normalized to LF"
+  },
+  "numerical": {
+    "passed": 1250,
+    "failed": 0,
+    "newFoundationCases": 7,
+    "log": ".local/hollow-cylinder-foundation-numerical-receipt.log"
+  },
+  "typecheck": "passed",
+  "build": "passed",
+  "buildLog": ".local/hollow-cylinder-foundation-build-receipt.log",
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-22T06:17:00.456Z",
+      "duration": 121383.062,
+      "expected": 12,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "title": "replacing and reopening a Canvas cylinder under native CPU throttling never renders a disposed cache or changes saved geography",
+        "project": "desktop",
+        "statuses": [
+          "passed"
+        ]
+      },
+      {
+        "title": "replacing and reopening a Canvas cylinder under native CPU throttling never renders a disposed cache or changes saved geography",
+        "project": "mobile",
+        "statuses": [
+          "passed"
+        ]
+      },
+      {
+        "title": "unavailable WebGL uses correct CPU fallback, readouts, Undo/Redo and v4 Save/Open",
+        "project": "desktop",
+        "statuses": [
+          "passed"
+        ]
+      },
+      {
+        "title": "unavailable WebGL uses correct CPU fallback, readouts, Undo/Redo and v4 Save/Open",
+        "project": "mobile",
+        "statuses": [
+          "passed"
+        ]
+      },
+      {
+        "title": "normal Atlas creates, sculpts all four tools and both rims, saves, switches and reopens exact v4 geography",
+        "project": "desktop",
+        "statuses": [
+          "passed"
+        ]
+      },
+      {
+        "title": "normal cylinder detail 64: exact saved words, signed-zero restoration and persistence timing",
+        "project": "desktop",
+        "statuses": [
+          "passed"
+        ]
+      },
+      {
+        "title": "normal cylinder detail 128: exact saved words, signed-zero restoration and persistence timing",
+        "project": "desktop",
+        "statuses": [
+          "passed"
+        ]
+      },
+      {
+        "title": "normal cylinder detail 256: exact saved words, signed-zero restoration and persistence timing",
+        "project": "desktop",
+        "statuses": [
+          "passed"
+        ]
+      },
+      {
+        "title": "normal Atlas creates, sculpts all four tools and both rims, saves, switches and reopens exact v4 geography",
+        "project": "mobile",
+        "statuses": [
+          "passed"
+        ]
+      },
+      {
+        "title": "normal cylinder detail 64: exact saved words, signed-zero restoration and persistence timing",
+        "project": "mobile",
+        "statuses": [
+          "passed"
+        ]
+      },
+      {
+        "title": "normal cylinder detail 128: exact saved words, signed-zero restoration and persistence timing",
+        "project": "mobile",
+        "statuses": [
+          "passed"
+        ]
+      },
+      {
+        "title": "normal cylinder detail 256: exact saved words, signed-zero restoration and persistence timing",
+        "project": "mobile",
+        "statuses": [
+          "passed"
+        ]
+      }
+    ],
+    "rawReport": ".local/hollow-cylinder-foundation-browser-final.json"
+  },
+  "disposalRegression": {
+    "before": {
+      "stats": {
+        "startTime": "2026-10-22T06:14:20.977Z",
+        "duration": 17698.666,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "cases": [
+        {
+          "title": "normal cylinder detail 64: exact saved words, signed-zero restoration and persistence timing",
+          "project": "mobile",
+          "statuses": [
+            "failed"
+          ]
+        }
+      ],
+      "rawReport": ".local/hollow-cylinder-detail-before.json"
+    },
+    "after": {
+      "stats": {
+        "startTime": "2026-10-22T06:15:55.029Z",
+        "duration": 19838.247000000003,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "cases": [
+        {
+          "title": "normal cylinder detail 64: exact saved words, signed-zero restoration and persistence timing",
+          "project": "mobile",
+          "statuses": [
+            "passed"
+          ]
+        }
+      ],
+      "rawReport": ".local/hollow-cylinder-detail-after.json"
+    },
+    "failure": "Cylinder display epoch is not prepared.",
+    "cause": "The host disposes a retired session before React unmount. A queued old Canvas frame could read its disposed cache.",
+    "fix": "Read-only session closed state stops retired frames. The source-revision guard is unchanged.",
+    "finalCoverage": "All three detail/signed-zero tests now capture and assert no page errors; final 12 cases also cover all tools/rims, legacy Save/Open, unavailable-WebGL Canvas fallback and five replacement/reopen loops under CPU throttling."
+  },
+  "historicalEvidenceRestoredSha256": {
+    "a7-d-mobile-n64-performance.json": "99c16f833588ffb1b9a85dc96d9e6aa106811447cc23a88f0236dea59b1abf6d",
+    "a7-d-mobile-n64-reopened.png": "a8409d143b8e6a3ffb288dd5e5d988e2133fa6087e9b9c050e6424a8678a5679"
+  },
+  "contracts": {
+    "coordinates": "Concentric/coaxial closed cylinders; common centered parent XYZ. Accepted kernels retain z in [0,L] and translate by -L/2 only in parent adapter.",
+    "orientation": "Inner U reflection gives inward physical normals and right-handed side/cap tangents; fold transport conjugated. Exact integer-column ownership reflection, odd/even periodic counts and shared rim keys.",
+    "authority": "Two independent accepted cylindrical terrain banks initially zero, own radius/length/IDs. Existing brush, path, worker, sparse history and cache machinery retained.",
+    "heightPolicy": "Generic optional initial height and synchronous captured host policies applied to direct writes and the entire existing atomic prepared-patch validation before any write. Existing history applies patch before moving its cursor.",
+    "dimensions": "Each radius/length 1..1e9 m; each length/radius .1..20; nested radii/lengths; radial/end thickness >= max(.001 m, corresponding outer dimension *1e-9).",
+    "heights": "Minimum -min(radialT,endT)/4; inside max min(Rin/2,Lin/4); outside max min(Rout,Lout); reject rather than clamp.",
+    "legacy": "Existing cylinders remain -100 m and v4. Revision-zero display reads actual uniform initial height. No other saved-format or database-version change."
+  },
+  "qualifications": [
+    "This checkpoint is numerical infrastructure only; no selectable hollow-cylinder editor, cavity view, parent Save/Open or new cylinder holes/networks/links is claimed.",
+    "The initial numerical gesture test chose an exact footprint-boundary radius and the accepted kernel refused a Float64 precision-floor ambiguity. Ordinary supported radius 397.3 m is tested; distance/falloff safeguards were not weakened.",
+    "Browser tests use desktop and Pixel 7 emulation, genuine WebGL2 or forced Canvas fallback, and browser CPU throttling. This is not physical-device or owner/Ember acceptance.",
+    "A diagnostic run wrote two historical evidence paths. Both were restored exactly from the unchanged Git checkpoint and verified by SHA256. New diagnostic copies are separate in .local/hollow-cylinder-disposal-before. Final legacy tests ran from an isolated working directory.",
+    "Open ends are not represented by hidden caps or equal capped-cylinder lengths. Their topology/global metric still needs the authorized separate assessment.",
+    "No website, shared database, Docker or Production changes."
+  ]
+}

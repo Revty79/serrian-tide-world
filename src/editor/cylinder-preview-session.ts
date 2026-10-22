@@ -58,6 +58,8 @@ export class CylinderPreviewSession {
   changed = () => {};
   stopped = () => {};
   private disposed = false;
+  /** A retired document's last scheduled frame may precede React unmount. */
+  get closed(){return this.disposed;}
   name: string;
   hasSaved: boolean;
   locked = false;

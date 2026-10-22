@@ -34,7 +34,7 @@ export function cylindricalSampleCount(r: CylinderResolution): number {
 }
 
 /** Numerical foundation only. Not part of AtlasDocument, UI selection or any save codec. */
-export function createCylindricalTerrain(options: { readonly terrainId: string; readonly geometry: CylinderConfiguration; readonly resolution: CylinderResolution }) {
+export function createCylindricalTerrain(options: { readonly terrainId: string; readonly geometry: CylinderConfiguration; readonly resolution: CylinderResolution;readonly initialElevation?:number;readonly validateElevation?:(height:number)=>void;readonly validateSample?:(index:number,height:number,before:number)=>void }) {
   if (typeof options.terrainId !== 'string' || !options.terrainId.trim() || options.terrainId.length > 128) throw new RangeError('Cylinder terrain identity must contain 1-128 characters.');
   const count = cylindricalSampleCount(options.resolution), geometry = createCylinderGeometry(options.geometry), identity = geometry.identity;
   const { angularSamples: a, axialCells: z, radialCells: p } = options.resolution;
@@ -47,7 +47,8 @@ export function createCylindricalTerrain(options: { readonly terrainId: string; 
   const metadata = Object.freeze({ terrainId: options.terrainId, identity, geometry: geometry.metadata,
     representation: Object.freeze({ provider: CYLINDRICAL_REPRESENTATION, version: 1 as const, resolution, ownership: 'side-rims-cap-interiors-single-centers' as const }), elevationUnits: 'meters' as const, seaLevel: 0 });
   // Only retained sample-sized storage: one private connected exterior authority. No alias/neighbor tables.
-  const elevations = new Float32Array(count).fill(-100);
+  const validateElevation=options.validateElevation,validateSample=options.validateSample,initial=options.initialElevation??-100;assertFloat32Elevation(initial);validateElevation?.(Math.fround(initial));
+  const elevations = new Float32Array(count).fill(initial);
   let revision = 0;
   const wrap = (c: number) => ((c % a) + a) % a;
   const keyAt = (index: number): CylinderSampleKey => {
@@ -124,7 +125,7 @@ export function createCylindricalTerrain(options: { readonly terrainId: string; 
     get revision() { return revision; },
     read: (key: CylinderSampleKey) => elevations[checkedKey(key)]!,
     write: (key: CylinderSampleKey, value: number) => {
-      const index = checkedKey(key); assertFloat32Elevation(value); const next = Math.fround(value);
+      const index = checkedKey(key); assertFloat32Elevation(value); const next = Math.fround(value);validateElevation?.(next);validateSample?.(index,next,elevations[index]!);
       if (!Object.is(elevations[index], next)) { elevations[index] = next; revision++; }
     },
     /** Validate completely, then apply without allocation/callbacks. Revision remains per changed word. */
@@ -144,6 +145,7 @@ export function createCylindricalTerrain(options: { readonly terrainId: string; 
         for (let i = 0; i < block.count; i++) {
           const index = block.indices[i]!, value = block.values[i]!;
           if (index <= previous || index >= count || !Number.isFinite(value)) throw new RangeError('Cylinder patch must have unique ordered indices and finite values.');
+          validateElevation?.(value);validateSample?.(index,value,elevations[index]!);
           previous = index; if (!Object.is(elevations[index], value)) changed++;
         }
       }
