@@ -1,5 +1,11 @@
 # One Atlas, geometry adapters
 
+**Phase 2 authorization, 2026-10-22:** the owner accepted the corrected Open
+Cylinder at `ebbb86b` and authorized Solid Pyramid followed by Hollow Pyramid.
+The [Phase 2 checkpoint record](PYRAMID-PHASE-2.md) supersedes the historical
+stop-before-pyramids wording below. Reuse the accepted infrastructure; stop
+after the two pyramid types for review. No later shape is authorized.
+
 **Current follow-up, 2026-10-22:** the owner-authorized hollow visual correction
 and [operational Open Cylinder](OPEN-CYLINDER-EDITOR.md) reuse the actual accepted
 cylinder field/raster/GPU components, session, viewport/input/scheduling and
