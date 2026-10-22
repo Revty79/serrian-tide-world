@@ -9,3 +9,8 @@ export type ConnectedWorkOutput=ConnectedPreparedPatch
  |{type:'progress';task:number;stats:ConnectedStrokeStatistics}
  |{type:'done';task:number;stats?:ConnectedStrokeStatistics;stages:ReturnType<typeof paintingMetrics>}
  |{type:'error';task:number;message:string;stats?:ConnectedStrokeStatistics;stages:ReturnType<typeof paintingMetrics>};
+export type ConnectedWorkerInput<Metadata,Options,View=unknown>=
+ |{type:'start';task:number;metadata:Metadata;revision:number;values:Float32Array;center:SurfacePosition;settings:CylindricalBrushSettings;options:Omit<Options,'commitReady'>;preview?:View;measure?:boolean}
+ |{type:'move';task:number;point:SurfacePosition;ordinal:number}
+ |{type:'release';task:number}
+ |{type:'ack';task:number;sequence:number;revision:number};

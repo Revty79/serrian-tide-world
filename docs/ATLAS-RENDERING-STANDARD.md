@@ -77,6 +77,15 @@ These are display budgets, independent of numerical resolution. Keep the proven
 interactive budgets; a uniform large raster during painting violates this
 contract. GPU backing and ordinary cube atlas limits remain explicitly bounded.
 
+Ordinary cylinder-family terrain updates may retain that settled image while
+rerendering conservative dirty rectangles, including periodic copies, through
+the same coherent field/color/coverage pass. The bound includes the complete
+intrinsic dab and reconstruction stencil. Camera/scene changes, unknown source
+revision chains, inspection and cuts use the existing complete raster path.
+Do not discard a sharp settled frame merely to enlarge a tiny interactive image.
+Optional graphics information queries have a separate error boundary; a debug
+renderer probe error must not be reported as a later resource-allocation error.
+
 ## Required acceptance evidence
 
 Every new shape or presentation change must provide all of the following:

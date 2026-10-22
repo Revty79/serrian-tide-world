@@ -16,6 +16,11 @@ accepted shared painting/history mechanisms. The subsequent
 [operational Open Cylinder](OPEN-CYLINDER-EDITOR.md) adds the normal selector,
 shared presentation/workspace, three views, strict v14 Save/Open and basic
 holes, networks, links and guided inspection. Owner acceptance remains separate.
+The rejected `0df1a66` presentation is followed by the
+[Open Cylinder corrective checkpoint](OPEN-CYLINDER-CORRECTION.md): actual-PC
+graphics diagnostics, shared worker preparation, sharp painting updates,
+usable rims and continuous visible-boundary editing. No pyramid work starts
+as part of that correction.
 
 Current follow-up authority (2026-10-22), starting at `b5636ec`: the owner accepts
 Hollow Sphere and Capped Hollow Cylinder core painting for development

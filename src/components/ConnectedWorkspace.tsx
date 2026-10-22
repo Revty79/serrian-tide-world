@@ -3,13 +3,14 @@ import {cross3,unitDirection,type Vec3} from '../surfaces/cube-sphere.ts';
 import {settledRasterBudget} from '../rendering/raster-quality.ts';
 import type {SurfacePosition} from '../surfaces/contracts.ts';
 import {Profiler,useLayoutEffect,useRef,useState,useImperativeHandle,useMemo,type ReactNode,type Ref} from 'react';
-import {recordPaintingStage} from '../editor/painting-metrics.ts';
+import {recordPaintingStage,recordPaintingEvent} from '../editor/painting-metrics.ts';
 import type {ConnectedPreviewSession} from '../editor/connected-preview-session.ts';
 import type {ConnectedStencil} from '../editor/connected-session-contracts.ts';
 import type {CylinderControls} from '../editor/cylinder-controls.ts';
 import {attachSphericalEditing as attachSurfaceEditing} from '../interaction/spherical-editing.ts';
 import {cylinderCenterInspection,type CylinderView,type CylinderScreenPoint,type CylinderViewport} from '../rendering/cylindrical-view.ts';
-import type {CoherentTerrainRaster} from '../rendering/coherent-terrain-raster.ts';
+import type {CoherentTerrainRaster,TerrainRasterUpdate} from '../rendering/coherent-terrain-raster.ts';
+import {rasterRegions} from '../rendering/coherent-terrain-raster.ts';
 import {surfaceDisplayDimensions} from '../rendering/surface-renderer.ts';
 import type {CylinderAppearance} from '../rendering/cylindrical-elevation.ts';
 import type {ConnectedWorkspaceAdapter,WorkspaceTerrain} from './connected-workspace-contracts.ts';
@@ -40,7 +41,7 @@ export function ConnectedWorkspace<T extends WorkspaceTerrain,V extends Cylinder
     setFullscreenSupported(!!document.fullscreenEnabled && typeof owner.requestFullscreen === 'function');
     let alive = true, frame = 0, requested = initialView??adapter.initial(), applied = requested, appliedSize: CylinderViewport = { width: node.clientWidth, height: node.clientHeight }, serial = 0, appliedSerial = -1, pendingSerial = 0, pendingView = requested, pendingSize = appliedSize;
     let raster: Generator<void,CoherentTerrainRaster> | undefined, front: CoherentTerrainRaster | undefined, spare: Uint8ClampedArray | undefined, displayRevision = -1, redraw = true, hover: CylinderScreenPoint | undefined, selection: SurfacePosition | undefined, interactionUntil = 0, refinement = 0, inputAt = 0, opportunityAt = 0, pointerAt = 0, signature = '', started = performance.now(), lastFrame = 0, interruptionReason = 'Input interruption';
-    let savedEditView:V|undefined,pendingRefinement=false,displayScene='',pendingScene='';
+    let savedEditView:V|undefined,pendingRefinement=false,displayScene='',pendingScene='',displayConfiguration='',pendingConfiguration='';
     let overlayState: { stencil?: ConnectedStencil; selection?: SurfacePosition; view: V; ready: boolean; width: number; height: number } | undefined;
     const metrics = { preparationMs, firstPresentationMs: 0, renders: 0, renderSliceMaxMs: 0, rasterTotalMs: 0, rasterStartedAt: 0, overlayMaxMs: 0, maxFrameGapMs: 0, rasterSnapshotBytes: 0, renderTimes: [] as number[], inputLatencies: [] as number[], brushLatencies: [] as number[], frameGaps: [] as number[], uploadTimes: [] as number[], submitTimes: [] as number[], resizeTimes: [] as number[], cameraTimes: [] as number[], pointerFeedbackLatencies: [] as number[], presentationOpportunityLatencies: [] as number[] };
     const bounded = (a: number[], values: number[]) => { a.push(...values); if (a.length > 120) a.splice(0, a.length - 120); };
@@ -87,6 +88,7 @@ export function ConnectedWorkspace<T extends WorkspaceTerrain,V extends Cylinder
       if (surface.width !== width || surface.height !== height) { surface.width = width; surface.height = height; overlayState = undefined; }
     };
     const presented = () => {
+      recordPaintingEvent('submitted',{revision:displayRevision});
       metrics.renders++; bounded(metrics.brushLatencies, session.presented(displayRevision));
       if (!metrics.firstPresentationMs) metrics.firstPresentationMs = performance.now() - started;
       if (inputAt) { bounded(metrics.inputLatencies, [performance.now() - inputAt]); opportunityAt ||= inputAt; inputAt = 0; }
@@ -116,17 +118,22 @@ export function ConnectedWorkspace<T extends WorkspaceTerrain,V extends Cylinder
       session.requestPreview(hover && pointAt(hover), brush, applied);
       // A settled image is expendable when input arrives. Its preparation must
       // not stand in front of a brush publication or a new camera pose.
-      const sceneStamp=[adapter.sceneStamp(cutRef.current),session.cache.sourceRevision,appearanceRef.current].join(':');
+      const configuration=[adapter.sceneStamp(cutRef.current),appearanceRef.current].join(':'),sceneStamp=[configuration,session.cache.sourceRevision].join(':');
       if(raster&&pendingRefinement&&(session.painting||session.processing||pendingSerial!==serial||pendingScene!==sceneStamp)){raster.return(undefined as never);raster=undefined;redraw=true;}
       const mobile=matchMedia('(pointer: coarse)').matches,settledBudget=settledRasterBudget(size(),devicePixelRatio||1,mobile),canRefine=!session.painting&&!session.processing&&performance.now()>=interactionUntil&&ready()&&front?.revision===session.cache.sourceRevision&&displayScene===sceneStamp,needsRefinement=canRefine&&front!.columns*front!.rows<settledBudget*.99;
       if(!gpu.available&&!raster&&ready()&&front?.revision===session.cache.sourceRevision&&displayScene===sceneStamp&&!needsRefinement)redraw=false;
       if (!gpu.available && !raster && (!ready() || !front || front.revision !== session.cache.sourceRevision||displayScene!==sceneStamp||needsRefinement)) {
-        pendingView = requested; pendingSize = size(); pendingSerial = serial;pendingScene=sceneStamp;
+        pendingView = requested; pendingSize = size(); pendingSerial = serial;pendingScene=sceneStamp;pendingConfiguration=configuration;
         if (pendingSize.width > 0 && pendingSize.height > 0) {
           const interactive = session.painting || session.processing || performance.now() < interactionUntil;
           pendingRefinement=!!canRefine;
           const budget=pendingRefinement?settledBudget:adapter.cutView(requested,cutRef.current)||cylinderCenterInspection(requested)?80000:interactive ? mobile ? 22000 : 40000 : mobile ? 90000 : 160000;
-          raster = adapter.raster(session.cache, pendingView, pendingSize, budget, spare, appearanceRef.current,cutRef.current); spare = undefined; redraw = false; metrics.rasterStartedAt = performance.now(); metrics.rasterTotalMs = 0;
+          let update:TerrainRasterUpdate|undefined;
+          if(front&&front.columns*front.rows>=settledBudget*.98&&appliedSerial===serial&&displayConfiguration===configuration&&!adapter.cutView(requested,cutRef.current)&&!cylinderCenterInspection(requested)){
+            const changes=session.displayDabsSince(front.revision),region=changes&&adapter.dirtyRegion?.(changes,pendingView,pendingSize,front.columns,front.rows);
+            if(region&&rasterRegions(region).reduce((sum,r)=>sum+(r.right-r.left)*(r.bottom-r.top),0)<front.columns*front.rows*.5)update={base:front,region};
+          }
+          raster = adapter.raster(session.cache, pendingView, pendingSize, budget, spare, appearanceRef.current,cutRef.current,update); spare = undefined; redraw = false; metrics.rasterStartedAt = performance.now(); metrics.rasterTotalMs = 0;
         }
       }
       // Cut work yields after 256 base rays rather than the old 1,024. Preserve
@@ -139,7 +146,7 @@ export function ConnectedWorkspace<T extends WorkspaceTerrain,V extends Cylinder
           backing(appliedSize);
           scratch.width = front.columns; scratch.height = front.rows; scratchContext.putImageData(new ImageData(front.pixels as Uint8ClampedArray<ArrayBuffer>, front.columns, front.rows), 0, 0);
           ctx.setTransform(node.width / appliedSize.width, 0, 0, node.height / appliedSize.height, 0, 0); ctx.clearRect(0, 0, appliedSize.width, appliedSize.height); ctx.imageSmoothingEnabled = true;ctx.imageSmoothingQuality='high'; ctx.drawImage(scratch, 0, 0, appliedSize.width, appliedSize.height);
-          displayScene=pendingScene;if(!pendingRefinement)schedule();displayRevision = front.revision; metrics.rasterSnapshotBytes = front.snapshotBytes; bounded(metrics.renderTimes, [metrics.rasterTotalMs]); presented();
+          displayScene=pendingScene;displayConfiguration=pendingConfiguration;if(!pendingRefinement)schedule();displayRevision = front.revision; metrics.rasterSnapshotBytes = front.snapshotBytes; bounded(metrics.renderTimes, [metrics.rasterTotalMs]); presented();
         }
       }
       if (diagnostics.current) {
@@ -154,7 +161,7 @@ export function ConnectedWorkspace<T extends WorkspaceTerrain,V extends Cylinder
       drawOverlay(); // A completed dry-run stencil must be visible even when no work remains.
       const pendingPresentation = displayRevision !== session.cache.sourceRevision;
       pointer.current!.dataset.pending = String(session.pendingWork || session.previewPending || pendingPresentation || !ready());
-      pointer.current!.textContent = session.pendingWork || session.previewPending || pendingPresentation ? 'Pointer · pending work' : 'Pointer';
+      pointer.current!.textContent = session.pendingWork?'Terrain pending':pendingPresentation?'Display pending':session.previewPending?'Footprint preview':'Pointer';
       const sig = JSON.stringify([session.modified, session.message, session.previewMessage, session.painting, session.processing, session.history.canUndo, session.history.canRedo, ready()]); if (sig !== signature) { signature = sig; update(v => v + 1); }
       node.dataset.renderer = gpu.available ? 'webgl2' : 'cpu'; node.dataset.modified = String(session.modified); node.dataset.ready = String(ready()); node.dataset.mode = applied.mode; node.dataset.inspecting=String(cylinderCenterInspection(applied));node.dataset.eye=JSON.stringify(applied.eyeMeters??null);node.dataset.frame=JSON.stringify(applied.frame); node.dataset.processing = String(session.processing); node.dataset.painting = String(session.painting); node.dataset.revision = String(session.terrain.revision); node.dataset.displayRevision = String(displayRevision); node.dataset.historyEntries = String(session.history.statistics.entries); node.dataset.zoom = String(applied.zoom); node.dataset.previewPending = String(session.previewPending);
       if (pending || previewPending || raster || redraw || opportunityAt || displayRevision !== session.cache.sourceRevision||!gpu.available&&(needsRefinement||displayScene!==sceneStamp)) schedule(); else lastFrame = 0;

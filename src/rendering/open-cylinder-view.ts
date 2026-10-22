@@ -4,7 +4,7 @@ import type {OpenCylinderGeometry,OpenCylinderPosition,OpenCylinderScope} from '
 import {traceCylinderExcavation,type CylinderExcavation} from '../surfaces/hollow-cylinder-excavation.ts';
 import {openCylinderFreeVolume} from '../surfaces/open-cylinder-prototype.ts';
 import {dot3,unitDirection,type Vec3} from '../surfaces/cube-sphere.ts';
-import {cylinderFrameLayout,cylinderCenterInspection,initialCylinderView,type CylinderView,type CylinderViewport,type CylinderScreenPoint} from './cylindrical-view.ts';
+import {cylinderFrameLayout,cylinderCenterInspection,cylinderRayHit,initialCylinderView,type CylinderView,type CylinderViewport,type CylinderScreenPoint} from './cylindrical-view.ts';
 import type {OpenCylinderFieldHit} from './open-cylinder-elevation.ts';
 
 export interface OpenCylinderView extends CylinderView {readonly scope:OpenCylinderScope}
@@ -33,6 +33,17 @@ export function openCylinderViewAdapter(g:OpenCylinderGeometry,view:OpenCylinder
    if(m<=2*L+T)return{kind:'terrain',patchId:'inner-wall',theta,radiusMeters:ri,zMeters:L-(m-L-T),normal:[0,0,1],displayRadial:ri/ro,depth:0};
    return{kind:'terrain',patchId:'rim-start',theta,radiusMeters:Math.min(ro,ri+(m-2*L-T)),zMeters:0,normal:[0,0,1],displayRadial:(ri+(m-2*L-T))/ro,depth:0};
   }
+  // Use the accepted convex-cylinder intersection for every unchanged nearest
+  // wall or real annular rim. Only rays through a natural opening (or authored
+  // excavation/inspection) need the interval subtraction adapter.
+  if(!inspection&&!model.primitives.length){
+   const hit=cylinderRayHit(x+tx,y+ty,f,model.outerHalfLength);
+   if(!hit)return;
+   if(hit.region==='side'||hit.radial>=model.innerRatio){
+    const radius=hit.region==='side'?fittedInside?ri:ro:fittedInside?ri/Math.max(hit.radial,Number.MIN_VALUE):ro*hit.radial,patchId=hit.region==='side'?fittedInside?'inner-wall':'outer-wall':hit.region==='cap-start'?'rim-start':'rim-end';
+    return{kind:'terrain',patchId,theta:hit.theta,radiusMeters:radius,zMeters:Math.max(0,Math.min(L,hit.z*model.radiusMeters+H)),normal:hit.region==='side'?[Math.cos(hit.theta),Math.sin(hit.theta),0]:[0,0,hit.region==='cap-start'?-1:1],displayRadial:hit.radial,depth:originExtent-hit.depth};
+   }
+  }
   const origin=inspection?eye.map(v=>v/model.radiusMeters)as unknown as Vec3:f.right.map((v,i)=>v*(x+tx)*ratio+f.up[i]!*(y+ty)*ratio+f.forward[i]!*originExtent)as unknown as Vec3,direction=inspection?unitDirection(f.right.map((v,i)=>-v*x+f.up[i]!*y+f.forward[i]!)as unknown as Vec3):f.forward.map(v=>-v)as unknown as Vec3,hit=traceCylinderExcavation(model,origin,direction);
   if(!hit)return;if(hit.kind==='rock')return{kind:'rock',normal:hit.normal,depth:hit.distance};
   const radial=Math.hypot(hit.point[0],hit.point[1]),rho=fittedInside?ri/Math.max(radial,Number.MIN_VALUE):radial*ro,z=Math.max(0,Math.min(L,hit.point[2]*model.radiusMeters+H)),theta=Math.atan2(hit.point[1],hit.point[0]),patchId=hit.region==='side'?(hit.kind==='exterior'?fittedInside?'inner-wall':'outer-wall':fittedInside?'outer-wall':'inner-wall'):hit.region==='cap-start'?'rim-start':'rim-end';
@@ -52,7 +63,7 @@ export function openCylinderViewAdapter(g:OpenCylinderGeometry,view:OpenCylinder
  };
  const visible=(input:SurfacePosition)=>{if(view.mode==='map')return true;if(inspection)return false;const points=project(input);if(!points.length)return false;const hit=hitAt(points[0]!);if(hit?.kind!=='terrain')return false;const at=positionAtHit(hit)!,a=g.referencePosition(input),b=g.referencePosition(at);return Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2])<=1e-8*Math.max(ro,L);};
  return Object.freeze({layout,model,inspection,fittedInside,radiusMeters:R,halfWidth,halfHeight,tx,ty,rayAt,hitAt,positionAtHit,project,visible,
-  editablePositionAtHit:(hit:OpenCylinderViewHit)=>{const p=positionAtHit(hit);return p&&!inspection&&(view.mode==='map'||g.scopeContains(p,view.scope))?p:undefined;},
+  editablePositionAtHit:(hit:OpenCylinderViewHit)=>{const p=positionAtHit(hit);return p&&!inspection?p:undefined;},
   insideBounds:(x:number,y:number,dx:number,dy:number)=>view.mode==='map'?Math.abs(x-view.pan.x)<=Math.PI+dx&&Math.abs(y-view.pan.y)<=S/(2*ro)+dy:Math.abs(x+tx)<=halfWidth/ratio+dx&&Math.abs(y+ty)<=halfHeight/ratio+dy,
  });
 }

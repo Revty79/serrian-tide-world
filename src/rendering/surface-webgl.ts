@@ -2,7 +2,16 @@
  * geometry/texture layouts; shader diagnostics, nearest Float32 textures and
  * resource cleanup do not vary with World geometry. */
 export function surfaceWebGLContext(canvas:HTMLCanvasElement){const gl=canvas.getContext('webgl2',{alpha:true,antialias:true,depth:true,stencil:false,premultipliedAlpha:true,preserveDrawingBuffer:false});if(!gl)throw Error('WebGL2 unavailable; using CPU fallback.');return gl;}
-export function surfaceGraphicsInfo(gl:WebGL2RenderingContext){const info=gl.getExtension('WEBGL_debug_renderer_info'),renderer=String(gl.getParameter(info?.UNMASKED_RENDERER_WEBGL??gl.RENDERER));return{renderer,software:/swiftshader|llvmpipe|software|basic render/i.test(renderer),antialias:!!gl.getContextAttributes()?.antialias};}
+export function surfaceGraphicsInfo(gl:WebGL2RenderingContext){
+ // Optional diagnostics must not contaminate the subsequent allocation check.
+ // Installed Chrome 134 on the owner's RX 6600 reports INVALID_VALUE during
+ // the debug-renderer probe despite returning the correct hardware identity.
+ // Capture these separately, before any resource is created. Allocation and
+ // upload errors remain fatal and are checked at their own stage.
+ const probeErrors:number[]=[];const capture=()=>{for(let i=0;i<8;i++){const code=gl.getError();if(code===gl.NO_ERROR)break;probeErrors.push(code);if(code===gl.CONTEXT_LOST_WEBGL)throw Error('Graphics context lost during information query.');}};
+ capture();const info=gl.getExtension('WEBGL_debug_renderer_info'),renderer=String(gl.getParameter(info?.UNMASKED_RENDERER_WEBGL??gl.RENDERER)),antialias=!!gl.getContextAttributes()?.antialias;capture();
+ return{renderer,software:/swiftshader|llvmpipe|software|basic render/i.test(renderer),antialias,probeErrors};
+}
 export function compileSurfaceProgram(gl:WebGL2RenderingContext,vertex:string,fragment:string){
  const compile=(type:number,source:string)=>{const shader=gl.createShader(type);if(!shader)throw Error('Shader allocation failed');gl.shaderSource(shader,source);gl.compileShader(shader);if(!gl.getShaderParameter(shader,gl.COMPILE_STATUS)){const reason=gl.getShaderInfoLog(shader);gl.deleteShader(shader);throw Error(reason??'Shader compilation failed');}return shader;};
  const shaders:WebGLShader[]=[];let program:WebGLProgram|null=null;

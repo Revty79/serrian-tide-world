@@ -1,7 +1,7 @@
 import {PHYSICAL_PREVIEW_DAB_LIMITS} from '../editor/physical-brush-policy.ts';
 import {IndexedDisplayCache,terrainPackedColor} from './indexed-display-cache.ts';
 import {cylinderCutView,cylinderCutHit,cylinderCutSurfaceHit,type CylinderExcavationDisplay} from './hollow-cylinder-display.ts';
-import {coherentTerrainRasterSteps} from './coherent-terrain-raster.ts';
+import {coherentTerrainRasterSteps,type TerrainRasterUpdate} from './coherent-terrain-raster.ts';
 import type { CylindricalTerrain } from '../terrain/cylindrical.ts';
 import type { CylindricalBrushSettings } from '../terrain/cylindrical-brush.ts';
 import { prepareCylindricalDab } from '../terrain/cylindrical-brush.ts';
@@ -36,11 +36,12 @@ export function cylinderInterpolatedColor(colors: Uint32Array, terrain: Cylindri
 }
 export interface CylinderRaster { readonly pixels: Uint8ClampedArray; readonly columns: number; readonly rows: number; readonly revision: number; readonly snapshotBytes: number }
 /** One coherent color epoch. Each next() covers at most 2,048 pixels / 10,240 subpixel rays. */
-export function* cylinderRasterSteps(cache: CylinderDisplayCache, view: CylinderView, size: CylinderViewport, pixelBudget: number, reusable?: Uint8ClampedArray, appearance: CylinderAppearance = 'elevation',excavation?:CylinderExcavationDisplay): Generator<void, CylinderRaster> {
+export function* cylinderRasterSteps(cache: CylinderDisplayCache, view: CylinderView, size: CylinderViewport, pixelBudget: number, reusable?: Uint8ClampedArray, appearance: CylinderAppearance = 'elevation',excavation?:CylinderExcavationDisplay,update?:TerrainRasterUpdate): Generator<void, CylinderRaster> {
   if (!Number.isInteger(pixelBudget) || pixelBudget < 1 || pixelBudget > 1500000) throw new RangeError('Cylinder raster budget exceeded.');
   const cut=cylinderCutView(view,excavation)?excavation:undefined;
-  const l = cylinderLayout(cache.terrain.geometry, view, size), factor = Math.min(1.5, Math.sqrt(pixelBudget / (size.width * size.height))), columns = Math.max(1, Math.floor(size.width * factor)), rows = Math.max(1, Math.floor(size.height * factor));
+  const l = cylinderLayout(cache.terrain.geometry, view, size), factor = Math.min(1.5, Math.sqrt(pixelBudget / (size.width * size.height))), columns = update?.base.columns??Math.max(1, Math.floor(size.width * factor)), rows = update?.base.rows??Math.max(1, Math.floor(size.height * factor));
   const pixels = reusable?.length === columns * rows * 4 ? reusable : new Uint8ClampedArray(columns * rows * 4), revision = cache.sourceRevision;
+  if(update)pixels.set(update.base.pixels);
   let elevations = cache.elevationSnapshot();
   const fieldAt = cylinderElevationSampler(elevations, cache.terrain, appearance === 'relief' ? 'land' : 'none');
   const opposite=cut?.opposite.elevationSnapshot(),oppositeField=cut&&opposite?cylinderElevationSampler(opposite,cut.opposite.terrain,appearance==='relief'?'land':'none'):undefined,labels=cut?new Uint8Array(columns*rows):undefined;
@@ -64,7 +65,7 @@ export function* cylinderRasterSteps(cache: CylinderDisplayCache, view: Cylinder
     const own=hit.kind===cut.role,source=own?cache:cut.opposite;
     return displayColor(cylinderCutSurfaceHit(hit,cut,source),source,own?fieldAt:oppositeField!,dot3(hit.normal,view.frame.forward),hit.kind==='interior');
   };
-  try { return yield* coherentTerrainRasterSteps<CylinderRayHit>({pixels,columns,rows,revision,snapshotBytes,size,grid:l,labels,quantum:cut?256:2048,sampleAt,
+  try { return yield* coherentTerrainRasterSteps<CylinderRayHit>({pixels,columns,rows,revision,snapshotBytes,size,grid:l,labels,region:update?.region,quantum:cut?256:2048,sampleAt,
     nearBoundary:(center,x,y,dx,dy)=>{
       const hit=center?.hit,insideBounds=view.mode==='physical'?Math.abs(x+tx)<=halfWidth+dx&&Math.abs(y+ty)<=halfHeight+dy:Math.abs(x-view.pan.x)<=Math.PI+dx&&Math.abs(y-view.pan.y)<=l.h+2+dy;
       return center?.label!==6&&!cylinderCenterInspection(view)&&(hit?hit.region==='side'?view.mode==='physical'?Math.abs(Math.cos(hit.theta)*view.frame.forward[0]+Math.sin(hit.theta)*view.frame.forward[1])<.15:Math.PI-Math.abs(x-view.pan.x)<dx||l.h-Math.abs(hit.z)<dy:1-hit.radial<2*Math.max(dx,dy):insideBounds);

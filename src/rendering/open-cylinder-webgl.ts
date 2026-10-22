@@ -34,7 +34,7 @@ export class OpenCylinderWebGLRenderer implements SurfaceRenderer<OpenCylinderVi
  private textures:WebGLTexture[]=[];private meshes:ReturnType<typeof createSurfaceMesh>[]=[];private uniforms=new Map<string,WebGLUniformLocation>();private uploadedRevision=-1;private heightScale=1;private disposed=false;private model:CylinderExcavation;
  private canvas:HTMLCanvasElement;private cache:OpenCylinderDisplayCache;private invalidate:()=>void;
  private compilation?:ReturnType<typeof beginSurfaceProgramCompilation>;private compilationFrame=0;private restorationPending=false;private waiters:{resolve:()=>void;reject:(error:Error)=>void}[]=[];
- readonly statistics={losses:0,recoveries:0,uploads:0,presentations:0,textureBytes:0,geometryBytes:0,antialias:false,baseCompileMs:0,cutCompileMs:0,reason:'',renderer:''};
+ readonly statistics={losses:0,recoveries:0,uploads:0,presentations:0,textureBytes:0,geometryBytes:0,antialias:false,baseCompileMs:0,cutCompileMs:0,reason:'',renderer:'',probeErrors:[] as number[]};
  constructor(canvas:HTMLCanvasElement,cache:OpenCylinderDisplayCache,invalidate:()=>void){this.canvas=canvas;this.cache=cache;this.invalidate=invalidate;this.model=openCylinderReferenceModel(cache.terrain.geometry);canvas.addEventListener('webglcontextlost',this.lost);canvas.addEventListener('webglcontextrestored',this.restored);this.initialize();}
  get available(){return!this.disposed&&!!this.terrainProgram&&(!this.model.primitives.length||!!this.cutProgram)&&!!this.gl&&!this.gl.isContextLost();}
  get preparing(){return!this.available&&!!this.compilation;}
@@ -50,10 +50,10 @@ export class OpenCylinderWebGLRenderer implements SurfaceRenderer<OpenCylinderVi
   this.compilationFrame=requestAnimationFrame(poll);
  }catch(error){this.fail(error);this.notifyReady();this.invalidate();}}
  private initialize(){try{
-  const gl=surfaceWebGLContext(this.canvas);this.gl=gl;const info=surfaceGraphicsInfo(gl);this.statistics.renderer=info.renderer;if(info.software)throw Error('Software graphics detected; using bounded CPU fallback.');
+  const gl=surfaceWebGLContext(this.canvas);this.gl=gl;const info=surfaceGraphicsInfo(gl);this.statistics.renderer=info.renderer;this.statistics.probeErrors=info.probeErrors;if(info.software)throw Error('Software graphics detected; using bounded CPU fallback.');
   for(let i=0;i<4;i++)this.textures.push(createSurfaceTexture(gl));
   for(const map of[false,true,undefined]){const data=map===undefined?new Float32Array([-1,-1,0,0,3,-1,0,0,-1,3,0,0]):vertices(this.cache.terrain.geometry,map),mesh=createSurfaceMesh(gl,data);this.meshes.push(mesh);this.statistics.geometryBytes+=mesh.byteLength;}
-  if(gl.getError()!==gl.NO_ERROR)throw Error('Graphics resource allocation failed; using CPU fallback.');this.statistics.antialias=info.antialias;this.startCompilation(false);
+  const allocationError=gl.getError();if(allocationError!==gl.NO_ERROR)throw Error(`Graphics resource allocation failed (0x${allocationError.toString(16)}); using CPU fallback.`);this.statistics.antialias=info.antialias;this.startCompilation(false);
  }catch(error){this.statistics.reason=String(error);this.release(true);this.canvas.hidden=true;this.canvas.width=0;}}
  present(view:OpenCylinderView,size:CylinderViewport,appearance:CylinderAppearance='elevation'){
   if(!this.available)throw Error('Graphics renderer unavailable');const gl=this.gl!,at=performance.now(),g=this.cache.terrain.geometry,adapter=openCylinderViewAdapter(g,view,size,this.model),l=adapter.layout,enabled=view.mode==='physical'&&!adapter.fittedInside&&this.model.primitives.length>0,dimensions=cutDisplayDimensions(size,devicePixelRatio||1,enabled||adapter.inspection),{outerRadiusMeters:ro,innerRadiusMeters:ri,lengthMeters:L}=g.metadata,own=view.scope==='interior'?ri:ro;

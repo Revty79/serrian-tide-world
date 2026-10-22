@@ -17,6 +17,10 @@ system with genuine open ends and annular rims, independent wall geography,
 fitted editing, actual immersive inspection, a connected surface map and strict
 v14 Save/Open. Basic wall holes, wall/rim tunnel networks, branches/chambers,
 reciprocal links and guided inspection use the accepted Atlas controls.
+The [Open Cylinder corrective review](docs/OPEN-CYLINDER-CORRECTION.md) covers
+the installed-Chrome graphics failure, shared worker preparation, sharp Canvas
+updates, usable annular brushes and continuous painting across visible walls
+and rims. This checkpoint stops before any subsequent geometry.
 
 The owner accepts Hollow Sphere and Capped Hollow Cylinder painting for
 development progression. The current follow-up restores smooth hollow-world

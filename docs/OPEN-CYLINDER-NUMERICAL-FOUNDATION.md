@@ -1,5 +1,10 @@
 # Open Cylinder connected numerical foundation
 
+The bounds below describe this historical foundation. The later
+[corrective checkpoint](OPEN-CYLINDER-CORRECTION.md) expands the proven local
+brush radius to `min(0.48*min(T,L),0.2*Ri)` while retaining the original per-query
+certificates, and connects the accepted acknowledged worker transport.
+
 This is the next checkpoint after published visual correction `2303bd2`.
 The connected terrain, bounded metric, continuous paths and shared brush/history
 integration were verified as a numerical milestone. This document records that

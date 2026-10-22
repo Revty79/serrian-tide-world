@@ -8,12 +8,15 @@ import {cylinderRasterSteps} from '../rendering/cylindrical-raster.ts';
 import {CylinderWebGLRenderer} from '../rendering/cylindrical-webgl.ts';
 import {cylinderBrushFromControls,defaultCylinderControls} from '../editor/cylinder-controls.ts';
 import type {ConnectedWorkspaceAdapter} from './connected-workspace-contracts.ts';
+import {cylinderDirtyRegion} from '../rendering/cylinder-dirty-region.ts';
+import {cylinderAngle} from '../surfaces/cylinder.ts';
 export function closedCylinderWorkspaceAdapter(t:CylindricalTerrain):ConnectedWorkspaceAdapter<CylindricalTerrain,CylinderView,CylinderExcavationDisplay>{
  const g=t.geometry,R=g.metadata.radiusMeters,L=g.metadata.lengthMeters;
  return{radiusMeters:R,lengthMeters:L,minBrushRadius:.005*R,maxBrushRadius:2*R,regions:[{id:'side',label:'Side'},{id:'cap-start',label:'Start cap'},{id:'cap-end',label:'End cap'}],defaultControls:()=>defaultCylinderControls(R),brush:c=>cylinderBrushFromControls(c,R),initial:initialCylinderView,normalizeView:v=>v,
   pointAt:(cache,view,size,p,cut)=>{if(cylinderCutView(view,cut)){const hit=cylinderCutHit(cut!,view,size,p,cache);if(!hit||hit.kind!==cut!.role)return;return hitToCylinderPosition(g,cylinderCutSurfaceHit(hit,cut!,cache));}return unprojectCylinder(g,p,view,size);},
   pointerMessage:(cache,view,size,p,cut)=>{if(!cylinderCutView(view,cut))return;const hit=cylinderCutHit(cut!,view,size,p,cache);if(!hit||hit.kind!==cut!.role)return!hit?'Open space through reference shell':hit.kind==='rock'?'Rock bore wall - physical reference-shell cut':`${hit.kind==='interior'?'Inside':'Outside'} through opening - switch sides to edit`;},
   project:(p,v,s)=>projectCylinder(g,p,v,s),
+  dirtyRegion:(changes,v,size,columns,rows)=>{const res=t.metadata.representation.resolution,pad=3*Math.max(2*Math.PI*R/res.angularSamples,L/res.axialCells,R/res.radialCells);return cylinderDirtyRegion(changes,size,columns,rows,cylinderLayout(g,v,size).scale,R,pad,(p,support)=>{const q=g.normalize(p);if(v.mode==='map'&&(q.patchId==='side'?(Math.min(q.v,L-q.v)<support||Math.PI-Math.abs(cylinderAngle(q.u-v.phase))<support/R):R-q.v<support))return;return projectCylinder(g,q,v,size);});},
   samplePositions:(index,view)=>{const key=t.keyAt(index),d=t.owner(key);return(view.mode==='map'&&d.patchId==='side'?t.aliases(key):[d]).map(a=>t.positionAt(a));},
   sample:index=>{const key=t.keyAt(index),address=t.owner(key);return{key,address,aliases:t.aliases(key),position:t.positionAt(address)};},
   readout:point=>{const{angularSamples:a,axialCells:z,radialCells:p}=t.metadata.representation.resolution,key=t.resolve({...point,patchId:point.patchId as CylinderRegion,column:Math.round(point.u/(2*Math.PI)*a),row:Math.round(point.v/(point.patchId==='side'?L:R)*(point.patchId==='side'?z:p))});return{index:key.index,height:t.read(key)};},

@@ -1,10 +1,15 @@
 # Open Cylinder: operational Atlas editor and basic connections
 
-This completes the operational Open Cylinder follow-up to the owner-approved
+This describes the operational Open Cylinder follow-up to the owner-approved
 [hollow coastline correction](HOLLOW-WORLD-VISUAL-POLISH.md) and the published
 [connected numerical foundation](OPEN-CYLINDER-NUMERICAL-FOUNDATION.md). Technical
 verification and owner acceptance are separate. Stop here for Ember's review
 and the owner's hands-on approval; pyramids are not part of this delivery.
+
+The original `0df1a66` checkpoint was rejected for slow, fuzzy painting and
+unusable rim interactions. The [corrective review](OPEN-CYLINDER-CORRECTION.md)
+records the development-PC reproduction, graphics fix, shared worker/Canvas
+corrections, continuous visible-surface editing and new acceptance evidence.
 
 ## Create and edit
 
@@ -19,14 +24,18 @@ Ocean initialization requires at least 400 m of radial and axial clearance;
 unsupported inputs reject rather than changing their values. Existing geography
 and v1-v13 save interpretations are unchanged.
 
-**Paint Outside** and **Paint Inside** select editing scope and retain separate
+**Paint Outside** and **Paint Inside** select the fitted view and retain separate
 cameras and shared brush settings. Walls have independent numerical geography;
 the joining annuli and physical creases are genuinely shared. Raise, Lower,
 Smooth and Flatten use the accepted kernels, physical spacing, transaction,
 history and input processing. Mouse/pen/one-finger drawing, two-contact navigation,
 rotation, pan, zoom, fitting, selection and region centering use the common
-workspace. Occluded or unselected physical samples reject atomically; the full
-connected Surface map can edit the whole boundary.
+workspace. Any visible connected terrain can be painted continuously in either
+fitted view, including the opposite curved wall visible through a natural end.
+The annular midpoint is bookkeeping, not an editing barrier. Occluded samples
+still reject atomically. The connected Surface map edits the complete boundary;
+lift across its displayed periodic cut. A dab straddling that cut still changes
+the actual connected numerical footprint on both sides.
 
 The three views are:
 
@@ -53,6 +62,7 @@ metadata and capacities remain in place.
 | Coherent Canvas field, coverage and progressive output | `coherent-terrain-raster.ts`, common backing/refinement policy | True four-patch intersections and physical rock hits |
 | GPU resources, Float32 textures, field/color/coast pass and cut intervals | `surface-webgl.ts`, `cylindrical-terrain-glsl.ts`, excavation interval GLSL and accepted cut builder | Actual annular boundary mesh, field addresses, fitted inversion and CSG hit mapping |
 | Cache, ordered work, commit observer, preview, history and draining | `IndexedDisplayCache`, `ConnectedPreviewSession`, existing connected numerical/history cores | Open candidates, certified metrics, paths and visibility |
+| Worker preparation, cancellation and canonical acknowledgement | `connected-worker-stroke.ts`, `connected-work-runtime.ts`, `connected-prepared-patch.ts` | Validated actual Open geometry and parent metadata |
 | Pointer/touch/pen arbitration, camera commands, frame budgets and editor chrome | `ConnectedWorkspace`, existing surface input adapter | Projection, hit testing, annular map joins, physical eye validation |
 | Placement/review/confirmation, hole/tunnel/link controls and bounded graph travel | `PhysicalHoleTools`, `PhysicalTunnelTools`, `PhysicalLinkTools`, `PhysicalPassageGuide` | Annular material containment, normal stubs and connection coordinate conversion |
 | Save lifecycle and local transactions | Existing Atlas host, LocalMapStore, checksum/cooperative work and connection journal | New strict v14 representation |
@@ -74,6 +84,10 @@ Canvas keeps immediate coherent input display and cancels expendable refinement
 during drawing/draining. Settled detail is bounded at 1.5 million pixels on
 desktop or 650,000 for coarse-pointer input. Numerical resolution and backing
 resolution remain separate. No canonical words are changed by viewing.
+Ordinary painting retains a sharp settled image and rerenders bounded dirty
+rectangles with the same field/color pass, including periodic seam copies.
+Camera/scene changes, cuts and inspection retain the accepted full-frame policy.
+Exact hover inspection waits for a stable pointer and yields to real painting.
 
 ## Physical and conceptual connections
 
@@ -178,7 +192,10 @@ Desktop Chromium and Pixel 7 emulation qualify browser behavior; neither is
 physical-device evidence or owner acceptance.
 
 The bounded certified path set remains explicit. Ordinary brush radii are strictly
-below `min(0.24*min(T,L), 0.2*Ri)`. Unsupported far transitions, precision or work
+below `min(0.48*min(T,L), 0.2*Ri)`. The strict `2r < 0.96*min(T,L)` condition
+excludes both edges of a wall/rim strip; every query still has its original
+global distance certificate and work limits. The accepted `0.0837*R` default is
+used where certified, otherwise at most 90% of this limit. Unsupported far transitions, precision or work
 limits reject with an exact undoable committed prefix. Arbitrary far paths,
 additional end configurations, high-resolution tiled worlds, site integration,
 hosting/Production and subsequent geometries are not claimed.

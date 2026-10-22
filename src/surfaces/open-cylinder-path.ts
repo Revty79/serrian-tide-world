@@ -22,13 +22,14 @@ const xy=(angle:number,radius:number):readonly[number,number]=>{const[s,c]=pathT
 function reconstructOpenCylinderPathImpl(g:OpenCylinderGeometry,first:SurfacePosition,last:SurfacePosition,options:OpenCylinderPathOptions){
  if(options.version!==1)throw RangeError('Only open-cylinder physical path version 1 is supported.');
  const start=g.normalize(first),end=g.normalize(last),p=g.physical(start),q=g.physical(end),{outerRadiusMeters:ro,innerRadiusMeters:ri,lengthMeters:L}=g.metadata;
+ const samePoint=g.aliases(start).some(alias=>alias.patchId===end.patchId&&alias.u===end.u&&alias.v===end.v);
  const guard=32768*Number.EPSILON*Math.max(ro,L),tolerance=options.absoluteToleranceMeters??Math.max(ro*1e-6,128*guard);
  if(!Number.isFinite(tolerance)||tolerance<=0)throw RangeError('Positive finite open-cylinder path tolerance required.');
  let preference:{patchId:OpenCylinderPatch;direction:CylinderVector}|undefined;
  if(options.continuity){const c=options.continuity,alias=g.aliases(start).find(a=>a.patchId===c.patchId);if(!alias||!Array.isArray(c.direction)||c.direction.length!==3||!c.direction.every(Number.isFinite))throw RangeError('Continuity must name a physical initial sheet and finite tangent.');const norm=pathNorm(...c.direction);if(norm===0)throw RangeError('A nonzero continuity tangent is required.');const direction=vec(c.direction.map(x=>x/norm)),normal=g.normal(alias);if(Math.abs(direction.reduce((s,x,i)=>s+x*normal[i]!,0))>4096*Number.EPSILON)throw RangeError('Continuity direction is not tangent to its initial sheet.');preference={patchId:c.patchId,direction};}
  const distance=openCylinderDistance(g,start,end,{absoluteToleranceMeters:tolerance/4,maxBoxes:options.maxBoxes});
  let delta=cylinderAngle(q.theta-p.theta);if(Math.abs(delta)===Math.PI)delta=Math.PI;
- const angle=Math.abs(delta),signs=distance.axis?distance.axis.directions:angle===Math.PI?[1,-1]:[delta<0?-1:1];
+ const angle=Math.abs(delta),signs=distance.axis?(distance.axis.directions.length?distance.axis.directions:distance.axis.upper<=8*guard?[1,-1]:[]):angle===Math.PI?[1,-1]:[delta<0?-1:1];
  const onRim=(z:number,radius:number,theta:number):OpenCylinderPosition=>g.normalize({...g.identity,patchId:z===0?'rim-start':'rim-end',u:theta,v:z===0?radius-ri:ro-radius});
  const onWall=(radius:number,z:number,theta:number):OpenCylinderPosition=>g.normalize({...g.identity,patchId:radius===ri?'inner-wall':'outer-wall',u:theta,v:radius===ri?L-z:z});
  const helix=(radius:number,z0:number,z1:number,theta:number,turn:number):Unplaced=>({kind:'wall-helix',radius,startAngle:theta,angleDelta:turn,startZ:z0,endZ:z1,patchId:radius===ri?'inner-wall':'outer-wall',start:onWall(radius,z0,theta),end:onWall(radius,z1,theta+turn),lengthMeters:pathNorm(radius*turn,z1-z0)});
@@ -74,7 +75,12 @@ function reconstructOpenCylinderPathImpl(g:OpenCylinderGeometry,first:SurfacePos
    }
    default:throw RangeError('Unsupported certified open-cylinder path class.');
   }
-  pieces=pieces.filter(piece=>piece.lengthMeters!==0);const length=pieces.reduce((sum,piece)=>sum+piece.lengthMeters,0),error=pieces.length?guard*(pieces.length+2):0;
+  // As in the accepted cylinder path, distinct endpoints retain reconstruction
+  // error even when their rounded Cartesian chord collapses to zero. Otherwise
+  // an ordinary pointer-up a few chart ULPs away incorrectly fails the global
+  // lower bound. Input is retained, with the same explicit position/length
+  // certificate; no coordinate snapping or uncertified route is substituted.
+  pieces=pieces.filter(piece=>piece.lengthMeters!==0);const length=pieces.reduce((sum,piece)=>sum+piece.lengthMeters,0),error=samePoint?0:guard*(pieces.length+2);
   if(!Number.isFinite(length)||length+error<distance.lowerBoundMeters||length+error-distance.lowerBoundMeters>tolerance)return undefined;
   return{pieces,length,error,alignment:alignment(pieces[0])};
  }).filter(candidate=>candidate!==undefined);

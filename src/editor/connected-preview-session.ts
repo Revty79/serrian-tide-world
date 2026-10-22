@@ -4,9 +4,10 @@ import {createConnectedHistory,type ConnectedHistory} from './connected-history.
 import {terrainPackedColor,type IndexedDisplayCache} from '../rendering/indexed-display-cache.ts';
 import {PHYSICAL_PREVIEW_DAB_LIMITS,PHYSICAL_UI_SPACING_RATIO} from './physical-brush-policy.ts';
 import {yieldPersistence} from '../persistence/cooperative-work.ts';
-import {paintingStage,paintingMetricsEnabled} from './painting-metrics.ts';
+import {paintingStage,paintingMetricsEnabled,recordPaintingEvent} from './painting-metrics.ts';
 import type {ConnectedWorkOutput} from './connected-work-protocol.ts';
 import type {ConnectedSessionTerrain,ConnectedSessionView,ConnectedSessionHooks,ConnectedSessionStroke,ConnectedWorkerSessionStroke,ConnectedWorkerFactory,ConnectedStencil} from './connected-session-contracts.ts';
+import type {TerrainDisplayDab} from '../rendering/cylinder-dirty-region.ts';
 const historyWord=new DataView(new ArrayBuffer(4));
 function valueOfWord(word:number){historyWord.setUint32(0,word,true);return historyWord.getFloat32(0,true);}
 function isWorkerStroke<T extends ConnectedSessionTerrain>(stroke:ConnectedSessionStroke<T>):stroke is ConnectedWorkerSessionStroke<T>{return 'diagnostics' in stroke && typeof stroke.diagnostics==='object' && stroke.diagnostics!==null && 'backend' in stroke.diagnostics && typeof stroke.diagnostics.backend==='string' && 'waitForProgress' in stroke && typeof stroke.waitForProgress==='function';}
@@ -39,7 +40,13 @@ export class ConnectedPreviewSession<T extends ConnectedSessionTerrain,View exte
   }
   private preview?: ReturnType<ConnectedSessionHooks<T,View>['prepareStencil']>;
   private previewKey = '';
+  private previewCandidateKey='';
+  private previewCandidateAt=0;
+  private previewWakeTimeout?:ReturnType<typeof setTimeout>;
   private lastStrokeRevision = 0;
+  private gesture=0;
+  private displayDabs:TerrainDisplayDab[]=[];
+  displayDabsSince(revision:number){const start=this.displayDabs.findIndex(d=>d.fromRevision===revision);if(start<0)return;const values=this.displayDabs.slice(start);return values.at(-1)?.toRevision===this.cache.sourceRevision?values:undefined;}
   private inputTimes: { ordinal: number; at: number }[] = [];
   private presentationTimes: { revision: number; at: number }[] = [];
   stencil?: ConnectedStencil;
@@ -74,11 +81,12 @@ export class ConnectedPreviewSession<T extends ConnectedSessionTerrain,View exte
   get pendingPositions() { return this.stroke?.statistics.pendingPositions ?? 0; }
   get pendingWork() { return !!this.stroke?.statistics.hasPendingWork; }
   get previewPending() { return !!this.preview || !!this.remotePreview; }
-  private clearPreview() { clearTimeout(this.previewTimeout); this.remotePreview?.terminate(); this.remotePreview = undefined; this.previewTask++; this.preview?.job.cancel(); this.preview = undefined; this.previewKey = ''; this.stencil = undefined; this.previewMessage = ''; }
+  private clearPreview() { clearTimeout(this.previewWakeTimeout);clearTimeout(this.previewTimeout); this.remotePreview?.terminate(); this.remotePreview = undefined; this.previewTask++; this.preview?.job.cancel(); this.preview = undefined; this.previewKey = ''; this.stencil = undefined; this.previewMessage = ''; }
   beforeOperation=()=>{};
   begin(center: SurfacePosition, settings: CylindricalBrushSettings, view: View, at = performance.now()) {
     if (this.disposed || this.stroke || this.locked) return false;
     this.beforeOperation();
+    this.gesture++;
     this.clearPreview(); this.lastDab = undefined;
     const real = this.history, guard = this.hooks.visibility(this.terrain, view);
     // Inherit the real closure-backed history. Override only its handoff to stage
@@ -92,20 +100,23 @@ export class ConnectedPreviewSession<T extends ConnectedSessionTerrain,View exte
         const stencil = { center: job.center, indices, revision: job.sourceRevision, settings: job.settings, affectedSamples: job.statistics.affectedSamples };
         this.statistics.stagedDisplayPeakBytes = Math.max(this.statistics.stagedDisplayPeakBytes, indices.byteLength + colors.byteLength);
         const count = paintingStage('historyAndCommit', () => operation.commitDab(job));
+        if(count){if(this.displayDabs.length===128)this.displayDabs.shift();this.displayDabs.push({fromRevision:job.sourceRevision,toRevision:this.terrain.revision,center:job.center,radiusMeters:job.settings.radiusMeters});}
         for (const c of changes) this.track(c.index, c.before, c.after);
-        this.cache.apply(indices, colors, this.terrain.revision); this.lastDab = stencil; return count;
+        this.cache.apply(indices, colors, this.terrain.revision); this.lastDab = stencil;
+        if(paintingMetricsEnabled()){const ordinal=(this.stroke?.statistics.processedPositions??0)+1,input=this.inputTimes.find(p=>p.ordinal===ordinal);recordPaintingEvent('commit',{gesture:this.gesture,ordinal,revision:this.terrain.revision,words:count,inputAt:input?.at??at});}
+        return count;
       } });
     } });
     try {
       const options = { spacingMeters: settings.radiusMeters * PHYSICAL_UI_SPACING_RATIO, dabLimits: PHYSICAL_PREVIEW_DAB_LIMITS, maxDabs: 2048 };
       this.stroke = this.workerFactory ? this.hooks.workers!.begin(this.terrain, tracked, center, settings, options, () => this.changed(), this.workerFactory) : this.hooks.begin(this.terrain, tracked, center, settings, options);
       this.workDiagnostics = isWorkerStroke(this.stroke) ? this.stroke.diagnostics : { backend: 'cooperative' };
-      this.lastStrokeRevision = this.terrain.revision; this.inputTimes = [{ ordinal: 1, at }]; this.message = 'Drawing physical terrain…'; this.changed(); return true;
+      this.lastStrokeRevision = this.terrain.revision; this.inputTimes = [{ ordinal: 1, at }];recordPaintingEvent('input',{gesture:this.gesture,ordinal:1},at); this.message = 'Drawing physical terrain…'; this.changed(); return true;
     } catch (e) { this.message = e instanceof Error ? e.message : String(e); this.changed(); return false; }
   }
   move(point: SurfacePosition, at = performance.now()) {
     if (!this.stroke || this.stroke.status !== 'drawing' || this.locked) return false;
-    try { this.stroke.move(point); this.inputTimes.push({ ordinal: this.stroke.statistics.acceptedPositions, at }); this.changed(); return true; }
+    try { this.stroke.move(point);const ordinal=this.stroke.statistics.acceptedPositions; this.inputTimes.push({ ordinal, at });recordPaintingEvent('input',{gesture:this.gesture,ordinal},at); this.changed(); return true; }
     catch (e) { this.fail(e); return false; }
   }
   release() { if (this.stroke) { try { this.stroke.release(); this.message = 'Finishing accepted physical input…'; this.changed(); } catch (e) { this.fail(e); } } }
@@ -148,6 +159,7 @@ export class ConnectedPreviewSession<T extends ConnectedSessionTerrain,View exte
   }
   undo() {
     if (this.locked) return;
+    this.displayDabs=[];
     this.cancel('Undo interrupted drawing');
     const operation = this.history.statistics.cursor - 1;
     try { if (this.history.undo()) { for (const c of this.history.changes(operation)) this.track(c.index, valueOfWord(c.afterWord), valueOfWord(c.beforeWord)); this.cache.refresh([...this.history.changes(operation)].map(c => c.index)); this.message = 'Exact whole-stroke Undo.'; } }
@@ -155,6 +167,7 @@ export class ConnectedPreviewSession<T extends ConnectedSessionTerrain,View exte
   }
   redo() {
     if (this.locked) return;
+    this.displayDabs=[];
     this.cancel('Redo interrupted drawing'); const operation = this.history.statistics.cursor;
     try { if (this.history.redo()) { for (const c of this.history.changes(operation)) this.track(c.index, valueOfWord(c.beforeWord), valueOfWord(c.afterWord)); this.cache.refresh([...this.history.changes(operation)].map(c => c.index)); this.message = 'Exact whole-stroke Redo.'; } }
     catch (e) { this.message = String(e); } this.lastDab = undefined; this.changed();
@@ -163,6 +176,12 @@ export class ConnectedPreviewSession<T extends ConnectedSessionTerrain,View exte
     if (this.stroke || this.disposed || this.locked || !center || !settings) { this.clearPreview(); return; }
     const key = JSON.stringify([center, settings, view.mode, view.frame, this.terrain.revision]);
     if (key === this.previewKey) return;
+    // Exact inspection is expendable. A moving pointer must not repeatedly
+    // create/cancel workers and terrain snapshots ahead of real painting.
+    if(this.workerFactory){
+      if(key!==this.previewCandidateKey){this.clearPreview();this.previewCandidateKey=key;this.previewCandidateAt=performance.now();this.previewWakeTimeout=setTimeout(()=>this.changed(),90);return;}
+      if(performance.now()-this.previewCandidateAt<90)return;
+    }
     this.clearPreview(); this.previewKey = key;
     if (this.workerFactory) {
       const task = this.previewTask, revision = this.terrain.revision, started = performance.now();

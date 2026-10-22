@@ -1,0 +1,2 @@
+import base from './playwright.hollow-worlds.config.mjs';
+export default{...base,testMatch:['open-cylinder-correction.spec.ts'],projects:[{name:'installed-chrome',use:{viewport:{width:1920,height:911},channel:'chrome',deviceScaleFactor:1}}],use:{...base.use,launchOptions:{},baseURL:process.env.ATLAS_PREVIEW_URL??'http://127.0.0.1:5264'},webServer:{...base.webServer,command:'npm run dev -- --port 5264 --strictPort',url:process.env.ATLAS_PREVIEW_URL??'http://127.0.0.1:5264'},reporter:[['list'],['json',{outputFile:'.local/open-correction-browser.json'}]]};

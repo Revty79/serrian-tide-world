@@ -3,7 +3,10 @@ import type {OpenCylinderTerrain} from './open-cylinder.ts';
 
 /** A local footprint can meet at most one physical crease. The restriction is
  * numerical, never a distance through an absent cap or an increase in budgets. */
-export function openCylinderBrushRadiusLimit(terrain:OpenCylinderTerrain){const g=terrain.geometry;return Math.min(.24*Math.min(g.thicknessMeters,g.metadata.lengthMeters),.2*g.metadata.innerRadiusMeters);}
+// 2r < .96 min(T,L) excludes both boundaries of any wall/rim strip. A visit
+// to the other curved wall costs at least T. Existing global lower/upper
+// certificates still validate EVERY query; no distance enclosure is relaxed.
+export function openCylinderBrushRadiusLimit(terrain:OpenCylinderTerrain){const g=terrain.geometry;return Math.min(.48*Math.min(g.thicknessMeters,g.metadata.lengthMeters),.2*g.metadata.innerRadiusMeters);}
 export function openCylinderBrushCandidates(terrain:OpenCylinderTerrain,input:SurfacePosition,radius:number){
  const g=terrain.geometry,center=g.normalize(input),{angularSamples:A,axialCells:Z,radialCells:P}=terrain.metadata.representation.resolution,L=g.metadata.lengthMeters,T=g.thicknessMeters,S=g.meridianLengthMeters,Q=2*Z+4*P;
  if(!Number.isFinite(radius)||radius<=0||radius>=openCylinderBrushRadiusLimit(terrain))throw RangeError('Open-cylinder brush radius must remain below the supported single-crease footprint limit.');

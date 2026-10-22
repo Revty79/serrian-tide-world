@@ -6,7 +6,8 @@ import type {CylindricalBrushSettings} from '../terrain/connected-brush.ts';
 import type {IndexedDisplayCache} from '../rendering/indexed-display-cache.ts';
 import type {CylinderView,CylinderViewport,CylinderScreenPoint} from '../rendering/cylindrical-view.ts';
 import type {CylinderAppearance} from '../rendering/cylindrical-elevation.ts';
-import type {CoherentTerrainRaster} from '../rendering/coherent-terrain-raster.ts';
+import type {CoherentTerrainRaster,TerrainRasterUpdate,RasterRegions} from '../rendering/coherent-terrain-raster.ts';
+import type {TerrainDisplayDab} from '../rendering/cylinder-dirty-region.ts';
 import type {SurfaceDisplayReceipt} from '../rendering/surface-renderer.ts';
 export interface WorkspaceTerrain extends ConnectedSessionTerrain{readonly metadata:ConnectedSessionTerrain['metadata']&{readonly identity:SurfaceIdentity;readonly terrainId:string;readonly representation:{readonly resolution:{readonly angularSamples:number;readonly axialCells:number;readonly radialCells:number}}}}
 export interface WorkspaceGPU<V,Scene>{readonly available:boolean;readonly statistics:{readonly renderer:string;readonly reason:string};setScene(scene:Scene|undefined):void;present(view:V,size:CylinderViewport,appearance:CylinderAppearance):SurfaceDisplayReceipt;fail(error:unknown):void;dispose():void}
@@ -29,6 +30,7 @@ export interface ConnectedWorkspaceAdapter<T extends WorkspaceTerrain,V extends 
  recenter(view:V,p:SurfacePosition):V;region(view:V,id:string):SurfacePosition;
  validateEye(eye:Vec3,scene?:Scene):boolean;
  cutView(view:V,scene?:Scene):boolean;sceneStamp(scene?:Scene):string;
- raster(cache:IndexedDisplayCache<T>,view:V,size:CylinderViewport,budget:number,reusable:Uint8ClampedArray|undefined,appearance:CylinderAppearance,scene?:Scene):Generator<void,CoherentTerrainRaster>;
+ dirtyRegion?(changes:readonly TerrainDisplayDab[],view:V,size:CylinderViewport,columns:number,rows:number):RasterRegions|undefined;
+ raster(cache:IndexedDisplayCache<T>,view:V,size:CylinderViewport,budget:number,reusable:Uint8ClampedArray|undefined,appearance:CylinderAppearance,scene?:Scene,update?:TerrainRasterUpdate):Generator<void,CoherentTerrainRaster>;
  gpu(canvas:HTMLCanvasElement,cache:IndexedDisplayCache<T>,invalidate:()=>void):WorkspaceGPU<V,Scene>;
 }
