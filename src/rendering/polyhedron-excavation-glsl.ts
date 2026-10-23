@@ -15,7 +15,7 @@ vec4 cutRay(vec2 pixel){vec2 s=(pixel/backingSize*viewport-viewCenter)/scale;vec
  // Same sorted free-interval union used by the CPU CSG. This bounded work is
  // restricted to conservative projected cut pixels in an editing overview.
  for(int i=1;i<49;i++){if(i>=n)break;vec2 v=intervals[i];int label=labels[i],j=i;for(int k=0;k<49;k++){if(j<=0||intervals[j-1].x<=v.x)break;intervals[j]=intervals[j-1];labels[j]=labels[j-1];j--;}intervals[j]=v;labels[j]=label;}
- float cursor=max(0.,outer.x);int which=-2;for(int i=0;i<49;i++){if(i>=n||intervals[i].x>cursor+1.e-7)break;if(intervals[i].y>cursor){cursor=intervals[i].y;which=labels[i];}}if(cursor>=outer.y-1.e-7||which==-2&&outer.x< -1.e-7)return vec4(0);vec3 point=o+d*cursor;
+ float cursor=max(0.,outer.x);int which=-2;for(int i=0;i<49;i++){if(i>=n||intervals[i].x>cursor+1.e-7)break;if(intervals[i].y>cursor){cursor=intervals[i].y;which=labels[i];}}if(cursor>=outer.y-1.e-7||which==-2&&outer.x< -1.e-7)return vec4(0);if(which==-2&&inspection==0)return vec4(0,0,0,-1);vec3 point=o+d*cursor;
  if(which>=0){vec3 a=primitiveA[which].xyz,axis=primitiveB[which].xyz-a;float len=dot(axis,axis),t=len>0.?clamp(dot(point-a,axis)/len,0.,1.):0.;vec3 normal=normalize(a+axis*t-point);float shade=clamp(.64+.36*dot(normal,vec3(-.38,-.48,.78)),.28,1.1);return vec4(vec3(164,145,114)/255.*shade,1.);}
  int face=int(which==-1?inner.w:outer.z);if(face<0)return vec4(0);vec3 delta=point-bodyOrigins[face];vec2 uv=vec2(dot(delta,bodyDualU[face]),dot(delta,bodyDualV[face]));return vec4(materialColorAtOrientation(face,materialFieldAt(face,uv),face<${count}?1.:-1.),1.);
 }`;}

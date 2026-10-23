@@ -14,6 +14,9 @@ link. Torus, ringworld, polyhedral and exotic adapters use their actual material
 boundaries. Purely 2D maps can own surface entrances and underground map links;
 physical subtraction requires a genuine volume or thickness model.
 
+Coverage includes future regional, settlement, building, dungeon, cave and
+interior mapping systems, alongside floating, fragmented and exotic Worlds.
+
 The later shared visual Tunnel Network Designer must support manual route
 authoring, moving/resizing/removing openings, extending/reshaping/splitting/
 connecting/deleting passages, junctions and dead ends, irregular chambers and
@@ -41,6 +44,9 @@ correction, then execute Geometry Queues 1, 2 and 3 in their authorized order.
 inventory and plan coordinated cross-shape excavation. Do not delay these queues
 for the full designer. Displaced-terrain excavation, volumetric deformation and
 free collision-aware underground exploration remain later true-3D work.
+
+The owner clarified that the queue references mean the remaining work already
+queued; this supplement does not request a new queue attachment or add a shape.
 
 Reference-shell restrictions may remain temporarily when documented. Track
 missing capabilities honestly: an explicitly limited geometry milestone can be

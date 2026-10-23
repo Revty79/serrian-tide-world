@@ -1,0 +1,2 @@
+﻿import base from './playwright.tetrahedron.config.mjs';
+export default{...base,testMatch:['tetrahedron-connections.spec.ts','tetrahedron-connection-pixels.spec.ts','tetrahedron-connection-boundaries.spec.ts','tetrahedron-connection-storage.spec.ts'],timeout:300000,workers:1,fullyParallel:false,reporter:[['list'],['json',{outputFile:process.env.TETRAHEDRON_CONNECTIONS_REPORT??'.local/tetrahedron-connections-browser.json'}]]};
