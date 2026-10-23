@@ -1,0 +1,1 @@
+export function assertInteractiveOctahedron(edge:number,n:number,initial=-100){const height=2*edge/Math.sqrt(6);if(!Number.isFinite(edge)||edge<1||edge>1e9||![128,256].includes(n)||!Number.isFinite(initial)||Math.abs(initial)>height/8)throw RangeError('A octahedron requires a supported edge length, N128/N256 detail and enough physical clearance for its starting terrain.');}

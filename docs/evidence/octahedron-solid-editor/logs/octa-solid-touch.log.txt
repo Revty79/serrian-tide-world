@@ -1,0 +1,15 @@
+
+Running 2 tests using 1 worker
+
+npx.cmd : (node:12152) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:16 char:1
++ npx.cmd playwright test --config playwright.octahedron-touch.config.m ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:12152) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [mobile-emulation] › tests\octahedron-touch.spec.ts:2:72 › octahedron auto: native emulated touch/pen drawing and two-finger navigation preserve exact history (3.2s)
+  ok 2 [mobile-emulation] › tests\octahedron-touch.spec.ts:2:72 › octahedron canvas: native emulated touch/pen drawing and two-finger navigation preserve exact history (3.1s)
+
+  2 passed (7.5s)

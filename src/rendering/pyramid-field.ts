@@ -1,3 +1,4 @@
+import {polyhedronDisplayCapacity} from './polyhedron-display-policy.ts';
 import {IndexedDisplayCache} from './indexed-display-cache.ts';
 import type {PyramidTerrain} from '../terrain/pyramid.ts';
 import type {PolyhedronTerrain} from '../terrain/polyhedron-contract.ts';
@@ -10,7 +11,9 @@ export class PyramidDisplayCache<T extends PolyhedronTerrain=PyramidTerrain> ext
  initialAtlasRevision=-1;
  private heights:Float32Array;private locations:Uint32Array;
  private journal:{from:number;to:number;rects:PyramidFieldRect[]}[]=[];
- constructor(t:T){super(t,196610,'Pyramid interactive capacity exceeded.');this.heights=t.copyElevations();this.locations=new Uint32Array(t.sampleCount).fill(0xffffffff);this.n=t.subdivisions;this.side=this.n+1;this.data=new Float32Array(t.geometry.faces.length*this.side*this.side*4);this.indices=new Uint32Array(t.geometry.faces.length*this.side*this.side).fill(0xffffffff);this.atlasSize=2*this.n+1;this.initialAtlas=new Map(this.terrain.geometry.faces.map(face=>[face,new Uint8ClampedArray(this.atlasSize*this.atlasSize*4)]));}
+ constructor(t:T){super(t,polyhedronDisplayCapacity(t),'Polyhedron interactive capacity exceeded.');this.heights=t.copyElevations();this.locations=new Uint32Array(t.sampleCount).fill(0xffffffff);this.n=t.subdivisions;this.side=this.n+1;this.data=new Float32Array(t.geometry.faces.length*this.side*this.side*4);this.indices=new Uint32Array(t.geometry.faces.length*this.side*this.side).fill(0xffffffff);this.atlasSize=2*this.n+1;this.initialAtlas=new Map(this.terrain.geometry.faces.map(face=>[face,new Uint8ClampedArray(this.atlasSize*this.atlasSize*4)]));}
+ /** Owned numerical/display ArrayBuffers; Canvas/GPU allocations are reported separately. */
+ get ownedArrayBufferBytes(){return super.byteLength+this.heights.byteLength+this.locations.byteLength+this.data.byteLength+this.indices.byteLength+[...this.initialAtlas.values()].reduce((sum,a)=>sum+a.byteLength,0);}
  private at(face:string,c:number,r:number){return this.terrain.geometry.faces.indexOf(face)*this.side*this.side+r*this.side+c;}
  private updateNode(face:string,c:number,r:number){const t=this.terrain,at=this.at(face,c,r),f=t.geometry.frame(face),current=this.heights[this.indices[at]!]!;let xx=0,xy=0,yy=0,hx=0,hy=0;
   for(const[dc,dr]of !this.terrain.geometry.isTriangle(face)?[[1,0],[-1,0],[0,1],[0,-1]]:[[1,0],[-1,0],[0,1],[0,-1],[1,-1],[-1,1]]){const nc=c+dc!,nr=r+dr!;if(nc<0||nr<0||nc>this.n||nr>this.n||(this.terrain.geometry.isTriangle(face)&&nc+nr>this.n))continue;const du=dc!/this.n,dv=dr!/this.n,dx=du*Math.hypot(...f.u)+dv*(f.v[0]*f.e1[0]+f.v[1]*f.e1[1]+f.v[2]*f.e1[2]),dy=dv*(f.v[0]*f.e2[0]+f.v[1]*f.e2[1]+f.v[2]*f.e2[2]),dh=this.heights[this.indices[this.at(face,nc,nr)]!]!-current;xx+=dx*dx;xy+=dx*dy;yy+=dy*dy;hx+=dx*dh;hy+=dy*dh;}

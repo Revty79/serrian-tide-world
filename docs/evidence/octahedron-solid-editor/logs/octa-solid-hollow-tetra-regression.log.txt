@@ -1,0 +1,32 @@
+
+Running 17 tests using 1 worker
+
+npx.cmd : (node:8636) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:22 char:1
++ npx.cmd playwright test --config playwright.hollow-tetrahedron.config ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:8636) War... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [installed-chrome] › tests\hollow-tetrahedron-context.spec.ts:2:1 › Hollow Tetrahedron N256: returning to painted banks, graphics loss and restoration retain current sharp terrain epochs (6.5s)
+  ok  2 [installed-chrome] › tests\hollow-tetrahedron-navigation.spec.ts:2:39 › Hollow Tetrahedron N256 auto: cavity drag reaches actual sharp pixels responsively without terrain/history writes (7.2s)
+  ok  3 [installed-chrome] › tests\hollow-tetrahedron-navigation.spec.ts:2:39 › Hollow Tetrahedron N256 canvas: cavity drag reaches actual sharp pixels responsively without terrain/history writes (10.5s)
+  ok  4 [installed-chrome] › tests\hollow-tetrahedron-pixels.spec.ts:2:75 › Hollow Tetrahedron outside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (3.0s)
+  ok  5 [installed-chrome] › tests\hollow-tetrahedron-pixels.spec.ts:2:75 › Hollow Tetrahedron inside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (3.4s)
+  ok  6 [installed-chrome] › tests\hollow-tetrahedron-pixels.spec.ts:2:75 › Hollow Tetrahedron cavity N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (9.9s)
+  ok  7 [installed-chrome] › tests\hollow-tetrahedron-pixels.spec.ts:2:75 › Hollow Tetrahedron outside N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (3.6s)
+  ok  8 [installed-chrome] › tests\hollow-tetrahedron-pixels.spec.ts:2:75 › Hollow Tetrahedron inside N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (3.6s)
+  ok  9 [installed-chrome] › tests\hollow-tetrahedron-pixels.spec.ts:2:75 › Hollow Tetrahedron cavity N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (10.5s)
+  ok 10 [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:12:63 › Hollow Tetrahedron N128 auto: independent banks, all tools and six joins, sharp inspection, exact replay and v18 reopen (48.3s)
+  ok 11 [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:12:63 › Hollow Tetrahedron N128 canvas: independent banks, all tools and six joins, sharp inspection, exact replay and v18 reopen (48.5s)
+  ok 12 [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:12:63 › Hollow Tetrahedron N256 auto: independent banks, all tools and six joins, sharp inspection, exact replay and v18 reopen (51.0s)
+  ok 13 [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:12:63 › Hollow Tetrahedron N256 canvas: independent banks, all tools and six joins, sharp inspection, exact replay and v18 reopen (51.5s)
+  ok 14 [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:22:73 › Hollow Tetrahedron N256 auto map: each bank retains a 20-second held gesture (44.7s)
+  ok 15 [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:22:73 › Hollow Tetrahedron N256 auto vertex: each bank retains a 20-second held gesture (44.4s)
+  ok 16 [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:22:73 › Hollow Tetrahedron N256 canvas map: each bank retains a 20-second held gesture (44.7s)
+  ok 17 [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:22:73 › Hollow Tetrahedron N256 canvas vertex: each bank retains a 20-second held gesture (44.4s)
+
+  Slow test file: [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts (6.3m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  17 passed (7.3m)

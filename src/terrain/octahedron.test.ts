@@ -14,4 +14,4 @@ test('octahedron ownership handles non-power-of-two detail, symmetric neighbor j
 });
 
 import {PolyhedronDisplayCache} from '../rendering/polyhedron-field.ts';
-test('octahedron numerical N256 does not silently raise the accepted interactive display capacity',()=>{const t=createOctahedronTerrain({terrainId:'t',geometry,subdivisions:256});assert.equal(t.sampleCount,262146);assert.throws(()=>new PolyhedronDisplayCache(t),/capacity/);});
+test('qualified octahedron N256 display has bounded eight-face storage and unknown profiles retain the previous capacity',()=>{const t=createOctahedronTerrain({terrainId:'t',geometry,subdivisions:256}),c=new PolyhedronDisplayCache(t);assert.equal(t.sampleCount,262146);assert.equal(c.data.byteLength,8*257*257*16);assert.equal(c.initialAtlas.size,8);assert.equal(c.ownedArrayBufferBytes,3*262146*4+8*257*257*20+8*513*513*4);assert.equal(c.atlasSize,513);assert.throws(()=>new PolyhedronDisplayCache({...t,geometry:{...t.geometry,metadata:{...t.geometry.metadata,provider:'unqualified'}}}),/capacity/);c.dispose();});

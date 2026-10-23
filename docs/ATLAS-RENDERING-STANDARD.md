@@ -31,6 +31,14 @@ reference-shell option or larger clearance; never clamp elevations silently.
 | Solid and Hollow Pyramid | The same `polyhedralDisplayColor` extracted from the accepted cube color pass, unchanged cube GLSL palette/relief functions, four-ray GPU coverage, sharp face atlases, indexed display epochs and shared graphics/backing policy. Both variants use `PyramidDisplayCache` and `PyramidPresentation`. | Four real triangles and a square base, barycentric field addresses, five-plane picking, physical frames and cavity perspective. Canvas cavity inspection samples that same atlas through exact inverse plane homographies; no alternate terrain or smoothing pass. |
 | Solid and Hollow Regular Tetrahedron | The same generic polyhedral display cache, palette/relief, sharp atlas, incremental epochs, four-ray GPU and graphics/backing mechanisms used by Pyramid. `PolyhedronPresentation` accepts real face count/triangle flags and a geometry projection; Pyramid keeps its compatibility entry points. | Four real equilateral triangles including the base, canonical edge/vertex ownership, true normals, four-plane picking and a connected triangular net. Nested hollow banks use this identical field and presenter with inward physical normals, fitted inside editing and center-cavity projection. See the [solid](TETRAHEDRON-SOLID-EDITOR.md) and [hollow](TETRAHEDRON-HOLLOW-EDITOR.md) operational reviews. |
 
+The operational regular Octahedron reuses this same polyhedral presenter, field,
+worker and input/history system. Its verified eight-triangle net uses the shared
+triangular projection factory; Tetrahedron retains its original net and public
+entry points. A geometry-qualified N128/N256 Octahedron profile admits 262,146
+canonical samples after actual pixels, memory, input latency and recovery pass.
+Other profiles retain their prior cap; work/history/backing limits do not change.
+See the [Solid Octahedron review](OCTAHEDRON-SOLID-EDITOR.md).
+
 The existing families have different accepted reconstruction mathematics. This
 standard does not silently replace cylinder Hermite reconstruction with cube
 bilinear reconstruction, or reinterpret saved geography. A hollow variant uses
