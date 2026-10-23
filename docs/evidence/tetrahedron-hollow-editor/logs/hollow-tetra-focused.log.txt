@@ -1,0 +1,18 @@
+✔ hollow tetrahedron v18 N128: both independent Float32 banks, signed zero and selected role roundtrip exactly (712.0762ms)
+✔ hollow tetrahedron v18 N256: both independent Float32 banks, signed zero and selected role roundtrip exactly (2227.3022ms)
+✔ hollow tetrahedron v18 rejects corruption, metadata smuggling, foreign banks, touching shells and out-of-clearance words even with rehashed payload (260.5688ms)
+✔ hollow tetrahedron saving rejects a stale bank epoch or selection and cancellation leaves its source unchanged (269.8253ms)
+✔ nested tetrahedron clearance encloses every inner vertex against every actual outer face, base and apex (5.9649ms)
+✔ intersecting, touching, inverted, nonfinite and ambiguous thin hollow tetrahedron shells reject explicitly (0.6877ms)
+✔ hollow tetrahedron N128: independent identities, canonical apex/edges, strict finite clearance and no copied/inverted geography (2.1436ms)
+✔ hollow tetrahedron N256: independent identities, canonical apex/edges, strict finite clearance and no copied/inverted geography (1.4996ms)
+✔ thin hollow tetrahedron requires explicit zero reference shell rather than clamping either bank (1.0121ms)
+✔ tetrahedron immutable geometry cannot drift with caller configuration or frame/topology mutation (2.5995ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3710.3755

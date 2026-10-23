@@ -73,7 +73,7 @@ Forty raw tetrahedron/reference complete terrain hashes match exactly. Isolated
 numerical preparation took at most 38.4 ms in that run; this is not an
 input-to-visible or worker latency claim. Operational performance follows.
 
-Hollow Tetrahedron and Octahedron work have not started. Physical holes/tunnels
+At that numerical checkpoint, Hollow Tetrahedron and Octahedron work had not started. Physical holes/tunnels
 are separate from nested boundary geometry; no connection between independent
 banks is implied. All overnight work stops for independent technical review and
 owner acceptance at the authorized queue boundary.
@@ -97,5 +97,19 @@ reopened strokes have identical words between WebGL2 and Canvas at both details.
 Actual RX 6600 pixels and explicit Canvas output remain separate from emulated
 touch/pen evidence and from owner acceptance.
 
-After this verified operational checkpoint is published, proceed to Hollow
-Tetrahedron. Octahedron remains gated on completion of both tetrahedron variants.
+The Solid Tetrahedron operational checkpoint was published as
+`52da75b1851ecf08750b627a5751c3a72321b695`. It authorized continuation to Hollow
+Tetrahedron after its technical gates passed. Octahedron remains gated on completion of both tetrahedron variants.
+
+## Hollow Tetrahedron operational checkpoint
+
+The [hollow technical review](TETRAHEDRON-HOLLOW-EDITOR.md) records two genuinely
+nested regular tetrahedra, independent canonical banks, fitted inside editing,
+read-only cavity inspection, shared sharp presentation, separate exact history
+and strict two-bank format 18. The full suite passes 1,451 units and build.
+The [receipt](evidence/tetrahedron-hollow-editor/receipt.json) records 39 successful
+unique browser cases with actual GPU/Canvas pixels, sustained map/vertex strokes,
+strict both-bank reopen, trusted emulated touch/pen and inherited editor regressions.
+The two initial map loops that exceeded shell elevation limits are preserved with
+their explicit within-bounds endurance reruns and added atomic rejection tests.
+Octahedron foundation remains gated on the verified Hollow checkpoint.

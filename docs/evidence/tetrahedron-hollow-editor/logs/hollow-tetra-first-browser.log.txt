@@ -1,0 +1,98 @@
+
+Running 17 tests using 1 worker
+
+npx.cmd : (node:24256) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:3 char:1
++ npx.cmd playwright test --config playwright.hollow-tetrahedron.config ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:24256) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [installed-chrome] › tests\hollow-tetrahedron-context.spec.ts:2:1 › Hollow Tetrahedron N256: returning to painted banks, graphics loss and restoration retain current sharp terrain epochs (6.5s)
+  ok  2 [installed-chrome] › tests\hollow-tetrahedron-navigation.spec.ts:2:39 › Hollow Tetrahedron N256 auto: cavity drag reaches actual sharp pixels responsively without terrain/history writes (7.2s)
+  ok  3 [installed-chrome] › tests\hollow-tetrahedron-navigation.spec.ts:2:39 › Hollow Tetrahedron N256 canvas: cavity drag reaches actual sharp pixels responsively without terrain/history writes (10.9s)
+  ok  4 [installed-chrome] › tests\hollow-tetrahedron-pixels.spec.ts:2:75 › Hollow Tetrahedron outside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (3.9s)
+  ok  5 [installed-chrome] › tests\hollow-tetrahedron-pixels.spec.ts:2:75 › Hollow Tetrahedron inside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (3.7s)
+  ok  6 [installed-chrome] › tests\hollow-tetrahedron-pixels.spec.ts:2:75 › Hollow Tetrahedron cavity N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (10.7s)
+  ok  7 [installed-chrome] › tests\hollow-tetrahedron-pixels.spec.ts:2:75 › Hollow Tetrahedron outside N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (4.2s)
+  ok  8 [installed-chrome] › tests\hollow-tetrahedron-pixels.spec.ts:2:75 › Hollow Tetrahedron inside N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (4.3s)
+  ok  9 [installed-chrome] › tests\hollow-tetrahedron-pixels.spec.ts:2:75 › Hollow Tetrahedron cavity N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (11.2s)
+  ok 10 [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:12:63 › Hollow Tetrahedron N128 auto: independent banks, all tools and six joins, sharp inspection, exact replay and v18 reopen (50.5s)
+  ok 11 [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:12:63 › Hollow Tetrahedron N128 canvas: independent banks, all tools and six joins, sharp inspection, exact replay and v18 reopen (49.8s)
+  ok 12 [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:12:63 › Hollow Tetrahedron N256 auto: independent banks, all tools and six joins, sharp inspection, exact replay and v18 reopen (52.7s)
+  ok 13 [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:12:63 › Hollow Tetrahedron N256 canvas: independent banks, all tools and six joins, sharp inspection, exact replay and v18 reopen (52.8s)
+  x  14 [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:22:73 › Hollow Tetrahedron N256 auto map: each bank retains a 20-second held gesture (23.6s)
+(node:1524) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 15 [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:22:73 › Hollow Tetrahedron N256 auto vertex: each bank retains a 20-second held gesture (45.6s)
+  x  16 [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:22:73 › Hollow Tetrahedron N256 canvas map: each bank retains a 20-second held gesture (24.0s)
+(node:23200) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 17 [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:22:73 › Hollow Tetrahedron N256 canvas vertex: each bank retains a 20-second held gesture (44.9s)
+
+
+  1) [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:22:73 › Hollow Tetrahedron N256 auto map: each bank retains a 20-second held gesture
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 0
+    Received: 1
+
+      22 | for(const backend of['auto','canvas'])for(const mode of['map','vertex'])test(`Hollow Tetrahedron N256 ${backend} ${mode}: each bank retains a 20-second held gesture`,async({page})=>{
+      23 |  test.setTimeout(180000);mkdirSync(output,{recursive:true});if(backend==='canvas')await page.addInitScript(()=>{const get=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(this:HTMLCanvasElement,type,...args){return type==='webgl2'?null:Reflect.apply(get,this,[type,...args]);} as typeof get;});await page.goto('/');await page.getByLabel('World shape',{exact:true}).selectOption('hollow-tetrahedron');await page.getByLabel('Tetrahedron numerical detail',{exact:true}).selectOption('256');await page.getByRole('button',{name:'Create World / Map',exact:true}).click();await ready(page);const banks=[];
+    > 24 |  for(const role of['exterior','interior'] as const){if(role==='interior')await select(page,role);if(mode==='map'){await page.getByRole('button',{name:'Surface map',exact:true}).click();await ready(page);}else await toward(page,['south','east','west']);const before=await hash(page,role),other=role==='exterior'?'interior':'exterior',unrelated=await hash(page,other),baseBefore=mode==='vertex'?await baseHash(page):undefined,points=[];if(mode==='map'){for(let i=0;i<48;i++){const angle=i/48*2*Math.PI;points.push(await point(page,'east',.25+.1*Math.cos(angle),.3+.1*Math.sin(angle)));}}else{for(const face of['south','east','west'])for(let i=0;i<=20;i++)points.push(await point(page,face,.06*(i/20),.94));}await startPaintingPixels(page);await page.mouse.move(points[0]!.x,points[0]!.y);await page.mouse.down();const started=Date.now();let events=0;while(Date.now()-started<20000){const p=points[events%points.length]!;await page.mouse.move(p.x,p.y);await page.waitForTimeout(16);events++;if(events%100===0)await expect(page.locator('.cylinder-canvas')).toHaveAttribute('data-painting','true');}await page.mouse.up();await ready(page);const timing=await finishPaintingPixels(page),after=await hash(page,role),s=await state(page),statistics=s.statistics as typeof s.statistics&{lastStroke:{workEpochs:number;distanceQueries:number};lastTermination:string};expect(statistics.failures).toBe(0);expect(statistics.lastTermination).toBe('complete');if(mode==='map'){expect(statistics.lastStroke.workEpochs).toBeGreaterThan(1);expect(statistics.lastStroke.distanceQueries).toBeGreaterThan(262144);}const baseAfter=mode==='vertex'?await baseHash(page):undefined;expect(baseAfter).toBe(baseBefore);expect(s.history.entries).toBe(1);expect(await hash(page,other)).toBe(unrelated);await page.getByRole('button',{name:'Undo',exact:true}).click();await ready(page);expect(await hash(page,role)).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await ready(page);expect(await hash(page,role)).toBe(after);expect(timing.summary.p95InputToPixels).toBeLessThan(300);expect(timing.summary.p95InputToCommit).toBeLessThan(250);expect(timing.summary.p95CommitToPixels).toBeLessThan(150);banks.push({role,events,baseBefore,baseAfter,before,after,unrelated,timing,state:s});await page.screenshot({path:`${output}/held-${backend}-${mode}-${role}.png`});}
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^
+      25 |  writeFileSync(`${output}/held-${backend}-${mode}.json`,JSON.stringify({backend,mode,banks},null,2));
+      26 | });
+      27 |
+        at D:\serrian-tide-world\tests\hollow-tetrahedron-workflow.spec.ts:24:1383
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\hollow-tetrahedron-workflo-9733c-ns-a-20-second-held-gesture-installed-chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\hollow-tetrahedron-workflo-9733c-ns-a-20-second-held-gesture-installed-chrome\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\hollow-tetrahedron-workflo-9733c-ns-a-20-second-held-gesture-installed-chrome\trace.zip
+    Usage:
+
+        npx playwright show-trace C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\hollow-tetrahedron-workflo-9733c-ns-a-20-second-held-gesture-installed-chrome\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:22:73 › Hollow Tetrahedron N256 canvas map: each bank retains a 20-second held gesture
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 0
+    Received: 1
+
+      22 | for(const backend of['auto','canvas'])for(const mode of['map','vertex'])test(`Hollow Tetrahedron N256 ${backend} ${mode}: each bank retains a 20-second held gesture`,async({page})=>{
+      23 |  test.setTimeout(180000);mkdirSync(output,{recursive:true});if(backend==='canvas')await page.addInitScript(()=>{const get=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(this:HTMLCanvasElement,type,...args){return type==='webgl2'?null:Reflect.apply(get,this,[type,...args]);} as typeof get;});await page.goto('/');await page.getByLabel('World shape',{exact:true}).selectOption('hollow-tetrahedron');await page.getByLabel('Tetrahedron numerical detail',{exact:true}).selectOption('256');await page.getByRole('button',{name:'Create World / Map',exact:true}).click();await ready(page);const banks=[];
+    > 24 |  for(const role of['exterior','interior'] as const){if(role==='interior')await select(page,role);if(mode==='map'){await page.getByRole('button',{name:'Surface map',exact:true}).click();await ready(page);}else await toward(page,['south','east','west']);const before=await hash(page,role),other=role==='exterior'?'interior':'exterior',unrelated=await hash(page,other),baseBefore=mode==='vertex'?await baseHash(page):undefined,points=[];if(mode==='map'){for(let i=0;i<48;i++){const angle=i/48*2*Math.PI;points.push(await point(page,'east',.25+.1*Math.cos(angle),.3+.1*Math.sin(angle)));}}else{for(const face of['south','east','west'])for(let i=0;i<=20;i++)points.push(await point(page,face,.06*(i/20),.94));}await startPaintingPixels(page);await page.mouse.move(points[0]!.x,points[0]!.y);await page.mouse.down();const started=Date.now();let events=0;while(Date.now()-started<20000){const p=points[events%points.length]!;await page.mouse.move(p.x,p.y);await page.waitForTimeout(16);events++;if(events%100===0)await expect(page.locator('.cylinder-canvas')).toHaveAttribute('data-painting','true');}await page.mouse.up();await ready(page);const timing=await finishPaintingPixels(page),after=await hash(page,role),s=await state(page),statistics=s.statistics as typeof s.statistics&{lastStroke:{workEpochs:number;distanceQueries:number};lastTermination:string};expect(statistics.failures).toBe(0);expect(statistics.lastTermination).toBe('complete');if(mode==='map'){expect(statistics.lastStroke.workEpochs).toBeGreaterThan(1);expect(statistics.lastStroke.distanceQueries).toBeGreaterThan(262144);}const baseAfter=mode==='vertex'?await baseHash(page):undefined;expect(baseAfter).toBe(baseBefore);expect(s.history.entries).toBe(1);expect(await hash(page,other)).toBe(unrelated);await page.getByRole('button',{name:'Undo',exact:true}).click();await ready(page);expect(await hash(page,role)).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await ready(page);expect(await hash(page,role)).toBe(after);expect(timing.summary.p95InputToPixels).toBeLessThan(300);expect(timing.summary.p95InputToCommit).toBeLessThan(250);expect(timing.summary.p95CommitToPixels).toBeLessThan(150);banks.push({role,events,baseBefore,baseAfter,before,after,unrelated,timing,state:s});await page.screenshot({path:`${output}/held-${backend}-${mode}-${role}.png`});}
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^
+      25 |  writeFileSync(`${output}/held-${backend}-${mode}.json`,JSON.stringify({backend,mode,banks},null,2));
+      26 | });
+      27 |
+        at D:\serrian-tide-world\tests\hollow-tetrahedron-workflow.spec.ts:24:1383
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\hollow-tetrahedron-workflo-144e5-ns-a-20-second-held-gesture-installed-chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\hollow-tetrahedron-workflo-144e5-ns-a-20-second-held-gesture-installed-chrome\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\hollow-tetrahedron-workflo-144e5-ns-a-20-second-held-gesture-installed-chrome\trace.zip
+    Usage:
+
+        npx playwright show-trace C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\hollow-tetrahedron-workflo-144e5-ns-a-20-second-held-gesture-installed-chrome\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:22:73 › Hollow Tetrahedron N256 auto map: each bank retains a 20-second held gesture
+    [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:22:73 › Hollow Tetrahedron N256 canvas map: each bank retains a 20-second held gesture
+  15 passed (6.9m)
