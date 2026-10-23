@@ -1,3 +1,4 @@
+import {decodeHollowPyramid,hollowPyramidHeader,validateHollowPyramid} from './hollow-pyramid-format.ts';
 import {decodePyramid,pyramidHeader,validatePyramid} from './pyramid-format.ts';
 import {decodeOpenCylinder,openCylinderHeader,validateOpenCylinder} from './open-cylinder-format.ts';
 import {decodeHollowCylinder,hollowCylinderHeader,validateHollowCylinder} from './hollow-cylinder-format.ts';
@@ -11,8 +12,8 @@ import {decodeSolidCubeHeightmap,solidCubeHeader,validateSolidCubeHeightmap} fro
 import {decodeHollowCube,hollowCubeHeader,validateHollowCube} from './hollow-cube-format.ts';
 import {decodeHollowSphere,hollowSphereHeader,validateHollowSphere} from './hollow-sphere-format.ts';
 
-export interface LocalMapSummary extends SavedMapSummary { kind?: 'pyramid' | 'bounded' | 'wrapped' | 'sphere' | 'cylinder' | 'cube' | 'hollow-cube' | 'hollow-sphere' | 'hollow-cylinder' | 'open-cylinder' }
-export const localMapType = (map: LocalMapSummary) => map.kind==='pyramid'?'Solid pyramid':map.kind==='open-cylinder'?'Open cylinder':map.kind==='hollow-cylinder'?'Capped hollow cylinder':map.kind==='hollow-sphere'?'Hollow sphere':map.kind === 'hollow-cube' ? 'Hollow cube' : map.kind === 'cube' ? 'Solid cube' : map.kind === 'cylinder' ? 'Physical cylinder' : map.kind === 'sphere' ? 'Sphere' : map.kind === 'wrapped' ? 'Wrapped plane' : map.kind === 'bounded' ? 'Bounded plane' : 'Planar (legacy)';
+export interface LocalMapSummary extends SavedMapSummary { kind?: 'hollow-pyramid' | 'pyramid' | 'bounded' | 'wrapped' | 'sphere' | 'cylinder' | 'cube' | 'hollow-cube' | 'hollow-sphere' | 'hollow-cylinder' | 'open-cylinder' }
+export const localMapType = (map: LocalMapSummary) => map.kind==='hollow-pyramid'?'Hollow pyramid':map.kind==='pyramid'?'Solid pyramid':map.kind==='open-cylinder'?'Open cylinder':map.kind==='hollow-cylinder'?'Capped hollow cylinder':map.kind==='hollow-sphere'?'Hollow sphere':map.kind === 'hollow-cube' ? 'Hollow cube' : map.kind === 'cube' ? 'Solid cube' : map.kind === 'cylinder' ? 'Physical cylinder' : map.kind === 'sphere' ? 'Sphere' : map.kind === 'wrapped' ? 'Wrapped plane' : map.kind === 'bounded' ? 'Bounded plane' : 'Planar (legacy)';
 
 const DB_NAME = 'serrian-tide-atlas';
 const DB_VERSION = 1;
@@ -46,15 +47,15 @@ export class LocalMapStore {
       });
       return values.map((value) => {
         const summary = decodeSummary(value), kind = (value as LocalMapSummary).kind;
-        if (kind !== undefined && !['bounded', 'wrapped', 'sphere', 'cylinder', 'cube', 'hollow-cube','hollow-sphere','hollow-cylinder','open-cylinder','pyramid'].includes(kind)) throw new Error('Unknown saved map type.');
+        if (kind !== undefined && !['bounded', 'wrapped', 'sphere', 'cylinder', 'cube', 'hollow-cube','hollow-sphere','hollow-cylinder','open-cylinder','pyramid','hollow-pyramid'].includes(kind)) throw new Error('Unknown saved map type.');
         return { ...summary, ...(kind ? { kind } : {}) };
       }).sort((a, b) => b.savedAt.localeCompare(a.savedAt));
     } finally { db.close(); }
   }
   async save(input: SavedMap, work: PersistenceWork = {}): Promise<void> {
     // Validate before starting the transaction: async hashing would let IDB auto-close it.
-    const value = input.formatVersion===15?await validatePyramid(input,work):input.formatVersion===14?await validateOpenCylinder(input,work):(input.formatVersion===11||input.formatVersion===12||input.formatVersion===13)?await validateHollowCylinder(input,work):(input.formatVersion===8||input.formatVersion===9||input.formatVersion===10)?await validateHollowSphere(input,work):(input.formatVersion === 6 || input.formatVersion === 7) ? await validateHollowCube(input,work) : input.formatVersion === 5 ? await validateSolidCubeHeightmap(input, work) : input.formatVersion === 4 ? await validateCylindricalHeightmap(input, work) : input.formatVersion === 3 ? await validateSphericalHeightmap(input, work) : input;
-    if (value.formatVersion !== 15 && value.formatVersion !== 14 && value.formatVersion !== 13 && value.formatVersion !== 12 && value.formatVersion !== 11 && value.formatVersion !== 10 && value.formatVersion !== 9 && value.formatVersion !== 8 && value.formatVersion !== 6 && value.formatVersion !== 7 && value.formatVersion !== 3 && value.formatVersion !== 4 && value.formatVersion !== 5) await decodeMap(value);
+    const value = input.formatVersion===16?await validateHollowPyramid(input,work):input.formatVersion===15?await validatePyramid(input,work):input.formatVersion===14?await validateOpenCylinder(input,work):(input.formatVersion===11||input.formatVersion===12||input.formatVersion===13)?await validateHollowCylinder(input,work):(input.formatVersion===8||input.formatVersion===9||input.formatVersion===10)?await validateHollowSphere(input,work):(input.formatVersion === 6 || input.formatVersion === 7) ? await validateHollowCube(input,work) : input.formatVersion === 5 ? await validateSolidCubeHeightmap(input, work) : input.formatVersion === 4 ? await validateCylindricalHeightmap(input, work) : input.formatVersion === 3 ? await validateSphericalHeightmap(input, work) : input;
+    if (value.formatVersion !== 16 && value.formatVersion !== 15 && value.formatVersion !== 14 && value.formatVersion !== 13 && value.formatVersion !== 12 && value.formatVersion !== 11 && value.formatVersion !== 10 && value.formatVersion !== 9 && value.formatVersion !== 8 && value.formatVersion !== 6 && value.formatVersion !== 7 && value.formatVersion !== 3 && value.formatVersion !== 4 && value.formatVersion !== 5) await decodeMap(value);
     work.progress?.('Writing local map transaction', 0);
     const db = await this.database();
     try {
@@ -85,8 +86,9 @@ export class LocalMapStore {
           if((previous?.formatVersion===11||previous?.formatVersion===12||previous?.formatVersion===13)&&(value.formatVersion===11||value.formatVersion===12||value.formatVersion===13)&&JSON.stringify(hollowCylinderHeader(previous).metadata)!==JSON.stringify(value.metadata)){reason=new Error('Cannot replace another hollow cylinder geometry, resolution or identity.');tx.abort();return;}
           if(previous?.formatVersion===14&&value.formatVersion===14&&JSON.stringify(openCylinderHeader(previous).metadata)!==JSON.stringify(value.metadata)){reason=new Error('Cannot replace another open-cylinder geometry, resolution or identity.');tx.abort();return;}
           if(previous?.formatVersion===15&&value.formatVersion===15&&JSON.stringify(pyramidHeader(previous).metadata)!==JSON.stringify(value.metadata)){reason=new Error('Cannot replace another pyramid geometry, resolution or identity.');tx.abort();return;}
+          if(previous?.formatVersion===16&&value.formatVersion===16&&JSON.stringify(hollowPyramidHeader(previous).metadata)!==JSON.stringify(value.metadata)){reason=new Error('Cannot replace another hollow pyramid geometry, resolution or identity.');tx.abort();return;}
           store.put(value);
-          tx.objectStore('catalog').put({ id: value.id, name: value.name, savedAt: value.savedAt, kind: value.formatVersion===15?'pyramid':value.formatVersion===14?'open-cylinder':(value.formatVersion===11||value.formatVersion===12||value.formatVersion===13)?'hollow-cylinder':(value.formatVersion===8||value.formatVersion===9||value.formatVersion===10)?'hollow-sphere':(value.formatVersion === 6 || value.formatVersion === 7) ? 'hollow-cube' : value.formatVersion === 5 ? 'cube' : value.formatVersion === 4 ? 'cylinder' : value.formatVersion === 3 ? 'sphere' : value.formatVersion === 2 ? 'wrapped' : 'bounded' });
+          tx.objectStore('catalog').put({ id: value.id, name: value.name, savedAt: value.savedAt, kind: value.formatVersion===16?'hollow-pyramid':value.formatVersion===15?'pyramid':value.formatVersion===14?'open-cylinder':(value.formatVersion===11||value.formatVersion===12||value.formatVersion===13)?'hollow-cylinder':(value.formatVersion===8||value.formatVersion===9||value.formatVersion===10)?'hollow-sphere':(value.formatVersion === 6 || value.formatVersion === 7) ? 'hollow-cube' : value.formatVersion === 5 ? 'cube' : value.formatVersion === 4 ? 'cylinder' : value.formatVersion === 3 ? 'sphere' : value.formatVersion === 2 ? 'wrapped' : 'bounded' });
           } catch (cause) { reason = cause instanceof Error ? cause : new Error('Map transaction failed.'); try { tx.abort(); } catch { /* An interrupted write may already have aborted it. */ } }
         };
         tx.oncomplete = () => resolve();
@@ -111,6 +113,7 @@ export class LocalMapStore {
   async open(id: string) { return decodeMap(await this.readRecord(id)); }
   async openAny(id: string, work: PersistenceWork = {}) {
     work.progress?.('Reading local map', 0); const value = await this.readRecord(id);
+    if((value as SavedMap).formatVersion===16)return{kind:'hollow-pyramid' as const,...await decodeHollowPyramid(value,work)};
     if((value as SavedMap).formatVersion===15)return{kind:'pyramid' as const,...await decodePyramid(value,work)};
     if((value as SavedMap).formatVersion===14)return{kind:'open-cylinder' as const,...await decodeOpenCylinder(value,work)};
     if(((value as SavedMap).formatVersion===11||(value as SavedMap).formatVersion===12||(value as SavedMap).formatVersion===13))return{kind:'hollow-cylinder' as const,...await decodeHollowCylinder(value,work)};

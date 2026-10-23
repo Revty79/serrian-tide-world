@@ -7,6 +7,7 @@ export interface PyramidFieldRect{readonly face:PyramidFace;readonly left:number
  * accepted indexed authority. Face aliases are read-only texture addresses. */
 export class PyramidDisplayCache extends IndexedDisplayCache<PyramidTerrain>{
  readonly n:number;readonly side:number;readonly data:Float32Array;readonly indices:Uint32Array;readonly initialAtlas:ReadonlyMap<PyramidFace,Uint8ClampedArray>;readonly atlasSize:number;
+ initialAtlasRevision=-1;
  private heights:Float32Array;private locations:Uint32Array;
  private journal:{from:number;to:number;rects:PyramidFieldRect[]}[]=[];
  constructor(t:PyramidTerrain){super(t,196610,'Pyramid interactive capacity exceeded.');this.heights=t.copyElevations();this.locations=new Uint32Array(t.sampleCount).fill(0xffffffff);this.n=t.subdivisions;this.side=this.n+1;this.data=new Float32Array(5*this.side*this.side*4);this.indices=new Uint32Array(5*this.side*this.side).fill(0xffffffff);this.atlasSize=2*this.n+1;this.initialAtlas=new Map(PYRAMID_FACES.map(face=>[face,new Uint8ClampedArray(this.atlasSize*this.atlasSize*4)]));}
@@ -18,6 +19,7 @@ export class PyramidDisplayCache extends IndexedDisplayCache<PyramidTerrain>{
  override *prepare(){yield* super.prepare();const t=this.terrain;for(const face of PYRAMID_FACES)for(let r=0;r<=this.n;r++){for(let c=0;c<=(face==='base'?this.n:this.n-r);c++){const offset=this.at(face,c,r),index=t.resolve({...t.metadata.identity,patchId:face,column:c,row:r}).index;this.indices[offset]=index;if(this.locations[index]===0xffffffff)this.locations[index]=offset;}if(r%8===7)yield;}
   for(const face of PYRAMID_FACES)for(let r=0;r<=this.n;r++){for(let c=0;c<=(face==='base'?this.n:this.n-r);c++)this.updateNode(face,c,r);if(r%8===7)yield;}
   for(const face of PYRAMID_FACES){const target=this.initialAtlas.get(face)!;for(let row=0;row<this.atlasSize;row++){for(let col=0;col<this.atlasSize;col++){const u=col/(this.atlasSize-1),v=1-row/(this.atlasSize-1);if(face!=='base'&&u+v>1)continue;const color=this.color(face,u,v,true),offset=(row*this.atlasSize+col)*4;target.set([...color,255],offset);}if(row%8===7)yield;}}
+  this.initialAtlasRevision=this.sourceRevision;
  }
  override apply(indices:Uint32Array,packed:Uint32Array,revision:number){const from=this.sourceRevision;super.apply(indices,packed,revision);this.updateIndices(indices,from,revision);}
  override refresh(input:Iterable<number>){const values=[...input],from=this.sourceRevision;super.refresh(values);this.updateIndices(values,from,this.sourceRevision);}

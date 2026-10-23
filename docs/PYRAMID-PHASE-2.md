@@ -147,3 +147,14 @@ Checkpoint 4 validation: all 1,404 numerical/unit tests pass with no failures,
 cancellations or skipped cases, with TypeScript clean. The complete suite ran
 sequentially at lower priority during continued owner use.
 
+
+## Checkpoint 5: operational Hollow Pyramid
+
+The [operational hollow review](PYRAMID-HOLLOW-EDITOR.md) and
+[current publication receipt](evidence/pyramid-hollow-editor/receipt.json)
+record the normal two-bank editor, continuous visible joins, sharp fitted/maps
+and cavity presentation, corrected inside drag axes and strict two-bank v16.
+The owner explicitly requested publishing the current corrected checkpoint
+before the remaining regressions, then fixing/pushing any later failures.
+The final frozen-source family regression receipt is still pending and work
+continues after this publication; this is not a final acceptance claim.
