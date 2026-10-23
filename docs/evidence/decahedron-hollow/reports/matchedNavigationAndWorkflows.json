@@ -1,0 +1,634 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=playwright.hollow-trapezohedron.config.mjs",
+      "--grep",
+      "match Solid|cavity drag|independent banks|held gesture"
+    ],
+    "configFile": "D:\\serrian-tide-world\\playwright.hollow-trapezohedron.config.mjs",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-atlas-hollow-worlds/workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "installed-chrome",
+        "name": "installed-chrome",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "hollow-trapezohedron-matched.spec.ts",
+          "hollow-trapezohedron-performance.spec.ts",
+          "hollow-trapezohedron-pixels.spec.ts",
+          "hollow-trapezohedron-workflow.spec.ts",
+          "hollow-trapezohedron-navigation.spec.ts",
+          "hollow-trapezohedron-context.spec.ts"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "installed-chrome",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "hollow-trapezohedron-matched.spec.ts",
+          "hollow-trapezohedron-performance.spec.ts",
+          "hollow-trapezohedron-pixels.spec.ts",
+          "hollow-trapezohedron-workflow.spec.ts",
+          "hollow-trapezohedron-navigation.spec.ts",
+          "hollow-trapezohedron-context.spec.ts"
+        ],
+        "timeout": 240000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5270",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "trace": "off",
+          "screenshot": "only-on-failure",
+          "channel": "chrome",
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "installed-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/hollow-trapezohedron-functional.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev -- --port 5270 --strictPort",
+      "url": "http://127.0.0.1:5270",
+      "reuseExistingServer": true,
+      "cwd": "D:\\serrian-tide-world"
+    }
+  },
+  "suites": [
+    {
+      "title": "hollow-trapezohedron-matched.spec.ts",
+      "file": "hollow-trapezohedron-matched.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Hollow decahedron N128 -100m: both banks match Solid foundation pixels at identical geography and pose",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6967,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:46:37.562Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "81ad248f9a505b3e5c5c-a835295d75e9a620d6f0",
+          "file": "hollow-trapezohedron-matched.spec.ts",
+          "line": 2,
+          "column": 52
+        },
+        {
+          "title": "Hollow decahedron N128 0m: both banks match Solid foundation pixels at identical geography and pose",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6801,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:46:44.894Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "81ad248f9a505b3e5c5c-6559e9f88bfccb362031",
+          "file": "hollow-trapezohedron-matched.spec.ts",
+          "line": 2,
+          "column": 52
+        },
+        {
+          "title": "Hollow decahedron N256 -100m: both banks match Solid foundation pixels at identical geography and pose",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18544,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:46:51.712Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "81ad248f9a505b3e5c5c-e53c0c302ca28f2c6ee3",
+          "file": "hollow-trapezohedron-matched.spec.ts",
+          "line": 2,
+          "column": 52
+        },
+        {
+          "title": "Hollow decahedron N256 0m: both banks match Solid foundation pixels at identical geography and pose",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20291,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:47:10.274Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "81ad248f9a505b3e5c5c-d2c5637b14809bff57ad",
+          "file": "hollow-trapezohedron-matched.spec.ts",
+          "line": 2,
+          "column": 52
+        }
+      ]
+    },
+    {
+      "title": "hollow-trapezohedron-navigation.spec.ts",
+      "file": "hollow-trapezohedron-navigation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Hollow Trapezohedron N256 auto: cavity drag reaches actual sharp pixels responsively without terrain/history writes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15910,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:47:30.596Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "268922ca58d39bbf0ac8-b0aa2a4535f52fc8348a",
+          "file": "hollow-trapezohedron-navigation.spec.ts",
+          "line": 2,
+          "column": 39
+        },
+        {
+          "title": "Hollow Trapezohedron N256 canvas: cavity drag reaches actual sharp pixels responsively without terrain/history writes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19082,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:47:46.526Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "268922ca58d39bbf0ac8-cfbb840894e40dae070b",
+          "file": "hollow-trapezohedron-navigation.spec.ts",
+          "line": 2,
+          "column": 39
+        }
+      ]
+    },
+    {
+      "title": "hollow-trapezohedron-workflow.spec.ts",
+      "file": "hollow-trapezohedron-workflow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Hollow Trapezohedron N128 auto: independent banks, all tools and twenty physical joins and ten diagonals, sharp inspection, exact replay and v26 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 150908,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:48:05.641Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "748111fead27b0ce980b-50d31f095a1eed476ec8",
+          "file": "hollow-trapezohedron-workflow.spec.ts",
+          "line": 12,
+          "column": 63
+        },
+        {
+          "title": "Hollow Trapezohedron N128 canvas: independent banks, all tools and twenty physical joins and ten diagonals, sharp inspection, exact replay and v26 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 131469,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:50:36.565Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "748111fead27b0ce980b-d0e37c5b35042c0492f1",
+          "file": "hollow-trapezohedron-workflow.spec.ts",
+          "line": 12,
+          "column": 63
+        },
+        {
+          "title": "Hollow Trapezohedron N256 auto: independent banks, all tools and twenty physical joins and ten diagonals, sharp inspection, exact replay and v26 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 171663,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:52:48.050Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "748111fead27b0ce980b-d204937b039c063788a1",
+          "file": "hollow-trapezohedron-workflow.spec.ts",
+          "line": 12,
+          "column": 63
+        },
+        {
+          "title": "Hollow Trapezohedron N256 canvas: independent banks, all tools and twenty physical joins and ten diagonals, sharp inspection, exact replay and v26 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 167462,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:55:39.737Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "748111fead27b0ce980b-d67b5e726c9775ccc874",
+          "file": "hollow-trapezohedron-workflow.spec.ts",
+          "line": 12,
+          "column": 63
+        },
+        {
+          "title": "Hollow Trapezohedron N256 auto map: each bank retains a 20-second held gesture",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 51734,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:58:27.218Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "748111fead27b0ce980b-005ab357f3aa00ab6d55",
+          "file": "hollow-trapezohedron-workflow.spec.ts",
+          "line": 23,
+          "column": 73
+        },
+        {
+          "title": "Hollow Trapezohedron N256 auto vertex: each bank retains a 20-second held gesture",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 54189,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:59:18.967Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "748111fead27b0ce980b-94f2a81ff257c7e391ba",
+          "file": "hollow-trapezohedron-workflow.spec.ts",
+          "line": 23,
+          "column": 73
+        },
+        {
+          "title": "Hollow Trapezohedron N256 canvas map: each bank retains a 20-second held gesture",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 52466,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T21:00:13.169Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "748111fead27b0ce980b-44ce962bfb4021b6529e",
+          "file": "hollow-trapezohedron-workflow.spec.ts",
+          "line": 23,
+          "column": 73
+        },
+        {
+          "title": "Hollow Trapezohedron N256 canvas vertex: each bank retains a 20-second held gesture",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 54119,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T21:01:05.648Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "748111fead27b0ce980b-9df273d86d9356aa48bb",
+          "file": "hollow-trapezohedron-workflow.spec.ts",
+          "line": 23,
+          "column": 73
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-23T20:46:37.043Z",
+    "duration": 922933.513,
+    "expected": 14,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

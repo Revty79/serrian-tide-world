@@ -1,0 +1,2 @@
+import base from './playwright.trapezohedron.config.mjs';
+export default{...base,testMatch:['hollow-trapezohedron-matched.spec.ts','hollow-trapezohedron-performance.spec.ts','hollow-trapezohedron-pixels.spec.ts','hollow-trapezohedron-workflow.spec.ts','hollow-trapezohedron-navigation.spec.ts','hollow-trapezohedron-context.spec.ts'],timeout:240000,reporter:[['list'],['json',{outputFile:process.env.TRAPEZOHEDRON_REPORT??'.local/hollow-trapezohedron-browser.json'}]]};

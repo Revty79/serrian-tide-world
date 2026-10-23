@@ -15,6 +15,7 @@ export function triangulatedPolygonGeometry<M extends Readonly<{identity:Surface
  const {metadata,vertices,vertexBounds,polygons,scaleMeters,minimumDimensionMeters}=input;
  assertIdentity(metadata.identity);const identity=metadata.identity;
  const charts=polygons.flatMap(p=>p.vertices.slice(1,-1).map((_,i)=>({id:`${p.id}:${i}`,physicalFaceId:p.id,vertices:[p.vertices[0]!,p.vertices[i+1]!,p.vertices[i+2]!] as const})));
+ for(const chart of charts)Object.freeze(chart.vertices);
  const faces=Object.freeze(charts.map(c=>c.id)),lookup=new Map(charts.map(c=>[c.id,c]));
  const edgeMap=new Map<string,readonly[number,number]>(),physicalEdgeMap=new Map<string,readonly[number,number]>();
  const edge=(a:number,b:number)=>Object.freeze([Math.min(a,b),Math.max(a,b)] as const);

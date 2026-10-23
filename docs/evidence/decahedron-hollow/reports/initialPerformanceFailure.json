@@ -1,0 +1,313 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=playwright.hollow-trapezohedron.config.mjs",
+      "--grep",
+      "stage profile"
+    ],
+    "configFile": "D:\\serrian-tide-world\\playwright.hollow-trapezohedron.config.mjs",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-atlas-hollow-worlds/workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "installed-chrome",
+        "name": "installed-chrome",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "hollow-trapezohedron-matched.spec.ts",
+          "hollow-trapezohedron-performance.spec.ts",
+          "hollow-trapezohedron-pixels.spec.ts",
+          "hollow-trapezohedron-workflow.spec.ts",
+          "hollow-trapezohedron-navigation.spec.ts",
+          "hollow-trapezohedron-context.spec.ts"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "installed-chrome",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "hollow-trapezohedron-matched.spec.ts",
+          "hollow-trapezohedron-performance.spec.ts",
+          "hollow-trapezohedron-pixels.spec.ts",
+          "hollow-trapezohedron-workflow.spec.ts",
+          "hollow-trapezohedron-navigation.spec.ts",
+          "hollow-trapezohedron-context.spec.ts"
+        ],
+        "timeout": 240000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5270",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "trace": "off",
+          "screenshot": "only-on-failure",
+          "channel": "chrome",
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "installed-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/hollow-trapezohedron-performance.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev -- --port 5270 --strictPort",
+      "url": "http://127.0.0.1:5270",
+      "reuseExistingServer": true,
+      "cwd": "D:\\serrian-tide-world"
+    }
+  },
+  "suites": [
+    {
+      "title": "hollow-trapezohedron-performance.spec.ts",
+      "file": "hollow-trapezohedron-performance.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Trapezohedron stage profile N128 auto hollow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 52389,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T21:02:08.738Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4b2a789b83a4ae8e8f5-9d485bdb2138700d0bd4",
+          "file": "hollow-trapezohedron-performance.spec.ts",
+          "line": 9,
+          "column": 89
+        },
+        {
+          "title": "Trapezohedron stage profile N128 canvas hollow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 49641,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T21:03:01.497Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4b2a789b83a4ae8e8f5-fcb6ac511e11fde74823",
+          "file": "hollow-trapezohedron-performance.spec.ts",
+          "line": 9,
+          "column": 89
+        },
+        {
+          "title": "Trapezohedron stage profile N256 auto hollow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 61459,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T21:03:51.150Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4b2a789b83a4ae8e8f5-500b4eadcf5cd1e5e6c2",
+          "file": "hollow-trapezohedron-performance.spec.ts",
+          "line": 9,
+          "column": 89
+        },
+        {
+          "title": "Trapezohedron stage profile N256 canvas hollow",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 56208,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m125\u001b[39m\nReceived:   \u001b[31m126.70000004768372\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m125\u001b[39m\nReceived:   \u001b[31m126.70000004768372\u001b[39m\n    at D:\\serrian-tide-world\\tests\\hollow-trapezohedron-performance.spec.ts:43:442",
+                    "location": {
+                      "file": "D:\\serrian-tide-world\\tests\\hollow-trapezohedron-performance.spec.ts",
+                      "column": 442,
+                      "line": 43
+                    },
+                    "snippet": "  41 |     await page.mouse.up();await wait(page);const timing=await finishPaintingPixels(page),after=await digest(page),s=await snapshot(page),hostStages=await page.evaluate(async()=>{const p='/src/editor/painting-metrics.ts';return(await import(p)).paintingMetrics();});\n  42 |     const record={role,mode,sustained,events,timing,hostStages,state:s,before,after,positions};results.push(record);writeFileSync(`${out}/n${n}-${backend}-${hollow?'hollow':'solid'}.json`,JSON.stringify({n,backend,hollow,results},null,2));\n> 43 |     expect(s.renderer.kind).toBe(backend==='auto'?'webgl2':'cpu');expect(s.statistics.failures).toBe(0);expect(s.statistics.lastTermination).toBe('complete');expect(s.statistics.lastStroke.discardedPositions).toBe(0);expect(s.workDiagnostics.backend).toBe('worker');expect(s.renderer.width*s.renderer.height).toBeGreaterThanOrEqual(1300000);if(backend==='auto')expect(s.renderer.software).toBe(false);expect(timing.summary.p95InputToPixels).toBeLessThan(sustained?100:125);\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^\n  44 |     expect(after).not.toBe(before);await page.getByRole('button',{name:'Undo',exact:true}).click();await wait(page);expect(await digest(page)).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await wait(page);expect(await digest(page)).toBe(after);\n  45 |     await page.screenshot({path:`${out}/n${n}-${backend}-${role}-${mode}-${sustained?'held':'ordinary'}.png`});\n  46 |     await page.getByRole('button',{name:'Undo',exact:true}).click();await wait(page);expect(await digest(page)).toBe(before);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\serrian-tide-world\\tests\\hollow-trapezohedron-performance.spec.ts",
+                        "column": 442,
+                        "line": 43
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m125\u001b[39m\nReceived:   \u001b[31m126.70000004768372\u001b[39m\n\n  41 |     await page.mouse.up();await wait(page);const timing=await finishPaintingPixels(page),after=await digest(page),s=await snapshot(page),hostStages=await page.evaluate(async()=>{const p='/src/editor/painting-metrics.ts';return(await import(p)).paintingMetrics();});\n  42 |     const record={role,mode,sustained,events,timing,hostStages,state:s,before,after,positions};results.push(record);writeFileSync(`${out}/n${n}-${backend}-${hollow?'hollow':'solid'}.json`,JSON.stringify({n,backend,hollow,results},null,2));\n> 43 |     expect(s.renderer.kind).toBe(backend==='auto'?'webgl2':'cpu');expect(s.statistics.failures).toBe(0);expect(s.statistics.lastTermination).toBe('complete');expect(s.statistics.lastStroke.discardedPositions).toBe(0);expect(s.workDiagnostics.backend).toBe('worker');expect(s.renderer.width*s.renderer.height).toBeGreaterThanOrEqual(1300000);if(backend==='auto')expect(s.renderer.software).toBe(false);expect(timing.summary.p95InputToPixels).toBeLessThan(sustained?100:125);\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^\n  44 |     expect(after).not.toBe(before);await page.getByRole('button',{name:'Undo',exact:true}).click();await wait(page);expect(await digest(page)).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await wait(page);expect(await digest(page)).toBe(after);\n  45 |     await page.screenshot({path:`${out}/n${n}-${backend}-${role}-${mode}-${sustained?'held':'ordinary'}.png`});\n  46 |     await page.getByRole('button',{name:'Undo',exact:true}).click();await wait(page);expect(await digest(page)).toBe(before);\n    at D:\\serrian-tide-world\\tests\\hollow-trapezohedron-performance.spec.ts:43:442"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T21:04:52.621Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\hollow-trapezohedron-perfo-3bddf--profile-N256-canvas-hollow-installed-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\hollow-trapezohedron-perfo-3bddf--profile-N256-canvas-hollow-installed-chrome\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\serrian-tide-world\\tests\\hollow-trapezohedron-performance.spec.ts",
+                    "column": 442,
+                    "line": 43
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a4b2a789b83a4ae8e8f5-2f96e61e0093dbc494fc",
+          "file": "hollow-trapezohedron-performance.spec.ts",
+          "line": 9,
+          "column": 89
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-23T21:02:08.129Z",
+    "duration": 220878.53699999998,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -106,7 +106,7 @@ export function App() {
     if (!selected || !lock()) return;
     try {
       const loaded = await store.openAny(selected);
-      if(loaded.kind==='trapezohedron')throw Error('Trapezohedron requires the current Atlas workspace.');
+      if(loaded.kind==='hollow-trapezohedron'||loaded.kind==='trapezohedron')throw Error('Trapezohedron requires the current Atlas workspace.');
       if (loaded.kind === 'sphere') {
         setSpherePreview({ radiusMeters: loaded.terrain.metadata.geometry.radiusMeters, cellsPerEdge: loaded.terrain.metadata.representation.cellsPerEdge, kind: 'blank', initial: { terrain: loaded.terrain, name: loaded.name } }); return;
       }
