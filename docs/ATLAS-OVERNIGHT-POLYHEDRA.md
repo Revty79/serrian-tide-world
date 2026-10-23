@@ -99,7 +99,8 @@ touch/pen evidence and from owner acceptance.
 
 The Solid Tetrahedron operational checkpoint was published as
 `52da75b1851ecf08750b627a5751c3a72321b695`. It authorized continuation to Hollow
-Tetrahedron after its technical gates passed. Octahedron remains gated on completion of both tetrahedron variants.
+Tetrahedron after its technical gates passed. At that stage, Octahedron remained
+gated on completion of both tetrahedron variants.
 
 ## Hollow Tetrahedron operational checkpoint
 
@@ -112,4 +113,24 @@ unique browser cases with actual GPU/Canvas pixels, sustained map/vertex strokes
 strict both-bank reopen, trusted emulated touch/pen and inherited editor regressions.
 The two initial map loops that exceeded shell elevation limits are preserved with
 their explicit within-bounds endurance reruns and added atomic rejection tests.
-Octahedron foundation remains gated on the verified Hollow checkpoint.
+The Hollow checkpoint was published as
+`6bcfec0faf7f09eddbe1da712836741643abd64f`, with a clean tree and live remote parity.
+That cleared the gate for Octahedron numerical work.
+
+## Octahedron foundation checkpoint
+
+The [foundation review](OCTAHEDRON-FOUNDATION.md) describes eight actual regular
+triangles, six shared vertices, twelve edges, all 64 face-pair certificates,
+`4*N*N + 2` canonical samples and the unchanged four-tool connected executor.
+Forty-eight N128/N256 dabs match complete exhaustive-reference Float32 words.
+All 1,463 units and build/TypeScript pass. The final
+[receipt](evidence/octahedron-foundation/receipt.json) records 87 passing browser
+checks: 68 inherited desktop/phone-size cases, twelve matched solid/hollow pixel
+comparisons and seven focused compatibility/Open Cylinder cases. All are complete
+without failures, retries or skips. Source and evidence hashes are checked against
+the staged Git blobs before publication.
+
+The optional operational Octahedron editor is deferred: N256 exceeds the accepted
+display-cache capacity and the real eight-face net needs its own verified adapter.
+No display limit was raised and no new editor, fake persistence or later shape
+was added to accelerate the overnight queue.
