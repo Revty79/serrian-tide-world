@@ -2,6 +2,7 @@ import { assertIdentity, type SurfaceIdentity, type SurfaceUnits } from './contr
 import {hollowCubeDimensions} from './hollow-cube.ts';
 import {hollowCylinderDimensions} from './hollow-cylinder.ts';
 import {openCylinderDimensions} from './open-cylinder.ts';
+import {hollowPyramidDimensions,type HollowPyramidDimensions} from './hollow-pyramid.ts';
 
 export interface VersionedProvider { readonly id: string; readonly version: number }
 export type PlanarOutline = (
@@ -11,6 +12,7 @@ export type PlanarOutline = (
 ) & { readonly units: SurfaceUnits };
 /** Shape descriptors do not imply an implemented terrain/topology/editor provider. */
 export type WorldShape =
+  | ({readonly kind:'hollow-pyramid'} & HollowPyramidDimensions)
   | { readonly kind: 'flat'; readonly outline: PlanarOutline }
   | { readonly kind: 'sphere'; readonly radiusMeters: number }
   | { readonly kind: 'cylinder'; readonly radiusMeters: number; readonly lengthMeters: number }
@@ -66,6 +68,7 @@ function shapeSnapshot(shape: WorldShape): WorldShape {
       if (shape.innerRadiusMeters >= shape.outerRadiusMeters) throw new RangeError('Interior reference radius must be smaller than exterior reference radius.');
       return Object.freeze({ ...shape });
     case 'hollow-cube': hollowCubeDimensions(shape); return Object.freeze({...shape});
+    case 'hollow-pyramid': hollowPyramidDimensions(shape); return Object.freeze({...shape});
     case 'hollow-cylinder': if(shape.configuration!=='capped')throw RangeError('Unsupported hollow cylinder closure.');hollowCylinderDimensions(shape);return Object.freeze({...shape});
     case 'open-cylinder': if(shape.configuration!=='both-open')throw RangeError('Only both-open cylinders are supported.');openCylinderDimensions(shape);return Object.freeze({...shape});
     case 'custom': return Object.freeze({ kind: 'custom', geometry: provider(shape.geometry) });
@@ -83,7 +86,7 @@ export function defineWorld(input: WorldDefinition): WorldDefinition {
     if (surface.identity.worldId !== input.id || ids.has(surface.identity.surfaceId)) throw new RangeError('Foreign or duplicate surface identity.');
     if (typeof surface.terrainId !== 'string' || !surface.terrainId.trim() || terrainIds.has(surface.terrainId)) throw new RangeError('Each surface needs an independent terrain identity.');
     if (!['sheet', 'exterior', 'interior', 'custom'].includes(surface.role)) throw new RangeError('Invalid surface role.');
-    if (shape.kind === 'hollow-sphere'||shape.kind==='hollow-cube'||shape.kind==='hollow-cylinder') {
+    if (shape.kind === 'hollow-sphere'||shape.kind==='hollow-cube'||shape.kind==='hollow-cylinder'||shape.kind==='hollow-pyramid') {
       if (!['exterior', 'interior'].includes(surface.role) || hollowRoles.has(surface.role)) throw new RangeError('A hollow World accepts unique interior/exterior surfaces.');
       hollowRoles.add(surface.role);
     }
@@ -92,6 +95,7 @@ export function defineWorld(input: WorldDefinition): WorldDefinition {
     return Object.freeze({ identity: Object.freeze({ ...surface.identity }), role: surface.role, terrainId: surface.terrainId, topology: provider(surface.topology), representation: provider(surface.representation) });
   });
   if(shape.kind==='hollow-cube'&&hollowRoles.size!==2)throw RangeError('A hollow cube requires both independent surfaces.');
+  if(shape.kind==='hollow-pyramid'&&hollowRoles.size!==2)throw RangeError('A hollow pyramid requires both independent surfaces.');
   if(shape.kind==='hollow-cylinder'&&hollowRoles.size!==2)throw RangeError('A capped hollow cylinder requires both independent surfaces.');
   return Object.freeze({ id: input.id, shape, surfaces: Object.freeze(surfaces) });
 }

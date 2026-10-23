@@ -116,3 +116,34 @@ Technical delivery does not substitute for final family acceptance.
    editable nets, persistence and compatible connection interfaces.
 3. Final existing-family regressions, actual Canvas/WebGL pixels and measured
    input-to-commit / commit-to-visible evidence, then stop for owner review.
+
+## Checkpoint 4: closed Hollow Pyramid foundation
+
+`surfaces/hollow-pyramid.ts` validates two centered right square pyramids with
+explicit outer/inner widths, heights and inner base elevation. The inner base
+corners, base and apex must lie strictly inside every outer halfspace. Convexity
+then covers every inner face and edge. Outward interval arithmetic encloses the
+slant-plane distances; the smallest lower bound, including the base-plane gap,
+must exceed the supported numerical separation. Intersecting, touching,
+degenerate, nonfinite and ambiguously thin shells reject before allocation.
+
+`terrain/hollow-pyramid.ts` creates two ordinary pyramid authorities, with
+distinct terrain/surface identities and the actual common World descriptor.
+Stored heights are neither negated nor copied. Cavity normals point inward.
+Each bank's absolute elevation limit is at most one quarter of minimum shell
+clearance and one eighth of its own minimum physical dimension. This bounds a
+reference-height envelope; it is not a claim of displaced-mesh collision proof.
+The ordinary -100 m ocean rejects when clearance cannot contain it; explicit
+0 m reference-shell initialization remains available without clamping.
+
+The geometry/topology frames are immutable, including nested vector/vertex
+arrays, and normals use the snapshotted role rather than caller-owned input.
+Focused tests verify all inner vertices against all five real outer planes,
+independent N128/N256 apex/edge words, foreign identity rejection, shell bounds,
+inward orientation, thin-shell initialization and mutation isolation. The
+operational solid checkpoint was published first as `2207edc`.
+
+Checkpoint 4 validation: all 1,404 numerical/unit tests pass with no failures,
+cancellations or skipped cases, with TypeScript clean. The complete suite ran
+sequentially at lower priority during continued owner use.
+
