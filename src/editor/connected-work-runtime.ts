@@ -5,7 +5,7 @@ import type {ConnectedStrokeOptions,beginConnectedStroke} from '../terrain/conne
 import type {prepareConnectedDab,CylindricalBrushSettings} from '../terrain/connected-brush.ts';
 import type {SurfacePosition} from '../surfaces/contracts.ts';
 import type {ConnectedStencil} from './connected-session-contracts.ts';
-import {paintingMetrics,resetPaintingMetrics,paintingStage,recordPaintingStage} from './painting-metrics.ts';
+import {paintingMetrics,paintingMetricsEnabled,resetPaintingMetrics,paintingStage,recordPaintingStage} from './painting-metrics.ts';
 export interface ConnectedRuntimeAdapter<T extends ConnectedWorkerTerrain,Metadata,View>{
  create(metadata:Metadata):T;
  createFromSnapshot?(metadata:Metadata,values:Float32Array):T;
@@ -14,13 +14,14 @@ export interface ConnectedRuntimeAdapter<T extends ConnectedWorkerTerrain,Metada
 }
 /** One short-lived source epoch, one proposal in flight. This copy cannot publish
  * terrain. It advances ONLY after the canonical host acknowledges the exact dab. */
-export function createConnectedWorkRuntime<T extends ConnectedWorkerTerrain,Metadata,View>(send:(message:ConnectedWorkOutput)=>void,schedule:(fn:()=>void)=>void,adapter:ConnectedRuntimeAdapter<T,Metadata,View>) {
+export function createConnectedWorkRuntime<T extends ConnectedWorkerTerrain,Metadata,View>(publish:(message:ConnectedWorkOutput)=>void,schedule:(fn:()=>void)=>void,adapter:ConnectedRuntimeAdapter<T,Metadata,View>) {
+  const send=(message:ConnectedWorkOutput)=>publish(paintingMetricsEnabled()?{...message,sentAtEpochMs:performance.timeOrigin+performance.now()}:message);
   let task = -1, sequence = 0, canonicalRevision = 0, expectedWrites = 0, queued = false, waiting = false, acknowledged = false;
   let stroke: ReturnType<ConnectedRuntimeAdapter<T,Metadata,View>['begin']> | undefined;
   let preview: ReturnType<ConnectedRuntimeAdapter<T,Metadata,View>['preview']> | undefined;
   let terrain: T | undefined;
   const fail = (e: unknown) => { const stats = stroke?.statistics; stroke?.cancel(); preview?.job.cancel(); stroke = undefined; preview = undefined; terrain = undefined; waiting = false; send({ type: 'error', task, message: String(e), stats, stages: paintingMetrics() }); };
-  const kick = () => { if (!queued && !waiting && (stroke || preview)) { queued = true; schedule(tick); } };
+  const kick = () => { if (!queued && !waiting && (stroke || preview)) { queued = true; const at=performance.now();schedule(()=>{recordPaintingStage('workerSchedulingWait',performance.now()-at);tick();}); } };
   function tick() {
     queued = false;
     try {
@@ -51,6 +52,7 @@ export function createConnectedWorkRuntime<T extends ConnectedWorkerTerrain,Meta
         if (m.type === 'start') {
           if (stroke || preview) throw new Error('Cylinder worker already owns an active task.');
           task = m.task; sequence = 0; canonicalRevision = m.revision; waiting = false; acknowledged = false; resetPaintingMetrics(m.measure === true);
+          if(m.sentAtEpochMs!==undefined)recordPaintingStage('inputTransport',Math.max(0,performance.timeOrigin+performance.now()-m.sentAtEpochMs));
           const snapshotAt = performance.now();
           terrain = adapter.createFromSnapshot?adapter.createFromSnapshot(m.metadata,m.values):adapter.create(m.metadata);
           if (m.values.length !== terrain.sampleCount) throw new Error('Invalid preparation snapshot length.');
@@ -73,6 +75,7 @@ export function createConnectedWorkRuntime<T extends ConnectedWorkerTerrain,Meta
           kick(); return;
         }
         if (m.task !== task || !stroke) return;
+        if(m.sentAtEpochMs!==undefined)recordPaintingStage(m.type==='ack'?'ackTransport':'inputTransport',Math.max(0,performance.timeOrigin+performance.now()-m.sentAtEpochMs));
         if (m.type === 'move') {
           if (m.ordinal !== stroke.statistics.acceptedPositions + 1) throw new Error('Out-of-order cylinder input.');
           stroke.move(m.point);

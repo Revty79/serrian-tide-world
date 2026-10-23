@@ -2,7 +2,14 @@
  * every elementary operation expands to the adjacent representable number. */
 export type Interval=readonly[number,number];
 const memory=new DataView(new ArrayBuffer(8));
-export function adjacentFloat(value:number,up:boolean){if(Number.isNaN(value))throw RangeError('NaN interval endpoint.');if(value===(up?Infinity:-Infinity))return value;if(value===0)return up?Number.MIN_VALUE:-Number.MIN_VALUE;memory.setFloat64(0,value);let bits=memory.getBigUint64(0);bits+=(value>0)===up?1n:-1n;memory.setBigUint64(0,bits);return memory.getFloat64(0);}
+export function adjacentFloat(value:number,up:boolean){if(Number.isNaN(value))throw RangeError('NaN interval endpoint.');if(value===(up?Infinity:-Infinity))return value;if(value===0)return up?Number.MIN_VALUE:-Number.MIN_VALUE;
+ // The same unsigned binary64 successor/predecessor, using two exact uint32
+ // words. No BigInt allocation in each elementary outward interval operation.
+ memory.setFloat64(0,value);let high=memory.getUint32(0),low=memory.getUint32(4);
+ if((value>0)===up){low=(low+1)>>>0;if(low===0)high=(high+1)>>>0;}
+ else{if(low===0)high=(high-1)>>>0;low=(low-1)>>>0;}
+ memory.setUint32(0,high);memory.setUint32(4,low);return memory.getFloat64(0);
+}
 export const exact=(x:number):Interval=>{if(!Number.isFinite(x))throw RangeError('Finite interval input required.');return[x,x];};
 const out=(lo:number,hi:number):Interval=>{if(!Number.isFinite(lo)||!Number.isFinite(hi))throw RangeError('Pyramid interval range unsupported.');return[adjacentFloat(lo,false),adjacentFloat(hi,true)];};
 export const add=(a:Interval,b:Interval)=>out(a[0]+b[0],a[1]+b[1]);

@@ -30,13 +30,19 @@ export class ConnectedPreviewSession<T extends ConnectedSessionTerrain,View exte
     if(!factory||!this.hooks.workers)return;
     if (factory === this.baseWorkerFactory) return;
     this.warmWorker?.terminate(); this.baseWorkerFactory = factory;
-    const warm = () => { if (this.disposed) return; try { this.warmWorker = factory(); this.warmWorker.onerror = e => { e.preventDefault(); this.warmWorker?.terminate(); this.warmWorker = undefined; }; } catch { this.warmWorker = undefined; } };
+    const park=(worker:Worker)=>{this.warmWorker=worker;worker.onerror=e=>{e.preventDefault();worker.terminate();if(this.warmWorker===worker)this.warmWorker=undefined;};};
+    const warm = () => { if (this.disposed) return; try { park(factory()); } catch { this.warmWorker = undefined; } };
     warm();
-    this.workerFactory = () => {
+    this.workerFactory = Object.assign(() => {
       const worker = this.warmWorker ?? factory(); this.warmWorker = undefined;
-      // One unused preloaded realm plus one active task, never a worker per dab.
+      // One unused realm plus one active task. A completed realm keeps its JIT
+      // code, but every next task still validates a fresh private terrain epoch.
       warm(); return worker;
-    };
+    },{release:(worker:Worker,completed:boolean)=>{
+      worker.onmessage=null;worker.onmessageerror=null;worker.onerror=null;
+      if(!completed||this.disposed||this.baseWorkerFactory!==factory){worker.terminate();return;}
+      this.warmWorker?.terminate();park(worker);
+    }});
   }
   private preview?: ReturnType<ConnectedSessionHooks<T,View>['prepareStencil']>;
   private previewKey = '';
@@ -102,7 +108,7 @@ export class ConnectedPreviewSession<T extends ConnectedSessionTerrain,View exte
         const count = paintingStage('historyAndCommit', () => operation.commitDab(job));
         if(count){if(this.displayDabs.length===128)this.displayDabs.shift();this.displayDabs.push({fromRevision:job.sourceRevision,toRevision:this.terrain.revision,center:job.center,radiusMeters:job.settings.radiusMeters});}
         for (const c of changes) this.track(c.index, c.before, c.after);
-        this.cache.apply(indices, colors, this.terrain.revision); this.lastDab = stencil;
+        paintingStage('displayAtlasUpdate',()=>this.cache.apply(indices, colors, this.terrain.revision)); this.lastDab = stencil;
         if(paintingMetricsEnabled()){const ordinal=(this.stroke?.statistics.processedPositions??0)+1,input=this.inputTimes.find(p=>p.ordinal===ordinal);recordPaintingEvent('commit',{gesture:this.gesture,ordinal,revision:this.terrain.revision,words:count,inputAt:input?.at??at});}
         return count;
       } });
@@ -186,8 +192,11 @@ export class ConnectedPreviewSession<T extends ConnectedSessionTerrain,View exte
     if (this.workerFactory) {
       const task = this.previewTask, revision = this.terrain.revision, started = performance.now();
       try {
-        const worker = this.workerFactory(); this.remotePreview = worker; this.previewMessage = 'Calculating exact canonical footprint…';
-        const finish = () => { if (this.remotePreview === worker) { clearTimeout(this.previewTimeout); this.remotePreview = undefined; } worker.terminate(); this.changed(); };
+        // Expendable hover work must not consume the retained painting realm:
+        // the next pointer-down cancels a preview, losing its compiled code.
+        // Still at most one idle paint worker plus one active preview/paint task.
+        const worker = this.baseWorkerFactory!(); this.remotePreview = worker; this.previewMessage = 'Calculating exact canonical footprint…';
+        const finish = () => { if(this.remotePreview!==worker)return;clearTimeout(this.previewTimeout);this.remotePreview=undefined;worker.terminate();this.changed(); };
         this.previewTimeout = setTimeout(() => { if (task === this.previewTask && this.remotePreview === worker) { this.previewMessage = 'Preview unavailable: background preparation timed out. Drawing and saving remain available.'; finish(); } }, 10000);
         worker.onerror = e => { e.preventDefault(); if (task === this.previewTask) this.previewMessage = `Preview unavailable: ${e.message || 'worker startup failed'}`; finish(); };
         worker.onmessageerror = () => { if (task === this.previewTask) this.previewMessage = 'Preview unavailable: worker response could not be decoded.'; finish(); };

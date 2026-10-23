@@ -11,7 +11,9 @@ export interface ConnectedStencil{readonly center:SurfacePosition;readonly indic
 export interface ConnectedSessionStrokeOptions{readonly spacingMeters:number;readonly dabLimits:CylinderDabLimits;readonly maxDabs:number}
 export type ConnectedSessionStroke<T extends ConnectedSessionTerrain>=Pick<ReturnType<typeof beginConnectedStroke<T>>,'status'|'failure'|'statistics'|'move'|'release'|'cancel'|'pump'>;
 export type ConnectedWorkerSessionStroke<T extends ConnectedSessionTerrain>=ConnectedSessionStroke<T>&{readonly diagnostics:{readonly backend:string};waitForProgress():Promise<void>};
-export type ConnectedWorkerFactory=()=>Worker;
+/** A completed runtime has released its scratch epoch. Hosts may retain that
+ * idle realm; cancellation/failure must retire it, never recycle active work. */
+export type ConnectedWorkerFactory=(()=>Worker)&{release?(worker:Worker,completed:boolean):void};
 export interface ConnectedSessionHooks<T extends ConnectedSessionTerrain,View extends ConnectedSessionView>{
  strokeOptions?(view:View):object;
  createCache(terrain:T):IndexedDisplayCache<T>;

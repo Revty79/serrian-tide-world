@@ -1,0 +1,48 @@
+import {test,expect,type Page} from '@playwright/test';
+import {mkdirSync,writeFileSync} from 'node:fs';
+import {toolsPanel} from './workspace-helpers.ts';
+import {startPaintingPixels,finishPaintingPixels} from './helpers/painting-pixels.ts';
+const out=process.env.OCTA_PERF_OUTPUT??'.local/octa-performance';
+const wait=async(page:Page)=>page.waitForFunction(()=>{const d=document.querySelector<HTMLCanvasElement>('.cylinder-canvas')?.dataset;return d?.ready==='true'&&d.painting==='false'&&d.processing==='false'&&d.revision===d.displayRevision;},null,{timeout:60000});
+const snapshot=async(page:Page)=>page.evaluate(async()=>{const p='/src/components/ConnectedWorkspace.tsx',m=await import(p);return m.connectedWorkspaceInspection().snapshot(false) as any;});
+const digest=async(page:Page)=>page.evaluate(async()=>{const p='/src/components/ConnectedWorkspace.tsx',m=await import(p),s=m.connectedWorkspaceInspection().snapshot() as any;return [...new Uint8Array(await crypto.subtle.digest('SHA-256',Uint32Array.from(s.words).buffer))].map(x=>x.toString(16).padStart(2,'0')).join('');});
+for(const n of[128,256])for(const backend of['auto','canvas'])for(const hollow of[false,true])test(`Octahedron stage profile N${n} ${backend} ${hollow?'hollow':'solid'}`,async({page})=>{
+ test.setTimeout(240000);mkdirSync(out,{recursive:true});
+ if(backend==='canvas')await page.addInitScript(()=>{const get=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(this:HTMLCanvasElement,type,...args){return type==='webgl2'?null:Reflect.apply(get,this,[type,...args]);} as typeof get;});
+ await page.goto('/');await page.getByLabel('World shape',{exact:true}).selectOption(hollow?'hollow-octahedron':'octahedron');await page.getByLabel('Octahedron numerical detail',{exact:true}).selectOption(String(n));await page.getByRole('button',{name:'Create World / Map',exact:true}).click();await wait(page);
+ await toolsPanel(page,true);await page.getByLabel('Octahedron brush radius (m)',{exact:true}).fill('60000');await page.getByLabel('Octahedron strength (m/dab)',{exact:true}).fill('200');await toolsPanel(page,false);
+ const results=[];
+ for(const role of(hollow?['exterior','interior']:['exterior'])){
+  if(role==='interior'){await toolsPanel(page,true);await page.getByRole('button',{name:'Paint Inside',exact:true}).click();await wait(page);await toolsPanel(page,false);}
+  for(const mode of['face','edge','vertex']){
+   const projected=await page.evaluate(async({hollow,mode})=>{
+    const p='/src/components/ConnectedWorkspace.tsx',m=await import(p),s=m.connectedWorkspaceInspection().snapshot(false) as any,gp='/src/surfaces/octahedron.ts',gm=await import(gp),vp='/src/surfaces/pyramid.ts',v=await import(vp),g=gm.createOctahedronGeometry(s.metadata.geometry),faces=mode==='face'?['ppp']:mode==='edge'?['ppp','ppn']:['ppp','ppn','pnn','pnp'],forward=v.pyramidUnit(faces.reduce((sum,face)=>sum.map((x,k)=>x+g.normal({...g.identity,patchId:face,u:.2,v:.3})[k]),[0,0,0])),right=v.pyramidUnit(v.pyramidCross(Math.abs(forward[2])>.9?[0,1,0]:[0,0,1],forward)),up=v.pyramidCross(forward,right),view={...s.view,mode:'physical',frame:{forward,right,up},target:[0,0,0],pan:{x:0,y:0},zoom:1};
+    if(hollow)window.__hollowOctahedronEditor!.setView(view);else window.__octahedronEditor!.setView(view);
+    return{edge:g.metadata.edgeLengthMeters,faces};
+   },{hollow,mode});await wait(page);
+   const positions=await page.evaluate(async({mode,edge})=>{
+    const p='/src/surfaces/octahedron.ts',gm=await import(p),sp='/src/components/ConnectedWorkspace.tsx',sm=await import(sp),s=sm.connectedWorkspaceInspection().snapshot(false) as any,g=gm.createOctahedronGeometry(s.metadata.geometry),radius=240000/(2*Math.PI*edge),points=[];
+    for(let i=0;i<=72;i++){
+     let point;const angle=i/72*2*Math.PI;
+     if(mode==='face')point={...g.identity,patchId:'ppp',u:.28+radius*(Math.cos(angle)-Math.sin(angle)/Math.sqrt(3)),v:.32+2*radius*Math.sin(angle)/Math.sqrt(3)};
+     else if(mode==='edge'){
+      const x=radius*Math.cos(angle),y=radius*Math.sin(angle),face=y>=0?'ppp':'ppn',weight=Math.abs(y)*2/Math.sqrt(3),ids=g.vertexIds(face),w=new Map(ids.map((id:number)=>[id,id===0?(1-weight)/2-x:id===2?(1-weight)/2+x:weight]));point=g.fromWeights(face,w)!;
+     }else{const quadrant=Math.min(3,Math.floor(i%72/18)),t=(i%18)/18,face=['ppp','ppn','pnn','pnp'][quadrant],step=60000/edge;point={...g.identity,patchId:face,u:step*t,v:step*(1-t)};}
+     points.push({position:point,screen:sm.connectedWorkspaceInspection().project(point),physical:g.referencePosition(point)});
+    }
+    return points;
+   },{mode,edge:projected.edge});
+   const box=(await page.locator('.cylinder-canvas').boundingBox())!,points=positions.map(p=>{expect(p.screen).toBeTruthy();return{x:box.x+p.screen!.x,y:box.y+p.screen!.y};});
+   for(const sustained of[false,true]){
+    const before=await digest(page);await startPaintingPixels(page);await page.mouse.move(points[0]!.x,points[0]!.y);await page.mouse.down();
+    const started=performance.now();let events=0;
+    do{const p=points[events%72]!;await page.mouse.move(p.x,p.y);await page.waitForTimeout(16);events++;}while(sustained?performance.now()-started<4000:events<=72);
+    await page.mouse.up();await wait(page);const timing=await finishPaintingPixels(page),after=await digest(page),s=await snapshot(page),hostStages=await page.evaluate(async()=>{const p='/src/editor/painting-metrics.ts';return(await import(p)).paintingMetrics();});
+    expect(s.statistics.failures).toBe(0);expect(s.statistics.lastTermination).toBe('complete');expect(s.statistics.lastStroke.discardedPositions).toBe(0);expect(s.workDiagnostics.backend).toBe('worker');expect(s.renderer.width*s.renderer.height).toBeGreaterThanOrEqual(1300000);if(backend==='auto')expect(s.renderer.software).toBe(false);expect(timing.summary.p95InputToPixels).toBeLessThan(sustained?100:125);
+    expect(after).not.toBe(before);await page.getByRole('button',{name:'Undo',exact:true}).click();await wait(page);expect(await digest(page)).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await wait(page);expect(await digest(page)).toBe(after);
+    const record={role,mode,sustained,events,timing,hostStages,state:s,before,after,positions};results.push(record);writeFileSync(`${out}/n${n}-${backend}-${hollow?'hollow':'solid'}.json`,JSON.stringify({n,backend,hollow,results},null,2));
+    await page.getByRole('button',{name:'Undo',exact:true}).click();await wait(page);expect(await digest(page)).toBe(before);
+   }
+  }
+ }
+});

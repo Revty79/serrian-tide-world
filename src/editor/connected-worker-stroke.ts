@@ -2,16 +2,16 @@ import {CYLINDER_STROKE_LIMITS,type CylinderStrokeStatus,type ConnectedStrokeOpt
 import type {SurfacePosition} from '../surfaces/contracts.ts';
 import type {CylindricalBrushSettings} from '../terrain/connected-brush.ts';
 import type {ConnectedHistory,ConnectedCommitJob} from './connected-history.ts';
-import type {ConnectedSessionTerrain} from './connected-session-contracts.ts';
+import type {ConnectedSessionTerrain,ConnectedWorkerFactory} from './connected-session-contracts.ts';
 import type {ConnectedPreparedPatch,ConnectedWorkOutput,ConnectedWorkerInput} from './connected-work-protocol.ts';
 import {OrderedSurfaceInput,RevisionLease,SurfaceProgressSignal} from './surface-work.ts';
-import {paintingStage,paintingMetricsEnabled} from './painting-metrics.ts';
+import {paintingStage,paintingMetricsEnabled,recordPaintingStage} from './painting-metrics.ts';
 export interface ConnectedWorkerTerrain extends ConnectedSessionTerrain {readonly geometry:{normalize(p:SurfacePosition):SurfacePosition};readonly metadata:ConnectedSessionTerrain['metadata'];write(key:{readonly index:number},value:number):unknown}
 export interface ConnectedWorkerAdapter<T extends ConnectedWorkerTerrain>{begin(terrain:T,history:ConnectedHistory<T>,first:SurfacePosition,settings:CylindricalBrushSettings,options:ConnectedStrokeOptions<T>):ReturnType<typeof beginConnectedStroke<T>>;preparedPatch(terrain:T,prepared:ConnectedPreparedPatch):ConnectedCommitJob<T>}
 /** Accepted cylinder worker transport: ordered input, one leased proposal,
  * canonical acknowledgement, exact history and pre-publication fallback. */
 let nextTask = 0;
-export function beginConnectedWorkerStroke<T extends ConnectedWorkerTerrain>(terrain:T, history:ConnectedHistory<T>, first:SurfacePosition, settings:CylindricalBrushSettings, options:ConnectedStrokeOptions<T>, changed:()=>void, adapter:ConnectedWorkerAdapter<T>, factory:()=>Worker) {
+export function beginConnectedWorkerStroke<T extends ConnectedWorkerTerrain>(terrain:T, history:ConnectedHistory<T>, first:SurfacePosition, settings:CylindricalBrushSettings, options:ConnectedStrokeOptions<T>, changed:()=>void, adapter:ConnectedWorkerAdapter<T>, factory:ConnectedWorkerFactory) {
   const task = ++nextTask, lease = new RevisionLease(task, terrain.revision), input = new OrderedSurfaceInput(options.maxPendingPositions ?? CYLINDER_STROKE_LIMITS.maxPendingPositions, options.maxAcceptedPositions ?? CYLINDER_STROKE_LIMITS.maxAcceptedPositions);
   const operation = history.beginOperation(terrain);
   const signal = new SurfaceProgressSignal();
@@ -22,10 +22,10 @@ export function beginConnectedWorkerStroke<T extends ConnectedWorkerTerrain>(ter
   const queued: SurfacePosition[] = [];
   const diagnostics = { backend: 'worker', fallbackReason: '', startupMs: 0, proposals: 0, staleResults: 0, mainCommitMaxMs: 0, stages: {} as object };
   const at = performance.now();
-  const cleanup = () => { clearTimeout(timeout); worker?.terminate(); worker = undefined; lease.cancel(); queued.length = 0; };
-  const end = (reason: 'released' | 'cancelled' | 'failed' | 'disposed') => { if (closed) return; closed = true; status = reason === 'released' ? 'complete' : reason; operation.finish(reason); cleanup(); notify(); };
+  const cleanup = (completed:boolean) => { clearTimeout(timeout); if(worker){if(factory.release)factory.release(worker,completed);else worker.terminate();} worker = undefined; lease.cancel(); queued.length = 0; };
+  const end = (reason: 'released' | 'cancelled' | 'failed' | 'disposed') => { if (closed) return; closed = true; status = reason === 'released' ? 'complete' : reason; operation.finish(reason); cleanup(reason==='released'); notify(); };
   const fail = (e: unknown) => { failure = { name: 'CylinderPreparationError', message: String(e) }; end('failed'); };
-  const send = (m: ConnectedWorkerInput<T['metadata'],ConnectedStrokeOptions<T>>) => worker!.postMessage(m);
+  const send = (m: ConnectedWorkerInput<T['metadata'],ConnectedStrokeOptions<T>>) => worker!.postMessage(paintingMetricsEnabled()?{...m,sentAtEpochMs:performance.timeOrigin+performance.now()}:m);
   // Failure before the first proposal can replay all accepted input into the
   // unchanged cooperative engine. No canonical dab has been committed yet.
   const fallback = (e: unknown) => {
@@ -47,6 +47,7 @@ export function beginConnectedWorkerStroke<T extends ConnectedWorkerTerrain>(ter
     worker.onmessage = (event: MessageEvent<ConnectedWorkOutput>) => {
       const m = event.data;
       if (closed || local || m.task !== task) { diagnostics.staleResults++; return; }
+      if(m.sentAtEpochMs!==undefined)recordPaintingStage('workerResultTransport',Math.max(0,performance.timeOrigin+performance.now()-m.sentAtEpochMs));
       clearTimeout(timeout); diagnostics.startupMs ||= performance.now() - at;
       try {
         if (m.stats) { stats = m.stats; input.progress(stats.processedPositions); }
@@ -75,7 +76,7 @@ export function beginConnectedWorkerStroke<T extends ConnectedWorkerTerrain>(ter
       } catch (e) { fail(e); }
     };
     const values = paintingStage('sourceSnapshot', () => terrain.copyElevations());
-    paintingStage('workerDispatch', () => worker!.postMessage({ type: 'start', task, metadata: terrain.metadata, revision: terrain.revision, values, center: first, settings, options, measure: paintingMetricsEnabled() }, [values.buffer]));
+    paintingStage('workerDispatch', () => worker!.postMessage({ type: 'start', task, metadata: terrain.metadata, revision: terrain.revision, values, center: first, settings, options, measure: paintingMetricsEnabled(),...(paintingMetricsEnabled()?{sentAtEpochMs:performance.timeOrigin+performance.now()}:{}) }, [values.buffer]));
   } catch (e) { fallback(e); }
   return {
     get status() { return local?.status ?? status; }, get failure() { return local?.failure ?? failure; }, diagnostics,

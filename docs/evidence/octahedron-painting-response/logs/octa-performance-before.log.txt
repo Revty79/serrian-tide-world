@@ -1,0 +1,21 @@
+
+Running 8 tests using 1 worker
+
+npx.cmd : (node:21488) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:5 char:1
++ npx.cmd playwright test --config playwright.octahedron-performance.co ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:21488) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\octahedron-performance.spec.ts:9:95 › Octahedron stage profile N128 auto solid (24.7s)
+  ok 2 [installed-chrome] › tests\octahedron-performance.spec.ts:9:95 › Octahedron stage profile N128 auto hollow (46.9s)
+  ok 3 [installed-chrome] › tests\octahedron-performance.spec.ts:9:95 › Octahedron stage profile N128 canvas solid (23.8s)
+  ok 4 [installed-chrome] › tests\octahedron-performance.spec.ts:9:95 › Octahedron stage profile N128 canvas hollow (46.8s)
+  ok 5 [installed-chrome] › tests\octahedron-performance.spec.ts:9:95 › Octahedron stage profile N256 auto solid (26.1s)
+  ok 6 [installed-chrome] › tests\octahedron-performance.spec.ts:9:95 › Octahedron stage profile N256 auto hollow (52.1s)
+  ok 7 [installed-chrome] › tests\octahedron-performance.spec.ts:9:95 › Octahedron stage profile N256 canvas solid (25.7s)
+  ok 8 [installed-chrome] › tests\octahedron-performance.spec.ts:9:95 › Octahedron stage profile N256 canvas hollow (52.3s)
+
+  8 passed (5.0m)

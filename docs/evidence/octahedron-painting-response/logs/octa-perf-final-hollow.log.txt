@@ -1,0 +1,32 @@
+
+Running 17 tests using 1 worker
+
+npx.cmd : (node:26860) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:15 char:1
++ npx.cmd playwright test --config playwright.hollow-octahedron.config. ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:26860) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [installed-chrome] › tests\hollow-octahedron-context.spec.ts:2:1 › Hollow Octahedron N256: returning to painted banks, graphics loss and restoration retain current sharp terrain epochs (7.8s)
+  ok  2 [installed-chrome] › tests\hollow-octahedron-navigation.spec.ts:2:39 › Hollow Octahedron N256 auto: cavity drag reaches actual sharp pixels responsively without terrain/history writes (8.0s)
+  ok  3 [installed-chrome] › tests\hollow-octahedron-navigation.spec.ts:2:39 › Hollow Octahedron N256 canvas: cavity drag reaches actual sharp pixels responsively without terrain/history writes (12.5s)
+  ok  4 [installed-chrome] › tests\hollow-octahedron-pixels.spec.ts:2:75 › Hollow Octahedron outside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (4.9s)
+  ok  5 [installed-chrome] › tests\hollow-octahedron-pixels.spec.ts:2:75 › Hollow Octahedron inside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (5.0s)
+  ok  6 [installed-chrome] › tests\hollow-octahedron-pixels.spec.ts:2:75 › Hollow Octahedron cavity N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (15.4s)
+  ok  7 [installed-chrome] › tests\hollow-octahedron-pixels.spec.ts:2:75 › Hollow Octahedron outside N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (6.1s)
+  ok  8 [installed-chrome] › tests\hollow-octahedron-pixels.spec.ts:2:75 › Hollow Octahedron inside N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (6.0s)
+  ok  9 [installed-chrome] › tests\hollow-octahedron-pixels.spec.ts:2:75 › Hollow Octahedron cavity N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (16.3s)
+  ok 10 [installed-chrome] › tests\hollow-octahedron-workflow.spec.ts:12:63 › Hollow Octahedron N128 auto: independent banks, all tools and twelve joins, sharp inspection, exact replay and v20 reopen (1.3m)
+  ok 11 [installed-chrome] › tests\hollow-octahedron-workflow.spec.ts:12:63 › Hollow Octahedron N128 canvas: independent banks, all tools and twelve joins, sharp inspection, exact replay and v20 reopen (1.3m)
+  ok 12 [installed-chrome] › tests\hollow-octahedron-workflow.spec.ts:12:63 › Hollow Octahedron N256 auto: independent banks, all tools and twelve joins, sharp inspection, exact replay and v20 reopen (1.5m)
+  ok 13 [installed-chrome] › tests\hollow-octahedron-workflow.spec.ts:12:63 › Hollow Octahedron N256 canvas: independent banks, all tools and twelve joins, sharp inspection, exact replay and v20 reopen (1.4m)
+  ok 14 [installed-chrome] › tests\hollow-octahedron-workflow.spec.ts:22:73 › Hollow Octahedron N256 auto map: each bank retains a 20-second held gesture (46.2s)
+  ok 15 [installed-chrome] › tests\hollow-octahedron-workflow.spec.ts:22:73 › Hollow Octahedron N256 auto vertex: each bank retains a 20-second held gesture (46.5s)
+  ok 16 [installed-chrome] › tests\hollow-octahedron-workflow.spec.ts:22:73 › Hollow Octahedron N256 canvas map: each bank retains a 20-second held gesture (46.5s)
+  ok 17 [installed-chrome] › tests\hollow-octahedron-workflow.spec.ts:22:73 › Hollow Octahedron N256 canvas vertex: each bank retains a 20-second held gesture (46.9s)
+
+  Slow test file: [installed-chrome] › tests\hollow-octahedron-workflow.spec.ts (8.6m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  17 passed (10.1m)

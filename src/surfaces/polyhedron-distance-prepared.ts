@@ -3,6 +3,8 @@ import type {PolyhedronGeometry} from './polyhedron-contract.ts';
 type PolyhedronFace=string;type PolyhedronPosition=SurfacePosition;
 import {polyhedronUnfoldings} from './polyhedron-path.ts';
 import * as I from './pyramid-interval.ts';
+import {paintingStage} from '../editor/painting-metrics.ts';
+import {polyhedronLocalDomain} from './polyhedron-local-domain.ts';
 type Route=ReturnType<typeof polyhedronUnfoldings>[number];
 interface Linear{readonly c:number;readonly u:number;readonly v:number;readonly error:number}
 type LinearPoint=readonly[Linear,Linear];
@@ -18,26 +20,56 @@ const subtract=I.pointSubtract,cross=I.pointCross;
 function native(g:PolyhedronGeometry,face:PolyhedronFace){const v=g.chartVertexBounds(face);return{u:v[1]!,v:v[g.isTriangle(face)?2:3]!};}
 const apply=(t:Route['placements'][number]['bounds'],p:I.IntervalPoint):I.IntervalPoint=>[I.add(I.subtract(I.multiply(t.a,p[0]),I.multiply(t.b,p[1])),t.x),I.add(I.add(I.multiply(t.b,p[0]),I.multiply(t.a,p[1])),t.y)];
 function fromPoint(g:PolyhedronGeometry,p:PolyhedronPosition):I.IntervalPoint{const n=native(g,p.patchId);return[I.add(I.multiply(n.u[0],I.exact(p.u)),I.multiply(n.v[0],I.exact(p.v))),I.add(I.multiply(n.u[1],I.exact(p.u)),I.multiply(n.v[1],I.exact(p.v)))];}
+/** Exact chart membership certifies a source/end portal without strict side
+ * signs. TwoSum's residual must be zero for the implicit triangle weight: a
+ * rounded u+v==1 alone does not prove that the binary64 inputs sum exactly to 1. */
+export function trianglePortalEndpoint(g:PolyhedronGeometry,p:PolyhedronPosition,edge:readonly[number,number]){
+ if(!g.isTriangle(p.patchId))return false;const sum=p.u+p.v,b=sum-p.u,error=(p.u-(sum-b))+(p.v-b),zero=[sum===1&&error===0,p.u===0,p.v===0];return g.vertexIds(p.patchId).every((id,k)=>edge.includes(id)||zero[k]);
+}
 function makeRoute(g:PolyhedronGeometry,start:PolyhedronPosition,route:Route){const origin=fromPoint(g,start),target=route.placements.at(-1)!.bounds,n=native(g,route.placements.at(-1)!.face),b0=subtract(apply(target,[zero,zero]),origin),bu=subtract(apply(target,n.u),apply(target,[zero,zero])),bv=subtract(apply(target,n.v),apply(target,[zero,zero])),delta:LinearPoint=[linear(b0[0],bu[0],bv[0]),linear(b0[1],bu[1],bv[1])];
  const portals=route.edges.map(([i,j],k)=>{const placement=route.placements[k]!,ids=g.vertexIds(placement.face),p=subtract(placement.bounds.vertices[ids.indexOf(i)]!,origin),q=subtract(placement.bounds.vertices[ids.indexOf(j)]!,origin),edge=subtract(q,p),fixed=cross(edge,[I.neg(p[0]),I.neg(p[1])]),cp=linear(cross(b0,p),cross(bu,p),cross(bv,p)),cq=linear(cross(b0,q),cross(bu,q),cross(bv,q)),last=linear(I.add(fixed,cross(edge,b0)),cross(edge,bu),cross(edge,bv)),den=linear(cross(b0,edge),cross(bu,edge),cross(bv,edge)),num=cross(p,edge);return{cp,cq,fixed,last,den,num};});
- return{route,delta,portals};
+ return{route,delta,portals,startsOnFirst:!!route.edges.length&&trianglePortalEndpoint(g,start,route.edges[0]!)};
 }
 type PreparedRoute=ReturnType<typeof makeRoute>;
-const cache=new WeakMap<PolyhedronGeometry,{start:PolyhedronPosition;aliases:Map<PolyhedronFace,PolyhedronPosition>;routes:Map<PolyhedronFace,PreparedRoute[]>;direct:Map<PolyhedronFace,LinearPoint>}>();
-function source(g:PolyhedronGeometry,start:PolyhedronPosition){let state=cache.get(g);if(!state||state.start.patchId!==start.patchId||state.start.u!==start.u||state.start.v!==start.v){state={start,aliases:new Map(g.aliases(start).map(p=>[p.patchId,p])),routes:new Map(),direct:new Map()};cache.set(g,state);}return state;}
+interface SourceState{start:PolyhedronPosition;aliases:Map<PolyhedronFace,PolyhedronPosition>;routes:Map<PolyhedronFace,PreparedRoute[]>;localRoutes:Map<PolyhedronFace,PreparedRoute[]>;direct:Map<PolyhedronFace,LinearPoint>;domainChecked:boolean;domain?:ReturnType<typeof polyhedronLocalDomain>}
+const cache=new WeakMap<PolyhedronGeometry,SourceState>();
+function source(g:PolyhedronGeometry,start:PolyhedronPosition){let state=cache.get(g);if(!state||state.start.patchId!==start.patchId||state.start.u!==start.u||state.start.v!==start.v){state={start,aliases:new Map(g.aliases(start).map(p=>[p.patchId,p])),routes:new Map(),localRoutes:new Map(),direct:new Map(),domainChecked:false};cache.set(g,state);}return state;}
 function straight(g:PolyhedronGeometry,start:PolyhedronPosition,end:PolyhedronPosition,state:ReturnType<typeof source>){let coefficients=state.direct.get(end.patchId);if(!coefficients){const n=native(g,end.patchId),a=fromPoint(g,start);coefficients=[linear(I.neg(a[0]),n.u[0],n.v[0]),linear(I.neg(a[1]),n.u[1],n.v[1])];state.direct.set(end.patchId,coefficients);}return I.pointLength([evaluate(coefficients[0],end),evaluate(coefficients[1],end)]);}
 function sameSign(a:I.Interval,b:I.Interval){return a[0]>0&&b[0]>0||a[1]<0&&b[1]<0;}
-function possible(route:PreparedRoute,end:PolyhedronPosition){let previous=0,previousUpper=0,feasible=true;const opposite=(a:I.Interval,b:I.Interval)=>a[1]<0&&b[0]>0||b[1]<0&&a[0]>0;
- for(const p of route.portals){const cp=evaluate(p.cp,end),cq=evaluate(p.cq,end),last=evaluate(p.last,end);if(sameSign(cp,cq)||sameSign(p.fixed,last))return false;feasible&&=opposite(cp,cq)&&opposite(p.fixed,last);const den=evaluate(p.den,end);if(den[0]<=0&&den[1]>=0){feasible=false;continue;}const t=I.divide(p.num,den);if(t[1]<0||t[0]>1||previous>t[1])return false;feasible&&=t[0]>=previousUpper&&t[0]>=0&&t[1]<=1;previous=Math.max(previous,t[0]);previousUpper=Math.max(previousUpper,t[1]);}return{feasible};}
-/** A strict crossing certificate proves that the unfolded segment intersects
- * every portal in its interior and in order. Convex face segments are then a
+function possible(g:PolyhedronGeometry,route:PreparedRoute,end:PolyhedronPosition){let previous=0,previousUpper=0,feasible=true;const opposite=(a:I.Interval,b:I.Interval)=>a[1]<0&&b[0]>0||b[1]<0&&a[0]>0;
+ for(const[k,p]of route.portals.entries()){
+  // The first/last segment endpoints are already inside their convex faces.
+  // Exact portal membership fixes the crossing parameter to 0/1. Together
+  // with ordered remaining portals, convexity gives an actual surface witness.
+  if(k===0&&route.startsOnFirst){continue;}
+  if(k===route.portals.length-1&&trianglePortalEndpoint(g,end,route.route.edges[k]!)){previous=previousUpper=1;continue;}
+  const cp=evaluate(p.cp,end),cq=evaluate(p.cq,end),last=evaluate(p.last,end);if(sameSign(cp,cq)||sameSign(p.fixed,last))return false;feasible&&=opposite(cp,cq)&&opposite(p.fixed,last);const den=evaluate(p.den,end);if(den[0]<=0&&den[1]>=0){feasible=false;continue;}const t=I.divide(p.num,den);if(t[1]<0||t[0]>1||previous>t[1])return false;feasible&&=t[0]>=previousUpper&&t[0]>=0&&t[1]<=1;previous=Math.max(previous,t[0]);previousUpper=Math.max(previousUpper,t[1]);}return{feasible};}
+function enclosure(g:PolyhedronGeometry,prepared:readonly PreparedRoute[],end:PolyhedronPosition){
+ let lower=Infinity,upper=Infinity;const surviving:Route[]=[];
+ for(const route of prepared){const proof=possible(g,route,end);if(!proof)continue;const length=I.pointLength([evaluate(route.delta[0],end),evaluate(route.delta[1],end)]);surviving.push(route.route);lower=Math.min(lower,length[0]);if(proof.feasible)upper=Math.min(upper,length[1]);}
+ return{lower:Math.max(0,lower),upper,surviving};
+}
+/** Strict crossings or exact endpoint membership prove that the unfolded segment
+ * intersects every portal in order. Convex face segments are then a
  * real feasible witness. Ambiguous grazing routes still contribute lower bounds;
  * without a sufficiently narrow global enclosure they use the original solver. */
-export function preparedPolyhedronDistance(g:PolyhedronGeometry,a:SurfacePosition,b:SurfacePosition,options:{absoluteToleranceMeters?:number;maxBoxes?:number}){const start=g.normalize(a),end=g.normalize(b),state=source(g,start),tolerance=options.absoluteToleranceMeters??g.scaleMeters*1e-6;if(!Number.isFinite(tolerance)||tolerance<=0||!Number.isInteger(options.maxBoxes??32768)||(options.maxBoxes??32768)<1)throw RangeError('Invalid pyramid distance options.');let common=state.aliases.get(end.patchId),target=end;
+export function preparedPolyhedronDistance(g:PolyhedronGeometry,a:SurfacePosition,b:SurfacePosition,options:{absoluteToleranceMeters?:number;maxBoxes?:number},witness=false){const start=g.normalize(a),end=g.normalize(b),state=source(g,start),tolerance=options.absoluteToleranceMeters??g.scaleMeters*1e-6;if(!Number.isFinite(tolerance)||tolerance<=0||!Number.isInteger(options.maxBoxes??32768)||(options.maxBoxes??32768)<1)throw RangeError('Invalid pyramid distance options.');let common=state.aliases.get(end.patchId),target=end;
  if(!common&&(end.u===0||end.v===0||end.u+end.v===1||!g.isTriangle(end.patchId)&&(end.u===1||end.v===1))){for(const alias of g.aliases(end)){const match=state.aliases.get(alias.patchId);if(match){common=match;target=alias;break;}}}
  if(common){const value=common.u===target.u&&common.v===target.v?[0,0] as const:straight(g,common,target,state);if(value[1]-value[0]>tolerance)return;return{scope:'global-reference-surface' as const,lowerBoundMeters:Math.max(0,value[0]),upperBoundMeters:value[1],evaluatedBoxes:0,evaluatedRoutes:1};}
- let prepared=state.routes.get(end.patchId);if(!prepared){prepared=polyhedronUnfoldings(g,start.patchId,end.patchId).map(route=>makeRoute(g,start,route));state.routes.set(end.patchId,prepared);}if(prepared.length>(options.maxBoxes??32768))throw RangeError('Pyramid route work budget exhausted.');
+ if(!state.domainChecked){state.domainChecked=true;state.domain=paintingStage('polyhedronDomainCertificate',()=>polyhedronLocalDomain(g,start));}
+ const domain=state.domain;
+ if(domain&&domain.escapeLowerBoundMeters>0&&domain.faces.includes(end.patchId)){
+  let local=state.localRoutes.get(end.patchId);if(!local){local=paintingStage('polyhedronSourcePreparation',()=>polyhedronUnfoldings(g,start.patchId,end.patchId,domain.faces).map(route=>makeRoute(g,start,route)));state.localRoutes.set(end.patchId,local);}
+  if(local.length<=(options.maxBoxes??32768)){
+   const e=enclosure(g,local,end);
+   if(Number.isFinite(e.upper)&&e.upper<domain.escapeLowerBoundMeters&&e.upper-e.lower<=tolerance){
+    if(witness)return{onlyRoutes:e.surviving,consideredRoutes:local.length};
+    return{scope:'global-reference-surface' as const,lowerBoundMeters:e.lower,upperBoundMeters:e.upper,evaluatedBoxes:0,evaluatedRoutes:local.length,certifiedDomainFaces:domain.faces.length,escapeLowerBoundMeters:domain.escapeLowerBoundMeters};
+   }
+  }
+ }
+ let prepared=state.routes.get(end.patchId);if(!prepared){prepared=paintingStage('polyhedronSourcePreparation',()=>polyhedronUnfoldings(g,start.patchId,end.patchId).map(route=>makeRoute(g,start,route)));state.routes.set(end.patchId,prepared);}if(prepared.length>(options.maxBoxes??32768))throw RangeError('Pyramid route work budget exhausted.');
  // Retain all possible route bounds for the caller's exact witness selection.
- const surviving=prepared.flatMap(route=>{const proof=possible(route,end);if(!proof)return[];return[{route,proof,length:I.pointLength([evaluate(route.delta[0],end),evaluate(route.delta[1],end)])}];});if(!surviving.length)return;const lower=Math.max(0,Math.min(...surviving.map(p=>p.length[0]))),upper=Math.min(...surviving.filter(p=>p.proof.feasible).map(p=>p.length[1]));
- if(Number.isFinite(upper)&&upper-lower<=tolerance)return{scope:'global-reference-surface' as const,lowerBoundMeters:lower,upperBoundMeters:upper,evaluatedBoxes:0,evaluatedRoutes:prepared.length};return{onlyRoutes:surviving.map(p=>p.route.route),consideredRoutes:prepared.length};
+ const {lower,upper,surviving}=enclosure(g,prepared,end);if(!surviving.length)return;
+ if(!witness&&Number.isFinite(upper)&&upper-lower<=tolerance)return{scope:'global-reference-surface' as const,lowerBoundMeters:lower,upperBoundMeters:upper,evaluatedBoxes:0,evaluatedRoutes:prepared.length};return{onlyRoutes:surviving,consideredRoutes:prepared.length};
 }

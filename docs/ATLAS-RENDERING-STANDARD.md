@@ -5,6 +5,16 @@ unworkable.** This is a standing requirement for every subsequent Atlas shape.
 It supplements the current hollow-world correction and Open Cylinder work;
 it does not authorize additional shapes or a replacement terrain engine.
 
+The owner's 2026-10-23 [course correction](ATLAS-PHASE2-COURSE-CORRECTION.md)
+supersedes historical deferrals of basic holes, tunnels and reciprocal links.
+A completed applicable 3D editor includes their real material validation,
+physical subtraction, shared authoring/history and strict Save/Open, alongside
+responsive terrain and sharp presentation. Preserve supported 0 m reference-
+ground restrictions; advanced displaced excavation and the full Tunnel Network
+Designer remain later systems. A blocked geometry must not hold up independent
+finishing or geometry work. Older checkpoint reviews describe their historical
+capabilities rather than granting an ongoing deferral.
+
 Atlas is one editor. New geometry inherits the accepted presentation, input,
 camera interaction, numerical editing, scheduling, history, persistence and
 workspace behavior wherever those implementations remain valid. Demonstrate a

@@ -1,0 +1,15 @@
+
+Running 2 tests using 1 worker
+
+npx.cmd : (node:23804) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:32 char:1
++ npx.cmd playwright test --config playwright.hollow-tetrahedron.config ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:23804) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:12:63 › Hollow Tetrahedron N256 auto: independent banks, all tools and six joins, sharp inspection, exact replay and v18 reopen (57.3s)
+  ok 2 [installed-chrome] › tests\hollow-tetrahedron-workflow.spec.ts:12:63 › Hollow Tetrahedron N256 canvas: independent banks, all tools and six joins, sharp inspection, exact replay and v18 reopen (55.9s)
+
+  2 passed (1.9m)

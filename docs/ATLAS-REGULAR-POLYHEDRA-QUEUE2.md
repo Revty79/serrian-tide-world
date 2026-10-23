@@ -1,5 +1,11 @@
 # Atlas regular polyhedron queue 2
 
+This records the earlier queue. The owner's 2026-10-23
+[course correction](ATLAS-PHASE2-COURSE-CORRECTION.md) now governs progression:
+basic connection deferrals are superseded, and a blocked geometry must not stop
+independent work. The sequential dependency below is historical, not a current
+gate on independent Icosahedron investigation or existing-family finishing.
+
 The owner's supplied Overnight Queue 2 authorizes sequential operational Solid
 Octahedron, Hollow Octahedron, Solid/Hollow Dodecahedron, Solid/Hollow Icosahedron
 and then comprehensive family verification. It follows the completed prior queue

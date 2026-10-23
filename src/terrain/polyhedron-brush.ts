@@ -1,4 +1,5 @@
 import type {SurfacePosition} from '../surfaces/contracts.ts';
+import {paintingStage} from '../editor/painting-metrics.ts';
 import {pyramidDot,pyramidSub} from '../surfaces/pyramid.ts';
 import {polyhedronDistance,reconstructPolyhedronPath,polyhedronArithmeticGuard} from '../surfaces/polyhedron-path.ts';
 import type {PolyhedronTerrain} from './polyhedron-contract.ts';
@@ -18,10 +19,10 @@ function candidates(t:T,input:SurfacePosition,radius:number){const g=t.geometry,
  }};
 }
 function smooth(t:T,key:ReturnType<T['keyAt']>,current:number){const neighbors=t.neighbors(key),p=t.referencePositionAt(key),weights=neighbors.map(k=>1/pyramidDot(pyramidSub(t.referencePositionAt(k),p),pyramidSub(t.referencePositionAt(k),p))),area=neighbors.reduce((sum,k)=>sum+pyramidDot(pyramidSub(t.referencePositionAt(k),p),pyramidSub(t.referencePositionAt(k),p)),0)/(neighbors.length*t.geometry.scaleMeters**2);return connectedSmoothEstimate(t,neighbors,weights,current,area);}
-const adapter=Object.freeze<ConnectedDabAdapter<T>>({candidates,distance:(t,a,b,o)=>polyhedronDistance(t.geometry,a,b,o),smooth:smooth});
+const adapter=Object.freeze<ConnectedDabAdapter<T>>({candidates,distance:(t,a,b,o)=>paintingStage('certifiedDistance',()=>polyhedronDistance(t.geometry,a,b,o)),smooth:smooth});
 function visibleAdapter(view?:CylinderView):ConnectedDabAdapter<T>{return view?{...adapter,candidates:(t,p,r)=>{const plan=candidates(t,p,r);return{...plan,*samples(){for(const item of plan.samples())if(view.mode==='map'||!cylinderCenterInspection(view)&&t.geometry.aliases(item.position).some(p=>pyramidDot(t.geometry.normal(p),view.frame.forward)>1e-9))yield item;}};}}:adapter;}
 function prepare(t:T,p:SurfacePosition,s:CylindricalBrushSettings,limits:CylinderDabLimits={},view?:CylinderView){return prepareConnectedDab(t,p,s,visibleAdapter(view),limits);}
-const strokeAdapter=Object.freeze<ConnectedStrokeAdapter<T>>({...adapter,normalize:(t,p)=>t.geometry.normalize(p),radiusMeters:t=>t.geometry.scaleMeters,path:(t,a,b,o)=>reconstructPolyhedronPath(t.geometry,a,b,o)});
+const strokeAdapter=Object.freeze<ConnectedStrokeAdapter<T>>({...adapter,normalize:(t,p)=>t.geometry.normalize(p),radiusMeters:t=>t.geometry.scaleMeters,path:(t,a,b,o)=>paintingStage('certifiedPath',()=>reconstructPolyhedronPath(t.geometry,a,b,o))});
 
 function begin(t:T,h:ConnectedHistory<T>,p:SurfacePosition,s:CylindricalBrushSettings,options:ConnectedStrokeOptions<T>&{readonly view?:CylinderView}={}){return beginConnectedStroke(t,h,p,s,{...strokeAdapter,...visibleAdapter(options.view)},options);}
 
