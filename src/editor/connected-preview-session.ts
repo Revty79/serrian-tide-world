@@ -66,9 +66,7 @@ export class ConnectedPreviewSession<T extends ConnectedSessionTerrain,View exte
   get closed(){return this.disposed;}
   name: string;
   hasSaved: boolean;
-  private hostLocked = false;
-  get locked(){return this.hostLocked;}
-  set locked(value:boolean){this.hostLocked=value;}
+  locked = false;
   readonly persistent: boolean;
   private checkpointName: string;
   // Exact sparse differences from the saved content; independent of history retention/cursors.

@@ -19,5 +19,3 @@ export function pyramidVisibility(g:PyramidGeometry,view:CylinderView,p:SurfaceP
 /** Canonical incident-face visibility without rebuilding sample coordinates.
  * Boundary words are shared; visibility of any incident face permits that word. */
 export function pyramidIndexVisible(t:PyramidTerrain,view:CylinderView,index:number){if(view.mode==='map')return true;if(cylinderCenterInspection(view))return false;if(!Number.isInteger(index)||index<0||index>=t.sampleCount)throw RangeError('Invalid pyramid visibility index.');const n=t.subdivisions,start=5+8*(n-1),triangle=(n-1)*(n-2)/2,faces=index>=start?[PYRAMID_FACES[Math.min(4,Math.floor((index-start)/triangle))]!]:index<5?PYRAMID_FACES.filter(f=>PYRAMID_VERTICES[f].includes(index)):(()=>{const edge=PYRAMID_EDGES[Math.floor((index-5)/(n-1))]!;return PYRAMID_FACES.filter(f=>edge.every(i=>PYRAMID_VERTICES[f].includes(i)));})();return faces.some(face=>pyramidDot(t.geometry.faceFrames[face].normal,view.frame.forward)*(t.geometry.metadata.role==='interior'?-1:1)>1e-9);}
-
-export const pyramidProjection={layout:pyramidLayout,netPoint:pyramidNetPoint,project:projectPyramid,unproject:unprojectPyramid};

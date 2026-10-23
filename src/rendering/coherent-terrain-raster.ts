@@ -8,13 +8,11 @@ export const rasterRegions=(region:RasterRegions):readonly RasterRegion[]=>'left
 /** Accepted cylindrical presentation loop, independent of intersection/chart
  * mathematics. Geometry selects actual hits; field/palette adapters supply
  * colors. Coast/material coverage and cooperative work policy stay shared. */
-export function* coherentTerrainRasterSteps<Hit>(options:{readonly pixels:Uint8ClampedArray;readonly columns:number;readonly rows:number;readonly revision:number;readonly snapshotBytes:number;readonly size:{readonly width:number;readonly height:number};readonly grid:{readonly x:number;readonly y:number;readonly scale:number};readonly labels?:Uint8Array;readonly region?:RasterRegions;readonly quantum:32|256|2048;preserveAt?(x:number,y:number):boolean;sampleAt(x:number,y:number):TerrainRasterSample<Hit>|undefined;nearBoundary(center:TerrainRasterSample<Hit>|undefined,x:number,y:number,dx:number,dy:number):boolean|undefined}):Generator<void,CoherentTerrainRaster>{
+export function* coherentTerrainRasterSteps<Hit>(options:{readonly pixels:Uint8ClampedArray;readonly columns:number;readonly rows:number;readonly revision:number;readonly snapshotBytes:number;readonly size:{readonly width:number;readonly height:number};readonly grid:{readonly x:number;readonly y:number;readonly scale:number};readonly labels?:Uint8Array;readonly region?:RasterRegions;readonly quantum:256|2048;sampleAt(x:number,y:number):TerrainRasterSample<Hit>|undefined;nearBoundary(center:TerrainRasterSample<Hit>|undefined,x:number,y:number,dx:number,dy:number):boolean|undefined}):Generator<void,CoherentTerrainRaster>{
  const {pixels,columns,rows,revision,snapshotBytes,size,grid:l,labels,sampleAt}=options,dx=size.width/columns/l.scale,dy=size.height/rows/l.scale;
- const regions=options.region?rasterRegions(options.region):[{left:0,top:0,right:columns,bottom:rows}];let work=0,skipped=0;
+ const regions=options.region?rasterRegions(options.region):[{left:0,top:0,right:columns,bottom:rows}];let work=0;
  for(const region of regions)for(let row=region.top;row<region.bottom;row++)for(let column=region.left;column<region.right;column++){const i=row*columns+column;
-  const x=((i%columns+.5)*size.width/columns-l.x)/l.scale,y=(l.y-(Math.floor(i/columns)+.5)*size.height/rows)/l.scale;
-  if(options.preserveAt?.(x,y)){if(++skipped%4096===0)yield;continue;}
-  const center=sampleAt(x,y),offset=i*4;if(labels)labels[i]=center?Math.floor(center.label/2):0;
+  const x=((i%columns+.5)*size.width/columns-l.x)/l.scale,y=(l.y-(Math.floor(i/columns)+.5)*size.height/rows)/l.scale,center=sampleAt(x,y),offset=i*4;if(labels)labels[i]=center?Math.floor(center.label/2):0;
   const nearBoundary=options.nearBoundary(center,x,y,dx,dy),nearCoast=center&&center.field.crossesSea;
   if(nearBoundary||nearCoast){
    let red=0,green=0,blue=0,covered=0,sameClass=true;

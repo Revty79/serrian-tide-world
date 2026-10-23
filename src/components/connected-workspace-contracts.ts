@@ -31,9 +31,6 @@ export interface ConnectedWorkspaceAdapter<T extends WorkspaceTerrain,V extends 
  navigate(view:V,dx:number,dy:number,size:CylinderViewport):V;
  recenter(view:V,p:SurfacePosition):V;region(view:V,id:string):SurfacePosition;
  readonly inspectionEye?:Vec3;validateEye(eye:Vec3,scene?:Scene):boolean;
- /** Raw camera-frame axis for an actual World-space look direction. Existing
-  * cylinder rays use +forward; the accepted polyhedral camera uses -forward. */
- inspectionForward?(lookDirection:Vec3):Vec3;
  cutView(view:V,scene?:Scene):boolean;sceneStamp(scene?:Scene):string;
  dirtyRegion?(changes:readonly TerrainDisplayDab[],view:V,size:CylinderViewport,columns:number,rows:number):RasterRegions|undefined;
  raster(cache:IndexedDisplayCache<T>,view:V,size:CylinderViewport,budget:number,reusable:Uint8ClampedArray|undefined,appearance:CylinderAppearance,scene?:Scene,update?:TerrainRasterUpdate):Generator<void,CoherentTerrainRaster>;

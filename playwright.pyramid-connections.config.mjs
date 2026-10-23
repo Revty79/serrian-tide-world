@@ -1,2 +1,0 @@
-import base from './playwright.pyramid.config.mjs';
-export default{...base,testMatch:['pyramid-connections.spec.ts','pyramid-connection-pixels.spec.ts','pyramid-connection-boundaries.spec.ts','pyramid-connection-storage.spec.ts'],timeout:300000,workers:1,fullyParallel:false,reporter:[['list'],['json',{outputFile:process.env.PYRAMID_CONNECTIONS_REPORT??'.local/pyramid-connections-browser.json'}]]};
