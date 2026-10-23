@@ -109,7 +109,7 @@ export function App() {
       if (loaded.kind === 'sphere') {
         setSpherePreview({ radiusMeters: loaded.terrain.metadata.geometry.radiusMeters, cellsPerEdge: loaded.terrain.metadata.representation.cellsPerEdge, kind: 'blank', initial: { terrain: loaded.terrain, name: loaded.name } }); return;
       }
-      if (loaded.kind==='hollow-tetrahedron'||loaded.kind==='octahedron'||loaded.kind==='tetrahedron'||loaded.kind==='hollow-pyramid'||loaded.kind==='pyramid'||loaded.kind === 'cylinder'||loaded.kind==='cube'||loaded.kind==='hollow-cube'||loaded.kind==='hollow-sphere'||loaded.kind==='hollow-cylinder'||loaded.kind==='open-cylinder') throw new Error('Physical worlds use the unified Atlas workspace.');
+      if (loaded.kind==='hollow-tetrahedron'||loaded.kind==='hollow-octahedron'||loaded.kind==='octahedron'||loaded.kind==='tetrahedron'||loaded.kind==='hollow-pyramid'||loaded.kind==='pyramid'||loaded.kind === 'cylinder'||loaded.kind==='cube'||loaded.kind==='hollow-cube'||loaded.kind==='hollow-sphere'||loaded.kind==='hollow-cylinder'||loaded.kind==='open-cylinder') throw new Error('Physical worlds use the unified Atlas workspace.');
       if (!guardDiscard()) return;
       setDocument(new TerrainDocument(loaded.terrain, loaded.name, true));
       setControls({ ...defaults, radius: Math.min(loaded.terrain.metadata.dimensions.width, loaded.terrain.metadata.dimensions.height) * 0.06 });

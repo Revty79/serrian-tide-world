@@ -132,6 +132,15 @@ context-loss and touch suites cover editing and history separately. See the
 [Pyramid family review](PYRAMID-FINAL-REVIEW.md) for the final source receipt and
 the conditional deferral of pyramid excavation.
 
+The Octahedron family uses that same presentation and field infrastructure,
+with the shared triangular projection adapter and a qualified eight-face cache
+profile. Its solid and hollow pixel suites compare actual hardware GPU/Canvas
+output at N128/N256, including fitted interior and cavity perspective. Workflow
+suites cover all twelve physical joins, four-face vertices and held strokes;
+see the [solid](OCTAHEDRON-SOLID-EDITOR.md) and
+[hollow](OCTAHEDRON-HOLLOW-EDITOR.md) reviews and their frozen-source receipts.
+The Octahedron cache qualification does not raise limits for unknown geometries.
+
 Pixel parity allows the existing bounded raster footprint and minor numeric
 channel rounding at edges; it cannot be used to excuse missing material, shifted
 geography, visibly lower display resolution or an unresponsive editor. Review

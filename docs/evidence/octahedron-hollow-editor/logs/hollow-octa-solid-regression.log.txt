@@ -1,0 +1,28 @@
+
+Running 15 tests using 1 worker
+
+npx.cmd : (node:15176) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:18 char:1
++ npx.cmd playwright test --config playwright.octahedron.config.mjs > . ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:15176) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [installed-chrome] › tests\octahedron-pixels.spec.ts:2:68 › Octahedron outside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (4.5s)
+  ok  2 [installed-chrome] › tests\octahedron-pixels.spec.ts:2:68 › Octahedron opposite N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (3.6s)
+  ok  3 [installed-chrome] › tests\octahedron-pixels.spec.ts:2:68 › Octahedron outside N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (4.7s)
+  ok  4 [installed-chrome] › tests\octahedron-pixels.spec.ts:2:68 › Octahedron opposite N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (4.6s)
+  ok  5 [installed-chrome] › tests\octahedron-recovery.spec.ts:7:39 › Octahedron N256 auto: active worker protocol fault preserves exact prefix history and a fresh stroke recovers (3.6s)
+  ok  6 [installed-chrome] › tests\octahedron-recovery.spec.ts:7:39 › Octahedron N256 canvas: active worker protocol fault preserves exact prefix history and a fresh stroke recovers (3.7s)
+  ok  7 [installed-chrome] › tests\octahedron-recovery.spec.ts:10:1 › Octahedron N256: graphics loss and restoration retain the current painted terrain epoch (3.6s)
+  ok  8 [installed-chrome] › tests\octahedron-workflow.spec.ts:13:63 › Solid Octahedron N128 auto: sharp live painting, twelve joins, four tools, exact replay and v19 reopen (36.1s)
+  ok  9 [installed-chrome] › tests\octahedron-workflow.spec.ts:13:63 › Solid Octahedron N128 canvas: sharp live painting, twelve joins, four tools, exact replay and v19 reopen (36.8s)
+  ok 10 [installed-chrome] › tests\octahedron-workflow.spec.ts:13:63 › Solid Octahedron N256 auto: sharp live painting, twelve joins, four tools, exact replay and v19 reopen (40.9s)
+  ok 11 [installed-chrome] › tests\octahedron-workflow.spec.ts:13:63 › Solid Octahedron N256 canvas: sharp live painting, twelve joins, four tools, exact replay and v19 reopen (39.6s)
+  ok 12 [installed-chrome] › tests\octahedron-workflow.spec.ts:20:73 › Solid Octahedron N256 auto map: sustained held painting crosses work epochs without release (23.0s)
+  ok 13 [installed-chrome] › tests\octahedron-workflow.spec.ts:20:73 › Solid Octahedron N256 auto vertex: sustained held painting crosses work epochs without release (23.4s)
+  ok 14 [installed-chrome] › tests\octahedron-workflow.spec.ts:20:73 › Solid Octahedron N256 canvas map: sustained held painting crosses work epochs without release (23.0s)
+  ok 15 [installed-chrome] › tests\octahedron-workflow.spec.ts:20:73 › Solid Octahedron N256 canvas vertex: sustained held painting crosses work epochs without release (23.5s)
+
+  15 passed (4.6m)

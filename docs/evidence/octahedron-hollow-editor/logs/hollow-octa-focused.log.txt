@@ -1,0 +1,20 @@
+✔ hollow octahedron v20 N128: both independent Float32 banks, signed zero and selected role roundtrip exactly (1276.5558ms)
+✔ hollow octahedron v20 N256: both independent Float32 banks, signed zero and selected role roundtrip exactly (4347.7273ms)
+✔ hollow octahedron v20 rejects corruption, metadata smuggling, foreign banks, touching shells and out-of-clearance words even with rehashed payload (533.5904ms)
+✔ hollow octahedron saving rejects a stale bank epoch or selection and cancellation leaves its source unchanged (538.2768ms)
+✔ nested octahedron clearance encloses every inner vertex against every actual outer face, base and apex (4.6645ms)
+✔ intersecting, touching, inverted, nonfinite and ambiguous thin hollow octahedron shells reject explicitly (0.483ms)
+✔ hollow octahedron N128: independent identities, canonical apex/edges, strict finite clearance and no copied/inverted geography (1.7462ms)
+✔ hollow octahedron N256: independent identities, canonical apex/edges, strict finite clearance and no copied/inverted geography (1.3191ms)
+✔ thin hollow octahedron requires explicit zero reference shell rather than clamping either bank (0.8274ms)
+✔ octahedron immutable geometry cannot drift with caller configuration or frame/topology mutation (1.6683ms)
+✔ hollow octahedron exterior: physical elevation exhaustion rejects an entire dab and retains exact undoable prefix (19.713ms)
+✔ hollow octahedron interior: physical elevation exhaustion rejects an entire dab and retains exact undoable prefix (8.4696ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6921.445
