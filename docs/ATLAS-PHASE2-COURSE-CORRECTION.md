@@ -1,5 +1,11 @@
 # Phase 2 course correction
 
+**Superseded sequencing, 2026-10-23:** the owner requested restoration to the
+07:30 shape-editing checkpoint and deferred new holes, tunnels and links until
+after queued shape completion. See [the current direction](ATLAS-SHAPES-FIRST-2026-10-23.md).
+The requirements below remain historical context; do not resume their excavation
+queue under the current shapes-first instruction.
+
 Owner direction of 2026-10-23 supersedes the earlier deferral of basic holes,
 tunnels and reciprocal map links on Pyramid, Tetrahedron and Octahedron.
 The starting standalone checkpoint is `7d6a3f7`. This is a sequential delivery

@@ -1,5 +1,11 @@
 # Atlas implementation standard
 
+Owner direction of 2026-10-23 now prioritizes finishing the queued shapes.
+The active application was restored to the 07:30 checkpoint `0b3f038`.
+Do not resume the paused new holes, tunnels or links work as part of shape
+completion. Arbitrary-height/depth excavation is a later shared pass.
+See [the restored baseline and current scope](docs/ATLAS-SHAPES-FIRST-2026-10-23.md).
+
 Read [the permanent rendering and editor standard](docs/ATLAS-RENDERING-STANDARD.md)
 when changing geometry, rendering or shared editing behavior.
 
