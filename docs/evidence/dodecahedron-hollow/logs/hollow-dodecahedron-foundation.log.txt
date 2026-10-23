@@ -1,0 +1,27 @@
+✔ hollow dodecahedron v28 N128: both independent Float32 banks, signed zero and selected role roundtrip exactly (10966.6345ms)
+✔ hollow dodecahedron v28 N256: both independent Float32 banks, signed zero and selected role roundtrip exactly (34751.1546ms)
+✔ hollow dodecahedron v28 rejects corruption, metadata smuggling, foreign banks, touching shells and out-of-clearance words even with rehashed payload (5097.2449ms)
+✔ hollow dodecahedron saving rejects a stale bank epoch or selection and cancellation leaves its source unchanged (5250.888ms)
+✔ hollow world catalogs allow exterior, interior, or both with independent surface and terrain identities (1.1127ms)
+✔ catalog rejects duplicate/foreign identities, shared terrain IDs and invalid hollow references (0.4281ms)
+✔ flat outlines and other shapes have data contracts without implying editor support (0.9855ms)
+✔ nested dodecahedron clearance encloses every inner vertex against every actual outer face, base and apex (8.6605ms)
+✔ intersecting, touching, inverted, nonfinite and ambiguous thin hollow dodecahedron shells reject explicitly (0.477ms)
+✔ hollow dodecahedron N128: independent identities, canonical apex/edges, strict finite clearance and no copied/inverted geography (5.7488ms)
+✔ hollow dodecahedron N256: independent identities, canonical apex/edges, strict finite clearance and no copied/inverted geography (4.8326ms)
+✔ thin hollow dodecahedron requires explicit zero reference shell rather than clamping either bank (3.9808ms)
+✔ dodecahedron immutable geometry cannot drift with caller configuration or frame/topology mutation (4.9931ms)
+✔ hollow dodecahedron exterior: physical elevation exhaustion rejects an entire dab and retains exact undoable prefix (16.8312ms)
+✔ hollow dodecahedron interior: physical elevation exhaustion rejects an entire dab and retains exact undoable prefix (12.0002ms)
+✔ hollow dodecahedron N128 exterior: all tools cross the three-face vertex and welded diagonals with exact independent history (258.5276ms)
+✔ hollow dodecahedron N128 interior: all tools cross the three-face vertex and welded diagonals with exact independent history (245.2558ms)
+✔ hollow dodecahedron N256 exterior: all tools cross the three-face vertex and welded diagonals with exact independent history (577.0476ms)
+✔ hollow dodecahedron N256 interior: all tools cross the three-face vertex and welded diagonals with exact independent history (654.6663ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 58419.1866

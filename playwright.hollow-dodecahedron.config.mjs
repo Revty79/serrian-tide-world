@@ -1,0 +1,2 @@
+import base from './playwright.dodecahedron.config.mjs';
+export default{...base,testMatch:['hollow-dodecahedron-matched.spec.ts','hollow-dodecahedron-performance.spec.ts','hollow-dodecahedron-pixels.spec.ts','hollow-dodecahedron-workflow.spec.ts','hollow-dodecahedron-navigation.spec.ts','hollow-dodecahedron-context.spec.ts'],timeout:240000,reporter:[['list'],['json',{outputFile:process.env.DODECAHEDRON_REPORT??'.local/hollow-dodecahedron-browser.json'}]]};

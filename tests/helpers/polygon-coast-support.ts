@@ -1,3 +1,4 @@
+import {drawPolyhedronPerspectiveAtlas} from '../../src/rendering/polyhedron-perspective-atlas.ts';
 import type {PolyhedronDisplayCache} from '../../src/rendering/polyhedron-field.ts';
 import type {PolyhedronTerrain} from '../../src/terrain/polyhedron-contract.ts';
 import type {CylinderView} from '../../src/rendering/cylindrical-view.ts';
@@ -16,4 +17,15 @@ export function polygonCoastSupportMask(cache:PolyhedronDisplayCache<PolyhedronT
   ctx.save();ctx.setTransform(ux,uy,vx,vy,p.x-ux*a[0]-vx*a[1],p.y-uy*a[0]-vy*a[1]);ctx.beginPath();atlas.coordinates.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.closePath();ctx.clip();ctx.drawImage(tile,-.5,-.5);ctx.restore();
  }
  return ctx.getImageData(0,0,canvas.width,canvas.height).data;
+}
+
+/** A sign-change reference through the accepted cavity atlas sampler. */
+export function perspectiveCoastSupportMask(cache:PolyhedronDisplayCache<PolyhedronTerrain>,view:CylinderView,size:{width:number;height:number},projection:PolyhedronProjection<PolyhedronGeometry>){
+ const side=cache.atlasSize,tiles=new Map<string,Uint8ClampedArray>();
+ for(const face of cache.terrain.geometry.faces){const land=new Uint8Array(side*side),prefix=new Uint32Array((side+1)*(side+1));
+  for(let row=0;row<side;row++)for(let col=0;col<side;col++){const u=col/(side-1),v=1-row/(side-1);if(u+v<=1)land[row*side+col]=cache.sample(face,u,v).height>=0?1:0;}
+  for(let row=0;row<side;row++){let sum=0;for(let col=0;col<side;col++){sum+=land[row*side+col]!;prefix[(row+1)*(side+1)+col+1]=sum+prefix[row*(side+1)+col+1]!;}}
+  const rgba=new Uint8ClampedArray(side*side*4);for(let row=0;row<side;row++)for(let col=0;col<side;col++){const l=Math.max(0,col-2),r=Math.min(side,col+3),t=Math.max(0,row-2),b=Math.min(side,row+3),count=prefix[b*(side+1)+r]!-prefix[t*(side+1)+r]!-prefix[b*(side+1)+l]!+prefix[t*(side+1)+l]!,coast=count>0&&count<(r-l)*(b-t)?255:0,at=(row*side+col)*4;rgba[at]=rgba[at+1]=rgba[at+2]=coast;rgba[at+3]=255;}tiles.set(face,rgba);
+ }
+ const canvas=document.createElement('canvas');canvas.width=size.width;canvas.height=size.height;const ctx=canvas.getContext('2d')!;drawPolyhedronPerspectiveAtlas(ctx,tiles,side,cache.terrain.geometry,view,size,projection);return ctx.getImageData(0,0,canvas.width,canvas.height).data;
 }
