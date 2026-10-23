@@ -1,0 +1,16 @@
+
+Running 9 tests using 1 worker
+
+(node:22484) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\icosahedron-recovery.spec.ts:7:39 › Icosahedron N256 auto: active worker protocol fault preserves exact prefix history and a fresh stroke recovers (9.2s)
+  ok 2 [installed-chrome] › tests\icosahedron-recovery.spec.ts:7:39 › Icosahedron N256 canvas: active worker protocol fault preserves exact prefix history and a fresh stroke recovers (8.0s)
+  ok 3 [installed-chrome] › tests\icosahedron-recovery.spec.ts:10:1 › Icosahedron N256: graphics loss and restoration retain the current painted terrain epoch (7.7s)
+  ok 4 [installed-chrome] › tests\icosahedron-workflow.spec.ts:13:63 › Solid Icosahedron N128 auto: sharp live painting, thirty joins, four tools, exact replay and v29 reopen (1.4m)
+  ok 5 [installed-chrome] › tests\icosahedron-workflow.spec.ts:13:63 › Solid Icosahedron N128 canvas: sharp live painting, thirty joins, four tools, exact replay and v29 reopen (13.6s)
+  ok 6 [installed-chrome] › tests\icosahedron-workflow.spec.ts:13:63 › Solid Icosahedron N256 auto: sharp live painting, thirty joins, four tools, exact replay and v29 reopen (22.1s)
+  ok 7 [installed-chrome] › tests\icosahedron-workflow.spec.ts:13:63 › Solid Icosahedron N256 canvas: sharp live painting, thirty joins, four tools, exact replay and v29 reopen (23.3s)
+  ok 8 [installed-chrome] › tests\icosahedron-workflow.spec.ts:20:64 › Solid Icosahedron N256 auto map: sustained held painting crosses work epochs without release (27.2s)
+  ok 9 [installed-chrome] › tests\icosahedron-workflow.spec.ts:20:64 › Solid Icosahedron N256 canvas map: sustained held painting crosses work epochs without release (27.4s)
+
+  9 passed (3.8m)

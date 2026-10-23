@@ -1,0 +1,2 @@
+﻿import base from './playwright.icosahedron.config.mjs';
+export default{...base,testMatch:['polyhedron-regression-smoke.spec.ts','trapezohedron-pixels.spec.ts','hollow-trapezohedron-pixels.spec.ts','dodecahedron-pixels.spec.ts','hollow-dodecahedron-pixels.spec.ts'],grep:/Prior |N128 incremental|outside N128|inside N256|cavity N128/,reporter:[['list'],['json',{outputFile:'.local/icosa-solid-regression.json'}]]};

@@ -1,0 +1,27 @@
+
+Running 20 tests using 1 worker
+
+(node:21700) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [installed-chrome] › tests\icosahedron-joins.spec.ts:2:1 › Icosahedron Canvas internal joins retain complete pixel coverage at flat ocean and reference height (5.0s)
+  ok  2 [installed-chrome] › tests\icosahedron-performance.spec.ts:9:90 › Icosahedron stage profile N128 auto solid (27.9s)
+  ok  3 [installed-chrome] › tests\icosahedron-performance.spec.ts:9:90 › Icosahedron stage profile N128 canvas solid (26.0s)
+  ok  4 [installed-chrome] › tests\icosahedron-performance.spec.ts:9:90 › Icosahedron stage profile N256 auto solid (32.1s)
+  ok  5 [installed-chrome] › tests\icosahedron-performance.spec.ts:9:90 › Icosahedron stage profile N256 canvas solid (32.5s)
+  ok  6 [installed-chrome] › tests\icosahedron-pixels.spec.ts:2:25 › Icosahedron N128 incremental GPU and Canvas epochs equal a fresh full presentation (3.5s)
+  ok  7 [installed-chrome] › tests\icosahedron-pixels.spec.ts:2:25 › Icosahedron N256 incremental GPU and Canvas epochs equal a fresh full presentation (10.0s)
+  ok  8 [installed-chrome] › tests\icosahedron-pixels.spec.ts:9:68 › Icosahedron outside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (9.5s)
+  ok  9 [installed-chrome] › tests\icosahedron-pixels.spec.ts:9:68 › Icosahedron opposite N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (8.8s)
+  ok 10 [installed-chrome] › tests\icosahedron-pixels.spec.ts:9:68 › Icosahedron outside N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (13.4s)
+  ok 11 [installed-chrome] › tests\icosahedron-pixels.spec.ts:9:68 › Icosahedron opposite N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (12.8s)
+  ok 12 [installed-chrome] › tests\icosahedron-recovery.spec.ts:7:39 › Icosahedron N256 auto: active worker protocol fault preserves exact prefix history and a fresh stroke recovers (7.8s)
+  ok 13 [installed-chrome] › tests\icosahedron-recovery.spec.ts:7:39 › Icosahedron N256 canvas: active worker protocol fault preserves exact prefix history and a fresh stroke recovers (8.0s)
+  ok 14 [installed-chrome] › tests\icosahedron-recovery.spec.ts:10:1 › Icosahedron N256: graphics loss and restoration retain the current painted terrain epoch (7.5s)
+  ok 15 [installed-chrome] › tests\icosahedron-workflow.spec.ts:13:63 › Solid Icosahedron N128 auto: sharp live painting, thirty joins, four tools, exact replay and v29 reopen (1.4m)
+  ok 16 [installed-chrome] › tests\icosahedron-workflow.spec.ts:13:63 › Solid Icosahedron N128 canvas: sharp live painting, thirty joins, four tools, exact replay and v29 reopen (13.9s)
+  ok 17 [installed-chrome] › tests\icosahedron-workflow.spec.ts:13:63 › Solid Icosahedron N256 auto: sharp live painting, thirty joins, four tools, exact replay and v29 reopen (22.0s)
+  ok 18 [installed-chrome] › tests\icosahedron-workflow.spec.ts:13:63 › Solid Icosahedron N256 canvas: sharp live painting, thirty joins, four tools, exact replay and v29 reopen (22.7s)
+  ok 19 [installed-chrome] › tests\icosahedron-workflow.spec.ts:20:64 › Solid Icosahedron N256 auto map: sustained held painting crosses work epochs without release (27.0s)
+  ok 20 [installed-chrome] › tests\icosahedron-workflow.spec.ts:20:64 › Solid Icosahedron N256 canvas map: sustained held painting crosses work epochs without release (26.8s)
+
+  20 passed (6.8m)

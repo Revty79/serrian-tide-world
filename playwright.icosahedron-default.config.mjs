@@ -1,0 +1,1 @@
+﻿import base from './playwright.icosahedron.config.mjs';export default{...base,testMatch:['icosahedron-workflow.spec.ts','icosahedron-recovery.spec.ts'],reporter:[['list'],['json',{outputFile:'.local/icosa-solid-default.json'}]]};
