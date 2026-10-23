@@ -1,0 +1,293 @@
+
+Running 12 tests using 1 worker
+
+node : (node:25156) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:9 char:1
++ node D:\serrian-tide-world\node_modules\@playwright\test\cli.js test  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:25156) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering cylinder N128 canvas: equal heights, pose, zoom and backing (3.5s)
+  x   2 [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering cylinder N128 webgl: equal heights, pose, zoom and backing (24.0s)
+(node:8232) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  3 [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering cylinder N256 canvas: equal heights, pose, zoom and backing (2.5s)
+  x   4 [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering cylinder N256 webgl: equal heights, pose, zoom and backing (25.1s)
+(node:25452) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  5 [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering sphere N128 canvas: equal heights, pose, zoom and backing (2.5s)
+  x   6 [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering sphere N128 webgl: equal heights, pose, zoom and backing (3.3s)
+(node:24628) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  7 [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering sphere N256 canvas: equal heights, pose, zoom and backing (5.1s)
+  x   8 [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering sphere N256 webgl: equal heights, pose, zoom and backing (5.7s)
+(node:5168) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  9 [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering cube N128 canvas: equal heights, pose, zoom and backing (1.7s)
+  x  10 [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering cube N128 webgl: equal heights, pose, zoom and backing (4.6s)
+(node:12588) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 11 [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering cube N256 canvas: equal heights, pose, zoom and backing (3.1s)
+  x  12 [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering cube N256 webgl: equal heights, pose, zoom and backing (5.3s)
+
+
+  1) [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering cylinder N128 webgl: equal heights, pose, zoom and backing
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 1000
+    Received:   0
+
+      3 | for(const shape of['cylinder','sphere','cube']as const)for(const n of[128,256])for(const backend of['canvas','webgl']as const)test(`shared rendering ${shape} N${n} ${backend}: equal heights, pose, zoom and backing`,async({page},info)=>{
+      4 |  test.setTimeout(240000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');const results=[],out=process.env.ATLAS_PARITY_OUTPUT??'.local/atlas-render-parity';mkdirSync(out,{recursive:true});const prefix=`${out}/${info.project.name}-${shape}-${n}-${backend}`;
+    > 5 |  for(const initial of[-100,0]){const proof=await page.evaluate(async({shape,n,initial,backend})=>{const path='/tests/fixtures/atlas-render-parity.ts',m=await import(path)as typeof import('./fixtures/atlas-render-parity.ts');return m.renderParity(shape,n,initial,backend);},{shape,n,initial,backend});results.push(proof);writeFileSync(`${prefix}.json`,JSON.stringify(results,null,2));expect(proof.sourceHash).toBe(proof.finalHash);expect.soft(proof.stableChecked).toBeGreaterThan(1000);expect.soft(proof.stableMax).toBeLessThanOrEqual(3);expect.soft(proof.envelopeViolations).toBe(0);}
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
+      6 |  expect(errors).toEqual([]);await page.screenshot({path:`${prefix}.png`,fullPage:true});
+      7 | });
+      8 |
+        at D:\serrian-tide-world\tests\atlas-render-parity.spec.ts:5:464
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 1000
+    Received:   0
+
+      3 | for(const shape of['cylinder','sphere','cube']as const)for(const n of[128,256])for(const backend of['canvas','webgl']as const)test(`shared rendering ${shape} N${n} ${backend}: equal heights, pose, zoom and backing`,async({page},info)=>{
+      4 |  test.setTimeout(240000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');const results=[],out=process.env.ATLAS_PARITY_OUTPUT??'.local/atlas-render-parity';mkdirSync(out,{recursive:true});const prefix=`${out}/${info.project.name}-${shape}-${n}-${backend}`;
+    > 5 |  for(const initial of[-100,0]){const proof=await page.evaluate(async({shape,n,initial,backend})=>{const path='/tests/fixtures/atlas-render-parity.ts',m=await import(path)as typeof import('./fixtures/atlas-render-parity.ts');return m.renderParity(shape,n,initial,backend);},{shape,n,initial,backend});results.push(proof);writeFileSync(`${prefix}.json`,JSON.stringify(results,null,2));expect(proof.sourceHash).toBe(proof.finalHash);expect.soft(proof.stableChecked).toBeGreaterThan(1000);expect.soft(proof.stableMax).toBeLessThanOrEqual(3);expect.soft(proof.envelopeViolations).toBe(0);}
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
+      6 |  expect(errors).toEqual([]);await page.screenshot({path:`${prefix}.png`,fullPage:true});
+      7 | });
+      8 |
+        at D:\serrian-tide-world\tests\atlas-render-parity.spec.ts:5:464
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-9e4ad-ights-pose-zoom-and-backing-desktop\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-9e4ad-ights-pose-zoom-and-backing-desktop\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-9e4ad-ights-pose-zoom-and-backing-desktop\trace.zip
+    Usage:
+
+        npx playwright show-trace C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-9e4ad-ights-pose-zoom-and-backing-desktop\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering cylinder N256 webgl: equal heights, pose, zoom and backing
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 1000
+    Received:   0
+
+      3 | for(const shape of['cylinder','sphere','cube']as const)for(const n of[128,256])for(const backend of['canvas','webgl']as const)test(`shared rendering ${shape} N${n} ${backend}: equal heights, pose, zoom and backing`,async({page},info)=>{
+      4 |  test.setTimeout(240000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');const results=[],out=process.env.ATLAS_PARITY_OUTPUT??'.local/atlas-render-parity';mkdirSync(out,{recursive:true});const prefix=`${out}/${info.project.name}-${shape}-${n}-${backend}`;
+    > 5 |  for(const initial of[-100,0]){const proof=await page.evaluate(async({shape,n,initial,backend})=>{const path='/tests/fixtures/atlas-render-parity.ts',m=await import(path)as typeof import('./fixtures/atlas-render-parity.ts');return m.renderParity(shape,n,initial,backend);},{shape,n,initial,backend});results.push(proof);writeFileSync(`${prefix}.json`,JSON.stringify(results,null,2));expect(proof.sourceHash).toBe(proof.finalHash);expect.soft(proof.stableChecked).toBeGreaterThan(1000);expect.soft(proof.stableMax).toBeLessThanOrEqual(3);expect.soft(proof.envelopeViolations).toBe(0);}
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
+      6 |  expect(errors).toEqual([]);await page.screenshot({path:`${prefix}.png`,fullPage:true});
+      7 | });
+      8 |
+        at D:\serrian-tide-world\tests\atlas-render-parity.spec.ts:5:464
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 1000
+    Received:   0
+
+      3 | for(const shape of['cylinder','sphere','cube']as const)for(const n of[128,256])for(const backend of['canvas','webgl']as const)test(`shared rendering ${shape} N${n} ${backend}: equal heights, pose, zoom and backing`,async({page},info)=>{
+      4 |  test.setTimeout(240000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');const results=[],out=process.env.ATLAS_PARITY_OUTPUT??'.local/atlas-render-parity';mkdirSync(out,{recursive:true});const prefix=`${out}/${info.project.name}-${shape}-${n}-${backend}`;
+    > 5 |  for(const initial of[-100,0]){const proof=await page.evaluate(async({shape,n,initial,backend})=>{const path='/tests/fixtures/atlas-render-parity.ts',m=await import(path)as typeof import('./fixtures/atlas-render-parity.ts');return m.renderParity(shape,n,initial,backend);},{shape,n,initial,backend});results.push(proof);writeFileSync(`${prefix}.json`,JSON.stringify(results,null,2));expect(proof.sourceHash).toBe(proof.finalHash);expect.soft(proof.stableChecked).toBeGreaterThan(1000);expect.soft(proof.stableMax).toBeLessThanOrEqual(3);expect.soft(proof.envelopeViolations).toBe(0);}
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
+      6 |  expect(errors).toEqual([]);await page.screenshot({path:`${prefix}.png`,fullPage:true});
+      7 | });
+      8 |
+        at D:\serrian-tide-world\tests\atlas-render-parity.spec.ts:5:464
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-84ef3-ights-pose-zoom-and-backing-desktop\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-84ef3-ights-pose-zoom-and-backing-desktop\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-84ef3-ights-pose-zoom-and-backing-desktop\trace.zip
+    Usage:
+
+        npx playwright show-trace C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-84ef3-ights-pose-zoom-and-backing-desktop\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering sphere N128 webgl: equal heights, pose, zoom and backing
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 1000
+    Received:   0
+
+      3 | for(const shape of['cylinder','sphere','cube']as const)for(const n of[128,256])for(const backend of['canvas','webgl']as const)test(`shared rendering ${shape} N${n} ${backend}: equal heights, pose, zoom and backing`,async({page},info)=>{
+      4 |  test.setTimeout(240000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');const results=[],out=process.env.ATLAS_PARITY_OUTPUT??'.local/atlas-render-parity';mkdirSync(out,{recursive:true});const prefix=`${out}/${info.project.name}-${shape}-${n}-${backend}`;
+    > 5 |  for(const initial of[-100,0]){const proof=await page.evaluate(async({shape,n,initial,backend})=>{const path='/tests/fixtures/atlas-render-parity.ts',m=await import(path)as typeof import('./fixtures/atlas-render-parity.ts');return m.renderParity(shape,n,initial,backend);},{shape,n,initial,backend});results.push(proof);writeFileSync(`${prefix}.json`,JSON.stringify(results,null,2));expect(proof.sourceHash).toBe(proof.finalHash);expect.soft(proof.stableChecked).toBeGreaterThan(1000);expect.soft(proof.stableMax).toBeLessThanOrEqual(3);expect.soft(proof.envelopeViolations).toBe(0);}
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
+      6 |  expect(errors).toEqual([]);await page.screenshot({path:`${prefix}.png`,fullPage:true});
+      7 | });
+      8 |
+        at D:\serrian-tide-world\tests\atlas-render-parity.spec.ts:5:464
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-6d58c-ights-pose-zoom-and-backing-desktop\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-6d58c-ights-pose-zoom-and-backing-desktop\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-6d58c-ights-pose-zoom-and-backing-desktop\trace.zip
+    Usage:
+
+        npx playwright show-trace C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-6d58c-ights-pose-zoom-and-backing-desktop\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering sphere N256 webgl: equal heights, pose, zoom and backing
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 1000
+    Received:   0
+
+      3 | for(const shape of['cylinder','sphere','cube']as const)for(const n of[128,256])for(const backend of['canvas','webgl']as const)test(`shared rendering ${shape} N${n} ${backend}: equal heights, pose, zoom and backing`,async({page},info)=>{
+      4 |  test.setTimeout(240000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');const results=[],out=process.env.ATLAS_PARITY_OUTPUT??'.local/atlas-render-parity';mkdirSync(out,{recursive:true});const prefix=`${out}/${info.project.name}-${shape}-${n}-${backend}`;
+    > 5 |  for(const initial of[-100,0]){const proof=await page.evaluate(async({shape,n,initial,backend})=>{const path='/tests/fixtures/atlas-render-parity.ts',m=await import(path)as typeof import('./fixtures/atlas-render-parity.ts');return m.renderParity(shape,n,initial,backend);},{shape,n,initial,backend});results.push(proof);writeFileSync(`${prefix}.json`,JSON.stringify(results,null,2));expect(proof.sourceHash).toBe(proof.finalHash);expect.soft(proof.stableChecked).toBeGreaterThan(1000);expect.soft(proof.stableMax).toBeLessThanOrEqual(3);expect.soft(proof.envelopeViolations).toBe(0);}
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
+      6 |  expect(errors).toEqual([]);await page.screenshot({path:`${prefix}.png`,fullPage:true});
+      7 | });
+      8 |
+        at D:\serrian-tide-world\tests\atlas-render-parity.spec.ts:5:464
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 1000
+    Received:   0
+
+      3 | for(const shape of['cylinder','sphere','cube']as const)for(const n of[128,256])for(const backend of['canvas','webgl']as const)test(`shared rendering ${shape} N${n} ${backend}: equal heights, pose, zoom and backing`,async({page},info)=>{
+      4 |  test.setTimeout(240000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');const results=[],out=process.env.ATLAS_PARITY_OUTPUT??'.local/atlas-render-parity';mkdirSync(out,{recursive:true});const prefix=`${out}/${info.project.name}-${shape}-${n}-${backend}`;
+    > 5 |  for(const initial of[-100,0]){const proof=await page.evaluate(async({shape,n,initial,backend})=>{const path='/tests/fixtures/atlas-render-parity.ts',m=await import(path)as typeof import('./fixtures/atlas-render-parity.ts');return m.renderParity(shape,n,initial,backend);},{shape,n,initial,backend});results.push(proof);writeFileSync(`${prefix}.json`,JSON.stringify(results,null,2));expect(proof.sourceHash).toBe(proof.finalHash);expect.soft(proof.stableChecked).toBeGreaterThan(1000);expect.soft(proof.stableMax).toBeLessThanOrEqual(3);expect.soft(proof.envelopeViolations).toBe(0);}
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
+      6 |  expect(errors).toEqual([]);await page.screenshot({path:`${prefix}.png`,fullPage:true});
+      7 | });
+      8 |
+        at D:\serrian-tide-world\tests\atlas-render-parity.spec.ts:5:464
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-f0aeb-ights-pose-zoom-and-backing-desktop\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-f0aeb-ights-pose-zoom-and-backing-desktop\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-f0aeb-ights-pose-zoom-and-backing-desktop\trace.zip
+    Usage:
+
+        npx playwright show-trace C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-f0aeb-ights-pose-zoom-and-backing-desktop\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering cube N128 webgl: equal heights, pose, zoom and backing
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 1000
+    Received:   0
+
+      3 | for(const shape of['cylinder','sphere','cube']as const)for(const n of[128,256])for(const backend of['canvas','webgl']as const)test(`shared rendering ${shape} N${n} ${backend}: equal heights, pose, zoom and backing`,async({page},info)=>{
+      4 |  test.setTimeout(240000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');const results=[],out=process.env.ATLAS_PARITY_OUTPUT??'.local/atlas-render-parity';mkdirSync(out,{recursive:true});const prefix=`${out}/${info.project.name}-${shape}-${n}-${backend}`;
+    > 5 |  for(const initial of[-100,0]){const proof=await page.evaluate(async({shape,n,initial,backend})=>{const path='/tests/fixtures/atlas-render-parity.ts',m=await import(path)as typeof import('./fixtures/atlas-render-parity.ts');return m.renderParity(shape,n,initial,backend);},{shape,n,initial,backend});results.push(proof);writeFileSync(`${prefix}.json`,JSON.stringify(results,null,2));expect(proof.sourceHash).toBe(proof.finalHash);expect.soft(proof.stableChecked).toBeGreaterThan(1000);expect.soft(proof.stableMax).toBeLessThanOrEqual(3);expect.soft(proof.envelopeViolations).toBe(0);}
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
+      6 |  expect(errors).toEqual([]);await page.screenshot({path:`${prefix}.png`,fullPage:true});
+      7 | });
+      8 |
+        at D:\serrian-tide-world\tests\atlas-render-parity.spec.ts:5:464
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 1000
+    Received:   0
+
+      3 | for(const shape of['cylinder','sphere','cube']as const)for(const n of[128,256])for(const backend of['canvas','webgl']as const)test(`shared rendering ${shape} N${n} ${backend}: equal heights, pose, zoom and backing`,async({page},info)=>{
+      4 |  test.setTimeout(240000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');const results=[],out=process.env.ATLAS_PARITY_OUTPUT??'.local/atlas-render-parity';mkdirSync(out,{recursive:true});const prefix=`${out}/${info.project.name}-${shape}-${n}-${backend}`;
+    > 5 |  for(const initial of[-100,0]){const proof=await page.evaluate(async({shape,n,initial,backend})=>{const path='/tests/fixtures/atlas-render-parity.ts',m=await import(path)as typeof import('./fixtures/atlas-render-parity.ts');return m.renderParity(shape,n,initial,backend);},{shape,n,initial,backend});results.push(proof);writeFileSync(`${prefix}.json`,JSON.stringify(results,null,2));expect(proof.sourceHash).toBe(proof.finalHash);expect.soft(proof.stableChecked).toBeGreaterThan(1000);expect.soft(proof.stableMax).toBeLessThanOrEqual(3);expect.soft(proof.envelopeViolations).toBe(0);}
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
+      6 |  expect(errors).toEqual([]);await page.screenshot({path:`${prefix}.png`,fullPage:true});
+      7 | });
+      8 |
+        at D:\serrian-tide-world\tests\atlas-render-parity.spec.ts:5:464
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-a3ce9-ights-pose-zoom-and-backing-desktop\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-a3ce9-ights-pose-zoom-and-backing-desktop\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-a3ce9-ights-pose-zoom-and-backing-desktop\trace.zip
+    Usage:
+
+        npx playwright show-trace C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-a3ce9-ights-pose-zoom-and-backing-desktop\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering cube N256 webgl: equal heights, pose, zoom and backing
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 1000
+    Received:   0
+
+      3 | for(const shape of['cylinder','sphere','cube']as const)for(const n of[128,256])for(const backend of['canvas','webgl']as const)test(`shared rendering ${shape} N${n} ${backend}: equal heights, pose, zoom and backing`,async({page},info)=>{
+      4 |  test.setTimeout(240000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');const results=[],out=process.env.ATLAS_PARITY_OUTPUT??'.local/atlas-render-parity';mkdirSync(out,{recursive:true});const prefix=`${out}/${info.project.name}-${shape}-${n}-${backend}`;
+    > 5 |  for(const initial of[-100,0]){const proof=await page.evaluate(async({shape,n,initial,backend})=>{const path='/tests/fixtures/atlas-render-parity.ts',m=await import(path)as typeof import('./fixtures/atlas-render-parity.ts');return m.renderParity(shape,n,initial,backend);},{shape,n,initial,backend});results.push(proof);writeFileSync(`${prefix}.json`,JSON.stringify(results,null,2));expect(proof.sourceHash).toBe(proof.finalHash);expect.soft(proof.stableChecked).toBeGreaterThan(1000);expect.soft(proof.stableMax).toBeLessThanOrEqual(3);expect.soft(proof.envelopeViolations).toBe(0);}
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
+      6 |  expect(errors).toEqual([]);await page.screenshot({path:`${prefix}.png`,fullPage:true});
+      7 | });
+      8 |
+        at D:\serrian-tide-world\tests\atlas-render-parity.spec.ts:5:464
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 1000
+    Received:   0
+
+      3 | for(const shape of['cylinder','sphere','cube']as const)for(const n of[128,256])for(const backend of['canvas','webgl']as const)test(`shared rendering ${shape} N${n} ${backend}: equal heights, pose, zoom and backing`,async({page},info)=>{
+      4 |  test.setTimeout(240000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');const results=[],out=process.env.ATLAS_PARITY_OUTPUT??'.local/atlas-render-parity';mkdirSync(out,{recursive:true});const prefix=`${out}/${info.project.name}-${shape}-${n}-${backend}`;
+    > 5 |  for(const initial of[-100,0]){const proof=await page.evaluate(async({shape,n,initial,backend})=>{const path='/tests/fixtures/atlas-render-parity.ts',m=await import(path)as typeof import('./fixtures/atlas-render-parity.ts');return m.renderParity(shape,n,initial,backend);},{shape,n,initial,backend});results.push(proof);writeFileSync(`${prefix}.json`,JSON.stringify(results,null,2));expect(proof.sourceHash).toBe(proof.finalHash);expect.soft(proof.stableChecked).toBeGreaterThan(1000);expect.soft(proof.stableMax).toBeLessThanOrEqual(3);expect.soft(proof.envelopeViolations).toBe(0);}
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
+      6 |  expect(errors).toEqual([]);await page.screenshot({path:`${prefix}.png`,fullPage:true});
+      7 | });
+      8 |
+        at D:\serrian-tide-world\tests\atlas-render-parity.spec.ts:5:464
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-3de1d-ights-pose-zoom-and-backing-desktop\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-3de1d-ights-pose-zoom-and-backing-desktop\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-3de1d-ights-pose-zoom-and-backing-desktop\trace.zip
+    Usage:
+
+        npx playwright show-trace C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\atlas-render-parity-shared-3de1d-ights-pose-zoom-and-backing-desktop\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6 failed
+    [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering cylinder N128 webgl: equal heights, pose, zoom and backing
+    [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering cylinder N256 webgl: equal heights, pose, zoom and backing
+    [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering sphere N128 webgl: equal heights, pose, zoom and backing
+    [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering sphere N256 webgl: equal heights, pose, zoom and backing
+    [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering cube N128 webgl: equal heights, pose, zoom and backing
+    [desktop] › ..\..\tests\atlas-render-parity.spec.ts:3:127 › shared rendering cube N256 webgl: equal heights, pose, zoom and backing
+  6 passed (1.5m)

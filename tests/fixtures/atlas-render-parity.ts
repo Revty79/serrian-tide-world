@@ -33,27 +33,30 @@ function compare(a:Uint8ClampedArray,b:Uint8ClampedArray,width:number,height:num
 export async function renderParity(shape:'cylinder'|'sphere'|'cube',n:number,initialElevation:number,backend:'canvas'|'webgl'){
  const started=performance.now();
  if(!document.querySelector('#parity')){const main=document.createElement('main');main.id='parity';main.style.cssText='display:grid;grid-template-columns:640px 640px;gap:16px;color:#eef5f2;font:16px system-ui';document.querySelector('#root')?.setAttribute('style','display:none');document.body.style.cssText='background:#071924;margin:16px';document.body.append(main);}
- const solid=node(`${shape} N${n}, initial ${initialElevation} m: accepted solid ${backend}`),hollow=node(`Identical heights and camera: hollow ${backend}`);let before='',after='',renderer='',dispose=()=>{};
+ const solid=node(`${shape} N${n}, initial ${initialElevation} m: accepted solid ${backend}`),hollow=node(`Identical heights and camera: hollow ${backend}`);let before='',renderer='',dispose=()=>{};let afterWords:Float32Array;
  if(shape==='cylinder'){
   const s=cylinderParityScene(n,initialElevation);before=await digest(s.terrain.copyElevations());
   if(backend==='canvas'){for(const [canvas,cut]of[[solid,undefined],[hollow,s.cut]]as const){const r=finish(cylinderRasterSteps(s.cache,s.view,size,307200,undefined,'relief',cut));cpu(canvas,r.pixels,r.columns,r.rows);}}
   else{const a=new CylinderWebGLRenderer(solid,s.cache,()=>{}),b=new CylinderWebGLRenderer(hollow,s.cache,()=>{});if(!a.available||!b.available)throw Error(a.statistics.reason||b.statistics.reason);b.setExcavation(s.cut);a.present(s.view,size,'relief');b.present(s.view,size,'relief');renderer=b.statistics.renderer;dispose=()=>{a.dispose();b.dispose();};}
-  after=await digest(s.terrain.copyElevations());s.cache.dispose();
+  afterWords=s.terrain.copyElevations();const graphicsDispose=dispose;dispose=()=>{graphicsDispose();s.cache.dispose();};
  }else if(shape==='sphere'){
   const t=createSphericalTerrain({terrainId:'parity-heights',identity:{worldId:'parity',surfaceId:'outside'},radiusMeters:1000000,cellsPerEdge:n,initialElevation});startSphericalBrushStroke(t,{...t.metadata.identity,direction:[1,0,0]},{tool:'raise',radiusMeters:140000,strengthMeters:2000}).end();
   const heights=t.copyElevations(),faces=Object.fromEntries(CUBE_FACES.map(f=>[f,buildSphericalFaceTexture(t,heights,f,true)]))as Record<CubeFace,FaceTexture>,cache=makeSphericalDisplayCache(faces,t.revision),field=new SphericalElevationField(t,cache);finish(field.prepare('all'));before=await digest(heights);
   const cut={model:{radiusMeters:1000000,innerRatio:.8,primitives:[{a:[-1,0,0]as const,b:[-.7,0,0]as const,radius:.03}]},opposite:field,role:'exterior'as const};
   if(backend==='canvas'){for(const [canvas,c]of[[solid,undefined],[hollow,cut]]as const){const r=finish(sphericalFieldRaster(field,INITIAL_SPHERICAL_VIEW,size,'relief',307200,undefined,c));cpu(canvas,r.pixels,r.columns,r.rows,r.left,r.top,r.width,r.height);}}
   else{const a=new SphereWebGLRenderer(solid,field,()=>{}),b=new SphereWebGLRenderer(hollow,field,()=>{});if(!a.available||!b.available)throw Error(a.statistics.reason||b.statistics.reason);b.setExcavation({...cut,opposite:field,oppositeTerrain:t,revision:1});a.present(INITIAL_SPHERICAL_VIEW,size);b.present(INITIAL_SPHERICAL_VIEW,size);renderer=b.statistics.renderer;dispose=()=>{a.dispose();b.dispose();};}
-  after=await digest(t.copyElevations());
+  afterWords=t.copyElevations();
  }else{
   const t=createSolidCubeTerrain({terrainId:'parity-heights',geometry:{identity:{worldId:'parity',surfaceId:'outside'},provider:'physical-solid-cube',version:1,configuration:'solid',role:'exterior',sideLengthMeters:1000000},cellsPerEdge:n,initialElevation}),dab=prepareSolidCubeDab(t,{...t.metadata.identity,patchId:'px',u:0,v:0},{version:1,tool:'raise',radiusMeters:140000,strengthMeters:2000});while(dab.status==='preparing')dab.pump(4096);dab.commit();
   const field=await prepareCubeDisplayField(t),camera=cubeCamera([1,0,0]),cut={halfSideMeters:500000,innerRatio:.8,primitives:[{a:[-1,0,0]as const,b:[-.7,0,0]as const,radius:.03}]};before=await digest(t.copyElevations());
   if(backend==='canvas'){const atlas=await prepareCubeCanvasAtlas(field);presentCubeCanvas(solid,atlas,camera,'physical',size);presentHollowCanvas(hollow,cut,{exterior:field,interior:field},atlas,camera,size,CUBE_EXTERIOR_VIEW,undefined,()=>{},()=>false);dispose=()=>{disposeHollowCanvas(hollow);atlas.dispose();};}
   else{const a=new SolidCubeWebGL(solid,()=>{}),b=new SolidCubeWebGL(hollow,()=>{},false,true);if(!a.available||!b.available)throw Error(a.statistics.reason||b.statistics.reason);a.present(field,camera,'physical',size);b.present(field,camera,'physical',size,true,CUBE_EXTERIOR_VIEW,cut,field);renderer=b.statistics.renderer;dispose=()=>{a.dispose();b.dispose();};}
-  after=await digest(t.copyElevations());
+  afterWords=t.copyElevations();
  }
- const a=pixels(solid,backend),b=pixels(hollow,backend);if(solid.width!==hollow.width||solid.height!==hollow.height)throw Error('Parity comparison requires identical backing dimensions');const result={shape,n,initialElevation,backend,sourceHash:before,finalHash:after,width:solid.width,height:solid.height,renderer,...compare(a,b,solid.width,solid.height),fixtureMs:performance.now()-started};
+ // Read the non-preserved GPU buffers in the same task as presentation. An
+ // awaited hash can let Chrome composite and discard them before readPixels.
+ // Snapshot terrain words synchronously above, then hash after pixel capture.
+ const a=pixels(solid,backend),b=pixels(hollow,backend),after=await digest(afterWords);if(solid.width!==hollow.width||solid.height!==hollow.height)throw Error('Parity comparison requires identical backing dimensions');const result={shape,n,initialElevation,backend,sourceHash:before,finalHash:after,width:solid.width,height:solid.height,renderer,...compare(a,b,solid.width,solid.height),fixtureMs:performance.now()-started};
  // Freeze exact read-back pixels before disposing the live graphics resources.
  for(const [canvas,data]of[[solid,a],[hollow,b]]as const){const snapshot=document.createElement('canvas');snapshot.width=canvas.width;snapshot.height=canvas.height;snapshot.style.cssText=canvas.style.cssText;snapshot.getContext('2d')!.putImageData(new ImageData(new Uint8ClampedArray(data),canvas.width,canvas.height),0,0);canvas.replaceWith(snapshot);}dispose();return result;
 }

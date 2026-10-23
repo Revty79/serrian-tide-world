@@ -28,6 +28,7 @@ reference-shell option or larger clearance; never clamp elevations silently.
 | Open Cylinder | The actual accepted cylinder Hermite, coherent raster/cache, field/color/coast GLSL, GPU resources, backing/refinement policy and editor session/workspace are shared. See `ConnectedWorkspace`, `ConnectedPreviewSession`, `coherent-terrain-raster.ts` and `cylindrical-terrain-glsl.ts`. | Four real annular patches, shared crease ownership, inner-wall/rim row orientation, fitted inversion, actual open-volume rays and protected reference-shell excavation. No filled disk caps or fabricated closed-worker metadata. |
 | Sphere | `spherical-elevation.ts`: canonical alias-aware height/gradient field and shared terrain color pass. `spherical-field-raster.ts`: common Globe/net raster and coast coverage. `spherical-webgl.ts`: shared field and terrain shading. | Cube-sphere chart lookup, projection, cavity rays and shell/capsule subtraction. |
 | Cube | `solid-cube-field.ts`: canonical bilinear elevation/gradient sampling and terrain color. `solid-cube-canvas.ts`: accepted face atlas and its ordinary presentation. `solid-cube-webgl.ts`: accepted field, palette, oriented relief and four-ray terrain presentation. | Face projection, normals, joins and box/capsule subtraction. Physical cut regions extend the accepted face presentation. |
+| Solid and Hollow Pyramid | The same `polyhedralDisplayColor` extracted from the accepted cube color pass, unchanged cube GLSL palette/relief functions, four-ray GPU coverage, sharp face atlases, indexed display epochs and shared graphics/backing policy. Both variants use `PyramidDisplayCache` and `PyramidPresentation`. | Four real triangles and a square base, barycentric field addresses, five-plane picking, physical frames and cavity perspective. Canvas cavity inspection samples that same atlas through exact inverse plane homographies; no alternate terrain or smoothing pass. |
 
 The existing families have different accepted reconstruction mathematics. This
 standard does not silently replace cylinder Hermite reconstruction with cube
@@ -114,6 +115,13 @@ without changing the visible front terrain. `tests/hollow-render-quality.spec.ts
 adds ordinary Atlas workflows with actual holes, both banks, all three views and
 read-only history checks. Connection/guide and sustained-paint suites verify
 excavation and responsiveness separately.
+
+`pyramid-pixels.spec.ts` and `hollow-pyramid-pixels.spec.ts` compare actual
+Canvas/WebGL output against the same canonical field and physical hit reference,
+including fitted inside and perspective cavity views. The workflow, navigation,
+context-loss and touch suites cover editing and history separately. See the
+[Pyramid family review](PYRAMID-FINAL-REVIEW.md) for the final source receipt and
+the conditional deferral of pyramid excavation.
 
 Pixel parity allows the existing bounded raster footprint and minor numeric
 channel rounding at edges; it cannot be used to excuse missing material, shifted

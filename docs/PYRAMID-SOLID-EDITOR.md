@@ -109,3 +109,8 @@ shape or host-site work is included.
 Final checkpoint validation: 1,398/1,398 units, TypeScript/production build,
 six operational pyramid cases, two actual GPU/Canvas pixel cases and seven
 existing-family browser cases pass with no failures or cancellations.
+
+This receipt preserves the standalone Solid Pyramid delivery. The subsequently
+completed Hollow Pyramid and final regression checkpoint are documented in the
+[family review](PYRAMID-FINAL-REVIEW.md) and its separate source-fingerprinted
+receipt; the historical evidence above remains unchanged.

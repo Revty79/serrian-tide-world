@@ -113,5 +113,7 @@ geometry, website, database, hosting or Production work is authorized here.
 The owner requested immediate publication of this working checkpoint before the
 remaining regression run. The [publication receipt](evidence/pyramid-hollow-editor/receipt.json)
 labels prior full-suite results, current targeted proof and remaining checks
-separately. The subsequent final receipt will record the complete frozen-source
-validation and any follow-up corrections.
+separately. The subsequent [final family review](PYRAMID-FINAL-REVIEW.md) and
+[final receipt](evidence/pyramid-final-regression/receipt.json) now record the
+complete frozen-runtime validation, the test-only GPU readback correction and
+the completed legacy/Open Cylinder compatibility checks.

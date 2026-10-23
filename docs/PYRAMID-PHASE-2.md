@@ -156,5 +156,32 @@ record the normal two-bank editor, continuous visible joins, sharp fitted/maps
 and cavity presentation, corrected inside drag axes and strict two-bank v16.
 The owner explicitly requested publishing the current corrected checkpoint
 before the remaining regressions, then fixing/pushing any later failures.
-The final frozen-source family regression receipt is still pending and work
-continues after this publication; this is not a final acceptance claim.
+At this publication the final frozen-runtime family regression receipt remained
+pending. Checkpoint 6 records the completed follow-up; neither checkpoint is a
+final owner acceptance claim.
+
+## Checkpoint 6: final family verification and review
+
+The [final family review](PYRAMID-FINAL-REVIEW.md) and
+[source-fingerprinted receipt](evidence/pyramid-final-regression/receipt.json)
+complete the authorized delivery sequence. The runtime published as `3a96f05`
+passes 1,414 unit tests, TypeScript/build and 114 browser test executions:
+15 Hollow Pyramid, eight Solid Pyramid, four touch/pen emulation, 68 existing
+family compatibility, 12 matched rendering parity and seven focused solid/Open
+Cylinder compatibility cases. The Open Cylinder cases retain their accepted
+backing/pixel gates and exercise sustained annular rims and continuous joins.
+
+The final parity run found a test-only asynchronous readback defect. Capturing
+non-preserved GPU buffers before awaiting a terrain hash fixes all six WebGL
+cases without changing renderers, numerical results or comparison thresholds.
+Both the failed attempt and complete passing rerun are preserved. All other
+published product/test source bytes match the preceding checkpoint.
+
+Actual RX 6600 WebGL2 and forced Canvas output, separate input/commit/pixel
+timings, native camera direction, twenty-second held gestures, exact history,
+strict v15/v16 persistence and graphics recovery are recorded. Touch/pen uses
+browser emulation, not a physical phone. Pyramid hole/tunnel authoring remains
+conditionally deferred as documented in the family review.
+
+Stop here for Ember review and owner acceptance. No subsequent geometry or
+host-site, database, hosting, Production or Docker work is included.

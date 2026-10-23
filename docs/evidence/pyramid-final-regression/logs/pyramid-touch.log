@@ -1,0 +1,17 @@
+
+Running 4 tests using 1 worker
+
+npx.cmd : (node:25504) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:5 char:1
++ npx.cmd playwright test --config playwright.pyramid-touch.config.mjs  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:25504) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [mobile-emulation] › tests\pyramid-touch.spec.ts:2:86 › pyramid auto: native emulated touch/pen drawing and two-finger navigation preserve exact history (3.1s)
+  ok 2 [mobile-emulation] › tests\pyramid-touch.spec.ts:2:86 › pyramid canvas: native emulated touch/pen drawing and two-finger navigation preserve exact history (3.2s)
+  ok 3 [mobile-emulation] › tests\pyramid-touch.spec.ts:2:86 › hollow-pyramid auto: native emulated touch/pen drawing and two-finger navigation preserve exact history (3.1s)
+  ok 4 [mobile-emulation] › tests\pyramid-touch.spec.ts:2:86 › hollow-pyramid canvas: native emulated touch/pen drawing and two-finger navigation preserve exact history (3.7s)
+
+  4 passed (14.0s)

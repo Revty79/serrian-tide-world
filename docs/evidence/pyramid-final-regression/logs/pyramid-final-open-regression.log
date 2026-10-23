@@ -1,0 +1,24 @@
+
+Running 7 tests using 1 worker
+
+node : (node:19248) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:11 char:1
++ node D:\serrian-tide-world\node_modules\@playwright\test\cli.js test  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:19248) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › ..\..\tests\cube-family.spec.ts:17:1 › I3 one brush choice follows the creator across hollow surfaces (3.9s)
+  ok 2 [installed-chrome] › ..\..\tests\cube-family.spec.ts:24:40 › I4/I5 auto: inspect while moving without losing look or zoom, then return to editing (8.1s)
+  ok 3 [installed-chrome] › ..\..\tests\cube-family.spec.ts:24:40 › I4/I5 canvas: inspect while moving without losing look or zoom, then return to editing (9.9s)
+(node:21208) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 4 [installed-chrome] › ..\..\tests\cylinder-workspace.spec.ts:29:1 › normal Atlas creates, sculpts all four tools and both rims, saves, switches and reopens exact v4 geography (16.9s)
+  ok 5 [installed-chrome] › ..\..\tests\spherical-editing.spec.ts:55:1 › all four tools on globe and connected net match the numerical engine bit for bit with exact Undo/Redo and readouts (8.3s)
+(node:28692) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 6 [installed-chrome] › ..\..\tests\open-cylinder-correction.spec.ts:28:113 › correction Open N128 auto exterior: measured wall and sustained rims, continuous visible joins, exact history and reopen (43.3s)
+  ok 7 [installed-chrome] › ..\..\tests\open-cylinder-correction.spec.ts:28:113 › correction Open N128 canvas exterior: measured wall and sustained rims, continuous visible joins, exact history and reopen (51.1s)
+
+  7 passed (2.4m)
