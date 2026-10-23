@@ -98,12 +98,21 @@ measurements are not browser input, rendering or visible-response evidence.
 The operational checkpoint must measure those independently, including joins,
 sustained painting, actual pixels and camera motion.
 
+## Checkpoint 3: operational Solid Pyramid
+
+The [operational review](PYRAMID-SOLID-EDITOR.md) and
+[raw receipt/captures](evidence/pyramid-solid-editor/receipt.json) document the
+normal Atlas editor, shared worker/workspace/brush/history, sharp GPU/Canvas
+presentation, continuous visible joins and strict format 15. All 1,398 unit
+tests, production build, six N128/N256 ordinary/held browser workflows, two
+actual output-pixel cases and seven accepted-family browser regressions pass.
+The owner independently confirmed the visual and held-brush improvements.
+Technical delivery does not substitute for final family acceptance.
+
 ## Remaining authorized sequence
 
-1. Operational Solid Pyramid in New World / Map, views, pixel/performance tests
-   and a strict new save version. Publish before the full hollow implementation.
-2. Nested closed Hollow Pyramid, independent banks and proven shell clearance.
-3. Operational hollow outside/inside editing, read-only cavity inspection,
+1. Nested closed Hollow Pyramid, independent banks and proven shell clearance.
+2. Operational hollow outside/inside editing, read-only cavity inspection,
    editable nets, persistence and compatible connection interfaces.
-4. Final existing-family regressions, actual Canvas/WebGL pixels and measured
+3. Final existing-family regressions, actual Canvas/WebGL pixels and measured
    input-to-commit / commit-to-visible evidence, then stop for owner review.

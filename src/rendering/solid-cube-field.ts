@@ -66,8 +66,13 @@ export function cubeDisplaySample(field:CubeDisplayField,face:SolidCubeFace,u:nu
 }
 const light:CubeVector=[-.38,-.48,.78];
 export function cubeDisplayColor(face:SolidCubeFace,height:number,du:number,dv:number,relief=true,orientation:1|-1=1){
- const f=SOLID_CUBE_FRAMES[face],rgb=elevationToColor(height,0),factor=height>0&&relief?6:0;
- const normal=f.normal.map((v,i)=>orientation*v-factor*(du*f.u[i]!+dv*f.v[i]!)) as unknown as CubeVector;
+ const f=SOLID_CUBE_FRAMES[face];return polyhedralDisplayColor(f.normal,f.u,f.v,height,du,dv,relief,orientation);
+}
+/** Accepted cube palette and oriented physical-slope relief, with a real face
+ * frame supplied by a polyhedral geometry adapter. Cube callers are unchanged. */
+export function polyhedralDisplayColor(n:CubeVector,u:CubeVector,v:CubeVector,height:number,du:number,dv:number,relief=true,orientation:1|-1=1){
+ const rgb=elevationToColor(height,0),factor=height>0&&relief?6:0;
+ const normal=n.map((value,i)=>orientation*value-factor*(du*u[i]!+dv*v[i]!)) as unknown as CubeVector;
  const shade=Math.max(.58,Math.min(1.16,.88+.30*cubeDot(normal,light)/Math.hypot(...normal)));
  return rgb.map(v=>Math.max(0,Math.min(255,Math.round(v*shade)))) as unknown as readonly[number,number,number];
 }

@@ -7,11 +7,11 @@ export interface PyramidSampleKey extends SurfaceIdentity{readonly terrainId:str
 export function pyramidSampleCount(n:number){if(!Number.isInteger(n)||n<4||n>256)throw RangeError('Pyramid subdivisions must be an integer from 4 through 256.');return 3*n*n+2;}
 /** Five vertices, eight edge interiors, four triangular interiors, one base.
  * All aliases resolve to ONE Float32 word, including the single apex. */
-export function createPyramidTerrain(options:{terrainId:string;geometry:PyramidConfiguration;subdivisions:number;initialElevation?:number;elevationLimitMeters?:number;validateSample?:(index:number,height:number,before:number)=>void}){
+export function createPyramidTerrain(options:{terrainId:string;geometry:PyramidConfiguration;subdivisions:number;initialElevation?:number;initialValues?:Float32Array;elevationLimitMeters?:number;validateSample?:(index:number,height:number,before:number)=>void}){
  const n=options.subdivisions,count=pyramidSampleCount(n),geometry=createPyramidGeometry(options.geometry),identity=geometry.identity,{baseWidthMeters:w,heightMeters:h,baseZMeters:z,role}=geometry.metadata;
  if(typeof options.terrainId!=='string'||!options.terrainId.trim()||options.terrainId.length>128)throw RangeError('Pyramid terrain identity required.');
  const elevationLimit=options.elevationLimitMeters??Math.min(w,h)/8;if(!(elevationLimit>0)||!Number.isFinite(elevationLimit))throw RangeError('Positive pyramid elevation clearance required.');
- const authority=createIndexedFloat32Authority({count,initialElevation:options.initialElevation??-100,validateElevation:v=>{if(Math.abs(v)>elevationLimit)throw RangeError('Elevation exceeds pyramid clearance.');},validateSample:options.validateSample});
+ const authority=createIndexedFloat32Authority({count,initialElevation:options.initialElevation??-100,initialValues:options.initialValues,validateElevation:v=>{if(Math.abs(v)>elevationLimit)throw RangeError('Elevation exceeds pyramid clearance.');},validateSample:options.validateSample});
  const metadata=Object.freeze({terrainId:options.terrainId,identity,geometry:geometry.metadata,representation:Object.freeze({provider:PYRAMID_REPRESENTATION,version:1 as const,subdivisions:n,ownership:'vertices-edges-triangle-interiors-base-interior' as const}),elevationUnits:'meters' as const,seaLevel:0,elevationLimitMeters:elevationLimit});
  const triangleCount=(n-1)*(n-2)/2,interiorStart=5+8*(n-1);
  const keyAt=(index:number):PyramidSampleKey=>{if(!Number.isSafeInteger(index)||index<0||index>=count)throw RangeError('Invalid pyramid canonical index.');return{...identity,terrainId:metadata.terrainId,representation:PYRAMID_REPRESENTATION,representationVersion:1,subdivisions:n,baseWidthMeters:w,heightMeters:h,baseZMeters:z,role,index};};

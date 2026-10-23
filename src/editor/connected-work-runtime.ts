@@ -8,6 +8,7 @@ import type {ConnectedStencil} from './connected-session-contracts.ts';
 import {paintingMetrics,resetPaintingMetrics,paintingStage,recordPaintingStage} from './painting-metrics.ts';
 export interface ConnectedRuntimeAdapter<T extends ConnectedWorkerTerrain,Metadata,View>{
  create(metadata:Metadata):T;
+ createFromSnapshot?(metadata:Metadata,values:Float32Array):T;
  begin(terrain:T,history:ConnectedHistory<T>,first:SurfacePosition,settings:CylindricalBrushSettings,options:ConnectedStrokeOptions<T>):ReturnType<typeof beginConnectedStroke<T>>;
  preview(terrain:T,center:SurfacePosition,settings:CylindricalBrushSettings,view:View):{readonly job:ReturnType<typeof prepareConnectedDab<T>>;finish():ConnectedStencil};
 }
@@ -51,9 +52,9 @@ export function createConnectedWorkRuntime<T extends ConnectedWorkerTerrain,Meta
           if (stroke || preview) throw new Error('Cylinder worker already owns an active task.');
           task = m.task; sequence = 0; canonicalRevision = m.revision; waiting = false; acknowledged = false; resetPaintingMetrics(m.measure === true);
           const snapshotAt = performance.now();
-          terrain = adapter.create(m.metadata);
+          terrain = adapter.createFromSnapshot?adapter.createFromSnapshot(m.metadata,m.values):adapter.create(m.metadata);
           if (m.values.length !== terrain.sampleCount) throw new Error('Invalid preparation snapshot length.');
-          for (const key of terrain.samples()) terrain.write(key, m.values[key.index]!);
+          if(!adapter.createFromSnapshot)for (const key of terrain.samples()) terrain.write(key, m.values[key.index]!);
           m.values = new Float32Array(0); // Release the transport copy immediately.
           recordPaintingStage('snapshotLoad', performance.now() - snapshotAt);
           if (m.preview) preview = adapter.preview(terrain, m.center, m.settings, m.preview);

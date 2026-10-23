@@ -13,6 +13,7 @@ export type ConnectedSessionStroke<T extends ConnectedSessionTerrain>=Pick<Retur
 export type ConnectedWorkerSessionStroke<T extends ConnectedSessionTerrain>=ConnectedSessionStroke<T>&{readonly diagnostics:{readonly backend:string};waitForProgress():Promise<void>};
 export type ConnectedWorkerFactory=()=>Worker;
 export interface ConnectedSessionHooks<T extends ConnectedSessionTerrain,View extends ConnectedSessionView>{
+ strokeOptions?(view:View):object;
  createCache(terrain:T):IndexedDisplayCache<T>;
  begin(terrain:T,history:ConnectedHistory<T>,center:SurfacePosition,settings:CylindricalBrushSettings,options:ConnectedSessionStrokeOptions):ConnectedSessionStroke<T>;
  visibility(terrain:T,view:View):(center:SurfacePosition,indices:Iterable<number>)=>void;

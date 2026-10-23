@@ -10,6 +10,9 @@ import type {IndexedTerrain} from './indexed-float32.ts';
 export const CYLINDER_STROKE_LIMITS = Object.freeze({ maxPendingPositions: 256, maxAcceptedPositions: 65536, maxDabs: 16384, maxTotalDistanceQueries: 262144, maxTotalDistanceBoxes: 1048576, maxTotalCandidates: 1048576, maxTotalPathBoxes: 262144 });
 type StrokeBudgetOptions = { readonly [K in keyof typeof CYLINDER_STROKE_LIMITS]?: number };
 export interface ConnectedStrokeOptions<T extends IndexedTerrain<{readonly index:number}>> extends StrokeBudgetOptions {
+  /** Reuse bounded work epochs within one history operation. Each epoch keeps
+   * the same hard limits; only completed preparation may start a new epoch. */
+  readonly rollingWork?:boolean;
   /** Optional execution barrier. The ready dab and all path residuals stay put
    * until its host acknowledges preparation. Does not change numerical work. */
   readonly commitReady?: (job: ReturnType<typeof prepareConnectedDab<T>>) => boolean;
@@ -48,9 +51,14 @@ export function beginConnectedStroke<T extends IndexedTerrain<{readonly index:nu
     if (!Number.isSafeInteger(value) || value < 1 || value > maximum) throw new RangeError('Cylinder stroke limits may only lower hard budgets.');
     return [name, value];
   })) as Record<keyof typeof CYLINDER_STROKE_LIMITS, number>);
+  if(input.rollingWork!==undefined&&typeof input.rollingWork!=='boolean')throw RangeError('Invalid connected work-epoch policy.');
+  const rolling=input.rollingWork===true;let workEpochs=1,totalDabs=0,totalPathBoxes=0;
+  let baseline={queries:0,boxes:0,candidates:0,dabs:0,pathBoxes:0};
+  const rollWork=(queries:number,boxes:number,candidates:number)=>{baseline={queries,boxes,candidates,dabs:totalDabs,pathBoxes:totalPathBoxes};workEpochs++;};
   const dabLimits = Object.freeze({ ...input.dabLimits });
   const boundedDabLimits = (queries: number, boxes: number, candidates: number): CylinderDabLimits => {
-    const q = limits.maxTotalDistanceQueries - queries, b = limits.maxTotalDistanceBoxes - boxes, c = limits.maxTotalCandidates - candidates;
+    if(rolling&&(limits.maxTotalDistanceQueries-(queries-baseline.queries)<Math.min(limits.maxTotalDistanceQueries,dabLimits.maxDistanceQueries??CYLINDER_DAB_LIMITS.maxDistanceQueries)||limits.maxTotalDistanceBoxes-(boxes-baseline.boxes)<Math.min(limits.maxTotalDistanceBoxes,dabLimits.maxDistanceBoxes??CYLINDER_DAB_LIMITS.maxDistanceBoxes)||limits.maxTotalCandidates-(candidates-baseline.candidates)<Math.min(limits.maxTotalCandidates,dabLimits.maxCandidates??CYLINDER_DAB_LIMITS.maxCandidates)||totalDabs-baseline.dabs>=limits.maxDabs))rollWork(queries,boxes,candidates);
+    const q = limits.maxTotalDistanceQueries - (queries-baseline.queries), b = limits.maxTotalDistanceBoxes - (boxes-baseline.boxes), c = limits.maxTotalCandidates - (candidates-baseline.candidates);
     if (q < 1 || b < 1 || c < 1) throw new RangeError('Cylinder aggregate dab work budget exhausted.');
     return { ...dabLimits, maxDistanceQueries: Math.min(dabLimits.maxDistanceQueries ?? CYLINDER_DAB_LIMITS.maxDistanceQueries, q), maxDistanceBoxes: Math.min(dabLimits.maxDistanceBoxes ?? CYLINDER_DAB_LIMITS.maxDistanceBoxes, b), maxCandidates: Math.min(dabLimits.maxCandidates ?? CYLINDER_DAB_LIMITS.maxCandidates, c) };
   };
@@ -85,7 +93,7 @@ export function beginConnectedStroke<T extends IndexedTerrain<{readonly index:nu
   return Object.freeze({
     settings, spacingMeters: spacing, limits, history,
     get status(): CylinderStrokeStatus { return status; }, get failure() { return failure; },
-    get statistics() { const pending = job?.statistics; return Object.freeze({ ...stats, hasPendingWork: Boolean(job || sampler || queued), pendingPositions: queued, residualMeters: residual, spacingErrorBoundMeters: spacingError, lastCommittedCenter, distanceQueries: stats.distanceQueries + (pending?.distanceQueries ?? 0), distanceBoxes: stats.distanceBoxes + (pending?.distanceBoxes ?? 0), dabCandidates: stats.dabCandidates + (pending?.candidates ?? 0) }); },
+    get statistics() { const pending = job?.statistics; return Object.freeze({ ...stats,...(rolling?{workEpochs}:{}), hasPendingWork: Boolean(job || sampler || queued), pendingPositions: queued, residualMeters: residual, spacingErrorBoundMeters: spacingError, lastCommittedCenter, distanceQueries: stats.distanceQueries + (pending?.distanceQueries ?? 0), distanceBoxes: stats.distanceBoxes + (pending?.distanceBoxes ?? 0), dabCandidates: stats.dabCandidates + (pending?.candidates ?? 0) }); },
     move(point: SurfacePosition, intent: CylinderTransitionIntent = 'local') {
       if (status !== 'drawing') throw new Error('Cylinder stroke is no longer accepting input.');
       try {
@@ -108,9 +116,9 @@ export function beginConnectedStroke<T extends IndexedTerrain<{readonly index:nu
         if (job) {
           if (job.status === 'preparing') paintingStage('dabPreparation', () => job!.pump(candidateSteps));
           if (job.status === 'ready') {
-            if (stats.committedDabs >= limits.maxDabs) throw new RangeError('Cylinder stroke dab budget exhausted.');
+            if (stats.committedDabs-baseline.dabs >= limits.maxDabs) throw new RangeError('Cylinder stroke dab budget exhausted.');
             if (input.commitReady && !input.commitReady(job)) return status;
-            const writes = operation.commitDab(job); account(); lastCommittedCenter = job.center; job = undefined; stats.committedDabs++; stats.writes += writes;
+            const writes = operation.commitDab(job); account(); lastCommittedCenter = job.center; job = undefined; stats.committedDabs++;totalDabs=stats.committedDabs; stats.writes += writes;
             if (stats.processedPositions === 0) stats.processedPositions = 1;
           }
         } else if (sampler) {
@@ -124,15 +132,17 @@ export function beginConnectedStroke<T extends IndexedTerrain<{readonly index:nu
           }
         } else if (queued) {
           const input = queue[head]!;
-          const remainingPathBoxes = Math.min(pathMaxBoxes, limits.maxTotalPathBoxes - stats.pathBoxes);
+          if(rolling&&limits.maxTotalPathBoxes-(stats.pathBoxes-baseline.pathBoxes)<Math.min(pathMaxBoxes,limits.maxTotalPathBoxes))rollWork(stats.distanceQueries,stats.distanceBoxes+stats.failedQueryBoxAllowance,stats.dabCandidates);
+          const remainingPathBoxes = Math.min(pathMaxBoxes, limits.maxTotalPathBoxes - (stats.pathBoxes-baseline.pathBoxes));
           if (remainingPathBoxes < 1) throw new RangeError('Cylinder aggregate path work budget exhausted.');
           stats.failedPathBoxAllowance = remainingPathBoxes;
           const nextPath = adapter.path(terrain, previous, input.point, { version: 1, continuity: direction, absoluteToleranceMeters: pathTolerance, maxBoxes: remainingPathBoxes });
-          stats.failedPathBoxAllowance = 0; stats.pathBoxes += nextPath.distance.evaluatedBoxes;
+          stats.failedPathBoxAllowance = 0; stats.pathBoxes += nextPath.distance.evaluatedBoxes;totalPathBoxes=stats.pathBoxes;
           if (!Number.isFinite(stats.traveledMeters + nextPath.lengthMeters)) throw new RangeError('Cylinder traveled-distance accumulator is unrepresentable.');
           if (input.intent === 'local' && nextPath.lengthUpperBoundMeters > localLimit) throw new RangeError('Cylinder input jump requires intermediate physical points or explicit shortest-surface intent.');
-          const nextSampler = physicalPathSpacings(nextPath, { spacingMeters: spacing, residualMeters: residual, residualErrorBoundMeters: spacingError + nextPath.lengthErrorBoundMeters, maxPoints: Math.max(1, limits.maxDabs - stats.committedDabs) });
-          if (nextSampler.expectedPoints > limits.maxDabs - stats.committedDabs || nextSampler.roundoffBoundMeters > maxError) throw new RangeError('Cylinder stroke dab/accumulated-spacing-error budget exhausted.');
+          const remainingDabs=rolling?limits.maxDabs:limits.maxDabs-stats.committedDabs;
+          const nextSampler = physicalPathSpacings(nextPath, { spacingMeters: spacing, residualMeters: residual, residualErrorBoundMeters: spacingError + nextPath.lengthErrorBoundMeters, maxPoints: Math.max(1, remainingDabs) });
+          if (nextSampler.expectedPoints > remainingDabs || nextSampler.roundoffBoundMeters > maxError) throw new RangeError('Cylinder stroke dab/accumulated-spacing-error budget exhausted.');
           path = nextPath; sampler = nextSampler; queue[head] = undefined; head = (head + 1) % queue.length; queued--; stats.paths++; stats.maximumPathPieces = Math.max(stats.maximumPathPieces, path.pieces.length);
         }
         completeIfDrained(); return status;

@@ -108,7 +108,7 @@ export class ConnectedPreviewSession<T extends ConnectedSessionTerrain,View exte
       } });
     } });
     try {
-      const options = { spacingMeters: settings.radiusMeters * PHYSICAL_UI_SPACING_RATIO, dabLimits: PHYSICAL_PREVIEW_DAB_LIMITS, maxDabs: 2048 };
+      const options = { spacingMeters: settings.radiusMeters * PHYSICAL_UI_SPACING_RATIO, dabLimits: PHYSICAL_PREVIEW_DAB_LIMITS, maxDabs: 2048,...this.hooks.strokeOptions?.(view) };
       this.stroke = this.workerFactory ? this.hooks.workers!.begin(this.terrain, tracked, center, settings, options, () => this.changed(), this.workerFactory) : this.hooks.begin(this.terrain, tracked, center, settings, options);
       this.workDiagnostics = isWorkerStroke(this.stroke) ? this.stroke.diagnostics : { backend: 'cooperative' };
       this.lastStrokeRevision = this.terrain.revision; this.inputTimes = [{ ordinal: 1, at }];recordPaintingEvent('input',{gesture:this.gesture,ordinal:1},at); this.message = 'Drawing physical terrain…'; this.changed(); return true;

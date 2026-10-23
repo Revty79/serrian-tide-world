@@ -5,11 +5,13 @@ export interface IndexedPatchBlock {readonly indices:Uint32Array;readonly values
 /** The accepted cylindrical atomic Float32 authority, independent of charts.
  * Geometry adapters validate complete keys before invoking index operations.
  * No backing array is exposed; snapshots and history remain host-owned. */
-export function createIndexedFloat32Authority(options:{count:number;initialElevation:number;validateElevation?:(value:number)=>void;validateSample?:(index:number,value:number,before:number)=>void}){
+export function createIndexedFloat32Authority(options:{count:number;initialElevation:number;initialValues?:Float32Array;validateElevation?:(value:number)=>void;validateSample?:(index:number,value:number,before:number)=>void}){
  const {count,initialElevation:initial,validateElevation,validateSample}=options;
  if(!Number.isSafeInteger(count)||count<1)throw RangeError('Positive finite sample count required.');
  assertFloat32Elevation(initial);validateElevation?.(Math.fround(initial));
- const elevations=new Float32Array(count).fill(initial);let revision=0;
+ const source=options.initialValues;let revision=0;
+ if(source){if(Object.getPrototypeOf(source)!==Float32Array.prototype||!(source.buffer instanceof ArrayBuffer)||source.length!==count)throw RangeError('Invalid private source epoch.');for(let i=0;i<count;i++){const value=source[i]!;assertFloat32Elevation(value);validateElevation?.(value);validateSample?.(i,value,Math.fround(initial));if(!Object.is(value,Math.fround(initial)))revision++;}}
+ const elevations=source?source.slice():new Float32Array(count).fill(initial);
  const checkedIndex=(i:number)=>{if(!Number.isSafeInteger(i)||i<0||i>=count)throw RangeError('Invalid canonical sample index.');return i;};
  return Object.freeze({get revision(){return revision;},byteLength:elevations.byteLength,
   read:(i:number)=>elevations[checkedIndex(i)]!,
