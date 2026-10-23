@@ -1,0 +1,2 @@
+import base from './playwright.dodecahedron.config.mjs';
+export default{...base,testMatch:['polyhedron-regression-smoke.spec.ts','octahedron-performance.spec.ts','trapezohedron-pixels.spec.ts','dodecahedron-pixels.spec.ts','dodecahedron-performance.spec.ts'],grep:/Prior |Octahedron stage profile.*solid|Trapezohedron N.*incremental|Dodecahedron (?!stage profile N256)/,grepInvert:/hollow/,reporter:[['list'],['json',{outputFile:'.local/dodecahedron-regression-browser.json'}]]};

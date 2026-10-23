@@ -1,0 +1,2 @@
+import {createDodecahedronGeometry} from '../surfaces/dodecahedron.ts';
+export function assertInteractiveDodecahedron(radius:number,n:number,initial=-100){const g=createDodecahedronGeometry({provider:'physical-regular-dodecahedron',version:1,identity:{worldId:'validation',surfaceId:'validation'},role:'exterior',edgeLengthMeters:radius});if(![128,256].includes(n)||!Number.isFinite(initial)||Math.abs(initial)>g.minimumDimensionMeters/8)throw RangeError('Dodecahedron requires N128/N256 and enough physical clearance for the starting terrain.');}

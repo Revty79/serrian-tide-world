@@ -1,5 +1,11 @@
 # Dodecahedron: measured architecture stop
 
+This is the historical stop report. The later shapes-first implementation uses
+the decahedron polygon adapter and certified local domains; see
+[Dodecahedron Worlds](DODECAHEDRON-WORLDS.md) for the subsequent implementation,
+current verification and remaining acceptance status. The measurements below
+retain their original diagnostic scope.
+
 Overnight Queue 2 Pass 3 stops at a diagnostic architecture review. The last
 operational checkpoint is Solid/Hollow Octahedron, published at
 `b111fe3c85a8f80f5c856c28131f74f5a2cbf8d1`. No Dodecahedron editor, terrain

@@ -1,0 +1,77 @@
+
+Running 22 tests using 1 worker
+
+(node:28208) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [installed-chrome] › tests\dodecahedron-performance.spec.ts:9:90 › Dodecahedron stage profile N128 auto solid (29.3s)
+  ok  2 [installed-chrome] › tests\dodecahedron-performance.spec.ts:9:90 › Dodecahedron stage profile N128 canvas solid (27.1s)
+  ok  3 [installed-chrome] › tests\dodecahedron-pixels.spec.ts:2:25 › Dodecahedron N128 incremental GPU and Canvas epochs equal a fresh full presentation (5.7s)
+  ok  4 [installed-chrome] › tests\dodecahedron-pixels.spec.ts:2:25 › Dodecahedron N256 incremental GPU and Canvas epochs equal a fresh full presentation (16.5s)
+  x   5 [installed-chrome] › tests\dodecahedron-pixels.spec.ts:9:68 › Dodecahedron outside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (23.3s)
+(node:8044) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   6 [installed-chrome] › tests\dodecahedron-pixels.spec.ts:9:68 › Dodecahedron opposite N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (19.6s)
+(node:21920) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  7 [installed-chrome] › tests\dodecahedron-pixels.spec.ts:9:68 › Dodecahedron outside N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (32.3s)
+  ok  8 [installed-chrome] › tests\dodecahedron-pixels.spec.ts:9:68 › Dodecahedron opposite N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (24.8s)
+  ok  9 [installed-chrome] › tests\octahedron-performance.spec.ts:9:95 › Octahedron stage profile N128 auto solid (24.5s)
+  ok 10 [installed-chrome] › tests\octahedron-performance.spec.ts:9:95 › Octahedron stage profile N128 canvas solid (23.2s)
+  ok 11 [installed-chrome] › tests\octahedron-performance.spec.ts:9:95 › Octahedron stage profile N256 auto solid (24.5s)
+  ok 12 [installed-chrome] › tests\octahedron-performance.spec.ts:9:95 › Octahedron stage profile N256 canvas solid (24.5s)
+  ok 13 [installed-chrome] › tests\polyhedron-regression-smoke.spec.ts:7:112 › Prior pyramid N128 auto smoke: paint, exact replay, save/open and continued painting (3.9s)
+  ok 14 [installed-chrome] › tests\polyhedron-regression-smoke.spec.ts:7:112 › Prior pyramid N128 canvas smoke: paint, exact replay, save/open and continued painting (4.0s)
+  ok 15 [installed-chrome] › tests\polyhedron-regression-smoke.spec.ts:7:112 › Prior tetrahedron N128 auto smoke: paint, exact replay, save/open and continued painting (4.1s)
+  ok 16 [installed-chrome] › tests\polyhedron-regression-smoke.spec.ts:7:112 › Prior tetrahedron N128 canvas smoke: paint, exact replay, save/open and continued painting (3.6s)
+  ok 17 [installed-chrome] › tests\polyhedron-regression-smoke.spec.ts:7:112 › Prior octahedron N128 auto smoke: paint, exact replay, save/open and continued painting (3.9s)
+  ok 18 [installed-chrome] › tests\polyhedron-regression-smoke.spec.ts:7:112 › Prior octahedron N128 canvas smoke: paint, exact replay, save/open and continued painting (3.9s)
+  ok 19 [installed-chrome] › tests\polyhedron-regression-smoke.spec.ts:7:112 › Prior trapezohedron N128 auto smoke: paint, exact replay, save/open and continued painting (6.7s)
+  ok 20 [installed-chrome] › tests\polyhedron-regression-smoke.spec.ts:7:112 › Prior trapezohedron N128 canvas smoke: paint, exact replay, save/open and continued painting (6.1s)
+  ok 21 [installed-chrome] › tests\trapezohedron-pixels.spec.ts:2:25 › Trapezohedron N128 incremental GPU and Canvas epochs equal a fresh full presentation (3.9s)
+  ok 22 [installed-chrome] › tests\trapezohedron-pixels.spec.ts:2:25 › Trapezohedron N256 incremental GPU and Canvas epochs equal a fresh full presentation (8.8s)
+
+
+  1) [installed-chrome] › tests\dodecahedron-pixels.spec.ts:9:68 › Dodecahedron outside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 100
+    Received:   0
+
+      42 |   if(difference>stableMax){stableMax=difference;worst={x,y,p,value:cache.sample(p.patchId,p.u,p.v),low,high,cpu:[...data.slice(at,at+4)],gpu:[...raw.slice(gpuAt,gpuAt+4)]};}
+      43 |  }
+    > 44 |  document.body.innerHTML='';document.body.style.background='#102b3a';for(const canvas of[gpu,cpu]){canvas.style.width='700px';canvas.style.height='462px';canvas.style.display='inline-block';document.body.appendChild(canvas);}return{n,variant,stableChecked,stableLandChecked,stableOceanChecked,stableMax,coastChecked,coastalMax,stableViolations,coverageViolations,envelopeViolations,diagonalChecked,diagonalCoverageViolations,diagonalBlankChecked,diagonalBlankMax,diagonalWorst,diagonalAlphaWorst,diagonalMinAlpha,worst,sourceHash,finalHash:await digest(),graphics:a.statistics,canvas:b.statistics};},{n,variant});mkdirSync('.local/dodecahedron-pixels',{recursive:true});writeFileSync(`.local/dodecahedron-pixels/n${n}-${variant}.json`,JSON.stringify(result,null,2));await page.screenshot({path:`.local/dodecahedron-pixels/n${n}-${variant}.png`});expect(result.graphics.software).toBe(false);expect(result.sourceHash).toBe(result.finalHash);expect(result.stableChecked).toBeGreaterThan(10000);expect(result.stableLandChecked).toBeGreaterThan(100);expect(result.stableOceanChecked).toBeGreaterThan(10000);expect(result.coastChecked).toBeGreaterThan(20);expect(result.stableMax).toBeLessThanOrEqual(3);expect(result.coverageViolations).toBe(0);expect(result.envelopeViolations).toBe(0);expect(result.diagonalChecked).toBeGreaterThan(100);expect(result.diagonalCoverageViolations).toBe(0);expect(result.diagonalBlankChecked).toBeGreaterThan(50);expect(result.diagonalBlankMax).toBeLessThanOrEqual(3);});
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^
+      45 |
+        at D:\serrian-tide-world\tests\dodecahedron-pixels.spec.ts:44:1026
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\dodecahedron-pixels-Dodeca-e2506-ast-and-physical-silhouette-installed-chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\dodecahedron-pixels-Dodeca-e2506-ast-and-physical-silhouette-installed-chrome\error-context.md
+
+  2) [installed-chrome] › tests\dodecahedron-pixels.spec.ts:9:68 › Dodecahedron opposite N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 100
+    Received:   2
+
+      42 |   if(difference>stableMax){stableMax=difference;worst={x,y,p,value:cache.sample(p.patchId,p.u,p.v),low,high,cpu:[...data.slice(at,at+4)],gpu:[...raw.slice(gpuAt,gpuAt+4)]};}
+      43 |  }
+    > 44 |  document.body.innerHTML='';document.body.style.background='#102b3a';for(const canvas of[gpu,cpu]){canvas.style.width='700px';canvas.style.height='462px';canvas.style.display='inline-block';document.body.appendChild(canvas);}return{n,variant,stableChecked,stableLandChecked,stableOceanChecked,stableMax,coastChecked,coastalMax,stableViolations,coverageViolations,envelopeViolations,diagonalChecked,diagonalCoverageViolations,diagonalBlankChecked,diagonalBlankMax,diagonalWorst,diagonalAlphaWorst,diagonalMinAlpha,worst,sourceHash,finalHash:await digest(),graphics:a.statistics,canvas:b.statistics};},{n,variant});mkdirSync('.local/dodecahedron-pixels',{recursive:true});writeFileSync(`.local/dodecahedron-pixels/n${n}-${variant}.json`,JSON.stringify(result,null,2));await page.screenshot({path:`.local/dodecahedron-pixels/n${n}-${variant}.png`});expect(result.graphics.software).toBe(false);expect(result.sourceHash).toBe(result.finalHash);expect(result.stableChecked).toBeGreaterThan(10000);expect(result.stableLandChecked).toBeGreaterThan(100);expect(result.stableOceanChecked).toBeGreaterThan(10000);expect(result.coastChecked).toBeGreaterThan(20);expect(result.stableMax).toBeLessThanOrEqual(3);expect(result.coverageViolations).toBe(0);expect(result.envelopeViolations).toBe(0);expect(result.diagonalChecked).toBeGreaterThan(100);expect(result.diagonalCoverageViolations).toBe(0);expect(result.diagonalBlankChecked).toBeGreaterThan(50);expect(result.diagonalBlankMax).toBeLessThanOrEqual(3);});
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^
+      45 |
+        at D:\serrian-tide-world\tests\dodecahedron-pixels.spec.ts:44:1026
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\dodecahedron-pixels-Dodeca-743cd-ast-and-physical-silhouette-installed-chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\dodecahedron-pixels-Dodeca-743cd-ast-and-physical-silhouette-installed-chrome\error-context.md
+
+  2 failed
+    [installed-chrome] › tests\dodecahedron-pixels.spec.ts:9:68 › Dodecahedron outside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette
+    [installed-chrome] › tests\dodecahedron-pixels.spec.ts:9:68 › Dodecahedron opposite N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette
+  20 passed (5.5m)

@@ -1,0 +1,15 @@
+✔ a physical linear height field has the same relief gradient across each internal pentagon diagonal (210.7536ms)
+✔ polygon diagonal gradient invalidation updates both charts after an adjacent interior word changes (436.9006ms)
+✔ dodecahedron derived fields preserve every canonical alias, the exact apex and constant gradients without terrain writes (152.506ms)
+✔ incremental dodecahedron field updates match a freshly reconstructed epoch byte for byte across edges and apex (449.4797ms)
+✔ physical and connected net dodecahedron projection/picking roundtrip actual visible points with no hidden painting (7.6228ms)
+✔ allocation-free atlas colors match the accepted palette and relief channel for channel (7.2468ms)
+✔ dirty polygon colors include the full interpolation-cell stencil under a sheared pentagon chart (710.5663ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2330.8616

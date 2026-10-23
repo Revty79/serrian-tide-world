@@ -1,0 +1,13 @@
+
+Running 6 tests using 1 worker
+
+(node:4612) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\dodecahedron-performance.spec.ts:9:90 › Dodecahedron stage profile N256 auto solid (42.6s)
+  ok 2 [installed-chrome] › tests\dodecahedron-performance.spec.ts:9:90 › Dodecahedron stage profile N256 canvas solid (40.7s)
+  ok 3 [installed-chrome] › tests\dodecahedron-pixels.spec.ts:2:25 › Dodecahedron N128 incremental GPU and Canvas epochs equal a fresh full presentation (6.1s)
+  ok 4 [installed-chrome] › tests\dodecahedron-pixels.spec.ts:2:25 › Dodecahedron N256 incremental GPU and Canvas epochs equal a fresh full presentation (20.6s)
+  ok 5 [installed-chrome] › tests\dodecahedron-pixels.spec.ts:9:68 › Dodecahedron outside N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (34.5s)
+  ok 6 [installed-chrome] › tests\dodecahedron-workflow.spec.ts:14:63 › Solid Dodecahedron N128 auto: sharp live painting, thirty real joins and twenty-four welded diagonals, four tools, exact replay and v27 reopen (2.3m)
+
+  6 passed (4.7m)

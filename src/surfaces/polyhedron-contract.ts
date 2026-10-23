@@ -22,6 +22,10 @@ export interface PolyhedronGeometry {
  readonly physicalFaces?:readonly{readonly id:string;readonly vertices:readonly number[]}[];
  readonly physicalEdges?:readonly(readonly[number,number])[];
  physicalFaceId?(chart:string):string;
+ /** Convex physical polygons may be visited only once by a shortest route:
+  * replace any departure/reentry by the straight segment inside that polygon.
+  * Numerical chart transitions within the same polygon remain unrestricted. */
+ readonly simplePhysicalFaceRoutes?:true;
  readonly scaleMeters:number;readonly surfaceAreaMeters2:number;
  readonly minimumDimensionMeters:number;readonly maximumLatticeEdgeMeters:number;
  readonly centerMeters:PolyhedronVector;readonly inspectionEyeMeters:PolyhedronVector;
