@@ -14,10 +14,14 @@ No Floating Islands, Torus, Ringworld or later family is authorized.
 
 Pass 1 is published as `6adc8e37d3d972ad1a88554b4f416819c148b014`; see the
 [Solid Octahedron review](OCTAHEDRON-SOLID-EDITOR.md). Pass 2 is technically
-verified (1,490 units, build and 49 browser cases); see the
+verified and published as `b111fe3c85a8f80f5c856c28131f74f5a2cbf8d1`
+(1,490 units, build and 49 browser cases); see the
 [Hollow Octahedron review](OCTAHEDRON-HOLLOW-EDITOR.md) and its frozen-source
 receipt, included in the same checkpoint.
-Dodecahedron and Icosahedron work have not begun at this checkpoint.
+Pass 3 has reached the owner's major-architecture stop rule; see the measured
+[Dodecahedron architecture review](DODECAHEDRON-ARCHITECTURE-REVIEW.md).
+There is no Dodecahedron editor or production provider. Pass 4 and the
+Icosahedron passes remain unstarted; comprehensive Pass 7 is not complete.
 Each pass proceeds only after the preceding milestone passes and is published.
 If a major architecture obstacle prevents safe mathematical, persistence,
 performance or visual verification, preserve the last passing checkpoint and

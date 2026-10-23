@@ -1,0 +1,30 @@
+{
+  "checkpoint": "Dodecahedron major architecture stop, diagnostic only",
+  "operationalCheckpoint": "b111fe3c85a8f80f5c856c28131f74f5a2cbf8d1",
+  "operationalSourceInputsUnchanged": 628,
+  "operationalSourceFingerprint": "4a3cd664a06420272a55bfb79e6280eb80fc13c1bbd8087c89ad9edd70417462",
+  "probeSource": {
+    "scripts/probe-dodecahedron-architecture.mjs": "4871f02a5c834082d53cca14d168b7c209047e1d99d539de51ac44dca99db87c"
+  },
+  "validation": "Topology assertions and actual triangular-authority rejection at N128/N256 pass; three fresh serial bounded unfolding/prepared-kernel benchmark runs pass their internal geometry, route-count and chart assertions. No production source changes after the passing operational checkpoint.",
+  "environment": {
+    "priority": "BelowNormal",
+    "runtime": "Node v24.18.0 on development PC",
+    "allocationLimit": "--max-old-space-size=512; one adjacent-pair cache and one current prepared source, no global route cache allocation",
+    "graphics": "not a rendering or browser input-to-visible benchmark"
+  },
+  "qualification": [
+    "Diagnostic Float64 pentagonal geometry is not an interval-certified provider",
+    "Kernel outputs are not distance-correctness evidence",
+    "Heap deltas are GC process observations, not whole-World/browser memory",
+    "Route counts are exact BigInt graph counts; production code confirms the allocated adjacent pair",
+    "32768 route cap not exceeded; chart support and scaling are the measured obstacles",
+    "No Dodecahedron editor/provider/format; later sequential passes unstarted; no full-family acceptance claim"
+  ],
+  "artifactSha256": {
+    "benchmark-1.json": "3b9497abd8e4d46b723d1606baaf90b710a7f2dc57091ec14d4bdca48b41ccce",
+    "benchmark-2.json": "be585ad0cf8e7f66db866b9d0cd12d1dd06decac2ff78b8f26f4fdffd5f5b6a3",
+    "benchmark-3.json": "2967ea32924556ce5cbca7e97b18cd80c002b5fe1b29b3bca3e20e9092958d80",
+    "topology.json": "25f6a46789a272931c15cc290f98c69318b8bd03b8847afeaffeab4983009fb3"
+  }
+}
