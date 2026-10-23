@@ -100,8 +100,9 @@ cases, two touch/pen cases, twelve complete Solid Tetrahedron regressions and ei
 Pyramid regressions. The initial two range-limit attempts remain visible beside
 their corrected map-endurance results. Every existing-family regression in this
 checkpoint passes without retries or skips. All suites ran serially at BelowNormal
-priority. Final broader earlier-family compatibility follows the Octahedron
-numerical foundation; no additional renderer or editor is implied by that pass.
+priority. The final broader earlier-family compatibility matrix also passes at
+the [Octahedron foundation checkpoint](OCTAHEDRON-FOUNDATION.md); no additional
+renderer or editor is implied by that foundation.
 
 This checkpoint is technically ready for publication and independent review.
 Owner acceptance is still required.

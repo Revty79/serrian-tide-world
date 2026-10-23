@@ -134,3 +134,9 @@ The optional operational Octahedron editor is deferred: N256 exceeds the accepte
 display-cache capacity and the real eight-face net needs its own verified adapter.
 No display limit was raised and no new editor, fake persistence or later shape
 was added to accelerate the overnight queue.
+
+The verified Octahedron foundation was published as
+`03cb8753213a0b5d2a420f61d2599baff5c5a91c`, with a clean tree and live GitHub main
+parity. The authorized overnight queue ends here. See the
+[morning handoff](ATLAS-OVERNIGHT-HANDOFF.md) for all implementation commits,
+verification, measured responsiveness, limitations and the next review action.

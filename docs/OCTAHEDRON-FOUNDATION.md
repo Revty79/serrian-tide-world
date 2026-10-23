@@ -3,7 +3,8 @@
 The owner-authorized overnight queue reaches this stage after the operational
 Solid Tetrahedron (`52da75b1851ecf08750b627a5751c3a72321b695`) and Hollow Tetrahedron
 (`6bcfec0faf7f09eddbe1da712836741643abd64f`) pass their technical gates and are
-published to main. This checkpoint delivers the requested Octahedron foundation.
+published to main. This checkpoint delivers the requested Octahedron foundation, published as
+`03cb8753213a0b5d2a420f61d2599baff5c5a91c`.
 
 ## Actual geometry
 
