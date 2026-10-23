@@ -28,6 +28,12 @@ normals and cuts. Cylinder-specific tool dimensions and diagrams must become
 genuine geometry contracts rather than fabricated cylindrical metadata.
 
 Heavy validation stays serial at BelowNormal priority on the development PC.
+The [universal excavation supplement](ATLAS-UNIVERSAL-EXCAVATION.md) requires
+eventual manual tunnel design across all applicable World and map families.
+It preserves this checkpoint's scope and queue ordering. Stop after Geometry
+Queue 3 for owner review; record advanced excavation gaps rather than expanding
+the current Pyramid assignment into the full designer.
+
 Do not modify the website, Worlds, databases, server infrastructure, hosting or
 Production. Technical verification remains separate from owner acceptance.
 

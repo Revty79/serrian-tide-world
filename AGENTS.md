@@ -20,3 +20,18 @@ reference-shell start remains available for supported holes/tunnels. Never alter
 an existing map's geography or a saved format's interpretation to conceal a
 display defect. Geometry correctness, visual quality and responsiveness must
 all survive a new shape's acceptance review.
+
+The 2026-10-23 course correction requires basic physical holes, physical tunnel
+graphs and reciprocal map links for completed applicable 3D shapes. Prior basic
+connection deferrals are superseded. Reuse actual material/CSG, connection tools,
+history and versioned storage; do not fabricate cylindrical metadata or an
+interior terrain bank for a solid. Keep reference-ground restrictions where
+displaced excavation is unsupported. A blocked shape does not stop independent
+authorized work. See docs/ATLAS-PHASE2-COURSE-CORRECTION.md for the current queue.
+
+Read docs/ATLAS-UNIVERSAL-EXCAVATION.md when changing World/map architecture or
+physical connections. All applicable solid, hollow, fragmented and future map
+families must accommodate eventual real excavation and manual tunnel design.
+This permanent requirement does not expand the current Pyramid checkpoint.
+Record limited milestones honestly, retain the authorized geometry sequence,
+and stop after Geometry Queue 3 for owner review.

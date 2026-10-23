@@ -1,0 +1,32 @@
+Running 18 tests using 1 worker
+
+node : (node:28860) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:12 char:1
++ node node_modules/@playwright/test/cli.js test --config playwright.py ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:28860) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [installed-chrome] › tests\pyramid-connection-boundaries.spec.ts:6:71 › Solid Pyramid N256 auto: normal hole editing near a real edge and apex preserves actual banks (5.1s)
+  ok  2 [installed-chrome] › tests\pyramid-connection-boundaries.spec.ts:6:71 › Solid Pyramid N256 canvas: normal hole editing near a real edge and apex preserves actual banks (4.3s)
+  ok  3 [installed-chrome] › tests\pyramid-connection-boundaries.spec.ts:6:71 › Hollow Pyramid N256 auto: normal hole editing near a real edge and apex preserves actual banks (6.3s)
+  ok  4 [installed-chrome] › tests\pyramid-connection-boundaries.spec.ts:6:71 › Hollow Pyramid N256 canvas: normal hole editing near a real edge and apex preserves actual banks (6.3s)
+  ok  5 [installed-chrome] › tests\pyramid-connection-pixels.spec.ts:3:57 › Solid Pyramid N128: actual CSG pixels, exposed rock, opposite geography and unchanged sharp Canvas outside cuts (2.5s)
+  ok  6 [installed-chrome] › tests\pyramid-connection-pixels.spec.ts:3:57 › Solid Pyramid N256: actual CSG pixels, exposed rock, opposite geography and unchanged sharp Canvas outside cuts (2.5s)
+  ok  7 [installed-chrome] › tests\pyramid-connection-pixels.spec.ts:3:57 › Hollow Pyramid N128: actual CSG pixels, exposed rock, opposite geography and unchanged sharp Canvas outside cuts (1.7s)
+  ok  8 [installed-chrome] › tests\pyramid-connection-pixels.spec.ts:3:57 › Hollow Pyramid N256: actual CSG pixels, exposed rock, opposite geography and unchanged sharp Canvas outside cuts (3.7s)
+  ok  9 [installed-chrome] › tests\pyramid-connection-storage.spec.ts:6:33 › Solid Pyramid: real legacy migration, IDB geometry/detail/identity guards, downgrade rejection and atomic failed Open (3.4s)
+  ok 10 [installed-chrome] › tests\pyramid-connection-storage.spec.ts:6:33 › Hollow Pyramid: real legacy migration, IDB geometry/detail/identity guards, downgrade rejection and atomic failed Open (4.4s)
+  ok 11 [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Solid Pyramid N128 auto: normal holes, physical graph edits, reciprocal links, painting and v21 reopen (23.1s)
+  ok 12 [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Solid Pyramid N128 canvas: normal holes, physical graph edits, reciprocal links, painting and v21 reopen (28.4s)
+  ok 13 [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Solid Pyramid N256 auto: normal holes, physical graph edits, reciprocal links, painting and v21 reopen (37.6s)
+  ok 14 [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Solid Pyramid N256 canvas: normal holes, physical graph edits, reciprocal links, painting and v21 reopen (43.0s)
+  ok 15 [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Hollow Pyramid N128 auto: normal holes, physical graph edits, reciprocal links, painting and v22 reopen (31.9s)
+  ok 16 [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Hollow Pyramid N128 canvas: normal holes, physical graph edits, reciprocal links, painting and v22 reopen (37.5s)
+  ok 17 [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Hollow Pyramid N256 auto: normal holes, physical graph edits, reciprocal links, painting and v22 reopen (1.2m)
+  ok 18 [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Hollow Pyramid N256 canvas: normal holes, physical graph edits, reciprocal links, painting and v22 reopen (1.3m)
+
+  Slow test file: [installed-chrome] › tests\pyramid-connections.spec.ts (5.8m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  18 passed (6.6m)

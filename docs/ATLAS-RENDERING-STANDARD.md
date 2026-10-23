@@ -15,6 +15,12 @@ Designer remain later systems. A blocked geometry must not hold up independent
 finishing or geometry work. Older checkpoint reviews describe their historical
 capabilities rather than granting an ongoing deferral.
 
+The [universal excavation supplement](ATLAS-UNIVERSAL-EXCAVATION.md) requires
+eventual manual underground design across applicable solid and hollow Worlds,
+fragments and future map categories. Current reference-ground and portal-based
+milestones are limited capabilities, not full excavation completion. Preserve
+their scope while keeping adapters extensible for the later shared designer.
+
 Atlas is one editor. New geometry inherits the accepted presentation, input,
 camera interaction, numerical editing, scheduling, history, persistence and
 workspace behavior wherever those implementations remain valid. Demonstrate a

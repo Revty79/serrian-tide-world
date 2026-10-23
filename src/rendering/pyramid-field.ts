@@ -30,10 +30,14 @@ export class PyramidDisplayCache<T extends PolyhedronTerrain=PyramidTerrain> ext
   for(const at of nodes){const face=this.terrain.geometry.faces[Math.floor(at/(this.side*this.side))]!,local=at%(this.side*this.side);this.updateNode(face,local%this.side,Math.floor(local/this.side));}if(this.journal.length===128)this.journal.shift();this.journal.push({from,to,rects:[...regions.values()]});
  }
  dirtySince(revision:number){const start=this.journal.findIndex(x=>x.from===revision);if(start<0||this.journal.at(-1)?.to!==this.sourceRevision)return;return this.journal.slice(start).flatMap(x=>x.rects);}
- sample(face:string,u:number,v:number){const n=this.n,x=Math.max(0,Math.min(n,u*n)),y=Math.max(0,Math.min(n,v*n)),c=Math.min(n-1,Math.floor(x)),r=Math.min(n-1,Math.floor(y)),a=x-c,b=y-r,at=this.at(face,c,r)*4;
-  const channel=(k:number)=>{const d=this.data;if(this.terrain.geometry.isTriangle(face)&&c+r>=n-1){return d[at+k]!*(1-a-b)+d[at+4+k]!*a+d[at+this.side*4+k]!*b;}return(d[at+k]!*(1-a)+d[at+4+k]!*a)*(1-b)+(d[at+this.side*4+k]!*(1-a)+d[at+(this.side+1)*4+k]!*a)*b;};
-  return{height:channel(0),du:channel(1),dv:channel(2)};
- }
+ sample(face:string,u:number,v:number){return polyhedronFieldSample(this.terrain.geometry,this.n,this.data,face,u,v);}
+
  color(face:string,u:number,v:number,relief:boolean){const value=this.sample(face,u,v),f=this.terrain.geometry.frame(face);return polyhedralDisplayColor(f.normal,f.e1,f.e2,value.height,value.du,value.dv,relief,this.terrain.geometry.metadata.role==='interior'?-1:1);}
  override dispose(){super.dispose();this.data.fill(0);(this.initialAtlas as Map<string,Uint8ClampedArray>).clear();this.journal=[];}
 }
+
+/** Accepted numerical reconstruction shared by normal display and CSG pixels. */
+export function polyhedronFieldSample(g:PolyhedronTerrain['geometry'],n:number,data:Float32Array,face:string,u:number,v:number){const side=n+1;const x=Math.max(0,Math.min(n,u*n)),y=Math.max(0,Math.min(n,v*n)),c=Math.min(n-1,Math.floor(x)),r=Math.min(n-1,Math.floor(y)),a=x-c,b=y-r,at=(g.faces.indexOf(face)*side*side+r*side+c)*4;
+  const channel=(k:number)=>{const d=data;if(g.isTriangle(face)&&c+r>=n-1){return d[at+k]!*(1-a-b)+d[at+4+k]!*a+d[at+side*4+k]!*b;}return(d[at+k]!*(1-a)+d[at+4+k]!*a)*(1-b)+(d[at+side*4+k]!*(1-a)+d[at+(side+1)*4+k]!*a)*b;};
+  return{height:channel(0),du:channel(1),dv:channel(2)};
+ }

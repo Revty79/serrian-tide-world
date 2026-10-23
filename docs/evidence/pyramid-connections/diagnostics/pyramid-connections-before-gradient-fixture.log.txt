@@ -1,0 +1,96 @@
+Running 18 tests using 1 worker
+
+node : (node:5144) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:9 char:1
++ node node_modules/@playwright/test/cli.js test --config playwright.py ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:5144) War... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [installed-chrome] › tests\pyramid-connection-boundaries.spec.ts:6:71 › Solid Pyramid N256 auto: normal hole editing near a real edge and apex preserves actual banks (4.9s)
+  ok  2 [installed-chrome] › tests\pyramid-connection-boundaries.spec.ts:6:71 › Solid Pyramid N256 canvas: normal hole editing near a real edge and apex preserves actual banks (4.3s)
+  ok  3 [installed-chrome] › tests\pyramid-connection-boundaries.spec.ts:6:71 › Hollow Pyramid N256 auto: normal hole editing near a real edge and apex preserves actual banks (6.2s)
+  ok  4 [installed-chrome] › tests\pyramid-connection-boundaries.spec.ts:6:71 › Hollow Pyramid N256 canvas: normal hole editing near a real edge and apex preserves actual banks (6.4s)
+  ok  5 [installed-chrome] › tests\pyramid-connection-pixels.spec.ts:3:57 › Solid Pyramid N128: actual CSG pixels, exposed rock, opposite geography and unchanged sharp Canvas outside cuts (2.6s)
+  ok  6 [installed-chrome] › tests\pyramid-connection-pixels.spec.ts:3:57 › Solid Pyramid N256: actual CSG pixels, exposed rock, opposite geography and unchanged sharp Canvas outside cuts (2.5s)
+  ok  7 [installed-chrome] › tests\pyramid-connection-pixels.spec.ts:3:57 › Hollow Pyramid N128: actual CSG pixels, exposed rock, opposite geography and unchanged sharp Canvas outside cuts (1.8s)
+  ok  8 [installed-chrome] › tests\pyramid-connection-pixels.spec.ts:3:57 › Hollow Pyramid N256: actual CSG pixels, exposed rock, opposite geography and unchanged sharp Canvas outside cuts (3.7s)
+  ok  9 [installed-chrome] › tests\pyramid-connection-storage.spec.ts:6:33 › Solid Pyramid: real legacy migration, IDB geometry/detail/identity guards, downgrade rejection and atomic failed Open (3.4s)
+  ok 10 [installed-chrome] › tests\pyramid-connection-storage.spec.ts:6:33 › Hollow Pyramid: real legacy migration, IDB geometry/detail/identity guards, downgrade rejection and atomic failed Open (4.3s)
+  ok 11 [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Solid Pyramid N128 auto: normal holes, physical graph edits, reciprocal links, painting and v21 reopen (20.9s)
+  ok 12 [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Solid Pyramid N128 canvas: normal holes, physical graph edits, reciprocal links, painting and v21 reopen (25.1s)
+  x  13 [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Solid Pyramid N256 auto: normal holes, physical graph edits, reciprocal links, painting and v21 reopen (24.5s)
+(node:1952) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  14 [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Solid Pyramid N256 canvas: normal holes, physical graph edits, reciprocal links, painting and v21 reopen (28.0s)
+(node:3560) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 15 [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Hollow Pyramid N128 auto: normal holes, physical graph edits, reciprocal links, painting and v22 reopen (31.4s)
+  ok 16 [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Hollow Pyramid N128 canvas: normal holes, physical graph edits, reciprocal links, painting and v22 reopen (34.2s)
+  ok 17 [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Hollow Pyramid N256 auto: normal holes, physical graph edits, reciprocal links, painting and v22 reopen (1.1m)
+  ok 18 [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Hollow Pyramid N256 canvas: normal holes, physical graph edits, reciprocal links, painting and v22 reopen (1.2m)
+
+
+  1) [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Solid Pyramid N256 auto: normal holes, physical graph edits, reciprocal links, painting and v21 reopen
+
+    Error: expect(received).not.toBe(expected) // Object.is equality
+
+    Expected: not "bfd3d8c1917d5ed8c68297ca20cdd9c6df1b57f17868525889f56de326cae040"
+
+      28 |  await page.getByLabel('Connection tools',{exact:true}).selectOption('links');await map(page);await choose(page,'Choose first link anchor','base',.7,.7);if(hollow){await toolsPanel(page,true);await button(page,'Paint Inside').click();await ready(page);await map(page);}await choose(page,'Choose second link anchor','base',.6,.6);await expect.poll(async()=>(await snapshot(page)).connections.links.length).toBe(1);const local=(await snapshot(page)).connections.links[0]!;expect(local.anchors[0]!.targetAnchorId).toBe(local.anchors[1]!.id);await page.getByLabel('Linked anchor',{exact:true}).selectOption(local.anchors[0]!.id);await button(page,'Follow map link').click();await ready(page);await page.getByLabel('Destination World ID',{exact:true}).fill('external-world');await page.getByLabel('Destination map ID',{exact:true}).fill('map');await page.getByLabel('Destination location ID',{exact:true}).fill('door');await page.getByLabel('Linked anchor',{exact:true}).selectOption(local.anchors[1]!.id);await button(page,'Set external destination').click();await expect.poll(async()=>(await snapshot(page)).connections.links[0]!.anchors[1]!.location.kind).toBe('map-location');expect((await snapshot(page)).connections.links[0]!.anchors.map(a=>a.id)).toEqual(local.anchors.map(a=>a.id));expect(await hash(page,hollow)).toEqual(terrainBefore);
+      29 |  if(hollow){await button(page,'Paint Outside').click();await ready(page);}await map(page);await startPaintingPixels(page);const q=await point(page,'base',.8,.8);await page.mouse.move(q.x,q.y);await page.mouse.down();for(let i=0;i<60;i++){await page.mouse.move(q.x+i*.6,q.y);await page.waitForTimeout(16);}await page.mouse.up();await ready(page);const timings=await finishPaintingPixels(page);let painted=await hash(page,hollow);expect(painted.exterior).not.toBe(terrainBefore.exterior);expect(painted.interior).toBe(terrainBefore.interior);expect(timings.summary.p95InputToPixels).toBeLessThan(300);await button(page,'Undo').click();await ready(page);expect(await hash(page,hollow)).toEqual(terrainBefore);await button(page,'Redo').click();await ready(page);expect(await hash(page,hollow)).toEqual(painted);
+    > 30 |  for(const tool of['Lower','Smooth','Flatten']){await button(page,tool).click();await page.mouse.click(q.x+10,q.y);await ready(page);const changed=await hash(page,hollow);expect(changed.exterior).not.toBe(painted.exterior);await button(page,'Undo').click();await ready(page);expect(await hash(page,hollow)).toEqual(painted);await button(page,'Redo').click();await ready(page);expect(await hash(page,hollow)).toEqual(changed);await button(page,'Undo').click();await ready(page);}
+         |                                                                                                                                                                                                         ^
+      31 |  await button(page,'Raise').click();await baseView(page,hollow);const beforePhysical=painted,physicalPoint=await point(page,'base',.8,.8);await startPaintingPixels(page);await page.mouse.move(physicalPoint.x,physicalPoint.y);await page.mouse.down();for(let i=0;i<60;i++){await page.mouse.move(physicalPoint.x+i,physicalPoint.y);await page.waitForTimeout(16);}await page.mouse.up();await ready(page);const physicalTimings=await finishWithDiagnostics(page,`${output}/${hollow?'hollow':'solid'}-n${n}-${backend}-physical-failure.json`),physicalDisplay=await displaySnapshot(page);if(backend==='canvas'){expect(physicalDisplay.renderer.geometryCacheBytes).toBeLessThanOrEqual(2600000);expect(physicalDisplay.renderer.geometryCacheSamples).toBeLessThanOrEqual(100000);expect(physicalDisplay.renderer.geometryCacheHits).toBeGreaterThan(0);}painted=await hash(page,hollow);expect(painted.exterior).not.toBe(beforePhysical.exterior);expect(painted.interior).toBe(beforePhysical.interior);expect(physicalTimings.summary.p95InputToPixels).toBeLessThan(300);await button(page,'Undo').click();await ready(page);expect(await hash(page,hollow)).toEqual(beforePhysical);await button(page,'Redo').click();await ready(page);expect(await hash(page,hollow)).toEqual(painted);
+      32 |  await toolsPanel(page,true);await page.getByLabel('Undo scope',{exact:true}).selectOption('connections');const published=(await snapshot(page)).connections;await button(page,'Save').click();await expect(page.getByText('Saved on this device',{exact:true})).toBeVisible({timeout:60000});await button(page,'Open Map').click();await ready(page);expect((await snapshot(page)).connections).toEqual(published);expect(await hash(page,hollow)).toEqual(painted);await toolsPanel(page,false);await button(page,'Undo').click();await expect.poll(async()=>(await snapshot(page)).connections.links[0]!.anchors[1]!.location.kind).toBe('surface');await button(page,'Redo').click();await expect.poll(async()=>(await snapshot(page)).connections).toEqual(published);await ready(page);expect(errors).toEqual([]);writeFileSync(`${output}/${hollow?'hollow':'solid'}-n${n}-${backend}.json`,JSON.stringify({hollow,n,backend,terrainBefore,painted,published,proposedPixel,rockPixel,timings,physicalTimings,physicalDisplay,guideTimings,final:await snapshot(page),errors},null,2));
+      33 | });
+        at D:\serrian-tide-world\tests\pyramid-connections.spec.ts:30:201
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\pyramid-connections-Solid--e6906-nks-painting-and-v21-reopen-installed-chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\pyramid-connections-Solid--e6906-nks-painting-and-v21-reopen-installed-chrome\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\pyramid-connections-Solid--e6906-nks-painting-and-v21-reopen-installed-chrome\trace.zip
+    Usage:
+
+        npx playwright show-trace C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\pyramid-connections-Solid--e6906-nks-painting-and-v21-reopen-installed-chrome\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Solid Pyramid N256 canvas: normal holes, physical graph edits, reciprocal links, painting and v21 reopen
+
+    Error: expect(received).not.toBe(expected) // Object.is equality
+
+    Expected: not "bfd3d8c1917d5ed8c68297ca20cdd9c6df1b57f17868525889f56de326cae040"
+
+      28 |  await page.getByLabel('Connection tools',{exact:true}).selectOption('links');await map(page);await choose(page,'Choose first link anchor','base',.7,.7);if(hollow){await toolsPanel(page,true);await button(page,'Paint Inside').click();await ready(page);await map(page);}await choose(page,'Choose second link anchor','base',.6,.6);await expect.poll(async()=>(await snapshot(page)).connections.links.length).toBe(1);const local=(await snapshot(page)).connections.links[0]!;expect(local.anchors[0]!.targetAnchorId).toBe(local.anchors[1]!.id);await page.getByLabel('Linked anchor',{exact:true}).selectOption(local.anchors[0]!.id);await button(page,'Follow map link').click();await ready(page);await page.getByLabel('Destination World ID',{exact:true}).fill('external-world');await page.getByLabel('Destination map ID',{exact:true}).fill('map');await page.getByLabel('Destination location ID',{exact:true}).fill('door');await page.getByLabel('Linked anchor',{exact:true}).selectOption(local.anchors[1]!.id);await button(page,'Set external destination').click();await expect.poll(async()=>(await snapshot(page)).connections.links[0]!.anchors[1]!.location.kind).toBe('map-location');expect((await snapshot(page)).connections.links[0]!.anchors.map(a=>a.id)).toEqual(local.anchors.map(a=>a.id));expect(await hash(page,hollow)).toEqual(terrainBefore);
+      29 |  if(hollow){await button(page,'Paint Outside').click();await ready(page);}await map(page);await startPaintingPixels(page);const q=await point(page,'base',.8,.8);await page.mouse.move(q.x,q.y);await page.mouse.down();for(let i=0;i<60;i++){await page.mouse.move(q.x+i*.6,q.y);await page.waitForTimeout(16);}await page.mouse.up();await ready(page);const timings=await finishPaintingPixels(page);let painted=await hash(page,hollow);expect(painted.exterior).not.toBe(terrainBefore.exterior);expect(painted.interior).toBe(terrainBefore.interior);expect(timings.summary.p95InputToPixels).toBeLessThan(300);await button(page,'Undo').click();await ready(page);expect(await hash(page,hollow)).toEqual(terrainBefore);await button(page,'Redo').click();await ready(page);expect(await hash(page,hollow)).toEqual(painted);
+    > 30 |  for(const tool of['Lower','Smooth','Flatten']){await button(page,tool).click();await page.mouse.click(q.x+10,q.y);await ready(page);const changed=await hash(page,hollow);expect(changed.exterior).not.toBe(painted.exterior);await button(page,'Undo').click();await ready(page);expect(await hash(page,hollow)).toEqual(painted);await button(page,'Redo').click();await ready(page);expect(await hash(page,hollow)).toEqual(changed);await button(page,'Undo').click();await ready(page);}
+         |                                                                                                                                                                                                         ^
+      31 |  await button(page,'Raise').click();await baseView(page,hollow);const beforePhysical=painted,physicalPoint=await point(page,'base',.8,.8);await startPaintingPixels(page);await page.mouse.move(physicalPoint.x,physicalPoint.y);await page.mouse.down();for(let i=0;i<60;i++){await page.mouse.move(physicalPoint.x+i,physicalPoint.y);await page.waitForTimeout(16);}await page.mouse.up();await ready(page);const physicalTimings=await finishWithDiagnostics(page,`${output}/${hollow?'hollow':'solid'}-n${n}-${backend}-physical-failure.json`),physicalDisplay=await displaySnapshot(page);if(backend==='canvas'){expect(physicalDisplay.renderer.geometryCacheBytes).toBeLessThanOrEqual(2600000);expect(physicalDisplay.renderer.geometryCacheSamples).toBeLessThanOrEqual(100000);expect(physicalDisplay.renderer.geometryCacheHits).toBeGreaterThan(0);}painted=await hash(page,hollow);expect(painted.exterior).not.toBe(beforePhysical.exterior);expect(painted.interior).toBe(beforePhysical.interior);expect(physicalTimings.summary.p95InputToPixels).toBeLessThan(300);await button(page,'Undo').click();await ready(page);expect(await hash(page,hollow)).toEqual(beforePhysical);await button(page,'Redo').click();await ready(page);expect(await hash(page,hollow)).toEqual(painted);
+      32 |  await toolsPanel(page,true);await page.getByLabel('Undo scope',{exact:true}).selectOption('connections');const published=(await snapshot(page)).connections;await button(page,'Save').click();await expect(page.getByText('Saved on this device',{exact:true})).toBeVisible({timeout:60000});await button(page,'Open Map').click();await ready(page);expect((await snapshot(page)).connections).toEqual(published);expect(await hash(page,hollow)).toEqual(painted);await toolsPanel(page,false);await button(page,'Undo').click();await expect.poll(async()=>(await snapshot(page)).connections.links[0]!.anchors[1]!.location.kind).toBe('surface');await button(page,'Redo').click();await expect.poll(async()=>(await snapshot(page)).connections).toEqual(published);await ready(page);expect(errors).toEqual([]);writeFileSync(`${output}/${hollow?'hollow':'solid'}-n${n}-${backend}.json`,JSON.stringify({hollow,n,backend,terrainBefore,painted,published,proposedPixel,rockPixel,timings,physicalTimings,physicalDisplay,guideTimings,final:await snapshot(page),errors},null,2));
+      33 | });
+        at D:\serrian-tide-world\tests\pyramid-connections.spec.ts:30:201
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\pyramid-connections-Solid--eec6c-nks-painting-and-v21-reopen-installed-chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\pyramid-connections-Solid--eec6c-nks-painting-and-v21-reopen-installed-chrome\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\pyramid-connections-Solid--eec6c-nks-painting-and-v21-reopen-installed-chrome\trace.zip
+    Usage:
+
+        npx playwright show-trace C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\pyramid-connections-Solid--eec6c-nks-painting-and-v21-reopen-installed-chrome\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Solid Pyramid N256 auto: normal holes, physical graph edits, reciprocal links, painting and v21 reopen
+    [installed-chrome] › tests\pyramid-connections.spec.ts:21:95 › Solid Pyramid N256 canvas: normal holes, physical graph edits, reciprocal links, painting and v21 reopen
+  16 passed (5.9m)

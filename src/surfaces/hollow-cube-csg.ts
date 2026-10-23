@@ -29,6 +29,23 @@ export function rayCapsuleInterval(o:CubeVector,d:CubeVector,p:ExcavationPrimiti
  if(radial){let a=-Infinity,b=Infinity;if(dv===0){if(vv<0||vv>length)a=Infinity;}else{a=-vv/dv;b=(length-vv)/dv;if(a>b)[a,b]=[b,a];}const start=Math.max(a,radial[0]),end=Math.min(b,radial[1]);if(start<=end)include([start,end]);}
  return lo<=hi?[lo,hi]:undefined;
 }
+/** Immutable geometry preparation for the accepted analytic capsule query.
+ * The scalar hot loop preserves the original operation order, including both
+ * endpoint spheres and the clipped tube, without temporary per-ray vectors.
+ * The ordinary rayCapsuleInterval implementation above remains unchanged. */
+export function prepareRayCapsuleInterval(input:ExcavationPrimitive){
+ const a=[...input.a] as unknown as CubeVector,b=[...input.b] as unknown as CubeVector,r2=input.radius*input.radius,axis=sub(b,a),length=Math.hypot(...axis);
+ if(length===0)return(o:CubeVector,d:CubeVector):Interval|undefined=>{const x=o[0]-a[0],y=o[1]-a[1],z=o[2]-a[2],projection=x*d[0]+y*d[1]+z*d[2],px=x+d[0]*(-projection),py=y+d[1]*(-projection),pz=z+d[2]*(-projection),disc=r2-(px*px+py*py+pz*pz);if(disc<0)return;const q=Math.sqrt(disc);return[-projection-q,-projection+q];};
+ const n=unit(axis),nx=n[0],ny=n[1],nz=n[2];
+ return(o:CubeVector,d:CubeVector):Interval|undefined=>{
+  const dx=d[0],dy=d[1],dz=d[2],vx=o[0]-a[0],vy=o[1]-a[1],vz=o[2]-a[2],dv=dx*nx+dy*ny+dz*nz,vv=vx*nx+vy*ny+vz*nz,pdx=dx+nx*(-dv),pdy=dy+ny*(-dv),pdz=dz+nz*(-dv),pvx=vx+nx*(-vv),pvy=vy+ny*(-vv),pvz=vz+nz*(-vv),aa=pdx*pdx+pdy*pdy+pdz*pdz,bb=pdx*pvx+pdy*pvy+pdz*pvz,cc=pvx*pvx+pvy*pvy+pvz*pvz-r2;
+  let lo=Infinity,hi=-Infinity;
+  for(let end=0;end<2;end++){const c=end?b:a,x=o[0]-c[0],y=o[1]-c[1],z=o[2]-c[2],projection=x*dx+y*dy+z*dz,px=x+dx*(-projection),py=y+dy*(-projection),pz=z+dz*(-projection),disc=r2-(px*px+py*py+pz*pz);if(disc<0)continue;const q=Math.sqrt(disc);lo=Math.min(lo,-projection-q);hi=Math.max(hi,-projection+q);}
+  let radial=false,radialLo=-Infinity,radialHi=Infinity;if(aa===0){if(cc<=0)radial=true;}else{const center=-bb/aa,cx=pvx+pdx*center,cy=pvy+pdy*center,cz=pvz+pdz*center,disc=r2-(cx*cx+cy*cy+cz*cz);if(disc>=0){const q=Math.sqrt(disc/aa);radialLo=center-q;radialHi=center+q;radial=true;}}
+  if(radial){let start=-Infinity,end=Infinity;if(dv===0){if(vv<0||vv>length)start=Infinity;}else{start=-vv/dv;end=(length-vv)/dv;if(start>end)[start,end]=[end,start];}const first=Math.max(start,radialLo),last=Math.min(end,radialHi);if(first<=last){lo=Math.min(lo,first);hi=Math.max(hi,last);}}
+  return lo<=hi?[lo,hi]:undefined;
+ };
+}
 export interface ExcavationHit {readonly distance:number;readonly point:CubeVector;readonly normal:CubeVector;readonly kind:'exterior'|'interior'|'rock';readonly face?:SolidCubeFace;readonly u?:number;readonly v?:number}
 /** Reference shell DIFFERENCE (inner cavity UNION connected excavation). CPU,
  * GPU, protection and inspection all use these exact sphere/capsule primitives. */
