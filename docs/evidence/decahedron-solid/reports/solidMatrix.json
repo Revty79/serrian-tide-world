@@ -1,0 +1,1362 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=playwright.trapezohedron.config.mjs"
+    ],
+    "configFile": "D:\\serrian-tide-world\\playwright.trapezohedron.config.mjs",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-atlas-hollow-worlds/workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "installed-chrome",
+        "name": "installed-chrome",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "trapezohedron-workflow.spec.ts",
+          "trapezohedron-pixels.spec.ts",
+          "trapezohedron-recovery.spec.ts",
+          "trapezohedron-performance.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "installed-chrome",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "trapezohedron-workflow.spec.ts",
+          "trapezohedron-pixels.spec.ts",
+          "trapezohedron-recovery.spec.ts",
+          "trapezohedron-performance.spec.ts"
+        ],
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5270",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "trace": "off",
+          "screenshot": "only-on-failure",
+          "channel": "chrome",
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "installed-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/trapezohedron-solid-final-core.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev -- --port 5270 --strictPort",
+      "url": "http://127.0.0.1:5270",
+      "reuseExistingServer": true,
+      "cwd": "D:\\serrian-tide-world"
+    }
+  },
+  "suites": [
+    {
+      "title": "trapezohedron-performance.spec.ts",
+      "file": "trapezohedron-performance.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Trapezohedron stage profile N128 auto solid",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 25826,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:21:27.290Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "554240520ce75776437b-773dd57567360282bf15",
+          "file": "trapezohedron-performance.spec.ts",
+          "line": 9,
+          "column": 90
+        },
+        {
+          "title": "Trapezohedron stage profile N128 canvas solid",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 24635,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:21:53.469Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "554240520ce75776437b-911cfedcf006eee289b6",
+          "file": "trapezohedron-performance.spec.ts",
+          "line": 9,
+          "column": 90
+        },
+        {
+          "title": "Trapezohedron stage profile N256 auto solid",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 29955,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:22:18.115Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "554240520ce75776437b-2fd0095abd3d4d4289ee",
+          "file": "trapezohedron-performance.spec.ts",
+          "line": 9,
+          "column": 90
+        },
+        {
+          "title": "Trapezohedron stage profile N256 canvas solid",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 29729,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:22:48.081Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "554240520ce75776437b-90fd77588143a233e84f",
+          "file": "trapezohedron-performance.spec.ts",
+          "line": 9,
+          "column": 90
+        }
+      ]
+    },
+    {
+      "title": "trapezohedron-pixels.spec.ts",
+      "file": "trapezohedron-pixels.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Trapezohedron N128 incremental GPU and Canvas epochs equal a fresh full presentation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2940,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:23:17.829Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a96eeb30f37d85c22898-bf5c1b53bee4859252be",
+          "file": "trapezohedron-pixels.spec.ts",
+          "line": 2,
+          "column": 25
+        },
+        {
+          "title": "Trapezohedron N256 incremental GPU and Canvas epochs equal a fresh full presentation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8217,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:23:20.782Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a96eeb30f37d85c22898-d487a3c58365a6fad797",
+          "file": "trapezohedron-pixels.spec.ts",
+          "line": 2,
+          "column": 25
+        },
+        {
+          "title": "Trapezohedron outside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8264,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:23:29.008Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a96eeb30f37d85c22898-a6173cb30e2cf4567d74",
+          "file": "trapezohedron-pixels.spec.ts",
+          "line": 9,
+          "column": 68
+        },
+        {
+          "title": "Trapezohedron opposite N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7226,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:23:37.281Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a96eeb30f37d85c22898-fed35dfc869db4d4b4e9",
+          "file": "trapezohedron-pixels.spec.ts",
+          "line": 9,
+          "column": 68
+        },
+        {
+          "title": "Trapezohedron outside N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11524,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:23:44.515Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a96eeb30f37d85c22898-9223b69c8aedcfa5e568",
+          "file": "trapezohedron-pixels.spec.ts",
+          "line": 9,
+          "column": 68
+        },
+        {
+          "title": "Trapezohedron opposite N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10730,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:23:56.049Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a96eeb30f37d85c22898-0e10ff9c78ff007e59e0",
+          "file": "trapezohedron-pixels.spec.ts",
+          "line": 9,
+          "column": 68
+        }
+      ]
+    },
+    {
+      "title": "trapezohedron-recovery.spec.ts",
+      "file": "trapezohedron-recovery.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Trapezohedron N256 auto: active worker protocol fault preserves exact prefix history and a fresh stroke recovers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6571,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:24:06.806Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "80e4ef28b73e7de5ce9b-a92115165c1cd228d00b",
+          "file": "trapezohedron-recovery.spec.ts",
+          "line": 7,
+          "column": 39
+        },
+        {
+          "title": "Trapezohedron N256 canvas: active worker protocol fault preserves exact prefix history and a fresh stroke recovers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7232,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:24:13.385Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "80e4ef28b73e7de5ce9b-aa4763c1ac69c4617ddd",
+          "file": "trapezohedron-recovery.spec.ts",
+          "line": 7,
+          "column": 39
+        },
+        {
+          "title": "Trapezohedron N256: graphics loss and restoration retain the current painted terrain epoch",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6592,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:24:20.627Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "80e4ef28b73e7de5ce9b-84ee0131c2311ebce6fe",
+          "file": "trapezohedron-recovery.spec.ts",
+          "line": 10,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "trapezohedron-workflow.spec.ts",
+      "file": "trapezohedron-workflow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Solid Trapezohedron N128 auto: sharp live painting, twenty real joins and ten welded diagonals, four tools, exact replay and v25 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 65898,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "physical/chart join 0-2 north-1:0,north-5:1",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 0-3 north-1:0,north-1:1",
+                      "duration": 21
+                    },
+                    {
+                      "title": "physical/chart join 0-4 north-1:1,north-2:0",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 0-5 north-2:0,north-2:1",
+                      "duration": 8
+                    },
+                    {
+                      "title": "physical/chart join 0-6 north-2:1,north-3:0",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 0-7 north-3:0,north-3:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 0-8 north-3:1,north-4:0",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 0-9 north-4:0,north-4:1",
+                      "duration": 8
+                    },
+                    {
+                      "title": "physical/chart join 0-10 north-4:1,north-5:0",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 0-11 north-5:0,north-5:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 1-2 south-1:0,south-1:1",
+                      "duration": 8
+                    },
+                    {
+                      "title": "physical/chart join 1-3 south-1:0,south-2:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 1-4 south-2:0,south-2:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 1-5 south-2:0,south-3:1",
+                      "duration": 15
+                    },
+                    {
+                      "title": "physical/chart join 1-6 south-3:0,south-3:1",
+                      "duration": 8
+                    },
+                    {
+                      "title": "physical/chart join 1-7 south-3:0,south-4:1",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 1-8 south-4:0,south-4:1",
+                      "duration": 8
+                    },
+                    {
+                      "title": "physical/chart join 1-9 south-4:0,south-5:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 1-10 south-5:0,south-5:1",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 1-11 south-1:1,south-5:0",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 2-3 north-1:0,south-1:0",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 2-11 south-1:1,north-5:1",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 3-4 north-1:1,south-2:1",
+                      "duration": 12
+                    },
+                    {
+                      "title": "physical/chart join 4-5 north-2:0,south-2:0",
+                      "duration": 17
+                    },
+                    {
+                      "title": "physical/chart join 5-6 north-2:1,south-3:1",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 6-7 north-3:0,south-3:0",
+                      "duration": 12
+                    },
+                    {
+                      "title": "physical/chart join 7-8 north-3:1,south-4:1",
+                      "duration": 16
+                    },
+                    {
+                      "title": "physical/chart join 8-9 north-4:0,south-4:0",
+                      "duration": 16
+                    },
+                    {
+                      "title": "physical/chart join 9-10 north-4:1,south-5:1",
+                      "duration": 12
+                    },
+                    {
+                      "title": "physical/chart join 10-11 north-5:0,south-5:0",
+                      "duration": 14
+                    }
+                  ],
+                  "startTime": "2026-10-23T20:24:27.249Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "39743ae9f5283d399cf8-519036060b1927a33386",
+          "file": "trapezohedron-workflow.spec.ts",
+          "line": 13,
+          "column": 63
+        },
+        {
+          "title": "Solid Trapezohedron N128 canvas: sharp live painting, twenty real joins and ten welded diagonals, four tools, exact replay and v25 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 63202,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "physical/chart join 0-2 north-1:0,north-5:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 0-3 north-1:0,north-1:1",
+                      "duration": 8
+                    },
+                    {
+                      "title": "physical/chart join 0-4 north-1:1,north-2:0",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 0-5 north-2:0,north-2:1",
+                      "duration": 8
+                    },
+                    {
+                      "title": "physical/chart join 0-6 north-2:1,north-3:0",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 0-7 north-3:0,north-3:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 0-8 north-3:1,north-4:0",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 0-9 north-4:0,north-4:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 0-10 north-4:1,north-5:0",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 0-11 north-5:0,north-5:1",
+                      "duration": 8
+                    },
+                    {
+                      "title": "physical/chart join 1-2 south-1:0,south-1:1",
+                      "duration": 8
+                    },
+                    {
+                      "title": "physical/chart join 1-3 south-1:0,south-2:1",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 1-4 south-2:0,south-2:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 1-5 south-2:0,south-3:1",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 1-6 south-3:0,south-3:1",
+                      "duration": 14
+                    },
+                    {
+                      "title": "physical/chart join 1-7 south-3:0,south-4:1",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 1-8 south-4:0,south-4:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 1-9 south-4:0,south-5:1",
+                      "duration": 13
+                    },
+                    {
+                      "title": "physical/chart join 1-10 south-5:0,south-5:1",
+                      "duration": 8
+                    },
+                    {
+                      "title": "physical/chart join 1-11 south-1:1,south-5:0",
+                      "duration": 15
+                    },
+                    {
+                      "title": "physical/chart join 2-3 north-1:0,south-1:0",
+                      "duration": 16
+                    },
+                    {
+                      "title": "physical/chart join 2-11 south-1:1,north-5:1",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 3-4 north-1:1,south-2:1",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 4-5 north-2:0,south-2:0",
+                      "duration": 12
+                    },
+                    {
+                      "title": "physical/chart join 5-6 north-2:1,south-3:1",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 6-7 north-3:0,south-3:0",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 7-8 north-3:1,south-4:1",
+                      "duration": 15
+                    },
+                    {
+                      "title": "physical/chart join 8-9 north-4:0,south-4:0",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 9-10 north-4:1,south-5:1",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 10-11 north-5:0,south-5:0",
+                      "duration": 12
+                    }
+                  ],
+                  "startTime": "2026-10-23T20:25:33.160Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "39743ae9f5283d399cf8-0ab958db96b7c1967dcf",
+          "file": "trapezohedron-workflow.spec.ts",
+          "line": 13,
+          "column": 63
+        },
+        {
+          "title": "Solid Trapezohedron N256 auto: sharp live painting, twenty real joins and ten welded diagonals, four tools, exact replay and v25 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 81526,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "physical/chart join 0-2 north-1:0,north-5:1",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 0-3 north-1:0,north-1:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 0-4 north-1:1,north-2:0",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 0-5 north-2:0,north-2:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 0-6 north-2:1,north-3:0",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 0-7 north-3:0,north-3:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 0-8 north-3:1,north-4:0",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 0-9 north-4:0,north-4:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 0-10 north-4:1,north-5:0",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 0-11 north-5:0,north-5:1",
+                      "duration": 8
+                    },
+                    {
+                      "title": "physical/chart join 1-2 south-1:0,south-1:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 1-3 south-1:0,south-2:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 1-4 south-2:0,south-2:1",
+                      "duration": 8
+                    },
+                    {
+                      "title": "physical/chart join 1-5 south-2:0,south-3:1",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 1-6 south-3:0,south-3:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 1-7 south-3:0,south-4:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 1-8 south-4:0,south-4:1",
+                      "duration": 8
+                    },
+                    {
+                      "title": "physical/chart join 1-9 south-4:0,south-5:1",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 1-10 south-5:0,south-5:1",
+                      "duration": 8
+                    },
+                    {
+                      "title": "physical/chart join 1-11 south-1:1,south-5:0",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 2-3 north-1:0,south-1:0",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 2-11 south-1:1,north-5:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 3-4 north-1:1,south-2:1",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 4-5 north-2:0,south-2:0",
+                      "duration": 12
+                    },
+                    {
+                      "title": "physical/chart join 5-6 north-2:1,south-3:1",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 6-7 north-3:0,south-3:0",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 7-8 north-3:1,south-4:1",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 8-9 north-4:0,south-4:0",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 9-10 north-4:1,south-5:1",
+                      "duration": 12
+                    },
+                    {
+                      "title": "physical/chart join 10-11 north-5:0,south-5:0",
+                      "duration": 11
+                    }
+                  ],
+                  "startTime": "2026-10-23T20:26:36.374Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "39743ae9f5283d399cf8-57fc2c9480ba870c150a",
+          "file": "trapezohedron-workflow.spec.ts",
+          "line": 13,
+          "column": 63
+        },
+        {
+          "title": "Solid Trapezohedron N256 canvas: sharp live painting, twenty real joins and ten welded diagonals, four tools, exact replay and v25 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 74303,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "physical/chart join 0-2 north-1:0,north-5:1",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 0-3 north-1:0,north-1:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 0-4 north-1:1,north-2:0",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 0-5 north-2:0,north-2:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 0-6 north-2:1,north-3:0",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 0-7 north-3:0,north-3:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 0-8 north-3:1,north-4:0",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 0-9 north-4:0,north-4:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 0-10 north-4:1,north-5:0",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 0-11 north-5:0,north-5:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 1-2 south-1:0,south-1:1",
+                      "duration": 8
+                    },
+                    {
+                      "title": "physical/chart join 1-3 south-1:0,south-2:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 1-4 south-2:0,south-2:1",
+                      "duration": 14
+                    },
+                    {
+                      "title": "physical/chart join 1-5 south-2:0,south-3:1",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 1-6 south-3:0,south-3:1",
+                      "duration": 8
+                    },
+                    {
+                      "title": "physical/chart join 1-7 south-3:0,south-4:1",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 1-8 south-4:0,south-4:1",
+                      "duration": 8
+                    },
+                    {
+                      "title": "physical/chart join 1-9 south-4:0,south-5:1",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 1-10 south-5:0,south-5:1",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 1-11 south-1:1,south-5:0",
+                      "duration": 9
+                    },
+                    {
+                      "title": "physical/chart join 2-3 north-1:0,south-1:0",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 2-11 south-1:1,north-5:1",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 3-4 north-1:1,south-2:1",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 4-5 north-2:0,south-2:0",
+                      "duration": 12
+                    },
+                    {
+                      "title": "physical/chart join 5-6 north-2:1,south-3:1",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 6-7 north-3:0,south-3:0",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 7-8 north-3:1,south-4:1",
+                      "duration": 10
+                    },
+                    {
+                      "title": "physical/chart join 8-9 north-4:0,south-4:0",
+                      "duration": 11
+                    },
+                    {
+                      "title": "physical/chart join 9-10 north-4:1,south-5:1",
+                      "duration": 14
+                    },
+                    {
+                      "title": "physical/chart join 10-11 north-5:0,south-5:0",
+                      "duration": 11
+                    }
+                  ],
+                  "startTime": "2026-10-23T20:27:57.913Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "39743ae9f5283d399cf8-cffe88c3012e83ad953c",
+          "file": "trapezohedron-workflow.spec.ts",
+          "line": 13,
+          "column": 63
+        },
+        {
+          "title": "Solid Trapezohedron N256 auto map: sustained held painting crosses work epochs without release",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 25768,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:29:12.231Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "39743ae9f5283d399cf8-a4108a17e2c1fa38e9af",
+          "file": "trapezohedron-workflow.spec.ts",
+          "line": 20,
+          "column": 73
+        },
+        {
+          "title": "Solid Trapezohedron N256 auto vertex: sustained held painting crosses work epochs without release",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26279,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:29:38.016Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "39743ae9f5283d399cf8-a1a012800965a7162171",
+          "file": "trapezohedron-workflow.spec.ts",
+          "line": 20,
+          "column": 73
+        },
+        {
+          "title": "Solid Trapezohedron N256 canvas map: sustained held painting crosses work epochs without release",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 25806,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:30:04.305Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "39743ae9f5283d399cf8-d88cda93d72dd2c46990",
+          "file": "trapezohedron-workflow.spec.ts",
+          "line": 20,
+          "column": 73
+        },
+        {
+          "title": "Solid Trapezohedron N256 canvas vertex: sustained held painting crosses work epochs without release",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26393,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T20:30:30.123Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "39743ae9f5283d399cf8-0ef24d8ff772738a06e0",
+          "file": "trapezohedron-workflow.spec.ts",
+          "line": 20,
+          "column": 73
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-23T20:21:26.784Z",
+    "duration": 569919.335,
+    "expected": 21,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -17,6 +17,11 @@ export interface PolyhedronGeometry {
  readonly metadata:Readonly<{identity:SurfaceIdentity;role:'exterior'|'interior'}>;
  readonly identity:SurfaceIdentity;readonly faces:readonly string[];
  readonly edges:readonly(readonly[number,number])[];readonly vertices:readonly PolyhedronVector[];
+ /** Optional polygon atlas provenance. `faces`/`edges` are numerical charts;
+  * these retain the physical topology when a polygon has internal diagonals. */
+ readonly physicalFaces?:readonly{readonly id:string;readonly vertices:readonly number[]}[];
+ readonly physicalEdges?:readonly(readonly[number,number])[];
+ physicalFaceId?(chart:string):string;
  readonly scaleMeters:number;readonly surfaceAreaMeters2:number;
  readonly minimumDimensionMeters:number;readonly maximumLatticeEdgeMeters:number;
  readonly centerMeters:PolyhedronVector;readonly inspectionEyeMeters:PolyhedronVector;

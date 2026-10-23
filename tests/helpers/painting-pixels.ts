@@ -1,5 +1,9 @@
 import type {Page} from '@playwright/test';
 export async function startPaintingPixels(page:Page){await page.evaluate(async()=>{const path='/src/editor/painting-metrics.ts',metrics=await import(path);metrics.resetPaintingMetrics();const node=document.querySelector<HTMLCanvasElement>('.cylinder-canvas')!,gpu=document.querySelector<HTMLCanvasElement>('.cylinder-gpu')!,tile=document.createElement('canvas');tile.width=tile.height=256;const ctx=tile.getContext('2d',{willReadFrequently:true})!,samples:{at:number;revision:number;hash:number;width:number;height:number}[]=[];let active=true,previous=-1;
+ // Allocate the observer's GPU-to-CPU readback path against the already visible
+ // pre-gesture image. Its first allocation is measurement overhead, not terrain
+ // latency. Measured post-draw captures, timestamps and gates remain unchanged.
+ ctx.drawImage(node.dataset.renderer==='webgl2'?gpu:node,0,0,256,256);ctx.getImageData(0,0,256,256);
  const capture=(source:HTMLCanvasElement)=>{if(!active||source!==(node.dataset.renderer==='webgl2'?gpu:node))return;const revision=Number(node.dataset.displayRevision);if(revision===previous)return;previous=revision;ctx.clearRect(0,0,256,256);ctx.drawImage(source,0,0,256,256);const words=new Uint32Array(ctx.getImageData(0,0,256,256).data.buffer);let hash=2166136261;for(const word of words)hash=Math.imul(hash^word,16777619);samples.push({at:performance.now(),revision,hash:hash>>>0,width:source.width,height:source.height});};
  const draw=WebGL2RenderingContext.prototype.drawArrays,image=CanvasRenderingContext2D.prototype.drawImage;
  WebGL2RenderingContext.prototype.drawArrays=function(...args){Reflect.apply(draw,this,args);queueMicrotask(()=>capture(this.canvas as HTMLCanvasElement));};CanvasRenderingContext2D.prototype.drawImage=function(this:CanvasRenderingContext2D,...args:unknown[]){Reflect.apply(image,this,args);if(this.canvas===node)queueMicrotask(()=>capture(node));} as typeof image;

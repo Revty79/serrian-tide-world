@@ -1,6 +1,6 @@
 import {SOLID_CUBE_FACES,SOLID_CUBE_FRAMES,solidCubeConnection,cubeDot,type CubeVector,type SolidCubeFace} from '../surfaces/solid-cube.ts';
 import {createSolidCubeTerrain,type SolidCubeTerrain} from '../terrain/solid-cube.ts';
-import {elevationToColor} from './elevation-colors.ts';
+import {elevationToColor,elevationColorInto} from './elevation-colors.ts';
 
 export interface CubeDisplayField {readonly n:number;readonly sourceRevision:number;readonly data:Float32Array;readonly bytes:number;readonly sourceCells:number;readonly updates?:{readonly baseRevision:number;readonly rects:readonly {face:number;column:number;row:number;width:number;height:number}[]}}
 export const CUBE_DISPLAY_LIMITS=Object.freeze({maxCells:256,coarseCells:16,maxFieldBytes:6*257**2*16,maxTextureBytes:6*257**2*16,maxCpuFacePixels:6*513**2,maxCanvasPixels:1_200_000});
@@ -75,4 +75,10 @@ export function polyhedralDisplayColor(n:CubeVector,u:CubeVector,v:CubeVector,he
  const normal=n.map((value,i)=>orientation*value-factor*(du*u[i]!+dv*v[i]!)) as unknown as CubeVector;
  const shade=Math.max(.58,Math.min(1.16,.88+.30*cubeDot(normal,light)/Math.hypot(...normal)));
  return rgb.map(v=>Math.max(0,Math.min(255,Math.round(v*shade)))) as unknown as readonly[number,number,number];
+}
+/** Identical accepted palette, physical normal and rounding, with caller-owned
+ * output for dirty atlas rectangles. No per-pixel color/normal arrays. */
+export function polyhedralDisplayColorInto(n:CubeVector,u:CubeVector,v:CubeVector,height:number,du:number,dv:number,relief:boolean,orientation:1|-1,out:Float64Array){
+ elevationColorInto(height,0,out);const factor=height>0&&relief?6:0,x=orientation*n[0]-factor*(du*u[0]+dv*v[0]),y=orientation*n[1]-factor*(du*u[1]+dv*v[1]),z=orientation*n[2]-factor*(du*u[2]+dv*v[2]),shade=Math.max(.58,Math.min(1.16,.88+.30*(x*light[0]+y*light[1]+z*light[2])/Math.hypot(x,y,z)));
+ for(let i=0;i<3;i++)out[i]=Math.max(0,Math.min(255,Math.round(out[i]!*shade)));
 }

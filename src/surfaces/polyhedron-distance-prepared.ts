@@ -1,10 +1,11 @@
 import type {SurfacePosition} from './contracts.ts';
 import type {PolyhedronGeometry} from './polyhedron-contract.ts';
 type PolyhedronFace=string;type PolyhedronPosition=SurfacePosition;
-import {polyhedronUnfoldings} from './polyhedron-path.ts';
+import {polyhedronUnfoldings,polyhedronRouteCertificate} from './polyhedron-path.ts';
 import * as I from './pyramid-interval.ts';
 import {paintingStage} from '../editor/painting-metrics.ts';
 import {polyhedronLocalDomain} from './polyhedron-local-domain.ts';
+import {polyhedronPositionBounds,polyhedronPhysicalLength} from './polyhedron-physical-bounds.ts';
 type Route=ReturnType<typeof polyhedronUnfoldings>[number];
 interface Linear{readonly c:number;readonly u:number;readonly v:number;readonly error:number}
 type LinearPoint=readonly[Linear,Linear];
@@ -54,8 +55,30 @@ function enclosure(g:PolyhedronGeometry,prepared:readonly PreparedRoute[],end:Po
  * real feasible witness. Ambiguous grazing routes still contribute lower bounds;
  * without a sufficiently narrow global enclosure they use the original solver. */
 export function preparedPolyhedronDistance(g:PolyhedronGeometry,a:SurfacePosition,b:SurfacePosition,options:{absoluteToleranceMeters?:number;maxBoxes?:number},witness=false){const start=g.normalize(a),end=g.normalize(b),state=source(g,start),tolerance=options.absoluteToleranceMeters??g.scaleMeters*1e-6;if(!Number.isFinite(tolerance)||tolerance<=0||!Number.isInteger(options.maxBoxes??32768)||(options.maxBoxes??32768)<1)throw RangeError('Invalid pyramid distance options.');let common=state.aliases.get(end.patchId),target=end;
+ // The straight segment in ONE convex planar physical polygon is an actual
+ // surface route and attains the ambient lower bound. Its chart diagonal is
+ // merely an atlas boundary. Reconstruct through those charts only; no route
+ // leaving the physical face can be shorter. This is not an interior shortcut.
+ if(g.physicalFaceId&&start.patchId!==end.patchId&&g.physicalFaceId(start.patchId)===g.physicalFaceId(end.patchId)){
+  const length=polyhedronPhysicalLength(polyhedronPositionBounds(g,start),polyhedronPositionBounds(g,end));
+  if(witness){const faces=g.faces.filter(f=>g.physicalFaceId!(f)===g.physicalFaceId!(start.patchId));return{onlyRoutes:polyhedronUnfoldings(g,start.patchId,end.patchId,faces),consideredRoutes:1};}
+  if(length[1]-length[0]<=tolerance)return{scope:'global-reference-surface' as const,lowerBoundMeters:Math.max(0,length[0]),upperBoundMeters:length[1],evaluatedBoxes:0,evaluatedRoutes:1};
+ }
  if(!common&&(end.u===0||end.v===0||end.u+end.v===1||!g.isTriangle(end.patchId)&&(end.u===1||end.v===1))){for(const alias of g.aliases(end)){const match=state.aliases.get(alias.patchId);if(match){common=match;target=alias;break;}}}
- if(common){const value=common.u===target.u&&common.v===target.v?[0,0] as const:straight(g,common,target,state);if(value[1]-value[0]>tolerance)return;return{scope:'global-reference-surface' as const,lowerBoundMeters:Math.max(0,value[0]),upperBoundMeters:value[1],evaluatedBoxes:0,evaluatedRoutes:1};}
+ if(common){const value=common.u===target.u&&common.v===target.v?[0,0] as const:straight(g,common,target,state);if(value[1]-value[0]>tolerance)return;
+  if(witness&&g.physicalFaceId){
+   const exactBoundary=(p:SurfacePosition)=>{const sum=p.u+p.v,b=sum-p.u;return g.isTriangle(p.patchId)&&(p.u===0||p.v===0||sum===1&&(p.u-(sum-b))+(p.v-b)===0);};
+   if((common.patchId===start.patchId||exactBoundary(start))&&(target.patchId===end.patchId||exactBoundary(end))){
+    // A segment in the shared convex chart attains the ambient lower bound.
+    // Original endpoint charts join it at certified zero-length portals. Retain
+    // all routes in those endpoint stars for the existing exact witness solver;
+    // an outside route cannot beat that actual straight surface segment.
+    const endFaces=new Set(g.aliases(end).map(p=>p.patchId)),faces=g.faces.filter(f=>state.aliases.has(f)||endFaces.has(f)),routes=polyhedronUnfoldings(g,start.patchId,end.patchId,faces);return{onlyRoutes:routes,consideredRoutes:routes.length};
+   }
+  }
+  // A rounded alias is not exact portal membership. For polygon witnesses let
+  // the certified local-domain/polyline path below handle that ambiguity.
+  if(!(witness&&g.physicalFaceId))return{scope:'global-reference-surface' as const,lowerBoundMeters:Math.max(0,value[0]),upperBoundMeters:value[1],evaluatedBoxes:0,evaluatedRoutes:1};}
  if(!state.domainChecked){state.domainChecked=true;state.domain=paintingStage('polyhedronDomainCertificate',()=>polyhedronLocalDomain(g,start));}
  const domain=state.domain;
  if(domain&&domain.escapeLowerBoundMeters>0&&domain.faces.includes(end.patchId)){
@@ -66,9 +89,17 @@ export function preparedPolyhedronDistance(g:PolyhedronGeometry,a:SurfacePositio
     if(witness)return{onlyRoutes:e.surviving,consideredRoutes:local.length};
     return{scope:'global-reference-surface' as const,lowerBoundMeters:e.lower,upperBoundMeters:e.upper,evaluatedBoxes:0,evaluatedRoutes:local.length,certifiedDomainFaces:domain.faces.length,escapeLowerBoundMeters:domain.escapeLowerBoundMeters};
    }
+   if(g.physicalFaceId&&e.surviving.length){
+    // Near a join, interval portal signs can be ambiguous even though a real
+    // local polyline is extremely short. Ask the ORIGINAL witness solver for
+    // that upper bound before compiling global routes. Only its existing tight
+    // certificate plus the same escape proof can establish global optimality.
+    try{const c=polyhedronRouteCertificate(g,start,end,e.surviving,options);if(c.upperBoundMeters<domain.escapeLowerBoundMeters){if(witness)return{onlyRoutes:e.surviving,consideredRoutes:local.length};return{scope:'global-reference-surface' as const,...c,evaluatedBoxes:0,evaluatedRoutes:local.length,certifiedDomainFaces:domain.faces.length,escapeLowerBoundMeters:domain.escapeLowerBoundMeters};}}
+    catch(error){if(!(error instanceof RangeError))throw error;}
+   }
   }
  }
- let prepared=state.routes.get(end.patchId);if(!prepared){prepared=paintingStage('polyhedronSourcePreparation',()=>polyhedronUnfoldings(g,start.patchId,end.patchId).map(route=>makeRoute(g,start,route)));state.routes.set(end.patchId,prepared);}if(prepared.length>(options.maxBoxes??32768))throw RangeError('Pyramid route work budget exhausted.');
+ let prepared=state.routes.get(end.patchId);if(!prepared){prepared=paintingStage('polyhedronSourcePreparation',()=>polyhedronUnfoldings(g,start.patchId,end.patchId).map(route=>makeRoute(g,start,route)));if(g.physicalFaceId&&state.routes.size>=4)state.routes.delete(state.routes.keys().next().value!);state.routes.set(end.patchId,prepared);}if(prepared.length>(options.maxBoxes??32768))throw RangeError('Pyramid route work budget exhausted.');
  // Retain all possible route bounds for the caller's exact witness selection.
  const {lower,upper,surviving}=enclosure(g,prepared,end);if(!surviving.length)return;
  if(!witness&&Number.isFinite(upper)&&upper-lower<=tolerance)return{scope:'global-reference-surface' as const,lowerBoundMeters:lower,upperBoundMeters:upper,evaluatedBoxes:0,evaluatedRoutes:prepared.length};return{onlyRoutes:surviving,consideredRoutes:prepared.length};

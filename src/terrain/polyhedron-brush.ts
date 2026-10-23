@@ -14,7 +14,15 @@ export function createPolyhedronBrush<T extends PolyhedronTerrain>(){
 function candidates(t:T,input:SurfacePosition,radius:number){const g=t.geometry,center=g.normalize(input),q=g.referencePosition(center),guard=polyhedronArithmeticGuard(g),n=t.subdivisions;if(!Number.isFinite(radius)||radius<=0||radius>=polyhedronBrushPolicy(t).maximum)throw RangeError('Pyramid radius exceeds the supported bounded footprint.');
  return{center,chordLowerBound:(p:SurfacePosition)=>Math.max(0,Math.hypot(...pyramidSub(g.referencePosition(p),q))-guard),*samples(){const unique=new Map<number,{key:ReturnType<T['keyAt']>;position:SurfacePosition}>();
   for(const patchId of g.faces){const f=g.frame(patchId),d=pyramidSub(q,f.origin),planeDistance=Math.max(0,Math.abs(pyramidDot(f.normal,d))-guard);if(planeDistance>radius+guard)continue;const projectedRadius=Math.sqrt(Math.max(0,(radius+guard)**2-planeDistance**2)),uu=pyramidDot(f.u,f.u),uv=pyramidDot(f.u,f.v),vv=pyramidDot(f.v,f.v),det=uu*vv-uv*uv,du=pyramidDot(d,f.u),dv=pyramidDot(d,f.v),u=(du*vv-dv*uv)/det,v=(dv*uu-du*uv)/det,ru=projectedRadius*Math.sqrt(vv/det),rv=projectedRadius*Math.sqrt(uu/det),left=Math.max(0,Math.ceil((u-ru)*n)-1),right=Math.min(n,Math.floor((u+ru)*n)+1),top=Math.max(0,Math.ceil((v-rv)*n)-1),bottom=Math.min(n,Math.floor((v+rv)*n)+1);
-   for(let row=top;row<=bottom;row++)for(let column=left;column<=Math.min(right,g.isTriangle(patchId)?n-row:n);column++){const p={...g.identity,patchId,row,column},key=t.resolve(p) as ReturnType<T['keyAt']>;if(!unique.has(key.index))unique.set(key.index,{key,position:t.positionAt(p)});}
+   for(let row=top;row<=bottom;row++)for(let column=left;column<=Math.min(right,g.isTriangle(patchId)?n-row:n);column++){const p={...g.identity,patchId,row,column};
+    // The accepted chord lower bound already excludes these words before a
+    // surface-distance query. Polygon charts can overlap large lattice boxes;
+    // apply that SAME exclusion before charging the interactive candidate cap.
+    // No chord is returned as a surface distance, and no influential sample is
+    // removed. Legacy shape traversal/statistics retain their accepted order.
+    const position=g.physicalFaceId?t.positionAt(p):undefined;
+    if(position&&Math.max(0,Math.hypot(...pyramidSub(g.referencePosition(position),q))-guard)>=radius)continue;
+    const key=t.resolve(p) as ReturnType<T['keyAt']>;if(!unique.has(key.index))unique.set(key.index,{key,position:position??t.positionAt(p)});}
   }for(const[,value]of[...unique].sort(([a],[b])=>a-b))yield value;
  }};
 }

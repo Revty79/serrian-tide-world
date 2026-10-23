@@ -1,0 +1,2 @@
+import {createTrapezohedronGeometry} from '../surfaces/trapezohedron.ts';
+export function assertInteractiveTrapezohedron(radius:number,n:number,initial=-100){const g=createTrapezohedronGeometry({provider:'physical-pentagonal-trapezohedron',version:1,identity:{worldId:'validation',surfaceId:'validation'},role:'exterior',radiusMeters:radius});if(![128,256].includes(n)||!Number.isFinite(initial)||Math.abs(initial)>g.minimumDimensionMeters/8)throw RangeError('Trapezohedron requires N128/N256 and enough physical clearance for the starting terrain.');}

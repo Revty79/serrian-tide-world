@@ -1,4 +1,7 @@
 import { expect, type Page } from '@playwright/test';
+/** Open retains the old ready image during cooperative preparation. Wait for
+ * actual document replacement before interacting with the new workspace. */
+export async function openConnectedMap(page:Page){const previous=await page.locator('.cylinder-canvas').elementHandle();if(!previous)throw Error('A connected canvas is required before Open.');try{await page.getByRole('button',{name:'Open Map',exact:true}).click();await page.waitForFunction(node=>!node.isConnected,previous,{timeout:60000});}finally{await previous.dispose();}}
 
 /** A short leg can finish while the panel scrolls into view. Inspect the
  * persistent control atomically instead of waiting for a past button label.

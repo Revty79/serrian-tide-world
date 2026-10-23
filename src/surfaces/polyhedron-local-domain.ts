@@ -7,7 +7,7 @@ type Domain={faces:readonly string[];boundary:readonly(readonly[number,number])[
 const domains=new WeakMap<PolyhedronGeometry,Map<number,Domain|undefined>>();
 function star(g:PolyhedronGeometry,vertex:number){
  let cache=domains.get(g);if(!cache){cache=new Map();domains.set(g,cache);}if(cache.has(vertex))return cache.get(vertex);
- const faces=g.faces.filter(f=>g.vertexIds(f).includes(vertex)),selected=new Set(faces),boundary:(readonly[number,number])[]=[];
+ const incident=g.faces.filter(f=>g.vertexIds(f).includes(vertex)),physical=g.physicalFaceId&&new Set(incident.map(f=>g.physicalFaceId!(f))),faces=physical?g.faces.filter(f=>physical.has(g.physicalFaceId!(f))):incident,selected=new Set(faces),boundary:(readonly[number,number])[]=[];
  for(const edge of g.edges){const incident=g.faces.filter(f=>edge.every(v=>g.vertexIds(f).includes(v)));if(incident.length!==2){cache.set(vertex,undefined);return;}
   if(incident.filter(f=>selected.has(f)).length===1)boundary.push(edge);
  }
