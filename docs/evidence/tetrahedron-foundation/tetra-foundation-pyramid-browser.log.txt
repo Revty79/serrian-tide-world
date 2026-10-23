@@ -1,0 +1,21 @@
+
+Running 8 tests using 1 worker
+
+npx.cmd : (node:5228) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:3 char:1
++ npx.cmd playwright test --config playwright.pyramid.config.mjs > .loc ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:5228) War... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\pyramid-pixels.spec.ts:2:25 › Pyramid N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (2.9s)
+  ok 2 [installed-chrome] › tests\pyramid-pixels.spec.ts:2:25 › Pyramid N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (2.9s)
+  ok 3 [installed-chrome] › tests\pyramid-workflow.spec.ts:12:63 › Solid Pyramid N128 auto: sharp live painting, eight joins, four tools, exact replay and v15 reopen (26.0s)
+  ok 4 [installed-chrome] › tests\pyramid-workflow.spec.ts:12:63 › Solid Pyramid N128 canvas: sharp live painting, eight joins, four tools, exact replay and v15 reopen (25.7s)
+  ok 5 [installed-chrome] › tests\pyramid-workflow.spec.ts:12:63 › Solid Pyramid N256 auto: sharp live painting, eight joins, four tools, exact replay and v15 reopen (26.8s)
+  ok 6 [installed-chrome] › tests\pyramid-workflow.spec.ts:12:63 › Solid Pyramid N256 canvas: sharp live painting, eight joins, four tools, exact replay and v15 reopen (27.4s)
+  ok 7 [installed-chrome] › tests\pyramid-workflow.spec.ts:19:39 › Solid Pyramid N256 auto: sustained held Surface-map painting crosses work epochs without release (22.7s)
+  ok 8 [installed-chrome] › tests\pyramid-workflow.spec.ts:19:39 › Solid Pyramid N256 canvas: sustained held Surface-map painting crosses work epochs without release (22.6s)
+
+  8 passed (2.6m)

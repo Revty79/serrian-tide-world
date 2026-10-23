@@ -1,0 +1,34 @@
+import type {SurfaceIdentity} from '../surfaces/contracts.ts';
+import type {PolyhedronGeometry} from '../surfaces/polyhedron-contract.ts';
+import {createIndexedFloat32Authority,type IndexedPatchBlock} from './indexed-float32.ts';
+export const TRIANGULAR_POLYHEDRON_REPRESENTATION='canonical-triangle-polyhedron-lattice' as const;
+export interface TriangularSampleAddress extends SurfaceIdentity{readonly patchId:string;readonly row:number;readonly column:number}
+export interface TriangularSampleKey extends SurfaceIdentity{readonly terrainId:string;readonly representation:typeof TRIANGULAR_POLYHEDRON_REPRESENTATION;readonly representationVersion:1;readonly subdivisions:number;readonly geometrySignature:string;readonly index:number}
+export function triangularPolyhedronSampleCount(g:PolyhedronGeometry,n:number){if(!Number.isInteger(n)||n<4||n>256||!g.faces.every(f=>g.isTriangle(f)))throw RangeError('Triangular polyhedra require N4 through N256 and actual triangular faces.');return g.vertices.length+g.edges.length*(n-1)+g.faces.length*(n-1)*(n-2)/2;}
+/** The accepted indexed authority and vertex/edge/interior ownership, with only
+ * triangular incidence supplied by geometry. No face owns a duplicate edge. */
+export function createTriangularPolyhedronTerrain<G extends PolyhedronGeometry>(options:{terrainId:string;geometry:G;subdivisions:number;initialElevation?:number;initialValues?:Float32Array;elevationLimitMeters?:number}){
+ const g=options.geometry,n=options.subdivisions,count=triangularPolyhedronSampleCount(g,n),identity=g.identity,geometrySignature=JSON.stringify(g.metadata),elevationLimit=options.elevationLimitMeters??g.minimumDimensionMeters/8;
+ if(typeof options.terrainId!=='string'||!options.terrainId.trim()||options.terrainId.length>128||!Number.isFinite(elevationLimit)||elevationLimit<=0)throw RangeError('Valid terrain identity and positive physical elevation bound required.');
+ const authority=createIndexedFloat32Authority({count,initialElevation:options.initialElevation??-100,initialValues:options.initialValues,validateElevation:v=>{if(Math.abs(v)>elevationLimit)throw RangeError('Elevation exceeds polyhedron clearance.');}});
+ const metadata=Object.freeze({terrainId:options.terrainId,identity,geometry:g.metadata as G['metadata'],representation:Object.freeze({provider:TRIANGULAR_POLYHEDRON_REPRESENTATION,version:1 as const,subdivisions:n,ownership:'vertices-edges-triangle-interiors' as const}),elevationUnits:'meters' as const,seaLevel:0,elevationLimitMeters:elevationLimit});
+ const boundaryCount=g.vertices.length+g.edges.length*(n-1),triangleCount=(n-1)*(n-2)/2;
+ const keyAt=(index:number):TriangularSampleKey=>{if(!Number.isSafeInteger(index)||index<0||index>=count)throw RangeError('Invalid polyhedron canonical index.');return{...identity,terrainId:metadata.terrainId,representation:TRIANGULAR_POLYHEDRON_REPRESENTATION,representationVersion:1,subdivisions:n,geometrySignature,index};};
+ const checkedKey=(key:TriangularSampleKey)=>{const expected=keyAt(key.index);for(const k of Object.keys(expected) as (keyof TriangularSampleKey)[])if(key[k]!==expected[k])throw RangeError('Foreign polyhedron sample key.');return key.index;};
+ const checkedAddress=(p:TriangularSampleAddress)=>{if(p.worldId!==identity.worldId||p.surfaceId!==identity.surfaceId||!g.faces.includes(p.patchId)||!Number.isInteger(p.row)||!Number.isInteger(p.column)||p.row<0||p.column<0||p.row+p.column>n)throw RangeError('Invalid polyhedron triangle sample address.');return p;};
+ const resolve=(input:TriangularSampleAddress)=>{const p=checkedAddress(input),ids=g.vertexIds(p.patchId),weights=[n-p.column-p.row,p.column,p.row],nonzero=weights.flatMap((w,i)=>w?[{vertex:ids[i]!,weight:w}]:[]);
+  if(nonzero.length===1)return keyAt(nonzero[0]!.vertex);
+  if(nonzero.length===2){const pair=nonzero.map(x=>x.vertex).sort((a,b)=>a-b),edge=g.edges.findIndex(e=>e[0]===pair[0]&&e[1]===pair[1]);if(edge<0)throw RangeError('Missing physical polyhedron edge.');const t=nonzero.find(x=>x.vertex===pair[1])!.weight;return keyAt(g.vertices.length+edge*(n-1)+t-1);}
+  const rank=(p.row-1)*(n-1)-(p.row-1)*p.row/2+p.column-1;return keyAt(boundaryCount+g.faces.indexOf(p.patchId)*triangleCount+rank);
+ };
+ const owner=(key:TriangularSampleKey):TriangularSampleAddress=>{const index=checkedKey(key);if(index<boundaryCount){const weights=index<g.vertices.length?new Map([[index,1]]):(()=>{const edge=g.edges[Math.floor((index-g.vertices.length)/(n-1))]!,t=((index-g.vertices.length)%(n-1)+1)/n;return new Map([[edge[0],1-t],[edge[1],t]]);})();for(const face of g.faces){const p=g.fromWeights(face,weights);if(p)return{...identity,patchId:face,row:Math.round(p.v*n),column:Math.round(p.u*n)};}throw Error('Missing boundary owner.');}
+  const local=index-boundaryCount,face=g.faces[Math.floor(local/triangleCount)]!;let offset=local%triangleCount,row=1;while(offset>=n-row-1){offset-=n-row-1;row++;}return{...identity,patchId:face,row,column:offset+1};
+ };
+ const positionAt=(input:TriangularSampleAddress)=>{const p=checkedAddress(input);return g.normalize({...identity,patchId:p.patchId,u:p.column/n,v:p.column+p.row===n?1-p.column/n:p.row/n});};
+ const aliases=(key:TriangularSampleKey)=>g.aliases(positionAt(owner(key))).map(p=>({...identity,patchId:p.patchId,row:Math.round(p.v*n),column:Math.round(p.u*n)}));
+ const neighbors=(key:TriangularSampleKey)=>{const found=new Map<number,TriangularSampleKey>();for(const p of aliases(key))for(const[dc,dr]of[[1,0],[-1,0],[0,1],[0,-1],[1,-1],[-1,1]]){const column=p.column+dc!,row=p.row+dr!;if(column>=0&&row>=0&&column+row<=n){const k=resolve({...p,column,row});if(k.index!==key.index)found.set(k.index,k);}}return[...found.values()].sort((a,b)=>a.index-b.index);};
+ return Object.freeze({geometry:g,metadata,subdivisions:n,sampleCount:count,boundarySampleCount:boundaryCount,elevationByteLength:authority.byteLength,minElevation:-elevationLimit,maxElevation:elevationLimit,keyAt,resolve,owner,positionAt,aliases,neighbors,
+  referencePositionAt:(key:TriangularSampleKey)=>g.referencePosition(positionAt(owner(key))),get revision(){return authority.revision;},read:(key:TriangularSampleKey)=>authority.read(checkedKey(key)),write:(key:TriangularSampleKey,value:number)=>authority.write(checkedKey(key),value),commitPreparedPatch:(key:TriangularSampleKey,revision:number,blocks:readonly IndexedPatchBlock[])=>{checkedKey(key);return authority.commitPreparedPatch(revision,blocks);},copyElevations:authority.copyElevations,snapshot:()=>({metadata,revision:authority.revision,elevations:authority.copyElevations()}),*samples(){for(let i=0;i<count;i++)yield keyAt(i);},
+ });
+}
+export type TriangularPolyhedronTerrain=ReturnType<typeof createTriangularPolyhedronTerrain>;

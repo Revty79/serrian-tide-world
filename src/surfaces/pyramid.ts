@@ -1,3 +1,5 @@
+import {freezePolyhedronArrays} from './polyhedron-contract.ts';
+import * as I from './pyramid-interval.ts';
 import {assertIdentity,type SurfaceIdentity,type SurfacePosition} from './contracts.ts';
 export type PyramidVector=readonly[number,number,number];
 export type PyramidPoint=readonly[number,number];
@@ -22,11 +24,17 @@ export function createPyramidGeometry(input:PyramidConfiguration){
  const referencePosition=(p:SurfacePosition):PyramidVector=>{const q=normalize(p),a=weights(q),ids=PYRAMID_VERTICES[q.patchId];return[0,1,2].map(k=>a.reduce((sum,t,i)=>sum+t*vertices[ids[i]!]![k]!,0)) as unknown as PyramidVector;};
  const faceFrames=Object.fromEntries(PYRAMID_FACES.map(face=>{const ids=PYRAMID_VERTICES[face],origin=vertices[ids[0]!]!,u=pyramidSub(vertices[ids[1]!]!,origin),v=pyramidSub(vertices[ids[face==='base'?3:2]!]!,origin),normal=pyramidUnit(pyramidCross(u,v)),e1=pyramidUnit(u),e2=pyramidCross(normal,e1);return[face,Object.freeze({origin,u,v,normal,e1,e2,chartVertices:ids.map(id=>{const d=pyramidSub(vertices[id]!,origin);return[pyramidDot(d,e1),pyramidDot(d,e2)] as PyramidPoint;})})];})) as unknown as Readonly<Record<PyramidFace,{readonly origin:PyramidVector;readonly u:PyramidVector;readonly v:PyramidVector;readonly normal:PyramidVector;readonly e1:PyramidVector;readonly e2:PyramidVector;readonly chartVertices:readonly PyramidPoint[]}>>;
  for(const f of Object.values(faceFrames)){for(const vector of[f.u,f.v,f.normal,f.e1,f.e2,...f.chartVertices])Object.freeze(vector);Object.freeze(f.chartVertices);}Object.freeze(faceFrames);
- const fromWeights=(face:PyramidFace,global:ReadonlyMap<number,number>):PyramidPosition|undefined=>{const ids=PYRAMID_VERTICES[face];if([...global].some(([id,v])=>v!==0&&!ids.includes(id)))return;const a=ids.map(id=>global.get(id)??0);return normalize({...identity,patchId:face,u:face==='base'?a[1]!+a[2]!:a[1]!,v:face==='base'?a[2]!+a[3]!:a[2]!});};
+ const fromWeights=(inputFace:string,global:ReadonlyMap<number,number>):PyramidPosition|undefined=>{const face=checkedFace(inputFace),ids=PYRAMID_VERTICES[face];if([...global].some(([id,v])=>v!==0&&!ids.includes(id)))return;const a=ids.map(id=>global.get(id)??0);return normalize({...identity,patchId:face,u:face==='base'?a[1]!+a[2]!:a[1]!,v:face==='base'?a[2]!+a[3]!:a[2]!});};
  const aliases=(input:SurfacePosition)=>{const p=normalize(input),a=weights(p);if(a.filter(x=>x!==0).length>2)return[p];const global=new Map(PYRAMID_VERTICES[p.patchId].map((id,i)=>[id,a[i]!]));return PYRAMID_FACES.flatMap(face=>{const q=fromWeights(face,global);return q?[q]:[];});};
  const chartPoint=(p:SurfacePosition):PyramidPoint=>{const q=normalize(p),f=faceFrames[q.patchId];return[q.u*pyramidDot(f.u,f.e1)+q.v*pyramidDot(f.v,f.e1),q.v*pyramidDot(f.v,f.e2)];};
  const positionFromChart=(face:PyramidFace,p:PyramidPoint):PyramidPosition=>{const f=faceFrames[face],v=p[1]/pyramidDot(f.v,f.e2),u=(p[0]-v*pyramidDot(f.v,f.e1))/pyramidDot(f.u,f.e1);return normalize({...identity,patchId:face,u,v});};
- return Object.freeze({metadata,identity,vertices,faceFrames,slantHeightMeters:s,scaleMeters:Math.max(w,h),surfaceAreaMeters2:w*w+2*w*s,normalize,weights,aliases,referencePosition,chartPoint,positionFromChart,fromWeights,
+ const checkedFace=(face:string)=>{if(!PYRAMID_FACES.includes(face as PyramidFace))throw RangeError('Unknown pyramid face.');return face as PyramidFace;};
+ const zero=I.exact(0),iw=I.exact(w),half=I.exact(.5),iz=I.exact(z),slant=I.root(I.add(I.square(I.exact(h)),I.square(I.multiply(iw,half))));
+ return Object.freeze({metadata,identity,vertices,faceFrames,faces:PYRAMID_FACES,edges:PYRAMID_EDGES,
+  centerMeters:Object.freeze([0,0,z+h/2] as PyramidVector),inspectionEyeMeters:Object.freeze([0,0,z+h/4] as PyramidVector),minimumDimensionMeters:Math.min(w,h),maximumLatticeEdgeMeters:Math.max(w,s),
+  frame:(face:string)=>faceFrames[checkedFace(face)],vertexIds:(face:string)=>PYRAMID_VERTICES[checkedFace(face)],isTriangle:(face:string)=>checkedFace(face)!=='base',
+  chartVertexBounds:(face:string):readonly I.IntervalPoint[]=>freezePolyhedronArrays(checkedFace(face)==='base'?[[zero,zero],[iw,zero],[iw,iw],[zero,iw]]:[[zero,zero],[iw,zero],[I.multiply(iw,half),slant]]),
+  physicalVertexBounds:(index:number):readonly[I.Interval,I.Interval,I.Interval]=>{if(!Number.isInteger(index)||index<0||index>4)throw RangeError('Unknown pyramid vertex.');const iw2=I.multiply(iw,half);return freezePolyhedronArrays(index===4?[zero,zero,I.add(iz,I.exact(h))]:[index===0||index===3?I.neg(iw2):iw2,index<2?I.neg(iw2):iw2,iz]);},slantHeightMeters:s,scaleMeters:Math.max(w,h),surfaceAreaMeters2:w*w+2*w*s,normalize,weights,aliases,referencePosition,chartPoint,positionFromChart,fromWeights,
   canonicalPosition:(p:SurfacePosition)=>aliases(p)[0]!,normal:(p:SurfacePosition):PyramidVector=>faceFrames[normalize(p).patchId].normal.map(x=>x*(metadata.role==='interior'?-1:1)) as unknown as PyramidVector,
   faceMetric:(p:SurfacePosition)=>{const f=faceFrames[normalize(p).patchId];return{uu:pyramidDot(f.u,f.u),uv:pyramidDot(f.u,f.v),vv:pyramidDot(f.v,f.v),coordinateUnits:'unit-barycentric' as const};},
  });
