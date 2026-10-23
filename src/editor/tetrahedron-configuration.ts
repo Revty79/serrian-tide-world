@@ -1,0 +1,1 @@
+export function assertInteractiveTetrahedron(edge:number,n:number,initial=-100){const height=edge*Math.sqrt(2/3);if(!Number.isFinite(edge)||edge<1||edge>1e9||![128,256].includes(n)||!Number.isFinite(initial)||Math.abs(initial)>height/8)throw RangeError('A tetrahedron requires a supported edge length, N128/N256 detail and enough physical clearance for its starting terrain.');}

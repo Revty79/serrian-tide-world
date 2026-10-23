@@ -1,0 +1,17 @@
+
+Running 4 tests using 1 worker
+
+npx.cmd : (node:12188) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:15 char:1
++ npx.cmd playwright test --config playwright.tetrahedron.config.mjs -- ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:12188) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\tetrahedron-pixels.spec.ts:2:64 › Tetrahedron outside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (3.2s)
+  ok 2 [installed-chrome] › tests\tetrahedron-pixels.spec.ts:2:64 › Tetrahedron base N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (2.0s)
+  ok 3 [installed-chrome] › tests\tetrahedron-pixels.spec.ts:2:64 › Tetrahedron outside N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (3.1s)
+  ok 4 [installed-chrome] › tests\tetrahedron-pixels.spec.ts:2:64 › Tetrahedron base N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (2.4s)
+
+  4 passed (11.9s)

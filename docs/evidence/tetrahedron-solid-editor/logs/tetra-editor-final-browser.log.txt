@@ -1,0 +1,25 @@
+
+Running 12 tests using 1 worker
+
+npx.cmd : (node:18052) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:7 char:1
++ npx.cmd playwright test --config playwright.tetrahedron.config.mjs >  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:18052) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [installed-chrome] › tests\tetrahedron-pixels.spec.ts:2:64 › Tetrahedron outside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (3.3s)
+  ok  2 [installed-chrome] › tests\tetrahedron-pixels.spec.ts:2:64 › Tetrahedron base N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (2.7s)
+  ok  3 [installed-chrome] › tests\tetrahedron-pixels.spec.ts:2:64 › Tetrahedron outside N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (3.8s)
+  ok  4 [installed-chrome] › tests\tetrahedron-pixels.spec.ts:2:64 › Tetrahedron base N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (3.3s)
+  ok  5 [installed-chrome] › tests\tetrahedron-workflow.spec.ts:13:63 › Solid Tetrahedron N128 auto: sharp live painting, six joins, four tools, exact replay and v17 reopen (24.8s)
+  ok  6 [installed-chrome] › tests\tetrahedron-workflow.spec.ts:13:63 › Solid Tetrahedron N128 canvas: sharp live painting, six joins, four tools, exact replay and v17 reopen (23.3s)
+  ok  7 [installed-chrome] › tests\tetrahedron-workflow.spec.ts:13:63 › Solid Tetrahedron N256 auto: sharp live painting, six joins, four tools, exact replay and v17 reopen (24.7s)
+  ok  8 [installed-chrome] › tests\tetrahedron-workflow.spec.ts:13:63 › Solid Tetrahedron N256 canvas: sharp live painting, six joins, four tools, exact replay and v17 reopen (24.6s)
+  ok  9 [installed-chrome] › tests\tetrahedron-workflow.spec.ts:20:73 › Solid Tetrahedron N256 auto map: sustained held painting crosses work epochs without release (22.4s)
+  ok 10 [installed-chrome] › tests\tetrahedron-workflow.spec.ts:20:73 › Solid Tetrahedron N256 auto vertex: sustained held painting crosses work epochs without release (23.3s)
+  ok 11 [installed-chrome] › tests\tetrahedron-workflow.spec.ts:20:73 › Solid Tetrahedron N256 canvas map: sustained held painting crosses work epochs without release (22.9s)
+  ok 12 [installed-chrome] › tests\tetrahedron-workflow.spec.ts:20:73 › Solid Tetrahedron N256 canvas vertex: sustained held painting crosses work epochs without release (22.9s)
+
+  12 passed (3.4m)

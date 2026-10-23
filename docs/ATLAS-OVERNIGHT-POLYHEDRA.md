@@ -13,6 +13,9 @@ Run heavy verification serially at lower priority on the development PC.
 
 ## Solid Tetrahedron numerical checkpoint
 
+Published as `a1b532ea5f5244a62d39b21a6cbff5463d401340` with clean-tree and
+GitHub `main` parity verified before operational work began.
+
 The model is a regular tetrahedron controlled by physical edge length, with four
 equilateral triangles, four shared vertices and six physical edges. The base is
 an actual triangle. The centroid is the physical origin; height is
@@ -74,3 +77,25 @@ Hollow Tetrahedron and Octahedron work have not started. Physical holes/tunnels
 are separate from nested boundary geometry; no connection between independent
 banks is implied. All overnight work stops for independent technical review and
 owner acceptance at the authorized queue boundary.
+
+## Solid Tetrahedron operational checkpoint
+
+The [operational review](TETRAHEDRON-SOLID-EDITOR.md) and
+[source-fingerprinted receipt](evidence/tetrahedron-solid-editor/receipt.json)
+record the normal selector/editor, one inherited sharp renderer and painting
+engine, genuine triangular base/net, six continuous physical joins, workers,
+exact history and strict format 17. The frozen runtime passes all 1,439 units,
+build/TypeScript, twelve tetrahedron workflow/pixel cases, two touch/pen cases,
+23 existing Pyramid cases and seven focused earlier-family compatibility cases.
+Four additional output comparisons confirm opaque interior coverage after that
+read-only assertion was added to the new fixture.
+
+Twenty-second map and three-face vertex gestures remain one history operation.
+Vertex p95 input-to-visible is about 49 ms on both backends with the unrelated
+base unchanged. Fixed ordinary strokes, complete saved geography and continued
+reopened strokes have identical words between WebGL2 and Canvas at both details.
+Actual RX 6600 pixels and explicit Canvas output remain separate from emulated
+touch/pen evidence and from owner acceptance.
+
+After this verified operational checkpoint is published, proceed to Hollow
+Tetrahedron. Octahedron remains gated on completion of both tetrahedron variants.

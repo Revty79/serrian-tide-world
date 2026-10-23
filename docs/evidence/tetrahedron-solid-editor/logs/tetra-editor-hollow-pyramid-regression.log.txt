@@ -1,0 +1,28 @@
+
+Running 15 tests using 1 worker
+
+npx.cmd : (node:27748) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:11 char:1
++ npx.cmd playwright test --config playwright.hollow-pyramid.config.mjs ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:27748) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [installed-chrome] › tests\hollow-pyramid-context.spec.ts:2:1 › Hollow Pyramid N256: returning to painted banks, graphics loss and restoration retain current sharp terrain epochs (6.9s)
+  ok  2 [installed-chrome] › tests\hollow-pyramid-navigation.spec.ts:2:39 › Hollow Pyramid N256 auto: cavity drag reaches actual sharp pixels responsively without terrain/history writes (7.2s)
+  ok  3 [installed-chrome] › tests\hollow-pyramid-navigation.spec.ts:2:39 › Hollow Pyramid N256 canvas: cavity drag reaches actual sharp pixels responsively without terrain/history writes (10.7s)
+  ok  4 [installed-chrome] › tests\hollow-pyramid-pixels.spec.ts:2:75 › Hollow Pyramid outside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (2.9s)
+  ok  5 [installed-chrome] › tests\hollow-pyramid-pixels.spec.ts:2:75 › Hollow Pyramid inside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (3.3s)
+  ok  6 [installed-chrome] › tests\hollow-pyramid-pixels.spec.ts:2:75 › Hollow Pyramid cavity N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (10.8s)
+  ok  7 [installed-chrome] › tests\hollow-pyramid-pixels.spec.ts:2:75 › Hollow Pyramid outside N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (3.6s)
+  ok  8 [installed-chrome] › tests\hollow-pyramid-pixels.spec.ts:2:75 › Hollow Pyramid inside N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (3.7s)
+  ok  9 [installed-chrome] › tests\hollow-pyramid-pixels.spec.ts:2:75 › Hollow Pyramid cavity N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (11.5s)
+  ok 10 [installed-chrome] › tests\hollow-pyramid-workflow.spec.ts:11:63 › Hollow Pyramid N128 auto: independent banks, all tools and eight joins, sharp inspection, exact replay and v16 reopen (47.7s)
+  ok 11 [installed-chrome] › tests\hollow-pyramid-workflow.spec.ts:11:63 › Hollow Pyramid N128 canvas: independent banks, all tools and eight joins, sharp inspection, exact replay and v16 reopen (48.0s)
+  ok 12 [installed-chrome] › tests\hollow-pyramid-workflow.spec.ts:11:63 › Hollow Pyramid N256 auto: independent banks, all tools and eight joins, sharp inspection, exact replay and v16 reopen (50.8s)
+  ok 13 [installed-chrome] › tests\hollow-pyramid-workflow.spec.ts:11:63 › Hollow Pyramid N256 canvas: independent banks, all tools and eight joins, sharp inspection, exact replay and v16 reopen (51.1s)
+  ok 14 [installed-chrome] › tests\hollow-pyramid-workflow.spec.ts:21:39 › Hollow Pyramid N256 auto: each bank retains a 20-second held map gesture across work epochs (44.7s)
+  ok 15 [installed-chrome] › tests\hollow-pyramid-workflow.spec.ts:21:39 › Hollow Pyramid N256 canvas: each bank retains a 20-second held map gesture across work epochs (45.1s)
+
+  15 passed (5.8m)

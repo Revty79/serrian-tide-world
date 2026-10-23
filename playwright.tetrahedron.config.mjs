@@ -1,0 +1,2 @@
+import base from './playwright.hollow-worlds.config.mjs';
+export default{...base,testMatch:['tetrahedron-workflow.spec.ts','tetrahedron-pixels.spec.ts'],timeout:180000,use:{...base.use,baseURL:'http://127.0.0.1:5265',channel:'chrome'},projects:[{name:'installed-chrome',use:{viewport:{width:1440,height:950},deviceScaleFactor:1}}],webServer:{...base.webServer,command:'npm run dev -- --port 5265 --strictPort',url:'http://127.0.0.1:5265'},reporter:[['list'],['json',{outputFile:process.env.TETRAHEDRON_REPORT??'.local/tetrahedron-browser.json'}]]};
