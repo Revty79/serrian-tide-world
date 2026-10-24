@@ -1,4 +1,4 @@
-import type {FloatingIslandTerrain} from '../terrain/floating-island.ts';
+import type {PhysicalPieceTerrain as FloatingIslandTerrain} from '../terrain/physical-piece.ts';
 import {beginFloatingIslandStroke} from '../terrain/floating-island-brush.ts';
 import {PolyhedronDisplayCache} from '../rendering/polyhedron-field.ts';
 import {floatingIslandIndexVisible} from '../rendering/floating-island-view.ts';

@@ -1,4 +1,4 @@
-import {createFloatingIslandTerrain,type FloatingIslandTerrain} from '../terrain/floating-island.ts';
+import {createPhysicalPieceTerrain as createFloatingIslandTerrain,type PhysicalPieceTerrain as FloatingIslandTerrain} from '../terrain/physical-piece.ts';
 import {TRIANGULAR_POLYHEDRON_REPRESENTATION} from '../terrain/triangular-polyhedron.ts';
 import {beginFloatingIslandStroke,prepareFloatingIslandDab} from '../terrain/floating-island-brush.ts';
 import {createConnectedWorkRuntime} from './connected-work-runtime.ts';

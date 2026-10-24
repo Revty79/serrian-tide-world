@@ -1,4 +1,4 @@
-import type {FloatingIslandTerrain} from '../terrain/floating-island.ts';
+import type {PhysicalPieceTerrain as FloatingIslandTerrain} from '../terrain/physical-piece.ts';
 import {prepareFloatingIslandSession} from './floating-island-session.ts';
 import type {PersistenceWork} from '../persistence/cooperative-work.ts';
 import {islandPlacement,validateIslandArrangement,type IslandDescriptor,type IslandPlacement} from './floating-islands-placement.ts';
@@ -17,6 +17,7 @@ export class FloatingIslandsDocument{
  readonly worldId:string;name:string;hasSaved:boolean;islands:readonly IslandComponent[];selectedIsland:string;controls:CylinderControls;error='';changed=()=>{};
  private sessions=new Map<string,Prepared>();private past:Arrangement[]=[];private future:Arrangement[]=[];private busy=false;private hostLocked=false;private closed=false;private savedStamp:string;
  constructor(worldId:string,islands:readonly IslandComponent[],name:string,saved:boolean,selected:string,first:Prepared,controls?:CylinderControls){this.worldId=worldId;this.islands=Object.freeze(islands.map(frozenComponent));this.name=name;this.hasSaved=saved;this.selectedIsland=selected;this.sessions.set(selected,first);const p=floatingIslandBrushPolicy(first.terrain);this.controls=controls??{...defaultCylinderControls(first.terrain.geometry.scaleMeters),radius:String(p.defaultRadius)};this.savedStamp=this.stamp();}
+ get family(){return this.islands[0]!.terrain.geometry.metadata.provider==='physical-tetrahedral-fragment'?'fragmented' as const:'floating-islands' as const;}
  get current(){return this.islands.find(c=>c.id===this.selectedIsland)!;}
  get selectedSession(){const p=this.sessions.get(this.selectedIsland);if(!p)throw Error('Selected island display is not prepared.');return p;}
  session(id:string){return this.sessions.get(id);}
