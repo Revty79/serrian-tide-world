@@ -1,0 +1,546 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "-c",
+      "playwright.torus.config.mjs",
+      "torus-pixels",
+      "--grep",
+      "actual matched"
+    ],
+    "configFile": "D:\\serrian-tide-world\\playwright.torus.config.mjs",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-atlas-hollow-worlds/workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "installed-chrome",
+        "name": "installed-chrome",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "torus-input.spec.ts",
+          "torus-workflow.spec.ts",
+          "torus-pixels.spec.ts",
+          "torus-navigation.spec.ts",
+          "torus-recovery.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "installed-chrome",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "torus-input.spec.ts",
+          "torus-workflow.spec.ts",
+          "torus-pixels.spec.ts",
+          "torus-navigation.spec.ts",
+          "torus-recovery.spec.ts"
+        ],
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5276",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "channel": "chrome",
+          "actionTimeout": 15000,
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "installed-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/torus-final-pixels-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "torus-pixels.spec.ts",
+      "file": "torus-pixels.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Torus oblique N128: actual matched GPU/Canvas pixels and independent physical rays",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4996,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T03:52:59.335Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87e4fe267aafdabc3fb3-8147185bf31e71005b84",
+          "file": "torus-pixels.spec.ts",
+          "line": 2,
+          "column": 93
+        },
+        {
+          "title": "Torus top N128: actual matched GPU/Canvas pixels and independent physical rays",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2887,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T03:53:04.705Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87e4fe267aafdabc3fb3-6653a27285f5c61bfbee",
+          "file": "torus-pixels.spec.ts",
+          "line": 2,
+          "column": 93
+        },
+        {
+          "title": "Torus bottom N128: actual matched GPU/Canvas pixels and independent physical rays",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2859,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T03:53:07.604Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87e4fe267aafdabc3fb3-3503089fd7ec23f341ec",
+          "file": "torus-pixels.spec.ts",
+          "line": 2,
+          "column": 93
+        },
+        {
+          "title": "Torus inner N128: actual matched GPU/Canvas pixels and independent physical rays",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2870,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T03:53:10.475Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87e4fe267aafdabc3fb3-028da0bbc5ecad4d33da",
+          "file": "torus-pixels.spec.ts",
+          "line": 2,
+          "column": 93
+        },
+        {
+          "title": "Torus map N128: actual matched GPU/Canvas pixels and independent physical rays",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1864,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T03:53:13.361Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87e4fe267aafdabc3fb3-611ff448089e1ea8e41a",
+          "file": "torus-pixels.spec.ts",
+          "line": 2,
+          "column": 93
+        },
+        {
+          "title": "Torus zoom N128: actual matched GPU/Canvas pixels and independent physical rays",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5724,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T03:53:15.239Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87e4fe267aafdabc3fb3-47d53a949c9e02ff4d3a",
+          "file": "torus-pixels.spec.ts",
+          "line": 2,
+          "column": 93
+        },
+        {
+          "title": "Torus oblique N256: actual matched GPU/Canvas pixels and independent physical rays",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2883,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T03:53:20.973Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87e4fe267aafdabc3fb3-4dc8ba85b1c90ea9c5c6",
+          "file": "torus-pixels.spec.ts",
+          "line": 2,
+          "column": 93
+        },
+        {
+          "title": "Torus top N256: actual matched GPU/Canvas pixels and independent physical rays",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2874,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T03:53:23.867Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87e4fe267aafdabc3fb3-cde9b16458c42db6c2b3",
+          "file": "torus-pixels.spec.ts",
+          "line": 2,
+          "column": 93
+        },
+        {
+          "title": "Torus bottom N256: actual matched GPU/Canvas pixels and independent physical rays",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2871,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T03:53:26.752Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87e4fe267aafdabc3fb3-f522dc8462f35937affd",
+          "file": "torus-pixels.spec.ts",
+          "line": 2,
+          "column": 93
+        },
+        {
+          "title": "Torus inner N256: actual matched GPU/Canvas pixels and independent physical rays",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2876,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T03:53:29.636Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87e4fe267aafdabc3fb3-f17f8e5789c791ccb74e",
+          "file": "torus-pixels.spec.ts",
+          "line": 2,
+          "column": 93
+        },
+        {
+          "title": "Torus map N256: actual matched GPU/Canvas pixels and independent physical rays",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1913,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T03:53:32.527Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87e4fe267aafdabc3fb3-94758cee4a7d25ffbb36",
+          "file": "torus-pixels.spec.ts",
+          "line": 2,
+          "column": 93
+        },
+        {
+          "title": "Torus zoom N256: actual matched GPU/Canvas pixels and independent physical rays",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5474,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T03:53:34.453Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "87e4fe267aafdabc3fb3-90055b197812696799ba",
+          "file": "torus-pixels.spec.ts",
+          "line": 2,
+          "column": 93
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-24T03:52:58.689Z",
+    "duration": 41395.578,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

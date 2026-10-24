@@ -4,6 +4,10 @@ import {torusDelta,type TorusGeometry} from './torus.ts';
 import type {SurfacePosition} from './contracts.ts';
 import type {Vec3} from './cube-sphere.ts';
 import type {ConnectedPathOptions,ConnectedPhysicalPath} from '../terrain/connected-stroke.ts';
+/** Subdivide a known continuous pointer trace before admission to the shared
+ * local-jump guard. The bound is the actual angular curve's speed upper bound;
+ * its pieces retain that SAME trace and leave dab spacing/history unchanged. */
+export function torusPointerInputs(g:TorusGeometry,first:SurfacePosition,last:SurfacePosition,localLimitMeters:number){const a=g.normalize(first),b=g.normalize(last),u=torusDelta(b.u-a.u),v=torusDelta(b.v-a.v),upper=Math.hypot((g.metadata.majorRadiusMeters+g.metadata.minorRadiusMeters)*u,g.metadata.minorRadiusMeters*v),count=Math.max(1,Math.ceil(upper/(localLimitMeters*.5)));if(!Number.isFinite(localLimitMeters)||localLimitMeters<=0||count>256)throw RangeError('Torus continuous input exceeds the bounded admission envelope.');return Array.from({length:count},(_,i)=>i+1===count?b:g.normalize({...a,u:a.u+u*(i+1)/count,v:a.v+v*(i+1)/count}));}
 /** A real surface curve joining consecutive pointer locations, with its actual
  * metric arc length. Pointer interpolation need not be a shortest geodesic;
  * brush influence separately uses the certified shortest-surface distance. */

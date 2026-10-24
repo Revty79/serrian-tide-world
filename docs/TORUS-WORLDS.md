@@ -169,3 +169,7 @@ or when shared behavior changes. Keep historical receipts immutable; unchanged
 renderer source can retain its earlier full pixel qualification while current
 creator smoke tests check shared integration. This avoids repeating every old
 shape's complete acceptance suite after each local adapter change.
+
+The [final review](TORUS-FINAL-REVIEW.md) records the compressed mobile-input
+correction, stricter native-pixel silhouette proof, recovery/input checks and
+remaining owner/device acceptance items.
