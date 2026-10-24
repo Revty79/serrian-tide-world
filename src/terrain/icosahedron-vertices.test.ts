@@ -1,4 +1,4 @@
-import {test} from 'node:test';import assert from 'node:assert/strict';
+﻿import {test} from 'node:test';import assert from 'node:assert/strict';
 import {createIcosahedronTerrain} from './icosahedron.ts';import {prepareIcosahedronDab,beginIcosahedronStroke,icosahedronBrushPolicy} from './icosahedron-brush.ts';import {createConnectedHistory} from '../editor/connected-history.ts';
 const identity={worldId:'vertices',surfaceId:'outside'},geometry={identity,provider:'physical-regular-icosahedron' as const,version:1 as const,role:'exterior' as const,edgeLengthMeters:1e6};
 test('all twelve five-face vertices accept all four tools with one owner and rotationally equal affected counts',()=>{

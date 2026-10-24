@@ -95,3 +95,61 @@ B publication checks also passed 26 targeted numerical/shared tests,
 TypeScript and production build, plus four current Floating Islands regressions:
 N256 GPU/Canvas independent editing and exact v32 reopening, N256 physical
 pixel reference, and fresh-catalog legacy v31 upgrade with corrupt-Open retention.
+
+## Checkpoint C: complete component authoring and final qualification
+
+The finished creator controls support selection, World Fit/Focus, rotation,
+pan/zoom, individual 3D translation, heading/tilt/roll, uniform arrangement scale
+from **0.5 to 2**, and removal. Initial generation creates four fragments;
+one through four can remain after removal. Removed pieces return through the
+bounded arrangement history with the same objects, identities and exact terrain.
+Membership/pose history and per-fragment terrain history remain separate.
+The initial camera now exposes the physical thickness and real break surfaces.
+
+Arrangement scale is a uniform transform of the reference body and its geography.
+Sculpting distances and elevations retain their saved **local reference meters**;
+they are not resampled or rewritten. No in-place geometry replacement, detail
+conversion, runtime cutting, new arbitrary fragments, general fracture simulator,
+joining, displacement meshing, holes, tunnels or links are included. This first
+provider supports a fractured **regular tetrahedral parent**, not a fractured
+sphere or every possible parent solid. Eight seed patterns are supported.
+
+Final Chrome qualification added 22 successful fragment checks: all six physical
+edges and all four shared canonical vertices on both backends; placement,
+orientation, scale, removal/replay, exact persistence and continued sculpting;
+repeated selection; narrow-gap painting and widely separated Fit/Focus; fitted
+and World graphics loss with exact geography through Canvas and hardware
+WebGL2 restoration; atomic corrupt-Open rejection and saved-identity guards;
+fitted color/coast/silhouette comparisons at both details; byte-exact incremental
+versus freshly rebuilt display output; independent transformed-world pixel/pick
+checks; trusted touch/pen and two-finger navigation; and a final creator smoke
+using nondefault dimensions and the maximum accepted seed.
+
+| Additional final measurement | WebGL2 | Canvas |
+| --- | ---: | ---: |
+| Six physical edges, maximum p95 input to changed pixels | 25.4 ms | 23.6 ms |
+| Four-fragment N256 World navigation p95 input to pixels | 15.7 ms | 39.6 ms |
+| World presentation p95 | 2.3 ms | 35.9 ms |
+| Repeated prepared selection p95, browser automation to ready UI | 74 ms | 120 ms |
+
+The initial vertex fixture clicked exactly on an unfolded tip and rounded into
+empty space. Its corrected version starts two CSS pixels inside that same
+surface and directly checks the shared vertex word, then exact Undo/Redo.
+Both original failed attempts and successful corrected checks are retained in
+the evidence; no production painting code or quality threshold was changed.
+
+Fourteen additional existing-family browser regressions passed: Pyramid,
+Tetrahedron, Octahedron, Decahedron, Dodecahedron and Icosahedron painting,
+history and Save/Open on both backends, plus Hollow Icosahedron N128/N256 cavity
+pixel comparisons. Together these are **36 successful final-checkpoint browser
+checks**. The final 26 numerical/shared checks, TypeScript and production build
+also passed. The normal build retains its existing large-chunk advisory.
+Historical A/B source and artifact hashes were independently checked against
+published Git objects, with zero mismatches; C has its own frozen receipt in
+`evidence/fragmented-complete/receipt.json`.
+
+Touch evidence is Pixel 7 browser emulation with trusted CDP touch/pen input.
+Physical touch/pen devices and owner acceptance remain unqualified. Geometry,
+terrain, rendering, responsiveness, history and persistence have technical
+validation; no owner acceptance is inferred. This pass ends with Fragmented
+Worlds and does not begin another World family.

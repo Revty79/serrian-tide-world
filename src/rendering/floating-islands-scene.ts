@@ -3,7 +3,7 @@ import type {IslandComponent} from '../editor/floating-islands-document.ts';
 import {islandPointToWorld,islandPointToLocal,islandVectorToLocal} from '../editor/floating-islands-placement.ts';
 import type {PhysicalPieceGeometry as FloatingIslandGeometry} from '../surfaces/physical-piece.ts';
 import type {SurfacePosition} from '../surfaces/contracts.ts';
-import {pyramidDot,pyramidSub,type PyramidVector} from '../surfaces/pyramid.ts';
+import {pyramidDot,pyramidSub,pyramidUnit,pyramidCross,type PyramidVector} from '../surfaces/pyramid.ts';
 import type {CylinderFrame,CylinderView,CylinderViewport,CylinderScreenPoint} from './cylindrical-view.ts';
 import {initialFloatingIslandView,FLOATING_ISLAND_PROJECTION} from './floating-island-view.ts';
 import {PolyhedronPresentation} from './polyhedron-presentation.ts';
@@ -14,7 +14,8 @@ import type {CylinderAppearance} from './cylindrical-elevation.ts';
 export interface IslandSceneCamera{readonly frame:CylinderFrame;readonly targetMeters:PyramidVector;readonly viewRadiusMeters:number;readonly zoom:number}
 export function fitIslandScene(islands:readonly IslandComponent[],selected?:string):IslandSceneCamera{
  const subset=selected?islands.filter(c=>c.id===selected):islands,points=subset.flatMap(c=>c.terrain.geometry.vertices.map(v=>islandPointToWorld(c.placement,v))),target=[0,1,2].map(k=>(Math.min(...points.map(p=>p[k]!))+Math.max(...points.map(p=>p[k]!)))/2) as unknown as PyramidVector,radius=Math.max(...points.map(p=>Math.hypot(...pyramidSub(p,target))));
- return{frame:initialFloatingIslandView(islands[0]!.terrain.geometry).frame,targetMeters:target,viewRadiusMeters:radius*1.04,zoom:1};
+ const forward=pyramidUnit([1,.35,.2]),right=pyramidUnit(pyramidCross([0,1,0],forward)),frame=islands[0]!.terrain.geometry.metadata.provider==='physical-tetrahedral-fragment'?{forward,right,up:pyramidCross(forward,right)}:initialFloatingIslandView(islands[0]!.terrain.geometry).frame;
+ return{frame,targetMeters:target,viewRadiusMeters:radius*1.04,zoom:1};
 }
 function scenePose(islands:readonly IslandComponent[],camera:IslandSceneCamera,size:CylinderViewport){
  let distance=3*camera.viewRadiusMeters;

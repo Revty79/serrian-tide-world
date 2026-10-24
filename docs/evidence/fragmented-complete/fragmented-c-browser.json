@@ -1,0 +1,833 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=playwright.fragmented.config.mjs",
+      "tests/fragmented-management.spec.ts",
+      "tests/fragmented-navigation.spec.ts",
+      "tests/fragmented-recovery.spec.ts",
+      "tests/fragmented-local-pixels.spec.ts",
+      "tests/fragmented-pixels.spec.ts"
+    ],
+    "configFile": "D:\\serrian-tide-world\\playwright.fragmented.config.mjs",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-atlas-hollow-worlds/workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "installed-chrome",
+        "name": "installed-chrome",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "fragmented-workflow.spec.ts",
+          "fragmented-performance.spec.ts",
+          "fragmented-pixels.spec.ts",
+          "fragmented-local-pixels.spec.ts",
+          "fragmented-management.spec.ts",
+          "fragmented-navigation.spec.ts",
+          "fragmented-recovery.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "installed-chrome",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "fragmented-workflow.spec.ts",
+          "fragmented-performance.spec.ts",
+          "fragmented-pixels.spec.ts",
+          "fragmented-local-pixels.spec.ts",
+          "fragmented-management.spec.ts",
+          "fragmented-navigation.spec.ts",
+          "fragmented-recovery.spec.ts"
+        ],
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5275",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "channel": "chrome",
+          "actionTimeout": 15000,
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "installed-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/fragmented-c-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "fragmented-local-pixels.spec.ts",
+      "file": "fragmented-local-pixels.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Fragment N128 incremental GPU and Canvas epochs equal a fresh full presentation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2517,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:05:57.306Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4fe6725f1e9a093bad96-81536ac37d4a001be6c4",
+          "file": "fragmented-local-pixels.spec.ts",
+          "line": 2,
+          "column": 25
+        },
+        {
+          "title": "Fragment N256 incremental GPU and Canvas epochs equal a fresh full presentation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3172,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:06:00.235Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4fe6725f1e9a093bad96-b1c32edb5c5e6f49f680",
+          "file": "fragmented-local-pixels.spec.ts",
+          "line": 2,
+          "column": 25
+        },
+        {
+          "title": "Fragment outside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2882,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:06:03.420Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4fe6725f1e9a093bad96-46213b74a5a106d23109",
+          "file": "fragmented-local-pixels.spec.ts",
+          "line": 9,
+          "column": 65
+        },
+        {
+          "title": "Fragment lower N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3561,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:06:06.313Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4fe6725f1e9a093bad96-928d3bbeee96e38458bf",
+          "file": "fragmented-local-pixels.spec.ts",
+          "line": 9,
+          "column": 65
+        },
+        {
+          "title": "Fragment outside N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3837,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:06:09.885Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4fe6725f1e9a093bad96-4096864926a549405513",
+          "file": "fragmented-local-pixels.spec.ts",
+          "line": 9,
+          "column": 65
+        },
+        {
+          "title": "Fragment lower N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4429,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:06:13.734Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4fe6725f1e9a093bad96-fe6b03fde834ac143b0a",
+          "file": "fragmented-local-pixels.spec.ts",
+          "line": 9,
+          "column": 65
+        }
+      ]
+    },
+    {
+      "title": "fragmented-management.spec.ts",
+      "file": "fragmented-management.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Fragmented N256 auto: transforms, scale, selection, removal and arrangement replay preserve exact identities and geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10987,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:06:18.191Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "27eb08d868e317002377-3f1df501c8224decaa6b",
+          "file": "fragmented-management.spec.ts",
+          "line": 2,
+          "column": 39
+        },
+        {
+          "title": "Fragmented N256 canvas: transforms, scale, selection, removal and arrangement replay preserve exact identities and geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11051,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:06:29.191Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "27eb08d868e317002377-cda86485ab013c7989ba",
+          "file": "fragmented-management.spec.ts",
+          "line": 2,
+          "column": 39
+        },
+        {
+          "title": "Fragmented N128 auto: all six physical edges and multi-face vertices paint continuously with exact complete-gesture replay",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 34918,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"7fc99b49a957a8637efba57dda941f3b505a74c9160a6fe2ba3ce6bb2d817223\"\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"7fc99b49a957a8637efba57dda941f3b505a74c9160a6fe2ba3ce6bb2d817223\"\u001b[39m\n    at D:\\serrian-tide-world\\tests\\fragmented-management.spec.ts:10:436",
+                    "location": {
+                      "file": "D:\\serrian-tide-world\\tests\\fragmented-management.spec.ts",
+                      "column": 436,
+                      "line": 10
+                    },
+                    "snippet": "   8 |  for(const{edge,faces}of edges){await viewToward(page,faces);const points=[];for(const[side,face]of faces.entries())for(let i=0;i<=48;i++){const weight=side===0?.22*(1-i/48):.22*i/48,coordinate=await page.evaluate(async({face,edge,weight})=>{const wp='/src/components/ConnectedWorkspace.tsx',gp='/src/surfaces/physical-piece.ts',m=await import(wp),gm=await import(gp),g=gm.createPhysicalPieceGeometry(m.connectedWorkspaceInspection().snapshot(false).metadata.geometry),ids=g.vertexIds(face),weights=ids.map((id:number)=>edge.includes(id)?(1-weight)/2:weight);return{u:weights[1],v:weights[2]};},{face,edge,weight});points.push(await point(page,face,coordinate.u,coordinate.v));}const before=await hashes(page);await startPaintingPixels(page);await stroke(page,points);const timing=await finishPaintingPixels(page),after=await hashes(page);expect(timing.summary.p95InputToPixels).toBeLessThan(125);expect(after[0]).not.toBe(before[0]);expect(after.slice(1)).toEqual(initial.slice(1));await page.getByRole('button',{name:'Undo',exact:true}).click();await idle(page);expect(await hashes(page)).toEqual(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await idle(page);expect(await hashes(page)).toEqual(after);timings.push({edge,faces,timing});}\n   9 |  // A dab at each real vertex owns one canonical word shared by three faces.\n> 10 |  await page.getByRole('button',{name:'Surface map',exact:true}).click();await idle(page);for(const[patchId,u,v]of[['outer:0',0,0],['outer:0',1,0],['outer:0',0,1],['fracture-1:0',0,1]] as const){const before=await hashes(page),p=await point(page,patchId,u,v);await page.mouse.move(p.x,p.y);await page.mouse.down();await page.waitForTimeout(220);await page.mouse.up();await idle(page);const after=await hashes(page);expect(after[0]).not.toBe(before[0]);await page.getByRole('button',{name:'Undo',exact:true}).click();await idle(page);expect(await hashes(page)).toEqual(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await idle(page);expect(await hashes(page)).toEqual(after);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^\n  11 |  mkdirSync('.local/fragmented-management',{recursive:true});writeFileSync(`.local/fragmented-management/joins-${backend}.json`,JSON.stringify({timings,final:await state(page)}));\n  12 | });\n  13 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\serrian-tide-world\\tests\\fragmented-management.spec.ts",
+                        "column": 436,
+                        "line": 10
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"7fc99b49a957a8637efba57dda941f3b505a74c9160a6fe2ba3ce6bb2d817223\"\u001b[39m\n\n   8 |  for(const{edge,faces}of edges){await viewToward(page,faces);const points=[];for(const[side,face]of faces.entries())for(let i=0;i<=48;i++){const weight=side===0?.22*(1-i/48):.22*i/48,coordinate=await page.evaluate(async({face,edge,weight})=>{const wp='/src/components/ConnectedWorkspace.tsx',gp='/src/surfaces/physical-piece.ts',m=await import(wp),gm=await import(gp),g=gm.createPhysicalPieceGeometry(m.connectedWorkspaceInspection().snapshot(false).metadata.geometry),ids=g.vertexIds(face),weights=ids.map((id:number)=>edge.includes(id)?(1-weight)/2:weight);return{u:weights[1],v:weights[2]};},{face,edge,weight});points.push(await point(page,face,coordinate.u,coordinate.v));}const before=await hashes(page);await startPaintingPixels(page);await stroke(page,points);const timing=await finishPaintingPixels(page),after=await hashes(page);expect(timing.summary.p95InputToPixels).toBeLessThan(125);expect(after[0]).not.toBe(before[0]);expect(after.slice(1)).toEqual(initial.slice(1));await page.getByRole('button',{name:'Undo',exact:true}).click();await idle(page);expect(await hashes(page)).toEqual(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await idle(page);expect(await hashes(page)).toEqual(after);timings.push({edge,faces,timing});}\n   9 |  // A dab at each real vertex owns one canonical word shared by three faces.\n> 10 |  await page.getByRole('button',{name:'Surface map',exact:true}).click();await idle(page);for(const[patchId,u,v]of[['outer:0',0,0],['outer:0',1,0],['outer:0',0,1],['fracture-1:0',0,1]] as const){const before=await hashes(page),p=await point(page,patchId,u,v);await page.mouse.move(p.x,p.y);await page.mouse.down();await page.waitForTimeout(220);await page.mouse.up();await idle(page);const after=await hashes(page);expect(after[0]).not.toBe(before[0]);await page.getByRole('button',{name:'Undo',exact:true}).click();await idle(page);expect(await hashes(page)).toEqual(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await idle(page);expect(await hashes(page)).toEqual(after);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^\n  11 |  mkdirSync('.local/fragmented-management',{recursive:true});writeFileSync(`.local/fragmented-management/joins-${backend}.json`,JSON.stringify({timings,final:await state(page)}));\n  12 | });\n  13 |\n    at D:\\serrian-tide-world\\tests\\fragmented-management.spec.ts:10:436"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:06:40.252Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\fragmented-management-Frag-d7ec1-act-complete-gesture-replay-installed-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\fragmented-management-Frag-d7ec1-act-complete-gesture-replay-installed-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\fragmented-management-Frag-d7ec1-act-complete-gesture-replay-installed-chrome\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\serrian-tide-world\\tests\\fragmented-management.spec.ts",
+                    "column": 436,
+                    "line": 10
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "27eb08d868e317002377-822d2e2ac9d199ac3cd3",
+          "file": "fragmented-management.spec.ts",
+          "line": 6,
+          "column": 39
+        },
+        {
+          "title": "Fragmented N128 canvas: all six physical edges and multi-face vertices paint continuously with exact complete-gesture replay",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 35512,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"7fc99b49a957a8637efba57dda941f3b505a74c9160a6fe2ba3ce6bb2d817223\"\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"7fc99b49a957a8637efba57dda941f3b505a74c9160a6fe2ba3ce6bb2d817223\"\u001b[39m\n    at D:\\serrian-tide-world\\tests\\fragmented-management.spec.ts:10:436",
+                    "location": {
+                      "file": "D:\\serrian-tide-world\\tests\\fragmented-management.spec.ts",
+                      "column": 436,
+                      "line": 10
+                    },
+                    "snippet": "   8 |  for(const{edge,faces}of edges){await viewToward(page,faces);const points=[];for(const[side,face]of faces.entries())for(let i=0;i<=48;i++){const weight=side===0?.22*(1-i/48):.22*i/48,coordinate=await page.evaluate(async({face,edge,weight})=>{const wp='/src/components/ConnectedWorkspace.tsx',gp='/src/surfaces/physical-piece.ts',m=await import(wp),gm=await import(gp),g=gm.createPhysicalPieceGeometry(m.connectedWorkspaceInspection().snapshot(false).metadata.geometry),ids=g.vertexIds(face),weights=ids.map((id:number)=>edge.includes(id)?(1-weight)/2:weight);return{u:weights[1],v:weights[2]};},{face,edge,weight});points.push(await point(page,face,coordinate.u,coordinate.v));}const before=await hashes(page);await startPaintingPixels(page);await stroke(page,points);const timing=await finishPaintingPixels(page),after=await hashes(page);expect(timing.summary.p95InputToPixels).toBeLessThan(125);expect(after[0]).not.toBe(before[0]);expect(after.slice(1)).toEqual(initial.slice(1));await page.getByRole('button',{name:'Undo',exact:true}).click();await idle(page);expect(await hashes(page)).toEqual(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await idle(page);expect(await hashes(page)).toEqual(after);timings.push({edge,faces,timing});}\n   9 |  // A dab at each real vertex owns one canonical word shared by three faces.\n> 10 |  await page.getByRole('button',{name:'Surface map',exact:true}).click();await idle(page);for(const[patchId,u,v]of[['outer:0',0,0],['outer:0',1,0],['outer:0',0,1],['fracture-1:0',0,1]] as const){const before=await hashes(page),p=await point(page,patchId,u,v);await page.mouse.move(p.x,p.y);await page.mouse.down();await page.waitForTimeout(220);await page.mouse.up();await idle(page);const after=await hashes(page);expect(after[0]).not.toBe(before[0]);await page.getByRole('button',{name:'Undo',exact:true}).click();await idle(page);expect(await hashes(page)).toEqual(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await idle(page);expect(await hashes(page)).toEqual(after);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^\n  11 |  mkdirSync('.local/fragmented-management',{recursive:true});writeFileSync(`.local/fragmented-management/joins-${backend}.json`,JSON.stringify({timings,final:await state(page)}));\n  12 | });\n  13 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\serrian-tide-world\\tests\\fragmented-management.spec.ts",
+                        "column": 436,
+                        "line": 10
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"7fc99b49a957a8637efba57dda941f3b505a74c9160a6fe2ba3ce6bb2d817223\"\u001b[39m\n\n   8 |  for(const{edge,faces}of edges){await viewToward(page,faces);const points=[];for(const[side,face]of faces.entries())for(let i=0;i<=48;i++){const weight=side===0?.22*(1-i/48):.22*i/48,coordinate=await page.evaluate(async({face,edge,weight})=>{const wp='/src/components/ConnectedWorkspace.tsx',gp='/src/surfaces/physical-piece.ts',m=await import(wp),gm=await import(gp),g=gm.createPhysicalPieceGeometry(m.connectedWorkspaceInspection().snapshot(false).metadata.geometry),ids=g.vertexIds(face),weights=ids.map((id:number)=>edge.includes(id)?(1-weight)/2:weight);return{u:weights[1],v:weights[2]};},{face,edge,weight});points.push(await point(page,face,coordinate.u,coordinate.v));}const before=await hashes(page);await startPaintingPixels(page);await stroke(page,points);const timing=await finishPaintingPixels(page),after=await hashes(page);expect(timing.summary.p95InputToPixels).toBeLessThan(125);expect(after[0]).not.toBe(before[0]);expect(after.slice(1)).toEqual(initial.slice(1));await page.getByRole('button',{name:'Undo',exact:true}).click();await idle(page);expect(await hashes(page)).toEqual(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await idle(page);expect(await hashes(page)).toEqual(after);timings.push({edge,faces,timing});}\n   9 |  // A dab at each real vertex owns one canonical word shared by three faces.\n> 10 |  await page.getByRole('button',{name:'Surface map',exact:true}).click();await idle(page);for(const[patchId,u,v]of[['outer:0',0,0],['outer:0',1,0],['outer:0',0,1],['fracture-1:0',0,1]] as const){const before=await hashes(page),p=await point(page,patchId,u,v);await page.mouse.move(p.x,p.y);await page.mouse.down();await page.waitForTimeout(220);await page.mouse.up();await idle(page);const after=await hashes(page);expect(after[0]).not.toBe(before[0]);await page.getByRole('button',{name:'Undo',exact:true}).click();await idle(page);expect(await hashes(page)).toEqual(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await idle(page);expect(await hashes(page)).toEqual(after);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^\n  11 |  mkdirSync('.local/fragmented-management',{recursive:true});writeFileSync(`.local/fragmented-management/joins-${backend}.json`,JSON.stringify({timings,final:await state(page)}));\n  12 | });\n  13 |\n    at D:\\serrian-tide-world\\tests\\fragmented-management.spec.ts:10:436"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:07:16.705Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\fragmented-management-Frag-2c9f1-act-complete-gesture-replay-installed-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\fragmented-management-Frag-2c9f1-act-complete-gesture-replay-installed-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\fragmented-management-Frag-2c9f1-act-complete-gesture-replay-installed-chrome\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\serrian-tide-world\\tests\\fragmented-management.spec.ts",
+                    "column": 436,
+                    "line": 10
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "27eb08d868e317002377-0f7345118e0de161cfff",
+          "file": "fragmented-management.spec.ts",
+          "line": 6,
+          "column": 39
+        }
+      ]
+    },
+    {
+      "title": "fragmented-navigation.spec.ts",
+      "file": "fragmented-navigation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Fragmented N256 auto: World navigation reaches actual sharp pixels responsively without terrain/history writes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9810,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:07:53.968Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7dc7dec4bf0a737490c7-92489270c8e57850ab16",
+          "file": "fragmented-navigation.spec.ts",
+          "line": 3,
+          "column": 39
+        },
+        {
+          "title": "Fragmented N256 canvas: World navigation reaches actual sharp pixels responsively without terrain/history writes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11538,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:08:04.165Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7dc7dec4bf0a737490c7-c2c4b54061040a367515",
+          "file": "fragmented-navigation.spec.ts",
+          "line": 3,
+          "column": 39
+        }
+      ]
+    },
+    {
+      "title": "fragmented-pixels.spec.ts",
+      "file": "fragmented-pixels.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Fragmented N128: true perspective, depth, coast, silhouettes and break faces agree with independent world-triangle rays",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16458,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:08:15.731Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8be28921a81dc26f04ce-a5532bcca1873a0b7806",
+          "file": "fragmented-pixels.spec.ts",
+          "line": 2,
+          "column": 25
+        },
+        {
+          "title": "Fragmented N256: true perspective, depth, coast, silhouettes and break faces agree with independent world-triangle rays",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18760,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:08:32.200Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8be28921a81dc26f04ce-dfbf74cb5e0a2157264b",
+          "file": "fragmented-pixels.spec.ts",
+          "line": 2,
+          "column": 25
+        }
+      ]
+    },
+    {
+      "title": "fragmented-recovery.spec.ts",
+      "file": "fragmented-recovery.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Fragmented N256: painted world graphics loss recovers all exact geography through Canvas and hardware WebGL2",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7374,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:08:50.987Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2cd4a1f82f548ee82fac-e9a0197b4363269a95cf",
+          "file": "fragmented-recovery.spec.ts",
+          "line": 2,
+          "column": 37
+        },
+        {
+          "title": "Fragmented N256: painted fitted graphics loss recovers all exact geography through Canvas and hardware WebGL2",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8005,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:08:58.373Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2cd4a1f82f548ee82fac-086495c1401116de8485",
+          "file": "fragmented-recovery.spec.ts",
+          "line": 2,
+          "column": 37
+        },
+        {
+          "title": "Fragmented World: fresh catalog discovery, strict save identity guard and corrupt Open preserve current work atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6781,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:09:06.391Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2cd4a1f82f548ee82fac-8bda2c912fdc0a213dfd",
+          "file": "fragmented-recovery.spec.ts",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-24T02:05:56.584Z",
+    "duration": 196863.267,
+    "expected": 15,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

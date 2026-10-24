@@ -98,3 +98,4 @@ test('material: routed capsules join independently elevated endpoints; bends hav
  assert(!terrainExcavationFreeBall(model,cuts,[50000,10000,460000],1000));
  assert.equal(traceTerrainExcavation(model,cuts,[0,0,550000],[0,0,-1])!.kind,'rock'); // A bend is not a straight line of sight.
 });
+
