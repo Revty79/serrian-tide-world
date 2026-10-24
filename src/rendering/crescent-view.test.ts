@@ -1,0 +1,10 @@
+﻿import{test}from'node:test';import assert from'node:assert/strict';
+import{createCrescentGeometry}from'../surfaces/crescent.ts';import{CRESCENT_DEFAULT_DIMENSIONS}from'../terrain/crescent.ts';import{crescentVisible,crescentRay,initialCrescentView}from'./crescent-view.ts';import{pyramidDot,pyramidUnit,pyramidCross}from'../surfaces/pyramid.ts';
+test('Crescent bounded prism visibility agrees with original full-triangle rays across supported proportions, all physical faces, aliases and cameras',()=>{
+ let compared=0;for(const d of[CRESCENT_DEFAULT_DIMENSIONS,{worldSizeMeters:100000,curvature:.8,openingDegrees:160,bodyWidthMeters:12500,thicknessMeters:2500,tipShape:'fine' as const},{worldSizeMeters:1e9,curvature:1.25,openingDegrees:60,bodyWidthMeters:3e8,thicknessMeters:1.8e8,tipShape:'full' as const},{worldSizeMeters:2e6,curvature:.9,openingDegrees:120,bodyWidthMeters:3e5,thicknessMeters:1e5,tipShape:'full' as const}]){
+  const g=createCrescentGeometry({...d,provider:'physical-prismatic-crescent',version:1,role:'exterior',identity:{worldId:'view',surfaceId:'boundary'}}),points=g.faces.flatMap(patchId=>[[.2,.3],[0,0],[0,.5],[.5,.5],[.01,.98]].map(([u,v])=>({...g.identity,patchId,u:u!,v:v!})));
+  for(const direction of[[0,1,0],[0,-1,0],[1,0,0],[-1,0,0],[0,0,1],[0,0,-1],[.55,1,.6],[-1,1,.04],[-1,-1,.04],[1,.2,-.3]]){const forward=pyramidUnit(direction as[number,number,number]),right=pyramidUnit(pyramidCross(Math.abs(forward[1])>.9?[1,0,0]:[0,1,0],forward)),view={...initialCrescentView(),frame:{forward,right,up:pyramidCross(forward,right)}};
+   for(const p of points){const aliases=g.aliases(p),cap=aliases.some(q=>g.region(q.patchId)==='upper'&&forward[1]>1e-10||g.region(q.patchId)==='lower'&&forward[1]< -1e-10),facing=aliases.some(q=>pyramidDot(g.normal(q),forward)>1e-10),P=g.referencePosition(p),hit=cap||!facing?undefined:crescentRay(g,P,forward),expected=cap||facing&&!!hit&&Math.hypot(...g.referencePosition(hit).map((x,k)=>x-P[k]!))<g.scaleMeters*1e-8;assert.equal(crescentVisible(g,p,view),expected,JSON.stringify({d,direction,p,hit}));compared++;}
+  }
+ }assert.equal(compared,50400);
+});

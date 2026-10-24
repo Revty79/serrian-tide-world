@@ -27,6 +27,9 @@ test('Crescent generation is deterministic; affine chart metrics equal physical 
  const a=createCrescentGeometry(base),b=createCrescentGeometry(JSON.parse(JSON.stringify(base)));assert.deepEqual(a.vertices,b.vertices);assert.deepEqual(a.metadata,b.metadata);
  for(const patchId of a.faces){const p={...a.identity,patchId,u:.2,v:.3},t={du:.001,dv:-.002},q={...p,u:p.u+t.du,v:p.v+t.dv},delta=pyramidSub(a.referencePosition(q),a.referencePosition(p));close(a.metricSquared(p,t),pyramidDot(delta,delta),1e-9);}
 });
+test('Crescent immutable geometry is reused while private terrain words and keys remain independent',()=>{
+ const a=createCrescentTerrain({terrainId:'first-heights',geometry:base,detail:128}),b=createCrescentTerrain({terrainId:'second-heights',geometry:structuredClone(base),detail:128});assert.equal(a.geometry,b.geometry);a.write(a.keyAt(100),500);assert.equal(b.read(b.keyAt(100)),-100);assert.equal(a.revision,1);assert.equal(b.revision,0);assert.throws(()=>b.read(a.keyAt(100)),/Foreign/);const changed=createCrescentGeometry({...base,openingDegrees:120});assert.notEqual(changed,a.geometry);assert.equal(a.geometry.metadata.openingDegrees,90);
+});
 for(const detail of[128,256]as const)test(`Crescent N${detail}: bounded canonical authority, welded aliases, independent caps and exact Float32 snapshot`,()=>{
  const t=createCrescentTerrain({terrainId:'heights',geometry:base,detail}),g=t.geometry;assert.equal(t.sampleCount,126*(detail/4)**2+2);assert.equal(t.elevationByteLength,t.sampleCount*4);assert.equal(t.minElevation,-25000);
  for(const edge of g.edges){const faces=g.faces.filter(f=>edge.every(v=>g.vertexIds(f).includes(v))),keys=faces.map(f=>{const p=g.fromWeights(f,new Map([[edge[0],.5],[edge[1],.5]]))!;return t.resolve({...p,row:Math.round(p.v*t.subdivisions),column:Math.round(p.u*t.subdivisions)});});assert.equal(keys[0]!.index,keys[1]!.index);assert.ok(t.aliases(keys[0]!).length>=2);}

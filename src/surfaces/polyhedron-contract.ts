@@ -22,6 +22,9 @@ export interface PolyhedronGeometry {
  readonly physicalFaces?:readonly{readonly id:string;readonly vertices:readonly number[]}[];
  readonly physicalEdges?:readonly(readonly[number,number])[];
  physicalFaceId?(chart:string):string;
+ /** Coplanar numerical strips may share one physical gradient region while
+  * retaining separate convex atlas polygons and certified chart topology. */
+ gradientRegionId?(chart:string):string;
  /** Convex physical polygons may be visited only once by a shortest route:
   * replace any departure/reentry by the straight segment inside that polygon.
   * Numerical chart transitions within the same polygon remain unrestricted. */

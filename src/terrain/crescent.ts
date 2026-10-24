@@ -9,6 +9,6 @@ export function createCrescentTerrain(options:{terrainId:string;geometry:Crescen
  if(![128,256].includes(options.detail))throw RangeError('Crescent requires N128 or N256 equivalent detail.');
  const geometry=createCrescentGeometry(options.geometry),terrain=createTriangularPolyhedronTerrain({...options,geometry,subdivisions:options.detail/4,initialElevation:options.initialElevation??-100});
  if(options.terrainId===geometry.identity.worldId||options.terrainId===geometry.identity.surfaceId||geometry.identity.worldId===geometry.identity.surfaceId)throw RangeError('Crescent World, surface and terrain identities must be distinct.');
- return Object.freeze({...terrain,detail:options.detail});
+ return Object.freeze({...terrain,detail:options.detail,get revision(){return terrain.revision;}});
 }
 export type CrescentTerrain=ReturnType<typeof createCrescentTerrain>;

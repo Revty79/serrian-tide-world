@@ -24,8 +24,8 @@ export class PyramidDisplayCache<T extends PolyhedronTerrain=PyramidTerrain> ext
   // physical gradient using the welded stencil on both coplanar charts.
   if(t.geometry.physicalFaceId&&(c===0||r===0||c+r===this.n)){
    let stencil=this.polygonGradients.get(at);
-   if(!stencil){const key=t.keyAt(this.indices[at]!) as ReturnType<T['keyAt']>,point=t.referencePositionAt(key),physical=t.geometry.physicalFaceId(face),values:number[]=[];
-    for(const neighbor of t.neighbors(key))if(t.aliases(neighbor).some(p=>t.geometry.physicalFaceId!(p.patchId)===physical)){
+   if(!stencil){const key=t.keyAt(this.indices[at]!) as ReturnType<T['keyAt']>,point=t.referencePositionAt(key),physical=t.geometry.gradientRegionId?.(face)??t.geometry.physicalFaceId(face),values:number[]=[];
+    for(const neighbor of t.neighbors(key))if(t.aliases(neighbor).some(p=>(t.geometry.gradientRegionId?.(p.patchId)??t.geometry.physicalFaceId!(p.patchId))===physical)){
      const d=pyramidSub(t.referencePositionAt(neighbor),point),dx=pyramidDot(d,f.e1),dy=pyramidDot(d,f.e2);xx+=dx*dx;xy+=dx*dy;yy+=dy*dy;values.push(neighbor.index,dx,dy);
     }
     stencil=Float64Array.from([xx,xy,yy,xx*yy-xy*xy,...values]);this.polygonGradients.set(at,stencil);this.polygonGradientBytes+=stencil.byteLength;

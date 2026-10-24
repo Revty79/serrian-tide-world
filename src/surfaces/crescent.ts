@@ -31,7 +31,7 @@ export function crescentDimensions(d:CrescentDimensions){
  * meet at two actual terminal edges. Tip cap triangles have positive area;
  * no collapsed quad, duplicate endpoint or zero-area triangle is allocated.
  * Internal fan diagonals and cap strip joins are welded numerical charts. */
-export function createCrescentGeometry(input:CrescentConfiguration){
+function buildCrescentGeometry(input:CrescentConfiguration){
  assertIdentity(input.identity);const d=crescentDimensions(input);
  if(input.provider!=='physical-prismatic-crescent'||input.version!==1||input.role!=='exterior')throw RangeError('Unsupported Crescent geometry.');
  const identity=Object.freeze({...input.identity}),metadata=Object.freeze({provider:input.provider,version:1 as const,identity,role:input.role,...d});
@@ -59,10 +59,21 @@ export function createCrescentGeometry(input:CrescentConfiguration){
  const region=(face:string)=>{const id=g.physicalFaceId(face);return id.startsWith('upper-')?'upper':id.startsWith('lower-')?'lower':Number(id.slice(5))<S?'outer':'inner';};
  const tangent=(p:SurfacePosition,t:SurfaceTangent)=>{const f=g.frame(g.normalize(p).patchId);return f.u.map((v,k)=>v*t.du+f.v[k]!*t.dv) as unknown as PolyhedronVector;};
  return Object.freeze({...g,outline,outer:Object.freeze(outer),inner:Object.freeze(inner),segments:S,region,
+  gradientRegionId:(face:string)=>face.startsWith('upper-')?'upper':face.startsWith('lower-')?'lower':g.physicalFaceId(face),
   planarAreaMeters2:signedArea,volumeMeters3:signedArea*d.thicknessMeters,perimeterMeters:perimeterOffsets[M]!,perimeterOffsets:Object.freeze(perimeterOffsets),
   heightMeters:d.thicknessMeters,diameterMeters:d.worldSizeMeters,circumradiusMeters:Math.max(...vertices.map(p=>Math.hypot(...p))),
   tangentVector:tangent,metricSquared:(p:SurfacePosition,t:SurfaceTangent)=>{const v=tangent(p,t);return pyramidDot(v,v);},
   localCoordinates:(face:string,p:PolyhedronVector)=>{const f=g.frame(face),v=pyramidSub(p,f.origin),uu=pyramidDot(f.u,f.u),uv=pyramidDot(f.u,f.v),vv=pyramidDot(f.v,f.v),du=pyramidDot(v,f.u),dv=pyramidDot(v,f.v),det=uu*vv-uv*uv;return{u:(du*vv-dv*uv)/det,v:(dv*uu-du*uv)/det};},
  });
 }
-export type CrescentGeometry=ReturnType<typeof createCrescentGeometry>;
+export type CrescentGeometry=ReturnType<typeof buildCrescentGeometry>;
+let retained:{key:string;geometry:CrescentGeometry}|undefined;
+/** One immutable physical/metric model survives private worker terrain epochs.
+ * No terrain words, history or view state is retained by this bounded cache. */
+export function createCrescentGeometry(input:CrescentConfiguration):CrescentGeometry{
+ assertIdentity(input.identity);const d=crescentDimensions(input);
+ if(input.provider!=='physical-prismatic-crescent'||input.version!==1||input.role!=='exterior')throw RangeError('Unsupported Crescent geometry.');
+ const key=JSON.stringify({provider:input.provider,version:input.version,role:input.role,identity:{worldId:input.identity.worldId,surfaceId:input.identity.surfaceId},...d});
+ if(retained?.key===key)return retained.geometry;
+ const geometry=buildCrescentGeometry(input);retained={key,geometry};return geometry;
+}

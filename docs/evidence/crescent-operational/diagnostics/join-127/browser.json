@@ -1,0 +1,236 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.crescent.config.mjs",
+      "tests/crescent-joins.spec.ts"
+    ],
+    "configFile": "D:\\serrian-tide-world\\playwright.crescent.config.mjs",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-atlas-hollow-worlds/workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "installed-chrome",
+        "name": "installed-chrome",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "crescent-*.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "installed-chrome",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "crescent-*.spec.ts"
+        ],
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5278",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "channel": "chrome",
+          "actionTimeout": 15000,
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "installed-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/crescent-joins-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "crescent-joins.spec.ts",
+      "file": "crescent-joins.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Crescent N256 auto: native continuous cap/wall joins and physical void picking",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 42435,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:16:56.436Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "937bf35b3616856fb86f-089d5f8334d6f92b7366",
+          "file": "crescent-joins.spec.ts",
+          "line": 3,
+          "column": 39
+        },
+        {
+          "title": "Crescent N256 canvas: native continuous cap/wall joins and physical void picking",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 44928,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m125\u001b[39m\nReceived:   \u001b[31m127.39999997615814\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m125\u001b[39m\nReceived:   \u001b[31m127.39999997615814\u001b[39m\n    at D:\\serrian-tide-world\\tests\\crescent-joins.spec.ts:6:1696",
+                    "location": {
+                      "file": "D:\\serrian-tide-world\\tests\\crescent-joins.spec.ts",
+                      "column": 1696,
+                      "line": 6
+                    },
+                    "snippet": "  4 |  for(const edge of[16,48]){\n  5 |   const points=await page.evaluate(async edge=>{const paths=['/src/components/ConnectedWorkspace.tsx','/src/surfaces/crescent.ts','/src/surfaces/crescent-distance.ts','/src/surfaces/pyramid.ts'],[i,s,d,m]=await Promise.all(paths.map(p=>import(p))),g=s.createCrescentGeometry((window.__crescentEditor!.snapshot()as any).configuration),wall=d.crescentWallPosition(g,edge,.5,g.metadata.thicknessMeters/2),normal=g.normal(wall),position=g.referencePosition(wall),forward=m.pyramidUnit([normal[0],1,normal[2]]),right=m.pyramidUnit(m.pyramidCross([0,1,0],forward)),view={...window.__crescentEditor!.view()!,mode:'physical' as const,zoom:3,target:position.map((x:number)=>x/g.scaleMeters)as[number,number,number],frame:{forward,right,up:m.pyramidCross(forward,right)}};window.__crescentEditor!.setView(view);void i;return Array.from({length:81},(_,k)=>{const q=k<=40?d.crescentCapPosition(g,[position[0]-normal[0]*40000*(1-k/40),position[2]-normal[2]*40000*(1-k/40)],1):d.crescentWallPosition(g,edge,.5,g.metadata.thicknessMeters/2-40000*(k-40)/40);return q;});},edge);\n> 6 |   await crescentIdle(page);const projected=await page.evaluate(async points=>{const path='/src/components/ConnectedWorkspace.tsx',inspector=(await import(path)).connectedWorkspaceInspection();return points.map((p:any)=>inspector.project(p));},points);await page.getByRole('button',{name:'Raise',exact:true}).click();const before=await crescentHash(page),upper=await crescentRegionHash(page,'upper'),wall=await crescentRegionHash(page,edge===16?'outer':'inner'),lower=await crescentRegionHash(page,'lower'),box=(await page.locator('.cylinder-canvas').boundingBox())!;await page.mouse.move(box.x+projected[0]!.x,box.y+projected[0]!.y);await startPaintingPixels(page);await page.mouse.down();for(const p of[...projected.slice(1),...projected.slice(0,-1).reverse(),...projected.slice(1)]){await page.mouse.move(box.x+p!.x,box.y+p!.y);await page.waitForTimeout(16);}await page.mouse.up();await crescentIdle(page);const timing=await finishPaintingPixels(page),after=await crescentHash(page),state=await crescentSnapshot(page);mkdirSync('.local/crescent-joins',{recursive:true});writeFileSync(`.local/crescent-joins/${backend}-edge-${edge}.json`,JSON.stringify({edge,timing,state,before,after},null,2));expect(after).not.toBe(before);expect(await crescentRegionHash(page,'upper')).not.toBe(upper);expect(await crescentRegionHash(page,edge===16?'outer':'inner')).not.toBe(wall);expect(await crescentRegionHash(page,'lower')).toBe(lower);expect(state.statistics.failures,state.message).toBe(0);expect(state.statistics.lastStroke.discardedPositions).toBe(0);expect(state.statistics.lastStroke.acceptedPositions).toBe(state.statistics.lastStroke.processedPositions);expect(timing.summary.p95InputToPixels).toBeLessThan(125);expect(timing.latencies[0]!.inputToPixels).toBeLessThan(1000);await page.getByRole('button',{name:'Undo',exact:true}).click();await crescentIdle(page);expect(await crescentHash(page)).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await crescentIdle(page);expect(await crescentHash(page)).toBe(after);results.push({edge,timing,state,before,after});\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^\n  7 |  }\n  8 |  await page.getByRole('button',{name:'World overview',exact:true}).click();await page.evaluate(async()=>{const p='/src/rendering/crescent-view.ts',m=await import(p);window.__crescentEditor!.setView({...m.initialCrescentView(),frame:{right:[1,0,0],up:[0,0,-1],forward:[0,1,0]}});});await crescentIdle(page);await page.getByRole('button',{name:'Raise',exact:true}).click();const before=await crescentHash(page),box=(await page.locator('.cylinder-canvas').boundingBox())!;await page.mouse.click(box.x+box.width/2,box.y+box.height/2);await crescentIdle(page);expect(await crescentHash(page)).toBe(before);mkdirSync('.local/crescent-joins',{recursive:true});writeFileSync(`.local/crescent-joins/${backend}.json`,JSON.stringify({results,voidUnchanged:true},null,2));await page.screenshot({path:`.local/crescent-joins/${backend}.png`});});\n  9 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\serrian-tide-world\\tests\\crescent-joins.spec.ts",
+                        "column": 1696,
+                        "line": 6
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m125\u001b[39m\nReceived:   \u001b[31m127.39999997615814\u001b[39m\n\n  4 |  for(const edge of[16,48]){\n  5 |   const points=await page.evaluate(async edge=>{const paths=['/src/components/ConnectedWorkspace.tsx','/src/surfaces/crescent.ts','/src/surfaces/crescent-distance.ts','/src/surfaces/pyramid.ts'],[i,s,d,m]=await Promise.all(paths.map(p=>import(p))),g=s.createCrescentGeometry((window.__crescentEditor!.snapshot()as any).configuration),wall=d.crescentWallPosition(g,edge,.5,g.metadata.thicknessMeters/2),normal=g.normal(wall),position=g.referencePosition(wall),forward=m.pyramidUnit([normal[0],1,normal[2]]),right=m.pyramidUnit(m.pyramidCross([0,1,0],forward)),view={...window.__crescentEditor!.view()!,mode:'physical' as const,zoom:3,target:position.map((x:number)=>x/g.scaleMeters)as[number,number,number],frame:{forward,right,up:m.pyramidCross(forward,right)}};window.__crescentEditor!.setView(view);void i;return Array.from({length:81},(_,k)=>{const q=k<=40?d.crescentCapPosition(g,[position[0]-normal[0]*40000*(1-k/40),position[2]-normal[2]*40000*(1-k/40)],1):d.crescentWallPosition(g,edge,.5,g.metadata.thicknessMeters/2-40000*(k-40)/40);return q;});},edge);\n> 6 |   await crescentIdle(page);const projected=await page.evaluate(async points=>{const path='/src/components/ConnectedWorkspace.tsx',inspector=(await import(path)).connectedWorkspaceInspection();return points.map((p:any)=>inspector.project(p));},points);await page.getByRole('button',{name:'Raise',exact:true}).click();const before=await crescentHash(page),upper=await crescentRegionHash(page,'upper'),wall=await crescentRegionHash(page,edge===16?'outer':'inner'),lower=await crescentRegionHash(page,'lower'),box=(await page.locator('.cylinder-canvas').boundingBox())!;await page.mouse.move(box.x+projected[0]!.x,box.y+projected[0]!.y);await startPaintingPixels(page);await page.mouse.down();for(const p of[...projected.slice(1),...projected.slice(0,-1).reverse(),...projected.slice(1)]){await page.mouse.move(box.x+p!.x,box.y+p!.y);await page.waitForTimeout(16);}await page.mouse.up();await crescentIdle(page);const timing=await finishPaintingPixels(page),after=await crescentHash(page),state=await crescentSnapshot(page);mkdirSync('.local/crescent-joins',{recursive:true});writeFileSync(`.local/crescent-joins/${backend}-edge-${edge}.json`,JSON.stringify({edge,timing,state,before,after},null,2));expect(after).not.toBe(before);expect(await crescentRegionHash(page,'upper')).not.toBe(upper);expect(await crescentRegionHash(page,edge===16?'outer':'inner')).not.toBe(wall);expect(await crescentRegionHash(page,'lower')).toBe(lower);expect(state.statistics.failures,state.message).toBe(0);expect(state.statistics.lastStroke.discardedPositions).toBe(0);expect(state.statistics.lastStroke.acceptedPositions).toBe(state.statistics.lastStroke.processedPositions);expect(timing.summary.p95InputToPixels).toBeLessThan(125);expect(timing.latencies[0]!.inputToPixels).toBeLessThan(1000);await page.getByRole('button',{name:'Undo',exact:true}).click();await crescentIdle(page);expect(await crescentHash(page)).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await crescentIdle(page);expect(await crescentHash(page)).toBe(after);results.push({edge,timing,state,before,after});\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^\n  7 |  }\n  8 |  await page.getByRole('button',{name:'World overview',exact:true}).click();await page.evaluate(async()=>{const p='/src/rendering/crescent-view.ts',m=await import(p);window.__crescentEditor!.setView({...m.initialCrescentView(),frame:{right:[1,0,0],up:[0,0,-1],forward:[0,1,0]}});});await crescentIdle(page);await page.getByRole('button',{name:'Raise',exact:true}).click();const before=await crescentHash(page),box=(await page.locator('.cylinder-canvas').boundingBox())!;await page.mouse.click(box.x+box.width/2,box.y+box.height/2);await crescentIdle(page);expect(await crescentHash(page)).toBe(before);mkdirSync('.local/crescent-joins',{recursive:true});writeFileSync(`.local/crescent-joins/${backend}.json`,JSON.stringify({results,voidUnchanged:true},null,2));await page.screenshot({path:`.local/crescent-joins/${backend}.png`});});\n  9 |\n    at D:\\serrian-tide-world\\tests\\crescent-joins.spec.ts:6:1696"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:17:39.266Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\crescent-joins-Crescent-N2-21f1f-s-and-physical-void-picking-installed-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\crescent-joins-Crescent-N2-21f1f-s-and-physical-void-picking-installed-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\crescent-joins-Crescent-N2-21f1f-s-and-physical-void-picking-installed-chrome\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\serrian-tide-world\\tests\\crescent-joins.spec.ts",
+                    "column": 1696,
+                    "line": 6
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "937bf35b3616856fb86f-c20da8afa6e95a6fb4a1",
+          "file": "crescent-joins.spec.ts",
+          "line": 3,
+          "column": 39
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-24T08:16:55.834Z",
+    "duration": 89905.303,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}
