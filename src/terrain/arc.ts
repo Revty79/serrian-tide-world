@@ -1,0 +1,6 @@
+import{createArcGeometry,type ArcConfiguration}from'../surfaces/arc.ts';import{createTriangularPolyhedronTerrain}from'./triangular-polyhedron.ts';
+export const ARC_DEFAULT_DIMENSIONS=Object.freeze({worldSizeMeters:2000000,curvature:1,arcSpanDegrees:220,bodyWidthRatio:.2,thicknessRatio:.1,endShape:'flat' as const});
+/** 30 bounded cap strips and 62 perimeter edges; no longitudinal periodicity.
+ * N128/N256 equivalent owns 122*n²+2 words at n32/n64. */
+export function createArcTerrain(options:{terrainId:string;geometry:ArcConfiguration;detail:128|256;initialElevation?:number;initialValues?:Float32Array}){if(![128,256].includes(options.detail))throw RangeError('Arc requires N128/N256 equivalent detail.');const geometry=createArcGeometry(options.geometry),terrain=createTriangularPolyhedronTerrain({...options,geometry,subdivisions:options.detail/4,initialElevation:options.initialElevation??-100});if(options.terrainId===geometry.identity.worldId||options.terrainId===geometry.identity.surfaceId||geometry.identity.worldId===geometry.identity.surfaceId)throw RangeError('Arc World, surface and terrain identities must be distinct.');return Object.freeze({...terrain,detail:options.detail,get revision(){return terrain.revision;}});}
+export type ArcTerrain=ReturnType<typeof createArcTerrain>;
