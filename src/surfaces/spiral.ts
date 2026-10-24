@@ -1,6 +1,6 @@
 import {assertIdentity,type SurfaceIdentity,type SurfacePosition} from './contracts.ts';
 import {polygonPrismGeometry,type PrismWallRegion} from './polygon-prism.ts';
-import type {PolyhedronPhysicalBounds} from './polyhedron-contract.ts';
+import type {PolyhedronPhysicalBounds,PolyhedronVector} from './polyhedron-contract.ts';
 import * as I from './pyramid-interval.ts';
 
 /** These straight facets ARE the reference solid; no hidden smooth sweep. */
@@ -69,7 +69,9 @@ function buildSpiralGeometry(input:SpiralConfiguration){
  const boundsStation=(p:PolyhedronPhysicalBounds):I.Interval=>{if(lastBounds&&[0,2].every(k=>lastBounds![k]![0]===p[k]![0]&&lastBounds![k]![1]===p[k]![1]))return lastStation;let lo=Infinity,hi=-Infinity;for(const c of capModels){if(p[0][1]<c.minX-tolerance||p[0][0]>c.maxX+tolerance||p[2][1]<c.minZ-tolerance||p[2][0]>c.maxZ+tolerance)continue;const value=I.add(I.exact(c.base),I.add(I.multiply(c.gx,I.subtract(p[0],I.exact(c.p[0]))),I.multiply(c.gz,I.subtract(p[2],I.exact(c.p[2])))));lo=Math.min(lo,value[0]);hi=Math.max(hi,value[1]);}lastBounds=p;lastStation=lo<=hi?[Math.max(0,lo),Math.min(N,hi)]:[0,N];return lastStation;};
  const difference=(a:I.Interval,b:I.Interval)=>Math.max(0,I.divide(I.subtract(a,b),I.exact(stationLipschitz))[0],I.divide(I.subtract(b,a),I.exact(stationLipschitz))[0]);
  const positionStation=(p:SurfacePosition)=>{const q=g.normalize(p),ids=g.vertexIds(q.patchId);return I.add(I.exact(station(ids[0]!)),I.add(I.multiply(I.exact(q.u),I.exact(station(ids[1]!)-station(ids[0]!))),I.multiply(I.exact(q.v),I.exact(station(ids[2]!)-station(ids[0]!)))));};
- return Object.freeze({...g,angles,centers:Object.freeze(centers.map(p=>Object.freeze(p))),minimumTurnGapMeters,stationLipschitz,
+ const polygons=new Map(g.physicalFaces.map(p=>[p.id,p]));
+ const atlasBoundaryPosition=(chart:string,point:PolyhedronVector)=>{const id=g.physicalFaceId(chart),polygon=polygons.get(id)!;let best=Infinity,weights=new Map<number,number>();for(let i=0;i<polygon.vertices.length;i++){const a=polygon.vertices[i]!,b=polygon.vertices[(i+1)%polygon.vertices.length]!,A=g.vertices[a]!,B=g.vertices[b]!,D=B.map((x,k)=>x-A[k]!),length=D.reduce((s,x)=>s+x*x,0),fraction=Math.max(0,Math.min(1,D.reduce((s,x,k)=>s+x*(point[k]!-A[k]!),0)/length)),distance=A.reduce((s,x,k)=>s+(x+fraction*D[k]!-point[k]!)**2,0);if(distance<best){best=distance;weights=new Map([[a,1-fraction],[b,fraction]]);}}const p=g.positionsFromWeights(weights).find(p=>g.physicalFaceId(p.patchId)===id);if(!p)throw Error('Spiral physical atlas boundary is missing.');return p;};
+ return Object.freeze({...g,atlasBoundaryPosition,angles,centers:Object.freeze(centers.map(p=>Object.freeze(p))),minimumTurnGapMeters,stationLipschitz,
   centerlineLengthMeters:centers.slice(1).reduce((s,p,i)=>s+Math.hypot(p[0]-centers[i]![0],p[1]-centers[i]![1]),0),
   longitudinalSector:(face:string)=>{const id=g.physicalFaceId(face),i=Number(id.slice(id.lastIndexOf('-')+1));return!id.startsWith('wall-')?i:i<N?i:i===N?N-1:i===M-1?0:2*N-i;},
   longitudinalLowerBound:(a:SurfacePosition,b:SurfacePosition)=>difference(positionStation(a),positionStation(b)),

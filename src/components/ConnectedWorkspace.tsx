@@ -97,7 +97,7 @@ export function ConnectedWorkspace<T extends WorkspaceTerrain,V extends Cylinder
       frame = 0; if (!alive||session.closed) return; const frameStart = performance.now();
       // Scene preparation can be asynchronous. Start it before testing readiness;
       // the coherent Canvas path remains active while the GPU program compiles.
-      gpu.setScene(cutRef.current);
+      gpu.setScene(cutRef.current);gpu.setInteraction?.(session.painting||session.processing||performance.now()<interactionUntil);
       // Following-RAF opportunity is a browser presentation proxy, not GPU completion or photons.
       if (opportunityAt) { bounded(metrics.presentationOpportunityLatencies, [frameStart - opportunityAt]); opportunityAt = 0; }
       if (lastFrame) { const gap = frameStart - lastFrame; bounded(metrics.frameGaps, [gap]); metrics.maxFrameGapMs = Math.max(metrics.maxFrameGapMs, gap); } lastFrame = frameStart;

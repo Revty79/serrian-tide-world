@@ -1,3 +1,4 @@
+import type{SavedSpiral}from'./spiral-format.ts';
 import type{SavedHourglass}from'./hourglass-format.ts';
 import type{SavedDumbbell}from'./dumbbell-format.ts';
 import type{SavedArc}from'./arc-format.ts';
@@ -33,8 +34,8 @@ import type {SavedSolidCubeHeightmap} from './solid-cube-format.ts';
 import type {SavedHollowCube} from './hollow-cube-format.ts';
 import type {SavedHollowSphere} from './hollow-sphere-format.ts';
 
-export type PlanarSavedMap = SavedHeightmap | SavedWrappedHeightmap;
-export type SavedMap = SavedHourglass | SavedDumbbell | SavedArc | SavedHorseshoe | SavedCrescent | SavedRingworld | SavedTorus | SavedFragmentedWorld | SavedFloatingIslands | SavedFloatingIsland | SavedHollowIcosahedron | SavedIcosahedron | SavedHollowDodecahedron | SavedDodecahedron | SavedHollowTrapezohedron | SavedTrapezohedron | SavedHollowOctahedron | SavedOctahedron | SavedHollowTetrahedron | SavedTetrahedron | SavedHollowPyramid | SavedPyramid | SavedOpenCylinder | PlanarSavedMap | SavedSphericalHeightmap | SavedCylindricalHeightmap | SavedSolidCubeHeightmap | SavedHollowCube | SavedHollowSphere | SavedHollowCylinder;
+export type PlanarSavedMap = SavedSpiral | SavedHeightmap | SavedWrappedHeightmap;
+export type SavedMap = SavedSpiral | SavedHourglass | SavedDumbbell | SavedArc | SavedHorseshoe | SavedCrescent | SavedRingworld | SavedTorus | SavedFragmentedWorld | SavedFloatingIslands | SavedFloatingIsland | SavedHollowIcosahedron | SavedIcosahedron | SavedHollowDodecahedron | SavedDodecahedron | SavedHollowTrapezohedron | SavedTrapezohedron | SavedHollowOctahedron | SavedOctahedron | SavedHollowTetrahedron | SavedTetrahedron | SavedHollowPyramid | SavedPyramid | SavedOpenCylinder | PlanarSavedMap | SavedSphericalHeightmap | SavedCylindricalHeightmap | SavedSolidCubeHeightmap | SavedHollowCube | SavedHollowSphere | SavedHollowCylinder;
 export const encodeMap = (terrain: Terrain, name: string, savedAt?: string): Promise<PlanarSavedMap> => isWrapped(terrain) ? encodeWrappedHeightmap(terrain, name, savedAt) : encodeHeightmap(terrain, name, savedAt);
 export function decodeMap(value: unknown): Promise<{ terrain: Terrain; name: string }> {
   const version = record(value).formatVersion;

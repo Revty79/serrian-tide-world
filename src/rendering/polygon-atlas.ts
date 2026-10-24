@@ -28,7 +28,9 @@ export class PolygonColorAtlas {
   const x=this.left+col*this.stepX,y=this.top-row*this.stepY;let face='',u=0,v=0,best=-Infinity,chart=0;
   for(let k=0;k<this.maps.length;k++){const m=this.maps[k]!,dx=x-m.x,dy=y-m.y,a=(dx*m.vy-dy*m.vx)/m.det,b=(m.ux*dy-m.uy*dx)/m.det,score=Math.min(a,b,1-a-b);if(score>best){best=score;face=m.face;u=a;v=b;chart=k;}}
   if(gutterOnly&&best>=0)continue;
-  u=Math.max(0,Math.min(1,u));v=Math.max(0,Math.min(1,v));if(u+v>1){const sum=u+v;u/=sum;v=1-u;}
+  const g=this.cache.terrain.geometry;
+  if(best<0&&g.atlasBoundaryPosition){const basis=g.frame(this.anchor.patchId),point=basis.origin.map((p,k)=>p+x*basis.e1[k]!+y*basis.e2[k]!) as unknown as PolyhedronVector,q=g.atlasBoundaryPosition(face,point);face=q.patchId;u=q.u;v=q.v;chart=this.charts.indexOf(face);if(chart<0)throw Error('Atlas boundary must remain in its physical polygon.');}
+  else{u=Math.max(0,Math.min(1,u));v=Math.max(0,Math.min(1,v));if(u+v>1){const sum=u+v;u/=sum;v=1-u;}}
   if(collectGutter&&best<0){const at=((Math.floor(row/16)*this.tileColumns+Math.floor(col/16))*this.maps.length+chart)*4,b=this.gutterBounds;b[at]=Math.min(b[at]!,u);b[at+1]=Math.max(b[at+1]!,u);b[at+2]=Math.min(b[at+2]!,v);b[at+3]=Math.max(b[at+3]!,v);}
   this.cache.colorInto(face,u,v,relief,color);const at=(row*this.width+col)*4;this.pixels[at]=color[0]!;this.pixels[at+1]=color[1]!;this.pixels[at+2]=color[2]!;this.pixels[at+3]=255;
  }}

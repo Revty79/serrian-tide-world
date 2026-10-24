@@ -1,0 +1,448 @@
+✔ Spiral creator admits useful two/three-turn profiles at both details and all supported scales (119.5597ms)
+✔ Thin/long Higher profiles retain useful brushes; unsupported detail, folded/overlapping material and undersampled profiles reject before allocation (22.7986ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 314.7443
+✔ Arc v38 N128: exact Float32 words, dimensions, identities, topology and editor configuration (38.8772ms)
+✔ Arc v38 N256: exact Float32 words, dimensions, identities, topology and editor configuration (38.4488ms)
+✔ Arc strict header rejects unknown fields, mixed identities, topology, geometry and invalid camera before any replacement (15.5084ms)
+✔ Arc checksum, nonfinite words, physical clearance and detached-sized payload reject; valid input owns a private copy (19.639ms)
+✔ Arc Save notices an authoritative edit during cooperative encoding (9.2379ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 385.7648
+✔ Crescent v36 N128: exact Float32 words, dimensions, identities, topology and editor configuration (37.4325ms)
+✔ Crescent v36 N256: exact Float32 words, dimensions, identities, topology and editor configuration (45.9219ms)
+✔ Crescent strict header rejects unknown fields, mixed identities, topology, geometry and invalid camera before any replacement (13.5128ms)
+✔ Crescent checksum, nonfinite words, physical clearance and detached-sized payload reject; valid input owns a private copy (19.1292ms)
+✔ Crescent Save notices an authoritative edit during cooperative encoding (10.756ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 338.0436
+✔ Horseshoe v37 N128: exact Float32 words, dimensions, identities, topology and editor configuration (40.2806ms)
+✔ Horseshoe v37 N256: exact Float32 words, dimensions, identities, topology and editor configuration (41.3291ms)
+✔ Horseshoe strict header rejects unknown fields, mixed identities, topology, geometry and invalid camera before any replacement (17.8647ms)
+✔ Horseshoe checksum, nonfinite words, physical clearance and detached-sized payload reject; valid input owns a private copy (23.779ms)
+✔ Horseshoe Save notices an authoritative edit during cooperative encoding (9.4459ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 367.4276
+✔ Spiral v41 N128: exact Float32 words, dimensions, identities, topology and editor configuration (99.1135ms)
+✔ Spiral v41 N256: exact Float32 words, dimensions, identities, topology and editor configuration (113.3256ms)
+✔ Spiral strict header rejects unknown fields, mixed identities, topology, geometry and invalid camera before any replacement (178.8498ms)
+✔ Spiral checksum, nonfinite words, physical clearance and detached-sized payload reject; valid input owns a private copy (107.8712ms)
+✔ Spiral Save notices an authoritative edit during cooperative encoding (24.6226ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 781.2976
+✔ Arc bounded prism visibility agrees with original full-triangle rays across supported proportions, all physical faces, aliases and cameras (1201.8259ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1375.795
+✔ Crescent bounded prism visibility agrees with original full-triangle rays across supported proportions, all physical faces, aliases and cameras (1186.035ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1336.7334
+✔ Horseshoe bounded prism visibility agrees with original full-triangle rays across supported proportions, all physical faces, aliases and cameras (952.0085ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1105.8813
+✔ Spiral exact quarter-ray bins agree with original full physical rays, including occluded adjacent turns and real empty gaps (770.4137ms)
+✔ Spiral complete/cap/wall map framing preserves every chart inverse, separate banks and real cuts (714.454ms)
+✔ Spiral actual concave cap and wall-run masks agree with independently projected physical triangles (137.2509ms)
+✔ Spiral indexed reference boundary distance equals capped exhaustive segment distances (142.552ms)
+✔ Spiral derived color gutters select the nearest actual edge in the same physical polygon (20.7052ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1967.8029
+✔ Arc flat: near-closed cap route follows real inner boundary and cannot wrap across terminal gap (123.2478ms)
+✔ Arc beveled: near-closed cap route follows real inner boundary and cannot wrap across terminal gap (92.3997ms)
+✔ Arc flat: certified real cap/wall and terminal joins remain connected (20.1827ms)
+✔ Arc beveled: certified real cap/wall and terminal joins remain connected (15.7717ms)
+✔ Arc end-cut lower bound is conservative for short through near-closed configurations (768.3227ms)
+✔ Arc near-closed cap/end edge aliases have the same globally exact planar-wall distance in both directions (4.5705ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1192.8937
+✔ Arc profile 0: genuine bounded span, radius/width, complete ends, oriented manifold and physical metrics (32.6863ms)
+✔ Arc profile 1: genuine bounded span, radius/width, complete ends, oriented manifold and physical metrics (22.5858ms)
+✔ Arc profile 2: genuine bounded span, radius/width, complete ends, oriented manifold and physical metrics (20.2256ms)
+✔ Arc profile 3: genuine bounded span, radius/width, complete ends, oriented manifold and physical metrics (25.0255ms)
+✔ Arc profile 4: genuine bounded span, radius/width, complete ends, oriented manifold and physical metrics (21.6267ms)
+✔ Arc profile 5: genuine bounded span, radius/width, complete ends, oriented manifold and physical metrics (19.0376ms)
+✔ Arc profile 6: genuine bounded span, radius/width, complete ends, oriented manifold and physical metrics (17.3625ms)
+✔ Arc scaling/reconstruction and strict invalid geometry rejection (10.3167ms)
+✔ Arc N128: exact canonical joins, independent terminal/cap words, private snapshots and live revision (22.4573ms)
+✔ Arc N256: exact canonical joins, independent terminal/cap words, private snapshots and live revision (20.0161ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 369.8049
+✔ Crescent coplanar cap distance is the true polygon-domain geodesic, never a chord through the opening (132.4601ms)
+✔ Crescent wall metric unfolds actual perimeter and axial length, including wall strip joins (8.0169ms)
+✔ Crescent cap/wall hinge uses physical unfolded distance on both upper and underside (4.4788ms)
+✔ Crescent concave and tip cones handle valid physical cross-surface routes without global face enumeration (33.1631ms)
+✔ Crescent routing rejects unsupported nonlocal through-material transitions explicitly (0.7133ms)
+✔ Crescent cached source locations still reject a foreign World or surface (0.3399ms)
+✔ Crescent compressed pointer input follows actual material before unchanged local guards (2.7532ms)
+✔ Crescent bounded prism search includes the feasible wall-only class near a cap (13.0264ms)
+✔ Crescent concave saddle paths may genuinely pass through the material-boundary vertex (2.6794ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 361.9762
+✔ Crescent physical profile 0: closed manifold, positive facets, outward normals, real concavity and both tapered terminals (24.4497ms)
+✔ Crescent physical profile 1: closed manifold, positive facets, outward normals, real concavity and both tapered terminals (19.2371ms)
+✔ Crescent physical profile 2: closed manifold, positive facets, outward normals, real concavity and both tapered terminals (19.6509ms)
+✔ Crescent physical profile 3: closed manifold, positive facets, outward normals, real concavity and both tapered terminals (17.1521ms)
+✔ Crescent dimensions reject nonfinite, unsupported and mixed identities without clamping (5.094ms)
+✔ Crescent generation is deterministic; affine chart metrics equal physical tangent lengths (2.1889ms)
+✔ Crescent immutable geometry is reused while private terrain words and keys remain independent (5.8577ms)
+✔ Crescent N128: bounded canonical authority, welded aliases, independent caps and exact Float32 snapshot (27.9209ms)
+✔ Crescent N256: bounded canonical authority, welded aliases, independent caps and exact Float32 snapshot (23.1691ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 280.6985
+✔ Horseshoe flat: exact U-domain cap route goes around bend, never across close arm gap (94.6868ms)
+✔ Horseshoe beveled: exact U-domain cap route goes around bend, never across close arm gap (68.3816ms)
+✔ Horseshoe flat: physical paths cross real cap/wall, collinear arm joins, bend and terminal closures (16.0501ms)
+✔ Horseshoe beveled: physical paths cross real cap/wall, collinear arm joins, bend and terminal closures (14.3282ms)
+✔ Horseshoe certified opposite-arm pruning never exceeds the actual planar-domain route (163.3508ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 513.5174
+✔ Horseshoe physical profile 0: closed U, real bend/arms/gap, positive terminal faces and correct topology/metrics (22.9653ms)
+✔ Horseshoe physical profile 1: closed U, real bend/arms/gap, positive terminal faces and correct topology/metrics (17.181ms)
+✔ Horseshoe physical profile 2: closed U, real bend/arms/gap, positive terminal faces and correct topology/metrics (15.4679ms)
+✔ Horseshoe physical profile 3: closed U, real bend/arms/gap, positive terminal faces and correct topology/metrics (15.0804ms)
+✔ Horseshoe physical profile 4: closed U, real bend/arms/gap, positive terminal faces and correct topology/metrics (13.9553ms)
+✔ Horseshoe uniform scale changes the real material, deterministic reconstruction and strict dimension/identity validation (16.2688ms)
+✔ Horseshoe N128: canonical shared boundaries, independent caps/arms/ends and private exact words (23.6278ms)
+✔ Horseshoe N256: canonical shared boundaries, independent caps/arms/ends and private exact words (18.1176ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 293.3627
+✔ Spiral 0: closed oriented winding solid, normal stations, actual metrics and independent scale (79.3534ms)
+✔ Spiral 1: closed oriented winding solid, normal stations, actual metrics and independent scale (70.308ms)
+✔ Spiral 2: closed oriented winding solid, normal stations, actual metrics and independent scale (60.3339ms)
+✔ Spiral 3: closed oriented winding solid, normal stations, actual metrics and independent scale (62.7634ms)
+✔ Spiral 4: closed oriented winding solid, normal stations, actual metrics and independent scale (61.7307ms)
+✔ Spiral 5: closed oriented winding solid, normal stations, actual metrics and independent scale (64.8458ms)
+✔ Spiral 6: closed oriented winding solid, normal stations, actual metrics and independent scale (66.1948ms)
+✔ Spiral reconstruction is deterministic; invalid dimensions and real overlaps fail before terrain allocation (22.8636ms)
+✔ Spiral N128: welded ownership at every edge, distinct turns/ends/banks and exact private words (58.8436ms)
+✔ Spiral N256: welded ownership at every edge, distinct turns/ends/banks and exact private words (71.1018ms)
+✔ Global upper/lower metric follows winding material, not adjacent-turn chords; long connected distance remains available (273.2412ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1064.5429
+{"detail":128,"nearClosedDabMs":2.358000000000004,"affected":75}
+{"detail":256,"nearClosedDabMs":7.208500000000015,"affected":295}
+✔ Arc N128: four tools on both caps, inner/outer boundaries, terminal ends and end neighborhoods (146.6423ms)
+✔ Arc N256: four tools on both caps, inner/outer boundaries, terminal ends and end neighborhoods (91.462ms)
+✔ Arc N128: nearby terminal caps do not share brush influence across the open wedge (11.4578ms)
+✔ Arc N256: nearby terminal caps do not share brush influence across the open wedge (8.0499ms)
+✔ Arc one continuous near-closed cap stroke follows real material with exact whole-gesture history (478.6227ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 929.2536
+✔ Crescent N128: four accepted tools on upper, lower, concave/convex walls and both terminal neighborhoods (189.8815ms)
+✔ Crescent N256: four accepted tools on upper, lower, concave/convex walls and both terminal neighborhoods (228.9236ms)
+✔ Crescent long cap gesture crosses welded strip charts with exact one-operation history (38.7475ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 640.9163
+{"detail":128,"narrowGapDabMs":3.3629000000000246,"affected":93}
+{"detail":256,"narrowGapDabMs":2.172799999999995,"affected":93}
+✔ Horseshoe N128: four tools cover both upper/lower arms, real bend, inner/outer walls and end faces (174.2527ms)
+✔ Horseshoe N256: four tools cover both upper/lower arms, real bend, inner/outer walls and end faces (127.4725ms)
+✔ Horseshoe N128: narrow-gap influence isolates arms despite opposite samples inside ambient brush radius (12.7091ms)
+✔ Horseshoe N256: narrow-gap influence isolates arms despite opposite samples inside ambient brush radius (2.9829ms)
+✔ Horseshoe one continuous U-body cap stroke preserves exact whole-gesture history through both arms and bend (394.4865ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 947.7123
+✔ Spiral N128: four tools cover inner/middle/outer upper/lower turns, both lateral walls and genuine terminals (129.8826ms)
+✔ Spiral N256: four tools cover inner/middle/outer upper/lower turns, both lateral walls and genuine terminals (77.9369ms)
+✔ Spiral N128: large practical dab cannot jump the real small gap or modify opposite lower bank/terminal (252.4353ms)
+✔ Spiral N256: large practical dab cannot jump the real small gap or modify opposite lower bank/terminal (667.1727ms)
+✔ One winding gesture crosses full rotations and welded charts with exact whole-gesture Undo/Redo (941.5227ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2253.9922
+✔ dirty polygon colors include the full interpolation-cell stencil under a sheared pentagon chart (611.6607ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 767.6105
+✔ pyramid derived fields preserve every canonical alias, the exact apex and constant gradients without terrain writes (14.2676ms)
+✔ incremental pyramid field updates match a freshly reconstructed epoch byte for byte across edges and apex (24.0338ms)
+✔ physical and connected net pyramid projection/picking roundtrip actual visible points with no hidden painting (1.5216ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 238.1487
+✔ Hourglass locally sized polygon atlases retain exact incremental field/colors at both cap centers, both flares and neck joins (3579.7953ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3769.0468
+✔ Dumbbell locally sized polygon atlases retain exact incremental field/colors at both poles, both lobes and neck joins (3678.2833ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3862.1711
+✔ triangle portal endpoint proof requires exact membership and handles initial edge/vertex dabs without grazing fallback (35.2791ms)
+✔ four-face domain excludes only routes longer than its interval-certified boundary escape (2.9178ms)
+✔ long or nonlocal queries retain the global certificate and original precision/work failures (8.9983ms)
+✔ local and fallback distances match exhaustive reference across aliases, roles, physical scales and moving sources (949.4665ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1153.8993
+✔ physical-faceted-dumbbell: topology index preserves exhaustive canonical owner and alias order exactly (75.5056ms)
+✔ physical-prismatic-arc: topology index preserves exhaustive canonical owner and alias order exactly (57.7073ms)
+✔ physical-prismatic-crescent: topology index preserves exhaustive canonical owner and alias order exactly (43.5613ms)
+✔ physical-prismatic-horseshoe: topology index preserves exhaustive canonical owner and alias order exactly (38.1899ms)
+✔ physical-regular-dodecahedron: topology index preserves exhaustive canonical owner and alias order exactly (3.8294ms)
+✔ physical-pentagonal-trapezohedron: topology index preserves exhaustive canonical owner and alias order exactly (2.0368ms)
+✔ physical-floating-island: topology index preserves exhaustive canonical owner and alias order exactly (1.558ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 402.2821
+✔ host retains only clean idle worker realms across strokes/previews and retires cancelled, failed and disposed tasks (141.001ms)
+✔ a reused runtime validates fresh geometry/identities/words each task and matches cooperative four-tool history exactly (42.9289ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 413.1544
+✔ read-only prepared changes require the exact authority, ready state and unchanged epoch (4.706ms)
+✔ whole-operation original/final Float32 words survive repeated writes and signed zero (3.2767ms)
+✔ branching, no-op operations and exact entry/memory eviction keep the remaining timeline valid (1.8915ms)
+✔ failed history reservation leaves the pending dab untouched and retains its committed prefix (1.2555ms)
+✔ source conflicts preserve external edits; overlapping Undo conflicts are all-or-nothing (0.8594ms)
+✔ foreign identity, malformed limits and stale dabs cannot enter a history operation (1.0572ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 193.3908
+✔ worker N64 raise: exact words AND complete history at caps/centers/rims/cut (71.3393ms)
+✔ worker N64 lower: exact words AND complete history at caps/centers/rims/cut (29.9186ms)
+✔ worker N64 smooth: exact words AND complete history at caps/centers/rims/cut (37.1158ms)
+✔ worker N64 flatten: exact words AND complete history at caps/centers/rims/cut (28.0757ms)
+✔ worker N128 raise: exact words AND complete history at caps/centers/rims/cut (81.5292ms)
+✔ worker N128 lower: exact words AND complete history at caps/centers/rims/cut (84.5471ms)
+✔ worker N128 smooth: exact words AND complete history at caps/centers/rims/cut (88.9223ms)
+✔ worker N128 flatten: exact words AND complete history at caps/centers/rims/cut (76.6535ms)
+✔ worker N256 raise: exact words AND complete history at caps/centers/rims/cut (318.937ms)
+✔ worker N256 lower: exact words AND complete history at caps/centers/rims/cut (260.5151ms)
+✔ worker N256 smooth: exact words AND complete history at caps/centers/rims/cut (323.757ms)
+✔ worker N256 flatten: exact words AND complete history at caps/centers/rims/cut (439.3282ms)
+✔ shared ordered queue and revision lease reject overflow, stale, foreign and ended work (0.6355ms)
+✔ stale worker proposals and malformed exact words never overwrite canonical terrain (3.199ms)
+✔ startup failure replays ordered accepted input; cancellation disposes worker and exact prefix (3.4446ms)
+✔ progress waits share one promise and release on completion/interruption without polling (121.0797ms)
+✔ worker failure after a committed prefix preserves one exact operation and a later task recovers (2.7813ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2191.3825
+✔ raise continuous round trip through both rims/caps is one exact reversible operation (24.1062ms)
+✔ lower continuous round trip through both rims/caps is one exact reversible operation (12.4013ms)
+✔ smooth continuous round trip through both rims/caps is one exact reversible operation (16.7616ms)
+✔ flatten continuous round trip through both rims/caps is one exact reversible operation (8.3506ms)
+✔ raise sparse/dense equivalent radial/axial inputs preserve spacing and numerical results (7.2984ms)
+✔ lower sparse/dense equivalent radial/axial inputs preserve spacing and numerical results (7.7534ms)
+✔ smooth sparse/dense equivalent radial/axial inputs preserve spacing and numerical results (8.2886ms)
+✔ flatten sparse/dense equivalent radial/axial inputs preserve spacing and numerical results (6.0204ms)
+✔ initial settings are immutable, stationary holding adds no dabs and decimal axial endpoints are not omitted (1.4617ms)
+✔ angular wrap, explicit cap shortcuts, cut preferences and actual intermediate trajectories remain physical (7.0435ms)
+✔ release drains accepted order; cancellation/disposal discard pending preparation and retain one prefix operation (1.061ms)
+✔ external edits fail a pending stroke without overwriting data and preserve conflict-safe prefix history (0.8094ms)
+✔ queue, path, dab, history and accumulated-error failures preserve the committed prefix (2.2416ms)
+✔ no-op strokes retain Redo, replacement is safe, and foreign/invalid input ends explicitly (0.7425ms)
+✔ maximum-resolution stroke/history and intentional reservation failure use sparse bounded storage (22.5229ms)
+✔ long ordered input streams retain one operation and bounded pending/storage state (56.0102ms)
+✔ aggregate work caps stop before another dab commits and release detects external changes (0.9397ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 347.2739
+✔ raise: all faces/edges/corners match independently reconstructed Float32 results and every center alias (1187.6071ms)
+✔ lower: all faces/edges/corners match independently reconstructed Float32 results and every center alias (997.4448ms)
+✔ smooth: all faces/edges/corners match independently reconstructed Float32 results and every center alias (982.7202ms)
+✔ flatten: all faces/edges/corners match independently reconstructed Float32 results and every center alias (1108.5847ms)
+✔ flatten explicitly reaches signed positive, zero, negative and negative-zero targets at the center (3.588ms)
+✔ Smooth reads pre-dab connected faces and three corner neighbors, preserving constants and signed zero (6.728ms)
+✔ exact radius contributes zero; nearest adjacent radius is deterministic and never changes out-of-radius samples (2.9381ms)
+✔ intensity zero performs no reads or writes, and tiny underflow influence preserves negative zero (4.1954ms)
+✔ source changes during preparation and after ready reject publication and release buffers (4.4614ms)
+✔ cancel, stale iterators and foreign handoff never publish; pump size does not alter results (10.8407ms)
+✔ all budget failures are explicit and leave the complete authority unchanged (15.3177ms)
+✔ atomic raw patch validates exact source words, all values, order, identities, buffers and epoch before writing (1.2829ms)
+✔ N128: cooperative ordinary seam footprint preserves identity/version/ownership and exact dry-run words (5.7309ms)
+✔ N256: cooperative ordinary seam footprint preserves identity/version/ownership and exact dry-run words (11.325ms)
+✔ large multi-face brushes work within bounds; overlarge N256 dab fails safely at its explicit change cap (488.1021ms)
+✔ invalid controls, foreign positions and invalid pumps fail without mutation; extreme finite elevations saturate (4.3269ms)
+✔ raw publication bypasses caller map/species and typed-view accessors before any write (0.3117ms)
+✔ raw publication checks intrinsic buffer brands and extents despite spoofed properties (0.8363ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5054.2212
+✔ Hourglass v40 N128: exact Float32 words, dimensions, identities, topology and editor configuration (84.4814ms)
+✔ Hourglass v40 N256: exact Float32 words, dimensions, identities, topology and editor configuration (89.9629ms)
+✔ Hourglass strict header rejects unknown fields, mixed identities, topology, geometry and invalid camera before any replacement (150.9054ms)
+✔ Hourglass checksum, nonfinite words, physical clearance and detached-sized payload reject; valid input owns a private copy (172.068ms)
+✔ Hourglass Save notices an authoritative edit during cooperative encoding (32.3692ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 771.9219

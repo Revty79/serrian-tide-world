@@ -10,7 +10,7 @@ import type {CoherentTerrainRaster,TerrainRasterUpdate,RasterRegions} from '../r
 import type {TerrainDisplayDab} from '../rendering/cylinder-dirty-region.ts';
 import type {SurfaceDisplayReceipt} from '../rendering/surface-renderer.ts';
 export interface WorkspaceTerrain extends ConnectedSessionTerrain{readonly metadata:ConnectedSessionTerrain['metadata']&{readonly identity:SurfaceIdentity;readonly terrainId:string;readonly representation:{readonly provider?:string;readonly version?:number;readonly resolution?:{readonly angularSamples:number;readonly axialCells:number;readonly radialCells:number}}}}
-export interface WorkspaceGPU<V,Scene>{readonly available:boolean;readonly backend?:'cpu'|'webgl2';readonly displayCanvas?:HTMLCanvasElement;readonly statistics:{readonly renderer:string;readonly reason:string};setScene(scene:Scene|undefined):void;present(view:V,size:CylinderViewport,appearance:CylinderAppearance):SurfaceDisplayReceipt;fail(error:unknown):void;dispose():void}
+export interface WorkspaceGPU<V,Scene>{readonly available:boolean;readonly backend?:'cpu'|'webgl2';readonly displayCanvas?:HTMLCanvasElement;readonly statistics:{readonly renderer:string;readonly reason:string};setScene(scene:Scene|undefined):void;setInteraction?(active:boolean):void;present(view:V,size:CylinderViewport,appearance:CylinderAppearance):SurfaceDisplayReceipt;fail(error:unknown):void;dispose():void}
 /** Geometry hooks only. Input arbitration, frame budgets, cache epochs, history,
  * progressive display and tool chrome remain in one accepted workspace. */
 export interface ConnectedWorkspaceAdapter<T extends WorkspaceTerrain,V extends CylinderView,Scene>{

@@ -236,3 +236,17 @@ Default-disabled options preserve Dumbbell's published composition. See the
 [Hourglass review](HOURGLASS-WORLDS.md) and its separate frozen receipts for
 matched-height pixels, ordinary input, exact geography/history, resource costs
 and strict format-40 reconstruction. Owner/device acceptance is separate.
+
+Spiral reuses the accepted prism/triangle field, cube palette and relief,
+physical polygon atlases, depth GPU, connected workers/history and Atlas
+workspace. Its 64-strip normal-station Archimedean body has two closed ends
+and actual empty turn gaps. Geometry adapters supply the real winding metric,
+conservative station lower bounds, picking, concave outlines and exact polygon
+boundary gutters. A qualified 516-chart n32/n64 profile retains common work,
+history and settled-backing limits. Bounded nearest-boundary quarter samples
+refine actual atlas joins and material creases. Their preparation yields in
+idle slices and cancels obsolete camera/revision work through an optional
+workspace interaction hook; existing providers keep their previous path.
+See the [Spiral review](SPIRAL-WORLDS.md) and separately frozen receipts for
+actual pixels, painting/navigation, resources, exact geography and format 41.
+Technical verification remains separate from owner and physical-device acceptance.

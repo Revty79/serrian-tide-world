@@ -1,0 +1,2 @@
+import base from './playwright.spiral.config.mjs';
+export default{...base,testMatch:['arc-pilot.spec.ts','arc-pixels.spec.ts','torus-input.spec.ts','atlas.spec.ts','cube-editor.spec.ts','spherical-limb-workspace.spec.ts'],grep:/SpiralNever|Arc N128 .*normal creator|Arc N256 near-closed|N256 (torus|cylinder)|Atlas opens with an uninterrupted|Cube-E a held physical corner gesture|native pen assistance stops on release/,reporter:[['list'],['json',{outputFile:process.env.SPIRAL_REPORT??'.local/spiral-regression-browser.json'}]]};
