@@ -1,8 +1,5 @@
-import {assertIdentity,type SurfaceIdentity,type SurfacePosition,type SurfaceTangent} from './contracts.ts';
-import {triangulatedPolygonGeometry} from './triangulated-polygon.ts';
-import {freezePolyhedronArrays,type PolyhedronPhysicalBounds,type PolyhedronVector} from './polyhedron-contract.ts';
-import {pyramidCross,pyramidDot,pyramidSub} from './pyramid.ts';
-import * as I from './pyramid-interval.ts';
+import {assertIdentity,type SurfaceIdentity} from './contracts.ts';
+import{polygonPrismGeometry}from'./polygon-prism.ts';
 
 export const CRESCENT_SEGMENTS=32;
 export interface CrescentDimensions {
@@ -41,30 +38,7 @@ function buildCrescentGeometry(input:CrescentConfiguration){
  for(let i=0;i<=S;i++){outer.push(points.length);points.push(point(i,1));}
  inner[S]=outer[S]!;inner[0]=outer[0]!;
  for(let i=S-1;i>0;i--){inner[i]=points.length;points.push(point(i,-1));}
- const outline=Object.freeze(points.map(p=>Object.freeze(p))),M=outline.length;
- const vertices=freezePolyhedronArrays([d.thicknessMeters/2,-d.thicknessMeters/2].flatMap(y=>outline.map(([x,z])=>[x,y,z] as PolyhedronVector)));
- const vertexBounds=freezePolyhedronArrays(vertices.map(v=>v.map(I.exact) as unknown as PolyhedronPhysicalBounds));
- const distinct=(ids:readonly number[])=>ids.filter((v,i)=>i===0||v!==ids[i-1]).filter((v,i,all)=>i!==all.length-1||v!==all[0]);
- const polygons=[];
- for(let i=0;i<S;i++){
-  const upper=distinct([outer[i]!,inner[i]!,inner[i+1]!,outer[i+1]!]);
-  polygons.push(Object.freeze({id:`upper-${i}`,vertices:Object.freeze(upper)}));
-  polygons.push(Object.freeze({id:`lower-${i}`,vertices:Object.freeze(upper.toReversed().map(v=>v+M))}));
- }
- for(let i=0;i<M;i++){const j=(i+1)%M;polygons.push(Object.freeze({id:`wall-${i}`,vertices:Object.freeze([i,j,j+M,i+M])}));}
- const g=triangulatedPolygonGeometry({metadata,vertices,vertexBounds,polygons:Object.freeze(polygons),scaleMeters:R,minimumDimensionMeters:d.thicknessMeters});
- const signedArea=outline.reduce((s,p,i)=>{const b=outline[(i+1)%M]!;return s+p[0]*b[1]-p[1]*b[0];},0)/2;
- if(!(signedArea>0)||g.faces.some(f=>{const frame=g.frame(f);return ![...frame.normal,...frame.u,...frame.v].every(Number.isFinite)||Math.hypot(...pyramidCross(frame.u,frame.v))<=R*R*1e-10;}))throw RangeError('Crescent geometry has a degenerate physical chart.');
- const perimeterOffsets=[0];for(let i=0;i<M;i++){const b=outline[(i+1)%M]!,p=outline[i]!;perimeterOffsets.push(perimeterOffsets[i]!+Math.hypot(b[0]-p[0],b[1]-p[1]));}
- const region=(face:string)=>{const id=g.physicalFaceId(face);return id.startsWith('upper-')?'upper':id.startsWith('lower-')?'lower':Number(id.slice(5))<S?'outer':'inner';};
- const tangent=(p:SurfacePosition,t:SurfaceTangent)=>{const f=g.frame(g.normalize(p).patchId);return f.u.map((v,k)=>v*t.du+f.v[k]!*t.dv) as unknown as PolyhedronVector;};
- return Object.freeze({...g,outline,outer:Object.freeze(outer),inner:Object.freeze(inner),segments:S,region,
-  gradientRegionId:(face:string)=>face.startsWith('upper-')?'upper':face.startsWith('lower-')?'lower':g.physicalFaceId(face),
-  planarAreaMeters2:signedArea,volumeMeters3:signedArea*d.thicknessMeters,perimeterMeters:perimeterOffsets[M]!,perimeterOffsets:Object.freeze(perimeterOffsets),
-  heightMeters:d.thicknessMeters,diameterMeters:d.worldSizeMeters,circumradiusMeters:Math.max(...vertices.map(p=>Math.hypot(...p))),
-  tangentVector:tangent,metricSquared:(p:SurfacePosition,t:SurfaceTangent)=>{const v=tangent(p,t);return pyramidDot(v,v);},
-  localCoordinates:(face:string,p:PolyhedronVector)=>{const f=g.frame(face),v=pyramidSub(p,f.origin),uu=pyramidDot(f.u,f.u),uv=pyramidDot(f.u,f.v),vv=pyramidDot(f.v,f.v),du=pyramidDot(v,f.u),dv=pyramidDot(v,f.v),det=uu*vv-uv*uv;return{u:(du*vv-dv*uv)/det,v:(dv*uu-du*uv)/det};},
- });
+ return polygonPrismGeometry({metadata,outline:points,outer,inner,wallRegions:points.map((_,i)=>i<S?'outer' as const:'inner' as const),scaleMeters:R});
 }
 export type CrescentGeometry=ReturnType<typeof buildCrescentGeometry>;
 let retained:{key:string;geometry:CrescentGeometry}|undefined;
