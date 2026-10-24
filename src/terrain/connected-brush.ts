@@ -97,8 +97,11 @@ export function prepareConnectedDab<T extends IndexedTerrain<{readonly index:num
       const distance = adapter.distance(terrain, center, position, { absoluteToleranceMeters: tolerance, maxBoxes });
       statistics.failedQueryBoxAllowance = 0; statistics.distanceBoxes += distance.evaluatedBoxes;
       const lo = distance.lowerBoundMeters, hi = distance.upperBoundMeters;
-      if (distance.scope !== 'global-reference-surface' || ![lo, hi].every(Number.isFinite) || lo < 0 || hi < lo || hi - lo > tolerance) throw new RangeError('Invalid global distance enclosure.');
+      if (distance.scope !== 'global-reference-surface' || ![lo, hi].every(Number.isFinite) || lo < 0 || hi < lo) throw new RangeError('Invalid global distance enclosure.');
+      // A certified lower bound beyond the brush proves exactly zero influence.
+      // Resolving its irrelevant upper witness cannot change any terrain word.
       if (lo >= settings.radiusMeters) return { value: 0, error: 0 };
+      if (hi - lo > tolerance) throw new RangeError('Invalid global distance enclosure.');
       // At a zero-influence boundary, deciding which side of the radius an
       // exact/rounded point lies on can demand sub-ULP distances. The existing
       // absolute influence contract already permits zero when the complete

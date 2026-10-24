@@ -50,6 +50,10 @@ function enclosure(g:PolyhedronGeometry,prepared:readonly PreparedRoute[],end:Po
  for(const route of prepared){const proof=possible(g,route,end);if(!proof)continue;const length=I.pointLength([evaluate(route.delta[0],end),evaluate(route.delta[1],end)]);surviving.push(route.route);lower=Math.min(lower,length[0]);if(proof.feasible)upper=Math.min(upper,length[1]);}
  return{lower:Math.max(0,lower),upper,surviving};
 }
+/** Compile an explicitly complete, geometry-qualified straight-route set. The
+ * caller owns its domain proof and vertex propagation. This exposes the same
+ * accepted portal certificates without preparing the unrestricted face graph. */
+export function preparePolyhedronRouteEnclosures(g:PolyhedronGeometry,start:SurfacePosition,routes:readonly Route[]){const prepared=routes.map(r=>makeRoute(g,g.normalize(start),r));return(end:SurfacePosition)=>enclosure(g,prepared,g.normalize(end));}
 /** Strict crossings or exact endpoint membership prove that the unfolded segment
  * intersects every portal in order. Convex face segments are then a
  * real feasible witness. Ambiguous grazing routes still contribute lower bounds;
