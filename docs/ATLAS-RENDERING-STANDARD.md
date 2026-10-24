@@ -158,6 +158,17 @@ see the [solid](OCTAHEDRON-SOLID-EDITOR.md) and
 [hollow](OCTAHEDRON-HOLLOW-EDITOR.md) reviews and their frozen-source receipts.
 The Octahedron cache qualification does not raise limits for unknown geometries.
 
+Ringworld reuses the accepted Open Cylinder boundary, Cylinder Hermite field,
+palette, relief, GLSL and coherent Canvas updates. Its qualified geometry-only
+hit cache retains one camera epoch, at most 25 bytes per center pixel within
+the existing desktop/coarse raster budgets; fractional rays remain live.
+Physical dirty rectangles include the intrinsic footprint and complete two-cell
+reconstruction stencil in each affected chart. Partial updates use the same
+crease/coast coverage quadrature as full output, with a one-pixel label halo.
+Neither this cache nor the Ringworld terrain profile raises shared work, history,
+backing or queue limits. See the [Ringworld final review](RINGWORLD-FINAL-REVIEW.md)
+and its separate foundation, operational and final frozen receipts.
+
 Pixel parity allows the existing bounded raster footprint and minor numeric
 channel rounding at edges; it cannot be used to excuse missing material, shifted
 geography, visibly lower display resolution or an unresponsive editor. Review

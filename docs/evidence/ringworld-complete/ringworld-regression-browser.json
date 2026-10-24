@@ -1,0 +1,604 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.ringworld-regression.config.mjs"
+    ],
+    "configFile": "D:\\serrian-tide-world\\playwright.ringworld-regression.config.mjs",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-atlas-hollow-worlds/workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "installed-chrome",
+        "name": "installed-chrome",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "open-cylinder-render.spec.ts",
+          "open-cylinder-workflow.spec.ts",
+          "atlas-render-parity.spec.ts",
+          "torus-input.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "installed-chrome",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "open-cylinder-render.spec.ts",
+          "open-cylinder-workflow.spec.ts",
+          "atlas-render-parity.spec.ts",
+          "torus-input.spec.ts"
+        ],
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5277",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "channel": "chrome",
+          "actionTimeout": 15000,
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "installed-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/ringworld-regression-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "atlas-render-parity.spec.ts",
+      "file": "atlas-render-parity.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "shared rendering cylinder N128 canvas: equal heights, pose, zoom and backing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2314,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T06:02:30.789Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af9e325a5ff8c2660d61-db15b140a0c0a6335681",
+          "file": "atlas-render-parity.spec.ts",
+          "line": 3,
+          "column": 127
+        },
+        {
+          "title": "shared rendering cylinder N128 webgl: equal heights, pose, zoom and backing",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 21319,
+                  "error": {
+                    "message": "Error: page.evaluate: Error: Parity comparison requires identical backing dimensions\n    at Module.renderParity (http://127.0.0.1:5277/tests/fixtures/atlas-render-parity.ts:287:76)\n    at async <anonymous>:396:30",
+                    "stack": "Error: page.evaluate: Error: Parity comparison requires identical backing dimensions\n    at Module.renderParity (http://127.0.0.1:5277/tests/fixtures/atlas-render-parity.ts:287:76)\n    at async <anonymous>:396:30\n    at Module.renderParity (http://127.0.0.1:5277/tests/fixtures/atlas-render-parity.ts:287:76)\n    at async <anonymous>:396:30\n    at D:\\serrian-tide-world\\tests\\atlas-render-parity.spec.ts:5:55",
+                    "location": {
+                      "file": "http://127.0.0.1:5277/tests/fixtures/atlas-render-parity.ts",
+                      "column": 76,
+                      "line": 287
+                    }
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "http://127.0.0.1:5277/tests/fixtures/atlas-render-parity.ts",
+                        "column": 76,
+                        "line": 287
+                      },
+                      "message": "Error: page.evaluate: Error: Parity comparison requires identical backing dimensions\n    at Module.renderParity (http://127.0.0.1:5277/tests/fixtures/atlas-render-parity.ts:287:76)\n    at async <anonymous>:396:30\n    at Module.renderParity (http://127.0.0.1:5277/tests/fixtures/atlas-render-parity.ts:287:76)\n    at async <anonymous>:396:30\n    at D:\\serrian-tide-world\\tests\\atlas-render-parity.spec.ts:5:55"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T06:02:33.481Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\atlas-render-parity-shared-9e4ad-ights-pose-zoom-and-backing-installed-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\atlas-render-parity-shared-9e4ad-ights-pose-zoom-and-backing-installed-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\atlas-render-parity-shared-9e4ad-ights-pose-zoom-and-backing-installed-chrome\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "http://127.0.0.1:5277/tests/fixtures/atlas-render-parity.ts",
+                    "column": 76,
+                    "line": 287
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "af9e325a5ff8c2660d61-be55cba066f25f33b395",
+          "file": "atlas-render-parity.spec.ts",
+          "line": 3,
+          "column": 127
+        }
+      ]
+    },
+    {
+      "title": "open-cylinder-render.spec.ts",
+      "file": "open-cylinder-render.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Open rendering N128 outside: actual annular pixels match accepted terrain presentation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14522,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T06:02:55.419Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ba4a43c6d28e5c04fbe0-b4a231a39364a634a0be",
+          "file": "open-cylinder-render.spec.ts",
+          "line": 2,
+          "column": 110
+        },
+        {
+          "title": "Open rendering N128 inside: actual annular pixels match accepted terrain presentation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2132,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T06:03:10.314Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ba4a43c6d28e5c04fbe0-dd923484ac8c0d6eb4a8",
+          "file": "open-cylinder-render.spec.ts",
+          "line": 2,
+          "column": 110
+        },
+        {
+          "title": "Open rendering N128 map: actual annular pixels match accepted terrain presentation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2173,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T06:03:12.460Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ba4a43c6d28e5c04fbe0-8c4995b4dfc55930864d",
+          "file": "open-cylinder-render.spec.ts",
+          "line": 2,
+          "column": 110
+        },
+        {
+          "title": "Open rendering N128 axial: actual annular pixels match accepted terrain presentation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2240,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T06:03:14.645Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ba4a43c6d28e5c04fbe0-938461b917aac8c5a8a2",
+          "file": "open-cylinder-render.spec.ts",
+          "line": 2,
+          "column": 110
+        }
+      ]
+    },
+    {
+      "title": "open-cylinder-workflow.spec.ts",
+      "file": "open-cylinder-workflow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Open N128 canvas: normal selector, four tools, independent walls, three views, exact history and v14 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12234,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T06:03:16.918Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "431816e74ff3e9677546-da84ff68c1f265897b7a",
+          "file": "open-cylinder-workflow.spec.ts",
+          "line": 5,
+          "column": 63
+        },
+        {
+          "title": "Open N128 auto: normal selector, four tools, independent walls, three views, exact history and v14 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6435,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T06:03:29.165Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "431816e74ff3e9677546-f78cadefbfac0c01d1f1",
+          "file": "open-cylinder-workflow.spec.ts",
+          "line": 5,
+          "column": 63
+        }
+      ]
+    },
+    {
+      "title": "torus-input.spec.ts",
+      "file": "torus-input.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "N256 torus auto: same 150 km brush, captured latency, complete input and exact gesture history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12927,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T06:03:35.626Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2bb89b6af17f48847e3-0a25f1ac1e3bbfd10971",
+          "file": "torus-input.spec.ts",
+          "line": 5,
+          "column": 78
+        },
+        {
+          "title": "N256 torus canvas: same 150 km brush, captured latency, complete input and exact gesture history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13256,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T06:03:48.564Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2bb89b6af17f48847e3-1eb51fd4f194150ccf33",
+          "file": "torus-input.spec.ts",
+          "line": 5,
+          "column": 78
+        },
+        {
+          "title": "N256 cylinder auto: same 150 km brush, captured latency, complete input and exact gesture history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13311,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T06:04:01.831Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2bb89b6af17f48847e3-ff038c850d3cac5b53b4",
+          "file": "torus-input.spec.ts",
+          "line": 5,
+          "column": 78
+        },
+        {
+          "title": "N256 cylinder canvas: same 150 km brush, captured latency, complete input and exact gesture history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9002,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T06:04:15.154Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2bb89b6af17f48847e3-aac8303ab2132ffd3874",
+          "file": "torus-input.spec.ts",
+          "line": 5,
+          "column": 78
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-24T06:02:30.161Z",
+    "duration": 114356.542,
+    "expected": 11,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

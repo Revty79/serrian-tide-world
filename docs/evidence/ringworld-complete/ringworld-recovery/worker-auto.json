@@ -1,0 +1,923 @@
+{
+  "before": "bf1eec8df453851766ed99091d4d2f02da490fccb8d22ddda82270d4b661858a",
+  "prefix": "4f5d3dd68d4fb8cb9b4b48b53b2953c284c6ad6e3d3c79fbba4321ce5be580f2",
+  "recovered": "59b2351c5c0e2b12ae5e6b9c46586be06e5cbf38e4c568d8250bea0ea6b6c70b",
+  "failed": {
+    "identity": {
+      "worldId": "7fa5b303-3ef4-4071-bad3-cbd4489cd9f5",
+      "surfaceId": "45960804-e097-488b-8e0d-ccd8e80a2ea7"
+    },
+    "metadata": {
+      "terrainId": "faf7c53d-d345-42e3-8620-3f00a3f643aa",
+      "identity": {
+        "worldId": "7fa5b303-3ef4-4071-bad3-cbd4489cd9f5",
+        "surfaceId": "45960804-e097-488b-8e0d-ccd8e80a2ea7"
+      },
+      "geometry": {
+        "identity": {
+          "worldId": "7fa5b303-3ef4-4071-bad3-cbd4489cd9f5",
+          "surfaceId": "45960804-e097-488b-8e0d-ccd8e80a2ea7"
+        },
+        "provider": "physical-open-cylinder",
+        "version": 1,
+        "configuration": "both-open",
+        "outerRadiusMeters": 1200000,
+        "innerRadiusMeters": 1000000,
+        "lengthMeters": 400000
+      },
+      "representation": {
+        "provider": "annular-cylinder-periodic-rings",
+        "version": 1,
+        "resolution": {
+          "angularSamples": 1024,
+          "axialCells": 55,
+          "radialCells": 14
+        },
+        "ownership": "one-cyclic-meridian-wall-owned-creases-midpoint-tie-exterior"
+      },
+      "elevationUnits": "meters",
+      "seaLevel": 0
+    },
+    "view": {
+      "mode": "map",
+      "frame": {
+        "right": [
+          0.4819187497721559,
+          0.876215908676647,
+          0
+        ],
+        "up": [
+          -0.43364060429174067,
+          0.2385023323604574,
+          0.8689490570615264
+        ],
+        "forward": [
+          0.761386987626881,
+          -0.4187628431947846,
+          0.49490154195747266
+        ]
+      },
+      "zoom": 4,
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "pan": {
+        "x": 0,
+        "y": 0.3333333333333333
+      },
+      "phase": 0,
+      "scope": "exterior",
+      "interior": false,
+      "interiorView": "edit"
+    },
+    "requested": {
+      "mode": "map",
+      "frame": {
+        "right": [
+          0.4819187497721559,
+          0.876215908676647,
+          0
+        ],
+        "up": [
+          -0.43364060429174067,
+          0.2385023323604574,
+          0.8689490570615264
+        ],
+        "forward": [
+          0.761386987626881,
+          -0.4187628431947846,
+          0.49490154195747266
+        ]
+      },
+      "zoom": 4,
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "pan": {
+        "x": 0,
+        "y": 0.3333333333333333
+      },
+      "phase": 0,
+      "scope": "exterior",
+      "interior": false,
+      "interiorView": "edit"
+    },
+    "size": {
+      "width": 1440,
+      "height": 950
+    },
+    "ready": true,
+    "painting": false,
+    "processing": false,
+    "name": "Untitled world",
+    "hasSaved": false,
+    "modified": true,
+    "checkpointSamples": 100,
+    "locked": false,
+    "history": {
+      "entries": 1,
+      "cursor": 1,
+      "retainedBytes": 12288,
+      "activeBytes": 0,
+      "activeSamples": 0,
+      "evictions": 0,
+      "branches": 0,
+      "peakTypedBytes": 12288
+    },
+    "operations": [
+      {
+        "samples": 100,
+        "bytes": 12288,
+        "dabs": 3,
+        "termination": "failed"
+      }
+    ],
+    "statistics": {
+      "strokes": 1,
+      "dabs": 3,
+      "writes": 232,
+      "failures": 1,
+      "cancellations": 0,
+      "sliceMaxMs": 0.2999999523162842,
+      "slices": 32,
+      "previewMaxMs": 0,
+      "stagedDisplayPeakBytes": 624,
+      "droppedTimingRecords": 0,
+      "lastStroke": {
+        "pumps": 73,
+        "paths": 12,
+        "pathBoxes": 0,
+        "failedPathBoxAllowance": 0,
+        "committedDabs": 3,
+        "writes": 232,
+        "distanceQueries": 232,
+        "distanceBoxes": 0,
+        "failedQueryBoxAllowance": 0,
+        "dabCandidates": 658,
+        "peakPreparedDabBytes": 8192,
+        "sumPreRoundElevationErrorMeters": 1.3660766531946932e-8,
+        "maxPreRoundElevationErrorMeters": 4.556746750734503e-9,
+        "maxFalloffError": 2.2748953123237144e-11,
+        "maximumPathPieces": 1,
+        "traveledMeters": 17141.626582087167,
+        "residualMeters": 70.4265820871642,
+        "spacingErrorBoundMeters": 0.0002881292558015502,
+        "lastCommittedCenter": {
+          "worldId": "7fa5b303-3ef4-4071-bad3-cbd4489cd9f5",
+          "surfaceId": "45960804-e097-488b-8e0d-ccd8e80a2ea7",
+          "patchId": "outer-wall",
+          "u": 0.014226,
+          "v": 200000
+        },
+        "acceptedPositions": 13,
+        "processedPositions": 13,
+        "discardedPositions": 0,
+        "peakPendingPositions": 1,
+        "workEpochs": 1,
+        "hasPendingWork": false,
+        "pendingPositions": 0
+      },
+      "lastTermination": "failed"
+    },
+    "workDiagnostics": {
+      "backend": "worker",
+      "fallbackReason": "",
+      "startupMs": 15.299999952316284,
+      "proposals": 3,
+      "staleResults": 0,
+      "mainCommitMaxMs": 1.399999976158142,
+      "stages": {}
+    },
+    "previewDiagnostics": {
+      "backend": "cooperative"
+    },
+    "cacheBytes": 679936,
+    "cacheOwnedArrayBufferBytes": 4665136,
+    "displayRevision": 232,
+    "revision": 232,
+    "rasterBytes": 0,
+    "appearance": "relief",
+    "renderer": {
+      "kind": "webgl2",
+      "width": 1440,
+      "height": 950,
+      "losses": 0,
+      "recoveries": 0,
+      "uploads": 4,
+      "presentations": 5,
+      "textureBytes": 696320,
+      "geometryBytes": 1573296,
+      "antialias": true,
+      "baseCompileMs": 23.90000009536743,
+      "cutCompileMs": 0,
+      "reason": "",
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "probeErrors": [
+        1281
+      ]
+    },
+    "metrics": {
+      "preparationMs": 0,
+      "firstPresentationMs": 63.10000002384186,
+      "renders": 5,
+      "renderSliceMaxMs": 1.9000000953674316,
+      "rasterTotalMs": 8.600000023841858,
+      "rasterStartedAt": 767.0999999046326,
+      "overlayMaxMs": 1.2999999523162842,
+      "maxFrameGapMs": 29.600000023841858,
+      "rasterSnapshotBytes": 0,
+      "renderTimes": [
+        31.700000047683716,
+        0.10000002384185791,
+        13,
+        17.399999976158142,
+        5.100000023841858
+      ],
+      "inputLatencies": [
+        13
+      ],
+      "brushLatencies": [
+        332.6999999284744,
+        304.7999999523163,
+        214.89999997615814,
+        178.89999997615814,
+        142.79999995231628,
+        107.29999995231628,
+        71.09999990463257,
+        221.10000002384186,
+        167,
+        131,
+        95,
+        58.90000009536743
+      ],
+      "frameGaps": [
+        14.699999928474426,
+        23.300000071525574,
+        17.699999928474426,
+        29.600000023841858,
+        17.5,
+        17.600000023841858,
+        17.5,
+        17.5,
+        17.5,
+        17.5,
+        17.800000071525574,
+        17.600000023841858,
+        17.600000023841858,
+        17.700000047683716,
+        17.700000047683716
+      ],
+      "uploadTimes": [
+        26.5,
+        0,
+        12.899999976158142,
+        17.200000047683716,
+        5
+      ],
+      "submitTimes": [
+        0.3999999761581421,
+        0.10000002384185791,
+        0.10000002384185791,
+        0,
+        0
+      ],
+      "resizeTimes": [
+        3.8000000715255737,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cameraTimes": [
+        0
+      ],
+      "pointerFeedbackLatencies": [
+        2.3000000715255737,
+        9.599999904632568,
+        0.6999999284744263,
+        0.5,
+        0.3999999761581421,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.3999999761581421,
+        0.2999999523162842
+      ],
+      "presentationOpportunityLatencies": [
+        36.10000002384186
+      ]
+    },
+    "controls": {
+      "tool": "raise",
+      "radius": "36000",
+      "strength": "200",
+      "intensity": "50",
+      "target": "0"
+    },
+    "lastDab": {
+      "center": {
+        "worldId": "7fa5b303-3ef4-4071-bad3-cbd4489cd9f5",
+        "surfaceId": "45960804-e097-488b-8e0d-ccd8e80a2ea7",
+        "patchId": "outer-wall",
+        "u": 0.014226,
+        "v": 200000
+      },
+      "indices": [
+        23553,
+        23554,
+        23555,
+        23556,
+        24576,
+        24577,
+        24578,
+        24579,
+        24580,
+        24581,
+        25599,
+        25600,
+        25601,
+        25602,
+        25603,
+        25604,
+        25605,
+        25606,
+        26623,
+        26624,
+        26625,
+        26626,
+        26627,
+        26628,
+        26629,
+        26630,
+        27646,
+        27647,
+        27648,
+        27649,
+        27650,
+        27651,
+        27652,
+        27653,
+        27654,
+        27655,
+        28670,
+        28671,
+        28672,
+        28673,
+        28674,
+        28675,
+        28676,
+        28677,
+        28678,
+        28679,
+        29694,
+        29695,
+        29696,
+        29697,
+        29698,
+        29699,
+        29700,
+        29701,
+        29702,
+        30718,
+        30719,
+        30720,
+        30721,
+        30722,
+        30723,
+        30724,
+        30725,
+        30726,
+        31743,
+        31744,
+        31745,
+        31746,
+        31747,
+        31748,
+        31749,
+        32767,
+        32769,
+        32770,
+        32771,
+        32772
+      ],
+      "revision": 156,
+      "settings": {
+        "version": 1,
+        "tool": "raise",
+        "radiusMeters": 36000,
+        "strengthMeters": 200,
+        "maxFalloffError": 0.000001
+      },
+      "affectedSamples": 76
+    },
+    "pendingWork": false,
+    "pendingPositions": 0,
+    "previewPending": false,
+    "previewMessage": "",
+    "message": "Stroke stopped safely: TypeError: Cannot read properties of null (reading 'type') Committed prefix remains undoable."
+  },
+  "final": {
+    "identity": {
+      "worldId": "7fa5b303-3ef4-4071-bad3-cbd4489cd9f5",
+      "surfaceId": "45960804-e097-488b-8e0d-ccd8e80a2ea7"
+    },
+    "metadata": {
+      "terrainId": "faf7c53d-d345-42e3-8620-3f00a3f643aa",
+      "identity": {
+        "worldId": "7fa5b303-3ef4-4071-bad3-cbd4489cd9f5",
+        "surfaceId": "45960804-e097-488b-8e0d-ccd8e80a2ea7"
+      },
+      "geometry": {
+        "identity": {
+          "worldId": "7fa5b303-3ef4-4071-bad3-cbd4489cd9f5",
+          "surfaceId": "45960804-e097-488b-8e0d-ccd8e80a2ea7"
+        },
+        "provider": "physical-open-cylinder",
+        "version": 1,
+        "configuration": "both-open",
+        "outerRadiusMeters": 1200000,
+        "innerRadiusMeters": 1000000,
+        "lengthMeters": 400000
+      },
+      "representation": {
+        "provider": "annular-cylinder-periodic-rings",
+        "version": 1,
+        "resolution": {
+          "angularSamples": 1024,
+          "axialCells": 55,
+          "radialCells": 14
+        },
+        "ownership": "one-cyclic-meridian-wall-owned-creases-midpoint-tie-exterior"
+      },
+      "elevationUnits": "meters",
+      "seaLevel": 0
+    },
+    "view": {
+      "mode": "map",
+      "frame": {
+        "right": [
+          0.4819187497721559,
+          0.876215908676647,
+          0
+        ],
+        "up": [
+          -0.43364060429174067,
+          0.2385023323604574,
+          0.8689490570615264
+        ],
+        "forward": [
+          0.761386987626881,
+          -0.4187628431947846,
+          0.49490154195747266
+        ]
+      },
+      "zoom": 4,
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "pan": {
+        "x": 0,
+        "y": 0.3333333333333333
+      },
+      "phase": 0,
+      "scope": "exterior",
+      "interior": false,
+      "interiorView": "edit"
+    },
+    "requested": {
+      "mode": "map",
+      "frame": {
+        "right": [
+          0.4819187497721559,
+          0.876215908676647,
+          0
+        ],
+        "up": [
+          -0.43364060429174067,
+          0.2385023323604574,
+          0.8689490570615264
+        ],
+        "forward": [
+          0.761386987626881,
+          -0.4187628431947846,
+          0.49490154195747266
+        ]
+      },
+      "zoom": 4,
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "pan": {
+        "x": 0,
+        "y": 0.3333333333333333
+      },
+      "phase": 0,
+      "scope": "exterior",
+      "interior": false,
+      "interiorView": "edit"
+    },
+    "size": {
+      "width": 1440,
+      "height": 950
+    },
+    "ready": true,
+    "painting": false,
+    "processing": false,
+    "name": "Untitled world",
+    "hasSaved": false,
+    "modified": true,
+    "checkpointSamples": 136,
+    "locked": false,
+    "history": {
+      "entries": 2,
+      "cursor": 2,
+      "retainedBytes": 24576,
+      "activeBytes": 0,
+      "activeSamples": 0,
+      "evictions": 0,
+      "branches": 0,
+      "peakTypedBytes": 24576
+    },
+    "operations": [
+      {
+        "samples": 100,
+        "bytes": 12288,
+        "dabs": 3,
+        "termination": "failed"
+      },
+      {
+        "samples": 99,
+        "bytes": 12288,
+        "dabs": 3,
+        "termination": "released"
+      }
+    ],
+    "statistics": {
+      "strokes": 2,
+      "dabs": 6,
+      "writes": 461,
+      "failures": 1,
+      "cancellations": 0,
+      "sliceMaxMs": 0.2999999523162842,
+      "slices": 70,
+      "previewMaxMs": 0,
+      "stagedDisplayPeakBytes": 624,
+      "droppedTimingRecords": 0,
+      "lastStroke": {
+        "pumps": 83,
+        "paths": 17,
+        "pathBoxes": 0,
+        "failedPathBoxAllowance": 0,
+        "committedDabs": 3,
+        "writes": 229,
+        "distanceQueries": 229,
+        "distanceBoxes": 0,
+        "failedQueryBoxAllowance": 0,
+        "dabCandidates": 658,
+        "peakPreparedDabBytes": 8192,
+        "sumPreRoundElevationErrorMeters": 1.3677111012579038e-8,
+        "maxPreRoundElevationErrorMeters": 4.566584257991321e-9,
+        "maxFalloffError": 2.275070179546861e-11,
+        "maximumPathPieces": 1,
+        "traveledMeters": 23374.94533920977,
+        "residualMeters": 6303.74533920977,
+        "spacingErrorBoundMeters": 0.0003929035306384775,
+        "lastCommittedCenter": {
+          "worldId": "7fa5b303-3ef4-4071-bad3-cbd4489cd9f5",
+          "surfaceId": "45960804-e097-488b-8e0d-ccd8e80a2ea7",
+          "patchId": "outer-wall",
+          "u": 0.014226,
+          "v": 176625.05466079025
+        },
+        "acceptedPositions": 18,
+        "processedPositions": 18,
+        "discardedPositions": 0,
+        "peakPendingPositions": 1,
+        "workEpochs": 1,
+        "hasPendingWork": false,
+        "pendingPositions": 0
+      },
+      "lastTermination": "complete"
+    },
+    "workDiagnostics": {
+      "backend": "worker",
+      "fallbackReason": "",
+      "startupMs": 13.399999976158142,
+      "proposals": 3,
+      "staleResults": 0,
+      "mainCommitMaxMs": 0.7999999523162842,
+      "stages": {}
+    },
+    "previewDiagnostics": {
+      "backend": "cooperative"
+    },
+    "cacheBytes": 679936,
+    "cacheOwnedArrayBufferBytes": 4665136,
+    "displayRevision": 661,
+    "revision": 661,
+    "rasterBytes": 0,
+    "appearance": "relief",
+    "renderer": {
+      "kind": "webgl2",
+      "width": 1440,
+      "height": 950,
+      "losses": 0,
+      "recoveries": 0,
+      "uploads": 9,
+      "presentations": 10,
+      "textureBytes": 696320,
+      "geometryBytes": 1573296,
+      "antialias": true,
+      "baseCompileMs": 23.90000009536743,
+      "cutCompileMs": 0,
+      "reason": "",
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "probeErrors": [
+        1281
+      ]
+    },
+    "metrics": {
+      "preparationMs": 0,
+      "firstPresentationMs": 63.10000002384186,
+      "renders": 10,
+      "renderSliceMaxMs": 1.9000000953674316,
+      "rasterTotalMs": 8.600000023841858,
+      "rasterStartedAt": 767.0999999046326,
+      "overlayMaxMs": 1.2999999523162842,
+      "maxFrameGapMs": 29.600000023841858,
+      "rasterSnapshotBytes": 0,
+      "renderTimes": [
+        31.700000047683716,
+        0.10000002384185791,
+        13,
+        17.399999976158142,
+        5.100000023841858,
+        5.5,
+        5.299999952316284,
+        6.200000047683716,
+        5.299999952316284,
+        5.399999976158142
+      ],
+      "inputLatencies": [
+        13
+      ],
+      "brushLatencies": [
+        332.6999999284744,
+        304.7999999523163,
+        214.89999997615814,
+        178.89999997615814,
+        142.79999995231628,
+        107.29999995231628,
+        71.09999990463257,
+        221.10000002384186,
+        167,
+        131,
+        95,
+        58.90000009536743,
+        149.30000007152557,
+        251.29999995231628,
+        239.29999995231628,
+        196.19999992847443,
+        167.29999995231628,
+        131.29999995231628,
+        95.19999992847443,
+        59.199999928474426,
+        203.40000009536743,
+        167.5,
+        131.40000009536743,
+        95.40000009536743,
+        59.300000071525574
+      ],
+      "frameGaps": [
+        14.699999928474426,
+        23.300000071525574,
+        17.699999928474426,
+        29.600000023841858,
+        17.5,
+        17.600000023841858,
+        17.5,
+        17.5,
+        17.5,
+        17.5,
+        17.800000071525574,
+        17.600000023841858,
+        17.600000023841858,
+        17.700000047683716,
+        17.700000047683716,
+        18.100000023841858,
+        10.5,
+        17.699999928474426,
+        17.699999928474426,
+        17.600000023841858,
+        17.700000047683716,
+        17.600000023841858,
+        17.600000023841858,
+        17.700000047683716,
+        17.700000047683716,
+        17.600000023841858,
+        17.600000023841858,
+        17.600000023841858,
+        17.600000023841858,
+        17.699999928474426,
+        17.699999928474426,
+        18.5
+      ],
+      "uploadTimes": [
+        26.5,
+        0,
+        12.899999976158142,
+        17.200000047683716,
+        5,
+        5.299999952316284,
+        5.199999928474426,
+        6.100000023841858,
+        5.199999928474426,
+        5.300000071525574
+      ],
+      "submitTimes": [
+        0.3999999761581421,
+        0.10000002384185791,
+        0.10000002384185791,
+        0,
+        0,
+        0.10000002384185791,
+        0.10000002384185791,
+        0.10000002384185791,
+        0,
+        0
+      ],
+      "resizeTimes": [
+        3.8000000715255737,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cameraTimes": [
+        0
+      ],
+      "pointerFeedbackLatencies": [
+        2.3000000715255737,
+        9.599999904632568,
+        0.6999999284744263,
+        0.5,
+        0.3999999761581421,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.3999999761581421,
+        0.2999999523162842,
+        0.6999999284744263,
+        0.2999999523162842,
+        0.5,
+        0.40000009536743164,
+        0.30000007152557373,
+        0.5,
+        0.3999999761581421,
+        0.5,
+        0.3999999761581421,
+        0.2999999523162842,
+        0.3999999761581421,
+        0.3999999761581421,
+        0.3999999761581421,
+        0.3999999761581421,
+        0.3999999761581421,
+        0.3999999761581421,
+        0.30000007152557373
+      ],
+      "presentationOpportunityLatencies": [
+        36.10000002384186
+      ]
+    },
+    "controls": {
+      "tool": "raise",
+      "radius": "36000",
+      "strength": "200",
+      "intensity": "50",
+      "target": "0"
+    },
+    "lastDab": {
+      "center": {
+        "worldId": "7fa5b303-3ef4-4071-bad3-cbd4489cd9f5",
+        "surfaceId": "45960804-e097-488b-8e0d-ccd8e80a2ea7",
+        "patchId": "outer-wall",
+        "u": 0.014226,
+        "v": 176625.05466079025
+      },
+      "indices": [
+        20480,
+        20481,
+        20482,
+        20483,
+        20484,
+        21504,
+        21505,
+        21506,
+        21507,
+        21508,
+        21509,
+        22527,
+        22528,
+        22529,
+        22530,
+        22531,
+        22532,
+        22533,
+        22534,
+        23550,
+        23551,
+        23552,
+        23553,
+        23554,
+        23555,
+        23556,
+        23557,
+        23558,
+        23559,
+        24574,
+        24575,
+        24576,
+        24577,
+        24578,
+        24579,
+        24580,
+        24581,
+        24582,
+        24583,
+        25598,
+        25599,
+        25600,
+        25601,
+        25602,
+        25603,
+        25604,
+        25605,
+        25606,
+        25607,
+        26622,
+        26623,
+        26624,
+        26625,
+        26626,
+        26627,
+        26628,
+        26629,
+        26630,
+        27646,
+        27647,
+        27648,
+        27649,
+        27650,
+        27651,
+        27652,
+        27653,
+        27654,
+        28671,
+        28672,
+        28673,
+        28674,
+        28675,
+        28676,
+        28677,
+        29697,
+        29698,
+        29699
+      ],
+      "revision": 584,
+      "settings": {
+        "version": 1,
+        "tool": "raise",
+        "radiusMeters": 36000,
+        "strengthMeters": 200,
+        "maxFalloffError": 0.000001
+      },
+      "affectedSamples": 77
+    },
+    "pendingWork": false,
+    "pendingPositions": 0,
+    "previewPending": false,
+    "previewMessage": "",
+    "message": "Stroke complete. Undo restores the entire gesture."
+  }
+}

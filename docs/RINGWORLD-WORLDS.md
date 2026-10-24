@@ -1,6 +1,7 @@
 # Ringworlds
 
-Checkpoint B delivers a normal Atlas Ringworld editor. The reference body is a
+Checkpoints B and C deliver and technically qualify a normal Atlas Ringworld
+editor. The reference body is a
 rectangular annular solid: Inner Band, Outer Band, Upper Rim and Lower Rim.
 The center is empty space. All four regions belong to one material boundary,
 with independent band interiors and single canonical words at every real crease.
@@ -121,10 +122,16 @@ active replacement. Incompatible same-ID geometry cannot replace a saved map.
 Session Undo/Redo restores whole gestures exactly; historical terrain Undo is
 not promised across Open. Save/Open restores geography and permits new editing.
 
-Focused final review separately checks the largest profile, recovery, a complete
-band-to-band rim gesture, matched Open Cylinder calibration, emulated touch/pen
-and relevant prior-family regressions. Technical qualification is separate from
+The [focused final review](RINGWORLD-FINAL-REVIEW.md) checks the largest profile,
+recovery, a complete band-to-band rim gesture, matched Open Cylinder calibration,
+emulated touch/pen and relevant prior-family regressions. Technical qualification is separate from
 owner acceptance and physical-device evidence. Arbitrarily thin proportions,
 excavation, holes, tunnels, links, displaced meshes, custom shaping and subsequent
 World families remain outside this pass. The excavation recovery branch is not
 merged or modified.
+
+For later small Ringworld changes, the maintained pilot is a quick normal-editor
+smoke covering creation, band focus, painting and exact v35 reopening:
+`node node_modules/@playwright/test/cli.js test --config playwright.ringworld.config.mjs tests/ringworld-pilot.spec.ts`.
+Use the relevant numerical/rendering/navigation subset when its shared mechanisms
+change; run the full qualification matrix for material changes to those mechanisms.
