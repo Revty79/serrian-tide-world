@@ -1,0 +1,31 @@
+{
+  "baseline": "8038db72a411237489da9c8d5e63ed20b6a9a2d1",
+  "modules": [
+    {
+      "module": "windows",
+      "mechanicallyIdenticalAfterNamesAndGenericTypes": true
+    },
+    {
+      "module": "distance",
+      "mechanicallyIdenticalAfterNamesAndGenericTypes": true
+    },
+    {
+      "module": "path",
+      "mechanicallyIdenticalAfterNamesAndGenericTypes": true
+    },
+    {
+      "module": "join-coverage",
+      "mechanicallyIdenticalAfterNamesAndGenericTypes": true
+    },
+    {
+      "module": "presentation",
+      "mechanicallyIdenticalAfterNamesAndGenericTypes": true
+    }
+  ],
+  "geometry": "Independently compared against full old implementation in 12 physical configurations",
+  "viewChanges": [
+    "Geometry metadata accesses replaced by typed axial dimensions",
+    "Coplanar gradient-region planes aggregate all actual triangle charts; required by flat Hourglass caps"
+  ],
+  "policyChange": "Only the new exact Hourglass provider is admitted at the same validated topology; old provider expression and limits unchanged"
+}

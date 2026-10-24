@@ -88,3 +88,11 @@ workflows (p95 28.6 ms WebGL2, 36.2 ms Canvas) and all 17 matched N128 pixel
 views. Stable/reference channel maximum was 3; coverage, outside and diagonal
 violations were zero. These qualify the extraction, not the unfinished Hourglass
 editor. Evidence is frozen in `evidence/hourglass-foundation/receipt.json`.
+
+Expanded foundation verification passed all 205 relevant source checks and a
+second production build. All 34 default matched N128/N256 Dumbbell views passed
+(max stable/reference difference 3, zero coverage/outside/diagonal violations).
+Both N256 terminal/transition response cases passed, maximum p95 94.7 ms.
+Five extracted math/rendering modules are mechanically identical after naming
+and generic type substitution. This additional evidence follows the automatic
+approval review request for broader verification before checkpoint publication.
