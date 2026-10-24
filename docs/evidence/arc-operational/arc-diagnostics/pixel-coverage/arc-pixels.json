@@ -1,0 +1,267 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.arc.config.mjs",
+      "tests/arc-pixels.spec.ts",
+      "--max-failures=1"
+    ],
+    "configFile": "D:\\serrian-tide-world\\playwright.arc.config.mjs",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-atlas-hollow-worlds/workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "installed-chrome",
+        "name": "installed-chrome",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "arc-*.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "installed-chrome",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "arc-*.spec.ts"
+        ],
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5280",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "channel": "chrome",
+          "actionTimeout": 15000,
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "installed-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/arc-pixels.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "arc-pixels.spec.ts",
+      "file": "arc-pixels.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Arc N128 default: independent geometry/palette views match hardware WebGL2 and sharp Canvas",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 1200000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 123047,
+                  "error": {
+                    "message": "Error: top\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m10000\u001b[39m\nReceived:   \u001b[31m6363\u001b[39m",
+                    "stack": "Error: top\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m10000\u001b[39m\nReceived:   \u001b[31m6363\u001b[39m\n    at D:\\serrian-tide-world\\tests\\arc-pixels.spec.ts:2:969",
+                    "location": {
+                      "file": "D:\\serrian-tide-world\\tests\\arc-pixels.spec.ts",
+                      "column": 969,
+                      "line": 2
+                    },
+                    "snippet": "  1 | import{test,expect}from'@playwright/test';import{mkdirSync,writeFileSync}from'node:fs';\n> 2 | for(const[detail,variant]of[[128,'default'],[256,'default'],[128,'short'],[256,'near-closed']]as const)test(`Arc N${detail} ${variant}: independent geometry/palette views match hardware WebGL2 and sharp Canvas`,async({page})=>{test.setTimeout(1200000);await page.goto('/');const result=await page.evaluate(async({detail,variant})=>{const path='/tests/fixtures/arc-pixel-proof.ts';return(await import(path)).arcPixelProof(detail,variant);},{detail,variant});mkdirSync('.local/arc-pixels',{recursive:true});for(const c of result.captures)writeFileSync(`.local/arc-pixels/n${detail}-${variant}-${c.pose}.png`,Buffer.from(c.png.split(',')[1]!,'base64'));const{captures:_captures,...proof}=result;writeFileSync(`.local/arc-pixels/n${detail}-${variant}.json`,JSON.stringify(proof,null,2));expect(result.sourceHash).toBe(result.finalHash);for(const p of result.results){expect(p.graphics.renderer).not.toMatch(/software|swiftshader|llvmpipe/i);expect(p.stableChecked,p.pose).toBeGreaterThan(10000);expect(p.stableLand,p.pose).toBeGreaterThan(100);expect(p.stableOcean,p.pose).toBeGreaterThan(10000);expect(p.coastChecked,p.pose).toBeGreaterThan(20);expect(p.stableMax,`${p.pose} ${JSON.stringify(p.worst)}`).toBeLessThanOrEqual(3);expect(p.referenceColorMax,p.pose).toBeLessThanOrEqual(3);expect(p.coverageViolations,`${p.pose} ${JSON.stringify(p.worst)}`).toBe(0);expect(p.outsideViolations,p.pose).toBe(0);expect(p.diagonalViolations,p.pose).toBe(0);expect(p.stripSeamViolations,p.pose).toBe(0);}expect(result.results.reduce((s:number,p:{diagonalChecked:number})=>s+p.diagonalChecked,0)).toBeGreaterThan(100);expect(result.results.reduce((s:number,p:{stripSeamsChecked:number})=>s+p.stripSeamsChecked,0)).toBeGreaterThan(100);});\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^\n  3 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\serrian-tide-world\\tests\\arc-pixels.spec.ts",
+                        "column": 969,
+                        "line": 2
+                      },
+                      "message": "Error: top\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m10000\u001b[39m\nReceived:   \u001b[31m6363\u001b[39m\n\n  1 | import{test,expect}from'@playwright/test';import{mkdirSync,writeFileSync}from'node:fs';\n> 2 | for(const[detail,variant]of[[128,'default'],[256,'default'],[128,'short'],[256,'near-closed']]as const)test(`Arc N${detail} ${variant}: independent geometry/palette views match hardware WebGL2 and sharp Canvas`,async({page})=>{test.setTimeout(1200000);await page.goto('/');const result=await page.evaluate(async({detail,variant})=>{const path='/tests/fixtures/arc-pixel-proof.ts';return(await import(path)).arcPixelProof(detail,variant);},{detail,variant});mkdirSync('.local/arc-pixels',{recursive:true});for(const c of result.captures)writeFileSync(`.local/arc-pixels/n${detail}-${variant}-${c.pose}.png`,Buffer.from(c.png.split(',')[1]!,'base64'));const{captures:_captures,...proof}=result;writeFileSync(`.local/arc-pixels/n${detail}-${variant}.json`,JSON.stringify(proof,null,2));expect(result.sourceHash).toBe(result.finalHash);for(const p of result.results){expect(p.graphics.renderer).not.toMatch(/software|swiftshader|llvmpipe/i);expect(p.stableChecked,p.pose).toBeGreaterThan(10000);expect(p.stableLand,p.pose).toBeGreaterThan(100);expect(p.stableOcean,p.pose).toBeGreaterThan(10000);expect(p.coastChecked,p.pose).toBeGreaterThan(20);expect(p.stableMax,`${p.pose} ${JSON.stringify(p.worst)}`).toBeLessThanOrEqual(3);expect(p.referenceColorMax,p.pose).toBeLessThanOrEqual(3);expect(p.coverageViolations,`${p.pose} ${JSON.stringify(p.worst)}`).toBe(0);expect(p.outsideViolations,p.pose).toBe(0);expect(p.diagonalViolations,p.pose).toBe(0);expect(p.stripSeamViolations,p.pose).toBe(0);}expect(result.results.reduce((s:number,p:{diagonalChecked:number})=>s+p.diagonalChecked,0)).toBeGreaterThan(100);expect(result.results.reduce((s:number,p:{stripSeamsChecked:number})=>s+p.stripSeamsChecked,0)).toBeGreaterThan(100);});\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^\n  3 |\n    at D:\\serrian-tide-world\\tests\\arc-pixels.spec.ts:2:969"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T10:56:32.213Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\arc-pixels-Arc-N128-defaul-64297-are-WebGL2-and-sharp-Canvas-installed-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\arc-pixels-Arc-N128-defaul-64297-are-WebGL2-and-sharp-Canvas-installed-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\arc-pixels-Arc-N128-defaul-64297-are-WebGL2-and-sharp-Canvas-installed-chrome\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\serrian-tide-world\\tests\\arc-pixels.spec.ts",
+                    "column": 969,
+                    "line": 2
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ab9a3875b8f164aa92ec-0138fcf53131aaf3d971",
+          "file": "arc-pixels.spec.ts",
+          "line": 2,
+          "column": 104
+        },
+        {
+          "title": "Arc N256 default: independent geometry/palette views match hardware WebGL2 and sharp Canvas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ab9a3875b8f164aa92ec-bd777398f4fcbf1201ab",
+          "file": "arc-pixels.spec.ts",
+          "line": 2,
+          "column": 104
+        },
+        {
+          "title": "Arc N128 short: independent geometry/palette views match hardware WebGL2 and sharp Canvas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ab9a3875b8f164aa92ec-175ff2bed89006a5c19c",
+          "file": "arc-pixels.spec.ts",
+          "line": 2,
+          "column": 104
+        },
+        {
+          "title": "Arc N256 near-closed: independent geometry/palette views match hardware WebGL2 and sharp Canvas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ab9a3875b8f164aa92ec-511b6c4ef086c8744eef",
+          "file": "arc-pixels.spec.ts",
+          "line": 2,
+          "column": 104
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "message": "\u001b[31mTesting stopped early after 1 maximum allowed failures.\u001b[39m"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-10-24T10:56:31.697Z",
+    "duration": 124291.349,
+    "expected": 0,
+    "skipped": 3,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

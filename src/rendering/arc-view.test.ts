@@ -1,0 +1,10 @@
+import{test}from'node:test';import assert from'node:assert/strict';
+import{createArcGeometry}from'../surfaces/arc.ts';import{ARC_DEFAULT_DIMENSIONS}from'../terrain/arc.ts';import{arcVisible,arcRay,initialArcView}from'./arc-view.ts';import{pyramidDot,pyramidUnit,pyramidCross}from'../surfaces/pyramid.ts';
+test('Arc bounded prism visibility agrees with original full-triangle rays across supported proportions, all physical faces, aliases and cameras',()=>{
+ let compared=0;for(const d of[ARC_DEFAULT_DIMENSIONS,{...ARC_DEFAULT_DIMENSIONS,worldSizeMeters:100000,curvature:.8,arcSpanDegrees:30,bodyWidthRatio:.08,thicknessRatio:.016,endShape:'beveled' as const},{...ARC_DEFAULT_DIMENSIONS,worldSizeMeters:1e9,curvature:1.6,arcSpanDegrees:358,bodyWidthRatio:.25,thicknessRatio:.15},{...ARC_DEFAULT_DIMENSIONS,arcSpanDegrees:300,endShape:'beveled' as const}]){
+  const g=createArcGeometry({...d,provider:'physical-prismatic-arc',version:1,role:'exterior',identity:{worldId:'view',surfaceId:'boundary'}}),points=g.faces.flatMap(patchId=>[[.2,.3],[0,0],[0,.5],[.5,.5],[.01,.98]].map(([u,v])=>({...g.identity,patchId,u:u!,v:v!})));
+  for(const direction of[[0,1,0],[0,-1,0],[1,0,0],[-1,0,0],[0,0,1],[0,0,-1],[.55,1,.6],[-1,1,.04],[-1,-1,.04],[1,.2,-.3]]){const forward=pyramidUnit(direction as[number,number,number]),right=pyramidUnit(pyramidCross(Math.abs(forward[1])>.9?[1,0,0]:[0,1,0],forward)),view={...initialArcView(),frame:{forward,right,up:pyramidCross(forward,right)}};
+   for(const p of points){const aliases=g.aliases(p),cap=aliases.some(q=>g.region(q.patchId)==='upper'&&forward[1]>1e-10||g.region(q.patchId)==='lower'&&forward[1]< -1e-10),facing=aliases.some(q=>pyramidDot(g.normal(q),forward)>1e-10),P=g.referencePosition(p),hit=cap||!facing?undefined:arcRay(g,P,forward),expected=cap||facing&&!!hit&&Math.hypot(...g.referencePosition(hit).map((x,k)=>x-P[k]!))<g.scaleMeters*1e-8;assert.equal(arcVisible(g,p,view),expected,JSON.stringify({d,direction,p,hit}));compared++;}
+  }
+ }assert.equal(compared,48800);
+});

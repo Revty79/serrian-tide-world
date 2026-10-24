@@ -1,0 +1,18 @@
+import{createArcTerrain,ARC_DEFAULT_DIMENSIONS}from'../../src/terrain/arc.ts';
+import{prepareArcDab,arcBrushPolicy}from'../../src/terrain/arc-brush.ts';
+import{arcCapPosition,arcWallPosition}from'../../src/surfaces/arc-distance.ts';
+import{PolyhedronDisplayCache}from'../../src/rendering/polyhedron-field.ts';
+import{ArcPresentation}from'../../src/rendering/arc-presentation.ts';
+import{initialArcView}from'../../src/rendering/arc-view.ts';
+import{terrainPackedColor}from'../../src/rendering/indexed-display-cache.ts';
+export async function arcIncrementalProof(detail:128|256){
+ const t=createArcTerrain({terrainId:'incremental-heights',detail,geometry:{...ARC_DEFAULT_DIMENSIONS,provider:'physical-prismatic-arc',version:1,role:'exterior',identity:{worldId:'incremental',surfaceId:'boundary'}}}),g=t.geometry;
+ const prepare=async(c:PolyhedronDisplayCache<typeof t>)=>{let at=performance.now();for(const _ of c.prepare())if(performance.now()-at>5){await new Promise(resolve=>setTimeout(resolve,0));at=performance.now();}};
+ const cache=new PolyhedronDisplayCache(t);await prepare(cache);const gpu=document.createElement('canvas'),cpu=document.createElement('canvas'),a=new ArcPresentation(gpu,cpu,cache,()=>{}),size={width:900,height:640},view=initialArcView();a.present(view,size,'relief');if(a.backend!=='webgl2')throw Error('Hardware WebGL2 required.');
+ const points=[arcCapPosition(g,[1000000,0],1),arcCapPosition(g,[1000000,0],-1),arcWallPosition(g,14,.5,98000),arcWallPosition(g,46,.5,98000),arcWallPosition(g,61,.5,98000),arcWallPosition(g,30,.5,98000)],changesPerDab=[];
+ for(const p of points){const job=prepareArcDab(t,p,{version:1,tool:'raise',radiusMeters:arcBrushPolicy(t).defaultRadius,strengthMeters:800});while(job.status==='preparing')job.pump(128);if(job.status!=='ready')throw Error('Incremental dab failed.');const changes=[...job.preparedChanges(t)];job.commit();cache.apply(Uint32Array.from(changes,c=>c.index),Uint32Array.from(changes,c=>terrainPackedColor(c.after,0)),t.revision);a.present(view,size,'relief');changesPerDab.push(changes.length);}
+ const fresh=new PolyhedronDisplayCache(t);await prepare(fresh);const other=document.createElement('canvas'),freshCpu=document.createElement('canvas'),b=new ArcPresentation(other,freshCpu,fresh,()=>{}),read=(c:HTMLCanvasElement)=>{const gl=c.getContext('webgl2')!,bytes=new Uint8Array(c.width*c.height*4);gl.readPixels(0,0,c.width,c.height,gl.RGBA,gl.UNSIGNED_BYTE,bytes);return bytes;},different=(a:ArrayLike<number>,b:ArrayLike<number>)=>{if(a.length!==b.length)throw Error('Different image sizes');let n=0;for(let i=0;i<a.length;i++)if(!Object.is(a[i],b[i]))n++;return n;},views=[{pose:'oblique',view},{pose:'underside',view:{...view,frame:{right:[1,0,0]as const,up:[0,0,1]as const,forward:[0,-1,0]as const}}},{pose:'maps',view:initialArcView('map')}],results=[];
+ for(const{pose,view}of views){a.present(view,size,'relief');b.present(view,size,'relief');results.push({pose,gpuDifferent:different(read(gpu),read(other)),canvasDifferent:0});}
+ a.fail('Forced current Canvas');b.fail('Forced fresh Canvas');for(let i=0;i<views.length;i++){a.present(views[i]!.view,size,'relief');b.present(views[i]!.view,size,'relief');results[i]!.canvasDifferent=different(cpu.getContext('2d')!.getImageData(0,0,cpu.width,cpu.height).data,freshCpu.getContext('2d')!.getImageData(0,0,freshCpu.width,freshCpu.height).data);}
+ const fieldDifferent=different(cache.data,fresh.data),atlases=cache.polygonAtlases.map((atlas,i)=>({id:atlas.id,different:different(atlas.pixels,fresh.polygonAtlases[i]!.pixels)})),statistics={...a.statistics};a.dispose();b.dispose();cache.dispose();fresh.dispose();return{detail,changesPerDab,revision:t.revision,fieldDifferent,atlases,results,statistics};
+}

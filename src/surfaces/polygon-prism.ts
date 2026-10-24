@@ -33,4 +33,9 @@ export function polygonPrismGeometry<M extends PrismMetadata,R extends PrismWall
   localCoordinates:(face:string,p:PolyhedronVector)=>{const f=g.frame(face),v=pyramidSub(p,f.origin),uu=pyramidDot(f.u,f.u),uv=pyramidDot(f.u,f.v),vv=pyramidDot(f.v,f.v),du=pyramidDot(v,f.u),dv=pyramidDot(v,f.v),det=uu*vv-uv*uv;return{u:(du*vv-dv*uv)/det,v:(dv*uu-du*uv)/det};},
  });
 }
-export type PolygonPrismGeometry=ReturnType<typeof polygonPrismGeometry>;
+export type PolygonPrismGeometry=ReturnType<typeof polygonPrismGeometry>&{
+ /** Optional certified global lower bound to any point on a real perimeter
+  * edge. Geometry adapters may separate nearby but intrinsically distant ends
+  * without weakening the shared local hinge/cone escape certificate. */
+ boundaryDistanceLowerBound?(source:PolyhedronPhysicalBounds,edge:number):number;
+};

@@ -54,7 +54,7 @@ export function prismPlanarVisible(g:PolygonPrismGeometry,a:P,b:P){
 interface StaticModel{edges:{a:P;b:P;unit:P;inward:P;size:B}[];offsets:B[];perimeter:B;cones:{beta:B;radius:number}[];visibility?:{to:number;length:B}[][]}
 const models=new WeakMap<PolygonPrismGeometry,StaticModel>();
 function model(g:PolygonPrismGeometry){let m=models.get(g);if(m)return m;const N=g.outline.length,edges=g.outline.map((a,i)=>{const b=g.outline[(i+1)%N]!,v=sub(b,a),size=length(minus(point(b),point(a))),n=mid(size);return{a,b,size,unit:[v[0]/n,v[1]/n] as P,inward:[-v[1]/n,v[0]/n] as P};}),offsets:B[]=[I.exact(0)];for(const e of edges)offsets.push(I.add(offsets.at(-1)!,e.size));
- const cones=edges.map((e,i)=>{const prev=edges[(i+N-1)%N]!,out=sub(e.b,e.a),back=sub(prev.a,e.a),beta=positiveAngle(I.pointCross(point(out),point(back)),I.pointDot(point(out),point(back)));let radius=Math.min(g.metadata.thicknessMeters,mid(e.size),mid(prev.size));for(let j=0;j<N;j++)if(j!==i&&j!==(i+N-1)%N)radius=Math.min(radius,segmentDistance(e.a,edges[j]!.a,edges[j]!.b));return{beta,radius:Math.max(0,radius-guard(g))};});
+ const cones=edges.map((e,i)=>{const prev=edges[(i+N-1)%N]!,out=sub(e.b,e.a),back=sub(prev.a,e.a),beta=positiveAngle(I.pointCross(point(out),point(back)),I.pointDot(point(out),point(back)));let radius=Math.min(g.metadata.thicknessMeters,mid(e.size),mid(prev.size));for(let j=0;j<N;j++)if(j!==i&&j!==(i+N-1)%N)radius=Math.min(radius,Math.max(segmentDistance(e.a,edges[j]!.a,edges[j]!.b),g.boundaryDistanceLowerBound?.([I.exact(e.a[0]),[-g.metadata.thicknessMeters/2,g.metadata.thicknessMeters/2],I.exact(e.a[1])],j)??0));return{beta,radius:Math.max(0,radius-guard(g))};});
  m={edges,offsets,perimeter:offsets.at(-1)!,cones};models.set(g,m);return m;
 }
 function graph(g:PolygonPrismGeometry){const m=model(g);if(m.visibility)return m.visibility;const N=g.outline.length,v:{to:number;length:B}[][]=Array.from({length:N},()=>[]);for(let i=0;i<N;i++)for(let j=i+1;j<N;j++)if(prismPlanarVisible(g,g.outline[i]!,g.outline[j]!)){const distance=length(minus(point(g.outline[i]!),point(g.outline[j]!)));v[i]!.push({to:j,length:distance});v[j]!.push({to:i,length:distance});}m.visibility=v;return v;}
@@ -79,7 +79,7 @@ function hinge(g:PolygonPrismGeometry,a:Location,b:Location,edge:number,cap:1|-1
  const m=model(g),e=m.edges[edge]!,N=m.edges.length,H=g.metadata.thicknessMeters,pad=guard(g),unit:BP=[I.divide(I.subtract(I.exact(e.b[0]),I.exact(e.a[0])),e.size),I.divide(I.subtract(I.exact(e.b[1]),I.exact(e.a[1])),e.size)];
  const map=(p:Location):BP|undefined=>{if(p.cap===cap){const v=minus(capBounds(p),point(e.a)),x=I.pointDot(v,unit),y=I.pointCross(unit,v);if(x[0]<-pad||x[1]>e.size[1]+pad||y[1]<-pad)return;return[x,y];}if(p.wall===edge)return[I.multiply(p.t!,e.size),I.subtract(I.multiply(I.exact(cap),p.y),I.exact(H/2))];};
  const A=map(a),B=map(b);if(!A||!B)return;let escape=Math.min(A[0][0],e.size[0]-A[0][1],A[1][0]+H)-pad;
- const source=capPoint(a);for(let j=0;j<N;j++)if(j!==edge){const other=m.edges[j]!,dy=a.position[1]-cap*H/2;escape=Math.min(escape,Math.hypot(segmentDistance(source,other.a,other.b),dy)-pad);}
+ const source=capPoint(a);for(let j=0;j<N;j++)if(j!==edge){const other=m.edges[j]!,dy=a.position[1]-cap*H/2;escape=Math.min(escape,Math.max(Math.hypot(segmentDistance(source,other.a,other.b),dy)-pad,g.boundaryDistanceLowerBound?.(a.bounds,j)??0));}
  const bounds=length(minus(B,A));if(bounds[1]>=escape)return;
  const av=A.map(mid)as unknown as P,bv=B.map(mid)as unknown as P,total=Math.hypot(...sub(bv,av));return{kind:'certified-hinge',bounds,length:total,at:f=>{const x=av[0]+f*(bv[0]-av[0]),y=av[1]+f*(bv[1]-av[1]);return y>=0?pointOnCap(g,[e.a[0]+e.unit[0]*x+e.inward[0]*y,e.a[1]+e.unit[1]*x+e.inward[1]*y],cap):pointOnWall(g,edge,x/mid(e.size),cap*(H/2+y));}};
 }
@@ -149,6 +149,11 @@ function prism(g:PolygonPrismGeometry,a:Location,b:Location):Route|undefined{
 }
 function route(g:PolygonPrismGeometry,first:SurfacePosition,last:SurfacePosition,tolerance:number){const a=sourceLocation(g,first),b=location(g,last);if(a.p.patchId===b.p.patchId&&a.p.u===b.p.u&&a.p.v===b.p.v)return{kind:'stationary',bounds:[0,0]as B,length:0,at:()=>b.p};let result:Route|undefined;
  if(a.cap!==undefined&&a.cap===b.cap)result=planar(g,a,b);
+ // An edge location can be addressed from its cap or its incident wall.
+ // When both endpoints share that real convex wall, its straight segment
+ // attains the ambient lower bound globally. Honor the canonical alias before
+ // conservative local escape tests reject a nearby, disconnected end face.
+ if(!result&&(a.cap!==undefined&&b.wall!==undefined||b.cap!==undefined&&a.wall!==undefined)){const c=a.cap!==undefined?a:b,w=a.wall!==undefined?a:b,alias=g.aliases(c.p).find(q=>g.physicalFaceId(q.patchId)===`wall-${w.wall}`);if(alias){const q=location(g,alias);result=wall(g,a.cap!==undefined?q:a,b.cap!==undefined?q:b);}}
  if(!result)result=wall(g,a,b);
  if(!result){const caps=a.cap?[a.cap]:b.cap?[b.cap]:[1,-1]as const;for(const cap of caps){const edges=a.wall!==undefined?[a.wall]:b.wall!==undefined?[b.wall]:[];for(const i of edges){result=hinge(g,a,b,i,cap);if(result)break;}if(result)break;for(let i=0;i<g.outline.length;i++){result=cone(g,a,b,i,cap);if(result)break;}if(result)break;}}
  if(!result)result=prism(g,a,b);

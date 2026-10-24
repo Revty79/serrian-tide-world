@@ -68,3 +68,84 @@ No Hollow Arc, excavation, link, displaced material, other geometry, website
 integration, deployment or database work is included. Owner acceptance and
 physical-device testing remain separate. The protected recovery branch remains
 at `35f7f5d34edf861c33c5eb4decad92d41664c749`.
+
+## Operational B
+
+The statements above describe the frozen A checkpoint. B adds the normal
+**Arc World** creator, all six structural controls, numerical detail, the Atlas
+workspace and strict format **38**. The format inventory is frozen at A;
+21–24 remain reserved and no previous format changes its interpretation.
+Upper/Underside maps preserve the actual bounded footprint. Wall map follows
+the complete physical perimeter; cuts remain explicit map cuts. Physical
+rotation, Pan World, overview, Fit arc, wheel zoom and ten region focus choices
+operate on the same geography. Occluded inward/end focus clears actual opposing
+material using the geometry's real clearance, with ordinary ray picking intact.
+
+Arc uses the accepted triangular authority, field/gradient cache, sharp polygon
+atlases, palette and relief, four-quarter-pixel GPU presentation, ordered Canvas
+wall runs and true cap silhouette. Its presenter/view entry points alias the
+shared prism implementations. The capacity exception requires this exact
+provider/generation, 244 triangular charts, 124 vertices, 366 edges, n32/n64
+and `122*n*n+2` canonical samples. Existing capacity profiles are unchanged.
+There is no separate Arc color field or alternate quality tier.
+
+A broad, 30-degree Arc exposed a faint Canvas antialias pixel outside a very
+thin/sheared atlas clip. The shared Canvas presenter now also applies its
+already-constructed exact physical union as a final destination-in mask. It
+reuses the existing path and scratch layer, leaves interior color/field values
+intact and introduces no expanded silhouette or hidden material. Both complete
+Canvas workflows are repeated after that change; GPU workflow code is unchanged.
+All final matched default/variant pixel checks use the corrected source.
+
+The existing connected brush, four tools, candidate pruning, worker protocol,
+host-validated canonical commits, input subdivision, rolling scheduling, preview,
+dirty journals and whole-gesture history remain authoritative. Save captures
+the current validated editor state and exact Float32 words, including -0.
+Header and payload share one checksum. Strict reconstruction checks raw and
+derived geometry, topology, three identities, limits and every record key.
+Corrupt Open validates before replacement; incompatible saved geometry cannot
+replace the existing World. No painted geography is resized or remapped.
+
+### Connected distance and separated ends
+
+The shared prism router uses real footprint visibility/shortest paths, physical
+wall arclength, certified unfolded cap/wall hinges and local vertex cones;
+interval certificates bound numerical error. Ambient chord distance is only a
+lower bound. Unsupported global path requests retain the accepted explicit
+failure/prefix semantics, rather than inventing a through-solid shortcut.
+Native input is subdivided within the existing brush/thickness bounds.
+
+Near-closed geometry exposed two narrowly corrected certificate cases. A cap
+edge's actual incident-wall alias now receives the globally exact straight
+route on that convex wall. A geometry adapter may also supply a certified lower
+bound to a real perimeter edge, preventing an unrelated nearby end from
+unnecessarily shrinking a valid hinge/cone neighborhood. Existing Crescent and
+Horseshoe geometries do not supply this optional hook.
+
+For Arc, the projection of any surface path stays within its real material
+footprint. This footprint meets z=0 only at x >= b, where b is the actual
+central inner vertex. For point/edge hulls wholly on opposite sides of z=0
+and with x <= b, any path therefore has length >= `2*b - max(A.x)-max(B.x)`.
+Outward interval arithmetic certifies this total-x-variation lower bound.
+Elsewhere it returns zero. The shared router retains actual surface-distance
+authority; this cut bound only excludes impossible shortcuts and certifies
+local escape distances. No terminal edge becomes a periodic alias.
+
+The operational receipt records the exact executed source, raw checks, matched
+pixel views and actual input-to-pixels timing. Initial failed terminal alias/
+escape and short-point fixture checks are retained as diagnostic evidence.
+The pixel fixture's initial high-frequency bands, then its wide views with
+broader bands, had too few stable-ocean pixels outside the accepted two-texel
+coast support. Both raw attempts are preserved. Final qualification uses broad
+deterministic bands and matched closer framing, with exactly the same coverage,
+stable-land/ocean, color, seam and silhouette thresholds. Short-Arc overview
+framing centers the actual body. These are test-data/camera changes only.
+For the minimum-span broad profile, long, skinny facets make the independent
+two-texel interval support span most of a facet. Its deterministic bands therefore
+follow the longitudinal angle in the body, with radial/vertical variation in
+the real terminal collars. This supplies substantial stable terrain on every
+face without changing the support reference or any acceptance gate.
+Complementary configuration, continuous joins, close-end isolation, navigation,
+recovery, emulated input and affected prior-family checks finish in C. A test
+appearing in B's source inventory does not imply that its C qualification ran
+at B. Owner acceptance and physical-device qualification remain separate.
