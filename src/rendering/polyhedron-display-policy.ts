@@ -8,6 +8,7 @@ export function polyhedronAtlasSpacingMeters(t:PolyhedronTerrain,charts:readonly
  * remain independent and unchanged. Unknown profiles retain the accepted cap. */
 export function polyhedronDisplayCapacity(t:PolyhedronTerrain){const g=t.geometry,m=g.metadata as unknown as{provider?:unknown;version?:unknown},n=t.subdivisions;
  if((m.provider==='physical-faceted-dumbbell'||m.provider==='physical-faceted-hourglass')&&m.version===1&&[32,64].includes(n)&&g.faces.length===320&&g.vertices.length===162&&g.edges.length===480&&g.faces.every(f=>g.isTriangle(f))&&t.sampleCount===160*n*n+2)return 655362;
+ if(m.provider==='physical-prismatic-spiral'&&m.version===1&&[32,64].includes(n)&&g.faces.length===516&&g.vertices.length===260&&g.edges.length===774&&g.faces.every(f=>g.isTriangle(f))&&t.sampleCount===258*n*n+2)return 1056770;
  if(m.provider==='physical-prismatic-arc'&&m.version===1&&[32,64].includes(n)&&g.faces.length===244&&g.vertices.length===124&&g.edges.length===366&&g.faces.every(f=>g.isTriangle(f))&&t.sampleCount===122*n*n+2)return 499714;
  if(m.provider==='physical-prismatic-horseshoe'&&m.version===1&&[32,64].includes(n)&&g.faces.length===228&&g.vertices.length===116&&g.edges.length===342&&g.faces.every(f=>g.isTriangle(f))&&t.sampleCount===114*n*n+2)return 466946;
  if(m.provider==='physical-prismatic-crescent'&&m.version===1&&[32,64].includes(n)&&g.faces.length===252&&g.vertices.length===128&&g.edges.length===378&&g.faces.every(f=>g.isTriangle(f))&&t.sampleCount===126*n*n+2)return 516098;

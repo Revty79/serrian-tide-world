@@ -1,0 +1,1 @@
+export{prismNetPoint as spiralNetPoint,prismLayout as spiralLayout,prismRay as spiralRay,prismVisible as spiralVisible,prismIndexVisible as spiralIndexVisible,initialPrismView as initialSpiralView,projectPrism as projectSpiral,unprojectPrism as unprojectSpiral,navigatePrism as navigateSpiral,PRISM_PROJECTION as SPIRAL_PROJECTION}from'./prismatic-view.ts';

@@ -1,0 +1,6 @@
+import{createSpiralGeometry,type SpiralConfiguration}from'../surfaces/spiral.ts';import{createTriangularPolyhedronTerrain}from'./triangular-polyhedron.ts';
+export{SPIRAL_DEFAULT_DIMENSIONS}from'../surfaces/spiral.ts';
+/** 64 bounded winding strips and 130 perimeter edges; no longitudinal periodicity.
+ * N128/N256 equivalent owns 122*n²+2 words at n32/n64. */
+export function createSpiralTerrain(options:{terrainId:string;geometry:SpiralConfiguration;detail:128|256;initialElevation?:number;initialValues?:Float32Array}){if(![128,256].includes(options.detail))throw RangeError('Spiral requires N128/N256 equivalent detail.');const geometry=createSpiralGeometry(options.geometry),terrain=createTriangularPolyhedronTerrain({...options,geometry,subdivisions:options.detail/4,initialElevation:options.initialElevation??-100});if(options.terrainId===geometry.identity.worldId||options.terrainId===geometry.identity.surfaceId||geometry.identity.worldId===geometry.identity.surfaceId)throw RangeError('Spiral World, surface and terrain identities must be distinct.');return Object.freeze({...terrain,detail:options.detail,get revision(){return terrain.revision;}});}
+export type SpiralTerrain=ReturnType<typeof createSpiralTerrain>;
