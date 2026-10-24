@@ -190,3 +190,17 @@ in 50,400 comparisons and contains no heights or history. Geometry/pixel and
 input evidence, unchanged resource caps, supported local distance domains and
 separate owner/device acceptance are in the [Crescent final review](CRESCENT-FINAL-REVIEW.md)
 and its three independently frozen checkpoint receipts.
+
+Horseshoe binds that same accepted prism field, palette, static-triangle GPU
+adapter, ordered Canvas wall runs, silhouettes, journals and Atlas editor
+systems through shared prism modules. Crescent compatibility entry points and
+physical construction fingerprints remain intact. Coplanar straight-arm strips
+share gradient regions; bend facets, beveled lateral pieces and real terminal
+faces keep their physical normals. Empty arm gaps remain empty in rendering,
+picking and brush distance. Inward-wall focus clears the actual opposite arm.
+The exact 228-chart N32/N64 profile qualifies its capacity without raising any
+shared limit. Equivalent canonical-height N128/N256 hardware GPU/Canvas pixels,
+ordinary painting, held strokes, joins, navigation, input and strict persistence
+are recorded in the [Horseshoe final review](HORSESHOE-FINAL-REVIEW.md) and its
+separate frozen A/B/C receipts. Owner acceptance and physical-device performance
+remain separate from emulated input and technical qualification.

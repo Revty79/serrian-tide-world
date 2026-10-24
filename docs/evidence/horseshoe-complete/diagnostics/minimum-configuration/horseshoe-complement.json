@@ -1,0 +1,613 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.horseshoe.config.mjs",
+      "tests/horseshoe-configuration.spec.ts",
+      "tests/horseshoe-gap.spec.ts",
+      "tests/horseshoe-incremental.spec.ts",
+      "tests/horseshoe-joins.spec.ts",
+      "tests/horseshoe-navigation.spec.ts",
+      "tests/horseshoe-recovery.spec.ts",
+      "tests/horseshoe-touch.spec.ts",
+      "--max-failures=1"
+    ],
+    "configFile": "D:\\serrian-tide-world\\playwright.horseshoe.config.mjs",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-atlas-hollow-worlds/workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "installed-chrome",
+        "name": "installed-chrome",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "horseshoe-*.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "installed-chrome",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "horseshoe-*.spec.ts"
+        ],
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5279",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "channel": "chrome",
+          "actionTimeout": 15000,
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "installed-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/horseshoe-complement.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "horseshoe-configuration.spec.ts",
+      "file": "horseshoe-configuration.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Horseshoe auto: supported compact-thin-beveled creator configuration remains editable",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 128609,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 120000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 120000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 120000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "D:\\serrian-tide-world\\tests\\helpers\\horseshoe.ts",
+                        "column": 59,
+                        "line": 2
+                      },
+                      "message": "Error: page.waitForFunction: Test timeout of 120000ms exceeded.\n\n   at helpers\\horseshoe.ts:2\n\n  1 | import{expect,type Page}from'@playwright/test';export{toolsPanel,openConnectedMap}from'../workspace-helpers.ts';\n> 2 | export async function horseshoeIdle(page:Page){await page.waitForFunction(()=>{const c=document.querySelector<HTMLCanvasElement>('.cylinder-canvas')?.dataset;return c?.ready==='true'&&c.painting==='false'&&c.processing==='false'&&c.revision===c.displayRevision;},null,{timeout:120000});}\n    |                                                           ^\n  3 | export async function createHorseshoe(page:Page,detail:128|256=128,canvas=false){if(canvas)await page.addInitScript(()=>{const get=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(this:HTMLCanvasElement,type,...args){return type==='webgl2'?null:Reflect.apply(get,this,[type,...args]);}as typeof get;});await page.goto('/');await page.getByLabel('World shape',{exact:true}).selectOption('horseshoe');await page.getByLabel('Horseshoe numerical detail',{exact:true}).selectOption(String(detail));await page.getByRole('button',{name:'Create World / Map',exact:true}).click({timeout:120000});await horseshoeIdle(page);await expect(page.locator('.cylinder-canvas')).toHaveAttribute('data-renderer',canvas?'cpu':'webgl2',{timeout:60000});}\n  4 | export async function horseshoeSnapshot(page:Page,words=false){return page.evaluate(async words=>{const path='/src/components/ConnectedWorkspace.tsx';return(await import(path)).connectedWorkspaceInspection().snapshot(words)as any;},words);}\n  5 | export async function horseshoeHash(page:Page){return page.evaluate(async()=>{const path='/src/components/ConnectedWorkspace.tsx',s=(await import(path)).connectedWorkspaceInspection().snapshot()as{words:number[]};return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',Uint32Array.from(s.words).buffer)),x=>x.toString(16).padStart(2,'0')).join('');});}\n    at horseshoeIdle (D:\\serrian-tide-world\\tests\\helpers\\horseshoe.ts:2:59)\n    at D:\\serrian-tide-world\\tests\\horseshoe-configuration.spec.ts:3:1084"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T09:48:46.451Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\horseshoe-configuration-Ho-ff745-figuration-remains-editable-installed-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\horseshoe-configuration-Ho-ff745-figuration-remains-editable-installed-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\horseshoe-configuration-Ho-ff745-figuration-remains-editable-installed-chrome\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "5f6f9bcdbe340052bbd5-0e63bbffee40328ac684",
+          "file": "horseshoe-configuration.spec.ts",
+          "line": 3,
+          "column": 69
+        },
+        {
+          "title": "Horseshoe auto: supported long-thick-close-arms creator configuration remains editable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "5f6f9bcdbe340052bbd5-aea9361c2a271d766072",
+          "file": "horseshoe-configuration.spec.ts",
+          "line": 3,
+          "column": 69
+        },
+        {
+          "title": "Horseshoe canvas: supported compact-thin-beveled creator configuration remains editable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "5f6f9bcdbe340052bbd5-d2b464dd8b8d77a22ef4",
+          "file": "horseshoe-configuration.spec.ts",
+          "line": 3,
+          "column": 69
+        },
+        {
+          "title": "Horseshoe canvas: supported long-thick-close-arms creator configuration remains editable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "5f6f9bcdbe340052bbd5-525afa555d584e8334f4",
+          "file": "horseshoe-configuration.spec.ts",
+          "line": 3,
+          "column": 69
+        }
+      ]
+    },
+    {
+      "title": "horseshoe-gap.spec.ts",
+      "file": "horseshoe-gap.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Horseshoe N256 auto: close arms keep separate words, accessible inward faces and one connected U gesture",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "8e7d8e61e14a43621be8-7a2f86dc6fe085ff3602",
+          "file": "horseshoe-gap.spec.ts",
+          "line": 3,
+          "column": 39
+        },
+        {
+          "title": "Horseshoe N256 canvas: close arms keep separate words, accessible inward faces and one connected U gesture",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "8e7d8e61e14a43621be8-3a8a373f27e747aae626",
+          "file": "horseshoe-gap.spec.ts",
+          "line": 3,
+          "column": 39
+        }
+      ]
+    },
+    {
+      "title": "horseshoe-incremental.spec.ts",
+      "file": "horseshoe-incremental.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Horseshoe N128: six-region dirty field, atlas, GPU and Canvas equal fresh reconstruction",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "81beaede58c1c66d61b2-de9d4ced8fc27f92029c",
+          "file": "horseshoe-incremental.spec.ts",
+          "line": 2,
+          "column": 38
+        },
+        {
+          "title": "Horseshoe N256: six-region dirty field, atlas, GPU and Canvas equal fresh reconstruction",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "81beaede58c1c66d61b2-3e6f30bc765b059c7252",
+          "file": "horseshoe-incremental.spec.ts",
+          "line": 2,
+          "column": 38
+        }
+      ]
+    },
+    {
+      "title": "horseshoe-joins.spec.ts",
+      "file": "horseshoe-joins.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Horseshoe N256 auto: native continuous cap/wall joins and physical void picking",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "053a994de4bb0bd32ddc-adb9d439ee167e1826b1",
+          "file": "horseshoe-joins.spec.ts",
+          "line": 3,
+          "column": 39
+        },
+        {
+          "title": "Horseshoe N256 canvas: native continuous cap/wall joins and physical void picking",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "053a994de4bb0bd32ddc-2e97712bc28c53415964",
+          "file": "horseshoe-joins.spec.ts",
+          "line": 3,
+          "column": 39
+        }
+      ]
+    },
+    {
+      "title": "horseshoe-navigation.spec.ts",
+      "file": "horseshoe-navigation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Horseshoe N256 auto: ordinary rotation publishes actual pixels and preserves geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "96cb7f523e7e7daea037-e7915e0d8e2276ee970f",
+          "file": "horseshoe-navigation.spec.ts",
+          "line": 2,
+          "column": 39
+        },
+        {
+          "title": "Horseshoe N256 canvas: ordinary rotation publishes actual pixels and preserves geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "96cb7f523e7e7daea037-5851709c60082d7f4181",
+          "file": "horseshoe-navigation.spec.ts",
+          "line": 2,
+          "column": 39
+        }
+      ]
+    },
+    {
+      "title": "horseshoe-recovery.spec.ts",
+      "file": "horseshoe-recovery.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Horseshoe N256 auto: active worker protocol fault preserves exact prefix history and a fresh stroke recovers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "971e965adbced41638ef-04a0fb023d39e8d1b7a2",
+          "file": "horseshoe-recovery.spec.ts",
+          "line": 9,
+          "column": 39
+        },
+        {
+          "title": "Horseshoe N256 canvas: active worker protocol fault preserves exact prefix history and a fresh stroke recovers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "971e965adbced41638ef-2bc3c990f314c598570d",
+          "file": "horseshoe-recovery.spec.ts",
+          "line": 9,
+          "column": 39
+        },
+        {
+          "title": "Horseshoe N256: graphics loss and restoration retain the current painted terrain epoch",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "971e965adbced41638ef-d1f40b96143ba8eccab8",
+          "file": "horseshoe-recovery.spec.ts",
+          "line": 12,
+          "column": 1
+        },
+        {
+          "title": "Horseshoe v37 corrupt Open retains the active World and exact geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "971e965adbced41638ef-b063bdb491315c790ad0",
+          "file": "horseshoe-recovery.spec.ts",
+          "line": 13,
+          "column": 1
+        },
+        {
+          "title": "Horseshoe v37: valid incompatible geometry cannot replace an existing saved World",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "971e965adbced41638ef-30e51334f97d098dcc9d",
+          "file": "horseshoe-recovery.spec.ts",
+          "line": 15,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "horseshoe-touch.spec.ts",
+      "file": "horseshoe-touch.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "horseshoe auto: native emulated touch/pen drawing and two-finger navigation preserve exact history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "058c2fb5dc1560c94a12-f0ab82f2fa04919e6b46",
+          "file": "horseshoe-touch.spec.ts",
+          "line": 2,
+          "column": 71
+        },
+        {
+          "title": "horseshoe canvas: native emulated touch/pen drawing and two-finger navigation preserve exact history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "058c2fb5dc1560c94a12-9560d4aa3364a8ff0b2d",
+          "file": "horseshoe-touch.spec.ts",
+          "line": 2,
+          "column": 71
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "message": "\u001b[31mTesting stopped early after 1 maximum allowed failures.\u001b[39m"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-10-24T09:48:45.633Z",
+    "duration": 130001.418,
+    "expected": 0,
+    "skipped": 18,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}
