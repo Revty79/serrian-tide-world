@@ -37,3 +37,61 @@ This checkpoint is a geometry foundation. Fragmented World creation and strict
 persistence are not yet exposed as an operational World. No excavation,
 custom cutting, displacement meshing or other World family is implemented.
 Owner acceptance remains separate from technical validation.
+
+## Checkpoint B: operational Atlas editor
+
+Choose **Fragmented World**. Set parent width, fracture seed, separation and
+N128/N256 detail; Atlas creates the four physical pieces together. The World
+view uses real perspective, depth and nearest-material picking. Select a piece,
+choose **Sculpt selected fragment**, and edit its Physical view or connected
+Surface map. Every break face uses the same authoritative terrain as the outer
+face. The selected fragment remains visible in the navigation controls.
+
+Raise, Lower, Smooth and Flatten use the accepted worker, scheduling, visible
+surface clipping and exact whole-gesture history. Inactive pieces retain their
+prepared resources; local strokes do not execute brushes on their neighbors.
+Open prepares only the selected display; World view prepares other displays
+once when needed. Tool, reference brush settings and fragment histories survive
+view/focus changes within the session. Undo stacks are not serialized.
+
+Format **33** stores the parent reference/generation settings, complete surviving
+membership, stable component/terrain/surface IDs, strict physical metadata,
+poses and scale, selection, controls and exact little-endian Float32 words. The
+whole header and payload are SHA-256 checked. All components are validated
+before replacement. New-family records cannot overwrite existing saved
+geometry or identity; formats 1–32 and reserved 21–24 retain their interpretation.
+
+Installed Chrome used actual AMD Radeon RX 6600 hardware WebGL2 (not software),
+plus forced Canvas, at 1440×950. Twelve new-family browser cases passed:
+four complete four-tool/isolation/history/v33 workflows, four ordinary painting
+cases on all four physical faces, two 20-second held strokes, and two independent
+transformed-world ray/pixel comparisons. The reference checks include unequal
+scales/orientations, exposed break faces, above/below views and occlusion.
+Stable RGB differences were at most 2/255, with zero checked material-coverage,
+silhouette or component-picking violations. Canonical words stayed unchanged
+through rendering.
+
+| Detail / backend | Outer | Break 1 | Break 2 | Break 3 |
+| --- | ---: | ---: | ---: | ---: |
+| N128 WebGL2 | 23.7 | 26.3 | 25.6 | 25.6 |
+| N128 Canvas | 21.3 | 22.5 | 22.2 | 23.5 |
+| N256 WebGL2 | 25.9 | 32.1 | 28.2 | 32.3 |
+| N256 Canvas | 26.0 | 30.2 | 29.8 | 23.7 |
+
+Values are p95 milliseconds from trusted input to actual changed output pixels,
+using the default brush with all four fragments resident. The held N256 strokes
+measured 62.1 ms WebGL2 and 48.9 ms Canvas, each one exact undoable gesture.
+Four prepared N256 display caches owned 55,105,064 bytes; the desktop shared
+World backing buffers owned 23,256,000 bytes. Authority for all four N256 pieces
+is 2,097,184 bytes. Existing work/history/backing limits remain unchanged.
+
+Component placement controls are integrated with the existing arrangement
+history. Final qualification of placement, scale, removal, recovery, touch/pen
+and repeated navigation is tracked by checkpoint C. B evidence is frozen in
+`evidence/fragmented-operational/receipt.json`. Technical validation is separate
+from owner and physical-device acceptance.
+
+B publication checks also passed 26 targeted numerical/shared tests,
+TypeScript and production build, plus four current Floating Islands regressions:
+N256 GPU/Canvas independent editing and exact v32 reopening, N256 physical
+pixel reference, and fresh-catalog legacy v31 upgrade with corrupt-Open retention.

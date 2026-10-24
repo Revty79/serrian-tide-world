@@ -1,0 +1,2 @@
+import base from './playwright.floating-islands.config.mjs';
+export default{...base,testMatch:['fragmented-workflow.spec.ts','fragmented-performance.spec.ts','fragmented-pixels.spec.ts','fragmented-management.spec.ts','fragmented-navigation.spec.ts','fragmented-recovery.spec.ts'],use:{...base.use,baseURL:'http://127.0.0.1:5275',actionTimeout:15000},webServer:undefined,reporter:[['list'],['json',{outputFile:process.env.FRAGMENT_REPORT??'.local/fragmented-browser.json'}]]};

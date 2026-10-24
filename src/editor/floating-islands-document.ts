@@ -1,3 +1,4 @@
+import {validateFragmentGeneration,type FragmentGeneration} from './fragment-generation.ts';
 import type {PhysicalPieceTerrain as FloatingIslandTerrain} from '../terrain/physical-piece.ts';
 import {prepareFloatingIslandSession} from './floating-island-session.ts';
 import type {PersistenceWork} from '../persistence/cooperative-work.ts';
@@ -14,14 +15,14 @@ export function islandDescriptor(c:IslandComponent):IslandDescriptor{return{id:c
  * geography, brushes, history and derived display resources. Inactive islands
  * are prepared lazily; selecting or painting never re-prepares their neighbors. */
 export class FloatingIslandsDocument{
- readonly worldId:string;name:string;hasSaved:boolean;islands:readonly IslandComponent[];selectedIsland:string;controls:CylinderControls;error='';changed=()=>{};
+ readonly generation?:FragmentGeneration;readonly worldId:string;name:string;hasSaved:boolean;islands:readonly IslandComponent[];selectedIsland:string;controls:CylinderControls;error='';changed=()=>{};
  private sessions=new Map<string,Prepared>();private past:Arrangement[]=[];private future:Arrangement[]=[];private busy=false;private hostLocked=false;private closed=false;private savedStamp:string;
- constructor(worldId:string,islands:readonly IslandComponent[],name:string,saved:boolean,selected:string,first:Prepared,controls?:CylinderControls){this.worldId=worldId;this.islands=Object.freeze(islands.map(frozenComponent));this.name=name;this.hasSaved=saved;this.selectedIsland=selected;this.sessions.set(selected,first);const p=floatingIslandBrushPolicy(first.terrain);this.controls=controls??{...defaultCylinderControls(first.terrain.geometry.scaleMeters),radius:String(p.defaultRadius)};this.savedStamp=this.stamp();}
+ constructor(worldId:string,islands:readonly IslandComponent[],name:string,saved:boolean,selected:string,first:Prepared,controls?:CylinderControls,generation?:FragmentGeneration){this.generation=generation;this.worldId=worldId;this.islands=Object.freeze(islands.map(frozenComponent));this.name=name;this.hasSaved=saved;this.selectedIsland=selected;this.sessions.set(selected,first);const p=floatingIslandBrushPolicy(first.terrain);this.controls=controls??{...defaultCylinderControls(first.terrain.geometry.scaleMeters),radius:String(p.defaultRadius)};this.savedStamp=this.stamp();}
  get family(){return this.islands[0]!.terrain.geometry.metadata.provider==='physical-tetrahedral-fragment'?'fragmented' as const:'floating-islands' as const;}
  get current(){return this.islands.find(c=>c.id===this.selectedIsland)!;}
  get selectedSession(){const p=this.sessions.get(this.selectedIsland);if(!p)throw Error('Selected island display is not prepared.');return p;}
  session(id:string){return this.sessions.get(id);}
- stamp(){return JSON.stringify({worldId:this.worldId,name:this.name,islands:this.islands.map(islandDescriptor),selected:this.selectedIsland,controls:this.controls});}
+ stamp(){return JSON.stringify({worldId:this.worldId,name:this.name,generation:this.generation,islands:this.islands.map(islandDescriptor),selected:this.selectedIsland,controls:this.controls});}
  get modified(){return this.stamp()!==this.savedStamp||this.islands.some(c=>this.sessions.get(c.id)?.editor.modified);}
  get painting(){return [...this.sessions.values()].some(p=>p.editor.painting);}
  get processing(){return this.busy||[...this.sessions.values()].some(p=>p.editor.processing);}
@@ -44,4 +45,4 @@ export class FloatingIslandsDocument{
  markSaved(name:string){this.name=name;this.hasSaved=true;for(const p of this.sessions.values())p.editor.markSaved(name);this.savedStamp=this.stamp();this.changed();}
  dispose(){this.closed=true;for(const p of this.sessions.values())p.editor.dispose();this.sessions.clear();this.past=[];this.future=[];this.changed=()=>{};}
 }
-export async function prepareFloatingIslandsDocument(worldId:string,islands:readonly IslandComponent[],name:string,saved=false,selected=islands[0]!.id,work:PersistenceWork={},controls?:CylinderControls){validateIslandArrangement(worldId,islands.map(islandDescriptor));const c=islands.find(c=>c.id===selected);if(!c)throw Error('Saved island selection is missing.');const started=performance.now(),p=await prepareFloatingIslandSession(c.terrain,name,saved,work);try{return{editor:new FloatingIslandsDocument(worldId,Object.freeze([...islands]),name,saved,selected,p,controls),preparationMs:performance.now()-started};}catch(e){p.editor.dispose();throw e;}}
+export async function prepareFloatingIslandsDocument(worldId:string,islands:readonly IslandComponent[],name:string,saved=false,selected=islands[0]!.id,work:PersistenceWork={},controls?:CylinderControls,generation?:FragmentGeneration){if(islands[0]?.terrain.geometry.metadata.provider==='physical-tetrahedral-fragment'&&!generation)throw Error('Fragmented Worlds require their saved generation parameters.');if(generation)validateFragmentGeneration(generation);validateIslandArrangement(worldId,islands.map(islandDescriptor));const c=islands.find(c=>c.id===selected);if(!c)throw Error('Saved island selection is missing.');const started=performance.now(),p=await prepareFloatingIslandSession(c.terrain,name,saved,work);try{return{editor:new FloatingIslandsDocument(worldId,Object.freeze([...islands]),name,saved,selected,p,controls,generation),preparationMs:performance.now()-started};}catch(e){p.editor.dispose();throw e;}}
