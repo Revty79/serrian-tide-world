@@ -19,8 +19,8 @@ Scale is not a claim that the maximum bounding-box dimension always equals S.
 In the x/z plane the bend's inner/outer chains use
 `(-(r +/- Width/2) cos(theta), -(Spacing/2 +/- Width/2) sin(theta))`,
 with theta from -pi/2 to pi/2. Straight arms extend from x=0 to Arm Length at
-z=+/-Spacing/2. The nested elliptical chains join their straight arm boundaries
-with the same tangents. Straight segments between the generated vertices define
+z=+/-Spacing/2. The generating ellipses meet straight arm lines tangentially;
+the actual faceted chains retain their real segment angles. Those segments define
 the actual outline. Fixed-order polynomial arithmetic reconstructs these same
 binary64 vertices independently of host sine/cosine implementations.
 
@@ -70,3 +70,55 @@ an independently allocated format without reinterpreting existing data.
 
 No excavation, hollow variant, later geometry, website integration or deployment
 is included. The protected recovery branch is unchanged.
+
+## Operational editor
+
+The creator now offers **Horseshoe World**, N128/N256 equivalent detail and all
+seven physical construction controls above. Names describe physical shapes;
+there is no dice-number label. Fourteen focus targets cover both upper and
+lower arms, both bend caps, inner/outer bend, four straight arm sides and two
+closed terminal faces. Inward-arm focus rises across the actual gap to clear
+the opposite arm; the picker continues to intersect the real solid.
+
+Horseshoe and Crescent bind the shared `polygon-prism`, `prismatic-distance`,
+`prismatic-brush`, `prismatic-view` and `prismatic-presentation` modules. Crescent
+keeps its public entry points. Terrain ownership, physical gradient field,
+polygon atlas, palette/relief, worker protocol, input scheduling, history and
+Atlas Save/Open remain the accepted implementations. Physical rendering uses
+static real triangles/depth; Canvas retains ordered wall runs and complete cap
+silhouettes. Coplanar arm strips share gradient regions; bend facets, beveled
+lateral pieces and end walls retain their actual distinct normals.
+
+Cap distance uses an exact-sign visibility graph in the true U footprint with
+outward interval edge lengths and Dijkstra bounds. Wall distance unfolds the
+real perimeter. Cap/wall and vertex neighborhoods retain certified hinge/cone
+and saddle-apex routes. The bounded general prism search is qualified below
+half body thickness minus its numerical margin; unsupported distant wall
+queries explicitly fail rather than substitute a chord. Long cap gestures are
+subdivided along genuine connected routes. The brush continues to prune by
+global lower bounds. For opposite arms, any projected real path must cross
+z=0 at or behind the inner bend, so total x variation supplies a cheap certified
+lower bound. This eliminates gap searches without joining the arms or changing
+the accepted distance calculation.
+
+Format **37**, `horseshoe-prism-welded-triangles-v1`, is a new allocation after
+Crescent 36. Reserved formats 21-24 remain untouched. It preserves raw and
+derived dimensions, end construction, distinct World/surface/terrain identities,
+canonical Float32 words including negative zero, editor controls, map/physical
+camera and navigation. Strict exact-key/schema and derived-dimension validation,
+finite physical limits and SHA-256 header/payload checks finish before replacing
+the active World. Save detects concurrent authority edits. The local store
+rejects incompatible geometry under an existing World identity. Reopened edits
+begin fresh undo history, as in the accepted family.
+
+Capacity is qualified only for this exact topology and N32/N64 chart lattice.
+There are 228 GPU array layers, within WebGL2's guaranteed minimum of 256.
+Existing Canvas 1.5M desktop/650k coarse and GPU 3M backing limits, field/history,
+worker queues and scheduling limits remain unchanged. No terrain displacement,
+excavation, hollow boundary, link, future shape or host integration is included.
+
+The frozen operational and completion receipts record source hashes, executed
+browser profiles, independent reference results, raw diagnostics and captured
+pixels. Technical qualification and owner acceptance remain separate. Trusted
+CDP touch/pen input and phone viewport emulation do not establish physical-device
+performance or owner approval.

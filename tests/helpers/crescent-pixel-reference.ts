@@ -1,13 +1,13 @@
-import type{CrescentGeometry}from'../../src/surfaces/crescent.ts';
+import type{PolygonPrismGeometry}from'../../src/surfaces/polygon-prism.ts';
 import type{CylinderView,CylinderViewport}from'../../src/rendering/cylindrical-view.ts';
 import{crescentLayout}from'../../src/rendering/crescent-view.ts';
-import type{PolyhedronDisplayCache}from'../../src/rendering/polyhedron-field.ts';import type{CrescentTerrain}from'../../src/terrain/crescent.ts';
+import type{PolyhedronDisplayCache}from'../../src/rendering/polyhedron-field.ts';import type{PrismaticTerrain}from'../../src/terrain/prismatic-contract.ts';
 import type{SurfacePosition}from'../../src/surfaces/contracts.ts';
 
 /** Independent projected-triangle/depth reference. It uses raw physical
  * vertices, not the production ray picker, mesh buffers or Canvas wall order.
  * Fixed 32px bins only accelerate exhaustive coverage of all reference faces. */
-export function crescentPixelReference(g:CrescentGeometry,view:CylinderView,size:CylinderViewport){
+export function crescentPixelReference(g:PolygonPrismGeometry,view:CylinderView,size:CylinderViewport){
  const dot=(a:readonly number[],b:readonly number[])=>a.reduce((s,x,k)=>s+x*b[k]!,0),l=crescentLayout(g,view,size),tile=32,columns=Math.ceil(size.width/tile),rows=Math.ceil(size.height/tile),bins:number[][]=Array.from({length:columns*rows},()=>[]);
  const triangles=g.faces.map((patchId,index)=>{const physical=g.physicalFaceId(patchId),vertices=g.vertexIds(patchId).map(i=>g.vertices[i]!),coordinates=vertices.map(p=>{let x:number,y:number;if(view.mode==='map'){if(physical.startsWith('upper-')||physical.startsWith('lower-')){x=p[0]/g.scaleMeters+view.pan.x;y=p[2]/g.scaleMeters+(physical.startsWith('upper-')?1.6:-1.6)+view.pan.y;}else{const edge=Number(physical.slice(5)),a=g.outline[edge]!,b=g.outline[(edge+1)%g.outline.length]!,dx=b[0]-a[0],dz=b[1]-a[1],along=((p[0]-a[0])*dx+(p[2]-a[1])*dz)/Math.hypot(dx,dz);x=(g.perimeterOffsets[edge]!+along-g.perimeterMeters/2)/g.scaleMeters+view.pan.x;y=p[1]/g.scaleMeters-3.5+view.pan.y;}}else{const v=p.map((x,k)=>x/g.scaleMeters-view.target[k]!);x=dot(v,view.frame.right);y=dot(v,view.frame.up);}return{x:l.x+x*l.scale,y:l.y-y*l.scale,depth:dot(p,view.frame.forward)};}),a=coordinates[0]!,b=coordinates[1]!,c=coordinates[2]!,ux=b.x-a.x,uy=b.y-a.y,vx=c.x-a.x,vy=c.y-a.y,det=ux*vy-uy*vx;if(Math.abs(det)>1e-10){const left=Math.max(0,Math.floor(Math.min(a.x,b.x,c.x)/tile)),right=Math.min(columns-1,Math.floor(Math.max(a.x,b.x,c.x)/tile)),top=Math.max(0,Math.floor(Math.min(a.y,b.y,c.y)/tile)),bottom=Math.min(rows-1,Math.floor(Math.max(a.y,b.y,c.y)/tile));for(let y=top;y<=bottom;y++)for(let x=left;x<=right;x++)bins[y*columns+x]!.push(index);}return{patchId,vertices,a,b,c,ux,uy,vx,vy,det};});
  const faces=new Int16Array(size.width*size.height).fill(-1),u=new Float64Array(faces.length),v=u.slice();
@@ -17,7 +17,7 @@ export function crescentPixelReference(g:CrescentGeometry,view:CylinderView,size
 
 /** Accepted two-texel physical atlas support, enclosed in every incident
  * affine chart. This is a field/coast reference, separate from geometry rays. */
-export function crescentSupportHeights(cache:PolyhedronDisplayCache<CrescentTerrain>,hits:readonly SurfacePosition[]){const g=cache.terrain.geometry,n=cache.n,ids=[...new Set(hits.map(p=>g.physicalFaceId(p.patchId)))],points=hits.map(p=>g.referencePosition(p)),dot=(a:readonly number[],b:readonly number[])=>a.reduce((s,x,k)=>s+x*b[k]!,0);let low=Infinity,high=-Infinity;
+export function crescentSupportHeights(cache:PolyhedronDisplayCache<PrismaticTerrain>,hits:readonly SurfacePosition[]){const g=cache.terrain.geometry,n=cache.n,ids=[...new Set(hits.map(p=>g.physicalFaceId(p.patchId)))],points=hits.map(p=>g.referencePosition(p)),dot=(a:readonly number[],b:readonly number[])=>a.reduce((s,x,k)=>s+x*b[k]!,0);let low=Infinity,high=-Infinity;
  for(const physical of ids){const atlas=cache.polygonAtlases.find(a=>a.id===physical)!,basis=g.frame(atlas.anchor.patchId);for(const face of atlas.charts){const f=g.frame(face),uu=dot(f.u,f.u),uv=dot(f.u,f.v),vv=dot(f.v,f.v),det=uu*vv-uv*uv,dualU=f.u.map((x,k)=>(vv*x-uv*f.v[k]!)/det),dualV=f.v.map((x,k)=>(uu*x-uv*f.u[k]!)/det),uvs=points.map(q=>{const d=q.map((x,k)=>x-f.origin[k]!);return[dot(d,dualU),dot(d,dualV)]as const;}),ru=2*atlas.step*(Math.abs(dot(dualU,basis.e1))+Math.abs(dot(dualU,basis.e2))),rv=2*atlas.step*(Math.abs(dot(dualV,basis.e1))+Math.abs(dot(dualV,basis.e2))),left=Math.max(0,Math.min(...uvs.map(p=>p[0]))-ru),right=Math.min(1,Math.max(...uvs.map(p=>p[0]))+ru),bottom=Math.max(0,Math.min(...uvs.map(p=>p[1]))-rv),top=Math.min(1,Math.max(...uvs.map(p=>p[1]))+rv);if(left>right||bottom>top||left+bottom>1)continue;
    const axes=(lo:number,hi:number)=>[lo,...Array.from({length:Math.max(0,Math.floor(hi*n)-Math.ceil(lo*n)+1)},(_,i)=>(Math.ceil(lo*n)+i)/n),hi],us=axes(left,right),vs=axes(bottom,top),offer=(u:number,v:number)=>{if(u<left||u>right||v<bottom||v>top||u+v>1)return;const h=cache.sample(face,u,v).height;low=Math.min(low,h);high=Math.max(high,h);};for(const u of us){for(const v of vs)offer(u,v);offer(u,1-u);}for(const v of vs)offer(1-v,v);
   }}return{low,high};
