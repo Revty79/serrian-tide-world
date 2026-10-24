@@ -1,5 +1,9 @@
 /** Accepted cylinder terrain reconstruction, palette and relief. Geometry shaders
  * supply only physical sample coordinates; closed shader arithmetic is preserved. */
+// Derive the integer address and fraction from one unwrapped coordinate.
+// Applying mod before floor/fract can round a negative near-integer to the
+// next column while a driver simplifies fract to the pre-modulo fraction.
+// sampleAt already wraps the integer address, including its Hermite stencil.
 export const CYLINDRICAL_TERRAIN_FIELD_GLSL=`float sampleAt(sampler2D data,int row,int col){ivec2 s=textureSize(data,0);return texelFetch(data,ivec2((col%s.x+s.x)%s.x,clamp(row,0,s.y-1)),0).r;}
 float tangent(float a,float b,float c){float u=b-a,v=c-b;return ((u>0.&&v>0.)||(u<0.&&v<0.))?2.*u*(v/(u+v)):0.;}
 float curve(vec4 v,float t){float m=tangent(v.x,v.y,v.z),n=tangent(v.y,v.z,v.w),q=3.*(v.z-v.y)-2.*m-n,r=2.*(v.y-v.z)+m+n;return v.y+t*(m+t*(q+t*r));}
@@ -16,8 +20,8 @@ vec4 gradients(sampler2D data,vec4 prev,vec4 here,vec4 next,int row,int col,vec2
 }
 vec3 field(sampler2D data,float theta,float radial,float z,bool side,float h,float radiusMeters,float lengthMeters){
  vec2 s=vec2(textureSize(data,0));
- float column=mod(theta/(2.*PI)*s.x,s.x),row=clamp(side?(z+h)/(2.*h)*(s.y-1.):radial*(s.y-1.),0.,s.y-1.);
- int col=int(floor(column)),r=int(min(floor(row),s.y-2.));float x=fract(column),y=row-float(r);
+ float column=theta/(2.*PI)*s.x,row=clamp(side?(z+h)/(2.*h)*(s.y-1.):radial*(s.y-1.),0.,s.y-1.);
+ int col=int(floor(column)),r=int(min(floor(row),s.y-2.));float x=column-float(col),y=row-float(r);
  vec4 q0=rowAt(data,r-1,col),q1=rowAt(data,r,col),q2=rowAt(data,r+1,col),q3=rowAt(data,r+2,col);
  float height=curve(vec4(curve(q0,x),curve(q1,x),curve(q2,x),curve(q3,x)),y);
  if(relief==0||height<=seaLevel/heightScale)return vec3(height,0.,0.);
@@ -47,8 +51,8 @@ vec4 annularGradients(sampler2D data,vec4 prev,vec4 here,vec4 next,int row,int c
  return vec4(cos(a)*dr.x-sin(a)*dt.x,sin(a)*dr.x+cos(a)*dt.x,cos(b)*dr.y-sin(b)*dt.y,sin(b)*dr.y+cos(b)*dt.y);
 }
 vec3 annularField(sampler2D data,float theta,float radialMeters,float outerRadius,float innerRadius,float span){
- vec2 s=vec2(textureSize(data,0));float column=mod(theta/(2.*PI)*s.x,s.x),row=clamp((radialMeters-innerRadius)/span*(s.y-1.),0.,s.y-1.);
- int col=int(floor(column)),r=int(min(floor(row),s.y-2.));float x=fract(column),y=row-float(r);
+ vec2 s=vec2(textureSize(data,0));float column=theta/(2.*PI)*s.x,row=clamp((radialMeters-innerRadius)/span*(s.y-1.),0.,s.y-1.);
+ int col=int(floor(column)),r=int(min(floor(row),s.y-2.));float x=column-float(col),y=row-float(r);
  vec4 q0=rowAt(data,r-1,col),q1=rowAt(data,r,col),q2=rowAt(data,r+1,col),q3=rowAt(data,r+2,col);
  float height=curve(vec4(curve(q0,x),curve(q1,x),curve(q2,x),curve(q3,x)),y);
  if(relief==0||height<=seaLevel/heightScale)return vec3(height,0.,0.);

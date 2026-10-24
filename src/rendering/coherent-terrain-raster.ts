@@ -23,6 +23,12 @@ export function* coherentTerrainRasterSteps<Hit>(options:{readonly pixels:Uint8C
   else{const{c,shade}=center;pixels[offset]=c[0]!*shade;pixels[offset+1]=c[1]!*shade;pixels[offset+2]=c[2]!*shade;pixels[offset+3]=255;}
   if(++work%options.quantum===0)yield;
  }
- if(labels&&!options.region)yield* rasterEdgeCoverage(pixels,labels,columns,rows,(x,y,out)=>{const value=sampleAt((x*size.width/columns-l.x)/l.scale,(l.y-y*size.height/rows)/l.scale);if(!value){out.fill(0);return 0;}for(let k=0;k<3;k++)out[k]=Math.min(255,value.c[k]!*value.shade);out[3]=1;return Math.floor(value.label/2);});
+ if(labels){
+  // A dirty update still needs the same real material/crease quadrature as a
+  // full frame. Populate its one-pixel label halo, then scan only those boxes.
+  // Temporary labels and yielding work remain within the existing budgets.
+  if(options.region){const labelAt=(x:number,y:number)=>{const value=sampleAt(((x+.5)*size.width/columns-l.x)/l.scale,(l.y-(y+.5)*size.height/rows)/l.scale);labels[y*columns+x]=value?Math.floor(value.label/2):0;};let halo=0;for(const r of regions)for(let y=Math.max(0,r.top-1);y<Math.min(rows,r.bottom+1);y++){const xs=y<r.top||y>=r.bottom?Array.from({length:Math.min(columns,r.right+1)-Math.max(0,r.left-1)},(_,i)=>Math.max(0,r.left-1)+i):[r.left-1,r.right].filter(x=>x>=0&&x<columns);for(const x of xs){labelAt(x,y);if(++halo%options.quantum===0)yield;}}}
+  yield* rasterEdgeCoverage(pixels,labels,columns,rows,(x,y,out)=>{const value=sampleAt((x*size.width/columns-l.x)/l.scale,(l.y-y*size.height/rows)/l.scale);if(!value){out.fill(0);return 0;}for(let k=0;k<3;k++)out[k]=Math.min(255,value.c[k]!*value.shade);out[3]=1;return Math.floor(value.label/2);},undefined,options.region?regions:undefined);
+ }
  return{pixels,columns,rows,revision,snapshotBytes};
 }

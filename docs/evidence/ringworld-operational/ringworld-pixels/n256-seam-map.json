@@ -1,0 +1,72 @@
+{
+  "n": 256,
+  "scene": "seam-map",
+  "before": "6be3c772520b46c84735bf744e999d4b93119cebfd949c51534d74605810072d",
+  "after": "6be3c772520b46c84735bf744e999d4b93119cebfd949c51534d74605810072d",
+  "stableChecked": 55373,
+  "stableMax": 1,
+  "envelopeMax": 1,
+  "envelopeViolations": 0,
+  "referenceMax": 0,
+  "geometryViolations": 0,
+  "empty": 89199,
+  "coasts": 627,
+  "land": 28246,
+  "ocean": 31856,
+  "edgeChecked": 1908,
+  "coverageMax": 0,
+  "gpuEdgeEnvelopeViolations": 0,
+  "regions": {
+    "rim-start": 9540,
+    "inner-wall": 20511,
+    "rim-end": 10017,
+    "outer-wall": 20034
+  },
+  "worst": [],
+  "stableWorst": {
+    "x": 119,
+    "y": 195,
+    "p": {
+      "patchId": "rim-start",
+      "theta": 1.737148021125606,
+      "radiusMeters": 1182036.1389463232,
+      "zMeters": 0,
+      "facing": 1
+    },
+    "sample": {
+      "height": -429.13522148601226,
+      "dx": 0,
+      "dy": 0,
+      "crossesSea": false
+    },
+    "variation": 5,
+    "cpu": [
+      26,
+      83,
+      113,
+      255
+    ],
+    "gpu": [
+      26,
+      83,
+      112,
+      255
+    ]
+  },
+  "graphics": {
+    "losses": 0,
+    "recoveries": 0,
+    "uploads": 1,
+    "presentations": 1,
+    "textureBytes": 696320,
+    "geometryBytes": 1573296,
+    "antialias": true,
+    "baseCompileMs": 17.799999952316284,
+    "cutCompileMs": 0,
+    "reason": "",
+    "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "probeErrors": []
+  },
+  "cacheBytes": 679936,
+  "authorityBytes": 679936
+}

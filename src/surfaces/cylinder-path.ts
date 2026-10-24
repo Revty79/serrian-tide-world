@@ -114,8 +114,11 @@ function reconstructCylinderPathImpl(g: Geometry, first: SurfacePosition, second
           pieces = [side(p.theta, p.coordinate, entry, z), cap(region, entry, R, exit, R), side(exit, z, terminal, q.coordinate)]; break;
         }
         case 'side-to-cap': {
+          // At a zero-turn crease, use the actual terminal angle. Rebuilding
+          // it as p.theta + lift can differ by an ULP and fabricate a tiny cap
+          // chord after the long helix, below cumulative-distance resolution.
           const region = q.region === 'start' ? 'start' : 'end', entry = terminal - sign * x;
-          pieces = [side(p.theta, p.coordinate, entry, region === 'start' ? 0 : L), cap(region, entry, R, q.theta, q.coordinate)]; break;
+          pieces = [side(p.theta, p.coordinate, entry, region === 'start' ? 0 : L), cap(region, x === 0 ? q.theta : entry, R, q.theta, q.coordinate)]; break;
         }
         case 'opposite-caps': {
           const entry = p.theta + sign * x, exit = terminal - sign * y;

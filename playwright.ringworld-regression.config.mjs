@@ -1,0 +1,2 @@
+import base from './playwright.ringworld.config.mjs';
+export default{...base,testMatch:['open-cylinder-render.spec.ts','open-cylinder-workflow.spec.ts','atlas-render-parity.spec.ts','torus-input.spec.ts'],grep:/Open rendering N128 (outside|inside|map|axial):|Open N128 (auto|canvas): normal selector|shared rendering cylinder N128|N256 (torus|cylinder) (auto|canvas): same/,reporter:[['list'],['json',{outputFile:'.local/ringworld-regression-browser.json'}]]};

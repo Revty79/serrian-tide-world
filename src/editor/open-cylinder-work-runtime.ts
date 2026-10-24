@@ -19,8 +19,8 @@ export function prepareOpenCylinderStencil(terrain:OpenCylinderTerrain,center:Su
 /** Actual Open provider metadata; every identity/layout field is checked before
  * loading words into the private scratch epoch. Host visibility/protection and
  * revision validation still precede every authoritative commit. */
-export function createOpenWorkerTerrain(metadata:OpenCylinderTerrain['metadata']){
+export function createOpenWorkerTerrain(metadata:OpenCylinderTerrain['metadata'],initialValues?:Float32Array){
  if(metadata.representation.provider!==OPEN_CYLINDER_REPRESENTATION||metadata.representation.version!==1||metadata.representation.ownership!=='one-cyclic-meridian-wall-owned-creases-midpoint-tie-exterior'||metadata.elevationUnits!=='meters'||metadata.seaLevel!==0||metadata.identity.worldId!==metadata.geometry.identity.worldId||metadata.identity.surfaceId!==metadata.geometry.identity.surfaceId)throw Error('Invalid Open Cylinder worker provider, layout or identity.');
- return createOpenCylinderTerrain({terrainId:metadata.terrainId,geometry:metadata.geometry,resolution:metadata.representation.resolution});
+ return createOpenCylinderTerrain({terrainId:metadata.terrainId,geometry:metadata.geometry,resolution:metadata.representation.resolution,initialValues});
 }
-export function createOpenCylinderWorkRuntime(send:(m:ConnectedWorkOutput)=>void,schedule:(fn:()=>void)=>void){return createConnectedWorkRuntime(send,schedule,{create:createOpenWorkerTerrain,begin:beginOpenWorkerNumerics,preview:prepareOpenCylinderStencil});}
+export function createOpenCylinderWorkRuntime(send:(m:ConnectedWorkOutput)=>void,schedule:(fn:()=>void)=>void){return createConnectedWorkRuntime(send,schedule,{create:createOpenWorkerTerrain,createFromSnapshot:createOpenWorkerTerrain,begin:beginOpenWorkerNumerics,preview:prepareOpenCylinderStencil});}

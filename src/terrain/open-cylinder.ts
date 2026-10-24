@@ -13,13 +13,13 @@ export function openCylinderSampleCount(r:CylinderResolution){
 /** A single connected parent authority. Both walls have independent words;
  * their common annuli and every physical crease have exactly one canonical word.
  * No terrain-sized alias or neighbor table is retained. */
-export function createOpenCylinderTerrain(options:{terrainId:string;geometry:OpenCylinderConfiguration;resolution:CylinderResolution;initialElevation?:number;validateSample?:(index:number,height:number,before:number)=>void}){
+export function createOpenCylinderTerrain(options:{terrainId:string;geometry:OpenCylinderConfiguration;resolution:CylinderResolution;initialElevation?:number;initialValues?:Float32Array;validateSample?:(index:number,height:number,before:number)=>void}){
  if(typeof options.terrainId!=='string'||!options.terrainId.trim()||options.terrainId.length>128)throw RangeError('Open-cylinder terrain identity must contain 1-128 characters.');
  const count=openCylinderSampleCount(options.resolution),geometry=createOpenCylinderGeometry(options.geometry),{angularSamples:A,axialCells:Z,radialCells:P}=options.resolution,T=geometry.thicknessMeters,L=geometry.metadata.lengthMeters,ro=geometry.metadata.outerRadiusMeters,ri=geometry.metadata.innerRadiusMeters;
  const Q=2*Z+4*P,resolution=Object.freeze({angularSamples:A,axialCells:Z,radialCells:P}),identity=geometry.identity;
  const metadata=Object.freeze({terrainId:options.terrainId,identity,geometry:geometry.metadata,representation:Object.freeze({provider:OPEN_CYLINDER_REPRESENTATION,version:1 as const,resolution,ownership:'one-cyclic-meridian-wall-owned-creases-midpoint-tie-exterior' as const}),elevationUnits:'meters' as const,seaLevel:0});
  const minElevation=-Math.min(T,L)/4,maxElevation=Math.min(T/2,ri/4,L/4),validateElevation=(v:number)=>{if(v<minElevation||v>maxElevation)throw RangeError('Elevation exceeds open-cylinder shell clearance.');};
- const authority=createIndexedFloat32Authority({count,initialElevation:options.initialElevation??0,validateElevation,validateSample:options.validateSample});
+ const authority=createIndexedFloat32Authority({count,initialElevation:options.initialElevation??0,initialValues:options.initialValues,validateElevation,validateSample:options.validateSample});
  const wrap=(column:number)=>((column%A)+A)%A;
  const keyAt=(index:number):OpenCylinderSampleKey=>{if(!Number.isSafeInteger(index)||index<0||index>=count)throw RangeError('Invalid open-cylinder canonical index.');return{...identity,...resolution,terrainId:metadata.terrainId,representation:OPEN_CYLINDER_REPRESENTATION,representationVersion:1,outerRadiusMeters:ro,innerRadiusMeters:ri,lengthMeters:L,index};};
  const checkedKey=(key:OpenCylinderSampleKey)=>{if(key.worldId!==identity.worldId||key.surfaceId!==identity.surfaceId||key.terrainId!==metadata.terrainId||key.representation!==OPEN_CYLINDER_REPRESENTATION||key.representationVersion!==1||key.outerRadiusMeters!==ro||key.innerRadiusMeters!==ri||key.lengthMeters!==L||key.angularSamples!==A||key.axialCells!==Z||key.radialCells!==P)throw RangeError('Foreign open-cylinder authority or geometry key.');keyAt(key.index);return key.index;};

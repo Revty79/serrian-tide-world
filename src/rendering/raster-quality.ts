@@ -11,11 +11,11 @@ export function settledRasterBudget(size:SurfaceDisplaySize,dpr:number,coarsePoi
  * Samples use premultiplied RGB (0..255) and alpha (0..1). No color blur, sample
  * interpolation or numerical write is involved. The labels are immutable for
  * this pass, so the result is independent of traversal order. */
-export function* rasterEdgeCoverage(pixels:Uint8ClampedArray,labels:Uint8Array,columns:number,rows:number,sample:(x:number,y:number,out:Float64Array)=>number,eraseMask?:Uint8ClampedArray):Generator<void>{
+export function* rasterEdgeCoverage(pixels:Uint8ClampedArray,labels:Uint8Array,columns:number,rows:number,sample:(x:number,y:number,out:Float64Array)=>number,eraseMask?:Uint8ClampedArray,regions?:readonly {readonly left:number;readonly right:number;readonly top:number;readonly bottom:number}[]):Generator<void>{
  if(pixels.length!==columns*rows*4||labels.length!==columns*rows)throw RangeError('Raster edge buffers disagree.');
  if(eraseMask&&eraseMask.length!==pixels.length)throw RangeError('Coverage mask dimensions disagree.');
  const value=new Float64Array(6),sum=new Float64Array(5);let rays=0,scans=0;
- for(let y=0;y<rows;y++)for(let x=0;x<columns;x++){
+ for(const area of regions??[{left:0,right:columns,top:0,bottom:rows}])for(let y=area.top;y<area.bottom;y++)for(let x=area.left;x<area.right;x++){
   const at=y*columns+x,label=labels[at]!;
   if((x>0&&labels[at-1]!==label)||(x+1<columns&&labels[at+1]!==label)||(y>0&&labels[at-columns]!==label)||(y+1<rows&&labels[at+columns]!==label)){
    let mixed=false;sum.fill(0);for(const dx of[-.25,.25])for(const dy of[-.25,.25]){value.fill(0);mixed=sample(x+.5+dx,y+.5+dy,value)!==label||mixed;for(let k=0;k<4;k++)sum[k]!+=value[k]!*.25;if(eraseMask)sum[4]!+=value[4]!*.25;}

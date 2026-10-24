@@ -1,3 +1,4 @@
+import type {SavedRingworld} from './ringworld-format.ts';
 import type {SavedTorus} from './torus-format.ts';
 import type {SavedFragmentedWorld} from './fragmented-world-format.ts';
 import type {SavedFloatingIslands} from './floating-islands-format.ts';
@@ -28,7 +29,7 @@ import type {SavedHollowCube} from './hollow-cube-format.ts';
 import type {SavedHollowSphere} from './hollow-sphere-format.ts';
 
 export type PlanarSavedMap = SavedHeightmap | SavedWrappedHeightmap;
-export type SavedMap = SavedTorus | SavedFragmentedWorld | SavedFloatingIslands | SavedFloatingIsland | SavedHollowIcosahedron | SavedIcosahedron | SavedHollowDodecahedron | SavedDodecahedron | SavedHollowTrapezohedron | SavedTrapezohedron | SavedHollowOctahedron | SavedOctahedron | SavedHollowTetrahedron | SavedTetrahedron | SavedHollowPyramid | SavedPyramid | SavedOpenCylinder | PlanarSavedMap | SavedSphericalHeightmap | SavedCylindricalHeightmap | SavedSolidCubeHeightmap | SavedHollowCube | SavedHollowSphere | SavedHollowCylinder;
+export type SavedMap = SavedRingworld | SavedTorus | SavedFragmentedWorld | SavedFloatingIslands | SavedFloatingIsland | SavedHollowIcosahedron | SavedIcosahedron | SavedHollowDodecahedron | SavedDodecahedron | SavedHollowTrapezohedron | SavedTrapezohedron | SavedHollowOctahedron | SavedOctahedron | SavedHollowTetrahedron | SavedTetrahedron | SavedHollowPyramid | SavedPyramid | SavedOpenCylinder | PlanarSavedMap | SavedSphericalHeightmap | SavedCylindricalHeightmap | SavedSolidCubeHeightmap | SavedHollowCube | SavedHollowSphere | SavedHollowCylinder;
 export const encodeMap = (terrain: Terrain, name: string, savedAt?: string): Promise<PlanarSavedMap> => isWrapped(terrain) ? encodeWrappedHeightmap(terrain, name, savedAt) : encodeHeightmap(terrain, name, savedAt);
 export function decodeMap(value: unknown): Promise<{ terrain: Terrain; name: string }> {
   const version = record(value).formatVersion;
