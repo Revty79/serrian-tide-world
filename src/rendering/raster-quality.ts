@@ -29,3 +29,6 @@ export function* rasterEdgeCoverage(pixels:Uint8ClampedArray,labels:Uint8Array,c
  * existing 1.5x / 3M backing cap and one CSG evaluation per backing pixel;
  * duplicating the large shader kernel causes excessive driver compile stalls. */
 export function cutDisplayDimensions(size:SurfaceDisplaySize,dpr:number,physicalCut:boolean){return surfaceDisplayDimensions(size,physicalCut?Math.max(dpr,1.5):dpr);}
+
+/** Preserve the accepted finite backing density within the settled Canvas cap. */
+export function settledSurfaceDimensions(size:SurfaceDisplaySize,dpr:number,coarsePointer=false){const backing=surfaceDisplayDimensions(size,dpr),budget=settledRasterBudget(size,dpr,coarsePointer),scale=Math.min(1,Math.sqrt(budget/(backing.width*backing.height)));return{width:Math.max(1,Math.floor(backing.width*scale)),height:Math.max(1,Math.floor(backing.height*scale))};}

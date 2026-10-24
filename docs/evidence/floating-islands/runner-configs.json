@@ -1,0 +1,7 @@
+{
+  "originalDirectory": ".local",
+  "configs": {
+    "islands-c-smoke.config.mjs": "import base from '../playwright.polyhedron-smoke.config.mjs';\nexport default {...base,testDir:'../tests',use:{...base.use,baseURL:'http://127.0.0.1:5274'},webServer:{...base.webServer,command:'npm run dev -- --port 5274 --strictPort',url:'http://127.0.0.1:5274'},reporter:[['list'],['json',{outputFile:'D:/serrian-tide-world/.local/islands-c-regression.json'}]]};\n",
+    "islands-c-cavity.config.mjs": "import base from '../playwright.hollow-icosahedron.config.mjs';\nexport default {...base,testDir:'../tests',testMatch:['hollow-icosahedron-pixels.spec.ts'],use:{...base.use,baseURL:'http://127.0.0.1:5274'},webServer:{...base.webServer,command:'npm run dev -- --port 5274 --strictPort',url:'http://127.0.0.1:5274'},reporter:[['list'],['json',{outputFile:'D:/serrian-tide-world/.local/islands-c-cavity.json'}]]};\n"
+  }
+}

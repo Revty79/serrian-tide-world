@@ -1,0 +1,2 @@
+import base from './playwright.floating-island.config.mjs';
+export default{...base,use:{...base.use,actionTimeout:15000},testMatch:['floating-islands-performance.spec.ts','floating-islands-recovery.spec.ts','floating-islands-navigation.spec.ts','floating-islands-pixels.spec.ts','floating-islands-workflow.spec.ts'],reporter:[['list'],['json',{outputFile:process.env.FLOATING_ISLANDS_REPORT??'.local/floating-islands-browser.json'}]]};

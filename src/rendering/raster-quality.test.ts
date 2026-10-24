@@ -1,3 +1,4 @@
+import {settledSurfaceDimensions} from './raster-quality.ts';
 import test from 'node:test';import assert from 'node:assert/strict';
 import {settledRasterBudget,rasterEdgeCoverage,cutDisplayDimensions} from './raster-quality.ts';
 test('settled display resolves existing geography at bounded backing density, independent of terrain resolution',()=>{
@@ -18,3 +19,5 @@ test('coverage samples actual boundary rays, preserves uniform pixels and averag
  const half=new Uint8ClampedArray(8),split=rasterEdgeCoverage(half,new Uint8Array([0,1]),2,1,(x,_y,out)=>{if(x<.5){out.set([200,100,50,1]);return 1;}return 0;});while(!split.next().done){}assert.deepEqual([...half.slice(0,4)],[200,100,50,128]);
  const ramp=new Uint8ClampedArray([71,83,95,255,0,0,0,0]),preserve=rasterEdgeCoverage(ramp,new Uint8Array([1,0]),2,1,(x,_y,out)=>{out.set([100+x*x,80,90,1]);return 1;});while(!preserve.next().done){}assert.deepEqual([...ramp.slice(0,4)],[71,83,95,255]);
 });
+
+test('settled Canvas backing retains density below the cap and bounds high-DPR desktop/coarse allocations',()=>{assert.deepEqual(settledSurfaceDimensions({width:1440,height:950},1),{width:1440,height:950});for(const coarse of[false,true])for(const size of[{width:1440,height:950},{width:412,height:839},{width:3440,height:1440}])for(const dpr of[1,1.5,3]){const d=settledSurfaceDimensions(size,dpr,coarse);assert.ok(d.width*d.height<=(coarse?650000:1500000));assert.ok(d.width>=1&&d.height>=1);assert.ok(Math.abs(d.width/d.height-size.width/size.height)<.01);}});
