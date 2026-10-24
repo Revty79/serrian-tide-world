@@ -66,3 +66,106 @@ This is a numerical foundation, not an operational Torus editor. Browser
 rendering, painting latency, strict persistence and owner acceptance have not
 been established by checkpoint A. The assignment remains limited to the solid
 physical Torus; no excavation, Hollow Torus or Ringworld is included.
+
+## Operational editor checkpoint B
+
+The normal Atlas creator now offers **Torus World**, physical major/tube
+dimensions and N128/N256. Physical view and the repeating Surface map edit the
+same canonical words. Both chart cuts and their common corner are continuous;
+the map repeats nearby context. Outer tube, Opening side, Tube top and Underside
+focus controls, rotation, pan, zoom, Fit and map focus retain geography/history.
+The central opening is empty space, not an independent hollow terrain bank.
+
+The editor reuses ConnectedWorkspace, ConnectedPreviewSession, the connected
+worker protocol, rolling input/history, accepted Hermite reconstruction,
+elevation palette, physical relief, coherent Canvas raster, GPU resource and
+backing policies, and the Cylinder dirty-rectangle merger. Geometry-specific
+code supplies the metric, interpolation addressing, intersections, visibility,
+projection and brush candidate bounds. No common work or history caps changed.
+
+Format **34** stores physical dimensions, identities, representation/detail,
+exact little-endian Float32 words and a header/payload SHA-256 checksum. Unknown
+fields, foreign identities, unsupported dimensions/counts, nonfinite/out-of-
+clearance words, invalid dates, corrupt payloads and cross-format overwrites are
+rejected. Save has a source revision lease. Open validates and prepares before
+replacing the active World. Undo history remains session-only. Formats 1-20 and
+25-33 retain their meanings; the paused recovery branch's 21-24 remain reserved.
+
+### Certified distance throughput
+
+The energy/residual certificate above is retained. Trial degrees 4, 6, 8 and 12
+are attempted until the requested enclosure is certified; there is no flat or
+uncertified fallback. Interval trigonometry at a brush-center latitude is cached
+by geometry. Polynomial arithmetic uses IEEE coefficients with a directed L1
+coefficient error and uniform remainder. gamma(k), using twice unit roundoff
+and a subnormal absolute term, bounds arithmetic; truncated powers join the
+uniform remainder. Only tail-free trial polynomials are differentiated.
+The velocity bound B includes both L/bmin and the trial derivative's L1 bound,
+so the convex segment used by the energy-gap argument includes the actual trial.
+Higher-degree trials retain the larger Taylor order for tighter requests.
+
+Measured before/after on twenty identical N256 inner-equator dabs: 4,713 distance
+queries took about 727 ms / 283 ms. Both evaluated all candidates and honored
+the existing falloff-error contract. This addressed the measured full-loop
+backlog without changing brush size, strength, spacing, detail or quality gates.
+
+### Presentation and resource bounds
+
+The CPU and GPU use the same accepted field, palette and slope model. CPU coast
+classification conservatively includes the Hermite stencil. The analytic GPU
+quartic partitions at its stationary points; its enclosing-sphere entry sign
+is analytically nonnegative. Enforcing that sign prevents float32 cancellation
+at the outer equator from skipping the front root and shading the rear tube.
+
+Canvas keeps sharp settled pixels for conservative merged periodic dirty
+regions. Ordinary batches use the accepted 2,048-pixel quantum and the existing
+9 ms frame budget. Camera changes use coherent interactive frames followed by
+idle refinement. Map inversion is cheap and does not allocate a hit cache.
+Physical camera hits use exact double coordinates/shading so cached updates
+and fresh output agree bit for bit. This derived cache is 25 bytes per raster
+pixel, at most 37.5 MB under the desktop 1.5-million-pixel settled cap, or
+16.25 MB under the coarse-pointer 650,000-pixel cap. The cache contains no
+authoritative terrain. Front/spare RGBA buffers remain separately bounded.
+At N256, canonical terrain and GPU elevation texture are each 1,048,576 bytes;
+the full-screen GPU mesh is 48 bytes. Derived upload history is capped at
+32 epochs and 1 MiB. No server GPU or new dependency is required.
+
+### Acceptance boundary
+
+This pass supports a circular solid Torus within the dimensions stated above.
+Elevation colors/shades the reference boundary; it does not displace a mesh.
+Excavation, Hollow Torus, Ringworlds and unrestricted shaping remain deferred.
+Browser automation, pixel inspection and numerical evidence are technical
+verification. Physical-device input and owner visual/interaction acceptance
+remain separate.
+
+## Operational measurements
+
+Installed Chrome on the hardware AMD Radeon RX 6600, 1440 by 950 presentation,
+with default physical radius/strength and idle refinement enabled. Values are
+input-to-captured-terrain-pixels p95 milliseconds; physical/seam/loop columns
+show the largest p95 among the tested strokes in that category.
+
+| Detail | Backend | Four physical regions | Either/both seams | Full major/minor loops | 20-second held stroke |
+| --- | --- | ---: | ---: | ---: | ---: |
+| 128 | WebGL2 | 51.3 | 42.1 | 44.7 | 35.6 |
+| 128 | Canvas | 75.3 | 100.2 | 107.4 | 54.8 |
+| 256 | WebGL2 | 68.7 | 47.7 | 78.9 | 42.4 |
+| 256 | Canvas | 95.0 | 64.6 | 93.9 | 47.3 |
+
+The Canvas workflows retained 1440 by 950 sharp painting. All four workflows
+processed every accepted input position, had zero unexpected failures/cancellations and restored
+exact words through whole-gesture Undo/Redo and v34 Save/Open/continued editing.
+The 14 pixel cases cover both details, physical outer/inner/top/bottom views,
+zoom, periodic maps, and incremental versus fresh frames. Stable GPU/Canvas
+channel differences are at most 1; independent signed-distance reference rays
+found zero missing/extra material. Incremental texture and Canvas output match
+fresh output byte for byte. Raw captures and timing epochs accompany the frozen
+operational receipt under `evidence/torus-operational/`.
+
+For subsequent changes, start with the affected numerical/format checks and the
+relevant browser case. Run prior-family smoke checks at publication boundaries
+or when shared behavior changes. Keep historical receipts immutable; unchanged
+renderer source can retain its earlier full pixel qualification while current
+creator smoke tests check shared integration. This avoids repeating every old
+shape's complete acceptance suite after each local adapter change.

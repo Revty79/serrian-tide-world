@@ -1,0 +1,1 @@
+import{devices}from'@playwright/test';import base from'./playwright.torus.config.mjs';export default{...base,testMatch:['torus-touch.spec.ts'],projects:[{name:'chrome-touch-emulation',use:{...devices['Pixel 7'],defaultBrowserType:'chromium',channel:'chrome'}}],reporter:[['list'],['json',{outputFile:'.local/torus-touch-browser.json'}]]};

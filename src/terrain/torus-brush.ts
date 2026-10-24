@@ -1,3 +1,5 @@
+import type {CylinderView} from '../rendering/cylindrical-view.ts';
+import {torusVisible} from '../rendering/torus-view.ts';
 import type {SurfacePosition} from '../surfaces/contracts.ts';
 import {torusDelta} from '../surfaces/torus.ts';
 import {torusLocalDistance,torusTrigBounds} from '../surfaces/torus-distance.ts';
@@ -16,5 +18,7 @@ function candidates(t:TorusTerrain,input:SurfacePosition,radius:number){const g=
 function smooth(t:TorusTerrain,k:TorusKey,current:number){const p=t.positionAt(t.owner(k)),r=t.geometry.metadata.minorRadiusMeters,q=t.geometry.metadata.majorRadiusMeters/r,du=2*Math.PI/(4*t.subdivisions),dv=2*Math.PI/t.subdivisions,a=q+Math.cos(p.v),weights=[dv/(a*du),dv/(a*du),(q+Math.cos(p.v+dv/2))*du/dv,(q+Math.cos(p.v-dv/2))*du/dv];return connectedSmoothEstimate(t,t.neighbors(k),weights,current,a*du*dv);}
 export const TORUS_DAB_ADAPTER=Object.freeze<ConnectedDabAdapter<TorusTerrain>>({candidates,distance:(t,a,b,o)=>torusLocalDistance(t.geometry,a,b,o),smooth});
 const adapter=Object.freeze<ConnectedStrokeAdapter<TorusTerrain>>({...TORUS_DAB_ADAPTER,normalize:(t,p)=>t.geometry.normalize(p),radiusMeters:t=>t.geometry.metadata.minorRadiusMeters,path:(t,a,b,o)=>torusPointerPath(t.geometry,a,b,o)});
-export const prepareTorusDab=(t:TorusTerrain,p:SurfacePosition,s:CylindricalBrushSettings,limits:CylinderDabLimits={})=>prepareConnectedDab(t,p,s,TORUS_DAB_ADAPTER,limits);
-export const beginTorusStroke=(t:TorusTerrain,h:ConnectedHistory<TorusTerrain>,p:SurfacePosition,s:CylindricalBrushSettings,options:ConnectedStrokeOptions<TorusTerrain>={})=>beginConnectedStroke(t,h,p,s,adapter,options);
+function visibleAdapter(view?:CylinderView):ConnectedDabAdapter<TorusTerrain>{return view?{...TORUS_DAB_ADAPTER,candidates:(t,p,r)=>{const plan=candidates(t,p,r);return{...plan,*samples(){for(const item of plan.samples())if(torusVisible(t.geometry,item.position,view))yield item;}};}}:TORUS_DAB_ADAPTER;}
+export type TorusStrokeOptions=ConnectedStrokeOptions<TorusTerrain>&{readonly view?:CylinderView};
+export const prepareTorusDab=(t:TorusTerrain,p:SurfacePosition,s:CylindricalBrushSettings,limits:CylinderDabLimits={},view?:CylinderView)=>prepareConnectedDab(t,p,s,visibleAdapter(view),limits);
+export const beginTorusStroke=(t:TorusTerrain,h:ConnectedHistory<TorusTerrain>,p:SurfacePosition,s:CylindricalBrushSettings,options:TorusStrokeOptions={})=>beginConnectedStroke(t,h,p,s,{...adapter,...visibleAdapter(options.view)},options);
