@@ -1,0 +1,1168 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/hourglass-configuration.spec.ts",
+      "tests/hourglass-cap-joins.spec.ts",
+      "tests/hourglass-narrow-response.spec.ts",
+      "tests/hourglass-connected.spec.ts",
+      "tests/hourglass-circumference.spec.ts",
+      "tests/hourglass-recovery.spec.ts",
+      "tests/hourglass-touch.spec.ts",
+      "--config=playwright.hourglass.config.mjs",
+      "--max-failures=1"
+    ],
+    "configFile": "D:\\serrian-tide-world\\playwright.hourglass.config.mjs",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-atlas-hollow-worlds/workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "installed-chrome",
+        "name": "installed-chrome",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "hourglass-*.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "installed-chrome",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "hourglass-*.spec.ts"
+        ],
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5290",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "channel": "chrome",
+          "actionTimeout": 15000,
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "installed-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local\\hourglass-c-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "hourglass-cap-joins.spec.ts",
+      "file": "hourglass-cap-joins.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Hourglass N128 auto: first cap-to-flare physical stroke stays connected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8868,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:23:13.424Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c065d1a885578b3ea906-c6332542f118b3dff786",
+          "file": "hourglass-cap-joins.spec.ts",
+          "line": 2,
+          "column": 75
+        },
+        {
+          "title": "Hourglass N128 auto: second cap-to-flare physical stroke stays connected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7893,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:23:22.696Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c065d1a885578b3ea906-7d39dcfb1bacef2ddb30",
+          "file": "hourglass-cap-joins.spec.ts",
+          "line": 2,
+          "column": 75
+        },
+        {
+          "title": "Hourglass N128 canvas: first cap-to-flare physical stroke stays connected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8093,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:23:30.599Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c065d1a885578b3ea906-db4309da918f33138460",
+          "file": "hourglass-cap-joins.spec.ts",
+          "line": 2,
+          "column": 75
+        },
+        {
+          "title": "Hourglass N128 canvas: second cap-to-flare physical stroke stays connected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7954,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:23:38.704Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c065d1a885578b3ea906-0176b03d64d093830842",
+          "file": "hourglass-cap-joins.spec.ts",
+          "line": 2,
+          "column": 75
+        }
+      ]
+    },
+    {
+      "title": "hourglass-circumference.spec.ts",
+      "file": "hourglass-circumference.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Hourglass N256 auto: one waist circumference reaches every sector and welds the map seam",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19075,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:23:46.680Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "393613a2085de9917fa1-325a4f1ef42a39242112",
+          "file": "hourglass-circumference.spec.ts",
+          "line": 2,
+          "column": 39
+        },
+        {
+          "title": "Hourglass N256 canvas: one waist circumference reaches every sector and welds the map seam",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22882,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:24:05.766Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "393613a2085de9917fa1-515f3ec7319f7cdecf0f",
+          "file": "hourglass-circumference.spec.ts",
+          "line": 2,
+          "column": 39
+        }
+      ]
+    },
+    {
+      "title": "hourglass-configuration.spec.ts",
+      "file": "hourglass-configuration.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Hourglass auto: short-wide dimensions remain editable and invalid creation retains geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9409,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:24:28.680Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a321e22298761b7795e-2d205748d9db242a4bd6",
+          "file": "hourglass-configuration.spec.ts",
+          "line": 10,
+          "column": 69
+        },
+        {
+          "title": "Hourglass auto: short-wide-high dimensions remain editable and invalid creation retains geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14034,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:24:38.100Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a321e22298761b7795e-b09e07a91b8dcf40fa13",
+          "file": "hourglass-configuration.spec.ts",
+          "line": 10,
+          "column": 69
+        },
+        {
+          "title": "Hourglass auto: narrow dimensions remain editable and invalid creation retains geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9268,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:24:52.145Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a321e22298761b7795e-9654d29ab11a401800c8",
+          "file": "hourglass-configuration.spec.ts",
+          "line": 10,
+          "column": 69
+        },
+        {
+          "title": "Hourglass auto: tall-thick dimensions remain editable and invalid creation retains geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8746,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:25:01.424Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a321e22298761b7795e-dcd5381e8bece6b96c28",
+          "file": "hourglass-configuration.spec.ts",
+          "line": 10,
+          "column": 69
+        },
+        {
+          "title": "Hourglass auto: asymmetric-large dimensions remain editable and invalid creation retains geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13303,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:25:10.182Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a321e22298761b7795e-935d82b024817671e681",
+          "file": "hourglass-configuration.spec.ts",
+          "line": 10,
+          "column": 69
+        },
+        {
+          "title": "Hourglass auto: narrow-high dimensions remain editable and invalid creation retains geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13247,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:25:23.498Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a321e22298761b7795e-ebba0cae359661f4af68",
+          "file": "hourglass-configuration.spec.ts",
+          "line": 10,
+          "column": 69
+        },
+        {
+          "title": "Hourglass canvas: short-wide dimensions remain editable and invalid creation retains geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9550,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:25:36.755Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a321e22298761b7795e-6c7443cbde3e9c04c508",
+          "file": "hourglass-configuration.spec.ts",
+          "line": 10,
+          "column": 69
+        },
+        {
+          "title": "Hourglass canvas: short-wide-high dimensions remain editable and invalid creation retains geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13828,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:25:46.317Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a321e22298761b7795e-8f6c95d1cee359efda90",
+          "file": "hourglass-configuration.spec.ts",
+          "line": 10,
+          "column": 69
+        },
+        {
+          "title": "Hourglass canvas: narrow dimensions remain editable and invalid creation retains geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9041,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:26:00.155Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a321e22298761b7795e-c37d042ce59941751809",
+          "file": "hourglass-configuration.spec.ts",
+          "line": 10,
+          "column": 69
+        },
+        {
+          "title": "Hourglass canvas: tall-thick dimensions remain editable and invalid creation retains geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8568,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:26:09.208Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a321e22298761b7795e-7f8727d2835d677e8c0c",
+          "file": "hourglass-configuration.spec.ts",
+          "line": 10,
+          "column": 69
+        },
+        {
+          "title": "Hourglass canvas: asymmetric-large dimensions remain editable and invalid creation retains geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13098,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:26:17.788Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a321e22298761b7795e-cd9e52616e68fbc0dfcc",
+          "file": "hourglass-configuration.spec.ts",
+          "line": 10,
+          "column": 69
+        },
+        {
+          "title": "Hourglass canvas: narrow-high dimensions remain editable and invalid creation retains geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12835,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:26:30.896Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a321e22298761b7795e-84c79e73aaefde0d7b9f",
+          "file": "hourglass-configuration.spec.ts",
+          "line": 10,
+          "column": 69
+        }
+      ]
+    },
+    {
+      "title": "hourglass-connected.spec.ts",
+      "file": "hourglass-connected.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Hourglass N128 auto: one continuous map gesture crosses both lobes, both shoulders and the whole neck",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13532,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:26:43.753Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df298d12486b15bde6a6-7b54a178de00593f3875",
+          "file": "hourglass-connected.spec.ts",
+          "line": 2,
+          "column": 39
+        },
+        {
+          "title": "Hourglass N128 canvas: one continuous map gesture crosses both lobes, both shoulders and the whole neck",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18004,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:26:57.297Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df298d12486b15bde6a6-5d5bb3a8b967ecb14dff",
+          "file": "hourglass-connected.spec.ts",
+          "line": 2,
+          "column": 39
+        }
+      ]
+    },
+    {
+      "title": "hourglass-narrow-response.spec.ts",
+      "file": "hourglass-narrow-response.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Hourglass N256 auto: narrow preset cap and both waist transitions remain responsive",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 27387,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:27:15.329Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d70a7ec24381846f2631-c9e08eddd977356a0fa6",
+          "file": "hourglass-narrow-response.spec.ts",
+          "line": 2,
+          "column": 39
+        },
+        {
+          "title": "Hourglass N256 canvas: narrow preset cap and both waist transitions remain responsive",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 28431,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:27:42.727Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d70a7ec24381846f2631-7d18316f720ba3f34efc",
+          "file": "hourglass-narrow-response.spec.ts",
+          "line": 2,
+          "column": 39
+        }
+      ]
+    },
+    {
+      "title": "hourglass-recovery.spec.ts",
+      "file": "hourglass-recovery.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Hourglass N256 auto: active worker protocol fault preserves exact prefix history and a fresh stroke recovers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7539,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:28:11.179Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "275196263aa73821ae21-2343cf8d0a53d9c64072",
+          "file": "hourglass-recovery.spec.ts",
+          "line": 9,
+          "column": 39
+        },
+        {
+          "title": "Hourglass N256 canvas: active worker protocol fault preserves exact prefix history and a fresh stroke recovers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9507,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:28:18.730Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "275196263aa73821ae21-1f3049065c76c22d4dea",
+          "file": "hourglass-recovery.spec.ts",
+          "line": 9,
+          "column": 39
+        },
+        {
+          "title": "Hourglass N256: graphics loss and restoration retain the current painted terrain epoch",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9065,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:28:28.249Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "275196263aa73821ae21-855101f24d73fa08d2a6",
+          "file": "hourglass-recovery.spec.ts",
+          "line": 12,
+          "column": 1
+        },
+        {
+          "title": "Hourglass v40 corrupt Open retains the active World and exact geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7317,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:28:37.326Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "275196263aa73821ae21-e23fedb99a9be89b897a",
+          "file": "hourglass-recovery.spec.ts",
+          "line": 13,
+          "column": 1
+        },
+        {
+          "title": "Hourglass v40: valid incompatible geometry cannot replace an existing saved World",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6601,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:28:44.657Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "275196263aa73821ae21-ee6392ff1327036aa612",
+          "file": "hourglass-recovery.spec.ts",
+          "line": 15,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "hourglass-touch.spec.ts",
+      "file": "hourglass-touch.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "hourglass auto: native emulated touch/pen drawing and two-finger navigation preserve exact history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5096,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:28:51.282Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ce95d32bae6b24111b81-4d0801c128c18f445645",
+          "file": "hourglass-touch.spec.ts",
+          "line": 2,
+          "column": 71
+        },
+        {
+          "title": "hourglass canvas: native emulated touch/pen drawing and two-finger navigation preserve exact history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5963,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:28:56.389Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ce95d32bae6b24111b81-043dcc82579ac5b818fb",
+          "file": "hourglass-touch.spec.ts",
+          "line": 2,
+          "column": 71
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-24T19:23:12.888Z",
+    "duration": 350620.554,
+    "expected": 29,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

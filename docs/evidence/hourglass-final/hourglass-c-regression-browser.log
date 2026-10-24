@@ -1,0 +1,18 @@
+
+Running 7 tests using 1 worker
+
+(node:10264) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\atlas.spec.ts:27:1 › Atlas opens with an uninterrupted, responsive ocean and no browser errors (2.3s)
+  ok 2 [installed-chrome] › tests\torus-input.spec.ts:5:78 › N256 torus auto: same 150 km brush, captured latency, complete input and exact gesture history (12.6s)
+  ok 3 [installed-chrome] › tests\torus-input.spec.ts:5:78 › N256 torus canvas: same 150 km brush, captured latency, complete input and exact gesture history (14.2s)
+  ok 4 [installed-chrome] › tests\torus-input.spec.ts:5:78 › N256 cylinder auto: same 150 km brush, captured latency, complete input and exact gesture history (13.5s)
+  ok 5 [installed-chrome] › tests\torus-input.spec.ts:5:78 › N256 cylinder canvas: same 150 km brush, captured latency, complete input and exact gesture history (8.9s)
+(node:26380) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 6 [installed-chrome] › tests\cube-editor.spec.ts:40:1 › Cube-E a held physical corner gesture remains one exact Undo operation (2.4s)
+(node:5504) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 7 [installed-chrome] › tests\spherical-limb-workspace.spec.ts:69:1 › native pen assistance stops on release and remains one exact operation (4.7s)
+
+  7 passed (1.0m)

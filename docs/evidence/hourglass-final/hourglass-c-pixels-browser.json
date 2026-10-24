@@ -1,0 +1,241 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/hourglass-pixels.spec.ts",
+      "tests/hourglass-incremental.spec.ts",
+      "--config=playwright.hourglass.config.mjs",
+      "--grep",
+      "N256",
+      "--max-failures=1"
+    ],
+    "configFile": "D:\\serrian-tide-world\\playwright.hourglass.config.mjs",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-atlas-hollow-worlds/workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "installed-chrome",
+        "name": "installed-chrome",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "hourglass-*.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "installed-chrome",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "hourglass-*.spec.ts"
+        ],
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5290",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "channel": "chrome",
+          "actionTimeout": 15000,
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "installed-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/hourglass-c-pixels-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "hourglass-incremental.spec.ts",
+      "file": "hourglass-incremental.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Hourglass N256: incremental Canvas matches a complete redraw within one channel level at poles, neck joins and map",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9866,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:19:12.446Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e1e0d01b1fa4ed8926eb-635486f6fc629cc9d6d6",
+          "file": "hourglass-incremental.spec.ts",
+          "line": 2,
+          "column": 38
+        }
+      ]
+    },
+    {
+      "title": "hourglass-pixels.spec.ts",
+      "file": "hourglass-pixels.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Hourglass N256 default: independent geometry and terrain pixels match hardware WebGL2 and Canvas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 1200000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 162954,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:19:22.772Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2397631e11c2e35f4e50-849766044f4f731f2989",
+          "file": "hourglass-pixels.spec.ts",
+          "line": 2,
+          "column": 108
+        },
+        {
+          "title": "Hourglass N256 stretched: independent geometry and terrain pixels match hardware WebGL2 and Canvas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 1200000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 63990,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:22:05.742Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2397631e11c2e35f4e50-437a0ece21db1d3cf4a2",
+          "file": "hourglass-pixels.spec.ts",
+          "line": 2,
+          "column": 108
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-24T19:19:11.928Z",
+    "duration": 238066.883,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

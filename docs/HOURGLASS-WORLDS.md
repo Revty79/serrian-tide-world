@@ -215,7 +215,7 @@ Hourglass enables exact projected outlines of its three real convex material
 regions for Canvas composition. Projection commutes with convex hull; this is
 the actual component union, not additional geometry or an enlarged silhouette.
 Map masks use the actual two cap polygons and strip union. At N256, the waist
-uses equal physical atlas spacing along both axes to preserve axial sharpness
+uses at most 2:1 physical atlas spacing between its axes to preserve axial sharpness
 under grazing minification; other regions retain their qualified spacing. Independent raw
 triangle rays agree with those outlines in 14,973 geometry comparisons across
 three profiles, six physical directions and map mode. This removes fractional
@@ -276,3 +276,68 @@ is frozen in `evidence/hourglass-editor/receipt.json`. Configuration extremes,
 extra cap/seam workflows, fault recovery, emulated touch/pen and final affected
 regressions remain checkpoint C work. Human visual acceptance and physical-device
 performance qualification remain separate from all automated results.
+
+## Final verification
+
+Checkpoint C passed 29 targeted desktop functional cases plus two Pixel 7
+emulation cases. All 214 source checks were rerun. The only runtime change bounds the
+N256 Hourglass waist atlas anisotropy at 2:1, retaining matched-pixel quality
+while reducing unnecessary color reconstruction. Native geography, brush
+settings, geometry and shared work/backing/history limits are unchanged. Final TypeScript and production build
+passed after adding the final browser proofs. The current affected Dumbbell
+regression at B passed both ordinary backends and three matched pixel views.
+Both final N256 default/asymmetric pixel matrices and N256 incremental output
+passed with the balanced atlas. Seven additional final regressions passed: bounded Atlas startup, Sphere native
+pen/history, Cube corner/history and N256 Torus/Cylinder ordinary input on both
+backends. Heavy browser jobs were serial, installed Chrome, one worker, zero
+retries, at BelowNormal process priority.
+
+Twelve configuration cases cover small short/wide straight and curved Worlds,
+narrow waists at both details, a tall broad World, offset waists and unequal
+ends at World Size 1,000,000,000 m. Small 100,000 m test Worlds explicitly use
+5 m/dab to stay within the existing physical height bound; ordinary and large
+World tests retain 200 m/dab. Invalid creation keeps the current geography.
+
+- Configuration painting p95 max: 73.7 ms.
+- Both real cap-to-flare joins, both backends: 66.0 ms max p95; both cap and side canonical samples changed in one exact gesture.
+- Continuous full waist circumference: 78.6 ms max p95; all sixteen sectors changed, including welded map-cut ownership.
+- Continuous cross-waist map gestures: 77.6 ms max p95; both flares and the waist remain one exact history operation.
+- Narrow-preset cap rim and both waist joins: 103.9 ms max p95.
+
+The final N256 derived ArrayBuffer totals are 62,401,400 bytes for the default
+profile and 63,917,448 bytes for the tall asymmetric profile. Authority and GPU
+field sizes remain unchanged. The final 20 N256 matched views have stable and
+reference channel differences at most 3 and zero coverage violations.
+
+The worker fault cases retain exact undoable failed prefixes and recover with a
+fresh worker. Graphics loss falls back to the current Canvas epoch and restores
+hardware WebGL2 without changing terrain. Corrupt Open retains the active canvas
+and exact words. A valid incompatible geometry cannot overwrite an existing
+saved World. These are deliberate fault tests, not unreported ordinary failures.
+
+Trusted CDP touch/pen and two-finger navigation passed at desktop coarse-pointer
+settings and Pixel 7 emulation on both backends. Emulation is not a physical
+phone, tablet or pen performance qualification. Frozen final evidence and the
+runtime-source comparison are in `evidence/hourglass-final/receipt.json`.
+
+## Publication and remaining acceptance
+
+- Geometry foundation: `73228039e9e4e6d12f714676403cbd30ef6117d7`.
+- Expanded foundation verification: `0c7e7864d39e8f89907db535b7a27465eee38bba`.
+- Operational editor: `390a9651295be0d430fc0c2348de7fcc44704656`.
+- Final verification: the commit containing this section and its separate final receipt.
+
+The protected excavation recovery branch remains outside this work. This pass
+ends at Hourglass. It does not authorize Spiral, Ribbon or another shape.
+
+Construction version 1 is faceted, with four segments per flare and flat end
+closures. It does not promise an analytic smooth revolution surface or rounded
+ends. Supported dimensions are creation-time values and the map strip is a
+presentation with variable physical circumference. Brush influence always uses
+the real physical metric. Reference-surface heightmaps remain the architecture;
+volumetric terrain/excavation are outside this pass. Minor filtering differences
+inside accepted coastline/crease support remain visible in the raw captures.
+
+Remaining owner acceptance is direct review of the physical profiles, close
+terrain/caps/waist views and ordinary authoring feel. Physical-device touch/pen
+checks remain distinct from the completed engineering and emulation proof.
