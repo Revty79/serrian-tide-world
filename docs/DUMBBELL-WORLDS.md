@@ -228,3 +228,82 @@ Final coverage-path response checks remeasure the terminal and both neck transit
 | N128 | canvas | 42.4 | 143.3 |
 | N256 | auto | 96.4 | 112.5 |
 | N256 | canvas | 90.5 | 129.1 |
+
+## Checkpoint C and final engineering report
+
+Checkpoint B is `5b82e70de0a6543dab4ddff3d5a36d3a73eb800d`.
+This commit publishes C verification and its [frozen receipt](evidence/dumbbell-final/receipt.json).
+The application code is unchanged from B. The B source checks therefore remain
+applicable; the production build passed for this same application code. Twenty-one final Dumbbell
+browser cases, two mobile emulation cases and seventeen selected existing-family
+browser regressions passed serially, with one worker and no retries.
+
+| Configuration | Backend | Detail | Neck painting p95 ms |
+| --- | --- | --- | ---: |
+| asymmetric-large | webgl2 | N256 | 54.3 |
+| asymmetric-large | cpu | N256 | 54.6 |
+| long-thick | webgl2 | N128 | 36.6 |
+| long-thick | cpu | N128 | 36.6 |
+| narrow | webgl2 | N128 | 25.7 |
+| narrow | cpu | N128 | 25.4 |
+| short-thick | webgl2 | N128 | 60.0 |
+| short-thick | cpu | N128 | 66.1 |
+| short-thick-high | webgl2 | N256 | 79.5 |
+| short-thick-high | cpu | N256 | 64.7 |
+
+The profiles include short/thick, narrow, long/thick and unequal-lobe extended-shoulder
+Worlds at scales from 100,000 to one billion meters. The 100,000 m profiles use 5 m/dab to remain within their finite elevation clearance; normal and large profiles use 200 m/dab. Each paints a real physical
+neck, passes exact Undo/Redo and retains its active geography when invalid new
+dimensions are proposed. Continuous map gestures cross both lobes, both shoulders
+and the full neck in one exact history operation. Their worst p95 is 70.9 ms.
+Ordinary physical rotation publishes distinct actual image epochs, with worst
+p95 52.0 ms; pan, zoom, Fit, whole-World framing and terminal-map focus retain
+exact geography and history.
+
+Worker protocol failure preserves an exactly undoable/redoable committed prefix
+and a fresh worker completes the next gesture. Graphics loss exposes the current
+sharp Canvas epoch; restoration preserves terrain. Corrupt Open retains the active
+canvas and every terrain word. A valid but incompatible geometry cannot replace
+an existing saved World. Trusted CDP touch, pen and two-finger navigation pass
+on desktop coarse-pointer and Pixel 7 viewport emulation, on both backends.
+These are emulated native events, not physical-device evidence.
+
+The regression selection covers Arc and Crescent matched pixels/normal Save-Open,
+Horseshoe dirty updates and cap/wall joins, Ringworld operation, and Torus/Cylinder
+N256 input/history. Source checks cover canonical aliases/owners across seven
+geometry families, polyhedral fields/atlases, exact history and legacy persistence.
+Use `playwright.dumbbell-regression.config.mjs` for that curated browser set; use
+focused new-shape tests during iteration and the complete new-shape matrix at
+publication. No complete historical browser-library rerun is required per edit.
+
+### Delivery coverage
+
+1. A and B SHAs are recorded above; C is the publication containing this report.
+2. Construction is the closed sixteen-sided faceted profile described above.
+3. Creator dimensions, asymmetric lobes, two shoulder styles and capacity guards are operational.
+4. One connected exterior has 162 vertices, 176 physical polygons and 320 numerical triangles.
+5. Brush influence uses certified intrinsic windows/saddle routing with exact qualified neck/cone fast paths.
+6. Indexed Float32 authority, accepted field/palette/relief, workspace, scheduling, history and local persistence are reused.
+7. N128/N256 contain 163,842/655,362 samples. Route/cache counts, sampling and display budgets stay bounded.
+8. Actual painting pixels pass the unchanged 125 ms ordinary, 100 ms held and 1,000 ms first-dab gates; tables give measured results.
+9. The matched 46-view WebGL2/Canvas matrix, independent geometry reference and incremental/full comparisons pass.
+10. All 160 region/tool gestures and the connected/configuration/input/recovery cases preserve exact whole-gesture history.
+11. Strict format 39, exact words/identities/configuration/view, atomic failed Open and continued editing pass.
+12. Facets define the real body; a distorted map does not supply brush distance. The creator rejects unsupported sampling combinations, including the combined shortest/narrowest neck at both details. Unrestricted global distance, displaced terrain and shared excavation refinement are deferred.
+13. Owner review of shape, geography, interaction and visual acceptance remains; physical-device touch/pen verification remains. Technical delivery does not substitute for either.
+
+### Resource evidence
+
+Owned ArrayBuffer counts include the derived color atlases; GPU textures and
+Canvas bitmaps are separate. These figures describe owned storage, not process
+RSS or driver allocation overhead. No terrain-sized alias/neighbor table was
+added.
+
+| Detail | Canonical bytes | Derived owned ArrayBuffer bytes | GPU field texture bytes |
+| --- | ---: | ---: | ---: |
+| N128 | 655,368 | 19,505,064 | 5,575,680 |
+| N256 | 2,621,448 | 67,504,552 | 21,632,000 |
+
+At the matched 1,000 by 660 pixel proof viewport, peak join coverage is 10855 pixels, with 3218680 owned hit/color bytes and 2437120 logical overlay Canvas bytes. The hard bounds are 131,072 hit pixels, one viewport-bounded RGBA image and one same-size overlay Canvas. The camera epoch releases the old overlay. Source preparation remains capped at 8,192 windows and 65,536 retained placements, with at most 24 vertex-cache entries and 8,192 retained cached placements. WebGL requires the qualified 320-layer field; allocation failure falls back to Canvas.
+
+For the curated browser regressions, start the local Vite app on port 5290, then run `node node_modules/@playwright/test/cli.js test --config=playwright.dumbbell-regression.config.mjs`. The detailed JSON, images and test logs are preserved in the two checkpoint evidence directories.
