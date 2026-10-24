@@ -17,6 +17,7 @@ export function triangulatedPolygonGeometry<M extends Readonly<{identity:Surface
  const charts=polygons.flatMap(p=>p.vertices.slice(1,-1).map((_,i)=>({id:`${p.id}:${i}`,physicalFaceId:p.id,vertices:[p.vertices[0]!,p.vertices[i+1]!,p.vertices[i+2]!] as const})));
  for(const chart of charts)Object.freeze(chart.vertices);
  const faces=Object.freeze(charts.map(c=>c.id)),lookup=new Map(charts.map(c=>[c.id,c]));
+ const incident=new Map<number,string[]>();for(const c of charts)for(const vertex of c.vertices){const list=incident.get(vertex)??[];list.push(c.id);incident.set(vertex,list);}for(const list of incident.values())Object.freeze(list);
  const edgeMap=new Map<string,readonly[number,number]>(),physicalEdgeMap=new Map<string,readonly[number,number]>();
  const edge=(a:number,b:number)=>Object.freeze([Math.min(a,b),Math.max(a,b)] as const);
  for(const c of charts)for(let i=0;i<3;i++){const e=edge(c.vertices[i]!,c.vertices[(i+1)%3]!);edgeMap.set(e.join(','),e);}
@@ -38,7 +39,8 @@ export function triangulatedPolygonGeometry<M extends Readonly<{identity:Surface
  const normalize=(p:SurfacePosition)=>{checked(p.patchId);if(p.worldId!==identity.worldId||p.surfaceId!==identity.surfaceId||![p.u,p.v].every(Number.isFinite)||p.u<0||p.v<0||p.u+p.v>1)throw RangeError('Invalid polygon triangle position.');return{...identity,patchId:p.patchId,u:p.u===0?0:p.u,v:p.v===0?0:p.v};};
  const weights=(p:SurfacePosition)=>{const q=normalize(p);return[1-(q.u+q.v),q.u,q.v] as const;};
  const fromWeights=(face:string,global:ReadonlyMap<number,number>)=>{const c=checked(face);if([...global].some(([id,w])=>w!==0&&!c.vertices.includes(id)))return;return normalize({...identity,patchId:face,u:global.get(c.vertices[1])??0,v:global.get(c.vertices[2])??0});};
- const aliases=(p:SurfacePosition)=>{const q=normalize(p),w=weights(q);if(w.every(x=>x!==0))return[q];const global=new Map(checked(q.patchId).vertices.map((id,i)=>[id,w[i]!]));return faces.flatMap(face=>{const a=fromWeights(face,global);return a?[a]:[];});};
+ const positionsFromWeights=(global:ReadonlyMap<number,number>)=>{const vertices=[...global].filter(([,w])=>w!==0).map(([id])=>id);if(!vertices.length)return[];return(incident.get(vertices[0]!)??[]).flatMap(face=>{const a=fromWeights(face,global);return a?[a]:[];});};
+ const aliases=(p:SurfacePosition)=>{const q=normalize(p),w=weights(q);if(w.every(x=>x!==0))return[q];return positionsFromWeights(new Map(checked(q.patchId).vertices.map((id,i)=>[id,w[i]!])));};
  const referencePosition=(p:SurfacePosition):PolyhedronVector=>{const q=normalize(p),f=frames.get(q.patchId)!;return f.origin.map((x,k)=>x+q.u*f.u[k]!+q.v*f.v[k]!) as unknown as PolyhedronVector;};
  return Object.freeze({metadata,identity,faces,edges,vertices,physicalFaces:polygons,physicalEdges,
   physicalFaceId:(face:string)=>checked(face).physicalFaceId,
@@ -46,7 +48,7 @@ export function triangulatedPolygonGeometry<M extends Readonly<{identity:Surface
   centerMeters:Object.freeze([0,0,0] as PolyhedronVector),inspectionEyeMeters:Object.freeze([0,0,0] as PolyhedronVector),
   frame:(face:string)=>frames.get(checked(face).id)!,vertexIds:(face:string)=>checked(face).vertices,isTriangle:(face:string)=>{checked(face);return true;},
   chartVertexBounds:(face:string)=>bounds.get(checked(face).id)!,physicalVertexBounds:(i:number)=>{if(!Number.isInteger(i)||!vertexBounds[i])throw RangeError('Unknown physical vertex.');return vertexBounds[i]!;},
-  normalize,weights,aliases,fromWeights,referencePosition,canonicalPosition:(p:SurfacePosition)=>aliases(p)[0]!,
+  normalize,weights,aliases,fromWeights,positionsFromWeights,referencePosition,canonicalPosition:(p:SurfacePosition)=>aliases(p)[0]!,
   chartPoint:(p:SurfacePosition):PolyhedronPoint=>{const q=normalize(p),f=frames.get(q.patchId)!;return[q.u*Math.hypot(...f.u)+q.v*pyramidDot(f.v,f.e1),q.v*pyramidDot(f.v,f.e2)];},
   normal:(p:SurfacePosition):PolyhedronVector=>frames.get(normalize(p).patchId)!.normal.map(x=>x*(metadata.role==='interior'?-1:1)) as unknown as PolyhedronVector,
  } satisfies PolyhedronGeometry);

@@ -6,6 +6,7 @@ import {polyhedronPhysicalLength,polyhedronPositionBounds} from './polyhedron-ph
 import {pyramidSub,pyramidUnit} from './pyramid.ts';
 import type {ConnectedPathOptions,ConnectedPhysicalPath} from '../terrain/connected-stroke.ts';
 import * as I from './pyramid-interval.ts';
+export function dumbbellPointerInputs(g:DumbbellGeometry,a:SurfacePosition,b:SurfacePosition,localLimitMeters:number){if(!Number.isFinite(localLimitMeters)||localLimitMeters<=0)throw RangeError('Dumbbell local input limit must be positive.');const path=dumbbellPointerPath(g,a,b,{version:1,absoluteToleranceMeters:g.scaleMeters*1e-8,maxBoxes:32768}),count=Math.max(1,Math.ceil(path.lengthUpperBoundMeters/(localLimitMeters*.5)));if(count>256)throw RangeError('Dumbbell continuous pointer trace exceeds its bounded admission envelope.');return Array.from({length:count},(_,i)=>i+1===count?g.normalize(b):path.atDistance(path.lengthMeters*(i+1)/count).position);}
 /** Actual boundary curves for pointer interpolation. Influence independently
  * uses certified intrinsic distances. An exactly witnessed unfolded segment is
  * preferred. At an ambiguous vertex, real face/edge segments provide bounded
@@ -13,6 +14,9 @@ import * as I from './pyramid-interval.ts';
 export function dumbbellPointerPath(g:DumbbellGeometry,first:SurfacePosition,last:SurfacePosition,o:ConnectedPathOptions):ConnectedPhysicalPath{
  const a=g.canonicalPosition(first),b=g.canonicalPosition(last),chord=Math.hypot(...pyramidSub(g.referencePosition(b),g.referencePosition(a)));
  if(o.version!==1)throw RangeError('Unsupported Dumbbell pointer path version.');
+ const firstCap=a.patchId.startsWith('first-terminal-'),secondCap=a.patchId.startsWith('second-terminal-');
+ if((firstCap&&b.patchId.startsWith('first-terminal-')||secondCap&&b.patchId.startsWith('second-terminal-'))&&a.patchId!==b.patchId){const vertex=firstCap?0:161,pole=g.vertices[vertex]!,A=pyramidSub(g.referencePosition(a),pole),B=pyramidSub(g.referencePosition(b),pole),dot=A.reduce((s,x,k)=>s+x*B[k]!,0);if(dot<0){const P=g.fromWeights(a.patchId,new Map([[vertex,1]]))!,Q=g.fromWeights(b.patchId,new Map([[vertex,1]]))!;return faceSegmentPath(g,a,b,[{start:a,end:P},{start:Q,end:b}]);}}
+
  let routes:ReturnType<typeof polyhedronUnfoldings>|undefined;
  if(g.physicalFaceId(a.patchId)===g.physicalFaceId(b.patchId))routes=polyhedronUnfoldings(g,a.patchId,b.patchId,g.faces.filter(f=>g.physicalFaceId(f)===g.physicalFaceId(a.patchId)));
  else{const w=dumbbellWindows(g,a,Math.min(g.minimumDimensionMeters*.49,Math.max(g.scaleMeters*1e-8,chord*2)));routes=w.byFace.get(b.patchId);}
@@ -25,6 +29,9 @@ export function dumbbellPointerPath(g:DumbbellGeometry,first:SurfacePosition,las
  const endVertex=g.vertexIds(b.patchId).reduce((i,j)=>d[i]!+polyhedronPhysicalLength(g.physicalVertexBounds(i),target)[1]<=d[j]!+polyhedronPhysicalLength(g.physicalVertexBounds(j),target)[1]?i:j),ids=[endVertex];while(prior[ids[0]!]!==-1)ids.unshift(prior[ids[0]!]!);
  const segments:{start:SurfacePosition;end:SurfacePosition}[]=[],vertex=(face:string,i:number)=>g.fromWeights(face,new Map([[i,1]]))!;
  segments.push({start:a,end:vertex(a.patchId,ids[0]!)});for(let i=1;i<ids.length;i++){const face=g.faces.find(f=>g.vertexIds(f).includes(ids[i-1]!)&&g.vertexIds(f).includes(ids[i]!))!;segments.push({start:vertex(face,ids[i-1]!),end:vertex(face,ids[i]!)});}segments.push({start:vertex(b.patchId,ids.at(-1)!),end:b});
+ return faceSegmentPath(g,a,b,segments);
+}
+function faceSegmentPath(g:DumbbellGeometry,a:SurfacePosition,b:SurfacePosition,segments:readonly{start:SurfacePosition;end:SurfacePosition}[]):ConnectedPhysicalPath{
  const pieces=segments.map(s=>{const delta=pyramidSub(g.referencePosition(s.end),g.referencePosition(s.start)),length=Math.hypot(...delta),bounds=polyhedronPhysicalLength(polyhedronPositionBounds(g,s.start),polyhedronPositionBounds(g,s.end));return{...s,length,bounds,tangent:length?pyramidUnit(delta):null};}).filter(s=>s.length>0),length=pieces.reduce((s,p)=>s+p.length,0),bounds=pieces.reduce((s,p)=>I.add(s,p.bounds),I.exact(0));
  return{end:b,pieces,lengthMeters:length,lengthUpperBoundMeters:Math.max(length,bounds[1]),lengthErrorBoundMeters:Math.max(length-bounds[0],bounds[1]-length),distance:{evaluatedBoxes:0},atDistance(meters:number){if(!Number.isFinite(meters)||meters<0||meters>length)throw RangeError('Dumbbell pointer address outside its physical curve.');let offset=0,i=0;for(;i<pieces.length-1;i++){if(meters<=offset+pieces[i]!.length)break;offset+=pieces[i]!.length;}const p=pieces[i];if(!p)return{position:b,referencePosition:g.referencePosition(b),tangent:null,pieceIndex:0,distanceMeters:meters,atEnd:true,oneSidedPatchId:b.patchId};const t=Math.max(0,Math.min(1,(meters-offset)/p.length)),u=p.start.u+(p.end.u-p.start.u)*t;let v=p.start.v+(p.end.v-p.start.v)*t;if(p.start.u+p.start.v===1&&p.end.u+p.end.v===1)v=1-u;const q=meters===0?a:meters===length?b:g.normalize({...p.start,u,v});return{position:q,referencePosition:g.referencePosition(q),tangent:p.tangent,pieceIndex:i,distanceMeters:meters,atEnd:meters===length,oneSidedPatchId:q.patchId};}};
 }

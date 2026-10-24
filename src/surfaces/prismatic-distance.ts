@@ -15,6 +15,7 @@ const absB=(a:B):B=>a[0]<=0&&a[1]>=0?[0,Math.max(-a[0],a[1])]:[Math.min(Math.abs
  * Eight terms leave cosine remainder <0.8^18/18! <2e-17 (sine smaller).
  * All polynomial operations and the PI reduction are outward intervals. */
 function trig(x:B,cos:boolean):B{const k=Math.round(mid(x)/(Math.PI/2)),z=I.subtract(x,I.multiply(pi,I.exact(k/2))),quadrant=(k%4+4)%4,swap=quadrant%2===1,kind=swap?!cos:cos,negative=cos?quadrant===1||quadrant===2:quadrant===2||quadrant===3;if(Math.max(Math.abs(z[0]),Math.abs(z[1]))>.8)throw RangeError('Prism trigonometric reduction failed.');let term=kind?I.exact(1):z,sum=term;const zz=I.square(z);for(let j=1;j<=8;j++){term=I.divide(I.neg(I.multiply(term,zz)),I.exact((2*j-(kind?1:0))*(2*j+(kind?0:1))));sum=I.add(sum,term);}const value=I.add(sum,[-2e-17,2e-17]);return negative?I.neg(value):value;}
+export {trig as prismTrigBounds};
 function segmentDistance(p:P,a:P,b:P){const v=sub(b,a),q=sub(p,a),t=Math.max(0,Math.min(1,dot(q,v)/dot(v,v)));return Math.hypot(q[0]-t*v[0],q[1]-t*v[1]);}
 const guard=(g:PolygonPrismGeometry)=>32768*Number.EPSILON*g.scaleMeters;
 

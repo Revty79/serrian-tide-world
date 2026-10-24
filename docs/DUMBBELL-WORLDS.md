@@ -92,12 +92,9 @@ The map has a longitudinal strip plus two separate terminal fan charts. Its
 circumferential coordinate is deliberately distorted where radius changes;
 painting continues to use the real metric.
 
-Checkpoint A is a geometry/numerical foundation. The Dumbbell option is not yet
-in the normal creator, and operational browser painting, Dumbbell rendered-pixel
-quality, persistence and final owner acceptance remain checkpoint B/C work.
-Numerical probes are not browser latency evidence. In particular, short necks
-need browser capacity qualification before being advertised at every detail and
-brush size.
+At checkpoint A this was a geometry/numerical foundation. The normal creator,
+operational browser painting, Dumbbell pixels and persistence arrived at B.
+The following A measurements remain historical foundation evidence.
 
 Checkpoint A verification: 20 Dumbbell numerical/geometry checks and 25 focused
 shared-system regressions passed, including 1,920 independent visibility/picker
@@ -109,3 +106,125 @@ outside, diagonal or coplanar-strip violations). Arc p95 input-to-visible-pixel
 was 31.6 ms GPU and 39.5 ms Canvas. These measurements qualify the affected Arc
 regression, not the unfinished Dumbbell editor. Evidence is frozen in
 `evidence/dumbbell-foundation/receipt.json`.
+
+## Operational editor
+
+The normal creator offers **Dumbbell World**. World Scale changes all lengths
+proportionally. First/Second Lobe Size are widths across the two cross-section axes at their widest
+stations; Neck Width is twice the generating neck radius; Neck Length is the
+actual straight connecting region. Both shoulder styles and independently sized
+lobes reconstruct deterministically. Total length and center spacing are shown.
+A three-native-cell default brush must fit a 1,600-sample neck-footprint estimate inside the unchanged common preview/work limits. The preferred radius may shrink within that envelope while retaining at least three native cells.
+Unsupported combinations are rejected before terrain allocation, with a neck-length/width or detail explanation. N128 does not admit every extreme
+combination of the individual dimension ranges. Format 39 applies this same
+interactive qualification before loading.
+
+Ten region controls expose both lobes, both terminals, both shoulders, the neck,
+its rear and both undersides. Physical view, the complete longitudinal map and
+the two terminal maps edit the same authority and whole-gesture history. World
+overview retains the tool; Pan World selects navigation. Structural dimensions
+cannot be changed on a painted World.
+
+Near either terminal the metric has an additional exact cone certificate. The
+sum of the sixteen actual face angles lies strictly between pi and 2 pi.
+Certified direct rotations develop candidate windings; angular qualification
+rejects impossible straight routes. A real rim escape lower bound proves when
+that local cone answer is global on the closed body. Near-apex enclosures retain
+the source coordinates rather than snapping geography. Tests independently use
+raw physical-vector cone developments for 1,536 pairs, including unequal lobes,
+both terminals, all windings and three World Scales. Pole-crossing pointer
+curves may use two actual face segments meeting at the real canonical pole.
+
+The rendering field, palette and oriented relief remain the accepted polyhedral
+implementations. Dumbbell polygon atlases use geometry-qualified anisotropic
+spacing: either atlas axis advances at most half a native coordinate cell.
+Very elongated atlas axes receive additional derived texels to keep browser minification from blurring the independently resolved long direction. Unrelated families retain their exact previous spacing. Unused per-triangle
+color atlases are omitted only for this polygon-rendered shape. The complete
+field and physical-polygon atlases remain current for graphics recovery.
+Physical Canvas redraws a conservative projected union of changed atlas texels
+when the camera/backing/appearance are unchanged, preserving settled density.
+Map rendering performs a complete composition. High-quality clamped image
+draws prevent opposite-edge texture wrapping on grazing anisotropic facets;
+other families retain their accepted sampling path. Actual nearest-boundary quarter
+rays repair only a narrow band at the two neck joins and real vertex stars; a geometry-only camera
+cache is capped at 131,072 pixels. No internal join disks are visible. Triangle
+map transforms preserve trapezoid charts without inventing a single affine quad.
+
+Topology-sized incidence, face and edge lookup maps remove repeated full-chart
+searches from canonical ownership and display refresh. Exhaustive alias and
+ownership comparisons cover seven geometry families. These indices contain no
+elevations or history. The shared work, backing, history, pending-input and
+preview limits are unchanged. Canvas still uses up to 1.5 million desktop pixels
+or 650,000 coarse-pointer pixels; WebGL uses the existing backing policy.
+
+## Persistence
+
+Dumbbell uses newly allocated format **39**, after the actual published format
+inventory (1-20 and 25-38, with 21-24 reserved). It records construction version,
+raw and derived dimensions, exterior role, topology, all three identities,
+terrain detail, exact little-endian Float32 words and editing/view controls.
+Validation rejects unknown keys, altered derived geometry, unsupported sampling,
+foreign/mixed identity, invalid controls/camera, wrong payload size, nonfinite or
+out-of-bound heights and SHA-256 failure. Save leases the authoritative revision;
+validated input owns a private payload. Failed Open retains the active editor.
+The existing local map store prevents a different geometry from overwriting a
+saved World. Existing versions keep their previous interpretation.
+
+Coverage preparation uses bounded projected-triangle bins to select candidates, then exact affine barycentrics and physical depth at every admitted quarter-pixel. The bins do not quantize material or field sampling. Their scratch storage is released after the camera hit cache is built; 4,278 offset samples are independently checked against exhaustive plane-ray picking.
+
+## Checkpoint B verification
+
+185 targeted source checks and the TypeScript/production build passed. The four
+installed-Chrome detail/backend workflows passed 160 physical tool gestures,
+each with exact whole-gesture Undo/Redo; each also passed a 15-second held map
+stroke, exact format-39 Save/Open and continued editing. Every accepted pointer
+position was processed; no ordinary workflow reported failure or discard.
+
+| Detail | Backend | Worst region p95 ms | Held-map p95 ms | Worst first dab ms |
+| --- | --- | ---: | ---: | ---: |
+| N128 | auto | 53.6 | 32.4 | 99.9 |
+| N128 | canvas | 49.2 | 58.6 | 150.3 |
+| N256 | auto | 91.7 | 38.5 | 120.8 |
+| N256 | canvas | 86.8 | 66.5 | 131.1 |
+
+The matched pixel matrix contains 46 physical/map views: 17 at each default
+detail and six each for compact/narrow and stretched/asymmetric configurations.
+Identical canonical heights, cameras, zoom, backing and appearance are compared
+with hardware WebGL2, forced Canvas and an independent physical-triangle
+reference. Stable color and reference errors stay within three channel levels;
+coverage, outside-material and internal-diagonal violations are zero. Viewing
+preserves every source word. The three-channel color gate applies outside
+the accepted coast/filter support and physical creases; per-view coast maxima
+are retained in the evidence rather than claimed as exact color parity.
+Incremental Canvas has 35 full-redraw comparisons
+at each detail, including visibly changed poles and neck joins; differences are
+at most one channel level. A scratch rendering margin keeps clipping coverage
+outside the published dirty rectangle. Join corrections use a single bounded
+overlay upload and exact replacement composition, avoiding visible-canvas CPU
+readback during ordinary painting. Its hit count remains capped at 131,072;
+overlay image and Canvas backing are each bounded by the existing settled
+viewport budget and released when the camera epoch changes.
+
+The hardware workflow paths were unchanged by the final Canvas-only clamp
+correction; both Canvas profiles were rechecked afterward. The final vertex-only coverage
+correction was checked with all four worst-case response profiles and the
+full incremental/pixel matrix; it changes no terrain, history or map path. The full matched
+WebGL2/Canvas matrix also ran after that correction.
+
+Evidence: [B receipt](evidence/dumbbell-editor/receipt.json). The receipt hashes
+source and frozen artifacts; committed blobs are audited after publication.
+Checkpoint A is `e764ce81d337d802aba7d0c840c19b6a5afe4db2`. Configuration/recovery,
+navigation, touch/pen emulation and the curated existing-family browser suite
+are published at C. Technical verification is separate from owner acceptance and
+physical-device verification.
+
+Review captures: [matched overview](evidence/dumbbell-editor/n128-default-oblique.png), [neck](evidence/dumbbell-editor/n256-default-neck.png), [complete map](evidence/dumbbell-editor/n256-default-complete-map.png), [stretched unequal lobes](evidence/dumbbell-editor/n256-stretched-oblique.png). Each pairs the same geography in WebGL2 and Canvas.
+
+Final coverage-path response checks remeasure the terminal and both neck transitions after the geometry-cache change. All four detail/backend profiles process every accepted input with no ordinary failure or discard.
+
+| Detail | Backend | Worst targeted p95 ms | Worst first dab ms |
+| --- | --- | ---: | ---: |
+| N128 | auto | 41.6 | 89.1 |
+| N128 | canvas | 42.4 | 143.3 |
+| N256 | auto | 96.4 | 112.5 |
+| N256 | canvas | 90.5 | 129.1 |

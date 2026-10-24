@@ -1,0 +1,14 @@
+import './DumbbellEditor.css';
+import {useMemo,useRef,useState,useEffect,useImperativeHandle,type ReactNode,type Ref} from 'react';
+import type {DumbbellSession} from '../editor/dumbbell-session.ts';import {validateDumbbellEditing} from '../editor/dumbbell-session.ts';
+import {initialDumbbellView} from '../rendering/dumbbell-view.ts';import type {CylinderView} from '../rendering/cylindrical-view.ts';
+import {ConnectedWorkspace,type ConnectedViewportHandle,type ConnectedWorkspaceView} from './ConnectedWorkspace.tsx';import {dumbbellWorkspaceAdapter} from './dumbbell-workspace-adapter.ts';
+declare global{interface Window{__dumbbellEditor?:{view():CylinderView|undefined;setView(v:CylinderView):void;snapshot():object}}}
+export function DumbbellEditor({session,workspace,handleRef}:{session:DumbbellSession;workspace:(v:ConnectedWorkspaceView)=>ReactNode;handleRef?:Ref<ConnectedViewportHandle>}){
+ const handle=useRef<ConnectedViewportHandle>(null),[controls,setControls]=useState(session.editing.controls),[navigation,setNavigation]=useState(session.editing.navigation),adapter=useMemo(()=>dumbbellWorkspaceAdapter(session.terrain,()=>session.editing.navigation==='pan'),[session]);
+ useImperativeHandle(handleRef,()=>({finishInteraction:()=>handle.current?.finishInteraction(),stop:()=>handle.current?.stop(),undo:()=>handle.current?.undo(),redo:()=>handle.current?.redo()}),[]);
+ useEffect(()=>{session.editing={...session.editing,controls,navigation};session.captureEditing=()=>{const view=handle.current?.getView?.()??session.editing.view;session.editing=validateDumbbellEditing(session.terrain,{controls,navigation,view});};session.changed();return()=>{session.captureEditing=()=>{};};},[session,controls,navigation]);
+ useEffect(()=>{if(!import.meta.env.DEV)return;window.__dumbbellEditor={view:()=>handle.current?.getView?.(),setView:v=>handle.current?.restoreView?.(v),snapshot:()=>({configuration:session.terrain.geometry.metadata,detail:session.terrain.detail,samples:session.terrain.sampleCount,editing:session.editing})};return()=>{delete window.__dumbbellEditor;};},[session]);
+ const extras=<><button onClick={()=>{handle.current?.finishInteraction();setNavigation('rotate');handle.current?.restoreView?.(initialDumbbellView());}}>World overview</button><button aria-pressed={navigation==='pan'} onClick={()=>{handle.current?.finishInteraction();setNavigation(n=>n==='pan'?'rotate':'pan');setControls(c=>({...c,tool:'navigate'}));}}>Pan World</button><button onClick={()=>{handle.current?.finishInteraction();handle.current?.restoreView?.(initialDumbbellView('map'));}}>Complete map</button></>;
+ return <ConnectedWorkspace session={session} adapter={adapter} handleRef={handle} initialView={session.editing.view} sharedControls={{value:controls,change:setControls}} mapControls={extras} workspace={workspace}/>;
+}

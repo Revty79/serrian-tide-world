@@ -37,6 +37,9 @@ export interface PolyhedronGeometry {
  normalize(p:SurfacePosition):SurfacePosition;weights(p:SurfacePosition):readonly number[];
  aliases(p:SurfacePosition):SurfacePosition[];canonicalPosition(p:SurfacePosition):SurfacePosition;
  fromWeights(face:string,weights:ReadonlyMap<number,number>):SurfacePosition|undefined;
+ /** Optional topology-sized incidence lookup, in the same canonical face order
+  * as exhaustive fromWeights. It contains no sample, height or history data. */
+ positionsFromWeights?(weights:ReadonlyMap<number,number>):readonly SurfacePosition[];
  referencePosition(p:SurfacePosition):PolyhedronVector;chartPoint(p:SurfacePosition):PolyhedronPoint;
  normal(p:SurfacePosition):PolyhedronVector;
 }

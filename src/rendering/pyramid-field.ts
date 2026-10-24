@@ -13,12 +13,13 @@ export class PyramidDisplayCache<T extends PolyhedronTerrain=PyramidTerrain> ext
  readonly polygonAtlases:PolygonColorAtlas[]=[];
  initialAtlasRevision=-1;
  private heights:Float32Array;private locations:Uint32Array;
+ private faceOffsets:ReadonlyMap<string,number>;
  private polygonGradients=new Map<number,Float64Array>();private polygonGradientBytes=0;
  private journal:{from:number;to:number;rects:PyramidFieldRect[]}[]=[];
- constructor(t:T){super(t,polyhedronDisplayCapacity(t),'Polyhedron interactive capacity exceeded.');this.heights=t.copyElevations();this.locations=new Uint32Array(t.sampleCount).fill(0xffffffff);this.n=t.subdivisions;this.side=this.n+1;this.data=new Float32Array(t.geometry.faces.length*this.side*this.side*4);this.indices=new Uint32Array(t.geometry.faces.length*this.side*this.side).fill(0xffffffff);this.atlasSize=2*this.n+1;this.initialAtlas=new Map(this.terrain.geometry.faces.map(face=>[face,new Uint8ClampedArray(this.atlasSize*this.atlasSize*4)]));}
+ constructor(t:T,options:{polygonColorsOnly?:boolean}={}){super(t,polyhedronDisplayCapacity(t),'Polyhedron interactive capacity exceeded.');this.heights=t.copyElevations();this.locations=new Uint32Array(t.sampleCount).fill(0xffffffff);this.n=t.subdivisions;this.side=this.n+1;this.faceOffsets=new Map(t.geometry.faces.map((face,i)=>[face,i*this.side*this.side]));this.data=new Float32Array(t.geometry.faces.length*this.side*this.side*4);this.indices=new Uint32Array(t.geometry.faces.length*this.side*this.side).fill(0xffffffff);this.atlasSize=2*this.n+1;this.initialAtlas=new Map((options.polygonColorsOnly?[]:this.terrain.geometry.faces).map(face=>[face,new Uint8ClampedArray(this.atlasSize*this.atlasSize*4)]));}
  /** Owned numerical/display ArrayBuffers; Canvas/GPU allocations are reported separately. */
  get ownedArrayBufferBytes(){return this.polygonAtlases.reduce((s,a)=>s+a.pixels.byteLength+a.gutterBounds.byteLength,0)+super.byteLength+this.heights.byteLength+this.locations.byteLength+this.data.byteLength+this.indices.byteLength+this.polygonGradientBytes+[...this.initialAtlas.values()].reduce((sum,a)=>sum+a.byteLength,0);}
- private at(face:string,c:number,r:number){return this.terrain.geometry.faces.indexOf(face)*this.side*this.side+r*this.side+c;}
+ private at(face:string,c:number,r:number){return this.faceOffsets.get(face)!+r*this.side+c;}
  private updateNode(face:string,c:number,r:number){const t=this.terrain,at=this.at(face,c,r),f=t.geometry.frame(face),current=this.heights[this.indices[at]!]!;let xx=0,xy=0,yy=0,hx=0,hy=0;
   // A polygon's triangulation diagonal is not a geographic crease. Fit one
   // physical gradient using the welded stencil on both coplanar charts.
@@ -38,7 +39,7 @@ export class PyramidDisplayCache<T extends PolyhedronTerrain=PyramidTerrain> ext
  }
  override *prepare(){yield* super.prepare();const t=this.terrain;for(const face of this.terrain.geometry.faces)for(let r=0;r<=this.n;r++){for(let c=0;c<=(!this.terrain.geometry.isTriangle(face)?this.n:this.n-r);c++){const offset=this.at(face,c,r),index=t.resolve({...t.metadata.identity,patchId:face,column:c,row:r}).index;this.indices[offset]=index;if(this.locations[index]===0xffffffff)this.locations[index]=offset;}if(r%8===7)yield;}
   for(const face of this.terrain.geometry.faces)for(let r=0;r<=this.n;r++){for(let c=0;c<=(!this.terrain.geometry.isTriangle(face)?this.n:this.n-r);c++)this.updateNode(face,c,r);if(r%8===7)yield;}
-  for(const face of this.terrain.geometry.faces){const target=this.initialAtlas.get(face)!;for(let row=0;row<this.atlasSize;row++){for(let col=0;col<this.atlasSize;col++){const u=col/(this.atlasSize-1),v=1-row/(this.atlasSize-1);if(this.terrain.geometry.isTriangle(face)&&u+v>1)continue;const color=this.color(face,u,v,true),offset=(row*this.atlasSize+col)*4;target.set([...color,255],offset);}if(row%8===7)yield;}}
+  for(const [face,target]of this.initialAtlas){for(let row=0;row<this.atlasSize;row++){for(let col=0;col<this.atlasSize;col++){const u=col/(this.atlasSize-1),v=1-row/(this.atlasSize-1);if(this.terrain.geometry.isTriangle(face)&&u+v>1)continue;const color=this.color(face,u,v,true),offset=(row*this.atlasSize+col)*4;target.set([...color,255],offset);}if(row%8===7)yield;}}
   if(this.terrain.geometry.physicalFaces)for(const polygon of this.terrain.geometry.physicalFaces){const atlas=new PolygonColorAtlas(this as unknown as PyramidDisplayCache<PolyhedronTerrain>,polygon);this.polygonAtlases.push(atlas);yield* atlas.prepare();}
   this.initialAtlasRevision=this.sourceRevision;
  }
