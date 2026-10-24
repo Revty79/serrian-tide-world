@@ -1,6 +1,6 @@
 import type {AxialTerrain} from '../terrain/axial-contract.ts';
 import type {PolyhedronDisplayCache} from './polyhedron-field.ts';
-import {axialPixelPicker,projectAxial} from './axial-view.ts';
+import {axialPixelPicker,axialMapPixelPicker,projectAxial} from './axial-view.ts';
 import type {CylinderView,CylinderViewport} from './cylindrical-view.ts';
 import type {CylinderAppearance} from './cylindrical-elevation.ts';
 const MAX_JOIN_PIXELS=131072;
@@ -15,17 +15,18 @@ export class AxialJoinCoverage{
  private readonly image:ImageData;private readonly origin:{x:number;y:number};private readonly overlay:HTMLCanvasElement;private readonly clip:Path2D;
  get canvasBytes(){return this.overlay.width*this.overlay.height*4;}
  private revision=-1;private appearance:CylinderAppearance|undefined;
- constructor(t:AxialTerrain,v:CylinderView,size:CylinderViewport,width:number,height:number){const g=t.geometry,sx=width/size.width,sy=height/size.height,selected=new Set<number>();
+ constructor(t:AxialTerrain,v:CylinderView,size:CylinderViewport,width:number,height:number,completeBoundaryCoverage=false){const g=t.geometry,sx=width/size.width,sy=height/size.height,selected=new Set<number>();
   const offer=(x:number,y:number)=>{for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++){const X=x+dx,Y=y+dy;if(X>=0&&X<width&&Y>=0&&Y<height)selected.add(Y*width+X);}if(selected.size>MAX_JOIN_PIXELS)throw RangeError('Axial join coverage exceeds its qualified pixel budget.');};
   // Clip before raster admission: zoomed offscreen geometry cannot create
   // unbounded line stepping or allocate pixels outside the settled output.
   const segment=(A:{x:number;y:number},B:{x:number;y:number})=>{const x=A.x*sx,y=A.y*sy,dx=(B.x-A.x)*sx,dy=(B.y-A.y)*sy;let lo=0,hi=1;for(const [p,q]of [[-dx,x+3],[dx,width+3-x],[-dy,y+3],[dy,height+3-y]]){if(p===0){if(q!<0)return;continue;}const r=q!/p!;if(p!<0)lo=Math.max(lo,r);else hi=Math.min(hi,r);if(lo>hi)return;}const steps=Math.max(1,Math.ceil(Math.hypot(dx,dy)*(hi-lo)*2));for(let i=0;i<=steps;i++){const f=lo+(hi-lo)*i/steps;offer(Math.floor(x+f*dx),Math.floor(y+f*dy));}};
-  for(const ring of [4,5])for(let j=0;j<16;j++){const ids=[1+ring*16+j,1+ring*16+(j+1)%16],q=ids.map(i=>{const face=g.faces.find(f=>g.vertexIds(f).includes(i))!;return g.fromWeights(face,new Map([[i,1]]))!;});segment(projectAxial(g,q[0]!,v,size),projectAxial(g,q[1]!,v,size));}
+  if(v.mode==='map'&&completeBoundaryCoverage){for(const polygon of g.physicalFaces){const charts=g.faces.filter(f=>g.physicalFaceId(f)===polygon.id);for(const vertex of polygon.vertices){const face=charts.find(f=>g.vertexIds(f).includes(vertex))!,p=projectAxial(g,g.fromWeights(face,new Map([[vertex,1]]))!,v,size);offer(Math.floor(p.x*sx),Math.floor(p.y*sy));}}}
+  else for(const ring of [4,5])for(let j=0;j<16;j++){const ids=[1+ring*16+j,1+ring*16+(j+1)%16],q=ids.map(i=>{const face=g.faces.find(f=>g.vertexIds(f).includes(i))!;return g.fromWeights(face,new Map([[i,1]]))!;});segment(projectAxial(g,q[0]!,v,size),projectAxial(g,q[1]!,v,size));}
   // Convex polygon unions can also have a subpixel star at a real vertex.
   // Admit only its five-by-five neighborhood; exact nearest-boundary quarter
   // rays replace coverage without expanding material or changing its field.
   for(let vertex=0;vertex<g.vertices.length;vertex++){const face=g.faces.find(f=>g.vertexIds(f).includes(vertex))!,q=g.fromWeights(face,new Map([[vertex,1]]))!,p=projectAxial(g,q,v,size);offer(Math.floor(p.x*sx),Math.floor(p.y*sy));}
-  const indices=[...selected].sort((a,b)=>a-b),runs:Run[]=[],pick=axialPixelPicker(g,v,size,width,height);let offset=0,minX=width,minY=height,maxX=-1,maxY=-1;for(const i of indices){const x=i%width,y=Math.floor(i/width);minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y);}if(!indices.length)minX=minY=maxX=maxY=0;this.origin={x:minX,y:minY};this.image=new ImageData(maxX-minX+1,maxY-minY+1);this.overlay=document.createElement('canvas');this.overlay.width=this.image.width;this.overlay.height=this.image.height;this.clip=new Path2D();
+  const indices=[...selected].sort((a,b)=>a-b),runs:Run[]=[],pick=v.mode==='map'?axialMapPixelPicker(g,v,size,width,height):axialPixelPicker(g,v,size,width,height);let offset=0,minX=width,minY=height,maxX=-1,maxY=-1;for(const i of indices){const x=i%width,y=Math.floor(i/width);minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y);}if(!indices.length)minX=minY=maxX=maxY=0;this.origin={x:minX,y:minY};this.image=new ImageData(maxX-minX+1,maxY-minY+1);this.overlay=document.createElement('canvas');this.overlay.width=this.image.width;this.overlay.height=this.image.height;this.clip=new Path2D();
   while(offset<indices.length){const first=indices[offset]!,y=Math.floor(first/width),x=first%width;let end=offset+1;while(end<indices.length&&indices[end]===indices[end-1]!+1&&Math.floor(indices[end]!/width)===y)end++;const count=end-offset,base=((y-minY)*this.image.width+x-minX)*4,run:Run={x,y,image:new ImageData(this.image.data.subarray(base,base+count*4),count,1),faces:new Int16Array(count*4).fill(-1),coordinates:new Float64Array(count*8)};this.clip.rect(x,y,count,1);
    for(let i=0;i<count;i++)for(let ray=0;ray<4;ray++){const p=pick(x+i+(ray%2?.75:.25),y+(ray<2?.25:.75));if(p){run.faces[i*4+ray]=p.face;run.coordinates[i*8+ray*2]=p.u;run.coordinates[i*8+ray*2+1]=p.v;}}
    runs.push(run);offset=end;

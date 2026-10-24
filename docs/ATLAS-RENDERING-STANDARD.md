@@ -222,3 +222,17 @@ to hide a clip defect. Equivalent-height default N128/N256 and short/near-closed
 Arc pixel evidence, native painting/navigation and strict persistence are recorded
 in the [Arc final review](ARC-FINAL-REVIEW.md) and separately frozen checkpoint
 receipts. Owner acceptance and physical-device performance remain separate.
+
+
+Hourglass shares the accepted Dumbbell axial builder, bounded certified distance
+and pointer-route machinery, welded Float32 authority, indexed field, palette,
+relief, triangle GPU, high-quality polygon atlases and ConnectedWorkspace
+systems. Its distinct four-segment flares, positive-length waist and two closed
+planar caps define its physical geometry. Exact projected convex-region masks
+compose actual material coverage; narrow quarter-ray repairs remain at real
+waist joins and vertex stars, with separate map vertex coverage. The original
+131,072-pixel repair limit and settled backing budgets remain unchanged.
+Default-disabled options preserve Dumbbell's published composition. See the
+[Hourglass review](HOURGLASS-WORLDS.md) and its separate frozen receipts for
+matched-height pixels, ordinary input, exact geography/history, resource costs
+and strict format-40 reconstruction. Owner/device acceptance is separate.

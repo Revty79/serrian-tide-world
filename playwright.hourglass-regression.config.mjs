@@ -1,0 +1,2 @@
+﻿import base from './playwright.hourglass.config.mjs';
+export default {...base,testMatch:['dumbbell-pilot.spec.ts','torus-input.spec.ts','cube-editor.spec.ts','spherical-limb-workspace.spec.ts','atlas.spec.ts'],grep:/Dumbbell N128 .*normal creator|N256 (torus|cylinder)|Cube-E a held physical corner gesture|native pen assistance stops on release|Atlas opens with an uninterrupted/,reporter:[['list'],['json',{outputFile:process.env.HOURGLASS_REPORT??'.local/hourglass-regression-browser.json'}]]};
