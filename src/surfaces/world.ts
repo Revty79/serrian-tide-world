@@ -1,3 +1,4 @@
+import {hollowIcosahedronDimensions,type HollowIcosahedronDimensions} from './hollow-icosahedron.ts';
 import {hollowDodecahedronDimensions,type HollowDodecahedronDimensions} from './hollow-dodecahedron.ts';
 import {hollowTrapezohedronDimensions,type HollowTrapezohedronDimensions} from './hollow-trapezohedron.ts';
 import {hollowOctahedronDimensions,type HollowOctahedronDimensions} from './hollow-octahedron.ts';
@@ -18,6 +19,7 @@ export type PlanarOutline = (
 export type WorldShape =
   | ({readonly kind:'hollow-trapezohedron'} & HollowTrapezohedronDimensions)
   | ({readonly kind:'hollow-dodecahedron'} & HollowDodecahedronDimensions)
+  | ({readonly kind:'hollow-icosahedron'} & HollowIcosahedronDimensions)
   | ({readonly kind:'hollow-octahedron'} & HollowOctahedronDimensions)
   | ({readonly kind:'hollow-tetrahedron'} & HollowTetrahedronDimensions)
   | ({readonly kind:'hollow-pyramid'} & HollowPyramidDimensions)
@@ -78,6 +80,7 @@ function shapeSnapshot(shape: WorldShape): WorldShape {
     case 'hollow-cube': hollowCubeDimensions(shape); return Object.freeze({...shape});
     case 'hollow-trapezohedron': hollowTrapezohedronDimensions(shape); return Object.freeze({...shape});
     case 'hollow-dodecahedron': hollowDodecahedronDimensions(shape); return Object.freeze({...shape});
+    case 'hollow-icosahedron': hollowIcosahedronDimensions(shape); return Object.freeze({...shape});
     case 'hollow-octahedron': hollowOctahedronDimensions(shape); return Object.freeze({...shape});
     case 'hollow-tetrahedron': hollowTetrahedronDimensions(shape); return Object.freeze({...shape});
     case 'hollow-pyramid': hollowPyramidDimensions(shape); return Object.freeze({...shape});
@@ -98,7 +101,7 @@ export function defineWorld(input: WorldDefinition): WorldDefinition {
     if (surface.identity.worldId !== input.id || ids.has(surface.identity.surfaceId)) throw new RangeError('Foreign or duplicate surface identity.');
     if (typeof surface.terrainId !== 'string' || !surface.terrainId.trim() || terrainIds.has(surface.terrainId)) throw new RangeError('Each surface needs an independent terrain identity.');
     if (!['sheet', 'exterior', 'interior', 'custom'].includes(surface.role)) throw new RangeError('Invalid surface role.');
-    if (shape.kind === 'hollow-sphere'||shape.kind==='hollow-dodecahedron'||shape.kind==='hollow-trapezohedron'||shape.kind==='hollow-cube'||shape.kind==='hollow-cylinder'||shape.kind==='hollow-pyramid'||shape.kind==='hollow-tetrahedron'||shape.kind==='hollow-octahedron') {
+    if (shape.kind === 'hollow-sphere'||shape.kind==='hollow-dodecahedron'||shape.kind==='hollow-icosahedron'||shape.kind==='hollow-trapezohedron'||shape.kind==='hollow-cube'||shape.kind==='hollow-cylinder'||shape.kind==='hollow-pyramid'||shape.kind==='hollow-tetrahedron'||shape.kind==='hollow-octahedron') {
       if (!['exterior', 'interior'].includes(surface.role) || hollowRoles.has(surface.role)) throw new RangeError('A hollow World accepts unique interior/exterior surfaces.');
       hollowRoles.add(surface.role);
     }
@@ -109,6 +112,7 @@ export function defineWorld(input: WorldDefinition): WorldDefinition {
   if(shape.kind==='hollow-cube'&&hollowRoles.size!==2)throw RangeError('A hollow cube requires both independent surfaces.');
   if(shape.kind==='hollow-trapezohedron'&&hollowRoles.size!==2)throw RangeError('A hollow decahedron requires both independent surfaces.');
   if(shape.kind==='hollow-dodecahedron'&&hollowRoles.size!==2)throw RangeError('A hollow dodecahedron requires both independent surfaces.');
+  if(shape.kind==='hollow-icosahedron'&&hollowRoles.size!==2)throw RangeError('A hollow icosahedron requires both independent surfaces.');
   if(shape.kind==='hollow-octahedron'&&hollowRoles.size!==2)throw RangeError('A hollow octahedron requires both independent surfaces.');
   if(shape.kind==='hollow-tetrahedron'&&hollowRoles.size!==2)throw RangeError('A hollow tetrahedron requires both independent surfaces.');
   if(shape.kind==='hollow-pyramid'&&hollowRoles.size!==2)throw RangeError('A hollow pyramid requires both independent surfaces.');

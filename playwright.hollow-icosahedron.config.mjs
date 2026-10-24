@@ -1,0 +1,2 @@
+import base from './playwright.icosahedron.config.mjs';
+export default{...base,testMatch:['hollow-icosahedron-matched.spec.ts','hollow-icosahedron-performance.spec.ts','hollow-icosahedron-pixels.spec.ts','hollow-icosahedron-workflow.spec.ts','hollow-icosahedron-navigation.spec.ts','hollow-icosahedron-context.spec.ts'],timeout:360000,reporter:[['list'],['json',{outputFile:process.env.ICOSAHEDRON_REPORT??'.local/hollow-icosahedron-browser.json'}]]};

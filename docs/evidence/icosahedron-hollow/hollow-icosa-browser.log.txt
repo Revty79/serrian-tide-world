@@ -1,0 +1,31 @@
+
+Running 22 tests using 1 worker
+
+(node:14880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [installed-chrome] › tests\hollow-icosahedron-context.spec.ts:2:1 › Hollow Icosahedron N256: returning to painted banks, graphics loss and restoration retain current sharp terrain epochs (16.6s)
+  ok  2 [installed-chrome] › tests\hollow-icosahedron-matched.spec.ts:2:52 › Hollow icosahedron N128 -100m: both banks match Solid foundation pixels at identical geography and pose (8.1s)
+  ok  3 [installed-chrome] › tests\hollow-icosahedron-matched.spec.ts:2:52 › Hollow icosahedron N128 0m: both banks match Solid foundation pixels at identical geography and pose (7.9s)
+  ok  4 [installed-chrome] › tests\hollow-icosahedron-matched.spec.ts:2:52 › Hollow icosahedron N256 -100m: both banks match Solid foundation pixels at identical geography and pose (23.3s)
+  ok  5 [installed-chrome] › tests\hollow-icosahedron-matched.spec.ts:2:52 › Hollow icosahedron N256 0m: both banks match Solid foundation pixels at identical geography and pose (23.7s)
+  ok  6 [installed-chrome] › tests\hollow-icosahedron-navigation.spec.ts:2:39 › Hollow Icosahedron N256 auto: cavity drag reaches actual sharp pixels responsively without terrain/history writes (17.2s)
+  ok  7 [installed-chrome] › tests\hollow-icosahedron-navigation.spec.ts:2:39 › Hollow Icosahedron N256 canvas: cavity drag reaches actual sharp pixels responsively without terrain/history writes (21.0s)
+  ok  8 [installed-chrome] › tests\hollow-icosahedron-performance.spec.ts:9:89 › Hollow Icosahedron stage profile N128 auto hollow (54.2s)
+  ok  9 [installed-chrome] › tests\hollow-icosahedron-performance.spec.ts:9:89 › Hollow Icosahedron stage profile N128 canvas hollow (52.5s)
+  ok 10 [installed-chrome] › tests\hollow-icosahedron-performance.spec.ts:9:89 › Hollow Icosahedron stage profile N256 auto hollow (1.1m)
+  ok 11 [installed-chrome] › tests\hollow-icosahedron-performance.spec.ts:9:89 › Hollow Icosahedron stage profile N256 canvas hollow (1.1m)
+  ok 12 [installed-chrome] › tests\hollow-icosahedron-pixels.spec.ts:2:75 › Hollow Icosahedron outside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (10.2s)
+  ok 13 [installed-chrome] › tests\hollow-icosahedron-pixels.spec.ts:2:75 › Hollow Icosahedron inside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (11.2s)
+  ok 14 [installed-chrome] › tests\hollow-icosahedron-pixels.spec.ts:2:75 › Hollow Icosahedron cavity N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (22.1s)
+  ok 15 [installed-chrome] › tests\hollow-icosahedron-pixels.spec.ts:2:75 › Hollow Icosahedron outside N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (15.4s)
+  ok 16 [installed-chrome] › tests\hollow-icosahedron-pixels.spec.ts:2:75 › Hollow Icosahedron inside N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (15.7s)
+  ok 17 [installed-chrome] › tests\hollow-icosahedron-pixels.spec.ts:2:75 › Hollow Icosahedron cavity N256 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette (25.9s)
+  ok 18 [installed-chrome] › tests\hollow-icosahedron-workflow.spec.ts:13:63 › Hollow Icosahedron N128 auto: independent banks, all tools and all thirty physical joins, sharp inspection, exact replay and v30 reopen (3.1m)
+  ok 19 [installed-chrome] › tests\hollow-icosahedron-workflow.spec.ts:13:63 › Hollow Icosahedron N128 canvas: independent banks, all tools and all thirty physical joins, sharp inspection, exact replay and v30 reopen (30.6s)
+  ok 20 [installed-chrome] › tests\hollow-icosahedron-workflow.spec.ts:13:63 › Hollow Icosahedron N256 auto: independent banks, all tools and all thirty physical joins, sharp inspection, exact replay and v30 reopen (46.4s)
+  ok 21 [installed-chrome] › tests\hollow-icosahedron-workflow.spec.ts:13:63 › Hollow Icosahedron N256 canvas: independent banks, all tools and all thirty physical joins, sharp inspection, exact replay and v30 reopen (47.1s)
+  ok 22 [installed-chrome] › tests\hollow-icosahedron-workflow.spec.ts:24:57 › Hollow Icosahedron N256 canvas map: each bank retains a 20-second held gesture (54.9s)
+
+  Slow test file: [installed-chrome] › tests\hollow-icosahedron-workflow.spec.ts (6.0m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  22 passed (13.8m)

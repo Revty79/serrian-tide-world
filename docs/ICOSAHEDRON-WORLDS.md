@@ -138,3 +138,105 @@ The 20-second N256 WebGL2 map gesture completed 2 work epochs / 471,380 distance
 
 The 20-second N256 Canvas map gesture completed 2 work epochs / 388,110 distance queries, at 66.1 ms p95, as one exact undoable operation.
 
+
+## Hollow composition
+
+The Hollow family starts from published Solid checkpoint `8df93fa`. Both banks
+use that same geometry, canonical authority, brush, session, worker and renderer.
+The parent owns bank selection, host locking and the combined save checkpoint.
+It does not create another terrain editor. Outside, fitted inside editing,
+connected maps and read-only cavity inspection retain the accepted controls.
+
+The concentric outer and inner icosahedra are equally oriented and homothetic.
+Their supporting planes are parallel. The unit inradius interval multiplied by
+the edge-length difference encloses the complete shell gap; the existing
+`32768 * EPSILON * outerEdge` guard is subtracted from its lower bound. Every
+inner vertex is independently checked against every outer plane. Convexity then
+covers all inner edges and faces. Touching, reversed, nonfinite or ambiguous thin
+shells reject explicitly. A spherical radius difference is not used as clearance.
+
+Each bank has `10 N^2+2` independent canonical words and its own surface/terrain
+identity and history. The ordinary -100 m ocean start must fit both physical
+bounds. The explicit 0 m reference shell remains available; no initialization
+silently clamps terrain. The bank elevation limit is the smaller of one quarter
+of certified clearance and the accepted geometry dimension bound.
+
+Unused format version 30 stores both banks and the selected surface, with the
+same strict validation, checksum, cooperative atomic Open and exact Float32
+contracts. Versions 1-29 retain their meanings. Undo stacks remain transient.
+
+The [Hollow receipt](evidence/icosahedron-hollow/receipt.json) records its final
+technical verification independently of the immutable Solid receipt. Owner
+acceptance remains a separate step.
+
+## Hollow qualification
+
+The 19 focused shell, bank, painting/history, strict format and World-catalog
+checks pass. The installed-Chrome run passes 22 complete browser cases, plus
+two touch/pen emulation cases. Twelve short family regressions pass in about
+one minute. Four additional north/lower pixel checks at N128/N256 complete the
+Solid view set: the tested camera vectors collectively face every physical
+triangle. Rendering code and geography were not changed for these captures.
+TypeScript and the production build pass.
+
+Both banks match the Solid foundation's exact canonical words and output pixels
+at identical geometry, pose, detail, role, backend and 0/-100 m starts. All six
+Hollow GPU/Canvas field comparisons pass: maximum stable channel difference is
+2 (the unchanged gate is 3), with stable land/ocean coverage and zero coverage or
+silhouette violations. Fitted inside and perspective cavity captures were also
+visually reviewed. Cavity navigation preserves both word hashes and history;
+N256 p95 input-to-pixels is 16.0 ms WebGL2 / 51.5 ms Canvas, with Canvas present
+p95 47.6 ms.
+
+Matched 60 km brush profile observations, in milliseconds:
+
+| Detail / backend / bank | Ordinary face, edge, vertex | Four-second held |
+| --- | ---: | ---: |
+| N128 / WebGL2 / exterior | 46.4-50.2 | 36.2-36.7 |
+| N128 / WebGL2 / interior | 50.0-54.8 | 37.4-38.5 |
+| N128 / Canvas / exterior | 43.3-52.0 | 31.3-33.0 |
+| N128 / Canvas / interior | 43.8-46.6 | 32.3-34.0 |
+| N256 / WebGL2 / exterior | 57.2-78.4 | 39.7-43.0 |
+| N256 / WebGL2 / interior | 65.0-80.7 | 41.3-56.8 |
+| N256 / Canvas / exterior | 80.0-86.9 | 50.5-66.8 |
+| N256 / Canvas / interior | 92.7-103.2 | 59.3-68.0 |
+
+Default-size physical workflow observations:
+
+| Detail / backend | Outside p95 | Inside p95 |
+| --- | ---: | ---: |
+| N128 / WebGL2 | 52.1 ms | 48.7 ms |
+| N128 / Canvas | 52.0 ms | 44.7 ms |
+| N256 / WebGL2 | 75.0 ms | 76.6 ms |
+| N256 / Canvas | 88.5 ms | 85.2 ms |
+
+The N128 WebGL2 UI workflow checks all thirty joins separately on each bank.
+Both details/backends cover four tools, bank isolation, actual sharp pixels,
+navigation, read-only inspection/return, exact history, v30 Save/Open and
+continued painting. The N256 Canvas endurance run retains each bank's held
+pointer for twenty seconds:
+
+- Exterior: 2 epochs, 358,120 distance queries, 65.1 ms p95, zero discarded positions, one exact history operation.
+- Interior: 2 epochs, 450,317 distance queries, 86.7 ms p95, zero discarded positions, one exact history operation.
+
+The opposite bank's word hash stays unchanged. No latency, pixel, history or work
+limit was relaxed. The profile is an observation on the recorded desktop, not
+a physical-mobile qualification or a guarantee for every computer.
+
+At N256 the two canonical authorities total 5,242,896 bytes and the two prepared
+indexed caches total 152,681,216 bytes. Presenter atlases/backing, worker snapshots,
+save checkpoints and bounded history remain additional allocations under the
+same Solid mechanisms. No global numerical capacity or work limit increased.
+Very wide work still fails explicitly with an exact undoable committed prefix.
+The full evidence is in the Hollow receipt above; final owner acceptance remains
+pending. This pass ends with this family.
+
+## Keeping later regression checks proportional
+
+`node node_modules/@playwright/test/cli.js test --config=playwright.polyhedron-smoke.config.mjs`
+runs two short normal workflows per completed polyhedron family: create, paint,
+exact replay, Save/Open and continued painting, on WebGL2 and Canvas. Icosahedron
+joins that reusable suite. Deep geometry, bank, pixel and endurance checks stay
+focused on the new family; broader rendering checks are added when a shared
+rendering mechanism changes, as they were for the Solid atlas repair.
+

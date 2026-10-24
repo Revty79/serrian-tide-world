@@ -1,0 +1,27 @@
+✔ hollow icosahedron v30 N128: both independent Float32 banks, signed zero and selected role roundtrip exactly (6288.1841ms)
+✔ hollow icosahedron v30 N256: both independent Float32 banks, signed zero and selected role roundtrip exactly (22577.1285ms)
+✔ hollow icosahedron v30 rejects corruption, metadata smuggling, foreign banks, touching shells and out-of-clearance words even with rehashed payload (3093.7304ms)
+✔ hollow icosahedron saving rejects a stale bank epoch or selection and cancellation leaves its source unchanged (3148.6458ms)
+✔ hollow world catalogs allow exterior, interior, or both with independent surface and terrain identities (1.1243ms)
+✔ catalog rejects duplicate/foreign identities, shared terrain IDs and invalid hollow references (0.4175ms)
+✔ flat outlines and other shapes have data contracts without implying editor support (0.9673ms)
+✔ nested icosahedron clearance encloses every inner vertex against every actual outer face, all five-face vertices (3.2864ms)
+✔ intersecting, touching, inverted, nonfinite and ambiguous thin hollow icosahedron shells reject explicitly (0.4021ms)
+✔ hollow icosahedron N128: independent identities, canonical apex/edges, strict finite clearance and no copied/inverted geography (1.7837ms)
+✔ hollow icosahedron N256: independent identities, canonical apex/edges, strict finite clearance and no copied/inverted geography (1.6165ms)
+✔ thin hollow icosahedron requires explicit zero reference shell rather than clamping either bank (1.7519ms)
+✔ icosahedron immutable geometry cannot drift with caller configuration or frame/topology mutation (3.456ms)
+✔ hollow icosahedron exterior: physical elevation exhaustion rejects an entire dab and retains exact undoable prefix (16.2599ms)
+✔ hollow icosahedron interior: physical elevation exhaustion rejects an entire dab and retains exact undoable prefix (10.5049ms)
+✔ hollow icosahedron N128 exterior: all tools cross the five-face vertex with exact independent history (130.1683ms)
+✔ hollow icosahedron N128 interior: all tools cross the five-face vertex with exact independent history (131.3122ms)
+✔ hollow icosahedron N256 exterior: all tools cross the five-face vertex with exact independent history (312.3797ms)
+✔ hollow icosahedron N256 interior: all tools cross the five-face vertex with exact independent history (376.4532ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 36670.9602
