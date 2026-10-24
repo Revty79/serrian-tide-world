@@ -204,3 +204,21 @@ ordinary painting, held strokes, joins, navigation, input and strict persistence
 are recorded in the [Horseshoe final review](HORSESHOE-FINAL-REVIEW.md) and its
 separate frozen A/B/C receipts. Owner acceptance and physical-device performance
 remain separate from emulated input and technical qualification.
+
+Arc binds those same field, gradient, palette, polygon atlas, prism GPU/Canvas,
+journal, worker, history and Atlas mechanisms to a real bounded annular-sector
+solid. Its 244-chart n32/n64 capacity qualification is exact and provider/version
+specific. Upper/underside geography, inner/outer boundaries and both closed
+terminal faces retain their actual geometry and independent canonical words.
+Nearby terminal faces never become longitudinal periodic neighbors. Optional
+geometry-supplied distance lower bounds must be conservative certificates; they
+do not replace the shared intrinsic-distance authority or relax work limits.
+
+For very thin/sheared prism atlas clips, the already-constructed exact physical
+union also supplies the final Canvas mask. Reuse its existing path/scratch layer;
+keep internal coverage opaque and constrain antialias color to real material.
+Do not expand geometry, change geography or introduce an invisible backing shape
+to hide a clip defect. Equivalent-height default N128/N256 and short/near-closed
+Arc pixel evidence, native painting/navigation and strict persistence are recorded
+in the [Arc final review](ARC-FINAL-REVIEW.md) and separately frozen checkpoint
+receipts. Owner acceptance and physical-device performance remain separate.

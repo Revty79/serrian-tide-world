@@ -1,0 +1,8 @@
+{
+  "applicationSourceUnchangedFromB": true,
+  "physicalDeviceInputQualified": false,
+  "ownerAcceptance": false,
+  "regressionScope": "14 selected browser cases: five directly affected Horseshoe pilot/join/incremental, four Crescent pilot/pixels/incremental, one Ringworld Save/Open and four Torus/Cylinder input/performance/history cases. Historical full suites were not repeated.",
+  "qualification": "Exact committed-source audit, creator variation, near-closed end isolation, continuous whole-body gesture, eight upper/lower joins per backend, fresh reconstruction, navigation, recovery and emulated desktop/phone touch and pen. Actual owner and physical-device qualification remain separate.",
+  "phoneFixtureDiagnostic": "The first phone pen gesture reused a fixed 25-pixel desktop offset and crossed outside the real Arc. Its pending input was correctly discarded. Raw screenshot, trace, report and original fixture are preserved. Final pen endpoints are projected from interior physical points after recentering; the fixture also explicitly verifies that two-finger navigation changes the view. Both desktop input cases and both phone input cases pass with the final fixture. Application source and all performance/history/input gates remain unchanged."
+}

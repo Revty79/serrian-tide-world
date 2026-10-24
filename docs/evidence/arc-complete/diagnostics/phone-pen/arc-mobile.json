@@ -1,0 +1,234 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.arc-touch.config.mjs",
+      "--max-failures=1"
+    ],
+    "configFile": "D:\\serrian-tide-world\\playwright.arc-touch.config.mjs",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-atlas-hollow-worlds/workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "pixel-7-emulation",
+        "name": "pixel-7-emulation",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "arc-touch.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "pixel-7-emulation",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "arc-touch.spec.ts"
+        ],
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5280",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "channel": "chrome",
+          "actionTimeout": 15000,
+          "userAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Mobile Safari/537.36",
+          "viewport": {
+            "width": 412,
+            "height": 839
+          },
+          "screen": {
+            "width": 412,
+            "height": 915
+          },
+          "deviceScaleFactor": 2.625,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "pixel-7-emulation"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/arc-mobile.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "arc-touch.spec.ts",
+      "file": "arc-touch.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "arc auto: native emulated touch/pen drawing and two-finger navigation preserve exact history",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pixel-7-emulation",
+              "projectName": "pixel-7-emulation",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 11915,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"3db94d627ba3faf8352d4c7008aa6963b69f5a3eabb0f11ad93be5b9f1e46ba9\"\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"3db94d627ba3faf8352d4c7008aa6963b69f5a3eabb0f11ad93be5b9f1e46ba9\"\u001b[39m\n    at D:\\serrian-tide-world\\tests\\arc-touch.spec.ts:6:831",
+                    "location": {
+                      "file": "D:\\serrian-tide-world\\tests\\arc-touch.spec.ts",
+                      "column": 831,
+                      "line": 6
+                    },
+                    "snippet": "  4 |  const hash=()=>page.evaluate(async()=>{const path='/src/components/ConnectedWorkspace.tsx',m=await import(path),s=m.connectedWorkspaceInspection().snapshot() as{words:number[]};return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',Uint32Array.from(s.words).buffer)),x=>x.toString(16).padStart(2,'0')).join('');}),before=await hash(),box=(await page.locator('.cylinder-canvas').boundingBox())!,p=await arcPoint(page,[1000000,0]),x=box.x+p.x,y=box.y+p.y,cdp=await context.newCDPSession(page);\n  5 |  await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:x-12,y,id:1}]});for(let i=1;i<=8;i++)await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x-12+i*4,y:y+i,id:1}]});await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await idle();const touched=await hash();expect(touched).not.toBe(before);await page.getByRole('button',{name:'Undo',exact:true}).click();await idle();expect(await hash()).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await idle();expect(await hash()).toBe(touched);\n> 6 |  await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:x-30,y,id:2},{x:x+30,y,id:3}]});await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x-40,y:y+10,id:2},{x:x+45,y:y+10,id:3}]});await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await idle();expect(await hash()).toBe(touched);await page.getByRole('button',{name:'Upper map',exact:true}).click();await idle();await cdp.send('Input.dispatchMouseEvent',{type:'mousePressed',x,y,button:'left',buttons:1,pointerType:'pen'});await cdp.send('Input.dispatchMouseEvent',{type:'mouseMoved',x:x+25,y:y+10,buttons:1,pointerType:'pen'});await cdp.send('Input.dispatchMouseEvent',{type:'mouseReleased',x:x+25,y:y+10,button:'left',buttons:0,pointerType:'pen'});await idle();const penned=await hash();expect(penned).not.toBe(touched);await page.getByRole('button',{name:'Undo',exact:true}).click();await idle();expect(await hash()).toBe(touched);const state=await page.evaluate(async()=>{const path='/src/components/ConnectedWorkspace.tsx',m=await import(path);return m.connectedWorkspaceInspection().snapshot(false) as{statistics:{failures:number;lastStroke:{acceptedPositions:number;processedPositions:number;discardedPositions:number}};renderer:{kind:string;width:number;height:number}};});expect(state.statistics.failures).toBe(0);expect(state.statistics.lastStroke.discardedPositions).toBe(0);expect(state.statistics.lastStroke.acceptedPositions).toBe(state.statistics.lastStroke.processedPositions);expect(state.renderer.kind).toBe(backend==='auto'?'webgl2':'cpu');expect(state.renderer.width*state.renderer.height).toBeLessThanOrEqual(backend==='canvas'?650000:3000000);mkdirSync('.local/arc-touch',{recursive:true});writeFileSync(`.local/arc-touch/${shape}-${backend}.json`,JSON.stringify({qualification:`${page.viewportSize()?.width}x${page.viewportSize()?.height} viewport with coarse-pointer emulation and trusted CDP touch/pen input; no physical device`,before,touched,penned,state},null,2));await page.screenshot({path:`.local/arc-touch/${shape}-${backend}.png`});\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^\n  7 | });\n  8 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\serrian-tide-world\\tests\\arc-touch.spec.ts",
+                        "column": 831,
+                        "line": 6
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"3db94d627ba3faf8352d4c7008aa6963b69f5a3eabb0f11ad93be5b9f1e46ba9\"\u001b[39m\n\n  4 |  const hash=()=>page.evaluate(async()=>{const path='/src/components/ConnectedWorkspace.tsx',m=await import(path),s=m.connectedWorkspaceInspection().snapshot() as{words:number[]};return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',Uint32Array.from(s.words).buffer)),x=>x.toString(16).padStart(2,'0')).join('');}),before=await hash(),box=(await page.locator('.cylinder-canvas').boundingBox())!,p=await arcPoint(page,[1000000,0]),x=box.x+p.x,y=box.y+p.y,cdp=await context.newCDPSession(page);\n  5 |  await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:x-12,y,id:1}]});for(let i=1;i<=8;i++)await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x-12+i*4,y:y+i,id:1}]});await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await idle();const touched=await hash();expect(touched).not.toBe(before);await page.getByRole('button',{name:'Undo',exact:true}).click();await idle();expect(await hash()).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await idle();expect(await hash()).toBe(touched);\n> 6 |  await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:x-30,y,id:2},{x:x+30,y,id:3}]});await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x-40,y:y+10,id:2},{x:x+45,y:y+10,id:3}]});await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await idle();expect(await hash()).toBe(touched);await page.getByRole('button',{name:'Upper map',exact:true}).click();await idle();await cdp.send('Input.dispatchMouseEvent',{type:'mousePressed',x,y,button:'left',buttons:1,pointerType:'pen'});await cdp.send('Input.dispatchMouseEvent',{type:'mouseMoved',x:x+25,y:y+10,buttons:1,pointerType:'pen'});await cdp.send('Input.dispatchMouseEvent',{type:'mouseReleased',x:x+25,y:y+10,button:'left',buttons:0,pointerType:'pen'});await idle();const penned=await hash();expect(penned).not.toBe(touched);await page.getByRole('button',{name:'Undo',exact:true}).click();await idle();expect(await hash()).toBe(touched);const state=await page.evaluate(async()=>{const path='/src/components/ConnectedWorkspace.tsx',m=await import(path);return m.connectedWorkspaceInspection().snapshot(false) as{statistics:{failures:number;lastStroke:{acceptedPositions:number;processedPositions:number;discardedPositions:number}};renderer:{kind:string;width:number;height:number}};});expect(state.statistics.failures).toBe(0);expect(state.statistics.lastStroke.discardedPositions).toBe(0);expect(state.statistics.lastStroke.acceptedPositions).toBe(state.statistics.lastStroke.processedPositions);expect(state.renderer.kind).toBe(backend==='auto'?'webgl2':'cpu');expect(state.renderer.width*state.renderer.height).toBeLessThanOrEqual(backend==='canvas'?650000:3000000);mkdirSync('.local/arc-touch',{recursive:true});writeFileSync(`.local/arc-touch/${shape}-${backend}.json`,JSON.stringify({qualification:`${page.viewportSize()?.width}x${page.viewportSize()?.height} viewport with coarse-pointer emulation and trusted CDP touch/pen input; no physical device`,before,touched,penned,state},null,2));await page.screenshot({path:`.local/arc-touch/${shape}-${backend}.png`});\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^\n  7 | });\n  8 |\n    at D:\\serrian-tide-world\\tests\\arc-touch.spec.ts:6:831"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T12:06:35.833Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\arc-touch-arc-auto-native--b49df-tion-preserve-exact-history-pixel-7-emulation\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\arc-touch-arc-auto-native--b49df-tion-preserve-exact-history-pixel-7-emulation\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\arc-touch-arc-auto-native--b49df-tion-preserve-exact-history-pixel-7-emulation\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\serrian-tide-world\\tests\\arc-touch.spec.ts",
+                    "column": 831,
+                    "line": 6
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7d361c6a799d1bd292bd-ac9f756a2305def00cba",
+          "file": "arc-touch.spec.ts",
+          "line": 2,
+          "column": 65
+        },
+        {
+          "title": "arc canvas: native emulated touch/pen drawing and two-finger navigation preserve exact history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pixel-7-emulation",
+              "projectName": "pixel-7-emulation",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "7d361c6a799d1bd292bd-a1a099de5ea595815d4d",
+          "file": "arc-touch.spec.ts",
+          "line": 2,
+          "column": 65
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "message": "\u001b[31mTesting stopped early after 1 maximum allowed failures.\u001b[39m"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-10-24T12:06:35.291Z",
+    "duration": 13236.336,
+    "expected": 0,
+    "skipped": 1,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

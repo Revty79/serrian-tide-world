@@ -45,6 +45,14 @@ ratio of their radii; no flat angular parameter is treated as a physical meter.
 All implemented metrics use actual physical vertices and frames. This does not
 claim an analytically smooth circle underneath the faceted surface.
 
+Width is the separation of the generating radii and equal-angle chain vertices.
+Across an ordinary straight facet, perpendicular inner/outer separation is
+`Width*cos(deltaTheta/2)`; radial separation varies between that value and Width.
+The terminal collars use their explicitly stated endpoint widths. Likewise the
+listed inner/outer radii describe generating vertices, rather than claiming
+every point on a straight facet lies on an ideal circle. Physical distances,
+areas, normals, picking and saved reconstruction always use the actual facets.
+
 The existing triangular indexed authority owns Float32 elevations, revisions,
 private snapshots and canonical vertex/edge/triangle-interior aliases. N128/N256
 equivalent detail is n32/n64 per chart, `122*n*n+2` words: 124,930 / 499,714
@@ -149,3 +157,23 @@ Complementary configuration, continuous joins, close-end isolation, navigation,
 recovery, emulated input and affected prior-family checks finish in C. A test
 appearing in B's source inventory does not imply that its C qualification ran
 at B. Owner acceptance and physical-device qualification remain separate.
+
+## Completion C
+
+Technical qualification is complete: 21 configuration, isolation, reconstruction,
+join, navigation, recovery and desktop input cases; both final desktop input
+cases repeated after the phone fixture correction; both phone-emulated input
+cases; and 14 selected existing-family regressions. Application and dependency
+source are unchanged from verified B. The final TypeScript check passes.
+
+The first phone pen fixture crossed outside the real Arc with its fixed desktop
+pixel offset. Its original trace, screenshot, report and source are retained.
+Final pen endpoints project actual interior physical positions after recentering;
+two-finger navigation must also change the view. No input or performance gate
+was weakened, and no application change was required.
+
+The [final review](ARC-FINAL-REVIEW.md) records the exact physical model, resource
+limits, measured pixels, persistence/history proof, supported domain and remaining
+owner/device acceptance. The final receipt freezes source and raw evidence;
+prior Crescent/Horseshoe and Arc checkpoint hashes are independently checked
+against committed Git objects. The pass stops at exterior Arc Worlds.
