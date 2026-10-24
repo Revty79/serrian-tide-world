@@ -1,0 +1,507 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.crescent-regression.config.mjs"
+    ],
+    "configFile": "D:\\serrian-tide-world\\playwright.crescent-regression.config.mjs",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-atlas-hollow-worlds/workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "installed-chrome",
+        "name": "installed-chrome",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "polyhedron-regression-smoke.spec.ts",
+          "dodecahedron-pixels.spec.ts",
+          "hollow-dodecahedron-pixels.spec.ts",
+          "ringworld-pilot.spec.ts",
+          "torus-input.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "installed-chrome",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "polyhedron-regression-smoke.spec.ts",
+          "dodecahedron-pixels.spec.ts",
+          "hollow-dodecahedron-pixels.spec.ts",
+          "ringworld-pilot.spec.ts",
+          "torus-input.spec.ts"
+        ],
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5278",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "channel": "chrome",
+          "actionTimeout": 15000,
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "installed-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/crescent-regression-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "dodecahedron-pixels.spec.ts",
+      "file": "dodecahedron-pixels.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Dodecahedron N128 incremental GPU and Canvas epochs equal a fresh full presentation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6655,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:32:01.194Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2ce0b6e0aadc0c29d46c-3f70c515f38bad3ea812",
+          "file": "dodecahedron-pixels.spec.ts",
+          "line": 2,
+          "column": 25
+        },
+        {
+          "title": "Dodecahedron outside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22530,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:32:08.232Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2ce0b6e0aadc0c29d46c-10d5c685fd75b790e1cf",
+          "file": "dodecahedron-pixels.spec.ts",
+          "line": 9,
+          "column": 68
+        }
+      ]
+    },
+    {
+      "title": "hollow-dodecahedron-pixels.spec.ts",
+      "file": "hollow-dodecahedron-pixels.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Hollow Dodecahedron inside N128 real GPU/Canvas pixels preserve field, crisp coast and physical silhouette",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22363,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:32:30.796Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9b1a4fd857f09ec8b71c-c66ed7fd5f10f903dc8e",
+          "file": "hollow-dodecahedron-pixels.spec.ts",
+          "line": 2,
+          "column": 75
+        }
+      ]
+    },
+    {
+      "title": "polyhedron-regression-smoke.spec.ts",
+      "file": "polyhedron-regression-smoke.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Prior pyramid N128 auto smoke: paint, exact replay, save/open and continued painting",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4351,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:32:53.195Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d53b38760912753ab435-37494cea75f532c87a9f",
+          "file": "polyhedron-regression-smoke.spec.ts",
+          "line": 7,
+          "column": 141
+        },
+        {
+          "title": "Prior pyramid N128 canvas smoke: paint, exact replay, save/open and continued painting",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3798,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:32:57.559Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d53b38760912753ab435-b30a508af764feb9a7e2",
+          "file": "polyhedron-regression-smoke.spec.ts",
+          "line": 7,
+          "column": 141
+        },
+        {
+          "title": "Prior dodecahedron N128 auto smoke: paint, exact replay, save/open and continued painting",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8417,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:33:01.369Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d53b38760912753ab435-c2a895a8640cbda01d64",
+          "file": "polyhedron-regression-smoke.spec.ts",
+          "line": 7,
+          "column": 141
+        },
+        {
+          "title": "Prior dodecahedron N128 canvas smoke: paint, exact replay, save/open and continued painting",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8927,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:33:09.797Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d53b38760912753ab435-117a694a44bfd79592d6",
+          "file": "polyhedron-regression-smoke.spec.ts",
+          "line": 7,
+          "column": 141
+        }
+      ]
+    },
+    {
+      "title": "ringworld-pilot.spec.ts",
+      "file": "ringworld-pilot.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Ringworld pilot: normal creation, focused bands and exact v35 Save/Open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14416,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:33:18.749Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "994979357ba37b70ecb5-d4cc2dc9203880f31270",
+          "file": "ringworld-pilot.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "torus-input.spec.ts",
+      "file": "torus-input.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "N256 torus auto: same 150 km brush, captured latency, complete input and exact gesture history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12701,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:33:33.191Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2bb89b6af17f48847e3-0a25f1ac1e3bbfd10971",
+          "file": "torus-input.spec.ts",
+          "line": 5,
+          "column": 78
+        },
+        {
+          "title": "N256 torus canvas: same 150 km brush, captured latency, complete input and exact gesture history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13061,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:33:45.905Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2bb89b6af17f48847e3-1eb51fd4f194150ccf33",
+          "file": "torus-input.spec.ts",
+          "line": 5,
+          "column": 78
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-24T08:32:00.683Z",
+    "duration": 118607.986,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

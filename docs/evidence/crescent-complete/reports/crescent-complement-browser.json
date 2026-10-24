@@ -1,0 +1,909 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.crescent.config.mjs",
+      "tests/crescent-navigation.spec.ts",
+      "tests/crescent-recovery.spec.ts",
+      "tests/crescent-joins.spec.ts",
+      "tests/crescent-configuration.spec.ts",
+      "tests/crescent-touch.spec.ts",
+      "tests/crescent-incremental.spec.ts"
+    ],
+    "configFile": "D:\\serrian-tide-world\\playwright.crescent.config.mjs",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-atlas-hollow-worlds/workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "installed-chrome",
+        "name": "installed-chrome",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "crescent-*.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "installed-chrome",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "crescent-*.spec.ts"
+        ],
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5278",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "channel": "chrome",
+          "actionTimeout": 15000,
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "installed-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/crescent-complement-browser.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "crescent-configuration.spec.ts",
+      "file": "crescent-configuration.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Crescent auto: supported narrow-gentle creator configuration remains editable",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 11838,
+                  "error": {
+                    "message": "Error: Exact whole-stroke Redo.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m",
+                    "stack": "Error: Exact whole-stroke Redo.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\n    at D:\\serrian-tide-world\\tests\\crescent-configuration.spec.ts:3:2009",
+                    "location": {
+                      "file": "D:\\serrian-tide-world\\tests\\crescent-configuration.spec.ts",
+                      "column": 2009,
+                      "line": 3
+                    },
+                    "snippet": "  1 | ﻿import{test,expect}from'@playwright/test';import{mkdirSync,writeFileSync}from'node:fs';import{crescentIdle,crescentPoint,crescentHash,crescentSnapshot,toolsPanel}from'./helpers/crescent.ts';\n  2 | const profiles=[{name:'narrow-gentle',size:100000,curvature:.8,opening:160,width:12500,thickness:2500,tip:'fine'},{name:'broad-strong',size:1e9,curvature:1.25,opening:60,width:3e8,thickness:1.8e8,tip:'full'}];\n> 3 | for(const backend of['auto','canvas'])for(const profile of profiles)test(`Crescent ${backend}: supported ${profile.name} creator configuration remains editable`,async({page})=>{test.setTimeout(120000);if(backend==='canvas')await page.addInitScript(()=>{const native=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(this:HTMLCanvasElement,type,...args){return type==='webgl2'?null:Reflect.apply(native,this,[type,...args]);}as typeof native;});await page.goto('/');await page.getByLabel('World shape',{exact:true}).selectOption('crescent');for(const[label,value]of[['World Size (m)',profile.size],['Curvature',profile.curvature],['Crescent Opening (degrees)',profile.opening],['Body Width (m)',profile.width],['Thickness (m)',profile.thickness]]as const)await page.getByLabel(label,{exact:true}).fill(String(value));await page.getByLabel('Tip Shape',{exact:true}).selectOption(profile.tip);await page.getByRole('button',{name:'Create World / Map',exact:true}).click();await crescentIdle(page);const configuration=await page.evaluate(()=>window.__crescentEditor!.snapshot()),before=await crescentHash(page);await page.getByRole('button',{name:'Upper map',exact:true}).click();await crescentIdle(page);const p=await crescentPoint(page,[profile.curvature*profile.size/2,0]),box=(await page.locator('.cylinder-canvas').boundingBox())!;await page.mouse.move(box.x+p.x,box.y+p.y);await page.mouse.down();for(let i=0;i<24;i++){await page.mouse.move(box.x+p.x,box.y+p.y+i/2);await page.waitForTimeout(16);}await page.mouse.up();await crescentIdle(page);const after=await crescentHash(page);expect(after).not.toBe(before);await page.getByRole('button',{name:'Undo',exact:true}).click();await crescentIdle(page);expect(await crescentHash(page)).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await crescentIdle(page);expect(await crescentHash(page)).toBe(after);const state=await crescentSnapshot(page);expect(state.statistics.failures,state.message).toBe(0);expect(state.renderer.kind).toBe(backend==='auto'?'webgl2':'cpu');mkdirSync('.local/crescent-configuration',{recursive:true});await page.screenshot({path:`.local/crescent-configuration/${profile.name}-${backend}.png`});await toolsPanel(page,true);await page.getByRole('button',{name:'New World / Map',exact:true}).click();await page.getByLabel('World shape',{exact:true}).selectOption('crescent');await page.getByLabel('Thickness (m)',{exact:true}).fill('0');await expect(page.getByRole('button',{name:'Create World / Map',exact:true})).toBeDisabled();expect(await crescentHash(page)).toBe(after);await page.getByRole('button',{name:'Cancel',exact:true}).click();writeFileSync(`.local/crescent-configuration/${profile.name}-${backend}.json`,JSON.stringify({profile,configuration,before,after,state,invalidCreationRetainsWorld:true},null,2));});\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^\n  4 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\serrian-tide-world\\tests\\crescent-configuration.spec.ts",
+                        "column": 2009,
+                        "line": 3
+                      },
+                      "message": "Error: Exact whole-stroke Redo.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\n\n  1 | ﻿import{test,expect}from'@playwright/test';import{mkdirSync,writeFileSync}from'node:fs';import{crescentIdle,crescentPoint,crescentHash,crescentSnapshot,toolsPanel}from'./helpers/crescent.ts';\n  2 | const profiles=[{name:'narrow-gentle',size:100000,curvature:.8,opening:160,width:12500,thickness:2500,tip:'fine'},{name:'broad-strong',size:1e9,curvature:1.25,opening:60,width:3e8,thickness:1.8e8,tip:'full'}];\n> 3 | for(const backend of['auto','canvas'])for(const profile of profiles)test(`Crescent ${backend}: supported ${profile.name} creator configuration remains editable`,async({page})=>{test.setTimeout(120000);if(backend==='canvas')await page.addInitScript(()=>{const native=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(this:HTMLCanvasElement,type,...args){return type==='webgl2'?null:Reflect.apply(native,this,[type,...args]);}as typeof native;});await page.goto('/');await page.getByLabel('World shape',{exact:true}).selectOption('crescent');for(const[label,value]of[['World Size (m)',profile.size],['Curvature',profile.curvature],['Crescent Opening (degrees)',profile.opening],['Body Width (m)',profile.width],['Thickness (m)',profile.thickness]]as const)await page.getByLabel(label,{exact:true}).fill(String(value));await page.getByLabel('Tip Shape',{exact:true}).selectOption(profile.tip);await page.getByRole('button',{name:'Create World / Map',exact:true}).click();await crescentIdle(page);const configuration=await page.evaluate(()=>window.__crescentEditor!.snapshot()),before=await crescentHash(page);await page.getByRole('button',{name:'Upper map',exact:true}).click();await crescentIdle(page);const p=await crescentPoint(page,[profile.curvature*profile.size/2,0]),box=(await page.locator('.cylinder-canvas').boundingBox())!;await page.mouse.move(box.x+p.x,box.y+p.y);await page.mouse.down();for(let i=0;i<24;i++){await page.mouse.move(box.x+p.x,box.y+p.y+i/2);await page.waitForTimeout(16);}await page.mouse.up();await crescentIdle(page);const after=await crescentHash(page);expect(after).not.toBe(before);await page.getByRole('button',{name:'Undo',exact:true}).click();await crescentIdle(page);expect(await crescentHash(page)).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await crescentIdle(page);expect(await crescentHash(page)).toBe(after);const state=await crescentSnapshot(page);expect(state.statistics.failures,state.message).toBe(0);expect(state.renderer.kind).toBe(backend==='auto'?'webgl2':'cpu');mkdirSync('.local/crescent-configuration',{recursive:true});await page.screenshot({path:`.local/crescent-configuration/${profile.name}-${backend}.png`});await toolsPanel(page,true);await page.getByRole('button',{name:'New World / Map',exact:true}).click();await page.getByLabel('World shape',{exact:true}).selectOption('crescent');await page.getByLabel('Thickness (m)',{exact:true}).fill('0');await expect(page.getByRole('button',{name:'Create World / Map',exact:true})).toBeDisabled();expect(await crescentHash(page)).toBe(after);await page.getByRole('button',{name:'Cancel',exact:true}).click();writeFileSync(`.local/crescent-configuration/${profile.name}-${backend}.json`,JSON.stringify({profile,configuration,before,after,state,invalidCreationRetainsWorld:true},null,2));});\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^\n  4 |\n    at D:\\serrian-tide-world\\tests\\crescent-configuration.spec.ts:3:2009"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:05:11.893Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\crescent-configuration-Cre-dd057-figuration-remains-editable-installed-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\crescent-configuration-Cre-dd057-figuration-remains-editable-installed-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\crescent-configuration-Cre-dd057-figuration-remains-editable-installed-chrome\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\serrian-tide-world\\tests\\crescent-configuration.spec.ts",
+                    "column": 2009,
+                    "line": 3
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6bf8339129556ea1715c-1b8896f49d3e65c58a71",
+          "file": "crescent-configuration.spec.ts",
+          "line": 3,
+          "column": 69
+        },
+        {
+          "title": "Crescent auto: supported broad-strong creator configuration remains editable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12555,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:05:24.751Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6bf8339129556ea1715c-339c884cf204fabb7866",
+          "file": "crescent-configuration.spec.ts",
+          "line": 3,
+          "column": 69
+        },
+        {
+          "title": "Crescent canvas: supported narrow-gentle creator configuration remains editable",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12654,
+                  "error": {
+                    "message": "Error: Exact whole-stroke Redo.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m",
+                    "stack": "Error: Exact whole-stroke Redo.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\n    at D:\\serrian-tide-world\\tests\\crescent-configuration.spec.ts:3:2009",
+                    "location": {
+                      "file": "D:\\serrian-tide-world\\tests\\crescent-configuration.spec.ts",
+                      "column": 2009,
+                      "line": 3
+                    },
+                    "snippet": "  1 | ﻿import{test,expect}from'@playwright/test';import{mkdirSync,writeFileSync}from'node:fs';import{crescentIdle,crescentPoint,crescentHash,crescentSnapshot,toolsPanel}from'./helpers/crescent.ts';\n  2 | const profiles=[{name:'narrow-gentle',size:100000,curvature:.8,opening:160,width:12500,thickness:2500,tip:'fine'},{name:'broad-strong',size:1e9,curvature:1.25,opening:60,width:3e8,thickness:1.8e8,tip:'full'}];\n> 3 | for(const backend of['auto','canvas'])for(const profile of profiles)test(`Crescent ${backend}: supported ${profile.name} creator configuration remains editable`,async({page})=>{test.setTimeout(120000);if(backend==='canvas')await page.addInitScript(()=>{const native=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(this:HTMLCanvasElement,type,...args){return type==='webgl2'?null:Reflect.apply(native,this,[type,...args]);}as typeof native;});await page.goto('/');await page.getByLabel('World shape',{exact:true}).selectOption('crescent');for(const[label,value]of[['World Size (m)',profile.size],['Curvature',profile.curvature],['Crescent Opening (degrees)',profile.opening],['Body Width (m)',profile.width],['Thickness (m)',profile.thickness]]as const)await page.getByLabel(label,{exact:true}).fill(String(value));await page.getByLabel('Tip Shape',{exact:true}).selectOption(profile.tip);await page.getByRole('button',{name:'Create World / Map',exact:true}).click();await crescentIdle(page);const configuration=await page.evaluate(()=>window.__crescentEditor!.snapshot()),before=await crescentHash(page);await page.getByRole('button',{name:'Upper map',exact:true}).click();await crescentIdle(page);const p=await crescentPoint(page,[profile.curvature*profile.size/2,0]),box=(await page.locator('.cylinder-canvas').boundingBox())!;await page.mouse.move(box.x+p.x,box.y+p.y);await page.mouse.down();for(let i=0;i<24;i++){await page.mouse.move(box.x+p.x,box.y+p.y+i/2);await page.waitForTimeout(16);}await page.mouse.up();await crescentIdle(page);const after=await crescentHash(page);expect(after).not.toBe(before);await page.getByRole('button',{name:'Undo',exact:true}).click();await crescentIdle(page);expect(await crescentHash(page)).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await crescentIdle(page);expect(await crescentHash(page)).toBe(after);const state=await crescentSnapshot(page);expect(state.statistics.failures,state.message).toBe(0);expect(state.renderer.kind).toBe(backend==='auto'?'webgl2':'cpu');mkdirSync('.local/crescent-configuration',{recursive:true});await page.screenshot({path:`.local/crescent-configuration/${profile.name}-${backend}.png`});await toolsPanel(page,true);await page.getByRole('button',{name:'New World / Map',exact:true}).click();await page.getByLabel('World shape',{exact:true}).selectOption('crescent');await page.getByLabel('Thickness (m)',{exact:true}).fill('0');await expect(page.getByRole('button',{name:'Create World / Map',exact:true})).toBeDisabled();expect(await crescentHash(page)).toBe(after);await page.getByRole('button',{name:'Cancel',exact:true}).click();writeFileSync(`.local/crescent-configuration/${profile.name}-${backend}.json`,JSON.stringify({profile,configuration,before,after,state,invalidCreationRetainsWorld:true},null,2));});\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^\n  4 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\serrian-tide-world\\tests\\crescent-configuration.spec.ts",
+                        "column": 2009,
+                        "line": 3
+                      },
+                      "message": "Error: Exact whole-stroke Redo.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\n\n  1 | ﻿import{test,expect}from'@playwright/test';import{mkdirSync,writeFileSync}from'node:fs';import{crescentIdle,crescentPoint,crescentHash,crescentSnapshot,toolsPanel}from'./helpers/crescent.ts';\n  2 | const profiles=[{name:'narrow-gentle',size:100000,curvature:.8,opening:160,width:12500,thickness:2500,tip:'fine'},{name:'broad-strong',size:1e9,curvature:1.25,opening:60,width:3e8,thickness:1.8e8,tip:'full'}];\n> 3 | for(const backend of['auto','canvas'])for(const profile of profiles)test(`Crescent ${backend}: supported ${profile.name} creator configuration remains editable`,async({page})=>{test.setTimeout(120000);if(backend==='canvas')await page.addInitScript(()=>{const native=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(this:HTMLCanvasElement,type,...args){return type==='webgl2'?null:Reflect.apply(native,this,[type,...args]);}as typeof native;});await page.goto('/');await page.getByLabel('World shape',{exact:true}).selectOption('crescent');for(const[label,value]of[['World Size (m)',profile.size],['Curvature',profile.curvature],['Crescent Opening (degrees)',profile.opening],['Body Width (m)',profile.width],['Thickness (m)',profile.thickness]]as const)await page.getByLabel(label,{exact:true}).fill(String(value));await page.getByLabel('Tip Shape',{exact:true}).selectOption(profile.tip);await page.getByRole('button',{name:'Create World / Map',exact:true}).click();await crescentIdle(page);const configuration=await page.evaluate(()=>window.__crescentEditor!.snapshot()),before=await crescentHash(page);await page.getByRole('button',{name:'Upper map',exact:true}).click();await crescentIdle(page);const p=await crescentPoint(page,[profile.curvature*profile.size/2,0]),box=(await page.locator('.cylinder-canvas').boundingBox())!;await page.mouse.move(box.x+p.x,box.y+p.y);await page.mouse.down();for(let i=0;i<24;i++){await page.mouse.move(box.x+p.x,box.y+p.y+i/2);await page.waitForTimeout(16);}await page.mouse.up();await crescentIdle(page);const after=await crescentHash(page);expect(after).not.toBe(before);await page.getByRole('button',{name:'Undo',exact:true}).click();await crescentIdle(page);expect(await crescentHash(page)).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await crescentIdle(page);expect(await crescentHash(page)).toBe(after);const state=await crescentSnapshot(page);expect(state.statistics.failures,state.message).toBe(0);expect(state.renderer.kind).toBe(backend==='auto'?'webgl2':'cpu');mkdirSync('.local/crescent-configuration',{recursive:true});await page.screenshot({path:`.local/crescent-configuration/${profile.name}-${backend}.png`});await toolsPanel(page,true);await page.getByRole('button',{name:'New World / Map',exact:true}).click();await page.getByLabel('World shape',{exact:true}).selectOption('crescent');await page.getByLabel('Thickness (m)',{exact:true}).fill('0');await expect(page.getByRole('button',{name:'Create World / Map',exact:true})).toBeDisabled();expect(await crescentHash(page)).toBe(after);await page.getByRole('button',{name:'Cancel',exact:true}).click();writeFileSync(`.local/crescent-configuration/${profile.name}-${backend}.json`,JSON.stringify({profile,configuration,before,after,state,invalidCreationRetainsWorld:true},null,2));});\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^\n  4 |\n    at D:\\serrian-tide-world\\tests\\crescent-configuration.spec.ts:3:2009"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:05:37.651Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\crescent-configuration-Cre-06ef3-figuration-remains-editable-installed-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\crescent-configuration-Cre-06ef3-figuration-remains-editable-installed-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\crescent-configuration-Cre-06ef3-figuration-remains-editable-installed-chrome\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\serrian-tide-world\\tests\\crescent-configuration.spec.ts",
+                    "column": 2009,
+                    "line": 3
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6bf8339129556ea1715c-9424e16968a17dee1a27",
+          "file": "crescent-configuration.spec.ts",
+          "line": 3,
+          "column": 69
+        },
+        {
+          "title": "Crescent canvas: supported broad-strong creator configuration remains editable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12509,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:05:51.036Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6bf8339129556ea1715c-e56d47ccb1a1968ffe67",
+          "file": "crescent-configuration.spec.ts",
+          "line": 3,
+          "column": 69
+        }
+      ]
+    },
+    {
+      "title": "crescent-incremental.spec.ts",
+      "file": "crescent-incremental.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Crescent N128: six-region dirty field, atlas, GPU and Canvas equal fresh reconstruction",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 28740,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:06:04.027Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "29f670226565c811253b-d61915f8560783caa366",
+          "file": "crescent-incremental.spec.ts",
+          "line": 2,
+          "column": 38
+        },
+        {
+          "title": "Crescent N256: six-region dirty field, atlas, GPU and Canvas equal fresh reconstruction",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 60554,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:06:32.783Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "29f670226565c811253b-45084bc18aec12e15992",
+          "file": "crescent-incremental.spec.ts",
+          "line": 2,
+          "column": 38
+        }
+      ]
+    },
+    {
+      "title": "crescent-joins.spec.ts",
+      "file": "crescent-joins.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Crescent N256 auto: native continuous cap/wall joins and physical void picking",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 24650,
+                  "error": {
+                    "message": "Error: page.evaluate: Error: Insufficient distinct painted output epochs.\n    at eval (eval at evaluate (:370:30), <anonymous>:20:88)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+                    "stack": "Error: page.evaluate: Error: Insufficient distinct painted output epochs.\n    at eval (eval at evaluate (:370:30), <anonymous>:20:88)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at eval (eval at evaluate (:370:30), <anonymous>:20:88)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at finishPaintingPixels (D:\\serrian-tide-world\\tests\\helpers\\painting-pixels.ts:13:67)\n    at D:\\serrian-tide-world\\tests\\crescent-joins.spec.ts:6:634",
+                    "location": {
+                      "file": "eval at evaluate (:370:30), <anonymous>",
+                      "column": 88,
+                      "line": 20
+                    }
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "eval at evaluate (:370:30), <anonymous>",
+                        "column": 88,
+                        "line": 20
+                      },
+                      "message": "Error: page.evaluate: Error: Insufficient distinct painted output epochs.\n    at eval (eval at evaluate (:370:30), <anonymous>:20:88)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at eval (eval at evaluate (:370:30), <anonymous>:20:88)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at finishPaintingPixels (D:\\serrian-tide-world\\tests\\helpers\\painting-pixels.ts:13:67)\n    at D:\\serrian-tide-world\\tests\\crescent-joins.spec.ts:6:634"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:07:33.361Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\crescent-joins-Crescent-N2-557e4-s-and-physical-void-picking-installed-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\crescent-joins-Crescent-N2-557e4-s-and-physical-void-picking-installed-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\crescent-joins-Crescent-N2-557e4-s-and-physical-void-picking-installed-chrome\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "eval at evaluate (:370:30), <anonymous>",
+                    "column": 88,
+                    "line": 20
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "937bf35b3616856fb86f-089d5f8334d6f92b7366",
+          "file": "crescent-joins.spec.ts",
+          "line": 3,
+          "column": 39
+        },
+        {
+          "title": "Crescent N256 canvas: native continuous cap/wall joins and physical void picking",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 23800,
+                  "error": {
+                    "message": "Error: page.evaluate: Error: Insufficient distinct painted output epochs.\n    at eval (eval at evaluate (:370:30), <anonymous>:20:88)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+                    "stack": "Error: page.evaluate: Error: Insufficient distinct painted output epochs.\n    at eval (eval at evaluate (:370:30), <anonymous>:20:88)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at eval (eval at evaluate (:370:30), <anonymous>:20:88)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at finishPaintingPixels (D:\\serrian-tide-world\\tests\\helpers\\painting-pixels.ts:13:67)\n    at D:\\serrian-tide-world\\tests\\crescent-joins.spec.ts:6:634",
+                    "location": {
+                      "file": "eval at evaluate (:370:30), <anonymous>",
+                      "column": 88,
+                      "line": 20
+                    }
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "eval at evaluate (:370:30), <anonymous>",
+                        "column": 88,
+                        "line": 20
+                      },
+                      "message": "Error: page.evaluate: Error: Insufficient distinct painted output epochs.\n    at eval (eval at evaluate (:370:30), <anonymous>:20:88)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at eval (eval at evaluate (:370:30), <anonymous>:20:88)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at finishPaintingPixels (D:\\serrian-tide-world\\tests\\helpers\\painting-pixels.ts:13:67)\n    at D:\\serrian-tide-world\\tests\\crescent-joins.spec.ts:6:634"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:07:58.767Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\crescent-joins-Crescent-N2-21f1f-s-and-physical-void-picking-installed-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\crescent-joins-Crescent-N2-21f1f-s-and-physical-void-picking-installed-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\crescent-joins-Crescent-N2-21f1f-s-and-physical-void-picking-installed-chrome\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "eval at evaluate (:370:30), <anonymous>",
+                    "column": 88,
+                    "line": 20
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "937bf35b3616856fb86f-c20da8afa6e95a6fb4a1",
+          "file": "crescent-joins.spec.ts",
+          "line": 3,
+          "column": 39
+        }
+      ]
+    },
+    {
+      "title": "crescent-navigation.spec.ts",
+      "file": "crescent-navigation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Crescent N256 auto: ordinary rotation publishes actual pixels and preserves geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 32143,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:08:23.609Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1289d626a8ce456da8ab-2f07550f6cad02cddc54",
+          "file": "crescent-navigation.spec.ts",
+          "line": 2,
+          "column": 39
+        },
+        {
+          "title": "Crescent N256 canvas: ordinary rotation publishes actual pixels and preserves geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 33960,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:08:56.098Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1289d626a8ce456da8ab-3dbc2a66228d65d1e614",
+          "file": "crescent-navigation.spec.ts",
+          "line": 2,
+          "column": 39
+        }
+      ]
+    },
+    {
+      "title": "crescent-recovery.spec.ts",
+      "file": "crescent-recovery.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Crescent N256 auto: active worker protocol fault preserves exact prefix history and a fresh stroke recovers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22288,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:09:30.087Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0ca404657a8d273ed86-898f796bbc64798bd37f",
+          "file": "crescent-recovery.spec.ts",
+          "line": 9,
+          "column": 39
+        },
+        {
+          "title": "Crescent N256 canvas: active worker protocol fault preserves exact prefix history and a fresh stroke recovers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 23170,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:09:52.386Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0ca404657a8d273ed86-9f98dadd74dca1dd3deb",
+          "file": "crescent-recovery.spec.ts",
+          "line": 9,
+          "column": 39
+        },
+        {
+          "title": "Crescent N256: graphics loss and restoration retain the current painted terrain epoch",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22868,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:10:15.569Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0ca404657a8d273ed86-f19fb6d819afe2e57dea",
+          "file": "crescent-recovery.spec.ts",
+          "line": 12,
+          "column": 1
+        },
+        {
+          "title": "Crescent v36 corrupt Open retains the active World and exact geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 21868,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:10:38.451Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0ca404657a8d273ed86-646ae8cbb345ccb779ec",
+          "file": "crescent-recovery.spec.ts",
+          "line": 13,
+          "column": 1
+        },
+        {
+          "title": "Crescent v36: valid incompatible geometry cannot replace an existing saved World",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 21084,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:11:00.333Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0ca404657a8d273ed86-52aa8cbb3bb761778f6d",
+          "file": "crescent-recovery.spec.ts",
+          "line": 15,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "crescent-touch.spec.ts",
+      "file": "crescent-touch.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "crescent auto: native emulated touch/pen drawing and two-finger navigation preserve exact history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12222,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:11:21.451Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55b108da4c18adbd16d4-7d9b95c9699063f8f2af",
+          "file": "crescent-touch.spec.ts",
+          "line": 2,
+          "column": 70
+        },
+        {
+          "title": "crescent canvas: native emulated touch/pen drawing and two-finger navigation preserve exact history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12025,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T08:11:33.686Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55b108da4c18adbd16d4-27d3610b458cdeec216e",
+          "file": "crescent-touch.spec.ts",
+          "line": 2,
+          "column": 70
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-24T08:05:11.083Z",
+    "duration": 394921.653,
+    "expected": 13,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

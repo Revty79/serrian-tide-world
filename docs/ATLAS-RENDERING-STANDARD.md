@@ -178,3 +178,15 @@ document why the accepted mechanism failed and provide comparative evidence.
 This gate applies to Open Cylinder, any later authorized solid/hollow pyramids,
 tetrahedra, polyhedra, tori, ringworlds, fragmented/irregular worlds and subsequent
 Atlas geometries. No future geometry is authorized merely by appearing here.
+
+Crescent reuses the accepted polyhedral field, physical-gradient stencils,
+polygon color atlas, cube palette/relief, four-quarter-pixel GLSL, dirty journals
+and ConnectedWorkspace/history/worker systems. Its 252 charts require a real
+static-triangle depth adapter rather than the convex uniform-plane presenter;
+Canvas orders genuine wall runs and composites the actual cap silhouette.
+Coplanar radial strips share gradient regions without changing other families.
+A small immutable prism visibility table agrees with the original triangle rays
+in 50,400 comparisons and contains no heights or history. Geometry/pixel and
+input evidence, unchanged resource caps, supported local distance domains and
+separate owner/device acceptance are in the [Crescent final review](CRESCENT-FINAL-REVIEW.md)
+and its three independently frozen checkpoint receipts.
