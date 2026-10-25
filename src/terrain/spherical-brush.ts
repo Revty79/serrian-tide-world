@@ -1,3 +1,4 @@
+import {cutGlobeVisible,type CrescentCutGlobeGeometry} from '../surfaces/crescent-cut-globe.ts';
 import type { SurfaceIdentity, SurfacePosition } from '../surfaces/contracts.ts';
 import { dot3, unitDirection, type Vec3 } from '../surfaces/cube-sphere.ts';
 import { greatCircleArc, unitArcAngle } from '../surfaces/great-circle.ts';
@@ -40,7 +41,7 @@ export function validateSphericalBrushSettings(terrain: SphericalTerrain, settin
 /** Physical great-circle input; one initial dab then radius/4 meters, independent of charts/UI. */
 export interface PreparedSphericalDab { readonly center: Vec3; readonly visible?: Vec3; readonly fraction: number; changes(): Generator<{index:number;before:number;after:number}> }
 export interface SphericalPreparationOptions { readonly deferInitial?: boolean; readonly commitReady?: (job: PreparedSphericalDab) => boolean }
-export function startSphericalBrushStroke(terrain: SphericalTerrain, point: SphericalBrushPoint, settings: SphericalBrushSettings, history?: SphericalHistory, domain?: { readonly hemisphere: Vec3 }, preparation: SphericalPreparationOptions = {}) {
+export function startSphericalBrushStroke(terrain: SphericalTerrain, point: SphericalBrushPoint, settings: SphericalBrushSettings, history?: SphericalHistory, domain?: { readonly hemisphere: Vec3;readonly cutGlobe?:CrescentCutGlobeGeometry }, preparation: SphericalPreparationOptions = {}) {
   validateSphericalBrushSettings(terrain, settings); const initial = directionOf(terrain, point);
   const hemisphere = domain ? unitDirection(domain.hemisphere) : undefined;
   if (activeTerrains.has(terrain)) throw new Error('A spherical stroke is already active on this terrain.');
@@ -57,7 +58,7 @@ export function startSphericalBrushStroke(terrain: SphericalTerrain, point: Sphe
       const distance = unitArcAngle(center, sample.direction) * radius / snapshot.radiusMeters;
       if (distance >= 1) continue;
       // Optional physical editing domain. Default numerical behavior remains the complete cap.
-      if (visible && dot3(visible, sample.direction) < 0) continue;
+      if (visible && (domain?.cutGlobe?!cutGlobeVisible(domain.cutGlobe,sample.direction,visible):dot3(visible, sample.direction) < 0)) continue;
       const current = terrain.read(sample.key);
       if (!Number.isFinite(current)) throw new RangeError('Spherical brush region contains a nonfinite elevation.');
       stats.affectedSamples++;

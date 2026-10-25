@@ -1,3 +1,5 @@
+import {recordPaintingEvent} from './painting-metrics.ts';
+import {cutGlobeVisible,type CrescentCutGlobeGeometry} from '../surfaces/crescent-cut-globe.ts';
 import { startSphericalBrushStroke, validateSphericalBrushSettings, type SphericalBrushSettings, type SphericalBrushVisibility } from '../terrain/spherical-brush.ts';
 import type { SphericalTerrain } from '../terrain/spherical.ts';
 import type { SphericalHistory } from './spherical-history.ts';
@@ -11,13 +13,13 @@ let nextTask=0;
 const copy=(v:Vec3):Vec3=>[v[0],v[1],v[2]];
 const visibilityCopy=(v:SphericalBrushVisibility|undefined)=>v&&{hemisphere:copy(v.hemisphere),...(v.endHemisphere?{endHemisphere:copy(v.endHemisphere)}:{})};
 const empty=():SphereWorkStats=>({dabs:0,writes:0,candidateChecks:0,affectedSamples:0,peakPreparedBytes:0});
-export function beginSphereWorkerStroke(terrain:SphericalTerrain,history:SphericalHistory,first:Vec3,settings:SphericalBrushSettings,hemisphere:Vec3|undefined,changed:()=>void,factory:SphereWorkerFactory=sphereWorkerFactory,directions?:Float64Array){
+export function beginSphereWorkerStroke(terrain:SphericalTerrain,history:SphericalHistory,first:Vec3,settings:SphericalBrushSettings,hemisphere:Vec3|undefined,changed:()=>void,factory:SphereWorkerFactory=sphereWorkerFactory,directions?:Float64Array,physicalGeometry?:CrescentCutGlobeGeometry){
  validateSphericalBrushSettings(terrain,settings);const initial=unitDirection(first),domain=hemisphere&&unitDirection(hemisphere),task=++nextTask,lease=new RevisionLease(task,terrain.revision),input=new OrderedSurfaceInput(2048,Number.MAX_SAFE_INTEGER),signal=new SurfaceProgressSignal(),points=new Map<number,SphereAcceptedPoint>([[1,{ordinal:1,direction:copy(first)}]]),fallbackPoints:SphereAcceptedPoint[]=[];
  let worker:Worker|undefined,status:'drawing'|'draining'|'complete'|'cancelled'|'failed'='drawing',closed=false,sequence=0,revision=terrain.revision,stats=empty(),failure:unknown;
  let local:ReturnType<typeof startSphericalBrushStroke>|undefined,localSegment:Generator<boolean>|undefined,localOrdinal=1;const localQueue:SphereAcceptedPoint[]=[];
  let watchdog:ReturnType<typeof setTimeout>|undefined;
  const diagnostics={backend:'worker',fallbackReason:'',readyRoundTripMs:0,snapshotMs:0,computeMs:0,proposals:0,staleResults:0,validationMaxMs:0,commitMaxMs:0,ackWait:{count:0,totalMs:0,maxMs:0,samples:[] as number[]}};
- const started=performance.now();history.begin();
+ const started=performance.now(),inputTimes=new Map<number,number>([[1,started]]);history.begin();
  const notify=()=>{signal.notify();changed();};
  const send=(m:SphereWorkInput)=>worker!.postMessage(m);
  const close=(reason:typeof status)=>{if(closed)return;closed=true;status=reason;clearTimeout(timeout);clearTimeout(watchdog);worker?.terminate();worker=undefined;lease.cancel();fallbackPoints.length=0;points.clear();localQueue.length=0;localSegment?.return(undefined);localSegment=undefined;
@@ -28,9 +30,9 @@ export function beginSphereWorkerStroke(terrain:SphericalTerrain,history:Spheric
  // preparation/draining, and start a fresh wait when new input is accepted.
  const armWatchdog=(progress=true)=>{const pending=!closed&&!local&&(status==='draining'||input.processed<input.accepted);if(!pending){clearTimeout(watchdog);watchdog=undefined;return;}if(!progress&&watchdog)return;clearTimeout(watchdog);watchdog=setTimeout(()=>{watchdog=undefined;if(!closed&&!local&&(status==='draining'||input.processed<input.accepted))fail(new Error('Spherical background preparation stopped responding; the committed prefix is retained.'));},30000);};
  const fallback=(error:unknown)=>{if(closed||local)return;if(sequence||terrain.revision!==revision){fail(error);return;}clearTimeout(timeout);clearTimeout(watchdog);worker?.terminate();worker=undefined;diagnostics.backend='cooperative fallback';diagnostics.fallbackReason=String(error);
-  try{history.commit();local=startSphericalBrushStroke(terrain,{...terrain.metadata.identity,direction:first},settings,history,hemisphere?{hemisphere}:undefined);revision=terrain.revision;input.progress(1);localQueue.push(...fallbackPoints);fallbackPoints.length=0;stats=local.statistics;notify();}catch(cause){revision=terrain.revision;fail(cause);}};
+  try{history.commit();local=startSphericalBrushStroke(terrain,{...terrain.metadata.identity,direction:first},settings,history,hemisphere?{hemisphere,cutGlobe:physicalGeometry}:undefined);revision=terrain.revision;input.progress(1);localQueue.push(...fallbackPoints);fallbackPoints.length=0;stats=local.statistics;notify();}catch(cause){revision=terrain.revision;fail(cause);}};
  const timeout=setTimeout(()=>fallback(new Error('Spherical worker startup timed out.')),10000);
- const progress=(processed:number)=>{input.progress(processed);for(const key of points.keys())if(key<processed)points.delete(key);};
+ const progress=(processed:number)=>{input.progress(processed);for(const key of points.keys())if(key<processed){points.delete(key);inputTimes.delete(key);}};
  const expectedDab=(m:Extract<SphereWorkOutput,{type:'prepared'}>)=>{
   if(!Number.isSafeInteger(m.ordinal)||!Number.isFinite(m.fraction)||m.fraction<0||m.fraction>1)throw Error('Invalid spherical input certificate.');
   let center:Vec3,visible:Vec3|undefined;
@@ -50,19 +52,19 @@ export function beginSphereWorkerStroke(terrain:SphericalTerrain,history:Spheric
      lease.validate(m.task,m.sourceRevision,terrain.revision);const visible=expectedDab(m);
      if(!(m.indices instanceof Uint32Array)||!(m.before instanceof Uint32Array)||!(m.after instanceof Float32Array)||m.indices.length!==m.before.length||m.indices.length!==m.after.length||m.indices.length>terrain.sampleCount)throw Error('Invalid spherical patch buffers.');
      const seen=new Uint8Array(Math.ceil(terrain.sampleCount/8)),word=new Float32Array(1),bits=new Uint32Array(word.buffer),afterBits=new Uint32Array(m.after.buffer,m.after.byteOffset,m.after.length);
-     for(let i=0;i<m.indices.length;i++){const index=m.indices[i]!;if(index>=terrain.sampleCount||seen[index>>3]!&(1<<(index&7)))throw Error('Invalid or repeated spherical sample.');seen[index>>3]!|=1<<(index&7);const key=terrain.keyAt(index);word[0]=terrain.read(key);if(bits[0]!==m.before[i]||!Number.isFinite(m.after[i])||m.before[i]===afterBits[i])throw Error('Spherical proposal no longer matches exact source words.');if(visible){const facing=directions?visible[0]*directions[index*3]!+visible[1]*directions[index*3+1]!+visible[2]*directions[index*3+2]!:dot3(visible,terrain.directionAt(key));if(facing<0)throw Error('Spherical proposal reached the hidden hemisphere.');}}
+     for(let i=0;i<m.indices.length;i++){const index=m.indices[i]!;if(index>=terrain.sampleCount||seen[index>>3]!&(1<<(index&7)))throw Error('Invalid or repeated spherical sample.');seen[index>>3]!|=1<<(index&7);const key=terrain.keyAt(index);word[0]=terrain.read(key);if(bits[0]!==m.before[i]||!Number.isFinite(m.after[i])||m.before[i]===afterBits[i])throw Error('Spherical proposal no longer matches exact source words.');if(visible){const facing=directions?visible[0]*directions[index*3]!+visible[1]*directions[index*3+1]!+visible[2]*directions[index*3+2]!:dot3(visible,terrain.directionAt(key));if(physicalGeometry?!cutGlobeVisible(physicalGeometry,terrain.directionAt(key),visible):facing<0)throw Error('Spherical proposal reached hidden physical geography.');}}
      for(let i=0;i<m.after.length;i++)terrain.validateSample(terrain.keyAt(m.indices[i]!),m.after[i]!);
      diagnostics.validationMaxMs=Math.max(diagnostics.validationMaxMs,performance.now()-at);const commit=performance.now();for(let i=0;i<m.indices.length;i++)terrain.write(terrain.keyAt(m.indices[i]!),m.after[i]!);diagnostics.commitMaxMs=Math.max(diagnostics.commitMaxMs,performance.now()-commit);
-     revision=terrain.revision;lease.acknowledged(revision);sequence=m.sequence;diagnostics.proposals++;stats={...m.statistics,dabs:m.statistics.dabs+1,writes:m.statistics.writes+m.indices.length};progress(Math.max(1,m.processed));fallbackPoints.length=0;send({type:'ack',task,sequence,revision});
+     revision=terrain.revision;if(m.indices.length)recordPaintingEvent('commit',{revision,words:m.indices.length,inputAt:inputTimes.get(m.ordinal)??started});lease.acknowledged(revision);sequence=m.sequence;diagnostics.proposals++;stats={...m.statistics,dabs:m.statistics.dabs+1,writes:m.statistics.writes+m.indices.length};progress(Math.max(1,m.processed));fallbackPoints.length=0;send({type:'ack',task,sequence,revision});
     }else{if(m.statistics.dabs!==stats.dabs||m.statistics.writes!==stats.writes)throw Error('Spherical progress does not match canonical commits.');stats={...m.statistics};progress(m.processed);if(m.type==='done'){if(input.processed!==input.accepted)throw Error('Spherical preparation ended before all accepted input.');diagnostics.computeMs=m.computeMs;diagnostics.snapshotMs=m.snapshotMs;diagnostics.ackWait=m.ackWait;close('complete');return;}}
     armWatchdog();notify();
    }catch(error){fail(error);}
   };
-  const values=terrain.copyElevations();worker.postMessage({type:'start',task,metadata:terrain.metadata,sourceRevision:revision,values,direction:copy(first),settings:{...settings},hemisphere:hemisphere&&copy(hemisphere)},[values.buffer]);
+  const values=terrain.copyElevations();worker.postMessage({type:'start',task,metadata:terrain.metadata,sourceRevision:revision,values,direction:copy(first),settings:{...settings},hemisphere:hemisphere&&copy(hemisphere),physicalGeometry},[values.buffer]);
  }catch(error){fallback(error);}
  return{
   diagnostics,get status(){return status;},get failure(){return failure;},get isRemote(){return!local;},get statistics(){return{...stats,acceptedPositions:input.accepted,processedPositions:input.processed,discardedPositions:closed&&status!=='complete'?input.accepted-input.processed:0,peakPendingPositions:input.peak};},get pending(){return input.pending;},get hasPending(){return!closed&&(input.processed<input.accepted||status==='draining');},
-  move(direction:Vec3,visibility?:SphericalBrushVisibility){if(closed||status!=='drawing')return;try{const ordinal=input.accept(),point={ordinal,direction:copy(direction),visibility:visibilityCopy(visibility)};points.set(ordinal,point);if(local)localQueue.push(point);else{if(!sequence)fallbackPoints.push(point);send({type:'move',task,point});armWatchdog(false);}}catch(error){fail(error);}},
+  move(direction:Vec3,visibility?:SphericalBrushVisibility){if(closed||status!=='drawing')return;try{const ordinal=input.accept(),point={ordinal,direction:copy(direction),visibility:visibilityCopy(visibility)};points.set(ordinal,point);inputTimes.set(ordinal,performance.now());if(local)localQueue.push(point);else{if(!sequence)fallbackPoints.push(point);send({type:'move',task,point});armWatchdog(false);}}catch(error){fail(error);}},
   release(){if(!closed&&status==='drawing'){status='draining';if(!local){send({type:'release',task});armWatchdog(false);}notify();}},
   cancel(){close('cancelled');},
   pump(){if(!local||closed)return;try{if(!localSegment&&localQueue.length){const point=localQueue.shift()!;localOrdinal=point.ordinal;localSegment=local.moveToSteps({...terrain.metadata.identity,direction:point.direction},point.visibility);}if(localSegment){const result=localSegment.next();stats=local.statistics;revision=terrain.revision;if(result.done){localSegment=undefined;progress(localOrdinal);}}if(status==='draining'&&!localSegment&&!localQueue.length)close('complete');}catch(error){revision=terrain.revision;fail(error);}},

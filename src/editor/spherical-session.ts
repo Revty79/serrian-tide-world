@@ -1,3 +1,5 @@
+import {recordPaintingEvent} from './painting-metrics.ts';
+import type {CrescentCutGlobeGeometry} from '../surfaces/crescent-cut-globe.ts';
 import { SphericalHistory } from './spherical-history.ts';
 import type { SphericalTerrain } from '../terrain/spherical.ts';
 import { startSphericalBrushStroke, type SphericalBrushSettings, type SphericalBrushVisibility } from '../terrain/spherical-brush.ts';
@@ -43,8 +45,9 @@ export class SphericalSession {
   error = (_message: string) => {};
   beforeOperation=()=>{};
   readonly statistics = { dabs: 0, writes: 0, updatedPixels: 0, updatedRegions: 0, fullRebuilds: 0, maxDabMs: 0, slices: 0 };
-  constructor(terrain: SphericalTerrain, cache: SphericalDisplayCache, name = 'Untitled sphere', saved = false) {
-    this.name = name; this.checkpointName = name; this.hasSaved = saved;
+  readonly cutGlobe?:CrescentCutGlobeGeometry;
+  constructor(terrain: SphericalTerrain, cache: SphericalDisplayCache, name = 'Untitled sphere', saved = false,cutGlobe?:CrescentCutGlobeGeometry) {
+    this.cutGlobe=cutGlobe;this.name = name; this.checkpointName = name; this.hasSaved = saved;
     this.terrain = terrain; this.cache = cache; this.trackedRevision = terrain.revision;
     this.provider = { ...terrain, get revision() { return terrain.revision; }, write: (key, value) => {
       const revision = terrain.revision; terrain.write(key, value);
@@ -77,8 +80,9 @@ export class SphericalSession {
     const start = performance.now();
     this.strokeRevision = this.terrain.revision;
     const decision = sphericalWorkDecision(this.terrain, direction, settings, this.coarse); this.lastWork = { ...decision, backend: this.workerFactory ? decision.backend : 'cooperative' };
-    if (this.workerFactory && decision.backend === 'worker') this.remote = beginSphereWorkerStroke(this.provider, this.history, direction, settings, hemisphere, () => this.changed(), this.workerFactory, this.field?.directions);
-    else this.stroke = startSphericalBrushStroke(this.provider, { ...this.terrain.metadata.identity, direction }, settings, this.history, hemisphere ? { hemisphere } : undefined);
+    if (this.workerFactory && decision.backend === 'worker') this.remote = beginSphereWorkerStroke(this.provider, this.history, direction, settings, hemisphere, () => this.changed(), this.workerFactory, this.field?.directions,this.cutGlobe);
+    else this.stroke = startSphericalBrushStroke(this.provider, { ...this.terrain.metadata.identity, direction }, settings, this.history, hemisphere ? { hemisphere,cutGlobe:this.cutGlobe } : undefined);
+    if(this.stroke&&this.terrain.revision!==this.strokeRevision)recordPaintingEvent('commit',{revision:this.terrain.revision,words:this.terrain.revision-this.strokeRevision,inputAt:start});
     this.notePresentationInput(start);
     this.statistics.maxDabMs = Math.max(this.statistics.maxDabMs, performance.now() - start);
     this.released = false; this.changed(); return true;
@@ -104,7 +108,8 @@ export class SphericalSession {
       if (this.stroke && this.terrain.revision !== this.trackedRevision) { this.cancel(); return false; }
       while (this.stroke && (this.segment || this.queue.length) && count < 8 && performance.now() - start < budgetMs) {
         if (!this.segment) { const point = this.queue.shift()!; this.segmentAt = point.at; this.segment = this.stroke.moveToSteps({ ...this.terrain.metadata.identity, direction: point.direction }, point.visibility); }
-        const before = performance.now(), result = this.segment.next();
+        const before = performance.now(),revision=this.terrain.revision,result = this.segment.next();
+        if(this.terrain.revision!==revision)recordPaintingEvent('commit',{revision:this.terrain.revision,words:this.terrain.revision-revision,inputAt:this.segmentAt});
         this.statistics.maxDabMs = Math.max(this.statistics.maxDabMs, performance.now() - before);
         if (result.done) { this.notePresentationInput(this.segmentAt); this.segment = undefined; } else count++;
       }

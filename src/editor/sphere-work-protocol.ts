@@ -1,10 +1,11 @@
+import type {CrescentCutGlobeGeometry} from '../surfaces/crescent-cut-globe.ts';
 import type { Vec3 } from '../surfaces/cube-sphere.ts';
 import type { SphericalTerrain } from '../terrain/spherical.ts';
 import type { SphericalBrushSettings,SphericalBrushVisibility } from '../terrain/spherical-brush.ts';
 export interface SphereAcceptedPoint { readonly ordinal:number; readonly direction:Vec3; readonly visibility?:SphericalBrushVisibility }
 export interface SphereWorkStats { dabs:number; candidateChecks:number; affectedSamples:number; writes:number; peakPreparedBytes:number }
 export type SphereWorkInput=
- |{type:'start';task:number;metadata:SphericalTerrain['metadata'];sourceRevision:number;values:Float32Array;direction:Vec3;settings:SphericalBrushSettings;hemisphere?:Vec3}
+ |{type:'start';task:number;metadata:SphericalTerrain['metadata'];sourceRevision:number;values:Float32Array;direction:Vec3;settings:SphericalBrushSettings;hemisphere?:Vec3;physicalGeometry?:CrescentCutGlobeGeometry}
  |{type:'move';task:number;point:SphereAcceptedPoint}
  |{type:'release';task:number}
  |{type:'ack';task:number;sequence:number;revision:number};

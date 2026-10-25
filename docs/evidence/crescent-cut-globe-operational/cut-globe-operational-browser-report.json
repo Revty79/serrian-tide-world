@@ -1,0 +1,704 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\.local\\crescent-cut-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.crescent-cut-globe.config.mjs",
+      "tests/crescent-cut-globe-workflow.spec.ts",
+      "tests/crescent-cut-globe-lifecycle.spec.ts",
+      "tests/crescent-cut-globe-pixels.spec.ts",
+      "--workers=1",
+      "--retries=0"
+    ],
+    "configFile": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\playwright.crescent-cut-globe.config.mjs",
+    "rootDir": "D:/serrian-tide-world/.local/crescent-cut-work/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-cut-globe-playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "installed-chrome",
+        "name": "installed-chrome",
+        "testDir": "D:/serrian-tide-world/.local/crescent-cut-work/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "crescent-cut-globe-*.spec.ts"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-cut-globe-playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "installed-chrome",
+        "testDir": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "crescent-cut-globe-*.spec.ts"
+        ],
+        "timeout": 240000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5298",
+          "channel": "chrome",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1,
+          "actionTimeout": 15000,
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "installed-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/cut-globe-operational-browser-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "crescent-cut-globe-lifecycle.spec.ts",
+      "file": "crescent-cut-globe-lifecycle.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Crescent-Cut Globe N128 hardware 15-second held input, navigation, maximum brush and recovery",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 24198,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T11:30:57.598Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e6126bea1fb46c5da6a5-bfa3724a33b54a37a082",
+          "file": "crescent-cut-globe-lifecycle.spec.ts",
+          "line": 2,
+          "column": 68
+        },
+        {
+          "title": "Crescent-Cut Globe N128 Canvas 15-second held input, navigation, maximum brush and recovery",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 30685,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m150\u001b[39m\nReceived:   \u001b[31m937.5\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m150\u001b[39m\nReceived:   \u001b[31m937.5\u001b[39m\n    at D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-lifecycle.spec.ts:5:772",
+                    "location": {
+                      "file": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-lifecycle.spec.ts",
+                      "column": 772,
+                      "line": 5
+                    },
+                    "snippet": "  3 |  test.setTimeout(300000);await createCutGlobe(page,n,canvas);await toolsPanel(page,false);await cutView(page,'Focus concave cut');await toolsPanel(page,true);await page.getByLabel('Spherical strength (m/dab)',{exact:true}).fill('900');await toolsPanel(page,false);await cutSettled(page);const before=await cutObserve(page,'hash'),points=await cutObserve(page,'path','cut');await page.mouse.move(points[20].x,points[20].y);await cutObserve(page,'record');await startPaintingPixels(page,{canvas:'canvas[aria-label=\"Atlas Crescent-Cut Globe terrain map\"]',gpu:'.sphere-gpu'});await page.mouse.down();const started=Date.now();let i=0;while(Date.now()-started<15000){const index=Math.round((.5+.5*Math.sin(i++/40))*40),p=points[index];await page.mouse.move(p.x,p.y);await page.waitForTimeout(16);}await page.mouse.up();await cutIdle(page);const timing=await finishPaintingPixels(page),comparison=await cutObserve(page,'compare'),after=await cutObserve(page,'hash');mkdirSync('.local/cut-globe-lifecycle',{recursive:true});const root=`.local/cut-globe-lifecycle/n${n}-${canvas?'canvas':'hardware'}`,records:any={timing,comparison,state:await cutObserve(page,'snapshot')};writeFileSync(root+'.json',JSON.stringify(records,null,2));expect(timing.summary.p95InputToPixels).toBeLessThan(100);expect(timing.latencies[0]!.inputToPixels).toBeLessThan(1000);expect(comparison.mismatches).toBe(0);expect(comparison.accepted).toBeGreaterThan(100);await page.getByRole('button',{name:'Undo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(after);\n  4 |  await page.getByRole('button',{name:'Smooth',exact:true}).click();await toolsPanel(page,true);await page.getByLabel('Spherical brush radius (m)',{exact:true}).fill('200000');await toolsPanel(page,false);await cutIdle(page);const largePath=await cutObserve(page,'path','cut');await cutObserve(page,'record');await page.mouse.move(largePath[0].x,largePath[0].y);await page.mouse.down();for(const p of largePath.slice(1)){await page.mouse.move(p.x,p.y);await page.waitForTimeout(16);}await page.mouse.up();await cutIdle(page);records.large={comparison:await cutObserve(page,'compare'),state:await cutObserve(page,'snapshot')};expect(records.large.comparison.mismatches).toBe(0);expect(records.large.state.work.backend).toBe(n===256?'worker':'cooperative');const large=await cutObserve(page,'hash');expect(large).not.toBe(after);await page.getByRole('button',{name:'Undo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(after);await page.getByRole('button',{name:'Redo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(large);\n> 5 |  await page.getByRole('button',{name:'Rotate / Pan',exact:true}).click();const frame=await cutCanvas(page).getAttribute('data-frame'),box=(await cutCanvas(page).boundingBox())!;await page.mouse.move(box.x+box.width*.5,box.y+box.height*.5);await page.mouse.down();for(let k=1;k<=16;k++){await page.mouse.move(box.x+box.width*.5+k*3,box.y+box.height*.5+k);await page.waitForTimeout(16);}await page.mouse.up();await cutIdle(page);expect(await cutCanvas(page).getAttribute('data-frame')).not.toBe(frame);expect(await cutObserve(page,'hash')).toBe(large);records.navigation=await cutCanvas(page).evaluate(c=>JSON.parse((c as HTMLCanvasElement).dataset.inputLatencies??'[]'));expect(records.navigation.sort((a:number,b:number)=>a-b)[Math.floor(records.navigation.length*.95)]).toBeLessThan(150);await cutView(page,'Focus concave cut');await cutSettled(page);\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^\n  6 |  if(!canvas){await page.evaluate(()=>{const gl=document.querySelector<HTMLCanvasElement>('.sphere-gpu')!.getContext('webgl2')!,ext=gl.getExtension('WEBGL_lose_context')!;(window as unknown as {restoreCutGlobe:()=>void}).restoreCutGlobe=()=>ext.restoreContext();ext.loseContext();});await expect(cutCanvas(page)).toHaveAttribute('data-renderer','cpu');await cutSettled(page);expect(await cutObserve(page,'hash')).toBe(large);const proof=await page.evaluate(async()=>{const path='/tests/fixtures/crescent-cut-globe-current-output.ts';return(await import(path)).cutGlobeCurrentOutputProof('cpu');});expect(proof.alphaDifferent).toBe(0);expect(proof.maxDifference).toBeLessThanOrEqual(3);records.contextCanvas={...proof,currentPng:undefined,freshPng:undefined};for(const key of ['currentPng','freshPng'] as const)writeFileSync(root+'-fallback-'+key+'.png',Buffer.from(proof[key].split(',')[1]!,'base64'));await page.evaluate(()=>(window as unknown as {restoreCutGlobe():void}).restoreCutGlobe());await expect(cutCanvas(page)).toHaveAttribute('data-renderer','webgl2',{timeout:60000});await cutSettled(page);expect(await cutObserve(page,'hash')).toBe(large);const restored=await page.evaluate(async()=>{const path='/tests/fixtures/crescent-cut-globe-current-output.ts';return(await import(path)).cutGlobeCurrentOutputProof('webgl2');});expect(restored.alphaDifferent).toBe(0);expect(restored.maxDifference).toBeLessThanOrEqual(3);records.contextRestored={...restored,currentPng:undefined,freshPng:undefined};for(const key of ['currentPng','freshPng'] as const)writeFileSync(root+'-restored-'+key+'.png',Buffer.from(restored[key].split(',')[1]!,'base64'));}\n  7 |  // Returning from navigation/context recovery must leave ordinary painting usable.\n  8 |  await page.getByRole('button',{name:'Raise',exact:true}).click();const p=(await cutObserve(page,'path','cut'))[20];await page.mouse.move(p.x,p.y);await page.mouse.down();await page.mouse.move(p.x+12,p.y);await page.keyboard.press('Escape');await page.mouse.up();await cutIdle(page);expect(await cutObserve(page,'hash')).not.toBe(large);await page.getByRole('button',{name:'Undo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(large);records.final=await cutObserve(page,'snapshot');writeFileSync(root+'.json',JSON.stringify(records,null,2));await page.screenshot({path:root+'.png'});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-lifecycle.spec.ts",
+                        "column": 772,
+                        "line": 5
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m150\u001b[39m\nReceived:   \u001b[31m937.5\u001b[39m\n\n  3 |  test.setTimeout(300000);await createCutGlobe(page,n,canvas);await toolsPanel(page,false);await cutView(page,'Focus concave cut');await toolsPanel(page,true);await page.getByLabel('Spherical strength (m/dab)',{exact:true}).fill('900');await toolsPanel(page,false);await cutSettled(page);const before=await cutObserve(page,'hash'),points=await cutObserve(page,'path','cut');await page.mouse.move(points[20].x,points[20].y);await cutObserve(page,'record');await startPaintingPixels(page,{canvas:'canvas[aria-label=\"Atlas Crescent-Cut Globe terrain map\"]',gpu:'.sphere-gpu'});await page.mouse.down();const started=Date.now();let i=0;while(Date.now()-started<15000){const index=Math.round((.5+.5*Math.sin(i++/40))*40),p=points[index];await page.mouse.move(p.x,p.y);await page.waitForTimeout(16);}await page.mouse.up();await cutIdle(page);const timing=await finishPaintingPixels(page),comparison=await cutObserve(page,'compare'),after=await cutObserve(page,'hash');mkdirSync('.local/cut-globe-lifecycle',{recursive:true});const root=`.local/cut-globe-lifecycle/n${n}-${canvas?'canvas':'hardware'}`,records:any={timing,comparison,state:await cutObserve(page,'snapshot')};writeFileSync(root+'.json',JSON.stringify(records,null,2));expect(timing.summary.p95InputToPixels).toBeLessThan(100);expect(timing.latencies[0]!.inputToPixels).toBeLessThan(1000);expect(comparison.mismatches).toBe(0);expect(comparison.accepted).toBeGreaterThan(100);await page.getByRole('button',{name:'Undo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(after);\n  4 |  await page.getByRole('button',{name:'Smooth',exact:true}).click();await toolsPanel(page,true);await page.getByLabel('Spherical brush radius (m)',{exact:true}).fill('200000');await toolsPanel(page,false);await cutIdle(page);const largePath=await cutObserve(page,'path','cut');await cutObserve(page,'record');await page.mouse.move(largePath[0].x,largePath[0].y);await page.mouse.down();for(const p of largePath.slice(1)){await page.mouse.move(p.x,p.y);await page.waitForTimeout(16);}await page.mouse.up();await cutIdle(page);records.large={comparison:await cutObserve(page,'compare'),state:await cutObserve(page,'snapshot')};expect(records.large.comparison.mismatches).toBe(0);expect(records.large.state.work.backend).toBe(n===256?'worker':'cooperative');const large=await cutObserve(page,'hash');expect(large).not.toBe(after);await page.getByRole('button',{name:'Undo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(after);await page.getByRole('button',{name:'Redo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(large);\n> 5 |  await page.getByRole('button',{name:'Rotate / Pan',exact:true}).click();const frame=await cutCanvas(page).getAttribute('data-frame'),box=(await cutCanvas(page).boundingBox())!;await page.mouse.move(box.x+box.width*.5,box.y+box.height*.5);await page.mouse.down();for(let k=1;k<=16;k++){await page.mouse.move(box.x+box.width*.5+k*3,box.y+box.height*.5+k);await page.waitForTimeout(16);}await page.mouse.up();await cutIdle(page);expect(await cutCanvas(page).getAttribute('data-frame')).not.toBe(frame);expect(await cutObserve(page,'hash')).toBe(large);records.navigation=await cutCanvas(page).evaluate(c=>JSON.parse((c as HTMLCanvasElement).dataset.inputLatencies??'[]'));expect(records.navigation.sort((a:number,b:number)=>a-b)[Math.floor(records.navigation.length*.95)]).toBeLessThan(150);await cutView(page,'Focus concave cut');await cutSettled(page);\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^\n  6 |  if(!canvas){await page.evaluate(()=>{const gl=document.querySelector<HTMLCanvasElement>('.sphere-gpu')!.getContext('webgl2')!,ext=gl.getExtension('WEBGL_lose_context')!;(window as unknown as {restoreCutGlobe:()=>void}).restoreCutGlobe=()=>ext.restoreContext();ext.loseContext();});await expect(cutCanvas(page)).toHaveAttribute('data-renderer','cpu');await cutSettled(page);expect(await cutObserve(page,'hash')).toBe(large);const proof=await page.evaluate(async()=>{const path='/tests/fixtures/crescent-cut-globe-current-output.ts';return(await import(path)).cutGlobeCurrentOutputProof('cpu');});expect(proof.alphaDifferent).toBe(0);expect(proof.maxDifference).toBeLessThanOrEqual(3);records.contextCanvas={...proof,currentPng:undefined,freshPng:undefined};for(const key of ['currentPng','freshPng'] as const)writeFileSync(root+'-fallback-'+key+'.png',Buffer.from(proof[key].split(',')[1]!,'base64'));await page.evaluate(()=>(window as unknown as {restoreCutGlobe():void}).restoreCutGlobe());await expect(cutCanvas(page)).toHaveAttribute('data-renderer','webgl2',{timeout:60000});await cutSettled(page);expect(await cutObserve(page,'hash')).toBe(large);const restored=await page.evaluate(async()=>{const path='/tests/fixtures/crescent-cut-globe-current-output.ts';return(await import(path)).cutGlobeCurrentOutputProof('webgl2');});expect(restored.alphaDifferent).toBe(0);expect(restored.maxDifference).toBeLessThanOrEqual(3);records.contextRestored={...restored,currentPng:undefined,freshPng:undefined};for(const key of ['currentPng','freshPng'] as const)writeFileSync(root+'-restored-'+key+'.png',Buffer.from(restored[key].split(',')[1]!,'base64'));}\n  7 |  // Returning from navigation/context recovery must leave ordinary painting usable.\n  8 |  await page.getByRole('button',{name:'Raise',exact:true}).click();const p=(await cutObserve(page,'path','cut'))[20];await page.mouse.move(p.x,p.y);await page.mouse.down();await page.mouse.move(p.x+12,p.y);await page.keyboard.press('Escape');await page.mouse.up();await cutIdle(page);expect(await cutObserve(page,'hash')).not.toBe(large);await page.getByRole('button',{name:'Undo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(large);records.final=await cutObserve(page,'snapshot');writeFileSync(root+'.json',JSON.stringify(records,null,2));await page.screenshot({path:root+'.png'});\n    at D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-lifecycle.spec.ts:5:772"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T11:31:22.205Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-cut-globe-playwright\\crescent-cut-globe-lifecyc-98b75--maximum-brush-and-recovery-installed-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-cut-globe-playwright\\crescent-cut-globe-lifecyc-98b75--maximum-brush-and-recovery-installed-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-cut-globe-playwright\\crescent-cut-globe-lifecyc-98b75--maximum-brush-and-recovery-installed-chrome\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-lifecycle.spec.ts",
+                    "column": 772,
+                    "line": 5
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e6126bea1fb46c5da6a5-bc0a6b21b77fc82dc263",
+          "file": "crescent-cut-globe-lifecycle.spec.ts",
+          "line": 2,
+          "column": 68
+        },
+        {
+          "title": "Crescent-Cut Globe N256 hardware 15-second held input, navigation, maximum brush and recovery",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26096,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T11:31:54.229Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e6126bea1fb46c5da6a5-c61fc8d49142d164d487",
+          "file": "crescent-cut-globe-lifecycle.spec.ts",
+          "line": 2,
+          "column": 68
+        },
+        {
+          "title": "Crescent-Cut Globe N256 Canvas 15-second held input, navigation, maximum brush and recovery",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 33342,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m150\u001b[39m\nReceived:   \u001b[31m922.3999999761581\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m150\u001b[39m\nReceived:   \u001b[31m922.3999999761581\u001b[39m\n    at D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-lifecycle.spec.ts:5:772",
+                    "location": {
+                      "file": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-lifecycle.spec.ts",
+                      "column": 772,
+                      "line": 5
+                    },
+                    "snippet": "  3 |  test.setTimeout(300000);await createCutGlobe(page,n,canvas);await toolsPanel(page,false);await cutView(page,'Focus concave cut');await toolsPanel(page,true);await page.getByLabel('Spherical strength (m/dab)',{exact:true}).fill('900');await toolsPanel(page,false);await cutSettled(page);const before=await cutObserve(page,'hash'),points=await cutObserve(page,'path','cut');await page.mouse.move(points[20].x,points[20].y);await cutObserve(page,'record');await startPaintingPixels(page,{canvas:'canvas[aria-label=\"Atlas Crescent-Cut Globe terrain map\"]',gpu:'.sphere-gpu'});await page.mouse.down();const started=Date.now();let i=0;while(Date.now()-started<15000){const index=Math.round((.5+.5*Math.sin(i++/40))*40),p=points[index];await page.mouse.move(p.x,p.y);await page.waitForTimeout(16);}await page.mouse.up();await cutIdle(page);const timing=await finishPaintingPixels(page),comparison=await cutObserve(page,'compare'),after=await cutObserve(page,'hash');mkdirSync('.local/cut-globe-lifecycle',{recursive:true});const root=`.local/cut-globe-lifecycle/n${n}-${canvas?'canvas':'hardware'}`,records:any={timing,comparison,state:await cutObserve(page,'snapshot')};writeFileSync(root+'.json',JSON.stringify(records,null,2));expect(timing.summary.p95InputToPixels).toBeLessThan(100);expect(timing.latencies[0]!.inputToPixels).toBeLessThan(1000);expect(comparison.mismatches).toBe(0);expect(comparison.accepted).toBeGreaterThan(100);await page.getByRole('button',{name:'Undo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(after);\n  4 |  await page.getByRole('button',{name:'Smooth',exact:true}).click();await toolsPanel(page,true);await page.getByLabel('Spherical brush radius (m)',{exact:true}).fill('200000');await toolsPanel(page,false);await cutIdle(page);const largePath=await cutObserve(page,'path','cut');await cutObserve(page,'record');await page.mouse.move(largePath[0].x,largePath[0].y);await page.mouse.down();for(const p of largePath.slice(1)){await page.mouse.move(p.x,p.y);await page.waitForTimeout(16);}await page.mouse.up();await cutIdle(page);records.large={comparison:await cutObserve(page,'compare'),state:await cutObserve(page,'snapshot')};expect(records.large.comparison.mismatches).toBe(0);expect(records.large.state.work.backend).toBe(n===256?'worker':'cooperative');const large=await cutObserve(page,'hash');expect(large).not.toBe(after);await page.getByRole('button',{name:'Undo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(after);await page.getByRole('button',{name:'Redo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(large);\n> 5 |  await page.getByRole('button',{name:'Rotate / Pan',exact:true}).click();const frame=await cutCanvas(page).getAttribute('data-frame'),box=(await cutCanvas(page).boundingBox())!;await page.mouse.move(box.x+box.width*.5,box.y+box.height*.5);await page.mouse.down();for(let k=1;k<=16;k++){await page.mouse.move(box.x+box.width*.5+k*3,box.y+box.height*.5+k);await page.waitForTimeout(16);}await page.mouse.up();await cutIdle(page);expect(await cutCanvas(page).getAttribute('data-frame')).not.toBe(frame);expect(await cutObserve(page,'hash')).toBe(large);records.navigation=await cutCanvas(page).evaluate(c=>JSON.parse((c as HTMLCanvasElement).dataset.inputLatencies??'[]'));expect(records.navigation.sort((a:number,b:number)=>a-b)[Math.floor(records.navigation.length*.95)]).toBeLessThan(150);await cutView(page,'Focus concave cut');await cutSettled(page);\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^\n  6 |  if(!canvas){await page.evaluate(()=>{const gl=document.querySelector<HTMLCanvasElement>('.sphere-gpu')!.getContext('webgl2')!,ext=gl.getExtension('WEBGL_lose_context')!;(window as unknown as {restoreCutGlobe:()=>void}).restoreCutGlobe=()=>ext.restoreContext();ext.loseContext();});await expect(cutCanvas(page)).toHaveAttribute('data-renderer','cpu');await cutSettled(page);expect(await cutObserve(page,'hash')).toBe(large);const proof=await page.evaluate(async()=>{const path='/tests/fixtures/crescent-cut-globe-current-output.ts';return(await import(path)).cutGlobeCurrentOutputProof('cpu');});expect(proof.alphaDifferent).toBe(0);expect(proof.maxDifference).toBeLessThanOrEqual(3);records.contextCanvas={...proof,currentPng:undefined,freshPng:undefined};for(const key of ['currentPng','freshPng'] as const)writeFileSync(root+'-fallback-'+key+'.png',Buffer.from(proof[key].split(',')[1]!,'base64'));await page.evaluate(()=>(window as unknown as {restoreCutGlobe():void}).restoreCutGlobe());await expect(cutCanvas(page)).toHaveAttribute('data-renderer','webgl2',{timeout:60000});await cutSettled(page);expect(await cutObserve(page,'hash')).toBe(large);const restored=await page.evaluate(async()=>{const path='/tests/fixtures/crescent-cut-globe-current-output.ts';return(await import(path)).cutGlobeCurrentOutputProof('webgl2');});expect(restored.alphaDifferent).toBe(0);expect(restored.maxDifference).toBeLessThanOrEqual(3);records.contextRestored={...restored,currentPng:undefined,freshPng:undefined};for(const key of ['currentPng','freshPng'] as const)writeFileSync(root+'-restored-'+key+'.png',Buffer.from(restored[key].split(',')[1]!,'base64'));}\n  7 |  // Returning from navigation/context recovery must leave ordinary painting usable.\n  8 |  await page.getByRole('button',{name:'Raise',exact:true}).click();const p=(await cutObserve(page,'path','cut'))[20];await page.mouse.move(p.x,p.y);await page.mouse.down();await page.mouse.move(p.x+12,p.y);await page.keyboard.press('Escape');await page.mouse.up();await cutIdle(page);expect(await cutObserve(page,'hash')).not.toBe(large);await page.getByRole('button',{name:'Undo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(large);records.final=await cutObserve(page,'snapshot');writeFileSync(root+'.json',JSON.stringify(records,null,2));await page.screenshot({path:root+'.png'});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-lifecycle.spec.ts",
+                        "column": 772,
+                        "line": 5
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m150\u001b[39m\nReceived:   \u001b[31m922.3999999761581\u001b[39m\n\n  3 |  test.setTimeout(300000);await createCutGlobe(page,n,canvas);await toolsPanel(page,false);await cutView(page,'Focus concave cut');await toolsPanel(page,true);await page.getByLabel('Spherical strength (m/dab)',{exact:true}).fill('900');await toolsPanel(page,false);await cutSettled(page);const before=await cutObserve(page,'hash'),points=await cutObserve(page,'path','cut');await page.mouse.move(points[20].x,points[20].y);await cutObserve(page,'record');await startPaintingPixels(page,{canvas:'canvas[aria-label=\"Atlas Crescent-Cut Globe terrain map\"]',gpu:'.sphere-gpu'});await page.mouse.down();const started=Date.now();let i=0;while(Date.now()-started<15000){const index=Math.round((.5+.5*Math.sin(i++/40))*40),p=points[index];await page.mouse.move(p.x,p.y);await page.waitForTimeout(16);}await page.mouse.up();await cutIdle(page);const timing=await finishPaintingPixels(page),comparison=await cutObserve(page,'compare'),after=await cutObserve(page,'hash');mkdirSync('.local/cut-globe-lifecycle',{recursive:true});const root=`.local/cut-globe-lifecycle/n${n}-${canvas?'canvas':'hardware'}`,records:any={timing,comparison,state:await cutObserve(page,'snapshot')};writeFileSync(root+'.json',JSON.stringify(records,null,2));expect(timing.summary.p95InputToPixels).toBeLessThan(100);expect(timing.latencies[0]!.inputToPixels).toBeLessThan(1000);expect(comparison.mismatches).toBe(0);expect(comparison.accepted).toBeGreaterThan(100);await page.getByRole('button',{name:'Undo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(after);\n  4 |  await page.getByRole('button',{name:'Smooth',exact:true}).click();await toolsPanel(page,true);await page.getByLabel('Spherical brush radius (m)',{exact:true}).fill('200000');await toolsPanel(page,false);await cutIdle(page);const largePath=await cutObserve(page,'path','cut');await cutObserve(page,'record');await page.mouse.move(largePath[0].x,largePath[0].y);await page.mouse.down();for(const p of largePath.slice(1)){await page.mouse.move(p.x,p.y);await page.waitForTimeout(16);}await page.mouse.up();await cutIdle(page);records.large={comparison:await cutObserve(page,'compare'),state:await cutObserve(page,'snapshot')};expect(records.large.comparison.mismatches).toBe(0);expect(records.large.state.work.backend).toBe(n===256?'worker':'cooperative');const large=await cutObserve(page,'hash');expect(large).not.toBe(after);await page.getByRole('button',{name:'Undo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(after);await page.getByRole('button',{name:'Redo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(large);\n> 5 |  await page.getByRole('button',{name:'Rotate / Pan',exact:true}).click();const frame=await cutCanvas(page).getAttribute('data-frame'),box=(await cutCanvas(page).boundingBox())!;await page.mouse.move(box.x+box.width*.5,box.y+box.height*.5);await page.mouse.down();for(let k=1;k<=16;k++){await page.mouse.move(box.x+box.width*.5+k*3,box.y+box.height*.5+k);await page.waitForTimeout(16);}await page.mouse.up();await cutIdle(page);expect(await cutCanvas(page).getAttribute('data-frame')).not.toBe(frame);expect(await cutObserve(page,'hash')).toBe(large);records.navigation=await cutCanvas(page).evaluate(c=>JSON.parse((c as HTMLCanvasElement).dataset.inputLatencies??'[]'));expect(records.navigation.sort((a:number,b:number)=>a-b)[Math.floor(records.navigation.length*.95)]).toBeLessThan(150);await cutView(page,'Focus concave cut');await cutSettled(page);\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^\n  6 |  if(!canvas){await page.evaluate(()=>{const gl=document.querySelector<HTMLCanvasElement>('.sphere-gpu')!.getContext('webgl2')!,ext=gl.getExtension('WEBGL_lose_context')!;(window as unknown as {restoreCutGlobe:()=>void}).restoreCutGlobe=()=>ext.restoreContext();ext.loseContext();});await expect(cutCanvas(page)).toHaveAttribute('data-renderer','cpu');await cutSettled(page);expect(await cutObserve(page,'hash')).toBe(large);const proof=await page.evaluate(async()=>{const path='/tests/fixtures/crescent-cut-globe-current-output.ts';return(await import(path)).cutGlobeCurrentOutputProof('cpu');});expect(proof.alphaDifferent).toBe(0);expect(proof.maxDifference).toBeLessThanOrEqual(3);records.contextCanvas={...proof,currentPng:undefined,freshPng:undefined};for(const key of ['currentPng','freshPng'] as const)writeFileSync(root+'-fallback-'+key+'.png',Buffer.from(proof[key].split(',')[1]!,'base64'));await page.evaluate(()=>(window as unknown as {restoreCutGlobe():void}).restoreCutGlobe());await expect(cutCanvas(page)).toHaveAttribute('data-renderer','webgl2',{timeout:60000});await cutSettled(page);expect(await cutObserve(page,'hash')).toBe(large);const restored=await page.evaluate(async()=>{const path='/tests/fixtures/crescent-cut-globe-current-output.ts';return(await import(path)).cutGlobeCurrentOutputProof('webgl2');});expect(restored.alphaDifferent).toBe(0);expect(restored.maxDifference).toBeLessThanOrEqual(3);records.contextRestored={...restored,currentPng:undefined,freshPng:undefined};for(const key of ['currentPng','freshPng'] as const)writeFileSync(root+'-restored-'+key+'.png',Buffer.from(restored[key].split(',')[1]!,'base64'));}\n  7 |  // Returning from navigation/context recovery must leave ordinary painting usable.\n  8 |  await page.getByRole('button',{name:'Raise',exact:true}).click();const p=(await cutObserve(page,'path','cut'))[20];await page.mouse.move(p.x,p.y);await page.mouse.down();await page.mouse.move(p.x+12,p.y);await page.keyboard.press('Escape');await page.mouse.up();await cutIdle(page);expect(await cutObserve(page,'hash')).not.toBe(large);await page.getByRole('button',{name:'Undo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(large);records.final=await cutObserve(page,'snapshot');writeFileSync(root+'.json',JSON.stringify(records,null,2));await page.screenshot({path:root+'.png'});\n    at D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-lifecycle.spec.ts:5:772"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T11:32:20.677Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-cut-globe-playwright\\crescent-cut-globe-lifecyc-c9526--maximum-brush-and-recovery-installed-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-cut-globe-playwright\\crescent-cut-globe-lifecyc-c9526--maximum-brush-and-recovery-installed-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-cut-globe-playwright\\crescent-cut-globe-lifecyc-c9526--maximum-brush-and-recovery-installed-chrome\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-lifecycle.spec.ts",
+                    "column": 772,
+                    "line": 5
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e6126bea1fb46c5da6a5-a8775a5584f4b0874e0c",
+          "file": "crescent-cut-globe-lifecycle.spec.ts",
+          "line": 2,
+          "column": 68
+        }
+      ]
+    },
+    {
+      "title": "crescent-cut-globe-pixels.spec.ts",
+      "file": "crescent-cut-globe-pixels.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Crescent-Cut Globe N128 pattern: matched hardware/Canvas pixels and independent physical geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19959,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T11:32:55.315Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4923a8e0e9f8bab8b030-ae03f342ee787c7ce6df",
+          "file": "crescent-cut-globe-pixels.spec.ts",
+          "line": 2,
+          "column": 95
+        },
+        {
+          "title": "Crescent-Cut Globe N128 ocean: matched hardware/Canvas pixels and independent physical geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5692,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T11:33:15.639Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4923a8e0e9f8bab8b030-b675aa7763d634d33a86",
+          "file": "crescent-cut-globe-pixels.spec.ts",
+          "line": 2,
+          "column": 95
+        },
+        {
+          "title": "Crescent-Cut Globe N128 reference: matched hardware/Canvas pixels and independent physical geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5953,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T11:33:21.343Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4923a8e0e9f8bab8b030-90ee95afcce5c3e36dec",
+          "file": "crescent-cut-globe-pixels.spec.ts",
+          "line": 2,
+          "column": 95
+        },
+        {
+          "title": "Crescent-Cut Globe N256 pattern: matched hardware/Canvas pixels and independent physical geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20324,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T11:33:27.307Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4923a8e0e9f8bab8b030-339f13fe86ffd4b1a029",
+          "file": "crescent-cut-globe-pixels.spec.ts",
+          "line": 2,
+          "column": 95
+        },
+        {
+          "title": "Crescent-Cut Globe N256 ocean: matched hardware/Canvas pixels and independent physical geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7635,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T11:33:47.641Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4923a8e0e9f8bab8b030-897581da41ae4a52af9b",
+          "file": "crescent-cut-globe-pixels.spec.ts",
+          "line": 2,
+          "column": 95
+        },
+        {
+          "title": "Crescent-Cut Globe N256 reference: matched hardware/Canvas pixels and independent physical geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8088,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T11:33:55.286Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4923a8e0e9f8bab8b030-06d8a49b98dad0b4d3de",
+          "file": "crescent-cut-globe-pixels.spec.ts",
+          "line": 2,
+          "column": 95
+        }
+      ]
+    },
+    {
+      "title": "crescent-cut-globe-workflow.spec.ts",
+      "file": "crescent-cut-globe-workflow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Crescent-Cut Globe N128 hardware all tools, physical banks, real rim, maps and atomic Save/Open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 38517,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T11:34:03.404Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d8dbb5cc63a784c2961b-14ea9a51b4d79fb85049",
+          "file": "crescent-cut-globe-workflow.spec.ts",
+          "line": 5,
+          "column": 68
+        },
+        {
+          "title": "Crescent-Cut Globe N128 Canvas all tools, physical banks, real rim, maps and atomic Save/Open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 86920,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T11:34:41.929Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d8dbb5cc63a784c2961b-ad08c5aafe0ba28ec261",
+          "file": "crescent-cut-globe-workflow.spec.ts",
+          "line": 5,
+          "column": 68
+        },
+        {
+          "title": "Crescent-Cut Globe N256 hardware all tools, physical banks, real rim, maps and atomic Save/Open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 46508,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T11:36:08.860Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d8dbb5cc63a784c2961b-14fa29986ffb36b31896",
+          "file": "crescent-cut-globe-workflow.spec.ts",
+          "line": 5,
+          "column": 68
+        },
+        {
+          "title": "Crescent-Cut Globe N256 Canvas all tools, physical banks, real rim, maps and atomic Save/Open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 106548,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T11:36:55.379Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d8dbb5cc63a784c2961b-ecbf5f9afb2eab0bd656",
+          "file": "crescent-cut-globe-workflow.spec.ts",
+          "line": 5,
+          "column": 68
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T11:30:57.105Z",
+    "duration": 465577.239,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

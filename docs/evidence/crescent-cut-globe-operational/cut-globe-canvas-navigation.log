@@ -1,0 +1,12 @@
+Command: ["node", "node_modules/@playwright/test/cli.js", "test", "--config", "playwright.crescent-cut-globe.config.mjs", "tests/crescent-cut-globe-lifecycle.spec.ts", "--grep", "Canvas", "--workers=1", "--retries=0"]
+
+Running 2 tests using 1 worker
+
+(node:17508) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\crescent-cut-globe-lifecycle.spec.ts:2:68 › Crescent-Cut Globe N128 Canvas 15-second held input, navigation, maximum brush and recovery (37.8s)
+  ok 2 [installed-chrome] › tests\crescent-cut-globe-lifecycle.spec.ts:2:68 › Crescent-Cut Globe N256 Canvas 15-second held input, navigation, maximum brush and recovery (39.9s)
+
+  2 passed (1.3m)
+
+Exit: 0

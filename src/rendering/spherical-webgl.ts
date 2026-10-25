@@ -1,3 +1,4 @@
+import {CRESCENT_CUT_GLOBE_GLSL} from './crescent-cut-globe-glsl.ts';
 import {cutDisplayDimensions} from './raster-quality.ts';
 import {sphereCenterInspection} from './spherical-view.ts';
 import { CUBE_FACES } from '../surfaces/cube-sphere.ts';
@@ -42,8 +43,9 @@ vec3 palette(float h){
 }
 vec3 color(vec4 v,float depth){vec3 rgb=palette(v.x);if(relief==1){if(v.x>0.){vec3 g=clamp(v.yzw*5.,vec3(-1e6),vec3(1e6));rgb*=clamp((1.-dot(g,vec3(-.6,-.6,.5291502622129182)))/length(vec4(1.,g)),.55,1.25);}if(mode==0&&interior==0)rgb*=.74+.26*depth;}return rgb;}
 vec4 shade(vec2 pixel){vec4 value;float alpha,depth;if(!hit(pixel,value,alpha,depth))return vec4(0.);return vec4(color(value,depth)*alpha,alpha);}
+${CRESCENT_CUT_GLOBE_GLSL}
 ${HOLLOW_SPHERE_GLSL}
-void main(){vec2 pixel=vec2(gl_FragCoord.x/backingSize.x*viewport.x,(1.-gl_FragCoord.y/backingSize.y)*viewport.y);if(mode==0&&excavationEnabled==1&&sphereCutAffects(pixel)){outColor=sphereCutRay(pixel);return;}vec4 v;float alpha,depth;if(!hit(pixel,v,alpha,depth)){outColor=vec4(0.);return;}
+void main(){vec2 pixel=vec2(gl_FragCoord.x/backingSize.x*viewport.x,(1.-gl_FragCoord.y/backingSize.y)*viewport.y);if(foldEnabled==1){outColor=foldPixel(pixel);return;}if(mode==0&&excavationEnabled==1&&sphereCutAffects(pixel)){outColor=sphereCutRay(pixel);return;}vec4 v;float alpha,depth;if(!hit(pixel,v,alpha,depth)){outColor=vec4(0.);return;}
  vec2 step=viewport/backingSize*.25;
  // Four geographical rays only where coast coverage or silhouette requires it.
  if(abs(v.x)<fwidth(v.x)||alpha<1.)outColor=(shade(pixel+vec2(-step.x,-step.y))+shade(pixel+vec2(step.x,-step.y))+shade(pixel+vec2(-step.x,step.y))+shade(pixel+step))*.25;
@@ -69,7 +71,7 @@ export class SphereWebGLRenderer implements SurfaceRenderer<SphericalView> {
   const info=gl.getExtension('WEBGL_debug_renderer_info');this.statistics.renderer=String(gl.getParameter(info?.UNMASKED_RENDERER_WEBGL??gl.RENDERER));if(/swiftshader|llvmpipe|software|basic render/i.test(this.statistics.renderer))throw Error('Software graphics detected; bounded CPU display is active.');
   const shaders:WebGLShader[]=[];let program:WebGLProgram|null=null;
   try{for(const[type,source]of[[gl.VERTEX_SHADER,VERTEX],[gl.FRAGMENT_SHADER,SPHERE_FRAGMENT_SHADER]] as const){const shader=gl.createShader(type);if(!shader)throw Error('Shader allocation failed.');shaders.push(shader);gl.shaderSource(shader,source);gl.compileShader(shader);if(!gl.getShaderParameter(shader,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(shader)??'Shader compilation failed.');}program=gl.createProgram();if(!program)throw Error('Program allocation failed.');for(const shader of shaders)gl.attachShader(program,shader);gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program)??'Shader linking failed.');this.program=program;}catch(e){if(program)gl.deleteProgram(program);throw e;}finally{for(const shader of shaders)gl.deleteShader(shader);}
-  for(const name of['elevations','viewport','backingSize','pan','cameraRight','cameraUp','cameraForward','globeRadius','faceSize','heightScale','mode','relief','interior','oppositeElevations','excavationEnabled','cutterCount','selectedInside','innerRatio','eyePosition','primitiveA[0]','primitiveB[0]']){const location=gl.getUniformLocation(this.program!,name);if(location===null)throw Error(`Missing sphere display uniform ${name}`);this.uniforms.set(name,location);}
+  for(const name of['foldEnabled','foldAxis','foldSeparation','foldRegion','elevations','viewport','backingSize','pan','cameraRight','cameraUp','cameraForward','globeRadius','faceSize','heightScale','mode','relief','interior','oppositeElevations','excavationEnabled','cutterCount','selectedInside','innerRatio','eyePosition','primitiveA[0]','primitiveB[0]']){const location=gl.getUniformLocation(this.program!,name);if(location===null)throw Error(`Missing sphere display uniform ${name}`);this.uniforms.set(name,location);}
   const vao=gl.createVertexArray(),texture=gl.createTexture();if(!vao||!texture){if(vao)gl.deleteVertexArray(vao);if(texture)gl.deleteTexture(texture);throw Error('Sphere display allocation failed.');}this.vao=vao;this.texture=texture;
   gl.bindTexture(gl.TEXTURE_2D_ARRAY,texture);for(const name of[gl.TEXTURE_MIN_FILTER,gl.TEXTURE_MAG_FILTER])gl.texParameteri(gl.TEXTURE_2D_ARRAY,name,gl.NEAREST);for(const name of[gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T])gl.texParameteri(gl.TEXTURE_2D_ARRAY,name,gl.CLAMP_TO_EDGE);
   gl.texStorage3D(gl.TEXTURE_2D_ARRAY,1,gl.RGBA32F,this.field.n+1,this.field.n+1,6);if(gl.getError()!==gl.NO_ERROR)throw Error('Sphere display texture allocation failed.');this.statistics.textureBytes=6*(this.field.n+1)**2*16;this.statistics.resources=3;this.statistics.reason='';
@@ -82,6 +84,7 @@ export class SphereWebGLRenderer implements SurfaceRenderer<SphericalView> {
    if(gl.getError()!==gl.NO_ERROR)throw Error('Sphere elevation upload failed.');this.uploadedRevision=this.field.sourceRevision;this.scale=this.field.heightScale;this.statistics.uploads++;
   }
   let uploaded=performance.now();const u=(name:string)=>this.uniforms.get(name)!;gl.uniform1i(u('elevations'),0);gl.uniform2f(u('viewport'),size.width,size.height);gl.uniform2f(u('backingSize'),dimensions.width,dimensions.height);gl.uniform2f(u('pan'),view.pan.x,view.pan.y);gl.uniform3fv(u('cameraRight'),view.frame.right);gl.uniform3fv(u('cameraUp'),view.frame.up);gl.uniform3fv(u('cameraForward'),view.frame.forward);gl.uniform1f(u('globeRadius'),layout.radius);gl.uniform1f(u('faceSize'),layout.face);gl.uniform1f(u('heightScale'),this.scale);gl.uniform1i(u('mode'),view.mode==='globe'?0:1);gl.uniform1i(u('relief'),appearance==='relief'?1:0);gl.uniform1i(u('interior'),sphereCenterInspection(view)?1:0);
+  gl.uniform1i(u('foldEnabled'),view.cutGlobe?1:0);gl.uniform3fv(u('foldAxis'),view.cutGlobe?.axis??[1,0,0]);gl.uniform1f(u('foldSeparation'),view.cutGlobe?.separationRatio??1);gl.uniform1i(u('foldRegion'),view.mapRegion==='retained'?1:view.mapRegion==='cut'?2:0);
   const excavation=this.excavation,enabled=!!excavation&&excavation.model.primitives.length>0&&view.mode==='globe'&&(!view.interior||sphereCenterInspection(view));gl.uniform1i(u('excavationEnabled'),enabled?1:0);gl.uniform1i(u('oppositeElevations'),1);
   // Keep sampler units distinct even with subtraction disabled: WebGL validates
   // sampler bindings before dynamic shader branches execute.

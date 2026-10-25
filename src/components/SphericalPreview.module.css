@@ -49,3 +49,10 @@
   .readout { bottom: 28px; padding-inline: 6px; }
   .panel { padding-top: 80px; }
 }
+
+.workspace .cutGlobeControls { left:12px;bottom:128px;transform:none;padding:0;border:0;background:none;max-width:calc(100% - 24px);white-space:normal; }
+.cutGlobeControls details {background:#102735ed;border:1px solid #809b99;border-radius:6px;max-width:290px;}
+.cutGlobeControls summary {cursor:pointer;padding:12px;min-height:20px;}
+.cutGlobeControls details>div {display:grid;gap:4px;padding:4px;max-height:50vh;overflow:auto;}
+.cutGlobeControls button {white-space:normal;text-align:left;}
+@media(max-width:600px){.workspace .cutGlobeControls{bottom:220px;}}

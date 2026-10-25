@@ -1,3 +1,4 @@
+import {cutGlobePixelSampler} from './crescent-cut-globe-pixels.ts';
 import {sphereCenterInspection} from './spherical-view.ts';
 import { type CubeFace } from '../surfaces/cube-sphere.ts';
 import { sphericalLayout, type SphericalView, type Viewport } from './spherical-view.ts';
@@ -14,9 +15,10 @@ export function* sphericalFieldRaster(field:SphereFieldSnapshot,view:SphericalVi
  const value=new Float64Array(5),center=new Float64Array(6),sample=new Float64Array(6),sum=new Float64Array(6),stepX=width/columns*.25,stepY=height/rows*.25;
  let crosses=false,classification=0;
  const cut=sphereCutSampler(field,excavation,view,size,appearance);
- const labels=cut?new Uint8Array(columns*rows):undefined;
- function shade(px:number,py:number,out:Float64Array){
-  classification=0;if(cut?.(px,py,out)){classification=out[4]!;crosses=!!out[5];return classification;}
+ const folded=cutGlobePixelSampler(field,view,size,appearance,{columns,rows,left,top,width,height});
+ const labels=cut||folded?new Uint8Array(columns*rows):undefined;
+ function shade(px:number,py:number,out:Float64Array,slot=-1){
+  classification=0;if(folded){classification=folded(px,py,out,slot);crosses=!!out[5];return classification;}if(cut?.(px,py,out)){classification=out[4]!;crosses=!!out[5];return classification;}
   let face:CubeFace,u:number,v:number,coverage=1,depth=1;
   if(globe){const x=(px-l.x)/l.radius,y=(l.y-py)/l.radius,r=Math.hypot(x,y);coverage=inside?1:Math.max(0,Math.min(1,(1-r)*l.radius*scale+.5));if(!coverage){out.fill(0);crosses=false;return;}depth=inside?1:Math.sqrt(Math.max(0,1-x*x-y*y));const f=view.frame,xx=inside?-x:x,a=f.right[0]*xx+f.up[0]*y+f.forward[0]*depth,b=f.right[1]*xx+f.up[1]*y+f.forward[1]*depth,c=f.right[2]*xx+f.up[2]*y+f.forward[2]*depth,ax=Math.abs(a),ay=Math.abs(b),az=Math.abs(c);let normal:number,du:number,dv:number;
    if(ax>=ay&&ax>=az){face=a>=0?'px':'nx';normal=ax;du=a>=0?b:-b;dv=c;}else if(ay>=az){face=b>=0?'py':'ny';normal=ay;du=b>=0?-a:a;dv=c;}else{face=c>=0?'pz':'nz';normal=az;du=a;dv=c>=0?b:-b;}u=Math.atan(du/normal);v=Math.atan(dv/normal);
@@ -30,7 +32,7 @@ export function* sphericalFieldRaster(field:SphereFieldSnapshot,view:SphericalVi
  }
  let count=0;
  for(let row=0;row<rows;row++)for(let column=0;column<columns;column++){
-  const x=left+(column+.5)*width/columns,y=top+(row+.5)*height/rows,centerClass=shade(x,y,center)??0;if(labels)labels[row*columns+column]=centerClass;
+  const x=left+(column+.5)*width/columns,y=top+(row+.5)*height/rows,centerClass=shade(x,y,center,row*columns+column)??0;if(labels)labels[row*columns+column]=centerClass;
   if(crosses||center[3]!>0&&center[3]!<1){let mixed=false;sum.fill(0);for(const dx of[-stepX,stepX])for(const dy of[-stepY,stepY]){const sampleClass=shade(x+dx,y+dy,sample)??0;mixed||=sampleClass!==centerClass||sample[3]!==center[3];for(let i=0;i<4;i++)sum[i]!+=sample[i]!*.25;}if(mixed)center.set(sum);}
   const offset=(row*columns+column)*4,alpha=center[3]!;if(alpha>0){pixels[offset]=center[0]!/alpha;pixels[offset+1]=center[1]!/alpha;pixels[offset+2]=center[2]!/alpha;pixels[offset+3]=alpha*255;}if(++count%512===0)yield;
  }

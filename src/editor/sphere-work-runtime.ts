@@ -22,7 +22,7 @@ export function createSphereWorkRuntime(send:(message:SphereWorkOutput)=>void,sc
  return{receive(message:SphereWorkInput){try{
   if(message.type==='start'){
    if(stroke)throw Error('A spherical preparation task is already active.');task=message.task;sequence=0;waiting=false;acknowledged=false;released=false;processed=0;ordinal=1;computeMs=0;queue.length=0;ackWait.count=0;ackWait.totalMs=0;ackWait.maxMs=0;ackWait.samples.length=0;const start=performance.now();terrain=sphereWorkEpoch(message.metadata,message.values,message.sourceRevision);snapshotMs=performance.now()-start;send({type:'started',task,snapshotMs});
-   stroke=startSphericalBrushStroke(terrain,{...terrain.metadata.identity,direction:message.direction},message.settings,undefined,message.hemisphere?{hemisphere:message.hemisphere}:undefined,{deferInitial:true,commitReady(job){
+   stroke=startSphericalBrushStroke(terrain,{...terrain.metadata.identity,direction:message.direction},message.settings,undefined,message.hemisphere?{hemisphere:message.hemisphere,cutGlobe:message.physicalGeometry}:undefined,{deferInitial:true,commitReady(job){
     if(acknowledged){acknowledged=false;return true;}const changes=[...job.changes()];waiting=true;waitingAt=performance.now();expectedWrites=changes.length;
     const before=new Uint32Array(changes.length),word=new Float32Array(1),bits=new Uint32Array(word.buffer);for(let i=0;i<changes.length;i++){word[0]=changes[i]!.before;before[i]=bits[0]!;}
     send({type:'prepared',task,sequence:++sequence,sourceRevision:terrain!.revision,ordinal,fraction:job.fraction,center:job.center,visible:job.visible,indices:Uint32Array.from(changes,c=>c.index),before,after:Float32Array.from(changes,c=>c.after),statistics:stroke!.statistics,processed});return false;

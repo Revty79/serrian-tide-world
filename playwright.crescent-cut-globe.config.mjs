@@ -1,0 +1,3 @@
+import {defineConfig} from '@playwright/test';
+import {tmpdir} from 'node:os';import {join} from 'node:path';
+export default defineConfig({testDir:'./tests',testMatch:['crescent-cut-globe-*.spec.ts'],fullyParallel:false,workers:1,retries:0,timeout:240000,outputDir:join(tmpdir(),'serrian-cut-globe-playwright'),reporter:[['list'],['json',{outputFile:process.env.RIBBON_REPORT??'.local/cut-globe-browser.json'}]],use:{baseURL:process.env.ATLAS_TEST_URL??'http://127.0.0.1:5298',channel:'chrome',launchOptions:{args:process.platform==='win32'?['--use-angle=default']:[]},viewport:{width:1440,height:950},deviceScaleFactor:1,actionTimeout:15000,trace:'retain-on-failure',screenshot:'only-on-failure'},projects:[{name:'installed-chrome'}]});

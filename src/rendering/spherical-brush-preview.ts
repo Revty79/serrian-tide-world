@@ -25,10 +25,10 @@ export function sphericalBrushPreview(terrain: SphericalTerrain, centerInput: Ve
   const normal = Math.abs(center[2]) < .9 ? [0, 0, 1] as Vec3 : [0, 1, 0] as Vec3;
   const a = unitDirection(cross3(normal, center)), b = cross3(center, a), cosine = Math.cos(alpha), sine = Math.sin(alpha);
   const curve = (t: number): Vec3 => unitDirection([0, 1, 2].map((i) => center[i]! * cosine + (a[i]! * Math.cos(t) + b[i]! * Math.sin(t)) * sine) as unknown as Vec3);
-  if(sphereCenterInspection(view)){
+  if(sphereCenterInspection(view)||view.cutGlobe){
     const result:BrushPreviewSegment[]=[];let points:ScreenPoint[]=[],directions:Vec3[]=[];
     const finish=()=>{if(points.length>1)result.push({points,directions,kind:'cap'});points=[];directions=[];};
-    for(let i=0;i<=128;i++){const d=curve(i/128*TAU),p=projectSphere(terrain,d,view,size)[0];if(p){points.push(p);directions.push(d);}else finish();}finish();return result;
+    let previousFace:CubeFace|undefined;const steps=view.cutGlobe?256:128,times=Array.from({length:steps+1},(_,i)=>i/steps*TAU);if(view.cutGlobe){const axis=view.cutGlobe.axis;times.push(...roots(dot3(center,axis)*cosine-view.cutGlobe.separationRatio/2,dot3(a,axis)*sine,dot3(b,axis)*sine));times.sort((a,b)=>a-b);}for(const t of times){const d=curve(t),p=projectSphere(terrain,d,view,size)[0];if(p){if(view.mode==='net'&&previousFace!==p.face)finish();points.push(p);directions.push(d);previousFace=p.face;}else{finish();previousFace=undefined;}}finish();return result;
   }
   const l = sphericalLayout(view, size), segments: BrushPreviewSegment[] = [];
   const project = (direction: Vec3, face?: CubeFace): ScreenPoint => {
