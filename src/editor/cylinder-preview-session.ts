@@ -18,4 +18,4 @@ const hooks=Object.freeze<ConnectedSessionHooks<CylindricalTerrain,CylinderView>
  },
 });
 /** The accepted closed host adapter retains its public API and worker protocol. */
-export class CylinderPreviewSession extends ConnectedPreviewSession<CylindricalTerrain,CylinderView>{constructor(terrain:CylindricalTerrain,name='Untitled cylinder',saved=false,persistent=false){super(terrain,name,saved,persistent,hooks);}}
+export class CylinderPreviewSession extends ConnectedPreviewSession<CylindricalTerrain,CylinderView>{constructor(terrain:CylindricalTerrain,name='Untitled cylinder',saved=false,persistent=false,options:{rollingWork?:boolean}={}){super(terrain,name,saved,persistent,options.rollingWork?{...hooks,strokeOptions:()=>({rollingWork:true})}:hooks);}}
