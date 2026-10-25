@@ -8,4 +8,4 @@ export async function createCutGlobe(page:Page,detail:128|256,canvas=false,dimen
 
 export async function cutView(page:Page,name:string){await page.getByText('Surface views',{exact:true}).click();await page.getByRole('button',{name,exact:true}).click();await cutIdle(page);}
 
-export async function cutSettled(page:Page){await cutIdle(page);await expect.poll(async()=>{const s=await cutObserve(page,'snapshot');return s.renderer==='webgl2'||s.diagnostics.cpu.refined===true&&!s.diagnostics.cpu.pending;},{timeout:120000}).toBe(true);}
+export async function cutSettled(page:Page){await page.evaluate(()=>new Promise<void>(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve()))));await cutIdle(page);await expect.poll(async()=>{const s=await cutObserve(page,'snapshot');return s.renderer==='webgl2'||s.diagnostics.cpu.refined===true&&!s.diagnostics.cpu.pending;},{timeout:120000}).toBe(true);}

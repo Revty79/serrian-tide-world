@@ -1,0 +1,468 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\.local\\crescent-cut-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.crescent-cut-globe.config.mjs",
+      "tests/crescent-cut-globe-configuration-pixels.spec.ts",
+      "tests/crescent-cut-globe-configuration.spec.ts",
+      "tests/crescent-cut-globe-responsive.spec.ts",
+      "--grep",
+      "(deep|small) N(128|256):|shallow N256 Canvas|reference coordinates",
+      "--workers=1",
+      "--retries=0"
+    ],
+    "configFile": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\playwright.crescent-cut-globe.config.mjs",
+    "rootDir": "D:/serrian-tide-world/.local/crescent-cut-work/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-cut-globe-playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "installed-chrome",
+        "name": "installed-chrome",
+        "testDir": "D:/serrian-tide-world/.local/crescent-cut-work/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "crescent-cut-globe-*.spec.ts"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-cut-globe-playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "installed-chrome",
+        "testDir": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "crescent-cut-globe-*.spec.ts"
+        ],
+        "timeout": 240000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5298",
+          "channel": "chrome",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1,
+          "actionTimeout": 15000,
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "installed-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/cut-globe-configuration-targeted-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "crescent-cut-globe-configuration-pixels.spec.ts",
+      "file": "crescent-cut-globe-configuration-pixels.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Crescent-Cut Globe deep N128: configuration pixels and independent surface coverage",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 19414,
+                  "error": {
+                    "message": "Error: overview\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m2\u001b[39m\nReceived:    \u001b[31m33\u001b[39m",
+                    "stack": "Error: overview\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m2\u001b[39m\nReceived:    \u001b[31m33\u001b[39m\n    at D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-configuration-pixels.spec.ts:2:1365",
+                    "location": {
+                      "file": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-configuration-pixels.spec.ts",
+                      "column": 1365,
+                      "line": 2
+                    },
+                    "snippet": "  1 | import {test,expect} from '@playwright/test';import {mkdirSync,writeFileSync} from 'node:fs';\n> 2 | for(const n of [128,256] as const)for(const variant of ['deep','shallow','polar','small','large'])test(`Crescent-Cut Globe ${variant} N${n}: configuration pixels and independent surface coverage`,async({page})=>{test.setTimeout(300000);await page.goto('/');const proof=await page.evaluate(async({n,variant})=>{const path='/tests/fixtures/crescent-cut-globe-pixel-proof.ts';return(await import(path)).cutGlobePixelProof(n,variant,'pattern',variant==='small'||variant==='large'?['overview','concave-cut']:undefined);},{n,variant});mkdirSync('.local/cut-globe-configuration-pixels',{recursive:true});const root=`.local/cut-globe-configuration-pixels/${variant}-n${n}`;writeFileSync(root+'.json',JSON.stringify(proof.results,null,2));for(const capture of proof.captures)for(const backend of ['gpu','cpu'] as const)writeFileSync(`${root}-${capture.pose}-${backend}.png`,Buffer.from(capture[backend].split(',')[1]!,'base64'));for(const r of proof.results){expect(r.stable,r.pose).toBeGreaterThan(10000);expect(r.stableMax,r.pose).toBeLessThanOrEqual(2);expect(r.referenceMax,r.pose).toBeLessThanOrEqual(2);expect(r.nativeMax,r.pose).toBeLessThanOrEqual(2);expect(r.missing,r.pose).toBe(0);expect(r.outside,r.pose).toBe(0);expect(r.quarterAlphaMax,r.pose).toBeLessThanOrEqual(1);expect(r.canvasQuarterAlphaMax,r.pose).toBeLessThanOrEqual(1);expect(r.gpuOracleMax,r.pose).toBeLessThanOrEqual(2);expect(r.gpuOracleAlphaMax,r.pose).toBeLessThanOrEqual(1);expect(r.after).toBe(r.before);}});\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^\n  3 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-configuration-pixels.spec.ts",
+                        "column": 1365,
+                        "line": 2
+                      },
+                      "message": "Error: overview\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m2\u001b[39m\nReceived:    \u001b[31m33\u001b[39m\n\n  1 | import {test,expect} from '@playwright/test';import {mkdirSync,writeFileSync} from 'node:fs';\n> 2 | for(const n of [128,256] as const)for(const variant of ['deep','shallow','polar','small','large'])test(`Crescent-Cut Globe ${variant} N${n}: configuration pixels and independent surface coverage`,async({page})=>{test.setTimeout(300000);await page.goto('/');const proof=await page.evaluate(async({n,variant})=>{const path='/tests/fixtures/crescent-cut-globe-pixel-proof.ts';return(await import(path)).cutGlobePixelProof(n,variant,'pattern',variant==='small'||variant==='large'?['overview','concave-cut']:undefined);},{n,variant});mkdirSync('.local/cut-globe-configuration-pixels',{recursive:true});const root=`.local/cut-globe-configuration-pixels/${variant}-n${n}`;writeFileSync(root+'.json',JSON.stringify(proof.results,null,2));for(const capture of proof.captures)for(const backend of ['gpu','cpu'] as const)writeFileSync(`${root}-${capture.pose}-${backend}.png`,Buffer.from(capture[backend].split(',')[1]!,'base64'));for(const r of proof.results){expect(r.stable,r.pose).toBeGreaterThan(10000);expect(r.stableMax,r.pose).toBeLessThanOrEqual(2);expect(r.referenceMax,r.pose).toBeLessThanOrEqual(2);expect(r.nativeMax,r.pose).toBeLessThanOrEqual(2);expect(r.missing,r.pose).toBe(0);expect(r.outside,r.pose).toBe(0);expect(r.quarterAlphaMax,r.pose).toBeLessThanOrEqual(1);expect(r.canvasQuarterAlphaMax,r.pose).toBeLessThanOrEqual(1);expect(r.gpuOracleMax,r.pose).toBeLessThanOrEqual(2);expect(r.gpuOracleAlphaMax,r.pose).toBeLessThanOrEqual(1);expect(r.after).toBe(r.before);}});\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^\n  3 |\n    at D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-configuration-pixels.spec.ts:2:1365"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:14:53.394Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-cut-globe-playwright\\crescent-cut-globe-configu-f2d43-ndependent-surface-coverage-installed-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-cut-globe-playwright\\crescent-cut-globe-configu-f2d43-ndependent-surface-coverage-installed-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-cut-globe-playwright\\crescent-cut-globe-configu-f2d43-ndependent-surface-coverage-installed-chrome\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-configuration-pixels.spec.ts",
+                    "column": 1365,
+                    "line": 2
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a6cb75d871a82df5628c-68026e600395b06a928a",
+          "file": "crescent-cut-globe-configuration-pixels.spec.ts",
+          "line": 2,
+          "column": 99
+        },
+        {
+          "title": "Crescent-Cut Globe small N128: configuration pixels and independent surface coverage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8313,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:15:14.007Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a6cb75d871a82df5628c-c71fc9936b1e5deb6a2a",
+          "file": "crescent-cut-globe-configuration-pixels.spec.ts",
+          "line": 2,
+          "column": 99
+        },
+        {
+          "title": "Crescent-Cut Globe deep N256: configuration pixels and independent surface coverage",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 19082,
+                  "error": {
+                    "message": "Error: overview\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m2\u001b[39m\nReceived:    \u001b[31m33\u001b[39m",
+                    "stack": "Error: overview\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m2\u001b[39m\nReceived:    \u001b[31m33\u001b[39m\n    at D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-configuration-pixels.spec.ts:2:1365",
+                    "location": {
+                      "file": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-configuration-pixels.spec.ts",
+                      "column": 1365,
+                      "line": 2
+                    },
+                    "snippet": "  1 | import {test,expect} from '@playwright/test';import {mkdirSync,writeFileSync} from 'node:fs';\n> 2 | for(const n of [128,256] as const)for(const variant of ['deep','shallow','polar','small','large'])test(`Crescent-Cut Globe ${variant} N${n}: configuration pixels and independent surface coverage`,async({page})=>{test.setTimeout(300000);await page.goto('/');const proof=await page.evaluate(async({n,variant})=>{const path='/tests/fixtures/crescent-cut-globe-pixel-proof.ts';return(await import(path)).cutGlobePixelProof(n,variant,'pattern',variant==='small'||variant==='large'?['overview','concave-cut']:undefined);},{n,variant});mkdirSync('.local/cut-globe-configuration-pixels',{recursive:true});const root=`.local/cut-globe-configuration-pixels/${variant}-n${n}`;writeFileSync(root+'.json',JSON.stringify(proof.results,null,2));for(const capture of proof.captures)for(const backend of ['gpu','cpu'] as const)writeFileSync(`${root}-${capture.pose}-${backend}.png`,Buffer.from(capture[backend].split(',')[1]!,'base64'));for(const r of proof.results){expect(r.stable,r.pose).toBeGreaterThan(10000);expect(r.stableMax,r.pose).toBeLessThanOrEqual(2);expect(r.referenceMax,r.pose).toBeLessThanOrEqual(2);expect(r.nativeMax,r.pose).toBeLessThanOrEqual(2);expect(r.missing,r.pose).toBe(0);expect(r.outside,r.pose).toBe(0);expect(r.quarterAlphaMax,r.pose).toBeLessThanOrEqual(1);expect(r.canvasQuarterAlphaMax,r.pose).toBeLessThanOrEqual(1);expect(r.gpuOracleMax,r.pose).toBeLessThanOrEqual(2);expect(r.gpuOracleAlphaMax,r.pose).toBeLessThanOrEqual(1);expect(r.after).toBe(r.before);}});\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^\n  3 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-configuration-pixels.spec.ts",
+                        "column": 1365,
+                        "line": 2
+                      },
+                      "message": "Error: overview\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m2\u001b[39m\nReceived:    \u001b[31m33\u001b[39m\n\n  1 | import {test,expect} from '@playwright/test';import {mkdirSync,writeFileSync} from 'node:fs';\n> 2 | for(const n of [128,256] as const)for(const variant of ['deep','shallow','polar','small','large'])test(`Crescent-Cut Globe ${variant} N${n}: configuration pixels and independent surface coverage`,async({page})=>{test.setTimeout(300000);await page.goto('/');const proof=await page.evaluate(async({n,variant})=>{const path='/tests/fixtures/crescent-cut-globe-pixel-proof.ts';return(await import(path)).cutGlobePixelProof(n,variant,'pattern',variant==='small'||variant==='large'?['overview','concave-cut']:undefined);},{n,variant});mkdirSync('.local/cut-globe-configuration-pixels',{recursive:true});const root=`.local/cut-globe-configuration-pixels/${variant}-n${n}`;writeFileSync(root+'.json',JSON.stringify(proof.results,null,2));for(const capture of proof.captures)for(const backend of ['gpu','cpu'] as const)writeFileSync(`${root}-${capture.pose}-${backend}.png`,Buffer.from(capture[backend].split(',')[1]!,'base64'));for(const r of proof.results){expect(r.stable,r.pose).toBeGreaterThan(10000);expect(r.stableMax,r.pose).toBeLessThanOrEqual(2);expect(r.referenceMax,r.pose).toBeLessThanOrEqual(2);expect(r.nativeMax,r.pose).toBeLessThanOrEqual(2);expect(r.missing,r.pose).toBe(0);expect(r.outside,r.pose).toBe(0);expect(r.quarterAlphaMax,r.pose).toBeLessThanOrEqual(1);expect(r.canvasQuarterAlphaMax,r.pose).toBeLessThanOrEqual(1);expect(r.gpuOracleMax,r.pose).toBeLessThanOrEqual(2);expect(r.gpuOracleAlphaMax,r.pose).toBeLessThanOrEqual(1);expect(r.after).toBe(r.before);}});\n    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^\n  3 |\n    at D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-configuration-pixels.spec.ts:2:1365"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:15:22.702Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-cut-globe-playwright\\crescent-cut-globe-configu-3f630-ndependent-surface-coverage-installed-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-cut-globe-playwright\\crescent-cut-globe-configu-3f630-ndependent-surface-coverage-installed-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-cut-globe-playwright\\crescent-cut-globe-configu-3f630-ndependent-surface-coverage-installed-chrome\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests\\crescent-cut-globe-configuration-pixels.spec.ts",
+                    "column": 1365,
+                    "line": 2
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a6cb75d871a82df5628c-436e16f8e35c4b03e42a",
+          "file": "crescent-cut-globe-configuration-pixels.spec.ts",
+          "line": 2,
+          "column": 99
+        },
+        {
+          "title": "Crescent-Cut Globe small N256: configuration pixels and independent surface coverage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10628,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:15:42.393Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a6cb75d871a82df5628c-5bac5c1f2334cc1226af",
+          "file": "crescent-cut-globe-configuration-pixels.spec.ts",
+          "line": 2,
+          "column": 99
+        }
+      ]
+    },
+    {
+      "title": "crescent-cut-globe-configuration.spec.ts",
+      "file": "crescent-cut-globe-configuration.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Crescent-Cut Globe shallow N256 Canvas physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12555,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:15:53.462Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-71d33058932cdca1e379",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        }
+      ]
+    },
+    {
+      "title": "crescent-cut-globe-responsive.spec.ts",
+      "file": "crescent-cut-globe-responsive.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Crescent-Cut Globe hardware reference coordinates, resize and return to painting",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2314,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:16:06.048Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5a44d3558b944a9ec127-a972a7019c23a180f8cb",
+          "file": "crescent-cut-globe-responsive.spec.ts",
+          "line": 2,
+          "column": 34
+        },
+        {
+          "title": "Crescent-Cut Globe Canvas reference coordinates, resize and return to painting",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5225,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:16:08.372Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5a44d3558b944a9ec127-1e7c4e1dd504702c41ba",
+          "file": "crescent-cut-globe-responsive.spec.ts",
+          "line": 2,
+          "column": 34
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T12:14:52.875Z",
+    "duration": 80899.899,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

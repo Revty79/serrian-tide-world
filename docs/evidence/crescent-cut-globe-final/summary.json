@@ -1,0 +1,40 @@
+{
+  "sourceTests": 219,
+  "sourceFiles": 29,
+  "finalBrowserCases": 41,
+  "finalPerformanceCases": 3,
+  "configurationWorkflows": 20,
+  "matchedPixelPoses": 72,
+  "pixelMaxima": {
+    "stableMax": 1,
+    "referenceMax": 1,
+    "nativeMax": 1,
+    "quarterAlphaMax": 0,
+    "canvasQuarterAlphaMax": 0,
+    "gpuOracleMax": 1,
+    "gpuOracleAlphaMax": 0,
+    "missing": 0,
+    "outside": 0
+  },
+  "configurationWorstP95Ms": 98.59999990463257,
+  "configurationWorstFirstMs": 98.59999990463257,
+  "finalLifecycle": {
+    "hardware": {
+      "p95InputToPixelsMs": 30.700000047683716,
+      "firstPixelMs": 31.799999952316284,
+      "navigationMaxMs": 13.399999976158142,
+      "numericalMismatches": 0,
+      "largeBrushBackend": "worker"
+    },
+    "canvas": {
+      "p95InputToPixelsMs": 61.300000071525574,
+      "firstPixelMs": 132,
+      "navigationMaxMs": 111.89999997615814,
+      "numericalMismatches": 0,
+      "largeBrushBackend": "worker"
+    }
+  },
+  "provenance": "Configuration, pixels, touch and responsive checks: final-browser. N256 hardware/Canvas lifecycle and N256 Canvas four-tool workflow: final-performance. Other default N128/N256 workflows and six shared browser regressions are in frozen B, not rerun or relabeled here.",
+  "touchQualification": "Trusted CDP touch/pen and coarse-pointer emulation in installed Chrome; no physical device.",
+  "coastalReferenceQualification": "Independent double physical-hit coverage; GPU-precision boundary color oracle uses accepted field/color functions. Direct double coastal RGB can differ by one quarter-ray class, also observed on accepted native Sphere."
+}

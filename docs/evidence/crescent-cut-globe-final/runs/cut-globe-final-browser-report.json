@@ -1,0 +1,1560 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\.local\\crescent-cut-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.crescent-cut-globe.config.mjs",
+      "tests/crescent-cut-globe-configuration.spec.ts",
+      "tests/crescent-cut-globe-configuration-pixels.spec.ts",
+      "tests/crescent-cut-globe-touch.spec.ts",
+      "tests/crescent-cut-globe-responsive.spec.ts",
+      "tests/crescent-cut-globe-pixels.spec.ts",
+      "--workers=1",
+      "--retries=0"
+    ],
+    "configFile": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\playwright.crescent-cut-globe.config.mjs",
+    "rootDir": "D:/serrian-tide-world/.local/crescent-cut-work/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-cut-globe-playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "installed-chrome",
+        "name": "installed-chrome",
+        "testDir": "D:/serrian-tide-world/.local/crescent-cut-work/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "crescent-cut-globe-*.spec.ts"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-cut-globe-playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "installed-chrome",
+        "testDir": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "crescent-cut-globe-*.spec.ts"
+        ],
+        "timeout": 240000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5298",
+          "channel": "chrome",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1,
+          "actionTimeout": 15000,
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "installed-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/cut-globe-final-browser-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "crescent-cut-globe-configuration-pixels.spec.ts",
+      "file": "crescent-cut-globe-configuration-pixels.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Crescent-Cut Globe deep N128: configuration pixels and independent surface coverage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19078,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:27:29.241Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a6cb75d871a82df5628c-68026e600395b06a928a",
+          "file": "crescent-cut-globe-configuration-pixels.spec.ts",
+          "line": 2,
+          "column": 99
+        },
+        {
+          "title": "Crescent-Cut Globe shallow N128: configuration pixels and independent surface coverage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16497,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:27:48.733Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a6cb75d871a82df5628c-ec832407ac19e0b61804",
+          "file": "crescent-cut-globe-configuration-pixels.spec.ts",
+          "line": 2,
+          "column": 99
+        },
+        {
+          "title": "Crescent-Cut Globe polar N128: configuration pixels and independent surface coverage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16673,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:28:05.244Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a6cb75d871a82df5628c-09fc5db84ddc1f61f253",
+          "file": "crescent-cut-globe-configuration-pixels.spec.ts",
+          "line": 2,
+          "column": 99
+        },
+        {
+          "title": "Crescent-Cut Globe small N128: configuration pixels and independent surface coverage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6046,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:28:21.930Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a6cb75d871a82df5628c-c71fc9936b1e5deb6a2a",
+          "file": "crescent-cut-globe-configuration-pixels.spec.ts",
+          "line": 2,
+          "column": 99
+        },
+        {
+          "title": "Crescent-Cut Globe large N128: configuration pixels and independent surface coverage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6103,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:28:27.987Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a6cb75d871a82df5628c-8de43a999eb0f8c87294",
+          "file": "crescent-cut-globe-configuration-pixels.spec.ts",
+          "line": 2,
+          "column": 99
+        },
+        {
+          "title": "Crescent-Cut Globe deep N256: configuration pixels and independent surface coverage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19083,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:28:34.106Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a6cb75d871a82df5628c-436e16f8e35c4b03e42a",
+          "file": "crescent-cut-globe-configuration-pixels.spec.ts",
+          "line": 2,
+          "column": 99
+        },
+        {
+          "title": "Crescent-Cut Globe shallow N256: configuration pixels and independent surface coverage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18955,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:28:53.201Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a6cb75d871a82df5628c-5389b5e15588d05c7965",
+          "file": "crescent-cut-globe-configuration-pixels.spec.ts",
+          "line": 2,
+          "column": 99
+        },
+        {
+          "title": "Crescent-Cut Globe polar N256: configuration pixels and independent surface coverage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19485,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:29:12.168Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a6cb75d871a82df5628c-590d42472d5ec296f892",
+          "file": "crescent-cut-globe-configuration-pixels.spec.ts",
+          "line": 2,
+          "column": 99
+        },
+        {
+          "title": "Crescent-Cut Globe small N256: configuration pixels and independent surface coverage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8394,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:29:31.666Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a6cb75d871a82df5628c-5bac5c1f2334cc1226af",
+          "file": "crescent-cut-globe-configuration-pixels.spec.ts",
+          "line": 2,
+          "column": 99
+        },
+        {
+          "title": "Crescent-Cut Globe large N256: configuration pixels and independent surface coverage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8332,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:29:40.069Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a6cb75d871a82df5628c-dfc075f912a991db978e",
+          "file": "crescent-cut-globe-configuration-pixels.spec.ts",
+          "line": 2,
+          "column": 99
+        }
+      ]
+    },
+    {
+      "title": "crescent-cut-globe-configuration.spec.ts",
+      "file": "crescent-cut-globe-configuration.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Crescent-Cut Globe deep N128 hardware physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5052,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:29:48.431Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-699535080dc41d378690",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe shallow N128 hardware physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5140,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:29:53.492Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-ad1ba828c6471ab3f9cd",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe polar N128 hardware physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5043,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:29:58.640Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-3a95dcb04449d91c505a",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe small N128 hardware physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5017,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:30:03.693Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-1d2bb3410b95d2422fba",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe large N128 hardware physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4864,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:30:08.718Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-26e296d50dad01d92884",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe deep N128 Canvas physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8418,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:30:13.591Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-9f178bef5d1b03cc549c",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe shallow N128 Canvas physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9910,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:30:22.017Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-660c3fa7f2da3bd75fb9",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe polar N128 Canvas physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9862,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:30:31.936Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-a13837d72c586c05b2df",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe small N128 Canvas physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9524,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:30:41.807Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-7576f86025a0e6306dfd",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe large N128 Canvas physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9297,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:30:51.339Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-0840e8f2a64a360023e8",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe deep N256 hardware physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7777,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:31:00.645Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-0bbcf93e38d388853538",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe shallow N256 hardware physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7741,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:31:08.431Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-7f9dc2a4f93bc91f926c",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe polar N256 hardware physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7681,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:31:16.180Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-cf8d1d1b5d2c70c8fa58",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe small N256 hardware physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7618,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:31:23.870Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-053a25378421e677190e",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe large N256 hardware physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7667,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:31:31.497Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-eb93a2e4fe4274cd5fe0",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe deep N256 Canvas physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11760,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:31:39.172Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-856d14e84e96d3b21534",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe shallow N256 Canvas physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12580,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:31:50.942Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-71d33058932cdca1e379",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe polar N256 Canvas physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12309,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:32:03.532Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-09ceaa18d971f1375f49",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe small N256 Canvas physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11708,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:32:15.851Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-c9df03c1e230c63a1141",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe large N256 Canvas physical rim, map correspondence, v45 configuration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12286,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:32:27.571Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-af0dbcf64a4373fafaab",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 3,
+          "column": 98
+        },
+        {
+          "title": "Crescent-Cut Globe creator rejects unsupported dimensions without changing the active World",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1218,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:32:39.869Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0e29b90f9c1cc610fc88-92c2c95e5b72e515f614",
+          "file": "crescent-cut-globe-configuration.spec.ts",
+          "line": 7,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "crescent-cut-globe-pixels.spec.ts",
+      "file": "crescent-cut-globe-pixels.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Crescent-Cut Globe N128 pattern: matched hardware/Canvas pixels and independent physical geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16838,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:32:41.119Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4923a8e0e9f8bab8b030-ae03f342ee787c7ce6df",
+          "file": "crescent-cut-globe-pixels.spec.ts",
+          "line": 2,
+          "column": 95
+        },
+        {
+          "title": "Crescent-Cut Globe N128 ocean: matched hardware/Canvas pixels and independent physical geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5449,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:32:57.965Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4923a8e0e9f8bab8b030-b675aa7763d634d33a86",
+          "file": "crescent-cut-globe-pixels.spec.ts",
+          "line": 2,
+          "column": 95
+        },
+        {
+          "title": "Crescent-Cut Globe N128 reference: matched hardware/Canvas pixels and independent physical geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5635,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:33:03.424Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4923a8e0e9f8bab8b030-90ee95afcce5c3e36dec",
+          "file": "crescent-cut-globe-pixels.spec.ts",
+          "line": 2,
+          "column": 95
+        },
+        {
+          "title": "Crescent-Cut Globe N256 pattern: matched hardware/Canvas pixels and independent physical geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19275,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:33:09.069Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4923a8e0e9f8bab8b030-339f13fe86ffd4b1a029",
+          "file": "crescent-cut-globe-pixels.spec.ts",
+          "line": 2,
+          "column": 95
+        },
+        {
+          "title": "Crescent-Cut Globe N256 ocean: matched hardware/Canvas pixels and independent physical geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7240,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:33:28.353Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4923a8e0e9f8bab8b030-897581da41ae4a52af9b",
+          "file": "crescent-cut-globe-pixels.spec.ts",
+          "line": 2,
+          "column": 95
+        },
+        {
+          "title": "Crescent-Cut Globe N256 reference: matched hardware/Canvas pixels and independent physical geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7869,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:33:35.603Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4923a8e0e9f8bab8b030-06d8a49b98dad0b4d3de",
+          "file": "crescent-cut-globe-pixels.spec.ts",
+          "line": 2,
+          "column": 95
+        }
+      ]
+    },
+    {
+      "title": "crescent-cut-globe-responsive.spec.ts",
+      "file": "crescent-cut-globe-responsive.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Crescent-Cut Globe hardware reference coordinates, resize and return to painting",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2288,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:33:43.487Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5a44d3558b944a9ec127-a972a7019c23a180f8cb",
+          "file": "crescent-cut-globe-responsive.spec.ts",
+          "line": 2,
+          "column": 34
+        },
+        {
+          "title": "Crescent-Cut Globe Canvas reference coordinates, resize and return to painting",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5626,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:33:45.786Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5a44d3558b944a9ec127-1e7c4e1dd504702c41ba",
+          "file": "crescent-cut-globe-responsive.spec.ts",
+          "line": 2,
+          "column": 34
+        }
+      ]
+    },
+    {
+      "title": "crescent-cut-globe-touch.spec.ts",
+      "file": "crescent-cut-globe-touch.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Crescent-Cut Globe hardware coarse emulated touch/pen and two-contact navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6542,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:33:51.442Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b1c76901cef5774bfcbd-712b4e32d4cf0407f492",
+          "file": "crescent-cut-globe-touch.spec.ts",
+          "line": 3,
+          "column": 34
+        },
+        {
+          "title": "Crescent-Cut Globe Canvas coarse emulated touch/pen and two-contact navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8148,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:33:57.993Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b1c76901cef5774bfcbd-b886725cf9ef810ad81e",
+          "file": "crescent-cut-globe-touch.spec.ts",
+          "line": 3,
+          "column": 34
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T12:27:28.757Z",
+    "duration": 397833.75700000004,
+    "expected": 41,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

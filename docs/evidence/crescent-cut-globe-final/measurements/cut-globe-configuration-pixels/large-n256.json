@@ -1,0 +1,301 @@
+[
+  {
+    "detail": 256,
+    "variant": "large",
+    "start": "pattern",
+    "pose": "overview",
+    "stable": 199515,
+    "stableLand": 79453,
+    "stableOcean": 120062,
+    "stableMax": 1,
+    "referenceMax": 1,
+    "nativeMax": 1,
+    "nativeChecked": 95961,
+    "missing": 0,
+    "outside": 0,
+    "quarterChecked": 2448,
+    "quarterAlphaMax": 0,
+    "quarterColorMax": 18,
+    "coastAmbiguous": 13,
+    "canvasQuarterChecked": 970,
+    "canvasQuarterAlphaMax": 0,
+    "gpuOracleMax": 0,
+    "gpuOracleAlphaMax": 0,
+    "worst": {
+      "kind": "stable",
+      "x": 488,
+      "y": 55,
+      "label": 3,
+      "cpu": {
+        "0": 104,
+        "1": 119,
+        "2": 77,
+        "3": 255
+      },
+      "gpu": {
+        "0": 104,
+        "1": 118,
+        "2": 77,
+        "3": 255
+      },
+      "expected": {
+        "0": 104,
+        "1": 119,
+        "2": 77,
+        "3": 255
+      }
+    },
+    "worstQuarter": {
+      "x": 421,
+      "y": 224,
+      "label": 2,
+      "rays": [
+        2,
+        3,
+        2,
+        3
+      ],
+      "alpha": 1,
+      "sum": [
+        70.73267982590656,
+        125.95745318327621,
+        111.90357769387234
+      ],
+      "gpu": [
+        53,
+        117,
+        125,
+        255
+      ],
+      "native": [
+        53,
+        117,
+        125,
+        255
+      ],
+      "expected": [
+        {
+          "label": 2,
+          "color": [
+            35.84207408163703,
+            107.52622224491108,
+            138.52477280200256
+          ],
+          "height": -4.7241799845637615
+        },
+        {
+          "label": 3,
+          "color": [
+            105.61227021365336,
+            144.3690666223335,
+            85.26495209909629
+          ],
+          "height": 0.02821561558227348
+        },
+        {
+          "label": 2,
+          "color": [
+            35.847658568183896,
+            107.54297570455168,
+            138.54635608784585
+          ],
+          "height": -0.17627581480072074
+        },
+        {
+          "label": 3,
+          "color": [
+            105.62871644015195,
+            144.39154816130863,
+            85.2782297865447
+          ],
+          "height": 4.602764064507304
+        }
+      ]
+    },
+    "graphics": {
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "reason": "",
+      "losses": 0,
+      "recoveries": 0,
+      "uploads": 1,
+      "uploadBytes": 6340704,
+      "textureBytes": 6340704,
+      "presentations": 1,
+      "resources": 3
+    },
+    "canvas": {
+      "columns": 556,
+      "rows": 556
+    },
+    "before": "598714cd5f5d1bf45900ac41cad09f1e9d0e8cfacfe2562140a070ab96155ac9",
+    "after": "598714cd5f5d1bf45900ac41cad09f1e9d0e8cfacfe2562140a070ab96155ac9"
+  },
+  {
+    "detail": 256,
+    "variant": "large",
+    "start": "pattern",
+    "pose": "concave-cut",
+    "stable": 220561,
+    "stableLand": 55319,
+    "stableOcean": 165242,
+    "stableMax": 1,
+    "referenceMax": 1,
+    "nativeMax": 1,
+    "nativeChecked": 11598,
+    "missing": 0,
+    "outside": 0,
+    "quarterChecked": 3352,
+    "quarterAlphaMax": 0,
+    "quarterColorMax": 1,
+    "coastAmbiguous": 11,
+    "canvasQuarterChecked": 1048,
+    "canvasQuarterAlphaMax": 0,
+    "gpuOracleMax": 1,
+    "gpuOracleAlphaMax": 0,
+    "gpuOracleWorst": {
+      "offset": 1656944,
+      "actual": [
+        55,
+        97,
+        86,
+        255
+      ],
+      "reference": [
+        55,
+        96,
+        86,
+        255
+      ],
+      "rays": [
+        236,
+        414,
+        0,
+        1.058984637260437,
+        236,
+        414,
+        0,
+        1.0480915307998657,
+        236,
+        414,
+        0,
+        1.0757759809494019,
+        236,
+        414,
+        0,
+        1.0348297357559204,
+        236,
+        414,
+        0,
+        1.0681345462799072
+      ]
+    },
+    "worst": {
+      "kind": "stable",
+      "x": 483,
+      "y": 55,
+      "label": 3,
+      "cpu": {
+        "0": 100,
+        "1": 117,
+        "2": 75,
+        "3": 255
+      },
+      "gpu": {
+        "0": 101,
+        "1": 118,
+        "2": 75,
+        "3": 255
+      },
+      "expected": {
+        "0": 100,
+        "1": 117,
+        "2": 75,
+        "3": 255
+      }
+    },
+    "worstQuarter": {
+      "x": 479,
+      "y": 53,
+      "label": 0,
+      "rays": [
+        0,
+        3,
+        0,
+        3
+      ],
+      "alpha": 0.5,
+      "sum": [
+        44.79068585472923,
+        56.59728762921631,
+        34.85793211600739
+      ],
+      "gpu": [
+        45,
+        56,
+        35,
+        128
+      ],
+      "native": [
+        39,
+        50,
+        30,
+        112
+      ],
+      "expected": [
+        {
+          "label": 0,
+          "color": [
+            0,
+            0,
+            0
+          ],
+          "height": 0
+        },
+        {
+          "label": 3,
+          "color": [
+            89.1505489160054,
+            113.12380576736821,
+            69.67227772427313
+          ],
+          "height": 274.6041786896907
+        },
+        {
+          "label": 0,
+          "color": [
+            0,
+            0,
+            0
+          ],
+          "height": 0
+        },
+        {
+          "label": 3,
+          "color": [
+            90.01219450291154,
+            113.26534474949702,
+            69.75945073975645
+          ],
+          "height": 289.6514249771111
+        }
+      ]
+    },
+    "graphics": {
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "reason": "",
+      "losses": 0,
+      "recoveries": 0,
+      "uploads": 1,
+      "uploadBytes": 6340704,
+      "textureBytes": 6340704,
+      "presentations": 2,
+      "resources": 3
+    },
+    "canvas": {
+      "columns": 556,
+      "rows": 556
+    },
+    "before": "598714cd5f5d1bf45900ac41cad09f1e9d0e8cfacfe2562140a070ab96155ac9",
+    "after": "598714cd5f5d1bf45900ac41cad09f1e9d0e8cfacfe2562140a070ab96155ac9"
+  }
+]

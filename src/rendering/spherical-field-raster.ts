@@ -1,3 +1,4 @@
+import {cutGlobeRasterGrid} from './crescent-cut-globe-raster-grid.ts';
 import {cutGlobePixelSampler} from './crescent-cut-globe-pixels.ts';
 import {sphereCenterInspection} from './spherical-view.ts';
 import { type CubeFace } from '../surfaces/cube-sphere.ts';
@@ -8,9 +9,10 @@ import {rasterEdgeCoverage} from './raster-quality.ts';
 
 /** A coherent derived epoch and bounded CPU pixel work, for both projections.
  * The caller presents only the completed buffer and retains its exact view. */
-export function* sphericalFieldRaster(field:SphereFieldSnapshot,view:SphericalView,size:Viewport,appearance:SphereAppearance,pixelBudget:number,reusable?:Uint8ClampedArray,excavation?:SphereCutRaster):Generator<void,{pixels:Uint8ClampedArray;columns:number;rows:number;left:number;top:number;width:number;height:number;revision:number}> {
+export function* sphericalFieldRaster(field:SphereFieldSnapshot,view:SphericalView,size:Viewport,appearance:SphereAppearance,pixelBudget:number,reusable?:Uint8ClampedArray,excavation?:SphereCutRaster,backing?:Viewport):Generator<void,{pixels:Uint8ClampedArray;columns:number;rows:number;left:number;top:number;width:number;height:number;revision:number}> {
  if(!Number.isSafeInteger(pixelBudget)||pixelBudget<1||pixelBudget>2000000)throw RangeError('Invalid spherical display pixel budget.');
- const l=sphericalLayout(view,size),globe=view.mode==='globe',inside=sphereCenterInspection(view),left=Math.max(0,inside?0:globe?l.x-l.radius:l.x+(-2+view.pan.x)*l.face),top=Math.max(0,inside?0:globe?l.y-l.radius:l.y+(-1.5+view.pan.y)*l.face),right=Math.min(size.width,inside?size.width:globe?l.x+l.radius:l.x+(2+view.pan.x)*l.face),bottom=Math.min(size.height,inside?size.height:globe?l.y+l.radius:l.y+(1.5+view.pan.y)*l.face),width=Math.max(0,right-left),height=Math.max(0,bottom-top),scale=width*height?Math.min(1.5,Math.sqrt(pixelBudget/(width*height))):1,columns=Math.max(1,Math.floor(width*scale)),rows=Math.max(1,Math.floor(height*scale));
+ const l=sphericalLayout(view,size),globe=view.mode==='globe',inside=sphereCenterInspection(view);let left=Math.max(0,inside?0:globe?l.x-l.radius:l.x+(-2+view.pan.x)*l.face),top=Math.max(0,inside?0:globe?l.y-l.radius:l.y+(-1.5+view.pan.y)*l.face),right=Math.min(size.width,inside?size.width:globe?l.x+l.radius:l.x+(2+view.pan.x)*l.face),bottom=Math.min(size.height,inside?size.height:globe?l.y+l.radius:l.y+(1.5+view.pan.y)*l.face),width=Math.max(0,right-left),height=Math.max(0,bottom-top),scale=width*height?Math.min(1.5,Math.sqrt(pixelBudget/(width*height))):1,columns=Math.max(1,Math.floor(width*scale)),rows=Math.max(1,Math.floor(height*scale));
+ if(view.cutGlobe){const aligned=cutGlobeRasterGrid({left,top,width,height},size,pixelBudget,backing);({left,top,width,height,scale,columns,rows}=aligned);}
  const pixels=reusable?.length===columns*rows*4?reusable:new Uint8ClampedArray(columns*rows*4);pixels.fill(0);
  const value=new Float64Array(5),center=new Float64Array(6),sample=new Float64Array(6),sum=new Float64Array(6),stepX=width/columns*.25,stepY=height/rows*.25;
  let crosses=false,classification=0;

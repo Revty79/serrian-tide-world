@@ -45,7 +45,7 @@ vec3 color(vec4 v,float depth){vec3 rgb=palette(v.x);if(relief==1){if(v.x>0.){ve
 vec4 shade(vec2 pixel){vec4 value;float alpha,depth;if(!hit(pixel,value,alpha,depth))return vec4(0.);return vec4(color(value,depth)*alpha,alpha);}
 ${CRESCENT_CUT_GLOBE_GLSL}
 ${HOLLOW_SPHERE_GLSL}
-void main(){vec2 pixel=vec2(gl_FragCoord.x/backingSize.x*viewport.x,(1.-gl_FragCoord.y/backingSize.y)*viewport.y);if(foldEnabled==1){outColor=foldPixel(pixel);return;}if(mode==0&&excavationEnabled==1&&sphereCutAffects(pixel)){outColor=sphereCutRay(pixel);return;}vec4 v;float alpha,depth;if(!hit(pixel,v,alpha,depth)){outColor=vec4(0.);return;}
+void main(){vec2 pixel=vec2(gl_FragCoord.x/backingSize.x*viewport.x,(1.-gl_FragCoord.y/backingSize.y)*viewport.y);if(foldEnabled==1){pixel=vec2(gl_FragCoord.x,backingSize.y-gl_FragCoord.y)*(viewport/backingSize);outColor=foldPixel(pixel);return;}if(mode==0&&excavationEnabled==1&&sphereCutAffects(pixel)){outColor=sphereCutRay(pixel);return;}vec4 v;float alpha,depth;if(!hit(pixel,v,alpha,depth)){outColor=vec4(0.);return;}
  vec2 step=viewport/backingSize*.25;
  // Four geographical rays only where coast coverage or silhouette requires it.
  if(abs(v.x)<fwidth(v.x)||alpha<1.)outColor=(shade(pixel+vec2(-step.x,-step.y))+shade(pixel+vec2(step.x,-step.y))+shade(pixel+vec2(-step.x,step.y))+shade(pixel+step))*.25;

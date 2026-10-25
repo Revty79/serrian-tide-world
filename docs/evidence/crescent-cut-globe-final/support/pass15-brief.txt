@@ -1,0 +1,1661 @@
+# CODY — ATLAS GEOMETRY PASS 15: CRESCENT-CUT GLOBE WORLDS
+
+**Repository:** `Revty79/serrian-tide-world`
+
+**Starting point:** Latest verified `main`, following previously authorized geometry checkpoints where successfully completed.
+
+**Objective:** Deliver fully operational **Crescent-Cut Globe Worlds** consisting of genuine three-dimensional spherical bodies with a substantial curved volume physically removed, creating a recognizable crescent-shaped remaining globe and a real concave exposed surface. The resulting World must provide correct physical topology, accurate connected surface mathematics, responsive numerical terrain sculpting, sharp rendering, reliable navigation, exact history, and strict Save/Open.
+
+**Scope:** Crescent-cut spherical geometry, physically valid material subtraction, configurable cut geometry, exposed concave surfaces, canonical numerical geography, sculpting, rendering, navigation, history, persistence, and verification.
+
+**Owner direction:** Continue the successful geometry-first development process. Reuse proven Atlas systems. Deliver genuine operational World geometries, documenting minor issues for later refinement where appropriate. Do not introduce excavation tools, unrestricted custom shape creation, or unrelated architectural work.
+
+**This assignment covers Crescent-Cut Globe Worlds only.** Rounded Crescent Globe Worlds and Filled-Torus Worlds will receive separate assignments.
+
+---
+
+## 1. MANDATORY EXISTING ATLAS STANDARDS
+
+Before beginning implementation, review:
+
+- `AGENTS.md`
+- `docs/ATLAS-RENDERING-STANDARD.md`
+- `docs/ATLAS-SHAPES-FIRST-2026-10-23.md`
+- Existing Sphere and Hollow Sphere implementations.
+- Existing Cube, Cylinder, Pyramid, Tetrahedron, and Octahedron implementations.
+- Completed Decahedron, Dodecahedron, and Icosahedron implementations where available.
+- Completed Floating Islands and Fragmented Worlds implementations where available.
+- Completed Torus and Ringworld implementations where available.
+- Completed Crescent, Horseshoe, and Arc implementations where available.
+- Completed Dumbbell, Hourglass, Spiral, and Ribbon implementations where available.
+- Existing shared terrain, worker, rendering, camera, history, persistence, and creator-interface infrastructure.
+
+Review the actual current repository state.
+
+Do not assume that an earlier implementation detail remains unchanged.
+
+All established Atlas quality and engineering standards remain mandatory.
+
+**USE WHAT WORKS. REINVENT ONLY WHEN PROVEN UNWORKABLE.**
+
+Reuse proven systems for:
+
+- Canonical Float32 numerical geography.
+- Existing spherical physical geometry mathematics.
+- Geometry-specific connected surface adapters.
+- Intrinsic surface-distance calculations.
+- Standard terrain brushes.
+- Worker execution and pointer scheduling.
+- Terrain interpolation.
+- Elevation palettes, coastlines, and relief shading.
+- Indexed display caches.
+- Sharp WebGL2 and Canvas rendering.
+- Incremental display updates.
+- Yielding idle refinement.
+- Physical camera navigation.
+- Surface selection and picking.
+- Two-dimensional map editing.
+- Exact whole-gesture Undo/Redo.
+- Strict versioned Save/Open.
+- Familiar Atlas creator controls.
+
+The existing Sphere implementation should provide substantial reusable infrastructure.
+
+The existing Hollow Sphere implementation may provide useful lessons about inward-facing surface normals and rendering.
+
+However, a Crescent-Cut Globe is neither an ordinary Sphere nor a Hollow Sphere.
+
+It requires a genuine curved subtraction from the material volume.
+
+Do not create a separate painting engine, renderer, history framework, or persistence system without demonstrated necessity.
+
+---
+
+## 2. WHAT A CRESCENT-CUT GLOBE ACTUALLY IS
+
+A Crescent-Cut Globe is a genuine three-dimensional spherical World from which a substantial curved portion of its material has been removed.
+
+The remaining physical body must preserve recognizable globe-like curvature while possessing a deep curved cut that can produce a distinct crescent silhouette.
+
+### Fundamental physical structure
+
+The completed geometry must possess:
+
+1. An original spherical reference body.
+2. A mathematically defined curved material subtraction.
+3. A remaining connected three-dimensional solid.
+4. A genuine outer spherical geographical surface.
+5. A real exposed concave cut surface.
+6. A valid physical boundary where the two surfaces meet.
+7. Meaningful remaining material volume.
+8. Accurate physical dimensions.
+9. Correct outward material normals.
+10. Valid connected surface topology.
+11. Fully authoritative numerical terrain on the remaining physical boundary.
+12. Stable geometry and geography through Save/Open.
+
+### The essential visual result
+
+Imagine a large globe.
+
+Another curved three-dimensional volume intersects it and removes a substantial portion of its material.
+
+The result is a globe with a huge curved section missing.
+
+Viewed from an appropriate angle, the remaining World resembles a crescent-shaped planet.
+
+However, unlike our existing Crescent World, the underlying construction retains its spherical origin.
+
+The exposed concave region must be actual physical surface geometry.
+
+### This World is NOT
+
+Do not implement it as:
+
+- A Sphere with crescent lighting.
+- A darkened hemisphere.
+- A visual shadow.
+- A crescent-shaped terrain color mask.
+- A Sphere with part of its mesh merely hidden.
+- A transparent section of an otherwise complete Sphere.
+- A flat crescent-shaped map.
+- A decorative crater texture.
+- A regular Crescent World renamed.
+- A Hollow Sphere with a missing outer texture.
+- A carved-looking surface that cannot be sculpted.
+- Two overlapping spheres rendered without a valid material subtraction.
+
+**The missing material must actually be absent from the physical geometry.**
+
+### Distinction from Rounded Crescent Globe
+
+The next geometry, Rounded Crescent Globe, will be a naturally crescent-shaped, bulbous physical body with its own smooth mass distribution.
+
+This Crescent-Cut Globe instead begins from an actual globe-like reference body and obtains its shape through a substantial curved subtraction.
+
+These are separate physical constructions and must remain separate creator-facing World families.
+
+---
+
+## 3. GENUINE SPHERICAL MATERIAL SUBTRACTION
+
+Implement a mathematically valid three-dimensional curved subtraction from a solid spherical reference body.
+
+### Suitable construction
+
+One appropriate initial model is the difference between two intersecting spherical volumes.
+
+Let:
+
+- `A` represent the original solid globe.
+- `B` represent a second solid curved cutting volume.
+
+The remaining World is the material belonging to `A` that is not inside `B`.
+
+Symbolically:
+
+`World = A \ B`
+
+An intersecting-sphere construction is acceptable if it produces the intended recognizable crescent-cut result.
+
+The cutting sphere may have a different radius and an offset center.
+
+A different mathematically justified curved cutting-volume construction is acceptable if it better satisfies the required geometry and creator experience.
+
+### Important distinction
+
+Using a spherical cutting volume is a procedural geometry-construction technique.
+
+It is **not** authorization to reopen our paused general excavation system.
+
+This assignment creates a predefined World geometry from validated construction parameters.
+
+It does not require arbitrary user-painted Boolean cutting, tunnel creation, or general material removal tools.
+
+### Required material geometry
+
+The completed World must represent:
+
+- The retained exterior spherical boundary.
+- The exposed surface of the cutting volume.
+- Their actual physical intersection boundary.
+- Correct material-side orientation.
+- Complete closed exterior geometry.
+- Valid connected material volume.
+
+Do not simply render two overlapping shells and pretend the overlap represents correct subtraction.
+
+### Real exposed concave surface
+
+The curved cutting volume exposes a surface facing into the removed region.
+
+That concave surface is a genuine part of the remaining World's exterior material boundary.
+
+It must possess:
+
+- Correct physical coordinates.
+- Valid outward normals relative to the remaining material.
+- Correct curvature.
+- Real physical area.
+- Stable surface identities.
+- Authoritative terrain samples.
+- Working geographical brushes.
+- Correct physical visibility.
+- Reliable persistence.
+
+The exposed surface cannot be merely decorative.
+
+### Correct normal orientation
+
+The retained spherical exterior has outward normals consistent with the original globe.
+
+The exposed concave cutting surface must have normals oriented outward from the remaining solid, which generally means toward the removed volume.
+
+Do not blindly reuse the cutting sphere's normal orientation without accounting for the subtraction.
+
+Incorrect normal orientation can cause rendering, lighting, picking, and geographical displacement-direction problems.
+
+### Intersection boundary
+
+Where the retained globe surface and the exposed cut surface meet, they form an actual physical intersection.
+
+For an intersecting-sphere model, the intersection is typically a circle.
+
+That boundary must be represented correctly.
+
+Requirements include:
+
+- Accurate physical position.
+- Stable topology.
+- Correct adjacency.
+- No artificial gap.
+- No overlapping material shells.
+- Valid numerical sample ownership.
+- Correct terrain continuity.
+- Proper physical brush crossing.
+- Appropriate rendering of the real surface crease.
+
+A genuine physical crease may have different surface normals on either side.
+
+Do not incorrectly smooth those normals into a nonexistent continuous tangent surface.
+
+Conversely, do not introduce an artificial gap between the connected surfaces.
+
+### Closed material boundary
+
+The resulting World must be one valid connected solid.
+
+The material boundary must be complete.
+
+The cut must not leave missing mesh patches, inverted material, nonmanifold edges, or disconnected fragments.
+
+### No invalid internal cavities
+
+The initial Crescent-Cut Globe represents an exposed curved subtraction.
+
+Do not accidentally generate a fully enclosed hidden cavity inside the original Sphere.
+
+That would introduce a different internal material-boundary problem.
+
+The removed region must intersect the exterior in the intended way.
+
+### No unintended tunnels
+
+The subtraction must not automatically produce a through-tunnel or multiple unrelated openings.
+
+A genuine Crescent-Cut Globe is the objective.
+
+Tunnel construction belongs to the later excavation system.
+
+---
+
+## 4. CREATOR-CONFIGURABLE CRESCENT CUT
+
+Creators must have meaningful control over the resulting physical World.
+
+Do not hardcode one permanently fixed cut.
+
+### Required configuration
+
+Provide suitable controls for:
+
+1. Overall globe size or radius.
+2. Crescent cut size.
+3. Cut depth.
+4. Cut curvature or cutting-volume radius.
+5. Cut position or offset.
+6. Cut orientation.
+7. Supported remaining-material constraints.
+
+The precise interface may use derived parameters rather than exposing every raw geometric variable.
+
+Controls must be understandable to ordinary creators.
+
+### Recognizable variations
+
+The supported geometry should allow configurations such as:
+
+- A globe with a relatively shallow curved cut.
+- A globe with a substantial crescent-shaped removal.
+- A deep crescent-cut globe.
+- A globe with a broad concave cut.
+- A globe with a narrower crescent-shaped remaining body.
+- Different supported cut orientations.
+
+These should be variations of one physical geometry family.
+
+### Default configuration
+
+The default must create an immediately recognizable Crescent-Cut Globe.
+
+Do not make the default an almost ordinary sphere with a tiny shallow dent.
+
+The removed section should be substantial enough that the cut clearly changes the World's physical silhouette.
+
+The initial camera should show both the retained spherical exterior and the concave cut.
+
+A creator should understand the geometry without rotating through several obscure viewing angles.
+
+### Physical validity
+
+Validate the proposed configuration before committing it.
+
+For two sphere volumes, the cutting geometry must have a valid partial intersection with the globe.
+
+Avoid:
+
+- No intersection.
+- Complete globe removal.
+- A fully enclosed invisible cavity.
+- Unintended multiple components.
+- Tangential configurations that produce degenerate topology.
+- Nearly zero remaining material.
+- Unsupported extremely thin regions.
+- Collapsed intersection boundaries.
+- Self-intersecting generated geometry.
+- Invalid surface normals.
+- Numerically unstable transitions.
+
+A mathematically nonempty residual body is not automatically a practical editable World.
+
+Set validated limits that preserve usable physical material and numerical geography.
+
+### Cut orientation
+
+Allow supported placement of the crescent cut around the globe.
+
+The cut must remain physically attached to the same World geometry.
+
+Its placement must be preserved through Save/Open.
+
+Orientation controls should not require the creator to enter raw matrices or technical XYZ vectors.
+
+### Changing cut parameters after painting
+
+Do not silently erase or scramble previously sculpted geography.
+
+If safe terrain-preserving geometry changes are supported, implement a mathematically defined mapping.
+
+Otherwise, limit structural configuration changes to World creation or require an explicit replacement workflow.
+
+Do not claim exact geographical preservation when the terrain is actually regenerated.
+
+---
+
+## 5. CORRECT PHYSICAL SURFACE TOPOLOGY AND MATHEMATICS
+
+The Crescent-Cut Globe combines at least two differently oriented curved physical surface regions.
+
+Its brushes must use their actual geometry.
+
+### Retained globe surface
+
+The retained original spherical exterior must preserve appropriate spherical surface mathematics.
+
+Reuse established Sphere geometry and intrinsic distance calculations where valid.
+
+However, the removed region must no longer be treated as traversable spherical geography.
+
+### Exposed cut surface
+
+The concave cut requires its own correct physical metric and orientation.
+
+If the cutting surface is spherical, use its actual radius and spherical geometry.
+
+Do not assume the cut shares the original globe's center or radius.
+
+### Correct shared boundary
+
+The two curved surfaces connect along their actual intersection.
+
+That boundary must be recognized by the physical surface-routing system.
+
+A brush crossing it must follow the connected surface correctly.
+
+### No shortcuts through missing material
+
+The most important rule is:
+
+**A brush must never travel through the removed spherical volume as though that material still exists.**
+
+If two remaining geographical regions are physically close across the cut, their connected surface distance may still be substantially longer.
+
+The brush must respect that actual surface route.
+
+### No shortcuts through solid material
+
+Likewise, a brush cannot travel directly through the surviving globe's solid interior.
+
+The correct influence follows the exterior material boundary.
+
+### Surface-route behavior
+
+Support genuine connected routes:
+
+- Along the retained globe exterior.
+- Along the concave cut.
+- Across the real intersection boundary.
+- Around the cut's rim.
+- Between surface regions through legitimate exterior connections.
+
+### Surface crease mathematics
+
+The cut boundary may be a real geometric crease.
+
+A path crossing that crease must account for the true surface geometry on both sides.
+
+Do not pretend the original sphere and cutting sphere form one smooth spherical surface.
+
+Do not treat the crease as an impassable boundary.
+
+### Spherical patch routing
+
+Reuse existing certified spherical route mechanisms where valid.
+
+A complete-sphere geodesic that crosses the removed portion of the original globe is not a valid route on the Crescent-Cut Globe.
+
+Similarly, a great-circle calculation over the complete cutting sphere cannot automatically use cut-surface regions that do not belong to the remaining World.
+
+The routing method must be restricted to the legitimate retained surface patches and their actual connections.
+
+### Resource-bounded calculation
+
+Develop or reuse a scalable connected-surface distance method.
+
+Avoid:
+
+- Unbounded exhaustive face-route enumeration.
+- Full global recomputation per dab.
+- Invalid straight-line shortcuts.
+- False connections through the removed volume.
+- Artificial brush barriers at the intersection.
+- Incorrect pole handling.
+- Unbounded memory growth.
+
+If an approximate route method is used, justify and verify its error bounds.
+
+The method must remain suitable for normal browser terrain painting.
+
+---
+
+## 6. CANONICAL NUMERICAL TERRAIN
+
+Crescent-Cut Globe Worlds must use the established Atlas numerical geography architecture.
+
+Rendered color and shading are not authoritative elevation data.
+
+### Required numerical properties
+
+Preserve:
+
+- Exact canonical Float32 elevation words.
+- Stable World identity.
+- Stable physical surface identities.
+- Correct canonical sample ownership.
+- Accurate physical sample positions.
+- Valid surface orientation.
+- Appropriate elevation bounds.
+- Correct interpolation.
+- Real shared-boundary aliases.
+- Consistent geographical continuity.
+- Exact history and persistence.
+
+### Surface domains
+
+A suitable implementation may use:
+
+- A retained original-globe terrain domain.
+- A distinct exposed cutting-surface terrain domain.
+- Appropriate intersection-boundary ownership.
+- Additional bounded charts where necessary.
+
+The exact representation must follow the physical construction.
+
+Do not force the entire geometry into an invalid complete-sphere terrain chart.
+
+### Removed geography
+
+The portion of the original globe that has been physically removed must not remain active geographical surface.
+
+A brush must not edit invisible original-sphere terrain that no longer belongs to the World.
+
+Do not retain ghost geographical surfaces underneath the cut.
+
+### Exposed geographical surface
+
+The concave cut requires its own editable numerical terrain.
+
+It must support mountains, valleys, smoothing, flattening, and other normal numerical elevation operations.
+
+Its terrain must not be a duplicated or reversed image of the original exterior.
+
+### Shared intersection ownership
+
+Where the two surface domains meet at the same physical location, canonical ownership must be consistent.
+
+Avoid:
+
+- Duplicate contradictory samples.
+- Artificial numerical gaps.
+- Double-applied brush influence.
+- Incorrectly disconnected charts.
+- Unstable sampling near the rim.
+
+### Distinct surface independence
+
+The retained globe exterior and exposed concave surface remain physically distinct everywhere except their real shared boundary.
+
+Do not alias unrelated samples merely because they have similar parameter coordinates or are close in three-dimensional space.
+
+### Narrow remaining material
+
+Some valid Crescent configurations may leave relatively narrow material regions.
+
+Those areas must remain numerically usable.
+
+Prevent:
+
+- Collapsed terrain cells.
+- Invalid interpolation.
+- Severe sample stretching.
+- Missing terrain.
+- Unstable brush footprints.
+- Excessively dense redundant samples.
+- Unusable geographical resolution.
+
+Reject unsupported configurations where available numerical detail cannot represent the geometry adequately.
+
+### Shape construction versus terrain sculpting
+
+The crescent cut defines the reference geometry.
+
+Normal terrain elevation editing remains a separate numerical operation.
+
+Do not require future full volumetric terrain displacement as a prerequisite for this World.
+
+Maintain the accepted Atlas heightmap architecture.
+
+---
+
+## 7. COMPLETE TERRAIN SCULPTING
+
+Provide the four standard Atlas terrain tools:
+
+1. **Raise**
+2. **Lower**
+3. **Smooth**
+4. **Flatten**
+
+Reuse established interaction semantics and brush infrastructure.
+
+### Required editing coverage
+
+Creators must be able to sculpt:
+
+- Retained outer spherical geography.
+- The exposed concave cut.
+- Regions near the intersection rim.
+- Narrow remaining material regions.
+- Both sides of legitimate physical surface joins.
+- All supported visible geographical areas.
+
+### Exterior painting
+
+The remaining globe exterior must provide normal Sphere-quality painting.
+
+Creators should be able to create:
+
+- Mountain ranges.
+- Valleys.
+- Coastlines.
+- Elevated plateaus.
+- Smooth geographical transitions.
+- Flattened areas.
+
+### Concave surface painting
+
+The exposed curved interior-facing surface must be equally functional.
+
+Do not implement it as a decorative surface that cannot receive normal terrain operations.
+
+The brush must work with the correct surface orientation and physical metric.
+
+### Cross-rim painting
+
+A brush moving from the retained outer sphere across the real cut boundary must continue onto the concave surface where the physical influence reaches it.
+
+Similarly, painting from the concave surface across the rim must reach legitimate connected exterior geography.
+
+The rim must not become an artificial geographical wall.
+
+### No through-cut painting
+
+Place a brush on one surviving geographical region near the cut.
+
+If another region is physically close across the missing volume but distant along the connected surface, it must remain unchanged.
+
+Verify actual canonical terrain values.
+
+### Brush behavior
+
+Preserve:
+
+- Responsive first dab.
+- Practical default brush radius.
+- Practical default strength.
+- Correct physical influence center.
+- Accurate surface-distance footprint.
+- Appropriate falloff.
+- Reliable Raise.
+- Reliable Lower.
+- Stable Smooth.
+- Correct Flatten.
+- Continuous held strokes.
+- Complete input processing.
+- Correct cross-surface connections.
+- Exact whole-gesture Undo/Redo.
+
+### Critical painting tests
+
+Explicitly test:
+
+- Ordinary original-globe exterior.
+- Opposite remaining exterior regions.
+- Concave cut center.
+- Concave cut near its boundary.
+- Multiple positions around the intersection rim.
+- Cross-rim strokes.
+- Narrow crescent regions.
+- Supported deep cuts.
+- Supported shallow cuts.
+- Long continuous strokes.
+- Locations separated by removed material.
+- Locations separated by solid material.
+- Internal chart seams.
+
+### Numerical validation
+
+Check which canonical samples changed.
+
+Do not treat a visually correct brush ring or a passing screenshot as proof of correct numerical influence.
+
+---
+
+## 8. RESPONSIVE PAINTING AND RESOURCE MANAGEMENT
+
+The Crescent-Cut Globe must use the existing Atlas worker, input-processing, and display infrastructure.
+
+### Mandatory responsiveness
+
+Preserve:
+
+- Responsive first dab.
+- Smooth continuous painting.
+- Complete pointer movement processing.
+- Correct cross-surface transitions.
+- No severe lag near the cut rim.
+- Responsive concave-surface painting.
+- Practical brush footprints.
+- Efficient terrain updates.
+- Incremental rendering.
+- Yielding idle refinement.
+- Cancellation of obsolete display work.
+- Exact completed-gesture history.
+
+### Avoid unnecessary computation
+
+Do not:
+
+- Rebuild the full Boolean geometry during every dab.
+- Recalculate the sphere intersection on each pointer update.
+- Recompute unchanged surface topology repeatedly.
+- Execute unbounded surface routes per dab.
+- Reconstruct the full World's numerical terrain for local changes.
+- Regenerate every display cache after small edits.
+- Initialize workers repeatedly.
+- Allocate excessive temporary arrays.
+- Block the main thread with global geometry calculations.
+
+Compute stable construction, intersection, and surface-routing data when the World configuration is established.
+
+Reuse that data until the actual physical geometry changes.
+
+### Detail profiles
+
+Inspect the established Atlas numerical resolution profiles.
+
+Support N128/N256 or appropriate validated equivalents where actual resource capacity permits.
+
+The retained globe and the concave cut may require distinct terrain charts or sampling allocations.
+
+Evaluate total memory rather than assuming a normal Sphere's resources are sufficient.
+
+### Resource bounds
+
+Bound:
+
+- Canonical terrain memory.
+- Intersection geometry.
+- Surface topology.
+- Shared-boundary data.
+- Routing preparation.
+- Worker snapshots.
+- GPU textures.
+- Canvas atlases.
+- Display caches.
+- History.
+- Temporary allocations.
+- Pending work.
+
+Do not globally increase resource limits merely to accommodate inefficient geometry construction.
+
+Unsupported configurations must fail clearly and safely.
+
+### Browser measurements
+
+Use installed Chrome to measure actual input-to-visible-pixel responsiveness.
+
+Include:
+
+- First dab.
+- Retained globe painting.
+- Concave cut painting.
+- Intersection rim painting.
+- Cross-rim painting.
+- Narrow remaining-material painting.
+- Long held strokes.
+- Multiple supported cut sizes.
+- WebGL2.
+- Forced Canvas.
+- Supported numerical detail levels.
+
+Report meaningful representative and p95 response measurements.
+
+Node-only timing is not sufficient proof of creator-facing responsiveness.
+
+Do not weaken established performance thresholds.
+
+---
+
+## 9. GENUINE THREE-DIMENSIONAL PHYSICAL PRESENTATION
+
+Render the World as an actual curved material subtraction from a globe.
+
+### Required physical appearance
+
+Display:
+
+- Original globe curvature where material remains.
+- The substantial removed region.
+- The exposed concave cutting surface.
+- The real intersection boundary.
+- Correct remaining material silhouette.
+- Appropriate physical relief.
+- Correct geographical terrain.
+- Proper depth and occlusion.
+
+### Recognizable crescent silhouette
+
+The default World must clearly demonstrate the intended physical crescent cut.
+
+From an appropriate side or oblique angle, the remaining material should present a recognizable crescent-like outline.
+
+The result must not depend on a lighting trick.
+
+From other angles, the globe may naturally look different.
+
+That is expected for genuine three-dimensional geometry.
+
+### Camera navigation
+
+Reuse normal Atlas controls:
+
+- Rotation.
+- Pan.
+- Zoom.
+- Fit.
+- Appropriate focus.
+- Accurate surface picking.
+
+Creators must be able to inspect:
+
+- The remaining spherical exterior.
+- The concave cut.
+- The complete intersection rim.
+- Thin remaining material regions.
+- The World from opposite sides.
+- The true material silhouette.
+
+### Cut inspection
+
+The camera must provide a useful view into the exposed concave region.
+
+Do not create a cut that is physically present but practically impossible to inspect or paint.
+
+### Correct physical occlusion
+
+Preserve genuine material visibility.
+
+Reject:
+
+- Rendering the removed sphere surface as if it still exists.
+- Showing hidden original-globe terrain inside the cut.
+- Showing rear surfaces through foreground material.
+- Incorrect normals.
+- Missing concave patches.
+- Incorrect depth ordering.
+- False material filling.
+- Broken silhouettes.
+- Unexplained black regions.
+
+### Physical surface picking
+
+The picker must select the genuinely visible physical surface.
+
+Clicking inside the concave cut must select that surface, not the original globe surface that would have occupied the same area before subtraction.
+
+### Editing-state continuity
+
+Camera movement must not rewrite terrain.
+
+Inspection must not trap creators outside normal painting.
+
+A creator must be able to return immediately to ordinary sculpting.
+
+---
+
+## 10. TWO-DIMENSIONAL MAP AND GEOGRAPHICAL VIEWS
+
+The Crescent-Cut Globe requires useful map editing presentations.
+
+A normal complete-sphere map cannot honestly represent the physical subtraction by itself.
+
+### Appropriate map architecture
+
+A suitable implementation may provide:
+
+- A map of the retained original-globe exterior.
+- A separate map of the exposed concave surface.
+- Connected or coordinated boundary views.
+- Valid surface charts with explicit presentation cuts.
+- Appropriate three-dimensional physical/map correspondence.
+
+Reuse accepted Atlas spherical map infrastructure where suitable.
+
+### Retained spherical geography
+
+The retained globe map must represent only geography still belonging to the physical World.
+
+Do not present removed surface regions as active terrain.
+
+The cut's boundary should be recognizable in the geographical representation.
+
+### Concave geographical map
+
+The exposed cut surface requires a complete editable map representation.
+
+Use a valid physical parameterization.
+
+If the cut is spherical, its map must account for the cutting surface's own center, radius, orientation, and retained domain.
+
+Do not pretend it is the same spherical chart as the original globe.
+
+### Boundary connections
+
+The retained exterior and exposed cut meet along a real physical boundary.
+
+Their map presentations must preserve that relationship.
+
+A visual map cut must not become a geographical barrier.
+
+### Physical-to-map correspondence
+
+Preserve:
+
+- Accurate surface selection.
+- Correct physical-to-map projection.
+- Accurate map-to-surface picking.
+- Stable surface identity.
+- Valid shared-boundary relationships.
+- Correct terrain editing coordinates.
+- Consistent numerical geography.
+- Useful pan and zoom.
+
+### Map integrity
+
+Reject:
+
+- Ghost geography over removed material.
+- Missing concave terrain.
+- Incorrect cut orientation.
+- Artificial map connections.
+- Invalid overlapping charts.
+- Inverted cut mapping.
+- False brush routes through the removed volume.
+- Terrain changing between physical and map views.
+
+### Editing continuity
+
+Switching between physical and map views must preserve:
+
+- Selected sculpting tool.
+- Brush settings.
+- Current canonical terrain.
+- Appropriate active surface.
+- Camera or map state.
+- History.
+- Continued editing.
+
+All views must represent the same authoritative physical World.
+
+---
+
+## 11. MANDATORY RENDERING AND VISUAL QUALITY
+
+Follow `docs/ATLAS-RENDERING-STANDARD.md`.
+
+Crescent-Cut Globe Worlds must preserve our existing Atlas visual standards.
+
+### Reuse accepted rendering
+
+Preserve:
+
+- Elevation-to-color terrain palette.
+- Numerical field reconstruction.
+- Proper interpolation.
+- Coastline coverage.
+- Physical gradient and relief shading.
+- Sharp Canvas atlases.
+- Correct backing resolution.
+- WebGL2 terrain presentation.
+- Canvas equivalent.
+- Indexed geographical display caches.
+- Incremental terrain updates.
+- Revision-aware refinement.
+- Yielding idle work.
+- Graphics-context recovery.
+- Canvas fallback.
+
+Do not introduce an unrelated low-quality rendering path for the exposed concave surface.
+
+### Surface-specific rendering
+
+The retained exterior and concave cut may have different physical curvature and normal orientation.
+
+Render both correctly.
+
+The concave cut should visually read as a real inward-curving physical surface, not a convex sphere pasted into the globe.
+
+### Intersection rendering
+
+The real intersection boundary must remain visually coherent.
+
+Avoid:
+
+- Gaps between surfaces.
+- Overlapping shells.
+- Z-fighting.
+- Missing triangles.
+- Jagged cut boundaries.
+- Incorrect normal interpolation.
+- Unexplained artificial seams.
+
+A sharp physical crease is acceptable and should be represented honestly where the material geometry defines one.
+
+### Sharp geographical detail
+
+Terrain must remain sharp on:
+
+- The retained globe.
+- The exposed concave surface.
+- The intersection rim.
+- Narrow remaining material regions.
+- Practical zoomed-in views.
+
+### Reject visual defects
+
+Do not accept:
+
+- Blurry terrain.
+- Grainy zoom.
+- Fuzzy coastlines.
+- Missing concave patches.
+- Broken silhouettes.
+- Visible invalid triangulation.
+- Stretched textures.
+- Incorrect relief shading.
+- Wrong backgrounds.
+- Unexplained black areas.
+- Hidden material rendered as present.
+- Incorrect cut occlusion.
+- Excessive redraw lag.
+- Major WebGL2/Canvas mismatches.
+
+### Actual rendered-pixel verification
+
+Inspect actual browser-rendered pixels.
+
+Verify:
+
+- Outer-globe terrain gradients.
+- Concave-surface terrain gradients.
+- Coastline coverage on both surfaces.
+- Intersection-rim continuity.
+- Correct material removal.
+- Physical relief.
+- Silhouette under rotation.
+- Surface occlusion.
+- Sharp practical zoom.
+- WebGL2/Canvas parity.
+
+Compare equivalent numerical geography, camera, zoom, backing resolution, and renderer settings.
+
+Do not weaken current rendering thresholds.
+
+### Display budgets
+
+Preserve the established Canvas settled-output budgets:
+
+- Up to 1.5 million settled pixels on desktop.
+- Up to 650,000 settled pixels for coarse-pointer operation.
+
+Follow the existing active-interaction and backing policies.
+
+These are not mandatory full-frame redraw sizes.
+
+Prioritize responsive painting and navigation over nonessential refinement.
+
+---
+
+## 12. EXACT HISTORY AND GEOGRAPHICAL INTEGRITY
+
+Crescent-Cut Globe Worlds must use the established whole-gesture Undo/Redo system.
+
+### Required behavior
+
+- One completed terrain stroke remains one history operation.
+- Undo restores exact previous canonical Float32 words.
+- Redo restores exact completed-stroke values.
+- Cross-rim painting remains one complete gesture.
+- Shared-boundary aliases restore correctly.
+- Painting the concave surface must not rewrite unrelated exterior geography.
+- Removed original-sphere regions must not receive hidden edits.
+- Camera movement must not rewrite terrain.
+- Map switching must not modify numerical geography.
+- Failed operations must not partially corrupt the World.
+
+### Physical boundary ownership
+
+The shared intersection boundary must have correct numerical ownership.
+
+Do not apply the same geographical modification twice through duplicate charts.
+
+### Structural configuration
+
+If the creator changes cut dimensions after painting, use an explicitly supported terrain-preservation and history policy.
+
+Do not claim exact reversible structural editing unless it is actually implemented.
+
+### Preserve existing history
+
+Extend established history mechanisms narrowly.
+
+Do not create a separate Crescent-Cut Globe history engine.
+
+---
+
+## 13. STRICT SAVE/OPEN AND DATA COMPATIBILITY
+
+Implement an explicitly versioned Crescent-Cut Globe World format.
+
+### Format allocation
+
+Inspect the current persistence version registry.
+
+Existing World formats 1–20 remain reserved.
+
+Archived excavation experiments reserve formats 21–24.
+
+Decahedron and subsequent authorized geometries occupy additional identifiers.
+
+The completed geometry assignments through Ribbon Worlds may have allocated further format identifiers.
+
+Do not guess the next free number.
+
+Choose a genuinely unused format.
+
+Never overwrite or reinterpret published or reserved formats.
+
+### Required saved data
+
+Preserve:
+
+- World identity.
+- Explicit Crescent-Cut Globe geometry family.
+- Physical construction version.
+- Original globe radius and dimensions.
+- Cutting-volume geometry type.
+- Cutting-volume dimensions.
+- Cut depth or equivalent intersection parameters.
+- Cut position.
+- Cut orientation.
+- Supported material constraints.
+- Deterministic geometry construction parameters.
+- Stable surface identities.
+- Correct intersection-boundary topology.
+- Numerical detail profile.
+- Canonical terrain arrays.
+- Exact Float32 elevation words.
+- Correct geographical ownership.
+- Integrity validation data.
+- Supported creator configuration.
+
+### Deterministic reconstruction
+
+Reopening must reproduce the same physical Crescent-Cut Globe.
+
+It must preserve:
+
+- Original globe dimensions.
+- Exact cut configuration.
+- Concave surface geometry.
+- Intersection boundary.
+- Remaining material shape.
+- Surface identities.
+- Canonical terrain values.
+
+Do not regenerate a different intersection or silently alter the cut.
+
+### Strict validation
+
+Reject:
+
+- Unsupported formats.
+- Corrupted integrity information.
+- Invalid globe radius.
+- Invalid cutting-volume dimensions.
+- Nonfinite parameters.
+- No-intersection configurations.
+- Fully removed globe configurations.
+- Unsupported internal cavities.
+- Invalid material remnants.
+- Degenerate intersection boundaries.
+- Invalid topology.
+- Missing required surfaces.
+- Duplicate surface identities.
+- Malformed terrain arrays.
+- Incorrect numerical sample counts.
+- Unsupported resolution.
+- Corrupted Float32 elevation data.
+- Inconsistent geometry metadata.
+
+### Atomic failed loading
+
+Validate the entire incoming World before replacing the active editing state.
+
+A failed Open must leave the current World intact.
+
+Do not partially restore the outer globe while discarding the concave surface.
+
+Do not silently substitute default cut dimensions for corrupted data.
+
+### Existing format compatibility
+
+Preserve all previously supported World formats.
+
+Do not reinterpret ordinary Sphere or Hollow Sphere saves as Crescent-Cut Globes.
+
+Do not change existing geometry semantics.
+
+### Continued editing
+
+After reopening, the creator must be able to:
+
+- Rotate the World.
+- Inspect the curved subtraction.
+- Select retained spherical geography.
+- Select concave geographical surfaces.
+- Paint across legitimate connected boundaries.
+- Use all four terrain tools.
+- Switch map views.
+- Continue normal editing.
+
+Do not invent undo-stack persistence guarantees beyond the existing architecture.
+
+---
+
+## 14. CREATOR EXPERIENCE
+
+Crescent-Cut Globe Worlds must feel like another understandable Atlas World option.
+
+Creators should not need to understand Boolean solids or spherical intersection equations.
+
+### Expected workflow
+
+A creator should be able to:
+
+1. Select **Crescent-Cut Globe World**.
+2. Choose a recognizable default.
+3. Adjust overall globe size.
+4. Set the cut size.
+5. Adjust cut depth.
+6. Configure supported cut orientation.
+7. Create the physical World.
+8. Rotate and inspect its crescent silhouette.
+9. Examine the removed section.
+10. Inspect the exposed concave surface.
+11. Sculpt the retained globe exterior.
+12. Sculpt the concave surface.
+13. Paint across the actual shared rim.
+14. Switch to a useful map view.
+15. Continue editing.
+16. Return to physical view.
+17. Save the World.
+18. Reopen identical geometry and geography.
+19. Resume normal sculpting.
+
+### Creator-facing naming
+
+Use **Crescent-Cut Globe World** as the primary selector label.
+
+Do not use an internal Boolean operation name as the creator-facing World name.
+
+### Understandable controls
+
+Use labels such as:
+
+- Globe Size.
+- Crescent Cut Size.
+- Cut Depth.
+- Cut Curvature.
+- Cut Position.
+- Cut Direction.
+
+Adjust labels to match the actual supported geometry model.
+
+Do not require raw center coordinates, Boolean expression syntax, intersection equations, or topology indices as normal creator inputs.
+
+### Useful defaults
+
+The default World must:
+
+- Clearly retain globe-like curvature.
+- Have a substantial curved cut.
+- Present a recognizable crescent silhouette from the initial view.
+- Display the exposed concave surface.
+- Possess valid material geometry.
+- Be properly framed.
+- Support immediate terrain painting.
+- Use practical brush defaults.
+- Remain within validated performance limits.
+
+### Preserve familiar Atlas controls
+
+Retain:
+
+- Tool selection.
+- Brush radius and strength.
+- Rotation.
+- Pan.
+- Zoom.
+- Fit.
+- Surface selection.
+- Map switching.
+- History.
+- Save/Open.
+
+Do not redesign the Atlas interface during this assignment.
+
+Do not introduce a special excavation or inspection mode that prevents creators from returning to normal painting.
+
+---
+
+## 15. REQUIRED ENGINEERING VERIFICATION
+
+Use targeted tests throughout implementation.
+
+Run broader relevant regressions at meaningful publication checkpoints.
+
+Avoid prolonged unrelated test-fixture correction cycles.
+
+### A. Physical geometry
+
+Verify:
+
+- Genuine original spherical reference body.
+- Real curved material subtraction.
+- Valid remaining material volume.
+- Correct concave exposed surface.
+- Valid intersection boundary.
+- Complete closed exterior topology.
+- Consistent material-side normals.
+- Correct physical dimensions.
+- No invalid self-intersections.
+- No missing mesh patches.
+- No ghost original-globe surface.
+- No unintended cavities.
+- No disconnected residual fragments.
+- Stable geometry across supported settings.
+
+Test shallow, deep, broad, and narrow valid cut configurations.
+
+### B. Intrinsic surface mathematics
+
+Verify:
+
+- Correct retained-sphere sample positions.
+- Correct cutting-surface positions.
+- Accurate physical curvature.
+- Correct surface metrics.
+- Valid intersection-boundary connections.
+- No shortcuts through removed material.
+- No shortcuts through surviving solid material.
+- Correct legitimate cross-rim routes.
+- Bounded route preparation.
+- Accurate brush footprints.
+
+### C. Numerical geography
+
+Verify:
+
+- Canonical terrain ownership.
+- Correct shared-boundary aliases.
+- Independent exterior and concave terrain.
+- No ghost geography.
+- Correct orientation.
+- Stable interpolation.
+- Valid narrow-region sampling.
+- No artificial geographical gaps.
+- All four sculpting tools.
+- Exact whole-gesture history.
+
+### D. Real browser painting
+
+Measure:
+
+- First dab.
+- Original exterior painting.
+- Concave cut painting.
+- Intersection rim painting.
+- Cross-rim strokes.
+- Narrow remaining-material painting.
+- Sustained held strokes.
+- Supported cut-depth variations.
+- Hardware WebGL2.
+- Forced Canvas.
+- Supported terrain detail levels.
+
+Report actual input-to-visible-pixel p95 measurements.
+
+### E. Rendering
+
+Verify:
+
+- Recognizable crescent-cut physical silhouette.
+- Correct spherical exterior.
+- Genuine exposed concave surface.
+- Complete intersection rim.
+- Accurate normals.
+- Correct material removal.
+- Sharp terrain.
+- Proper coastlines.
+- Appropriate relief shading.
+- Correct physical occlusion.
+- No missing patches.
+- Practical zoom sharpness.
+- WebGL2/Canvas parity.
+- Graphics-context recovery.
+
+### F. Navigation and map views
+
+Verify:
+
+- Rotation.
+- Pan.
+- Zoom.
+- Fit.
+- Complete physical framing.
+- Concave-surface inspection.
+- Accurate exterior picking.
+- Accurate cutting-surface picking.
+- Intersection-rim selection.
+- Correct physical/map correspondence.
+- Continued painting after view changes.
+- No trapped editing states.
+
+### G. History and persistence
+
+Verify:
+
+- Exact terrain Undo.
+- Exact terrain Redo.
+- Cross-rim terrain history.
+- World creation.
+- Configuration serialization.
+- Deterministic physical reconstruction.
+- Exact Float32 elevation preservation.
+- Stable surface identities.
+- Strict corrupted-data rejection.
+- Atomic failed-load behavior.
+- Continued editing.
+- Existing format compatibility.
+
+### H. Shared regressions
+
+Run relevant tests for shared infrastructure modified during this geometry pass.
+
+Prioritize:
+
+- Sphere.
+- Hollow Sphere.
+- Crescent Worlds.
+- Representative curved-surface painting.
+- Shared physical camera picking.
+- WebGL2 and Canvas rendering.
+- History.
+- Persistence.
+
+Run TypeScript checks and the production build.
+
+Perform heavyweight browser testing sequentially where appropriate.
+
+Do not weaken established acceptance thresholds.
+
+Automated technical verification remains separate from owner acceptance.
+
+---
+
+## 16. PUBLICATION CHECKPOINTS
+
+### Checkpoint A — Genuine Crescent-Cut Globe Geometry Foundation
+
+Implement and validate:
+
+- Original spherical reference body.
+- Valid curved cutting-volume construction.
+- Correct physical material subtraction.
+- Real concave exposed surface.
+- Closed material boundary.
+- Correct intersection topology.
+- Valid material-side normals.
+- Accurate physical coordinates.
+- Stable surface identities.
+- Correct intrinsic metrics.
+- Canonical numerical terrain ownership.
+
+Publish verified foundation work where appropriate.
+
+Do not expose an incomplete Boolean mesh demonstration as a completed World.
+
+### Checkpoint B — Operational Crescent-Cut Globe Editor
+
+Integrate the geometry into Atlas.
+
+Deliver:
+
+- Creator-facing World selection.
+- Useful default cut configuration.
+- Genuine physical subtraction.
+- Editable retained globe exterior.
+- Editable concave cut surface.
+- All four terrain tools.
+- Correct cross-rim painting.
+- No influence through removed material.
+- Responsive painting.
+- Accurate physical navigation.
+- Appropriate map views.
+- Sharp WebGL2 and Canvas.
+- Exact whole-gesture history.
+- Strict Save/Open.
+
+Publish the verified operational checkpoint.
+
+### Checkpoint C — Configuration and Final Verification
+
+Complete:
+
+- Supported cut-size variation.
+- Supported cut-depth variation.
+- Valid cut placement and orientation.
+- Thin-region validation.
+- Cross-rim numerical tests.
+- Concave-surface terrain tests.
+- Real browser responsiveness measurements.
+- Rendering verification.
+- Strict persistence validation.
+- Relevant shared regressions.
+- Creator workflow testing.
+
+Publish the verified checkpoint.
+
+### Completion report
+
+Provide a concise engineering report including:
+
+1. Published commit SHAs.
+2. Physical material-subtraction construction.
+3. Supported creator configuration.
+4. Actual surface and intersection topology.
+5. Intrinsic surface-distance method.
+6. Existing Atlas infrastructure reused.
+7. Numerical detail profiles and resource limits.
+8. Browser painting-response measurements.
+9. WebGL2 and Canvas verification.
+10. Exact history results.
+11. Strict Save/Open results.
+12. Known limitations and deferred refinements.
+13. Remaining owner-acceptance items.
+
+If a genuine mathematical, performance, or architecture problem prevents safe completion, preserve the last verified checkpoint and document the specific blocker.
+
+Do not fabricate a completed implementation.
+
+Do not weaken numerical or rendering requirements.
+
+Do not spend indefinite cycles correcting unrelated test fixtures.
+
+The goal is a genuinely operational Crescent-Cut Globe.
+
+---
+
+## 17. STRICT SCOPE PROTECTION
+
+Do NOT implement:
+
+- Rounded Crescent Globe Worlds.
+- Filled-Torus Worlds.
+- Unrestricted custom World shaping.
+- Arbitrary creator-defined Boolean geometry.
+- General-purpose solid subtraction tools.
+- New excavation brushes.
+- Physical tunnel networks.
+- Underground passage systems.
+- Arbitrary cutouts in existing saved Worlds.
+- Map-link expansion.
+- Volumetric displaced-terrain material geometry.
+- Collision-aware free exploration.
+- Professional illustrated cartography.
+- City, town, or village map systems.
+- Building interiors.
+- Dungeon mapping systems.
+- Living-history functionality.
+- Earth reconstruction.
+- Serrian Tide website integration.
+- Production database changes.
+- Hosting modifications.
+- Docker changes.
+- Server configuration changes.
+
+Do not restore paused excavation functionality.
+
+Do not merge unfinished excavation work from preserved recovery branches.
+
+### Critical distinction from excavation
+
+This World uses a curved material subtraction to define its initial physical geometry.
+
+That does not mean Atlas's general-purpose excavation system has been restarted.
+
+The current deliverable requires a validated, parametrically constructed Crescent-Cut Globe—not an unrestricted editor for holes, chambers, tunnels, or arbitrary cuts.
+
+### Protect existing World geometries
+
+Do not unnecessarily modify previously operational World families.
+
+If Crescent-Cut Globe development reveals a legitimate shared-infrastructure issue, make the smallest justified correction and verify affected Worlds.
+
+Do not rebuild working systems without demonstrated necessity.
+
+### Maintain the geometry-first strategy
+
+The owner has deliberately chosen to complete the remaining World geometries before returning to broad correction and polish work.
+
+Minor cosmetic issues and noncritical refinements may be documented for later review.
+
+However, the following are not minor:
+
+- A visually masked rather than physically removed section.
+- Incorrect Boolean material geometry.
+- A missing or decorative concave surface.
+- Invalid intersection topology.
+- Incorrect cut-surface normals.
+- Noneditable major physical surfaces.
+- Brushes traveling through removed material.
+- Broken cross-rim painting.
+- Unusable performance.
+- Incorrect physical picking.
+- Trapped editor modes.
+- Lost canonical geography.
+- Incorrect Undo/Redo.
+- Broken Save/Open.
+- Serious regressions in existing Worlds.
+
+Postponing polish does not mean accepting fundamentally broken functionality.
+
+**This assignment ends with Crescent-Cut Globe Worlds. Do not automatically begin Rounded Crescent Globe Worlds or another geometry.**
+
+---
+
+## FINAL OWNER ACCEPTANCE STANDARD
+
+A completed Crescent-Cut Globe World must be a genuine three-dimensional spherical physical body with a substantial curved volume removed.
+
+The remaining globe must possess:
+
+- Real spherical exterior geometry.
+- A real exposed concave subtraction surface.
+- Correct material volume.
+- A complete physical intersection boundary.
+- Valid closed solid topology.
+- Appropriate material-side normals.
+- A recognizable crescent-cut silhouette.
+- Authoritative numerical terrain on the complete supported exterior.
+- Correct connected surface distances.
+- Responsive Raise, Lower, Smooth, and Flatten.
+- Sharp WebGL2 and Canvas presentation.
+- Reliable physical and map navigation.
+- Correct surface picking.
+- Exact whole-gesture history.
+- Strict lossless Save/Open.
+
+Creators must be able to configure the cut, rotate the World, inspect the remaining spherical exterior, examine the concave exposed surface, and sculpt meaningful geography on both.
+
+Brushes must cross legitimate connected surface boundaries.
+
+They must never incorrectly pass through missing material or the remaining solid interior.
+
+The completed World must render as a true physical crescent-cut globe, not a shaded or hidden ordinary Sphere.
+
+Its geometry, intersection configuration, surface identities, and exact Float32 geographical data must survive Save/Open.
+
+Reuse the proven Atlas architecture.
+
+Preserve established painting, rendering, navigation, history, performance, and persistence systems.
+
+Minor refinements may be deferred, but the geometry and creator-facing editor must be genuinely operational.
+
+**BUILD ONE COMPLETE, GENUINELY OPERATIONAL CRESCENT-CUT GLOBE WORLD GEOMETRY.**
+
+**DO NOT START THE NEXT SHAPE WITHOUT OWNER AUTHORIZATION.**
+
+**USE WHAT WORKS. REINVENT ONLY WHEN PROVEN UNWORKABLE.**

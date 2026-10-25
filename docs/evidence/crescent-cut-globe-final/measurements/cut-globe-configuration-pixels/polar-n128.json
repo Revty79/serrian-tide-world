@@ -1,0 +1,956 @@
+[
+  {
+    "detail": 128,
+    "variant": "polar",
+    "start": "pattern",
+    "pose": "overview",
+    "stable": 201895,
+    "stableLand": 99835,
+    "stableOcean": 102060,
+    "stableMax": 1,
+    "referenceMax": 1,
+    "nativeMax": 1,
+    "nativeChecked": 98612,
+    "missing": 0,
+    "outside": 0,
+    "quarterChecked": 2162,
+    "quarterAlphaMax": 0,
+    "quarterColorMax": 18,
+    "coastAmbiguous": 9,
+    "canvasQuarterChecked": 1006,
+    "canvasQuarterAlphaMax": 0,
+    "gpuOracleMax": 1,
+    "gpuOracleAlphaMax": 0,
+    "gpuOracleWorst": {
+      "offset": 2250592,
+      "actual": [
+        11,
+        41,
+        62,
+        255
+      ],
+      "reference": [
+        11,
+        40,
+        62,
+        255
+      ],
+      "rays": [
+        648,
+        562,
+        0,
+        1.097558856010437,
+        648,
+        562,
+        0,
+        1.1095229387283325,
+        648,
+        562,
+        0,
+        1.1003129482269287,
+        648,
+        562,
+        0,
+        1.0947074890136719,
+        648,
+        562,
+        0,
+        1.0838862657546997
+      ]
+    },
+    "worst": {
+      "kind": "stable",
+      "x": 410,
+      "y": 120,
+      "label": 4,
+      "cpu": {
+        "0": 23,
+        "1": 72,
+        "2": 101,
+        "3": 255
+      },
+      "gpu": {
+        "0": 23,
+        "1": 73,
+        "2": 101,
+        "3": 255
+      },
+      "expected": {
+        "0": 23,
+        "1": 72,
+        "2": 101,
+        "3": 255
+      }
+    },
+    "worstQuarter": {
+      "x": 495,
+      "y": 133,
+      "label": 5,
+      "rays": [
+        4,
+        4,
+        5,
+        5
+      ],
+      "alpha": 1,
+      "sum": [
+        72.07164853667241,
+        128.49186561141627,
+        114.3028306088234
+      ],
+      "gpu": [
+        90,
+        138,
+        100,
+        255
+      ],
+      "native": [
+        123,
+        143,
+        92,
+        255
+      ],
+      "expected": [
+        {
+          "label": 4,
+          "color": [
+            36.70534719059585,
+            110.11604157178755,
+            141.86120670960017
+          ],
+          "height": -2.3428116100111183
+        },
+        {
+          "label": 4,
+          "color": [
+            36.70898358873409,
+            110.12695076620227,
+            141.87526089699932
+          ],
+          "height": -0.021397614504244156
+        },
+        {
+          "label": 5,
+          "color": [
+            107.43136270216121,
+            146.855715987358,
+            86.7335772274329
+          ],
+          "height": 3.3108085005353103
+        },
+        {
+          "label": 5,
+          "color": [
+            107.44090066519853,
+            146.86875412031725,
+            86.7412776012612
+          ],
+          "height": 5.6145368001383895
+        }
+      ]
+    },
+    "graphics": {
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "reason": "",
+      "losses": 0,
+      "recoveries": 0,
+      "uploads": 1,
+      "uploadBytes": 1597536,
+      "textureBytes": 1597536,
+      "presentations": 1,
+      "resources": 3
+    },
+    "canvas": {
+      "columns": 556,
+      "rows": 556
+    },
+    "before": "1ab406a14c2e28c58ba3bda6c076b4ece9ea57eb177560f3f8fc63fbb6096676",
+    "after": "1ab406a14c2e28c58ba3bda6c076b4ece9ea57eb177560f3f8fc63fbb6096676"
+  },
+  {
+    "detail": 128,
+    "variant": "polar",
+    "start": "pattern",
+    "pose": "concave-cut",
+    "stable": 220372,
+    "stableLand": 147173,
+    "stableOcean": 73199,
+    "stableMax": 1,
+    "referenceMax": 1,
+    "nativeMax": 1,
+    "nativeChecked": 12533,
+    "missing": 0,
+    "outside": 0,
+    "quarterChecked": 3238,
+    "quarterAlphaMax": 0,
+    "quarterColorMax": 14,
+    "coastAmbiguous": 24,
+    "canvasQuarterChecked": 1048,
+    "canvasQuarterAlphaMax": 0,
+    "gpuOracleMax": 0,
+    "gpuOracleAlphaMax": 0,
+    "worst": {
+      "kind": "stable",
+      "x": 483,
+      "y": 55,
+      "label": 2,
+      "cpu": {
+        "0": 17,
+        "1": 54,
+        "2": 76,
+        "3": 255
+      },
+      "gpu": {
+        "0": 17,
+        "1": 54,
+        "2": 77,
+        "3": 255
+      },
+      "expected": {
+        "0": 17,
+        "1": 54,
+        "2": 76,
+        "3": 255
+      }
+    },
+    "worstQuarter": {
+      "x": 667,
+      "y": 534,
+      "label": 4,
+      "rays": [
+        5,
+        4,
+        5,
+        2
+      ],
+      "alpha": 1,
+      "sum": [
+        59.41357890020652,
+        105.919964580723,
+        94.01437733427264
+      ],
+      "gpu": [
+        45,
+        98,
+        105,
+        255
+      ],
+      "native": [
+        45,
+        98,
+        105,
+        255
+      ],
+      "expected": [
+        {
+          "label": 5,
+          "color": [
+            88.6215018243138,
+            121.14315386993354,
+            71.54763450036343
+          ],
+          "height": 0.02647340864808151
+        },
+        {
+          "label": 4,
+          "color": [
+            30.272071727926534,
+            90.8162151837796,
+            116.17930230717751
+          ],
+          "height": -7.352876728260512
+        },
+        {
+          "label": 5,
+          "color": [
+            88.5237602221744,
+            121.00954378994483,
+            71.46872384909493
+          ],
+          "height": 1.5247324899046928
+        },
+        {
+          "label": 2,
+          "color": [
+            30.23698182641135,
+            90.71094547923404,
+            116.86184868045467
+          ],
+          "height": -5.9633828912864235
+        }
+      ]
+    },
+    "graphics": {
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "reason": "",
+      "losses": 0,
+      "recoveries": 0,
+      "uploads": 1,
+      "uploadBytes": 1597536,
+      "textureBytes": 1597536,
+      "presentations": 2,
+      "resources": 3
+    },
+    "canvas": {
+      "columns": 556,
+      "rows": 556
+    },
+    "before": "1ab406a14c2e28c58ba3bda6c076b4ece9ea57eb177560f3f8fc63fbb6096676",
+    "after": "1ab406a14c2e28c58ba3bda6c076b4ece9ea57eb177560f3f8fc63fbb6096676"
+  },
+  {
+    "detail": 128,
+    "variant": "polar",
+    "start": "pattern",
+    "pose": "retained-exterior",
+    "stable": 228774,
+    "stableLand": 47665,
+    "stableOcean": 181109,
+    "stableMax": 1,
+    "referenceMax": 1,
+    "nativeMax": 1,
+    "nativeChecked": 228774,
+    "missing": 0,
+    "outside": 0,
+    "quarterChecked": 2094,
+    "quarterAlphaMax": 0,
+    "quarterColorMax": 18,
+    "coastAmbiguous": 17,
+    "canvasQuarterChecked": 1048,
+    "canvasQuarterAlphaMax": 0,
+    "gpuOracleMax": 0,
+    "gpuOracleAlphaMax": 0,
+    "worst": {
+      "kind": "stable",
+      "x": 482,
+      "y": 55,
+      "label": 2,
+      "cpu": {
+        "0": 13,
+        "1": 46,
+        "2": 67,
+        "3": 255
+      },
+      "gpu": {
+        "0": 13,
+        "1": 45,
+        "2": 67,
+        "3": 255
+      },
+      "expected": {
+        "0": 13,
+        "1": 46,
+        "2": 67,
+        "3": 255
+      }
+    },
+    "worstQuarter": {
+      "x": 482,
+      "y": 325,
+      "label": 3,
+      "rays": [
+        2,
+        3,
+        3,
+        3
+      ],
+      "alpha": 1,
+      "sum": [
+        91.44688609609298,
+        140.10224316514172,
+        102.09461612610775
+      ],
+      "gpu": [
+        73,
+        130,
+        116,
+        255
+      ],
+      "native": [
+        91,
+        140,
+        102,
+        255
+      ],
+      "expected": [
+        {
+          "label": 2,
+          "color": [
+            36.97884217264256,
+            110.93652651792767,
+            142.91822785642935
+          ],
+          "height": -0.5848058742527806
+        },
+        {
+          "label": 3,
+          "color": [
+            109.61054648264049,
+            149.8346002377379,
+            88.49291826121433
+          ],
+          "height": 0.026369805367099097
+        },
+        {
+          "label": 3,
+          "color": [
+            109.6004280243095,
+            149.82076858368913,
+            88.48474923063519
+          ],
+          "height": 2.365684757288567
+        },
+        {
+          "label": 3,
+          "color": [
+            109.59772770477937,
+            149.81707732121217,
+            88.48256915615215
+          ],
+          "height": 2.956152575611827
+        }
+      ]
+    },
+    "graphics": {
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "reason": "",
+      "losses": 0,
+      "recoveries": 0,
+      "uploads": 1,
+      "uploadBytes": 1597536,
+      "textureBytes": 1597536,
+      "presentations": 3,
+      "resources": 3
+    },
+    "canvas": {
+      "columns": 556,
+      "rows": 556
+    },
+    "before": "1ab406a14c2e28c58ba3bda6c076b4ece9ea57eb177560f3f8fc63fbb6096676",
+    "after": "1ab406a14c2e28c58ba3bda6c076b4ece9ea57eb177560f3f8fc63fbb6096676"
+  },
+  {
+    "detail": 128,
+    "variant": "polar",
+    "start": "pattern",
+    "pose": "oblique-rim",
+    "stable": 218042,
+    "stableLand": 128841,
+    "stableOcean": 89201,
+    "stableMax": 1,
+    "referenceMax": 1,
+    "nativeMax": 1,
+    "nativeChecked": 62845,
+    "missing": 0,
+    "outside": 0,
+    "quarterChecked": 2550,
+    "quarterAlphaMax": 0,
+    "quarterColorMax": 18,
+    "coastAmbiguous": 13,
+    "canvasQuarterChecked": 1057,
+    "canvasQuarterAlphaMax": 0,
+    "gpuOracleMax": 0,
+    "gpuOracleAlphaMax": 0,
+    "worst": {
+      "kind": "stable",
+      "x": 451,
+      "y": 74,
+      "label": 4,
+      "cpu": {
+        "0": 22,
+        "1": 69,
+        "2": 96,
+        "3": 255
+      },
+      "gpu": {
+        "0": 21,
+        "1": 69,
+        "2": 97,
+        "3": 255
+      },
+      "expected": {
+        "0": 22,
+        "1": 69,
+        "2": 96,
+        "3": 255
+      }
+    },
+    "worstQuarter": {
+      "x": 390,
+      "y": 205,
+      "label": 4,
+      "rays": [
+        4,
+        5,
+        4,
+        4
+      ],
+      "alpha": 1,
+      "sum": [
+        53.09946962947852,
+        115.87556091228257,
+        123.89078568290367
+      ],
+      "gpu": [
+        35,
+        106,
+        137,
+        255
+      ],
+      "native": [
+        125,
+        143,
+        93,
+        255
+      ],
+      "expected": [
+        {
+          "label": 4,
+          "color": [
+            35.53386584493125,
+            106.60159753479375,
+            137.33358961689646
+          ],
+          "height": -0.3704744064624599
+        },
+        {
+          "label": 5,
+          "color": [
+            105.77331045988953,
+            144.58920420663796,
+            85.39496624284659
+          ],
+          "height": 0.035254198499117706
+        },
+        {
+          "label": 4,
+          "color": [
+            35.54459506851019,
+            105.67312047394923,
+            136.41439188455263
+          ],
+          "height": -7.959015760968732
+        },
+        {
+          "label": 4,
+          "color": [
+            35.54610714458312,
+            106.63832143374934,
+            136.42019498731898
+          ],
+          "height": -7.563550612588552
+        }
+      ]
+    },
+    "graphics": {
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "reason": "",
+      "losses": 0,
+      "recoveries": 0,
+      "uploads": 1,
+      "uploadBytes": 1597536,
+      "textureBytes": 1597536,
+      "presentations": 4,
+      "resources": 3
+    },
+    "canvas": {
+      "columns": 556,
+      "rows": 556
+    },
+    "before": "1ab406a14c2e28c58ba3bda6c076b4ece9ea57eb177560f3f8fc63fbb6096676",
+    "after": "1ab406a14c2e28c58ba3bda6c076b4ece9ea57eb177560f3f8fc63fbb6096676"
+  },
+  {
+    "detail": 128,
+    "variant": "polar",
+    "start": "pattern",
+    "pose": "connected-map",
+    "stable": 181205,
+    "stableLand": 76169,
+    "stableOcean": 105036,
+    "stableMax": 1,
+    "referenceMax": 1,
+    "nativeMax": 1,
+    "nativeChecked": 118373,
+    "missing": 0,
+    "outside": 0,
+    "quarterChecked": 3800,
+    "quarterAlphaMax": 0,
+    "quarterColorMax": 1,
+    "coastAmbiguous": 22,
+    "canvasQuarterChecked": 1462,
+    "canvasQuarterAlphaMax": 0,
+    "gpuOracleMax": 0,
+    "gpuOracleAlphaMax": 0,
+    "worst": {
+      "kind": "stable",
+      "x": 319,
+      "y": 57,
+      "label": 5,
+      "cpu": {
+        "0": 137,
+        "1": 154,
+        "2": 101,
+        "3": 255
+      },
+      "gpu": {
+        "0": 136,
+        "1": 154,
+        "2": 100,
+        "3": 255
+      },
+      "expected": {
+        "0": 137,
+        "1": 154,
+        "2": 101,
+        "3": 255
+      }
+    },
+    "worstQuarter": {
+      "x": 431,
+      "y": 60,
+      "label": 4,
+      "rays": [
+        5,
+        4,
+        4,
+        4
+      ],
+      "alpha": 1,
+      "sum": [
+        54.694182117584454,
+        119.83195537174389,
+        128.75310115915076
+      ],
+      "gpu": [
+        55,
+        120,
+        128,
+        255
+      ],
+      "native": [
+        55,
+        120,
+        128,
+        255
+      ],
+      "expected": [
+        {
+          "label": 5,
+          "color": [
+            107.77672847033782,
+            147.32782148697555,
+            87.01240463660301
+          ],
+          "height": 3.0794673694255743
+        },
+        {
+          "label": 4,
+          "color": [
+            37,
+            111,
+            143
+          ],
+          "height": -5.762529631528667
+        },
+        {
+          "label": 4,
+          "color": [
+            37,
+            111,
+            143
+          ],
+          "height": -4.997728896433185
+        },
+        {
+          "label": 4,
+          "color": [
+            37,
+            110,
+            142
+          ],
+          "height": -13.808948997529654
+        }
+      ]
+    },
+    "graphics": {
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "reason": "",
+      "losses": 0,
+      "recoveries": 0,
+      "uploads": 1,
+      "uploadBytes": 1597536,
+      "textureBytes": 1597536,
+      "presentations": 5,
+      "resources": 3
+    },
+    "canvas": {
+      "columns": 734,
+      "rows": 550
+    },
+    "before": "1ab406a14c2e28c58ba3bda6c076b4ece9ea57eb177560f3f8fc63fbb6096676",
+    "after": "1ab406a14c2e28c58ba3bda6c076b4ece9ea57eb177560f3f8fc63fbb6096676"
+  },
+  {
+    "detail": 128,
+    "variant": "polar",
+    "start": "pattern",
+    "pose": "retained-map",
+    "stable": 118373,
+    "stableLand": 33934,
+    "stableOcean": 84439,
+    "stableMax": 1,
+    "referenceMax": 1,
+    "nativeMax": 1,
+    "nativeChecked": 118373,
+    "missing": 0,
+    "outside": 0,
+    "quarterChecked": 2305,
+    "quarterAlphaMax": 0,
+    "quarterColorMax": 1,
+    "coastAmbiguous": 13,
+    "canvasQuarterChecked": 1162,
+    "canvasQuarterAlphaMax": 0,
+    "gpuOracleMax": 0,
+    "gpuOracleAlphaMax": 0,
+    "worst": {
+      "kind": "stable",
+      "x": 496,
+      "y": 251,
+      "label": 2,
+      "cpu": {
+        "0": 30,
+        "1": 92,
+        "2": 123,
+        "3": 255
+      },
+      "gpu": {
+        "0": 30,
+        "1": 92,
+        "2": 122,
+        "3": 255
+      },
+      "expected": {
+        "0": 30,
+        "1": 92,
+        "2": 123,
+        "3": 255
+      }
+    },
+    "worstQuarter": {
+      "x": 498,
+      "y": 247,
+      "label": 2,
+      "rays": [
+        0,
+        2,
+        0,
+        2
+      ],
+      "alpha": 0.5,
+      "sum": [
+        14.5,
+        45,
+        60.5
+      ],
+      "gpu": [
+        15,
+        45,
+        60,
+        128
+      ],
+      "native": [
+        29,
+        90,
+        121,
+        255
+      ],
+      "expected": [
+        {
+          "label": 0,
+          "color": [
+            0,
+            0,
+            0
+          ],
+          "height": 0
+        },
+        {
+          "label": 2,
+          "color": [
+            29,
+            90,
+            121
+          ],
+          "height": -313.3394793533703
+        },
+        {
+          "label": 0,
+          "color": [
+            0,
+            0,
+            0
+          ],
+          "height": 0
+        },
+        {
+          "label": 2,
+          "color": [
+            29,
+            90,
+            121
+          ],
+          "height": -312.5013743563563
+        }
+      ]
+    },
+    "graphics": {
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "reason": "",
+      "losses": 0,
+      "recoveries": 0,
+      "uploads": 1,
+      "uploadBytes": 1597536,
+      "textureBytes": 1597536,
+      "presentations": 6,
+      "resources": 3
+    },
+    "canvas": {
+      "columns": 734,
+      "rows": 550
+    },
+    "before": "1ab406a14c2e28c58ba3bda6c076b4ece9ea57eb177560f3f8fc63fbb6096676",
+    "after": "1ab406a14c2e28c58ba3bda6c076b4ece9ea57eb177560f3f8fc63fbb6096676"
+  },
+  {
+    "detail": 128,
+    "variant": "polar",
+    "start": "pattern",
+    "pose": "cut-map",
+    "stable": 62832,
+    "stableLand": 42235,
+    "stableOcean": 20597,
+    "stableMax": 1,
+    "referenceMax": 1,
+    "nativeMax": 0,
+    "nativeChecked": 0,
+    "missing": 0,
+    "outside": 0,
+    "quarterChecked": 1926,
+    "quarterAlphaMax": 0,
+    "quarterColorMax": 1,
+    "coastAmbiguous": 9,
+    "canvasQuarterChecked": 1162,
+    "canvasQuarterAlphaMax": 0,
+    "gpuOracleMax": 0,
+    "gpuOracleAlphaMax": 0,
+    "worst": {
+      "kind": "stable",
+      "x": 319,
+      "y": 57,
+      "label": 5,
+      "cpu": {
+        "0": 137,
+        "1": 154,
+        "2": 101,
+        "3": 255
+      },
+      "gpu": {
+        "0": 136,
+        "1": 154,
+        "2": 100,
+        "3": 255
+      },
+      "expected": {
+        "0": 137,
+        "1": 154,
+        "2": 101,
+        "3": 255
+      }
+    },
+    "worstQuarter": {
+      "x": 431,
+      "y": 60,
+      "label": 4,
+      "rays": [
+        5,
+        4,
+        4,
+        4
+      ],
+      "alpha": 1,
+      "sum": [
+        54.694182117584454,
+        119.83195537174389,
+        128.75310115915076
+      ],
+      "gpu": [
+        55,
+        120,
+        128,
+        255
+      ],
+      "native": [
+        55,
+        120,
+        128,
+        255
+      ],
+      "expected": [
+        {
+          "label": 5,
+          "color": [
+            107.77672847033782,
+            147.32782148697555,
+            87.01240463660301
+          ],
+          "height": 3.0794673694255743
+        },
+        {
+          "label": 4,
+          "color": [
+            37,
+            111,
+            143
+          ],
+          "height": -5.762529631528667
+        },
+        {
+          "label": 4,
+          "color": [
+            37,
+            111,
+            143
+          ],
+          "height": -4.997728896433185
+        },
+        {
+          "label": 4,
+          "color": [
+            37,
+            110,
+            142
+          ],
+          "height": -13.808948997529654
+        }
+      ]
+    },
+    "graphics": {
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "reason": "",
+      "losses": 0,
+      "recoveries": 0,
+      "uploads": 1,
+      "uploadBytes": 1597536,
+      "textureBytes": 1597536,
+      "presentations": 7,
+      "resources": 3
+    },
+    "canvas": {
+      "columns": 734,
+      "rows": 550
+    },
+    "before": "1ab406a14c2e28c58ba3bda6c076b4ece9ea57eb177560f3f8fc63fbb6096676",
+    "after": "1ab406a14c2e28c58ba3bda6c076b4ece9ea57eb177560f3f8fc63fbb6096676"
+  }
+]

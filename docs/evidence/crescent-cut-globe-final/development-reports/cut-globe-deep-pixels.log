@@ -1,0 +1,12 @@
+Command: ["node", "node_modules/@playwright/test/cli.js", "test", "--config", "playwright.crescent-cut-globe.config.mjs", "tests/crescent-cut-globe-configuration-pixels.spec.ts", "--grep", "deep N", "--workers=1", "--retries=0"]
+
+Running 2 tests using 1 worker
+
+(node:21380) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\crescent-cut-globe-configuration-pixels.spec.ts:2:99 › Crescent-Cut Globe deep N128: configuration pixels and independent surface coverage (19.3s)
+  ok 2 [installed-chrome] › tests\crescent-cut-globe-configuration-pixels.spec.ts:2:99 › Crescent-Cut Globe deep N256: configuration pixels and independent surface coverage (19.0s)
+
+  2 passed (39.3s)
+
+Exit: 0

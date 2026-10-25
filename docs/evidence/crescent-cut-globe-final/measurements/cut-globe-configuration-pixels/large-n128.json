@@ -1,0 +1,301 @@
+[
+  {
+    "detail": 128,
+    "variant": "large",
+    "start": "pattern",
+    "pose": "overview",
+    "stable": 199516,
+    "stableLand": 79448,
+    "stableOcean": 120068,
+    "stableMax": 1,
+    "referenceMax": 1,
+    "nativeMax": 1,
+    "nativeChecked": 95961,
+    "missing": 0,
+    "outside": 0,
+    "quarterChecked": 2448,
+    "quarterAlphaMax": 0,
+    "quarterColorMax": 17,
+    "coastAmbiguous": 12,
+    "canvasQuarterChecked": 970,
+    "canvasQuarterAlphaMax": 0,
+    "gpuOracleMax": 0,
+    "gpuOracleAlphaMax": 0,
+    "worst": {
+      "kind": "stable",
+      "x": 488,
+      "y": 55,
+      "label": 3,
+      "cpu": {
+        "0": 104,
+        "1": 119,
+        "2": 77,
+        "3": 255
+      },
+      "gpu": {
+        "0": 104,
+        "1": 118,
+        "2": 77,
+        "3": 255
+      },
+      "expected": {
+        "0": 104,
+        "1": 119,
+        "2": 77,
+        "3": 255
+      }
+    },
+    "worstQuarter": {
+      "x": 417,
+      "y": 384,
+      "label": 5,
+      "rays": [
+        5,
+        5,
+        4,
+        5
+      ],
+      "alpha": 1,
+      "sum": [
+        88.59566095069461,
+        135.81413250330573,
+        99.06145402189456
+      ],
+      "gpu": [
+        106,
+        145,
+        86,
+        255
+      ],
+      "native": [
+        135,
+        151,
+        99,
+        255
+      ],
+      "expected": [
+        {
+          "label": 5,
+          "color": [
+            106.10225417551094,
+            145.0388612123957,
+            85.66053548114644
+          ],
+          "height": 4.264286174650596
+        },
+        {
+          "label": 5,
+          "color": [
+            106.12064107415947,
+            145.0639955967868,
+            85.67537994978012
+          ],
+          "height": 6.471215374721565
+        },
+        {
+          "label": 4,
+          "color": [
+            36.02217890352417,
+            108.0665367105725,
+            139.22085360010692
+          ],
+          "height": -0.024970842282843186
+        },
+        {
+          "label": 5,
+          "color": [
+            106.13756964958388,
+            145.08713649346788,
+            85.68904705654478
+          ],
+          "height": 2.1969531003766054
+        }
+      ]
+    },
+    "graphics": {
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "reason": "",
+      "losses": 0,
+      "recoveries": 0,
+      "uploads": 1,
+      "uploadBytes": 1597536,
+      "textureBytes": 1597536,
+      "presentations": 1,
+      "resources": 3
+    },
+    "canvas": {
+      "columns": 556,
+      "rows": 556
+    },
+    "before": "1ab406a14c2e28c58ba3bda6c076b4ece9ea57eb177560f3f8fc63fbb6096676",
+    "after": "1ab406a14c2e28c58ba3bda6c076b4ece9ea57eb177560f3f8fc63fbb6096676"
+  },
+  {
+    "detail": 128,
+    "variant": "large",
+    "start": "pattern",
+    "pose": "concave-cut",
+    "stable": 220561,
+    "stableLand": 55317,
+    "stableOcean": 165244,
+    "stableMax": 1,
+    "referenceMax": 1,
+    "nativeMax": 0,
+    "nativeChecked": 11598,
+    "missing": 0,
+    "outside": 0,
+    "quarterChecked": 3354,
+    "quarterAlphaMax": 0,
+    "quarterColorMax": 16,
+    "coastAmbiguous": 8,
+    "canvasQuarterChecked": 1048,
+    "canvasQuarterAlphaMax": 0,
+    "gpuOracleMax": 1,
+    "gpuOracleAlphaMax": 0,
+    "gpuOracleWorst": {
+      "offset": 2261672,
+      "actual": [
+        94,
+        127,
+        76,
+        255
+      ],
+      "reference": [
+        94,
+        127,
+        75,
+        255
+      ],
+      "rays": [
+        418,
+        565,
+        0,
+        -1.4379416704177856,
+        418,
+        565,
+        0,
+        -1.4390825033187866,
+        418,
+        565,
+        0,
+        -1.4402886629104614,
+        418,
+        565,
+        0,
+        -1.435578465461731,
+        418,
+        565,
+        0,
+        -1.4367942810058594
+      ]
+    },
+    "worst": {
+      "kind": "stable",
+      "x": 483,
+      "y": 55,
+      "label": 3,
+      "cpu": {
+        "0": 100,
+        "1": 117,
+        "2": 75,
+        "3": 255
+      },
+      "gpu": {
+        "0": 101,
+        "1": 118,
+        "2": 75,
+        "3": 255
+      },
+      "expected": {
+        "0": 100,
+        "1": 117,
+        "2": 75,
+        "3": 255
+      }
+    },
+    "worstQuarter": {
+      "x": 332,
+      "y": 140,
+      "label": 4,
+      "rays": [
+        4,
+        4,
+        4,
+        5
+      ],
+      "alpha": 1,
+      "sum": [
+        46.56623822831981,
+        101.36575963629085,
+        108.75482968814146
+      ],
+      "gpu": [
+        31,
+        93,
+        120,
+        255
+      ],
+      "native": [
+        31,
+        93,
+        120,
+        255
+      ],
+      "expected": [
+        {
+          "label": 4,
+          "color": [
+            31.290149151422405,
+            93.02476774747201,
+            120.08651836491842
+          ],
+          "height": -19.04396337895426
+        },
+        {
+          "label": 4,
+          "color": [
+            31.319225365346334,
+            93.11121054562423,
+            120.19810815889674
+          ],
+          "height": -11.509151568871838
+        },
+        {
+          "label": 4,
+          "color": [
+            31.315860783792576,
+            93.10120773559956,
+            120.18519544050125
+          ],
+          "height": -7.605374974627663
+        },
+        {
+          "label": 5,
+          "color": [
+            92.33971761271793,
+            126.22585251646764,
+            74.54949678824934
+          ],
+          "height": 0.029151677681768018
+        }
+      ]
+    },
+    "graphics": {
+      "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "reason": "",
+      "losses": 0,
+      "recoveries": 0,
+      "uploads": 1,
+      "uploadBytes": 1597536,
+      "textureBytes": 1597536,
+      "presentations": 2,
+      "resources": 3
+    },
+    "canvas": {
+      "columns": 556,
+      "rows": 556
+    },
+    "before": "1ab406a14c2e28c58ba3bda6c076b4ece9ea57eb177560f3f8fc63fbb6096676",
+    "after": "1ab406a14c2e28c58ba3bda6c076b4ece9ea57eb177560f3f8fc63fbb6096676"
+  }
+]

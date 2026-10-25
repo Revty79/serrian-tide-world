@@ -1,0 +1,243 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\.local\\crescent-cut-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.crescent-cut-globe.config.mjs",
+      "tests/crescent-cut-globe-workflow.spec.ts",
+      "tests/crescent-cut-globe-lifecycle.spec.ts",
+      "--grep",
+      "N256 Canvas|N256 hardware 15-second",
+      "--workers=1",
+      "--retries=0"
+    ],
+    "configFile": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\playwright.crescent-cut-globe.config.mjs",
+    "rootDir": "D:/serrian-tide-world/.local/crescent-cut-work/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-cut-globe-playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "installed-chrome",
+        "name": "installed-chrome",
+        "testDir": "D:/serrian-tide-world/.local/crescent-cut-work/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "crescent-cut-globe-*.spec.ts"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-cut-globe-playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "installed-chrome",
+        "testDir": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\.local\\crescent-cut-work\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "crescent-cut-globe-*.spec.ts"
+        ],
+        "timeout": 240000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5298",
+          "channel": "chrome",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1,
+          "actionTimeout": 15000,
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "installed-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/cut-globe-final-performance-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "crescent-cut-globe-lifecycle.spec.ts",
+      "file": "crescent-cut-globe-lifecycle.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Crescent-Cut Globe N256 hardware 15-second held input, navigation, maximum brush and recovery",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26048,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:38:07.209Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e6126bea1fb46c5da6a5-c61fc8d49142d164d487",
+          "file": "crescent-cut-globe-lifecycle.spec.ts",
+          "line": 2,
+          "column": 68
+        },
+        {
+          "title": "Crescent-Cut Globe N256 Canvas 15-second held input, navigation, maximum brush and recovery",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 31823,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:38:33.718Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e6126bea1fb46c5da6a5-a8775a5584f4b0874e0c",
+          "file": "crescent-cut-globe-lifecycle.spec.ts",
+          "line": 2,
+          "column": 68
+        }
+      ]
+    },
+    {
+      "title": "crescent-cut-globe-workflow.spec.ts",
+      "file": "crescent-cut-globe-workflow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Crescent-Cut Globe N256 Canvas all tools, physical banks, real rim, maps and atomic Save/Open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 79115,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T12:39:05.563Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d8dbb5cc63a784c2961b-ecbf5f9afb2eab0bd656",
+          "file": "crescent-cut-globe-workflow.spec.ts",
+          "line": 5,
+          "column": 68
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T12:38:06.764Z",
+    "duration": 138363.8,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

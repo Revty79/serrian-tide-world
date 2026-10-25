@@ -7,11 +7,15 @@ vec3 foldDirection(int face,vec2 uv){vec2 t=tan(uv);return normalize(face==0?vec
 bool foldHit(vec2 pixel,out vec4 value,out float depth,out int classification){
  value=vec4(0.);depth=1.;classification=0;vec3 p;bool cut=false;int face;vec2 uv;
  if(mode==0){vec2 xy=(pixel-viewport*.5)/globeRadius;xy.y=-xy.y;vec3 plane=cameraRight*xy.x+cameraUp*xy.y;float outerDisc=1.-dot(xy,xy);if(outerDisc<0.)return false;float outerRoot=sqrt(outerDisc),z=outerRoot;
-  // Exact one-dimensional interval difference along the camera ray. The first
-  // surviving material endpoint belongs to A or to B's exposed far cap. This
-  // avoids a floating tolerance at the shared rim and never draws A behind B.
-  vec2 shifted=xy-foldSeparation*vec2(dot(foldAxis,cameraRight),dot(foldAxis,cameraUp));float cutterDisc=1.-dot(shifted,shifted);
-  if(cutterDisc>=0.){float root=sqrt(cutterDisc),centerDepth=foldSeparation*dot(foldAxis,cameraForward),front=centerDepth+root,back=centerDepth-root;if(outerRoot<=front&&outerRoot>=back){if(back< -outerRoot)return false;z=back;cut=true;}}
+  // A ray meets material iff at least one A endpoint is outside B. On A,
+  // outside B is exactly axis.point <= d/2. Compare the squared projected
+  // predicate rather than subtracting two almost equal sphere roots at the
+  // silhouette. This is the same solid interval difference without its loss
+  // of significant digits; no epsilon expands the material boundary.
+  vec2 projectedAxis=vec2(dot(foldAxis,cameraRight),dot(foldAxis,cameraUp));float facing=dot(foldAxis,cameraForward),side=dot(projectedAxis,xy)-foldSeparation*.5,predicate=facing*facing*outerDisc-side*side;
+  if(side>0.&&predicate<0.)return false;
+  cut=facing>0.&&!(side<=0.&&predicate<=0.);
+  if(cut){vec2 shifted=xy-foldSeparation*projectedAxis;z=foldSeparation*facing-sqrt(max(0.,1.-dot(shifted,shifted)));}
   vec3 q=plane+cameraForward*z;
   vec3 normal=cut?foldSeparation*foldAxis-q:q;depth=max(0.,dot(normal,cameraForward));if(cut){vec2 shifted=xy-foldSeparation*vec2(dot(foldAxis,cameraRight),dot(foldAxis,cameraUp));vec3 r=cameraRight-2.*dot(cameraRight,foldAxis)*foldAxis,uvec=cameraUp-2.*dot(cameraUp,foldAxis)*foldAxis,f= -cameraForward+2.*dot(cameraForward,foldAxis)*foldAxis;p=normalize(r*shifted.x+uvec*shifted.y+f*sqrt(max(0.,1.-dot(shifted,shifted))));}else p=normalize(q);vec3 a=abs(p);float n,u,v;
   if(a.x>=a.y&&a.x>=a.z){face=p.x>=0.?0:1;n=a.x;u=p.x>=0.?p.y:-p.y;v=p.z;}else if(a.y>=a.z){face=p.y>=0.?2:3;n=a.y;u=p.y>=0.?-p.x:p.x;v=p.z;}else{face=p.z>=0.?4:5;n=a.z;u=p.x;v=p.z>=0.?p.y:-p.y;}uv=atan(vec2(u,v)/n);
