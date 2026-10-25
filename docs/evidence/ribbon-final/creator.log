@@ -1,0 +1,17 @@
+Command: ["node", "node_modules/@playwright/test/cli.js", "test", "--config", "playwright.ribbon.config.mjs", "tests/ribbon-configuration.spec.ts", "--grep", "two-turns|thick|wide|canvas: bent", "--workers", "1", "--retries", "0", "--max-failures", "1"]
+
+Running 7 tests using 1 worker
+
+(node:26788) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\ribbon-configuration.spec.ts:13:69 › Ribbon auto: two-turns dimensions remain editable and invalid creation retains geography (36.6s)
+  ok 2 [installed-chrome] › tests\ribbon-configuration.spec.ts:13:69 › Ribbon auto: thick dimensions remain editable and invalid creation retains geography (34.4s)
+  ok 3 [installed-chrome] › tests\ribbon-configuration.spec.ts:13:69 › Ribbon auto: wide dimensions remain editable and invalid creation retains geography (36.0s)
+  ok 4 [installed-chrome] › tests\ribbon-configuration.spec.ts:13:69 › Ribbon canvas: two-turns dimensions remain editable and invalid creation retains geography (38.7s)
+  ok 5 [installed-chrome] › tests\ribbon-configuration.spec.ts:13:69 › Ribbon canvas: thick dimensions remain editable and invalid creation retains geography (37.6s)
+  ok 6 [installed-chrome] › tests\ribbon-configuration.spec.ts:13:69 › Ribbon canvas: wide dimensions remain editable and invalid creation retains geography (42.8s)
+  ok 7 [installed-chrome] › tests\ribbon-configuration.spec.ts:13:69 › Ribbon canvas: bent dimensions remain editable and invalid creation retains geography (25.5s)
+
+  7 passed (4.2m)
+
+Exit: 0

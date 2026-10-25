@@ -1,0 +1,12 @@
+Command: ["node", "node_modules/@playwright/test/cli.js", "test", "--config", "playwright.ribbon.config.mjs", "tests/ribbon-touch.spec.ts", "--workers", "1", "--retries", "0", "--max-failures", "1"]
+
+Running 2 tests using 1 worker
+
+(node:22984) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\ribbon-touch.spec.ts:2:68 › ribbon auto: native emulated touch/pen drawing and two-finger navigation preserve exact history (9.8s)
+  ok 2 [installed-chrome] › tests\ribbon-touch.spec.ts:2:68 › ribbon canvas: native emulated touch/pen drawing and two-finger navigation preserve exact history (9.9s)
+
+  2 passed (21.6s)
+
+Exit: 0

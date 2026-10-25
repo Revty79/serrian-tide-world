@@ -1,0 +1,13 @@
+Command: ["node", "node_modules/@playwright/test/cli.js", "test", "--config", ".local/playwright.ribbon-shared.config.mjs", "--grep", "N128", "--workers", "1", "--retries", "0", "--max-failures", "1"]
+
+Running 3 tests using 1 worker
+
+(node:25860) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\spiral-pilot.spec.ts:2:39 › Spiral N128 auto: normal creator, actual painting pixels and exact v41 Save/Open (16.6s)
+  ok 2 [installed-chrome] › tests\spiral-pilot.spec.ts:2:39 › Spiral N128 canvas: normal creator, actual painting pixels and exact v41 Save/Open (16.4s)
+  ok 3 [installed-chrome] › tests\spiral-pixels.spec.ts:2:70 › Spiral N128 default: independent geometry/palette views match hardware WebGL2 and sharp Canvas (1.8m)
+
+  3 passed (2.4m)
+
+Exit: 0
