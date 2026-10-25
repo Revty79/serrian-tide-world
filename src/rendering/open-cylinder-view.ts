@@ -7,7 +7,7 @@ import {dot3,unitDirection,type Vec3} from '../surfaces/cube-sphere.ts';
 import {cylinderFrameLayout,cylinderCenterInspection,cylinderRayHit,initialCylinderView,type CylinderView,type CylinderViewport,type CylinderScreenPoint} from './cylindrical-view.ts';
 import type {OpenCylinderFieldHit} from './open-cylinder-elevation.ts';
 
-export interface OpenCylinderView extends CylinderView {readonly scope:OpenCylinderScope}
+export interface OpenCylinderView extends CylinderView {readonly scope:OpenCylinderScope;readonly mapProjection?:'upper-annulus'|'lower-annulus'|'inner-wall'|'outer-wall'}
 export function initialOpenCylinderView(scope:OpenCylinderScope='exterior',mode:CylinderView['mode']='physical'):OpenCylinderView{return{...initialCylinderView(mode),scope,interior:scope==='interior',interiorView:'edit'};}
 export function openCylinderReferenceModel(g:OpenCylinderGeometry):CylinderExcavation{const {outerRadiusMeters:R,innerRadiusMeters:ri,lengthMeters:L}=g.metadata;return Object.freeze({radiusMeters:R,outerHalfLength:L/R/2,innerRatio:ri/R,innerHalfLength:L/R/2,primitives:Object.freeze([])});}
 export type OpenCylinderViewHit=(OpenCylinderFieldHit&{readonly kind:'terrain';readonly normal:Vec3;readonly displayRadial:number;readonly depth:number})|{readonly kind:'rock';readonly normal:Vec3;readonly depth:number};
@@ -21,10 +21,15 @@ export function openCylinderViewAdapter(g:OpenCylinderGeometry,view:OpenCylinder
  if(physicalModel.radiusMeters!==ro||physicalModel.innerRatio!==ri/ro||physicalModel.outerHalfLength!==L/ro/2||physicalModel.innerHalfLength!==L/ro/2||!Array.isArray(physicalModel.primitives)||physicalModel.primitives.length>48)throw RangeError('Foreign or unsupported open-cylinder display geometry.');
  const model=fittedInside?Object.freeze({radiusMeters:ri,outerHalfLength:L/ri/2,innerRatio:ri/ro,innerHalfLength:L/ri/2,primitives:Object.freeze([])}):physicalModel;
  if(model.outerHalfLength!==model.innerHalfLength)throw RangeError('Open-cylinder display requires actual equal-length annular ends.');
- const layout=cylinderFrameLayout({radiusMeters:R,lengthMeters:L},view,size,{halfWidth:Math.PI,halfHeight:S/(2*ro)}),f=view.frame,tx=dot3(view.target,f.right),ty=dot3(view.target,f.up),ratio=R/model.radiusMeters;
+ const layout=cylinderFrameLayout({radiusMeters:R,lengthMeters:L},view,size,{halfWidth:view.mapProjection?.endsWith('annulus')?1:view.mapProjection==='inner-wall'?Math.PI*ri/ro:Math.PI,halfHeight:view.mapProjection?.endsWith('annulus')?1:view.mapProjection?L/(2*ro):S/(2*ro)}),f=view.frame,tx=dot3(view.target,f.right),ty=dot3(view.target,f.up),ratio=R/model.radiusMeters;
  const eye=view.eyeMeters??[0,0,0];if(inspection&&!openCylinderFreeVolume(model,eye))throw RangeError('Open-cylinder inspection eye must remain in actual free volume.');
  const originExtent=Math.hypot(f.forward[0],f.forward[1])+model.outerHalfLength*Math.abs(f.forward[2])+2,halfWidth=Math.hypot(f.right[0],f.right[1])+model.outerHalfLength*Math.abs(f.right[2]),halfHeight=Math.hypot(f.up[0],f.up[1])+model.outerHalfLength*Math.abs(f.up[2]);
  const rayAt=(x:number,y:number):OpenCylinderViewHit|undefined=>{
+  if(view.mode==='map'&&view.mapProjection){
+   const px=x-view.pan.x,py=y-view.pan.y,annulus=view.mapProjection.endsWith('annulus'),upper=view.mapProjection==='upper-annulus',inner=view.mapProjection==='inner-wall',rho=annulus?Math.hypot(px,py)*ro:inner?ri:ro,z=annulus?upper?L:0:py*ro+H;
+   if(annulus?(rho<ri||rho>ro):(Math.abs(px)>Math.PI*rho/ro||z<0||z>L))return;
+   return{kind:'terrain',patchId:annulus?upper?'rim-end':'rim-start':inner?'inner-wall':'outer-wall',theta:cylinderAngle(view.phase+(annulus?Math.atan2(upper?py:-py,px):px*ro/rho)),radiusMeters:rho,zMeters:z,normal:[0,0,1],displayRadial:rho/ro,depth:0};
+  }
   if(view.mode==='map'){
    const px=x-view.pan.x,py=y-view.pan.y,raw=S/2+py*ro,pad=1e-12*Math.max(ro,L,S);if(Math.abs(px)>Math.PI+pad/ro||raw< -pad||raw>S+pad)return;const m=Math.max(0,Math.min(S,raw));
    const theta=cylinderAngle(view.phase+Math.max(-Math.PI,Math.min(Math.PI,px))),T=g.thicknessMeters;
@@ -53,6 +58,13 @@ export function openCylinderViewAdapter(g:OpenCylinderGeometry,view:OpenCylinder
  const hitAt=(point:CylinderScreenPoint)=>rayAt((point.x-layout.x)/layout.scale,(layout.y-point.y)/layout.scale);
  const project=(input:SurfacePosition):readonly CylinderScreenPoint[]=>{
   const p=g.normalize(input),q=g.physical(p);
+  if(view.mode==='map'&&view.mapProjection){
+   const annulus=view.mapProjection.endsWith('annulus'),upper=view.mapProjection==='upper-annulus',inner=view.mapProjection==='inner-wall',expected=annulus?upper?'rim-end':'rim-start':inner?'inner-wall':'outer-wall';
+   if(!g.aliases(p).some(a=>a.patchId===expected))return[];
+   const theta=cylinderAngle(q.theta-view.phase),rho=q.radius/ro;
+   if(annulus)return[{x:layout.x+(rho*Math.cos(theta)+view.pan.x)*layout.scale,y:layout.y-((upper?1:-1)*rho*Math.sin(theta)+view.pan.y)*layout.scale}];
+   const angles=[theta];if(Math.abs(Math.abs(theta)-Math.PI)<1e-12)angles.push(-theta);return angles.map(a=>({x:layout.x+(a*rho+view.pan.x)*layout.scale,y:layout.y-((q.z-H)/ro+view.pan.y)*layout.scale}));
+  }
   if(view.mode==='map'){
    const angles=[cylinderAngle(p.u-view.phase)],base=angles[0]!;if(Math.abs(Math.abs(base)-Math.PI)<1e-12)angles.push(-base);const points:CylinderScreenPoint[]=[];
    for(const alias of g.aliases(p)){const m=g.meridianAt(alias);for(const angle of angles){const point={x:layout.x+(angle+view.pan.x)*layout.scale,y:layout.y-((m-S/2)/ro+view.pan.y)*layout.scale};if(!points.some(p=>Math.abs(p.x-point.x)<1e-9&&Math.abs(p.y-point.y)<1e-9))points.push(point);}}return points;
@@ -61,9 +73,9 @@ export function openCylinderViewAdapter(g:OpenCylinderGeometry,view:OpenCylinder
   if(inspection){const relative=point.map((v,i)=>v-eye[i]!/R)as unknown as Vec3,depth=dot3(relative,f.forward);if(depth<=1e-5)return[];return[{x:layout.x-dot3(relative,f.right)/depth*layout.scale,y:layout.y-dot3(relative,f.up)/depth*layout.scale}];}
   return[{x:layout.x+(dot3(point,f.right)-tx)*layout.scale,y:layout.y-(dot3(point,f.up)-ty)*layout.scale}];
  };
- const visible=(input:SurfacePosition)=>{if(view.mode==='map')return true;if(inspection)return false;const points=project(input);if(!points.length)return false;const hit=hitAt(points[0]!);if(hit?.kind!=='terrain')return false;const at=positionAtHit(hit)!,a=g.referencePosition(input),b=g.referencePosition(at);return Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2])<=1e-8*Math.max(ro,L);};
+ const visible=(input:SurfacePosition)=>{if(view.mode==='map')return project(input).length>0;if(inspection)return false;const points=project(input);if(!points.length)return false;const hit=hitAt(points[0]!);if(hit?.kind!=='terrain')return false;const at=positionAtHit(hit)!,a=g.referencePosition(input),b=g.referencePosition(at);return Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2])<=1e-8*Math.max(ro,L);};
  return Object.freeze({layout,model,inspection,fittedInside,radiusMeters:R,halfWidth,halfHeight,tx,ty,rayAt,hitAt,positionAtHit,project,visible,
   editablePositionAtHit:(hit:OpenCylinderViewHit)=>{const p=positionAtHit(hit);return p&&!inspection?p:undefined;},
-  insideBounds:(x:number,y:number,dx:number,dy:number)=>view.mode==='map'?Math.abs(x-view.pan.x)<=Math.PI+dx&&Math.abs(y-view.pan.y)<=S/(2*ro)+dy:Math.abs(x+tx)<=halfWidth/ratio+dx&&Math.abs(y+ty)<=halfHeight/ratio+dy,
+  insideBounds:(x:number,y:number,dx:number,dy:number)=>view.mode==='map'?view.mapProjection?view.mapProjection.endsWith('annulus')?Math.hypot(x-view.pan.x,y-view.pan.y)<=1+Math.hypot(dx,dy):Math.abs(x-view.pan.x)<=(view.mapProjection==='inner-wall'?Math.PI*ri/ro:Math.PI)+dx&&Math.abs(y-view.pan.y)<=H/ro+dy:Math.abs(x-view.pan.x)<=Math.PI+dx&&Math.abs(y-view.pan.y)<=S/(2*ro)+dy:Math.abs(x+tx)<=halfWidth/ratio+dx&&Math.abs(y+ty)<=halfHeight/ratio+dy,
  });
 }

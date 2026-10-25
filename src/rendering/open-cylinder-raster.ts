@@ -25,7 +25,7 @@ export function* openCylinderRasterSteps(cache:OpenCylinderDisplayCache,view:Ope
  };
  try{return yield* coherentTerrainRasterSteps<OpenCylinderViewHit>({pixels,columns,rows,revision,snapshotBytes,size,grid:l,labels,region:update?.region,sampleAt,quantum:geometry.model.primitives.length?256:2048,
   nearBoundary:(center,x,y,dx,dy)=>{
-   if(geometry.inspection||center?.hit?.kind==='rock')return false;if(!center?.hit)return geometry.insideBounds(x,y,dx,dy);if(view.mode==='map')return Math.PI-Math.abs(x-view.pan.x)<dx||cache.terrain.geometry.meridianLengthMeters/(2*geometry.radiusMeters)-Math.abs(y-view.pan.y)<dy;
+   if(geometry.inspection||center?.hit?.kind==='rock')return false;if(!center?.hit)return geometry.insideBounds(x,y,dx,dy);if(view.mode==='map'&&view.mapProjection){const px=x-view.pan.x,py=y-view.pan.y,ro=cache.terrain.geometry.metadata.outerRadiusMeters,ri=cache.terrain.geometry.metadata.innerRadiusMeters;if(view.mapProjection.endsWith('annulus')){const rho=Math.hypot(px,py),pad=Math.hypot(dx,dy);return Math.min(Math.abs(rho-1),Math.abs(rho-ri/ro))<pad;}return Math.PI*(view.mapProjection==='inner-wall'?ri/ro:1)-Math.abs(px)<dx||cache.terrain.geometry.metadata.lengthMeters/(2*ro)-Math.abs(py)<dy;}if(view.mode==='map')return Math.PI-Math.abs(x-view.pan.x)<dx||cache.terrain.geometry.meridianLengthMeters/(2*geometry.radiusMeters)-Math.abs(y-view.pan.y)<dy;
    const hit=center.hit;if(hit.patchId.endsWith('wall'))return Math.abs((hit as OpenCylinderViewHit&{displayFacing?:number}).displayFacing??dot3(hit.normal,view.frame.forward))<.15;return Math.min(hit.displayRadial-geometry.model.innerRatio,1-hit.displayRadial)<2*Math.max(dx,dy);
   },
  });}finally{elevations=new Float32Array(0);}

@@ -16,7 +16,7 @@ interface Segment {length:number;low:number;high:number}
 export function flatRingDistance(g:OpenCylinderGeometry,first:SurfacePosition,last:SurfacePosition,options:CylinderDistanceOptions={}){
  const a=g.normalize(first),b=g.normalize(last),p=g.physical(a),q=g.physical(b),{outerRadiusMeters:R,innerRadiusMeters:r,lengthMeters:H}=g.metadata,S=g.meridianLengthMeters,W=R-r,
   angle=Math.abs(cylinderAngle(q.theta-p.theta)),guard=524288*Number.EPSILON*Math.max(R,H),tolerance=options.absoluteToleranceMeters??R*1e-6;
- if(!Number.isFinite(tolerance)||tolerance<16*guard||!Number.isInteger(options.maxBoxes??32768)||(options.maxBoxes??32768)<1)throw new CylinderDistanceUnsupportedError('precision','Flat Ring query is below the qualified arithmetic floor or work budget.');
+ if(!Number.isFinite(tolerance)||tolerance<16*guard||!Number.isInteger(options.maxBoxes??32768)||(options.maxBoxes??32768)<1||(options.maxBoxes??32768)>32768)throw new CylinderDistanceUnsupportedError('precision','Flat Ring query is below the qualified arithmetic floor or work budget.');
  if(angle===0||p.z===q.z&&(p.z===0||p.z===H)||p.radius===r&&q.radius===r||p.radius===r&&(q.z===0||q.z===H)||q.radius===r&&(p.z===0||p.z===H))return openCylinderDistance(g,a,b,options);
  const ma=g.meridianAt(a)%S,mb=g.meridianAt(b)%S;
  const radius=(m:number)=>m<=H?R:m<=H+W?R-(m-H):m<=2*H+W?r:r+(m-2*H-W);

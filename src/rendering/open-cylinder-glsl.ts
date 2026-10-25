@@ -25,7 +25,7 @@ uniform vec3 cameraRight,cameraUp,cameraForward,inspectionEye,eyePosition;
 uniform vec2 viewport,translation,backingSize;
 uniform float scale,h,phase,outerRadiusMeters,innerRadiusMeters,lengthMeters,seaLevel,heightScale;
 uniform float radiusMeters,oppositeRadius,oppositeLength,innerRatio,outerHalf,innerHalf,ownRatio;
-uniform int mode,relief,invertedProjection,selectedInside,excavationEnabled,cutterCount,inspection;
+uniform int mapProjection,mode,relief,invertedProjection,selectedInside,excavationEnabled,cutterCount,inspection;
 uniform vec4 primitiveA[48],primitiveB[48];
 flat in int region;out vec4 outColor;
 const float PI=3.141592653589793;
@@ -46,7 +46,10 @@ vec3 wallField(bool outer,float theta,float z){
 }
 vec3 surfaceField(vec3 p){
  float theta,radial,z;
- if(mode==1){float T=outerRadiusMeters-innerRadiusMeters,S=2.*(lengthMeters+T),m=S*.5+p.y*outerRadiusMeters;theta=phase+p.x;
+ if(mode==1&&mapProjection>0){
+  bool annulus=mapProjection<=2;radial=annulus?length(p.xy)*outerRadiusMeters:mapProjection==3?innerRadiusMeters:outerRadiusMeters;
+  theta=phase+(annulus?atan(mapProjection==1?p.y:-p.y,p.x):p.x*outerRadiusMeters/radial);z=annulus?(mapProjection==1?lengthMeters*.5:-lengthMeters*.5):p.y*outerRadiusMeters;
+ }else if(mode==1){float T=outerRadiusMeters-innerRadiusMeters,S=2.*(lengthMeters+T),m=S*.5+p.y*outerRadiusMeters;theta=phase+p.x;
   if(region==0){radial=outerRadiusMeters;z=m-lengthMeters*.5;}
   else if(region==3){radial=innerRadiusMeters;z=lengthMeters-(m-lengthMeters-T)-lengthMeters*.5;}
   else if(region==2){radial=outerRadiusMeters-(m-lengthMeters);z=lengthMeters*.5;}

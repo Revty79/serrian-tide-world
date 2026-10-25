@@ -14,6 +14,6 @@ export function flatRingBrushPolicy(input:FlatRingDimensions){const d=flatRingDi
 export function createFlatRing(options:{geometry:FlatRingConfiguration;terrainId:string;detail:128|256;initialElevation?:number}){
  const geometry=createFlatRingGeometry(options.geometry),resolution=flatRingResolution(geometry.metadata,options.detail),terrain=createOpenCylinderTerrain({terrainId:options.terrainId,geometry:geometry.boundary.metadata,resolution,initialElevation:options.initialElevation??-100});
  if(new Set([geometry.identity.worldId,geometry.identity.surfaceId,terrain.metadata.terrainId]).size!==3)throw RangeError('Flat Ring requires distinct World, surface and terrain identities.');
- return Object.freeze({configuration:geometry.metadata,geometry,terrain,detail:options.detail,elevationByteLength:terrain.elevationByteLength});
+ return Object.freeze({configuration:geometry.metadata,geometry,terrain,detail:options.detail,regions:Object.freeze({upper:'rim-end',lower:'rim-start',innerWall:'inner-wall',outerWall:'outer-wall'} as const),elevationByteLength:terrain.elevationByteLength});
 }
 export type FlatRing=ReturnType<typeof createFlatRing>;

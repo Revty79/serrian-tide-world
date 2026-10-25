@@ -1,4 +1,4 @@
-import type {Ringworld} from '../terrain/ringworld.ts';
+import type {OpenCylinderTerrain} from '../terrain/open-cylinder.ts';
 import type {OpenCylinderView} from './open-cylinder-view.ts';
 import {openCylinderViewAdapter} from './open-cylinder-view.ts';
 import type {CylinderViewport} from './cylindrical-view.ts';
@@ -10,7 +10,7 @@ import type {RasterRegion} from './coherent-terrain-raster.ts';
  * use a conservative sin/cos Lipschitz enclosure over the complete footprint.
  * Fitted radial inversion is 1-Lipschitz on this annulus. No terrain is sampled,
  * blurred or changed here; unknown/nonphysical views use the accepted fallback. */
-export function ringworldPhysicalDirtyRegions(world:Ringworld,changes:readonly TerrainDisplayDab[],view:OpenCylinderView,size:CylinderViewport,columns:number,rows:number){
+export function ringworldPhysicalDirtyRegions(world:{readonly terrain:OpenCylinderTerrain},changes:readonly TerrainDisplayDab[],view:OpenCylinderView,size:CylinderViewport,columns:number,rows:number){
  if(view.mode!=='physical'||view.interiorView==='center')return;
  const g=world.terrain.geometry,{outerRadiusMeters:ro,innerRadiusMeters:ri,lengthMeters:L}=g.metadata,T=g.thicknessMeters,S=g.meridianLengthMeters,{angularSamples:A,axialCells:Z,radialCells:P}=world.terrain.metadata.representation.resolution,stepZ=L/Z,stepR=T/(2*P),angleStep=2*Math.PI/A,adapter=openCylinderViewAdapter(g,view,size),regions:RasterRegion[]=[];
  for(const dab of changes){const p=g.normalize(dab.center);if(!adapter.visible(p))return;const screen=adapter.project(p)[0];if(!screen)return;const m=g.meridianAt(p),support=dab.radiusMeters+2*Math.max(stepZ,stepR),window=dab.radiusMeters/ri+2*angleStep;

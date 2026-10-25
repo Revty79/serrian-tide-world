@@ -1,0 +1,14 @@
+
+Running 7 tests using 1 worker
+
+(node:8372) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\flat-ring-pilot.spec.ts:2:39 › Flat Ring N128 auto: creator, upper annulus pixels, exact history and v43 reopen (28.3s)
+  ok 2 [installed-chrome] › tests\flat-ring-pilot.spec.ts:2:39 › Flat Ring N128 canvas: creator, upper annulus pixels, exact history and v43 reopen (10.6s)
+  ok 3 [installed-chrome] › tests\flat-ring-pixels.spec.ts:2:171 › Flat Ring N128 Standard: independent physical intervals, matched canonical field and actual GPU/Canvas pixels (11.2s)
+  ok 4 [installed-chrome] › tests\flat-ring-recovery.spec.ts:9:39 › Flat Ring N256 auto: active worker protocol fault preserves exact prefix history and a fresh stroke recovers (3.1s)
+  ok 5 [installed-chrome] › tests\flat-ring-recovery.spec.ts:9:39 › Flat Ring N256 canvas: active worker protocol fault preserves exact prefix history and a fresh stroke recovers (4.1s)
+  ok 6 [installed-chrome] › tests\flat-ring-recovery.spec.ts:12:1 › Flat Ring N256: graphics loss and restoration retain the current painted terrain epoch (6.2s)
+  ok 7 [installed-chrome] › tests\flat-ring-recovery.spec.ts:13:1 › Flat Ring v43 corrupt Open retains the active World and exact geography (2.0s)
+
+  7 passed (1.1m)

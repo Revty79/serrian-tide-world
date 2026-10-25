@@ -1,0 +1,18 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {createFlatRing} from '../terrain/flat-ring.ts';
+import {beginFlatRingStroke} from '../terrain/flat-ring-stroke.ts';
+import {beginWorkerFlatRingStroke} from './flat-ring-work.ts';
+import {createFlatRingWorkRuntime,createFlatRingWorkerTerrain,type OpenCylinderWorkInput} from './flat-ring-work-runtime.ts';
+import {createConnectedHistory} from './connected-history.ts';
+import type {ConnectedWorkOutput} from './connected-work-protocol.ts';
+import {PHYSICAL_PREVIEW_DAB_LIMITS} from './physical-brush-policy.ts';
+const make=(small=false)=>createFlatRing({geometry:{provider:'physical-flat-ring',version:1,identity:{worldId:'w',surfaceId:'s'},outerRadiusMeters:1e6,innerRadiusMeters:small?60000:350000,thicknessMeters:150000},terrainId:'t',detail:256}).terrain;
+const words=(t:ReturnType<typeof make>)=>new Uint32Array(t.copyElevations().buffer);
+function factory(){return()=>{let dead=false;const port={onmessage:undefined as((e:{data:ConnectedWorkOutput})=>void)|undefined,terminate(){dead=true;},postMessage(m:OpenCylinderWorkInput){setImmediate(()=>{if(!dead)runtime.receive(m);});}};const runtime=createFlatRingWorkRuntime(m=>setImmediate(()=>{if(!dead)port.onmessage?.({data:m});}),f=>setImmediate(()=>{if(!dead)f();}));return port as unknown as Worker;};}
+for(const small of[false,true])for(const tool of['raise','lower','smooth','flatten']as const)test(`Flat Ring ${small?'around hole':'four creases'} ${tool}: worker and host preserve exact words and whole-gesture history`,async()=>{
+ const t=make(small),reference=make(small);for(let i=0;i<t.sampleCount;i++){const h=Math.fround(-100+(i*13%17)*20);t.write(t.keyAt(i),h);reference.write(reference.keyAt(i),h);}const before=words(t),history=createConnectedHistory(t),rh=createConnectedHistory(reference),radiusMeters=small?200000:36000,settings=tool==='raise'||tool==='lower'?{version:1 as const,tool,radiusMeters,strengthMeters:100}:tool==='smooth'?{version:1 as const,tool,radiusMeters,intensity:.5}:{version:1 as const,tool,radiusMeters,intensity:.5,targetElevation:200},options={spacingMeters:radiusMeters*.2371,dabLimits:PHYSICAL_PREVIEW_DAB_LIMITS,rollingWork:true},g=t.geometry;
+ const p={...g.identity,patchId:'rim-end',u:Math.PI-.02,v:small?g.thicknessMeters:g.thicknessMeters/2},a=beginWorkerFlatRingStroke(t,history,p,settings,options,()=>{},factory()),b=beginFlatRingStroke(reference,rh,p,settings,options);
+ for(const u of[Math.PI-.01,-Math.PI+.01,-Math.PI+.02]){a.move({...p,u});b.move({...p,u});}a.release();b.release();while(b.status==='draining')b.pump(16);for(let i=0;a.status==='drawing'||a.status==='draining';i++){assert.ok(i<100000);a.pump();await new Promise<void>(r=>setImmediate(r));}
+ assert.equal(a.status,'complete');assert.deepEqual(words(t),words(reference));assert.deepEqual([...history.changes(0)],[...rh.changes(0)]);const after=words(t);assert.notDeepEqual(after,before);history.undo();assert.deepEqual(words(t),before);history.redo();assert.deepEqual(words(t),after);
+});
+test('Flat Ring worker validates its profile and owns exact private Float32 snapshots',()=>{const t=make(),source=t.copyElevations();source[0]=-0;const worker=createFlatRingWorkerTerrain(t.metadata,source);assert.ok(Object.is(worker.read(worker.keyAt(0)),-0));source.fill(99);assert.equal(worker.read(worker.keyAt(1)),-100);assert.throws(()=>createFlatRingWorkerTerrain({...t.metadata,representation:{...t.metadata.representation,resolution:{...t.metadata.representation.resolution,axialCells:2}}}));assert.throws(()=>createFlatRingWorkerTerrain({...t.metadata,geometry:{...t.metadata.geometry,innerRadiusMeters:1}}));});
