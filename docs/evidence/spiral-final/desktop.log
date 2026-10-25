@@ -1,0 +1,33 @@
+
+Running 26 tests using 1 worker
+
+(node:23456) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [installed-chrome] › tests\spiral-canvas-incremental.spec.ts:2:38 › Spiral N128: each incremental Canvas commit preserves fresh full coverage and accepted color tolerance (19.5s)
+  ok  2 [installed-chrome] › tests\spiral-canvas-incremental.spec.ts:2:38 › Spiral N256: each incremental Canvas commit preserves fresh full coverage and accepted color tolerance (39.1s)
+  ok  3 [installed-chrome] › tests\spiral-canvas-incremental.spec.ts:5:132 › Canvas device scale 1 › Spiral N128: idle Canvas refinement retains the current physical picker (12.2s)
+  ok  4 [installed-chrome] › tests\spiral-canvas-incremental.spec.ts:5:132 › Canvas device scale 2 › Spiral N256: idle Canvas refinement retains the current physical picker (24.4s)
+  ok  5 [installed-chrome] › tests\spiral-configuration.spec.ts:11:69 › Spiral auto: small-open dimensions remain editable and invalid creation retains geography (15.6s)
+  ok  6 [installed-chrome] › tests\spiral-configuration.spec.ts:11:69 › Spiral auto: compact dimensions remain editable and invalid creation retains geography (15.2s)
+  ok  7 [installed-chrome] › tests\spiral-configuration.spec.ts:11:69 › Spiral auto: tight dimensions remain editable and invalid creation retains geography (14.9s)
+  ok  8 [installed-chrome] › tests\spiral-configuration.spec.ts:11:69 › Spiral auto: long-large dimensions remain editable and invalid creation retains geography (23.9s)
+  ok  9 [installed-chrome] › tests\spiral-configuration.spec.ts:11:69 › Spiral auto: thin dimensions remain editable and invalid creation retains geography (22.8s)
+  ok 10 [installed-chrome] › tests\spiral-configuration.spec.ts:11:69 › Spiral auto: wide-thick dimensions remain editable and invalid creation retains geography (22.7s)
+  ok 11 [installed-chrome] › tests\spiral-configuration.spec.ts:11:69 › Spiral auto: opposite dimensions remain editable and invalid creation retains geography (23.5s)
+  ok 12 [installed-chrome] › tests\spiral-configuration.spec.ts:11:69 › Spiral canvas: small-open dimensions remain editable and invalid creation retains geography (13.9s)
+  ok 13 [installed-chrome] › tests\spiral-configuration.spec.ts:11:69 › Spiral canvas: compact dimensions remain editable and invalid creation retains geography (14.4s)
+  ok 14 [installed-chrome] › tests\spiral-configuration.spec.ts:11:69 › Spiral canvas: tight dimensions remain editable and invalid creation retains geography (13.9s)
+  ok 15 [installed-chrome] › tests\spiral-configuration.spec.ts:11:69 › Spiral canvas: long-large dimensions remain editable and invalid creation retains geography (23.0s)
+  ok 16 [installed-chrome] › tests\spiral-configuration.spec.ts:11:69 › Spiral canvas: thin dimensions remain editable and invalid creation retains geography (22.2s)
+  ok 17 [installed-chrome] › tests\spiral-configuration.spec.ts:11:69 › Spiral canvas: wide-thick dimensions remain editable and invalid creation retains geography (22.2s)
+  ok 18 [installed-chrome] › tests\spiral-configuration.spec.ts:11:69 › Spiral canvas: opposite dimensions remain editable and invalid creation retains geography (22.4s)
+  ok 19 [installed-chrome] › tests\spiral-connected.spec.ts:3:39 › Spiral N256 auto: one complete three-turn gesture follows the winding surface and changes every station (24.7s)
+  ok 20 [installed-chrome] › tests\spiral-connected.spec.ts:3:39 › Spiral N256 canvas: one complete three-turn gesture follows the winding surface and changes every station (26.7s)
+  ok 21 [installed-chrome] › tests\spiral-incremental.spec.ts:2:38 › Spiral N128: ten-region dirty field, atlas, GPU and Canvas equal fresh reconstruction (10.8s)
+  ok 22 [installed-chrome] › tests\spiral-incremental.spec.ts:2:38 › Spiral N256: ten-region dirty field, atlas, GPU and Canvas equal fresh reconstruction (23.7s)
+  ok 23 [installed-chrome] › tests\spiral-isolation.spec.ts:3:76 › Spiral N128 auto: maximum practical brush crosses a real edge but leaves the nearby disconnected turn, underside and ends unchanged (30.9s)
+  ok 24 [installed-chrome] › tests\spiral-isolation.spec.ts:3:76 › Spiral N128 canvas: maximum practical brush crosses a real edge but leaves the nearby disconnected turn, underside and ends unchanged (31.2s)
+  ok 25 [installed-chrome] › tests\spiral-isolation.spec.ts:3:76 › Spiral N256 auto: maximum practical brush crosses a real edge but leaves the nearby disconnected turn, underside and ends unchanged (35.3s)
+  ok 26 [installed-chrome] › tests\spiral-isolation.spec.ts:3:76 › Spiral N256 canvas: maximum practical brush crosses a real edge but leaves the nearby disconnected turn, underside and ends unchanged (36.3s)
+
+  26 passed (9.8m)

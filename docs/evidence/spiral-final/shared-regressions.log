@@ -1,0 +1,21 @@
+
+Running 10 tests using 1 worker
+
+(node:25920) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [installed-chrome] › tests\arc-pilot.spec.ts:2:39 › Arc N128 auto: normal creator, actual painting pixels and exact v38 Save/Open (14.1s)
+  ok  2 [installed-chrome] › tests\arc-pilot.spec.ts:2:39 › Arc N128 canvas: normal creator, actual painting pixels and exact v38 Save/Open (16.3s)
+  ok  3 [installed-chrome] › tests\arc-pixels.spec.ts:2:104 › Arc N256 near-closed: independent geometry/palette views match hardware WebGL2 and sharp Canvas (2.5m)
+  ok  4 [installed-chrome] › tests\atlas.spec.ts:27:1 › Atlas opens with an uninterrupted, responsive ocean and no browser errors (1.4s)
+  ok  5 [installed-chrome] › tests\torus-input.spec.ts:5:78 › N256 torus auto: same 150 km brush, captured latency, complete input and exact gesture history (14.6s)
+  ok  6 [installed-chrome] › tests\torus-input.spec.ts:5:78 › N256 torus canvas: same 150 km brush, captured latency, complete input and exact gesture history (14.7s)
+  ok  7 [installed-chrome] › tests\torus-input.spec.ts:5:78 › N256 cylinder auto: same 150 km brush, captured latency, complete input and exact gesture history (14.9s)
+  ok  8 [installed-chrome] › tests\torus-input.spec.ts:5:78 › N256 cylinder canvas: same 150 km brush, captured latency, complete input and exact gesture history (8.3s)
+(node:25904) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  9 [installed-chrome] › tests\cube-editor.spec.ts:40:1 › Cube-E a held physical corner gesture remains one exact Undo operation (3.1s)
+(node:3720) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 10 [installed-chrome] › tests\spherical-limb-workspace.spec.ts:69:1 › native pen assistance stops on release and remains one exact operation (5.3s)
+
+  10 passed (4.1m)

@@ -14,11 +14,14 @@ export class PyramidDisplayCache<T extends PolyhedronTerrain=PyramidTerrain> ext
  initialAtlasRevision=-1;
  private heights:Float32Array;private locations:Uint32Array;
  private faceOffsets:ReadonlyMap<string,number>;
+ private readonly cacheInteriorStencils:boolean;
+ private interiorStencils=new Map<string,Float64Array>();
+ private interiorStencilBytes=0;
  private polygonGradients=new Map<number,Float64Array>();private polygonGradientBytes=0;
  private journal:{from:number;to:number;rects:PyramidFieldRect[]}[]=[];
- constructor(t:T,options:{polygonColorsOnly?:boolean}={}){super(t,polyhedronDisplayCapacity(t),'Polyhedron interactive capacity exceeded.');this.heights=t.copyElevations();this.locations=new Uint32Array(t.sampleCount).fill(0xffffffff);this.n=t.subdivisions;this.side=this.n+1;this.faceOffsets=new Map(t.geometry.faces.map((face,i)=>[face,i*this.side*this.side]));this.data=new Float32Array(t.geometry.faces.length*this.side*this.side*4);this.indices=new Uint32Array(t.geometry.faces.length*this.side*this.side).fill(0xffffffff);this.atlasSize=2*this.n+1;this.initialAtlas=new Map((options.polygonColorsOnly?[]:this.terrain.geometry.faces).map(face=>[face,new Uint8ClampedArray(this.atlasSize*this.atlasSize*4)]));}
+ constructor(t:T,options:{polygonColorsOnly?:boolean;cacheInteriorStencils?:boolean}={}){super(t,polyhedronDisplayCapacity(t),'Polyhedron interactive capacity exceeded.');this.cacheInteriorStencils=options.cacheInteriorStencils??false;this.heights=t.copyElevations();this.locations=new Uint32Array(t.sampleCount).fill(0xffffffff);this.n=t.subdivisions;this.side=this.n+1;this.faceOffsets=new Map(t.geometry.faces.map((face,i)=>[face,i*this.side*this.side]));this.data=new Float32Array(t.geometry.faces.length*this.side*this.side*4);this.indices=new Uint32Array(t.geometry.faces.length*this.side*this.side).fill(0xffffffff);this.atlasSize=2*this.n+1;this.initialAtlas=new Map((options.polygonColorsOnly?[]:this.terrain.geometry.faces).map(face=>[face,new Uint8ClampedArray(this.atlasSize*this.atlasSize*4)]));}
  /** Owned numerical/display ArrayBuffers; Canvas/GPU allocations are reported separately. */
- get ownedArrayBufferBytes(){return this.polygonAtlases.reduce((s,a)=>s+a.pixels.byteLength+a.gutterBounds.byteLength,0)+super.byteLength+this.heights.byteLength+this.locations.byteLength+this.data.byteLength+this.indices.byteLength+this.polygonGradientBytes+[...this.initialAtlas.values()].reduce((sum,a)=>sum+a.byteLength,0);}
+ get ownedArrayBufferBytes(){return this.polygonAtlases.reduce((s,a)=>s+a.pixels.byteLength+a.gutterBounds.byteLength,0)+super.byteLength+this.heights.byteLength+this.locations.byteLength+this.data.byteLength+this.indices.byteLength+this.polygonGradientBytes+this.interiorStencilBytes+[...this.initialAtlas.values()].reduce((sum,a)=>sum+a.byteLength,0);}
  private at(face:string,c:number,r:number){return this.faceOffsets.get(face)!+r*this.side+c;}
  private updateNode(face:string,c:number,r:number){const t=this.terrain,at=this.at(face,c,r),f=t.geometry.frame(face),current=this.heights[this.indices[at]!]!;let xx=0,xy=0,yy=0,hx=0,hy=0;
   // A polygon's triangulation diagonal is not a geographic crease. Fit one
@@ -33,6 +36,17 @@ export class PyramidDisplayCache<T extends PolyhedronTerrain=PyramidTerrain> ext
    }
    for(let i=4;i<stencil.length;i+=3){const dh=this.heights[stencil[i]!]!-current;hx+=stencil[i+1]!*dh;hy+=stencil[i+2]!*dh;}
    this.data[at*4]=current;this.data[at*4+1]=(hx*stencil[2]!-hy*stencil[1]!)/stencil[3]!;this.data[at*4+2]=(hy*stencil[0]!-hx*stencil[1]!)/stencil[3]!;this.data[at*4+3]=1;return;
+  }
+  // An interior triangle node has the same complete six-neighbor metric
+  // stencil on every update. Cache immutable geometry only, in the identical
+  // arithmetic order; heights and gradients always read the current field.
+  // Default-disabled while new geometry qualifies this reuse independently.
+  if(this.cacheInteriorStencils&&t.geometry.isTriangle(face)&&c>0&&r>0&&c+r<this.n){
+   let stencil=this.interiorStencils.get(face);
+   if(!stencil){const values:number[]=[];for(const[dc,dr]of[[1,0],[-1,0],[0,1],[0,-1],[1,-1],[-1,1]]){const du=dc!/this.n,dv=dr!/this.n,dx=du*Math.hypot(...f.u)+dv*(f.v[0]*f.e1[0]+f.v[1]*f.e1[1]+f.v[2]*f.e1[2]),dy=dv*(f.v[0]*f.e2[0]+f.v[1]*f.e2[1]+f.v[2]*f.e2[2]);xx+=dx*dx;xy+=dx*dy;yy+=dy*dy;values.push(dc!,dr!,dx,dy);}stencil=Float64Array.from([xx,xy,yy,...values]);this.interiorStencils.set(face,stencil);this.interiorStencilBytes+=stencil.byteLength;}
+   xx=stencil[0]!;xy=stencil[1]!;yy=stencil[2]!;
+   for(let i=3;i<stencil.length;i+=4){const dh=this.heights[this.indices[this.at(face,c+stencil[i]!,r+stencil[i+1]!)]!]!-current;hx+=stencil[i+2]!*dh;hy+=stencil[i+3]!*dh;}
+   const det=xx*yy-xy*xy;this.data[at*4]=current;this.data[at*4+1]=(hx*yy-hy*xy)/det;this.data[at*4+2]=(hy*xx-hx*xy)/det;this.data[at*4+3]=1;return;
   }
   for(const[dc,dr]of !this.terrain.geometry.isTriangle(face)?[[1,0],[-1,0],[0,1],[0,-1]]:[[1,0],[-1,0],[0,1],[0,-1],[1,-1],[-1,1]]){const nc=c+dc!,nr=r+dr!;if(nc<0||nr<0||nc>this.n||nr>this.n||(this.terrain.geometry.isTriangle(face)&&nc+nr>this.n))continue;const du=dc!/this.n,dv=dr!/this.n,dx=du*Math.hypot(...f.u)+dv*(f.v[0]*f.e1[0]+f.v[1]*f.e1[1]+f.v[2]*f.e1[2]),dy=dv*(f.v[0]*f.e2[0]+f.v[1]*f.e2[1]+f.v[2]*f.e2[2]),dh=this.heights[this.indices[this.at(face,nc,nr)]!]!-current;xx+=dx*dx;xy+=dx*dy;yy+=dy*dy;hx+=dx*dh;hy+=dy*dh;}
   const det=xx*yy-xy*xy;this.data[at*4]=current;this.data[at*4+1]=(hx*yy-hy*xy)/det;this.data[at*4+2]=(hy*xx-hx*xy)/det;this.data[at*4+3]=1;
@@ -56,5 +70,5 @@ export class PyramidDisplayCache<T extends PolyhedronTerrain=PyramidTerrain> ext
  }
  color(face:string,u:number,v:number,relief:boolean){const value=this.sample(face,u,v),f=this.terrain.geometry.frame(face);return polyhedralDisplayColor(f.normal,f.e1,f.e2,value.height,value.du,value.dv,relief,this.terrain.geometry.metadata.role==='interior'?-1:1);}
  colorInto(face:string,u:number,v:number,relief:boolean,out:Float64Array){const value=this.sample(face,u,v),f=this.terrain.geometry.frame(face);polyhedralDisplayColorInto(f.normal,f.e1,f.e2,value.height,value.du,value.dv,relief,this.terrain.geometry.metadata.role==='interior'?-1:1,out);}
- override dispose(){super.dispose();this.data.fill(0);(this.initialAtlas as Map<string,Uint8ClampedArray>).clear();this.polygonAtlases.length=0;this.polygonGradients.clear();this.polygonGradientBytes=0;this.journal=[];}
+ override dispose(){super.dispose();this.data.fill(0);(this.initialAtlas as Map<string,Uint8ClampedArray>).clear();this.polygonAtlases.length=0;this.polygonGradients.clear();this.polygonGradientBytes=0;this.interiorStencils.clear();this.interiorStencilBytes=0;this.journal=[];}
 }

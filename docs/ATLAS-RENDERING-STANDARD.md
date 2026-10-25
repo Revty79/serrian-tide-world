@@ -250,3 +250,29 @@ workspace interaction hook; existing providers keep their previous path.
 See the [Spiral review](SPIRAL-WORLDS.md) and separately frozen receipts for
 actual pixels, painting/navigation, resources, exact geography and format 41.
 Technical verification remains separate from owner and physical-device acceptance.
+
+Spiral qualifies reuse of immutable interior metric stencils and cached physical
+boundary incidence with exact field-word and gutter-UV comparisons. Its optional
+planar visibility pruning retains every vertex that can participate in a shorter
+route than a real boundary-walk witness; certified distances remain authoritative.
+Local cone and hinge certificates cache only unchanged geometry/source addresses.
+The worker uses the accepted single-pending MessageChannel scheduling turn and
+canonical ACK gate. GPU painting defers unused Canvas color work; context loss
+refreshes from the journal or rebuilds after missing revisions. Canvas composes
+the complete dirty filter footprint with the accepted pattern fill, real material
+masks and conservative scratch guard. Empty dirty rectangles perform no output
+copy. A refinement repaint must retain an unchanged applied camera and picker;
+only a real device/transform invalidation blocks picking until coherent output.
+A workspace backing clear or resize must invalidate its cached Canvas frame,
+including unchanged-size observations and a return from hardware rendering.
+Managed Canvas presenters retain their own bounded backing dimensions; generic
+overlay allocation must not resize and erase that backing on high-DPI frames.
+Existing prism presenters retain their default composition paths.
+
+Nearest physical visibility admits narrow quarter-ray repair bands before the
+unchanged pixel cap is applied; hidden turn edges cannot consume that capacity.
+Preparation yields within long segments as well as between edges. Matched output
+classifies the actual two-source-texel filtering support at real material creases
+in source coordinates, including shear. Coplanar station joins are not material
+creases. This qualification does not relax independent silhouette, empty-gap,
+coverage, internal-seam or stable terrain-color gates.

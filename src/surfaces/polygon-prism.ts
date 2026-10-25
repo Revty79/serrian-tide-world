@@ -37,5 +37,7 @@ export type PolygonPrismGeometry=ReturnType<typeof polygonPrismGeometry>&{
  /** Optional certified global lower bound to any point on a real perimeter
   * edge. Geometry adapters may separate nearby but intrinsically distant ends
   * without weakening the shared local hinge/cone escape certificate. */
+ /** Opt in to certified feasible-witness pruning of the same visibility graph. */
+ readonly planarWitnessPruning?:boolean;
  boundaryDistanceLowerBound?(source:PolyhedronPhysicalBounds,edge:number):number;
 };

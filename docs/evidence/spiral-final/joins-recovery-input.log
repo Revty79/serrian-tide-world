@@ -1,0 +1,18 @@
+
+Running 11 tests using 1 worker
+
+(node:20832) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [installed-chrome] › tests\spiral-joins.spec.ts:3:73 › Spiral N256 auto: one physical upper-to-outer-wall gesture crosses the real material join (12.8s)
+  ok  2 [installed-chrome] › tests\spiral-joins.spec.ts:3:73 › Spiral N256 auto: one physical upper-to-inner-terminal gesture crosses the real material join (12.5s)
+  ok  3 [installed-chrome] › tests\spiral-joins.spec.ts:3:73 › Spiral N256 canvas: one physical upper-to-outer-wall gesture crosses the real material join (12.6s)
+  ok  4 [installed-chrome] › tests\spiral-joins.spec.ts:3:73 › Spiral N256 canvas: one physical upper-to-inner-terminal gesture crosses the real material join (13.0s)
+  ok  5 [installed-chrome] › tests\spiral-recovery.spec.ts:9:39 › Spiral N256 auto: active worker protocol fault preserves exact prefix history and a fresh stroke recovers (9.7s)
+  ok  6 [installed-chrome] › tests\spiral-recovery.spec.ts:9:39 › Spiral N256 canvas: active worker protocol fault preserves exact prefix history and a fresh stroke recovers (9.7s)
+  ok  7 [installed-chrome] › tests\spiral-recovery.spec.ts:12:1 › Spiral N256: graphics loss and restoration retain the current painted terrain epoch (34.2s)
+  ok  8 [installed-chrome] › tests\spiral-recovery.spec.ts:13:1 › Spiral v41 corrupt Open retains the active World and exact geography (8.0s)
+  ok  9 [installed-chrome] › tests\spiral-recovery.spec.ts:15:1 › Spiral v41: valid incompatible geometry cannot replace an existing saved World (8.8s)
+  ok 10 [installed-chrome] › tests\spiral-touch.spec.ts:2:68 › spiral auto: native emulated touch/pen drawing and two-finger navigation preserve exact history (5.2s)
+  ok 11 [installed-chrome] › tests\spiral-touch.spec.ts:2:68 › spiral canvas: native emulated touch/pen drawing and two-finger navigation preserve exact history (5.2s)
+
+  11 passed (2.2m)

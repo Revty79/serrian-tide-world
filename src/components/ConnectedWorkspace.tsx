@@ -81,10 +81,17 @@ export function ConnectedWorkspace<T extends WorkspaceTerrain,V extends Cylinder
       // A lost device never changes numerical work. Block hit tests until a coherent
       // fallback/restored image has actually been submitted with the new transform.
       appliedSerial = -1; displayRevision = -1; raster?.return(undefined as never); raster = undefined; redraw = true; schedule();
-    },node);
+    },node,()=>{
+      // Idle refinement changes pixels without changing the applied camera.
+      // Keep picking available until the next coherent redraw.
+      redraw=true;schedule();
+    });
     const backing = (viewport: CylinderViewport) => {
       const { width, height } = surfaceDisplayDimensions(viewport, devicePixelRatio || 1);
-      if (node.width !== width || node.height !== height) { node.width = width; node.height = height; }
+      // A managed Canvas presenter owns its bounded backing dimensions. Resizing
+      // it to the generic overlay budget here would erase every high-DPI frame.
+      const managedCanvas=gpu.available&&gpu.backend==='cpu'&&gpu.displayCanvas===node;
+      if (!managedCanvas&&(node.width !== width || node.height !== height)) { gpu.invalidateCanvas?.(); node.width = width; node.height = height; }
       if (surface.width !== width || surface.height !== height) { surface.width = width; surface.height = height; overlayState = undefined; }
     };
     const presented = () => {
@@ -110,7 +117,7 @@ export function ConnectedWorkspace<T extends WorkspaceTerrain,V extends Cylinder
         raster?.return(undefined as never); raster = undefined;
         try {
           const viewport = size(), at = performance.now(); backing(viewport); const receipt = (gpu.setScene(cutRef.current),gpu.present(requested, viewport, appearanceRef.current));
-          if(gpu.backend!=='cpu')ctx.clearRect(0, 0, node.width, node.height);
+          if(gpu.backend!=='cpu'){gpu.invalidateCanvas?.();ctx.clearRect(0, 0, node.width, node.height);}
           applied = requested; appliedSize = viewport; appliedSerial = serial; displayRevision = receipt.revision; redraw = false; front = undefined; spare = undefined;
           bounded(metrics.renderTimes, [performance.now() - at]); bounded(metrics.uploadTimes, [receipt.uploadMs]); bounded(metrics.submitTimes, [receipt.submitMs]); bounded(metrics.resizeTimes, [receipt.resizeMs]); recordPaintingStage('gpuElevationUpload', receipt.uploadMs); recordPaintingStage('gpuSubmit', receipt.submitMs); presented();
         } catch (e) { gpu.fail(e); appliedSerial = -1; displayRevision = -1; redraw = true; }
@@ -193,7 +200,7 @@ export function ConnectedWorkspace<T extends WorkspaceTerrain,V extends Cylinder
       if (p) change(view => adapter.recenter( view, p));
     }, undo: () => { if(cylinderCenterInspection(requested)||readOnlyRef.current)return;stop(); session.undo(); schedule(); }, redo: () => { if(cylinderCenterInspection(requested)||readOnlyRef.current)return;stop(); session.redo(); schedule(); }, refresh: schedule, finish: () => { navigation.finish(); session.release(); schedule(); }, display: () => { appliedSerial=-1;overlayState=undefined;raster?.return(undefined as never); raster = undefined; redraw = true; schedule(); } };
     session.changed = schedule; session.stopped = () => navigation.cancel();
-    const resize = new ResizeObserver(() => { stop(); raster?.return(undefined as never); raster = undefined; serial++; node.dataset.ready = 'false'; redraw = true; ctx.clearRect(0, 0, node.width, node.height); mark.clearRect(0, 0, surface.width, surface.height); schedule(); }); resize.observe(owner);
+    const resize = new ResizeObserver(() => { stop(); raster?.return(undefined as never); raster = undefined; serial++; node.dataset.ready = 'false'; redraw = true; gpu.invalidateCanvas?.();ctx.clearRect(0, 0, node.width, node.height); mark.clearRect(0, 0, surface.width, surface.height); schedule(); }); resize.observe(owner);
     const textInput = (target: EventTarget | null) => target instanceof HTMLElement && !!target.closest('input,textarea,select,[contenteditable="true"]');
     const key = (event: KeyboardEvent) => {
       if (workspace) return;
