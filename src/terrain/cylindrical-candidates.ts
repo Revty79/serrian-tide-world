@@ -29,12 +29,19 @@ export function cylinderBrushCandidates(terrain: CylindricalTerrain, input: Surf
   };
   return Object.freeze({
     center, centerXYZ,
-    /** A guarded reference chord is only an exclusion lower bound. */
+    /** Legacy API name: both the ambient chord and mandatory rim/axial
+     * travel are exclusion lower bounds, never influential brush distances.
+     * A path between opposite caps must traverse both radial clearances and
+     * the wall's full axial span; cap/wall paths traverse one clearance. */
     chordLowerBound(position: SurfacePosition): number {
       const xyz = terrain.geometry.referencePosition(position);
       const chord = Math.hypot(xyz[0] - centerXYZ[0], xyz[1] - centerXYZ[1], xyz[2] - centerXYZ[2]);
       const error = PAD * Math.max(R, Math.abs(xyz[2]), Math.abs(centerXYZ[2]), radiusMeters);
-      return Math.max(0, chord - error);
+      const target=terrain.geometry.normalize(position),targetRho=target.patchId==='side'?R:target.v;
+      let route=0;
+      if(center.patchId!=='side'&&target.patchId!=='side'&&center.patchId!==target.patchId)route=2*R-rho-targetRho+L;
+      else if((center.patchId==='side')!==(target.patchId==='side'))route=R-(center.patchId==='side'?targetRho:rho)+Math.abs(xyz[2]-centerXYZ[2]);
+      return Math.max(0,chord-error,route-error);
     },
     *samples() {
       const emit = function* (patchId: CylinderRegion, row: number, r: number) {
