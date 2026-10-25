@@ -1,0 +1,27 @@
+# Rounded Crescent Globe Worlds - Pass 16
+
+Checkpoint A establishes the physical geometry, metric, canonical ownership and numerical brush adapter. The editor, rendering and persistence are not yet qualified. The verified Crescent-Cut Globe remains on main while this pass proceeds on `work/rounded-crescent-globe` from `ecee5d9df8eb2a59b92c306924fa05d9f0cd617e`.
+
+The new construction is a smooth bent, tapered elliptical solid. It uses the native cube-sphere lattice as coordinates of a topological sphere, with the new body's actual induced metric. It is neither an ordinary Sphere nor the previous Boolean Crescent-Cut Globe. There is no excavation dependency.
+
+With unit-ball coordinates (u,v,w), f(u)=1-k*u*u and phi(u)=beta*(u+h*(u*u*u-u)), normalized physical position is:
+
+`((R+a*f(u)*v)*cos(phi(u)), (R+a*f(u)*v)*sin(phi(u)), b*f(u)*w)`.
+
+World Size supplies the physical scale S/2. Curvature controls R; central radius a and rounded depth b are independent supported dimensions. The angular span is 2*beta. Taper k and terminal roundness h modify the real cross-sections and centerline station spacing. The default span is 260 degrees, central radius is 0.45 reference scales, depth is circular and taper is 0.15. Supported presets include heavy, slender, gentle, strongly curved, long tapered and short/full bodies.
+
+The map is injective on the complete closed unit ball: phi is strictly increasing and spans less than 2*pi; every material point has positive cylindrical radius R-a; each angular section has one invertible ellipse map. In the transported tangent/normal/binormal frame its ambient Jacobian is triangular and nonzero. The sphere restriction is therefore a complete smooth embedded boundary with one connected solid interior, no self-intersections and two regular closed terminal poles. Each pole uses an ordinary native cube chart, avoiding collapsed geographical rows. All cross-sections are rounded; there are no slab faces or cylindrical caps. An analytical polynomial volume integral and surface quadrature cross-check positive material volume.
+
+Position, inverse position, the full physical Jacobian and Hessian, inverse-transpose material normals, induced metric and transformed tangent gradients belong to the geometry adapter. Elliptical sections and changing taper can produce a nonzero metric cross-term; it is retained. A global lower stretch follows from a Frobenius bound on the inverse ambient Jacobian. It supplies a conservative intrinsic candidate cap and prevents shortcuts across the external crescent opening.
+
+Native N128/N256 provide 98,306/393,218 canonical Float32 heights, including exact cube seams/corners and distinct terminal owners. All coordinates map to actual active geographical surface. Normal new terrain is the shared -100 m ocean. Terrain elevation limits follow the supported minimum section size; values are rejected rather than silently clamped. Reference-boundary height/gradient terrain remains distinct from later volumetric displacement.
+
+The native spherical stroke engine gains an optional Rounded Crescent numerical metric adapter. Existing Sphere/Crescent-Cut paths keep their original calculations. Raise, Lower, Smooth and Flatten preserve shared arithmetic, radius/4 physical spacing, atomic pre-dab preparation, canonical ownership and exact whole-gesture history. Smoothing retains the accepted inverse-distance-square neighbor semantics using physical curved routes. Ordinary pointer segments use a surface variational route with an actual arc-length table; widely separated samples follow a real mapped surface arc, never a chord through material or empty space.
+
+Brush distance is explicitly a **bounded numerical local approximation**, not a certified global-distance interval receipt. The optimized quadratic surface route uses four-point Gaussian quadrature and the complete induced metric. It is compared with progressively refined RK4 geodesic shooting through the center, both curvatures, rounded sides and both tips across all presets. The source qualification gates relative distance error at 0.01% over more than 700 qualifying routes. Actual numerical error measurements and browser response will be recorded at later checkpoints. The qualified radius is bounded by both 20% of the minimum section scale and a 0.45-radian global stretch cap; this preserves the supported local route domain without imposing artificial chart or region barriers.
+
+The geodesic equation is derived from the physical Jacobian/Hessian and induced metric. The mathematical basis is the usual [geodesic energy and first variation](https://www.mit.edu/~anser/files/18_965.pdf). Our particular map, validity and stretch arguments are application derivations; that source does not certify this implementation.
+
+Foundation checks cover physical inverses, volume, outward normal sides, regular tip charts, finite-difference physical derivatives including mixed terms, numerical route convergence, canonical alias ownership, all four tools on both numerical details, exact Undo/Redo and authoritative no-gap-influence checks. A's frozen receipt identifies the actual source and commands. Operational browser pixels, response, worker qualification, strict format allocation, configuration workflow and owner/device acceptance remain outstanding at this checkpoint.
+
+No next shape, holes, tunnels, links, arbitrary sweep editor, website integration or deployment is included. Stop after Rounded Crescent Globe.

@@ -1,4 +1,6 @@
 import {cutGlobeVisible,type CrescentCutGlobeGeometry} from '../surfaces/crescent-cut-globe.ts';
+import type {RoundedCrescentGeometry} from '../surfaces/rounded-crescent-globe.ts';
+import {roundedBrushMetric,validateRoundedBrush} from './rounded-crescent-brush-metric.ts';
 import type { SurfaceIdentity, SurfacePosition } from '../surfaces/contracts.ts';
 import { dot3, unitDirection, type Vec3 } from '../surfaces/cube-sphere.ts';
 import { greatCircleArc, unitArcAngle } from '../surfaces/great-circle.ts';
@@ -40,9 +42,10 @@ export function validateSphericalBrushSettings(terrain: SphericalTerrain, settin
 
 /** Physical great-circle input; one initial dab then radius/4 meters, independent of charts/UI. */
 export interface PreparedSphericalDab { readonly center: Vec3; readonly visible?: Vec3; readonly fraction: number; changes(): Generator<{index:number;before:number;after:number}> }
-export interface SphericalPreparationOptions { readonly deferInitial?: boolean; readonly commitReady?: (job: PreparedSphericalDab) => boolean }
+export interface SphericalPreparationOptions { readonly deferInitial?: boolean; readonly commitReady?: (job: PreparedSphericalDab) => boolean;readonly roundedGlobe?:RoundedCrescentGeometry }
 export function startSphericalBrushStroke(terrain: SphericalTerrain, point: SphericalBrushPoint, settings: SphericalBrushSettings, history?: SphericalHistory, domain?: { readonly hemisphere: Vec3;readonly cutGlobe?:CrescentCutGlobeGeometry }, preparation: SphericalPreparationOptions = {}) {
   validateSphericalBrushSettings(terrain, settings); const initial = directionOf(terrain, point);
+  const rounded=preparation.roundedGlobe,metric=rounded&&roundedBrushMetric(rounded,terrain);if(rounded)validateRoundedBrush(rounded,settings);
   const hemisphere = domain ? unitDirection(domain.hemisphere) : undefined;
   if (activeTerrains.has(terrain)) throw new Error('A spherical stroke is already active on this terrain.');
   if (history && !history.owns(terrain)) throw new RangeError('History belongs to another spherical terrain.');
@@ -50,12 +53,14 @@ export function startSphericalBrushStroke(terrain: SphericalTerrain, point: Sphe
   const stats = { dabs: 0, candidateChecks: 0, affectedSamples: 0, writes: 0, peakPreparedBytes: 0 };
   let previous = initial, untilNext = spacing, active = true, advancing = false;
   function* stamp(center: Vec3, visible = hemisphere, fraction = 0): Generator<boolean,boolean> {
-    const candidates = sphericalCapCandidates(terrain, center, Math.min(Math.PI, snapshot.radiusMeters / radius));
+    const candidates = sphericalCapCandidates(terrain, center, metric?metric.angularRadius(snapshot.radiusMeters):Math.min(Math.PI, snapshot.radiusMeters / radius));
     const chunks: { indices: Uint32Array; values: Float32Array; count: number }[] = [];
     let chunk: typeof chunks[number] | undefined, allocated = 0;
     for (const sample of candidates.samples()) {
       stats.candidateChecks++;
-      const distance = unitArcAngle(center, sample.direction) * radius / snapshot.radiusMeters;
+      if(metric&&stats.candidateChecks%32===0)yield false;
+      if(metric&&metric.lowerBound(center,sample.direction)>=snapshot.radiusMeters)continue;
+      const distance = (metric?metric.distance(center,sample.direction):unitArcAngle(center, sample.direction) * radius) / snapshot.radiusMeters;
       if (distance >= 1) continue;
       // Optional physical editing domain. Default numerical behavior remains the complete cap.
       if (visible && (domain?.cutGlobe?!cutGlobeVisible(domain.cutGlobe,sample.direction,visible):dot3(visible, sample.direction) < 0)) continue;
@@ -71,7 +76,7 @@ export function startSphericalBrushStroke(terrain: SphericalTerrain, point: Sphe
         if (blend === 0) continue;
         next = saturatedElevation(snapshot.tool === 'flatten'
           ? (1 - blend) * current + blend * snapshot.targetElevation
-          : current + blend * sphericalSmoothDelta(terrain, sample.key, current));
+          : current + blend * (metric?metric.smooth(sample.key,current):sphericalSmoothDelta(terrain, sample.key, current)));
       }
       if (next === current) continue;
       if (!chunk || chunk.count === CHUNK_SAMPLES) {
@@ -104,7 +109,7 @@ export function startSphericalBrushStroke(terrain: SphericalTerrain, point: Sphe
       if (advancing) throw new Error('Finish the pending spherical segment before supplying another.');
       const visible = visibility ? unitDirection(visibility.hemisphere) : hemisphere;
       const visibilityArc = visibility?.endHemisphere ? greatCircleArc(visible!, unitDirection(visibility.endHemisphere)) : undefined;
-      const next = directionOf(terrain, target), arc = greatCircleArc(previous, next), length = arc.angle * radius;
+      const next = directionOf(terrain, target), arc = metric?metric.path(previous,next):greatCircleArc(previous, next), length = 'lengthMeters' in arc?arc.lengthMeters:arc.angle * radius;
       if (length === 0) return;
       const tolerance = Number.EPSILON * 64 * Math.max(length, spacing);
       const count = Math.max(0, Math.floor((length - untilNext + tolerance) / spacing) + 1);

@@ -1,0 +1,1871 @@
+# CODY — ATLAS GEOMETRY PASS 16: ROUNDED CRESCENT GLOBE WORLDS
+
+**Repository:** `Revty79/serrian-tide-world`
+
+**Starting point:** Latest verified `main`, following previously authorized geometry checkpoints where successfully completed.
+
+**Objective:** Deliver fully operational **Rounded Crescent Globe Worlds** consisting of genuine three-dimensional, naturally crescent-shaped celestial bodies with substantial rounded mass, a curved inner profile, a convex outer profile, smoothly narrowing terminal regions, and fully connected sculptable geographical surfaces. The completed implementation must provide correct physical geometry, accurate intrinsic surface mathematics, responsive terrain painting, sharp rendering, reliable navigation, exact history, and strict Save/Open.
+
+**Scope:** Physical Rounded Crescent Globe geometry, creator configuration, variable-radius curved-body mathematics, connected surface topology, canonical numerical geography, sculpting, rendering, navigation, history, persistence, and verification.
+
+**Owner direction:** Continue the established geometry-first development process. Reuse proven Atlas infrastructure, deliver operational World geometries, and document minor imperfections for later refinement. Do not introduce unrelated architectural work, unrestricted custom shaping, or excavation functionality.
+
+**This assignment covers Rounded Crescent Globe Worlds only.** Filled-Torus Worlds will receive their own separate assignment.
+
+---
+
+## 1. MANDATORY EXISTING ATLAS STANDARDS
+
+Before beginning implementation, review:
+
+- `AGENTS.md`
+- `docs/ATLAS-RENDERING-STANDARD.md`
+- `docs/ATLAS-SHAPES-FIRST-2026-10-23.md`
+- Existing Sphere and Hollow Sphere implementations.
+- Existing Cube, Cylinder, Pyramid, Tetrahedron, and Octahedron implementations.
+- Completed Decahedron, Dodecahedron, and Icosahedron implementations where available.
+- Completed Floating Islands and Fragmented Worlds implementations where available.
+- Completed Torus and Ringworld implementations where available.
+- Completed Crescent, Horseshoe, and Arc implementations where available.
+- Completed Dumbbell and Hourglass implementations where available.
+- Completed Spiral and Ribbon implementations where available.
+- Completed Crescent-Cut Globe implementation where available.
+- Existing shared numerical terrain, painting, worker, rendering, navigation, history, persistence, and creator-interface infrastructure.
+
+Review the actual current repository state before choosing implementation details.
+
+Do not assume an earlier architecture remains unchanged.
+
+All established Atlas quality standards remain mandatory.
+
+**USE WHAT WORKS. REINVENT ONLY WHEN PROVEN UNWORKABLE.**
+
+Reuse proven mechanisms for:
+
+- Canonical Float32 numerical terrain.
+- Geometry-specific physical surface providers.
+- Intrinsic surface-distance calculations.
+- Connected brush footprints.
+- Worker execution and pointer scheduling.
+- Terrain interpolation.
+- Existing elevation palettes.
+- Coastline coverage.
+- Physical relief and gradient shading.
+- Indexed geographical display caches.
+- Sharp WebGL2 and Canvas rendering.
+- Incremental geographical updates.
+- Yielding idle refinement.
+- Cancellation of obsolete work.
+- Physical camera navigation.
+- Accurate surface selection.
+- Two-dimensional geographical map views.
+- Exact whole-gesture Undo/Redo.
+- Strict versioned Save/Open.
+- Familiar Atlas creator controls.
+
+The original Crescent, Arc, Sphere, Dumbbell, Spiral, and Ribbon implementations may provide useful mathematical and rendering components.
+
+Evaluate those systems for legitimate reuse.
+
+Do not recreate accepted painting, rendering, history, or persistence mechanisms.
+
+However, do not force this geometry into an unsuitable existing shape merely to reuse its implementation.
+
+The completed World must possess the intended physical structure.
+
+---
+
+## 2. WHAT A ROUNDED CRESCENT GLOBE ACTUALLY IS
+
+A Rounded Crescent Globe is a genuine three-dimensional celestial body whose entire physical mass forms a substantial, rounded crescent.
+
+Unlike a relatively flat crescent-shaped landmass, this geometry has significant rounded depth.
+
+Unlike a Crescent-Cut Globe, it is not defined by removing a curved volume from an ordinary sphere.
+
+Its physical mass naturally curves and narrows into two terminal regions.
+
+### Fundamental physical structure
+
+The completed World must possess:
+
+1. A continuous crescent-shaped central structure.
+2. A substantial, rounded central body.
+3. A clearly convex outer profile.
+4. A clearly concave inner profile.
+5. Two narrowing terminal regions.
+6. Genuine three-dimensional rounded mass.
+7. Continuous geographical surfaces around the body.
+8. Correct physical thickness and dimensions.
+9. Valid closed material topology.
+10. Accurate surface normals and intrinsic distances.
+11. Fully authoritative numerical geography.
+12. Stable geometry and geography through Save/Open.
+
+### Intended appearance
+
+Imagine a crescent moon, but instead of being a relatively flat cutout, the crescent itself is made of thick, rounded, globe-like material.
+
+Its central region may be quite substantial.
+
+The body curves around an open region, becoming narrower toward both ends.
+
+Its cross-sections are rounded rather than broad flat slabs.
+
+From an appropriate viewing angle, the World has a clearly recognizable crescent silhouette.
+
+From other angles, the viewer can see its genuine rounded depth and mass.
+
+### This World is NOT
+
+Do not implement it as:
+
+- A flattened crescent plate.
+- A two-dimensional crescent extrusion with predominantly flat upper and lower faces.
+- An ordinary Sphere with crescent lighting.
+- A Sphere with a carved-out section.
+- A Crescent-Cut Globe renamed.
+- A Torus with a segment hidden.
+- A constant-width bent Cylinder automatically labeled a crescent.
+- A thin curved ribbon.
+- A decorative crescent mesh.
+- Multiple disconnected rounded objects.
+- A rendered surface lacking genuine material volume.
+- A shape whose geographical editing works only on a flat reference map.
+
+The physical geometry must actually form the rounded crescent body.
+
+### Distinction from the original Crescent World
+
+The original Crescent World prioritizes a bounded crescent-shaped landmass with real material thickness, including broad geographical surfaces and appropriate physical side regions.
+
+The Rounded Crescent Globe emphasizes a different physical structure:
+
+- A bulbous, globe-like central mass.
+- Rounded cross-sectional geometry.
+- Smooth curvature around most of its exterior.
+- Tapering rounded terminal regions.
+- A continuous three-dimensional geographical surface.
+
+It should not look like a flat Crescent World with increased extrusion thickness.
+
+### Distinction from Crescent-Cut Globe
+
+**Crescent-Cut Globe:** A spherical reference body with an actual curved material subtraction and an exposed concave cutting surface.
+
+**Rounded Crescent Globe:** A naturally formed crescent-shaped mass whose entire physical geometry follows the crescent body.
+
+Do not simulate the latter by applying a Boolean cut to an ordinary Sphere.
+
+The resulting shapes may share a similar silhouette, but their physical construction and geographical surface mathematics are different.
+
+---
+
+## 3. GENUINE THREE-DIMENSIONAL ROUNDED CRESCENT GEOMETRY
+
+Implement a coherent bounded three-dimensional solid.
+
+A suitable mathematical construction may use a curved centerline with a variable-radius rounded cross-section.
+
+This can create the required thick central mass and narrowing terminal regions.
+
+Other mathematically justified constructions are acceptable if they satisfy the physical and numerical requirements.
+
+### Suitable curved-body construction
+
+Define a curved longitudinal centerline.
+
+At positions along that curve, construct appropriately oriented rounded cross-sections.
+
+Allow the cross-sectional dimensions to vary along the body's length.
+
+The cross-section should be largest through a substantial central region and narrow toward the two ends.
+
+### Mathematical example
+
+A suitable general swept-surface representation may be:
+
+`P(s, θ) = C(s) + a(s) cos(θ) N(s) + b(s) sin(θ) B(s)`
+
+where:
+
+- `C(s)` is the curved centerline.
+- `s` is a longitudinal parameter, preferably physical arc length where practical.
+- `N(s)` and `B(s)` are appropriate transverse frame vectors.
+- `a(s)` describes one rounded cross-sectional radius.
+- `b(s)` describes the other rounded cross-sectional radius.
+- `θ` is the circumferential surface parameter.
+
+The transverse radii may vary along the body to create a broad middle and narrower ends.
+
+This is a candidate construction, not permission to replace an already suitable shared geometry system.
+
+### Cross-sectional geometry
+
+The cross-sections must produce a physically rounded body.
+
+A circular cross-section is a reasonable baseline.
+
+An elliptical cross-section may support additional globe-like proportions.
+
+The geometry must not become an effectively flat slab simply because an extremely small depth parameter is convenient.
+
+### Substantial central mass
+
+The central region must be visibly fuller than the terminal regions.
+
+It should resemble a thick rounded celestial body curving into a crescent.
+
+The geometry must have genuine material volume.
+
+A uniformly narrow curved tube is not sufficient as the only supported Crescent Globe configuration.
+
+### Inner concave profile
+
+The side facing the crescent opening must form a recognizable concave overall silhouette.
+
+This must result from the physical geometry itself.
+
+Do not generate the concavity through:
+
+- Lighting.
+- Transparency.
+- A visual mask.
+- A missing texture.
+- A fake indentation.
+- A camera-only projection trick.
+
+### Outer convex profile
+
+The outer boundary must create the recognizable broader crescent curve.
+
+It must maintain correct physical geometry and surface orientation.
+
+### Rounded material throughout
+
+The body must be genuinely rounded through its depth.
+
+The geographical exterior should curve continuously around its cross-section wherever the physical construction is smooth.
+
+This is a defining difference from a crescent slab.
+
+### Terminal regions
+
+The Crescent Globe must narrow toward two distinct ends.
+
+These ends should preserve a recognizable crescent silhouette while remaining physically valid.
+
+Avoid:
+
+- Arbitrary flat cylindrical caps.
+- Missing terminal surfaces.
+- Infinitely thin material tips.
+- Nonmanifold convergence.
+- Folded geometry.
+- Invalid normals.
+- Zero-area editable triangles.
+- Numerical singularities exposed as terrain defects.
+
+Smooth rounded terminal closures are preferred.
+
+A mathematically smooth pole-like closure is acceptable if it can be represented and edited correctly.
+
+Appropriate regularization may be used where necessary for numerical stability.
+
+Do not make the ends so blunt that the object loses its crescent identity.
+
+### Complete material boundary
+
+The final World must represent one valid connected solid.
+
+Its exterior must be complete.
+
+There must be no unexplained missing faces, internal gaps, inverted boundaries, or decorative surfaces pretending to be physical geography.
+
+### No internal cavity
+
+The initial Rounded Crescent Globe is a solid body.
+
+Its crescent opening is external empty space.
+
+It does not require an internal hollow material chamber.
+
+A separate Hollow Rounded Crescent Globe remains outside this assignment.
+
+---
+
+## 4. PHYSICAL CURVATURE AND SELF-INTERSECTION VALIDITY
+
+This geometry introduces important challenges involving curved sweeps and varying body thickness.
+
+A mathematically valid centerline does not automatically guarantee a valid physical solid.
+
+### Local curvature constraints
+
+The cross-sectional dimensions must remain compatible with the centerline curvature.
+
+For a normal-offset construction, the transverse dimensions must remain inside validated limits that prevent the sweep from folding locally.
+
+Where appropriate, use the local radius of curvature to determine supported body thickness.
+
+### Global self-intersection
+
+Even if every local cross-section is individually valid, different distant sections of a strongly curved Crescent may overlap.
+
+Validate the complete physical body.
+
+Do not allow the two terminal regions to collide unintentionally.
+
+Do not allow the inner curve to collapse.
+
+Do not allow cross-sections from different longitudinal positions to intersect improperly.
+
+### Frame stability
+
+For a planar curved centerline, use a consistent tangent-normal-binormal construction or another validated frame.
+
+If additional supported centerline variations are implemented, preserve continuous frame orientation.
+
+Avoid sudden flips.
+
+Do not introduce unnecessary Ribbon-style twist editing.
+
+### Valid body construction
+
+Verify:
+
+- Positive physical material thickness.
+- Properly ordered cross-sections.
+- Correct outward normals.
+- No folded sweep surfaces.
+- No invalid local Jacobians on regular charts.
+- No self-intersections.
+- No unexpected internal cavities.
+- No disconnected physical components.
+- Correct terminal closure.
+
+### Physical clearance
+
+The crescent opening must remain physically open.
+
+If the body becomes too thick relative to its curvature, the opening may close or the material may intersect.
+
+Reject those unsupported configurations.
+
+Do not silently transform the Crescent into a Torus, Sphere, or unrelated body.
+
+---
+
+## 5. CREATOR-CONFIGURABLE CRESCENT GLOBE DIMENSIONS
+
+Do not hardcode one fixed physical Crescent Globe.
+
+Provide useful and understandable configuration.
+
+### Required creator controls
+
+At minimum, support appropriate equivalents of:
+
+1. Overall World scale.
+2. Crescent curvature.
+3. Crescent opening or angular span.
+4. Maximum central body radius or width.
+5. Rounded body depth.
+6. Terminal taper.
+7. Terminal roundness.
+
+The exact parameter names must agree with the chosen mathematical construction.
+
+### Supported variations
+
+Creators should be able to produce recognizable examples such as:
+
+- A broad, heavy Crescent Globe.
+- A relatively slender Crescent Globe.
+- A strongly curved Crescent Globe.
+- A more gently curved Crescent Globe.
+- A long Crescent Globe with extended tapering ends.
+- A short, thick Crescent Globe.
+- A Crescent with pronounced central bulging.
+- A Crescent with smoother, more gradual taper.
+
+These are variations within one geometry family.
+
+### Central mass
+
+The creator must have meaningful control over the fullness of the central region.
+
+This is an important distinction from the earlier Crescent World.
+
+Increasing central mass should change the actual physical cross-sectional geometry.
+
+### Rounded depth
+
+The body must possess real depth.
+
+If independently configurable cross-sectional dimensions are supported, their effects must remain physically coherent.
+
+The default must not be flattened into a thin plate.
+
+### Terminal taper
+
+Creators should be able to control the supported degree of narrowing near the ends.
+
+Keep the parameterization bounded and stable.
+
+A terminal profile may use a smooth taper function with validated geometric constraints.
+
+Do not require arbitrary user-authored mathematical profile curves.
+
+### Asymmetry
+
+A symmetrical starting construction is acceptable.
+
+If safely supported within this pass, allow variations between the two terminal regions.
+
+However, unrestricted asymmetrical mesh manipulation belongs to the later Build Your Own Shape system.
+
+Do not turn this geometry assignment into a general-purpose custom surface editor.
+
+### Invalid configurations
+
+Reject combinations involving:
+
+- Nonpositive dimensions.
+- Invalid curvature.
+- Collapsed inner opening.
+- Overlapping terminal sections.
+- Excessively thick bodies.
+- Degenerate cross-sections.
+- Invalid taper.
+- Unsupported numerical resolution.
+- Nonfinite parameters.
+- Self-intersecting surfaces.
+- Invalid material topology.
+- Excessive memory requirements.
+
+Failed configuration changes must leave the current valid World intact.
+
+### Changes after painting
+
+Do not silently erase or remap existing sculpted geography.
+
+If the current architecture supports a mathematically defined terrain-preserving configuration change, use it correctly.
+
+Otherwise, limit structural adjustments to creation or require an explicit replacement workflow.
+
+Do not describe approximate terrain regeneration as exact preservation.
+
+---
+
+## 6. CORRECT INTRINSIC SURFACE MATHEMATICS
+
+The Rounded Crescent Globe has genuine curved exterior geometry.
+
+A simple flat distance calculation is not sufficient.
+
+### Physical surface coordinates
+
+The geometry adapter must provide:
+
+- Accurate three-dimensional positions.
+- Local tangent directions.
+- Correct outward normals.
+- Valid surface orientation.
+- Physical distances.
+- Appropriate curvature.
+- Surface-area information.
+- Stable chart connections.
+- Valid geographical sample coordinates.
+- Correct physical-to-map correspondence.
+
+### Swept-surface metric
+
+If the geometry uses a parameterized surface `P(s, θ)`, calculate the intrinsic metric from its actual physical derivatives.
+
+Use:
+
+`g_ss = ∂P/∂s · ∂P/∂s`
+
+`g_sθ = ∂P/∂s · ∂P/∂θ`
+
+`g_θθ = ∂P/∂θ · ∂P/∂θ`
+
+The induced squared line element is:
+
+`dℓ² = g_ss ds² + 2g_sθ ds dθ + g_θθ dθ²`
+
+Do not assume the cross-term is always zero without proving that for the selected construction.
+
+Do not assume the surface is globally equivalent to a uniform Cylinder.
+
+The changing radius and curved centerline must be accounted for.
+
+### Longitudinal distances
+
+Surface distance along the crescent body depends on the actual curvature and cross-sectional shape.
+
+An inner longitudinal route may be physically shorter than an outer route over the same parameter interval.
+
+Brush mathematics must respect that difference.
+
+### Circumferential distances
+
+The exterior wraps around the rounded cross-section.
+
+Circumferential distance changes where the cross-sectional radius changes.
+
+Do not use one fixed circumference for the entire body.
+
+### No shortcuts through the crescent opening
+
+The most important requirement:
+
+**A brush must never jump across the empty crescent opening.**
+
+Two physically separated regions may be close together in three-dimensional distance while remaining far apart along the connected surface.
+
+They must not be incorrectly linked.
+
+### No shortcuts through solid material
+
+A brush on the outer rounded surface must not pass directly through the body's volume to affect a geographically distant opposite surface.
+
+It must travel along the real exterior.
+
+### Correct physical connectivity
+
+The entire body is one connected exterior surface.
+
+Brush influence must correctly follow legitimate routes:
+
+- Along the inner curve.
+- Along the outer curve.
+- Around the rounded cross-section.
+- Through valid longitudinal regions.
+- Toward either terminal.
+- Across legitimate internal chart cuts.
+- Around the terminal regions through valid surface routes.
+
+### Terminal mathematics
+
+Rounded terminal regions may require special numerical treatment.
+
+If the sweep parameter becomes singular at a rounded tip, use a valid chart or canonical sample strategy.
+
+Do not allow the terminal points to create undefined metrics, invalid normals, or corrupted numerical influence.
+
+### Surface routing
+
+Reuse established certified surface-distance calculations wherever mathematically valid.
+
+If the variable-radius curved-body surface requires a specialized route method, implement a bounded and justified approach.
+
+Avoid:
+
+- Straight-line shortcuts across empty space.
+- Shortcuts through solid material.
+- Incorrect uniform-Cylinder metrics.
+- Invalid flat-map approximations.
+- Unbounded route enumeration.
+- Excessive per-dab global computation.
+- Artificial boundaries at internal charts.
+- Broken terminal influence.
+
+Numerical approximations must be validated against representative physical configurations.
+
+Do not sacrifice creator-facing responsiveness for unnecessary exhaustive routing.
+
+---
+
+## 7. CANONICAL NUMERICAL TERRAIN
+
+Rounded Crescent Globe Worlds must use our accepted authoritative numerical geography architecture.
+
+Terrain elevations are stored as numerical data, not inferred from rendered pixels.
+
+### Required numerical properties
+
+Preserve:
+
+- Exact canonical Float32 elevation samples.
+- Stable World identity.
+- Stable geographical surface identities.
+- Accurate physical sample positions.
+- Correct canonical ownership.
+- Valid surface orientation.
+- Reliable interpolation.
+- Appropriate elevation bounds.
+- Correct boundary aliases.
+- Real geographical continuity.
+- Exact history and persistence.
+
+### Complete rounded exterior
+
+The full legitimate exterior of the Crescent Globe must support numerical geography.
+
+This includes:
+
+- Outer convex geographical regions.
+- Inner concave-facing regions.
+- Broad central body.
+- Rounded transverse regions.
+- Narrowing terminal regions.
+- Valid transitions throughout the surface.
+
+Do not treat portions of the rounded body as decorative, noneditable material.
+
+### Suitable terrain representation
+
+A variable-radius swept body may use a longitudinal and circumferential geographical domain with additional terminal charts.
+
+Alternatively, use an existing valid curved-surface terrain adapter.
+
+Choose the representation that best preserves actual physical positions and practical terrain resolution.
+
+### Circumferential connectivity
+
+The geographical surface connects around each regular rounded cross-section.
+
+A map cut introduced for display must not interrupt real painting connectivity.
+
+### Longitudinal terminal boundaries
+
+The two terminal regions are distinct physical locations.
+
+They must not be joined through false longitudinal wraparound.
+
+### Terminal sample ownership
+
+If a rounded terminal converges to a pole-like region, it must have valid canonical sampling.
+
+Avoid contradictory duplicate elevation values for the same terminal point.
+
+Do not create invalid sample cells at a collapsed parameter boundary.
+
+### Changing cross-sectional radius
+
+The available surface area changes along the body.
+
+The numerical sampling policy must account for this.
+
+Prevent:
+
+- Severe stretching through the central body.
+- Collapsed terminal samples.
+- Missing geographical coverage.
+- Unstable interpolation.
+- Artificial seams.
+- Excessive redundant allocation.
+- Unrealistically distorted brush footprints.
+
+### Central-body geographical detail
+
+The broad central region should support meaningful terrain creation.
+
+A creator should be able to build substantial mountain ranges, valleys, and coastlines.
+
+Do not allocate so little geographical resolution that the rounded mass becomes visually detailed but numerically unusable.
+
+### Inner-curvature sampling
+
+The concave-facing region must remain properly sampled.
+
+The geometry must not produce artificial numerical discontinuities where the surface curves inward.
+
+### Separation of reference geometry and elevation
+
+Maintain the existing Atlas reference-surface heightmap architecture.
+
+Do not turn this assignment into later true-3D displaced-material terrain modeling.
+
+The physical Crescent Globe geometry and numerical terrain elevations must remain compatible with our current established systems.
+
+---
+
+## 8. COMPLETE NUMERICAL TERRAIN SCULPTING
+
+Rounded Crescent Globe Worlds must support the four standard Atlas tools:
+
+1. **Raise**
+2. **Lower**
+3. **Smooth**
+4. **Flatten**
+
+Reuse our established brush semantics and numerical editing infrastructure.
+
+### Required geographical coverage
+
+Creators must be able to sculpt:
+
+- Broad central rounded regions.
+- Outer convex surfaces.
+- Inner concave-facing surfaces.
+- Both lateral rounded regions.
+- Both terminal regions.
+- Continuous longitudinal geography.
+- Circumferential geography.
+- Valid internal chart joins.
+
+### Normal authoring
+
+Creators must be able to:
+
+- Build mountains.
+- Carve valleys.
+- Sculpt coastlines.
+- Smooth terrain.
+- Flatten locations.
+- Continue painting around the curved body.
+- Paint toward the narrowing ends.
+- Edit geographical features on all sides of the rounded World.
+
+### Brush consistency
+
+Preserve:
+
+- Responsive first dab.
+- Useful default brush radius.
+- Useful default strength.
+- Accurate physical brush center.
+- Correct intrinsic influence radius.
+- Appropriate falloff.
+- Stable Raise behavior.
+- Stable Lower behavior.
+- Correct Smooth behavior.
+- Reliable Flatten targets.
+- Continuous held strokes.
+- Complete input processing.
+- Correct shared-boundary influence.
+- Exact whole-gesture Undo/Redo.
+
+### Central-body painting
+
+The broad middle must provide practical sculpting.
+
+The rounded cross-section cannot make ordinary terrain creation feel significantly worse than accepted Sphere or curved-world painting.
+
+### Inner-curve painting
+
+The concave-facing side must receive full geographical editing support.
+
+The brush must not incorrectly jump across the opening to the opposite crescent arm.
+
+### Outer-curve painting
+
+The outer boundary must support normal continuous strokes.
+
+Surface curvature and cross-sectional radius changes must not produce unexpected brush-size shifts.
+
+### Terminal painting
+
+Both terminal regions must remain editable.
+
+A brush should not become unusably small or generate severe processing delays near the tips.
+
+### Cross-sectional painting
+
+A creator must be able to paint continuously around the body circumference.
+
+An internal map seam must not become a physical painting boundary.
+
+### Critical painting cases
+
+Test:
+
+- Broad central region.
+- Outer convex center.
+- Inner concave center.
+- Upper-facing rounded region.
+- Lower-facing rounded region.
+- Circumferential seam.
+- Both terminal regions.
+- Narrow terminal transitions.
+- Long strokes following the crescent.
+- Strokes around the body.
+- Tight but valid curvature.
+- Wide open curvature.
+- Thin but valid body configurations.
+- Thick central-body configurations.
+- Close opposing regions across empty space.
+- Internal chart joins.
+
+### No false cross-gap painting
+
+Create a valid Crescent Globe configuration where portions of the inner-facing body approach each other across the opening.
+
+Paint one region.
+
+Verify that another physically separate surface region remains unchanged when its real connected-surface distance exceeds the brush radius.
+
+Inspect authoritative numerical terrain values.
+
+Do not rely solely on visual observations.
+
+### Legitimate large-radius influence
+
+A sufficiently large brush may legitimately reach distant surface regions by traveling around the connected body.
+
+Do not impose an artificial blanket restriction on cross-region influence.
+
+The rule is accurate physical surface distance.
+
+---
+
+## 9. RESPONSIVE PAINTING AND RESOURCE MANAGEMENT
+
+Rounded Crescent Globe Worlds must reuse the existing Atlas worker, pointer scheduling, terrain editing, and rendering infrastructure.
+
+### Mandatory responsiveness
+
+Preserve:
+
+- Responsive first dab.
+- Smooth held-stroke painting.
+- Complete pointer processing.
+- No dropped stroke segments.
+- Efficient inner-curve painting.
+- Efficient outer-curve painting.
+- Stable terminal painting.
+- Practical brush footprints.
+- Correct visible terrain updates.
+- Incremental rendering.
+- Yielding idle refinement.
+- Cancellation of obsolete display work.
+- Exact completed-gesture history.
+
+### Geometry-specific performance concerns
+
+The changing rounded cross-section can introduce:
+
+- Variable sampling density.
+- Changing intrinsic metrics.
+- Curvature-dependent brush footprints.
+- Terminal sampling complexity.
+- Expensive surface-route preparation.
+- Different display texture requirements.
+
+Manage these using the established Atlas architecture.
+
+### Avoid unnecessary computation
+
+Do not:
+
+- Rebuild the full swept geometry for every dab.
+- Recompute unchanged centerline data.
+- Recalculate all cross-sectional frames per stroke.
+- Run unbounded route searches.
+- Reconstruct the entire numerical terrain after a local edit.
+- Regenerate all display caches unnecessarily.
+- Allocate large temporary arrays per pointer event.
+- Reinitialize workers repeatedly.
+- Block the main browser thread with full-world metric calculations.
+
+Cache stable geometry and routing information appropriately.
+
+Invalidate only what genuinely changes.
+
+### Numerical detail levels
+
+Inspect the current supported Atlas terrain profiles.
+
+Support N128/N256 or appropriate validated equivalents where measured capacity permits.
+
+Evaluate the total geographical surface allocation rather than assuming an ordinary Sphere profile automatically fits the new geometry.
+
+### Resource limits
+
+Bound:
+
+- Canonical terrain arrays.
+- Surface coordinate data.
+- Swept geometry buffers.
+- Frame calculations.
+- Metric and route preparation.
+- Worker snapshots.
+- GPU textures.
+- Canvas atlases.
+- Display caches.
+- History.
+- Temporary buffers.
+- Pending operations.
+
+Do not globally increase memory limits to accommodate inefficient numerical sampling.
+
+Reject unsupported configurations safely.
+
+### Real browser verification
+
+Use installed Chrome to measure actual input-to-visible-pixel responsiveness.
+
+Include:
+
+- First dab.
+- Central-body painting.
+- Inner-curve painting.
+- Outer-curve painting.
+- Circumferential strokes.
+- Terminal painting.
+- Narrow valid tip configurations.
+- Broad central-body configurations.
+- Long sustained strokes.
+- Hardware WebGL2.
+- Forced Canvas.
+- Supported numerical detail profiles.
+
+Report meaningful representative and p95 response measurements.
+
+Node-only timing is not sufficient proof of interactive responsiveness.
+
+Do not weaken established painting thresholds.
+
+---
+
+## 10. GENUINE THREE-DIMENSIONAL PHYSICAL PRESENTATION
+
+Render the Rounded Crescent Globe as a real three-dimensional celestial body.
+
+### Required physical appearance
+
+Display:
+
+- The complete crescent-shaped mass.
+- A substantial rounded center.
+- Correct inner concave profile.
+- Correct outer convex profile.
+- Genuine three-dimensional depth.
+- Smoothly narrowing ends.
+- Complete terminal geometry.
+- Continuous rounded exterior surfaces.
+- Proper geographical terrain.
+- Correct physical relief.
+- Valid silhouettes.
+
+### Globe-like mass
+
+The central body must visibly possess rounded volume.
+
+It must not appear as a flat plate merely because the initial viewing angle is face-on.
+
+Oblique and side views should clearly reveal the substantial rounded cross-section.
+
+### Crescent silhouette
+
+From an appropriate viewing angle, the body must have a recognizable crescent outline.
+
+The geometry must provide that silhouette physically.
+
+Do not rely on lighting or hidden mesh portions.
+
+### Camera navigation
+
+Reuse normal Atlas controls:
+
+- Rotation.
+- Pan.
+- Zoom.
+- Fit.
+- Appropriate focus.
+- Accurate physical surface picking.
+
+Creators must be able to inspect:
+
+- The complete crescent.
+- The central rounded mass.
+- The inner curvature.
+- The outer curvature.
+- The upper and lower rounded sides.
+- Both terminal regions.
+- The actual opening between the ends.
+
+### Default camera
+
+Choose a useful initial camera pose that communicates the crescent silhouette and rounded physical depth.
+
+Do not open the World from an angle where the crescent shape becomes unrecognizable unless the creator rotates it.
+
+### Physical occlusion
+
+Reject:
+
+- Rear surfaces displaying over foreground material.
+- Incorrect normals.
+- Missing rounded regions.
+- Broken silhouettes.
+- Invalid end closures.
+- Unexplained black patches.
+- Rendering through solid material.
+- Incorrect depth ordering.
+- Artificial gaps.
+- Displayed terrain disconnected from the physical body.
+
+### Surface picking
+
+The picker must select the genuinely visible physical surface.
+
+Painting the inner-facing region must not accidentally select an opposite region across the empty opening.
+
+Painting the near rounded surface must not select a hidden back surface.
+
+### Editing continuity
+
+Camera navigation must not rewrite geography.
+
+Inspection must not trap creators outside ordinary painting.
+
+Normal sculpting must remain available after rotation, zoom, or map switching.
+
+---
+
+## 11. TWO-DIMENSIONAL MAP AND UNWRAPPED VIEWS
+
+Rounded Crescent Globe Worlds require practical geographical map editing views.
+
+The entire rounded exterior may not admit a distortion-free flat representation.
+
+Use honest physical mappings.
+
+### Appropriate map approach
+
+A suitable representation may use:
+
+- A longitudinal/circumferential unwrapped map.
+- A coordinated set of surface charts.
+- Special terminal maps.
+- A connected geographical representation with explicit presentation cuts.
+
+Reuse existing curved-world map infrastructure where appropriate.
+
+### Longitudinal map coordinates
+
+If a swept-surface representation is used, the longitudinal map coordinate should correspond meaningfully to the body's actual physical length.
+
+Do not treat arbitrary centerline parameters as uniform physical distances without justification.
+
+### Circumferential coordinate
+
+The rounded exterior genuinely connects around its cross-section.
+
+A map cut used for unwrapping must not become a physical geographical barrier.
+
+### Varying circumference
+
+Because the body changes radius, the circumferential physical distance varies along the crescent.
+
+A simple rectangular visual map may be acceptable, but its displayed flat distances must not replace the real surface metric for painting.
+
+### Terminal representation
+
+Both rounded terminal regions must have correct geographical coverage.
+
+Where pole-like coordinates require special handling, provide valid map and numerical treatment.
+
+### Physical/map correspondence
+
+Preserve:
+
+- Accurate physical-to-map projection.
+- Accurate map-to-surface picking.
+- Stable surface identities.
+- Correct shared-boundary relationships.
+- Authoritative numerical geography.
+- Appropriate connected painting.
+- Useful pan and zoom.
+- Understandable orientation.
+
+### Map integrity
+
+Reject:
+
+- Missing rounded surface regions.
+- False longitudinal wrapping.
+- Artificial circumferential seams.
+- Incorrect terminal ownership.
+- Invalid overlapping map interiors.
+- Wrong-side painting.
+- Severe uncontrolled texture stretching.
+- False connections across the crescent opening.
+- Geography changing between physical and map views.
+
+### Editing continuity
+
+Switching views must preserve:
+
+- Selected terrain tool.
+- Brush radius.
+- Brush strength.
+- Current numerical geography.
+- Appropriate active surface.
+- Camera or map state.
+- History.
+- Continued painting.
+
+All views must represent one authoritative World.
+
+---
+
+## 12. MANDATORY RENDERING AND VISUAL QUALITY
+
+Follow `docs/ATLAS-RENDERING-STANDARD.md`.
+
+Rounded Crescent Globe Worlds must maintain our accepted geographical rendering quality.
+
+### Reuse established rendering
+
+Preserve:
+
+- Elevation-to-color terrain palettes.
+- Numerical field reconstruction.
+- Correct terrain interpolation.
+- Coastline coverage.
+- Physical gradient and relief shading.
+- Sharp Canvas atlases.
+- Appropriate backing resolution.
+- WebGL2 geographical presentation.
+- Canvas equivalent.
+- Indexed display caches.
+- Incremental terrain updates.
+- Revision-aware refinement.
+- Yielding idle work.
+- Graphics-context recovery.
+- Canvas fallback.
+
+Do not introduce a lower-quality rounded-crescent rendering path.
+
+### Curved-body rendering challenges
+
+The geometry includes:
+
+- Changing central-body thickness.
+- Convex outer curvature.
+- Concave inner curvature.
+- Rounded cross-sectional surfaces.
+- Narrowing terminal regions.
+- Variable sampling density.
+- Potentially difficult physical occlusion.
+
+Handle these through appropriate geometry-specific adapters.
+
+### Terrain sharpness
+
+Geography must remain sharp across the complete physical body.
+
+Do not allow:
+
+- Blurry central terrain.
+- Grainy zoom.
+- Fuzzy coastlines.
+- Stretched inner curvature.
+- Collapsed terminal textures.
+- Visible chart seams.
+- Incorrect cross-sectional gradients.
+
+### Surface relief
+
+Terrain relief must follow the actual local physical surface orientation.
+
+Do not shade the rounded body as if it were a flat slab.
+
+The central mass must look physically rounded under camera movement.
+
+### Terminal rendering
+
+Terminal closures require particular care.
+
+Avoid:
+
+- Missing geometry.
+- Jagged artificial tips.
+- Degenerate triangles.
+- Black pinholes.
+- Inverted normal patches.
+- Sudden texture stretching.
+- Incorrect relief.
+- Visible mismatched cap geometry.
+
+### Reject visual defects
+
+Do not accept:
+
+- Blurry terrain.
+- Grainy zoom.
+- Fuzzy coastlines.
+- Missing rounded surfaces.
+- Broken crescent silhouette.
+- Incorrect central-body thickness.
+- Artificial internal seams.
+- Stretched textures.
+- Incorrect shading.
+- Unexplained black areas.
+- Wrong background treatment.
+- Invalid physical occlusion.
+- Excessive redraw lag.
+- Significant WebGL2/Canvas mismatch.
+
+### Actual rendered-pixel verification
+
+Inspect actual browser-rendered pixels.
+
+Check:
+
+- Central rounded terrain.
+- Inner concave-facing terrain.
+- Outer convex terrain.
+- Upper and lower rounded regions.
+- Both terminal regions.
+- Circumferential chart seam.
+- Coastline coverage.
+- Elevation gradients.
+- Relief under rotation.
+- Physical silhouette.
+- Practical zoom sharpness.
+- WebGL2/Canvas parity.
+
+Compare equivalent numerical geography, camera, zoom, backing resolution, and renderer settings.
+
+Do not weaken established quality thresholds.
+
+### Display budgets
+
+Preserve existing Canvas settled-output budgets:
+
+- Up to 1.5 million settled pixels on desktop.
+- Up to 650,000 settled pixels for coarse-pointer operation.
+
+Follow the existing active-interaction and backing policies.
+
+These are not mandatory full-frame redraw sizes.
+
+Keep active painting and navigation ahead of nonessential refinement.
+
+---
+
+## 13. EXACT HISTORY AND GEOGRAPHICAL INTEGRITY
+
+Rounded Crescent Globe Worlds must use the established Atlas whole-gesture Undo/Redo system.
+
+### Required history behavior
+
+- One completed stroke remains one history operation.
+- Undo restores exact previous canonical Float32 elevation words.
+- Redo restores exact completed-stroke values.
+- Longitudinal strokes preserve complete history.
+- Circumferential seam painting remains one gesture.
+- Terminal painting preserves exact history.
+- Shared physical aliases restore correctly.
+- Physically distinct regions must not share unrelated modifications.
+- Camera rotation must not rewrite geography.
+- Map switching must not modify numerical terrain.
+- Failed operations must not partially corrupt the World.
+
+### Surface ownership
+
+The changing physical orientation of the rounded body must not change canonical terrain identities.
+
+Do not allow geography to migrate between unrelated samples when switching map views or rotating the camera.
+
+### Structural configuration
+
+If shape configuration changes are supported after creation, define exact history and terrain-preservation behavior.
+
+Do not claim unsupported geometry-changing operations have lossless Undo/Redo.
+
+### Reuse existing history
+
+Extend proven mechanisms narrowly where necessary.
+
+Do not create a separate Rounded Crescent Globe history implementation.
+
+---
+
+## 14. STRICT SAVE/OPEN AND DATA COMPATIBILITY
+
+Implement a new explicitly versioned Rounded Crescent Globe World format.
+
+### Format allocation
+
+Inspect the actual current persistence registry.
+
+Existing Worlds occupy formats 1–20.
+
+Archived excavation experiments reserve formats 21–24.
+
+Decahedron and subsequent geometry families occupy later identifiers.
+
+Crescent-Cut Globe may have assigned an additional format before this pass begins.
+
+Do not guess the next available identifier.
+
+Choose a genuinely unused format.
+
+Do not overwrite or reinterpret existing published or reserved formats.
+
+### Required saved information
+
+Preserve:
+
+- World identity.
+- Explicit Rounded Crescent Globe geometry family.
+- Geometry construction version.
+- Overall World scale.
+- Centerline geometry.
+- Crescent curvature.
+- Crescent angular span or equivalent length.
+- Central body dimensions.
+- Rounded cross-sectional configuration.
+- Longitudinal taper profile.
+- Terminal closure configuration.
+- Supported asymmetry parameters.
+- Any deterministic reconstruction information.
+- Stable geographical surface identities.
+- Valid topology metadata.
+- Numerical detail profile.
+- Canonical terrain arrays.
+- Exact Float32 elevation words.
+- Correct geographical ownership.
+- Integrity validation information.
+- Supported creator configuration.
+
+### Deterministic reconstruction
+
+Reopening must reproduce exactly the same physical Rounded Crescent Globe.
+
+It must preserve:
+
+- Overall curvature.
+- Crescent opening.
+- Central rounded mass.
+- Cross-sectional dimensions.
+- Terminal taper.
+- Physical surface topology.
+- Surface identities.
+- Numerical terrain.
+
+Do not regenerate a different physical silhouette during loading.
+
+### Strict validation
+
+Reject:
+
+- Unsupported formats.
+- Corrupted integrity data.
+- Invalid dimensions.
+- Invalid curvature.
+- Collapsed openings.
+- Overlapping geometry.
+- Nonfinite parameters.
+- Invalid cross-sections.
+- Invalid taper functions.
+- Degenerate terminal geometry.
+- Self-intersecting surfaces.
+- Missing physical surfaces.
+- Duplicate surface identities.
+- Malformed terrain arrays.
+- Incorrect numerical sample counts.
+- Unsupported resolution.
+- Corrupted Float32 elevation data.
+- Inconsistent geometry metadata.
+
+### Atomic failed loading
+
+Validate the entire incoming World before replacing the active editing state.
+
+A failed Open must leave the current World intact.
+
+Do not partially restore the central body while discarding terminal geography.
+
+Do not silently substitute default geometry parameters for corrupted data.
+
+### Existing compatibility
+
+Preserve every previously supported World format.
+
+Do not reinterpret existing Crescent, Crescent-Cut Globe, Sphere, Torus, or other saved Worlds through the new geometry model.
+
+### Continued editing
+
+After reopening, creators must be able to:
+
+- Rotate the Crescent Globe.
+- Inspect its rounded central body.
+- Navigate around the inner curvature.
+- Paint the outer curvature.
+- Sculpt both terminals.
+- Use all four terrain tools.
+- Switch map views.
+- Continue normal editing.
+
+Do not invent persistent undo-stack guarantees beyond the established Atlas architecture.
+
+---
+
+## 15. CREATOR EXPERIENCE
+
+Rounded Crescent Globe Worlds must feel like another complete Atlas World option.
+
+Creators should not need to understand curved surface parameterization or differential geometry.
+
+### Expected creator workflow
+
+A creator should be able to:
+
+1. Select **Rounded Crescent Globe World**.
+2. Choose a recognizable starting preset.
+3. Adjust overall size.
+4. Configure crescent curvature.
+5. Adjust the crescent opening.
+6. Set central body fullness.
+7. Adjust rounded body depth.
+8. Configure supported terminal taper.
+9. Create the physical World.
+10. Rotate and inspect the complete crescent.
+11. Examine the rounded central mass.
+12. Focus on the inner curvature.
+13. Sculpt mountains and valleys.
+14. Paint the outer curvature.
+15. Sculpt both narrowing terminal regions.
+16. Rotate to inspect the opposite side.
+17. Continue painting around the full body.
+18. Switch to a useful map view.
+19. Continue geographical editing.
+20. Return to physical view.
+21. Save the World.
+22. Reopen identical geometry and terrain.
+23. Resume normal painting.
+
+### Creator-facing naming
+
+Use **Rounded Crescent Globe World** as the primary World selector label.
+
+Do not expose internal sweep, profile, or parameterization names as creator-facing terminology.
+
+### Understandable controls
+
+Use labels such as:
+
+- World Size.
+- Crescent Curvature.
+- Crescent Opening.
+- Central Body Size.
+- Body Depth.
+- Tip Taper.
+- Tip Roundness.
+
+Adjust labels to match the implemented physical construction.
+
+Avoid exposing raw mathematical coefficients, coordinate frames, or topology identifiers as mandatory creator inputs.
+
+### Useful defaults
+
+The default World must:
+
+- Clearly resemble a crescent.
+- Possess substantial rounded central mass.
+- Have a visibly concave inner profile.
+- Have a convex outer profile.
+- Narrow naturally toward both ends.
+- Possess real geographical surface area.
+- Be physically valid.
+- Display correctly immediately.
+- Be properly framed.
+- Support immediate terrain sculpting.
+- Use practical brush settings.
+- Remain within validated performance limits.
+
+Do not force creators to solve mathematical constraints before making their first Rounded Crescent Globe.
+
+### Preserve established controls
+
+Retain:
+
+- Terrain tool selection.
+- Brush radius.
+- Brush strength.
+- Rotation.
+- Pan.
+- Zoom.
+- Fit.
+- Surface selection.
+- Map switching.
+- History.
+- Save/Open.
+
+Do not redesign the entire Atlas interface during this assignment.
+
+Do not introduce special inspection modes that trap creators outside normal painting.
+
+---
+
+## 16. REQUIRED ENGINEERING VERIFICATION
+
+Use targeted implementation tests and broader affected-family regression checks at meaningful publication checkpoints.
+
+Avoid prolonged unrelated testing cycles.
+
+### A. Physical geometry
+
+Verify:
+
+- Genuine naturally crescent-shaped geometry.
+- Substantial central rounded mass.
+- Valid convex outer profile.
+- Valid concave inner profile.
+- Two properly narrowing terminal regions.
+- Genuine three-dimensional volume.
+- Correct physical cross-sections.
+- Stable surface frames.
+- Closed material topology.
+- Correct outward normals.
+- No invalid self-intersections.
+- No folded sweep surfaces.
+- No missing physical patches.
+- Stable geometry across supported configurations.
+
+Test narrow, broad, strongly curved, gently curved, thick, and long-tapered configurations.
+
+### B. Intrinsic surface mathematics
+
+Verify:
+
+- Accurate physical sample positions.
+- Correct longitudinal metrics.
+- Correct circumferential metrics.
+- Valid variable-radius calculations.
+- Proper local curvature behavior.
+- Correct connected surface routes.
+- No shortcuts across the crescent opening.
+- No shortcuts through solid material.
+- Stable terminal-region mathematics.
+- Proper circumferential connectivity.
+- No false longitudinal periodicity.
+- Bounded route preparation.
+- Accurate brush footprints.
+
+### C. Numerical geography
+
+Verify:
+
+- Canonical sample ownership.
+- Correct shared aliases.
+- Valid cross-sectional sampling.
+- Stable central-body detail.
+- Correct inner-curve sampling.
+- Correct outer-curve sampling.
+- Valid terminal ownership.
+- Accurate interpolation.
+- No artificial numerical seams.
+- All four sculpting tools.
+- Exact whole-gesture history.
+
+### D. Real browser painting
+
+Measure:
+
+- First dab.
+- Central-body painting.
+- Inner-curve painting.
+- Outer-curve painting.
+- Circumferential strokes.
+- Longitudinal strokes.
+- Terminal painting.
+- Narrow-tip configurations.
+- Broad-body configurations.
+- Long held strokes.
+- Hardware WebGL2.
+- Forced Canvas.
+- Supported numerical detail levels.
+
+Report meaningful actual input-to-visible-pixel p95 measurements.
+
+### E. Rendering
+
+Verify:
+
+- Correct crescent silhouette.
+- Genuine rounded central mass.
+- Proper three-dimensional depth.
+- Complete curved exterior.
+- Correct terminal closure.
+- Sharp geographical terrain.
+- Accurate coastline coverage.
+- Appropriate relief shading.
+- Correct material normals.
+- Proper physical occlusion.
+- No missing patches.
+- Practical zoom sharpness.
+- WebGL2/Canvas consistency.
+- Graphics-context recovery.
+
+### F. Navigation and map views
+
+Verify:
+
+- Rotation.
+- Pan.
+- Zoom.
+- Fit.
+- Whole-World framing.
+- Central-body inspection.
+- Inner-curvature inspection.
+- Outer-curvature inspection.
+- Both terminal regions.
+- Accurate physical surface picking.
+- Correct physical/map correspondence.
+- Continued painting after view changes.
+- No trapped editing states.
+
+### G. History and persistence
+
+Verify:
+
+- Exact terrain Undo.
+- Exact terrain Redo.
+- Cross-chart history.
+- World creation.
+- Configuration serialization.
+- Deterministic physical reconstruction.
+- Exact Float32 terrain preservation.
+- Stable surface identities.
+- Strict corrupted-data rejection.
+- Atomic failed-load behavior.
+- Continued editing.
+- Existing save compatibility.
+
+### H. Shared regressions
+
+Run relevant tests for shared systems modified during this pass.
+
+Prioritize:
+
+- Crescent Worlds.
+- Crescent-Cut Globe Worlds.
+- Sphere.
+- Dumbbell.
+- Arc.
+- Spiral.
+- Ribbon.
+- Representative curved-surface painting.
+- Rendering.
+- History.
+- Persistence.
+
+Run TypeScript checks and the production build.
+
+Sequence heavyweight browser tests appropriately on the development PC.
+
+Do not weaken established acceptance thresholds.
+
+Automated technical verification remains separate from final owner acceptance.
+
+---
+
+## 17. PUBLICATION CHECKPOINTS
+
+### Checkpoint A — Genuine Rounded Crescent Globe Geometry Foundation
+
+Implement and validate:
+
+- Curved crescent centerline.
+- Variable-radius rounded physical body.
+- Substantial central mass.
+- Valid terminal taper.
+- Complete material boundaries.
+- Correct surface frames.
+- Valid physical normals.
+- Stable surface coordinates.
+- Accurate intrinsic metrics.
+- Proper connected topology.
+- Canonical numerical terrain ownership.
+
+Publish verified foundation work where appropriate.
+
+Do not present an incomplete static mesh as a completed World.
+
+### Checkpoint B — Operational Rounded Crescent Globe Editor
+
+Integrate the geometry into Atlas.
+
+Deliver:
+
+- Creator-facing Rounded Crescent Globe selection.
+- Useful default configuration.
+- Genuine physical rounded crescent.
+- Complete geographical surface editing.
+- All four sculpting tools.
+- Correct connected-surface brush influence.
+- No shortcuts across the opening.
+- Responsive painting.
+- Accurate physical navigation.
+- Appropriate map views.
+- Sharp WebGL2 and Canvas.
+- Exact whole-gesture history.
+- Strict Save/Open.
+
+Publish the verified operational checkpoint.
+
+### Checkpoint C — Configuration and Final Verification
+
+Complete:
+
+- Supported dimensional variation.
+- Rounded central-body variation.
+- Inner and outer curvature validation.
+- Terminal taper verification.
+- Cross-sectional painting tests.
+- No-cross-gap numerical checks.
+- Real browser responsiveness measurements.
+- Rendering verification.
+- Strict persistence validation.
+- Relevant shared regressions.
+- Creator workflow testing.
+
+Publish the verified checkpoint.
+
+### Completion report
+
+Provide a concise engineering report including:
+
+1. Published commit SHAs.
+2. Physical Rounded Crescent Globe construction.
+3. Supported creator configuration.
+4. Actual material and surface topology.
+5. Intrinsic surface-distance method.
+6. Existing Atlas infrastructure reused.
+7. Supported numerical detail profiles and resource limits.
+8. Browser painting-response measurements.
+9. WebGL2 and Canvas verification.
+10. Exact history results.
+11. Strict Save/Open results.
+12. Known limitations and deferred refinements.
+13. Remaining owner-acceptance items.
+
+If a genuine mathematical, performance, or architectural obstacle prevents safe completion, preserve the last verified checkpoint and document the specific issue.
+
+Do not fabricate completion.
+
+Do not weaken numerical or rendering requirements.
+
+Do not spend indefinite cycles repairing unrelated test fixtures.
+
+The objective is a genuinely operational Rounded Crescent Globe.
+
+---
+
+## 18. STRICT SCOPE PROTECTION
+
+Do NOT implement:
+
+- Filled-Torus Worlds.
+- Unrestricted custom World shaping.
+- Arbitrary creator-defined geometry.
+- General-purpose surface sweep editing.
+- Arbitrary physical mesh construction.
+- New holes.
+- Tunnel networks.
+- Underground excavation.
+- Map-link expansion.
+- True displaced-material terrain geometry.
+- Collision-aware free exploration.
+- Professional illustrated cartography.
+- City, town, or village map systems.
+- Building interiors.
+- Dungeon mapping systems.
+- Living-history functionality.
+- Earth reconstruction.
+- Serrian Tide website integration.
+- Production database changes.
+- Hosting modifications.
+- Docker changes.
+- Server configuration changes.
+
+Do not restore paused excavation functionality.
+
+Do not merge unfinished excavation code from recovery branches.
+
+A separate Hollow Rounded Crescent Globe is not required.
+
+### Protect existing geometry families
+
+Do not unnecessarily modify existing operational World implementations.
+
+If the Rounded Crescent Globe reveals a legitimate shared-infrastructure issue, make the smallest justified correction and verify affected geometries.
+
+Do not rebuild working systems without demonstrated necessity.
+
+### Maintain geometry-first development
+
+The owner has deliberately chosen to complete the remaining physical World geometries before returning to broad correction and polish work.
+
+Minor cosmetic issues and noncritical refinements may be documented for later review.
+
+However, the following are not minor:
+
+- A flattened Crescent relabeled as a Globe.
+- A Crescent-Cut Globe relabeled as a naturally rounded Crescent.
+- Insufficient physical body volume.
+- Invalid terminal geometry.
+- Self-intersecting surfaces.
+- Broken physical topology.
+- Missing geographical coverage.
+- Brushes jumping across the crescent opening.
+- Brushes passing through solid material.
+- Unusable painting performance.
+- Broken surface picking.
+- Trapped editor modes.
+- Lost canonical geography.
+- Incorrect Undo/Redo.
+- Broken Save/Open.
+- Serious regressions in existing Worlds.
+
+Postponing polish does not mean accepting fundamentally broken functionality.
+
+**This assignment ends with Rounded Crescent Globe Worlds. Do not automatically begin Filled-Torus Worlds.**
+
+---
+
+## FINAL OWNER ACCEPTANCE STANDARD
+
+A completed Rounded Crescent Globe World must be a genuine three-dimensional, naturally crescent-shaped physical celestial body.
+
+It must possess:
+
+- A recognizable crescent silhouette.
+- Substantial rounded central mass.
+- A physically concave inner profile.
+- A physically convex outer profile.
+- Real rounded depth.
+- Two smoothly narrowing terminal regions.
+- Valid closed material topology.
+- Correct surface normals.
+- Accurate intrinsic surface distances.
+- Authoritative numerical geography covering its exterior.
+- Responsive Raise, Lower, Smooth, and Flatten.
+- Sharp WebGL2 and Canvas rendering.
+- Reliable physical and map navigation.
+- Correct surface picking.
+- Exact whole-gesture history.
+- Strict lossless Save/Open.
+
+The physical body must not be a flat crescent with merely decorative rounded shading.
+
+It must not be an ordinary sphere with a Boolean subtraction.
+
+It must be a genuinely rounded crescent-shaped mass.
+
+Creators must be able to configure its physical proportions, rotate it, inspect every side, sculpt meaningful geography around its curved body, and continue painting through the legitimate surface connections.
+
+Brushes must never incorrectly jump across empty space or travel through solid material.
+
+The complete geometry and canonical numerical geography must survive Save/Open without corruption or reinterpretation.
+
+Reuse the proven Atlas architecture.
+
+Preserve established painting, rendering, navigation, history, performance, and persistence systems.
+
+Minor refinements may be deferred, but the geometry and creator-facing editor must be genuinely operational.
+
+**BUILD ONE COMPLETE, GENUINELY OPERATIONAL ROUNDED CRESCENT GLOBE WORLD GEOMETRY.**
+
+**DO NOT START THE NEXT SHAPE WITHOUT OWNER AUTHORIZATION.**
+
+**USE WHAT WORKS. REINVENT ONLY WHEN PROVEN UNWORKABLE.**

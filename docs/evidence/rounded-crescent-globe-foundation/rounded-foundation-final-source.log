@@ -1,0 +1,51 @@
+Command: ["node", "--test", "src/surfaces/rounded-crescent-globe.test.ts", "src/terrain/rounded-crescent-globe.test.ts", "src/terrain/spherical-brush.test.ts", "src/terrain/spherical-tools.test.ts"]
+✔ supported rounded profiles are smooth injective solids with real volume, taper, regular terminal charts and inverse coordinates (79.7749ms)
+✔ physical Jacobian, mixed metric and second derivatives match independently differenced swept positions (0.7082ms)
+✔ invalid dimensions, collapsed opening and unsupported curvature fail without normalizing parameters (0.7199ms)
+✔ actual curved geodesics converge against further refined integration at center, inner/outer banks and both tips (221.3688ms)
+✔ bounded fast brush routes stay on material and agree with refined geodesics throughout the supported local footprint (1839.3353ms)
+✔ native canonical ownership covers the full curved body and both regular poles without false longitudinal wrap (35.5931ms)
+✔ four tools use curved physical footprints on inner/outer center, rounded sides, seams and both terminals, with exact whole-gesture history (4351.1805ms)
+✔ a close-opening profile never paints through the gap or material; maximum supported brush retains real terminal continuity (315.2276ms)
+✔ conservative cap regions never omit exact samples and emit every candidate at most once, including all chart cuts (1523.2466ms)
+✔ raise uses meters and exact geodesic falloff at all six face centers without changing identity (50.9211ms)
+✔ lower uses meters and exact geodesic falloff at all six face centers without changing identity (39.6408ms)
+✔ all twelve edges and all eight corners sculpt every adjoining face through one authority, with no duplicate dab writes (131.6366ms)
+✔ equivalent seam/corner addresses and arbitrary poles produce the same physical footprint as brute-force distance checks (29.858ms)
+✔ large caps span multiple faces, including a complete sphere, without duplicate sample influence (12.2331ms)
+✔ great-circle strokes cross every edge with residual spacing and agree for sparse/dense/duplicate events (135.4766ms)
+✔ one multi-face/corner stroke, settings snapshot and partial termination preserve exact Undo/Redo including signed zero (17.791ms)
+✔ stationary, tiny and rejected antipodal movements do not add dabs or invent paths; valid intermediates can follow (8.7044ms)
+✔ invalid settings/identities, work limits and corrupt read protection reject before the affected dab writes anything (2.4617ms)
+✔ small caps at higher resolutions check a bounded subset rather than every sample; input unit vectors remain untouched (4.0463ms)
+✔ great circle interpolation follows angular arc length through seams and handles near-identical/near-antipodal cases explicitly (0.4551ms)
+✔ a corrupt later dab stops without partial writes and leaves completed Lower work as one exact history operation (0.8111ms)
+✔ no-hit and saturated strokes create no history entry, preserve Redo and never produce nonfinite values (1.4681ms)
+✔ smooth: independent full-mesh reference at six interiors, twelve edges, eight corners and arbitrary/near poles (94.3249ms)
+✔ smooth: equivalent face aliases produce identical bits and multi-face footprints have no duplicate influence (106.5234ms)
+✔ smooth: every seam and a multi-face corner path retain spacing for sparse/dense/duplicate events (175.5168ms)
+✔ smooth: partial stroke, parameter snapshot, exact signed-zero history, Redo branching and out-of-band protection (10.0816ms)
+✔ smooth: corruption in a later dab commits only completed work as one operation (1.288ms)
+✔ flatten: independent full-mesh reference at six interiors, twelve edges, eight corners and arbitrary/near poles (26.0598ms)
+✔ flatten: equivalent face aliases produce identical bits and multi-face footprints have no duplicate influence (23.9995ms)
+✔ flatten: every seam and a multi-face corner path retain spacing for sparse/dense/duplicate events (95.2503ms)
+✔ flatten: partial stroke, parameter snapshot, exact signed-zero history, Redo branching and out-of-band protection (8.6389ms)
+✔ flatten: corruption in a later dab commits only completed work as one operation (1.8834ms)
+✔ Smooth is invariant for constant fields including signed zero, at corners/poles and whole-sphere caps (314.2777ms)
+✔ Smooth snapshot includes neighbors beyond the cap, handles corner degree three and unequal physical spacing (14.2728ms)
+✔ Smooth damps an isolated spike without chart-boundary extrema and tolerates reversed neighbor enumeration (46.4629ms)
+✔ Flatten targets are actual datum-relative positive, negative and zero meters, including extreme finite inputs (3.5168ms)
+✔ new tools reject invalid blends/targets/identities before edits and remain isolated between terrain/surface instances (5.8793ms)
+✔ Raise/Lower retain their independent numerical falloff at every interior, edge, corner and pole (53.4629ms)
+✔ Smooth/Flatten independent references cover coarse/odd grids and physically scaled extreme sphere radii (25.4041ms)
+✔ N=128/256 new-tool dabs use bounded cap work, no per-dab elevation copies, and two copies per tracked stroke (55.7509ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4912.1471
+
+Exit: 0
