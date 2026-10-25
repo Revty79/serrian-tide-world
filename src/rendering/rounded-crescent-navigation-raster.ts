@@ -20,7 +20,7 @@ export class RoundedNavigationRaster {
  /** One read-only field copy per yielding idle task, never during a stroke.
   * A navigation request still synchronously queues any missing worker fields. */
  warmNext(field:SphereFieldSnapshot,view:SphericalView){if(this.disposed||this.pending)return false;const w=this.workers.find(w=>this.epochs.get(w)!==field.sourceRevision&&!this.warming.has(w));if(!w)return false;try{this.sendField(w,field,view);this.statistics.idleFieldCopies++;return true;}catch(e){this.statistics.error=String(e);this.release();this.changed();return false;}}
- warm(field:SphereFieldSnapshot,view:SphericalView){if(this.disposed)return;for(const w of this.workers)if(this.epochs.get(w)!==field.sourceRevision)this.sendField(w,field,view);} 
+ warm(field:SphereFieldSnapshot,view:SphericalView){if(this.disposed)return;for(const w of this.workers)if(this.epochs.get(w)!==field.sourceRevision)this.sendField(w,field,view);}
  *render(field:SphereFieldSnapshot,view:SphericalView,size:Viewport,appearance:SphereAppearance,budget:number,backing:Viewport):ReturnType<typeof sphericalFieldRaster>{
   if(!this.workers.length||this.disposed)return yield* sphericalFieldRaster(field,view,size,appearance,budget,undefined,undefined,backing);
   const started=performance.now();this.warm(field,view);const id=++this.id,grid=cutGlobeRasterGrid({left:0,top:0,width:size.width,height:size.height},size,budget,backing),pixels=new Uint8ClampedArray(grid.columns*grid.rows*4),count=Math.min(grid.rows,this.workers.length*4),tasks=Array.from({length:count},(_,i)=>({first:Math.floor(grid.rows*i/count),last:Math.floor(grid.rows*(i+1)/count)})),busy=new Map<Worker,{first:number;last:number}>();let remaining=count,cursor=0,done=false,error='';this.statistics.pending=true;
