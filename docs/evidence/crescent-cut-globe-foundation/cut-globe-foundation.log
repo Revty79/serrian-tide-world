@@ -1,0 +1,32 @@
+Command: ["node", "--test", "src/surfaces/crescent-cut-globe.test.ts", "src/terrain/crescent-cut-globe.test.ts"]
+✔ true boundary, normals, seam and metric d=0.25 orientation=0,0 (8.0707ms)
+✔ true boundary, normals, seam and metric d=0.25 orientation=71,-39 (4.0042ms)
+✔ true boundary, normals, seam and metric d=0.25 orientation=-180,90 (3.2455ms)
+✔ true boundary, normals, seam and metric d=0.6 orientation=0,0 (3.0155ms)
+✔ true boundary, normals, seam and metric d=0.6 orientation=71,-39 (5.6552ms)
+✔ true boundary, normals, seam and metric d=0.6 orientation=-180,90 (3.9827ms)
+✔ true boundary, normals, seam and metric d=1 orientation=0,0 (3.2852ms)
+✔ true boundary, normals, seam and metric d=1 orientation=71,-39 (4.1373ms)
+✔ true boundary, normals, seam and metric d=1 orientation=-180,90 (4.557ms)
+✔ true boundary, normals, seam and metric d=1.5 orientation=0,0 (3.2373ms)
+✔ true boundary, normals, seam and metric d=1.5 orientation=71,-39 (3.0621ms)
+✔ true boundary, normals, seam and metric d=1.5 orientation=-180,90 (2.6066ms)
+✔ folded great circles preserve length on the real exterior including repeated seam crossings (455.9311ms)
+✔ near opposing material banks do not become a chord shortcut (0.4223ms)
+✔ orthographic first intersections agree with an independent quadratic/volume oracle (49.8809ms)
+✔ qualified creator limits reject degeneracy, enclosed cavities and invalid orientations (0.53ms)
+✔ one canonical authority at both qualified profiles, including all cube-chart aliases (802.7444ms)
+✔ raise crosses the actual rim and whole-gesture history restores exact Float32 words (13.7867ms)
+✔ lower crosses the actual rim and whole-gesture history restores exact Float32 words (10.4064ms)
+✔ smooth crosses the actual rim and whole-gesture history restores exact Float32 words (27.5081ms)
+✔ flatten crosses the actual rim and whole-gesture history restores exact Float32 words (8.0022ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1012.7593
+
+Exit: 0
