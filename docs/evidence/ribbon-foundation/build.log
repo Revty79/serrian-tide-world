@@ -1,0 +1,49 @@
+Command: ["node", "node_modules/vite/bin/vite.js", "build"]
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 506 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/dev/cube-preview.html                                      0.51 kB │ gzip:   0.32 kB
+dist/dev/cube-editor.html                                       0.62 kB │ gzip:   0.33 kB
+dist/dev/hollow-cube.html                                       0.67 kB │ gzip:   0.36 kB
+dist/index.html                                                 0.99 kB │ gzip:   0.44 kB
+dist/assets/sphere-preparation.worker--CaFm_1e.js              18.80 kB
+dist/assets/cube-path.worker-oGvgR_R9.js                       35.39 kB
+dist/assets/torus-preparation.worker-ACqUzHpc.js               40.57 kB
+dist/assets/tetrahedron-preparation.worker-9xm_P2zP.js         51.38 kB
+dist/assets/octahedron-preparation.worker-CkYANK8-.js          51.55 kB
+dist/assets/pyramid-preparation.worker-DFbSB03D.js             51.63 kB
+dist/assets/icosahedron-preparation.worker-FF66uYiB.js         52.35 kB
+dist/assets/trapezohedron-preparation.worker-BykYjMIJ.js       53.19 kB
+dist/assets/dodecahedron-preparation.worker-CmsxUmBs.js        53.23 kB
+dist/assets/cylinder-preparation.worker-CY_pEJOK.js            54.04 kB
+dist/assets/floating-island-preparation.worker-D4gLlmCY.js     55.88 kB
+dist/assets/hourglass-preparation.worker-CZQEP8aw.js           75.09 kB
+dist/assets/dumbbell-preparation.worker-Lx43gVVE.js            76.78 kB
+dist/assets/crescent-preparation.worker-BbE8hQhz.js            77.13 kB
+dist/assets/arc-preparation.worker-BCNNXQEb.js                 78.02 kB
+dist/assets/horseshoe-preparation.worker-DnwgZidE.js           78.27 kB
+dist/assets/spiral-preparation.worker-C5t-aZZ5.js              81.82 kB
+dist/assets/open-cylinder-preparation.worker-BbX2O2Vb.js       84.58 kB
+dist/assets/flat-ring-preparation.worker-DSAMdthz.js           92.45 kB
+dist/assets/hollowCube--nVUMCc5.css                             3.16 kB │ gzip:   1.14 kB
+dist/assets/CubeEditor-P1tFxV6L.css                             4.16 kB │ gzip:   1.30 kB
+dist/assets/styles-DMZzfgmp.css                                11.04 kB │ gzip:   3.33 kB
+dist/assets/main-Ct7HnrFn.css                                  17.12 kB │ gzip:   4.20 kB
+dist/assets/cubeEditor-C0wajSmx.js                              0.17 kB │ gzip:   0.16 kB
+dist/assets/cubePreview-CaHKQ8r4.js                             9.25 kB │ gzip:   3.54 kB
+dist/assets/hollowCube-BkOxB1DE.js                             17.34 kB │ gzip:   6.27 kB
+dist/assets/hollow-cube-passages-Dh0XxitG.js                   69.41 kB │ gzip:  18.06 kB
+dist/assets/CubeEditor-kSpZ6v3o.js                            101.94 kB │ gzip:  33.94 kB
+dist/assets/styles-DmUOHBrp.js                                297.87 kB │ gzip:  94.25 kB
+dist/assets/main-52W4Reob.js                                1,245.53 kB │ gzip: 331.28 kB
+
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 748ms
+
+Exit code: 0
