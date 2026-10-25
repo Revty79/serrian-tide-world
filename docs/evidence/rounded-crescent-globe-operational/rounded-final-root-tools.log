@@ -1,0 +1,16 @@
+Command: ["node", "node_modules/@playwright/test/cli.js", "test", "--config", "playwright.rounded-crescent-globe.config.mjs", "tests/rounded-crescent-tools.spec.ts", "--workers=1", "--retries=0", "--max-failures=1"]
+
+Running 4 tests using 1 worker
+
+(node:18060) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\rounded-crescent-tools.spec.ts:5:65 › Rounded Crescent N128 hardware four tools across curved regions, both tips and joined charts (1.4m)
+  ok 2 [installed-chrome] › tests\rounded-crescent-tools.spec.ts:5:65 › Rounded Crescent N128 Canvas four tools across curved regions, both tips and joined charts (1.8m)
+  ok 3 [installed-chrome] › tests\rounded-crescent-tools.spec.ts:5:65 › Rounded Crescent N256 hardware four tools across curved regions, both tips and joined charts (1.4m)
+  ok 4 [installed-chrome] › tests\rounded-crescent-tools.spec.ts:5:65 › Rounded Crescent N256 Canvas four tools across curved regions, both tips and joined charts (1.8m)
+
+  Slow test file: [installed-chrome] › tests\rounded-crescent-tools.spec.ts (6.3m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  4 passed (6.4m)
+
+Exit: 0

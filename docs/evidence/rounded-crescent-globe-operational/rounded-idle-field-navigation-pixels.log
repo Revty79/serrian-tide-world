@@ -1,0 +1,12 @@
+Command: ["node", "node_modules/@playwright/test/cli.js", "test", "--config", "playwright.rounded-crescent-globe.config.mjs", "tests/rounded-crescent-navigation-pixels.spec.ts", "--workers=1", "--retries=0", "--max-failures=1"]
+
+Running 2 tests using 1 worker
+
+(node:18888) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\rounded-crescent-navigation-pixels.spec.ts:3:35 › Rounded Crescent N128 navigation workers retain every pixel, epoch and canceled-view isolation (52.7s)
+  ok 2 [installed-chrome] › tests\rounded-crescent-navigation-pixels.spec.ts:3:35 › Rounded Crescent N256 navigation workers retain every pixel, epoch and canceled-view isolation (59.2s)
+
+  2 passed (1.9m)
+
+Exit: 0

@@ -1,0 +1,221 @@
+{
+  "max": 0,
+  "alpha": 0,
+  "different": 0,
+  "width": 1500,
+  "height": 1080,
+  "clientWidth": 1000,
+  "clientHeight": 720,
+  "transform": [
+    1.5,
+    0,
+    0,
+    0,
+    0,
+    1.5,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "state": {
+    "ready": true,
+    "viewPending": false,
+    "displayPending": false,
+    "painting": false,
+    "processing": false,
+    "pending": 0,
+    "revision": 6123,
+    "displayRevision": 6123,
+    "renderer": "cpu",
+    "diagnostics": {
+      "gpu": {
+        "renderer": "",
+        "reason": "Error: WebGL2 unavailable; bounded CPU display is active.",
+        "losses": 0,
+        "recoveries": 0,
+        "uploads": 0,
+        "uploadBytes": 0,
+        "textureBytes": 0,
+        "presentations": 0,
+        "resources": 0
+      },
+      "cpu": {
+        "width": 1200,
+        "height": 900,
+        "pending": false,
+        "refined": true,
+        "images": 63,
+        "slices": 1033,
+        "computeMs": 5104.100000977516,
+        "maxSliceMs": 35.39999997615814,
+        "snapshotBytes": 1597536,
+        "partialFrames": 49,
+        "baseRasterPixels": 1080000
+      },
+      "navigation": {
+        "workers": 6,
+        "pending": false,
+        "completed": 4,
+        "canceled": 0,
+        "fieldBytes": 9585216,
+        "maxComputeMs": 92,
+        "lastFrameMs": 53.300000071525574,
+        "maxFrameMs": 366.1999999284744,
+        "error": ""
+      },
+      "fieldBytes": 5948672,
+      "fieldRevision": 6123,
+      "displayRevision": 6123,
+      "pending": false,
+      "appearance": "relief",
+      "timingBounds": {
+        "retained": 0,
+        "capacity": 512,
+        "total": 2
+      }
+    },
+    "statistics": {
+      "dabs": 60,
+      "writes": 6123,
+      "updatedPixels": 11234,
+      "updatedRegions": 74,
+      "fullRebuilds": 0,
+      "maxDabMs": 1.8000000715255737,
+      "slices": 973
+    },
+    "work": {
+      "backend": "worker",
+      "candidates": 1156,
+      "weighted": 73984,
+      "threshold": 24000,
+      "coarse": false,
+      "reason": "Preparation exceeds calibrated UI-work threshold",
+      "geometryPreparationMs": 98,
+      "fallbackReason": "",
+      "readyRoundTripMs": 15.399999976158142,
+      "snapshotMs": 1.5,
+      "computeMs": 54.99999976158142,
+      "proposals": 27,
+      "staleResults": 0,
+      "validationMaxMs": 0.2999999523162842,
+      "commitMaxMs": 0.10000002384185791,
+      "ackWait": {
+        "count": 27,
+        "totalMs": 28.100000381469727,
+        "maxMs": 5.599999904632568,
+        "samples": [
+          5.599999904632568,
+          0.5,
+          1.6999999284744263,
+          0.6000000238418579,
+          0.8000000715255737,
+          0.40000009536743164,
+          0.5,
+          0.5,
+          0.6000000238418579,
+          0.7999999523162842,
+          0.5,
+          0.6000000238418579,
+          0.8999999761581421,
+          0.40000009536743164,
+          1.3000000715255737,
+          1,
+          0.9000000953674316,
+          1.100000023841858,
+          0.30000007152557373,
+          0.6999999284744263,
+          0.6000000238418579,
+          1.0999999046325684,
+          1.2000000476837158,
+          1.5,
+          1.399999976158142,
+          1.2000000476837158,
+          1.4000000953674316
+        ]
+      },
+      "statistics": {
+        "dabs": 27,
+        "candidateChecks": 20878,
+        "affectedSamples": 1285,
+        "writes": 1284,
+        "peakPreparedBytes": 32768,
+        "acceptedPositions": 26,
+        "processedPositions": 26,
+        "discardedPositions": 0,
+        "peakPendingPositions": 1
+      }
+    },
+    "historyEntries": 2,
+    "historyBytes": 13268,
+    "configuration": {
+      "provider": "physical-rounded-crescent-globe",
+      "version": 1,
+      "worldSizeMeters": 2000000,
+      "curvatureRatio": 1,
+      "spanDegrees": 260,
+      "bodyRadiusRatio": 0.45,
+      "depthRatio": 1,
+      "tipTaper": 0.15,
+      "tipRoundness": 0,
+      "scaleMeters": 1000000,
+      "bendRadius": 1,
+      "bodyRadius": 0.45,
+      "bodyDepth": 0.45,
+      "halfSpan": 2.2689280275926285,
+      "minimumStretch": 0.26359553174342487,
+      "maximumStretch": 3.3563659386628686,
+      "elevationLimitMeters": 47812.5
+    },
+    "view": {
+      "mode": "net",
+      "frame": {
+        "right": [
+          0,
+          0,
+          1
+        ],
+        "up": [
+          -0.6427876096865394,
+          0.766044443118978,
+          0
+        ],
+        "forward": [
+          -0.766044443118978,
+          -0.6427876096865394,
+          0
+        ]
+      },
+      "zoom": 1,
+      "pan": {
+        "x": 0,
+        "y": 0
+      },
+      "roundedGlobe": {
+        "provider": "physical-rounded-crescent-globe",
+        "version": 1,
+        "worldSizeMeters": 2000000,
+        "curvatureRatio": 1,
+        "spanDegrees": 260,
+        "bodyRadiusRatio": 0.45,
+        "depthRatio": 1,
+        "tipTaper": 0.15,
+        "tipRoundness": 0,
+        "scaleMeters": 1000000,
+        "bendRadius": 1,
+        "bodyRadius": 0.45,
+        "bodyDepth": 0.45,
+        "halfSpan": 2.2689280275926285,
+        "minimumStretch": 0.26359553174342487,
+        "maximumStretch": 3.3563659386628686,
+        "elevationLimitMeters": 47812.5
+      }
+    }
+  }
+}

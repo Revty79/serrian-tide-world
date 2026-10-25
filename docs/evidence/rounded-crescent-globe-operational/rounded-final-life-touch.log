@@ -1,0 +1,16 @@
+Command: ["node", "node_modules/@playwright/test/cli.js", "test", "--config", "playwright.rounded-crescent-globe.config.mjs", "tests/rounded-crescent-lifecycle.spec.ts", "tests/rounded-crescent-touch.spec.ts", "--workers=1", "--retries=0", "--max-failures=1"]
+
+Running 6 tests using 1 worker
+
+(node:16584) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\rounded-crescent-lifecycle.spec.ts:2:68 › Rounded Crescent Globe N128 hardware 15-second held input, navigation, maximum brush and recovery (31.9s)
+  ok 2 [installed-chrome] › tests\rounded-crescent-lifecycle.spec.ts:2:68 › Rounded Crescent Globe N128 Canvas 15-second held input, navigation, maximum brush and recovery (31.8s)
+  ok 3 [installed-chrome] › tests\rounded-crescent-lifecycle.spec.ts:2:68 › Rounded Crescent Globe N256 hardware 15-second held input, navigation, maximum brush and recovery (28.8s)
+  ok 4 [installed-chrome] › tests\rounded-crescent-lifecycle.spec.ts:2:68 › Rounded Crescent Globe N256 Canvas 15-second held input, navigation, maximum brush and recovery (34.0s)
+  ok 5 [installed-chrome] › tests\rounded-crescent-touch.spec.ts:3:34 › Rounded Crescent Globe hardware coarse emulated touch/pen and two-contact navigation (6.0s)
+  ok 6 [installed-chrome] › tests\rounded-crescent-touch.spec.ts:3:34 › Rounded Crescent Globe Canvas coarse emulated touch/pen and two-contact navigation (12.9s)
+
+  6 passed (2.4m)
+
+Exit: 0

@@ -1,0 +1,14 @@
+Command: ["node", "node_modules/@playwright/test/cli.js", "test", "--config", "playwright.rounded-crescent-globe.config.mjs", "tests/rounded-crescent-current-output.spec.ts", "--workers=1", "--retries=0", "--max-failures=1"]
+
+Running 4 tests using 1 worker
+
+(node:8444) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\rounded-crescent-current-output.spec.ts:3:175 › Rounded Crescent DPR 1.5 › hardware resize, cropped-map dirty updates and fresh full output (13.1s)
+  ok 2 [installed-chrome] › tests\rounded-crescent-current-output.spec.ts:3:175 › Rounded Crescent DPR 1.5 › Canvas resize, cropped-map dirty updates and fresh full output (24.6s)
+  ok 3 [installed-chrome] › tests\rounded-crescent-current-output.spec.ts:3:175 › Rounded Crescent DPR 2 › hardware resize, cropped-map dirty updates and fresh full output (6.8s)
+  ok 4 [installed-chrome] › tests\rounded-crescent-current-output.spec.ts:3:175 › Rounded Crescent DPR 2 › Canvas resize, cropped-map dirty updates and fresh full output (24.9s)
+
+  4 passed (1.2m)
+
+Exit: 0

@@ -1,0 +1,12 @@
+Command: ["node", "node_modules/@playwright/test/cli.js", "test", "--config", "playwright.rounded-crescent-globe.config.mjs", "tests/rounded-crescent-observer.spec.ts", "--workers=1", "--retries=0", "--max-failures=1"]
+
+Running 2 tests using 1 worker
+
+(node:22096) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\rounded-crescent-observer.spec.ts:3:36 › Rounded pixel observer preserves exact submitted Canvas epochs (1.7s)
+  ok 2 [installed-chrome] › tests\rounded-crescent-observer.spec.ts:3:36 › Rounded pixel observer preserves exact submitted WebGL2 epochs (1.4s)
+
+  2 passed (4.4s)
+
+Exit: 0
