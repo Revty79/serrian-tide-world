@@ -102,10 +102,12 @@ export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, 
     };
     // Complete current Rounded Crescent images through yielding tasks, at most two ms during painting.
     // Optional idle refinement keeps the ordinary animation-frame schedule.
-    // Other folded surfaces retain their established one-timer scheduling.
+    // A completed editing image publishes immediately through the ordinary paint
+    // path; it does not wait another animation frame. Idle refinement and other
+    // folded surfaces retain their established scheduling.
     const cpuSliceBudget=()=>editor?.roundedGlobe&&editor.painting?2:6;
     const cpuPreparationChannel=editor?.roundedGlobe?new MessageChannel():undefined;let cpuPreparationQueued=false;
-    const advanceCpuPreparation=()=>{if(!active||!cpuJob||cpuReady||cpuRefinement||cpuNavigation?.pending||cpuSerial!==serial&&!((viewRef.current.cutGlobe||viewRef.current.roundedGlobe)&&cpuQuality==='navigation'&&cpuView?.mode===viewRef.current.mode&&cpuSize.width===size().width&&cpuSize.height===size().height))return;const at=performance.now();let result=cpuJob.next();while(!result.done&&performance.now()-at<cpuSliceBudget())result=cpuJob.next();const elapsed=performance.now()-at;cpu.computeMs+=elapsed;cpu.maxSliceMs=Math.max(cpu.maxSliceMs,elapsed);cpu.slices++;if(result.done)cpuReady=result;schedule(false);if(cpuPreparationChannel)prepareBetweenFrames();};
+    const advanceCpuPreparation=()=>{if(!active||!cpuJob||cpuReady||cpuRefinement||cpuNavigation?.pending||cpuSerial!==serial&&!((viewRef.current.cutGlobe||viewRef.current.roundedGlobe)&&cpuQuality==='navigation'&&cpuView?.mode===viewRef.current.mode&&cpuSize.width===size().width&&cpuSize.height===size().height))return;const at=performance.now();let result=cpuJob.next();while(!result.done&&performance.now()-at<cpuSliceBudget())result=cpuJob.next();const elapsed=performance.now()-at;cpu.computeMs+=elapsed;cpu.maxSliceMs=Math.max(cpu.maxSliceMs,elapsed);cpu.slices++;if(result.done){cpuReady=result;if(cpuPreparationChannel&&cpuQuality==='editing'&&editor?.painting){cancelAnimationFrame(frame);frame=0;paint();return;}}schedule(false);if(cpuPreparationChannel)prepareBetweenFrames();};
     const prepareBetweenFrames=()=>{if(cpuPreparationTimer||cpuPreparationQueued||!cpuJob||cpuReady||cpuRefinement||cpuNavigation?.pending||!(viewRef.current.cutGlobe||viewRef.current.roundedGlobe))return;if(cpuPreparationChannel){cpuPreparationQueued=true;cpuPreparationChannel.port2.postMessage(0);}else cpuPreparationTimer=window.setTimeout(()=>{cpuPreparationTimer=0;advanceCpuPreparation();},0);};
     if(cpuPreparationChannel)cpuPreparationChannel.port1.onmessage=()=>{cpuPreparationQueued=false;advanceCpuPreparation();};
     // Keep Rounded Crescent's coherent numerical-field preparation moving

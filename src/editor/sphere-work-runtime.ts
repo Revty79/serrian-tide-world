@@ -10,7 +10,7 @@ import {unitDirection,type Vec3} from '../surfaces/cube-sphere.ts';
 /** Bounded pure-geometry preparation before creator input. No terrain or private
  * elevation epoch is created or retained by warm-up. Ordinary strokes still
  * compute and validate their complete current source-word patches. */
-function primeRoundedGeometry(g:RoundedCrescentGeometry){roundedBoundTree(g);for(const center of [[0,-1,0],[0,1,0],[0,0,1],[0,0,-1],[1,0,0],[-1,0,0]] as Vec3[]){const routes=roundedBrushRoutes(g,center),forward=roundedNormal(g,center);for(let i=0;i<128;i++){const end=unitDirection(center.map((v,k)=>v+(.025+.1*(i%7)/6)*Math.sin(i*(k+1)+.3)) as unknown as Vec3);routes(end);roundedVisible(g,end,forward);}}}
+function primeRoundedGeometry(g:RoundedCrescentGeometry){roundedBoundTree(g);for(const center of [...([[0,-1,0],[0,1,0],[0,0,1],[0,0,-1],[1,0,0],[-1,0,0]] as Vec3[]),...[1,-1].flatMap(x=>[unitDirection([x,.3,0]),unitDirection([x,-.3,0]),unitDirection([x,0,.3]),unitDirection([x,0,-.3])])]){const routes=roundedBrushRoutes(g,center),forward=roundedNormal(g,center);for(let i=0;i<128;i++){const end=unitDirection(center.map((v,k)=>v+(.025+.1*(i%7)/6)*Math.sin(i*(k+1)+.3)) as unknown as Vec3);routes(end);roundedVisible(g,end,forward);}}}
 /** One ready dab waits for the host. No speculative source-epoch advancement. */
 export function createSphereWorkRuntime(send:(message:SphereWorkOutput)=>void,schedule:(fn:()=>void)=>void){
  let task=-1,sequence=0,waiting=false,acknowledged=false,scheduled=false,released=false,processed=0,ordinal=1,expectedWrites=0,computeMs=0,snapshotMs=0;
