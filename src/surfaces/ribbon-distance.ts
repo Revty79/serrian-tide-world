@@ -5,12 +5,13 @@ import {polyhedronUnfoldings,polyhedronRouteCertificate,reconstructPolyhedronPat
 import {preparePolyhedronRouteEnclosures} from './polyhedron-distance-prepared.ts';
 import type {PolyhedronPhysicalBounds} from './polyhedron-contract.ts';
 import * as I from './pyramid-interval.ts';
+export {ribbonPointerInputs} from './ribbon-material.ts';
 
 type Routes=ReturnType<typeof polyhedronUnfoldings>;
 type B=PolyhedronPhysicalBounds;
 interface Certificate {lowerBoundMeters:number;upperBoundMeters:number;evaluatedBoxes:number;scope:'global-reference-surface'}
 const preparationBudget={maxExpansions:8192,maxRoutes:2048};
-function sharedConvexFace(g:RibbonGeometry,a:SurfacePosition,b:SurfacePosition){const first=g.aliases(a);for(const q of g.aliases(b)){const p=first.find(p=>g.physicalFaceId(p.patchId)===g.physicalFaceId(q.patchId));if(p)return{a:p,b:q};}return undefined;}
+function sharedConvexFace(g:RibbonGeometry,a:SurfacePosition,b:SurfacePosition){const ra=g.region(a.patchId);if(ra.endsWith('end')&&ra===g.region(b.patchId))return{a,b};const first=g.aliases(a);for(const q of g.aliases(b)){const p=first.find(p=>g.physicalFaceId(p.patchId)===g.physicalFaceId(q.patchId));if(p)return{a:p,b:q};}return undefined;}
 const midpoint=(a:B,b:B)=>a.map((x,k)=>I.multiply(I.add(x,b[k]!),I.exact(.5))) as unknown as B;
 function boxDistance(p:B,vertices:readonly B[]){
  let squared=I.exact(0);for(let k=0;k<3;k++){const box:I.Interval=[Math.min(...vertices.map(v=>v[k]![0])),Math.max(...vertices.map(v=>v[k]![1]))],gap=Math.max(0,I.subtract(p[k]!,box)[0],I.subtract(box,p[k]!)[0]);squared=I.add(squared,I.square(I.exact(gap)));}return Math.max(0,I.root(squared)[0]);
@@ -26,7 +27,7 @@ function edgeWalkUpper(g:RibbonGeometry){let value=edgeWalkBounds.get(g);if(valu
  * This is a complete domain proof, never an influential ambient distance. */
 function query(g:RibbonGeometry,start:SurfacePosition,reach:number,maxBoxes:number){
  let old=queries.get(g);if(old&&old.start.patchId===start.patchId&&old.start.u===start.u&&old.start.v===start.v&&old.reach===reach)return{state:old,boxes:0};
- const p=polyhedronPositionBounds(g,start);let boxes=0;
+ const p=polyhedronPositionBounds(g,start),station=g.stationBounds(start);let boxes=0;
  const possible=(v:readonly B[],depth:number):boolean=>{
   if(++boxes>Math.min(16384,maxBoxes))throw RangeError('Ribbon domain preparation budget exhausted.');
   if(boxDistance(p,v)>=reach)return false;
@@ -34,9 +35,9 @@ function query(g:RibbonGeometry,start:SurfacePosition,reach:number,maxBoxes:numb
   const[a,b,c]=v as readonly[B,B,B],ab=midpoint(a,b),bc=midpoint(b,c),ca=midpoint(c,a);
   return possible([a,ab,ca],depth-1)||possible([ab,b,bc],depth-1)||possible([ca,bc,c],depth-1)||possible([ab,bc,ca],depth-1);
  };
- const faces=g.faces.filter(face=>possible(g.vertexIds(face).map(i=>g.physicalVertexBounds(i)),6));
+ const faces=g.faces.filter(face=>g.faceLongitudinalLowerBound(station,face)<reach&&possible(g.vertexIds(face).map(i=>g.physicalVertexBounds(i)),6));
  if(!faces.includes(start.patchId)||faces.length>32)throw RangeError('Ribbon brush exceeds the qualified local face domain.');
- const sourceWeights=g.weights(start),sourceIds=g.vertexIds(start.patchId),sourceVertex=sourceWeights.findIndex(w=>w===1),vertices=g.vertices.flatMap((_,id)=>id!==(sourceVertex<0?-1:sourceIds[sourceVertex])&&polyhedronPhysicalLength(p,g.physicalVertexBounds(id))[0]<reach?[g.fromWeights(faces.find(f=>g.vertexIds(f).includes(id))!,new Map([[id,1]]))!]:[]);
+ const sourceWeights=g.weights(start),sourceIds=g.vertexIds(start.patchId),sourceVertex=sourceWeights.findIndex(w=>w===1),vertices=g.vertices.flatMap((_,id)=>id!==(sourceVertex<0?-1:sourceIds[sourceVertex])&&g.vertexLongitudinalLowerBound(station,id)<reach&&polyhedronPhysicalLength(p,g.physicalVertexBounds(id))[0]<reach?[g.fromWeights(faces.find(f=>g.vertexIds(f).includes(id))!,new Map([[id,1]]))!]:[]);
  if(vertices.length>8)throw RangeError('Ribbon brush reaches too many material vertices.');
  old={start,reach,faces,vertices,boxes,placements:0,prepared:new Map(),fixed:new Map()};queries.set(g,old);return{state:old,boxes};
 }
@@ -92,7 +93,7 @@ function solve(g:RibbonGeometry,a:SurfacePosition,b:SurfacePosition,options:{abs
 export function ribbonDistance(g:RibbonGeometry,a:SurfacePosition,b:SurfacePosition,options:{absoluteToleranceMeters?:number;maxBoxes?:number;reachMeters?:number}={}):Certificate{return solve(g,a,b,options).certificate;}
 export function ribbonPath(g:RibbonGeometry,a:SurfacePosition,b:SurfacePosition,options:{version:1;absoluteToleranceMeters?:number;maxBoxes?:number;reachMeters?:number}){
  const result=solve(g,a,b,options);if(!result.legs)throw RangeError('Ribbon pointer interval exceeds the qualified surface route.');
- const paths=result.legs.map(leg=>{let routes=leg.routes;if(!routes?.length){const domain=g.faces.filter(f=>g.aliases(leg.a).some(p=>p.patchId===f)||g.aliases(leg.b).some(p=>p.patchId===f)||g.physicalFaceId(f)===g.physicalFaceId(leg.a.patchId));routes=polyhedronUnfoldings(g,leg.a.patchId,leg.b.patchId,domain,preparationBudget);}return reconstructPolyhedronPath(g,leg.a,leg.b,options,routes);});
+ const paths=result.legs.map(leg=>{let routes=leg.routes;if(!routes?.length){const domain=g.faces.filter(f=>g.aliases(leg.a).some(p=>p.patchId===f)||g.aliases(leg.b).some(p=>p.patchId===f)||g.physicalFaceId(f)===g.physicalFaceId(leg.a.patchId)||g.region(leg.a.patchId).endsWith('end')&&g.region(leg.a.patchId)===g.region(leg.b.patchId)&&g.region(f)===g.region(leg.a.patchId));routes=polyhedronUnfoldings(g,leg.a.patchId,leg.b.patchId,domain,preparationBudget);}return reconstructPolyhedronPath(g,leg.a,leg.b,options,routes);});
  if(paths.length===1)return paths[0]!;
  // Reuse the existing path representation and per-leg reconstruction. Zero
  // length vertex portals are retained in the route proof, not as new terrain.

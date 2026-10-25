@@ -1,3 +1,4 @@
+import {polyhedronPixelPicker} from './polyhedron-pixel-picker.ts';
 import type{SurfacePosition}from'../surfaces/contracts.ts';import type{SpiralGeometry}from'../surfaces/spiral.ts';
 import{prismLayout,unprojectPrism,navigatePrism}from'./prismatic-view.ts';
 import type{CylinderView,CylinderViewport,CylinderScreenPoint}from'./cylindrical-view.ts';import type{PolyhedronProjection}from'./polyhedron-projection.ts';
@@ -19,12 +20,7 @@ export const SPIRAL_PROJECTION:PolyhedronProjection<SpiralGeometry>={layout:spir
 
 /** Exact nearest-triangle quarter rays in 32px geometry-only bins. Same
  * accepted axial mechanism; actual Spiral projection and topology specialize it. */
-export function spiralPixelPicker(g:SpiralGeometry,v:CylinderView,size:CylinderViewport,width:number,height:number){
- if(![width,height].every(x=>Number.isInteger(x)&&x>0))throw RangeError('Spiral coverage viewport required.');
- const sx=width/size.width,sy=height/size.height,tile=32,columns=Math.ceil(width/tile),rows=Math.ceil(height/tile),bins:number[][]=Array.from({length:columns*rows},()=>[]),dot=(a:readonly number[],b:readonly number[])=>a.reduce((s,x,k)=>s+x*b[k]!,0);
- const triangles=g.faces.map((patchId,index)=>{const points=[[0,0],[1,0],[0,1]].map(([u,w])=>{const p={...g.identity,patchId,u:u!,v:w!},q=projectSpiral(g,p,v,size);return{x:q.x*sx,y:q.y*sy,z:dot(g.referencePosition(p),v.frame.forward)};}),[a,b,c]=points,ux=b!.x-a!.x,uy=b!.y-a!.y,vx=c!.x-a!.x,vy=c!.y-a!.y,det=ux*vy-uy*vx;if(Math.abs(det)>1e-12&&(v.mode==='map'||dot(g.frame(patchId).normal,v.frame.forward)>1e-12)){const left=Math.max(0,Math.floor(Math.min(...points.map(p=>p.x))/tile)),right=Math.min(columns-1,Math.floor(Math.max(...points.map(p=>p.x))/tile)),top=Math.max(0,Math.floor(Math.min(...points.map(p=>p.y))/tile)),bottom=Math.min(rows-1,Math.floor(Math.max(...points.map(p=>p.y))/tile));for(let y=top;y<=bottom;y++)for(let x=left;x<=right;x++)bins[y*columns+x]!.push(index);}return{a:a!,ux,uy,vx,vy,det,zu:b!.z-a!.z,zv:c!.z-a!.z};});
- return(x:number,y:number)=>{if(x<0||x>=width||y<0||y>=height)return;let best=-Infinity,selected:{face:number;u:number;v:number}|undefined;for(const face of bins[Math.floor(y/tile)*columns+Math.floor(x/tile)]!){const t=triangles[face]!,dx=x-t.a.x,dy=y-t.a.y,u=(dx*t.vy-dy*t.vx)/t.det,w=(t.ux*dy-t.uy*dx)/t.det;if(u< -1e-9||w< -1e-9||u+w>1+1e-9)continue;const depth=v.mode==='map'?0:t.a.z+u*t.zu+w*t.zv;if(selected&&(v.mode==='map'||depth<=best))continue;best=depth;const U=Math.max(0,Math.min(1,u)),V=Math.max(0,Math.min(1,w));selected={face,u:U,v:U+V>1?1-U:V};}return selected;};
-}
+export function spiralPixelPicker(g:SpiralGeometry,v:CylinderView,size:CylinderViewport,width:number,height:number){return polyhedronPixelPicker(g,v,size,width,height,projectSpiral);}
 
 /** Actual concave cap outline / contiguous wall-run silhouettes, without
  * internal atlas edges. No hull, expanded material or hidden backing surface. */

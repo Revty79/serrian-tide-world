@@ -9,6 +9,7 @@ import {polyhedronAtlasSpacingMeters} from './polyhedron-display-policy.ts';
 export class PolygonColorAtlas {
  readonly id:string;readonly charts:string[];readonly width:number;readonly height:number;readonly pixels:Uint8ClampedArray<ArrayBuffer>;
  readonly coordinates:readonly(readonly[number,number])[];readonly anchor:{patchId:string;u:number;v:number};
+ private readonly colors:ReturnType<PyramidDisplayCache<PolyhedronTerrain>['colorSampler']>[];
  private readonly maps:{face:string;x:number;y:number;ux:number;uy:number;vx:number;vy:number;det:number}[];
  readonly left:number;readonly top:number;readonly step:number;readonly stepX:number;readonly stepY:number;
  readonly gutterBounds:Float64Array;private readonly tileColumns:number;private readonly tileRows:number;
@@ -21,6 +22,7 @@ export class PolygonColorAtlas {
   this.width=Math.ceil((Math.max(...xs)-this.left)/this.stepX)+2;this.height=Math.ceil((this.top-Math.min(...ys))/this.stepY)+2;
   this.pixels=new Uint8ClampedArray(this.width*this.height*4);this.coordinates=points.map(p=>[(p[0]-this.left)/this.stepX,(this.top-p[1])/this.stepY]);
   this.maps=this.charts.map(face=>{const q=g.frame(face),a=xy(q.origin),u=xy(q.origin.map((x,k)=>x+q.u[k]!) as unknown as PolyhedronVector),v=xy(q.origin.map((x,k)=>x+q.v[k]!) as unknown as PolyhedronVector),ux=u[0]-a[0],uy=u[1]-a[1],vx=v[0]-a[0],vy=v[1]-a[1];return{face,x:a[0],y:a[1],ux,uy,vx,vy,det:ux*vy-uy*vx};});
+  this.colors=this.maps.map(m=>cache.colorSampler(m.face));
   this.tileColumns=Math.ceil(this.width/16);this.tileRows=Math.ceil(this.height/16);this.gutterBounds=new Float64Array(this.tileColumns*this.tileRows*this.maps.length*4);for(let i=0;i<this.gutterBounds.length;i+=4){this.gutterBounds[i]=this.gutterBounds[i+2]=Infinity;this.gutterBounds[i+1]=this.gutterBounds[i+3]=-Infinity;}
   this.anchor={patchId:this.charts[0]!,u:0,v:0};
  }
@@ -32,7 +34,7 @@ export class PolygonColorAtlas {
   if(best<0&&g.atlasBoundaryPosition){const basis=g.frame(this.anchor.patchId),point=basis.origin.map((p,k)=>p+x*basis.e1[k]!+y*basis.e2[k]!) as unknown as PolyhedronVector,q=g.atlasBoundaryPosition(face,point);face=q.patchId;u=q.u;v=q.v;chart=this.charts.indexOf(face);if(chart<0)throw Error('Atlas boundary must remain in its physical polygon.');}
   else{u=Math.max(0,Math.min(1,u));v=Math.max(0,Math.min(1,v));if(u+v>1){const sum=u+v;u/=sum;v=1-u;}}
   if(collectGutter&&best<0){const at=((Math.floor(row/16)*this.tileColumns+Math.floor(col/16))*this.maps.length+chart)*4,b=this.gutterBounds;b[at]=Math.min(b[at]!,u);b[at+1]=Math.max(b[at+1]!,u);b[at+2]=Math.min(b[at+2]!,v);b[at+3]=Math.max(b[at+3]!,v);}
-  this.cache.colorInto(face,u,v,relief,color);const at=(row*this.width+col)*4;this.pixels[at]=color[0]!;this.pixels[at+1]=color[1]!;this.pixels[at+2]=color[2]!;this.pixels[at+3]=255;
+  this.colors[chart]!(u,v,relief,color);const at=(row*this.width+col)*4;this.pixels[at]=color[0]!;this.pixels[at+1]=color[1]!;this.pixels[at+2]=color[2]!;this.pixels[at+3]=255;
  }}
  *prepare(){for(let row=0;row<this.height;row+=8){this.paint(0,row,this.width-1,Math.min(this.height-1,row+7),true,true);yield;}}
  update(regions:readonly PyramidFieldRect[]|undefined,relief:boolean){

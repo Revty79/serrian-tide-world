@@ -1,0 +1,13 @@
+Command: ["node", "node_modules/@playwright/test/cli.js", "test", "--config", "playwright.ribbon.config.mjs", "tests/ribbon-pixels.spec.ts", "tests/ribbon-settled.spec.ts", "--workers", "1", "--retries", "0"]
+
+Running 3 tests using 1 worker
+
+(node:26472) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\ribbon-pixels.spec.ts:2:70 › Ribbon N128 default: independent geometry/palette views match hardware WebGL2 and sharp Canvas (1.9m)
+  ok 2 [installed-chrome] › tests\ribbon-pixels.spec.ts:2:70 › Ribbon N256 default: independent geometry/palette views match hardware WebGL2 and sharp Canvas (2.5m)
+  ok 3 [installed-chrome] › tests\ribbon-settled.spec.ts:3:1 › Ribbon N128 Canvas: overview, broad map and complete atlas finish bounded sharp refinement (11.8s)
+
+  3 passed (4.5m)
+
+Exit: 0

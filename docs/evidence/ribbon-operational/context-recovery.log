@@ -1,0 +1,11 @@
+Command: ["node", "node_modules/@playwright/test/cli.js", "test", "--config", "playwright.ribbon.config.mjs", "tests/ribbon-recovery.spec.ts", "--grep", "graphics loss", "--workers", "1", "--retries", "0"]
+
+Running 1 test using 1 worker
+
+(node:28392) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\ribbon-recovery.spec.ts:12:1 › Ribbon N256: graphics loss and restoration retain the current painted terrain epoch (1.5m)
+
+  1 passed (1.5m)
+
+Exit: 0

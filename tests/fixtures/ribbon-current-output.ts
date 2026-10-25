@@ -1,0 +1,16 @@
+import{connectedWorkspaceInspection}from'../../src/components/ConnectedWorkspace.tsx';
+import{createRibbonTerrain}from'../../src/terrain/ribbon.ts';import{PolyhedronDisplayCache}from'../../src/rendering/polyhedron-field.ts';import{RibbonPresentation}from'../../src/rendering/ribbon-presentation.ts';
+/** Compare the real active output against fresh numerical reconstruction after
+ * a backend transition. No canonical writes or changes to the active view. */
+export async function ribbonCurrentOutputProof(backend:'cpu'|'webgl2'){
+ const s=connectedWorkspaceInspection().snapshot()as any,terrain=createRibbonTerrain({terrainId:s.metadata.terrainId,detail:s.metadata.representation.subdivisions*8 as 128|256,geometry:s.metadata.geometry,initialValues:new Float32Array(Uint32Array.from(s.words).buffer)}),cache=new PolyhedronDisplayCache(terrain,{polygonColorsOnly:true,cacheInteriorStencils:true});
+ let at=performance.now();for(const _ of cache.prepare())if(performance.now()-at>5){await new Promise(resolve=>setTimeout(resolve,0));at=performance.now();}
+ const gpu=document.createElement('canvas'),cpu=document.createElement('canvas'),fresh=new RibbonPresentation(gpu,cpu,cache,()=>{});if(backend==='cpu')fresh.fail('Fresh Canvas reconstruction proof');fresh.present(s.view,s.size,s.appearance);if(fresh.backend!==backend)throw Error('Expected fresh backend is unavailable.');
+ const actual=document.querySelector<HTMLCanvasElement>(backend==='cpu'?'.cylinder-canvas':'.cylinder-gpu')!,source=fresh.displayCanvas;
+ if(actual.width!==source.width||actual.height!==source.height)throw Error('Different current/fresh backing dimensions.');
+ const capture=(image:HTMLCanvasElement)=>{const copy=document.createElement('canvas');copy.width=image.width;copy.height=image.height;const ctx=copy.getContext('2d',{willReadFrequently:true})!;ctx.drawImage(image,0,0);return{data:ctx.getImageData(0,0,copy.width,copy.height).data,png:copy.toDataURL()};},expected=capture(source);
+ // WebGL deliberately does not preserve its drawing buffer. Observe the next
+ // real submitted frame, before compositing discards it, as painting tests do.
+ const current=backend==='cpu'?capture(actual):await new Promise<ReturnType<typeof capture>>((resolve,reject)=>{const draw=WebGL2RenderingContext.prototype.drawArrays,timer=window.setTimeout(()=>{WebGL2RenderingContext.prototype.drawArrays=draw;reject(Error('No actual restored GPU submission'));},10000);WebGL2RenderingContext.prototype.drawArrays=function(...args){Reflect.apply(draw,this,args);if(this.canvas===actual){clearTimeout(timer);WebGL2RenderingContext.prototype.drawArrays=draw;try{resolve(capture(actual));}catch(e){reject(e);}}};window.__ribbonEditor!.setView(s.view);});
+ const A=current.data,B=expected.data;let different=0,maxDifference=0,alphaDifferent=0;for(let i=0;i<A.length;i++)if(A[i]!==B[i]){different++;maxDifference=Math.max(maxDifference,Math.abs(A[i]!-B[i]!));if(i%4===3)alphaDifferent++;}const result={backend,width:actual.width,height:actual.height,different,maxDifference,alphaDifferent,actualAlphaPixels:A.reduce((n,x,i)=>n+(i%4===3&&x>0?1:0),0),freshAlphaPixels:B.reduce((n,x,i)=>n+(i%4===3&&x>0?1:0),0),view:s.view,currentView:(connectedWorkspaceInspection().snapshot(false)as any).view,currentPng:current.png,freshPng:expected.png};fresh.dispose();cache.dispose();return result;
+}
