@@ -10,6 +10,8 @@ The pixel-timing observer is also being qualified: actual submitted images are c
 
 Filled-Torus Worlds has not been started. Holes, tunnels, links and arbitrary-height excavation remain outside this pass. Automated technical verification remains separate from owner acceptance.
 
+Current follow-up checks: exact field-bank and snapshot reuse, incremental sign summaries, and the 20-epoch Canvas/WebGL2 pixel-observer calibration pass. The stricter route and terrain checks pass after removing unnecessary optimizer precision. The latest six-profile browser run is in progress; all three hardware configurations have passed. Canvas and final regression/pixel checks remain pending. Painting now yields Canvas work at two ms and field preparation at one ms; native Sphere scheduling remains unchanged. The combined eight MiB geometry cache also retains already-computed quarter rays in a bounded 128-square focus window during settled rendering, without adding idle ray work.
+
 ## Historical foundation record (checkpoint A)
 
 Checkpoint A establishes the physical geometry, metric, canonical ownership and numerical brush adapter. The editor, rendering and persistence are not yet qualified. The verified Crescent-Cut Globe remains on main while this pass proceeds on `work/rounded-crescent-globe` from `ecee5d9df8eb2a59b92c306924fa05d9f0cd617e`.

@@ -1,3 +1,4 @@
+import {roundedFieldSnapshot} from '../rendering/rounded-crescent-field-snapshot.ts';
 import {RoundedNavigationRaster} from '../rendering/rounded-crescent-navigation-raster.ts';
 import {roundedDirtyRaster,type RoundedRasterDensity,type RoundedPatchRect} from '../rendering/rounded-crescent-dirty.ts';
 import {roundedControlRange} from '../editor/rounded-crescent-session.ts';
@@ -99,15 +100,16 @@ export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, 
       output.dataset.sample = String(sample.key.index); output.dataset.elevation = String(sample.elevation); output.dataset.direction = JSON.stringify(sample.direction);
       if (select) { selectedRef.current = sample.direction; setHasSelection(true); }
     };
-    // Complete current Rounded Crescent images through yielding six ms tasks.
+    // Complete current Rounded Crescent images through yielding tasks, at most two ms during painting.
     // Optional idle refinement keeps the ordinary animation-frame schedule.
     // Other folded surfaces retain their established one-timer scheduling.
+    const cpuSliceBudget=()=>editor?.roundedGlobe&&editor.painting?2:6;
     const cpuPreparationChannel=editor?.roundedGlobe?new MessageChannel():undefined;let cpuPreparationQueued=false;
-    const advanceCpuPreparation=()=>{if(!active||!cpuJob||cpuReady||cpuRefinement||cpuNavigation?.pending||cpuSerial!==serial&&!((viewRef.current.cutGlobe||viewRef.current.roundedGlobe)&&cpuQuality==='navigation'&&cpuView?.mode===viewRef.current.mode&&cpuSize.width===size().width&&cpuSize.height===size().height))return;const at=performance.now();let result=cpuJob.next();while(!result.done&&performance.now()-at<6)result=cpuJob.next();const elapsed=performance.now()-at;cpu.computeMs+=elapsed;cpu.maxSliceMs=Math.max(cpu.maxSliceMs,elapsed);cpu.slices++;if(result.done)cpuReady=result;schedule(false);if(cpuPreparationChannel)prepareBetweenFrames();};
+    const advanceCpuPreparation=()=>{if(!active||!cpuJob||cpuReady||cpuRefinement||cpuNavigation?.pending||cpuSerial!==serial&&!((viewRef.current.cutGlobe||viewRef.current.roundedGlobe)&&cpuQuality==='navigation'&&cpuView?.mode===viewRef.current.mode&&cpuSize.width===size().width&&cpuSize.height===size().height))return;const at=performance.now();let result=cpuJob.next();while(!result.done&&performance.now()-at<cpuSliceBudget())result=cpuJob.next();const elapsed=performance.now()-at;cpu.computeMs+=elapsed;cpu.maxSliceMs=Math.max(cpu.maxSliceMs,elapsed);cpu.slices++;if(result.done)cpuReady=result;schedule(false);if(cpuPreparationChannel)prepareBetweenFrames();};
     const prepareBetweenFrames=()=>{if(cpuPreparationTimer||cpuPreparationQueued||!cpuJob||cpuReady||cpuRefinement||cpuNavigation?.pending||!(viewRef.current.cutGlobe||viewRef.current.roundedGlobe))return;if(cpuPreparationChannel){cpuPreparationQueued=true;cpuPreparationChannel.port2.postMessage(0);}else cpuPreparationTimer=window.setTimeout(()=>{cpuPreparationTimer=0;advanceCpuPreparation();},0);};
     if(cpuPreparationChannel)cpuPreparationChannel.port1.onmessage=()=>{cpuPreparationQueued=false;advanceCpuPreparation();};
     // Keep Rounded Crescent's coherent numerical-field preparation moving
-    // between animation frames with the existing four ms yield boundary.
+    // between animation frames with one ms yields while preserving coherent field epochs.
     // Rendering still publishes only complete field epochs. This task does
     // no brush work and never advances optional idle raster refinement.
     const fieldPreparationChannel=editor?.roundedGlobe?new MessageChannel():undefined;let fieldPreparationQueued=false;
@@ -185,7 +187,7 @@ export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, 
       if (!gpu?.available && (sceneKey !== lastSceneKey || cpuJob)) {
 
         if (!cpuJob) {
-          if (!cpuEpoch || cpuEpoch.sourceRevision !== field.sourceRevision) {cpuEpoch=field.snapshot();cpu.snapshotBytes=Object.values(cpuEpoch.data).reduce((sum,data)=>sum+data.byteLength,0);}
+          if (!cpuEpoch || cpuEpoch.sourceRevision !== field.sourceRevision) {cpuEpoch=view.roundedGlobe?roundedFieldSnapshot(field,cpuEpoch):field.snapshot();cpu.snapshotBytes=Object.values(cpuEpoch.data).reduce((sum,data)=>sum+data.byteLength,0);}
           cpuView=view;cpuSize=viewport;cpuSerial=serial;cpuCameraInputAt=latestCameraInputAt;cpuKey=sceneKey;cpuQuality=quality;cpuBudget=budget;cpuBaseKey=baseKey;cpuRefinement=refine;cpuSceneAppearance=appearanceRef.current;
           const dimensions=surfaceDisplayDimensions(viewport,devicePixelRatio||1);
           cpuPatch=view.roundedGlobe&&cpuGrid&&cpuImageSerial===serial&&cpuImageRevision<field.sourceRevision&&cpuImageAppearance===cpuSceneAppearance&&canvas.width===dimensions.width&&canvas.height===dimensions.height?roundedDirtyRaster(view,viewport,dimensions,field,cpuImageRevision,cpuGrid,budget):undefined;
@@ -194,7 +196,7 @@ export function SphericalViewport({ terrain, cache, onClose, preparationMs = 0, 
           cpuJob=view.roundedGlobe&&view.mode==='globe'&&quality==='navigation'?cpuNavigation!.render(cpuEpoch,view,viewport,cpuSceneAppearance,budget,dimensions):sphericalFieldRaster(cpuEpoch,view,viewport,cpuSceneAppearance,budget,raster,cut&&oppositeEpoch?{model:cut.model,opposite:oppositeEpoch,role:cut.role}:undefined,dimensions,cpuPatch?.grid);
           cpu.snapshotBytes=Object.values(cpuEpoch.data).reduce((sum,data)=>sum+data.byteLength,0)+(oppositeEpoch?Object.values(oppositeEpoch.data).reduce((sum,data)=>sum+data.byteLength,0):0);
         }
-        const at = performance.now(); let result = cpuReady??cpuJob.next();cpuReady=undefined; while (!result.done && !cpuNavigation?.pending && performance.now() - at < 6) result = cpuJob.next(); const elapsed = performance.now() - at; cpu.computeMs += elapsed; cpu.maxSliceMs = Math.max(cpu.maxSliceMs, elapsed); cpu.slices++;
+        const at = performance.now(); let result = cpuReady??cpuJob.next();cpuReady=undefined; while (!result.done && !cpuNavigation?.pending && performance.now() - at < cpuSliceBudget()) result = cpuJob.next(); const elapsed = performance.now() - at; cpu.computeMs += elapsed; cpu.maxSliceMs = Math.max(cpu.maxSliceMs, elapsed); cpu.slices++;
         if (result.done) {
           const image=result.value;raster=image.pixels;cpuPublishedBudget=cpuBudget;cpu.width=image.columns;cpu.height=image.rows;backing();
           if(cpuPatch&&!cpuGrid){cpuJob=undefined;cpuPatch=undefined;lastSceneKey='';appliedSerial=-1;schedule(false);}

@@ -31,6 +31,7 @@ export class SphericalElevationField implements SphereFieldSnapshot {
  building=false;
  sourceCopies=0;
  private retainRegions=false;
+ private backSynchronized=false;
  private aliasCache=new Map<number,readonly SphericalSampleAddress[]>();
  private aliases(index:number){if(!this.retainRegions)return this.terrain.aliases(this.terrain.keyAt(index));const found=this.aliasCache.get(index);if(found)return found;const result=this.terrain.aliases(this.terrain.keyAt(index));if(this.aliasCache.size===8192)this.aliasCache.delete(this.aliasCache.keys().next().value!);this.aliasCache.set(index,result);return result;}
  private regionJournal:{from:number;to:number;regions:SphereFieldRegion[]}[]=[];
@@ -80,7 +81,8 @@ export class SphericalElevationField implements SphereFieldSnapshot {
    this.missing=[];
    const all=changed==='all'||this.sourceRevision<0,dirty=new Set<number>();let work=0;
    if(!all)for(const index of changed){dirty.add(index);if(this.retainRegions){for(const a of this.aliases(index)){const map=this.indices[a.patchId],c=a.column,r=a.row;if(c>0)dirty.add(map[r*side+c-1]!);if(c<this.n)dirty.add(map[r*side+c+1]!);if(r>0)dirty.add(map[(r-1)*side+c]!);if(r<this.n)dirty.add(map[(r+1)*side+c]!);}}else for(const k of t.neighbors(t.keyAt(index),'edges'))dirty.add(k.index);if(++work%64===0)yield;}
-   if(!all)for(const face of CUBE_FACES)this.back[face].set(this.data[face]);
+   if(!all&&!(this.retainRegions&&this.backSynchronized))for(const face of CUBE_FACES)this.back[face].set(this.data[face]);
+   this.backSynchronized=false;
    const keys=all?function*(){for(let i=0;i<t.sampleCount;i++)yield i;}():dirty.values();let at=0,max=this.heightScale;
    const regions=new Map<CubeFace,SphereFieldRegion>();
    for(const index of keys){if(this.sourceRevision<0)this.directions.set(t.directionAt(t.keyAt(index)),index*3);const gradient=this.gradient(index,values),height=values[index]!;max=Math.max(max,Math.abs(height));
@@ -89,6 +91,10 @@ export class SphericalElevationField implements SphereFieldSnapshot {
    }
    // Six reference swaps publish one coherent display epoch, never geography.
    for(const face of CUBE_FACES){const old=this.data[face];this.data[face]=this.back[face];this.back[face]=old;}
+   // Rounded Crescent retains coherent banks by copying only changed rows
+   // after publication. Native Sphere keeps its established full-bank copy.
+   // A cancelled/failed preparation leaves backSynchronized false.
+   if(this.retainRegions){for(const r of regions.values())for(let row=r.top;row<=r.bottom;row++){const start=(row*side+r.left)*4,end=(row*side+r.right+1)*4;this.back[r.face].set(this.data[r.face].subarray(start,end),start);}this.backSynchronized=true;}
    this.source=values;this.heightScale=max;this.previousRevision=this.sourceRevision;this.sourceRevision=target;this.regions=[...regions.values()];if(this.retainRegions&&this.previousRevision>=0){if(this.regionJournal.length===128)this.regionJournal.shift();this.regionJournal.push({from:this.previousRevision,to:target,regions:this.regions.map(r=>({...r}))});}return this.regions;
   }finally{this.building=false;}
  }

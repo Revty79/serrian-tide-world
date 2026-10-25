@@ -146,7 +146,7 @@ export class SphericalSession {
       if (external) this.displayAll = true;
       if (!this.displayJob && (this.displayAll || this.dirtyIndices.size)) { const changed = this.displayAll ? 'all' as const : this.dirtyIndices; this.dirtyIndices = new Set(); this.displayAll = false; this.displayJob = this.field.prepare(changed); }
       const start = performance.now();
-      while (this.displayJob) { const next = this.displayJob.next(); if (next.done) { this.displayJob = undefined; this.cache.sourceRevision = this.field.sourceRevision; this.statistics.updatedRegions += next.value.length; this.statistics.updatedPixels += next.value.reduce((sum,r)=>sum+(r.right-r.left+1)*(r.bottom-r.top+1),0); return next.value; } if (performance.now() - start >= 4) break; }
+      while (this.displayJob) { const next = this.displayJob.next(); if (next.done) { this.displayJob = undefined; this.cache.sourceRevision = this.field.sourceRevision; this.statistics.updatedRegions += next.value.length; this.statistics.updatedPixels += next.value.reduce((sum,r)=>sum+(r.right-r.left+1)*(r.bottom-r.top+1),0); return next.value; } if (performance.now() - start >= (this.roundedGlobe?1:4)) break; }
       return [];
     }
     const regions = updateSphericalTextures(this.terrain, this.cache, external ? 'all' : this.dirtyIndices);
