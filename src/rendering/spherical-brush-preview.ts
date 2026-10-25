@@ -1,3 +1,4 @@
+import {roundedPreviewDirections} from './rounded-crescent-preview.ts';
 import {sphereCenterInspection} from './spherical-view.ts';
 import { CUBE_FACES, FACE_BASES, FACE_CONNECTIONS, FACE_EDGES, QUARTER_PI, cross3, dot3, unitDirection, type CubeFace, type Vec3 } from '../surfaces/cube-sphere.ts';
 import { greatCircleArc } from '../surfaces/great-circle.ts';
@@ -20,6 +21,7 @@ export function sphericalBrushContains(center: Vec3, direction: Vec3, angularRad
 }
 /** Analytic small-circle/chart/horizon intersections. Only the final display polyline is sampled. */
 export function sphericalBrushPreview(terrain: SphericalTerrain, centerInput: Vec3, radiusMeters: number, view: SphericalView, size: Viewport): BrushPreviewSegment[] {
+  if(view.roundedGlobe){const result:BrushPreviewSegment[]=[];let points:ScreenPoint[]=[],directions:Vec3[]=[],face:CubeFace|undefined;const finish=()=>{if(points.length>1)result.push({points,directions,kind:'cap'});points=[];directions=[];};for(const d of roundedPreviewDirections(view.roundedGlobe,unitDirection(centerInput),radiusMeters)){const p=projectSphere(terrain,d,view,size)[0];if(!p){finish();face=undefined;continue;}if(view.mode==='net'&&face!==p.face)finish();points.push(p);directions.push(d);face=p.face;}finish();return result;}
   const center = unitDirection(centerInput), alpha = radiusMeters / terrain.metadata.geometry.radiusMeters;
   if (!(alpha > 0 && alpha <= Math.PI)) return [];
   const normal = Math.abs(center[2]) < .9 ? [0, 0, 1] as Vec3 : [0, 1, 0] as Vec3;

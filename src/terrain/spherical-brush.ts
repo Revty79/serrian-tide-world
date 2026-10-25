@@ -1,6 +1,7 @@
 import {cutGlobeVisible,type CrescentCutGlobeGeometry} from '../surfaces/crescent-cut-globe.ts';
 import type {RoundedCrescentGeometry} from '../surfaces/rounded-crescent-globe.ts';
 import {roundedBrushMetric,validateRoundedBrush} from './rounded-crescent-brush-metric.ts';
+import {roundedVisible} from '../surfaces/rounded-crescent-ray.ts';
 import type { SurfaceIdentity, SurfacePosition } from '../surfaces/contracts.ts';
 import { dot3, unitDirection, type Vec3 } from '../surfaces/cube-sphere.ts';
 import { greatCircleArc, unitArcAngle } from '../surfaces/great-circle.ts';
@@ -53,17 +54,17 @@ export function startSphericalBrushStroke(terrain: SphericalTerrain, point: Sphe
   const stats = { dabs: 0, candidateChecks: 0, affectedSamples: 0, writes: 0, peakPreparedBytes: 0 };
   let previous = initial, untilNext = spacing, active = true, advancing = false;
   function* stamp(center: Vec3, visible = hemisphere, fraction = 0): Generator<boolean,boolean> {
-    const candidates = sphericalCapCandidates(terrain, center, metric?metric.angularRadius(snapshot.radiusMeters):Math.min(Math.PI, snapshot.radiusMeters / radius));
+    const candidates = sphericalCapCandidates(terrain, center, metric?metric.angularRadius(snapshot.radiusMeters):Math.min(Math.PI, snapshot.radiusMeters / radius),metric?.coordinateBounds(center,snapshot.radiusMeters));
     const chunks: { indices: Uint32Array; values: Float32Array; count: number }[] = [];
     let chunk: typeof chunks[number] | undefined, allocated = 0;
-    for (const sample of candidates.samples()) {
+    for (const sample of candidates.samples(metric?.directionAt)) {
       stats.candidateChecks++;
-      if(metric&&stats.candidateChecks%32===0)yield false;
+      if(metric&&stats.candidateChecks%128===0)yield false;
       if(metric&&metric.lowerBound(center,sample.direction)>=snapshot.radiusMeters)continue;
       const distance = (metric?metric.distance(center,sample.direction):unitArcAngle(center, sample.direction) * radius) / snapshot.radiusMeters;
       if (distance >= 1) continue;
       // Optional physical editing domain. Default numerical behavior remains the complete cap.
-      if (visible && (domain?.cutGlobe?!cutGlobeVisible(domain.cutGlobe,sample.direction,visible):dot3(visible, sample.direction) < 0)) continue;
+      if (visible && (rounded?!roundedVisible(rounded,sample.direction,visible,terrain.metadata.representation.cellsPerEdge*1000000+sample.key.index):domain?.cutGlobe?!cutGlobeVisible(domain.cutGlobe,sample.direction,visible):dot3(visible, sample.direction) < 0)) continue;
       const current = terrain.read(sample.key);
       if (!Number.isFinite(current)) throw new RangeError('Spherical brush region contains a nonfinite elevation.');
       stats.affectedSamples++;

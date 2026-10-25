@@ -1,0 +1,21 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {createRoundedCrescentWorld} from '../terrain/rounded-crescent-globe.ts';
+import {ROUNDED_CRESCENT_DEFAULTS} from '../surfaces/rounded-crescent-globe.ts';
+import {prepareRoundedCrescentSession} from '../editor/rounded-crescent-session.ts';
+import {encodeRoundedCrescent,decodeRoundedCrescent,validateRoundedCrescent,roundedCrescentHeader} from './rounded-crescent-globe-format.ts';
+import {payloadChecksum} from './heightmap-payload.ts';
+async function fixture(detail:128|256=128){const w=createRoundedCrescentWorld({terrainId:'rounded-terrain',identity:{worldId:'rounded-world',surfaceId:'whole-exterior'},dimensions:{...ROUNDED_CRESCENT_DEFAULTS,depthRatio:.8,tipRoundness:.15},detail});for(const [i,v]of[-0,0,2**-149,-(2**-149),123.456,-1234.5].entries())w.terrain.write(w.terrain.keyAt(i),v);return(await prepareRoundedCrescentSession(w,'Rounded persistence')).editor;}
+for(const detail of[128,256]as const)test(`v46 N${detail} exact Float32 words, physical proportions, coordinates, controls and focus; fresh history`,async()=>{
+ const e=await fixture(detail);e.editing={...e.editing,view:{...e.editing.view,mode:'net',zoom:2,pan:{x:.4,y:-.2}},controls:{...e.editing.controls,tool:'flatten',target:'300',intensity:'65'}};const saved=await encodeRoundedCrescent(e,'2026-10-25T14:00:00.000Z'),loaded=await decodeRoundedCrescent(saved);assert.equal(saved.formatVersion,46);assert.deepEqual(new Uint32Array(loaded.terrain.copyElevations().buffer),new Uint32Array(e.terrain.copyElevations().buffer));assert.deepEqual(loaded.world.metadata,e.world.metadata);assert.deepEqual(loaded.editor.editing,e.editing);assert.equal(loaded.editor.history.length,0);
+});
+test('v46 strictly rejects malformed physical geometry, domains, identities, editor state and payload even with recalculated integrity',async()=>{
+ const saved=await encodeRoundedCrescent(await fixture());
+ const mutations:((v:any)=>void)[]=[v=>v.formatVersion=45,v=>v.extra=true,v=>v.metadata.intrinsic=v.metadata.coordinates,v=>v.metadata.geometry.provider='physical-crescent-cut-globe',v=>v.metadata.geometry.version=2,v=>v.metadata.geometry.spanDegrees=360,v=>v.metadata.geometry.bodyRadiusRatio=0,v=>v.metadata.geometry.minimumStretch*=2,v=>v.metadata.geometry.scaleMeters++,v=>v.metadata.geometry.tipTaper=1,v=>v.metadata.coordinates.geometry.radiusMeters++,v=>v.metadata.coordinates.representation.cellsPerEdge=512,v=>v.metadata.coordinates.identity.surfaceId=v.metadata.coordinates.identity.worldId,v=>v.editing.view.pan.x=100,v=>v.editing.view.frame.right.push(0),v=>v.editing.controls.limbAssist=true,v=>v.editing.controls.radius='999999999',v=>v.editing.controls.strength='Infinity',v=>v.editing.controls.target='999999999',v=>v.sampleCount--,v=>v.elevationEncoding='pixels',v=>v.elevations=v.elevations.slice(0,12),v=>new DataView(v.elevations).setFloat32(0,NaN,true),v=>new DataView(v.elevations).setFloat32(0,1e8,true)];
+ for(const mutate of mutations){const bad=structuredClone(saved);mutate(bad);const{elevations,checksum,...header}=bad;bad.checksum=await payloadChecksum(header,elevations);await assert.rejects(()=>validateRoundedCrescent(bad));}
+ const corrupt=structuredClone(saved);const bytes=new Uint8Array(corrupt.elevations);bytes[31]=bytes[31]!^128;await assert.rejects(()=>validateRoundedCrescent(corrupt),/checksum/);
+ assert.equal(roundedCrescentHeader(saved).metadata.geometry.provider,'physical-rounded-crescent-globe');
+});
+test('v46 snapshots incoming bytes and metadata before yielding; a mid-save numerical edit is rejected',async()=>{
+ const e=await fixture(),saved=structuredClone(await encodeRoundedCrescent(e));let changed=false;const valid=await validateRoundedCrescent(saved,{yield:async()=>{if(!changed){changed=true;new Uint8Array(saved.elevations).fill(0);(saved.metadata.geometry as unknown as {tipTaper:number}).tipTaper=999;}}});assert.notEqual(new Uint32Array(valid.elevations)[3],0);assert.equal(valid.metadata.geometry.tipTaper,.15);
+ let edited=false;await assert.rejects(()=>encodeRoundedCrescent(e,undefined,{yield:async()=>{if(!edited){edited=true;e.terrain.write(e.terrain.keyAt(40),321);}}}),/changed during Save/);
+});

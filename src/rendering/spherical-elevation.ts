@@ -1,5 +1,5 @@
 import { CUBE_FACES, FACE_BASES, QUARTER_PI, dot3, type CubeFace, type Vec3 } from '../surfaces/cube-sphere.ts';
-import type { SphericalTerrain } from '../terrain/spherical.ts';
+import type { SphericalTerrain,SphericalSampleAddress } from '../terrain/spherical.ts';
 import type { SphericalDisplayCache } from './spherical-raster.ts';
 import { elevationColorInto } from './elevation-colors.ts';
 
@@ -30,6 +30,18 @@ export class SphericalElevationField implements SphereFieldSnapshot {
  heightScale=1;
  building=false;
  sourceCopies=0;
+ private retainRegions=false;
+ private aliasCache=new Map<number,readonly SphericalSampleAddress[]>();
+ private aliases(index:number){if(!this.retainRegions)return this.terrain.aliases(this.terrain.keyAt(index));const found=this.aliasCache.get(index);if(found)return found;const result=this.terrain.aliases(this.terrain.keyAt(index));if(this.aliasCache.size===8192)this.aliasCache.delete(this.aliasCache.keys().next().value!);this.aliasCache.set(index,result);return result;}
+ private regionJournal:{from:number;to:number;regions:SphereFieldRegion[]}[]=[];
+ /** Optional bounded dirty history for geometry adapters that retain a current
+  * sharp Canvas image. No elevation arrays or historical display fields. */
+ enableRegionHistory(){this.retainRegions=true;}
+ regionsSince(revision:number):SphereFieldRegion[]|undefined{
+  if(revision===this.sourceRevision)return[];const start=this.regionJournal.findIndex(e=>e.from===revision);if(start<0)return;const merged=new Map<CubeFace,SphereFieldRegion>();let expected=revision;
+  for(const e of this.regionJournal.slice(start)){if(e.from!==expected)return;expected=e.to;for(const r of e.regions){const old=merged.get(r.face);merged.set(r.face,old?{face:r.face,left:Math.min(old.left,r.left),right:Math.max(old.right,r.right),top:Math.min(old.top,r.top),bottom:Math.max(old.bottom,r.bottom)}:{...r});}}
+  return expected===this.sourceRevision?[...merged.values()]:undefined;
+ }
  constructor(terrain:SphericalTerrain,cache:SphericalDisplayCache) {
   this.terrain=terrain;this.n=terrain.metadata.representation.cellsPerEdge;this.source=new Float32Array(0);
   this.directions=new Float64Array(terrain.sampleCount*3);
@@ -41,7 +53,7 @@ export class SphericalElevationField implements SphereFieldSnapshot {
  }
  get byteLength(){return this.indexBytes+this.source.byteLength+this.directions.byteLength+CUBE_FACES.reduce((sum,f)=>sum+this.data[f].byteLength+this.back[f].byteLength,0)+this.tangents.byteLength;}
  private gradient(index:number,values:Float32Array):Vec3 {
-  const t=this.terrain,n=this.n,side=n+1,r=t.metadata.geometry.radiusMeters,aliases=t.aliases(t.keyAt(index));let gx=0,gy=0,gz=0;
+  const t=this.terrain,n=this.n,side=n+1,r=t.metadata.geometry.radiusMeters,aliases=this.aliases(index);let gx=0,gy=0,gz=0;
   for(const a of aliases){
    const c=a.column,row=a.row,map=this.indices[a.patchId],basis=FACE_BASES[a.patchId],u=this.tangents[c]!,v=this.tangents[row]!,length=Math.hypot(1,u,v);
    // Scalar Jacobian evaluation avoids allocating several vectors per dirty
@@ -67,17 +79,17 @@ export class SphericalElevationField implements SphereFieldSnapshot {
    for(const face of this.missing)for(let row=0;row<=this.n;row++){for(let column=0;column<=this.n;column++)this.indices[face][row*side+column]=t.resolve({...t.metadata.identity,patchId:face,column,row}).index;yield;}
    this.missing=[];
    const all=changed==='all'||this.sourceRevision<0,dirty=new Set<number>();let work=0;
-   if(!all)for(const index of changed){const key=t.keyAt(index);dirty.add(index);for(const k of t.neighbors(key,'edges'))dirty.add(k.index);if(++work%64===0)yield;}
+   if(!all)for(const index of changed){dirty.add(index);if(this.retainRegions){for(const a of this.aliases(index)){const map=this.indices[a.patchId],c=a.column,r=a.row;if(c>0)dirty.add(map[r*side+c-1]!);if(c<this.n)dirty.add(map[r*side+c+1]!);if(r>0)dirty.add(map[(r-1)*side+c]!);if(r<this.n)dirty.add(map[(r+1)*side+c]!);}}else for(const k of t.neighbors(t.keyAt(index),'edges'))dirty.add(k.index);if(++work%64===0)yield;}
    if(!all)for(const face of CUBE_FACES)this.back[face].set(this.data[face]);
    const keys=all?function*(){for(let i=0;i<t.sampleCount;i++)yield i;}():dirty.values();let at=0,max=this.heightScale;
    const regions=new Map<CubeFace,SphereFieldRegion>();
    for(const index of keys){if(this.sourceRevision<0)this.directions.set(t.directionAt(t.keyAt(index)),index*3);const gradient=this.gradient(index,values),height=values[index]!;max=Math.max(max,Math.abs(height));
-    for(const a of t.aliases(t.keyAt(index))){const data=this.back[a.patchId],offset=(a.row*side+a.column)*4;data[offset]=height;data[offset+1]=gradient[0];data[offset+2]=gradient[1];data[offset+3]=gradient[2];const old=regions.get(a.patchId);regions.set(a.patchId,{face:a.patchId,left:Math.min(a.column,old?.left??a.column),right:Math.max(a.column,old?.right??a.column),top:Math.min(a.row,old?.top??a.row),bottom:Math.max(a.row,old?.bottom??a.row)});}
+    for(const a of this.aliases(index)){const data=this.back[a.patchId],offset=(a.row*side+a.column)*4;data[offset]=height;data[offset+1]=gradient[0];data[offset+2]=gradient[1];data[offset+3]=gradient[2];const old=regions.get(a.patchId);regions.set(a.patchId,{face:a.patchId,left:Math.min(a.column,old?.left??a.column),right:Math.max(a.column,old?.right??a.column),top:Math.min(a.row,old?.top??a.row),bottom:Math.max(a.row,old?.bottom??a.row)});}
     if(++at%64===0)yield;
    }
    // Six reference swaps publish one coherent display epoch, never geography.
    for(const face of CUBE_FACES){const old=this.data[face];this.data[face]=this.back[face];this.back[face]=old;}
-   this.source=values;this.heightScale=max;this.previousRevision=this.sourceRevision;this.sourceRevision=target;this.regions=[...regions.values()];return this.regions;
+   this.source=values;this.heightScale=max;this.previousRevision=this.sourceRevision;this.sourceRevision=target;this.regions=[...regions.values()];if(this.retainRegions&&this.previousRevision>=0){if(this.regionJournal.length===128)this.regionJournal.shift();this.regionJournal.push({from:this.previousRevision,to:target,regions:this.regions.map(r=>({...r}))});}return this.regions;
   }finally{this.building=false;}
  }
  snapshot():SphereFieldSnapshot {return{n:this.n,data:Object.fromEntries(CUBE_FACES.map(f=>[f,this.data[f].slice()])) as Record<CubeFace,Float32Array>,sourceRevision:this.sourceRevision,heightScale:this.heightScale};}

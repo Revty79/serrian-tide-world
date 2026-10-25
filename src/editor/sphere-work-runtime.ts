@@ -1,10 +1,21 @@
 import { startSphericalBrushStroke } from '../terrain/spherical-brush.ts';
 import { sphereWorkEpoch } from './sphere-work-epoch.ts';
 import type { SphereWorkInput,SphereWorkOutput,SphereAcceptedPoint } from './sphere-work-protocol.ts';
+import {roundedCrescentGeometry,type RoundedCrescentGeometry} from '../surfaces/rounded-crescent-globe.ts';
+import {roundedBoundTree} from '../surfaces/rounded-crescent-bounds.ts';
+import {roundedBrushRoutes} from '../surfaces/rounded-crescent-distance.ts';
+import {roundedNormal} from '../surfaces/rounded-crescent-globe.ts';
+import {roundedVisible} from '../surfaces/rounded-crescent-ray.ts';
+import {unitDirection,type Vec3} from '../surfaces/cube-sphere.ts';
+/** Bounded pure-geometry preparation before creator input. No terrain or private
+ * elevation epoch is created or retained by warm-up. Ordinary strokes still
+ * compute and validate their complete current source-word patches. */
+function primeRoundedGeometry(g:RoundedCrescentGeometry){roundedBoundTree(g);for(const center of [[0,-1,0],[0,1,0],[0,0,1],[0,0,-1],[1,0,0],[-1,0,0]] as Vec3[]){const routes=roundedBrushRoutes(g,center),forward=roundedNormal(g,center);for(let i=0;i<128;i++){const end=unitDirection(center.map((v,k)=>v+(.025+.1*(i%7)/6)*Math.sin(i*(k+1)+.3)) as unknown as Vec3);routes(end);roundedVisible(g,end,forward);}}}
 /** One ready dab waits for the host. No speculative source-epoch advancement. */
 export function createSphereWorkRuntime(send:(message:SphereWorkOutput)=>void,schedule:(fn:()=>void)=>void){
  let task=-1,sequence=0,waiting=false,acknowledged=false,scheduled=false,released=false,processed=0,ordinal=1,expectedWrites=0,computeMs=0,snapshotMs=0;
  let terrain:ReturnType<typeof sphereWorkEpoch>|undefined,stroke:ReturnType<typeof startSphericalBrushStroke>|undefined,initial:Generator<boolean,void>|undefined,segment:Generator<boolean>|undefined;
+ let warmedGeometry:RoundedCrescentGeometry|undefined,geometryPreparationMs=0;
  const queue:SphereAcceptedPoint[]=[];
  let waitingAt=0;const ackWait={count:0,totalMs:0,maxMs:0,samples:[] as number[]};
  const fail=(error:unknown)=>{const statistics=stroke?.statistics;stroke?.end();stroke=undefined;terrain=undefined;queue.length=0;initial=undefined;segment=undefined;waiting=false;send({type:'error',task,message:String(error),processed,statistics});};
@@ -20,9 +31,10 @@ export function createSphereWorkRuntime(send:(message:SphereWorkOutput)=>void,sc
   computeMs+=performance.now()-start;if(stroke&&!waiting)send({type:'progress',task,processed,statistics:stroke.statistics});kick();
  }catch(error){computeMs+=performance.now()-start;fail(error);}}
  return{receive(message:SphereWorkInput){try{
+  if(message.type==='warm'){if(stroke)return;const g=roundedCrescentGeometry(message.roundedGeometry);if(JSON.stringify(g)!==JSON.stringify(warmedGeometry)){const at=performance.now();warmedGeometry=g;primeRoundedGeometry(g);geometryPreparationMs=performance.now()-at;}return;}
   if(message.type==='start'){
-   if(stroke)throw Error('A spherical preparation task is already active.');task=message.task;sequence=0;waiting=false;acknowledged=false;released=false;processed=0;ordinal=1;computeMs=0;queue.length=0;ackWait.count=0;ackWait.totalMs=0;ackWait.maxMs=0;ackWait.samples.length=0;const start=performance.now();terrain=sphereWorkEpoch(message.metadata,message.values,message.sourceRevision);snapshotMs=performance.now()-start;send({type:'started',task,snapshotMs});
-   stroke=startSphericalBrushStroke(terrain,{...terrain.metadata.identity,direction:message.direction},message.settings,undefined,message.hemisphere?{hemisphere:message.hemisphere,cutGlobe:message.physicalGeometry}:undefined,{deferInitial:true,commitReady(job){
+   if(stroke)throw Error('A spherical preparation task is already active.');task=message.task;sequence=0;waiting=false;acknowledged=false;released=false;processed=0;ordinal=1;computeMs=0;queue.length=0;ackWait.count=0;ackWait.totalMs=0;ackWait.maxMs=0;ackWait.samples.length=0;const start=performance.now();terrain=sphereWorkEpoch(message.metadata,message.values,message.sourceRevision);snapshotMs=performance.now()-start;send({type:'started',task,snapshotMs,geometryPreparationMs});const roundedGeometry=message.roundedGeometry&&(JSON.stringify(message.roundedGeometry)===JSON.stringify(warmedGeometry)?warmedGeometry:roundedCrescentGeometry(message.roundedGeometry));
+   stroke=startSphericalBrushStroke(terrain,{...terrain.metadata.identity,direction:message.direction},message.settings,undefined,message.hemisphere?{hemisphere:message.hemisphere,cutGlobe:message.physicalGeometry}:undefined,{deferInitial:true,roundedGlobe:roundedGeometry,commitReady(job){
     if(acknowledged){acknowledged=false;return true;}const changes=[...job.changes()];waiting=true;waitingAt=performance.now();expectedWrites=changes.length;
     const before=new Uint32Array(changes.length),word=new Float32Array(1),bits=new Uint32Array(word.buffer);for(let i=0;i<changes.length;i++){word[0]=changes[i]!.before;before[i]=bits[0]!;}
     send({type:'prepared',task,sequence:++sequence,sourceRevision:terrain!.revision,ordinal,fraction:job.fraction,center:job.center,visible:job.visible,indices:Uint32Array.from(changes,c=>c.index),before,after:Float32Array.from(changes,c=>c.after),statistics:stroke!.statistics,processed});return false;

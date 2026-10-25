@@ -1,5 +1,7 @@
+import {roundedRefinedRoute} from './rounded-crescent-variational-route.ts';
 import {cross3,dot3,unitDirection,type Vec3} from './cube-sphere.ts';
 import {roundedDifferential,type RoundedCrescentGeometry} from './rounded-crescent-globe.ts';
+import {roundedBrushChart} from './rounded-crescent-local-frame.ts';
 
 type V2=readonly[number,number];type State=readonly[number,number,number,number];
 /** Regular gnomonic coordinates centered at the query, including both physical
@@ -62,22 +64,36 @@ const GAUSS=[[-.8611363115940526,.3478548451374538],[-.3399810435848563,.6521451
  * footprint. Its curve always lies on the real smooth surface. Four-point
  * Gaussian quadrature and optimized quadratic controls are checked against the
  * refined geodesic solver; this is explicitly a numerical approximation. */
-export function roundedBrushRoute(g:RoundedCrescentGeometry,first:Vec3,last:Vec3){
- const chart=roundedLocalChart(g,first),b=chart.coordinates(unitDirection(last)),origin=chart.frame(0,0),aa=dot3(origin.Jx,origin.Jx),ab=dot3(origin.Jx,origin.Jy),bb=dot3(origin.Jy,origin.Jy),det=aa*bb-ab*ab;
- let wx=0,wy=0,energy=0,length=0,gradientNorm=0;
- const evaluate=(cx:number,cy:number,gradient:boolean)=>{let E=0,L=0,gx=0,gy=0;
-  for(const[node,weight]of GAUSS){const t=(1+node)/2,B=4*t*(1-t),dB=4*(1-2*t),vx=b[0]+dB*cx,vy=b[1]+dB*cy,F=chart.frame(t*b[0]+B*cx,t*b[1]+B*cy),v=F.Jx.map((a,i)=>a*vx+F.Jy[i]!*vy) as unknown as Vec3,ww=weight/2;E+=ww*dot3(v,v)/2;L+=ww*Math.hypot(...v);
-   if(gradient){const dx=F.Hxx.map((a,i)=>B*(a*vx+F.Hxy[i]!*vy)+dB*F.Jx[i]!) as unknown as Vec3,dy=F.Hxy.map((a,i)=>B*(a*vx+F.Hyy[i]!*vy)+dB*F.Jy[i]!) as unknown as Vec3;gx+=ww*dot3(v,dx);gy+=ww*dot3(v,dy);}
-  }return{energy:E,length:L,gx,gy};
+export function roundedBrushRoute(g:RoundedCrescentGeometry,first:Vec3,last:Vec3,iterations=2){return roundedBrushRoutes(g,first)(last,iterations);}
+export function roundedBrushRoutes(g:RoundedCrescentGeometry,first:Vec3){
+ const chart=roundedBrushChart(g,first),F=new Float64Array(15);chart.frame(0,0,F,false);
+ const dot=(a:number,b:number)=>F[a]!*F[b]!+F[a+1]!*F[b+1]!+F[a+2]!*F[b+2]!,aa=dot(0,0),ab=dot(0,3),bb=dot(3,3),det=aa*bb-ab*ab;
+ return(last:Vec3,iterations=2)=>{
+ const b=chart.coordinates(unitDirection(last));chart.frame(b[0]/2,b[1]/2,F);
+ const ma=dot(0,0),mb=dot(0,3),mc=dot(3,3),md=ma*mc-mb*mb;
+ let rx=0,ry=0;for(let i=0;i<3;i++){const H=F[6+i]!*b[0]*b[0]+2*F[9+i]!*b[0]*b[1]+F[12+i]!*b[1]*b[1];rx+=F[i]!*H;ry+=F[3+i]!*H;}
+ let wx=(mc*rx-mb*ry)/(8*md),wy=(ma*ry-mb*rx)/(8*md),energy=0,length=0,gradientNorm=0;
+ const evaluate=(cx:number,cy:number,gradient:boolean,lengthGradient=false)=>{let E=0,L=0,gx=0,gy=0,gzx=0,gzy=0,gqx=0,gqy=0;
+  for(const[node,weight]of GAUSS){const t=(1+node)/2,B=4*t*(1-t),dB=4*(1-2*t),vx=b[0]+dB*cx,vy=b[1]+dB*cy,ww=weight/2;chart.frame(t*b[0]+B*cx,t*b[1]+B*cy,F,gradient);
+   const v0=F[0]!*vx+F[3]!*vy,v1=F[1]!*vx+F[4]!*vy,v2=F[2]!*vx+F[5]!*vy,norm=lengthGradient?Math.max(1e-30,Math.sqrt(v0*v0+v1*v1+v2*v2)):1,C=8*t*(1-t)*(2*t-1),dC=8*(-6*t*t+6*t-1),D=16*(5*t**4-10*t**3+6*t*t-t),dD=16*(20*t**3-30*t*t+12*t-1);let square=0;for(let i=0;i<3;i++){const v=F[i]!*vx+F[3+i]!*vy;square+=v*v;if(gradient){gx+=ww/norm*v*(B*(F[6+i]!*vx+F[9+i]!*vy)+dB*F[i]!);gy+=ww/norm*v*(B*(F[9+i]!*vx+F[12+i]!*vy)+dB*F[3+i]!);if(lengthGradient){gzx+=ww/norm*v*(C*(F[6+i]!*vx+F[9+i]!*vy)+dC*F[i]!);gzy+=ww/norm*v*(C*(F[9+i]!*vx+F[12+i]!*vy)+dC*F[3+i]!);gqx+=ww/norm*v*(D*(F[6+i]!*vx+F[9+i]!*vy)+dD*F[i]!);gqy+=ww/norm*v*(D*(F[9+i]!*vx+F[12+i]!*vy)+dD*F[3+i]!);}}}E+=ww*square/2;L+=ww*Math.sqrt(square);
+  }return{energy:E,length:L,gx,gy,gzx,gzy,gqx,gqy};
  };
- for(let pass=0;pass<6;pass++){
+ if(iterations===0){const v=evaluate(wx,wy,false);energy=v.energy;length=v.length;}
+ for(let pass=0;pass<iterations;pass++){
   const v=evaluate(wx,wy,true);energy=v.energy;length=v.length;const dx=3/16*(bb*v.gx-ab*v.gy)/det,dy=3/16*(aa*v.gy-ab*v.gx)/det;gradientNorm=Math.hypot(dx,dy);
   if(gradientNorm<Math.max(1e-12,Math.hypot(...b)*1e-7))break;
   let scale=1;for(let line=0;line<5;line++){const trial=evaluate(wx-dx*scale,wy-dy*scale,false);if(trial.energy<=energy){wx-=dx*scale;wy-=dy*scale;energy=trial.energy;length=trial.length;break;}scale/=2;}
  }
+ if(iterations>0){
+  // Length variation ignores changes that only reparameterize the same path.
+  // Energy residual alone unnecessarily refines those harmless speed changes.
+  const v=evaluate(wx,wy,true,true),residual=(3/16*(bb*v.gx*v.gx-2*ab*v.gx*v.gy+aa*v.gy*v.gy)+5/64*(bb*v.gzx*v.gzx-2*ab*v.gzx*v.gzy+aa*v.gzy*v.gzy)+7/256*(bb*v.gqx*v.gqx-2*ab*v.gqx*v.gqy+aa*v.gqy*v.gqy))/det;
+  if(residual>1e-4)return roundedRefinedRoute(g,chart,first,b,[wx,wy]);
+ }
  const atParameter=(t:number)=>chart.direction(t*b[0]+4*t*(1-t)*wx,t*b[1]+4*t*(1-t)*wy);
  return{lengthMeters:length*g.scaleMeters,gradientNorm,atParameter,
   /** Parameter speed is not presumed uniform physical distance. */
-  arcTable(){const count=16,distances=[0],points=[first];for(let i=1;i<=count;i++){const lo=(i-1)/count,hi=i/count;let L=0;for(const[node,weight]of GAUSS){const t=lo+(hi-lo)*(1+node)/2,B=4*t*(1-t),dB=4*(1-2*t),F=chart.frame(t*b[0]+B*wx,t*b[1]+B*wy),vx=b[0]+dB*wx,vy=b[1]+dB*wy;L+=weight/2*(hi-lo)*Math.hypot(...F.Jx.map((a,k)=>a*vx+F.Jy[k]!*vy));}distances.push(distances.at(-1)!+L*g.scaleMeters);points.push(atParameter(hi));}return{distances,points,at:(fraction:number)=>{const distance=fraction*distances.at(-1)!;let i=0;while(i<count-1&&distances[i+1]!<distance)i++;const t=(i+(distance-distances[i]!)/(distances[i+1]!-distances[i]!||1))/count;return atParameter(Math.max(0,Math.min(1,t)));}};}
+  arcTable(){const count=16,distances=[0],points=[first];for(let i=1;i<=count;i++){const lo=(i-1)/count,hi=i/count;let L=0;for(const[node,weight]of GAUSS){const t=lo+(hi-lo)*(1+node)/2,B=4*t*(1-t),dB=4*(1-2*t),vx=b[0]+dB*wx,vy=b[1]+dB*wy;chart.frame(t*b[0]+B*wx,t*b[1]+B*wy,F,false);L+=weight/2*(hi-lo)*Math.hypot(F[0]!*vx+F[3]!*vy,F[1]!*vx+F[4]!*vy,F[2]!*vx+F[5]!*vy);}distances.push(distances.at(-1)!+L*g.scaleMeters);points.push(atParameter(hi));}return{distances,points,at:(fraction:number)=>{const distance=fraction*distances.at(-1)!;let i=0;while(i<count-1&&distances[i+1]!<distance)i++;const t=(i+(distance-distances[i]!)/(distances[i+1]!-distances[i]!||1))/count;return atParameter(Math.max(0,Math.min(1,t)));}};}
+ };
  };
 }

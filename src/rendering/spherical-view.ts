@@ -1,3 +1,5 @@
+import {roundedPoint,roundedNormal,type RoundedCrescentGeometry} from '../surfaces/rounded-crescent-globe.ts';
+import {roundedVisible,traceRoundedCrescent} from '../surfaces/rounded-crescent-ray.ts';
 import {cutGlobePosition,cutGlobeNormal,cutGlobeRegion,cutGlobeVisible,traceCutGlobe,type CrescentCutGlobeGeometry,type CrescentCutGlobeRegion} from '../surfaces/crescent-cut-globe.ts';
 import { CUBE_FACES, cross3, dot3, unitDirection, type CubeFace, type Vec3 } from '../surfaces/cube-sphere.ts';
 import type { PatchEdge } from '../surfaces/contracts.ts';
@@ -6,7 +8,7 @@ import type { SphericalTerrain } from '../terrain/spherical.ts';
 export interface ScreenPoint { readonly x: number; readonly y: number }
 export interface Viewport { readonly width: number; readonly height: number }
 export interface SphereFrame { readonly right: Vec3; readonly up: Vec3; readonly forward: Vec3 }
-export interface SphericalView { readonly cutGlobe?:CrescentCutGlobeGeometry;readonly mapRegion?:CrescentCutGlobeRegion; readonly mode: 'globe' | 'net'; readonly frame: SphereFrame; readonly zoom: number; readonly pan: ScreenPoint; readonly interior?:boolean; readonly interiorView?:'edit'|'center';readonly eyeMeters?:Vec3 }
+export interface SphericalView {readonly roundedGlobe?:RoundedCrescentGeometry; readonly cutGlobe?:CrescentCutGlobeGeometry;readonly mapRegion?:CrescentCutGlobeRegion; readonly mode: 'globe' | 'net'; readonly frame: SphereFrame; readonly zoom: number; readonly pan: ScreenPoint; readonly interior?:boolean; readonly interiorView?:'edit'|'center';readonly eyeMeters?:Vec3 }
 /** An inside bank uses the fitted editing projection unless inspection is explicit. */
 export const sphereCenterInspection=(view:SphericalView)=>view.mode==='globe'&&view.interior===true&&view.interiorView==='center';
 export const INITIAL_SPHERICAL_VIEW: SphericalView = Object.freeze({ mode: 'globe', frame: Object.freeze({ right: [0, 1, 0] as Vec3, up: [0, 0, 1] as Vec3, forward: [1, 0, 0] as Vec3 }), zoom: 1, pan: Object.freeze({ x: 0, y: 0 }) });
@@ -24,11 +26,11 @@ export function sphericalLayout(view: SphericalView, size: Viewport) {
 }
 /** Recenter through camera orientation, with a deterministic fallback at the current up pole. */
 export function recenterSphere(view: SphericalView, direction: Vec3): SphericalView {
-  const forward = unitDirection(view.cutGlobe?cutGlobeNormal(view.cutGlobe,unitDirection(direction)):direction);
+  const forward = unitDirection(view.roundedGlobe?roundedNormal(view.roundedGlobe,unitDirection(direction)):view.cutGlobe?cutGlobeNormal(view.cutGlobe,unitDirection(direction)):direction);
   let up = view.frame.up;
   if (Math.abs(dot3(up, forward)) > .999999) up = Math.abs(forward[2]) < .9 ? [0, 0, 1] : [0, 1, 0];
   const right = unitDirection(cross3(up, forward)); up = unitDirection(cross3(forward, right));
-  return { ...view, frame: { right, up, forward } };
+  const next={...view,frame:{right,up,forward}};if(view.roundedGlobe){const q=roundedPoint(view.roundedGlobe,unitDirection(direction)),E=view.roundedGlobe.bendRadius+view.roundedGlobe.bodyRadius;return{...next,pan:{x:dot3(q,right)/E,y:dot3(q,up)/E}};}return next;
 }
 export function rotateSphere(view: SphericalView, dx: number, dy: number): SphericalView {
   if (!Number.isFinite(dx + dy)) throw new RangeError('Invalid rotation.');
@@ -74,6 +76,7 @@ export function netEdgeIsJoined(terrain: SphericalTerrain, face: CubeFace, edge:
 /** Direction -> all visible chart occurrences. Globe occlusion is explicit; net cut copies are presentation only. */
 export function projectSphere(terrain: SphericalTerrain, input: Vec3, view: SphericalView, size: Viewport): readonly (ScreenPoint & { readonly face: CubeFace })[] {
   const direction = unitDirection(input), l = sphericalLayout(view, size), positions = terrain.geometry.positionsForDirection(direction);
+  if(view.roundedGlobe&&view.mode==='globe'){const g=view.roundedGlobe;if(!roundedVisible(g,direction,view.frame.forward))return[];const q=roundedPoint(g,direction),E=g.bendRadius+g.bodyRadius,point={x:l.x+l.radius*(dot3(q,view.frame.right)/E-view.pan.x),y:l.y-l.radius*(dot3(q,view.frame.up)/E-view.pan.y),face:positions[0]!.patchId};return point.x>=0&&point.y>=0&&point.x<=size.width&&point.y<=size.height?[point]:[];}
   if(view.cutGlobe){const g=view.cutGlobe;if(view.mode==='globe'){if(!cutGlobeVisible(g,direction,view.frame.forward))return [];const q=cutGlobePosition(g,direction),point={x:l.x+l.radius*dot3(q,view.frame.right),y:l.y-l.radius*dot3(q,view.frame.up),face:positions[0]!.patchId};return point.x>=0&&point.y>=0&&point.x<=size.width&&point.y<=size.height?[point]:[];}if(view.mapRegion&&view.mapRegion!=='all'&&cutGlobeRegion(g,direction)!==view.mapRegion)return [];}
   if (view.mode === 'globe') {
     if(sphereCenterInspection(view)){const z=dot3(direction,view.frame.forward);if(z<=1e-12)return[];const p={x:l.x-l.radius*dot3(direction,view.frame.right)/z,y:l.y-l.radius*dot3(direction,view.frame.up)/z,face:positions[0]!.patchId};return p.x>=-1e-9&&p.y>=-1e-9&&p.x<=size.width+1e-9&&p.y<=size.height+1e-9?[{...p,x:Math.max(0,Math.min(size.width,p.x)),y:Math.max(0,Math.min(size.height,p.y))}]:[];}
@@ -91,6 +94,7 @@ export function unprojectSphere(terrain: SphericalTerrain, point: ScreenPoint, v
   const l = sphericalLayout(view, size);
   if (view.mode === 'globe') {
     const x = (point.x - l.x) / l.radius, y = (l.y - point.y) / l.radius, squared = x * x + y * y;
+    if(view.roundedGlobe){const g=view.roundedGlobe,E=g.bendRadius+g.bodyRadius,f=view.frame,o=f.right.map((v,i)=>(v*(x+view.pan.x)+f.up[i]!*(y+view.pan.y)+f.forward[i]!*3)*E) as unknown as Vec3;return traceRoundedCrescent(g,o,f.forward.map(v=>-v) as unknown as Vec3)?.direction??null;}
     if(view.cutGlobe){const f=view.frame,o=f.right.map((v,i)=>v*x+f.up[i]!*y+f.forward[i]!*4) as unknown as Vec3;return traceCutGlobe(view.cutGlobe,o,f.forward.map(v=>-v) as unknown as Vec3)?.direction??null;}
     if(sphereCenterInspection(view)){const f=view.frame;return unitDirection([0,1,2].map(i=>-f.right[i]!*x+f.up[i]!*y+f.forward[i]!)as unknown as Vec3);}
     if (squared > 1 + 1e-14) return null;

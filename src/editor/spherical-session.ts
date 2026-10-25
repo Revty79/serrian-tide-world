@@ -1,3 +1,5 @@
+import type {RoundedCrescentGeometry} from '../surfaces/rounded-crescent-globe.ts';
+import {validateRoundedBrush} from '../terrain/rounded-crescent-brush-metric.ts';
 import {recordPaintingEvent} from './painting-metrics.ts';
 import type {CrescentCutGlobeGeometry} from '../surfaces/crescent-cut-globe.ts';
 import { SphericalHistory } from './spherical-history.ts';
@@ -45,9 +47,9 @@ export class SphericalSession {
   error = (_message: string) => {};
   beforeOperation=()=>{};
   readonly statistics = { dabs: 0, writes: 0, updatedPixels: 0, updatedRegions: 0, fullRebuilds: 0, maxDabMs: 0, slices: 0 };
-  readonly cutGlobe?:CrescentCutGlobeGeometry;
-  constructor(terrain: SphericalTerrain, cache: SphericalDisplayCache, name = 'Untitled sphere', saved = false,cutGlobe?:CrescentCutGlobeGeometry) {
-    this.cutGlobe=cutGlobe;this.name = name; this.checkpointName = name; this.hasSaved = saved;
+  readonly cutGlobe?:CrescentCutGlobeGeometry;readonly roundedGlobe?:RoundedCrescentGeometry;
+  constructor(terrain: SphericalTerrain, cache: SphericalDisplayCache, name = 'Untitled sphere', saved = false,cutGlobe?:CrescentCutGlobeGeometry,roundedGlobe?:RoundedCrescentGeometry) {
+    this.cutGlobe=cutGlobe;this.roundedGlobe=roundedGlobe;this.name = name; this.checkpointName = name; this.hasSaved = saved;
     this.terrain = terrain; this.cache = cache; this.trackedRevision = terrain.revision;
     this.provider = { ...terrain, get revision() { return terrain.revision; }, write: (key, value) => {
       const revision = terrain.revision; terrain.write(key, value);
@@ -68,20 +70,23 @@ export class SphericalSession {
   private notePresentationInput(at: number) { this.presentedInputCount++; if (this.presentedInputs.length === 512) this.presentedInputs.shift(); this.presentedInputs.push(at); }
   enableBackground(coarse: boolean, factory: SphereWorkerFactory = sphereWorkerFactory) {
     this.disableBackground(); this.coarse = coarse;
-    const warm = () => { try { this.warmWorker = factory(); } catch { this.warmWorker = undefined; } };
-    this.workerFactory = () => { const worker = this.warmWorker ?? factory(); this.warmWorker = undefined; warm(); return worker; }; warm();
+    const park=(worker:Worker)=>{this.warmWorker?.terminate();this.warmWorker=worker;worker.onmessage=null;worker.onmessageerror=null;worker.onerror=e=>{e.preventDefault();worker.terminate();if(this.warmWorker===worker)this.warmWorker=undefined;};};
+    const make=()=>{const worker=factory();if(this.roundedGlobe)worker.postMessage({type:'warm',roundedGeometry:this.roundedGlobe});return worker;};
+    const warm=()=>{try{const worker=make();if(this.roundedGlobe)park(worker);else this.warmWorker=worker;}catch{this.warmWorker=undefined;}};
+    if(this.roundedGlobe){const pooled:SphereWorkerFactory=Object.assign(()=>{const worker=this.warmWorker??make();this.warmWorker=undefined;return worker;},{release:(worker:Worker,completed:boolean)=>{worker.onmessage=null;worker.onmessageerror=null;worker.onerror=null;if(completed&&this.workerFactory===pooled)park(worker);else worker.terminate();}});this.workerFactory=pooled;warm();}
+    else{this.workerFactory=()=>{const worker=this.warmWorker??factory();this.warmWorker=undefined;warm();return worker;};warm();}
   }
   disableBackground() { this.cancel(); this.warmWorker?.terminate(); this.warmWorker = undefined; this.workerFactory = undefined; }
   useElevationField(field: SphericalElevationField) { this.displayJob?.return([]); this.displayJob = undefined; this.field = field; this.cache.sourceRevision = field.sourceRevision; if (field.sourceRevision !== this.terrain.revision) this.displayAll = true; }
   releaseDisplay() { this.displayJob?.return([]); this.displayJob = undefined; this.field = undefined; }
   begin(direction: Vec3, settings: SphericalBrushSettings, hemisphere?: Vec3) {
     if (this.painting || this.locked) return false;
-    this.beforeOperation();
+    this.beforeOperation();if(this.roundedGlobe)validateRoundedBrush(this.roundedGlobe,settings);
     const start = performance.now();
     this.strokeRevision = this.terrain.revision;
-    const decision = sphericalWorkDecision(this.terrain, direction, settings, this.coarse); this.lastWork = { ...decision, backend: this.workerFactory ? decision.backend : 'cooperative' };
-    if (this.workerFactory && decision.backend === 'worker') this.remote = beginSphereWorkerStroke(this.provider, this.history, direction, settings, hemisphere, () => this.changed(), this.workerFactory, this.field?.directions,this.cutGlobe);
-    else this.stroke = startSphericalBrushStroke(this.provider, { ...this.terrain.metadata.identity, direction }, settings, this.history, hemisphere ? { hemisphere,cutGlobe:this.cutGlobe } : undefined);
+    const decision = sphericalWorkDecision(this.terrain, direction, settings, this.coarse,this.roundedGlobe?{angularRadius:settings.radiusMeters/(this.roundedGlobe.minimumStretch*this.roundedGlobe.scaleMeters),cost:64}:undefined); this.lastWork = { ...decision, backend: this.workerFactory ? decision.backend : 'cooperative' };
+    if (this.workerFactory && decision.backend === 'worker') this.remote = beginSphereWorkerStroke(this.provider, this.history, direction, settings, hemisphere, () => this.changed(), this.workerFactory, this.field?.directions,this.cutGlobe,this.roundedGlobe);
+    else this.stroke = startSphericalBrushStroke(this.provider, { ...this.terrain.metadata.identity, direction }, settings, this.history, hemisphere ? { hemisphere,cutGlobe:this.cutGlobe } : undefined,{roundedGlobe:this.roundedGlobe});
     if(this.stroke&&this.terrain.revision!==this.strokeRevision)recordPaintingEvent('commit',{revision:this.terrain.revision,words:this.terrain.revision-this.strokeRevision,inputAt:start});
     this.notePresentationInput(start);
     this.statistics.maxDabMs = Math.max(this.statistics.maxDabMs, performance.now() - start);

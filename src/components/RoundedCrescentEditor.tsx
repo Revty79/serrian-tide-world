@@ -1,0 +1,15 @@
+import {useLayoutEffect,useRef,useState,type Ref} from 'react';
+import {SphericalViewport,type SphericalViewportHandle,type SphericalWorkspaceView} from './SphericalViewport.tsx';
+import {roundedOverview,type RoundedCrescentSession} from '../editor/rounded-crescent-session.ts';
+import type {SphericalControlState} from '../editor/spherical-controls.ts';
+import type {SphericalView} from '../rendering/spherical-view.ts';
+import type {Vec3} from '../surfaces/cube-sphere.ts';
+export function RoundedCrescentEditor({session,handleRef,workspace}:{session:RoundedCrescentSession;handleRef:Ref<SphericalViewportHandle>;workspace:(view:SphericalWorkspaceView)=>React.ReactNode}){
+ const [controls,setControls]=useState<SphericalControlState>(session.editing.controls),controlsRef=useRef(controls);controlsRef.current=controls;const handle=useRef<SphericalViewportHandle|null>(null),g=session.world.geometry;
+ const assign=(value:SphericalViewportHandle|null)=>{handle.current=value;if(typeof handleRef==='function')handleRef(value);else if(handleRef)handleRef.current=value;};
+ useLayoutEffect(()=>{session.captureEditing=()=>{const v=handle.current?.getView?.()??session.editing.view,{mode,frame,zoom,pan}=v;session.editing={view:{mode,frame,zoom,pan},controls:structuredClone(controlsRef.current)};};return()=>{session.captureEditing();session.captureEditing=()=>{};};},[session]);
+ const change=(fn:(v:SphericalView)=>SphericalView)=>{const h=handle.current,v=h?.getView?.();if(v){h!.stop();h!.restoreView?.(fn(v));}};
+ const focus=(direction:Vec3)=>handle.current?.focusDirection?.(direction);
+ const maps=<details onClick={e=>{if((e.target as HTMLElement).closest('button'))e.currentTarget.open=false;}}><summary>Surface views</summary><div><button onClick={()=>change(()=>roundedOverview(session.world))}>Rounded crescent overview</button><button onClick={()=>focus([0,-1,0])}>Focus inner curve</button><button onClick={()=>focus([0,1,0])}>Focus outer curve</button><button onClick={()=>focus([0,0,1])}>Focus rounded upper side</button><button onClick={()=>focus([0,0,-1])}>Focus rounded underside</button><button onClick={()=>focus([1,0,0])}>Focus first tip</button><button onClick={()=>focus([-1,0,0])}>Focus second tip</button><button onClick={()=>change(v=>({...v,mode:'net',zoom:1,pan:{x:0,y:0}}))}>Connected surface map</button></div></details>;
+ return <SphericalViewport terrain={session.terrain} cache={session.cache} editor={session} handleRef={assign} onClose={()=>{}} initialView={{...session.editing.view,roundedGlobe:g}} sharedControls={{value:controls,change:setControls}} mapControls={maps} workspace={view=>workspace({...view,tools:<><p><strong>Rounded Crescent Globe World</strong> · {g.spanDegrees} degree crescent; central width {(2*g.bodyRadius*g.scaleMeters).toLocaleString()} m; rounded depth {(2*g.bodyDepth*g.scaleMeters).toLocaleString()} m.</p><p className="hint">Every side and both rounded tips share one connected geographical surface. Structural proportions are fixed when created. Create a new World to change them.</p>{view.tools}</>})}/>;
+}

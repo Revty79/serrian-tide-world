@@ -1,5 +1,17 @@
 # Rounded Crescent Globe Worlds - Pass 16
 
+Development checkpoint, 2026-10-25: Rounded Crescent Globe is integrated into the normal `D:/serrian-tide-world` main checkout. The creator, complete connected surface, four sculpting tools, physical views, worker preparation, whole-gesture history and strict format-46 Save/Open are implemented. This checkpoint is being pushed to origin/main at the owner's request; it does not deploy the application to a server.
+
+**Final verification is still in progress.** The original 55-case browser pass preceded stricter distance tests and subsequent performance corrections. It must not be described as acceptance of the latest source. Current maximum-footprint qualification checks 2,112 routes across all seven presets and four combined dimensional corners, with worst relative error 0.007852% against the 0.01% gate; 528 tiny smoothing-neighbor routes also pass. Harder tip latency, current-versus-fresh pixels, resource lifecycle, relevant shared regressions and the production build remain release checks.
+
+The current distance adapter retains its quadratic local route and selectively refines an unresolved length gradient with a bounded six-control quartic variational route. This remains a numerical local approximation, not a certified global geodesic-distance interval. Rendering retains the shared numerical field, palette and relief. Rounded Crescent now also retains one derived RGBA8 GPU frame within the existing three-million-pixel backing limit (at most 12 MB), updating conservative physical dirty regions through the identical shader and sampling density. Main geometry-ray caches retain the combined eight MiB ceiling. These changes require final pixel and recovery verification.
+
+The pixel-timing observer is also being qualified: actual submitted images are copied into a bounded readback worker so the observer's synchronous GPU readback does not block the editor's canonical acknowledgement path. The 125 ms tool and 100 ms held-painting gates remain unchanged. Historical failed measurements are retained in the development evidence.
+
+Filled-Torus Worlds has not been started. Holes, tunnels, links and arbitrary-height excavation remain outside this pass. Automated technical verification remains separate from owner acceptance.
+
+## Historical foundation record (checkpoint A)
+
 Checkpoint A establishes the physical geometry, metric, canonical ownership and numerical brush adapter. The editor, rendering and persistence are not yet qualified. The verified Crescent-Cut Globe remains on main while this pass proceeds on `work/rounded-crescent-globe` from `ecee5d9df8eb2a59b92c306924fa05d9f0cd617e`.
 
 The new construction is a smooth bent, tapered elliptical solid. It uses the native cube-sphere lattice as coordinates of a topological sphere, with the new body's actual induced metric. It is neither an ordinary Sphere nor the previous Boolean Crescent-Cut Globe. There is no excavation dependency.
