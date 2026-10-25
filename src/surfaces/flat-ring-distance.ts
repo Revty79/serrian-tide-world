@@ -1,10 +1,12 @@
 import type {SurfacePosition} from './contracts.ts';
 import type {OpenCylinderGeometry} from './open-cylinder.ts';
 import {openCylinderDistance} from './open-cylinder-distance.ts';
+import {createAnnularDistance} from './open-cylinder-annular-distance.ts';
 import {cylinderAngle,createCylinderGeometry} from './cylinder.ts';
 import {pathAngle,pathNorm,pathTrig} from './cylinder-path-math.ts';
 import {CylinderDistanceUnsupportedError,type CylinderDistanceOptions} from './cylinder-distance.ts';
 
+const annularMetrics=new WeakMap<OpenCylinderGeometry,ReturnType<typeof createAnnularDistance>>();
 interface Segment {length:number;low:number;high:number}
 /** Global dual certificate on the cyclic meridian. For 0<=k<=Ri, integrate
  * sqrt(1-k²/r(m)²) along each of the two meridian arcs. A periodic potential
@@ -14,10 +16,16 @@ interface Segment {length:number;low:number;high:number}
  * at their minimum radius. A witness is accepted only when the bounds close.
  * This extends the accepted local annular metric without using a graph metric. */
 export function flatRingDistance(g:OpenCylinderGeometry,first:SurfacePosition,last:SurfacePosition,options:CylinderDistanceOptions={}){
- const a=g.normalize(first),b=g.normalize(last),p=g.physical(a),q=g.physical(b),{outerRadiusMeters:R,innerRadiusMeters:r,lengthMeters:H}=g.metadata,S=g.meridianLengthMeters,W=R-r,
+ const a=first,b=last,p=g.physical(a),q=g.physical(b),{outerRadiusMeters:R,innerRadiusMeters:r,lengthMeters:H}=g.metadata,S=g.meridianLengthMeters,W=R-r,
   angle=Math.abs(cylinderAngle(q.theta-p.theta)),guard=524288*Number.EPSILON*Math.max(R,H),tolerance=options.absoluteToleranceMeters??R*1e-6;
  if(!Number.isFinite(tolerance)||tolerance<16*guard||!Number.isInteger(options.maxBoxes??32768)||(options.maxBoxes??32768)<1||(options.maxBoxes??32768)>32768)throw new CylinderDistanceUnsupportedError('precision','Flat Ring query is below the qualified arithmetic floor or work budget.');
- if(angle===0||p.z===q.z&&(p.z===0||p.z===H)||p.radius===r&&q.radius===r||p.radius===r&&(q.z===0||q.z===H)||q.radius===r&&(p.z===0||p.z===H))return openCylinderDistance(g,a,b,options);
+ if(angle===0)return openCylinderDistance(g,a,b,options);
+ // Reuse the unchanged certified annular core once per geometry epoch. A wide
+ // dab queries thousands of samples: rebuilding its closures and validating the
+ // same endpoints twice per query caused avoidable allocation/JIT latency.
+ let metric=annularMetrics.get(g);if(!metric){metric=createAnnularDistance(r,R,H,true);annularMetrics.set(g,metric);}
+ const bounds=p.z===q.z&&(p.z===0||p.z===H)?metric.annulus(p.radius,q.radius,angle,tolerance):p.radius===r&&q.radius===r?metric.innerHelix(angle,Math.abs(p.z-q.z),tolerance):p.radius===r&&(q.z===0||q.z===H)?metric.innerToRim(q.radius,angle,Math.abs(p.z-q.z),tolerance):q.radius===r&&(p.z===0||p.z===H)?metric.innerToRim(p.radius,angle,Math.abs(p.z-q.z),tolerance):undefined;
+ if(bounds)return Object.freeze({scope:'global-reference-surface' as const,lowerBoundMeters:bounds.lower,upperBoundMeters:bounds.upper,evaluatedBoxes:0,iterations:bounds.iterations,bestRoute:bounds.route,value:bounds.upper});
  const ma=g.meridianAt(a)%S,mb=g.meridianAt(b)%S;
  const radius=(m:number)=>m<=H?R:m<=H+W?R-(m-H):m<=2*H+W?r:r+(m-2*H-W);
  function arc(start:number,end:number){if(end<start)end+=S;const cuts=[start,end];for(const offset of[0,S])for(const m of[0,H,H+W,2*H+W,S])if(m+offset>start&&m+offset<end)cuts.push(m+offset);cuts.sort((x,y)=>x-y);const result:Segment[]=[];for(let i=1;i<cuts.length;i++){const x=cuts[i-1]!,y=cuts[i]!,rx=radius(x%S),ry=radius(y===S?S:y%S);result.push({length:y-x,low:Math.min(rx,ry),high:Math.max(rx,ry)});}return result;}
@@ -46,6 +54,6 @@ export function flatRingDistance(g:OpenCylinderGeometry,first:SurfacePosition,la
   }
   lower=Math.max(lower,Math.min(result.lowerBoundMeters,(p.radius-r)+(q.radius-r))-guard);
  }catch(error){if(!(error instanceof CylinderDistanceUnsupportedError))throw error;}}
- lower=Math.max(0,lower);if(!Number.isFinite(upper)||upper-lower>tolerance)throw new CylinderDistanceUnsupportedError('range',`Flat Ring global certificate remains unresolved (${upper-lower} m).`);
+ lower=Math.max(0,lower);if(!Number.isFinite(upper)||upper<lower||upper-lower>tolerance)throw new CylinderDistanceUnsupportedError('range',`Flat Ring global certificate remains unresolved (${upper-lower} m).`);
  return Object.freeze({scope:'global-reference-surface' as const,lowerBoundMeters:lower,upperBoundMeters:upper,evaluatedBoxes,iterations,bestRoute:'cyclic-meridian-calibration',value:upper});
 }

@@ -121,8 +121,8 @@ export function NewWorldDialog({ busy, hasDocument, create, close, error }: { bu
           <label>Hole Diameter (m)<input type="number" step="any" value={flatRingInput.hole} onChange={e=>setFlatRingInput(v=>({...v,hole:e.target.value}))}/></label>
           <p className="hint">Ring Width: {((Number(flatRingInput.diameter)-Number(flatRingInput.hole))/2).toLocaleString()} m</p>
           <label>Ring Thickness (m)<input type="number" step="any" value={flatRingInput.thickness} onChange={e=>setFlatRingInput(v=>({...v,thickness:e.target.value}))}/></label>
-          <label>Terrain Detail<select aria-label="Flat Ring Terrain Detail" value={resolution} onChange={e=>setResolution(Number(e.target.value)as 128|256)}><option value="128">Standard ? N128</option><option value="256">Higher ? N256</option></select></label>
-          <p className="hint">World Size is Ring Diameter. Resizing it scales the hole and thickness proportionately. Hole Diameter is 6?85% of Ring Diameter; Thickness is 5?15%. Dimensions are fixed after creation. Small openings require Higher detail.</p>
+          <label>Terrain Detail<select aria-label="Flat Ring Terrain Detail" value={resolution} onChange={e=>setResolution(Number(e.target.value)as 128|256)}><option value="128">Standard (N128)</option><option value="256">Higher (N256)</option></select></label>
+          <p className="hint">World Size is Ring Diameter. Resizing it scales the hole and thickness proportionately. Hole Diameter is 6 to 85% of Ring Diameter; Thickness is 5 to 15%. Dimensions are fixed after creation. Small openings require Higher detail.</p>
           {flatRingError&&<p role="alert">{flatRingError}</p>}
         </>}
         {shape==='flat-disc'&&<>

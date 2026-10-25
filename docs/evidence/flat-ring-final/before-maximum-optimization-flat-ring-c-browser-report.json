@@ -1,0 +1,1361 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\.local\\flat-ring-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=playwright.flat-ring.config.mjs",
+      "--workers=1",
+      "--retries=0",
+      "--max-failures=1"
+    ],
+    "configFile": "D:\\serrian-tide-world\\.local\\flat-ring-work\\playwright.flat-ring.config.mjs",
+    "rootDir": "D:/serrian-tide-world/.local/flat-ring-work/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-atlas-hollow-worlds/workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "installed-chrome",
+        "name": "installed-chrome",
+        "testDir": "D:/serrian-tide-world/.local/flat-ring-work/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "flat-ring-*.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "installed-chrome",
+        "testDir": "D:\\serrian-tide-world\\.local\\flat-ring-work\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\.local\\flat-ring-work\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "flat-ring-*.spec.ts"
+        ],
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5294",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "channel": "chrome",
+          "actionTimeout": 15000,
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "installed-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/flat-ring-c-browser-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "flat-ring-configuration.spec.ts",
+      "file": "flat-ring-configuration.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Flat Ring creator: bounded dimensions, proportional diameter, all presets, Small opening detail and immutable saved structure",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17447,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:26:43.361Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "67189ef37f9a69dca3c1-05e71624badbb10ed3f3",
+          "file": "flat-ring-configuration.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "Flat Ring Wide N256 auto: four actual regions, four tools, history, maps and reopened editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 360000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17131,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:27:01.217Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "67189ef37f9a69dca3c1-1c500bddb1e79d6700b1",
+          "file": "flat-ring-configuration.spec.ts",
+          "line": 12,
+          "column": 123
+        },
+        {
+          "title": "Flat Ring Wide N256 canvas: four actual regions, four tools, history, maps and reopened editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 360000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 49849,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:27:18.362Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "67189ef37f9a69dca3c1-d801ed5eaca59399ff8c",
+          "file": "flat-ring-configuration.spec.ts",
+          "line": 12,
+          "column": 123
+        },
+        {
+          "title": "Flat Ring Narrow N256 auto: four actual regions, four tools, history, maps and reopened editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 360000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16487,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:28:08.224Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "67189ef37f9a69dca3c1-b9f1a9e0b66beba74dc6",
+          "file": "flat-ring-configuration.spec.ts",
+          "line": 12,
+          "column": 123
+        },
+        {
+          "title": "Flat Ring Narrow N256 canvas: four actual regions, four tools, history, maps and reopened editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 360000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 60032,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:28:24.722Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "67189ef37f9a69dca3c1-8dff9b27f14dc0b1b6dc",
+          "file": "flat-ring-configuration.spec.ts",
+          "line": 12,
+          "column": 123
+        },
+        {
+          "title": "Flat Ring Small opening N256 auto: four actual regions, four tools, history, maps and reopened editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 360000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16785,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:29:24.767Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "67189ef37f9a69dca3c1-827ca0f2ae88d72260df",
+          "file": "flat-ring-configuration.spec.ts",
+          "line": 12,
+          "column": 123
+        },
+        {
+          "title": "Flat Ring Small opening N256 canvas: four actual regions, four tools, history, maps and reopened editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 360000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 46943,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:29:41.562Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "67189ef37f9a69dca3c1-7cc8abed12a6ebe393d8",
+          "file": "flat-ring-configuration.spec.ts",
+          "line": 12,
+          "column": 123
+        },
+        {
+          "title": "Flat Ring Large opening N256 auto: four actual regions, four tools, history, maps and reopened editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 360000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17235,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:30:28.517Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "67189ef37f9a69dca3c1-79cbd91799aee4c138f1",
+          "file": "flat-ring-configuration.spec.ts",
+          "line": 12,
+          "column": 123
+        },
+        {
+          "title": "Flat Ring Large opening N256 canvas: four actual regions, four tools, history, maps and reopened editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 360000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 58180,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:30:45.765Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "67189ef37f9a69dca3c1-f68f40880c2f609aceb7",
+          "file": "flat-ring-configuration.spec.ts",
+          "line": 12,
+          "column": 123
+        },
+        {
+          "title": "Flat Ring Thin N256 auto: four actual regions, four tools, history, maps and reopened editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 360000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16655,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:31:43.958Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "67189ef37f9a69dca3c1-30acc5e71ceeb5af00a9",
+          "file": "flat-ring-configuration.spec.ts",
+          "line": 12,
+          "column": 123
+        },
+        {
+          "title": "Flat Ring Thin N256 canvas: four actual regions, four tools, history, maps and reopened editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 360000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 52024,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:32:00.623Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "67189ef37f9a69dca3c1-12935ba80fa52572e685",
+          "file": "flat-ring-configuration.spec.ts",
+          "line": 12,
+          "column": 123
+        },
+        {
+          "title": "Flat Ring Thick N256 auto: four actual regions, four tools, history, maps and reopened editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 360000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18083,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:32:52.659Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "67189ef37f9a69dca3c1-1bd058af2446469c590f",
+          "file": "flat-ring-configuration.spec.ts",
+          "line": 12,
+          "column": 123
+        },
+        {
+          "title": "Flat Ring Thick N256 canvas: four actual regions, four tools, history, maps and reopened editing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 360000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 64112,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:33:10.754Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "67189ef37f9a69dca3c1-654789541b243e40dd0a",
+          "file": "flat-ring-configuration.spec.ts",
+          "line": 12,
+          "column": 123
+        }
+      ]
+    },
+    {
+      "title": "flat-ring-hole.spec.ts",
+      "file": "flat-ring-hole.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Flat Ring Small opening N256 auto: hole isolation, real around-hole and two-rim influence, maximum brush pixels",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 13895,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m125\u001b[39m\nReceived:   \u001b[31m201.90000009536743\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m125\u001b[39m\nReceived:   \u001b[31m201.90000009536743\u001b[39m\n    at D:\\serrian-tide-world\\.local\\flat-ring-work\\tests\\flat-ring-hole.spec.ts:9:722",
+                    "location": {
+                      "file": "D:\\serrian-tide-world\\.local\\flat-ring-work\\tests\\flat-ring-hole.spec.ts",
+                      "column": 722,
+                      "line": 9
+                    },
+                    "snippet": "   7 |  await toolsPanel(page,true);await page.getByLabel('Flat Ring brush radius (m)',{exact:true}).fill('150000');await toolsPanel(page,false);const p=await ringMapPoint(page,0,.07),before=await sample();await page.mouse.click(box.x+p.x,box.y+p.y);await ringIdle(page);expect((await sample()).opposite).toBe(before.opposite);await page.getByRole('button',{name:'Undo',exact:true}).click();await ringIdle(page);expect(await ringHash(page)).toBe(blank);\n   8 |  await toolsPanel(page,true);await page.getByLabel('Flat Ring brush radius (m)',{exact:true}).fill('200000');await toolsPanel(page,false);await page.mouse.click(box.x+p.x,box.y+p.y);await ringIdle(page);const around=await sample(),after=await ringHash(page);expect(around.opposite).not.toBe(before.opposite);expect(around.lower).not.toBe(before.lower);await page.getByRole('button',{name:'Undo',exact:true}).click();await ringIdle(page);expect(await ringHash(page)).toBe(blank);await page.getByRole('button',{name:'Redo',exact:true}).click();await ringIdle(page);expect(await ringHash(page)).toBe(after);\n>  9 |  const points=[];for(let k=0;k<=192;k++)points.push(await ringMapPoint(page,-1.2+2.4*k/192,.11));await page.mouse.move(box.x+points[0]!.x,box.y+points[0]!.y);await startPaintingPixels(page);await page.mouse.down();for(const p of points.slice(1)){await page.mouse.move(box.x+p.x,box.y+p.y);await page.waitForTimeout(16);}await page.mouse.up();await ringIdle(page);const timing=await finishPaintingPixels(page),state=await ringSnapshot(page),last=await ringHash(page);mkdirSync('.local/flat-ring-hole',{recursive:true});writeFileSync(`.local/flat-ring-hole/${backend}.json`,JSON.stringify({before,around,timing,state},null,2));expect(state.statistics.failures,state.message).toBe(0);expect(timing.summary.p95InputToPixels).toBeLessThan(125);expect(timing.latencies[0]!.inputToPixels).toBeLessThan(1000);await page.getByRole('button',{name:'Undo',exact:true}).click();await ringIdle(page);expect(await ringHash(page)).toBe(after);await page.getByRole('button',{name:'Redo',exact:true}).click();await ringIdle(page);expect(await ringHash(page)).toBe(last);await page.screenshot({path:`.local/flat-ring-hole/${backend}.png`});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^\n  10 | });\n  11 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\serrian-tide-world\\.local\\flat-ring-work\\tests\\flat-ring-hole.spec.ts",
+                        "column": 722,
+                        "line": 9
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m125\u001b[39m\nReceived:   \u001b[31m201.90000009536743\u001b[39m\n\n   7 |  await toolsPanel(page,true);await page.getByLabel('Flat Ring brush radius (m)',{exact:true}).fill('150000');await toolsPanel(page,false);const p=await ringMapPoint(page,0,.07),before=await sample();await page.mouse.click(box.x+p.x,box.y+p.y);await ringIdle(page);expect((await sample()).opposite).toBe(before.opposite);await page.getByRole('button',{name:'Undo',exact:true}).click();await ringIdle(page);expect(await ringHash(page)).toBe(blank);\n   8 |  await toolsPanel(page,true);await page.getByLabel('Flat Ring brush radius (m)',{exact:true}).fill('200000');await toolsPanel(page,false);await page.mouse.click(box.x+p.x,box.y+p.y);await ringIdle(page);const around=await sample(),after=await ringHash(page);expect(around.opposite).not.toBe(before.opposite);expect(around.lower).not.toBe(before.lower);await page.getByRole('button',{name:'Undo',exact:true}).click();await ringIdle(page);expect(await ringHash(page)).toBe(blank);await page.getByRole('button',{name:'Redo',exact:true}).click();await ringIdle(page);expect(await ringHash(page)).toBe(after);\n>  9 |  const points=[];for(let k=0;k<=192;k++)points.push(await ringMapPoint(page,-1.2+2.4*k/192,.11));await page.mouse.move(box.x+points[0]!.x,box.y+points[0]!.y);await startPaintingPixels(page);await page.mouse.down();for(const p of points.slice(1)){await page.mouse.move(box.x+p.x,box.y+p.y);await page.waitForTimeout(16);}await page.mouse.up();await ringIdle(page);const timing=await finishPaintingPixels(page),state=await ringSnapshot(page),last=await ringHash(page);mkdirSync('.local/flat-ring-hole',{recursive:true});writeFileSync(`.local/flat-ring-hole/${backend}.json`,JSON.stringify({before,around,timing,state},null,2));expect(state.statistics.failures,state.message).toBe(0);expect(timing.summary.p95InputToPixels).toBeLessThan(125);expect(timing.latencies[0]!.inputToPixels).toBeLessThan(1000);await page.getByRole('button',{name:'Undo',exact:true}).click();await ringIdle(page);expect(await ringHash(page)).toBe(after);await page.getByRole('button',{name:'Redo',exact:true}).click();await ringIdle(page);expect(await ringHash(page)).toBe(last);await page.screenshot({path:`.local/flat-ring-hole/${backend}.png`});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^\n  10 | });\n  11 |\n    at D:\\serrian-tide-world\\.local\\flat-ring-work\\tests\\flat-ring-hole.spec.ts:9:722"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T04:34:14.897Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\flat-ring-hole-Flat-Ring-S-bdf17-luence-maximum-brush-pixels-installed-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\flat-ring-hole-Flat-Ring-S-bdf17-luence-maximum-brush-pixels-installed-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\flat-ring-hole-Flat-Ring-S-bdf17-luence-maximum-brush-pixels-installed-chrome\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\serrian-tide-world\\.local\\flat-ring-work\\tests\\flat-ring-hole.spec.ts",
+                    "column": 722,
+                    "line": 9
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fecf2790874dd582bc7a-3a04ee92c90b4d8a0ff4",
+          "file": "flat-ring-hole.spec.ts",
+          "line": 3,
+          "column": 39
+        },
+        {
+          "title": "Flat Ring Small opening N256 canvas: hole isolation, real around-hole and two-rim influence, maximum brush pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "fecf2790874dd582bc7a-d2770a983d11cc88965d",
+          "file": "flat-ring-hole.spec.ts",
+          "line": 3,
+          "column": 39
+        }
+      ]
+    },
+    {
+      "title": "flat-ring-incremental.spec.ts",
+      "file": "flat-ring-incremental.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Flat Ring N128 Standard: incremental Canvas and GPU equal fresh complete reconstruction",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "25a96c606b44dd9675ee-30dc72c633cd93429ca6",
+          "file": "flat-ring-incremental.spec.ts",
+          "line": 2,
+          "column": 126
+        },
+        {
+          "title": "Flat Ring N256 Thin: incremental Canvas and GPU equal fresh complete reconstruction",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "25a96c606b44dd9675ee-a49c64612922d740ce98",
+          "file": "flat-ring-incremental.spec.ts",
+          "line": 2,
+          "column": 126
+        },
+        {
+          "title": "Flat Ring N256 Thick: incremental Canvas and GPU equal fresh complete reconstruction",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "25a96c606b44dd9675ee-ee04babddec11b95a0d8",
+          "file": "flat-ring-incremental.spec.ts",
+          "line": 2,
+          "column": 126
+        },
+        {
+          "title": "Flat Ring N256 Small opening: incremental Canvas and GPU equal fresh complete reconstruction",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "25a96c606b44dd9675ee-cf9fcdbe2c70ebe76539",
+          "file": "flat-ring-incremental.spec.ts",
+          "line": 2,
+          "column": 126
+        },
+        {
+          "title": "Flat Ring N256 Large opening: incremental Canvas and GPU equal fresh complete reconstruction",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "25a96c606b44dd9675ee-c1b3234e768e8f7ef1c1",
+          "file": "flat-ring-incremental.spec.ts",
+          "line": 2,
+          "column": 126
+        }
+      ]
+    },
+    {
+      "title": "flat-ring-joins.spec.ts",
+      "file": "flat-ring-joins.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Flat Ring Thin N256 auto: continuous physical strokes cross all four genuine rims",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "63b1d01fcdac144d5b26-f9fa4fa4c021df1ea8e3",
+          "file": "flat-ring-joins.spec.ts",
+          "line": 3,
+          "column": 75
+        },
+        {
+          "title": "Flat Ring Thin N256 canvas: continuous physical strokes cross all four genuine rims",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "63b1d01fcdac144d5b26-087d23548ab7830e2759",
+          "file": "flat-ring-joins.spec.ts",
+          "line": 3,
+          "column": 75
+        },
+        {
+          "title": "Flat Ring Thick N256 auto: continuous physical strokes cross all four genuine rims",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "63b1d01fcdac144d5b26-0aa07e684eec4b5f5f57",
+          "file": "flat-ring-joins.spec.ts",
+          "line": 3,
+          "column": 75
+        },
+        {
+          "title": "Flat Ring Thick N256 canvas: continuous physical strokes cross all four genuine rims",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "63b1d01fcdac144d5b26-fa7305aa987b1951ca1c",
+          "file": "flat-ring-joins.spec.ts",
+          "line": 3,
+          "column": 75
+        }
+      ]
+    },
+    {
+      "title": "flat-ring-navigation.spec.ts",
+      "file": "flat-ring-navigation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Flat Ring N256 auto: ordinary rotation publishes actual pixels and preserves geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2c8d06a8bdc8453a9236-9a75cf2d70afdd5ad3a9",
+          "file": "flat-ring-navigation.spec.ts",
+          "line": 2,
+          "column": 39
+        },
+        {
+          "title": "Flat Ring N256 canvas: ordinary rotation publishes actual pixels and preserves geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2c8d06a8bdc8453a9236-a6baebe6bf3ef32337ff",
+          "file": "flat-ring-navigation.spec.ts",
+          "line": 2,
+          "column": 39
+        }
+      ]
+    },
+    {
+      "title": "flat-ring-pilot.spec.ts",
+      "file": "flat-ring-pilot.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Flat Ring N128 auto: creator, upper annulus pixels, exact history and v43 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "891b53f3ece75aaa4dc6-c2865a9405ebe4773d6f",
+          "file": "flat-ring-pilot.spec.ts",
+          "line": 2,
+          "column": 39
+        },
+        {
+          "title": "Flat Ring N128 canvas: creator, upper annulus pixels, exact history and v43 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "891b53f3ece75aaa4dc6-57d330d9f0cbf93618c5",
+          "file": "flat-ring-pilot.spec.ts",
+          "line": 2,
+          "column": 39
+        }
+      ]
+    },
+    {
+      "title": "flat-ring-pixels.spec.ts",
+      "file": "flat-ring-pixels.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Flat Ring N128 Standard: independent physical intervals, matched canonical field and actual GPU/Canvas pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "6f9a4ea8804cbe257958-5e475d88e651e0949bc6",
+          "file": "flat-ring-pixels.spec.ts",
+          "line": 2,
+          "column": 171
+        },
+        {
+          "title": "Flat Ring N256 Standard: independent physical intervals, matched canonical field and actual GPU/Canvas pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "6f9a4ea8804cbe257958-65f8230b1fe2811f339c",
+          "file": "flat-ring-pixels.spec.ts",
+          "line": 2,
+          "column": 171
+        },
+        {
+          "title": "Flat Ring N256 Thin: independent physical intervals, matched canonical field and actual GPU/Canvas pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "6f9a4ea8804cbe257958-8b4bd4916022064a37d3",
+          "file": "flat-ring-pixels.spec.ts",
+          "line": 2,
+          "column": 171
+        },
+        {
+          "title": "Flat Ring N256 Thick: independent physical intervals, matched canonical field and actual GPU/Canvas pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "6f9a4ea8804cbe257958-93131239582eccada399",
+          "file": "flat-ring-pixels.spec.ts",
+          "line": 2,
+          "column": 171
+        },
+        {
+          "title": "Flat Ring N256 Wide: independent physical intervals, matched canonical field and actual GPU/Canvas pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "6f9a4ea8804cbe257958-f2687917cc4216cf3c67",
+          "file": "flat-ring-pixels.spec.ts",
+          "line": 2,
+          "column": 171
+        },
+        {
+          "title": "Flat Ring N256 Narrow: independent physical intervals, matched canonical field and actual GPU/Canvas pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "6f9a4ea8804cbe257958-705a406ec5d79eb63dd1",
+          "file": "flat-ring-pixels.spec.ts",
+          "line": 2,
+          "column": 171
+        },
+        {
+          "title": "Flat Ring N256 Small opening: independent physical intervals, matched canonical field and actual GPU/Canvas pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "6f9a4ea8804cbe257958-157bc18f94b35801041c",
+          "file": "flat-ring-pixels.spec.ts",
+          "line": 2,
+          "column": 171
+        },
+        {
+          "title": "Flat Ring N256 Large opening: independent physical intervals, matched canonical field and actual GPU/Canvas pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "6f9a4ea8804cbe257958-d1623ea08cdd553a56c3",
+          "file": "flat-ring-pixels.spec.ts",
+          "line": 2,
+          "column": 171
+        }
+      ]
+    },
+    {
+      "title": "flat-ring-recovery.spec.ts",
+      "file": "flat-ring-recovery.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Flat Ring N256 auto: active worker protocol fault preserves exact prefix history and a fresh stroke recovers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "940380ace04710057467-789afb439e42375f9d05",
+          "file": "flat-ring-recovery.spec.ts",
+          "line": 9,
+          "column": 39
+        },
+        {
+          "title": "Flat Ring N256 canvas: active worker protocol fault preserves exact prefix history and a fresh stroke recovers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "940380ace04710057467-04035018564c7c776252",
+          "file": "flat-ring-recovery.spec.ts",
+          "line": 9,
+          "column": 39
+        },
+        {
+          "title": "Flat Ring N256: graphics loss and restoration retain the current painted terrain epoch",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "940380ace04710057467-43d8d7bcb1ab5885e8fe",
+          "file": "flat-ring-recovery.spec.ts",
+          "line": 12,
+          "column": 1
+        },
+        {
+          "title": "Flat Ring v43 corrupt Open retains the active World and exact geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "940380ace04710057467-931c1d673855429249d4",
+          "file": "flat-ring-recovery.spec.ts",
+          "line": 13,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "flat-ring-touch.spec.ts",
+      "file": "flat-ring-touch.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "flat-ring auto: native emulated touch/pen drawing and two-finger navigation preserve exact history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "50fe52bbaa448fecde8c-9965a0940ce60f63d544",
+          "file": "flat-ring-touch.spec.ts",
+          "line": 2,
+          "column": 71
+        },
+        {
+          "title": "flat-ring canvas: native emulated touch/pen drawing and two-finger navigation preserve exact history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "50fe52bbaa448fecde8c-5b6d079cbebc3e88350e",
+          "file": "flat-ring-touch.spec.ts",
+          "line": 2,
+          "column": 71
+        }
+      ]
+    },
+    {
+      "title": "flat-ring-workflow.spec.ts",
+      "file": "flat-ring-workflow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Flat Ring N128 auto: nine physical regions, four tools, held map, exact history and v43 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1ccd92b920c8ee54e306-d488a5012020262ca00b",
+          "file": "flat-ring-workflow.spec.ts",
+          "line": 4,
+          "column": 79
+        },
+        {
+          "title": "Flat Ring N128 canvas: nine physical regions, four tools, held map, exact history and v43 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1ccd92b920c8ee54e306-5c185f75717448f544ae",
+          "file": "flat-ring-workflow.spec.ts",
+          "line": 4,
+          "column": 79
+        },
+        {
+          "title": "Flat Ring N256 auto: nine physical regions, four tools, held map, exact history and v43 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1ccd92b920c8ee54e306-78b9b367265f59c44530",
+          "file": "flat-ring-workflow.spec.ts",
+          "line": 4,
+          "column": 79
+        },
+        {
+          "title": "Flat Ring N256 canvas: nine physical regions, four tools, held map, exact history and v43 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1ccd92b920c8ee54e306-56f8f43ce9b14bdae963",
+          "file": "flat-ring-workflow.spec.ts",
+          "line": 4,
+          "column": 79
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "message": "\u001b[31mTesting stopped early after 1 maximum allowed failures.\u001b[39m"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-10-25T04:26:42.632Z",
+    "duration": 467163.643,
+    "expected": 13,
+    "skipped": 32,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

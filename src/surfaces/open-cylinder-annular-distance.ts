@@ -10,7 +10,7 @@ function root(value:number){const r=Math.sqrt(value);if(!Number.isFinite(r)||r<0
 function tangent(radius:number,k:number){return root(Math.max(0,(radius-k)*(radius+k)));}
 function beta(radius:number,k:number){if(radius===k)return{value:0,lower:0,upper:0};const value=pathAngle(k,tangent(radius,k));return{value,lower:Math.max(0,value-ANGLE_PAD),upper:Math.min(Math.PI/2,value+ANGLE_PAD)};}
 function chord(a:number,b:number,angle:number){const[s]=pathTrig(angle/2);return pathNorm(a-b,2*root(a*b)*s);}
-export function createAnnularDistance(innerRadius:number,outerRadius:number,length:number){
+export function createAnnularDistance(innerRadius:number,outerRadius:number,length:number,cacheEndpoints=false){
  if(![innerRadius,outerRadius,length].every(v=>Number.isFinite(v)&&v>=1&&v<=1e9)||innerRadius>=outerRadius)throw RangeError('Supported positive annular dimensions required.');
  const guard=32768*EPS*Math.max(innerRadius,outerRadius,length),ri=innerRadius;
  const validate=(radius:number,angle:number)=>{if(!Number.isFinite(radius)||radius<ri||radius>outerRadius||!Number.isFinite(angle)||angle<0||angle>Math.PI)throw RangeError('Annular query is outside its physical domain.');};
@@ -19,9 +19,14 @@ export function createAnnularDistance(innerRadius:number,outerRadius:number,leng
   const lower=Math.max(0,bounds.lower),upper=bounds.upper;if(!Number.isFinite(upper)||upper<lower||upper-lower>tolerance)throw new CylinderDistanceUnsupportedError('precision',`Open-cylinder feasible upper and independent global lower do not certify the requested width (${upper-lower} > ${tolerance}).`);
   return Object.freeze({...bounds,lower,upper,value:upper,guard});
  };
+ // Optional geometry-only memoization for qualified wide Flat Ring brushes.
+ // Exact radius keys, unchanged certified arithmetic, at most 256 entries. No
+ // coordinates are rounded; no heights or influence results enter this cache.
+ const endpointAngles=cacheEndpoints?new Map<number,ReturnType<typeof beta>>():undefined;
+ const annularBeta=(radius:number)=>{if(!endpointAngles)return beta(radius,ri);const found=endpointAngles.get(radius);if(found)return found;const value=beta(radius,ri);if(endpointAngles.size>=256)endpointAngles.clear();endpointAngles.set(radius,value);return value;};
  const annulus=(a:number,b:number,angle:number)=>{
   validate(a,angle);validate(b,angle);if(a===b&&angle===0)return{lower:0,upper:0,iterations:0,route:'annular-chord'};
-  const ba=beta(a,ri),bb=beta(b,ri),low=ba.lower+bb.lower,high=ba.upper+bb.upper,direct=chord(a,b,angle);
+  const ba=annularBeta(a),bb=annularBeta(b),low=ba.lower+bb.lower,high=ba.upper+bb.upper,direct=chord(a,b,angle);
   // A chord is feasible iff its angular separation is no greater than the sum
   // of the endpoint tangent angles. The lower-angle construction is always
   // inside the actual annulus, including uncertain tangent transitions.

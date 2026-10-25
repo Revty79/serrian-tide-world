@@ -1,0 +1,58 @@
+
+Running 46 tests using 1 worker
+
+(node:8224) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [installed-chrome] › tests\flat-ring-configuration.spec.ts:3:1 › Flat Ring creator: bounded dimensions, proportional diameter, all presets, Small opening detail and immutable saved structure (17.4s)
+  ok  2 [installed-chrome] › tests\flat-ring-configuration.spec.ts:12:123 › Flat Ring Wide N256 auto: four actual regions, four tools, history, maps and reopened editing (17.1s)
+  ok  3 [installed-chrome] › tests\flat-ring-configuration.spec.ts:12:123 › Flat Ring Wide N256 canvas: four actual regions, four tools, history, maps and reopened editing (49.8s)
+  ok  4 [installed-chrome] › tests\flat-ring-configuration.spec.ts:12:123 › Flat Ring Narrow N256 auto: four actual regions, four tools, history, maps and reopened editing (16.5s)
+  ok  5 [installed-chrome] › tests\flat-ring-configuration.spec.ts:12:123 › Flat Ring Narrow N256 canvas: four actual regions, four tools, history, maps and reopened editing (1.0m)
+  ok  6 [installed-chrome] › tests\flat-ring-configuration.spec.ts:12:123 › Flat Ring Small opening N256 auto: four actual regions, four tools, history, maps and reopened editing (16.8s)
+  ok  7 [installed-chrome] › tests\flat-ring-configuration.spec.ts:12:123 › Flat Ring Small opening N256 canvas: four actual regions, four tools, history, maps and reopened editing (46.9s)
+  ok  8 [installed-chrome] › tests\flat-ring-configuration.spec.ts:12:123 › Flat Ring Large opening N256 auto: four actual regions, four tools, history, maps and reopened editing (17.2s)
+  ok  9 [installed-chrome] › tests\flat-ring-configuration.spec.ts:12:123 › Flat Ring Large opening N256 canvas: four actual regions, four tools, history, maps and reopened editing (58.2s)
+  ok 10 [installed-chrome] › tests\flat-ring-configuration.spec.ts:12:123 › Flat Ring Thin N256 auto: four actual regions, four tools, history, maps and reopened editing (16.7s)
+  ok 11 [installed-chrome] › tests\flat-ring-configuration.spec.ts:12:123 › Flat Ring Thin N256 canvas: four actual regions, four tools, history, maps and reopened editing (52.0s)
+  ok 12 [installed-chrome] › tests\flat-ring-configuration.spec.ts:12:123 › Flat Ring Thick N256 auto: four actual regions, four tools, history, maps and reopened editing (18.1s)
+  ok 13 [installed-chrome] › tests\flat-ring-configuration.spec.ts:12:123 › Flat Ring Thick N256 canvas: four actual regions, four tools, history, maps and reopened editing (1.1m)
+  x  14 [installed-chrome] › tests\flat-ring-hole.spec.ts:3:39 › Flat Ring Small opening N256 auto: hole isolation, real around-hole and two-rim influence, maximum brush pixels (13.9s)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) [installed-chrome] › tests\flat-ring-hole.spec.ts:3:39 › Flat Ring Small opening N256 auto: hole isolation, real around-hole and two-rim influence, maximum brush pixels
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 125
+    Received:   201.90000009536743
+
+       7 |  await toolsPanel(page,true);await page.getByLabel('Flat Ring brush radius (m)',{exact:true}).fill('150000');await toolsPanel(page,false);const p=await ringMapPoint(page,0,.07),before=await sample();await page.mouse.click(box.x+p.x,box.y+p.y);await ringIdle(page);expect((await sample()).opposite).toBe(before.opposite);await page.getByRole('button',{name:'Undo',exact:true}).click();await ringIdle(page);expect(await ringHash(page)).toBe(blank);
+       8 |  await toolsPanel(page,true);await page.getByLabel('Flat Ring brush radius (m)',{exact:true}).fill('200000');await toolsPanel(page,false);await page.mouse.click(box.x+p.x,box.y+p.y);await ringIdle(page);const around=await sample(),after=await ringHash(page);expect(around.opposite).not.toBe(before.opposite);expect(around.lower).not.toBe(before.lower);await page.getByRole('button',{name:'Undo',exact:true}).click();await ringIdle(page);expect(await ringHash(page)).toBe(blank);await page.getByRole('button',{name:'Redo',exact:true}).click();await ringIdle(page);expect(await ringHash(page)).toBe(after);
+    >  9 |  const points=[];for(let k=0;k<=192;k++)points.push(await ringMapPoint(page,-1.2+2.4*k/192,.11));await page.mouse.move(box.x+points[0]!.x,box.y+points[0]!.y);await startPaintingPixels(page);await page.mouse.down();for(const p of points.slice(1)){await page.mouse.move(box.x+p.x,box.y+p.y);await page.waitForTimeout(16);}await page.mouse.up();await ringIdle(page);const timing=await finishPaintingPixels(page),state=await ringSnapshot(page),last=await ringHash(page);mkdirSync('.local/flat-ring-hole',{recursive:true});writeFileSync(`.local/flat-ring-hole/${backend}.json`,JSON.stringify({before,around,timing,state},null,2));expect(state.statistics.failures,state.message).toBe(0);expect(timing.summary.p95InputToPixels).toBeLessThan(125);expect(timing.latencies[0]!.inputToPixels).toBeLessThan(1000);await page.getByRole('button',{name:'Undo',exact:true}).click();await ringIdle(page);expect(await ringHash(page)).toBe(after);await page.getByRole('button',{name:'Redo',exact:true}).click();await ringIdle(page);expect(await ringHash(page)).toBe(last);await page.screenshot({path:`.local/flat-ring-hole/${backend}.png`});
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^
+      10 | });
+      11 |
+        at D:\serrian-tide-world\.local\flat-ring-work\tests\flat-ring-hole.spec.ts:9:722
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\flat-ring-hole-Flat-Ring-S-bdf17-luence-maximum-brush-pixels-installed-chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\flat-ring-hole-Flat-Ring-S-bdf17-luence-maximum-brush-pixels-installed-chrome\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\flat-ring-hole-Flat-Ring-S-bdf17-luence-maximum-brush-pixels-installed-chrome\trace.zip
+    Usage:
+
+        npx playwright show-trace C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\flat-ring-hole-Flat-Ring-S-bdf17-luence-maximum-brush-pixels-installed-chrome\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Slow test file: [installed-chrome] › tests\flat-ring-configuration.spec.ts (7.5m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  1 failed
+    [installed-chrome] › tests\flat-ring-hole.spec.ts:3:39 › Flat Ring Small opening N256 auto: hole isolation, real around-hole and two-rim influence, maximum brush pixels
+  32 did not run
+  13 passed (7.8m)
+  1 error was not a part of any test, see above for details

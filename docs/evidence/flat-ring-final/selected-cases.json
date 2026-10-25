@@ -1,0 +1,917 @@
+{
+  "flatRingCases": 46,
+  "legacyCases": 19,
+  "retryPolicy": 0,
+  "phases": [
+    {
+      "name": "final-render",
+      "report": "flat-ring-c-focus-render-report.json",
+      "count": 13,
+      "scope": "Final geometry coverage and 125% focus; eight pixel profiles and five incremental cases.",
+      "cases": [
+        {
+          "file": "flat-ring-incremental.spec.ts",
+          "title": "Flat Ring N128 Standard: incremental Canvas and GPU equal fresh complete reconstruction",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 47610,
+              "startTime": "2026-10-25T05:43:32.913Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-incremental.spec.ts",
+          "title": "Flat Ring N256 Thin: incremental Canvas and GPU equal fresh complete reconstruction",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 6517,
+              "startTime": "2026-10-25T05:44:20.978Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-incremental.spec.ts",
+          "title": "Flat Ring N256 Thick: incremental Canvas and GPU equal fresh complete reconstruction",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7183,
+              "startTime": "2026-10-25T05:44:27.509Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-incremental.spec.ts",
+          "title": "Flat Ring N256 Small opening: incremental Canvas and GPU equal fresh complete reconstruction",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7199,
+              "startTime": "2026-10-25T05:44:34.705Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-incremental.spec.ts",
+          "title": "Flat Ring N256 Large opening: incremental Canvas and GPU equal fresh complete reconstruction",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 8232,
+              "startTime": "2026-10-25T05:44:41.918Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-pixels.spec.ts",
+          "title": "Flat Ring N128 Standard: independent physical intervals, matched canonical field and actual GPU/Canvas pixels",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 23083,
+              "startTime": "2026-10-25T05:44:50.193Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-pixels.spec.ts",
+          "title": "Flat Ring N256 Standard: independent physical intervals, matched canonical field and actual GPU/Canvas pixels",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 24188,
+              "startTime": "2026-10-25T05:45:13.285Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-pixels.spec.ts",
+          "title": "Flat Ring N256 Thin: independent physical intervals, matched canonical field and actual GPU/Canvas pixels",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 19782,
+              "startTime": "2026-10-25T05:45:37.484Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-pixels.spec.ts",
+          "title": "Flat Ring N256 Thick: independent physical intervals, matched canonical field and actual GPU/Canvas pixels",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 22533,
+              "startTime": "2026-10-25T05:45:57.278Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-pixels.spec.ts",
+          "title": "Flat Ring N256 Wide: independent physical intervals, matched canonical field and actual GPU/Canvas pixels",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 20801,
+              "startTime": "2026-10-25T05:46:19.831Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-pixels.spec.ts",
+          "title": "Flat Ring N256 Narrow: independent physical intervals, matched canonical field and actual GPU/Canvas pixels",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 21279,
+              "startTime": "2026-10-25T05:46:40.647Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-pixels.spec.ts",
+          "title": "Flat Ring N256 Small opening: independent physical intervals, matched canonical field and actual GPU/Canvas pixels",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 20107,
+              "startTime": "2026-10-25T05:47:01.936Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-pixels.spec.ts",
+          "title": "Flat Ring N256 Large opening: independent physical intervals, matched canonical field and actual GPU/Canvas pixels",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 19502,
+              "startTime": "2026-10-25T05:47:22.053Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "final-input",
+      "report": "flat-ring-c-focus-input-report.json",
+      "count": 5,
+      "scope": "Final 125% focus: Thin/Thick Canvas joins, N128 GPU and both N256 workflows.",
+      "cases": [
+        {
+          "file": "flat-ring-joins.spec.ts",
+          "title": "Flat Ring Thin N256 canvas: continuous physical strokes cross all four genuine rims",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 69895,
+              "startTime": "2026-10-25T05:47:42.747Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-joins.spec.ts",
+          "title": "Flat Ring Thick N256 canvas: continuous physical strokes cross all four genuine rims",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 56036,
+              "startTime": "2026-10-25T05:48:53.048Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-workflow.spec.ts",
+          "title": "Flat Ring N128 auto: nine physical regions, four tools, held map, exact history and v43 reopen",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 148954,
+              "startTime": "2026-10-25T05:49:49.132Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-workflow.spec.ts",
+          "title": "Flat Ring N256 auto: nine physical regions, four tools, held map, exact history and v43 reopen",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 85138,
+              "startTime": "2026-10-25T05:52:18.101Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-workflow.spec.ts",
+          "title": "Flat Ring N256 canvas: nine physical regions, four tools, held map, exact history and v43 reopen",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 151721,
+              "startTime": "2026-10-25T05:53:43.261Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "final-standard-canvas",
+      "report": "flat-ring-c-focus-report.json",
+      "count": 1,
+      "scope": "Final N128 Canvas workflow at 125% wall/inner focus.",
+      "cases": [
+        {
+          "file": "flat-ring-workflow.spec.ts",
+          "title": "Flat Ring N128 canvas: nine physical regions, four tools, held map, exact history and v43 reopen",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 201508,
+              "startTime": "2026-10-25T05:37:39.231Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "maximum-brush",
+      "report": "flat-ring-c-hole-report.json",
+      "count": 2,
+      "scope": "Final distance core; map workflow unaffected by subsequent physical-only crease/focus changes.",
+      "cases": [
+        {
+          "file": "flat-ring-hole.spec.ts",
+          "title": "Flat Ring Small opening N256 auto: hole isolation, real around-hole and two-rim influence, maximum brush pixels",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 39416,
+              "startTime": "2026-10-25T04:49:37.434Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-hole.spec.ts",
+          "title": "Flat Ring Small opening N256 canvas: hole isolation, real around-hole and two-rim influence, maximum brush pixels",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 26483,
+              "startTime": "2026-10-25T04:50:17.249Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "retained-configurations",
+      "report": "before-maximum-optimization-flat-ring-c-browser-report.json",
+      "count": 12,
+      "scope": "Nonstandard creator/editor/history/reopen workflows before final geometry-only caches; 108084 exact distance-enclosure comparisons and final all-profile pixel sweeps qualify the later changes.",
+      "cases": [
+        {
+          "file": "flat-ring-configuration.spec.ts",
+          "title": "Flat Ring Wide N256 auto: four actual regions, four tools, history, maps and reopened editing",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 17131,
+              "startTime": "2026-10-25T04:27:01.217Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-configuration.spec.ts",
+          "title": "Flat Ring Wide N256 canvas: four actual regions, four tools, history, maps and reopened editing",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 49849,
+              "startTime": "2026-10-25T04:27:18.362Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-configuration.spec.ts",
+          "title": "Flat Ring Narrow N256 auto: four actual regions, four tools, history, maps and reopened editing",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 16487,
+              "startTime": "2026-10-25T04:28:08.224Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-configuration.spec.ts",
+          "title": "Flat Ring Narrow N256 canvas: four actual regions, four tools, history, maps and reopened editing",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 60032,
+              "startTime": "2026-10-25T04:28:24.722Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-configuration.spec.ts",
+          "title": "Flat Ring Small opening N256 auto: four actual regions, four tools, history, maps and reopened editing",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 16785,
+              "startTime": "2026-10-25T04:29:24.767Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-configuration.spec.ts",
+          "title": "Flat Ring Small opening N256 canvas: four actual regions, four tools, history, maps and reopened editing",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 46943,
+              "startTime": "2026-10-25T04:29:41.562Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-configuration.spec.ts",
+          "title": "Flat Ring Large opening N256 auto: four actual regions, four tools, history, maps and reopened editing",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 17235,
+              "startTime": "2026-10-25T04:30:28.517Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-configuration.spec.ts",
+          "title": "Flat Ring Large opening N256 canvas: four actual regions, four tools, history, maps and reopened editing",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 58180,
+              "startTime": "2026-10-25T04:30:45.765Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-configuration.spec.ts",
+          "title": "Flat Ring Thin N256 auto: four actual regions, four tools, history, maps and reopened editing",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 16655,
+              "startTime": "2026-10-25T04:31:43.958Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-configuration.spec.ts",
+          "title": "Flat Ring Thin N256 canvas: four actual regions, four tools, history, maps and reopened editing",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 52024,
+              "startTime": "2026-10-25T04:32:00.623Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-configuration.spec.ts",
+          "title": "Flat Ring Thick N256 auto: four actual regions, four tools, history, maps and reopened editing",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 18083,
+              "startTime": "2026-10-25T04:32:52.659Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-configuration.spec.ts",
+          "title": "Flat Ring Thick N256 canvas: four actual regions, four tools, history, maps and reopened editing",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 64112,
+              "startTime": "2026-10-25T04:33:10.754Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "final-creator",
+      "report": "flat-ring-c-creator-final-report.json",
+      "count": 1,
+      "scope": "Creator rerun after final ASCII range/detail caption cleanup; no other application change after final focus checks.",
+      "cases": [
+        {
+          "file": "flat-ring-configuration.spec.ts",
+          "title": "Flat Ring creator: bounded dimensions, proportional diameter, all presets, Small opening detail and immutable saved structure",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 25505,
+              "startTime": "2026-10-25T06:10:24.482Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "retained-recovery-navigation",
+      "report": "flat-ring-c-verified-browser-report.json",
+      "count": 12,
+      "scope": "Final rendering before focus adjustment. Recovery/pilot/touch use maps; navigation overview unchanged. Two GPU join cases qualify earlier 150% focus. New final 125% workflows and Canvas joins are separately selected.",
+      "cases": [
+        {
+          "file": "flat-ring-joins.spec.ts",
+          "title": "Flat Ring Thin N256 auto: continuous physical strokes cross all four genuine rims",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 27964,
+              "startTime": "2026-10-25T05:24:33.629Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-joins.spec.ts",
+          "title": "Flat Ring Thick N256 auto: continuous physical strokes cross all four genuine rims",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 28409,
+              "startTime": "2026-10-25T05:25:45.585Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-navigation.spec.ts",
+          "title": "Flat Ring N256 auto: ordinary rotation publishes actual pixels and preserves geography",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 47955,
+              "startTime": "2026-10-25T05:27:00.009Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-navigation.spec.ts",
+          "title": "Flat Ring N256 canvas: ordinary rotation publishes actual pixels and preserves geography",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 26442,
+              "startTime": "2026-10-25T05:27:47.980Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-pilot.spec.ts",
+          "title": "Flat Ring N128 auto: creator, upper annulus pixels, exact history and v43 reopen",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 11616,
+              "startTime": "2026-10-25T05:28:14.473Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-pilot.spec.ts",
+          "title": "Flat Ring N128 canvas: creator, upper annulus pixels, exact history and v43 reopen",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 13750,
+              "startTime": "2026-10-25T05:28:26.107Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-recovery.spec.ts",
+          "title": "Flat Ring N256 auto: active worker protocol fault preserves exact prefix history and a fresh stroke recovers",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3042,
+              "startTime": "2026-10-25T05:31:24.584Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-recovery.spec.ts",
+          "title": "Flat Ring N256 canvas: active worker protocol fault preserves exact prefix history and a fresh stroke recovers",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4113,
+              "startTime": "2026-10-25T05:31:27.635Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-recovery.spec.ts",
+          "title": "Flat Ring N256: graphics loss and restoration retain the current painted terrain epoch",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5984,
+              "startTime": "2026-10-25T05:31:31.758Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-recovery.spec.ts",
+          "title": "Flat Ring v43 corrupt Open retains the active World and exact geography",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1929,
+              "startTime": "2026-10-25T05:31:37.753Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-touch.spec.ts",
+          "title": "flat-ring auto: native emulated touch/pen drawing and two-finger navigation preserve exact history",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3066,
+              "startTime": "2026-10-25T05:31:39.699Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-ring-touch.spec.ts",
+          "title": "flat-ring canvas: native emulated touch/pen drawing and two-finger navigation preserve exact history",
+          "project": "installed-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5373,
+              "startTime": "2026-10-25T05:31:42.775Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "legacy-regressions",
+      "report": "flat-ring-c-regression-report.json",
+      "count": 19,
+      "scope": "Final geometry; before caption-only creator cleanup. No legacy runtime source changed subsequently.",
+      "cases": [
+        {
+          "file": "atlas-render-parity.spec.ts",
+          "title": "shared rendering cylinder N128 canvas: equal heights, pose, zoom and backing",
+          "project": "flat-ring-regression-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2456,
+              "startTime": "2026-10-25T06:06:02.791Z"
+            }
+          ]
+        },
+        {
+          "file": "atlas-render-parity.spec.ts",
+          "title": "shared rendering cylinder N128 webgl: equal heights, pose, zoom and backing",
+          "project": "flat-ring-regression-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 18491,
+              "startTime": "2026-10-25T06:06:05.811Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-disc-pilot.spec.ts",
+          "title": "Flat Disc N128 auto: creator, upper center pixels, exact history and v42 reopen",
+          "project": "flat-ring-regression-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7140,
+              "startTime": "2026-10-25T06:06:24.339Z"
+            }
+          ]
+        },
+        {
+          "file": "flat-disc-pilot.spec.ts",
+          "title": "Flat Disc N128 canvas: creator, upper center pixels, exact history and v42 reopen",
+          "project": "flat-ring-regression-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 10907,
+              "startTime": "2026-10-25T06:06:31.491Z"
+            }
+          ]
+        },
+        {
+          "file": "hollow-cylinder-workflow.spec.ts",
+          "title": "capped hollow cylinder 128 auto: independent terrain, three retained views, caps, exact history and v11 reopen",
+          "project": "flat-ring-regression-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 8434,
+              "startTime": "2026-10-25T06:06:42.432Z"
+            }
+          ]
+        },
+        {
+          "file": "hollow-cylinder-workflow.spec.ts",
+          "title": "capped hollow cylinder 128 canvas: independent terrain, three retained views, caps, exact history and v11 reopen",
+          "project": "flat-ring-regression-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 9902,
+              "startTime": "2026-10-25T06:06:50.877Z"
+            }
+          ]
+        },
+        {
+          "file": "open-cylinder-render.spec.ts",
+          "title": "Open rendering N128 outside: actual annular pixels match accepted terrain presentation",
+          "project": "flat-ring-regression-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 30066,
+              "startTime": "2026-10-25T06:07:00.799Z"
+            }
+          ]
+        },
+        {
+          "file": "open-cylinder-render.spec.ts",
+          "title": "Open rendering N128 inside: actual annular pixels match accepted terrain presentation",
+          "project": "flat-ring-regression-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1220,
+              "startTime": "2026-10-25T06:07:30.878Z"
+            }
+          ]
+        },
+        {
+          "file": "open-cylinder-render.spec.ts",
+          "title": "Open rendering N128 map: actual annular pixels match accepted terrain presentation",
+          "project": "flat-ring-regression-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1172,
+              "startTime": "2026-10-25T06:07:32.110Z"
+            }
+          ]
+        },
+        {
+          "file": "open-cylinder-render.spec.ts",
+          "title": "Open rendering N128 axial: actual annular pixels match accepted terrain presentation",
+          "project": "flat-ring-regression-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1230,
+              "startTime": "2026-10-25T06:07:33.294Z"
+            }
+          ]
+        },
+        {
+          "file": "open-cylinder-workflow.spec.ts",
+          "title": "Open N128 canvas: normal selector, four tools, independent walls, three views, exact history and v14 reopen",
+          "project": "flat-ring-regression-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 10475,
+              "startTime": "2026-10-25T06:07:34.563Z"
+            }
+          ]
+        },
+        {
+          "file": "open-cylinder-workflow.spec.ts",
+          "title": "Open N128 auto: normal selector, four tools, independent walls, three views, exact history and v14 reopen",
+          "project": "flat-ring-regression-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5722,
+              "startTime": "2026-10-25T06:07:45.055Z"
+            }
+          ]
+        },
+        {
+          "file": "ringworld-pilot.spec.ts",
+          "title": "Ringworld pilot: normal creation, focused bands and exact v35 Save/Open",
+          "project": "flat-ring-regression-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3642,
+              "startTime": "2026-10-25T06:07:50.805Z"
+            }
+          ]
+        },
+        {
+          "file": "ringworld-pixels.spec.ts",
+          "title": "Ringworld N128 oblique: actual matched Canvas/WebGL2 and independent annular rays",
+          "project": "flat-ring-regression-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2456,
+              "startTime": "2026-10-25T06:07:54.467Z"
+            }
+          ]
+        },
+        {
+          "file": "ringworld-pixels.spec.ts",
+          "title": "Ringworld N128 inner: actual matched Canvas/WebGL2 and independent annular rays",
+          "project": "flat-ring-regression-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2441,
+              "startTime": "2026-10-25T06:07:56.932Z"
+            }
+          ]
+        },
+        {
+          "file": "torus-input.spec.ts",
+          "title": "N256 torus auto: same 150 km brush, captured latency, complete input and exact gesture history",
+          "project": "flat-ring-regression-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 11969,
+              "startTime": "2026-10-25T06:07:59.403Z"
+            }
+          ]
+        },
+        {
+          "file": "torus-input.spec.ts",
+          "title": "N256 torus canvas: same 150 km brush, captured latency, complete input and exact gesture history",
+          "project": "flat-ring-regression-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 12261,
+              "startTime": "2026-10-25T06:08:11.381Z"
+            }
+          ]
+        },
+        {
+          "file": "torus-input.spec.ts",
+          "title": "N256 cylinder auto: same 150 km brush, captured latency, complete input and exact gesture history",
+          "project": "flat-ring-regression-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7770,
+              "startTime": "2026-10-25T06:08:23.652Z"
+            }
+          ]
+        },
+        {
+          "file": "torus-input.spec.ts",
+          "title": "N256 cylinder canvas: same 150 km brush, captured latency, complete input and exact gesture history",
+          "project": "flat-ring-regression-chrome",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 8872,
+              "startTime": "2026-10-25T06:08:31.433Z"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "excludedHistory": "Mixed reports retain original failures/skips for audit. Only named selected cases count. Earlier failed short maximum-brush probes, grazing-crease pixels and 150% Standard Canvas latency are superseded; no failed result is counted as passing. No claim of a monolithic full-suite run or physical-device/owner acceptance."
+}

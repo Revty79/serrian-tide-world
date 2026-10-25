@@ -23,9 +23,9 @@ precision highp float;precision highp int;
 uniform sampler2D sideElevations,startElevations,endElevations,oppositeSide,oppositeStart,oppositeEnd;
 uniform vec3 cameraRight,cameraUp,cameraForward,inspectionEye,eyePosition;
 uniform vec2 viewport,translation,backingSize;
-uniform float scale,h,phase,outerRadiusMeters,innerRadiusMeters,lengthMeters,seaLevel,heightScale;
+uniform float depthExtent,scale,h,phase,outerRadiusMeters,innerRadiusMeters,lengthMeters,seaLevel,heightScale;
 uniform float radiusMeters,oppositeRadius,oppositeLength,innerRatio,outerHalf,innerHalf,ownRatio;
-uniform int mapProjection,mode,relief,invertedProjection,selectedInside,excavationEnabled,cutterCount,inspection;
+uniform int annularCoverage,mapProjection,mode,relief,invertedProjection,selectedInside,excavationEnabled,cutterCount,inspection;
 uniform vec4 primitiveA[48],primitiveB[48];
 flat in int region;out vec4 outColor;
 const float PI=3.141592653589793;
@@ -44,20 +44,21 @@ vec3 wallField(bool outer,float theta,float z){
  if(outer)return selectedInside==1?field(oppositeSide,theta,1.,z/r,true,bankH,r,lengthMeters):field(sideElevations,theta,1.,z/r,true,bankH,r,lengthMeters);
  return selectedInside==1?field(sideElevations,theta,1.,z/r,true,bankH,r,lengthMeters):field(oppositeSide,theta,1.,z/r,true,bankH,r,lengthMeters);
 }
-vec3 surfaceField(vec3 p){
+vec3 fieldOn(int face,vec3 p){
  float theta,radial,z;
  if(mode==1&&mapProjection>0){
   bool annulus=mapProjection<=2;radial=annulus?length(p.xy)*outerRadiusMeters:mapProjection==3?innerRadiusMeters:outerRadiusMeters;
   theta=phase+(annulus?atan(mapProjection==1?p.y:-p.y,p.x):p.x*outerRadiusMeters/radial);z=annulus?(mapProjection==1?lengthMeters*.5:-lengthMeters*.5):p.y*outerRadiusMeters;
  }else if(mode==1){float T=outerRadiusMeters-innerRadiusMeters,S=2.*(lengthMeters+T),m=S*.5+p.y*outerRadiusMeters;theta=phase+p.x;
-  if(region==0){radial=outerRadiusMeters;z=m-lengthMeters*.5;}
-  else if(region==3){radial=innerRadiusMeters;z=lengthMeters-(m-lengthMeters-T)-lengthMeters*.5;}
-  else if(region==2){radial=outerRadiusMeters-(m-lengthMeters);z=lengthMeters*.5;}
+  if(face==0){radial=outerRadiusMeters;z=m-lengthMeters*.5;}
+  else if(face==3){radial=innerRadiusMeters;z=lengthMeters-(m-lengthMeters-T)-lengthMeters*.5;}
+  else if(face==2){radial=outerRadiusMeters-(m-lengthMeters);z=lengthMeters*.5;}
   else{radial=innerRadiusMeters+(m-2.*lengthMeters-T);z=-lengthMeters*.5;}
  }else{float viewRadius=outerRadiusMeters*ownRatio;theta=atan(p.y,p.x);radial=length(p.xy)*viewRadius;if(invertedProjection==1)radial=innerRadiusMeters*innerRadiusMeters/max(radial,1.e-20);z=p.z*viewRadius;}
- if(region==0||region==3)return wallField(region==0,theta,z);
- float bankH=lengthMeters/(2.*outerRadiusMeters);return region==1?field(startElevations,theta,radial/outerRadiusMeters,z/outerRadiusMeters,false,bankH,outerRadiusMeters,lengthMeters):field(endElevations,theta,radial/outerRadiusMeters,z/outerRadiusMeters,false,bankH,outerRadiusMeters,lengthMeters);
+ if(face==0||face==3)return wallField(face==0,theta,z);
+ float bankH=lengthMeters/(2.*outerRadiusMeters);return face==1?field(startElevations,theta,radial/outerRadiusMeters,z/outerRadiusMeters,false,bankH,outerRadiusMeters,lengthMeters):field(endElevations,theta,radial/outerRadiusMeters,z/outerRadiusMeters,false,bankH,outerRadiusMeters,lengthMeters);
 }
+vec3 surfaceField(vec3 p){return fieldOn(region,p);}
 float displayRadius(){float r=region==0?1.:innerRatio;if(invertedProjection==1)r=innerRatio*innerRatio/r;return r/ownRatio;}
 float radialNormalSign(){float sign=region==0?1.:-1.;return invertedProjection==1?-sign:sign;}
 vec3 referenceAt(vec2 fragment){
@@ -67,10 +68,50 @@ vec3 referenceAt(vec2 fragment){
  float radius=displayRadius(),a=dot(cameraForward.xy,cameraForward.xy),b=dot(origin.xy,cameraForward.xy),c=dot(origin.xy,origin.xy)-radius*radius;return origin+cameraForward*((-b+radialNormalSign()*sqrt(max(0.,b*b-a*c)))/max(a,1.e-20));
 }
 vec3 displayNormal(vec3 p){return region==0||region==3?vec3(p.xy/max(length(p.xy),1.e-20)*radialNormalSign(),0.):vec3(0,0,region==1?-1.:1.);}
+// Geometry-only quadrature at a real annular crease. Hardware mesh coverage
+// stays in place. Four fully covered rays can meet different physical charts;
+// sample the same accepted field on their actual chart and material normal.
+// A single-patch pixel retains the accepted ordinary center/coast policy.
+bool flatRingBoundaryHit(vec2 fragment,out vec3 point,out int face){
+ vec2 screen=(fragment/backingSize*viewport-.5*viewport)/scale;
+ vec3 o=cameraRight*(screen.x+translation.x)+cameraUp*(screen.y+translation.y),d=cameraForward;
+ float closest=-1.e20;face=-1;point=vec3(0.);
+ float A=dot(d.xy,d.xy),B=dot(o.xy,d.xy);
+ if(A>1.e-20)for(int wall=0;wall<2;wall++){
+  float r=wall==0?1.:innerRatio,C=dot(o.xy,o.xy)-r*r,D=B*B-A*C;
+  if(D>=0.)for(int side=0;side<2;side++){
+   float t=(-B+(side==0?-1.:1.)*sqrt(D))/A;vec3 p=o+t*d;
+   if(t>closest&&abs(p.z)<=h){closest=t;point=p;face=wall==0?0:3;}
+  }
+ }
+ if(abs(d.z)>1.e-12)for(int cap=0;cap<2;cap++){
+  float z=cap==0?-h:h,t=(z-o.z)/d.z;vec3 p=o+t*d;float r=length(p.xy);
+  if(t>closest&&r>=innerRatio&&r<=1.){closest=t;point=p;face=cap==0?1:2;}
+ }
+ return face>=0;
+}
+bool flatRingCreaseColor(vec2 fragment,vec3 center,out vec3 rgb){
+ if(annularCoverage==0||mode!=0||invertedProjection!=0)return false;
+ vec2 pixel=viewport/backingSize/scale;float facing=abs(dot(displayNormal(center),cameraForward));
+ if(region==0||region==3){if(h-abs(center.z)>4.*(pixel.x+pixel.y)/max(.05,facing))return false;}
+ else{
+  if(abs(cameraForward.z)<1.e-8)return false;
+  vec3 dx=cameraRight-cameraForward*cameraRight.z/cameraForward.z,dy=cameraUp-cameraForward*cameraUp.z/cameraForward.z;
+  float pad=2.*(length(dx.xy)*pixel.x+length(dy.xy)*pixel.y),r=length(center.xy);
+  if(min(abs(r-innerRatio),abs(r-1.))>pad)return false;
+ }
+ vec3 sum=vec3(0.);bool mixed=false;
+ for(int x=0;x<2;x++)for(int y=0;y<2;y++){
+  vec3 p;int face;if(!flatRingBoundaryHit(fragment+vec2(x==0?-.25:.25,y==0?-.25:.25),p,face))return false;
+  mixed=mixed||face!=region;vec3 normal=face==0||face==3?vec3(normalize(p.xy)*(face==0?1.:-1.),0.):vec3(0.,0.,face==1?-1.:1.);
+  sum+=colorAt(fieldOn(face,p))*(.74+.26*max(0.,dot(normal,cameraForward)));
+ }
+ if(!mixed)return false;rgb=sum*.25;return true;
+}
 ${cut?openCuts:''}
 void main(){
  ${cut?'if(excavationEnabled==1){outColor=cylinderCutRay(gl_FragCoord.xy);return;}':''}
- vec3 p=referenceAt(gl_FragCoord.xy),value=surfaceField(p),rgb=colorAt(value);
+ vec3 p=referenceAt(gl_FragCoord.xy),value=surfaceField(p),rgb=colorAt(value),creaseColor;if(flatRingCreaseColor(gl_FragCoord.xy,p,creaseColor)){outColor=vec4(creaseColor,1.);return;}
  // Same accepted geographical quadrature; the large CSG kernel is evaluated
  // once only, never expanded into four terrain-antialiasing ray programs.
  if(abs(value.x-seaLevel/heightScale)<fwidth(value.x)){

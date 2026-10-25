@@ -1,0 +1,11 @@
+Command: ['node', 'node_modules/@playwright/test/cli.js', 'test', '--config=playwright.flat-ring.config.mjs', '--grep', 'Flat Ring creator:', '--workers=1', '--retries=0']
+
+Running 1 test using 1 worker
+
+(node:25960) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\flat-ring-configuration.spec.ts:3:1 › Flat Ring creator: bounded dimensions, proportional diameter, all presets, Small opening detail and immutable saved structure (25.5s)
+
+  1 passed (26.7s)
+
+Exit code: 0

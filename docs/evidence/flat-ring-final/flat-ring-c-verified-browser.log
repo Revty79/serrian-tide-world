@@ -1,0 +1,72 @@
+
+Running 31 tests using 1 worker
+
+(node:29076) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [installed-chrome] › tests\flat-ring-incremental.spec.ts:2:126 › Flat Ring N128 Standard: incremental Canvas and GPU equal fresh complete reconstruction (30.2s)
+  ok  2 [installed-chrome] › tests\flat-ring-incremental.spec.ts:2:126 › Flat Ring N256 Thin: incremental Canvas and GPU equal fresh complete reconstruction (6.1s)
+  ok  3 [installed-chrome] › tests\flat-ring-incremental.spec.ts:2:126 › Flat Ring N256 Thick: incremental Canvas and GPU equal fresh complete reconstruction (7.0s)
+  ok  4 [installed-chrome] › tests\flat-ring-incremental.spec.ts:2:126 › Flat Ring N256 Small opening: incremental Canvas and GPU equal fresh complete reconstruction (7.0s)
+  ok  5 [installed-chrome] › tests\flat-ring-incremental.spec.ts:2:126 › Flat Ring N256 Large opening: incremental Canvas and GPU equal fresh complete reconstruction (7.2s)
+  ok  6 [installed-chrome] › tests\flat-ring-joins.spec.ts:3:75 › Flat Ring Thin N256 auto: continuous physical strokes cross all four genuine rims (28.0s)
+  ok  7 [installed-chrome] › tests\flat-ring-joins.spec.ts:3:75 › Flat Ring Thin N256 canvas: continuous physical strokes cross all four genuine rims (44.0s)
+  ok  8 [installed-chrome] › tests\flat-ring-joins.spec.ts:3:75 › Flat Ring Thick N256 auto: continuous physical strokes cross all four genuine rims (28.4s)
+  ok  9 [installed-chrome] › tests\flat-ring-joins.spec.ts:3:75 › Flat Ring Thick N256 canvas: continuous physical strokes cross all four genuine rims (46.0s)
+  ok 10 [installed-chrome] › tests\flat-ring-navigation.spec.ts:2:39 › Flat Ring N256 auto: ordinary rotation publishes actual pixels and preserves geography (48.0s)
+  ok 11 [installed-chrome] › tests\flat-ring-navigation.spec.ts:2:39 › Flat Ring N256 canvas: ordinary rotation publishes actual pixels and preserves geography (26.4s)
+  ok 12 [installed-chrome] › tests\flat-ring-pilot.spec.ts:2:39 › Flat Ring N128 auto: creator, upper annulus pixels, exact history and v43 reopen (11.6s)
+  ok 13 [installed-chrome] › tests\flat-ring-pilot.spec.ts:2:39 › Flat Ring N128 canvas: creator, upper annulus pixels, exact history and v43 reopen (13.8s)
+  ok 14 [installed-chrome] › tests\flat-ring-pixels.spec.ts:2:171 › Flat Ring N128 Standard: independent physical intervals, matched canonical field and actual GPU/Canvas pixels (19.7s)
+  ok 15 [installed-chrome] › tests\flat-ring-pixels.spec.ts:2:171 › Flat Ring N256 Standard: independent physical intervals, matched canonical field and actual GPU/Canvas pixels (19.0s)
+  ok 16 [installed-chrome] › tests\flat-ring-pixels.spec.ts:2:171 › Flat Ring N256 Thin: independent physical intervals, matched canonical field and actual GPU/Canvas pixels (21.0s)
+  ok 17 [installed-chrome] › tests\flat-ring-pixels.spec.ts:2:171 › Flat Ring N256 Thick: independent physical intervals, matched canonical field and actual GPU/Canvas pixels (22.3s)
+  ok 18 [installed-chrome] › tests\flat-ring-pixels.spec.ts:2:171 › Flat Ring N256 Wide: independent physical intervals, matched canonical field and actual GPU/Canvas pixels (20.8s)
+  ok 19 [installed-chrome] › tests\flat-ring-pixels.spec.ts:2:171 › Flat Ring N256 Narrow: independent physical intervals, matched canonical field and actual GPU/Canvas pixels (21.7s)
+  ok 20 [installed-chrome] › tests\flat-ring-pixels.spec.ts:2:171 › Flat Ring N256 Small opening: independent physical intervals, matched canonical field and actual GPU/Canvas pixels (19.8s)
+  ok 21 [installed-chrome] › tests\flat-ring-pixels.spec.ts:2:171 › Flat Ring N256 Large opening: independent physical intervals, matched canonical field and actual GPU/Canvas pixels (20.2s)
+  ok 22 [installed-chrome] › tests\flat-ring-recovery.spec.ts:9:39 › Flat Ring N256 auto: active worker protocol fault preserves exact prefix history and a fresh stroke recovers (3.0s)
+  ok 23 [installed-chrome] › tests\flat-ring-recovery.spec.ts:9:39 › Flat Ring N256 canvas: active worker protocol fault preserves exact prefix history and a fresh stroke recovers (4.1s)
+  ok 24 [installed-chrome] › tests\flat-ring-recovery.spec.ts:12:1 › Flat Ring N256: graphics loss and restoration retain the current painted terrain epoch (6.0s)
+  ok 25 [installed-chrome] › tests\flat-ring-recovery.spec.ts:13:1 › Flat Ring v43 corrupt Open retains the active World and exact geography (1.9s)
+  ok 26 [installed-chrome] › tests\flat-ring-touch.spec.ts:2:71 › flat-ring auto: native emulated touch/pen drawing and two-finger navigation preserve exact history (3.1s)
+  ok 27 [installed-chrome] › tests\flat-ring-touch.spec.ts:2:71 › flat-ring canvas: native emulated touch/pen drawing and two-finger navigation preserve exact history (5.4s)
+  ok 28 [installed-chrome] › tests\flat-ring-workflow.spec.ts:4:79 › Flat Ring N128 auto: nine physical regions, four tools, held map, exact history and v43 reopen (1.5m)
+  x  29 [installed-chrome] › tests\flat-ring-workflow.spec.ts:4:79 › Flat Ring N128 canvas: nine physical regions, four tools, held map, exact history and v43 reopen (1.2m)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) [installed-chrome] › tests\flat-ring-workflow.spec.ts:4:79 › Flat Ring N128 canvas: nine physical regions, four tools, held map, exact history and v43 reopen
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 125
+    Received:   134.5
+
+       6 |  for(const region of ['Upper annulus','Upper inner rim','Upper outer rim','Inner wall','Outer wall','Lower inner rim','Lower outer rim','Lower annulus','Circumferential seam']){
+       7 |   await ringFocus(page,region);let box=(await page.locator('.cylinder-canvas').boundingBox())!;
+    >  8 |   for(const tool of ['Raise','Smooth','Lower','Flatten']){await page.getByRole('button',{name:tool,exact:true}).click();await ringIdle(page);box=(await page.locator('.cylinder-canvas').boundingBox())!;const before=await ringHash(page),count=tool==='Raise'?96:12,points=await ringPoints(page,region,count,tool==='Raise'?3:1);await page.mouse.move(box.x+points[0]!.x,box.y+points[0]!.y);if(tool==='Raise')await startPaintingPixels(page);await page.mouse.down();const admission=await ringSnapshot(page);if(!admission.painting)writeFileSync(`${root}-failed-admission.json`,JSON.stringify({region,tool,box,point:points[0],admission,input:await page.evaluate(()=>({trail:(window as any).__spiralInputTrail,hit:document.elementFromPoint(innerWidth/2,innerHeight/2)?.outerHTML.slice(0,600),canvas:{...document.querySelector<HTMLCanvasElement>('.cylinder-canvas')!.dataset},visibility:document.visibilityState})),admissionEvents:await page.evaluate(async()=>{const path='/src/editor/painting-metrics.ts';return(await import(path)).paintingEvents().filter((e:any)=>e.name==='pointerAdmission');})},null,2));expect(admission.painting,`${region} ${tool}: native pointer-down must start the gesture`).toBe(true);expect(admission.controls.tool).toBe(tool.toLowerCase());for(const p of points.slice(1)){await page.mouse.move(box.x+p.x,box.y+p.y);await page.waitForTimeout(16);}await page.mouse.up();await ringIdle(page);const timing=tool==='Raise'?await measuredPixels(page,root,region):undefined,after=await ringHash(page),state=await ringSnapshot(page);writeFileSync(`${root}-latest.json`,JSON.stringify({region,tool,timing,state},null,2));writeFileSync(`${root}-progress.json`,JSON.stringify({results:[...results,{region,tool,timing,state}]},null,2));expect(state.statistics.failures,state.message).toBe(0);expect(state.statistics.lastStroke.discardedPositions).toBe(0);expect(state.statistics.lastStroke.acceptedPositions).toBe(state.statistics.lastStroke.processedPositions);expect(after,`${region} ${tool}`).not.toBe(before);if(timing){expect(timing.summary.p95InputToPixels).toBeLessThan(125);expect(timing.latencies[0]!.inputToPixels).toBeLessThan(1000);}await page.getByRole('button',{name:'Undo',exact:true}).click();await ringIdle(page);expect(await ringHash(page)).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await ringIdle(page);expect(await ringHash(page)).toBe(after);results.push({region,tool,timing,state});}
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+       9 |   await page.screenshot({path:`${root}-${region.replaceAll(' ','-')}.png`});
+      10 |  }
+      11 |  await page.getByRole('button',{name:'Upper map',exact:true}).click();await page.getByRole('button',{name:'Raise',exact:true}).click();await ringSettled(page);const beforeHeld=await ringHash(page),p=await ringMapPoint(page,0),box=(await page.locator('.cylinder-canvas').boundingBox())!;await page.mouse.move(box.x+p.x,box.y+p.y);await startPaintingPixels(page);await page.mouse.down();const A=await ringMapPoint(page,-.6),B=await ringMapPoint(page,.6),started=Date.now();let count=0;while(Date.now()-started<15000){const f=.5+.5*Math.sin(count/100*2*Math.PI),point={x:A.x+(B.x-A.x)*f,y:A.y+(B.y-A.y)*f};await page.mouse.move(box.x+point.x,box.y+point.y);await page.waitForTimeout(16);count++;}await page.mouse.up();await ringIdle(page);const held=await finishPaintingPixels(page),afterHeld=await ringHash(page);writeFileSync(`${root}-held.json`,JSON.stringify({held,state:await ringSnapshot(page)},null,2));expect(held.summary.p95InputToPixels).toBeLessThan(100);expect(afterHeld).not.toBe(beforeHeld);await page.getByRole('button',{name:'Undo',exact:true}).click();await ringIdle(page);expect(await ringHash(page)).toBe(beforeHeld);await page.getByRole('button',{name:'Redo',exact:true}).click();await ringIdle(page);expect(await ringHash(page)).toBe(afterHeld);
+        at D:\serrian-tide-world\.local\flat-ring-work\tests\flat-ring-workflow.spec.ts:8:2068
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\flat-ring-workflow-Flat-Ri-391a7-xact-history-and-v43-reopen-installed-chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\flat-ring-workflow-Flat-Ri-391a7-xact-history-and-v43-reopen-installed-chrome\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\flat-ring-workflow-Flat-Ri-391a7-xact-history-and-v43-reopen-installed-chrome\trace.zip
+    Usage:
+
+        npx playwright show-trace C:\Users\birev\AppData\Local\Temp\serrian-atlas-hollow-worlds\workflow\flat-ring-workflow-Flat-Ri-391a7-xact-history-and-v43-reopen-installed-chrome\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [installed-chrome] › tests\flat-ring-workflow.spec.ts:4:79 › Flat Ring N128 canvas: nine physical regions, four tools, held map, exact history and v43 reopen
+  2 did not run
+  28 passed (10.9m)
+  1 error was not a part of any test, see above for details

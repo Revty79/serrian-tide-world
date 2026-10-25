@@ -1,0 +1,98 @@
+{
+  "ordinaryWorkflows": [
+    {
+      "case": "n128-auto",
+      "toolsAndRegions": 36,
+      "timedRegionalStrokes": 9,
+      "worstRegionalP95Ms": 41.39999997615814,
+      "held15sP95Ms": 28.399999976158142,
+      "worstFirstPixelsMs": 54.700000047683716
+    },
+    {
+      "case": "n128-canvas",
+      "toolsAndRegions": 36,
+      "timedRegionalStrokes": 9,
+      "worstRegionalP95Ms": 116.5,
+      "held15sP95Ms": 45.09999990463257,
+      "worstFirstPixelsMs": 132.29999995231628
+    },
+    {
+      "case": "n256-auto",
+      "toolsAndRegions": 36,
+      "timedRegionalStrokes": 9,
+      "worstRegionalP95Ms": 46.60000002384186,
+      "held15sP95Ms": 27.600000023841858,
+      "worstFirstPixelsMs": 59.10000002384186
+    },
+    {
+      "case": "n256-canvas",
+      "toolsAndRegions": 36,
+      "timedRegionalStrokes": 9,
+      "worstRegionalP95Ms": 61.10000002384186,
+      "held15sP95Ms": 30.600000023841858,
+      "worstFirstPixelsMs": 77.79999995231628
+    }
+  ],
+  "joins": [
+    {
+      "case": "Thick-auto",
+      "worstP95Ms": 42.89999997615814
+    },
+    {
+      "case": "Thick-canvas",
+      "worstP95Ms": 67.20000004768372
+    },
+    {
+      "case": "Thin-auto",
+      "worstP95Ms": 38.10000002384186
+    },
+    {
+      "case": "Thin-canvas",
+      "worstP95Ms": 72.20000004768372
+    }
+  ],
+  "maximumBrush": [
+    {
+      "case": "auto",
+      "commits": 49,
+      "p95InputToCommit": 50.199999928474426,
+      "p95CommitToPixels": 29,
+      "p95InputToPixels": 76.59999990463257,
+      "firstPixelsMs": 111
+    },
+    {
+      "case": "canvas",
+      "commits": 49,
+      "p95InputToCommit": 65,
+      "p95CommitToPixels": 55.39999997615814,
+      "p95InputToPixels": 122.59999990463257,
+      "firstPixelsMs": 129.29999995231628
+    }
+  ],
+  "navigation": [
+    {
+      "backend": "auto",
+      "actualPixelP95Ms": 16.799999952316284,
+      "frames": 90
+    },
+    {
+      "backend": "canvas",
+      "actualPixelP95Ms": 114.79999995231628,
+      "frames": 69
+    }
+  ],
+  "pixels": {
+    "views": 96,
+    "stableMax": 1,
+    "referenceMax": 1,
+    "coverageMax": 0,
+    "geometryViolations": 0,
+    "envelopeViolations": 0,
+    "gpuEdgeEnvelopeViolations": 0
+  },
+  "incremental": {
+    "comparisonsPerBackend": 60,
+    "maxCanvasDifferent": 0,
+    "maxGpuDifferent": 0
+  }
+}

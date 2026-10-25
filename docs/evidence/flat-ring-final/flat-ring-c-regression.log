@@ -1,0 +1,26 @@
+
+Running 19 tests using 1 worker
+
+(node:13764) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [flat-ring-regression-chrome] › tests\atlas-render-parity.spec.ts:3:127 › shared rendering cylinder N128 canvas: equal heights, pose, zoom and backing (2.5s)
+  ok  2 [flat-ring-regression-chrome] › tests\atlas-render-parity.spec.ts:3:127 › shared rendering cylinder N128 webgl: equal heights, pose, zoom and backing (18.5s)
+  ok  3 [flat-ring-regression-chrome] › tests\flat-disc-pilot.spec.ts:2:39 › Flat Disc N128 auto: creator, upper center pixels, exact history and v42 reopen (7.1s)
+  ok  4 [flat-ring-regression-chrome] › tests\flat-disc-pilot.spec.ts:2:39 › Flat Disc N128 canvas: creator, upper center pixels, exact history and v42 reopen (10.9s)
+  ok  5 [flat-ring-regression-chrome] › tests\hollow-cylinder-workflow.spec.ts:5:71 › capped hollow cylinder 128 auto: independent terrain, three retained views, caps, exact history and v11 reopen (8.4s)
+  ok  6 [flat-ring-regression-chrome] › tests\hollow-cylinder-workflow.spec.ts:5:71 › capped hollow cylinder 128 canvas: independent terrain, three retained views, caps, exact history and v11 reopen (9.9s)
+  ok  7 [flat-ring-regression-chrome] › tests\open-cylinder-render.spec.ts:2:110 › Open rendering N128 outside: actual annular pixels match accepted terrain presentation (30.1s)
+  ok  8 [flat-ring-regression-chrome] › tests\open-cylinder-render.spec.ts:2:110 › Open rendering N128 inside: actual annular pixels match accepted terrain presentation (1.2s)
+  ok  9 [flat-ring-regression-chrome] › tests\open-cylinder-render.spec.ts:2:110 › Open rendering N128 map: actual annular pixels match accepted terrain presentation (1.2s)
+  ok 10 [flat-ring-regression-chrome] › tests\open-cylinder-render.spec.ts:2:110 › Open rendering N128 axial: actual annular pixels match accepted terrain presentation (1.2s)
+  ok 11 [flat-ring-regression-chrome] › tests\open-cylinder-workflow.spec.ts:5:63 › Open N128 canvas: normal selector, four tools, independent walls, three views, exact history and v14 reopen (10.5s)
+  ok 12 [flat-ring-regression-chrome] › tests\open-cylinder-workflow.spec.ts:5:63 › Open N128 auto: normal selector, four tools, independent walls, three views, exact history and v14 reopen (5.7s)
+  ok 13 [flat-ring-regression-chrome] › tests\ringworld-pilot.spec.ts:4:1 › Ringworld pilot: normal creation, focused bands and exact v35 Save/Open (3.6s)
+  ok 14 [flat-ring-regression-chrome] › tests\ringworld-pixels.spec.ts:2:122 › Ringworld N128 oblique: actual matched Canvas/WebGL2 and independent annular rays (2.5s)
+  ok 15 [flat-ring-regression-chrome] › tests\ringworld-pixels.spec.ts:2:122 › Ringworld N128 inner: actual matched Canvas/WebGL2 and independent annular rays (2.4s)
+  ok 16 [flat-ring-regression-chrome] › tests\torus-input.spec.ts:5:78 › N256 torus auto: same 150 km brush, captured latency, complete input and exact gesture history (12.0s)
+  ok 17 [flat-ring-regression-chrome] › tests\torus-input.spec.ts:5:78 › N256 torus canvas: same 150 km brush, captured latency, complete input and exact gesture history (12.3s)
+  ok 18 [flat-ring-regression-chrome] › tests\torus-input.spec.ts:5:78 › N256 cylinder auto: same 150 km brush, captured latency, complete input and exact gesture history (7.8s)
+  ok 19 [flat-ring-regression-chrome] › tests\torus-input.spec.ts:5:78 › N256 cylinder canvas: same 150 km brush, captured latency, complete input and exact gesture history (8.9s)
+
+  19 passed (2.7m)

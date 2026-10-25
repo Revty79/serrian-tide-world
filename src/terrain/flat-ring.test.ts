@@ -38,3 +38,8 @@ for(const [name,[ri,h]]of Object.entries(FLAT_RING_PRESETS))test(`${name}: defau
   while(job.status==='preparing')job.pump(512);assert.equal(job.status,'ready');assert.ok(job.statistics.distanceQueries<=4096);assert.ok(job.statistics.candidates<=8192);assert.ok(job.statistics.peakPreparedBytes<=65536);job.cancel();
  }
 });
+for(const ratio of[.06,.199,.2,.6,.85])for(const h of[.1,.3])test(`configuration boundary ${ratio} opening / ${h} thickness: smallest and largest Worlds retain maximum-brush budgets`,()=>{
+ for(const R of[500000,500000000]){const w=make(ratio,h,256,R),t=w.terrain,g=t.geometry,policy=flatRingBrushPolicy(w.configuration);
+  for(const patchId of['rim-end','rim-start','inner-wall','outer-wall']as const){const p={...g.identity,patchId,u:-Math.PI+.0001,v:patchId.endsWith('wall')?h*R/2:g.thicknessMeters*.99},job=prepareFlatRingDab(t,p,{version:1,tool:'raise',radiusMeters:policy.maximum,strengthMeters:100},PHYSICAL_PREVIEW_DAB_LIMITS);while(job.status==='preparing')job.pump(512);assert.equal(job.status,'ready');job.cancel();}
+ }
+});

@@ -1,0 +1,844 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\.local\\flat-ring-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=playwright.flat-ring-regression.config.mjs",
+      "--workers=1",
+      "--retries=0"
+    ],
+    "configFile": "D:\\serrian-tide-world\\.local\\flat-ring-work\\playwright.flat-ring-regression.config.mjs",
+    "rootDir": "D:/serrian-tide-world/.local/flat-ring-work/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-atlas-hollow-worlds/workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "flat-ring-regression-chrome",
+        "name": "flat-ring-regression-chrome",
+        "testDir": "D:/serrian-tide-world/.local/flat-ring-work/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "flat-disc-pilot.spec.ts",
+          "ringworld-pilot.spec.ts",
+          "open-cylinder-workflow.spec.ts",
+          "hollow-cylinder-workflow.spec.ts",
+          "torus-input.spec.ts",
+          "atlas-render-parity.spec.ts",
+          "open-cylinder-render.spec.ts",
+          "ringworld-pixels.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "flat-ring-regression-chrome",
+        "testDir": "D:\\serrian-tide-world\\.local\\flat-ring-work\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\.local\\flat-ring-work\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "flat-disc-pilot.spec.ts",
+          "ringworld-pilot.spec.ts",
+          "open-cylinder-workflow.spec.ts",
+          "hollow-cylinder-workflow.spec.ts",
+          "torus-input.spec.ts",
+          "atlas-render-parity.spec.ts",
+          "open-cylinder-render.spec.ts",
+          "ringworld-pixels.spec.ts"
+        ],
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5294",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "channel": "chrome",
+          "actionTimeout": 120000,
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "flat-ring-regression-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/flat-ring-c-regression-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "atlas-render-parity.spec.ts",
+      "file": "atlas-render-parity.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "shared rendering cylinder N128 canvas: equal heights, pose, zoom and backing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-ring-regression-chrome",
+              "projectName": "flat-ring-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2456,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T06:06:02.791Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af9e325a5ff8c2660d61-7f4cf9d343c521e28f59",
+          "file": "atlas-render-parity.spec.ts",
+          "line": 3,
+          "column": 127
+        },
+        {
+          "title": "shared rendering cylinder N128 webgl: equal heights, pose, zoom and backing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-ring-regression-chrome",
+              "projectName": "flat-ring-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18491,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T06:06:05.811Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af9e325a5ff8c2660d61-733c586eee742c0fc502",
+          "file": "atlas-render-parity.spec.ts",
+          "line": 3,
+          "column": 127
+        }
+      ]
+    },
+    {
+      "title": "flat-disc-pilot.spec.ts",
+      "file": "flat-disc-pilot.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Flat Disc N128 auto: creator, upper center pixels, exact history and v42 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-ring-regression-chrome",
+              "projectName": "flat-ring-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7140,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T06:06:24.339Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dfc86c56f715d37a1359-cc90a0c4d6ed07e53fc8",
+          "file": "flat-disc-pilot.spec.ts",
+          "line": 2,
+          "column": 39
+        },
+        {
+          "title": "Flat Disc N128 canvas: creator, upper center pixels, exact history and v42 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-ring-regression-chrome",
+              "projectName": "flat-ring-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10907,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T06:06:31.491Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dfc86c56f715d37a1359-76630a1bf4bbccd677a4",
+          "file": "flat-disc-pilot.spec.ts",
+          "line": 2,
+          "column": 39
+        }
+      ]
+    },
+    {
+      "title": "hollow-cylinder-workflow.spec.ts",
+      "file": "hollow-cylinder-workflow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "capped hollow cylinder 128 auto: independent terrain, three retained views, caps, exact history and v11 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-ring-regression-chrome",
+              "projectName": "flat-ring-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8434,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T06:06:42.432Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f0ef25780e515f8f58ec-84466153028392cff256",
+          "file": "hollow-cylinder-workflow.spec.ts",
+          "line": 5,
+          "column": 71
+        },
+        {
+          "title": "capped hollow cylinder 128 canvas: independent terrain, three retained views, caps, exact history and v11 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-ring-regression-chrome",
+              "projectName": "flat-ring-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9902,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T06:06:50.877Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f0ef25780e515f8f58ec-38cbb15b81ec9374f32f",
+          "file": "hollow-cylinder-workflow.spec.ts",
+          "line": 5,
+          "column": 71
+        }
+      ]
+    },
+    {
+      "title": "open-cylinder-render.spec.ts",
+      "file": "open-cylinder-render.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Open rendering N128 outside: actual annular pixels match accepted terrain presentation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-ring-regression-chrome",
+              "projectName": "flat-ring-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 30066,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T06:07:00.799Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ba4a43c6d28e5c04fbe0-a8d09daf76daff1f06aa",
+          "file": "open-cylinder-render.spec.ts",
+          "line": 2,
+          "column": 110
+        },
+        {
+          "title": "Open rendering N128 inside: actual annular pixels match accepted terrain presentation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-ring-regression-chrome",
+              "projectName": "flat-ring-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1220,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T06:07:30.878Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ba4a43c6d28e5c04fbe0-fdd140fc30ba0781a05a",
+          "file": "open-cylinder-render.spec.ts",
+          "line": 2,
+          "column": 110
+        },
+        {
+          "title": "Open rendering N128 map: actual annular pixels match accepted terrain presentation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-ring-regression-chrome",
+              "projectName": "flat-ring-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1172,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T06:07:32.110Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ba4a43c6d28e5c04fbe0-5f29cb31e15e7c710796",
+          "file": "open-cylinder-render.spec.ts",
+          "line": 2,
+          "column": 110
+        },
+        {
+          "title": "Open rendering N128 axial: actual annular pixels match accepted terrain presentation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-ring-regression-chrome",
+              "projectName": "flat-ring-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1230,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T06:07:33.294Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ba4a43c6d28e5c04fbe0-2d29fc403bf4c7da87df",
+          "file": "open-cylinder-render.spec.ts",
+          "line": 2,
+          "column": 110
+        }
+      ]
+    },
+    {
+      "title": "open-cylinder-workflow.spec.ts",
+      "file": "open-cylinder-workflow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Open N128 canvas: normal selector, four tools, independent walls, three views, exact history and v14 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-ring-regression-chrome",
+              "projectName": "flat-ring-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10475,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T06:07:34.563Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "431816e74ff3e9677546-ea42b59ca11684c899c8",
+          "file": "open-cylinder-workflow.spec.ts",
+          "line": 5,
+          "column": 63
+        },
+        {
+          "title": "Open N128 auto: normal selector, four tools, independent walls, three views, exact history and v14 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-ring-regression-chrome",
+              "projectName": "flat-ring-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5722,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T06:07:45.055Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "431816e74ff3e9677546-c5b4685e9cf48795c515",
+          "file": "open-cylinder-workflow.spec.ts",
+          "line": 5,
+          "column": 63
+        }
+      ]
+    },
+    {
+      "title": "ringworld-pilot.spec.ts",
+      "file": "ringworld-pilot.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Ringworld pilot: normal creation, focused bands and exact v35 Save/Open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-ring-regression-chrome",
+              "projectName": "flat-ring-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3642,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T06:07:50.805Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "994979357ba37b70ecb5-1ce7992aae53c9960057",
+          "file": "ringworld-pilot.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "ringworld-pixels.spec.ts",
+      "file": "ringworld-pixels.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Ringworld N128 oblique: actual matched Canvas/WebGL2 and independent annular rays",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-ring-regression-chrome",
+              "projectName": "flat-ring-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2456,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T06:07:54.467Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0bcf0cb1912bd79c071b-eff6a2eb27fb5b4d7c1f",
+          "file": "ringworld-pixels.spec.ts",
+          "line": 2,
+          "column": 122
+        },
+        {
+          "title": "Ringworld N128 inner: actual matched Canvas/WebGL2 and independent annular rays",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-ring-regression-chrome",
+              "projectName": "flat-ring-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2441,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T06:07:56.932Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0bcf0cb1912bd79c071b-61123c79d1c1374eee51",
+          "file": "ringworld-pixels.spec.ts",
+          "line": 2,
+          "column": 122
+        }
+      ]
+    },
+    {
+      "title": "torus-input.spec.ts",
+      "file": "torus-input.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "N256 torus auto: same 150 km brush, captured latency, complete input and exact gesture history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-ring-regression-chrome",
+              "projectName": "flat-ring-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11969,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T06:07:59.403Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2bb89b6af17f48847e3-8a3c8e08783efabca527",
+          "file": "torus-input.spec.ts",
+          "line": 5,
+          "column": 78
+        },
+        {
+          "title": "N256 torus canvas: same 150 km brush, captured latency, complete input and exact gesture history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-ring-regression-chrome",
+              "projectName": "flat-ring-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12261,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T06:08:11.381Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2bb89b6af17f48847e3-83f799f9c8da7df4019d",
+          "file": "torus-input.spec.ts",
+          "line": 5,
+          "column": 78
+        },
+        {
+          "title": "N256 cylinder auto: same 150 km brush, captured latency, complete input and exact gesture history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-ring-regression-chrome",
+              "projectName": "flat-ring-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7770,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T06:08:23.652Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2bb89b6af17f48847e3-abafe985256e50948f29",
+          "file": "torus-input.spec.ts",
+          "line": 5,
+          "column": 78
+        },
+        {
+          "title": "N256 cylinder canvas: same 150 km brush, captured latency, complete input and exact gesture history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-ring-regression-chrome",
+              "projectName": "flat-ring-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8872,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T06:08:31.433Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2bb89b6af17f48847e3-8e342898009de93f9d88",
+          "file": "torus-input.spec.ts",
+          "line": 5,
+          "column": 78
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T06:06:01.840Z",
+    "duration": 159071.482,
+    "expected": 19,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
