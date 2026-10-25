@@ -1,0 +1,33 @@
+
+Running 26 tests using 1 worker
+
+(node:28248) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [installed-chrome] › tests\flat-disc-configuration.spec.ts:2:1 › Flat Disc creator: bounded dimensions, proportional World Size, thin detail, all presets and immutable reconstructed configuration (13.8s)
+  ok  2 [installed-chrome] › tests\flat-disc-configuration.spec.ts:3:1 › Flat Disc saved identity refuses a different valid radius, thickness or detail; old cylinder v4 keeps its kind (1.6s)
+  ok  3 [installed-chrome] › tests\flat-disc-incremental.spec.ts:2:116 › Cylinder field support N128 cylinder: sharp incremental Canvas and GPU equal fresh complete numerical reconstruction (3.5s)
+  ok  4 [installed-chrome] › tests\flat-disc-incremental.spec.ts:2:116 › Cylinder field support N256 cylinder: sharp incremental Canvas and GPU equal fresh complete numerical reconstruction (3.5s)
+  ok  5 [installed-chrome] › tests\flat-disc-incremental.spec.ts:2:116 › Cylinder field support N128 standard: sharp incremental Canvas and GPU equal fresh complete numerical reconstruction (3.5s)
+  ok  6 [installed-chrome] › tests\flat-disc-incremental.spec.ts:2:116 › Cylinder field support N256 thin: sharp incremental Canvas and GPU equal fresh complete numerical reconstruction (3.6s)
+  ok  7 [installed-chrome] › tests\flat-disc-incremental.spec.ts:2:116 › Cylinder field support N256 thick: sharp incremental Canvas and GPU equal fresh complete numerical reconstruction (3.5s)
+  ok  8 [installed-chrome] › tests\flat-disc-joins.spec.ts:2:76 › Flat Disc thin N256 auto: circular strokes, both real rim crossings and protected opposite center (33.9s)
+  ok  9 [installed-chrome] › tests\flat-disc-joins.spec.ts:2:76 › Flat Disc thin N256 canvas: circular strokes, both real rim crossings and protected opposite center (48.4s)
+  ok 10 [installed-chrome] › tests\flat-disc-joins.spec.ts:2:76 › Flat Disc thick N256 auto: circular strokes, both real rim crossings and protected opposite center (33.8s)
+  ok 11 [installed-chrome] › tests\flat-disc-joins.spec.ts:2:76 › Flat Disc thick N256 canvas: circular strokes, both real rim crossings and protected opposite center (46.6s)
+  ok 12 [installed-chrome] › tests\flat-disc-maximum.spec.ts:2:39 › Flat Disc N256 auto: maximum 120 km brush at whole-World scale keeps exact history (7.6s)
+  ok 13 [installed-chrome] › tests\flat-disc-maximum.spec.ts:2:39 › Flat Disc N256 canvas: maximum 120 km brush at whole-World scale keeps exact history (10.4s)
+  ok 14 [installed-chrome] › tests\flat-disc-navigation.spec.ts:2:39 › Flat Disc N256 auto: ordinary rotation publishes actual pixels and preserves geography (8.4s)
+  ok 15 [installed-chrome] › tests\flat-disc-navigation.spec.ts:2:39 › Flat Disc N256 canvas: ordinary rotation publishes actual pixels and preserves geography (11.0s)
+  ok 16 [installed-chrome] › tests\flat-disc-pixels.spec.ts:2:113 › Flat Disc N128 standard: independent physical intervals, matched canonical field and actual GPU/Canvas pixels (8.4s)
+  ok 17 [installed-chrome] › tests\flat-disc-pixels.spec.ts:2:113 › Flat Disc N256 standard: independent physical intervals, matched canonical field and actual GPU/Canvas pixels (9.9s)
+  ok 18 [installed-chrome] › tests\flat-disc-pixels.spec.ts:2:113 › Flat Disc N256 thin: independent physical intervals, matched canonical field and actual GPU/Canvas pixels (9.0s)
+  ok 19 [installed-chrome] › tests\flat-disc-pixels.spec.ts:2:113 › Flat Disc N128 thick: independent physical intervals, matched canonical field and actual GPU/Canvas pixels (11.3s)
+  ok 20 [installed-chrome] › tests\flat-disc-pixels.spec.ts:2:113 › Flat Disc N256 thick: independent physical intervals, matched canonical field and actual GPU/Canvas pixels (10.5s)
+  ok 21 [installed-chrome] › tests\flat-disc-recovery.spec.ts:9:39 › Flat Disc N256 auto: active worker protocol fault preserves exact prefix history and a fresh stroke recovers (3.1s)
+  ok 22 [installed-chrome] › tests\flat-disc-recovery.spec.ts:9:39 › Flat Disc N256 canvas: active worker protocol fault preserves exact prefix history and a fresh stroke recovers (4.1s)
+  ok 23 [installed-chrome] › tests\flat-disc-recovery.spec.ts:12:1 › Flat Disc N256: graphics loss and restoration retain the current painted terrain epoch (7.2s)
+  ok 24 [installed-chrome] › tests\flat-disc-recovery.spec.ts:13:1 › Flat Disc v42 corrupt Open retains the active World and exact geography (2.0s)
+  ok 25 [installed-chrome] › tests\flat-disc-touch.spec.ts:2:71 › flat-disc auto: native emulated touch/pen drawing and two-finger navigation preserve exact history (3.0s)
+  ok 26 [installed-chrome] › tests\flat-disc-touch.spec.ts:2:71 › flat-disc canvas: native emulated touch/pen drawing and two-finger navigation preserve exact history (5.2s)
+
+  26 passed (5.2m)

@@ -1,0 +1,92 @@
+{
+  "sourceChecks": 294,
+  "finalBrowserCases": 44,
+  "regional": [
+    {
+      "detail": 128,
+      "backend": "auto",
+      "checkpoint": "B",
+      "p95": 42.300000071525574,
+      "first": 80.39999997615814,
+      "held": 25.5
+    },
+    {
+      "detail": 128,
+      "backend": "canvas",
+      "checkpoint": "C",
+      "p95": 103.5,
+      "first": 131.5,
+      "held": 44.59999990463257
+    },
+    {
+      "detail": 256,
+      "backend": "auto",
+      "checkpoint": "B",
+      "p95": 53.199999928474426,
+      "first": 95.5,
+      "held": 27
+    },
+    {
+      "detail": 256,
+      "backend": "canvas",
+      "checkpoint": "C",
+      "p95": 92.09999990463257,
+      "first": 191.69999992847443,
+      "held": 65.30000007152557
+    }
+  ],
+  "joins": [
+    {
+      "profile": "thin",
+      "backend": "auto",
+      "p95": 28.5,
+      "first": 46.89999997615814,
+      "circle": 25.699999928474426
+    },
+    {
+      "profile": "thin",
+      "backend": "canvas",
+      "p95": 50.10000002384186,
+      "first": 100.5,
+      "circle": 45.299999952316284
+    },
+    {
+      "profile": "thick",
+      "backend": "auto",
+      "p95": 29.40000009536743,
+      "first": 65.29999995231628,
+      "circle": 25.5
+    },
+    {
+      "profile": "thick",
+      "backend": "canvas",
+      "p95": 61.799999952316284,
+      "first": 115.79999995231628,
+      "circle": 44.5
+    }
+  ],
+  "maximum": [
+    {
+      "backend": "auto",
+      "commits": 22,
+      "p95InputToCommit": 7.799999952316284,
+      "p95CommitToPixels": 25.100000023841858,
+      "p95InputToPixels": 32
+    },
+    {
+      "backend": "canvas",
+      "commits": 22,
+      "p95InputToCommit": 12.5,
+      "p95CommitToPixels": 61.10000002384186,
+      "p95InputToPixels": 69.30000007152557
+    }
+  ],
+  "navigation": {
+    "auto": 10.399999976158142,
+    "canvas": 43
+  },
+  "matchedViews": 40,
+  "stableColorMax": 1,
+  "referenceColorMax": 1,
+  "independentCanvasCoverageMax": 0
+}

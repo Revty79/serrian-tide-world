@@ -1,0 +1,2 @@
+import base from './playwright.flat-disc.config.mjs';
+export default{...base,projects:base.projects.map(p=>({...p,name:'flat-disc-regression-chrome',use:{...p.use,actionTimeout:120000}})),testMatch:['torus-input.spec.ts','cylinder-workspace.spec.ts','hollow-cylinder-workflow.spec.ts','open-cylinder-workflow.spec.ts','unified-workspace.spec.ts','spiral-pilot.spec.ts','atlas-render-parity.spec.ts','flat-disc-workflow.spec.ts'],reporter:[['list'],['json',{outputFile:'.local/flat-disc-c-regression-report.json'}]]};

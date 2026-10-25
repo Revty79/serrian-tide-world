@@ -47,6 +47,19 @@ export function* cylinderRasterSteps(cache: CylinderDisplayCache, view: Cylinder
   const opposite=cut?.opposite.elevationSnapshot(),oppositeField=cut&&opposite?cylinderElevationSampler(opposite,cut.opposite.terrain,appearance==='relief'?'land':'none'):undefined,labels=cut?new Uint8Array(columns*rows):undefined;
   const snapshotBytes=elevations.byteLength+(opposite?.byteLength??0)+(labels?.byteLength??0);
   const tx = dot3(view.target, view.frame.right), ty = dot3(view.target, view.frame.up);
+  const f=view.frame.forward,rx=view.frame.right,uy=view.frame.up,rayDx=size.width/columns/l.scale,rayDy=size.height/rows/l.scale;
+  const capRay=Math.abs(f[2])>=1e-8?[rx[0]-rx[2]/f[2]*f[0],rx[1]-rx[2]/f[2]*f[1],uy[0]-uy[2]/f[2]*f[0],uy[1]-uy[2]/f[2]*f[1]]:undefined;
+  const capQuadraticPad=capRay?(Math.hypot(capRay[0]!,capRay[1]!)*rayDx/2+Math.hypot(capRay[2]!,capRay[3]!)*rayDy/2)**2:0;
+  const nearCapBoundary=(hit:CylinderRayHit)=>{
+    // Project the entire pixel rectangle onto each cap plane. The exact
+    // quadratic radius interval bounds whether its circular edge can cross it.
+    // This keeps four-ray coverage local even on a very thin, sharp settled image.
+    if(!capRay)return l.h-Math.abs(hit.z)<=Math.abs(rx[2])*rayDx/2+Math.abs(uy[2])*rayDy/2+4*Math.abs(f[2]);
+    const cosine=Math.cos(hit.theta),sine=Math.sin(hit.theta);
+    for(let sign=-1;sign<=1;sign+=2){const d=(sign*l.h-hit.z)/f[2],x=cosine+d*f[0],y=sine+d*f[1],radiusSquared=x*x+y*y,span=Math.abs(x*capRay[0]!+y*capRay[1]!)*rayDx+Math.abs(x*capRay[2]!+y*capRay[3]!)*rayDy+capQuadraticPad;
+      if(Math.abs(radiusSquared-1)<=span+64*Number.EPSILON*Math.max(1,radiusSquared))return true;}
+    return false;
+  };
   const halfWidth = Math.hypot(view.frame.right[0], view.frame.right[1]) + l.h * Math.abs(view.frame.right[2]), halfHeight = Math.hypot(view.frame.up[0], view.frame.up[1]) + l.h * Math.abs(view.frame.up[2]);
   const hitAt = (x: number, y: number) => cylinderCenterInspection(view)?cylinderInsideRayHit(x,y,view.frame,l.h,view.eyeMeters?.map(v=>v/cache.terrain.metadata.geometry.radiusMeters)as unknown as readonly[number,number,number]):view.mode === 'physical' ? cylinderRayHit(x + tx, y + ty, view.frame, l.h) : cylinderMapHit(x - view.pan.x, y - view.pan.y, l.h, view.phase);
   const displayColor = (hit: CylinderRayHit,source=cache,sample=fieldAt,normalFacing?:number,inside=false) => {
@@ -68,7 +81,12 @@ export function* cylinderRasterSteps(cache: CylinderDisplayCache, view: Cylinder
   try { return yield* coherentTerrainRasterSteps<CylinderRayHit>({pixels,columns,rows,revision,snapshotBytes,size,grid:l,labels,region:update?.region,quantum:cut?256:2048,sampleAt,
     nearBoundary:(center,x,y,dx,dy)=>{
       const hit=center?.hit,insideBounds=view.mode==='physical'?Math.abs(x+tx)<=halfWidth+dx&&Math.abs(y+ty)<=halfHeight+dy:Math.abs(x-view.pan.x)<=Math.PI+dx&&Math.abs(y-view.pan.y)<=l.h+2+dy;
-      return center?.label!==6&&!cylinderCenterInspection(view)&&(hit?hit.region==='side'?view.mode==='physical'?Math.abs(Math.cos(hit.theta)*view.frame.forward[0]+Math.sin(hit.theta)*view.frame.forward[1])<.15:Math.PI-Math.abs(x-view.pan.x)<dx||l.h-Math.abs(hit.z)<dy:1-hit.radial<2*Math.max(dx,dy):insideBounds);
+      // A wall pixel can straddle a real cap silhouette even when its radial
+      // normal faces the camera. Bound axial movement of its ray intersection
+      // as well as the curved side silhouette; the same four real rays decide
+      // coverage. Otherwise a thin body overfills that edge by a whole pixel.
+      const facing=hit?Math.abs(Math.cos(hit.theta)*view.frame.forward[0]+Math.sin(hit.theta)*view.frame.forward[1]):0;
+      return center?.label!==6&&!cylinderCenterInspection(view)&&(hit?hit.region==='side'?view.mode==='physical'?facing<.15||l.h-Math.abs(hit.z)<2*(dx+dy)/Math.max(.15,facing)&&nearCapBoundary(hit):Math.PI-Math.abs(x-view.pan.x)<dx||l.h-Math.abs(hit.z)<dy:1-hit.radial<2*Math.max(dx,dy):insideBounds);
     },
   });
   } finally { elevations = new Float32Array(0); }

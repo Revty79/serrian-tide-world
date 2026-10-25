@@ -37,7 +37,11 @@ export async function renderParity(shape:'cylinder'|'sphere'|'cube',n:number,ini
  if(shape==='cylinder'){
   const s=cylinderParityScene(n,initialElevation);before=await digest(s.terrain.copyElevations());
   if(backend==='canvas'){for(const [canvas,cut]of[[solid,undefined],[hollow,s.cut]]as const){const r=finish(cylinderRasterSteps(s.cache,s.view,size,307200,undefined,'relief',cut));cpu(canvas,r.pixels,r.columns,r.rows);}}
-  else{const a=new CylinderWebGLRenderer(solid,s.cache,()=>{}),b=new CylinderWebGLRenderer(hollow,s.cache,()=>{});if(!a.available||!b.available)throw Error(a.statistics.reason||b.statistics.reason);b.setExcavation(s.cut);a.present(s.view,size,'relief');b.present(s.view,size,'relief');renderer=b.statistics.renderer;dispose=()=>{a.dispose();b.dispose();};}
+  else{const a=new CylinderWebGLRenderer(solid,s.cache,()=>{}),b=new CylinderWebGLRenderer(hollow,s.cache,()=>{});if(!a.available||!b.available)throw Error(a.statistics.reason||b.statistics.reason);b.setExcavation(s.cut);
+   // Cut views use at least 1.5x backing. Qualify both accepted programs at
+   // that same density rather than comparing different-sized images.
+   const descriptor=Object.getOwnPropertyDescriptor(window,'devicePixelRatio');Object.defineProperty(window,'devicePixelRatio',{configurable:true,value:Math.max(1.5,devicePixelRatio)});
+   try{a.present(s.view,size,'relief');b.present(s.view,size,'relief');}finally{if(descriptor)Object.defineProperty(window,'devicePixelRatio',descriptor);else Reflect.deleteProperty(window,'devicePixelRatio');}renderer=b.statistics.renderer;dispose=()=>{a.dispose();b.dispose();};}
   afterWords=s.terrain.copyElevations();const graphicsDispose=dispose;dispose=()=>{graphicsDispose();s.cache.dispose();};
  }else if(shape==='sphere'){
   const t=createSphericalTerrain({terrainId:'parity-heights',identity:{worldId:'parity',surfaceId:'outside'},radiusMeters:1000000,cellsPerEdge:n,initialElevation});startSphericalBrushStroke(t,{...t.metadata.identity,direction:[1,0,0]},{tool:'raise',radiusMeters:140000,strengthMeters:2000}).end();

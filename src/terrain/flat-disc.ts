@@ -11,13 +11,13 @@ export function flatDiscResolution(dimensions:FlatDiscDimensions,detail:number){
   const resolution=Object.freeze({angularSamples,axialCells,radialCells});
   if(cylindricalSampleCount(resolution)>MAX_CYLINDER_PREVIEW_SAMPLES)throw RangeError('Disc exceeds the existing cylinder terrain budget.');
   const coveringRadius=d.radiusMeters*Math.hypot(1/(2*radialCells),Math.PI/angularSamples);
-  const defaultRadius=Math.min(.0837*d.radiusMeters,.49*d.thicknessMeters);
+  const defaultRadius=Math.min(.049*d.radiusMeters,.49*d.thicknessMeters);
   if(defaultRadius<coveringRadius*1.05)throw RangeError('This thin disc requires Higher Terrain Detail for a useful physical brush.');
   return resolution;
 }
 export function flatDiscBrushPolicy(dimensions:FlatDiscDimensions){
   const d=flatDiscDimensions(dimensions);
-  return Object.freeze({minimum:d.radiusMeters*.005,maximum:d.radiusMeters*.12,defaultRadius:Math.min(.0837*d.radiusMeters,.49*d.thicknessMeters)});
+  return Object.freeze({minimum:d.radiusMeters*.005,maximum:d.radiusMeters*.12,defaultRadius:Math.min(.049*d.radiusMeters,.49*d.thicknessMeters)});
 }
 export function createFlatDisc(options:{readonly geometry:FlatDiscConfiguration;readonly terrainId:string;readonly detail:128|256;readonly initialElevation?:number}){
   const geometry=createFlatDiscGeometry(options.geometry),resolution=flatDiscResolution(geometry.metadata,options.detail),

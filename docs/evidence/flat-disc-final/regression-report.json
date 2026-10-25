@@ -1,0 +1,825 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "-c",
+      "playwright.flat-disc-regression.config.mjs",
+      "--grep",
+      "N256 (torus|cylinder)|normal Atlas creates|capped hollow cylinder 128 |Open N128 |one workflow creates|Spiral N128|shared rendering cylinder|Flat Disc N(128|256) canvas: ten physical",
+      "--workers=1",
+      "--retries=0"
+    ],
+    "configFile": "D:\\serrian-tide-world\\playwright.flat-disc-regression.config.mjs",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-atlas-hollow-worlds/workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "flat-disc-regression-chrome",
+        "name": "flat-disc-regression-chrome",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "torus-input.spec.ts",
+          "cylinder-workspace.spec.ts",
+          "hollow-cylinder-workflow.spec.ts",
+          "open-cylinder-workflow.spec.ts",
+          "unified-workspace.spec.ts",
+          "spiral-pilot.spec.ts",
+          "atlas-render-parity.spec.ts",
+          "flat-disc-workflow.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "flat-disc-regression-chrome",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "torus-input.spec.ts",
+          "cylinder-workspace.spec.ts",
+          "hollow-cylinder-workflow.spec.ts",
+          "open-cylinder-workflow.spec.ts",
+          "unified-workspace.spec.ts",
+          "spiral-pilot.spec.ts",
+          "atlas-render-parity.spec.ts",
+          "flat-disc-workflow.spec.ts"
+        ],
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5293",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "channel": "chrome",
+          "actionTimeout": 120000,
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "flat-disc-regression-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/flat-disc-c-regression-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "atlas-render-parity.spec.ts",
+      "file": "atlas-render-parity.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "shared rendering cylinder N128 canvas: equal heights, pose, zoom and backing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-disc-regression-chrome",
+              "projectName": "flat-disc-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2753,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T03:11:28.881Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af9e325a5ff8c2660d61-a4dd04350b491ab8764b",
+          "file": "atlas-render-parity.spec.ts",
+          "line": 3,
+          "column": 127
+        },
+        {
+          "title": "shared rendering cylinder N128 webgl: equal heights, pose, zoom and backing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-disc-regression-chrome",
+              "projectName": "flat-disc-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 33650,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T03:11:32.035Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af9e325a5ff8c2660d61-682fffb15819eed4caae",
+          "file": "atlas-render-parity.spec.ts",
+          "line": 3,
+          "column": 127
+        },
+        {
+          "title": "shared rendering cylinder N256 canvas: equal heights, pose, zoom and backing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-disc-regression-chrome",
+              "projectName": "flat-disc-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2543,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T03:12:05.699Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af9e325a5ff8c2660d61-05083b8083bb07753238",
+          "file": "atlas-render-parity.spec.ts",
+          "line": 3,
+          "column": 127
+        },
+        {
+          "title": "shared rendering cylinder N256 webgl: equal heights, pose, zoom and backing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-disc-regression-chrome",
+              "projectName": "flat-disc-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1397,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T03:12:08.256Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af9e325a5ff8c2660d61-ba3efe06362b088da4a7",
+          "file": "atlas-render-parity.spec.ts",
+          "line": 3,
+          "column": 127
+        }
+      ]
+    },
+    {
+      "title": "cylinder-workspace.spec.ts",
+      "file": "cylinder-workspace.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "normal Atlas creates, sculpts all four tools and both rims, saves, switches and reopens exact v4 geography",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-disc-regression-chrome",
+              "projectName": "flat-disc-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20945,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T03:18:59.485Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\cylinder-workspace-normal--94620--reopens-exact-v4-geography-flat-disc-regression-chrome\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e5134e589d5d4b4378bc-7af956dccf7cc0b18607",
+          "file": "cylinder-workspace.spec.ts",
+          "line": 29,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "flat-disc-workflow.spec.ts",
+      "file": "flat-disc-workflow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Flat Disc N128 canvas: ten physical regions, four tools, held map, exact history and v42 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-disc-regression-chrome",
+              "projectName": "flat-disc-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 127061,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T03:12:09.688Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "45df177d8baad935e2e4-ef8fc893f5f8a5aaab09",
+          "file": "flat-disc-workflow.spec.ts",
+          "line": 4,
+          "column": 79
+        },
+        {
+          "title": "Flat Disc N256 canvas: ten physical regions, four tools, held map, exact history and v42 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-disc-regression-chrome",
+              "projectName": "flat-disc-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 136676,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T03:14:16.766Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "45df177d8baad935e2e4-6d95fb8d3c75e98fd4e7",
+          "file": "flat-disc-workflow.spec.ts",
+          "line": 4,
+          "column": 79
+        }
+      ]
+    },
+    {
+      "title": "hollow-cylinder-workflow.spec.ts",
+      "file": "hollow-cylinder-workflow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "capped hollow cylinder 128 auto: independent terrain, three retained views, caps, exact history and v11 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-disc-regression-chrome",
+              "projectName": "flat-disc-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8963,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T03:16:33.477Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f0ef25780e515f8f58ec-c1e714a97e84a75f8631",
+          "file": "hollow-cylinder-workflow.spec.ts",
+          "line": 5,
+          "column": 71
+        },
+        {
+          "title": "capped hollow cylinder 128 canvas: independent terrain, three retained views, caps, exact history and v11 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-disc-regression-chrome",
+              "projectName": "flat-disc-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10671,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T03:16:42.452Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f0ef25780e515f8f58ec-a9b7ff0f52537ad31004",
+          "file": "hollow-cylinder-workflow.spec.ts",
+          "line": 5,
+          "column": 71
+        }
+      ]
+    },
+    {
+      "title": "open-cylinder-workflow.spec.ts",
+      "file": "open-cylinder-workflow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Open N128 canvas: normal selector, four tools, independent walls, three views, exact history and v14 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-disc-regression-chrome",
+              "projectName": "flat-disc-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10605,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T03:16:53.160Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "431816e74ff3e9677546-7aa3dae11e7fc17e3fd2",
+          "file": "open-cylinder-workflow.spec.ts",
+          "line": 5,
+          "column": 63
+        },
+        {
+          "title": "Open N128 auto: normal selector, four tools, independent walls, three views, exact history and v14 reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-disc-regression-chrome",
+              "projectName": "flat-disc-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 24590,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T03:17:03.777Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "431816e74ff3e9677546-39e9838b66a857ef1507",
+          "file": "open-cylinder-workflow.spec.ts",
+          "line": 5,
+          "column": 63
+        }
+      ]
+    },
+    {
+      "title": "spiral-pilot.spec.ts",
+      "file": "spiral-pilot.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Spiral N128 auto: normal creator, actual painting pixels and exact v41 Save/Open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-disc-regression-chrome",
+              "projectName": "flat-disc-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20162,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T03:17:28.399Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f9eb47cb444ebc45bd52-4168b89d14e385634bf2",
+          "file": "spiral-pilot.spec.ts",
+          "line": 2,
+          "column": 39
+        },
+        {
+          "title": "Spiral N128 canvas: normal creator, actual painting pixels and exact v41 Save/Open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-disc-regression-chrome",
+              "projectName": "flat-disc-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20582,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T03:17:48.577Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f9eb47cb444ebc45bd52-df12b4dbca28fa7a97ad",
+          "file": "spiral-pilot.spec.ts",
+          "line": 2,
+          "column": 39
+        }
+      ]
+    },
+    {
+      "title": "torus-input.spec.ts",
+      "file": "torus-input.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "N256 torus auto: same 150 km brush, captured latency, complete input and exact gesture history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-disc-regression-chrome",
+              "projectName": "flat-disc-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16900,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T03:18:09.227Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2bb89b6af17f48847e3-115c20f5e6c1b447c2e3",
+          "file": "torus-input.spec.ts",
+          "line": 5,
+          "column": 78
+        },
+        {
+          "title": "N256 torus canvas: same 150 km brush, captured latency, complete input and exact gesture history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-disc-regression-chrome",
+              "projectName": "flat-disc-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15639,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T03:18:26.141Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2bb89b6af17f48847e3-e25118a5a6ee2665a4a8",
+          "file": "torus-input.spec.ts",
+          "line": 5,
+          "column": 78
+        },
+        {
+          "title": "N256 cylinder auto: same 150 km brush, captured latency, complete input and exact gesture history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-disc-regression-chrome",
+              "projectName": "flat-disc-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7560,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T03:18:41.793Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2bb89b6af17f48847e3-a2a87ea794ecca2f27c7",
+          "file": "torus-input.spec.ts",
+          "line": 5,
+          "column": 78
+        },
+        {
+          "title": "N256 cylinder canvas: same 150 km brush, captured latency, complete input and exact gesture history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-disc-regression-chrome",
+              "projectName": "flat-disc-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8264,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T03:18:49.365Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2bb89b6af17f48847e3-df3a667ed45cf385668a",
+          "file": "torus-input.spec.ts",
+          "line": 5,
+          "column": 78
+        }
+      ]
+    },
+    {
+      "title": "unified-workspace.spec.ts",
+      "file": "unified-workspace.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "one workflow creates, edits with all four tools, saves and reopens v1/v2/v3 with exact history and shared globe/net authority",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "flat-disc-regression-chrome",
+              "projectName": "flat-disc-regression-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 28763,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T03:19:21.400Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-atlas-hollow-worlds\\workflow\\unified-workspace-one-work-96d92--shared-globe-net-authority-flat-disc-regression-chrome\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "afa49328af5a27a98259-ea69185be3c47a8e64b2",
+          "file": "unified-workspace.spec.ts",
+          "line": 45,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T03:11:28.172Z",
+    "duration": 502877.18200000003,
+    "expected": 18,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -24,7 +24,7 @@ export function flatDiscWorkspaceAdapter(world:FlatDisc,physicalPan=()=>false){
   recenter:(v:CylinderView,q:Parameters<typeof g.normalize>[0])=>{
    let result=recenterCylinder(g,v,q);if(v.mode==='map')return{...result,zoom:4};
    if(q.patchId!=='side'&&q.v>R*.85){const theta=q.patchId==='cap-end'?-q.u:q.u,forward=unitDirection([.7*Math.cos(theta),.7*Math.sin(theta),q.patchId==='cap-end'?1:-1]),right=unitDirection(cross3([0,0,1],forward));result={...result,frame:{forward,right,up:unitDirection(cross3(forward,right))}};}
-   return{...result,zoom:q.patchId==='side'?6:3};
+   return{...result,zoom:q.patchId==='side'?1.25:1.5};
   },
   navigate:(v:CylinderView,dx:number,dy:number,size:Parameters<typeof base.navigate>[3])=>{
    if(v.mode==='map'||!physicalPan())return base.navigate(v,dx,dy,size);const l=cylinderLayout(g,v,size);

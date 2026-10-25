@@ -1,0 +1,27 @@
+
+Running 18 tests using 1 worker
+
+(node:23088) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [flat-disc-regression-chrome] › tests\atlas-render-parity.spec.ts:3:127 › shared rendering cylinder N128 canvas: equal heights, pose, zoom and backing (2.8s)
+  ok  2 [flat-disc-regression-chrome] › tests\atlas-render-parity.spec.ts:3:127 › shared rendering cylinder N128 webgl: equal heights, pose, zoom and backing (33.6s)
+  ok  3 [flat-disc-regression-chrome] › tests\atlas-render-parity.spec.ts:3:127 › shared rendering cylinder N256 canvas: equal heights, pose, zoom and backing (2.5s)
+  ok  4 [flat-disc-regression-chrome] › tests\atlas-render-parity.spec.ts:3:127 › shared rendering cylinder N256 webgl: equal heights, pose, zoom and backing (1.4s)
+  ok  5 [flat-disc-regression-chrome] › tests\flat-disc-workflow.spec.ts:4:79 › Flat Disc N128 canvas: ten physical regions, four tools, held map, exact history and v42 reopen (2.1m)
+  ok  6 [flat-disc-regression-chrome] › tests\flat-disc-workflow.spec.ts:4:79 › Flat Disc N256 canvas: ten physical regions, four tools, held map, exact history and v42 reopen (2.3m)
+  ok  7 [flat-disc-regression-chrome] › tests\hollow-cylinder-workflow.spec.ts:5:71 › capped hollow cylinder 128 auto: independent terrain, three retained views, caps, exact history and v11 reopen (9.0s)
+  ok  8 [flat-disc-regression-chrome] › tests\hollow-cylinder-workflow.spec.ts:5:71 › capped hollow cylinder 128 canvas: independent terrain, three retained views, caps, exact history and v11 reopen (10.7s)
+  ok  9 [flat-disc-regression-chrome] › tests\open-cylinder-workflow.spec.ts:5:63 › Open N128 canvas: normal selector, four tools, independent walls, three views, exact history and v14 reopen (10.6s)
+  ok 10 [flat-disc-regression-chrome] › tests\open-cylinder-workflow.spec.ts:5:63 › Open N128 auto: normal selector, four tools, independent walls, three views, exact history and v14 reopen (24.6s)
+  ok 11 [flat-disc-regression-chrome] › tests\spiral-pilot.spec.ts:2:39 › Spiral N128 auto: normal creator, actual painting pixels and exact v41 Save/Open (20.2s)
+  ok 12 [flat-disc-regression-chrome] › tests\spiral-pilot.spec.ts:2:39 › Spiral N128 canvas: normal creator, actual painting pixels and exact v41 Save/Open (20.6s)
+  ok 13 [flat-disc-regression-chrome] › tests\torus-input.spec.ts:5:78 › N256 torus auto: same 150 km brush, captured latency, complete input and exact gesture history (16.9s)
+  ok 14 [flat-disc-regression-chrome] › tests\torus-input.spec.ts:5:78 › N256 torus canvas: same 150 km brush, captured latency, complete input and exact gesture history (15.6s)
+  ok 15 [flat-disc-regression-chrome] › tests\torus-input.spec.ts:5:78 › N256 cylinder auto: same 150 km brush, captured latency, complete input and exact gesture history (7.6s)
+  ok 16 [flat-disc-regression-chrome] › tests\torus-input.spec.ts:5:78 › N256 cylinder canvas: same 150 km brush, captured latency, complete input and exact gesture history (8.3s)
+(node:24888) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 17 [flat-disc-regression-chrome] › tests\cylinder-workspace.spec.ts:29:1 › normal Atlas creates, sculpts all four tools and both rims, saves, switches and reopens exact v4 geography (20.9s)
+  ok 18 [flat-disc-regression-chrome] › tests\unified-workspace.spec.ts:45:1 › one workflow creates, edits with all four tools, saves and reopens v1/v2/v3 with exact history and shared globe/net authority (28.8s)
+
+  18 passed (8.4m)
