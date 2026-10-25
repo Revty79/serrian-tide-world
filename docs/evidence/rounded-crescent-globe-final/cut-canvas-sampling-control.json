@@ -1,0 +1,5 @@
+{
+  "originalTestSha256": "5f478be70c441330f8633158b8b50356baf39c912dc5758dd423cacc0fe5bc26",
+  "change": "Three continuous passes along the same visible path, with unchanged original synchronous pixel observer and 125 ms p95 / 1000 ms first-pixel limits; require at least 20 committed samples.",
+  "reason": "Original N128 Canvas case has 12 commits, so floor(N*0.95) selects its maximum cold first image. Current first pixel was 140 ms below the separate 1000 ms limit; subsequent images were below 125 ms."
+}

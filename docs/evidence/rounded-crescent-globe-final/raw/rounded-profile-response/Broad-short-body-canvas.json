@@ -1,0 +1,2582 @@
+[
+  {
+    "region": "inner",
+    "tool": "Raise",
+    "timing": {
+      "samples": [
+        {
+          "at": 17708.299999952316,
+          "revision": 368,
+          "hash": 4098504890,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 17852.200000047684,
+          "revision": 742,
+          "hash": 736967699,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 18116.5,
+          "revision": 1114,
+          "hash": 3999796549,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 18357.100000023842,
+          "revision": 1476,
+          "hash": 1194753688,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 18609.5,
+          "revision": 1842,
+          "hash": 4241138474,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 18802.5,
+          "revision": 2216,
+          "hash": 2042398020,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 19058.5,
+          "revision": 2588,
+          "hash": 666335831,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 19299,
+          "revision": 2952,
+          "hash": 4216912564,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 19565.100000023842,
+          "revision": 3322,
+          "hash": 3266569272,
+          "width": 1440,
+          "height": 950
+        }
+      ],
+      "events": [
+        {
+          "name": "commit",
+          "at": 17651.700000047684,
+          "detail": {
+            "revision": 368,
+            "words": 368,
+            "inputAt": 17608.399999976158
+          }
+        },
+        {
+          "name": "commit",
+          "at": 17818,
+          "detail": {
+            "revision": 742,
+            "words": 374,
+            "inputAt": 17804.200000047684
+          }
+        },
+        {
+          "name": "commit",
+          "at": 18079.399999976158,
+          "detail": {
+            "revision": 1114,
+            "words": 372,
+            "inputAt": 18069.899999976158
+          }
+        },
+        {
+          "name": "commit",
+          "at": 18323.399999976158,
+          "detail": {
+            "revision": 1476,
+            "words": 362,
+            "inputAt": 18316.399999976158
+          }
+        },
+        {
+          "name": "commit",
+          "at": 18579.799999952316,
+          "detail": {
+            "revision": 1842,
+            "words": 366,
+            "inputAt": 18571.5
+          }
+        },
+        {
+          "name": "commit",
+          "at": 18756.299999952316,
+          "detail": {
+            "revision": 2216,
+            "words": 374,
+            "inputAt": 18748.100000023842
+          }
+        },
+        {
+          "name": "commit",
+          "at": 19019.5,
+          "detail": {
+            "revision": 2588,
+            "words": 372,
+            "inputAt": 19013.299999952316
+          }
+        },
+        {
+          "name": "commit",
+          "at": 19265.799999952316,
+          "detail": {
+            "revision": 2952,
+            "words": 364,
+            "inputAt": 19258.399999976158
+          }
+        },
+        {
+          "name": "commit",
+          "at": 19530.899999976158,
+          "detail": {
+            "revision": 3322,
+            "words": 370,
+            "inputAt": 19524.600000023842
+          }
+        }
+      ],
+      "observer": {
+        "mode": "bounded bitmap worker",
+        "captureSize": 512,
+        "maxInFlight": 1,
+        "skipped": 0
+      },
+      "latencies": [
+        {
+          "revision": 368,
+          "inputAt": 17608.399999976158,
+          "commitAt": 17651.700000047684,
+          "pixelsAt": 17708.299999952316,
+          "inputToCommit": 43.300000071525574,
+          "commitToPixels": 56.59999990463257,
+          "inputToPixels": 99.89999997615814
+        },
+        {
+          "revision": 742,
+          "inputAt": 17804.200000047684,
+          "commitAt": 17818,
+          "pixelsAt": 17852.200000047684,
+          "inputToCommit": 13.799999952316284,
+          "commitToPixels": 34.200000047683716,
+          "inputToPixels": 48
+        },
+        {
+          "revision": 1114,
+          "inputAt": 18069.899999976158,
+          "commitAt": 18079.399999976158,
+          "pixelsAt": 18116.5,
+          "inputToCommit": 9.5,
+          "commitToPixels": 37.10000002384186,
+          "inputToPixels": 46.60000002384186
+        },
+        {
+          "revision": 1476,
+          "inputAt": 18316.399999976158,
+          "commitAt": 18323.399999976158,
+          "pixelsAt": 18357.100000023842,
+          "inputToCommit": 7,
+          "commitToPixels": 33.700000047683716,
+          "inputToPixels": 40.700000047683716
+        },
+        {
+          "revision": 1842,
+          "inputAt": 18571.5,
+          "commitAt": 18579.799999952316,
+          "pixelsAt": 18609.5,
+          "inputToCommit": 8.299999952316284,
+          "commitToPixels": 29.700000047683716,
+          "inputToPixels": 38
+        },
+        {
+          "revision": 2216,
+          "inputAt": 18748.100000023842,
+          "commitAt": 18756.299999952316,
+          "pixelsAt": 18802.5,
+          "inputToCommit": 8.199999928474426,
+          "commitToPixels": 46.200000047683716,
+          "inputToPixels": 54.39999997615814
+        },
+        {
+          "revision": 2588,
+          "inputAt": 19013.299999952316,
+          "commitAt": 19019.5,
+          "pixelsAt": 19058.5,
+          "inputToCommit": 6.200000047683716,
+          "commitToPixels": 39,
+          "inputToPixels": 45.200000047683716
+        },
+        {
+          "revision": 2952,
+          "inputAt": 19258.399999976158,
+          "commitAt": 19265.799999952316,
+          "pixelsAt": 19299,
+          "inputToCommit": 7.399999976158142,
+          "commitToPixels": 33.200000047683716,
+          "inputToPixels": 40.60000002384186
+        },
+        {
+          "revision": 3322,
+          "inputAt": 19524.600000023842,
+          "commitAt": 19530.899999976158,
+          "pixelsAt": 19565.100000023842,
+          "inputToCommit": 6.299999952316284,
+          "commitToPixels": 34.200000047683716,
+          "inputToPixels": 40.5
+        }
+      ],
+      "summary": {
+        "commits": 9,
+        "p95InputToCommit": 43.300000071525574,
+        "p95CommitToPixels": 56.59999990463257,
+        "p95InputToPixels": 99.89999997615814
+      }
+    },
+    "comparison": {
+      "mismatches": 0,
+      "changed": 846,
+      "accepted": 26,
+      "statistics": {
+        "dabs": 9,
+        "candidateChecks": 21417,
+        "affectedSamples": 3322,
+        "writes": 3322,
+        "peakPreparedBytes": 32768
+      }
+    },
+    "state": {
+      "ready": true,
+      "viewPending": false,
+      "displayPending": false,
+      "painting": false,
+      "processing": false,
+      "pending": 0,
+      "revision": 3322,
+      "displayRevision": 3322,
+      "renderer": "cpu",
+      "diagnostics": {
+        "gpu": {
+          "renderer": "",
+          "reason": "Error: WebGL2 unavailable; bounded CPU display is active.",
+          "losses": 0,
+          "recoveries": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "textureBytes": 0,
+          "presentations": 0,
+          "resources": 0
+        },
+        "cpu": {
+          "width": 66,
+          "height": 69,
+          "pending": false,
+          "refined": true,
+          "images": 16,
+          "slices": 771,
+          "computeMs": 4206.400001525879,
+          "maxSliceMs": 57,
+          "snapshotBytes": 6340704,
+          "partialFrames": 9,
+          "baseRasterPixels": 1368000
+        },
+        "navigation": {
+          "workers": 6,
+          "pending": false,
+          "completed": 4,
+          "canceled": 0,
+          "fieldBytes": 38044224,
+          "maxComputeMs": 81.5,
+          "lastFrameMs": 195.30000007152557,
+          "maxFrameMs": 348.10000002384186,
+          "error": ""
+        },
+        "fieldBytes": 23693568,
+        "fieldRevision": 3322,
+        "displayRevision": 3322,
+        "pending": false,
+        "appearance": "relief",
+        "timingBounds": {
+          "retained": 0,
+          "capacity": 512,
+          "total": 1
+        }
+      },
+      "statistics": {
+        "dabs": 9,
+        "writes": 3322,
+        "updatedPixels": 5220,
+        "updatedRegions": 9,
+        "fullRebuilds": 0,
+        "maxDabMs": 5.799999952316284,
+        "slices": 777
+      },
+      "work": {
+        "backend": "worker",
+        "candidates": 3540,
+        "weighted": 226560,
+        "threshold": 24000,
+        "coarse": false,
+        "reason": "Preparation exceeds calibrated UI-work threshold",
+        "geometryPreparationMs": 93.09999990463257,
+        "fallbackReason": "",
+        "readyRoundTripMs": 21.300000071525574,
+        "snapshotMs": 6,
+        "computeMs": 83.79999935626984,
+        "proposals": 9,
+        "staleResults": 0,
+        "validationMaxMs": 6.100000023841858,
+        "commitMaxMs": 0.5,
+        "ackWait": {
+          "count": 9,
+          "totalMs": 19.99999988079071,
+          "maxMs": 7.299999952316284,
+          "samples": [
+            7.299999952316284,
+            2.5,
+            1.899999976158142,
+            1.399999976158142,
+            1.5999999046325684,
+            1.5,
+            1.100000023841858,
+            1.600000023841858,
+            1.100000023841858
+          ]
+        },
+        "statistics": {
+          "dabs": 9,
+          "candidateChecks": 21417,
+          "affectedSamples": 3322,
+          "writes": 3322,
+          "peakPreparedBytes": 32768,
+          "acceptedPositions": 26,
+          "processedPositions": 26,
+          "discardedPositions": 0,
+          "peakPendingPositions": 1
+        }
+      },
+      "historyEntries": 1,
+      "historyBytes": 10216,
+      "configuration": {
+        "provider": "physical-rounded-crescent-globe",
+        "version": 1,
+        "worldSizeMeters": 2000000,
+        "curvatureRatio": 1.25,
+        "spanDegrees": 160,
+        "bodyRadiusRatio": 0.6,
+        "depthRatio": 1.25,
+        "tipTaper": 0,
+        "tipRoundness": -0.2,
+        "scaleMeters": 1000000,
+        "bendRadius": 1.25,
+        "bodyRadius": 0.6,
+        "bodyDepth": 0.75,
+        "halfSpan": 1.3962634015954636,
+        "minimumStretch": 0.35515671919326974,
+        "maximumStretch": 3.741695648699371,
+        "elevationLimitMeters": 75000
+      },
+      "view": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            0,
+            0,
+            1
+          ],
+          "up": [
+            0,
+            1,
+            0
+          ],
+          "forward": [
+            -1,
+            0,
+            0
+          ]
+        },
+        "zoom": 1.5625,
+        "pan": {
+          "x": 0,
+          "y": 0
+        },
+        "roundedGlobe": {
+          "provider": "physical-rounded-crescent-globe",
+          "version": 1,
+          "worldSizeMeters": 2000000,
+          "curvatureRatio": 1.25,
+          "spanDegrees": 160,
+          "bodyRadiusRatio": 0.6,
+          "depthRatio": 1.25,
+          "tipTaper": 0,
+          "tipRoundness": -0.2,
+          "scaleMeters": 1000000,
+          "bendRadius": 1.25,
+          "bodyRadius": 0.6,
+          "bodyDepth": 0.75,
+          "halfSpan": 1.3962634015954636,
+          "minimumStretch": 0.35515671919326974,
+          "maximumStretch": 3.741695648699371,
+          "elevationLimitMeters": 75000
+        }
+      }
+    }
+  },
+  {
+    "region": "inner",
+    "tool": "Smooth",
+    "timing": {
+      "samples": [
+        {
+          "at": 20686.200000047684,
+          "revision": 5382,
+          "hash": 909687245,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 20874,
+          "revision": 5756,
+          "hash": 1419751173,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 21140.200000047684,
+          "revision": 6124,
+          "hash": 3081642393,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 21397.600000023842,
+          "revision": 6483,
+          "hash": 1456211262,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 21643.799999952316,
+          "revision": 6849,
+          "hash": 1141850861,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 21814.100000023842,
+          "revision": 7221,
+          "hash": 3523551207,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 22054.700000047684,
+          "revision": 7589,
+          "hash": 2647656212,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 22295.700000047684,
+          "revision": 7949,
+          "hash": 2712091239,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 22559.299999952316,
+          "revision": 8317,
+          "hash": 3819975181,
+          "width": 1440,
+          "height": 950
+        }
+      ],
+      "events": [
+        {
+          "name": "commit",
+          "at": 20659.600000023842,
+          "detail": {
+            "revision": 5382,
+            "words": 368,
+            "inputAt": 20622.399999976158
+          }
+        },
+        {
+          "name": "commit",
+          "at": 20843.700000047684,
+          "detail": {
+            "revision": 5756,
+            "words": 374,
+            "inputAt": 20833.700000047684
+          }
+        },
+        {
+          "name": "commit",
+          "at": 21106.799999952316,
+          "detail": {
+            "revision": 6124,
+            "words": 368,
+            "inputAt": 21099.299999952316
+          }
+        },
+        {
+          "name": "commit",
+          "at": 21354.200000047684,
+          "detail": {
+            "revision": 6483,
+            "words": 359,
+            "inputAt": 21347.600000023842
+          }
+        },
+        {
+          "name": "commit",
+          "at": 21610.299999952316,
+          "detail": {
+            "revision": 6849,
+            "words": 366,
+            "inputAt": 21603.5
+          }
+        },
+        {
+          "name": "commit",
+          "at": 21785.899999976158,
+          "detail": {
+            "revision": 7221,
+            "words": 372,
+            "inputAt": 21779.5
+          }
+        },
+        {
+          "name": "commit",
+          "at": 22024.799999952316,
+          "detail": {
+            "revision": 7589,
+            "words": 368,
+            "inputAt": 22018
+          }
+        },
+        {
+          "name": "commit",
+          "at": 22265.100000023842,
+          "detail": {
+            "revision": 7949,
+            "words": 360,
+            "inputAt": 22257.899999976158
+          }
+        },
+        {
+          "name": "commit",
+          "at": 22530.399999976158,
+          "detail": {
+            "revision": 8317,
+            "words": 368,
+            "inputAt": 22523.700000047684
+          }
+        }
+      ],
+      "observer": {
+        "mode": "bounded bitmap worker",
+        "captureSize": 512,
+        "maxInFlight": 1,
+        "skipped": 0
+      },
+      "latencies": [
+        {
+          "revision": 5382,
+          "inputAt": 20622.399999976158,
+          "commitAt": 20659.600000023842,
+          "pixelsAt": 20686.200000047684,
+          "inputToCommit": 37.200000047683716,
+          "commitToPixels": 26.600000023841858,
+          "inputToPixels": 63.800000071525574
+        },
+        {
+          "revision": 5756,
+          "inputAt": 20833.700000047684,
+          "commitAt": 20843.700000047684,
+          "pixelsAt": 20874,
+          "inputToCommit": 10,
+          "commitToPixels": 30.299999952316284,
+          "inputToPixels": 40.299999952316284
+        },
+        {
+          "revision": 6124,
+          "inputAt": 21099.299999952316,
+          "commitAt": 21106.799999952316,
+          "pixelsAt": 21140.200000047684,
+          "inputToCommit": 7.5,
+          "commitToPixels": 33.40000009536743,
+          "inputToPixels": 40.90000009536743
+        },
+        {
+          "revision": 6483,
+          "inputAt": 21347.600000023842,
+          "commitAt": 21354.200000047684,
+          "pixelsAt": 21397.600000023842,
+          "inputToCommit": 6.600000023841858,
+          "commitToPixels": 43.39999997615814,
+          "inputToPixels": 50
+        },
+        {
+          "revision": 6849,
+          "inputAt": 21603.5,
+          "commitAt": 21610.299999952316,
+          "pixelsAt": 21643.799999952316,
+          "inputToCommit": 6.799999952316284,
+          "commitToPixels": 33.5,
+          "inputToPixels": 40.299999952316284
+        },
+        {
+          "revision": 7221,
+          "inputAt": 21779.5,
+          "commitAt": 21785.899999976158,
+          "pixelsAt": 21814.100000023842,
+          "inputToCommit": 6.399999976158142,
+          "commitToPixels": 28.200000047683716,
+          "inputToPixels": 34.60000002384186
+        },
+        {
+          "revision": 7589,
+          "inputAt": 22018,
+          "commitAt": 22024.799999952316,
+          "pixelsAt": 22054.700000047684,
+          "inputToCommit": 6.799999952316284,
+          "commitToPixels": 29.90000009536743,
+          "inputToPixels": 36.700000047683716
+        },
+        {
+          "revision": 7949,
+          "inputAt": 22257.899999976158,
+          "commitAt": 22265.100000023842,
+          "pixelsAt": 22295.700000047684,
+          "inputToCommit": 7.200000047683716,
+          "commitToPixels": 30.600000023841858,
+          "inputToPixels": 37.800000071525574
+        },
+        {
+          "revision": 8317,
+          "inputAt": 22523.700000047684,
+          "commitAt": 22530.399999976158,
+          "pixelsAt": 22559.299999952316,
+          "inputToCommit": 6.699999928474426,
+          "commitToPixels": 28.899999976158142,
+          "inputToPixels": 35.59999990463257
+        }
+      ],
+      "summary": {
+        "commits": 9,
+        "p95InputToCommit": 37.200000047683716,
+        "p95CommitToPixels": 43.39999997615814,
+        "p95InputToPixels": 63.800000071525574
+      }
+    },
+    "comparison": {
+      "mismatches": 0,
+      "changed": 840,
+      "accepted": 26,
+      "statistics": {
+        "dabs": 9,
+        "candidateChecks": 21417,
+        "affectedSamples": 3322,
+        "writes": 3303,
+        "peakPreparedBytes": 32768
+      }
+    },
+    "state": {
+      "ready": true,
+      "viewPending": false,
+      "displayPending": false,
+      "painting": false,
+      "processing": false,
+      "pending": 0,
+      "revision": 8317,
+      "displayRevision": 8317,
+      "renderer": "cpu",
+      "diagnostics": {
+        "gpu": {
+          "renderer": "",
+          "reason": "Error: WebGL2 unavailable; bounded CPU display is active.",
+          "losses": 0,
+          "recoveries": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "textureBytes": 0,
+          "presentations": 0,
+          "resources": 0
+        },
+        "cpu": {
+          "width": 66,
+          "height": 69,
+          "pending": false,
+          "refined": true,
+          "images": 27,
+          "slices": 825,
+          "computeMs": 4297.800001621246,
+          "maxSliceMs": 57,
+          "snapshotBytes": 6340704,
+          "partialFrames": 20,
+          "baseRasterPixels": 1368000
+        },
+        "navigation": {
+          "workers": 6,
+          "pending": false,
+          "completed": 4,
+          "canceled": 0,
+          "fieldBytes": 38044224,
+          "maxComputeMs": 81.5,
+          "lastFrameMs": 195.30000007152557,
+          "maxFrameMs": 348.10000002384186,
+          "error": ""
+        },
+        "fieldBytes": 23693568,
+        "fieldRevision": 8317,
+        "displayRevision": 8317,
+        "pending": false,
+        "appearance": "relief",
+        "timingBounds": {
+          "retained": 0,
+          "capacity": 512,
+          "total": 2
+        }
+      },
+      "statistics": {
+        "dabs": 18,
+        "writes": 6625,
+        "updatedPixels": 12615,
+        "updatedRegions": 20,
+        "fullRebuilds": 0,
+        "maxDabMs": 5.799999952316284,
+        "slices": 852
+      },
+      "work": {
+        "backend": "worker",
+        "candidates": 3540,
+        "weighted": 1812480,
+        "threshold": 24000,
+        "coarse": false,
+        "reason": "Preparation exceeds calibrated UI-work threshold",
+        "geometryPreparationMs": 93.09999990463257,
+        "fallbackReason": "",
+        "readyRoundTripMs": 9.800000071525574,
+        "snapshotMs": 5.5,
+        "computeMs": 78.7000002861023,
+        "proposals": 9,
+        "staleResults": 0,
+        "validationMaxMs": 0.7000000476837158,
+        "commitMaxMs": 0.10000002384185791,
+        "ackWait": {
+          "count": 9,
+          "totalMs": 8.899999976158142,
+          "maxMs": 1.899999976158142,
+          "samples": [
+            0.7000000476837158,
+            1,
+            1,
+            1,
+            0.8999999761581421,
+            0.7000000476837158,
+            0.8999999761581421,
+            1.899999976158142,
+            0.7999999523162842
+          ]
+        },
+        "statistics": {
+          "dabs": 9,
+          "candidateChecks": 21417,
+          "affectedSamples": 3322,
+          "writes": 3303,
+          "peakPreparedBytes": 32768,
+          "acceptedPositions": 26,
+          "processedPositions": 26,
+          "discardedPositions": 0,
+          "peakPendingPositions": 1
+        }
+      },
+      "historyEntries": 2,
+      "historyBytes": 20360,
+      "configuration": {
+        "provider": "physical-rounded-crescent-globe",
+        "version": 1,
+        "worldSizeMeters": 2000000,
+        "curvatureRatio": 1.25,
+        "spanDegrees": 160,
+        "bodyRadiusRatio": 0.6,
+        "depthRatio": 1.25,
+        "tipTaper": 0,
+        "tipRoundness": -0.2,
+        "scaleMeters": 1000000,
+        "bendRadius": 1.25,
+        "bodyRadius": 0.6,
+        "bodyDepth": 0.75,
+        "halfSpan": 1.3962634015954636,
+        "minimumStretch": 0.35515671919326974,
+        "maximumStretch": 3.741695648699371,
+        "elevationLimitMeters": 75000
+      },
+      "view": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            0,
+            0,
+            1
+          ],
+          "up": [
+            0,
+            1,
+            0
+          ],
+          "forward": [
+            -1,
+            0,
+            0
+          ]
+        },
+        "zoom": 1.5625,
+        "pan": {
+          "x": 0,
+          "y": 0
+        },
+        "roundedGlobe": {
+          "provider": "physical-rounded-crescent-globe",
+          "version": 1,
+          "worldSizeMeters": 2000000,
+          "curvatureRatio": 1.25,
+          "spanDegrees": 160,
+          "bodyRadiusRatio": 0.6,
+          "depthRatio": 1.25,
+          "tipTaper": 0,
+          "tipRoundness": -0.2,
+          "scaleMeters": 1000000,
+          "bendRadius": 1.25,
+          "bodyRadius": 0.6,
+          "bodyDepth": 0.75,
+          "halfSpan": 1.3962634015954636,
+          "minimumStretch": 0.35515671919326974,
+          "maximumStretch": 3.741695648699371,
+          "elevationLimitMeters": 75000
+        }
+      }
+    }
+  },
+  {
+    "region": "first-tip",
+    "tool": "Raise",
+    "timing": {
+      "samples": [
+        {
+          "at": 28017.600000023842,
+          "revision": 10648,
+          "hash": 3349846712,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 28052.899999976158,
+          "revision": 11301,
+          "hash": 1806964697,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 28135.600000023842,
+          "revision": 11957,
+          "hash": 1693672126,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 28210.200000047684,
+          "revision": 12613,
+          "hash": 3433807199,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 28297,
+          "revision": 13271,
+          "hash": 921846649,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 28390.200000047684,
+          "revision": 13931,
+          "hash": 3676464264,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 28476.899999976158,
+          "revision": 14591,
+          "hash": 125376491,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 28565.700000047684,
+          "revision": 15253,
+          "hash": 770058957,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 28657.600000023842,
+          "revision": 15913,
+          "hash": 1627374352,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 28748.200000047684,
+          "revision": 16573,
+          "hash": 289263781,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 28835.399999976158,
+          "revision": 17235,
+          "hash": 3090196921,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 28929.799999952316,
+          "revision": 17899,
+          "hash": 4046192485,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 29024.5,
+          "revision": 18567,
+          "hash": 775808925,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 29114.600000023842,
+          "revision": 19233,
+          "hash": 3403401690,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 29198.200000047684,
+          "revision": 19899,
+          "hash": 1346468548,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 29287.700000047684,
+          "revision": 20563,
+          "hash": 1625318777,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 29381.100000023842,
+          "revision": 21223,
+          "hash": 3455306684,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 29472.899999976158,
+          "revision": 21881,
+          "hash": 2264905362,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 29557,
+          "revision": 22536,
+          "hash": 2138646980,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 29647.299999952316,
+          "revision": 23189,
+          "hash": 864504175,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 29738.399999976158,
+          "revision": 23836,
+          "hash": 412473089,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 29832.600000023842,
+          "revision": 24474,
+          "hash": 3566366271,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 29924.100000023842,
+          "revision": 25104,
+          "hash": 1297462331,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 29938.5,
+          "revision": 25727,
+          "hash": 3343975086,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 30008.799999952316,
+          "revision": 26333,
+          "hash": 182039175,
+          "width": 1440,
+          "height": 950
+        }
+      ],
+      "events": [
+        {
+          "name": "commit",
+          "at": 27952.700000047684,
+          "detail": {
+            "revision": 10648,
+            "words": 651,
+            "inputAt": 27894.5
+          }
+        },
+        {
+          "name": "commit",
+          "at": 28020.5,
+          "detail": {
+            "revision": 11301,
+            "words": 653,
+            "inputAt": 28006.5
+          }
+        },
+        {
+          "name": "commit",
+          "at": 28103.899999976158,
+          "detail": {
+            "revision": 11957,
+            "words": 656,
+            "inputAt": 28092.399999976158
+          }
+        },
+        {
+          "name": "commit",
+          "at": 28184.5,
+          "detail": {
+            "revision": 12613,
+            "words": 656,
+            "inputAt": 28172.200000047684
+          }
+        },
+        {
+          "name": "commit",
+          "at": 28270.700000047684,
+          "detail": {
+            "revision": 13271,
+            "words": 658,
+            "inputAt": 28258.5
+          }
+        },
+        {
+          "name": "commit",
+          "at": 28360.600000023842,
+          "detail": {
+            "revision": 13931,
+            "words": 660,
+            "inputAt": 28348.700000047684
+          }
+        },
+        {
+          "name": "commit",
+          "at": 28449.200000047684,
+          "detail": {
+            "revision": 14591,
+            "words": 660,
+            "inputAt": 28438.600000023842
+          }
+        },
+        {
+          "name": "commit",
+          "at": 28539.399999976158,
+          "detail": {
+            "revision": 15253,
+            "words": 662,
+            "inputAt": 28528.799999952316
+          }
+        },
+        {
+          "name": "commit",
+          "at": 28629.700000047684,
+          "detail": {
+            "revision": 15913,
+            "words": 660,
+            "inputAt": 28618.899999976158
+          }
+        },
+        {
+          "name": "commit",
+          "at": 28721.200000047684,
+          "detail": {
+            "revision": 16573,
+            "words": 660,
+            "inputAt": 28709
+          }
+        },
+        {
+          "name": "commit",
+          "at": 28810.399999976158,
+          "detail": {
+            "revision": 17235,
+            "words": 662,
+            "inputAt": 28798.899999976158
+          }
+        },
+        {
+          "name": "commit",
+          "at": 28900,
+          "detail": {
+            "revision": 17899,
+            "words": 664,
+            "inputAt": 28889.100000023842
+          }
+        },
+        {
+          "name": "commit",
+          "at": 28992,
+          "detail": {
+            "revision": 18567,
+            "words": 668,
+            "inputAt": 28979.299999952316
+          }
+        },
+        {
+          "name": "commit",
+          "at": 29080.799999952316,
+          "detail": {
+            "revision": 19233,
+            "words": 666,
+            "inputAt": 29069.399999976158
+          }
+        },
+        {
+          "name": "commit",
+          "at": 29171.100000023842,
+          "detail": {
+            "revision": 19899,
+            "words": 666,
+            "inputAt": 29159.399999976158
+          }
+        },
+        {
+          "name": "commit",
+          "at": 29260.899999976158,
+          "detail": {
+            "revision": 20563,
+            "words": 664,
+            "inputAt": 29249.399999976158
+          }
+        },
+        {
+          "name": "commit",
+          "at": 29350.600000023842,
+          "detail": {
+            "revision": 21223,
+            "words": 660,
+            "inputAt": 29339.600000023842
+          }
+        },
+        {
+          "name": "commit",
+          "at": 29440.899999976158,
+          "detail": {
+            "revision": 21881,
+            "words": 658,
+            "inputAt": 29429.600000023842
+          }
+        },
+        {
+          "name": "commit",
+          "at": 29531.200000047684,
+          "detail": {
+            "revision": 22536,
+            "words": 655,
+            "inputAt": 29519.600000023842
+          }
+        },
+        {
+          "name": "commit",
+          "at": 29619,
+          "detail": {
+            "revision": 23189,
+            "words": 653,
+            "inputAt": 29609.799999952316
+          }
+        },
+        {
+          "name": "commit",
+          "at": 29710.899999976158,
+          "detail": {
+            "revision": 23836,
+            "words": 647,
+            "inputAt": 29699.799999952316
+          }
+        },
+        {
+          "name": "commit",
+          "at": 29799,
+          "detail": {
+            "revision": 24474,
+            "words": 638,
+            "inputAt": 29788.799999952316
+          }
+        },
+        {
+          "name": "commit",
+          "at": 29891.399999976158,
+          "detail": {
+            "revision": 25104,
+            "words": 630,
+            "inputAt": 29880
+          }
+        },
+        {
+          "name": "commit",
+          "at": 29902.299999952316,
+          "detail": {
+            "revision": 25727,
+            "words": 623,
+            "inputAt": 29880
+          }
+        },
+        {
+          "name": "commit",
+          "at": 29974.700000047684,
+          "detail": {
+            "revision": 26333,
+            "words": 606,
+            "inputAt": 29963.899999976158
+          }
+        }
+      ],
+      "observer": {
+        "mode": "bounded bitmap worker",
+        "captureSize": 512,
+        "maxInFlight": 1,
+        "skipped": 0
+      },
+      "latencies": [
+        {
+          "revision": 10648,
+          "inputAt": 27894.5,
+          "commitAt": 27952.700000047684,
+          "pixelsAt": 28017.600000023842,
+          "inputToCommit": 58.200000047683716,
+          "commitToPixels": 64.89999997615814,
+          "inputToPixels": 123.10000002384186
+        },
+        {
+          "revision": 11301,
+          "inputAt": 28006.5,
+          "commitAt": 28020.5,
+          "pixelsAt": 28052.899999976158,
+          "inputToCommit": 14,
+          "commitToPixels": 32.39999997615814,
+          "inputToPixels": 46.39999997615814
+        },
+        {
+          "revision": 11957,
+          "inputAt": 28092.399999976158,
+          "commitAt": 28103.899999976158,
+          "pixelsAt": 28135.600000023842,
+          "inputToCommit": 11.5,
+          "commitToPixels": 31.700000047683716,
+          "inputToPixels": 43.200000047683716
+        },
+        {
+          "revision": 12613,
+          "inputAt": 28172.200000047684,
+          "commitAt": 28184.5,
+          "pixelsAt": 28210.200000047684,
+          "inputToCommit": 12.299999952316284,
+          "commitToPixels": 25.700000047683716,
+          "inputToPixels": 38
+        },
+        {
+          "revision": 13271,
+          "inputAt": 28258.5,
+          "commitAt": 28270.700000047684,
+          "pixelsAt": 28297,
+          "inputToCommit": 12.200000047683716,
+          "commitToPixels": 26.299999952316284,
+          "inputToPixels": 38.5
+        },
+        {
+          "revision": 13931,
+          "inputAt": 28348.700000047684,
+          "commitAt": 28360.600000023842,
+          "pixelsAt": 28390.200000047684,
+          "inputToCommit": 11.899999976158142,
+          "commitToPixels": 29.600000023841858,
+          "inputToPixels": 41.5
+        },
+        {
+          "revision": 14591,
+          "inputAt": 28438.600000023842,
+          "commitAt": 28449.200000047684,
+          "pixelsAt": 28476.899999976158,
+          "inputToCommit": 10.600000023841858,
+          "commitToPixels": 27.699999928474426,
+          "inputToPixels": 38.299999952316284
+        },
+        {
+          "revision": 15253,
+          "inputAt": 28528.799999952316,
+          "commitAt": 28539.399999976158,
+          "pixelsAt": 28565.700000047684,
+          "inputToCommit": 10.600000023841858,
+          "commitToPixels": 26.300000071525574,
+          "inputToPixels": 36.90000009536743
+        },
+        {
+          "revision": 15913,
+          "inputAt": 28618.899999976158,
+          "commitAt": 28629.700000047684,
+          "pixelsAt": 28657.600000023842,
+          "inputToCommit": 10.800000071525574,
+          "commitToPixels": 27.899999976158142,
+          "inputToPixels": 38.700000047683716
+        },
+        {
+          "revision": 16573,
+          "inputAt": 28709,
+          "commitAt": 28721.200000047684,
+          "pixelsAt": 28748.200000047684,
+          "inputToCommit": 12.200000047683716,
+          "commitToPixels": 27,
+          "inputToPixels": 39.200000047683716
+        },
+        {
+          "revision": 17235,
+          "inputAt": 28798.899999976158,
+          "commitAt": 28810.399999976158,
+          "pixelsAt": 28835.399999976158,
+          "inputToCommit": 11.5,
+          "commitToPixels": 25,
+          "inputToPixels": 36.5
+        },
+        {
+          "revision": 17899,
+          "inputAt": 28889.100000023842,
+          "commitAt": 28900,
+          "pixelsAt": 28929.799999952316,
+          "inputToCommit": 10.899999976158142,
+          "commitToPixels": 29.799999952316284,
+          "inputToPixels": 40.699999928474426
+        },
+        {
+          "revision": 18567,
+          "inputAt": 28979.299999952316,
+          "commitAt": 28992,
+          "pixelsAt": 29024.5,
+          "inputToCommit": 12.700000047683716,
+          "commitToPixels": 32.5,
+          "inputToPixels": 45.200000047683716
+        },
+        {
+          "revision": 19233,
+          "inputAt": 29069.399999976158,
+          "commitAt": 29080.799999952316,
+          "pixelsAt": 29114.600000023842,
+          "inputToCommit": 11.399999976158142,
+          "commitToPixels": 33.800000071525574,
+          "inputToPixels": 45.200000047683716
+        },
+        {
+          "revision": 19899,
+          "inputAt": 29159.399999976158,
+          "commitAt": 29171.100000023842,
+          "pixelsAt": 29198.200000047684,
+          "inputToCommit": 11.700000047683716,
+          "commitToPixels": 27.100000023841858,
+          "inputToPixels": 38.800000071525574
+        },
+        {
+          "revision": 20563,
+          "inputAt": 29249.399999976158,
+          "commitAt": 29260.899999976158,
+          "pixelsAt": 29287.700000047684,
+          "inputToCommit": 11.5,
+          "commitToPixels": 26.800000071525574,
+          "inputToPixels": 38.300000071525574
+        },
+        {
+          "revision": 21223,
+          "inputAt": 29339.600000023842,
+          "commitAt": 29350.600000023842,
+          "pixelsAt": 29381.100000023842,
+          "inputToCommit": 11,
+          "commitToPixels": 30.5,
+          "inputToPixels": 41.5
+        },
+        {
+          "revision": 21881,
+          "inputAt": 29429.600000023842,
+          "commitAt": 29440.899999976158,
+          "pixelsAt": 29472.899999976158,
+          "inputToCommit": 11.299999952316284,
+          "commitToPixels": 32,
+          "inputToPixels": 43.299999952316284
+        },
+        {
+          "revision": 22536,
+          "inputAt": 29519.600000023842,
+          "commitAt": 29531.200000047684,
+          "pixelsAt": 29557,
+          "inputToCommit": 11.600000023841858,
+          "commitToPixels": 25.799999952316284,
+          "inputToPixels": 37.39999997615814
+        },
+        {
+          "revision": 23189,
+          "inputAt": 29609.799999952316,
+          "commitAt": 29619,
+          "pixelsAt": 29647.299999952316,
+          "inputToCommit": 9.200000047683716,
+          "commitToPixels": 28.299999952316284,
+          "inputToPixels": 37.5
+        },
+        {
+          "revision": 23836,
+          "inputAt": 29699.799999952316,
+          "commitAt": 29710.899999976158,
+          "pixelsAt": 29738.399999976158,
+          "inputToCommit": 11.100000023841858,
+          "commitToPixels": 27.5,
+          "inputToPixels": 38.60000002384186
+        },
+        {
+          "revision": 24474,
+          "inputAt": 29788.799999952316,
+          "commitAt": 29799,
+          "pixelsAt": 29832.600000023842,
+          "inputToCommit": 10.200000047683716,
+          "commitToPixels": 33.60000002384186,
+          "inputToPixels": 43.800000071525574
+        },
+        {
+          "revision": 25104,
+          "inputAt": 29880,
+          "commitAt": 29891.399999976158,
+          "pixelsAt": 29924.100000023842,
+          "inputToCommit": 11.399999976158142,
+          "commitToPixels": 32.700000047683716,
+          "inputToPixels": 44.10000002384186
+        },
+        {
+          "revision": 25727,
+          "inputAt": 29880,
+          "commitAt": 29902.299999952316,
+          "pixelsAt": 29938.5,
+          "inputToCommit": 22.299999952316284,
+          "commitToPixels": 36.200000047683716,
+          "inputToPixels": 58.5
+        },
+        {
+          "revision": 26333,
+          "inputAt": 29963.899999976158,
+          "commitAt": 29974.700000047684,
+          "pixelsAt": 30008.799999952316,
+          "inputToCommit": 10.800000071525574,
+          "commitToPixels": 34.09999990463257,
+          "inputToPixels": 44.89999997615814
+        }
+      ],
+      "summary": {
+        "commits": 25,
+        "p95InputToCommit": 22.299999952316284,
+        "p95CommitToPixels": 36.200000047683716,
+        "p95InputToPixels": 58.5
+      }
+    },
+    "comparison": {
+      "mismatches": 0,
+      "changed": 3151,
+      "accepted": 26,
+      "statistics": {
+        "dabs": 25,
+        "candidateChecks": 90990,
+        "affectedSamples": 16336,
+        "writes": 16336,
+        "peakPreparedBytes": 32768
+      }
+    },
+    "state": {
+      "ready": true,
+      "viewPending": false,
+      "displayPending": false,
+      "painting": false,
+      "processing": false,
+      "pending": 0,
+      "revision": 26333,
+      "displayRevision": 26333,
+      "renderer": "cpu",
+      "diagnostics": {
+        "gpu": {
+          "renderer": "",
+          "reason": "Error: WebGL2 unavailable; bounded CPU display is active.",
+          "losses": 0,
+          "recoveries": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "textureBytes": 0,
+          "presentations": 0,
+          "resources": 0
+        },
+        "cpu": {
+          "width": 66,
+          "height": 73,
+          "pending": false,
+          "refined": true,
+          "images": 56,
+          "slices": 1189,
+          "computeMs": 5806.100001692772,
+          "maxSliceMs": 57,
+          "snapshotBytes": 6340704,
+          "partialFrames": 47,
+          "baseRasterPixels": 1368000
+        },
+        "navigation": {
+          "workers": 6,
+          "pending": false,
+          "completed": 5,
+          "canceled": 0,
+          "fieldBytes": 38044224,
+          "maxComputeMs": 81.5,
+          "lastFrameMs": 132.60000002384186,
+          "maxFrameMs": 348.10000002384186,
+          "error": ""
+        },
+        "fieldBytes": 23693568,
+        "fieldRevision": 26333,
+        "displayRevision": 26333,
+        "pending": false,
+        "appearance": "relief",
+        "timingBounds": {
+          "retained": 0,
+          "capacity": 512,
+          "total": 3
+        }
+      },
+      "statistics": {
+        "dabs": 43,
+        "writes": 22961,
+        "updatedPixels": 39005,
+        "updatedRegions": 47,
+        "fullRebuilds": 0,
+        "maxDabMs": 5.799999952316284,
+        "slices": 1163
+      },
+      "work": {
+        "backend": "worker",
+        "candidates": 3900,
+        "weighted": 249600,
+        "threshold": 24000,
+        "coarse": false,
+        "reason": "Preparation exceeds calibrated UI-work threshold",
+        "geometryPreparationMs": 93.09999990463257,
+        "fallbackReason": "",
+        "readyRoundTripMs": 11,
+        "snapshotMs": 6.199999928474426,
+        "computeMs": 263.90000009536743,
+        "proposals": 25,
+        "staleResults": 0,
+        "validationMaxMs": 9.200000047683716,
+        "commitMaxMs": 0.30000007152557373,
+        "ackWait": {
+          "count": 25,
+          "totalMs": 60.30000019073486,
+          "maxMs": 10.100000023841858,
+          "samples": [
+            10.100000023841858,
+            2.100000023841858,
+            2.200000047683716,
+            2.5,
+            2.5,
+            2.4000000953674316,
+            1.5999999046325684,
+            1.5,
+            1.3000000715255737,
+            2.100000023841858,
+            1.899999976158142,
+            2.8000000715255737,
+            3.8000000715255737,
+            2.1999999284744263,
+            2.3000000715255737,
+            1.7999999523162842,
+            1.5,
+            1.7000000476837158,
+            2.0999999046325684,
+            1.3000000715255737,
+            1.7999999523162842,
+            1.8000000715255737,
+            1.7999999523162842,
+            3.5,
+            1.6999999284744263
+          ]
+        },
+        "statistics": {
+          "dabs": 25,
+          "candidateChecks": 90990,
+          "affectedSamples": 16336,
+          "writes": 16336,
+          "peakPreparedBytes": 32768,
+          "acceptedPositions": 26,
+          "processedPositions": 26,
+          "discardedPositions": 0,
+          "peakPendingPositions": 1
+        }
+      },
+      "historyEntries": 3,
+      "historyBytes": 58236,
+      "configuration": {
+        "provider": "physical-rounded-crescent-globe",
+        "version": 1,
+        "worldSizeMeters": 2000000,
+        "curvatureRatio": 1.25,
+        "spanDegrees": 160,
+        "bodyRadiusRatio": 0.6,
+        "depthRatio": 1.25,
+        "tipTaper": 0,
+        "tipRoundness": -0.2,
+        "scaleMeters": 1000000,
+        "bendRadius": 1.25,
+        "bodyRadius": 0.6,
+        "bodyDepth": 0.75,
+        "halfSpan": 1.3962634015954636,
+        "minimumStretch": 0.35515671919326974,
+        "maximumStretch": 3.741695648699371,
+        "elevationLimitMeters": 75000
+      },
+      "view": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            0,
+            0,
+            1
+          ],
+          "up": [
+            0.17364817766693044,
+            0.9848077530122081,
+            0
+          ],
+          "forward": [
+            -0.9848077530122081,
+            0.17364817766693044,
+            0
+          ]
+        },
+        "zoom": 1.5625,
+        "pan": {
+          "x": 0,
+          "y": 0.6756756756756757
+        },
+        "roundedGlobe": {
+          "provider": "physical-rounded-crescent-globe",
+          "version": 1,
+          "worldSizeMeters": 2000000,
+          "curvatureRatio": 1.25,
+          "spanDegrees": 160,
+          "bodyRadiusRatio": 0.6,
+          "depthRatio": 1.25,
+          "tipTaper": 0,
+          "tipRoundness": -0.2,
+          "scaleMeters": 1000000,
+          "bendRadius": 1.25,
+          "bodyRadius": 0.6,
+          "bodyDepth": 0.75,
+          "halfSpan": 1.3962634015954636,
+          "minimumStretch": 0.35515671919326974,
+          "maximumStretch": 3.741695648699371,
+          "elevationLimitMeters": 75000
+        }
+      }
+    }
+  },
+  {
+    "region": "first-tip",
+    "tool": "Smooth",
+    "timing": {
+      "samples": [
+        {
+          "at": 31173.899999976158,
+          "revision": 33284,
+          "hash": 3529165180,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 31281.100000023842,
+          "revision": 33934,
+          "hash": 1026555270,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 31347,
+          "revision": 34585,
+          "hash": 3244885851,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 31439.5,
+          "revision": 35240,
+          "hash": 1525333952,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 31533.799999952316,
+          "revision": 35896,
+          "hash": 410217048,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 31616,
+          "revision": 36550,
+          "hash": 3851403120,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 31708,
+          "revision": 37210,
+          "hash": 2158066556,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 31796.600000023842,
+          "revision": 37868,
+          "hash": 2486081461,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 31884.600000023842,
+          "revision": 38526,
+          "hash": 3753055767,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 31981.399999976158,
+          "revision": 39186,
+          "hash": 1768387754,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 32065.299999952316,
+          "revision": 39844,
+          "hash": 2832169862,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 32161.200000047684,
+          "revision": 40504,
+          "hash": 3219905765,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 32251.100000023842,
+          "revision": 41168,
+          "hash": 384964262,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 32339.100000023842,
+          "revision": 41830,
+          "hash": 4053749102,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 32428.700000047684,
+          "revision": 42492,
+          "hash": 1498532016,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 32516.100000023842,
+          "revision": 43148,
+          "hash": 793093807,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 32607.299999952316,
+          "revision": 43808,
+          "hash": 3896323961,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 32696.200000047684,
+          "revision": 44460,
+          "hash": 2128220249,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 32785.89999997616,
+          "revision": 45111,
+          "hash": 3719345811,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 32879.799999952316,
+          "revision": 45760,
+          "hash": 1083989151,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 32974.39999997616,
+          "revision": 46403,
+          "hash": 3219750724,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 33062.299999952316,
+          "revision": 47041,
+          "hash": 723864507,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 33156.39999997616,
+          "revision": 47671,
+          "hash": 2420485380,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 33171,
+          "revision": 48294,
+          "hash": 2842768719,
+          "width": 1440,
+          "height": 950
+        },
+        {
+          "at": 33236.10000002384,
+          "revision": 48896,
+          "hash": 1164692322,
+          "width": 1440,
+          "height": 950
+        }
+      ],
+      "events": [
+        {
+          "name": "commit",
+          "at": 31146.299999952316,
+          "detail": {
+            "revision": 33284,
+            "words": 649,
+            "inputAt": 31112
+          }
+        },
+        {
+          "name": "commit",
+          "at": 31241.100000023842,
+          "detail": {
+            "revision": 33934,
+            "words": 650,
+            "inputAt": 31219.299999952316
+          }
+        },
+        {
+          "name": "commit",
+          "at": 31318.299999952316,
+          "detail": {
+            "revision": 34585,
+            "words": 651,
+            "inputAt": 31303.399999976158
+          }
+        },
+        {
+          "name": "commit",
+          "at": 31411.899999976158,
+          "detail": {
+            "revision": 35240,
+            "words": 655,
+            "inputAt": 31399.399999976158
+          }
+        },
+        {
+          "name": "commit",
+          "at": 31501.200000047684,
+          "detail": {
+            "revision": 35896,
+            "words": 656,
+            "inputAt": 31489.600000023842
+          }
+        },
+        {
+          "name": "commit",
+          "at": 31591.100000023842,
+          "detail": {
+            "revision": 36550,
+            "words": 654,
+            "inputAt": 31579.600000023842
+          }
+        },
+        {
+          "name": "commit",
+          "at": 31681.299999952316,
+          "detail": {
+            "revision": 37210,
+            "words": 660,
+            "inputAt": 31669.600000023842
+          }
+        },
+        {
+          "name": "commit",
+          "at": 31770.600000023842,
+          "detail": {
+            "revision": 37868,
+            "words": 658,
+            "inputAt": 31759.700000047684
+          }
+        },
+        {
+          "name": "commit",
+          "at": 31860.700000047684,
+          "detail": {
+            "revision": 38526,
+            "words": 658,
+            "inputAt": 31849.700000047684
+          }
+        },
+        {
+          "name": "commit",
+          "at": 31949.399999976158,
+          "detail": {
+            "revision": 39186,
+            "words": 660,
+            "inputAt": 31939.899999976158
+          }
+        },
+        {
+          "name": "commit",
+          "at": 32041,
+          "detail": {
+            "revision": 39844,
+            "words": 658,
+            "inputAt": 32030
+          }
+        },
+        {
+          "name": "commit",
+          "at": 32132.700000047684,
+          "detail": {
+            "revision": 40504,
+            "words": 660,
+            "inputAt": 32120.799999952316
+          }
+        },
+        {
+          "name": "commit",
+          "at": 32222,
+          "detail": {
+            "revision": 41168,
+            "words": 664,
+            "inputAt": 32210.200000047684
+          }
+        },
+        {
+          "name": "commit",
+          "at": 32311.5,
+          "detail": {
+            "revision": 41830,
+            "words": 662,
+            "inputAt": 32300.200000047684
+          }
+        },
+        {
+          "name": "commit",
+          "at": 32400.100000023842,
+          "detail": {
+            "revision": 42492,
+            "words": 662,
+            "inputAt": 32390.399999976158
+          }
+        },
+        {
+          "name": "commit",
+          "at": 32491.899999976158,
+          "detail": {
+            "revision": 43148,
+            "words": 656,
+            "inputAt": 32480.399999976158
+          }
+        },
+        {
+          "name": "commit",
+          "at": 32582.399999976158,
+          "detail": {
+            "revision": 43808,
+            "words": 660,
+            "inputAt": 32570.399999976158
+          }
+        },
+        {
+          "name": "commit",
+          "at": 32671,
+          "detail": {
+            "revision": 44460,
+            "words": 652,
+            "inputAt": 32660.600000023842
+          }
+        },
+        {
+          "name": "commit",
+          "at": 32762.799999952316,
+          "detail": {
+            "revision": 45111,
+            "words": 651,
+            "inputAt": 32750.700000047684
+          }
+        },
+        {
+          "name": "commit",
+          "at": 32851.200000047684,
+          "detail": {
+            "revision": 45760,
+            "words": 649,
+            "inputAt": 32840.10000002384
+          }
+        },
+        {
+          "name": "commit",
+          "at": 32941.60000002384,
+          "detail": {
+            "revision": 46403,
+            "words": 643,
+            "inputAt": 32930.799999952316
+          }
+        },
+        {
+          "name": "commit",
+          "at": 33032.10000002384,
+          "detail": {
+            "revision": 47041,
+            "words": 638,
+            "inputAt": 33020.799999952316
+          }
+        },
+        {
+          "name": "commit",
+          "at": 33121.299999952316,
+          "detail": {
+            "revision": 47671,
+            "words": 630,
+            "inputAt": 33111
+          }
+        },
+        {
+          "name": "commit",
+          "at": 33135.10000002384,
+          "detail": {
+            "revision": 48294,
+            "words": 623,
+            "inputAt": 33111
+          }
+        },
+        {
+          "name": "commit",
+          "at": 33202.200000047684,
+          "detail": {
+            "revision": 48896,
+            "words": 602,
+            "inputAt": 33191.10000002384
+          }
+        }
+      ],
+      "observer": {
+        "mode": "bounded bitmap worker",
+        "captureSize": 512,
+        "maxInFlight": 2,
+        "skipped": 0
+      },
+      "latencies": [
+        {
+          "revision": 33284,
+          "inputAt": 31112,
+          "commitAt": 31146.299999952316,
+          "pixelsAt": 31173.899999976158,
+          "inputToCommit": 34.299999952316284,
+          "commitToPixels": 27.600000023841858,
+          "inputToPixels": 61.89999997615814
+        },
+        {
+          "revision": 33934,
+          "inputAt": 31219.299999952316,
+          "commitAt": 31241.100000023842,
+          "pixelsAt": 31281.100000023842,
+          "inputToCommit": 21.800000071525574,
+          "commitToPixels": 40,
+          "inputToPixels": 61.800000071525574
+        },
+        {
+          "revision": 34585,
+          "inputAt": 31303.399999976158,
+          "commitAt": 31318.299999952316,
+          "pixelsAt": 31347,
+          "inputToCommit": 14.899999976158142,
+          "commitToPixels": 28.700000047683716,
+          "inputToPixels": 43.60000002384186
+        },
+        {
+          "revision": 35240,
+          "inputAt": 31399.399999976158,
+          "commitAt": 31411.899999976158,
+          "pixelsAt": 31439.5,
+          "inputToCommit": 12.5,
+          "commitToPixels": 27.600000023841858,
+          "inputToPixels": 40.10000002384186
+        },
+        {
+          "revision": 35896,
+          "inputAt": 31489.600000023842,
+          "commitAt": 31501.200000047684,
+          "pixelsAt": 31533.799999952316,
+          "inputToCommit": 11.600000023841858,
+          "commitToPixels": 32.59999990463257,
+          "inputToPixels": 44.199999928474426
+        },
+        {
+          "revision": 36550,
+          "inputAt": 31579.600000023842,
+          "commitAt": 31591.100000023842,
+          "pixelsAt": 31616,
+          "inputToCommit": 11.5,
+          "commitToPixels": 24.899999976158142,
+          "inputToPixels": 36.39999997615814
+        },
+        {
+          "revision": 37210,
+          "inputAt": 31669.600000023842,
+          "commitAt": 31681.299999952316,
+          "pixelsAt": 31708,
+          "inputToCommit": 11.699999928474426,
+          "commitToPixels": 26.700000047683716,
+          "inputToPixels": 38.39999997615814
+        },
+        {
+          "revision": 37868,
+          "inputAt": 31759.700000047684,
+          "commitAt": 31770.600000023842,
+          "pixelsAt": 31796.600000023842,
+          "inputToCommit": 10.899999976158142,
+          "commitToPixels": 26,
+          "inputToPixels": 36.89999997615814
+        },
+        {
+          "revision": 38526,
+          "inputAt": 31849.700000047684,
+          "commitAt": 31860.700000047684,
+          "pixelsAt": 31884.600000023842,
+          "inputToCommit": 11,
+          "commitToPixels": 23.899999976158142,
+          "inputToPixels": 34.89999997615814
+        },
+        {
+          "revision": 39186,
+          "inputAt": 31939.899999976158,
+          "commitAt": 31949.399999976158,
+          "pixelsAt": 31981.399999976158,
+          "inputToCommit": 9.5,
+          "commitToPixels": 32,
+          "inputToPixels": 41.5
+        },
+        {
+          "revision": 39844,
+          "inputAt": 32030,
+          "commitAt": 32041,
+          "pixelsAt": 32065.299999952316,
+          "inputToCommit": 11,
+          "commitToPixels": 24.299999952316284,
+          "inputToPixels": 35.299999952316284
+        },
+        {
+          "revision": 40504,
+          "inputAt": 32120.799999952316,
+          "commitAt": 32132.700000047684,
+          "pixelsAt": 32161.200000047684,
+          "inputToCommit": 11.900000095367432,
+          "commitToPixels": 28.5,
+          "inputToPixels": 40.40000009536743
+        },
+        {
+          "revision": 41168,
+          "inputAt": 32210.200000047684,
+          "commitAt": 32222,
+          "pixelsAt": 32251.100000023842,
+          "inputToCommit": 11.799999952316284,
+          "commitToPixels": 29.100000023841858,
+          "inputToPixels": 40.89999997615814
+        },
+        {
+          "revision": 41830,
+          "inputAt": 32300.200000047684,
+          "commitAt": 32311.5,
+          "pixelsAt": 32339.100000023842,
+          "inputToCommit": 11.299999952316284,
+          "commitToPixels": 27.600000023841858,
+          "inputToPixels": 38.89999997615814
+        },
+        {
+          "revision": 42492,
+          "inputAt": 32390.399999976158,
+          "commitAt": 32400.100000023842,
+          "pixelsAt": 32428.700000047684,
+          "inputToCommit": 9.700000047683716,
+          "commitToPixels": 28.600000023841858,
+          "inputToPixels": 38.300000071525574
+        },
+        {
+          "revision": 43148,
+          "inputAt": 32480.399999976158,
+          "commitAt": 32491.899999976158,
+          "pixelsAt": 32516.100000023842,
+          "inputToCommit": 11.5,
+          "commitToPixels": 24.200000047683716,
+          "inputToPixels": 35.700000047683716
+        },
+        {
+          "revision": 43808,
+          "inputAt": 32570.399999976158,
+          "commitAt": 32582.399999976158,
+          "pixelsAt": 32607.299999952316,
+          "inputToCommit": 12,
+          "commitToPixels": 24.899999976158142,
+          "inputToPixels": 36.89999997615814
+        },
+        {
+          "revision": 44460,
+          "inputAt": 32660.600000023842,
+          "commitAt": 32671,
+          "pixelsAt": 32696.200000047684,
+          "inputToCommit": 10.399999976158142,
+          "commitToPixels": 25.200000047683716,
+          "inputToPixels": 35.60000002384186
+        },
+        {
+          "revision": 45111,
+          "inputAt": 32750.700000047684,
+          "commitAt": 32762.799999952316,
+          "pixelsAt": 32785.89999997616,
+          "inputToCommit": 12.099999904632568,
+          "commitToPixels": 23.100000023841858,
+          "inputToPixels": 35.199999928474426
+        },
+        {
+          "revision": 45760,
+          "inputAt": 32840.10000002384,
+          "commitAt": 32851.200000047684,
+          "pixelsAt": 32879.799999952316,
+          "inputToCommit": 11.100000023841858,
+          "commitToPixels": 28.59999990463257,
+          "inputToPixels": 39.699999928474426
+        },
+        {
+          "revision": 46403,
+          "inputAt": 32930.799999952316,
+          "commitAt": 32941.60000002384,
+          "pixelsAt": 32974.39999997616,
+          "inputToCommit": 10.800000071525574,
+          "commitToPixels": 32.799999952316284,
+          "inputToPixels": 43.60000002384186
+        },
+        {
+          "revision": 47041,
+          "inputAt": 33020.799999952316,
+          "commitAt": 33032.10000002384,
+          "pixelsAt": 33062.299999952316,
+          "inputToCommit": 11.300000071525574,
+          "commitToPixels": 30.199999928474426,
+          "inputToPixels": 41.5
+        },
+        {
+          "revision": 47671,
+          "inputAt": 33111,
+          "commitAt": 33121.299999952316,
+          "pixelsAt": 33156.39999997616,
+          "inputToCommit": 10.299999952316284,
+          "commitToPixels": 35.10000002384186,
+          "inputToPixels": 45.39999997615814
+        },
+        {
+          "revision": 48294,
+          "inputAt": 33111,
+          "commitAt": 33135.10000002384,
+          "pixelsAt": 33171,
+          "inputToCommit": 24.100000023841858,
+          "commitToPixels": 35.89999997615814,
+          "inputToPixels": 60
+        },
+        {
+          "revision": 48896,
+          "inputAt": 33191.10000002384,
+          "commitAt": 33202.200000047684,
+          "pixelsAt": 33236.10000002384,
+          "inputToCommit": 11.100000023841858,
+          "commitToPixels": 33.89999997615814,
+          "inputToPixels": 45
+        }
+      ],
+      "summary": {
+        "commits": 25,
+        "p95InputToCommit": 24.100000023841858,
+        "p95CommitToPixels": 35.89999997615814,
+        "p95InputToPixels": 61.800000071525574
+      }
+    },
+    "comparison": {
+      "mismatches": 0,
+      "changed": 3139,
+      "accepted": 26,
+      "statistics": {
+        "dabs": 25,
+        "candidateChecks": 90990,
+        "affectedSamples": 16336,
+        "writes": 16261,
+        "peakPreparedBytes": 32768
+      }
+    },
+    "state": {
+      "ready": true,
+      "viewPending": false,
+      "displayPending": false,
+      "painting": false,
+      "processing": false,
+      "pending": 0,
+      "revision": 48896,
+      "displayRevision": 48896,
+      "renderer": "cpu",
+      "diagnostics": {
+        "gpu": {
+          "renderer": "",
+          "reason": "Error: WebGL2 unavailable; bounded CPU display is active.",
+          "losses": 0,
+          "recoveries": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "textureBytes": 0,
+          "presentations": 0,
+          "resources": 0
+        },
+        "cpu": {
+          "width": 66,
+          "height": 73,
+          "pending": false,
+          "refined": true,
+          "images": 83,
+          "slices": 1319,
+          "computeMs": 6016.300001859665,
+          "maxSliceMs": 57,
+          "snapshotBytes": 6340704,
+          "partialFrames": 74,
+          "baseRasterPixels": 1368000
+        },
+        "navigation": {
+          "workers": 6,
+          "pending": false,
+          "completed": 5,
+          "canceled": 0,
+          "fieldBytes": 38044224,
+          "maxComputeMs": 81.5,
+          "lastFrameMs": 132.60000002384186,
+          "maxFrameMs": 348.10000002384186,
+          "error": ""
+        },
+        "fieldBytes": 23693568,
+        "fieldRevision": 48896,
+        "displayRevision": 48896,
+        "pending": false,
+        "appearance": "relief",
+        "timingBounds": {
+          "retained": 0,
+          "capacity": 512,
+          "total": 4
+        }
+      },
+      "statistics": {
+        "dabs": 68,
+        "writes": 39222,
+        "updatedPixels": 70354,
+        "updatedRegions": 74,
+        "fullRebuilds": 0,
+        "maxDabMs": 5.799999952316284,
+        "slices": 1256
+      },
+      "work": {
+        "backend": "worker",
+        "candidates": 3900,
+        "weighted": 1996800,
+        "threshold": 24000,
+        "coarse": false,
+        "reason": "Preparation exceeds calibrated UI-work threshold",
+        "geometryPreparationMs": 93.09999990463257,
+        "fallbackReason": "",
+        "readyRoundTripMs": 20.5,
+        "snapshotMs": 5.799999952316284,
+        "computeMs": 288.10000002384186,
+        "proposals": 25,
+        "staleResults": 0,
+        "validationMaxMs": 1,
+        "commitMaxMs": 0.20000004768371582,
+        "ackWait": {
+          "count": 25,
+          "totalMs": 25.99999964237213,
+          "maxMs": 3.100000023841858,
+          "samples": [
+            1.1999999284744263,
+            1.2999999523162842,
+            1.1999999284744263,
+            1.2999999523162842,
+            1.2999999523162842,
+            0.8000000715255737,
+            0.6999999284744263,
+            0.8000000715255737,
+            0.7999999523162842,
+            0.7999999523162842,
+            0.7999999523162842,
+            1,
+            0.6000000238418579,
+            1,
+            0.7000000476837158,
+            0.8999999761581421,
+            1,
+            1,
+            1,
+            0.8999999761581421,
+            0.7000000476837158,
+            0.8999999761581421,
+            0.5,
+            3.100000023841858,
+            1.6999999284744263
+          ]
+        },
+        "statistics": {
+          "dabs": 25,
+          "candidateChecks": 90990,
+          "affectedSamples": 16336,
+          "writes": 16261,
+          "peakPreparedBytes": 32768,
+          "acceptedPositions": 26,
+          "processedPositions": 26,
+          "discardedPositions": 0,
+          "peakPendingPositions": 1
+        }
+      },
+      "historyEntries": 4,
+      "historyBytes": 95968,
+      "configuration": {
+        "provider": "physical-rounded-crescent-globe",
+        "version": 1,
+        "worldSizeMeters": 2000000,
+        "curvatureRatio": 1.25,
+        "spanDegrees": 160,
+        "bodyRadiusRatio": 0.6,
+        "depthRatio": 1.25,
+        "tipTaper": 0,
+        "tipRoundness": -0.2,
+        "scaleMeters": 1000000,
+        "bendRadius": 1.25,
+        "bodyRadius": 0.6,
+        "bodyDepth": 0.75,
+        "halfSpan": 1.3962634015954636,
+        "minimumStretch": 0.35515671919326974,
+        "maximumStretch": 3.741695648699371,
+        "elevationLimitMeters": 75000
+      },
+      "view": {
+        "mode": "globe",
+        "frame": {
+          "right": [
+            0,
+            0,
+            1
+          ],
+          "up": [
+            0.17364817766693044,
+            0.9848077530122081,
+            0
+          ],
+          "forward": [
+            -0.9848077530122081,
+            0.17364817766693044,
+            0
+          ]
+        },
+        "zoom": 1.5625,
+        "pan": {
+          "x": 0,
+          "y": 0.6756756756756757
+        },
+        "roundedGlobe": {
+          "provider": "physical-rounded-crescent-globe",
+          "version": 1,
+          "worldSizeMeters": 2000000,
+          "curvatureRatio": 1.25,
+          "spanDegrees": 160,
+          "bodyRadiusRatio": 0.6,
+          "depthRatio": 1.25,
+          "tipTaper": 0,
+          "tipRoundness": -0.2,
+          "scaleMeters": 1000000,
+          "bendRadius": 1.25,
+          "bodyRadius": 0.6,
+          "bodyDepth": 0.75,
+          "halfSpan": 1.3962634015954636,
+          "minimumStretch": 0.35515671919326974,
+          "maximumStretch": 3.741695648699371,
+          "elevationLimitMeters": 75000
+        }
+      }
+    }
+  }
+]

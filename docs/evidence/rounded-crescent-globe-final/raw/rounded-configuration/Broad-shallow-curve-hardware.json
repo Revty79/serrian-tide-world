@@ -1,0 +1,435 @@
+{
+  "n": 256,
+  "name": "Broad shallow curve",
+  "configuration": {
+    "provider": "physical-rounded-crescent-globe",
+    "version": 1,
+    "worldSizeMeters": 2000000,
+    "curvatureRatio": 1.25,
+    "spanDegrees": 160,
+    "bodyRadiusRatio": 0.6,
+    "depthRatio": 1.25,
+    "tipTaper": 0,
+    "tipRoundness": -0.2,
+    "scaleMeters": 1000000,
+    "bendRadius": 1.25,
+    "bodyRadius": 0.6,
+    "bodyDepth": 0.75,
+    "halfSpan": 1.3962634015954636,
+    "minimumStretch": 0.35515671919326974,
+    "maximumStretch": 3.741695648699371,
+    "elevationLimitMeters": 75000
+  },
+  "before": "60905f2b55402ee5f00ddfa80d85b8eb04c251f8c5a5c8d1528d5867c2959927",
+  "after": "ae124d2a7e704c54d9e011d323b8bcf46e90bf5cd83f82904189ab0af4d91d20",
+  "records": [
+    {
+      "region": "upper",
+      "comparison": {
+        "mismatches": 0,
+        "changed": 859,
+        "accepted": 26,
+        "statistics": {
+          "dabs": 17,
+          "candidateChecks": 40533,
+          "affectedSamples": 4087,
+          "writes": 4087,
+          "peakPreparedBytes": 32768
+        }
+      },
+      "state": {
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "revision": 4087,
+        "displayRevision": 4087,
+        "renderer": "webgl2",
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "reason": "",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 18,
+            "uploadBytes": 6559376,
+            "textureBytes": 17364576,
+            "presentations": 19,
+            "resources": 8
+          },
+          "cpu": {
+            "width": 0,
+            "height": 0,
+            "pending": false,
+            "refined": false,
+            "images": 0,
+            "slices": 0,
+            "computeMs": 0,
+            "maxSliceMs": 0,
+            "snapshotBytes": 0,
+            "partialFrames": 0,
+            "baseRasterPixels": 0
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 4087,
+          "displayRevision": 4087,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 1
+          }
+        },
+        "geometry": {
+          "geometryProbes": 1,
+          "repairPixels": 10552,
+          "maxRepairPixels": 10552,
+          "probeMaxMs": 173.69999992847443,
+          "lastProbeMs": 29.200000047683716,
+          "probeReadbackBytes": 5472000,
+          "frameBytes": 5472000,
+          "partialFrames": 17,
+          "fullFrames": 2,
+          "lastDrawPixels": 2150
+        },
+        "statistics": {
+          "dabs": 17,
+          "writes": 4087,
+          "updatedPixels": 6755,
+          "updatedRegions": 17,
+          "fullRebuilds": 0,
+          "maxDabMs": 7.600000023841858,
+          "slices": 62
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 3540,
+          "weighted": 226560,
+          "threshold": 24000,
+          "coarse": false,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "geometryPreparationMs": 83.89999997615814,
+          "fallbackReason": "",
+          "readyRoundTripMs": 24.699999928474426,
+          "snapshotMs": 7.199999928474426,
+          "computeMs": 92.49999988079071,
+          "proposals": 17,
+          "staleResults": 0,
+          "validationMaxMs": 1.0999999046325684,
+          "commitMaxMs": 0.3999999761581421,
+          "ackWait": {
+            "count": 17,
+            "totalMs": 30.199999928474426,
+            "maxMs": 7.600000023841858,
+            "samples": [
+              7.600000023841858,
+              1.7000000476837158,
+              2.399999976158142,
+              0.8999999761581421,
+              2.399999976158142,
+              2.6999999284744263,
+              1.7999999523162842,
+              2.100000023841858,
+              0.8000000715255737,
+              1,
+              0.7999999523162842,
+              1.2999999523162842,
+              0.8000000715255737,
+              1.4000000953674316,
+              0.6999999284744263,
+              1.399999976158142,
+              0.3999999761581421
+            ]
+          },
+          "statistics": {
+            "dabs": 17,
+            "candidateChecks": 40533,
+            "affectedSamples": 4087,
+            "writes": 4087,
+            "peakPreparedBytes": 32768,
+            "acceptedPositions": 26,
+            "processedPositions": 26,
+            "discardedPositions": 0,
+            "peakPendingPositions": 1
+          }
+        },
+        "historyEntries": 1,
+        "historyBytes": 10372,
+        "configuration": {
+          "provider": "physical-rounded-crescent-globe",
+          "version": 1,
+          "worldSizeMeters": 2000000,
+          "curvatureRatio": 1.25,
+          "spanDegrees": 160,
+          "bodyRadiusRatio": 0.6,
+          "depthRatio": 1.25,
+          "tipTaper": 0,
+          "tipRoundness": -0.2,
+          "scaleMeters": 1000000,
+          "bendRadius": 1.25,
+          "bodyRadius": 0.6,
+          "bodyDepth": 0.75,
+          "halfSpan": 1.3962634015954636,
+          "minimumStretch": 0.35515671919326974,
+          "maximumStretch": 3.741695648699371,
+          "elevationLimitMeters": 75000
+        },
+        "view": {
+          "mode": "globe",
+          "frame": {
+            "right": [
+              1,
+              0,
+              0
+            ],
+            "up": [
+              0,
+              1,
+              0
+            ],
+            "forward": [
+              0,
+              0,
+              1
+            ]
+          },
+          "zoom": 1,
+          "pan": {
+            "x": 0.6756756756756757,
+            "y": 0
+          },
+          "roundedGlobe": {
+            "provider": "physical-rounded-crescent-globe",
+            "version": 1,
+            "worldSizeMeters": 2000000,
+            "curvatureRatio": 1.25,
+            "spanDegrees": 160,
+            "bodyRadiusRatio": 0.6,
+            "depthRatio": 1.25,
+            "tipTaper": 0,
+            "tipRoundness": -0.2,
+            "scaleMeters": 1000000,
+            "bendRadius": 1.25,
+            "bodyRadius": 0.6,
+            "bodyDepth": 0.75,
+            "halfSpan": 1.3962634015954636,
+            "minimumStretch": 0.35515671919326974,
+            "maximumStretch": 3.741695648699371,
+            "elevationLimitMeters": 75000
+          }
+        }
+      }
+    },
+    {
+      "region": "first-tip",
+      "comparison": {
+        "mismatches": 0,
+        "changed": 3151,
+        "accepted": 26,
+        "statistics": {
+          "dabs": 25,
+          "candidateChecks": 90990,
+          "affectedSamples": 16336,
+          "writes": 16334,
+          "peakPreparedBytes": 32768
+        }
+      },
+      "state": {
+        "ready": true,
+        "viewPending": false,
+        "displayPending": false,
+        "painting": false,
+        "processing": false,
+        "pending": 0,
+        "revision": 20421,
+        "displayRevision": 20421,
+        "renderer": "webgl2",
+        "diagnostics": {
+          "gpu": {
+            "renderer": "ANGLE (AMD, AMD Radeon RX 6600 (0x000073FF) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "reason": "",
+            "losses": 0,
+            "recoveries": 0,
+            "uploads": 42,
+            "uploadBytes": 7080816,
+            "textureBytes": 17348192,
+            "presentations": 44,
+            "resources": 8
+          },
+          "cpu": {
+            "width": 0,
+            "height": 0,
+            "pending": false,
+            "refined": false,
+            "images": 0,
+            "slices": 0,
+            "computeMs": 0,
+            "maxSliceMs": 0,
+            "snapshotBytes": 0,
+            "partialFrames": 0,
+            "baseRasterPixels": 0
+          },
+          "fieldBytes": 23693568,
+          "fieldRevision": 20421,
+          "displayRevision": 20421,
+          "pending": false,
+          "appearance": "relief",
+          "timingBounds": {
+            "retained": 0,
+            "capacity": 512,
+            "total": 2
+          }
+        },
+        "geometry": {
+          "geometryProbes": 2,
+          "repairPixels": 687,
+          "maxRepairPixels": 10552,
+          "probeMaxMs": 173.69999992847443,
+          "lastProbeMs": 96.89999997615814,
+          "probeReadbackBytes": 5472000,
+          "frameBytes": 5472000,
+          "partialFrames": 41,
+          "fullFrames": 3,
+          "lastDrawPixels": 1800
+        },
+        "statistics": {
+          "dabs": 42,
+          "writes": 20421,
+          "updatedPixels": 30941,
+          "updatedRegions": 42,
+          "fullRebuilds": 0,
+          "maxDabMs": 7.600000023841858,
+          "slices": 140
+        },
+        "work": {
+          "backend": "worker",
+          "candidates": 3900,
+          "weighted": 249600,
+          "threshold": 24000,
+          "coarse": false,
+          "reason": "Preparation exceeds calibrated UI-work threshold",
+          "geometryPreparationMs": 83.89999997615814,
+          "fallbackReason": "",
+          "readyRoundTripMs": 12.199999928474426,
+          "snapshotMs": 5.700000047683716,
+          "computeMs": 299.10000026226044,
+          "proposals": 25,
+          "staleResults": 0,
+          "validationMaxMs": 9.100000023841858,
+          "commitMaxMs": 0.20000004768371582,
+          "ackWait": {
+            "count": 25,
+            "totalMs": 92.7999997138977,
+            "maxMs": 11.699999928474426,
+            "samples": [
+              11.699999928474426,
+              2.100000023841858,
+              3.100000023841858,
+              4.5,
+              4.099999904632568,
+              1.5,
+              1.7000000476837158,
+              3.899999976158142,
+              3.100000023841858,
+              5.399999976158142,
+              3.6999999284744263,
+              4.799999952316284,
+              2.399999976158142,
+              2.8000000715255737,
+              4.399999976158142,
+              5.5,
+              5,
+              3.5,
+              2.700000047683716,
+              1.899999976158142,
+              3.299999952316284,
+              2.5999999046325684,
+              3,
+              2.700000047683716,
+              3.399999976158142
+            ]
+          },
+          "statistics": {
+            "dabs": 25,
+            "candidateChecks": 90990,
+            "affectedSamples": 16336,
+            "writes": 16334,
+            "peakPreparedBytes": 32768,
+            "acceptedPositions": 26,
+            "processedPositions": 26,
+            "discardedPositions": 0,
+            "peakPendingPositions": 1
+          }
+        },
+        "historyEntries": 2,
+        "historyBytes": 48248,
+        "configuration": {
+          "provider": "physical-rounded-crescent-globe",
+          "version": 1,
+          "worldSizeMeters": 2000000,
+          "curvatureRatio": 1.25,
+          "spanDegrees": 160,
+          "bodyRadiusRatio": 0.6,
+          "depthRatio": 1.25,
+          "tipTaper": 0,
+          "tipRoundness": -0.2,
+          "scaleMeters": 1000000,
+          "bendRadius": 1.25,
+          "bodyRadius": 0.6,
+          "bodyDepth": 0.75,
+          "halfSpan": 1.3962634015954636,
+          "minimumStretch": 0.35515671919326974,
+          "maximumStretch": 3.741695648699371,
+          "elevationLimitMeters": 75000
+        },
+        "view": {
+          "mode": "globe",
+          "frame": {
+            "right": [
+              0,
+              0,
+              1
+            ],
+            "up": [
+              0.17364817766693044,
+              0.9848077530122081,
+              0
+            ],
+            "forward": [
+              -0.9848077530122081,
+              0.17364817766693044,
+              0
+            ]
+          },
+          "zoom": 1,
+          "pan": {
+            "x": 0,
+            "y": 0.6756756756756757
+          },
+          "roundedGlobe": {
+            "provider": "physical-rounded-crescent-globe",
+            "version": 1,
+            "worldSizeMeters": 2000000,
+            "curvatureRatio": 1.25,
+            "spanDegrees": 160,
+            "bodyRadiusRatio": 0.6,
+            "depthRatio": 1.25,
+            "tipTaper": 0,
+            "tipRoundness": -0.2,
+            "scaleMeters": 1000000,
+            "bendRadius": 1.25,
+            "bodyRadius": 0.6,
+            "bodyDepth": 0.75,
+            "halfSpan": 1.3962634015954636,
+            "minimumStretch": 0.35515671919326974,
+            "maximumStretch": 3.741695648699371,
+            "elevationLimitMeters": 75000
+          }
+        }
+      }
+    }
+  ]
+}

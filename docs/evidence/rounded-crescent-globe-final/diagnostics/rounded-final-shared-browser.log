@@ -1,0 +1,21 @@
+Command: ["node", "node_modules/@playwright/test/cli.js", "test", "--config", ".local/rounded-shared.config.mjs", "--grep", "shared|N128|Ribbon N256 (auto|canvas): ordinary|spherical standards N256|sphere appearance, navigation", "--workers=1", "--retries=0"]
+
+Running 14 tests using 1 worker
+
+(node:12500) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [installed-chrome] › tests\crescent-cut-globe-shared.spec.ts:3:34 › shared Sphere N128 hardware ordinary painting, exact history and legacy v3 (6.5s)
+  ok  2 [installed-chrome] › tests\crescent-cut-globe-shared.spec.ts:3:34 › shared Sphere N128 Canvas ordinary painting, exact history and legacy v3 (6.4s)
+  x   3 [installed-chrome] › tests\crescent-cut-globe-shared.spec.ts:6:34 › shared Crescent N128 hardware painting, history and legacy v36 (3.0s)
+(node:29104) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   4 [installed-chrome] › tests\crescent-cut-globe-shared.spec.ts:6:34 › shared Crescent N128 Canvas painting, history and legacy v36 (3.1s)
+(node:6708) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  5 [installed-chrome] › tests\crescent-cut-globe-workflow.spec.ts:5:68 › Crescent-Cut Globe N128 hardware all tools, physical banks, real rim, maps and atomic Save/Open (42.8s)
+  ok  6 [installed-chrome] › tests\crescent-cut-globe-workflow.spec.ts:5:68 › Crescent-Cut Globe N128 Canvas all tools, physical banks, real rim, maps and atomic Save/Open (1.5m)
+  ok  7 [installed-chrome] › tests\hollow-sphere-workflow.spec.ts:5:63 › hollow sphere N128 auto: independent geography, cavity camera, exact history and v8 reopen (11.4s)
+  ok  8 [installed-chrome] › tests\hollow-sphere-workflow.spec.ts:5:63 › hollow sphere N128 canvas: independent geography, cavity camera, exact history and v8 reopen (16.7s)
+  x   9 [installed-chrome] › tests\ribbon-navigation.spec.ts:2:39 › Ribbon N256 auto: ordinary rotation publishes actual pixels and preserves geography (2.3m)
+(node:344) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

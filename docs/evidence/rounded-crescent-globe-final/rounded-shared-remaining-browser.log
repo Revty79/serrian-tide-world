@@ -1,0 +1,17 @@
+Command: ["node", "node_modules/@playwright/test/cli.js", "test", "--config", ".local/rounded-shared.config.mjs", "--grep", "Ribbon N256 (auto|canvas): ordinary|Ribbon.*N128|spherical standards N256|sphere appearance, navigation", "--workers=1", "--retries=0", "--max-failures=1"]
+
+Running 5 tests using 1 worker
+
+(node:21820) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\ribbon-navigation.spec.ts:2:39 › Ribbon N256 auto: ordinary rotation publishes actual pixels and preserves geography (1.1m)
+  ok 2 [installed-chrome] › tests\ribbon-navigation.spec.ts:2:39 › Ribbon N256 canvas: ordinary rotation publishes actual pixels and preserves geography (1.0m)
+  ok 3 [installed-chrome] › tests\ribbon-pixels.spec.ts:2:70 › Ribbon N128 default: independent geometry/palette views match hardware WebGL2 and sharp Canvas (3.2m)
+(node:5624) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 4 [installed-chrome] › tests\sphere-standards.spec.ts:24:29 › spherical standards N256: actual Globe/Net ordinary and large brushes, accepted input, exact history and v3 reopening (34.0s)
+  ok 5 [installed-chrome] › tests\sphere-standards.spec.ts:46:1 › sphere appearance, navigation and source synchronization never rewrite geography; hardware context loss/restoration and CPU fallback are safe (5.9s)
+
+  5 passed (6.0m)
+
+Exit: 0

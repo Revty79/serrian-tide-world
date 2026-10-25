@@ -1,0 +1,47 @@
+Command: ["node", "node_modules/@playwright/test/cli.js", "test", "--config", "playwright.rounded-crescent-globe.config.mjs", "tests/rounded-crescent-pixels.spec.ts", "tests/rounded-crescent-configuration-pixels.spec.ts", "--grep", "N128|N256|Stretched thin tips", "--workers=1", "--retries=0", "--max-failures=1"]
+
+Running 7 tests using 1 worker
+
+(node:12628) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [installed-chrome] › tests\rounded-crescent-configuration-pixels.spec.ts:3:28 › Rounded Crescent Stretched thin tips: independent configured geometry, material coverage and terrain pixels (38.9s)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) [installed-chrome] › tests\rounded-crescent-configuration-pixels.spec.ts:3:28 › Rounded Crescent Stretched thin tips: independent configured geometry, material coverage and terrain pixels 
+
+    Error: first-tip
+
+    expect(received).toBeGreaterThan(expected)
+
+    Expected: > 10000
+    Received:   6611
+
+      2 | const profiles=['Heavy crescent','Slender crescent','Gentle curve','Strong curve','Long taper','Short and full','Small scale','Large scale','Slender deep curve','Broad shallow curve','Stretched thin tips'];
+      3 | for(const name of profiles)test(`Rounded Crescent ${name}: independent configured geometry, material coverage and terrain pixels`,async({page})=>{
+    > 4 |  test.setTimeout(600000);await page.goto('/');const proof=await page.evaluate(async(name)=>{const path='/tests/fixtures/rounded-crescent-pixel-proof.ts',m=await import(path),extreme=['Small scale','Large scale','Slender deep curve','Broad shallow curve','Stretched thin tips'].includes(name);return m.roundedPixelProof(extreme?256:128,'pattern',extreme?['front','inner','first-tip']:['overview','first-tip'],m.roundedPixelProfiles[name]);},name);mkdirSync('.local/rounded-configuration-pixels',{recursive:true});const root='.local/rounded-configuration-pixels/'+name.replaceAll(' ','-');writeFileSync(root+'.json',JSON.stringify(proof.results,null,2));for(const r of proof.results){expect(r.stable,r.pose).toBeGreaterThan(10000);expect(r.stableMax,r.pose).toBeLessThanOrEqual(2);expect(r.referenceMax,r.pose).toBeLessThanOrEqual(2);expect(r.quarterColorMax,r.pose).toBeLessThanOrEqual(2);expect(r.alphaMax,r.pose).toBeLessThanOrEqual(1);expect(r.missing,r.pose).toBe(0);expect(r.outside,r.pose).toBe(0);expect(r.optimizationMax,r.pose).toBe(0);expect(r.oracleConvergence,r.pose).toBeLessThan(1e-7);expect(r.before).toBe(r.after);expect(r.graphics.renderer).not.toMatch(/software|swiftshader|llvmpipe/i);}for(const r of proof.captures)for(const backend of ['cpu','gpu'] as const)writeFileSync(`${root}-${r.pose}-${backend}.png`,Buffer.from(r[backend].split(',')[1]!,'base64'));
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^
+      5 | });
+      6 |
+        at D:\serrian-tide-world\tests\rounded-crescent-configuration-pixels.spec.ts:4:707
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-rounded-crescent-playwright\rounded-crescent-configura-76a49-coverage-and-terrain-pixels-installed-chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: C:\Users\birev\AppData\Local\Temp\serrian-rounded-crescent-playwright\rounded-crescent-configura-76a49-coverage-and-terrain-pixels-installed-chrome\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-rounded-crescent-playwright\rounded-crescent-configura-76a49-coverage-and-terrain-pixels-installed-chrome\trace.zip
+    Usage:
+
+        npx playwright show-trace C:\Users\birev\AppData\Local\Temp\serrian-rounded-crescent-playwright\rounded-crescent-configura-76a49-coverage-and-terrain-pixels-installed-chrome\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [installed-chrome] › tests\rounded-crescent-configuration-pixels.spec.ts:3:28 › Rounded Crescent Stretched thin tips: independent configured geometry, material coverage and terrain pixels 
+  6 did not run
+  1 error was not a part of any test, see above for details
+
+Exit: 1

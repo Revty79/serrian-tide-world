@@ -1,0 +1,11 @@
+Command: ["node", "node_modules/@playwright/test/cli.js", "test", "--config", "playwright.rounded-crescent-globe.config.mjs", "tests/rounded-crescent-profile-response.spec.ts", "--grep", "Stretched thin tips Canvas", "--workers=1", "--retries=0", "--max-failures=1"]
+
+Running 1 test using 1 worker
+
+(node:21612) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\rounded-crescent-profile-response.spec.ts:5:64 › Rounded Crescent Stretched thin tips Canvas measured inner-curve and tip response (39.4s)
+
+  1 passed (40.4s)
+
+Exit: 0

@@ -1,0 +1,1615 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\serrian-tide-world\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.rounded-crescent-globe.config.mjs",
+      "--list"
+    ],
+    "configFile": "D:\\serrian-tide-world\\playwright.rounded-crescent-globe.config.mjs",
+    "rootDir": "D:/serrian-tide-world/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {},
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/birev/AppData/Local/Temp/serrian-rounded-crescent-playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "installed-chrome",
+        "name": "installed-chrome",
+        "testDir": "D:/serrian-tide-world/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "rounded-crescent-*.spec.ts"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\birev\\AppData\\Local\\Temp\\serrian-rounded-crescent-playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "name": "installed-chrome",
+        "testDir": "D:\\serrian-tide-world\\tests",
+        "snapshotDir": "D:\\serrian-tide-world\\tests",
+        "testIgnore": [],
+        "testMatch": [
+          "rounded-crescent-*.spec.ts"
+        ],
+        "timeout": 240000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5262",
+          "channel": "chrome",
+          "launchOptions": {
+            "args": [
+              "--use-angle=default"
+            ]
+          },
+          "viewport": {
+            "width": 1440,
+            "height": 950
+          },
+          "deviceScaleFactor": 1,
+          "actionTimeout": 15000,
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "installed-chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".local/rounded-final-config-list-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "rounded-crescent-configuration-pixels.spec.ts",
+      "file": "rounded-crescent-configuration-pixels.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Rounded Crescent Heavy crescent: independent configured geometry, material coverage and terrain pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a70fc5dcf92431e5a7c8-39ca8c223ee66c706285",
+          "file": "rounded-crescent-configuration-pixels.spec.ts",
+          "line": 3,
+          "column": 28
+        },
+        {
+          "title": "Rounded Crescent Slender crescent: independent configured geometry, material coverage and terrain pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a70fc5dcf92431e5a7c8-6a1c03469ec4c70bbce2",
+          "file": "rounded-crescent-configuration-pixels.spec.ts",
+          "line": 3,
+          "column": 28
+        },
+        {
+          "title": "Rounded Crescent Gentle curve: independent configured geometry, material coverage and terrain pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a70fc5dcf92431e5a7c8-ffaca6dda74d52e1b485",
+          "file": "rounded-crescent-configuration-pixels.spec.ts",
+          "line": 3,
+          "column": 28
+        },
+        {
+          "title": "Rounded Crescent Strong curve: independent configured geometry, material coverage and terrain pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a70fc5dcf92431e5a7c8-a85b8064cc4c513c9438",
+          "file": "rounded-crescent-configuration-pixels.spec.ts",
+          "line": 3,
+          "column": 28
+        },
+        {
+          "title": "Rounded Crescent Long taper: independent configured geometry, material coverage and terrain pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a70fc5dcf92431e5a7c8-08bffc7a80ba598f5043",
+          "file": "rounded-crescent-configuration-pixels.spec.ts",
+          "line": 3,
+          "column": 28
+        },
+        {
+          "title": "Rounded Crescent Short and full: independent configured geometry, material coverage and terrain pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a70fc5dcf92431e5a7c8-9d30c5b88d561bc0aac5",
+          "file": "rounded-crescent-configuration-pixels.spec.ts",
+          "line": 3,
+          "column": 28
+        },
+        {
+          "title": "Rounded Crescent Small scale: independent configured geometry, material coverage and terrain pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a70fc5dcf92431e5a7c8-df71de4492b1ea8f30b7",
+          "file": "rounded-crescent-configuration-pixels.spec.ts",
+          "line": 3,
+          "column": 28
+        },
+        {
+          "title": "Rounded Crescent Large scale: independent configured geometry, material coverage and terrain pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a70fc5dcf92431e5a7c8-89e198e02c1f779d04e4",
+          "file": "rounded-crescent-configuration-pixels.spec.ts",
+          "line": 3,
+          "column": 28
+        },
+        {
+          "title": "Rounded Crescent Slender deep curve: independent configured geometry, material coverage and terrain pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a70fc5dcf92431e5a7c8-f988e1cb7dfe37ac9297",
+          "file": "rounded-crescent-configuration-pixels.spec.ts",
+          "line": 3,
+          "column": 28
+        },
+        {
+          "title": "Rounded Crescent Broad shallow curve: independent configured geometry, material coverage and terrain pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a70fc5dcf92431e5a7c8-35630bd6257c7f51e88b",
+          "file": "rounded-crescent-configuration-pixels.spec.ts",
+          "line": 3,
+          "column": 28
+        },
+        {
+          "title": "Rounded Crescent Stretched thin tips: independent configured geometry, material coverage and terrain pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a70fc5dcf92431e5a7c8-dbc59f54983869636477",
+          "file": "rounded-crescent-configuration-pixels.spec.ts",
+          "line": 3,
+          "column": 28
+        }
+      ]
+    },
+    {
+      "title": "rounded-crescent-configuration.spec.ts",
+      "file": "rounded-crescent-configuration.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Rounded Crescent Rounded crescent hardware configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-59bb4d205a65235bbe09",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Heavy crescent hardware configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-ef615235bb25d9ac0333",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Slender crescent hardware configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-bea859777e70ca5abe79",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Gentle curve hardware configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-a27e4eabe79391c08fcf",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Strong curve hardware configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-8654d0067c4aa723fe30",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Long taper hardware configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-a618a15c61a26b505958",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Short and full hardware configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-9f1b4b071e352e936ef4",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Small scale hardware configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-02024ef9b9a0de09322c",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Large scale hardware configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-14aba5acc7f15b324760",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Slender deep curve hardware configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-151a690b6fb6ea8eefa7",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Broad shallow curve hardware configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-f445989c0820fa8e91f9",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Rounded crescent Canvas configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-c2631698aaf5f6af8b34",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Heavy crescent Canvas configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-5df597460a0a58215ee9",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Slender crescent Canvas configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-e15b14ae06d67aa2c7f7",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Gentle curve Canvas configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-8ed6ee942587d735b735",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Strong curve Canvas configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-bf3c95f6e4575945bcbd",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Long taper Canvas configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-a1047603e755bbf22331",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Short and full Canvas configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-58499b4db56d927de0c6",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Small scale Canvas configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-441f0e7c9f27545e55a7",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Large scale Canvas configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-c4a652cc092aff2d2c83",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Slender deep curve Canvas configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-7efc96dfc348332bad91",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent Broad shallow curve Canvas configuration, cross-section editing and exact reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-c4149de63c8676de1615",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 5,
+          "column": 118
+        },
+        {
+          "title": "Rounded Crescent creator rejects unsupported proportions and permits correction",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f57f8559d00497ba8231-d481e92846011dce5836",
+          "file": "rounded-crescent-configuration.spec.ts",
+          "line": 11,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "rounded-crescent-current-output.spec.ts",
+      "file": "rounded-crescent-current-output.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Rounded Crescent DPR 1.5",
+          "file": "rounded-crescent-current-output.spec.ts",
+          "line": 3,
+          "column": 31,
+          "specs": [
+            {
+              "title": "hardware resize, cropped-map dirty updates and fresh full output",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 240000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "installed-chrome",
+                  "projectName": "installed-chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "3b4c28adb0cf3c4cd104-52dfaa4c99a278cb40ce",
+              "file": "rounded-crescent-current-output.spec.ts",
+              "line": 3,
+              "column": 175
+            },
+            {
+              "title": "Canvas resize, cropped-map dirty updates and fresh full output",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 240000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "installed-chrome",
+                  "projectName": "installed-chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "3b4c28adb0cf3c4cd104-335b83d7427bd57ba893",
+              "file": "rounded-crescent-current-output.spec.ts",
+              "line": 3,
+              "column": 175
+            }
+          ]
+        },
+        {
+          "title": "Rounded Crescent DPR 2",
+          "file": "rounded-crescent-current-output.spec.ts",
+          "line": 3,
+          "column": 31,
+          "specs": [
+            {
+              "title": "hardware resize, cropped-map dirty updates and fresh full output",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 240000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "installed-chrome",
+                  "projectName": "installed-chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "3b4c28adb0cf3c4cd104-a79718bc7b0846fc0528",
+              "file": "rounded-crescent-current-output.spec.ts",
+              "line": 3,
+              "column": 175
+            },
+            {
+              "title": "Canvas resize, cropped-map dirty updates and fresh full output",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 240000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "installed-chrome",
+                  "projectName": "installed-chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "3b4c28adb0cf3c4cd104-9c58656d88ba3278bcdf",
+              "file": "rounded-crescent-current-output.spec.ts",
+              "line": 3,
+              "column": 175
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "rounded-crescent-lifecycle.spec.ts",
+      "file": "rounded-crescent-lifecycle.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Rounded Crescent Globe N128 hardware 15-second held input, navigation, maximum brush and recovery",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c5523015d889ae70e306-078a9052f0c70c8d87a1",
+          "file": "rounded-crescent-lifecycle.spec.ts",
+          "line": 2,
+          "column": 68
+        },
+        {
+          "title": "Rounded Crescent Globe N128 Canvas 15-second held input, navigation, maximum brush and recovery",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c5523015d889ae70e306-8c3848ecb92ad51c62de",
+          "file": "rounded-crescent-lifecycle.spec.ts",
+          "line": 2,
+          "column": 68
+        },
+        {
+          "title": "Rounded Crescent Globe N256 hardware 15-second held input, navigation, maximum brush and recovery",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c5523015d889ae70e306-d5e9e9720dd0073c2b90",
+          "file": "rounded-crescent-lifecycle.spec.ts",
+          "line": 2,
+          "column": 68
+        },
+        {
+          "title": "Rounded Crescent Globe N256 Canvas 15-second held input, navigation, maximum brush and recovery",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c5523015d889ae70e306-b5202ff7eb2493918374",
+          "file": "rounded-crescent-lifecycle.spec.ts",
+          "line": 2,
+          "column": 68
+        }
+      ]
+    },
+    {
+      "title": "rounded-crescent-navigation-pixels.spec.ts",
+      "file": "rounded-crescent-navigation-pixels.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Rounded Crescent N128 navigation workers retain every pixel, epoch and canceled-view isolation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b25eb786f9eb76462ee8-8fa5e1d3b858f346e6a8",
+          "file": "rounded-crescent-navigation-pixels.spec.ts",
+          "line": 3,
+          "column": 35
+        },
+        {
+          "title": "Rounded Crescent N256 navigation workers retain every pixel, epoch and canceled-view isolation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b25eb786f9eb76462ee8-3fa043ba10a59a0e7568",
+          "file": "rounded-crescent-navigation-pixels.spec.ts",
+          "line": 3,
+          "column": 35
+        }
+      ]
+    },
+    {
+      "title": "rounded-crescent-navigation.spec.ts",
+      "file": "rounded-crescent-navigation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Rounded Crescent N128 Canvas ordinary rotation and return to painting",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "010b450e0aeb5803ef7d-861f5eb11ad41367993d",
+          "file": "rounded-crescent-navigation.spec.ts",
+          "line": 3,
+          "column": 35
+        },
+        {
+          "title": "Rounded Crescent N256 Canvas ordinary rotation and return to painting",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "010b450e0aeb5803ef7d-8a24cc9cd82d43fe8fff",
+          "file": "rounded-crescent-navigation.spec.ts",
+          "line": 3,
+          "column": 35
+        }
+      ]
+    },
+    {
+      "title": "rounded-crescent-observer.spec.ts",
+      "file": "rounded-crescent-observer.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Rounded pixel observer preserves exact submitted Canvas epochs",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e8595cb720be5a2351c2-a036dad47df8d839792f",
+          "file": "rounded-crescent-observer.spec.ts",
+          "line": 3,
+          "column": 36
+        },
+        {
+          "title": "Rounded pixel observer preserves exact submitted WebGL2 epochs",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "e8595cb720be5a2351c2-ad38ac345e5e9dee5a6f",
+          "file": "rounded-crescent-observer.spec.ts",
+          "line": 3,
+          "column": 36
+        }
+      ]
+    },
+    {
+      "title": "rounded-crescent-pixels.spec.ts",
+      "file": "rounded-crescent-pixels.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Rounded Crescent N128 pattern: independent physical geography and matched hardware/Canvas output",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53bc3276d397e509a546-141831f803943eb9d3a3",
+          "file": "rounded-crescent-pixels.spec.ts",
+          "line": 2,
+          "column": 95
+        },
+        {
+          "title": "Rounded Crescent N128 ocean: independent physical geography and matched hardware/Canvas output",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53bc3276d397e509a546-bd5e1ed13196975480c3",
+          "file": "rounded-crescent-pixels.spec.ts",
+          "line": 2,
+          "column": 95
+        },
+        {
+          "title": "Rounded Crescent N128 reference: independent physical geography and matched hardware/Canvas output",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53bc3276d397e509a546-12e71fa1b21fbcbf42dc",
+          "file": "rounded-crescent-pixels.spec.ts",
+          "line": 2,
+          "column": 95
+        },
+        {
+          "title": "Rounded Crescent N256 pattern: independent physical geography and matched hardware/Canvas output",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53bc3276d397e509a546-6886034f4b54bdbc41e7",
+          "file": "rounded-crescent-pixels.spec.ts",
+          "line": 2,
+          "column": 95
+        },
+        {
+          "title": "Rounded Crescent N256 ocean: independent physical geography and matched hardware/Canvas output",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53bc3276d397e509a546-c30487c731410587fc07",
+          "file": "rounded-crescent-pixels.spec.ts",
+          "line": 2,
+          "column": 95
+        },
+        {
+          "title": "Rounded Crescent N256 reference: independent physical geography and matched hardware/Canvas output",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "53bc3276d397e509a546-ddf60da37e34686ec3cd",
+          "file": "rounded-crescent-pixels.spec.ts",
+          "line": 2,
+          "column": 95
+        }
+      ]
+    },
+    {
+      "title": "rounded-crescent-profile-response.spec.ts",
+      "file": "rounded-crescent-profile-response.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Rounded Crescent Slender preset hardware measured inner-curve and tip response",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "14b19157e195fcb2c26e-8c8b3b969ff836ce39fc",
+          "file": "rounded-crescent-profile-response.spec.ts",
+          "line": 5,
+          "column": 64
+        },
+        {
+          "title": "Rounded Crescent Stretched thin tips hardware measured inner-curve and tip response",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "14b19157e195fcb2c26e-7f5b511c7346d8f24355",
+          "file": "rounded-crescent-profile-response.spec.ts",
+          "line": 5,
+          "column": 64
+        },
+        {
+          "title": "Rounded Crescent Broad short body hardware measured inner-curve and tip response",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "14b19157e195fcb2c26e-71299e3b7e032fd4298b",
+          "file": "rounded-crescent-profile-response.spec.ts",
+          "line": 5,
+          "column": 64
+        },
+        {
+          "title": "Rounded Crescent Slender preset Canvas measured inner-curve and tip response",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "14b19157e195fcb2c26e-dae64523c9f3a913b4e7",
+          "file": "rounded-crescent-profile-response.spec.ts",
+          "line": 5,
+          "column": 64
+        },
+        {
+          "title": "Rounded Crescent Stretched thin tips Canvas measured inner-curve and tip response",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "14b19157e195fcb2c26e-56f60c919dc49b5dede8",
+          "file": "rounded-crescent-profile-response.spec.ts",
+          "line": 5,
+          "column": 64
+        },
+        {
+          "title": "Rounded Crescent Broad short body Canvas measured inner-curve and tip response",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "14b19157e195fcb2c26e-b8b6771f971278231bc6",
+          "file": "rounded-crescent-profile-response.spec.ts",
+          "line": 5,
+          "column": 64
+        }
+      ]
+    },
+    {
+      "title": "rounded-crescent-render-probe.spec.ts",
+      "file": "rounded-crescent-render-probe.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Rounded Crescent initial actual renderer probe",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "3ec81ca7427150133913-65c33aaf2b7754dc8add",
+          "file": "rounded-crescent-render-probe.spec.ts",
+          "line": 2,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "rounded-crescent-tools.spec.ts",
+      "file": "rounded-crescent-tools.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Rounded Crescent N128 hardware four tools across curved regions, both tips and joined charts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "08b3146910721d2ac5d7-02022da22116a7e37f0e",
+          "file": "rounded-crescent-tools.spec.ts",
+          "line": 5,
+          "column": 65
+        },
+        {
+          "title": "Rounded Crescent N128 Canvas four tools across curved regions, both tips and joined charts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "08b3146910721d2ac5d7-71fa1ef879362ce45465",
+          "file": "rounded-crescent-tools.spec.ts",
+          "line": 5,
+          "column": 65
+        },
+        {
+          "title": "Rounded Crescent N256 hardware four tools across curved regions, both tips and joined charts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "08b3146910721d2ac5d7-04a05bc066ed2620713a",
+          "file": "rounded-crescent-tools.spec.ts",
+          "line": 5,
+          "column": 65
+        },
+        {
+          "title": "Rounded Crescent N256 Canvas four tools across curved regions, both tips and joined charts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "08b3146910721d2ac5d7-76c830b7f6dd743cece9",
+          "file": "rounded-crescent-tools.spec.ts",
+          "line": 5,
+          "column": 65
+        }
+      ]
+    },
+    {
+      "title": "rounded-crescent-touch.spec.ts",
+      "file": "rounded-crescent-touch.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Rounded Crescent Globe hardware coarse emulated touch/pen and two-contact navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f7e2dda9ec2ac7574c27-3ecf954e4dd60d9621fe",
+          "file": "rounded-crescent-touch.spec.ts",
+          "line": 3,
+          "column": 34
+        },
+        {
+          "title": "Rounded Crescent Globe Canvas coarse emulated touch/pen and two-contact navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f7e2dda9ec2ac7574c27-a45bb339260afed2d6ce",
+          "file": "rounded-crescent-touch.spec.ts",
+          "line": 3,
+          "column": 34
+        }
+      ]
+    },
+    {
+      "title": "rounded-crescent-workflow.spec.ts",
+      "file": "rounded-crescent-workflow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Rounded Crescent N128 hardware initial worker painting, history and strict reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "5543b7bcdfd691b6ad4b-63f6e8089977ff9af2d7",
+          "file": "rounded-crescent-workflow.spec.ts",
+          "line": 4,
+          "column": 34
+        },
+        {
+          "title": "Rounded Crescent N128 Canvas initial worker painting, history and strict reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "installed-chrome",
+              "projectName": "installed-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "5543b7bcdfd691b6ad4b-d7ed2f8da072fe3beb85",
+          "file": "rounded-crescent-workflow.spec.ts",
+          "line": 4,
+          "column": 34
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T23:40:10.930Z",
+    "duration": 575.43,
+    "expected": 0,
+    "skipped": 69,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

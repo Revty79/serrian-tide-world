@@ -1,0 +1,45 @@
+Command: ["node", "node_modules/@playwright/test/cli.js", "test", "--config", ".local/cut-canvas-observer-control.config.mjs", "--grep", "N128 Canvas", "--workers=1", "--retries=0", "--max-failures=1"]
+
+Running 1 test using 1 worker
+
+(node:19360) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [installed-chrome] › .local\cut-canvas-observer-control.spec.ts:5:68 › Crescent-Cut Globe N128 Canvas all tools, physical banks, real rim, maps and atomic Save/Open (8.2s)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) [installed-chrome] › .local\cut-canvas-observer-control.spec.ts:5:68 › Crescent-Cut Globe N128 Canvas all tools, physical banks, real rim, maps and atomic Save/Open 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 125
+    Received:   148.39999997615814
+
+       5 | for(const n of [128,256] as const)for(const canvas of [false,true])test(`Crescent-Cut Globe N${n} ${canvas?'Canvas':'hardware'} all tools, physical banks, real rim, maps and atomic Save/Open`,async({page})=>{
+       6 |  const errors:string[]=[];page.on('pageerror',e=>errors.push(String(e)));await createCutGlobe(page,n,canvas);await toolsPanel(page,false);mkdirSync('.local/cut-globe-observer-control',{recursive:true});const prefix=`.local/cut-globe-observer-control/n${n}-${canvas?'canvas':'hardware'}`;await page.screenshot({path:prefix+'-overview.png'});const records=[];
+    >  7 |  for(const [focus,region] of [['Focus concave cut','cut'],['Focus retained exterior','retained'],['Crescent overview','rim'],['Connected surface map','rim']] as const){const unchanged=await cutObserve(page,'hash');await cutView(page,focus);expect(await cutObserve(page,'hash')).toBe(unchanged);for(const tool of ['Raise','Smooth','Flatten','Lower']){await configure(page,tool);const before=await cutObserve(page,'hash'),result=await stroke(page,region),after=await cutObserve(page,'hash');records.push({focus,tool,...result,state:await cutObserve(page,'snapshot')});writeFileSync(prefix+'.json',JSON.stringify(records,null,2));expect(result.comparison.mismatches).toBe(0);expect(result.comparison.accepted).toBeGreaterThan(8);expect(after).not.toBe(before);if(region==='rim')expect(result.comparison.changed.cut>0&&result.comparison.changed.retained>0).toBe(true);expect(result.timing.summary.p95InputToPixels).toBeLessThan(125);expect(result.timing.latencies[0]!.inputToPixels).toBeLessThan(1000);await page.getByRole('button',{name:'Undo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(before);await page.getByRole('button',{name:'Redo',exact:true}).click();await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(after);}}
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
+       8 |  for(const focus of ['Retained exterior map','Concave cut map']){const before=await cutObserve(page,'hash');await cutView(page,focus);expect(await cutObserve(page,'hash')).toBe(before);await page.screenshot({path:prefix+'-'+focus.replaceAll(' ','-')+'.png'});}
+       9 |  const after=await cutObserve(page,'hash'),savedView=(await cutObserve(page,'snapshot')).view;await toolsPanel(page,true);await page.getByRole('button',{name:'Save',exact:true}).click();await expect(page.getByText('Saved on this device',{exact:true})).toBeVisible({timeout:60000});const previous=await cutCanvas(page).elementHandle();await page.getByRole('button',{name:'Open Map',exact:true}).click();await page.waitForFunction(node=>!node!.isConnected,previous);await cutIdle(page);expect(await cutObserve(page,'hash')).toBe(after);expect((await cutObserve(page,'snapshot')).view).toEqual(savedView);expect((await cutObserve(page,'snapshot')).historyEntries).toBe(0);
+      10 |  const id=await page.getByLabel('Saved maps',{exact:true}).inputValue();await page.evaluate(async id=>{const database=await new Promise<IDBDatabase>((resolve,reject)=>{const r=indexedDB.open('serrian-tide-atlas',1);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});try{await new Promise<void>((resolve,reject)=>{const tx=database.transaction('heightmaps','readwrite'),store=tx.objectStore('heightmaps'),get=store.get(id);get.onsuccess=()=>{const value=get.result as {elevations:ArrayBuffer};new DataView(value.elevations).setFloat32(0,876,true);store.put(value);};tx.oncomplete=()=>resolve();tx.onabort=()=>reject(tx.error);});}finally{database.close();}},id);
+        at D:\serrian-tide-world\.local\cut-canvas-observer-control.spec.ts:7:912
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-rounded-shared-playwright\cut-canvas-observer-contro-dc5cd-m-maps-and-atomic-Save-Open-installed-chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: C:\Users\birev\AppData\Local\Temp\serrian-rounded-shared-playwright\cut-canvas-observer-contro-dc5cd-m-maps-and-atomic-Save-Open-installed-chrome\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    C:\Users\birev\AppData\Local\Temp\serrian-rounded-shared-playwright\cut-canvas-observer-contro-dc5cd-m-maps-and-atomic-Save-Open-installed-chrome\trace.zip
+    Usage:
+
+        npx playwright show-trace C:\Users\birev\AppData\Local\Temp\serrian-rounded-shared-playwright\cut-canvas-observer-contro-dc5cd-m-maps-and-atomic-Save-Open-installed-chrome\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [installed-chrome] › .local\cut-canvas-observer-control.spec.ts:5:68 › Crescent-Cut Globe N128 Canvas all tools, physical banks, real rim, maps and atomic Save/Open 
+  1 error was not a part of any test, see above for details
+
+Exit: 1

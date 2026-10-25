@@ -1,0 +1,215 @@
+{
+  "measuredOn": "Installed Chrome, AMD Radeon RX 6600 ANGLE, serial BelowNormal jobs; no device independent guarantee",
+  "gatesMs": {
+    "ordinaryP95": 125,
+    "heldP95": 100,
+    "navigationP95": 150,
+    "firstPixel": 1000
+  },
+  "toolSweep": {
+    "n128-canvas": {
+      "strokes": 24,
+      "maxP95InputToPixelsMs": 123.5,
+      "maxFirstPixelMs": 124.20000004768372,
+      "canonicalMismatches": 0
+    },
+    "n128-hardware": {
+      "strokes": 24,
+      "maxP95InputToPixelsMs": 45.800000071525574,
+      "maxFirstPixelMs": 52.5,
+      "canonicalMismatches": 0
+    },
+    "n256-canvas": {
+      "strokes": 24,
+      "maxP95InputToPixelsMs": 96.89999997615814,
+      "maxFirstPixelMs": 102.89999997615814,
+      "canonicalMismatches": 0
+    },
+    "n256-hardware": {
+      "strokes": 24,
+      "maxP95InputToPixelsMs": 72.5,
+      "maxFirstPixelMs": 95.69999992847443,
+      "canonicalMismatches": 0
+    }
+  },
+  "profiles": {
+    "Broad-short-body-canvas": {
+      "strokes": 4,
+      "maxP95InputToPixelsMs": 99.89999997615814,
+      "maxFirstPixelMs": 123.10000002384186,
+      "canonicalMismatches": 0
+    },
+    "Broad-short-body-hardware": {
+      "strokes": 4,
+      "maxP95InputToPixelsMs": 89.40000009536743,
+      "maxFirstPixelMs": 89.40000009536743,
+      "canonicalMismatches": 0
+    },
+    "Slender-preset-canvas": {
+      "strokes": 4,
+      "maxP95InputToPixelsMs": 108.10000002384186,
+      "maxFirstPixelMs": 128.10000002384186,
+      "canonicalMismatches": 0
+    },
+    "Slender-preset-hardware": {
+      "strokes": 4,
+      "maxP95InputToPixelsMs": 59.60000002384186,
+      "maxFirstPixelMs": 59.60000002384186,
+      "canonicalMismatches": 0
+    },
+    "Stretched-thin-tips-canvas": {
+      "strokes": 4,
+      "maxP95InputToPixelsMs": 124.70000004768372,
+      "maxFirstPixelMs": 103.60000002384186,
+      "canonicalMismatches": 0
+    },
+    "Stretched-thin-tips-hardware": {
+      "strokes": 4,
+      "maxP95InputToPixelsMs": 96.70000004768372,
+      "maxFirstPixelMs": 66.60000002384186,
+      "canonicalMismatches": 0
+    }
+  },
+  "lifecycle": {
+    "n128-canvas": {
+      "heldP95Ms": 42.40000009536743,
+      "navigationP95Ms": 138.70000004768372,
+      "canonicalMismatches": 0,
+      "currentCanvas": {
+        "backend": "cpu",
+        "coveredPixels": 154798,
+        "maxDifference": 0,
+        "alphaDifferent": 0,
+        "different": 0
+      },
+      "contextCanvas": null,
+      "contextRestored": null
+    },
+    "n128-hardware": {
+      "heldP95Ms": 31.100000023841858,
+      "navigationP95Ms": 84,
+      "canonicalMismatches": 0,
+      "currentCanvas": null,
+      "contextCanvas": {
+        "backend": "cpu",
+        "coveredPixels": 154798,
+        "maxDifference": 0,
+        "alphaDifferent": 0,
+        "different": 0
+      },
+      "contextRestored": {
+        "backend": "webgl2",
+        "coveredPixels": 154798,
+        "maxDifference": 0,
+        "alphaDifferent": 0,
+        "different": 0
+      }
+    },
+    "n256-canvas": {
+      "heldP95Ms": 41.39999997615814,
+      "navigationP95Ms": 145.29999995231628,
+      "canonicalMismatches": 0,
+      "currentCanvas": {
+        "backend": "cpu",
+        "coveredPixels": 154798,
+        "maxDifference": 0,
+        "alphaDifferent": 0,
+        "different": 0
+      },
+      "contextCanvas": null,
+      "contextRestored": null
+    },
+    "n256-hardware": {
+      "heldP95Ms": 30.799999952316284,
+      "navigationP95Ms": 83.29999995231628,
+      "canonicalMismatches": 0,
+      "currentCanvas": null,
+      "contextCanvas": {
+        "backend": "cpu",
+        "coveredPixels": 154798,
+        "maxDifference": 0,
+        "alphaDifferent": 0,
+        "different": 0
+      },
+      "contextRestored": {
+        "backend": "webgl2",
+        "coveredPixels": 154798,
+        "maxDifference": 0,
+        "alphaDifferent": 0,
+        "different": 0
+      }
+    }
+  },
+  "pixels": {
+    "n128-ocean": {
+      "poses": 2,
+      "minimumStableTerrainPixels": 106532,
+      "referenceColorMax": 1,
+      "quarterColorMax": 2,
+      "alphaMax": 0,
+      "missing": 0,
+      "outside": 0,
+      "coastAmbiguous": 0
+    },
+    "n128-pattern": {
+      "poses": 8,
+      "minimumStableTerrainPixels": 65877,
+      "referenceColorMax": 1,
+      "quarterColorMax": 2,
+      "alphaMax": 0,
+      "missing": 0,
+      "outside": 0,
+      "coastAmbiguous": 169
+    },
+    "n128-reference": {
+      "poses": 2,
+      "minimumStableTerrainPixels": 106532,
+      "referenceColorMax": 1,
+      "quarterColorMax": 2,
+      "alphaMax": 0,
+      "missing": 0,
+      "outside": 0,
+      "coastAmbiguous": 0
+    },
+    "n256-ocean": {
+      "poses": 2,
+      "minimumStableTerrainPixels": 106532,
+      "referenceColorMax": 1,
+      "quarterColorMax": 2,
+      "alphaMax": 0,
+      "missing": 0,
+      "outside": 0,
+      "coastAmbiguous": 0
+    },
+    "n256-pattern": {
+      "poses": 8,
+      "minimumStableTerrainPixels": 65877,
+      "referenceColorMax": 1,
+      "quarterColorMax": 2,
+      "alphaMax": 0,
+      "missing": 0,
+      "outside": 0,
+      "coastAmbiguous": 179
+    },
+    "n256-reference": {
+      "poses": 2,
+      "minimumStableTerrainPixels": 106532,
+      "referenceColorMax": 1,
+      "quarterColorMax": 2,
+      "alphaMax": 0,
+      "missing": 0,
+      "outside": 0,
+      "coastAmbiguous": 0
+    },
+    "Stretched-thin-tips": {
+      "poses": 3,
+      "minimumStableTerrainPixels": 13899,
+      "referenceColorMax": 1,
+      "quarterColorMax": 2,
+      "alphaMax": 0,
+      "missing": 0,
+      "outside": 0,
+      "coastAmbiguous": 19
+    }
+  }
+}

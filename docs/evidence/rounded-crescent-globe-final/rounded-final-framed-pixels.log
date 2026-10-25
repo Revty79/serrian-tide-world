@@ -1,0 +1,19 @@
+Command: ["node", "node_modules/@playwright/test/cli.js", "test", "--config", "playwright.rounded-crescent-globe.config.mjs", "tests/rounded-crescent-pixels.spec.ts", "tests/rounded-crescent-configuration-pixels.spec.ts", "--grep", "N128|N256|Stretched thin tips", "--workers=1", "--retries=0", "--max-failures=1"]
+
+Running 7 tests using 1 worker
+
+(node:28300) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [installed-chrome] › tests\rounded-crescent-configuration-pixels.spec.ts:3:28 › Rounded Crescent Stretched thin tips: independent configured geometry, material coverage and terrain pixels (41.2s)
+  ok 2 [installed-chrome] › tests\rounded-crescent-pixels.spec.ts:2:95 › Rounded Crescent N128 pattern: independent physical geography and matched hardware/Canvas output (1.9m)
+  ok 3 [installed-chrome] › tests\rounded-crescent-pixels.spec.ts:2:95 › Rounded Crescent N128 ocean: independent physical geography and matched hardware/Canvas output (31.1s)
+  ok 4 [installed-chrome] › tests\rounded-crescent-pixels.spec.ts:2:95 › Rounded Crescent N128 reference: independent physical geography and matched hardware/Canvas output (36.0s)
+  ok 5 [installed-chrome] › tests\rounded-crescent-pixels.spec.ts:2:95 › Rounded Crescent N256 pattern: independent physical geography and matched hardware/Canvas output (2.1m)
+  ok 6 [installed-chrome] › tests\rounded-crescent-pixels.spec.ts:2:95 › Rounded Crescent N256 ocean: independent physical geography and matched hardware/Canvas output (28.3s)
+  ok 7 [installed-chrome] › tests\rounded-crescent-pixels.spec.ts:2:95 › Rounded Crescent N256 reference: independent physical geography and matched hardware/Canvas output (31.4s)
+
+  Slow test file: [installed-chrome] › tests\rounded-crescent-pixels.spec.ts (6.1m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  7 passed (6.8m)
+
+Exit: 0

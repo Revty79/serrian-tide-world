@@ -1,0 +1,35 @@
+Command: ["node", "node_modules/@playwright/test/cli.js", "test", "--config", "playwright.rounded-crescent-globe.config.mjs", "tests/rounded-crescent-configuration.spec.ts", "--workers=1", "--retries=0", "--max-failures=1"]
+
+Running 23 tests using 1 worker
+
+(node:18088) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Rounded crescent hardware configuration, cross-section editing and exact reopen (21.0s)
+  ok  2 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Heavy crescent hardware configuration, cross-section editing and exact reopen (9.2s)
+  ok  3 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Slender crescent hardware configuration, cross-section editing and exact reopen (7.9s)
+  ok  4 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Gentle curve hardware configuration, cross-section editing and exact reopen (7.9s)
+  ok  5 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Strong curve hardware configuration, cross-section editing and exact reopen (9.3s)
+  ok  6 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Long taper hardware configuration, cross-section editing and exact reopen (8.8s)
+  ok  7 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Short and full hardware configuration, cross-section editing and exact reopen (7.6s)
+  ok  8 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Small scale hardware configuration, cross-section editing and exact reopen (13.1s)
+  ok  9 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Large scale hardware configuration, cross-section editing and exact reopen (12.8s)
+  ok 10 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Slender deep curve hardware configuration, cross-section editing and exact reopen (14.0s)
+  ok 11 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Broad shallow curve hardware configuration, cross-section editing and exact reopen (12.9s)
+  ok 12 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Rounded crescent Canvas configuration, cross-section editing and exact reopen (29.9s)
+  ok 13 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Heavy crescent Canvas configuration, cross-section editing and exact reopen (29.3s)
+  ok 14 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Slender crescent Canvas configuration, cross-section editing and exact reopen (27.7s)
+  ok 15 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Gentle curve Canvas configuration, cross-section editing and exact reopen (22.4s)
+  ok 16 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Strong curve Canvas configuration, cross-section editing and exact reopen (30.4s)
+  ok 17 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Long taper Canvas configuration, cross-section editing and exact reopen (22.8s)
+  ok 18 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Short and full Canvas configuration, cross-section editing and exact reopen (17.1s)
+  ok 19 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Small scale Canvas configuration, cross-section editing and exact reopen (26.0s)
+  ok 20 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Large scale Canvas configuration, cross-section editing and exact reopen (34.1s)
+  ok 21 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Slender deep curve Canvas configuration, cross-section editing and exact reopen (42.5s)
+  ok 22 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:5:118 › Rounded Crescent Broad shallow curve Canvas configuration, cross-section editing and exact reopen (26.6s)
+  ok 23 [installed-chrome] › tests\rounded-crescent-configuration.spec.ts:11:1 › Rounded Crescent creator rejects unsupported proportions and permits correction (1.5s)
+
+  Slow test file: [installed-chrome] › tests\rounded-crescent-configuration.spec.ts (7.2m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  23 passed (7.3m)
+
+Exit: 0

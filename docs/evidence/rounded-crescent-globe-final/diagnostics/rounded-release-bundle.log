@@ -1,0 +1,19 @@
+Command: ["node", ".local/smoke-rounded-built.mjs"]
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.getAttribute: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByRole('button', { name: 'View controls', exact: true })[22m
+
+    at D:\serrian-tide-world\.local\smoke-rounded-built.mjs:5:1343 {
+  log: [
+    "  - waiting for getByRole('button', { name: 'View controls', exact: true })"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.18.0
+
+Exit: 1
